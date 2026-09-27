@@ -1,0 +1,14 @@
+{
+  "id": "local-policy-smoke-2026-09-27",
+  "purpose": "Exploratory synthetic regression evidence; not a strategy promotion, calibrated bidder comparison or human quality claim.",
+  "seedSplit": {"development": [1, 30], "heldOut": [10001, 10002, 10003, 10004, 10005, 10006, 10007, 10008]},
+  "groupBy": "All modes, seats and policies sharing a deal seed stay together.",
+  "modes": ["hearts", "spades-solo", "spades-partners"],
+  "actorSeats": [0, 1, 2, 3],
+  "candidatePolicies": ["local-baseline-1.0.0", "first-legal-1.0.0"],
+  "opponentPolicies": ["local-baseline-1.0.0", "first-legal-1.0.0"],
+  "horizon": "one complete hand",
+  "budget": {"hands": 384, "maxTransitionsPerHand": 80, "networkRequests": 0},
+  "acceptance": ["Every synthetic hand terminates with legal actions and 13 resolved tricks.", "Paired per-hand scores remain grouped by seed and actor seat.", "No statistical promotion, categorical player grade or calibrated probability is derived from this small smoke run."],
+  "limitations": ["Baseline and first-legal opponents are synthetic; no human evidence.", "No bidding A/B calibration or full-reference shortlist-loss comparison is implemented.", "Seeds were held out from deterministic rule regression seeds; no learned parameters were fitted."]
+}
