@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-27T01:41:01.6876034-04:00",
+  "scope": "Documentation-only implementation handoff verification",
+  "documents": [
+    "planning/2026-09-27-monorepo-implementation-plan.md",
+    "planning/IMPLEMENTATION-START-HERE.md",
+    "planning/implementation/requirements-and-tests.md",
+    "planning/decisions/CR-IMPL-001-monorepo-and-stripe.md",
+    "planning/README.md",
+    "planning/CHANGELOG.md"
+  ],
+  "localLinksChecked": 66,
+  "linkAndFenceErrors": [],
+  "originalManifestFiles": 56,
+  "originalManifestMismatches": [],
+  "historicalPrototypeFiles": 7,
+  "historicalPrototypeMismatches": [],
+  "expectedWorkPackets": 20,
+  "missingPackets": [],
+  "placeholderHits": [],
+  "applicationTests": "Not run; application code unchanged",
+  "providerMode": "No provider execution",
+  "observedModel": null,
+  "stripe": "No payment execution",
+  "commit": "Unavailable: no Git repository"
+}

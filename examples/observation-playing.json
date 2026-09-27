@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "game": {
+    "gameId": "spades",
+    "moduleVersion": "1.0.0",
+    "ruleProfileId": "spades-training-1.0.0",
+    "observationSchemaVersion": "1.0.0",
+    "featureVersion": "spades-facts-1.0.0",
+    "promptVersion": "jev-decision-1.0.0"
+  },
+  "competition": {
+    "mode": "partnership",
+    "competitors": [
+      {
+        "id": "NS",
+        "seats": [
+          "N",
+          "S"
+        ]
+      },
+      {
+        "id": "EW",
+        "seats": [
+          "E",
+          "W"
+        ]
+      }
+    ]
+  },
+  "actorSeat": "S",
+  "stateVersion": 7,
+  "lifecycle": "awaiting_action",
+  "modulePhase": "PLAYING",
+  "candidates": [
+    {
+      "id": "play:H3",
+      "kind": "spades.play",
+      "label": "Play three of hearts",
+      "cardIds": [
+        "H3"
+      ],
+      "payload": {
+        "cardId": "H3"
+      }
+    },
+    {
+      "id": "play:HQ",
+      "kind": "spades.play",
+      "label": "Play queen of hearts",
+      "cardIds": [
+        "HQ"
+      ],
+      "payload": {
+        "cardId": "HQ"
+      }
+    }
+  ],
+  "gameData": {
+    "ownHand": [
+      "C2",
+      "C4",
+      "C8",
+      "CQ",
+      "D3",
+      "D8",
+      "DK",
+      "H3",
+      "HQ",
+      "S2",
+      "S5",
+      "S9",
+      "SA"
+    ],
+    "public": {
+      "handNumber": 1,
+      "dealer": "W",
+      "currentSeat": "S",
+      "spadesBroken": false,
+      "bids": {
+        "N": 3,
+        "E": 4,
+        "S": 2,
+        "W": 3
+      },
+      "tricksWon": {
+        "N": 0,
+        "E": 0,
+        "S": 0,
+        "W": 0
+      },
+      "remainingCardCounts": {
+        "N": 12,
+        "E": 12,
+        "S": 13,
+        "W": 13
+      },
+      "scores": {
+        "NS": 0,
+        "EW": 0
+      },
+      "bags": {
+        "NS": 0,
+        "EW": 0
+      },
+      "currentTrick": {
+        "leader": "N",
+        "plays": [
+          {
+            "seat": "N",
+            "cardId": "H2"
+          },
+          {
+            "seat": "E",
+            "cardId": "H7"
+          }
+        ]
+      },
+      "completedTricks": []
+    },
+    "facts": {
+      "suitCounts": {
+        "C": 4,
+        "D": 3,
+        "H": 2,
+        "S": 4
+      },
+      "knownVoids": {
+        "N": [],
+        "E": [],
+        "S": [],
+        "W": []
+      },
+      "partnerSeat": "N",
+      "currentWinningSeat": "E",
+      "positiveTeamContract": 5,
+      "teamBidComplete": true,
+      "positiveTeamTricks": 0,
+      "outstandingPositiveTricks": 5,
+      "tricksRemaining": 13,
+      "candidateFacts": [
+        {
+          "candidateId": "play:H3",
+          "followsLedSuit": true,
+          "isTrump": false,
+          "wouldCurrentlyWin": false,
+          "winsCompletedTrick": null
+        },
+        {
+          "candidateId": "play:HQ",
+          "followsLedSuit": true,
+          "isTrump": false,
+          "wouldCurrentlyWin": true,
+          "winsCompletedTrick": null
+        }
+      ]
+    }
+  }
+}

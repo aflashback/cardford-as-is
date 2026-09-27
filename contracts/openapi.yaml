@@ -1,0 +1,1071 @@
+openapi: 3.1.0
+info:
+  title: Card Coach API — planning contract
+  version: 1.0.0
+  description: Specification only. No server exists. Spades is the sole registered
+    production union member. Enforce all semantic invariants in docs 07 and 12.
+servers:
+- url: /api/v1
+security:
+- guestCookie: []
+paths:
+  /guest:
+    post:
+      operationId: bootstrapGuest
+      summary: Create/resume origin-checked guest
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  csrfToken: &id002
+                    type: string
+                    minLength: 1
+                  expiresAt:
+                    type: string
+                    format: date-time
+                required:
+                - csrfToken
+                - expiresAt
+                additionalProperties: false
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: &id001
+                $ref: '#/components/schemas/Problem'
+      security: []
+  /games:
+    get:
+      operationId: listGames
+      summary: List implemented compatible game modules
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GameManifest'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      security: []
+  /sessions:
+    post:
+      operationId: createSession
+      summary: Create idempotent version-pinned session
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema: &id004
+                $ref: '#/components/schemas/SessionView'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSession'
+    get:
+      operationId: listSessions
+      summary: List owned resumable and historical sessions
+      parameters:
+      - name: cursor
+        in: query
+        required: false
+        schema: &id003
+          type: string
+          minLength: 1
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 20
+      responses:
+        '200':
+          description: Owned session page
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sessionId: &id008
+                          type: string
+                          format: uuid
+                        gameId: *id003
+                        aiMode:
+                          enum:
+                          - jev
+                          - demo
+                        playMode:
+                          enum:
+                          - guided
+                          - practice
+                          - match
+                        modulePhase: *id003
+                        stateVersion:
+                          type: integer
+                          minimum: 0
+                        updatedAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - sessionId
+                      - gameId
+                      - aiMode
+                      - playMode
+                      - modulePhase
+                      - stateVersion
+                      - updatedAt
+                      additionalProperties: false
+                  nextCursor:
+                    type:
+                    - string
+                    - 'null'
+                required:
+                - items
+                - nextCursor
+                additionalProperties: false
+        default: &id009
+          description: Typed failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+  /sessions/{id}:
+    get:
+      operationId: getSession
+      summary: Get owner-only human-safe view
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: *id004
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+    delete:
+      operationId: deleteSession
+      summary: Delete owned session and descendants
+      responses:
+        '204':
+          description: Deleted
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+  /sessions/{id}/actions:
+    post:
+      operationId: submitAction
+      summary: Commit exact legal candidate once
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: &id006
+                $ref: '#/components/schemas/CommandReceipt'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionCommand'
+  /sessions/{id}/hints:
+    post:
+      operationId: revealHint
+      summary: Reveal existing human advice stage
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: &id011
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - not_applicable
+                    - pending
+                    - ready
+                    - unavailable
+                  decisionId:
+                    anyOf:
+                    - &id005
+                      type: string
+                      format: uuid
+                    - type: 'null'
+                  source:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - jev
+                      - demo
+                      - forced
+                    - type: 'null'
+                  suggestedActionId:
+                    anyOf:
+                    - *id002
+                    - type: 'null'
+                  hintStage:
+                    type: integer
+                    minimum: 0
+                    maximum: 3
+                  notes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        templateId: *id002
+                        evidenceClass:
+                          type: string
+                          enum:
+                          - rule_fact
+                          - exercise_answer
+                          - strategic_suggestion
+                        text: *id002
+                      required:
+                      - templateId
+                      - evidenceClass
+                      - text
+                      additionalProperties: false
+                required:
+                - status
+                - decisionId
+                - source
+                - suggestedActionId
+                - hintStage
+                - notes
+                additionalProperties: false
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commandId: *id005
+                decisionStateVersion:
+                  type: integer
+                  minimum: 1
+                stage:
+                  type: integer
+                  minimum: 1
+                  maximum: 3
+              required:
+              - commandId
+              - decisionStateVersion
+              - stage
+              additionalProperties: false
+  /sessions/{id}/next-hand:
+    post:
+      operationId: nextHand
+      summary: Advance a completed nonterminal match round
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: *id006
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commandId: *id005
+                expectedStateVersion: &id010
+                  type: integer
+                  minimum: 1
+              required:
+              - commandId
+              - expectedStateVersion
+              additionalProperties: false
+  /sessions/{id}/retry-decision:
+    post:
+      operationId: retryDecision
+      summary: Retry unchanged failed job with cooldown
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scheduled: &id016
+                    type: boolean
+                required:
+                - scheduled
+                additionalProperties: false
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commandId: *id005
+                decisionStateVersion:
+                  type: integer
+                  minimum: 1
+                purpose:
+                  type: string
+                  enum:
+                  - bot_turn
+                  - human_advice
+              required:
+              - commandId
+              - decisionStateVersion
+              - purpose
+              additionalProperties: false
+  /sessions/{id}/review:
+    get:
+      operationId: getReview
+      summary: Review completed hand with original human information
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: handNumber
+        in: query
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+  /sessions/{id}/reveal:
+    post:
+      operationId: revealHand
+      summary: Explicit completed-hand hindsight reveal
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  handNumber:
+                    type: integer
+                    minimum: 1
+                  hands:
+                    type: object
+                    properties:
+                      N:
+                        type: array
+                        items:
+                          type: string
+                          pattern: ^[CDHS](?:[2-9]|10|J|Q|K|A)$
+                        minItems: 13
+                        maxItems: 13
+                      E:
+                        type: array
+                        items:
+                          type: string
+                          pattern: ^[CDHS](?:[2-9]|10|J|Q|K|A)$
+                        minItems: 13
+                        maxItems: 13
+                      S:
+                        type: array
+                        items:
+                          type: string
+                          pattern: ^[CDHS](?:[2-9]|10|J|Q|K|A)$
+                        minItems: 13
+                        maxItems: 13
+                      W:
+                        type: array
+                        items:
+                          type: string
+                          pattern: ^[CDHS](?:[2-9]|10|J|Q|K|A)$
+                        minItems: 13
+                        maxItems: 13
+                    required:
+                    - N
+                    - E
+                    - S
+                    - W
+                    additionalProperties: false
+                  exposedFuture:
+                    const: true
+                required:
+                - handNumber
+                - hands
+                - exposedFuture
+                additionalProperties: false
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commandId: *id005
+                handNumber:
+                  type: integer
+                  minimum: 1
+              required:
+              - commandId
+              - handNumber
+              additionalProperties: false
+  /sessions/{id}/fork:
+    post:
+      operationId: forkSession
+      summary: Create a new branch before historical human action
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema: *id004
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commandId: *id005
+                beforeStateVersion:
+                  type: integer
+                  minimum: 1
+              required:
+              - commandId
+              - beforeStateVersion
+              additionalProperties: false
+  /drills:
+    get:
+      operationId: listDrills
+      summary: List game-specific authored drills
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items: &id014
+                  $ref: '#/components/schemas/DrillSummary'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - &id007
+        name: gameId
+        in: query
+        required: true
+        schema: *id002
+  /drills/{id}:
+    get:
+      operationId: getDrill
+      summary: Get safe exercise without answer key
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrillView'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+  /drills/{id}/attempts:
+    post:
+      operationId: submitDrill
+      summary: Assess authored answer, not model agreement
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrillResult'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id002
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attemptId: *id005
+                contentVersion: &id013
+                  type: string
+                  pattern: ^\d+\.\d+\.\d+$
+                answer:
+                  $ref: '#/components/schemas/DrillAnswer'
+                hintStage:
+                  type: integer
+                  minimum: 0
+                  maximum: 3
+              required:
+              - attemptId
+              - contentVersion
+              - answer
+              - hintStage
+              additionalProperties: false
+  /progress:
+    get:
+      operationId: getProgress
+      summary: Get assistance-aware game-scoped progress
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Progress'
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - *id007
+  /guest/data:
+    delete:
+      operationId: deleteGuestData
+      summary: Delete owned records and expire guest cookie
+      responses:
+        '204':
+          description: Deleted
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      parameters:
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id002
+  /healthz:
+    get:
+      operationId: health
+      summary: Operational health (no private details)
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - ok
+                    - unavailable
+                required:
+                - status
+                additionalProperties: false
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      security: []
+      servers:
+      - url: /
+  /readyz:
+    get:
+      operationId: readiness
+      summary: Operational health (no private details)
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                    - ok
+                    - unavailable
+                required:
+                - status
+                additionalProperties: false
+        default:
+          description: Typed failure; see docs/07-data-api.md for status mapping
+          content:
+            application/json:
+              schema: *id001
+      security: []
+      servers:
+      - url: /
+  /drills/{id}/hints:
+    post:
+      operationId: revealDrillHint
+      summary: Record server-side exercise assistance and reveal one stage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: *id003
+      - name: X-CSRF-Token
+        in: header
+        required: true
+        schema: *id003
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                attemptId: *id008
+                contentVersion: *id003
+                stage:
+                  type: integer
+                  minimum: 1
+                  maximum: 3
+              required:
+              - attemptId
+              - contentVersion
+              - stage
+              additionalProperties: false
+      responses:
+        '200':
+          description: Recorded hint
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attemptId: *id008
+                  stage:
+                    type: integer
+                    minimum: 1
+                    maximum: 3
+                  text: *id003
+                required:
+                - attemptId
+                - stage
+                - text
+                additionalProperties: false
+        default: *id009
+components:
+  securitySchemes:
+    guestCookie:
+      type: apiKey
+      in: cookie
+      name: card_coach_guest
+  schemas:
+    Problem:
+      type: object
+      properties:
+        code: *id002
+        message: *id002
+        requestId: *id002
+        currentStateVersion: &id012
+          type: integer
+          minimum: 0
+      required:
+      - code
+      - message
+      - requestId
+      additionalProperties: false
+    SessionView:
+      $ref: session-view.schema.json
+    GameManifest:
+      $ref: game-manifest.schema.json
+    DecisionObservation:
+      $ref: decision-observation.schema.json
+    ActionCommand:
+      type: object
+      properties:
+        commandId: *id005
+        expectedStateVersion: *id010
+        actionId: *id002
+      required:
+      - commandId
+      - expectedStateVersion
+      - actionId
+      additionalProperties: false
+    CreateSession:
+      type: object
+      properties:
+        commandId: *id005
+        gameId:
+          const: spades
+        ruleProfileId:
+          const: spades-training-1.0.0
+        competition:
+          $ref: competition.schema.json
+        aiMode:
+          type: string
+          enum:
+          - jev
+          - demo
+        playMode:
+          type: string
+          enum:
+          - guided
+          - practice
+          - match
+      required:
+      - commandId
+      - gameId
+      - ruleProfileId
+      - competition
+      - aiMode
+      - playMode
+      additionalProperties: false
+    CommandReceipt:
+      type: object
+      properties:
+        sessionId: *id005
+        stateVersion:
+          type: integer
+          minimum: 1
+        commandId: *id005
+      required:
+      - sessionId
+      - stateVersion
+      - commandId
+      additionalProperties: false
+    ReviewItem:
+      type: object
+      properties:
+        stateVersion:
+          type: integer
+          minimum: 1
+        observation: &id015
+          $ref: '#/components/schemas/DecisionObservation'
+        actualActionId: *id002
+        suggestion: *id011
+      required:
+      - stateVersion
+      - observation
+      - actualActionId
+      - suggestion
+      additionalProperties: false
+    Review:
+      type: object
+      properties:
+        sessionId: *id005
+        handNumber:
+          type: integer
+          minimum: 1
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewItem'
+        highlightStateVersions:
+          type: array
+          items: *id012
+          minItems: 0
+          maxItems: 3
+      required:
+      - sessionId
+      - handNumber
+      - items
+      - highlightStateVersions
+      additionalProperties: false
+    DrillAnswer:
+      oneOf:
+      - type: object
+        properties:
+          type:
+            const: action
+          actionId: *id002
+        required:
+        - type
+        - actionId
+        additionalProperties: false
+      - type: object
+        properties:
+          type:
+            const: number
+          value:
+            type: integer
+        required:
+        - type
+        - value
+        additionalProperties: false
+      - type: object
+        properties:
+          type:
+            const: seat
+          seat:
+            type: string
+            enum:
+            - N
+            - E
+            - S
+            - W
+        required:
+        - type
+        - seat
+        additionalProperties: false
+    DrillSummary:
+      type: object
+      properties:
+        id: *id002
+        gameId: *id002
+        contentVersion: *id013
+        skillId: *id002
+        title: *id002
+        objective: *id002
+      required:
+      - id
+      - gameId
+      - contentVersion
+      - skillId
+      - title
+      - objective
+      additionalProperties: false
+    DrillView:
+      type: object
+      properties:
+        summary: *id014
+        table:
+          anyOf:
+          - $ref: table-view.schema.json
+          - type: 'null'
+        observation:
+          anyOf:
+          - *id015
+          - type: 'null'
+        answerType:
+          type: string
+          enum:
+          - action
+          - number
+          - seat
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              id: *id002
+              label: *id002
+            required:
+            - id
+            - label
+            additionalProperties: false
+        explanationBeforeAnswer: *id002
+      required:
+      - summary
+      - table
+      - observation
+      - answerType
+      - choices
+      - explanationBeforeAnswer
+      additionalProperties: false
+    DrillResult:
+      type: object
+      properties:
+        attemptId: *id005
+        correct: *id016
+        evidenceClass:
+          const: exercise_answer
+        explanation: *id002
+        skillId: *id002
+        assisted: *id016
+      required:
+      - attemptId
+      - correct
+      - evidenceClass
+      - explanation
+      - skillId
+      - assisted
+      additionalProperties: false
+    Progress:
+      type: object
+      properties:
+        gameId: *id002
+        skills:
+          type: array
+          items:
+            type: object
+            properties:
+              skillId: *id002
+              label: *id002
+              attempts: *id012
+              unaidedCorrect: *id012
+              assistedCorrect: *id012
+              status:
+                type: string
+                enum:
+                - introduced
+                - practising
+                - consistent_in_exercises
+            required:
+            - skillId
+            - label
+            - attempts
+            - unaidedCorrect
+            - assistedCorrect
+            - status
+            additionalProperties: false
+      required:
+      - gameId
+      - skills
+      additionalProperties: false

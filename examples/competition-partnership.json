@@ -1,0 +1,19 @@
+{
+  "mode": "partnership",
+  "competitors": [
+    {
+      "id": "NS",
+      "seats": [
+        "N",
+        "S"
+      ]
+    },
+    {
+      "id": "EW",
+      "seats": [
+        "E",
+        "W"
+      ]
+    }
+  ]
+}

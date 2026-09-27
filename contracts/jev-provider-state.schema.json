@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jev-provider-state.schema.json",
+  "type": "object",
+  "properties": {
+    "gameName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ruleSummary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "string",
+      "enum": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ]
+    },
+    "ownCards": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "maxItems": 13
+    },
+    "publicInformation": {
+      "$ref": "spades-public.schema.json"
+    },
+    "programFacts": {
+      "$ref": "spades-facts.schema.json"
+    }
+  },
+  "required": [
+    "gameName",
+    "ruleSummary",
+    "objective",
+    "actor",
+    "ownCards",
+    "publicInformation",
+    "programFacts"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "spades-action.schema.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^bid:(?:[0-9]|1[0-3])$"
+        },
+        "kind": {
+          "const": "spades.bid"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+          },
+          "minItems": 0,
+          "maxItems": 0
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "bid": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          "required": [
+            "bid"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "label",
+        "cardIds",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^play:[CDHS](?:[2-9]|10|J|Q|K|A)$"
+        },
+        "kind": {
+          "const": "spades.play"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cardIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "cardId": {
+              "type": "string",
+              "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+            }
+          },
+          "required": [
+            "cardId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "label",
+        "cardIds",
+        "payload"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

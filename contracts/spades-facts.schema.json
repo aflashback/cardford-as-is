@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "spades-facts.schema.json",
+  "type": "object",
+  "properties": {
+    "suitCounts": {
+      "type": "object",
+      "properties": {
+        "C": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "D": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "H": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "S": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        }
+      },
+      "required": [
+        "C",
+        "D",
+        "H",
+        "S"
+      ],
+      "additionalProperties": false
+    },
+    "knownVoids": {
+      "type": "object",
+      "properties": {
+        "N": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "C",
+              "D",
+              "H",
+              "S"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "E": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "C",
+              "D",
+              "H",
+              "S"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "S": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "C",
+              "D",
+              "H",
+              "S"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "W": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "C",
+              "D",
+              "H",
+              "S"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ],
+      "additionalProperties": false
+    },
+    "partnerSeat": {
+      "type": "string",
+      "enum": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ]
+    },
+    "currentWinningSeat": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "N",
+            "E",
+            "S",
+            "W"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "positiveTeamContract": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 26
+    },
+    "teamBidComplete": {
+      "type": "boolean"
+    },
+    "positiveTeamTricks": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 13
+    },
+    "outstandingPositiveTricks": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 26
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tricksRemaining": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 13
+    },
+    "candidateFacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidateId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "followsLedSuit": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "isTrump": {
+            "type": "boolean"
+          },
+          "wouldCurrentlyWin": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "winsCompletedTrick": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "candidateId",
+          "followsLedSuit",
+          "isTrump",
+          "wouldCurrentlyWin",
+          "winsCompletedTrick"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 13
+    }
+  },
+  "required": [
+    "suitCounts",
+    "knownVoids",
+    "partnerSeat",
+    "currentWinningSeat",
+    "positiveTeamContract",
+    "teamBidComplete",
+    "positiveTeamTricks",
+    "outstandingPositiveTricks",
+    "tricksRemaining",
+    "candidateFacts"
+  ],
+  "additionalProperties": false
+}

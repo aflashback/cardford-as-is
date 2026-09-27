@@ -1,0 +1,24 @@
+{
+  "gameId": "test-solo",
+  "displayName": "Test-only individual module",
+  "moduleVersion": "1.0.0",
+  "playerCount": 4,
+  "supportedCompetitionModes": [
+    "individual"
+  ],
+  "ruleProfileIds": [
+    "test-solo-1.0.0"
+  ],
+  "requiredCapabilities": [
+    "turns.sequential",
+    "competition.individual",
+    "input.single_choice"
+  ],
+  "schemaIds": {
+    "action": "test-solo-action-1.0.0 (test implementation)",
+    "observation": "test-solo-observation-1.0.0 (test implementation)",
+    "privateState": "test-solo-privateState-1.0.0 (test implementation)",
+    "publicView": "test-solo-publicView-1.0.0 (test implementation)"
+  },
+  "status": "test_only"
+}

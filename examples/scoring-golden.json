@@ -1,0 +1,222 @@
+{
+  "ruleProfileId": "spades-training-1.0.0",
+  "fixtureScope": "single-team scoring unit; not complete deals",
+  "cases": [
+    {
+      "id": "SC-01",
+      "bids": [
+        3,
+        2
+      ],
+      "tricks": [
+        3,
+        2
+      ],
+      "oldScore": 0,
+      "oldBags": 0,
+      "expected": {
+        "delta": 50,
+        "newScore": 50,
+        "newBags": 0
+      }
+    },
+    {
+      "id": "SC-02",
+      "bids": [
+        3,
+        2
+      ],
+      "tricks": [
+        4,
+        3
+      ],
+      "oldScore": 100,
+      "oldBags": 4,
+      "expected": {
+        "delta": 52,
+        "newScore": 152,
+        "newBags": 6
+      }
+    },
+    {
+      "id": "SC-03",
+      "bids": [
+        3,
+        2
+      ],
+      "tricks": [
+        2,
+        2
+      ],
+      "oldScore": 100,
+      "oldBags": 4,
+      "expected": {
+        "delta": -50,
+        "newScore": 50,
+        "newBags": 4
+      }
+    },
+    {
+      "id": "SC-04",
+      "bids": [
+        3,
+        2
+      ],
+      "tricks": [
+        4,
+        3
+      ],
+      "oldScore": 100,
+      "oldBags": 9,
+      "expected": {
+        "delta": -48,
+        "newScore": 52,
+        "newBags": 1
+      }
+    },
+    {
+      "id": "SC-05",
+      "bids": [
+        0,
+        4
+      ],
+      "tricks": [
+        0,
+        4
+      ],
+      "oldScore": 0,
+      "oldBags": 0,
+      "expected": {
+        "delta": 140,
+        "newScore": 140,
+        "newBags": 0
+      }
+    },
+    {
+      "id": "SC-06",
+      "bids": [
+        0,
+        4
+      ],
+      "tricks": [
+        0,
+        3
+      ],
+      "oldScore": 0,
+      "oldBags": 0,
+      "expected": {
+        "delta": 60,
+        "newScore": 60,
+        "newBags": 0
+      }
+    },
+    {
+      "id": "SC-07",
+      "bids": [
+        0,
+        4
+      ],
+      "tricks": [
+        2,
+        4
+      ],
+      "oldScore": 0,
+      "oldBags": 0,
+      "expected": {
+        "delta": -60,
+        "newScore": -60,
+        "newBags": 2
+      }
+    },
+    {
+      "id": "SC-08",
+      "bids": [
+        0,
+        4
+      ],
+      "tricks": [
+        2,
+        3
+      ],
+      "oldScore": 150,
+      "oldBags": 9,
+      "expected": {
+        "delta": -240,
+        "newScore": -90,
+        "newBags": 1
+      }
+    },
+    {
+      "id": "SC-09",
+      "bids": [
+        0,
+        4
+      ],
+      "tricks": [
+        1,
+        6
+      ],
+      "oldScore": 100,
+      "oldBags": 8,
+      "expected": {
+        "delta": -158,
+        "newScore": -58,
+        "newBags": 1
+      }
+    },
+    {
+      "id": "SC-10",
+      "bids": [
+        0,
+        0
+      ],
+      "tricks": [
+        2,
+        0
+      ],
+      "oldScore": 0,
+      "oldBags": 0,
+      "expected": {
+        "delta": 0,
+        "newScore": 0,
+        "newBags": 2
+      }
+    },
+    {
+      "id": "SC-11",
+      "bids": [
+        0,
+        0
+      ],
+      "tricks": [
+        6,
+        7
+      ],
+      "oldScore": 100,
+      "oldBags": 9,
+      "expected": {
+        "delta": -400,
+        "newScore": -300,
+        "newBags": 2
+      }
+    },
+    {
+      "id": "SC-12",
+      "bids": [
+        13,
+        13
+      ],
+      "tricks": [
+        6,
+        7
+      ],
+      "oldScore": 100,
+      "oldBags": 3,
+      "expected": {
+        "delta": -260,
+        "newScore": -160,
+        "newBags": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "gameId": "spades",
+  "displayName": "Spades",
+  "moduleVersion": "1.0.0",
+  "playerCount": 4,
+  "supportedCompetitionModes": [
+    "partnership"
+  ],
+  "ruleProfileIds": [
+    "spades-training-1.0.0"
+  ],
+  "requiredCapabilities": [
+    "turns.sequential",
+    "competition.partnership",
+    "input.single_choice",
+    "input.single_card",
+    "board.trick",
+    "display.trump"
+  ],
+  "schemaIds": {
+    "action": "spades-action.schema.json",
+    "observation": "decision-observation.schema.json",
+    "privateState": "spades-private-state-1.0.0 (implementation must define before persistence)",
+    "publicView": "session-view.schema.json"
+  },
+  "status": "production"
+}

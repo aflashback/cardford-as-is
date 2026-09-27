@@ -1,0 +1,117 @@
+{
+  "model": "jev-1.13.0",
+  "state": {
+    "gameName": "Partnership Spades, training rules 1.0.0",
+    "ruleSummary": "Follow the led suit when held. Spades are trump. Normal positive contracts score ten times the bid or lose that amount when missed. Nil succeeds only with zero tricks and scores +100, otherwise -100. Failed-Nil tricks do not fulfill the partner contract or earn points, but add bags. Each ten bags costs 100 points. Positive-contract overtricks earn one point each and add one bag each. Bags carry across hands. Evaluate the match after scoring both teams; reach 500 with a higher score than the opponent, continuing ties at or above 500.",
+    "objective": "Pursue the NS partnership score and match objective; do not assume unobserved cards. Do not try to win every trick regardless of contract, Nil or bag costs.",
+    "actor": "S",
+    "ownCards": [
+      "two of clubs",
+      "four of clubs",
+      "eight of clubs",
+      "queen of clubs",
+      "three of diamonds",
+      "eight of diamonds",
+      "king of diamonds",
+      "three of hearts",
+      "queen of hearts",
+      "two of spades",
+      "five of spades",
+      "nine of spades",
+      "ace of spades"
+    ],
+    "publicInformation": {
+      "handNumber": 1,
+      "dealer": "W",
+      "currentSeat": "S",
+      "spadesBroken": false,
+      "bids": {
+        "N": 3,
+        "E": 4,
+        "S": 2,
+        "W": 3
+      },
+      "tricksWon": {
+        "N": 0,
+        "E": 0,
+        "S": 0,
+        "W": 0
+      },
+      "remainingCardCounts": {
+        "N": 12,
+        "E": 12,
+        "S": 13,
+        "W": 13
+      },
+      "scores": {
+        "NS": 0,
+        "EW": 0
+      },
+      "bags": {
+        "NS": 0,
+        "EW": 0
+      },
+      "currentTrick": {
+        "leader": "N",
+        "plays": [
+          {
+            "seat": "N",
+            "cardId": "H2"
+          },
+          {
+            "seat": "E",
+            "cardId": "H7"
+          }
+        ]
+      },
+      "completedTricks": []
+    },
+    "programFacts": {
+      "suitCounts": {
+        "C": 4,
+        "D": 3,
+        "H": 2,
+        "S": 4
+      },
+      "knownVoids": {
+        "N": [],
+        "E": [],
+        "S": [],
+        "W": []
+      },
+      "partnerSeat": "N",
+      "currentWinningSeat": "E",
+      "positiveTeamContract": 5,
+      "teamBidComplete": true,
+      "positiveTeamTricks": 0,
+      "outstandingPositiveTricks": 5,
+      "tricksRemaining": 13,
+      "candidateFacts": [
+        {
+          "candidateId": "play:H3",
+          "followsLedSuit": true,
+          "isTrump": false,
+          "wouldCurrentlyWin": false,
+          "winsCompletedTrick": null
+        },
+        {
+          "candidateId": "play:HQ",
+          "followsLedSuit": true,
+          "isTrump": false,
+          "wouldCurrentlyWin": true,
+          "winsCompletedTrick": null
+        }
+      ]
+    }
+  },
+  "questions": {
+    "action": {
+      "type": "choice",
+      "instructions": "Choose one legal action for South using the supplied rules, own hand and public information only. Program facts are exact. The current lead is not a guaranteed final win.",
+      "criteria": {
+        "play:H3": "Play three of hearts. Follows suit; does not overtake the current seven of hearts. West still acts.",
+        "play:HQ": "Play queen of hearts. Follows suit; becomes the current leader, but West still acts."
+      }
+    }
+  }
+}

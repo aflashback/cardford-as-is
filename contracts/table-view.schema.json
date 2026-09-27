@@ -1,0 +1,289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "table-view.schema.json",
+  "type": "object",
+  "properties": {
+    "seats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seat": {
+            "type": "string",
+            "enum": [
+              "N",
+              "E",
+              "S",
+              "W"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "avatarInitial": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2
+          },
+          "controller": {
+            "type": "string",
+            "enum": [
+              "human",
+              "jev",
+              "demo"
+            ]
+          },
+          "competitorId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "remainingCardCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "seat",
+          "label",
+          "avatarInitial",
+          "controller",
+          "competitorId",
+          "remainingCardCount",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "ownHand": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "instanceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "faceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rankLabel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "suitLabel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accessibleLabel": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "instanceId",
+          "faceId",
+          "rankLabel",
+          "suitLabel",
+          "accessibleLabel"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "publicZones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seat": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "N",
+                        "E",
+                        "S",
+                        "W"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "card": {
+                  "type": "object",
+                  "properties": {
+                    "instanceId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "faceId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "rankLabel": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "suitLabel": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "accessibleLabel": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "instanceId",
+                    "faceId",
+                    "rankLabel",
+                    "suitLabel",
+                    "accessibleLabel"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "seat",
+                "card"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "hiddenCardCount": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "cards",
+          "hiddenCardCount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scoreEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitorId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "total": {
+            "type": "integer"
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "number"
+                  ]
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "competitorId",
+          "total",
+          "metrics"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 4
+    },
+    "activeSeat": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "N",
+            "E",
+            "S",
+            "W"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "seats",
+    "ownHand",
+    "publicZones",
+    "scoreEntries",
+    "activeSeat"
+  ],
+  "additionalProperties": false
+}

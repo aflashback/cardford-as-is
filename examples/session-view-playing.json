@@ -1,0 +1,386 @@
+{
+  "sessionId": "00000000-0000-4000-8000-000000000001",
+  "branchId": "00000000-0000-4000-8000-000000000002",
+  "game": {
+    "gameId": "spades",
+    "moduleVersion": "1.0.0",
+    "ruleProfileId": "spades-training-1.0.0",
+    "observationSchemaVersion": "1.0.0",
+    "featureVersion": "spades-facts-1.0.0",
+    "promptVersion": "jev-decision-1.0.0"
+  },
+  "competition": {
+    "mode": "partnership",
+    "competitors": [
+      {
+        "id": "NS",
+        "seats": [
+          "N",
+          "S"
+        ]
+      },
+      {
+        "id": "EW",
+        "seats": [
+          "E",
+          "W"
+        ]
+      }
+    ]
+  },
+  "aiMode": "jev",
+  "playMode": "guided",
+  "lifecycle": "awaiting_action",
+  "modulePhase": "PLAYING",
+  "stateVersion": 7,
+  "humanSeat": "S",
+  "exposedFuture": false,
+  "table": {
+    "seats": [
+      {
+        "seat": "N",
+        "label": "N",
+        "avatarInitial": "N",
+        "controller": "jev",
+        "competitorId": "NS",
+        "remainingCardCount": 12,
+        "status": [
+          {
+            "key": "bid",
+            "label": "Bid",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "seat": "E",
+        "label": "E",
+        "avatarInitial": "E",
+        "controller": "jev",
+        "competitorId": "EW",
+        "remainingCardCount": 12,
+        "status": [
+          {
+            "key": "bid",
+            "label": "Bid",
+            "value": 4
+          }
+        ]
+      },
+      {
+        "seat": "S",
+        "label": "You",
+        "avatarInitial": "S",
+        "controller": "human",
+        "competitorId": "NS",
+        "remainingCardCount": 13,
+        "status": [
+          {
+            "key": "bid",
+            "label": "Bid",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "seat": "W",
+        "label": "W",
+        "avatarInitial": "W",
+        "controller": "jev",
+        "competitorId": "EW",
+        "remainingCardCount": 13,
+        "status": [
+          {
+            "key": "bid",
+            "label": "Bid",
+            "value": 3
+          }
+        ]
+      }
+    ],
+    "ownHand": [
+      {
+        "instanceId": "C2",
+        "faceId": "C2",
+        "rankLabel": "2",
+        "suitLabel": "clubs",
+        "accessibleLabel": "two of clubs"
+      },
+      {
+        "instanceId": "C4",
+        "faceId": "C4",
+        "rankLabel": "4",
+        "suitLabel": "clubs",
+        "accessibleLabel": "four of clubs"
+      },
+      {
+        "instanceId": "C8",
+        "faceId": "C8",
+        "rankLabel": "8",
+        "suitLabel": "clubs",
+        "accessibleLabel": "eight of clubs"
+      },
+      {
+        "instanceId": "CQ",
+        "faceId": "CQ",
+        "rankLabel": "Q",
+        "suitLabel": "clubs",
+        "accessibleLabel": "queen of clubs"
+      },
+      {
+        "instanceId": "D3",
+        "faceId": "D3",
+        "rankLabel": "3",
+        "suitLabel": "diamonds",
+        "accessibleLabel": "three of diamonds"
+      },
+      {
+        "instanceId": "D8",
+        "faceId": "D8",
+        "rankLabel": "8",
+        "suitLabel": "diamonds",
+        "accessibleLabel": "eight of diamonds"
+      },
+      {
+        "instanceId": "DK",
+        "faceId": "DK",
+        "rankLabel": "K",
+        "suitLabel": "diamonds",
+        "accessibleLabel": "king of diamonds"
+      },
+      {
+        "instanceId": "H3",
+        "faceId": "H3",
+        "rankLabel": "3",
+        "suitLabel": "hearts",
+        "accessibleLabel": "three of hearts"
+      },
+      {
+        "instanceId": "HQ",
+        "faceId": "HQ",
+        "rankLabel": "Q",
+        "suitLabel": "hearts",
+        "accessibleLabel": "queen of hearts"
+      },
+      {
+        "instanceId": "S2",
+        "faceId": "S2",
+        "rankLabel": "2",
+        "suitLabel": "spades",
+        "accessibleLabel": "two of spades"
+      },
+      {
+        "instanceId": "S5",
+        "faceId": "S5",
+        "rankLabel": "5",
+        "suitLabel": "spades",
+        "accessibleLabel": "five of spades"
+      },
+      {
+        "instanceId": "S9",
+        "faceId": "S9",
+        "rankLabel": "9",
+        "suitLabel": "spades",
+        "accessibleLabel": "nine of spades"
+      },
+      {
+        "instanceId": "SA",
+        "faceId": "SA",
+        "rankLabel": "A",
+        "suitLabel": "spades",
+        "accessibleLabel": "ace of spades"
+      }
+    ],
+    "publicZones": [
+      {
+        "id": "current-trick",
+        "label": "Current trick",
+        "cards": [
+          {
+            "seat": "N",
+            "card": {
+              "instanceId": "H2",
+              "faceId": "H2",
+              "rankLabel": "2",
+              "suitLabel": "hearts",
+              "accessibleLabel": "two of hearts"
+            }
+          },
+          {
+            "seat": "E",
+            "card": {
+              "instanceId": "H7",
+              "faceId": "H7",
+              "rankLabel": "7",
+              "suitLabel": "hearts",
+              "accessibleLabel": "seven of hearts"
+            }
+          }
+        ],
+        "hiddenCardCount": 0
+      }
+    ],
+    "scoreEntries": [
+      {
+        "competitorId": "NS",
+        "total": 0,
+        "metrics": [
+          {
+            "key": "bags",
+            "label": "Bags",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "competitorId": "EW",
+        "total": 0,
+        "metrics": [
+          {
+            "key": "bags",
+            "label": "Bags",
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "activeSeat": "S"
+  },
+  "legalActions": [
+    {
+      "id": "play:H3",
+      "kind": "spades.play",
+      "label": "Play three of hearts",
+      "cardIds": [
+        "H3"
+      ],
+      "payload": {
+        "cardId": "H3"
+      }
+    },
+    {
+      "id": "play:HQ",
+      "kind": "spades.play",
+      "label": "Play queen of hearts",
+      "cardIds": [
+        "HQ"
+      ],
+      "payload": {
+        "cardId": "HQ"
+      }
+    }
+  ],
+  "unavailableCards": [
+    {
+      "cardId": "C2",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "C4",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "C8",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "CQ",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "D3",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "D8",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "DK",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "S2",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "S5",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "S9",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    },
+    {
+      "cardId": "SA",
+      "reasonCode": "MUST_FOLLOW_SUIT",
+      "message": "Hearts were led and you have hearts."
+    }
+  ],
+  "gameData": {
+    "handNumber": 1,
+    "dealer": "W",
+    "currentSeat": "S",
+    "spadesBroken": false,
+    "bids": {
+      "N": 3,
+      "E": 4,
+      "S": 2,
+      "W": 3
+    },
+    "tricksWon": {
+      "N": 0,
+      "E": 0,
+      "S": 0,
+      "W": 0
+    },
+    "remainingCardCounts": {
+      "N": 12,
+      "E": 12,
+      "S": 13,
+      "W": 13
+    },
+    "scores": {
+      "NS": 0,
+      "EW": 0
+    },
+    "bags": {
+      "NS": 0,
+      "EW": 0
+    },
+    "currentTrick": {
+      "leader": "N",
+      "plays": [
+        {
+          "seat": "N",
+          "cardId": "H2"
+        },
+        {
+          "seat": "E",
+          "cardId": "H7"
+        }
+      ]
+    },
+    "completedTricks": []
+  },
+  "jobStatus": "idle",
+  "advice": {
+    "status": "pending",
+    "decisionId": null,
+    "source": null,
+    "suggestedActionId": null,
+    "hintStage": 0,
+    "notes": []
+  },
+  "winningCompetitorIds": []
+}

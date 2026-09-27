@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game-manifest.schema.json",
+  "type": "object",
+  "properties": {
+    "gameId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "moduleVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "playerCount": {
+      "const": 4
+    },
+    "supportedCompetitionModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "individual",
+          "partnership"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true
+    },
+    "ruleProfileIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "requiredCapabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "schemaIds": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "privateState": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publicView": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "action",
+        "observation",
+        "privateState",
+        "publicView"
+      ],
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "production",
+        "test_only"
+      ]
+    }
+  },
+  "required": [
+    "gameId",
+    "displayName",
+    "moduleVersion",
+    "playerCount",
+    "supportedCompetitionModes",
+    "ruleProfileIds",
+    "requiredCapabilities",
+    "schemaIds",
+    "status"
+  ],
+  "additionalProperties": false
+}

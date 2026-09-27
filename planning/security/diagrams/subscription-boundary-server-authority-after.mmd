@@ -1,0 +1,29 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
+flowchart TD
+  accTitle: Proposed option 2: server game and coach
+  accDescr: The browser receives views and a finite demo. The proposed service owns the engine, private state and coach; protected operations and saved-result reads require the appropriate authority.
+  FILES("Static app and demo") --> UI("Views and commands")
+  FILES --> DEMO("Finite authored demo")
+  subgraph BROWSER["Player-controlled browser"]
+    UI
+    DEMO
+  end
+  UI --> ACCESS{"Allowed operation?"}
+  subgraph SERVER["Proposed service"]
+    ACCESS --> ENGINE("Engine and bots")
+    ENGINE --> STATE[("Private state and grants")]
+    ACCESS --> COACH("Coach")
+    COACH -->|"Recheck and save"| STATE
+    COACH -.-> JEV("Jev via OpenRouter")
+  end
+  ACCESS -->|"Permitted view or result"| UI
+  classDef view fill:#E8F1FC,stroke:#7FA6CB,color:#14283F;
+  classDef service fill:#E5F5EF,stroke:#65A68C,color:#173F33;
+  classDef data fill:#F1EBFC,stroke:#A68AC9,color:#392B52;
+  classDef gate fill:#FFF3D9,stroke:#C7A253,color:#594219;
+  classDef muted fill:#F1F5F9,stroke:#94A3B8,color:#334155,stroke-dasharray:4 3;
+  class FILES,UI,DEMO view;
+  class ENGINE,COACH service;
+  class STATE data;
+  class ACCESS gate;
+  class JEV muted;

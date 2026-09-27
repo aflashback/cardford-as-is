@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session-view.schema.json",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "branchId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "game": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "spades"
+        },
+        "moduleVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "ruleProfileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observationSchemaVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "featureVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promptVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "gameId",
+        "moduleVersion",
+        "ruleProfileId",
+        "observationSchemaVersion",
+        "featureVersion",
+        "promptVersion"
+      ],
+      "additionalProperties": false
+    },
+    "competition": {
+      "$ref": "competition.schema.json"
+    },
+    "aiMode": {
+      "type": "string",
+      "enum": [
+        "jev",
+        "demo"
+      ]
+    },
+    "playMode": {
+      "type": "string",
+      "enum": [
+        "guided",
+        "practice",
+        "match"
+      ]
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": [
+        "awaiting_action",
+        "round_complete",
+        "session_complete"
+      ]
+    },
+    "modulePhase": {
+      "type": "string",
+      "enum": [
+        "BIDDING",
+        "PLAYING",
+        "HAND_COMPLETE",
+        "MATCH_COMPLETE"
+      ]
+    },
+    "stateVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "humanSeat": {
+      "const": "S"
+    },
+    "exposedFuture": {
+      "type": "boolean"
+    },
+    "table": {
+      "$ref": "table-view.schema.json"
+    },
+    "legalActions": {
+      "type": "array",
+      "items": {
+        "$ref": "spades-action.schema.json"
+      },
+      "minItems": 0,
+      "maxItems": 255
+    },
+    "unavailableCards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cardId": {
+            "type": "string",
+            "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+          },
+          "reasonCode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "cardId",
+          "reasonCode",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "gameData": {
+      "$ref": "spades-public.schema.json"
+    },
+    "jobStatus": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "queued",
+        "thinking",
+        "waiting_provider",
+        "error"
+      ]
+    },
+    "advice": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_applicable",
+            "pending",
+            "ready",
+            "unavailable"
+          ]
+        },
+        "decisionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "jev",
+                "demo",
+                "forced"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "suggestedActionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hintStage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "templateId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidenceClass": {
+                "type": "string",
+                "enum": [
+                  "rule_fact",
+                  "exercise_answer",
+                  "strategic_suggestion"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "templateId",
+              "evidenceClass",
+              "text"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "status",
+        "decisionId",
+        "source",
+        "suggestedActionId",
+        "hintStage",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "winningCompetitorIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "maxItems": 4
+    }
+  },
+  "required": [
+    "sessionId",
+    "branchId",
+    "game",
+    "competition",
+    "aiMode",
+    "playMode",
+    "lifecycle",
+    "modulePhase",
+    "stateVersion",
+    "humanSeat",
+    "exposedFuture",
+    "table",
+    "legalActions",
+    "unavailableCards",
+    "gameData",
+    "jobStatus",
+    "advice",
+    "winningCompetitorIds"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.0.0",
+  "game": {
+    "gameId": "spades",
+    "moduleVersion": "1.0.0",
+    "ruleProfileId": "spades-training-1.0.0",
+    "observationSchemaVersion": "1.0.0",
+    "featureVersion": "spades-facts-1.0.0",
+    "promptVersion": "jev-decision-1.0.0"
+  },
+  "competition": {
+    "mode": "partnership",
+    "competitors": [
+      {
+        "id": "NS",
+        "seats": [
+          "N",
+          "S"
+        ]
+      },
+      {
+        "id": "EW",
+        "seats": [
+          "E",
+          "W"
+        ]
+      }
+    ]
+  },
+  "actorSeat": "N",
+  "stateVersion": 1,
+  "lifecycle": "awaiting_action",
+  "modulePhase": "BIDDING",
+  "candidates": [
+    {
+      "id": "bid:0",
+      "kind": "spades.bid",
+      "label": "Bid Nil",
+      "cardIds": [],
+      "payload": {
+        "bid": 0
+      }
+    },
+    {
+      "id": "bid:1",
+      "kind": "spades.bid",
+      "label": "Bid 1",
+      "cardIds": [],
+      "payload": {
+        "bid": 1
+      }
+    },
+    {
+      "id": "bid:2",
+      "kind": "spades.bid",
+      "label": "Bid 2",
+      "cardIds": [],
+      "payload": {
+        "bid": 2
+      }
+    },
+    {
+      "id": "bid:3",
+      "kind": "spades.bid",
+      "label": "Bid 3",
+      "cardIds": [],
+      "payload": {
+        "bid": 3
+      }
+    },
+    {
+      "id": "bid:4",
+      "kind": "spades.bid",
+      "label": "Bid 4",
+      "cardIds": [],
+      "payload": {
+        "bid": 4
+      }
+    },
+    {
+      "id": "bid:5",
+      "kind": "spades.bid",
+      "label": "Bid 5",
+      "cardIds": [],
+      "payload": {
+        "bid": 5
+      }
+    },
+    {
+      "id": "bid:6",
+      "kind": "spades.bid",
+      "label": "Bid 6",
+      "cardIds": [],
+      "payload": {
+        "bid": 6
+      }
+    },
+    {
+      "id": "bid:7",
+      "kind": "spades.bid",
+      "label": "Bid 7",
+      "cardIds": [],
+      "payload": {
+        "bid": 7
+      }
+    },
+    {
+      "id": "bid:8",
+      "kind": "spades.bid",
+      "label": "Bid 8",
+      "cardIds": [],
+      "payload": {
+        "bid": 8
+      }
+    },
+    {
+      "id": "bid:9",
+      "kind": "spades.bid",
+      "label": "Bid 9",
+      "cardIds": [],
+      "payload": {
+        "bid": 9
+      }
+    },
+    {
+      "id": "bid:10",
+      "kind": "spades.bid",
+      "label": "Bid 10",
+      "cardIds": [],
+      "payload": {
+        "bid": 10
+      }
+    },
+    {
+      "id": "bid:11",
+      "kind": "spades.bid",
+      "label": "Bid 11",
+      "cardIds": [],
+      "payload": {
+        "bid": 11
+      }
+    },
+    {
+      "id": "bid:12",
+      "kind": "spades.bid",
+      "label": "Bid 12",
+      "cardIds": [],
+      "payload": {
+        "bid": 12
+      }
+    },
+    {
+      "id": "bid:13",
+      "kind": "spades.bid",
+      "label": "Bid 13",
+      "cardIds": [],
+      "payload": {
+        "bid": 13
+      }
+    }
+  ],
+  "gameData": {
+    "ownHand": [
+      "C2",
+      "C4",
+      "C8",
+      "CQ",
+      "D3",
+      "D8",
+      "DK",
+      "H3",
+      "HQ",
+      "S2",
+      "S5",
+      "S9",
+      "SA"
+    ],
+    "public": {
+      "handNumber": 1,
+      "dealer": "W",
+      "currentSeat": "N",
+      "spadesBroken": false,
+      "bids": {
+        "N": null,
+        "E": null,
+        "S": null,
+        "W": null
+      },
+      "tricksWon": {
+        "N": 0,
+        "E": 0,
+        "S": 0,
+        "W": 0
+      },
+      "remainingCardCounts": {
+        "N": 13,
+        "E": 13,
+        "S": 13,
+        "W": 13
+      },
+      "scores": {
+        "NS": 0,
+        "EW": 0
+      },
+      "bags": {
+        "NS": 0,
+        "EW": 0
+      },
+      "currentTrick": null,
+      "completedTricks": []
+    },
+    "facts": {
+      "suitCounts": {
+        "C": 4,
+        "D": 3,
+        "H": 2,
+        "S": 4
+      },
+      "knownVoids": {
+        "N": [],
+        "E": [],
+        "S": [],
+        "W": []
+      },
+      "partnerSeat": "S",
+      "currentWinningSeat": null,
+      "positiveTeamContract": 0,
+      "teamBidComplete": false,
+      "positiveTeamTricks": 0,
+      "outstandingPositiveTricks": null,
+      "tricksRemaining": 13,
+      "candidateFacts": []
+    }
+  }
+}

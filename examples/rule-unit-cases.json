@@ -1,0 +1,161 @@
+{
+  "ruleProfileId": "spades-training-1.0.0",
+  "fixtureScope": "partial pure-function units; not live hands or complete drills",
+  "cases": [
+    {
+      "id": "RU-01",
+      "operation": "legal_lead",
+      "ownHand": [
+        "H2",
+        "S3"
+      ],
+      "spadesBroken": false,
+      "expected": [
+        "play:H2"
+      ]
+    },
+    {
+      "id": "RU-02",
+      "operation": "legal_lead",
+      "ownHand": [
+        "S2",
+        "SA"
+      ],
+      "spadesBroken": false,
+      "expected": [
+        "play:S2",
+        "play:SA"
+      ]
+    },
+    {
+      "id": "RU-03",
+      "operation": "legal_follow",
+      "ownHand": [
+        "H3",
+        "S2",
+        "D2"
+      ],
+      "ledSuit": "H",
+      "expected": [
+        "play:H3"
+      ]
+    },
+    {
+      "id": "RU-04",
+      "operation": "legal_follow",
+      "ownHand": [
+        "S2",
+        "D2"
+      ],
+      "ledSuit": "H",
+      "expected": [
+        "play:D2",
+        "play:S2"
+      ]
+    },
+    {
+      "id": "RU-05",
+      "operation": "resolve_trick",
+      "plays": [
+        {
+          "seat": "N",
+          "cardId": "H7"
+        },
+        {
+          "seat": "E",
+          "cardId": "HA"
+        },
+        {
+          "seat": "S",
+          "cardId": "S2"
+        },
+        {
+          "seat": "W",
+          "cardId": "SK"
+        }
+      ],
+      "expectedWinner": "W"
+    },
+    {
+      "id": "RU-06",
+      "operation": "resolve_trick",
+      "plays": [
+        {
+          "seat": "N",
+          "cardId": "H7"
+        },
+        {
+          "seat": "E",
+          "cardId": "D9"
+        },
+        {
+          "seat": "S",
+          "cardId": "HJ"
+        },
+        {
+          "seat": "W",
+          "cardId": "H3"
+        }
+      ],
+      "expectedWinner": "S"
+    },
+    {
+      "id": "RU-07",
+      "operation": "legal_lead",
+      "ownHand": [
+        "H2",
+        "S3"
+      ],
+      "spadesBroken": true,
+      "expected": [
+        "play:H2",
+        "play:S3"
+      ]
+    },
+    {
+      "id": "RU-08",
+      "operation": "match_outcome",
+      "scores": {
+        "NS": 500,
+        "EW": 500
+      },
+      "expectedWinner": null
+    },
+    {
+      "id": "RU-09",
+      "operation": "match_outcome",
+      "scores": {
+        "NS": 500,
+        "EW": 480
+      },
+      "expectedWinner": "NS"
+    },
+    {
+      "id": "RU-10",
+      "operation": "match_outcome",
+      "scores": {
+        "NS": 498,
+        "EW": 499
+      },
+      "expectedWinner": null
+    },
+    {
+      "id": "RU-11",
+      "operation": "match_outcome",
+      "scores": {
+        "NS": 490,
+        "EW": 520
+      },
+      "expectedWinner": "EW"
+    },
+    {
+      "id": "RU-12",
+      "operation": "match_outcome",
+      "scores": {
+        "NS": -10,
+        "EW": -20
+      },
+      "expectedWinner": null
+    }
+  ]
+}

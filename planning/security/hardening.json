@@ -1,0 +1,393 @@
+{
+  "documentType": "codex-security.hardening-analysis",
+  "schemaVersion": "1.0",
+  "analysisId": "jev_subscription_20260926",
+  "sourceEvidence": {
+    "kind": "document_collection",
+    "label": "Six inspected jev-test prototype source/config files",
+    "collectionSha256": "951b20c20ca0020622bdc4bdf39793fd75b28204701e01f88bb264dadf6a3d6c",
+    "artifactCount": 6,
+    "sourceDrift": "unknown"
+  },
+  "assessment": {
+    "outcome": "opportunities_identified",
+    "summary": "Retain TypeScript stack; protect live game and coaching capabilities through server authority. Proposed, not implemented."
+  },
+  "constraints": {
+    "profile": "balanced",
+    "changeHorizons": [
+      "incremental",
+      "medium_term"
+    ],
+    "nonNegotiables": [
+      "Finite authored unpaid demo",
+      "Paid full games",
+      "Server-only hidden state and coach",
+      "OpenRouter-only optional Jev",
+      "Current-game review and coached-hand units"
+    ],
+    "assumptions": [
+      "Node/Fastify/PostgreSQL plan retained unless measured needs justify change.",
+      "Pilot SLOs are targets, not measured performance.",
+      "No deployment or product implementation in this work."
+    ]
+  },
+  "opportunities": [
+    {
+      "opportunityId": "subscription-boundary",
+      "title": "Protect paid game and coaching authority",
+      "summary": "Remove valuable computation from public artifacts and authorize every protected service operation.",
+      "diagnosis": "The local prototype executes engine/coach and holds full state in the player-controlled browser.",
+      "evidence": [
+        {
+          "claimType": "observed",
+          "sourceKind": "source",
+          "evidenceId": "E01",
+          "path": "web/package.json",
+          "claim": "Existing React, TypeScript and Vite dependencies."
+        },
+        {
+          "claimType": "observed",
+          "sourceKind": "source",
+          "evidenceId": "E02",
+          "path": "web/vite.config.ts",
+          "claim": "Browser build targets ES2020."
+        },
+        {
+          "claimType": "observed",
+          "sourceKind": "source",
+          "evidenceId": "E03",
+          "path": "web/src/App.tsx",
+          "claim": "UI imports and invokes the engine and coach locally."
+        },
+        {
+          "claimType": "observed",
+          "sourceKind": "source",
+          "evidenceId": "E04",
+          "path": "web/src/game.ts",
+          "claim": "GameState includes full hands and deterministic seeded dealing."
+        },
+        {
+          "claimType": "observed",
+          "sourceKind": "source",
+          "evidenceId": "E05",
+          "path": "web/src/coach.ts",
+          "claim": "Advice calls local strategy helpers."
+        },
+        {
+          "claimType": "observed",
+          "sourceKind": "source",
+          "evidenceId": "E06",
+          "path": "web/src/storage.ts",
+          "claim": "Browser storage persists game state."
+        }
+      ],
+      "desiredInvariants": [
+        "Public demo cannot generate new games/advice.",
+        "Every protected operation validates identity, ownership and its applicable access policy.",
+        "Quota and accepted game records commit atomically.",
+        "Revoked work cannot publish; legitimate saved-result recovery remains available to its owner.",
+        "Hidden holdings are excluded from public observations."
+      ],
+      "proposalPath": "proposals/subscription-boundary.md",
+      "options": [
+        {
+          "optionId": "browser-engine",
+          "title": "Option 1: browser engine and server coach",
+          "kind": "baseline",
+          "summary": "Keep local game execution and authorize a remote coach.",
+          "diagramPaths": {
+            "before": "diagrams/subscription-boundary-before.mmd",
+            "after": "diagrams/subscription-boundary-browser-engine-after.mmd"
+          },
+          "evidenceCoverage": [
+            {
+              "evidenceId": "E01",
+              "effect": "unaffected",
+              "tacticalFixRequired": false,
+              "rationale": "Retain stack; artifact and supported-version checks still required."
+            },
+            {
+              "evidenceId": "E02",
+              "effect": "unaffected",
+              "tacticalFixRequired": false,
+              "rationale": "Retain stack; artifact and supported-version checks still required."
+            },
+            {
+              "evidenceId": "E03",
+              "effect": "mitigates",
+              "tacticalFixRequired": true,
+              "rationale": "Remote coach can be protected; full local engine/state remain player-controlled."
+            },
+            {
+              "evidenceId": "E04",
+              "effect": "unaffected",
+              "tacticalFixRequired": true,
+              "rationale": "Remote coach can be protected; full local engine/state remain player-controlled."
+            },
+            {
+              "evidenceId": "E05",
+              "effect": "addresses",
+              "tacticalFixRequired": true,
+              "rationale": "Remote coach can be protected; full local engine/state remain player-controlled."
+            },
+            {
+              "evidenceId": "E06",
+              "effect": "unaffected",
+              "tacticalFixRequired": true,
+              "rationale": "Remote coach can be protected; full local engine/state remain player-controlled."
+            }
+          ],
+          "tradeoffs": [
+            {
+              "dimension": "security",
+              "direction": "improves",
+              "confidence": "high",
+              "basis": "source-derived",
+              "assessment": "Protects remote coaching, but downloadable full play remains.",
+              "validationPlan": "Direct HTTP, artifact and ownership tests."
+            },
+            {
+              "dimension": "performance",
+              "direction": "neutral",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "Local gameplay remains fast; coach gains network latency.",
+              "validationPlan": "T37 workload and tail-latency sweep."
+            },
+            {
+              "dimension": "memory",
+              "direction": "regresses",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "Adds coach service while retaining client game state.",
+              "validationPlan": "Measure API/worker peak memory at declared load."
+            },
+            {
+              "dimension": "reliability",
+              "direction": "unknown",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "Local play continues during service outage; coaching cannot.",
+              "validationPlan": "Crash/restart, disconnection and backup tests."
+            },
+            {
+              "dimension": "operability",
+              "direction": "regresses",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "New identity, billing and coach service must be operated.",
+              "validationPlan": "Exercise alerts, backlogs and failure runbooks."
+            },
+            {
+              "dimension": "migration",
+              "direction": "regresses",
+              "confidence": "high",
+              "basis": "source-derived",
+              "assessment": "Extract coach and change paid-full-play product promise.",
+              "validationPlan": "Vertical slice, import graph and artifact checks."
+            },
+            {
+              "dimension": "developer_ergonomics",
+              "direction": "unknown",
+              "confidence": "medium",
+              "basis": "source-derived",
+              "assessment": "Client and service state boundaries need coordination.",
+              "validationPlan": "Review import rules and route-policy coverage."
+            },
+            {
+              "dimension": "rollback",
+              "direction": "unknown",
+              "confidence": "medium",
+              "basis": "source-derived",
+              "assessment": "Disabling remote coach retains unrestricted local play.",
+              "validationPlan": "Rehearse version/schema rollback without fail-open grants."
+            }
+          ],
+          "residualRisks": [
+            "Unrestricted copied local gameplay.",
+            "Untrusted browser outcomes.",
+            "Credential theft, output copying and implementation mistakes."
+          ],
+          "implementationReadiness": {
+            "affectedComponents": [
+              "web/src/App.tsx",
+              "web/src/game.ts",
+              "web/src/coach.ts",
+              "web/src/storage.ts",
+              "planned web/server and public DTOs"
+            ],
+            "workPackages": [
+              "Extract coach",
+              "Add server auth/usage",
+              "Accept unrestricted local-play scope"
+            ],
+            "acceptanceCriteria": [
+              "Direct unpaid coach requests fail.",
+              "Local game reuse is an accepted product property."
+            ],
+            "migrationNotes": [
+              "Do not publish prototype as commercial access boundary.",
+              "No hosted testing or implementation performed by this research."
+            ],
+            "rollback": "Disable remote coach and retain local play only if commercially accepted."
+          }
+        },
+        {
+          "optionId": "server-authority",
+          "title": "Option 2: server engine and coach with finite demo",
+          "kind": "structural",
+          "summary": "Server owns game, coach, access and usage; public demo is finite.",
+          "diagramPaths": {
+            "before": "diagrams/subscription-boundary-before.mmd",
+            "after": "diagrams/subscription-boundary-server-authority-after.mmd"
+          },
+          "evidenceCoverage": [
+            {
+              "evidenceId": "E01",
+              "effect": "unaffected",
+              "tacticalFixRequired": false,
+              "rationale": "Retain stack; artifact and supported-version checks still required."
+            },
+            {
+              "evidenceId": "E02",
+              "effect": "unaffected",
+              "tacticalFixRequired": false,
+              "rationale": "Retain stack; artifact and supported-version checks still required."
+            },
+            {
+              "evidenceId": "E03",
+              "effect": "addresses",
+              "tacticalFixRequired": true,
+              "rationale": "Remove privileged client capability and treat local saves as untrusted; proposed, not implemented."
+            },
+            {
+              "evidenceId": "E04",
+              "effect": "addresses",
+              "tacticalFixRequired": true,
+              "rationale": "Remove privileged client capability and treat local saves as untrusted; proposed, not implemented."
+            },
+            {
+              "evidenceId": "E05",
+              "effect": "addresses",
+              "tacticalFixRequired": true,
+              "rationale": "Remove privileged client capability and treat local saves as untrusted; proposed, not implemented."
+            },
+            {
+              "evidenceId": "E06",
+              "effect": "addresses",
+              "tacticalFixRequired": true,
+              "rationale": "Remove privileged client capability and treat local saves as untrusted; proposed, not implemented."
+            }
+          ],
+          "tradeoffs": [
+            {
+              "dimension": "security",
+              "direction": "improves",
+              "confidence": "high",
+              "basis": "source-derived",
+              "assessment": "Protects service games and coaching when per-operation policies hold.",
+              "validationPlan": "Direct HTTP, artifact and ownership tests."
+            },
+            {
+              "dimension": "performance",
+              "direction": "regresses",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "Gameplay gains API and database latency.",
+              "validationPlan": "T37 workload and tail-latency sweep."
+            },
+            {
+              "dimension": "memory",
+              "direction": "regresses",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "Adds server table, worker and queue memory.",
+              "validationPlan": "Measure API/worker peak memory at declared load."
+            },
+            {
+              "dimension": "reliability",
+              "direction": "unknown",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "Live play requires service; durable records enable recovery.",
+              "validationPlan": "Crash/restart, disconnection and backup tests."
+            },
+            {
+              "dimension": "operability",
+              "direction": "regresses",
+              "confidence": "medium",
+              "basis": "hypothetical",
+              "assessment": "Adds authoritative game operation, jobs and recovery.",
+              "validationPlan": "Exercise alerts, backlogs and failure runbooks."
+            },
+            {
+              "dimension": "migration",
+              "direction": "regresses",
+              "confidence": "high",
+              "basis": "source-derived",
+              "assessment": "Extract engine and coach; preserve paid-full-play promise.",
+              "validationPlan": "Vertical slice, import graph and artifact checks."
+            },
+            {
+              "dimension": "developer_ergonomics",
+              "direction": "unknown",
+              "confidence": "medium",
+              "basis": "source-derived",
+              "assessment": "One domain authority with public contract discipline.",
+              "validationPlan": "Review import rules and route-policy coverage."
+            },
+            {
+              "dimension": "rollback",
+              "direction": "unknown",
+              "confidence": "medium",
+              "basis": "source-derived",
+              "assessment": "Requires compatible secure service or a safe pause.",
+              "validationPlan": "Rehearse version/schema rollback without fail-open grants."
+            }
+          ],
+          "residualRisks": [
+            "Credential theft and authorized automation.",
+            "Output copying and independent rule implementations.",
+            "External assistance and implementation mistakes."
+          ],
+          "implementationReadiness": {
+            "affectedComponents": [
+              "web/src/App.tsx",
+              "web/src/game.ts",
+              "web/src/coach.ts",
+              "web/src/storage.ts",
+              "planned web/server and public DTOs"
+            ],
+            "workPackages": [
+              "Contracts/finite demo",
+              "Authoritative game slice",
+              "Identity/access",
+              "Atomic coaching usage",
+              "Billing/family",
+              "Delivery/detection"
+            ],
+            "acceptanceCriteria": [
+              "Unauthorized clients cannot obtain fresh service play/coaching.",
+              "Saved results and retries respect ownership without duplicate consumption.",
+              "Public bundle contains no general game/evaluator."
+            ],
+            "migrationNotes": [
+              "Do not publish prototype as commercial access boundary.",
+              "No hosted testing or implementation performed by this research."
+            ],
+            "rollback": "Compatible secure service or pause new work; never restore client-owned authority."
+          }
+        }
+      ],
+      "recommendedOptionId": "server-authority",
+      "recommendation": "Use server authority because full live play is paid. Choose the baseline only if unrestricted local play becomes intentional."
+    }
+  ],
+  "openQuestions": [
+    "Identity/hosting vendor and region",
+    "Exact maintained browser/device matrix",
+    "Measured concurrency, cost and detector accuracy",
+    "Final price/currency/fair-use terms"
+  ]
+}

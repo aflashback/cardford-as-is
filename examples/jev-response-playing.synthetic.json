@@ -1,0 +1,18 @@
+{
+  "model": "jev-1.13.0",
+  "answers": {
+    "action": {
+      "type": "choice",
+      "choice": "play:HQ",
+      "probabilities": {
+        "play:H3": 0.25,
+        "play:HQ": 0.75
+      },
+      "confidence": 0.5
+    }
+  },
+  "usage": {
+    "input_tokens": 900,
+    "output_tokens": 30
+  }
+}

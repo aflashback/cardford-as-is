@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "common.schema.json",
+  "$defs": {
+    "Seat": {
+      "type": "string",
+      "enum": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ]
+    },
+    "CardId": {
+      "type": "string",
+      "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+    },
+    "GameIdentity": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "moduleVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "ruleProfileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observationSchemaVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "featureVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promptVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "gameId",
+        "moduleVersion",
+        "ruleProfileId",
+        "observationSchemaVersion",
+        "featureVersion",
+        "promptVersion"
+      ],
+      "additionalProperties": false
+    },
+    "Competition": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "individual",
+            "partnership"
+          ]
+        },
+        "competitors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "seats": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "N",
+                    "E",
+                    "S",
+                    "W"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 2,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "seats"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "mode",
+        "competitors"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "individual"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "competitors": {
+                "minItems": 4,
+                "maxItems": 4,
+                "items": {
+                  "properties": {
+                    "seats": {
+                      "minItems": 1,
+                      "maxItems": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "competitors": {
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "properties": {
+                    "seats": {
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+!.env.local.example
+*token*.txt
+*secret*.txt
+.secrets/
+data/
+.worktrees/
+.superpowers/
+.local/
+playwright-report/
+test-results/
+*.log

@@ -1,0 +1,288 @@
+{
+  "package": "Card Coach specification",
+  "version": "0.2.0",
+  "prepared": "2026-09-26",
+  "contents": "planning documents and contracts only; no application implementation",
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 589,
+      "sha256": "a9da72cb82efb7e1244c26854c1ea477d33a4926f01ff7962185308a110ab1ba"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 4864,
+      "sha256": "1e2c981b475f7c7ebf53b0aa0a61942944b4353715808add88a06e2de9b16e7f"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 847,
+      "sha256": "db71d214468a4d1bb26d37410a8a811822820ac36a4292362239e7a0f2c7b2d8"
+    },
+    {
+      "path": "PLAN-OVERVIEW.md",
+      "bytes": 5095,
+      "sha256": "a2a36afdf18f7e61345adc6381d2c518213ee388f5dec33e9c04c4a4801c584b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7286,
+      "sha256": "62d9f0fa40a5a0f519e2403da462c0db133621248707441b98299e33fe1798b6"
+    },
+    {
+      "path": "contracts/README.md",
+      "bytes": 1949,
+      "sha256": "4107fc9094c1b08da686950e5f46d7f8959d1d344a707140c58707a0ada2bb2a"
+    },
+    {
+      "path": "contracts/common.schema.json",
+      "bytes": 3498,
+      "sha256": "55a7e5ff7fe8178cf0d568051d603103a338010e548cd51a640741283bf9f803"
+    },
+    {
+      "path": "contracts/competition.schema.json",
+      "bytes": 151,
+      "sha256": "6a435798f9f34b51a1523862813dc37814373bb7ce025c2bde84ff0d886ebf2e"
+    },
+    {
+      "path": "contracts/decision-observation.schema.json",
+      "bytes": 1952,
+      "sha256": "edb9c3653c31ba3a045aa67a5d0de6657c6a6f699f3fa558ae518c3715030cb1"
+    },
+    {
+      "path": "contracts/decision-record.schema.json",
+      "bytes": 3213,
+      "sha256": "831b6eea4d1a1de8aeb6f8fb61d5ae255a008546061ba19b7e7c8326d6300ba2"
+    },
+    {
+      "path": "contracts/game-manifest.schema.json",
+      "bytes": 1978,
+      "sha256": "add9a49d39e9fa9e47fa36ca7f6b45c3fd3c904a7a3dba5d5bcbf36812361331"
+    },
+    {
+      "path": "contracts/jev-provider-state.schema.json",
+      "bytes": 974,
+      "sha256": "2a50d9ab119a3fa1ddbaf9e98af3c1069df2fad7019599099f043102e0644271"
+    },
+    {
+      "path": "contracts/jev-request.schema.json",
+      "bytes": 1220,
+      "sha256": "37ad56f9d79aa939920ef1e10ce9b7843edb29afb181e9363bf554784ae4dcef"
+    },
+    {
+      "path": "contracts/jev-response.schema.json",
+      "bytes": 1698,
+      "sha256": "355fafe324eef521883f3d9f214103827912968479f45499fe5df101d59e4e7f"
+    },
+    {
+      "path": "contracts/openapi.yaml",
+      "bytes": 28865,
+      "sha256": "58abfc66b40e1951ffd6702db2417c84c126cf2da39f50ebdb3eb1386cf21c68"
+    },
+    {
+      "path": "contracts/session-view.schema.json",
+      "bytes": 5610,
+      "sha256": "557cc40a0c42be9a97fc799a57de106de6a52a4c1a9e706c71b91cde0571ec5e"
+    },
+    {
+      "path": "contracts/spades-action.schema.json",
+      "bytes": 2146,
+      "sha256": "30107a30f4ed28738a03d66fd9f6f52475204a3cc54265adf5918664448f8dba"
+    },
+    {
+      "path": "contracts/spades-facts.schema.json",
+      "bytes": 4604,
+      "sha256": "9fa28a3775f5dc74d503e02eed69432d2a5a4a6622bbd2fbbe55c199c1f52539"
+    },
+    {
+      "path": "contracts/spades-observation-data.schema.json",
+      "bytes": 595,
+      "sha256": "f27ef84cf1c2ac281b3a5d5611a62a40c0bd64d409e2385105d71af30771a6c5"
+    },
+    {
+      "path": "contracts/spades-public.schema.json",
+      "bytes": 6591,
+      "sha256": "ae97856ca2427df60b12cc246e789b83737a7ea2a2647023539ca09d15e756ab"
+    },
+    {
+      "path": "contracts/spades-rule-profile.json",
+      "bytes": 1698,
+      "sha256": "cdc2bbe6cb3d91372dc3b5cf902c1911e46642d4c857a4f27991cb06357b6553"
+    },
+    {
+      "path": "contracts/table-view.schema.json",
+      "bytes": 6811,
+      "sha256": "2fadb8589914b8489a8bf1de528b17016f09deec069d7dfe7c8e35ed74d46f61"
+    },
+    {
+      "path": "docs/01-product.md",
+      "bytes": 6687,
+      "sha256": "3a8a196fb711430e4907443ddc3af6cc91d31dbd41ff32ac7ad1f83763e15de1"
+    },
+    {
+      "path": "docs/02-rules.md",
+      "bytes": 8283,
+      "sha256": "2bbdf9502623f3422504495eb2e3ccb17fe0c8a697edd14cbd3222e10dc7671f"
+    },
+    {
+      "path": "docs/03-architecture.md",
+      "bytes": 11338,
+      "sha256": "2cae36af140bd4d72cd1c76c6d51d7dde641f11794dbbadf07563a9f46fe1da2"
+    },
+    {
+      "path": "docs/04-jev-integration.md",
+      "bytes": 10179,
+      "sha256": "6dde9f92665e71c193fa84717ec7f12af8c6d3a2dc539c2b31f96db7d4f6a3a6"
+    },
+    {
+      "path": "docs/05-coaching.md",
+      "bytes": 8598,
+      "sha256": "5177322d28b788cf8240670ffb3ab1912a39a0bd44c18b607c01d041003d7cf7"
+    },
+    {
+      "path": "docs/06-responsive-ux.md",
+      "bytes": 7847,
+      "sha256": "7428d38ba9ca49903a0de00fd414a3594ca4a03b59359bd9c3cb41a98fba0831"
+    },
+    {
+      "path": "docs/07-data-api.md",
+      "bytes": 12552,
+      "sha256": "c1022b14f93f145dbc1e367a7faaead1f8bbf1c4ed8f9ca903840f88fb5454ff"
+    },
+    {
+      "path": "docs/08-security-operations.md",
+      "bytes": 6109,
+      "sha256": "9d1cecc84339a72a7d7f89d8df51f9b3cd6d5fa1e472a0731eb86448bc79263f"
+    },
+    {
+      "path": "docs/09-testing-evaluation.md",
+      "bytes": 10192,
+      "sha256": "1349944d0a844bf37c62ae61719e89b13fd63c7287a6b9c0c690a88c1b3df9b7"
+    },
+    {
+      "path": "docs/10-delivery-plan.md",
+      "bytes": 6729,
+      "sha256": "1bcc76846e96a49b3d253603c56b5d87ab6ac72e33cb320d135ecdac8a374ee9"
+    },
+    {
+      "path": "docs/11-decisions-risks.md",
+      "bytes": 6340,
+      "sha256": "32f0d5326b0fde15cde7739c343f8ea99e0e8cebc235149eda29b86e86a13f87"
+    },
+    {
+      "path": "docs/12-multi-game-extensibility.md",
+      "bytes": 12899,
+      "sha256": "efbb7f6d459f488625cf6461c68c0d1746078a0f494b1c5fb1160cdc56ca4d49"
+    },
+    {
+      "path": "examples/README.md",
+      "bytes": 1433,
+      "sha256": "b84b230e146d408d4bc35c0a917e3ac0be500f67a2b1498116c2627a819250e5"
+    },
+    {
+      "path": "examples/competition-individual.json",
+      "bytes": 318,
+      "sha256": "c83f0cb5075501ad9af4481b9f812a758b6e248a96e2e50b4b48063a9d15b6c9"
+    },
+    {
+      "path": "examples/competition-partnership.json",
+      "bytes": 213,
+      "sha256": "da5a2cd0f981e7d3f86c8d2624301f9b7d563b38885ccafbe3fcca8648cd5098"
+    },
+    {
+      "path": "examples/decision-record.synthetic.json",
+      "bytes": 922,
+      "sha256": "a69ef67a7db6e4d86e4719d973f9ef167dd7f061410dd55a796b3758d464dce3"
+    },
+    {
+      "path": "examples/jev-request-playing.json",
+      "bytes": 3389,
+      "sha256": "0497091c41e54800842978c9f4f8a5017394539cfb6c891ee308ad29623bcb13"
+    },
+    {
+      "path": "examples/jev-response-playing.synthetic.json",
+      "bytes": 295,
+      "sha256": "db21d268aa3e4e6b9a206fedde50b19b09fe2512b03635e66a1dbe848348239f"
+    },
+    {
+      "path": "examples/observation-bidding.json",
+      "bytes": 4057,
+      "sha256": "bd8d95f2815698a52f07d66280e97958676d5ee8a7c49cfc1ae2624e1cdb7cea"
+    },
+    {
+      "path": "examples/observation-playing.json",
+      "bytes": 2905,
+      "sha256": "59508dfe8737508ce773367893dd735911d2729b2e1e2ffae644633d7b0e0b04"
+    },
+    {
+      "path": "examples/rule-unit-cases.json",
+      "bytes": 2806,
+      "sha256": "1c6872062727ebd754fecaa78ea2c7bf0091c8ec9cfc2282c63acdeeb6b8c18f"
+    },
+    {
+      "path": "examples/scoring-golden.json",
+      "bytes": 3321,
+      "sha256": "00fa334416f1cb04a63c7cde4c9c09fb1de7719a8f480723b490c5e8ac0cabc1"
+    },
+    {
+      "path": "examples/session-view-playing.json",
+      "bytes": 8286,
+      "sha256": "beb99d3843e743fab8dd930ddc0169c0d48f60a48b65a931e2b79e341e421064"
+    },
+    {
+      "path": "examples/spades-manifest.json",
+      "bytes": 679,
+      "sha256": "2163fab03af45afdd77ac401c844b691bb3fe44f961852c2fa31d0c6225624cb"
+    },
+    {
+      "path": "examples/test-solo-manifest.json",
+      "bytes": 665,
+      "sha256": "6c47be6284b726d13b0b3778632f5a0ae068f92b6f381b8a114356765e46ee80"
+    },
+    {
+      "path": "prompts/ADD-A-GAME.md",
+      "bytes": 1523,
+      "sha256": "56328a3389fa6f14f59519ee5e5dc33c72c2970187096c0ffa40d9855cecfccb"
+    },
+    {
+      "path": "prompts/AGENT-WORK-PACKETS.md",
+      "bytes": 4008,
+      "sha256": "3187bd60018e525e3e109fdacc93a0151d0f8499d88fdf4934f35a5e8ff8e000"
+    },
+    {
+      "path": "prompts/JEV-DECISION-v1.md",
+      "bytes": 2907,
+      "sha256": "2597c19da7eb5fa42305c3fa90a408b686f26d06832ea64582c2255648df1be0"
+    },
+    {
+      "path": "prompts/JEV-SHARED-v1.md",
+      "bytes": 778,
+      "sha256": "f1c7e382a84f928a5c22ce73c66ab3114cace1b6a4030c848f8388f6231cbece"
+    },
+    {
+      "path": "prompts/START-HERE.md",
+      "bytes": 4145,
+      "sha256": "9e1e2eff1ca8ee898710f4f8b55915d710063875d40914450589def556cbe501"
+    },
+    {
+      "path": "qa/acceptance-matrix.md",
+      "bytes": 2146,
+      "sha256": "b2fc1d564e23b4f0393b54fed3ceeb311194b1a57c58690562b1d4f10a678d95"
+    },
+    {
+      "path": "qa/spec-validation.md",
+      "bytes": 2366,
+      "sha256": "94ac81bee5bb96cd26ceab64476aefc3227f3db14bcdc8ce9ab4d33c3a5242cd"
+    },
+    {
+      "path": "research/01-findings.md",
+      "bytes": 7640,
+      "sha256": "c3388db11f13ecb5704906a5be639aeb9362b9f62e9dd537c6670eb12dcbf997"
+    },
+    {
+      "path": "research/02-sources.md",
+      "bytes": 4661,
+      "sha256": "2b7e7d8de6389512d09526290a1720d74a2750b6fe42c0c0782fbf1870940fe3"
+    }
+  ]
+}

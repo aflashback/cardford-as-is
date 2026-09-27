@@ -1,0 +1,14 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
+flowchart TD
+  accTitle: Observed local prototype
+  accDescr: The inspected browser contains the engine, bots, coach and full game state. No subscription service exists in this observed prototype.
+  FILES("Static app files") --> UI("Views and commands")
+  subgraph BROWSER["Player-controlled browser"]
+    UI --> ENGINE("Engine and bots")
+    ENGINE --> STATE[("Full state")]
+    ENGINE --> COACH("Coach")
+  end
+  classDef view fill:#E8F1FC,stroke:#7FA6CB,color:#14283F;
+  classDef data fill:#F1EBFC,stroke:#A68AC9,color:#392B52;
+  class FILES,UI,ENGINE,COACH view;
+  class STATE data;

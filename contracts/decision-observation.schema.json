@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "decision-observation.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "game": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "spades"
+        },
+        "moduleVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "ruleProfileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observationSchemaVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "featureVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promptVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "gameId",
+        "moduleVersion",
+        "ruleProfileId",
+        "observationSchemaVersion",
+        "featureVersion",
+        "promptVersion"
+      ],
+      "additionalProperties": false
+    },
+    "competition": {
+      "$ref": "competition.schema.json"
+    },
+    "actorSeat": {
+      "type": "string",
+      "enum": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ]
+    },
+    "stateVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "lifecycle": {
+      "const": "awaiting_action"
+    },
+    "modulePhase": {
+      "type": "string",
+      "enum": [
+        "BIDDING",
+        "PLAYING"
+      ]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "spades-action.schema.json"
+      },
+      "minItems": 1,
+      "maxItems": 255
+    },
+    "gameData": {
+      "$ref": "spades-observation-data.schema.json"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "game",
+    "competition",
+    "actorSeat",
+    "stateVersion",
+    "lifecycle",
+    "modulePhase",
+    "candidates",
+    "gameData"
+  ],
+  "additionalProperties": false
+}

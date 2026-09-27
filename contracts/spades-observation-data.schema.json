@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "spades-observation-data.schema.json",
+  "type": "object",
+  "properties": {
+    "ownHand": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+      },
+      "minItems": 1,
+      "maxItems": 13,
+      "uniqueItems": true
+    },
+    "public": {
+      "$ref": "spades-public.schema.json"
+    },
+    "facts": {
+      "$ref": "spades-facts.schema.json"
+    }
+  },
+  "required": [
+    "ownHand",
+    "public",
+    "facts"
+  ],
+  "additionalProperties": false
+}

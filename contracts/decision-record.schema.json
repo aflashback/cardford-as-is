@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "decision-record.schema.json",
+  "type": "object",
+  "properties": {
+    "decisionId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "sessionId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "branchId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "stateVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "game": {
+      "$ref": "common.schema.json#/$defs/GameIdentity"
+    },
+    "actorSeat": {
+      "type": "string",
+      "enum": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "bot_turn",
+        "human_advice"
+      ]
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "jev",
+        "demo",
+        "forced"
+      ]
+    },
+    "choiceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidateIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "maxItems": 255,
+      "uniqueItems": true
+    },
+    "requestedModel": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resolvedModel": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "probabilities": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minProperties": 1,
+          "maxProperties": 255
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "confidence": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "usage": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "input_tokens": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "output_tokens": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "input_tokens",
+            "output_tokens"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "latencyMs": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retryCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "observationRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "syntheticExample": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "decisionId",
+    "sessionId",
+    "branchId",
+    "stateVersion",
+    "game",
+    "actorSeat",
+    "purpose",
+    "source",
+    "choiceId",
+    "candidateIds",
+    "requestedModel",
+    "resolvedModel",
+    "probabilities",
+    "confidence",
+    "usage",
+    "latencyMs",
+    "retryCount",
+    "observationRef",
+    "syntheticExample"
+  ],
+  "additionalProperties": false
+}

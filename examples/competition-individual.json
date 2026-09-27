@@ -1,0 +1,29 @@
+{
+  "mode": "individual",
+  "competitors": [
+    {
+      "id": "n",
+      "seats": [
+        "N"
+      ]
+    },
+    {
+      "id": "e",
+      "seats": [
+        "E"
+      ]
+    },
+    {
+      "id": "s",
+      "seats": [
+        "S"
+      ]
+    },
+    {
+      "id": "w",
+      "seats": [
+        "W"
+      ]
+    }
+  ]
+}

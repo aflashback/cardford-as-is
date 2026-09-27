@@ -1,0 +1,90 @@
+{
+  "gameId": "spades",
+  "moduleVersion": "1.0.0",
+  "ruleProfileId": "spades-training-1.0.0",
+  "competition": {
+    "mode": "partnership",
+    "competitors": [
+      {
+        "id": "NS",
+        "seats": [
+          "N",
+          "S"
+        ]
+      },
+      {
+        "id": "EW",
+        "seats": [
+          "E",
+          "W"
+        ]
+      }
+    ]
+  },
+  "deck": {
+    "suits": [
+      "C",
+      "D",
+      "H",
+      "S"
+    ],
+    "ranks": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "J",
+      "Q",
+      "K",
+      "A"
+    ],
+    "jokers": false,
+    "copies": 1
+  },
+  "deal": {
+    "cardsPerSeat": 13,
+    "direction": "clockwise",
+    "firstBidderAndLeader": "seat_after_dealer",
+    "passing": false
+  },
+  "bidding": {
+    "minimum": 0,
+    "maximum": 13,
+    "zeroMeans": "nil",
+    "blindNil": false,
+    "bothPartnersNilAllowed": true,
+    "combinedBidCap": null
+  },
+  "play": {
+    "trump": "S",
+    "mustFollowSuit": true,
+    "mustTrumpWhenVoid": false,
+    "mustOvertrump": false,
+    "leadSpadesBeforeBroken": "only_when_holding_only_spades",
+    "firstTrickVoidMayTrump": true
+  },
+  "scoring": {
+    "positiveBidMultiplier": 10,
+    "nilSuccess": 100,
+    "nilFailure": -100,
+    "failedNilTricksCountTowardContract": false,
+    "failedNilTricksEarnPoints": false,
+    "failedNilTricksAddBags": true,
+    "normalOvertrickPoints": 1,
+    "bagsPerPenalty": 10,
+    "bagPenaltyPoints": 100,
+    "repeatBagPenalties": true
+  },
+  "match": {
+    "threshold": 500,
+    "scoreBothTeamsBeforeCheck": true,
+    "tieAtOrAboveThreshold": "continue",
+    "mercyRule": false
+  },
+  "authority": "docs/02-rules.md"
+}

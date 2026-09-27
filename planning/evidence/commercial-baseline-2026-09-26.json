@@ -1,0 +1,44 @@
+{
+  "recordedDate": "2026-09-26",
+  "workspace": "C:/repos/test-jev/web",
+  "runtime": "Node v24.19.0",
+  "command": "node --test --test-isolation=none tests/*.test.ts",
+  "result": {
+    "tests": 38,
+    "passed": 38,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 974.4762
+  },
+  "scope": "Existing browser prototype tests only; proposed hosted/security/payment checks are not run.",
+  "files": [
+    {
+      "Path": "C:\\repos\\test-jev\\web\\src\\game.ts",
+      "Hash": "581A1A34197951A0461226C2CF6CA6942FBB9DF47EEAF2DAB8281D8E54D7D132"
+    },
+    {
+      "Path": "C:\\repos\\test-jev\\web\\src\\coach.ts",
+      "Hash": "F49B418B2ECB7FB8C1DF380D30CFE06511B9F456FBBA6AC289C00B5FF90EE9EC"
+    },
+    {
+      "Path": "C:\\repos\\test-jev\\web\\src\\storage.ts",
+      "Hash": "EDE5A43E61FDCF9E628C37524BDDBB9AAEBF06FCC54BA6DB627EB7160F27B30A"
+    },
+    {
+      "Path": "C:\\repos\\test-jev\\web\\src\\App.tsx",
+      "Hash": "0D77F5068B66BB4EA7166A482DDDD16949E3DDDBD9AD8E87C369DE24BDB5B2AD"
+    },
+    {
+      "Path": "C:\\repos\\test-jev\\web\\tests\\game.test.ts",
+      "Hash": "47397716287CB86D047B39CAD6996BB5AA6EB204FCA679096D095B5A44A505CE"
+    },
+    {
+      "Path": "C:\\repos\\test-jev\\web\\tests\\coach.test.ts",
+      "Hash": "11A03EA46E409DEB2DE08C05AA7B3642E24000F81C86558F0E8FDFB09A920CB5"
+    },
+    {
+      "Path": "C:\\repos\\test-jev\\web\\tests\\storage.test.ts",
+      "Hash": "3D2D0A8A0922A392F81540947B0D732989950B3E436A819130CFDB8ED127BED5"
+    }
+  ]
+}
