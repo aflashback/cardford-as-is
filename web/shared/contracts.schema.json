@@ -1470,10 +1470,15 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 100
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
             }
           },
           "required": [
-            "displayName"
+            "displayName",
+            "id"
           ],
           "additionalProperties": false
         },
@@ -2185,6 +2190,199 @@
           "additionalProperties": false
         }
       ]
+    },
+    "AccountDeleteRequest": {
+      "title": "AccountDeleteRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "confirmation": {
+          "const": "DELETE LOCAL ACCOUNT"
+        }
+      },
+      "required": [
+        "commandId",
+        "confirmation"
+      ],
+      "additionalProperties": false
+    },
+    "AccountDeleteView": {
+      "title": "AccountDeleteView",
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "const": true
+        },
+        "mode": {
+          "const": "local-test"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "deleted",
+        "mode",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "ExportView": {
+      "title": "ExportView",
+      "type": "object",
+      "properties": {
+        "formatVersion": {
+          "const": "local-export-1"
+        },
+        "exportedAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "mode": {
+          "const": "local-test"
+        },
+        "player": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "displayName": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "preferences": {
+              "$ref": "#/$defs/Preferences"
+            }
+          },
+          "required": [
+            "id",
+            "displayName",
+            "preferences"
+          ],
+          "additionalProperties": false
+        },
+        "subscription": {
+          "type": "object",
+          "properties": {
+            "plan": {
+              "$ref": "#/$defs/PaidPlan"
+            },
+            "cancelAtPeriodEnd": {
+              "type": "boolean"
+            },
+            "currentPeriodEnd": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "plan",
+            "cancelAtPeriodEnd",
+            "currentPeriodEnd"
+          ],
+          "additionalProperties": false
+        },
+        "games": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "frames": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/ReviewFrame"
+                },
+                "maxItems": 100000
+              },
+              "advice": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/AdviceView"
+                },
+                "maxItems": 100000
+              },
+              "stats": {
+                "$ref": "#/$defs/SessionStats"
+              }
+            },
+            "required": [
+              "id",
+              "revision",
+              "frames",
+              "advice",
+              "stats"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100000
+        },
+        "coachedHands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "gameId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "handNumber": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "period": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              }
+            },
+            "required": [
+              "gameId",
+              "handNumber",
+              "period"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100000
+        },
+        "billing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BillingOperation"
+          },
+          "maxItems": 100000
+        }
+      },
+      "required": [
+        "formatVersion",
+        "exportedAt",
+        "mode",
+        "player",
+        "subscription",
+        "games",
+        "coachedHands",
+        "billing"
+      ],
+      "additionalProperties": false
     }
   },
   "anyOf": [
@@ -2352,6 +2550,15 @@
     },
     {
       "$ref": "#/$defs/FamilyCommand"
+    },
+    {
+      "$ref": "#/$defs/AccountDeleteRequest"
+    },
+    {
+      "$ref": "#/$defs/AccountDeleteView"
+    },
+    {
+      "$ref": "#/$defs/ExportView"
     }
   ]
 }

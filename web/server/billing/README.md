@@ -22,3 +22,13 @@ For isolated worktree verification only, `BILLING_BASELINE_ROOT=C:/repos/test-je
 Known scope limits: actual Stripe calls and observed payment IDs: none. Real managed identity, Stripe sandbox authentication/declines/refunds/disputes/renewals, hosted payer-revocation races, commercial policy review, physical devices and family usability pilot are blocked or not run. Family period renewal orchestration is not claimed by these tests. Local ordinary removals fence through the removed player's lock/access generation. Public offers continue to require null price/currency. Stripe documentation checked: https://docs.stripe.com/api/checkout/sessions/create and https://docs.stripe.com/api/events.
 
 Changelog 2026-09-27: introduced the local subscription/family services, migration 002, Stripe boundary implementation and eight actual fixture/DB tests; no live payment activation.
+
+## Local account export and deletion follow-up
+
+`access/account-data.ts` exports `exportAccount(pool, playerId, guard?)` and `deleteLocalAccount(pool, playerId, request, guard?)`. Both lock the authenticated player and recheck the supplied session guard. Only fixture billing is accepted. Export constructs own public/own-card frames, saved advice, profile/preferences, usage and local billing-operation views; authoritative deals, private game states and other owners' games never enter the output.
+
+Migration 003 makes a removed member's held family assignment anonymous after account deletion. This retains capacity for the period without retaining that deleted player's identity on the seat. Deleting the payer fences affected members and removes the family relationship; their own identities and game records remain. Local fixture billing requires no external cancellation, and the deletion response says that no real payment subscription was canceled. Real provider billing/retention/export and shared administrative-record policy remain hosted release work.
+
+Three additional isolated PostgreSQL tests passed: owner-only allowlisted export with hidden canaries; guarded deletion with session/game cascade and anonymous held seat; payer deletion with member access-generation change and account preservation. Combined billing/family/account run: 11 passed, 0 skipped. Strict TypeScript with unused checks, deterministic regeneration and 8 contract tests with string code generation disabled also passed. One unprivileged test-process spawn failed with EPERM; rerunning with `--test-isolation=none` passed. No live payment/model calls.
+
+Changelog 2026-09-27: added local account export/deletion and required current-player UUID in AccountView for account-bound family invitations.

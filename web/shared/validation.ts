@@ -58,6 +58,9 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   FamilyInvitation: compiled.validateFamilyInvitation,
   FamilyView: compiled.validateFamilyView,
   FamilyCommand: compiled.validateFamilyCommand,
+  AccountDeleteRequest: compiled.validateAccountDeleteRequest,
+  AccountDeleteView: compiled.validateAccountDeleteView,
+  ExportView: compiled.validateExportView,
 };
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
   return validators[name];
@@ -123,3 +126,6 @@ export const validateFamilyMember = contractValidator('FamilyMember');
 export const validateFamilyInvitation = contractValidator('FamilyInvitation');
 export const validateFamilyView = contractValidator('FamilyView');
 export const validateFamilyCommand = contractValidator('FamilyCommand');
+export const validateAccountDeleteRequest = contractValidator('AccountDeleteRequest');
+export const validateAccountDeleteView = contractValidator('AccountDeleteView');
+export const validateExportView = contractValidator('ExportView');

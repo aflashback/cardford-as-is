@@ -58,7 +58,10 @@ export type PublicContracts =
   | FamilyMember
   | FamilyInvitation
   | FamilyView
-  | FamilyCommand;
+  | FamilyCommand
+  | AccountDeleteRequest
+  | AccountDeleteView
+  | ExportView;
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
 export type Seat = 0 | 1 | 2 | 3;
 export type Card = string;
@@ -432,6 +435,7 @@ export interface AccountView {
   authMode: 'local-test' | 'managed';
   player: {
     displayName: string;
+    id: string;
   };
   access: CoachAccess;
   subscription: SubscriptionView;
@@ -553,6 +557,58 @@ export interface FamilyView {
   periodEnd: string | null;
   localMock: true;
 }
+export interface AccountDeleteRequest {
+  commandId: string;
+  confirmation: 'DELETE LOCAL ACCOUNT';
+}
+export interface AccountDeleteView {
+  deleted: true;
+  mode: 'local-test';
+  message: string;
+}
+export interface ExportView {
+  formatVersion: 'local-export-1';
+  exportedAt: string;
+  mode: 'local-test';
+  player: {
+    id: string;
+    displayName: string;
+    preferences: Preferences;
+  };
+  subscription: {
+    plan: PaidPlan;
+    cancelAtPeriodEnd: boolean;
+    currentPeriodEnd: string;
+  };
+  /**
+   * @maxItems 100000
+   */
+  games: {
+    id: string;
+    revision: number;
+    /**
+     * @maxItems 100000
+     */
+    frames: ReviewFrame[];
+    /**
+     * @maxItems 100000
+     */
+    advice: AdviceView[];
+    stats: SessionStats;
+  }[];
+  /**
+   * @maxItems 100000
+   */
+  coachedHands: {
+    gameId: string;
+    handNumber: number;
+    period: string;
+  }[];
+  /**
+   * @maxItems 100000
+   */
+  billing: BillingOperation[];
+}
 
 export interface ContractTypes {
   Mode: Mode;
@@ -610,5 +666,8 @@ export interface ContractTypes {
   FamilyInvitation: FamilyInvitation;
   FamilyView: FamilyView;
   FamilyCommand: FamilyCommand;
+  AccountDeleteRequest: AccountDeleteRequest;
+  AccountDeleteView: AccountDeleteView;
+  ExportView: ExportView;
 }
 export type ContractName = keyof ContractTypes;
