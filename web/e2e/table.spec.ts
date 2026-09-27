@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import type { SessionView } from '../shared/contracts';
+import type { NotesView, SessionView } from '../shared/contracts';
 
 function fixture(): SessionView {
   return {
@@ -19,7 +19,7 @@ function fixture(): SessionView {
       dealer: 3,
       handNumber: 1,
       heartsBroken: false,
-      spadesBroken: false,
+      spadesBroken: true,
       passDirection: 'hold',
       received: [],
       outgoing: [],
@@ -400,4 +400,211 @@ test('desktop and landscape phone preserve table geometry and card targets', asy
     expect(cards[index + 1].x - cards[index].x).toBeGreaterThanOrEqual(43.9);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('phone.png') });
+});
+
+for (const mode of ['spades-partners', 'hearts'] as const) {
+  test(`${mode}: unavailable-card cues follow server legality and clear on a new turn`, async ({ page }) => {
+    const restricted = mode === 'hearts' ? 'H4' : 'S5';
+    const label = mode === 'hearts' ? '4 of hearts' : '5 of spades';
+    const initial = fixture();
+    initial.game.mode = mode;
+    initial.game.spadesBroken = false;
+    initial.game.legalActions = [{ kind: 'play', card: 'C2' }];
+    const harness = await mount(page, initial);
+    const blocked = page.getByRole('button', { name: `${label}, unavailable this turn`, exact: true });
+    await expect(blocked).toBeDisabled();
+    await expect(blocked).toHaveAttribute('aria-disabled', 'true');
+    await expect(blocked.locator('.unavailable-mark')).toBeVisible();
+    await expect(page.getByRole('button', { name: '2 of clubs', exact: true })).toBeEnabled();
+    expect(harness.commands).toHaveLength(0);
+    await expect(page.locator('.you-active .your-turn-mark')).toBeVisible();
+    expect(await page.locator('.you-label').ariaSnapshot()).toContain(
+      mode === 'hearts' ? '0 tricks' : '0 tricks, bid 3',
+    );
+    await expect(page.getByRole('status')).toHaveText('Your turn');
+    const announcement = await page.getByRole('status').boundingBox();
+    expect(announcement?.width).toBe(1);
+    expect(announcement?.height).toBe(1);
+    expect(await page.locator('.app-shell').innerText()).not.toMatch(
+      /Spades (?:un)?broken|Hearts (?:un)?broken|bid is covered|Double-tap/,
+    );
+
+    // A legal exception must stay available even when the restricted-suit flag is false.
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+    const next = fixture();
+    next.game.mode = mode;
+    next.revision = 2;
+    next.decisionId = 'legal-exception';
+    next.game.hand = [restricted];
+    next.game.spadesBroken = false;
+    next.game.legalActions = [{ kind: 'play', card: restricted }];
+    harness.setState(next);
+    await page.getByRole('button', { name: 'Resume', exact: true }).click();
+    await expect(page.getByRole('button', { name: label, exact: true })).toBeEnabled();
+    await expect(page.locator('.unavailable-mark')).toHaveCount(0);
+    expect(harness.commands).toHaveLength(0);
+  });
+}
+
+test('a prepared card becomes unavailable without autoplay when the server excludes it', async ({ page }) => {
+  const initial = fixture();
+  initial.game.turn = 1;
+  initial.game.legalActions = [];
+  const harness = await mount(page, initial);
+  await page.getByRole('button', { name: '5 of spades', exact: true }).click();
+  await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  const next = fixture();
+  next.revision = 2;
+  next.decisionId = 'restricted-human-turn';
+  next.game.spadesBroken = false;
+  next.game.legalActions = [{ kind: 'play', card: 'C2' }];
+  harness.setState(next);
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  const blocked = page.getByRole('button', { name: '5 of spades, unavailable this turn', exact: true });
+  await expect(blocked).toBeDisabled();
+  await expect(blocked).toHaveAttribute('aria-pressed', 'false');
+  expect(harness.commands).toHaveLength(0);
+});
+
+test('last trick stays beside the table with seat positions, no names and no notes request', async ({
+  page,
+}, testInfo) => {
+  const session = fixture();
+  session.game.hand = ['C3', 'C10', 'CK', 'D8', 'D9', 'H2', 'H8', 'S2', 'S6', 'S8', 'SK', 'SA'];
+  session.game.handCounts = [12, 12, 12, 11];
+  session.game.spadesBroken = false;
+  session.game.history = [
+    {
+      plays: [
+        { seat: 0, card: 'C2' },
+        { seat: 1, card: 'C4' },
+        { seat: 2, card: 'C7' },
+        { seat: 3, card: 'CQ' },
+      ],
+      winner: 3,
+    },
+  ];
+  session.game.tricks = [0, 0, 0, 1];
+  session.game.trick = [{ seat: 3, card: 'D6' }];
+  session.game.currentWinner = 3;
+  session.game.legalActions = [
+    { kind: 'play', card: 'D8' },
+    { kind: 'play', card: 'D9' },
+  ];
+  const notesCalls: string[] = [];
+  page.on('request', (request) => {
+    if (request.url().includes('/api/session/notes') || request.url().includes('/api/coaching/hand-unlocks'))
+      notesCalls.push(request.url());
+  });
+  const harness = await mount(page, session);
+  const last = page.getByRole('complementary', { name: 'Last trick', exact: true });
+  await expect(last.getByRole('img')).toHaveCount(4);
+  await expect(last.getByRole('img', { name: 'Theo: Queen of clubs, won the trick' })).toBeVisible();
+  expect(await last.innerText()).not.toMatch(/You|Leo|Maya|Theo/);
+  await expect(page.getByRole('button', { name: 'Last trick' })).toHaveCount(0);
+  for (const [width, height, name] of [
+    [1280, 800, 'desktop'],
+    [768, 1024, 'tablet'],
+    [667, 375, 'phone'],
+    [667, 320, 'short-phone'],
+  ] as const) {
+    await page.setViewportSize({ width, height });
+    await expect(last).toBeVisible();
+    const memory = await last.boundingBox();
+    const current = await page.locator('.trick-area').boundingBox();
+    const west = await page.locator('.player-1').boundingBox();
+    expect(memory).not.toBeNull();
+    expect(current).not.toBeNull();
+    expect(west).not.toBeNull();
+    expect(memory!.x + memory!.width).toBeLessThanOrEqual(current!.x);
+    expect(memory!.y >= west!.y + west!.height || memory!.x >= west!.x + west!.width).toBe(true);
+    expect(memory!.y + memory!.height).toBeLessThan(height);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.screenshot({ path: testInfo.outputPath(`cues-${name}.png`) });
+  }
+  expect(notesCalls).toEqual([]);
+  expect(harness.commands).toHaveLength(0);
+  await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  const next = fixture();
+  next.revision = 2;
+  next.decisionId = 'next-hand';
+  next.game.handNumber = 2;
+  harness.setState(next);
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await expect(last).toHaveCount(0);
+});
+
+for (const phase of ['hand-end', 'match-end'] as const) {
+  test(`${phase}: Play again continues a hand or restarts the same game`, async ({ page }) => {
+    const ended = fixture();
+    ended.game.phase = phase;
+    ended.game.turn = null;
+    ended.game.hand = [];
+    ended.game.legalActions = [];
+    const harness = await mount(page, ended);
+    const requests: unknown[] = [];
+    const next = fixture();
+    next.revision = 2;
+    next.decisionId = 'playing-again';
+    next.game.handNumber = phase === 'hand-end' ? 2 : 1;
+    next.game.id = phase === 'hand-end' ? ended.game.id : 'restarted-game';
+    await page.route(phase === 'hand-end' ? '**/api/session/next-hand' : '**/api/sessions', (route) => {
+      requests.push(route.request().postDataJSON());
+      harness.setState(next);
+      return route.fulfill({ json: next });
+    });
+    const recap = page.getByRole('dialog');
+    await expect(recap.getByRole('button', { name: 'Play again', exact: true })).toBeVisible();
+    await expect(recap.getByText('Turns with cues or table notes open. No skill rating.')).not.toBeVisible();
+    await recap.getByRole('button', { name: 'Play again', exact: true }).click();
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    expect(requests).toHaveLength(1);
+    expect(requests[0]).toMatchObject(
+      phase === 'hand-end'
+        ? { gameId: ended.game.id, expectedRevision: ended.revision }
+        : { mode: ended.game.mode, expectedActiveGameId: ended.game.id },
+    );
+    await expect(page.locator('.hand-card')).toHaveCount(4);
+  });
+}
+
+test('compact notes keep rules expandable by keyboard and settings use short labels', async ({
+  page,
+}, testInfo) => {
+  const harness = await mount(page);
+  const notes: NotesView = {
+    memory: [
+      { suit: 'C', played: 4, remaining: 9, voidSeats: [], playedCards: ['C2', 'C4', 'C7', 'CQ'] },
+      { suit: 'D', played: 0, remaining: 13, voidSeats: [] },
+      { suit: 'H', played: 0, remaining: 13, voidSeats: [] },
+      { suit: 'S', played: 0, remaining: 13, voidSeats: [] },
+    ],
+    outgoing: [],
+    received: [],
+    history: [],
+  };
+  await page.route('**/api/session/notes', (route) => route.fulfill({ json: notes }));
+  await page.getByRole('button', { name: 'Table notes', exact: true }).click();
+  const dialog = page.getByRole('dialog', { name: 'Table notes', exact: true });
+  await expect(dialog.getByText('9 unplayed')).toBeVisible();
+  await expect(dialog.getByText('Last trick', { exact: true })).toHaveCount(0);
+  await expect(dialog.getByText('Your pass · private', { exact: true })).toHaveCount(0);
+  await expect(dialog.getByText(/Nil: ±100/)).not.toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('cues-notes.png') });
+  await page.keyboard.press('Tab');
+  await expect(dialog.getByText('Played cards', { exact: true })).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(dialog.getByText('Table rules', { exact: true })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(dialog.getByText(/Nil: ±100/)).toBeVisible();
+  await page.keyboard.press('Tab');
+  await expect(dialog.getByRole('button', { name: 'Close dialog' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('button', { name: 'Table notes', exact: true })).toBeFocused();
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'When I ask', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Occasional cues', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '1.2×', exact: true })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('cues-settings.png') });
+  expect(harness.commands).toHaveLength(0);
 });

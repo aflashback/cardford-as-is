@@ -39,3 +39,66 @@
 .family-panel,.family-panel form,.family-panel label,.family-invitation,.family-confirm{display:flex;flex-direction:column;gap:12px}.family-panel input:not([type=checkbox]),.family-panel select{font:inherit;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff;max-width:100%;min-width:0}.family-panel .check-label{flex-direction:row;align-items:center}.family-member{display:flex;align-items:center;justify-content:space-between;gap:12px}.family-invitation,.family-confirm{padding:16px;border:1px solid var(--line);border-radius:10px;margin-top:16px}.family-panel form{margin-top:18px}
 
 .local-account-id{display:flex;flex-direction:column;gap:8px;font-size:12px}.local-account-id input{font:inherit;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:8px;width:100%;background:#fff}
+
+/* Quiet table cues: availability comes from the server's legal action set. */
+.you-label .player-detail{margin-top:0}
+.you-active .you-avatar{box-shadow:0 0 0 2px var(--gold);outline:2px solid #edf1f2;outline-offset:-2px}
+.you-label .your-turn-mark{width:6px;height:6px;border-radius:50%;background:#b4853c;margin-left:2px}
+.hand-card.unplayable{cursor:not-allowed}
+.hand-card.unplayable .card-face{background:#d4dce0;color:#87949d;border-color:#bbc8ce;filter:grayscale(1)}
+.unavailable-mark{position:absolute;left:6px;bottom:7px;color:#667782;pointer-events:none}
+.hand-card.unplayable .received-mark{left:24px}
+
+.last-trick{position:absolute;left:90px;bottom:24px;width:120px;z-index:1}
+.last-trick-label{display:block;margin-bottom:8px;color:#c6d9de;font-size:10px}
+.last-trick-layout{position:relative;width:120px;height:108px}
+.last-trick-card{position:absolute;width:36px;height:50px}
+.last-trick-seat-2{top:0;left:42px}
+.last-trick-seat-1{left:0;top:29px}
+.last-trick-seat-3{right:0;top:29px}
+.last-trick-seat-0{bottom:0;left:42px}
+.last-trick-card .card-face{border-radius:4px;box-shadow:0 2px 4px #122e4033}
+.last-trick-card .card-corner{left:4px;top:4px;gap:0}
+.last-trick-card .card-corner b{font-size:15px;letter-spacing:-.5px}
+.last-trick-card .card-corner>span{font-size:11px}
+.last-trick-card .card-corner-bottom{display:none}
+.last-trick-card .card-pip{font-size:18px;left:69%;top:69%}
+.last-trick-winner .card-face{outline:1px solid var(--gold);outline-offset:2px}
+.last-trick-check{position:absolute;right:-4px;bottom:-4px;width:13px;height:13px;padding:2px;border-radius:50%;background:var(--gold);color:#203f52}
+
+.notes-layout>section>.notes-subtitle:first-child{margin-top:0}
+.notes-details{margin-top:22px}
+.notes-layout summary,.recap-details summary,.review-panel summary{cursor:pointer;font-size:12px;min-height:32px;align-content:center}
+.notes-layout details p,.recap-details p,.review-panel details p{margin-top:8px}
+.recap-details{font-size:12px;color:#6b838d}
+.setting-option{min-height:62px}
+.game-option{min-height:215px}
+
+@media (orientation:portrait) and (min-width:700px){
+  .last-trick{left:80px;bottom:26px}
+}
+@media (max-height:520px) and (orientation:landscape){
+  .you-label .you-avatar{display:grid}
+  .last-trick{left:50px;bottom:5px;width:82px}
+  .last-trick-label{font-size:9px;margin-bottom:4px}
+  .last-trick-layout{width:82px;height:72px}
+  .last-trick-card{width:24px;height:34px}
+  .last-trick-seat-2{left:29px}
+  .last-trick-seat-1,.last-trick-seat-3{top:19px}
+  .last-trick-seat-0{left:29px}
+  .last-trick-card .card-corner{left:3px;top:3px}
+  .last-trick-card .card-corner b{font-size:12px}
+  .last-trick-card .card-corner>span{font-size:10px}
+  .last-trick-card .card-pip{display:none}
+  .last-trick-check{width:11px;height:11px;padding:1px;right:-3px;bottom:-3px}
+  .unavailable-mark{width:10px;height:10px;bottom:4px;left:5px}
+  .setting-option{min-height:44px}
+  .game-option{min-height:130px}
+  .notes-details{margin-top:12px}
+}
+@media (max-height:350px) and (orientation:landscape){
+  .last-trick{bottom:2px}
+  .last-trick-layout{height:64px}
+  .last-trick-card{height:30px}
+  .last-trick-seat-1,.last-trick-seat-3{top:17px}
+}

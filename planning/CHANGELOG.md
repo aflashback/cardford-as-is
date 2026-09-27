@@ -1,5 +1,11 @@
 # Planning changes
 
+## 2026-09-27 — Visual cues and shorter practice copy
+
+Implemented the owner's cue-first table update in [CR-UX-004](decisions/CR-UX-004-table-cues.md), requirements UX-13–16. Removed repeated visible turn, lead, objective and broken-suit sentences; kept accessible announcements and numeric player counts. Unavailable cards use grey faces and a lock driven by server legal actions. Last trick now stays at the left with seat positions and a winner mark, without visible player names or a notes request.
+
+Shortened game/settings/notes/recap/review copy and made extra explanation expandable with keyboard access. Play again continues the current match after a hand and restarts the same mode after match completion. Rules, scoring, contracts and stored coaching content are unchanged. See [actual verification results](../qa/implementation/ui-cues-acceptance.md) for checks, provider mode, screenshots and remaining limits.
+
 ## 2026-09-27 — Local V1 implemented and hosted
 
 Implemented the owner-authorized local cycle in [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md): one npm monorepo, generated public contracts, server-owned three-mode rules, PostgreSQL persistence, command/control fences, observation-only local play and coaching, current-game review, isolated sampled continuations, in-app subscription/family fixtures and account data controls. Preserved the accepted table experience. Added local launch/stop, isolated test database and backup/restore scripts. No pipeline, remote push or public deployment was added.

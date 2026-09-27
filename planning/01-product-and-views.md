@@ -10,6 +10,8 @@ A complete card game with a coach in the player's corner. The player already kno
 
 The visual reference is [App.tsx](../web/src/App.tsx), [styles.css](../web/src/styles.css), [desktop](../web/qa/ui-v1-desktop.png) and [phone coach](../web/qa/ui-v1-phone.png). Preserve the blue table, simple avatars, right coach panel and hand below. Decorative captions, pep-talk text and the small hand footer are removed; the table uses the freed space. Keep computer-player disclosure in game setup; names and avatars can feel personable.
 
+[CR-UX-004](decisions/CR-UX-004-table-cues.md) records the later owner-approved cue and copy changes. Active-seat rings/dots, numeric bid/trick counts and grey unavailable cards carry routine status; screen-reader announcements remain. Last trick stays visible at the left as four small cards with a winner mark and no visible names. Extra rules/review explanation is expandable.
+
 ## View contract
 
 ### Table view map
@@ -53,15 +55,15 @@ Optional views return to the current table. Help does not commit a move; review 
 | Spades bid | Integer 0–13, Nil shortcut and explicit confirmation. Show earlier public bids; no artificial restriction on their sum. |
 | Play | Double-click/double-tap during another player's turn prepares and raises a card; it never auto-plays when the turn arrives. During the player's turn, double-click/double-tap plays that legal card. Single activation selects; Enter is the keyboard play equivalent. Remove the Play card button; keep bid/pass confirmation. Recheck legality at play time; every legal card remains available, including cards outside the coach's shortlist. |
 | Coach | Notice → Consider → Suggestion, plus the existing direct-suggestion shortcut. One cue at a time; dismissal never erases recorded exposure. Advice never commits a move. |
-| Table notes | Played counts, known voids, last trick and this table's rules. Add expandable played ranks/current-hand tricks and the player's own pass memory. Label public facts and private pass knowledge separately. No old-game navigation. |
-| Settings | Coaching: When I ask; A nudge now and then; After the hand. Game speed: 1×, 1.2×, 1.4×, persisted locally. Keep these together; no model, skill-level or strategy configuration screen. |
+| Table notes | Public played counts and known voids; expandable played cards, table rules and Hearts private pass memory. Last trick lives directly on the table. Label public facts and private pass knowledge separately. No old-game navigation. |
+| Settings | Coaching: When I ask; Occasional cues; After the hand. Game speed: 1×, 1.2×, 1.4×, persisted. Keep these together; no model, skill-level or strategy configuration screen. |
 | Pause | Preserve position and selections. Dialogs, backgrounding and the phone rotation gate suspend progression. Resume starts a fresh animation delay. |
-| Hand recap | Existing score comparison plus at most one supported strength, one review moment and one next focus. Skip/Next hand always available. Expand evidence within this dialog. |
-| Match result | Name the winner and final standings, then Choose next game. Retain a compact aggregate progress message; no archive or replay library. |
+| Hand recap | Existing score comparison plus at most one supported strength, one review moment and one next focus. Back to table/Play again always available. Play again continues the match; expand evidence within this dialog. |
+| Match result | Name the winner and final standings, then Play again to restart the same mode. Other modes remain in the game picker. No archive or replay library. |
 
 Table notes' **unplayed** count includes the player's hand; it must not be labeled unknown. Detailed memory is optional assistance. Score, bids, legal-card availability and the visible trick are ordinary game information.
 
-Use “Play to 500” for Spades: scoring is simultaneous and tied leaders continue. The hand objective must adapt to a credible Hearts moon plan or Nil situation; avoid a permanent “always avoid points” instruction.
+Use “Play to 500” for Spades: scoring is simultaneous and tied leaders continue. Requested advice must adapt to a credible Hearts moon plan or Nil situation; omit the default hand-objective caption.
 
 ## Advice states
 

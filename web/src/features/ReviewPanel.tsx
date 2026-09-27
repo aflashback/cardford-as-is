@@ -101,12 +101,11 @@ export function ReviewPanel({
   const hands = [...new Set(index?.cases.map((item) => item.handNumber) ?? [])];
   return (
     <div className="review-panel">
-      <p>Your live table is paused. Review does not change its cards or score.</p>
       {error && <p role="alert">{error}</p>}
       <label>
         Hand{' '}
         <select value={hand ?? ''} onChange={(e) => setHand(e.target.value ? Number(e.target.value) : null)}>
-          <option value="">All current-game hands</option>
+          <option value="">All hands</option>
           {hands.map((number) => (
             <option key={number} value={number}>
               {number}
@@ -127,15 +126,13 @@ export function ReviewPanel({
               Hand {item.handNumber}: {item.summary} {item.assisted ? '· help issued' : ''}
             </button>
           ))}
-        {index?.cases.length === 0 && <p>No recorded choices yet. Play a turn to begin.</p>}
+        {index?.cases.length === 0 && <p>No plays to review yet.</p>}
       </div>
       {frame && (
         <section className="review-evidence">
           <h3>{trial ? 'Possible continuation' : 'Original'}</h3>
-          {trial && <p>A sampled possibility, not a prediction or a new live result.</p>}
-          <p>
-            Hand {frame.game.handNumber} · {frame.game.phase}
-          </p>
+          {trial && <p>Sampled play. Live game unchanged.</p>}
+          <p>Hand {frame.game.handNumber}</p>
           <h4>What you knew</h4>
           <p>Your cards: {frame.game.hand.map(cardLabel).join(', ')}</p>
           <p>
@@ -143,9 +140,14 @@ export function ReviewPanel({
             {frame.game.trick.map((play) => `Seat ${play.seat}: ${cardLabel(play.card)}`).join('; ') ||
               'No cards played'}
           </p>
-          {frame.notes.map((note, position) => (
-            <p key={position}>{note}</p>
-          ))}
+          {frame.notes.length > 0 && (
+            <details>
+              <summary>Details</summary>
+              {frame.notes.map((note, position) => (
+                <p key={position}>{note}</p>
+              ))}
+            </details>
+          )}
           <div className="review-navigation">
             <button
               className="text-button"
@@ -181,7 +183,6 @@ export function ReviewPanel({
             frame.game.legalActions.some((action) => action.kind === 'play') && (
               <details>
                 <summary>Explore another card</summary>
-                <p>This is separate from your live game.</p>
                 <div className="review-alternatives">
                   {frame.game.legalActions.flatMap((action) =>
                     action.kind === 'play'
@@ -203,7 +204,7 @@ export function ReviewPanel({
           )}
           {pendingCard && (
             <div className="fixture-notice">
-              <p>Use one coached hand for this reviewed hand? This will not unlock other hands.</p>
+              <p>Unlock help for this hand only.</p>
               <button
                 className="primary-button"
                 disabled={busy}

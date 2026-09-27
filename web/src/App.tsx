@@ -9,13 +9,13 @@ import {
   Flag,
   Focus,
   Lightbulb,
+  LockKeyhole,
   Pause,
   Play,
   RotateCcw,
   RotateCw,
   Settings2,
   Sparkles,
-  Target,
   X,
 } from 'lucide-react';
 import type { AdviceView, Card, GameView, Mode, NotesView, Seat } from '../shared/contracts';
@@ -32,11 +32,6 @@ const modeNames: Record<Mode, string> = {
   hearts: 'Hearts',
   'spades-solo': 'Spades',
   'spades-partners': 'Spades',
-};
-const modeDescriptions: Record<Mode, string> = {
-  hearts: 'Every player for themselves',
-  'spades-solo': 'Your bid. Your tricks.',
-  'spades-partners': 'You and Maya, together',
 };
 type Modal = 'games' | 'notes' | 'settings' | 'pause' | 'review' | null;
 
@@ -73,11 +68,15 @@ function Dialog({
   wide?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
   const closeRef = useRef(onClose);
   closeRef.current = onClose;
   useEffect(() => {
-    const before = document.activeElement as HTMLElement | null;
     const element = ref.current;
+    // Keep the external trigger when Strict Mode replays the focus effect.
+    if (document.activeElement instanceof HTMLElement && !element?.contains(document.activeElement))
+      returnFocusRef.current = document.activeElement;
+    const before = returnFocusRef.current;
     element?.querySelector<HTMLElement>('button')?.focus();
     const keydown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -87,9 +86,9 @@ function Dialog({
       if (event.key !== 'Tab') return;
       const focusables = [
         ...element!.querySelectorAll<HTMLElement>(
-          'button:not(:disabled),input:not(:disabled),select,a[href],[tabindex="0"]',
+          'button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),a[href],summary,[tabindex="0"]',
         ),
-      ];
+      ].filter((control) => control.getClientRects().length > 0);
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
       if (event.shiftKey && document.activeElement === first) {
@@ -104,7 +103,10 @@ function Dialog({
     document.addEventListener('keydown', keydown);
     return () => {
       document.removeEventListener('keydown', keydown);
-      before?.focus();
+      // The table removes its inert attribute in the parent's effect on close.
+      queueMicrotask(() => {
+        if (!ref.current?.isConnected && before?.isConnected) before.focus();
+      });
     };
   }, []);
   return (
@@ -177,15 +179,51 @@ function Player({ seat, game, active }: { seat: Seat; game: GameView; active: bo
         <div className="player-name">
           {names[seat]} {partner && <span className="partner-label">Partner</span>}
         </div>
-        <span className="player-detail">
-          {game.mode === 'hearts'
-            ? `${game.tricks[seat]} tricks`
-            : `${game.tricks[seat]} / ${game.bids[seat] === null ? '—' : game.bids[seat] === 0 ? 'Nil' : game.bids[seat]}`}
-          <span className="player-detail-word">{game.mode !== 'hearts' ? ' tricks' : ''}</span>
-        </span>
+        <PlayerCount seat={seat} game={game} />
       </div>
       {active && <span className="turn-dot" aria-label="Current player" />}
     </div>
+  );
+}
+
+function PlayerCount({ seat, game }: { seat: Seat; game: GameView }) {
+  const bid = game.bids[seat];
+  const bidLabel = bid === null ? '—' : bid === 0 ? 'Nil' : bid;
+  return (
+    <span className="player-detail">
+      <span aria-hidden="true">
+        {game.tricks[seat]}
+        {game.mode !== 'hearts' && ` / ${bidLabel}`}
+      </span>
+      <span className="sr-only">
+        {`${game.tricks[seat]} tricks${game.mode === 'hearts' ? '' : bid === null ? ', not bid yet' : `, bid ${bidLabel}`}`}
+      </span>
+    </span>
+  );
+}
+
+function LastTrick({ game }: { game: GameView }) {
+  const last = game.history[game.history.length - 1];
+  if (!last) return null;
+  return (
+    <aside className="last-trick" aria-label="Last trick">
+      <span className="last-trick-label" aria-hidden="true">
+        Last trick
+      </span>
+      <div className="last-trick-layout">
+        {last.plays.map((play) => (
+          <div
+            key={play.seat}
+            className={`last-trick-card last-trick-seat-${play.seat} ${last.winner === play.seat ? 'last-trick-winner' : ''}`}
+            role="img"
+            aria-label={`${names[play.seat]}: ${cardLabel(play.card)}${last.winner === play.seat ? ', won the trick' : ''}`}
+          >
+            <CardFace card={play.card} />
+            {last.winner === play.seat && <Check className="last-trick-check" size={10} aria-hidden="true" />}
+          </div>
+        ))}
+      </div>
+    </aside>
   );
 }
 
@@ -262,13 +300,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   const isTeam = game.mode === 'spades-partners';
   const activeHint = canDecide && advice?.decisionId === turnKey ? hint : 0;
   const currentWinner = game.currentWinner;
-  const need = Math.max(
-    0,
-    (game.bids[0] || 0) +
-      (isTeam ? game.bids[2] || 0 : 0) -
-      (game.bids[0] === 0 ? 0 : game.tricks[0]) -
-      (isTeam && game.bids[2] !== 0 ? game.tricks[2] : 0),
-  );
   const matchWinner = game.handResult?.winner;
   const winnerLabel =
     matchWinner === undefined
@@ -525,7 +556,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               ? 'Game complete'
               : 'Hand complete'
             : myTurn
-              ? 'Double-tap a card to play'
+              ? 'Your turn'
               : `${names[game.turn ?? 0]} is playing`;
   const commitLabel =
     game.phase === 'pass' ? `Pass ${selected.length} of 3` : bid === 0 ? 'Bid Nil' : `Bid ${bid}`;
@@ -655,7 +686,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                       <span className="prompt-icon">
                         <Flag size={23} />
                       </span>
-                      <h2>{myTurn ? 'Choose your bid' : `${names[game.turn ?? 0]} is bidding`}</h2>
+                      <h2>{myTurn ? 'Your bid' : 'Bidding'}</h2>
                       {myTurn && (
                         <div className="bid-selector" aria-label="Choose your bid">
                           <button
@@ -724,30 +755,10 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                           </div>
                         );
                       })}
-                      {!game.trick.length && (
-                        <span className="lead-prompt">
-                          {myTurn ? 'You lead' : `${names[game.turn ?? 0]} leads`}
-                        </span>
-                      )}
                     </>
                   )}
                 </div>
-                <div className="table-footer">
-                  <span>
-                    {isHearts
-                      ? game.heartsBroken
-                        ? '♥ Hearts broken'
-                        : '♡ Hearts unbroken'
-                      : game.spadesBroken
-                        ? '♠ Spades broken'
-                        : '♤ Spades unbroken'}
-                  </span>
-                  {game.history.length > 0 && (
-                    <button onClick={openNotes}>
-                      Last trick <ChevronRight size={13} />
-                    </button>
-                  )}
-                </div>
+                <LastTrick game={game} />
               </section>
 
               <aside className={`coach-panel ${activeHint > 0 ? 'coach-open' : ''}`} aria-label="Your coach">
@@ -770,7 +781,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                   {advicePending && <p>Considering the position…</p>}
                   {unlockLevel && (
                     <div>
-                      <p>Use one coached hand? All help in this hand is included.</p>
+                      <p>Unlock all help for this hand.</p>
                       <button className="hint-button" onClick={() => void showHint(unlockLevel, true)}>
                         Use coached hand
                       </button>
@@ -798,7 +809,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                         {advice.source === 'jev'
                           ? 'Jev suggestion'
                           : advice.source === 'forced'
-                            ? 'Only legal move'
+                            ? 'Forced move'
                             : 'Local suggestion'}
                       </small>
                       <h3>{advice.focus}</h3>
@@ -846,66 +857,29 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                     )
                   ) : null}
                 </div>
-                <div className="hand-objective">
-                  <span>
-                    <Target size={15} />
-                    This hand
-                  </span>
-                  <b>
-                    {isHearts
-                      ? 'Aim for the lowest score'
-                      : game.bids[0] === null
-                        ? 'Find a comfortable bid'
-                        : game.bids[0] === 0
-                          ? game.tricks[0]
-                            ? isTeam
-                              ? 'Help your partner’s contract'
-                              : 'Limit extra bags'
-                            : 'Take no tricks'
-                          : need > 0
-                            ? `${need} more ${need === 1 ? 'trick' : 'tricks'} ${isTeam ? 'for your team' : 'to make your bid'}`
-                            : 'Your bid is covered'}
-                  </b>
-                </div>
               </aside>
             </div>
 
             <section className="hand-section" aria-label="Your hand">
               <div className="hand-toolbar">
-                <div className="you-label">
+                <div className={`you-label ${canDecide ? 'you-active' : ''}`}>
                   <span className="you-avatar">Y</span>
                   <b>You</b>
-                  <span>
-                    {isHearts
-                      ? `${game.tricks[0]} tricks`
-                      : game.bids[0] !== null
-                        ? `${game.tricks[0]} / ${game.bids[0] === 0 ? 'Nil' : game.bids[0]} tricks`
-                        : 'Your hand'}
-                  </span>
+                  <PlayerCount seat={0} game={game} />
+                  {canDecide && <span className="your-turn-mark" aria-hidden="true" />}
                 </div>
-                <div className={`turn-message ${canDecide ? 'your-turn' : ''}`} aria-live="polite">
-                  <span className="turn-indicator" />
-                  <span>
-                    {taskText}
-                    {!isHearts && game.phase !== 'bid' && !handEnd && (
-                      <small className="compact-objective">
-                        {game.bids[0] === 0
-                          ? game.tricks[0]
-                            ? 'Nil broken'
-                            : 'Keep your Nil'
-                          : `${isTeam ? 'Team' : 'You'} ${need ? `need ${need} more` : 'made the bid'}`}
-                      </small>
-                    )}
-                  </span>
+                <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+                  {taskText}
                 </div>
                 <div className="hand-action">
                   {handEnd ? (
                     <button
                       className="primary-button"
-                      onClick={() => (game.phase === 'match-end' ? setModal('games') : continueHand())}
+                      disabled={controller.busy}
+                      onClick={() => (game.phase === 'match-end' ? startGame(game.mode) : continueHand())}
                     >
-                      {game.phase === 'match-end' ? 'Choose next game' : 'Next hand'}
-                      <ArrowRight size={16} />
+                      Play again
+                      <RotateCcw size={16} />
                     </button>
                   ) : game.phase === 'pass' || game.phase === 'bid' ? (
                     <button className="primary-button play-button" disabled={!commitEnabled} onClick={commit}>
@@ -930,7 +904,8 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                       key={card}
                       className={`hand-card ${selected.includes(card) ? 'selected' : ''} ${!playable ? 'unplayable' : ''} ${recommended ? 'recommended' : ''} ${received ? 'received-card' : ''} ${index > 0 && cardSuit(card) !== cardSuit(game.hand[index - 1]) ? 'suit-start' : ''}`}
                       disabled={paused || handEnd || game.phase === 'bid' || !playable}
-                      aria-label={`${cardLabel(card)}${received ? ', received in pass' : ''}${!playable ? ', cannot follow with this card' : ''}${recommended ? ', coach suggestion' : ''}`}
+                      aria-disabled={!playable || undefined}
+                      aria-label={`${cardLabel(card)}${received ? ', received in pass' : ''}${!playable ? ', unavailable this turn' : ''}${recommended ? ', coach suggestion' : ''}`}
                       aria-pressed={selected.includes(card)}
                       aria-describedby="card-controls"
                       aria-keyshortcuts="Enter"
@@ -950,6 +925,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                       }}
                     >
                       <CardFace card={card} />
+                      {!playable && <LockKeyhole className="unavailable-mark" size={12} aria-hidden="true" />}
                       {selected.includes(card) && (
                         <span className="selection-mark">
                           <Check size={12} />
@@ -1003,7 +979,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                 </div>
                 <h3>{modeNames[mode]}</h3>
                 <span className="mode-label">{mode === 'spades-partners' ? 'Partners' : 'Solo'}</span>
-                <p>{modeDescriptions[mode]}</p>
                 <span className="option-check">
                   {newMode === mode ? <Check size={16} /> : <ArrowUpRight size={16} />}
                 </span>
@@ -1011,7 +986,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
             ))}
           </div>
           <div className="dialog-bottom">
-            <p>{newMode ? 'Starting a new game replaces your current table.' : ''}</p>
+            <p>{newMode ? 'Replaces your current game.' : ''}</p>
             <button
               className="primary-button"
               disabled={!newMode}
@@ -1031,19 +1006,16 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                 {
                   value: 'asked',
                   title: 'When I ask',
-                  detail: 'Cues and suggestions on request.',
                   icon: <Focus size={20} />,
                 },
                 {
                   value: 'nudges',
-                  title: 'A nudge now and then',
-                  detail: 'Occasional cues during play.',
+                  title: 'Occasional cues',
                   icon: <Sparkles size={20} />,
                 },
                 {
                   value: 'after',
                   title: 'After the hand',
-                  detail: 'Feedback after each hand.',
                   icon: <Flag size={20} />,
                 },
               ] as const
@@ -1060,7 +1032,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                 {option.icon}
                 <span>
                   <b>{option.title}</b>
-                  <small>{option.detail}</small>
                 </span>
                 <span className="radio-mark">{coachMode === option.value && <span />}</span>
               </button>
@@ -1077,7 +1048,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                   onClick={() => setGameSpeed(speed)}
                 >
                   {speed}×
-                  <small>{speed === 1 ? 'Normal' : speed === 1.2 ? '20% faster' : '40% faster'}</small>
                 </button>
               ))}
             </div>
@@ -1092,7 +1062,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
           <>
             {notesUnlock && (
               <div className="fixture-notice">
-                <p>Use one coached hand to open detailed memory? All help in this hand is included.</p>
+                <p>Unlock notes and all help for this hand.</p>
                 <button className="hint-button" onClick={() => void loadNotes(true)}>
                   Use coached hand
                 </button>
@@ -1104,7 +1074,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
             <div className="notes-layout">
               <section>
                 <h3>Public cards played</h3>
-                <p className="small-copy">Only cards everyone has seen.</p>
                 <div className="suit-memory">
                   {getMemory().map((row) => (
                     <div className="suit-memory-row" key={row.suit}>
@@ -1133,12 +1102,8 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                     </p>
                   ))}
                 </details>
-                <h3 className="notes-subtitle">Your private pass memory</h3>
-                <p className="small-copy">
-                  Sent: {notes?.outgoing.map(cardLabel).join(', ') || 'None'}
-                  <br />
-                  Received: {notes?.received.map(cardLabel).join(', ') || 'None'}
-                </p>
+              </section>
+              <section>
                 <h3 className="notes-subtitle">Known voids</h3>
                 <div className="void-list">
                   {getMemory().some((row) => row.voidSeats.length) ? (
@@ -1151,37 +1116,27 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                         </span>
                       ))
                   ) : (
-                    <p className="small-copy">No voids revealed by play yet.</p>
+                    <p className="small-copy">None revealed yet.</p>
                   )}
                 </div>
-              </section>
-              <section className="last-trick-section">
-                <h3>Last trick</h3>
-                {game.history.length ? (
-                  <>
+                {isHearts && (
+                  <details className="notes-details">
+                    <summary>Your pass · private</summary>
                     <p className="small-copy">
-                      Taken by {names[game.history[game.history.length - 1].winner]}
+                      Sent: {notes?.outgoing.map(cardLabel).join(', ') || 'None'}
+                      <br />
+                      Received: {notes?.received.map(cardLabel).join(', ') || 'None'}
                     </p>
-                    <div className="last-trick-cards">
-                      {game.history[game.history.length - 1].plays.map((play) => (
-                        <div key={play.seat}>
-                          <CardFace card={play.card} />
-                          <span>{names[play.seat]}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <p className="small-copy">The first trick is still ahead.</p>
+                  </details>
                 )}
-                <div className="table-rules">
-                  <h3>This table</h3>
+                <details className="table-rules">
+                  <summary>Table rules</summary>
                   <p>
                     {isHearts
                       ? 'Pass left, right, across, then hold. Hearts: 1 point. Queen of spades: 13. Shoot the moon: 26 to everyone else. Game ends at 100.'
                       : `${isTeam ? 'You and Maya share a contract. ' : 'Each player has their own contract. '}Nil: ±100. Ten bags cost 100 points. No blind Nil. Play to 500.`}
                   </p>
-                </div>
+                </details>
               </section>
             </div>
           </>
@@ -1231,14 +1186,17 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               <div className="decision-summary">
                 <div>
                   <b>{stats.decisions - stats.helped}</b>
-                  <span>no help opened</span>
+                  <span>No help opened</span>
                 </div>
                 <div>
                   <b>{stats.helped}</b>
-                  <span>help opened</span>
+                  <span>Help opened</span>
                 </div>
               </div>
-              <small>Counts cues and table-note views on your decision turns, not skill or mistakes.</small>
+              <details className="recap-details">
+                <summary>What counts?</summary>
+                <p>Turns with cues or table notes open. No skill rating.</p>
+              </details>
             </div>
           </div>
           <div className="dialog-bottom">
@@ -1248,10 +1206,11 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
             </button>
             <button
               className="primary-button"
-              onClick={() => (game.phase === 'match-end' ? setModal('games') : continueHand())}
+              disabled={controller.busy}
+              onClick={() => (game.phase === 'match-end' ? startGame(game.mode) : continueHand())}
             >
-              {game.phase === 'match-end' ? 'Choose next game' : 'Next hand'}
-              <ArrowRight size={16} />
+              Play again
+              <RotateCcw size={16} />
             </button>
           </div>
         </Dialog>

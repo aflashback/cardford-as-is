@@ -66,6 +66,12 @@ Source: [product/views](../01-product-and-views.md), [UI-V1 evidence](../../web/
 | UX-10 / W11 | `coaching.spec.ts`: `notes-and-recap` | Public facts/private pass memory labelled separately; unplayed includes own hand; recap max one supported strength/review/focus; skip/next always works. |
 | UX-11 / W13 | `review.spec.ts`: `return-to-live` | Original/Possible continuation labels, prior current-game hands selectable, latest live state restored after another tab/reload; new game ends old review access. |
 | UX-12 / W08/W14–W16 | `demo/subscription/family.spec.ts`: `portrait-account` | Login/offer/payment return/subscription/family works in portrait with no table gate; chosen offer and saved table survive redirect; cancellation and billing repair are easy to reach. |
+| UX-13 / W07 | `table.spec.ts`: unavailable cards and prepared-card invalidation | Active-seat cues and numeric counts replace repeated visible status copy. Server legal actions alone determine unavailable cards; legal exceptions stay available. Accessible turn/card labels remain. |
+| UX-14 / W07 | `table.spec.ts`: inline last trick | Latest public trick sits at the left, with four seat positions and winner marking, no visible names or dialog, and zero notes/unlock requests. Fits desktop/tablet/landscape phones; clears for a new hand. |
+| UX-15 / W07/W13 | `table.spec.ts`: compact notes and keyboard details | Short labels and optional explanations in game/settings/notes/recap/review dialogs; keyboard expansion, focus trapping/restoration and provenance/usage context are preserved. |
+| UX-16 / W07 | `table.spec.ts`: hand-end and match-end Play again | Existing next-hand command continues match scores; existing new-game command restarts the same mode after match completion. Each requires explicit activation. |
+
+UX-13–16 implement the later owner direction in [CR-UX-004](../decisions/CR-UX-004-table-cues.md). Actual results: [cue and copy verification](../../qa/implementation/ui-cues-acceptance.md).
 
 Initial explanation budgets: 6-word heading, 18-word cue, 35-word context/suggestion. Expansion may be longer. Test useful meaning and layout, not brittle exact copy except required labels.
 
