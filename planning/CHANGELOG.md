@@ -56,3 +56,9 @@ Recorded the owner's demo-only unpaid access, worldwide target market, provision
 Replaced the old free-game and decision-quota assumptions with paid full play and a proposed coached-hand allowance. Specified server-only engine/coach, secure dealing, authenticated ownership, transactional usage and required server records. Separated optional analytics, reported display and competitive rating from trusted service state. Added 42 planned acceptance scenarios and recorded 38 existing prototype tests passing.
 
 The current prototype remains unchanged. New requirements are not represented as implemented or tested. Earlier imported v0.2 documentation and its integrity manifest are preserved.
+
+## 2026-09-27 — Authorized local implementation and deployment handoff
+
+Added [local build cycle](LOCAL-V1-BUILD-CYCLE.md), [deployment guide](DEPLOYMENT-GUIDE.md) and [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md), recording the owner's local implementation, worktree/review, Podman, no-push and no-pipeline direction. Requirements LOCAL-01–05 cover schema-first integration, explicit local fixtures, honest completion gates and server-only credentials. Preserve existing B2C UX and three game modes; hosted Stripe/identity, optional Jev and paid-launch evidence remain separately identified.
+
+Documentation only: commands for future scripts are labelled planned, the coordinator-reported 38-test/build baseline is not a new test run, and no credential contents, product code, deployment or payment/provider execution were created by this documentation change.
