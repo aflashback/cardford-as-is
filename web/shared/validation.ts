@@ -1,19 +1,66 @@
 /* Generated from contracts.schema.json. Do not edit; run npm run contracts:generate. */
-import { Ajv2020 } from 'ajv/dist/2020.js';
-import schema from './contracts.schema.json' with { type: 'json' };
+import * as compiled from './validators.mjs';
 import type { ValidateFunction } from 'ajv';
 import type { ContractName, ContractTypes } from './contracts.ts';
-const ajv = new Ajv2020({ strict: true, allErrors: true, coerceTypes: false, removeAdditional: false, useDefaults: false });
-ajv.addSchema(schema);
-const validators = new Map<ContractName, ValidateFunction>();
+const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = {
+  Mode: compiled.validateMode,
+  Seat: compiled.validateSeat,
+  Card: compiled.validateCard,
+  Suit: compiled.validateSuit,
+  Phase: compiled.validatePhase,
+  GameAction: compiled.validateGameAction,
+  Play: compiled.validatePlay,
+  Trick: compiled.validateTrick,
+  HandResult: compiled.validateHandResult,
+  GameView: compiled.validateGameView,
+  Preferences: compiled.validatePreferences,
+  Plan: compiled.validatePlan,
+  PaidPlan: compiled.validatePaidPlan,
+  CoachAccess: compiled.validateCoachAccess,
+  SessionStats: compiled.validateSessionStats,
+  SessionView: compiled.validateSessionView,
+  AdviceView: compiled.validateAdviceView,
+  CommandEnvelope: compiled.validateCommandEnvelope,
+  NewSessionRequest: compiled.validateNewSessionRequest,
+  ActionsRequest: compiled.validateActionsRequest,
+  PrepareRequest: compiled.validatePrepareRequest,
+  PrepareView: compiled.validatePrepareView,
+  AdvanceRequest: compiled.validateAdvanceRequest,
+  NextHandRequest: compiled.validateNextHandRequest,
+  AdviceRequest: compiled.validateAdviceRequest,
+  PreferencesRequest: compiled.validatePreferencesRequest,
+  HandUnlockRequest: compiled.validateHandUnlockRequest,
+  HandUnlockView: compiled.validateHandUnlockView,
+  ExposureRequest: compiled.validateExposureRequest,
+  AcceptedView: compiled.validateAcceptedView,
+  ReviewFrame: compiled.validateReviewFrame,
+  ReviewCase: compiled.validateReviewCase,
+  ReviewIndex: compiled.validateReviewIndex,
+  ReviewView: compiled.validateReviewView,
+  TrialRequest: compiled.validateTrialRequest,
+  ReviewTrial: compiled.validateReviewTrial,
+  RecapView: compiled.validateRecapView,
+  SubscriptionView: compiled.validateSubscriptionView,
+  OfferView: compiled.validateOfferView,
+  AccountView: compiled.validateAccountView,
+  AccountCommand: compiled.validateAccountCommand,
+  ApiError: compiled.validateApiError,
+  ReviewQuery: compiled.validateReviewQuery,
+  ReviewStepQuery: compiled.validateReviewStepQuery,
+  AccessQuery: compiled.validateAccessQuery,
+  SuitMemory: compiled.validateSuitMemory,
+  NotesView: compiled.validateNotesView,
+  BillingPreviewRequest: compiled.validateBillingPreviewRequest,
+  BillingPreview: compiled.validateBillingPreview,
+  BillingConfirmRequest: compiled.validateBillingConfirmRequest,
+  BillingOperation: compiled.validateBillingOperation,
+  FamilyMember: compiled.validateFamilyMember,
+  FamilyInvitation: compiled.validateFamilyInvitation,
+  FamilyView: compiled.validateFamilyView,
+  FamilyCommand: compiled.validateFamilyCommand,
+};
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
-  let validator = validators.get(name);
-  if (!validator) {
-    validator = ajv.getSchema(schema.$id + '#/$defs/' + name);
-    if (!validator) throw new Error('Unknown contract: ' + name);
-    validators.set(name, validator);
-  }
-  return validator as ValidateFunction<ContractTypes[N]>;
+  return validators[name];
 }
 export function validateContract<N extends ContractName>(name: N, value: unknown): value is ContractTypes[N] {
   return contractValidator(name)(value);
@@ -68,3 +115,11 @@ export const validateReviewStepQuery = contractValidator('ReviewStepQuery');
 export const validateAccessQuery = contractValidator('AccessQuery');
 export const validateSuitMemory = contractValidator('SuitMemory');
 export const validateNotesView = contractValidator('NotesView');
+export const validateBillingPreviewRequest = contractValidator('BillingPreviewRequest');
+export const validateBillingPreview = contractValidator('BillingPreview');
+export const validateBillingConfirmRequest = contractValidator('BillingConfirmRequest');
+export const validateBillingOperation = contractValidator('BillingOperation');
+export const validateFamilyMember = contractValidator('FamilyMember');
+export const validateFamilyInvitation = contractValidator('FamilyInvitation');
+export const validateFamilyView = contractValidator('FamilyView');
+export const validateFamilyCommand = contractValidator('FamilyCommand');

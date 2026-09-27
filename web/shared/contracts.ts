@@ -50,7 +50,15 @@ export type PublicContracts =
   | ReviewStepQuery
   | AccessQuery
   | SuitMemory
-  | NotesView;
+  | NotesView
+  | BillingPreviewRequest
+  | BillingPreview
+  | BillingConfirmRequest
+  | BillingOperation
+  | FamilyMember
+  | FamilyInvitation
+  | FamilyView
+  | FamilyCommand;
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
 export type Seat = 0 | 1 | 2 | 3;
 export type Card = string;
@@ -100,6 +108,45 @@ export type AccountCommand =
   | {
       commandId: string;
       action: 'cancel' | 'resume';
+    };
+export type BillingPreviewRequest =
+  | {
+      action: 'select-plan';
+      plan: PaidPlan;
+    }
+  | {
+      action: 'cancel' | 'resume';
+    };
+export type FamilyCommand =
+  | {
+      commandId: string;
+      action: 'create';
+    }
+  | {
+      commandId: string;
+      action: 'invite';
+      inviteeId: string;
+      seatClass: 'unlimited' | 'limited';
+    }
+  | {
+      commandId: string;
+      action: 'accept';
+      token: string;
+      acknowledgeIndividualCoverage: boolean;
+    }
+  | {
+      commandId: string;
+      action: 'revoke-invite';
+      invitationId: string;
+    }
+  | {
+      commandId: string;
+      action: 'remove';
+      assignmentId: string;
+    }
+  | {
+      commandId: string;
+      action: 'leave';
     };
 
 export interface Play {
@@ -449,6 +496,63 @@ export interface NotesView {
    */
   history: Trick[];
 }
+export interface BillingPreview {
+  previewId: string;
+  action: 'select-plan' | 'cancel' | 'resume';
+  plan: PaidPlan;
+  effectiveAt: string;
+  expiresAt: string;
+  amountDueNow: null;
+  currency: null;
+  mode: 'fixture';
+  notice: string;
+}
+export interface BillingConfirmRequest {
+  commandId: string;
+  previewId: string;
+}
+export interface BillingOperation {
+  operationId: string;
+  status: 'confirmed' | 'scheduled';
+  effectiveAt: string;
+  plan: PaidPlan;
+  cancelAtPeriodEnd: boolean;
+  mode: 'fixture';
+  message: string;
+}
+export interface FamilyMember {
+  assignmentId: string;
+  playerId: string;
+  displayName: string;
+  seatClass: 'unlimited' | 'limited';
+  status: 'active' | 'held';
+  periodEnd: string;
+}
+export interface FamilyInvitation {
+  invitationId: string;
+  inviteeId: string;
+  seatClass: 'unlimited' | 'limited';
+  expiresAt: string;
+  token?: string;
+}
+export interface FamilyView {
+  familyId: string | null;
+  role: 'none' | 'payer' | 'member';
+  payer: {
+    playerId: string;
+    displayName: string;
+  } | null;
+  /**
+   * @maxItems 5
+   */
+  members: FamilyMember[];
+  /**
+   * @maxItems 4
+   */
+  invitations: FamilyInvitation[];
+  periodEnd: string | null;
+  localMock: true;
+}
 
 export interface ContractTypes {
   Mode: Mode;
@@ -498,5 +602,13 @@ export interface ContractTypes {
   AccessQuery: AccessQuery;
   SuitMemory: SuitMemory;
   NotesView: NotesView;
+  BillingPreviewRequest: BillingPreviewRequest;
+  BillingPreview: BillingPreview;
+  BillingConfirmRequest: BillingConfirmRequest;
+  BillingOperation: BillingOperation;
+  FamilyMember: FamilyMember;
+  FamilyInvitation: FamilyInvitation;
+  FamilyView: FamilyView;
+  FamilyCommand: FamilyCommand;
 }
 export type ContractName = keyof ContractTypes;
