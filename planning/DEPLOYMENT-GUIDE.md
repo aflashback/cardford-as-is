@@ -1,6 +1,8 @@
 # Deployment guide: local → staging → production
 
-**Status:** implementation runbook, 27 September 2026. Hosting and identity vendors/region are undecided. No deployment, real payment or live model call is claimed. The owner authorized local implementation only; no pipeline or GitHub push is part of this cycle. [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md) controls scope.
+**Status:** implementation runbook, 27 September 2026. Hosting and identity vendors/region are undecided. No public deployment or real payment is claimed. The owner authorized local implementation and bounded model testing; no pipeline or GitHub push is part of this cycle. [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md) controls scope.
+
+**Local execution update:** The application is implemented and hosted on loopback; [LOCAL-README](../LOCAL-README.md) is the current runnable setup guide. See [the acceptance report](../qa/implementation/LOCAL-V1-REPORT.md) for checks and any separately recorded Jev transport experiment. Hosted identity, Stripe route orchestration/recovery and deployment remain unfinished code/integration work, not flags to enable. Complete them before following the staging procedure.
 
 ## One application, three environments
 
@@ -52,7 +54,7 @@ The loader should reject missing/empty/unreadable input when a live experiment i
 
 ## Local build and run
 
-Use the command contract and evidence rules in the [local build cycle](LOCAL-V1-BUILD-CYCLE.md). W00 must provide a pinned PostgreSQL compose service, health check, named development volume, root scripts and separate test database. Podman is allowed; `db:up` should report missing Podman/compose prerequisites clearly rather than falling back to an in-memory database. Keep database and API ports on loopback by default. Container restarts must preserve the development volume; test cleanup can delete only validated test resources.
+Use the command contract and evidence rules in the [local build cycle](LOCAL-V1-BUILD-CYCLE.md). `scripts/database.mjs` starts PostgreSQL 16 through the Podman CLI, checks readiness and creates a named development volume plus a separate test database. It requires a running Podman service; no compose plugin or in-memory fallback is used. The observed image digest is recorded in the acceptance report; pin the reviewed digest before staging. Database and API ports bind to loopback. Container restarts preserve the development volume; test cleanup deletes only validated test resources.
 
 After those scripts exist, run from the repository root:
 

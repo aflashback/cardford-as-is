@@ -10,6 +10,8 @@
 
 **Spec:** [Implementation entry point](IMPLEMENTATION-START-HERE.md), [W00–W19 packets](2026-09-27-monorepo-implementation-plan.md), [requirements/tests](implementation/requirements-and-tests.md), [local authorization](decisions/CR-IMPL-003-local-build.md).
 
+**Execution update:** The local application and command contract now exist. Use [LOCAL-README](../LOCAL-README.md) to run it and [the acceptance report](../qa/implementation/LOCAL-V1-REPORT.md) for actual results and unfinished gates. The steps below remain the dependency map; they are not blanket acceptance of every W packet. The schema source is `web/shared/contracts.schema.json`; Node 24 runs TypeScript tests directly. The Podman launcher uses the CLI without requiring a compose plugin.
+
 ## Scope and source authority
 
 The owner has initiated local implementation. Preserve Hearts Solo, Spades Solo and Spades Partners, default Spades Partners and When I ask coaching. Preserve the blue table, four small seats, hand below, right coach panel, selection/play gestures, explicit bid/pass confirmation and portrait account screens. There is no redesign, enterprise administration, new game archive, new drill catalog, live deployment or live payment activation in this cycle. Do not create a CI/CD pipeline or push to GitHub.

@@ -1,6 +1,6 @@
 # Start implementing Tricks Coach
 
-**Audience:** a coding agent returning without the original conversation. **Product:** B2C Hearts/Spades practice and coaching. **Status:** implementation plan ready; application implementation has not been started by this documentation task.
+**Audience:** a coding agent returning without the original conversation. **Product:** B2C Hearts/Spades practice and coaching. **Status:** owner-authorized local implementation now exists. Start with [local run instructions](../LOCAL-README.md) and the actual [packet status/evidence](../qa/implementation/status.md), rather than restarting W00. [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md) records the local build scope and no-pipeline/no-push direction.
 
 The owner wants one simple monorepo, the latest Tricks Coach specification, the existing user experience, in-app subscription management and Stripe payments. Do not restart product ideation or request a visual redesign. The current table and interactions are good enough to build on.
 
@@ -65,4 +65,4 @@ Separate initial product delivery from operations growth: no fleet, message brok
 
 > Implement the next ready work packet from `planning/IMPLEMENTATION-START-HERE.md` and `planning/2026-09-27-monorepo-implementation-plan.md`, starting W00/W01 if no implementation evidence exists. Preserve the current B2C table/coaching UX. Use `planning/implementation/requirements-and-tests.md` for requirement IDs, fixtures and acceptance. Keep one simple monorepo, server-owned state and Stripe payments with in-app subscription management. Complete the packet's implementation and meaningful tests, update its evidence/status, then continue within the authorized scope. Do not activate live charges/deployment, change approved rule/safety semantics, invent test results, or expose credentials.
 
-The kickoff is a future handoff prompt, not an instruction to execute application work during this planning task.
+The kickoff is a handoff prompt. The owner has since authorized local implementation; use current evidence to find unfinished work. Real identity, Stripe service acceptance, validated strategic grading, devices/pilot and paid launch are distinct from a working local fixture build.

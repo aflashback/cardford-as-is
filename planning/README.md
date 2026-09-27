@@ -4,7 +4,7 @@
 
 Implementation target, grounded in the playable [web prototype](../web/README.md). On 27 September 2026 the owner confirmed the latest planning baseline with earlier safeguards retained, a simple monorepo, the existing UX, a B2C learning product, in-app subscription management and Stripe payments. [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md) records that authority and its compatibility effects. Earlier analysis remains supporting research; the original pack is preserved.
 
-**For implementation agents:** start at [IMPLEMENTATION-START-HERE.md](IMPLEMENTATION-START-HERE.md), then use the [current implementation plan](2026-09-27-monorepo-implementation-plan.md) and [requirements/test specification](implementation/requirements-and-tests.md). These files define future work, not completed application features.
+**For implementation agents:** start at [IMPLEMENTATION-START-HERE.md](IMPLEMENTATION-START-HERE.md), then use the [current implementation plan](2026-09-27-monorepo-implementation-plan.md) and [requirements/test specification](implementation/requirements-and-tests.md). Local implementation now exists: see [run instructions](../LOCAL-README.md), [build cycle](LOCAL-V1-BUILD-CYCLE.md), [deployment guide](DEPLOYMENT-GUIDE.md) and [actual evidence](../qa/implementation/status.md). Planned hosted/paid-launch gates are not implied complete.
 
 | Read | Purpose |
 |---|---|

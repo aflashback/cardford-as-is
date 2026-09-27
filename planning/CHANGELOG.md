@@ -1,5 +1,13 @@
 # Planning changes
 
+## 2026-09-27 — Local V1 implemented and hosted
+
+Implemented the owner-authorized local cycle in [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md): one npm monorepo, generated public contracts, server-owned three-mode rules, PostgreSQL persistence, command/control fences, observation-only local play and coaching, current-game review, isolated sampled continuations, in-app subscription/family fixtures and account data controls. Preserved the accepted table experience. Added local launch/stop, isolated test database and backup/restore scripts. No pipeline, remote push or public deployment was added.
+
+Requirement groups: LOCAL-01–05, IMPL-01–04, RULE-01–09, KNOW-01–03, UX-01–12, STRAT-01–04, COACH-01–03/07–08 and SUB-01–04. These identify affected behavior, not blanket completion of every acceptance target. Strategy assessment/promotion, hosted identity, full Stripe orchestration and paid-launch evidence remain partial or blocked as recorded in [the acceptance report](../qa/implementation/LOCAL-V1-REPORT.md).
+
+Integration evidence includes contract freeze `878cf07`, domain `d8b6b42`, durable service `b24ac05`, billing/family `e6b9b1b`, sampler `e8ede9d`, UI `c79dabb`/`11504dc`, provider ledger `ba3e333`, load smoke `1779684` and Stripe management primitives `c6e924a`. Final root integration `4145972` fixes family plan selection, saved-result access after expiry, stale trial publication, strict read queries, browser request recovery and bounded provider waits. Final checks: 140 service/rule tests, 18 browser checks and 2 boundary tests passed. One live Jev request reached the configured snapshot but failed response validation; no retry or promotion. Check [status](../qa/implementation/status.md) and [LOCAL-README](../LOCAL-README.md) for commands, evidence and remaining work.
+
 ## 2026-09-27 — Agent-ready B2C monorepo implementation plan
 
 Recorded the owner's current-baseline, simple-monorepo, existing-UX and Stripe decisions in [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md). Tricks Coach remains a B2C product to learn to play well; no enterprise product features are added. Subscription management is in-app and payments use Stripe.

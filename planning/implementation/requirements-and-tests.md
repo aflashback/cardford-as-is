@@ -1,12 +1,12 @@
 # Implementation requirements and test specification
 
-**Status:** planned acceptance, 27 September 2026. No test in this file is claimed implemented or executed. Use with the [work packets](../2026-09-27-monorepo-implementation-plan.md) and [agent entry point](../IMPLEMENTATION-START-HERE.md).
+**Status:** acceptance targets, 27 September 2026. This registry does not itself claim that a test passed. The [local implementation report](../../qa/implementation/LOCAL-V1-REPORT.md) records implemented checks and remaining gates. Use with the [work packets](../2026-09-27-monorepo-implementation-plan.md) and [agent entry point](../IMPLEMENTATION-START-HERE.md).
 
 This registry assigns stable IDs to behavior currently specified in prose. It does not replace rule semantics or commercial T01–T49. When they conflict, resolve the conflict in a numbered decision before changing tests. P/A/S/BRAND/IMPL/SUB identifiers retain their source definitions.
 
 ## Test environment and fixture conventions
 
-W00 defines root scripts and isolated databases; W01 generates public DTOs. `test:unit` in the web workspace is `tsx --test`, with explicit files relative to `web/`. `test:all` discovers files with a small cross-platform runner. Integration suites use a real disposable PostgreSQL database, never the development database or customer data. Fail early if the database identity does not match the dedicated test configuration.
+W00 defines root scripts and isolated databases; W01 generates public DTOs. The implemented runner uses Node 24 native TypeScript with `--test --test-isolation=none`; `test:all` passes explicit legacy/server test globs from the repository root. Integration suites use isolated schemas in the dedicated test PostgreSQL database, never the development database or customer data. Fail early if the database identity does not match the dedicated test configuration. Helper names below describe required responsibilities; the local report maps consolidated implementation suites to evidence.
 
 Use `node:assert/strict` and the Node test runner already familiar to the repository. Add fast-check for conservation/transition/serialization properties; pin its version and store counterexample seed/path in failure output. Playwright drives the real browser/API when integration is under test; safe fixture views are suitable for isolated UI states only. Inject clocks, randomness and fetch in tests instead of waiting on wall time or causing real outages.
 

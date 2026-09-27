@@ -1,8 +1,8 @@
 {
-  "status": "not-run-no-live-call-authorized-to-implementer",
+  "status": "unavailable-invalid-response",
   "requestedModel": "typesafe/jev-1.13",
-  "observedModel": null,
-  "costUsd": null,
-  "costUnknown": true,
+  "observedModel": "typesafe/jev-1.13-20260917",
+  "costUsd": 0.0000714,
+  "costUnknown": false,
   "promotion": false
 }
