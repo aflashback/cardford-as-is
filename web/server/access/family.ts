@@ -11,8 +11,8 @@ async function view(client:PoolClient,playerId:string):Promise<FamilyView> {
   if(!group)return noFamily();
   const payer=group.payer_id===playerId;
   const display=(await client.query<{name:string}>('SELECT profile->>\'displayName\' AS name FROM players WHERE id=$1',[group.payer_id])).rows[0]?.name??'Family payer';
-  const assignments=await client.query<{id:string;player_id:string;name:string;seat_class:'unlimited'|'limited';status:'active'|'held';period_end:Date}>("SELECT a.*,p.profile->>'displayName' AS name FROM family_assignments a JOIN players p ON p.id=a.player_id WHERE a.family_id=$1 AND a.period_end>now() AND ($2::boolean OR a.player_id=$3) ORDER BY a.accepted_at",[group.id,payer,playerId]);
-  const members:FamilyMember[]=assignments.rows.map(a=>({assignmentId:a.id,playerId:a.player_id,displayName:a.name,seatClass:a.seat_class,status:a.status,periodEnd:a.period_end.toISOString()}));
+  const assignments=await client.query<{id:string;player_id:string;name:string;seat_class:'unlimited'|'limited';status:'active'|'held';period_end:Date}>("SELECT a.*,p.profile->>'displayName' AS name FROM family_assignments a LEFT JOIN players p ON p.id=a.player_id WHERE a.family_id=$1 AND a.period_end>now() AND ($2::boolean OR a.player_id=$3) ORDER BY a.accepted_at",[group.id,payer,playerId]);
+  const members:FamilyMember[]=assignments.rows.map(a=>({assignmentId:a.id,playerId:a.player_id??'deleted-account',displayName:a.name??'Deleted local account',seatClass:a.seat_class,status:a.status,periodEnd:a.period_end.toISOString()}));
   const invites=payer?(await client.query<Invite>("SELECT * FROM family_invitations WHERE family_id=$1 AND status='pending' AND expires_at>now() ORDER BY created_at",[group.id])).rows:[];
   const invitations:FamilyInvitation[]=invites.map(i=>({invitationId:i.id,inviteeId:i.invitee_id,seatClass:i.seat_class,expiresAt:i.expires_at.toISOString()}));
   return {familyId:group.id,role:payer?'payer':'member',payer:{playerId:group.payer_id,displayName:display},members,invitations,periodEnd:group.period_end.toISOString(),localMock:true};

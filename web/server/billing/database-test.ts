@@ -15,9 +15,10 @@ export async function testDatabase(t:TestContext):Promise<pg.Pool|null> {
   const baseline=process.env.BILLING_BASELINE_ROOT ? new URL('web/server/records/migrations/001-local-platform.sql',new URL('file:///'+process.env.BILLING_BASELINE_ROOT.replaceAll('\\','/')+'/')) : new URL('../records/migrations/001-local-platform.sql',import.meta.url);
   await pool.query(await readFile(baseline,'utf8'));
   await pool.query(await readFile(new URL('../records/migrations/002-billing-family.sql',import.meta.url),'utf8'));
+  await pool.query(await readFile(new URL('../records/migrations/003-account-data.sql',import.meta.url),'utf8'));
   return pool;
 }
 export async function player(pool:pg.Pool,patch:Partial<BillingProfile>={}):Promise<string> {
-  const id=randomUUID();const profile:BillingProfile={displayName:'Local fixture',plan:'unlimited',currentPeriodEnd:new Date(Date.now()+30*86400000).toISOString(),cancelAtPeriodEnd:false,billingMode:'fixture',...patch};
+  const id=randomUUID();const profile={displayName:'Local fixture',preferences:{coachMode:'asked',gameSpeed:1},plan:'unlimited',currentPeriodEnd:new Date(Date.now()+30*86400000).toISOString(),cancelAtPeriodEnd:false,billingMode:'fixture',...patch};
   await pool.query('INSERT INTO players(id,profile) VALUES($1,$2)',[id,profile]);return id;
 }

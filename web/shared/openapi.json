@@ -841,6 +841,68 @@
         }
       }
     },
+    "/api/account/export": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/account/delete": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDeleteView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountDeleteRequest"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/account": {
       "get": {
         "responses": {
@@ -1068,6 +1130,15 @@
       },
       "FamilyCommand": {
         "$ref": "./contracts.schema.json#/$defs/FamilyCommand"
+      },
+      "AccountDeleteRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AccountDeleteRequest"
+      },
+      "AccountDeleteView": {
+        "$ref": "./contracts.schema.json#/$defs/AccountDeleteView"
+      },
+      "ExportView": {
+        "$ref": "./contracts.schema.json#/$defs/ExportView"
       }
     }
   }
