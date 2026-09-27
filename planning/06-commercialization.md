@@ -4,6 +4,8 @@
 
 Read with [the architecture](07-hosted-architecture.md), [test gates](08-commercial-testing.md) and [delivery sequence](09-delivery-and-evidence.md). Requirements P01–P08 below are traceable in the test gates. Prices, currency, allowances and family composition remain hypotheses.
 
+**Future consideration, 27 September:** [CR-FUTURE-001](11-future-play-and-membership.md) evaluates free or play-only membership for people returning mainly for the bots, and later human games. The offer below remains the launch proposal. Free access is no longer ruled out forever; introducing it requires separate demand, cost and access-policy decisions.
+
 ## P01 — Who pays and why
 
 Players already know Hearts or Spades. They want to compete better: notice what a play reveals, weigh plausible alternatives, understand their own decisions and practice applying those ideas in new hands. A useful message is: **“Understand the table. Make better decisions against other players.”**

@@ -5,6 +5,16 @@ const crypto = require('node:crypto');
 const { chromium } = require('C:/Users/AliA/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 
 const root = path.resolve(__dirname, '../..');
+// Optional scoped review: --document planning/example.md --output example
+const options = {};
+const args = process.argv.slice(2);
+for (let i = 0; i < args.length; i += 2) {
+  if (!['--document', '--output'].includes(args[i]) || !args[i + 1]) throw new Error('Expected --document <relative Markdown path> and/or --output <name>');
+  options[args[i].slice(2)] = args[i + 1];
+}
+if (options.document && !options.output) throw new Error('Scoped review needs --output to preserve the full gallery');
+const outputStem = options.output || 'diagram';
+if (!/^[a-z0-9-]+$/.test(outputStem)) throw new Error('Output name must use lowercase letters, numbers and hyphens');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'PACKAGE-MANIFEST.json'), 'utf8'));
 const original = new Set(manifest.files.map(file => file.path));
 const normalize = value => value.replace(/\r\n/g, '\n').trim();
@@ -20,7 +30,10 @@ function walk(dir) {
 const files = walk(root);
 const diagrams = [];
 const uncovered = [];
-const markdown = files.filter(file => file.endsWith('.md') && !original.has(path.relative(root, file).replace(/\\/g, '/')));
+const allMarkdown = files.filter(file => file.endsWith('.md') && !original.has(path.relative(root, file).replace(/\\/g, '/')));
+const markdown = options.document ? allMarkdown.filter(file => path.relative(root, file).replace(/\\/g, '/') === options.document) : allMarkdown;
+if (!markdown.length) throw new Error('No authored Markdown matched the requested scope');
+const embeddedSources = new Set(allMarkdown.flatMap(file => [...fs.readFileSync(file, 'utf8').matchAll(/^```mermaid\s*\r?\n([\s\S]*?)^```\s*$/gm)].map(block => normalize(block[1]))));
 for (const file of markdown) {
   const relative = path.relative(root, file).replace(/\\/g, '/');
   const text = fs.readFileSync(file, 'utf8');
@@ -72,7 +85,7 @@ async function main() {
     }
     const standalone = files.filter(file => file.endsWith('.mmd')).map(file => {
       const source = normalize(fs.readFileSync(file, 'utf8'));
-      return { file: path.relative(root, file).replace(/\\/g, '/'), matchesEmbedded: diagrams.some(item => item.source === source) };
+      return { file: path.relative(root, file).replace(/\\/g, '/'), matchesEmbedded: embeddedSources.has(source) };
     });
     const manifestFailures = manifest.files.filter(file => sha(fs.readFileSync(path.join(root, file.path))) !== file.sha256).map(file => file.path);
     const report = {
@@ -81,17 +94,17 @@ async function main() {
       rendererLicense: 'mermaid-LICENSE.txt',
       networkPolicy: 'Offline browser context; all routes aborted; connect-src none; no document content sent to an external renderer',
       rendererSha256: sha(fs.readFileSync(path.join(__dirname, 'mermaid-11.12.1.min.js'))),
-      scope: 'Authored Markdown diagrams; imported pack and exported chats excluded',
+      scope: options.document || 'Authored Markdown diagrams; imported pack and exported chats excluded',
       documents: markdown.length, diagrams: diagrams.length, uncovered, results, standalone,
       originalManifestFilesChecked: manifest.files.length, originalManifestFailures: manifestFailures,
       productTestsRun: false,
     };
-    fs.writeFileSync(path.join(__dirname, 'diagram-validation.json'), JSON.stringify(report, null, 2) + '\n');
+    fs.writeFileSync(path.join(__dirname, `${outputStem}-validation.json`), JSON.stringify(report, null, 2) + '\n');
     const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tricks Coach · Diagram review</title><style>body{margin:0;background:#f3f6fa;color:#183153;font:15px/1.5 "Segoe UI",Arial,sans-serif}main{max-width:1120px;margin:48px auto;padding:0 24px}h1{font-size:32px;letter-spacing:-.03em;margin:0 0 8px}.intro{max-width:720px;color:#52657b}article{background:#fff;border:1px solid #dce4ef;border-radius:16px;margin:28px 0;padding:24px}h2{font-size:20px;letter-spacing:-.02em;margin:0}header p{color:#64748b;font-size:13px;margin:5px 0 0}figure{margin:24px 0;overflow-x:auto;padding:12px}figure svg{max-width:100%;height:auto;display:block;margin:auto}details{border-top:1px solid #e6ebf2;padding-top:14px;color:#52657b}summary{cursor:pointer}pre{overflow:auto;background:#f8fafc;border-radius:8px;padding:16px;font-size:12px;line-height:1.6}.tag{display:inline-block;background:#e5f5ef;color:#173f33;border:1px solid #b6dccc;border-radius:20px;padding:5px 12px;margin:12px 8px 0 0;font-size:13px}</style></head><body><main><h1>Tricks Coach · Diagram review</h1><p class="intro">Visual summaries of the current design, supporting research and recorded prototype evidence. Editable Mermaid remains beside the text in each document. Proposed flows do not establish implementation or test results.</p><span class="tag">${diagrams.length} diagrams</span><span class="tag">${markdown.length} authored documents</span>${cards.join('\n')}</main></body></html>`;
-    const gallery = path.join(__dirname, 'diagram-review.html');
+    const gallery = path.join(__dirname, `${outputStem}-review.html`);
     fs.writeFileSync(gallery, html);
     await page.setContent(html.replace('<head>', '<head><meta http-equiv="Content-Security-Policy" content="' + csp + '">'));
-    for (const [name, wanted, ordinal] of [['hosted','planning/07-hosted-architecture.md',1],['coach','planning/04-coaching-and-evidence.md',1],['scaling','planning/10-capacity-and-scaling.md',1]]) {
+    for (const [name, wanted, ordinal] of [['hosted','planning/07-hosted-architecture.md',1],['coach','planning/04-coaching-and-evidence.md',1],['scaling','planning/10-capacity-and-scaling.md',1],['future-play','planning/11-future-play-and-membership.md',1],['future-rating','planning/11-future-play-and-membership.md',2]]) {
       const index = diagrams.findIndex(item => item.file === wanted && item.ordinal === ordinal);
       if (index >= 0 && results[index].status === 'rendered') await page.locator(`#diagram-${index}`).screenshot({ path: path.join(__dirname, `diagram-${name}.png`) });
     }

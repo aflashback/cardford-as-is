@@ -38,6 +38,7 @@ flowchart TD
 | [Commercial test gates](08-commercial-testing.md) | Evidence required before release |
 | [Delivery and evidence](09-delivery-and-evidence.md) | Staged delivery and later expansion |
 | [Capacity and scaling](10-capacity-and-scaling.md) | Separate workloads and measured growth |
+| [Future play and membership](11-future-play-and-membership.md) | Reasons to return and fair provisional placement; consideration only |
 | [Brand and domain](brand-and-domain.md) | Approved identity and pending domain verification |
 | [Planning changelog](CHANGELOG.md) | How the design has developed |
 
@@ -84,6 +85,8 @@ Renderer appearance can vary across Markdown viewers; the Mermaid source remains
 
 ## Rendered review
 
-All **34 diagrams across 29 authored documents** rendered successfully with Mermaid 11.12.1. Browse the [visual gallery](evidence/diagram-review.html) or inspect the [validation record](evidence/diagram-validation.json). The gallery includes the editable source for each diagram.
+The **26 September snapshot** contains 34 diagrams across 29 authored documents, rendered successfully with Mermaid 11.12.1. Browse that [visual gallery](evidence/diagram-review.html) or inspect its [validation record](evidence/diagram-validation.json). The gallery includes the editable source for each diagram; later documents are not covered by that snapshot.
 
 Validation ran locally with browser networking disabled. All three standalone security diagrams match their embedded versions, and all 56 original manifest files retain their recorded hashes. Application tests were not run for this documentation update.
+
+The **27 September future-play addition** has its own [two-diagram preview](evidence/future-play-review.html) and [validation record](evidence/future-play-validation.json). Both rendered successfully with the same offline settings; this scoped check does not claim coverage of other later documents.

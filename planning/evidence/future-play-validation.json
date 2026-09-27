@@ -1,0 +1,55 @@
+{
+  "createdAt": "2026-09-27T17:54:01.948Z",
+  "renderer": "Locally vendored Mermaid 11.12.1 in headless Edge",
+  "rendererSource": "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.min.js",
+  "rendererLicense": "mermaid-LICENSE.txt",
+  "networkPolicy": "Offline browser context; all routes aborted; connect-src none; no document content sent to an external renderer",
+  "rendererSha256": "198b19442f86f0b46a17e56d3abf744c3a28a3427e66fa8dada3b589a77babcc",
+  "scope": "planning/11-future-play-and-membership.md",
+  "documents": 1,
+  "diagrams": 2,
+  "uncovered": [],
+  "results": [
+    {
+      "file": "planning/11-future-play-and-membership.md",
+      "ordinal": 1,
+      "title": "Future reasons to return",
+      "sourceSha256": "dfeefc5ec50a281e75bc35d7383738ffb4bcc4169a727bde995b8aa9d6f883d1",
+      "status": "rendered",
+      "width": 648.7265625,
+      "height": 775.65625,
+      "nodes": 9,
+      "accessible": true,
+      "missingText": 0
+    },
+    {
+      "file": "planning/11-future-play-and-membership.md",
+      "ordinal": 2,
+      "title": "Future placement without buying a rating",
+      "sourceSha256": "e8a06ce120d4f8ad5124285b90296e2ff0f5836c3384c8ff481199b4f0dc486d",
+      "status": "rendered",
+      "width": 458.79296875,
+      "height": 949.763427734375,
+      "nodes": 8,
+      "accessible": true,
+      "missingText": 0
+    }
+  ],
+  "standalone": [
+    {
+      "file": "planning/security/diagrams/subscription-boundary-before.mmd",
+      "matchesEmbedded": true
+    },
+    {
+      "file": "planning/security/diagrams/subscription-boundary-browser-engine-after.mmd",
+      "matchesEmbedded": true
+    },
+    {
+      "file": "planning/security/diagrams/subscription-boundary-server-authority-after.mmd",
+      "matchesEmbedded": true
+    }
+  ],
+  "originalManifestFilesChecked": 56,
+  "originalManifestFailures": [],
+  "productTestsRun": false
+}

@@ -4,6 +4,8 @@
 
 The owner wants one simple monorepo, the latest Tricks Coach specification, the existing user experience, in-app subscription management and Stripe payments. Do not restart product ideation or request a visual redesign. The current table and interactions are good enough to build on.
 
+**Future scope boundary:** [CR-FUTURE-001](11-future-play-and-membership.md) considers free/play-only membership and human matching. It authorizes planning only. Continue the existing packets without adding free grants, matchmaking, ratings or new subscription products; any activation needs a separate approved specification.
+
 ## First-run reading order
 
 1. Read root [AGENTS.md](../AGENTS.md) and its required original-spec sequence for the preserved engineering safeguards. Its old scope conflicts are resolved by the later explicit owner decision below; do not silently restore the Spades-only product.

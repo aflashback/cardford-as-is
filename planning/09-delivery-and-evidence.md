@@ -8,7 +8,7 @@
 |---|---|
 | Owner confirmed | Product name **Tricks Coach**; chosen primary domain **trickscoach.com**. The owner will add it to Vercel manually on 26 September 2026. Setup remains unverified. [CR-BRAND-001](brand-and-domain.md). |
 | Owner confirmed | Target people who already know the rules and want to make stronger decisions against others. |
-| Owner confirmed | Only the fixed, authored coached demo is available without a subscription. No timed trial and no permanent free full-game tier. |
+| Current launch direction | Only the fixed, authored coached demo is available without a subscription; no timed trial. A future free full-game tier is now under consideration, not approved. See [CR-FUTURE-001](11-future-play-and-membership.md). |
 | Owner proposed | Monthly 4.99/9.99 individual plans, with four daily coaching sessions versus unlimited; 17.99 family with three unlimited and two limited users. Values remain adjustable. |
 | Owner confirmed | Separate member accounts/profiles, one payer and visible paid-by relationship. Upgrade can be requested at any time. |
 | Owner confirmed | Worldwide market; incorporate after testing and before launch. App Store and human multiplayer are later phases. |
@@ -17,6 +17,8 @@
 | Evidence boundary | Browser tamper-proofing and perfect external-cheating detection are not deliverable promises. Essential server records enforce access; optional analytics are not an attestation. |
 
 ## Work split and dependencies
+
+**27 September extension:** [11 — Future play and membership](11-future-play-and-membership.md) adds a separate consideration track: establish demand for coaching-off bot play, evaluate bounded free or play-only access, then privately test human play before public matching/ranking. These options do not add W00–W19 work or change the current paid-launch gates. Naming is handled separately.
 
 Proposed delivery path; later distribution and competition have separate gates.
 

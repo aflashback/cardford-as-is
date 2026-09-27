@@ -90,3 +90,5 @@ Keyboard-selectable cards, visible focus, modal focus trapping/restoration, iner
 Validate the six contrasting coaching situations in [04](04-coaching-and-evidence.md), including on physical iPhone/iPad Safari and Android Chrome. Screen emulation alone does not establish touch comfort or suspension behavior.
 
 Out of scope for the first commercial product: beginner curriculum, chat interface, human multiplayer, competitive rating, user game history/library and a drill catalog. Accounts, hosted persistence, paid play and family membership are commercial requirements in [06](06-commercialization.md) and [07](07-hosted-architecture.md), built after the local rule/coach foundations. The landscape gate applies only to game tables, never login, billing or account management.
+
+[Future play considerations](11-future-play-and-membership.md) cover returning for bot enjoyment, optional free access and human matches. They preserve the shared table and optional coach; they do not add views, matchmaking or a free tier to this release.

@@ -1,5 +1,11 @@
 # Planning changes
 
+## 2026-09-27 — Future play and membership consideration
+
+Recorded [CR-FUTURE-001](11-future-play-and-membership.md): people may return for enjoyable bots after needing less coaching, or later for human matches. Compared paid-only/play-only, bounded free and broad free access; recommend evaluating bounded free play against retention, cost and lost paid revenue before committing. Kept coaching progress, provisional placement and competitive rating distinct, including a fair path without coach history.
+
+Linked implications for access, pricing/family value, UX, capacity, shared-match ownership and future feature gates. Added two Mermaid diagrams. Current paid launch, W00–W19, application behavior and naming decisions are unaffected; no free tier, rating service, payment product or multiplayer was built. Research links support design considerations, not demand or capacity claims.
+
 ## 2026-09-27 — Visual cues and shorter practice copy
 
 Implemented the owner's cue-first table update in [CR-UX-004](decisions/CR-UX-004-table-cues.md), requirements UX-13–16. Removed repeated visible turn, lead, objective and broken-suit sentences; kept accessible announcements and numeric player counts. Unavailable cards use grey faces and a lock driven by server legal actions. Last trick now stays at the left with seat positions and a winner mark, without visible player names or a notes request.

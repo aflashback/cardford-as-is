@@ -22,6 +22,7 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 | [08 — Commercial test gates](08-commercial-testing.md) | 49 planned acceptance cases and actual prototype baseline evidence. |
 | [09 — Delivery and evidence](09-delivery-and-evidence.md) | Work split, changed decisions, dependencies and remaining launch choices. |
 | [10 — Capacity and scaling](10-capacity-and-scaling.md) | Concurrent-player workload, independent scaling, database/provider limits and growth gates. |
+| [11 — Future play and membership](11-future-play-and-membership.md) | Consideration only: free/play-only offers, enjoyable bots, human matching and rating boundaries; no change to launch scope. |
 | [Security research and plan](security/hardening.md) | Stack decision, browser/Wasm limits, access protection and abuse detection. |
 | [Historical local plan](2026-09-26-implementation-plan.md) | Earlier rule/strategy/review task reference; revise before execution. |
 | [Planning changelog](CHANGELOG.md) | Later changes without editing the original v0.2 pack. |
@@ -56,7 +57,7 @@ The latest commercial decisions in 06–10 supersede conflicting local/free-play
 - Players know the basic rules. Help improves decisions during real play.
 - Preserve the existing table, dialogs and responsive layouts.
 - Jev runs through OpenRouter when enabled. Local rule/coach testing comes first; commercial play uses a hosted authoritative Node service and authenticated membership.
-- Unpaid access is only a finite authored demo. Proposed paid plans meter coached hands; browser edits cannot confer server access.
+- At launch, unpaid access is only a finite authored demo. Proposed paid plans meter coached hands; browser edits cannot confer server access. [Future free/play-only options](11-future-play-and-membership.md) are under consideration, not approved offers.
 - Required action/usage records are written by the server. Optional analytics and client display reports cannot prove integrity.
 - Every started game is stored internally. No player-facing game archive.
 - All project artifacts remain under `C:\repos\test-jev`.

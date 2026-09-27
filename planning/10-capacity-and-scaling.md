@@ -8,6 +8,8 @@ The owner's requirement is thousands of simultaneous players and growth beyond t
 
 For V1, one active player normally owns one table with three bots. A table is durable state plus short computations when something changes. It does not require a dedicated process, thread, container, database connection or continuous tick loop. Paused tables schedule no new bot work; in-flight preparation may finish without advancing play. Later human multiplayer needs a separate workload model.
 
+Future free play changes demand and who funds that work; human tables change the bot/connection/ownership mix. [F05](11-future-play-and-membership.md#f05--capacity-and-economics-change-by-play-mix) records cost/admission gates and the need for one shared match authority across player partitions. The calculations and player co-location proposal below remain scoped to current solo practice; no new capacity claim or infrastructure work follows from this consideration.
+
 ## S02 — Retain the stack; scale separate workloads
 
 Recommend one modular TypeScript codebase with independently deployable API and worker pools. A larger single server is useful for an early baseline but is not the growth plan. Splitting every component into a microservice or introducing a distributed actor framework now would add operations and coordination without evidence of a need.

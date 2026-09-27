@@ -109,6 +109,8 @@ Keep identity-provider tokens on the backend. Validate issuer/audience/signature
 | Manage billing or family seats | Valid session and the specific billing/family role; this grants no access to members' private games. |
 | Payment webhook | Verified provider signature and server-bound purchase; no browser session substitutes for it. |
 
+**Future compatibility:** this operation split can later distinguish an approved free/play-only grant from paid coaching. Current play coverage remains paid; do not bypass A04 or add grants now. Human matches also need seat-specific authority and shared scheduling, not merely a different plan flag. [F04–F05](11-future-play-and-membership.md#f04--necessary-design-implications) records that separate design/migration work.
+
 Use current session/access generations from the authoritative store at protected boundaries. Replicas may not rely on a stale positive permission cache. Revoking a session blocks its subsequent requests; security revocation also cancels/fences unfinished work initiated by it. Ordinary sign-out blocks retrieval through that session but may let already-authorized work finish for recovery after sign-in. Coverage expiry/removal stops new work and publication unless another valid grant remains. Recheck before dispatch and at result commit; a request timeout alone does not stop a worker. Work committed before revocation remains subject to the saved-result read policy.
 
 For each live mutation:

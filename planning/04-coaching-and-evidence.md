@@ -166,6 +166,8 @@ Initial descriptive window: compare the latest 20 eligible opportunities with th
 
 Repeated review opportunities across three fresh hands may nominate the next focus. They do not prove why the player struggled. Recap shows at most one strength, one review moment and one next focus; use no filler when evidence is absent. No overall rating, leaderboard, historical game list or obligatory quiz.
 
+Future matching must preserve this boundary: coaching evidence may inform an uncertain initial placement only after separate validation; eligible human outcomes determine competitive rating. Players without coaching history need an equal provisional path. See [F03](11-future-play-and-membership.md#f03--three-distinct-uses-of-skill-evidence). No rating feature is added here.
+
 ## Scenarios that must pass
 
 1. **Hearts pass:** compare full triples; an incoming club reverses a planned void, while outgoing-card knowledge remains correct.
