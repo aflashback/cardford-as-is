@@ -65,3 +65,55 @@ test('phone portrait account bypasses table rotation gate',async({page})=>{
   await page.route('**/api/account',route=>route.fulfill({json:{authMode:'local-test',player:{displayName:'Local player'},access:session.access,subscription:{status:'local-mock',plan:'unlimited',cancelAtPeriodEnd:false,currentPeriodEnd:null,billingAvailable:false},offers:[{id:'practice',name:'Practice',description:'Test coverage',price:null,currency:null}]}}));
   await page.goto('/#account'); await expect(page.getByRole('heading',{name:'Account and subscription'})).toBeVisible(); await expect(page.getByRole('button',{name:'Cancel renewal'})).toBeVisible(); await expect(page.getByText('Turn your phone')).toHaveCount(0);
 });
+
+test('late initial refresh cannot overwrite a subsequently accepted move',async({page})=>{
+  let release: (()=>void) | undefined; let reads=0;
+  const initial=fixture(); let state=structuredClone(initial);
+  await page.route(url=>url.pathname.startsWith('/api/'),async route=>{
+    if(new URL(route.request().url()).pathname==='/api/session/actions'){
+      state={...state,revision:2,decisionId:'after-move',game:{...state.game,hand:['D3','H4','S5'],turn:0,legalActions:[{kind:'play',card:'D3'}]}};
+      return route.fulfill({json:state});
+    }
+    reads++;
+    if(reads===1){await new Promise<void>(resolve=>{release=resolve;});return route.fulfill({json:initial});}
+    return route.fulfill({json:state});
+  });
+  await page.goto('/',{waitUntil:'domcontentloaded'}); await page.getByRole('button',{name:'Resume',exact:true}).click();
+  await page.getByRole('button',{name:'2 of clubs',exact:true}).dblclick();
+  await expect(page.locator('.hand-card')).toHaveCount(3); release?.();
+  await page.waitForTimeout(250); await expect(page.locator('.hand-card')).toHaveCount(3);
+});
+
+test('retry after lost response keeps exactly the original mutation envelope',async({page})=>{
+  await mount(page); const bodies:unknown[]=[];const next=fixture();next.revision=2;next.decisionId='accepted';next.game.hand=['D3','H4','S5'];
+  await page.route('**/api/session/actions',async route=>{bodies.push(route.request().postDataJSON());if(bodies.length===1)return route.abort('failed');return route.fulfill({json:next});});
+  await page.getByRole('button',{name:'2 of clubs',exact:true}).dblclick();
+  await expect(page.getByRole('alert')).toBeVisible();await page.getByRole('button',{name:'Retry',exact:true}).click();
+  await expect(page.locator('.hand-card')).toHaveCount(3);expect(bodies).toHaveLength(2);expect(bodies[1]).toEqual(bodies[0]);
+});
+
+test('billing preview is server-defined and requires explicit confirmation',async({page})=>{
+  const session=fixture();const changes:unknown[]=[];
+  const account={authMode:'local-test',player:{displayName:'Local player'},access:session.access,subscription:{status:'local-mock',plan:'unlimited',cancelAtPeriodEnd:false,currentPeriodEnd:null,billingAvailable:false},offers:[{id:'practice',name:'Practice',description:'Test coverage',price:null,currency:null}]};
+  await page.route('**/api/account',route=>route.fulfill({json:account}));
+  await page.route('**/api/subscription/preview',route=>route.fulfill({json:{previewId:'server-preview',action:'select-plan',plan:'practice',effectiveAt:'2026-10-01T00:00:00Z',expiresAt:'2026-09-28T00:00:00Z',amountDueNow:null,currency:null,mode:'fixture',notice:'Your current coverage continues until the effective date.'}}));
+  await page.route('**/api/subscription/change',route=>{changes.push(route.request().postDataJSON());return route.fulfill({json:{operationId:'operation-1',status:'scheduled',effectiveAt:'2026-10-01T00:00:00Z',plan:'practice',cancelAtPeriodEnd:false,mode:'fixture',message:'Test change scheduled.'}});});
+  await page.goto('/#account');await page.getByRole('button',{name:'Preview test plan'}).click();
+  await expect(page.getByText('Your current coverage continues until the effective date.')).toBeVisible();expect(changes).toHaveLength(0);
+  await page.getByRole('button',{name:'Confirm test change'}).click();await expect(page.getByText('Test change scheduled.')).toBeVisible();expect(changes).toHaveLength(1);expect(changes[0]).toMatchObject({previewId:'server-preview'});
+});
+
+test('family member view exposes only own seat and leave control',async({page})=>{
+  const session=fixture();
+  await page.route('**/api/account',route=>route.fulfill({json:{authMode:'local-test',player:{displayName:'Member'},access:session.access,subscription:{status:'none',plan:null,cancelAtPeriodEnd:false,currentPeriodEnd:null,billingAvailable:false},offers:[]}}));
+  await page.route('**/api/family',route=>route.fulfill({json:{familyId:'family-1',role:'member',payer:{playerId:'payer-1',displayName:'Payer'},members:[{assignmentId:'assignment-1',playerId:'member-1',displayName:'Member',seatClass:'limited',status:'active',periodEnd:'2026-10-01T00:00:00Z'}],invitations:[],periodEnd:'2026-10-01T00:00:00Z',localMock:true}}));
+  await page.goto('/#account');await page.getByRole('button',{name:'Manage family'}).click();await expect(page.getByText('Paid by Payer')).toBeVisible();await expect(page.getByRole('button',{name:'Leave family',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Create invitation'})).toHaveCount(0);await expect(page.getByRole('button',{name:'Remove member'})).toHaveCount(0);
+});
+
+test('desktop and landscape phone preserve table geometry and card targets',async({page},testInfo)=>{
+  const session=fixture();session.game.hand=['C3','C10','CK','D8','D9','H2','H8','S2','S6','S8','S9','SK','SA'];session.game.handCounts=[13,13,13,13];session.game.legalActions=session.game.hand.map(card=>({kind:'play',card}));
+  await page.setViewportSize({width:1280,height:800});await mount(page,session);await expect(page.getByRole('region',{name:'Card table'})).toBeVisible();expect(await page.evaluate(async()=>{await document.fonts.ready;return document.fonts.check('14px "DM Sans Variable"') && document.fonts.check('14px "Manrope Variable"');})).toBe(true);await page.screenshot({path:testInfo.outputPath('desktop.png')});
+  await page.setViewportSize({width:667,height:375});await expect(page.locator('.hand-card')).toHaveCount(13);const cards=await page.locator('.hand-card').evaluateAll(nodes=>nodes.map(node=>{const r=node.getBoundingClientRect();return {x:r.x,width:r.width};}));
+  for(let index=0;index<cards.length-1;index++)expect(cards[index+1].x-cards[index].x).toBeGreaterThanOrEqual(43.9);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);await page.screenshot({path:testInfo.outputPath('phone.png')});
+});

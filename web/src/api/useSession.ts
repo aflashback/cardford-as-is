@@ -10,8 +10,14 @@ export function useSession() {
   const current = useRef<SessionView | null>(null);
   const pending = useRef<Pending | null>(null);
   const inFlight = useRef(false);
-  const accept = useCallback((value: SessionView) => { current.current = value; setSession(value); return value; }, []);
-  const refresh = useCallback(async () => { const value = await api('/api/session', 'SessionView'); accept(value); return value; }, [accept]);
+  const generation = useRef(0);
+  const accept = useCallback((value: SessionView) => { generation.current++; current.current = value; setSession(value); return value; }, []);
+  const refresh = useCallback(async () => {
+    const requestGeneration = ++generation.current;
+    const value = await api('/api/session', 'SessionView');
+    if (requestGeneration !== generation.current || (current.current?.game.id === value.game.id && current.current.revision > value.revision)) return current.current ?? value;
+    accept(value); return value;
+  }, [accept]);
   useEffect(() => { void refresh().catch(e => setError(e instanceof Error ? e.message : 'Could not connect.')); }, [refresh]);
   const envelope = useCallback((): CommandEnvelope => {
     const value = current.current;
@@ -20,7 +26,7 @@ export function useSession() {
   }, []);
   const submit = useCallback(async (operation: Pending): Promise<boolean> => {
     if (inFlight.current || (pending.current && pending.current !== operation)) return false;
-    inFlight.current = true; pending.current = operation; setBusy(true); setError('');
+    generation.current++; inFlight.current = true; pending.current = operation; setBusy(true); setError('');
     try { accept(await api(operation.path, 'SessionView', operation.body, operation.method)); pending.current = null; return true; }
     catch (e) {
       if (e instanceof ApiFailure && e.current) accept(e.current);
