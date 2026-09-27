@@ -1,16 +1,31 @@
 {
-  "name": "tricks-coach", "version": "0.1.0", "private": true, "type": "module",
-  "workspaces": ["web"],
-  "engines": {"node": ">=24.0.0 <25"},
+  "name": "tricks-coach",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "web"
+  ],
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
   "scripts": {
-    "dev": "node scripts/dev.mjs", "start": "node web/server/index.ts",
-    "db:up": "node scripts/database.mjs up", "db:migrate": "node web/server/records/migrate.ts",
-    "contracts:generate": "node web/scripts/generate-contracts.mjs", "contracts:check": "node web/scripts/generate-contracts.mjs --check",
-    "typecheck": "npm run typecheck --workspace web", "build": "npm run build --workspace web",
+    "dev": "node scripts/dev.mjs",
+    "start": "node web/server/index.ts",
+    "db:up": "node scripts/database.mjs up",
+    "db:migrate": "node web/server/records/migrate.ts",
+    "contracts:generate": "node web/scripts/generate-contracts.mjs",
+    "contracts:check": "node web/scripts/generate-contracts.mjs --check",
+    "typecheck": "npm run typecheck --workspace web",
+    "build": "npm run build --workspace web",
     "test:legacy": "node --test --test-isolation=none web/tests/*.test.ts",
-    "test:all": "node --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts",
-    "test:integration": "node --test --test-isolation=none web/server/tests/integration.test.ts",
+    "test:all": "node --env-file=.env.local --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts",
+    "test:integration": "node --env-file=.env.local --test --test-isolation=none web/server/tests/integration.test.ts web/server/tests/access-review.test.ts web/server/tests/billing.test.ts web/server/tests/family.test.ts web/server/tests/account-data.test.ts web/server/tests/provider-ledger.test.ts",
     "test:ui": "playwright test -c web/playwright.config.ts",
+    "test:stripe": "node --env-file=.env.local --test --test-isolation=none web/server/tests/billing.test.ts web/server/tests/billing-stripe-management.test.ts",
+    "evaluate:local": "node web/server/evaluation/local-policy.ts",
+    "evaluate:jev": "node web/server/evaluation/jev-smoke.ts",
+    "db:backup:verify": "node scripts/verify-backup.mjs",
     "lint:boundaries": "node web/scripts/check-artifacts.mjs --source",
     "check:artifacts": "node web/scripts/check-artifacts.mjs"
   }

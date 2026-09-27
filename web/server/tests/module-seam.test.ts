@@ -1,9 +1,70 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {catalog,validateCompetition,assertCatalogMode,type GameModule,type Competition} from '../game/kernel/registry.ts';
-import type {Seat} from '../game/kernel/types.ts';
-const competition:Competition={mode:'individual',competitors:[0,1,2,3].map(n=>({id:`p${n}`,seats:[n as Seat]}))};
-type State={totals:number[];turn:number};type Observation={seat:Seat;total:number;active:boolean};type Action={add:1|2};
-const solo:GameModule<State,Observation,Action>={manifest:{id:'test-individual-counter',version:'1.0.0',capabilities:['sequential-turns','individual-scores']},competition,create:()=>({totals:[0,0,0,0],turn:0}),lifecycle:s=>s.turn===4?'session_complete':'awaiting_action',observe:(s,seat)=>({seat,total:s.totals[seat],active:s.turn===seat}),legalActions:o=>o.active?[{add:1},{add:2}]:[],apply:(s,seat,a)=>{if(s.turn!==seat||![1,2].includes(a.add))throw new Error('Illegal counter action');const next=structuredClone(s);next.totals[seat]+=a.add;next.turn++;return next;},scores:s=>s.totals.map((value,n)=>({competitorId:`p${n}`,value}))};
-test('SEAM: four-individual non-card module observes, chooses, applies, replays and renders four scores',()=>{validateCompetition(solo.competition);let state=solo.create();const records:{seat:Seat;action:Action}[]=[];for(const seat of [0,1,2,3] as Seat[]){const obs=solo.observe(state,seat);const candidates=solo.legalActions(obs);const mockChoice=candidates[1];records.push({seat,action:mockChoice});state=solo.apply(state,seat,mockChoice);}assert.equal(solo.lifecycle(state),'session_complete');assert.deepEqual(records.reduce((s,r)=>solo.apply(s,r.seat,r.action),solo.create()),state);assert.deepEqual(solo.scores(state),[0,1,2,3].map(n=>({competitorId:`p${n}`,value:2})));assert.equal((catalog as readonly string[]).includes(solo.manifest.id),false);assert.throws(()=>assertCatalogMode(solo.manifest.id));});
-test('SEAM: duplicate seats, unsupported modes and malformed team partitions fail closed',()=>{assert.throws(()=>validateCompetition({mode:'individual',competitors:[0,1,2,3].map(n=>({id:`p${n}`,seats:[0]}))}));assert.throws(()=>validateCompetition({mode:'partnership',competitors:competition.competitors}));assert.throws(()=>assertCatalogMode('bridge'));});
+import {
+  catalog,
+  validateCompetition,
+  assertCatalogMode,
+  type GameModule,
+  type Competition,
+} from '../game/kernel/registry.ts';
+import type { Seat } from '../game/kernel/types.ts';
+const competition: Competition = {
+  mode: 'individual',
+  competitors: [0, 1, 2, 3].map((n) => ({ id: `p${n}`, seats: [n as Seat] })),
+};
+type State = { totals: number[]; turn: number };
+type Observation = { seat: Seat; total: number; active: boolean };
+type Action = { add: 1 | 2 };
+const solo: GameModule<State, Observation, Action> = {
+  manifest: {
+    id: 'test-individual-counter',
+    version: '1.0.0',
+    capabilities: ['sequential-turns', 'individual-scores'],
+  },
+  competition,
+  create: () => ({ totals: [0, 0, 0, 0], turn: 0 }),
+  lifecycle: (s) => (s.turn === 4 ? 'session_complete' : 'awaiting_action'),
+  observe: (s, seat) => ({ seat, total: s.totals[seat], active: s.turn === seat }),
+  legalActions: (o) => (o.active ? [{ add: 1 }, { add: 2 }] : []),
+  apply: (s, seat, a) => {
+    if (s.turn !== seat || ![1, 2].includes(a.add)) throw new Error('Illegal counter action');
+    const next = structuredClone(s);
+    next.totals[seat] += a.add;
+    next.turn++;
+    return next;
+  },
+  scores: (s) => s.totals.map((value, n) => ({ competitorId: `p${n}`, value })),
+};
+test('SEAM: four-individual non-card module observes, chooses, applies, replays and renders four scores', () => {
+  validateCompetition(solo.competition);
+  let state = solo.create();
+  const records: { seat: Seat; action: Action }[] = [];
+  for (const seat of [0, 1, 2, 3] as Seat[]) {
+    const obs = solo.observe(state, seat);
+    const candidates = solo.legalActions(obs);
+    const mockChoice = candidates[1];
+    records.push({ seat, action: mockChoice });
+    state = solo.apply(state, seat, mockChoice);
+  }
+  assert.equal(solo.lifecycle(state), 'session_complete');
+  assert.deepEqual(
+    records.reduce((s, r) => solo.apply(s, r.seat, r.action), solo.create()),
+    state,
+  );
+  assert.deepEqual(
+    solo.scores(state),
+    [0, 1, 2, 3].map((n) => ({ competitorId: `p${n}`, value: 2 })),
+  );
+  assert.equal((catalog as readonly string[]).includes(solo.manifest.id), false);
+  assert.throws(() => assertCatalogMode(solo.manifest.id));
+});
+test('SEAM: duplicate seats, unsupported modes and malformed team partitions fail closed', () => {
+  assert.throws(() =>
+    validateCompetition({
+      mode: 'individual',
+      competitors: [0, 1, 2, 3].map((n) => ({ id: `p${n}`, seats: [0] })),
+    }),
+  );
+  assert.throws(() => validateCompetition({ mode: 'partnership', competitors: competition.competitors }));
+  assert.throws(() => assertCatalogMode('bridge'));
+});
