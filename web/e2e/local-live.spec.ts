@@ -102,3 +102,21 @@ test('live safe export and typed local-account deletion',async({page})=>{
   await page.getByLabel('Type DELETE LOCAL ACCOUNT',{exact:true}).fill('DELETE LOCAL ACCOUNT');await expect(button).toBeEnabled();await button.click();await expect(page.getByRole('heading',{name:'Local account deleted',exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Start a new local account',exact:true}).click();await expect(page.getByRole('dialog',{name:'Paused',exact:true})).toBeVisible();await page.goto(`${origin}/#account`);expect(await page.getByLabel('Local account ID',{exact:true}).inputValue()).not.toBe(oldId);
 });
+
+test('live alternative trial stays separate from the accepted table',async({page})=>{
+  await open(page);await newGame(page,'spades-partners');await expect(page.getByRole('button',{name:'Bid 3',exact:true})).toBeEnabled({timeout:15_000});await page.getByRole('button',{name:'Bid 3',exact:true}).click();
+  let found=false;
+  for(let attempt=0;attempt<10;attempt++){
+    await waitHuman(page);const view=await current(page);const choices=view.game.legalActions.filter(action=>action.kind==='play');
+    await playHuman(page);
+    if(choices.length>1){found=true;break;}
+  }
+  expect(found).toBe(true);
+  await page.getByRole('button',{name:'Review current game',exact:true}).click();const before=await current(page);
+  await page.locator('.review-choices button').last().click();await expect(page.getByRole('heading',{name:'Original',exact:true})).toBeVisible();
+  await page.getByText('Explore another card',{exact:true}).click();await page.locator('.review-alternatives button').last().click();
+  const unlock=page.getByRole('button',{name:'Use coached hand',exact:true});if(await unlock.isVisible())await unlock.click();
+  await expect(page.getByRole('heading',{name:'Possible continuation',exact:true})).toBeVisible({timeout:20_000});
+  const after=await current(page);expect(after.revision).toBe(before.revision);expect(after.game.hand).toEqual(before.game.hand);expect(after.game.scores).toEqual(before.game.scores);
+  await page.getByRole('button',{name:'Back to Original',exact:true}).click();await expect(page.getByRole('heading',{name:'Original',exact:true})).toBeVisible();
+});
