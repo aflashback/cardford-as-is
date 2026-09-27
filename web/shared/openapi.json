@@ -1,0 +1,918 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Tricks Coach local V1",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/session": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/control": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandEnvelope"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/notes": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotesView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandEnvelope"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/sessions": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSessionRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/actions": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionsRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/prepare": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrepareView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrepareRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/advance": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdvanceRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/next-hand": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NextHandRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/advice": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdviceView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdviceRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/exposures": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AcceptedView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExposureRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/preferences": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreferencesRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/coaching/access": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachAccess"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/coaching/hand-unlocks": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HandUnlockView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandUnlockRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/recap": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecapView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/reviews": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewIndex"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/reviews/{decisionId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "decisionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/reviews/{decisionId}/trials": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewTrial"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrialRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "decisionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/account": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountCommand"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Mode": {
+        "$ref": "./contracts.schema.json#/$defs/Mode"
+      },
+      "Seat": {
+        "$ref": "./contracts.schema.json#/$defs/Seat"
+      },
+      "Card": {
+        "$ref": "./contracts.schema.json#/$defs/Card"
+      },
+      "Suit": {
+        "$ref": "./contracts.schema.json#/$defs/Suit"
+      },
+      "Phase": {
+        "$ref": "./contracts.schema.json#/$defs/Phase"
+      },
+      "GameAction": {
+        "$ref": "./contracts.schema.json#/$defs/GameAction"
+      },
+      "Play": {
+        "$ref": "./contracts.schema.json#/$defs/Play"
+      },
+      "Trick": {
+        "$ref": "./contracts.schema.json#/$defs/Trick"
+      },
+      "HandResult": {
+        "$ref": "./contracts.schema.json#/$defs/HandResult"
+      },
+      "GameView": {
+        "$ref": "./contracts.schema.json#/$defs/GameView"
+      },
+      "Preferences": {
+        "$ref": "./contracts.schema.json#/$defs/Preferences"
+      },
+      "Plan": {
+        "$ref": "./contracts.schema.json#/$defs/Plan"
+      },
+      "PaidPlan": {
+        "$ref": "./contracts.schema.json#/$defs/PaidPlan"
+      },
+      "CoachAccess": {
+        "$ref": "./contracts.schema.json#/$defs/CoachAccess"
+      },
+      "SessionStats": {
+        "$ref": "./contracts.schema.json#/$defs/SessionStats"
+      },
+      "SessionView": {
+        "$ref": "./contracts.schema.json#/$defs/SessionView"
+      },
+      "AdviceView": {
+        "$ref": "./contracts.schema.json#/$defs/AdviceView"
+      },
+      "CommandEnvelope": {
+        "$ref": "./contracts.schema.json#/$defs/CommandEnvelope"
+      },
+      "NewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/NewSessionRequest"
+      },
+      "ActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/ActionsRequest"
+      },
+      "PrepareRequest": {
+        "$ref": "./contracts.schema.json#/$defs/PrepareRequest"
+      },
+      "PrepareView": {
+        "$ref": "./contracts.schema.json#/$defs/PrepareView"
+      },
+      "AdvanceRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AdvanceRequest"
+      },
+      "NextHandRequest": {
+        "$ref": "./contracts.schema.json#/$defs/NextHandRequest"
+      },
+      "AdviceRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AdviceRequest"
+      },
+      "PreferencesRequest": {
+        "$ref": "./contracts.schema.json#/$defs/PreferencesRequest"
+      },
+      "HandUnlockRequest": {
+        "$ref": "./contracts.schema.json#/$defs/HandUnlockRequest"
+      },
+      "HandUnlockView": {
+        "$ref": "./contracts.schema.json#/$defs/HandUnlockView"
+      },
+      "ExposureRequest": {
+        "$ref": "./contracts.schema.json#/$defs/ExposureRequest"
+      },
+      "AcceptedView": {
+        "$ref": "./contracts.schema.json#/$defs/AcceptedView"
+      },
+      "ReviewFrame": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewFrame"
+      },
+      "ReviewCase": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewCase"
+      },
+      "ReviewIndex": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewIndex"
+      },
+      "ReviewView": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewView"
+      },
+      "TrialRequest": {
+        "$ref": "./contracts.schema.json#/$defs/TrialRequest"
+      },
+      "ReviewTrial": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewTrial"
+      },
+      "RecapView": {
+        "$ref": "./contracts.schema.json#/$defs/RecapView"
+      },
+      "SubscriptionView": {
+        "$ref": "./contracts.schema.json#/$defs/SubscriptionView"
+      },
+      "OfferView": {
+        "$ref": "./contracts.schema.json#/$defs/OfferView"
+      },
+      "AccountView": {
+        "$ref": "./contracts.schema.json#/$defs/AccountView"
+      },
+      "AccountCommand": {
+        "$ref": "./contracts.schema.json#/$defs/AccountCommand"
+      },
+      "ApiError": {
+        "$ref": "./contracts.schema.json#/$defs/ApiError"
+      },
+      "ReviewQuery": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewQuery"
+      },
+      "ReviewStepQuery": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewStepQuery"
+      },
+      "AccessQuery": {
+        "$ref": "./contracts.schema.json#/$defs/AccessQuery"
+      },
+      "SuitMemory": {
+        "$ref": "./contracts.schema.json#/$defs/SuitMemory"
+      },
+      "NotesView": {
+        "$ref": "./contracts.schema.json#/$defs/NotesView"
+      }
+    }
+  }
+}
