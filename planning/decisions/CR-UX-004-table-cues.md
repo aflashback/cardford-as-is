@@ -34,3 +34,9 @@ This supersedes the corresponding visible-copy and last-trick placement entries 
 `web/e2e/table.spec.ts` covers legal availability, off-turn preparation, last-trick visibility/geometry, both Play again outcomes, and expandable dialog keyboard navigation. The existing local-service journeys check all three game modes, coaching, accepted play, pause and review against PostgreSQL. Build/typecheck and browser dependency checks preserve the server-only boundary.
 
 Actual outcomes and limitations are recorded in [the verification report](../../qa/implementation/ui-cues-acceptance.md). These requirements do not close external hosted, provider, physical-device or screen-reader gates.
+
+## Owner follow-up: outside the table
+
+On 27 September 2026 the owner requested a smaller table with last trick outside it on the left, responsive across screens. This supersedes the lower-left placement above. UX-14 now uses a separate left column; UX-17 requires responsive space allocation and reachable hand cards. A reserved column avoids overlapping players or current-trick cards. The hand remains full width below the play area. Narrow landscape hands scroll horizontally and keyboard focus reveals each card. Short tablet windows scroll vertically. Existing portrait-phone rotation guidance remains.
+
+Rejected alternatives: overlaying the miniature on the felt or shrinking hand targets further. No rules, scoring, APIs, stored data or provider behavior change. Acceptance uses eleven viewport sizes plus two portrait-phone rotation checks in `table.spec.ts`. See [the follow-up evidence](../../qa/implementation/ui-external-trick-acceptance.md).

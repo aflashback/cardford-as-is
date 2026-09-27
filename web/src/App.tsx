@@ -654,112 +654,116 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
             </section>
 
             <div className="play-space">
-              <section className="table-zone" aria-label="Card table">
-                <div className="table-felt">
-                  <div className="table-line" />
-                  <span className="table-brand">Tricks Coach</span>
+              <div className="table-stage">
+                <div className="last-trick-rail">
+                  <LastTrick game={game} />
                 </div>
-                {([1, 2, 3] as Seat[]).map((seat) => (
-                  <Player
-                    key={seat}
-                    seat={seat}
-                    game={game}
-                    active={
-                      !handEnd && game.phase !== 'pass' && game.turn === seat && game.phase !== 'trick-end'
-                    }
-                  />
-                ))}
-                <div
-                  className={`trick-area ${activeHint > 0 && advice?.highlightSuit ? 'evidence-active' : ''}`}
-                >
-                  {game.phase === 'pass' ? (
-                    <div className="table-prompt">
-                      <div className="pass-illustration">
-                        <span>♥</span>
-                        <ArrowRight size={26} />
-                        <span>♠</span>
-                      </div>
-                      <h2>Pass three cards {game.passDirection}</h2>
-                    </div>
-                  ) : game.phase === 'bid' ? (
-                    <div className="table-prompt bidding-prompt">
-                      <span className="prompt-icon">
-                        <Flag size={23} />
-                      </span>
-                      <h2>{myTurn ? 'Your bid' : 'Bidding'}</h2>
-                      {myTurn && (
-                        <div className="bid-selector" aria-label="Choose your bid">
-                          <button
-                            className="bid-step"
-                            disabled={bid === 0}
-                            onClick={() => setBid((b) => b - 1)}
-                            aria-label="Decrease bid"
-                          >
-                            −
-                          </button>
-                          <output aria-live="polite">{bid === 0 ? 'Nil' : bid}</output>
-                          <button
-                            className="bid-step"
-                            disabled={bid === 13}
-                            onClick={() => setBid((b) => b + 1)}
-                            aria-label="Increase bid"
-                          >
-                            +
-                          </button>
-                          <button
-                            className={`nil-button ${bid === 0 ? 'active' : ''}`}
-                            onClick={() => setBid(0)}
-                          >
-                            Nil
-                          </button>
+                <section className="table-zone" aria-label="Card table">
+                  <div className="table-felt">
+                    <div className="table-line" />
+                    <span className="table-brand">Tricks Coach</span>
+                  </div>
+                  {([1, 2, 3] as Seat[]).map((seat) => (
+                    <Player
+                      key={seat}
+                      seat={seat}
+                      game={game}
+                      active={
+                        !handEnd && game.phase !== 'pass' && game.turn === seat && game.phase !== 'trick-end'
+                      }
+                    />
+                  ))}
+                  <div
+                    className={`trick-area ${activeHint > 0 && advice?.highlightSuit ? 'evidence-active' : ''}`}
+                  >
+                    {game.phase === 'pass' ? (
+                      <div className="table-prompt">
+                        <div className="pass-illustration">
+                          <span>♥</span>
+                          <ArrowRight size={26} />
+                          <span>♠</span>
                         </div>
-                      )}
-                    </div>
-                  ) : handEnd ? (
-                    <div className="table-prompt">
-                      <span className="prompt-icon">
-                        <Flag size={26} />
-                      </span>
-                      <h2>{game.phase === 'match-end' ? 'Game complete' : 'Hand complete'}</h2>
-                      <button className="table-continue" onClick={() => setShowRecap(true)}>
-                        View hand recap <ArrowUpRight size={16} />
-                      </button>
-                    </div>
-                  ) : (
-                    <>
-                      {([2, 1, 3, 0] as Seat[]).map((seat) => {
-                        const played = game.trick.find((item) => item.seat === seat);
-                        const relevant =
-                          activeHint > 0 &&
-                          (isTeam && currentWinner === 2 ? seat === 2 : seat === game.trick[0]?.seat);
-                        return (
-                          <div
-                            key={seat}
-                            className={`trick-slot trick-slot-${seat} ${played && currentWinner === seat ? 'winning-card' : ''} ${relevant ? 'cue-card' : ''}`}
-                          >
-                            {played ? (
-                              <>
-                                <CardFace card={played.card} />
-                                <span className="played-by">
-                                  {names[seat]}
-                                  {currentWinner === seat && (
-                                    <span className="winner-mark" title="Currently winning">
-                                      ●
-                                    </span>
-                                  )}
-                                </span>
-                              </>
-                            ) : (
-                              <span className="empty-card" />
-                            )}
+                        <h2>Pass three cards {game.passDirection}</h2>
+                      </div>
+                    ) : game.phase === 'bid' ? (
+                      <div className="table-prompt bidding-prompt">
+                        <span className="prompt-icon">
+                          <Flag size={23} />
+                        </span>
+                        <h2>{myTurn ? 'Your bid' : 'Bidding'}</h2>
+                        {myTurn && (
+                          <div className="bid-selector" aria-label="Choose your bid">
+                            <button
+                              className="bid-step"
+                              disabled={bid === 0}
+                              onClick={() => setBid((b) => b - 1)}
+                              aria-label="Decrease bid"
+                            >
+                              −
+                            </button>
+                            <output aria-live="polite">{bid === 0 ? 'Nil' : bid}</output>
+                            <button
+                              className="bid-step"
+                              disabled={bid === 13}
+                              onClick={() => setBid((b) => b + 1)}
+                              aria-label="Increase bid"
+                            >
+                              +
+                            </button>
+                            <button
+                              className={`nil-button ${bid === 0 ? 'active' : ''}`}
+                              onClick={() => setBid(0)}
+                            >
+                              Nil
+                            </button>
                           </div>
-                        );
-                      })}
-                    </>
-                  )}
-                </div>
-                <LastTrick game={game} />
-              </section>
+                        )}
+                      </div>
+                    ) : handEnd ? (
+                      <div className="table-prompt">
+                        <span className="prompt-icon">
+                          <Flag size={26} />
+                        </span>
+                        <h2>{game.phase === 'match-end' ? 'Game complete' : 'Hand complete'}</h2>
+                        <button className="table-continue" onClick={() => setShowRecap(true)}>
+                          View hand recap <ArrowUpRight size={16} />
+                        </button>
+                      </div>
+                    ) : (
+                      <>
+                        {([2, 1, 3, 0] as Seat[]).map((seat) => {
+                          const played = game.trick.find((item) => item.seat === seat);
+                          const relevant =
+                            activeHint > 0 &&
+                            (isTeam && currentWinner === 2 ? seat === 2 : seat === game.trick[0]?.seat);
+                          return (
+                            <div
+                              key={seat}
+                              className={`trick-slot trick-slot-${seat} ${played && currentWinner === seat ? 'winning-card' : ''} ${relevant ? 'cue-card' : ''}`}
+                            >
+                              {played ? (
+                                <>
+                                  <CardFace card={played.card} />
+                                  <span className="played-by">
+                                    {names[seat]}
+                                    {currentWinner === seat && (
+                                      <span className="winner-mark" title="Currently winning">
+                                        ●
+                                      </span>
+                                    )}
+                                  </span>
+                                </>
+                              ) : (
+                                <span className="empty-card" />
+                              )}
+                            </div>
+                          );
+                        })}
+                      </>
+                    )}
+                  </div>
+                </section>
+              </div>
 
               <aside className={`coach-panel ${activeHint > 0 ? 'coach-open' : ''}`} aria-label="Your coach">
                 <div className="coach-heading">
@@ -909,6 +913,12 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                       aria-pressed={selected.includes(card)}
                       aria-describedby="card-controls"
                       aria-keyshortcuts="Enter"
+                      onFocus={(event) => {
+                        const card = event.currentTarget;
+                        const hand = card.parentElement;
+                        if (hand && hand.scrollWidth > hand.clientWidth && card.matches(':focus-visible'))
+                          card.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                      }}
                       onClick={(event) => activateCard(card, event.detail, event.timeStamp)}
                       onKeyDown={(event) => {
                         if (event.key === ' ') {

@@ -400,6 +400,16 @@ test('desktop and landscape phone preserve table geometry and card targets', asy
     expect(cards[index + 1].x - cards[index].x).toBeGreaterThanOrEqual(43.9);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('phone.png') });
+  await page.setViewportSize({ width: 568, height: 320 });
+  await expect(page.locator('.hand-cards')).toHaveCSS('overflow-x', 'auto');
+  const lastCard = page.locator('.hand-card').last();
+  await page.locator('.hand-card').first().focus();
+  for (let index = 1; index < 13; index++) await page.keyboard.press('Tab');
+  await expect(lastCard).toBeFocused();
+  await expect(lastCard).toBeInViewport({ ratio: 1 });
+  expect(await page.locator('.hand-cards').evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
+  await page.locator('.hand-card').first().focus();
+  expect((await page.locator('.hand-card').first().boundingBox())!.x).toBeGreaterThanOrEqual(0);
 });
 
 for (const mode of ['spades-partners', 'hearts'] as const) {
@@ -503,24 +513,53 @@ test('last trick stays beside the table with seat positions, no names and no not
   expect(await last.innerText()).not.toMatch(/You|Leo|Maya|Theo/);
   await expect(page.getByRole('button', { name: 'Last trick' })).toHaveCount(0);
   for (const [width, height, name] of [
+    [1920, 1080, 'wide-desktop'],
     [1280, 800, 'desktop'],
+    [1024, 768, 'tablet-landscape'],
+    [800, 600, 'compact-window'],
+    [700, 700, 'square-window'],
     [768, 1024, 'tablet'],
+    [700, 701, 'short-tablet'],
+    [844, 390, 'wide-phone'],
     [667, 375, 'phone'],
     [667, 320, 'short-phone'],
+    [568, 320, 'small-phone'],
   ] as const) {
     await page.setViewportSize({ width, height });
     await expect(last).toBeVisible();
     const memory = await last.boundingBox();
     const current = await page.locator('.trick-area').boundingBox();
+    const table = await page.getByRole('region', { name: 'Card table' }).boundingBox();
     const west = await page.locator('.player-1').boundingBox();
     expect(memory).not.toBeNull();
     expect(current).not.toBeNull();
     expect(west).not.toBeNull();
+    expect(table).not.toBeNull();
+    expect(memory!.x + memory!.width).toBeLessThan(table!.x);
+    expect(memory!.x).toBeGreaterThanOrEqual(0);
+    expect(memory!.y).toBeGreaterThanOrEqual(0);
     expect(memory!.x + memory!.width).toBeLessThanOrEqual(current!.x);
-    expect(memory!.y >= west!.y + west!.height || memory!.x >= west!.x + west!.width).toBe(true);
     expect(memory!.y + memory!.height).toBeLessThan(height);
+    for (const selector of ['.trick-area', '.player-1', '.player-2', '.player-3', '.coach-panel']) {
+      const box = await page.locator(selector).boundingBox();
+      expect(
+        box!.x >= memory!.x + memory!.width ||
+          box!.y >= memory!.y + memory!.height ||
+          box!.y + box!.height <= memory!.y,
+        `${name}: ${selector} must not overlap last trick`,
+      ).toBe(true);
+      expect(box!.x + box!.width).toBeLessThanOrEqual(width);
+      expect(box!.y).toBeGreaterThanOrEqual(0);
+      expect(box!.y + box!.height).toBeLessThanOrEqual(height);
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.screenshot({ path: testInfo.outputPath(`cues-${name}.png`) });
+    await page.screenshot({ path: testInfo.outputPath(`cues-${name}.png`), fullPage: true });
+    if (name === 'square-window' || name === 'short-tablet') {
+      const hand = page.locator('.hand-card').first();
+      await hand.scrollIntoViewIfNeeded();
+      await expect(hand).toBeInViewport({ ratio: 1 });
+      await page.evaluate(() => window.scrollTo(0, 0));
+    }
   }
   expect(notesCalls).toEqual([]);
   expect(harness.commands).toHaveLength(0);
@@ -532,6 +571,15 @@ test('last trick stays beside the table with seat positions, no names and no not
   harness.setState(next);
   await page.getByRole('button', { name: 'Resume', exact: true }).click();
   await expect(last).toHaveCount(0);
+  for (const [width, height] of [
+    [320, 568],
+    [390, 844],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await expect(page.getByRole('heading', { name: /Turn your phone/ })).toBeVisible();
+    await expect(page.getByRole('region', { name: 'Card table' })).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
 });
 
 for (const phase of ['hand-end', 'match-end'] as const) {
