@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import test from 'node:test';
+import {exportAccount,deleteLocalAccount} from '../access/account-data.ts';
+import {mutateFamily,getFamily} from '../access/family.ts';
+import {testDatabase,player} from '../billing/database-test.ts';
+import type {GameView} from '../../shared/contracts.ts';
+const game:GameView={id:'game-fixture',mode:'hearts',phase:'pass',hand:['C2','H3','SA'],handCounts:[3,3,3,3],bids:[null,null,null,null],tricks:[0,0,0,0],scores:[0,0,0,0],bags:[0,0,0,0],trick:[],history:[],turn:null,dealer:0,handNumber:1,heartsBroken:false,spadesBroken:false,passDirection:'left',received:[],outgoing:[],handResult:null,currentWinner:null,legalActions:[{kind:'pass',cards:['C2','H3','SA']}]};
+const document={state:{seed:812,hands:[['C2'],['D2'],['H2'],['S2']]},deals:[['S2']],frames:[{game:{...game,hiddenCanary:'not exported'},decisionId:'decision-1',action:null,notes:[]}],savedAdvice:{},stats:{decisions:0,helped:0,suggestions:0},secret:'not exported'};
+const deletion={commandId:'delete-once',confirmation:'DELETE LOCAL ACCOUNT' as const};
+test('account export is owner-scoped and allowlists safe frames without deals, seeds or other accounts',async t=>{
+  const pool=await testDatabase(t);if(!pool)return;const owner=await player(pool),other=await player(pool);
+  const mine=randomUUID();await pool.query('INSERT INTO games(id,player_id,document) VALUES($1,$2,$3),($4,$5,$3)',[mine,owner,document,randomUUID(),other]);
+  const result=await exportAccount(pool,owner);assert.equal(result.games.length,1);assert.equal(result.games[0]!.id,mine);
+  const json=JSON.stringify(result);for(const key of ['hands','seed','deals','secret','hiddenCanary'])assert.equal(json.includes(`"${key}"`),false);
+  assert.equal(json.includes(other),false);assert.deepEqual(result.games[0]!.frames[0]!.game.hand,['C2','H3','SA']);
+  await assert.rejects(exportAccount(pool,owner,async()=>{throw new Error('Revoked');}));
+});
+test('deletion erases the local owner/session/game but preserves another player and anonymous held family seat',async t=>{
+  const pool=await testDatabase(t);if(!pool)return;const payer=await player(pool,{plan:'family'}),member=await player(pool,{currentPeriodEnd:new Date(0).toISOString()});
+  await mutateFamily(pool,payer,{commandId:'create',action:'create'});const invitation=(await mutateFamily(pool,payer,{commandId:'invite',action:'invite',inviteeId:member,seatClass:'limited'})).invitations[0]!;
+  await mutateFamily(pool,member,{commandId:'accept',action:'accept',token:invitation.token!,acknowledgeIndividualCoverage:false});
+  await pool.query("INSERT INTO sessions(token_hash,player_id,expires_at) VALUES('fixture-session',$1,now()+interval '1 day')",[member]);
+  await pool.query('INSERT INTO games(id,player_id,document) VALUES($1,$2,$3),($4,$5,$3)',[randomUUID(),member,document,randomUUID(),payer]);
+  await assert.rejects(deleteLocalAccount(pool,member,deletion,async()=>{throw new Error('Revoked');}));
+  assert.equal((await pool.query('SELECT 1 FROM players WHERE id=$1',[member])).rowCount,1);
+  assert.equal((await deleteLocalAccount(pool,member,deletion)).deleted,true);
+  assert.equal((await pool.query('SELECT 1 FROM players WHERE id=$1',[member])).rowCount,0);
+  assert.equal((await pool.query('SELECT 1 FROM sessions WHERE player_id=$1',[member])).rowCount,0);
+  assert.equal((await pool.query('SELECT 1 FROM games WHERE player_id=$1',[member])).rowCount,0);
+  assert.equal((await pool.query('SELECT 1 FROM games WHERE player_id=$1',[payer])).rowCount,1);
+  const held=(await getFamily(pool,payer)).members.find(m=>m.status==='held');assert.equal(held?.playerId,'deleted-account');
+});
+test('payer deletion revokes family grant while retaining member identity and private records',async t=>{
+  const pool=await testDatabase(t);if(!pool)return;const payer=await player(pool,{plan:'family'}),member=await player(pool,{currentPeriodEnd:new Date(0).toISOString()});
+  await mutateFamily(pool,payer,{commandId:'create',action:'create'});const invitation=(await mutateFamily(pool,payer,{commandId:'invite',action:'invite',inviteeId:member,seatClass:'limited'})).invitations[0]!;
+  await mutateFamily(pool,member,{commandId:'accept',action:'accept',token:invitation.token!,acknowledgeIndividualCoverage:false});
+  const before=(await pool.query('SELECT access_generation FROM players WHERE id=$1',[member])).rows[0].access_generation;
+  await deleteLocalAccount(pool,payer,deletion);
+  assert.equal((await getFamily(pool,member)).role,'none');
+  assert.ok((await pool.query('SELECT access_generation FROM players WHERE id=$1',[member])).rows[0].access_generation>before);
+});

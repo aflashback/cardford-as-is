@@ -34,7 +34,7 @@ const routes = [
   ['post','/api/coaching/hand-unlocks','HandUnlockRequest','HandUnlockView'], ['get','/api/session/recap',null,'RecapView'],
   ['get','/api/session/reviews',null,'ReviewIndex'], ['get','/api/session/reviews/{decisionId}',null,'ReviewView'],
   ['post','/api/session/reviews/{decisionId}/trials','TrialRequest','ReviewTrial'],
-  ['post','/api/subscription/preview','BillingPreviewRequest','BillingPreview'], ['post','/api/subscription/change','BillingConfirmRequest','BillingOperation'], ['get','/api/family',null,'FamilyView'], ['post','/api/family','FamilyCommand','FamilyView'], ['get','/api/account',null,'AccountView'], ['post','/api/account','AccountCommand','AccountView'],
+  ['post','/api/subscription/preview','BillingPreviewRequest','BillingPreview'], ['post','/api/subscription/change','BillingConfirmRequest','BillingOperation'], ['get','/api/family',null,'FamilyView'], ['post','/api/family','FamilyCommand','FamilyView'], ['get','/api/account/export',null,'ExportView'], ['post','/api/account/delete','AccountDeleteRequest','AccountDeleteView'], ['get','/api/account',null,'AccountView'], ['post','/api/account','AccountCommand','AccountView'],
 ];
 const openapi = { openapi: '3.1.0', info: { title: 'Tricks Coach local V1', version: '1.0.0' }, paths: {}, components: { schemas: Object.fromEntries(names.map(n => [n, { $ref: `./contracts.schema.json#/$defs/${n}` }])) } };
 for (const [method,path,input,output] of routes) {
