@@ -102,6 +102,8 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   const [advicePending, setAdvicePending] = useState(false);
   const [unlockLevel, setUnlockLevel] = useState<1 | 2 | 3 | null>(null);
   const [notes, setNotes] = useState<NotesView | null>(null);
+  const [notesUnlock, setNotesUnlock] = useState(false);
+  const lastNudge = useRef({ hand: '', trick: 0 });
   const [modal, setModal] = useState<Modal>('pause');
   const [newMode, setNewMode] = useState<Mode | null>(null);
   const [toast, setToast] = useState('');
@@ -150,11 +152,19 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
         const envelope = controller.envelope();
         void api('/api/session/prepare', 'PrepareView', envelope).then(prepared => {
           if (!cancelled && decisionRef.current === turnKey) return controller.mutate('/api/session/advance', { kind: 'bot', preparedDecisionId: prepared.preparedDecisionId });
-        }).catch(e => { if (!cancelled) setToast(e instanceof Error ? e.message : 'Could not prepare the next turn.'); });
+        }).catch(e => { if (!cancelled) { setModal('pause'); setToast(e instanceof Error ? e.message : 'Could not prepare the next turn.'); } });
       }, (game.phase === 'trick-end' ? 2100 : 900) / gameSpeed);
     }).catch(() => { if (!cancelled) setToast('Reconnect to resume play.'); });
     return () => { cancelled = true; if (timer !== undefined) window.clearTimeout(timer); };
   }, [turnKey, paused, gameSpeed, controller.busy, controller.error]);
+  useEffect(() => {
+    if (coachMode !== 'nudges' || paused || !canDecide || game.phase !== 'play' || legal.length <= 1 || !session.access.handUnlocked || !session.access.canCoach || hint > 0 || advicePending) return;
+    const handKey = `${game.id}:${game.handNumber}`;
+    const previousTrick = lastNudge.current.hand === handKey ? lastNudge.current.trick : 0;
+    if (game.history.length - previousTrick < 3) return;
+    const timer = window.setTimeout(() => { lastNudge.current = { hand: handKey, trick: game.history.length }; void showHint(1); }, 700);
+    return () => clearTimeout(timer);
+  }, [turnKey, coachMode, paused, session.access.handUnlocked, session.access.canCoach, hint, advicePending]);
   async function showHint(level: HintLevel, unlock = false) {
     if (!level) { setHint(0); return; }
     if (!session.access.handUnlocked && session.access.remainingHands !== null && !unlock) { setUnlockLevel(level); return; }
@@ -167,7 +177,15 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
     } catch (e) { if (decisionRef.current === decision) { setHint(0); setToast(e instanceof Error ? e.message : 'Suggestions unavailable. You can keep playing.'); } }
     finally { if (decisionRef.current === decision) setAdvicePending(false); }
   }
-  function openNotes() { setModal('notes'); setNotes(null); void api('/api/session/notes', 'NotesView', controller.envelope()).then(setNotes).catch(e => setToast(e instanceof Error ? e.message : 'Notes unavailable.')); }
+  async function loadNotes(unlock = false) {
+    try { if (unlock || !session.access.handUnlocked) await controller.unlock(1); setNotes(await api('/api/session/notes', 'NotesView', controller.envelope())); setNotesUnlock(false); }
+    catch (e) { setToast(e instanceof Error ? e.message : 'Notes unavailable.'); }
+  }
+  function openNotes() {
+    setModal('notes'); setNotes(null);
+    const needsConfirm = !session.access.handUnlocked && session.access.remainingHands !== null;
+    setNotesUnlock(needsConfirm); if (!needsConfirm) void loadNotes();
+  }
   async function commit() {
     if (paused || controller.busy) return;
     const ok = game.phase === 'pass' && selected.length === 3 ? await controller.action({ kind: 'pass', cards: selected }) : game.phase === 'bid' && myTurn ? await controller.action({ kind: 'bid', bid }) : false;
@@ -262,7 +280,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       <h3 className="settings-label">Coaching</h3><div className="setting-options">{([{ value: 'asked', title: 'When I ask', detail: 'Cues and suggestions on request.', icon: <Focus size={20} /> }, { value: 'nudges', title: 'A nudge now and then', detail: 'Occasional cues during play.', icon: <Sparkles size={20} /> }, { value: 'after', title: 'After the hand', detail: 'Feedback after each hand.', icon: <Flag size={20} /> }] as const).map(option => <button key={option.value} className={`setting-option ${coachMode === option.value ? 'chosen' : ''}`} onClick={() => { setCoachMode(option.value); setHint(0); }} aria-pressed={coachMode === option.value}>{option.icon}<span><b>{option.title}</b><small>{option.detail}</small></span><span className="radio-mark">{coachMode === option.value && <span />}</span></button>)}</div><fieldset className="speed-settings"><legend>Game speed</legend><div className="speed-options">{([1, 1.2, 1.4] as const).map(speed => <button key={speed} className={gameSpeed === speed ? 'chosen' : ''} aria-pressed={gameSpeed === speed} onClick={() => setGameSpeed(speed)}>{speed}×<small>{speed === 1 ? 'Normal' : speed === 1.2 ? '20% faster' : '40% faster'}</small></button>)}</div></fieldset><button className="primary-button full-button" onClick={closeModal}>Done</button>
     </Dialog>}
     {!viewport.portraitPhone && modal === 'notes' && <Dialog title="Table notes" onClose={closeModal} wide>
-      <div className="notes-layout"><section><h3>Public cards played</h3><p className="small-copy">Only cards everyone has seen.</p><div className="suit-memory">{getMemory().map(row => <div className="suit-memory-row" key={row.suit}><span className={`memory-suit ${row.suit === 'H' || row.suit === 'D' ? 'heart-symbol' : ''}`}>{suitSymbols[row.suit]}</span><div className="suit-track"><span style={{ width: `${row.played / 13 * 100}%` }} /></div><b>{row.played}<span> / 13</span></b><small>{row.remaining} unplayed</small></div>)}</div><details><summary>Played cards</summary>{getMemory().map(row => <p key={row.suit}>{row.playedCards?.map(cardLabel).join(', ') || `${row.played} cards played in ${row.suit}`}</p>)}</details><h3 className="notes-subtitle">Your private pass memory</h3><p className="small-copy">Sent: {notes?.outgoing.map(cardLabel).join(', ') || 'None'}<br />Received: {notes?.received.map(cardLabel).join(', ') || 'None'}</p><h3 className="notes-subtitle">Known voids</h3><div className="void-list">{getMemory().some(row => row.voidSeats.length) ? getMemory().filter(row => row.voidSeats.length).map(row => <span key={row.suit}>{row.voidSeats.map(seat => names[seat]).join(', ')} <b>no {suitSymbols[row.suit]}</b></span>) : <p className="small-copy">No voids revealed by play yet.</p>}</div></section><section className="last-trick-section"><h3>Last trick</h3>{game.history.length ? <><p className="small-copy">Taken by {names[game.history[game.history.length - 1].winner]}</p><div className="last-trick-cards">{game.history[game.history.length - 1].plays.map(play => <div key={play.seat}><CardFace card={play.card} /><span>{names[play.seat]}</span></div>)}</div></> : <p className="small-copy">The first trick is still ahead.</p>}<div className="table-rules"><h3>This table</h3><p>{isHearts ? 'Pass left, right, across, then hold. Hearts: 1 point. Queen of spades: 13. Shoot the moon: 26 to everyone else. Game ends at 100.' : `${isTeam ? 'You and Maya share a contract. ' : 'Each player has their own contract. '}Nil: ±100. Ten bags cost 100 points. No blind Nil. Play to 500.`}</p></div></section></div>
+      <>{notesUnlock && <div className="fixture-notice"><p>Use one coached hand to open detailed memory? All help in this hand is included.</p><button className="hint-button" onClick={() => void loadNotes(true)}>Use coached hand</button><button className="text-button" onClick={closeModal}>Not now</button></div>}<div className="notes-layout"><section><h3>Public cards played</h3><p className="small-copy">Only cards everyone has seen.</p><div className="suit-memory">{getMemory().map(row => <div className="suit-memory-row" key={row.suit}><span className={`memory-suit ${row.suit === 'H' || row.suit === 'D' ? 'heart-symbol' : ''}`}>{suitSymbols[row.suit]}</span><div className="suit-track"><span style={{ width: `${row.played / 13 * 100}%` }} /></div><b>{row.played}<span> / 13</span></b><small>{row.remaining} unplayed</small></div>)}</div><details><summary>Played cards</summary>{getMemory().map(row => <p key={row.suit}>{row.playedCards?.map(cardLabel).join(', ') || `${row.played} cards played in ${row.suit}`}</p>)}</details><h3 className="notes-subtitle">Your private pass memory</h3><p className="small-copy">Sent: {notes?.outgoing.map(cardLabel).join(', ') || 'None'}<br />Received: {notes?.received.map(cardLabel).join(', ') || 'None'}</p><h3 className="notes-subtitle">Known voids</h3><div className="void-list">{getMemory().some(row => row.voidSeats.length) ? getMemory().filter(row => row.voidSeats.length).map(row => <span key={row.suit}>{row.voidSeats.map(seat => names[seat]).join(', ')} <b>no {suitSymbols[row.suit]}</b></span>) : <p className="small-copy">No voids revealed by play yet.</p>}</div></section><section className="last-trick-section"><h3>Last trick</h3>{game.history.length ? <><p className="small-copy">Taken by {names[game.history[game.history.length - 1].winner]}</p><div className="last-trick-cards">{game.history[game.history.length - 1].plays.map(play => <div key={play.seat}><CardFace card={play.card} /><span>{names[play.seat]}</span></div>)}</div></> : <p className="small-copy">The first trick is still ahead.</p>}<div className="table-rules"><h3>This table</h3><p>{isHearts ? 'Pass left, right, across, then hold. Hearts: 1 point. Queen of spades: 13. Shoot the moon: 26 to everyone else. Game ends at 100.' : `${isTeam ? 'You and Maya share a contract. ' : 'Each player has their own contract. '}Nil: ±100. Ten bags cost 100 points. No blind Nil. Play to 500.`}</p></div></section></div></>
     </Dialog>}
     {!viewport.portraitPhone && modal === 'pause' && <Dialog title="Paused" onClose={closeModal}><div className="pause-art"><Pause size={34} /></div><button className="primary-button full-button" onClick={closeModal}><Play size={17} />Resume</button><button className="text-button full-button" onClick={() => setModal('games')}><RotateCcw size={17} />Choose another game</button></Dialog>}
 
