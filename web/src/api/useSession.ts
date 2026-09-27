@@ -11,6 +11,7 @@ export function useSession() {
   const pending = useRef<Pending | null>(null);
   const inFlight = useRef(false);
   const generation = useRef(0);
+  const boot = useRef<Promise<SessionView> | null>(null);
   const accept = useCallback((value: SessionView) => { generation.current++; current.current = value; setSession(value); return value; }, []);
   const refresh = useCallback(async () => {
     const requestGeneration = ++generation.current;
@@ -18,7 +19,7 @@ export function useSession() {
     if (requestGeneration !== generation.current || (current.current?.game.id === value.game.id && current.current.revision > value.revision)) return current.current ?? value;
     accept(value); return value;
   }, [accept]);
-  useEffect(() => { void refresh().catch(e => setError(e instanceof Error ? e.message : 'Could not connect.')); }, [refresh]);
+  useEffect(() => { boot.current ??= refresh(); void boot.current.catch(e => setError(e instanceof Error ? e.message : 'Could not connect.')); }, [refresh]);
   const envelope = useCallback((): CommandEnvelope => {
     const value = current.current;
     if (!value) throw new Error('The table is still loading.');

@@ -224,7 +224,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       </header>
 
       <main className="game-shell">
-        <section className="score-strip" aria-label="Game score"><div className="hand-number"><span className="status-light" /> Hand {game.handNumber}<span className="hand-divider">/</span><span className="trick-number">Trick {Math.min(13, game.history.length + 1)} of 13</span></div>
+        <section className="score-strip" aria-label="Game score"><div className="hand-number"><span className="status-light" /> Hand {game.handNumber}<span className="hand-divider">/</span><span className="trick-number">Trick {Math.max(1, Math.min(13, game.history.length + (game.phase === 'trick-end' ? 0 : 1)))} of 13</span></div>
           <div className="scoreboard">{(isTeam ? [0, 1] : [0, 1, 2, 3]).map(seat => <div className={`score-item ${seat === 0 ? 'your-score' : ''}`} key={seat}><span>{isTeam ? seat === 0 ? 'You & Maya' : 'Leo & Theo' : names[seat]}</span><b>{game.scores[seat]}</b>{!isHearts && <small className="bag-count">{game.bags[seat]} bags</small>}</div>)}<span className="target-score">{isHearts ? 'Low score wins' : 'Play to 500'}</span></div>
         </section>
 
