@@ -1,0 +1,155 @@
+{
+  "kind": "local-operating-smoke",
+  "startedAt": "2026-09-27T06:32:42.078Z",
+  "finishedAt": "2026-09-27T06:32:43.875Z",
+  "runtime": "v24.19.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "sourceCommit": "c79dabbcd10959d60ebc9dec1cc4884f39fc9f96",
+  "sourceWorkingTreeDirty": true,
+  "sourceHashes": {
+    "web/server/http/app.ts": "8814856e8a3a6c8e58ae338b33cfb453b8273eea3952397d45c0f4201719a04d",
+    "web/server/http/game-service.ts": "917cec1c8c28a0a9086935b2b8ba130c2496e1c63550752c77609c7be6b571e1",
+    "web/server/http/views.ts": "3970a0185721ccb3f0a1e343958ecf51a12c1f550b69238200033cde3930f65d",
+    "web/server/records/repository.ts": "501bbc5fe2b7358140d43562aae8f48ba26d5d396ec64436f950e30a794f14b8",
+    "web/shared/contracts.schema.json": "16cf18e102d884f4b99b0d363787eb19db1f13802272e9b22ec52aaea543fecf"
+  },
+  "transport": "real HTTP over ephemeral 127.0.0.1 port",
+  "database": "isolated random schema in loopback *_test database",
+  "databasePoolMax": 8,
+  "identity": "local-test",
+  "payments": "fixture; no external calls",
+  "provider": "off; no requests",
+  "uniqueTableLimit": 100,
+  "databaseCounts": {
+    "players": 100,
+    "games": 100
+  },
+  "cleanupComplete": true,
+  "stages": [
+    {
+      "concurrentTables": 1,
+      "admitted": 1,
+      "completed": 1,
+      "errors": 0,
+      "httpRequests": 3,
+      "durationMs": 108.92,
+      "requestLatencyMs": {
+        "p50": 33.67,
+        "p95": 55.94,
+        "p99": 55.94,
+        "max": 55.94
+      },
+      "routes": {
+        "/api/session": {
+          "requests": 1,
+          "p50": 55.94,
+          "p95": 55.94,
+          "p99": 55.94
+        },
+        "/api/session/prepare": {
+          "requests": 1,
+          "p50": 33.67,
+          "p95": 33.67,
+          "p99": 33.67
+        },
+        "/api/session/advance": {
+          "requests": 1,
+          "p50": 18.96,
+          "p95": 18.96,
+          "p99": 18.96
+        }
+      },
+      "failures": []
+    },
+    {
+      "concurrentTables": 10,
+      "admitted": 10,
+      "completed": 10,
+      "errors": 0,
+      "httpRequests": 29,
+      "durationMs": 235.68,
+      "requestLatencyMs": {
+        "p50": 57.43,
+        "p95": 140.8,
+        "p99": 149.03,
+        "max": 149.03
+      },
+      "routes": {
+        "/api/session": {
+          "requests": 10,
+          "p50": 126.81,
+          "p95": 149.03,
+          "p99": 149.03
+        },
+        "/api/session/prepare": {
+          "requests": 9,
+          "p50": 57.43,
+          "p95": 73.94,
+          "p99": 73.94
+        },
+        "/api/session/actions": {
+          "requests": 1,
+          "p50": 39.8,
+          "p95": 39.8,
+          "p99": 39.8
+        },
+        "/api/session/advance": {
+          "requests": 9,
+          "p50": 41.52,
+          "p95": 44.82,
+          "p99": 44.82
+        }
+      },
+      "failures": []
+    },
+    {
+      "concurrentTables": 100,
+      "admitted": 100,
+      "completed": 100,
+      "errors": 0,
+      "httpRequests": 273,
+      "durationMs": 1183.83,
+      "requestLatencyMs": {
+        "p50": 372.98,
+        "p95": 516.67,
+        "p99": 556.38,
+        "max": 563.97
+      },
+      "routes": {
+        "/api/session": {
+          "requests": 100,
+          "p50": 410.93,
+          "p95": 550.94,
+          "p99": 558.23
+        },
+        "/api/session/actions": {
+          "requests": 27,
+          "p50": 289.39,
+          "p95": 330.76,
+          "p99": 332.89
+        },
+        "/api/session/prepare": {
+          "requests": 73,
+          "p50": 471.75,
+          "p95": 494.8,
+          "p99": 497.38
+        },
+        "/api/session/advance": {
+          "requests": 73,
+          "p50": 207.39,
+          "p95": 383.95,
+          "p99": 388.45
+        }
+      },
+      "failures": []
+    }
+  ],
+  "status": "passed",
+  "limitations": [
+    "One local process and short samples on the current workstation; no production capacity claim.",
+    "Tables are reused between stages: 100 distinct identities/tables maximum, 111 measured transitions.",
+    "HTTP latency includes local connection, application, database and JSON transfer; no browser rendering or external provider latency.",
+    "No sustained-load, remote-client, hosted multi-replica, failover or paid-load gate is established."
+  ]
+}
