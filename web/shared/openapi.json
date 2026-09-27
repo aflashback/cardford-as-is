@@ -709,6 +709,138 @@
         ]
       }
     },
+    "/api/subscription/preview": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingPreview"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillingPreviewRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subscription/change": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillingConfirmRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/family": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamilyView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamilyView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyCommand"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/account": {
       "get": {
         "responses": {
@@ -912,6 +1044,30 @@
       },
       "NotesView": {
         "$ref": "./contracts.schema.json#/$defs/NotesView"
+      },
+      "BillingPreviewRequest": {
+        "$ref": "./contracts.schema.json#/$defs/BillingPreviewRequest"
+      },
+      "BillingPreview": {
+        "$ref": "./contracts.schema.json#/$defs/BillingPreview"
+      },
+      "BillingConfirmRequest": {
+        "$ref": "./contracts.schema.json#/$defs/BillingConfirmRequest"
+      },
+      "BillingOperation": {
+        "$ref": "./contracts.schema.json#/$defs/BillingOperation"
+      },
+      "FamilyMember": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyMember"
+      },
+      "FamilyInvitation": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyInvitation"
+      },
+      "FamilyView": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyView"
+      },
+      "FamilyCommand": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyCommand"
       }
     }
   }

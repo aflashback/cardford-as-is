@@ -1705,6 +1705,486 @@
         "history"
       ],
       "additionalProperties": false
+    },
+    "BillingPreviewRequest": {
+      "title": "BillingPreviewRequest",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "const": "select-plan"
+            },
+            "plan": {
+              "$ref": "#/$defs/PaidPlan"
+            }
+          },
+          "required": [
+            "action",
+            "plan"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "enum": [
+                "cancel",
+                "resume"
+              ]
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "BillingPreview": {
+      "title": "BillingPreview",
+      "type": "object",
+      "properties": {
+        "previewId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "action": {
+          "enum": [
+            "select-plan",
+            "cancel",
+            "resume"
+          ]
+        },
+        "plan": {
+          "$ref": "#/$defs/PaidPlan"
+        },
+        "effectiveAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expiresAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "amountDueNow": {
+          "type": "null"
+        },
+        "currency": {
+          "type": "null"
+        },
+        "mode": {
+          "const": "fixture"
+        },
+        "notice": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "previewId",
+        "action",
+        "plan",
+        "effectiveAt",
+        "expiresAt",
+        "amountDueNow",
+        "currency",
+        "mode",
+        "notice"
+      ],
+      "additionalProperties": false
+    },
+    "BillingConfirmRequest": {
+      "title": "BillingConfirmRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "previewId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "previewId"
+      ],
+      "additionalProperties": false
+    },
+    "BillingOperation": {
+      "title": "BillingOperation",
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "status": {
+          "enum": [
+            "confirmed",
+            "scheduled"
+          ]
+        },
+        "effectiveAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "plan": {
+          "$ref": "#/$defs/PaidPlan"
+        },
+        "cancelAtPeriodEnd": {
+          "type": "boolean"
+        },
+        "mode": {
+          "const": "fixture"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "operationId",
+        "status",
+        "effectiveAt",
+        "plan",
+        "cancelAtPeriodEnd",
+        "mode",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyMember": {
+      "title": "FamilyMember",
+      "type": "object",
+      "properties": {
+        "assignmentId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "playerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "seatClass": {
+          "enum": [
+            "unlimited",
+            "limited"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "held"
+          ]
+        },
+        "periodEnd": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "assignmentId",
+        "playerId",
+        "displayName",
+        "seatClass",
+        "status",
+        "periodEnd"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyInvitation": {
+      "title": "FamilyInvitation",
+      "type": "object",
+      "properties": {
+        "invitationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "inviteeId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "seatClass": {
+          "enum": [
+            "unlimited",
+            "limited"
+          ]
+        },
+        "expiresAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "invitationId",
+        "inviteeId",
+        "seatClass",
+        "expiresAt"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyView": {
+      "title": "FamilyView",
+      "type": "object",
+      "properties": {
+        "familyId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "role": {
+          "enum": [
+            "none",
+            "payer",
+            "member"
+          ]
+        },
+        "payer": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "playerId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "displayName": {
+                  "type": "string",
+                  "maxLength": 2000
+                }
+              },
+              "required": [
+                "playerId",
+                "displayName"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FamilyMember"
+          },
+          "maxItems": 5
+        },
+        "invitations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FamilyInvitation"
+          },
+          "maxItems": 4
+        },
+        "periodEnd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "localMock": {
+          "const": true
+        }
+      },
+      "required": [
+        "familyId",
+        "role",
+        "payer",
+        "members",
+        "invitations",
+        "periodEnd",
+        "localMock"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyCommand": {
+      "title": "FamilyCommand",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "create"
+            }
+          },
+          "required": [
+            "commandId",
+            "action"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "invite"
+            },
+            "inviteeId": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            },
+            "seatClass": {
+              "enum": [
+                "unlimited",
+                "limited"
+              ]
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "inviteeId",
+            "seatClass"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "accept"
+            },
+            "token": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "acknowledgeIndividualCoverage": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "token",
+            "acknowledgeIndividualCoverage"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "revoke-invite"
+            },
+            "invitationId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "invitationId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "remove"
+            },
+            "assignmentId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "assignmentId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "leave"
+            }
+          },
+          "required": [
+            "commandId",
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      ]
     }
   },
   "anyOf": [
@@ -1848,6 +2328,30 @@
     },
     {
       "$ref": "#/$defs/NotesView"
+    },
+    {
+      "$ref": "#/$defs/BillingPreviewRequest"
+    },
+    {
+      "$ref": "#/$defs/BillingPreview"
+    },
+    {
+      "$ref": "#/$defs/BillingConfirmRequest"
+    },
+    {
+      "$ref": "#/$defs/BillingOperation"
+    },
+    {
+      "$ref": "#/$defs/FamilyMember"
+    },
+    {
+      "$ref": "#/$defs/FamilyInvitation"
+    },
+    {
+      "$ref": "#/$defs/FamilyView"
+    },
+    {
+      "$ref": "#/$defs/FamilyCommand"
     }
   ]
 }
