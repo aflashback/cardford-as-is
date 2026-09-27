@@ -1,0 +1,15 @@
+.git
+.env
+.env.*
+!*.example
+*token*.txt
+*secret*.txt
+.local
+.secrets
+node_modules
+**/node_modules
+**/dist
+qa
+.playwright-mcp
+test-results
+playwright-report

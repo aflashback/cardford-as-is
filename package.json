@@ -1,0 +1,17 @@
+{
+  "name": "tricks-coach", "version": "0.1.0", "private": true, "type": "module",
+  "workspaces": ["web"],
+  "engines": {"node": ">=24.0.0 <25"},
+  "scripts": {
+    "dev": "node scripts/dev.mjs", "start": "node web/server/index.ts",
+    "db:up": "node scripts/database.mjs up", "db:migrate": "node web/server/records/migrate.ts",
+    "contracts:generate": "node web/scripts/generate-contracts.mjs", "contracts:check": "node web/scripts/generate-contracts.mjs --check",
+    "typecheck": "npm run typecheck --workspace web", "build": "npm run build --workspace web",
+    "test:legacy": "node --test --test-isolation=none web/tests/*.test.ts",
+    "test:all": "node --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts",
+    "test:integration": "node --test --test-isolation=none web/server/tests/integration.test.ts",
+    "test:ui": "playwright test -c web/playwright.config.ts",
+    "lint:boundaries": "node web/scripts/check-artifacts.mjs --source",
+    "check:artifacts": "node web/scripts/check-artifacts.mjs"
+  }
+}

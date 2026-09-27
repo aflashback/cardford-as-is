@@ -25,7 +25,7 @@ These names are the local build's configuration convention. They must be validat
 | `HOST`, `PORT`, `APP_ORIGIN` | Local API binds loopback; canonical origin is an allowlist input for cookies/CSRF/redirects. Hosted values are explicit. |
 | `DATABASE_URL` | Server-only connection string for the current environment. Never reuse it as the destructive test target. |
 | `TEST_DATABASE_URL` | Dedicated integration database. Test harness rejects the development/hosted database before setup/reset. |
-| `IDENTITY_MODE` | Explicit `development` locally or `managed` hosted. Hosted startup rejects development mode regardless of other flags. |
+| `IDENTITY_MODE` | Explicit `local-test` locally or `managed` hosted. Hosted startup rejects local-test mode regardless of other flags. |
 | `BILLING_MODE` | Explicit `fixture`, `stripe-test` or `stripe-live`. Staging requires stripe-test; production requires stripe-live. Test/live resource IDs cannot cross environments. |
 | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` | Server secrets. Test and live credentials/endpoints are separate. Reconciliation verifies environment/customer/offer/beneficiary. |
 | `JEV_MODE`, `JEV_MODEL`, `JEV_MAX_REQUESTS` | Defaults off, configured release ID and zero attempts. Follow W17 for the model allowlist, durable experiment caps and cost budget. |
