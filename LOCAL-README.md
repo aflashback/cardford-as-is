@@ -2,7 +2,7 @@
 
 Open **http://127.0.0.1:4173**. The application runs on Node and PostgreSQL. The existing table now uses server-owned state; the browser receives only your hand and public information.
 
-Hearts, Spades Solo and Spades Partners are playable. Local coaching, table notes, score recaps, current-game replay and isolated sample continuations work without Jev. Account screens include subscription previews, cancel/resume, family invitations, export and local deletion.
+Hearts, Spades Solo and Spades Partners are playable. Local coaching, end-game trick results, score recaps, current-game replay and isolated sample continuations work without Jev. Account screens include subscription previews, cancel/resume, family invitations, export and local deletion.
 
 Identity and subscription coverage are explicitly **local test fixtures**. No payment is collected. Stripe has a server adapter and fixture tests; real managed login, Stripe sandbox/live configuration and public launch remain separate gates. Strategy grades and model promotion remain disabled without independent evidence.
 

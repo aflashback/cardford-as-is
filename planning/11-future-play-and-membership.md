@@ -4,6 +4,8 @@
 
 The current launch offer remains the finite free example plus subscribed live play in [06](06-commercialization.md). The local implementation and its remaining hosted gates are recorded in [status](../qa/implementation/status.md). Future ideas below are not additional W00–W19 acceptance requirements.
 
+**CR-STRAT-005:** future human play remains possible through `tableType=human-only`; current `practice-bots` always has one human and three bots. Table type is independent of game and solo/partnership competition. Human-only remains unavailable until its gates pass.
+
 ## F01 — A reason to stay after learning
 
 **Recommendation:** preserve a path from learning to enjoyable regular play. Needing the coach less can be a successful outcome. Test whether the game itself earns repeat use before assuming either that every returning player needs coaching or that free play will fund itself.

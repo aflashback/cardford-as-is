@@ -2,6 +2,8 @@
 
 This is the primary product specification. The game views are a useful starting point; styling can change. The core experience is **help before a choice → notice a useful review moment → revisit the evidence → return to play**.
 
+**CR-STRAT-005:** [Spades reasoning](12-spades-reasoning.md) requires analysis for every human decision regardless of UI preference. Preserve original analysis and authored advice for later authorized review. No live Table notes screen is required; aggregate trick results belong at game end.
+
 ## One strategy, two uses
 
 Bots and coach use the same player-information boundary, tactics, candidate evaluation and verified reasons. A bot applies its selected action. The coach decides what to reveal, when to speak and how to compare the player's accepted choice. It also remembers teaching exposure and selects useful review moments. Assessment audits the shared strategy's evidence; simply disagreeing with the bot is not a mistake.
@@ -29,7 +31,7 @@ Coaching frequency also controls post-action feedback:
 | A nudge now and then | Sparse Notice cues. | One quiet review marker when evidence warrants it; share the cue budget. |
 | After the hand | No live strategic cues. | Queue findings for hand/game review. |
 
-Table notes and player-initiated review remain available in every mode. Settings changes never erase prior exposure. Keep at most one unresolved live marker; do not stack notifications. The marker never pauses play, opens a dialog, undoes a move or reveals the replacement card automatically. Dismiss means continue playing; the finding remains available in review. Late findings identify their original hand/trick and never highlight the current card as wrong.
+Player-initiated current-game review remains available in every coaching preference. End-game results show completed trick winners and public statistics. Settings changes never erase prior exposure. Keep at most one unresolved live marker; do not stack notifications. The marker never pauses play, opens a dialog, undoes a move or reveals the replacement card automatically. Dismiss means continue playing; the finding remains available in review. Late findings identify their original hand/trick and never highlight the current card as wrong.
 
 ### Before and after a choice
 
@@ -70,13 +72,13 @@ New coaching requires current access and explicit activation of a locked limited
 
 Before first coaching in a locked hand, show remaining hands and request explicit activation. Automatic cues cannot spend limited allowance or reveal paid advice before activation. Unlocked hands follow the selected coaching frequency. At coaching exhaustion an active member can keep playing. At membership expiry live play pauses with state preserved; coaching saved under an existing unlock during paid coverage remains readable. A match review previews the number of distinct locked hands to activate.
 
-The usage ledger records first usable coaching durably saved for the hand. Provider attempts, server-issued guidance and browser display reports are separate. An unlock alone does not prove content was viewed; issued guidance makes the hand potentially assisted even when display is unknown. Unseen shadow output is never issued guidance.
+The usage ledger records first usable coaching durably saved for the hand. Provider attempts, server-issued guidance and browser display reports are separate. Internal analysis neither unlocks a hand nor consumes coaching allowance. An unlock alone does not prove content was viewed; issued guidance makes the hand potentially assisted even when display is unknown. Unseen shadow output is never issued guidance.
 
 ## Pause, revisit, compare
 
 A **hand** is one deal; a **trick** is four played cards; the **game/match** spans hands. Review covers earlier tricks and hands of the current game, including the just-completed match until the next game starts. This adds no library of older games.
 
-Open review from a marker, Table notes or a recap. Freeze automated progression and retain the latest live position and selections. Use a compact hand/trick selector with flagged decisions; any accepted player decision can be inspected, even if ungraded. Return to table restores that live position. Resuming never substitutes a replayed move.
+Open review from a marker, the review control or a recap. Freeze automated progression and retain the latest live position and selections. Use a compact hand/trick selector with flagged decisions; any accepted player decision can be inspected, even if ungraded. Return to table restores that live position. Resuming never substitutes a replayed move.
 
 Each review presents:
 

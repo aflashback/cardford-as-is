@@ -147,3 +147,14 @@ Separate four evidence classes:
 Pilot targets from current specs: in-region non-analysis API p95 <300 ms at declared load; code advice p95 <1 second where budget permits; Jev total deadline 8 seconds. Initial candidate/world/time settings are experiments. Do not claim a capacity tier from server count, registered accounts or an unloaded benchmark.
 
 Use evidence filenames such as `qa/implementation/W04-commands-<run-id>.md` and a small linked status table. Screenshots prove appearance, not private-data safety; mocks prove application handling, not live provider/payment availability; a process crash test does not establish regional disaster RPO.
+
+## CR-STRAT-005 reasoning extension
+
+| IDs | Evidence target |
+|---|---|
+| TABLE-01/02 | Internal practice table metadata; future human-only remains separately gated; setup copy reads three trained players. |
+| KNOW-05, STRAT-07–10 | `spades-reasoning.test.ts`: reachable solo then partnership facts/tactics, hidden-hand invariance and bot/coach agreement; `evaluation/spades-reasoning.ts`: seeded full hands and frozen baseline. |
+| COACH-09/10 | `saved-analysis.test.ts`: analysis exists with hints off/quota exhausted, no automatic charge/exposure, stable original review and explicit legacy absence. |
+| COACH-11 | `table.spec.ts`: game-end final-hand trick results, no live Table notes. |
+
+Scenario family definitions and limits are in [CR-STRAT-005](../12-spades-reasoning.md). Passing these cases is scoped correctness evidence, not all-deal optimality or player-learning proof.

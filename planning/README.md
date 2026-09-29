@@ -13,6 +13,7 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 | [Requirements and tests](implementation/requirements-and-tests.md) | Stable IDs, named fixtures and concrete rule/UX/service/payment assertions. |
 | [01 — Product and views](01-product-and-views.md) | Preserve the coded experience; define missing interactions. |
 | [Brand and domain](brand-and-domain.md) | CardFord name, previous domain plan and unverified setup. |
+| [12 — Spades reasoning](12-spades-reasoning.md) | Table types, solo core, partnership overlays, scenarios and saved analysis. |
 | [02 — Games and decisions](02-games-and-decisions.md) | Exact rules, player knowledge, tactics, probabilities and Jev's role. |
 | [03 — Local runtime](03-local-runtime.md) | OpenRouter, state ownership, persistence and failures. |
 | [04 — Coaching and evidence](04-coaching-and-evidence.md) | Assistance, feedback, mistake categories and progress. |

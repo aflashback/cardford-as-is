@@ -2,10 +2,12 @@
 
 Specification, 26 September 2026. The browser game exists; the service, probability pipeline and Jev integration below are planned. This update does not implement or activate them.
 
+**Current reasoning update:** [CR-STRAT-005](12-spades-reasoning.md) supersedes tactical/analysis behavior below. Runtime and storage status are in the [local handoff](../qa/implementation/LOCAL-V1-REPORT.md).
+
 ## What V1 commits to
 
 - Keep usable game interactions, three modes and landscape phone gate; visual styling remains flexible.
-- One shared decision policy for bots and coach, consuming only the acting player's knowledge.
+- One shared analysis policy for bots and coach: solo core plus partnership overlay, consuming only the acting player's knowledge. Retain every human analysis even when cues are off.
 - Prioritize coaching before/after a choice, evidence review across the current game's hands/tricks and optional end-game review. Alternative trials never replace the live game.
 - Compare **A: calibrated contextual bidding** with **B: constrained-deal rollouts**. Add adaptive A/B only if it earns its complexity. No replacement magic coefficient.
 - Local Node service and worker; SQLite retains every started game internally. No user game archive.

@@ -2,6 +2,8 @@
 
 26 September 2026. Scope of this work: product, architecture and test design first, using the existing game as evidence. No production service, checkout, incorporation, provider account or multiplayer deployment is created here.
 
+**CR-STRAT-005:** table composition is explicit: current `practice-bots` (one human plus three bots), future `human-only` (four humans). Future PvP remains separate from the current coaching table.
+
 ## Recorded direction
 
 | Status | Decision |

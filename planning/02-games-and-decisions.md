@@ -1,5 +1,7 @@
 # Games and decisions
 
+**CR-STRAT-005:** [Reasoning contract and scenario catalog](12-spades-reasoning.md) specifies the shared solo core, partnership overlays, evidence classes and saved analysis.
+
 ## Rules to preserve
 
 Freeze `hearts-training-1.0.0`, `spades-solo-training-1.0.0` and the existing partnership `spades-training-1.0.0`. These are this app's variants, not claims about every table's rules. Use the current [engine](../web/src/game.ts) and [scoring fixtures](../examples) as the starting point.
@@ -67,7 +69,7 @@ flowchart TD
 Shadow comparisons remain internal. A human suggestion leaves every legal action available.
 
 1. Enumerate every legal action. Play ≤13; bid 14; Hearts pass 286 complete triples. Derive exact counts, known holdings and voids first.
-2. Apply conditional tactics: short suits, queen protection, moon opportunities, safe underplays, contract need, bags, Nil coverage, control and next lead. Bots and coach share this policy and its verified reasons.
+2. Apply the solo tactical core, then partnership objectives and exceptions before selecting a move. Partner evidence is public and can be exact (void) or soft (lead/discard); it never shares hidden hands. Apply conditional tactics: short suits, queen protection, moon opportunities, safe underplays, contract need, bags, Nil coverage, control and next lead. Bots and coach share this policy and its verified reasons.
 3. Calculate exact probabilities for tractable questions; otherwise sample hidden deals constrained by known holdings, voids and hand sizes. Uniform feasible assignments are the baseline assumption. Validate both feasibility and sampling frequencies against exact small-state enumeration; naive sequential placement can be biased. Bid/pass-based weighting is a separate, versioned soft assumption.
 4. Compare complete plans using the same sampled deals across actions. Simulated actors use their own observations. Incoming Hearts passes are simulated before judging a proposed pass. Screen all actions cheaply, then allocate extra computation to competitive or uncertain plans; record which actions received deeper evaluation.
 5. Retain strong, close and strategically different candidates. Initial cap: 12; retain an alternative objective when relevant. Code ranks this shortlist; enabled Jev runs compare choices using the same facts, estimates and limitations.

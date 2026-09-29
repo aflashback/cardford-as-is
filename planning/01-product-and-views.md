@@ -4,11 +4,13 @@
 
 Commercial entry, membership and family behavior are defined in [06](06-commercialization.md); the server boundary is in [07](07-hosted-architecture.md). The current prototype does not implement them.
 
+**CR-STRAT-005:** [Spades reasoning and table design](12-spades-reasoning.md) governs table types, retained decision analysis and end-game evidence.
+
 ## Experience
 
-A complete card game with a coach in the player's corner. The player already knows the rules; the coach helps them notice, decide and improve. Default: Spades partners, coaching **When I ask**, three computer opponents. Resume the active game on return.
+A complete card game with a coach in the player's corner. The player already knows the rules; the coach helps them notice, decide and improve. Default: Spades partners, coaching **When I ask**. Current `practice-bots` tables contain human South and three bots, including one teammate in Partners. Setup copy is **three trained players**. Future `human-only` tables contain four humans and omit that phrase. Resume the active game on return.
 
-The visual reference is [App.tsx](../web/src/App.tsx), [styles.css](../web/src/styles.css), [desktop](../web/qa/ui-v1-desktop.png) and [phone coach](../web/qa/ui-v1-phone.png). Preserve the blue table, simple avatars, right coach panel and hand below. Decorative captions, pep-talk text and the small hand footer are removed; the table uses the freed space. Keep computer-player disclosure in game setup; names and avatars can feel personable.
+The visual reference is [App.tsx](../web/src/App.tsx), [styles.css](../web/src/styles.css), [desktop](../web/qa/ui-v1-desktop.png) and [phone coach](../web/qa/ui-v1-phone.png). Preserve the blue table, simple avatars, right coach panel and hand below. Decorative captions, pep-talk text and the small hand footer are removed; the table uses the freed space. Use the owner-selected setup phrase **three trained players** for practice tables; names and avatars can feel personable.
 
 [CR-UX-004](decisions/CR-UX-004-table-cues.md) records the later owner-approved cue and copy changes. Active-seat rings/dots, numeric bid/trick counts and grey unavailable cards carry routine status; screen-reader announcements remain. Last trick stays visible at the left as four small cards with a winner mark and no visible names. Extra rules/review explanation is expandable.
 
@@ -58,7 +60,7 @@ Optional views return to the current table. Help does not commit a move; review 
 | Settings | Coaching: When I ask; Occasional cues; After the hand. Game speed is set in the new-game flow (1×, 1.2×, 1.4×, persisted). No model, skill-level or strategy configuration screen. |
 | Pause | Preserve position and selections. Dialogs, backgrounding and the phone rotation gate suspend progression. Resume starts a fresh animation delay. |
 | Hand recap | Existing score comparison plus at most one supported strength, one review moment and one next focus. Back to table/Play again always available. Play again continues the match; expand evidence within this dialog. |
-| Match result | Name the winner and final standings, then Play again to restart the same mode. Other modes remain in the new-game flow. No archive or replay library. |
+| Match result | Name the winner and final standings; expand completed trick winners and public bid/trick/score statistics. Play again restarts the same mode. Other modes remain in the new-game flow. No archive or replay library. |
 
 Historical table-notes behavior is superseded by [CR-UX-005](decisions/CR-UX-005-game-entry.md); there is no notes control on the current table. Score, bids, legal-card availability and the visible trick remain ordinary game information.
 
@@ -68,7 +70,7 @@ Use “Play to 500” for Spades: scoring is simultaneous and tied leaders conti
 
 Facts and legal play remain responsive while analysis runs. Use the existing coach panel:
 
-In V1 `off` and `shadow` modes, the shared local strategy supplies all visible advice. A shadow response or failure never changes the UI, recommendation, human assessment or game timing. After promotion, `recommend` mode may use Jev for a requested suggestion; facts and earlier help levels remain code-derived. These are internal modes, not another player setting.
+Every human decision receives retained pre-action analysis regardless of cue settings; hidden analysis is not assistance and does not spend allowance. In V1 `off` and `shadow` modes, the shared local strategy supplies all visible advice. A shadow response or failure never changes the UI, recommendation, human assessment or game timing. After promotion, `recommend` mode may use Jev for a requested suggestion; facts and earlier help levels remain code-derived. These are internal modes, not another player setting.
 
 - Pending: “Considering the position…”; allow dismissal and human play.
 - Ready: reveal only the requested help level. Outline evidence at Notice; mark a proposed card, bid or pass only at Suggestion.
