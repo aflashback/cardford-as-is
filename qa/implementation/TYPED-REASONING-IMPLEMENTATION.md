@@ -14,7 +14,7 @@
 
 | Check | Result |
 |---|---|
-| `node --env-file=C:\repos\test-jev\.env.local --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts` | 207 passed, 0 failed |
+| `node --env-file=C:\repos\test-jev\.env.local --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts` | 208 passed, 0 failed |
 | `npm run typecheck` | Passed |
 | `npm run build` | Passed; existing Vite large-chunk warning |
 | `npm run contracts:check` | Passed |
@@ -24,6 +24,8 @@
 | `node web/server/evaluation/spades-reasoning.ts` | Completed 512 synthetic hands; Solo margin +4.68, Partners one-seat +3.55, both-teammate +0.35 against baseline over 24 deal seeds. Partnership own-score changes were negative (−2.88/−4.60). |
 
 The [matrix report](typed-spades-casebook-and-matrix.md) records baseline-style partnership margins of **−8.67** (one changed seat) and **−17.33** (both teammates) against the local baseline. The [pinned diagnostic](spades-policy-2.0-vs-2.1-diagnostic.json) found zero bid, play or score changes between policy versions across those 180 hands; the losses predate this candidate and this matrix does not exercise its new tactics. Only two matrix hands contain Nil; none reaches a bag penalty or match completion. These are exploratory results, not evidence of partnership mastery.
+
+Independent review found and fixed two evidence-provenance issues: continuing-match outcome preferences now identify score-margin ranking as heuristic, and matrix rows identify the actual selector for each seat. The saved matrix and pinned diagnostic were regenerated after the fix.
 
 ## Unfinished promotion work
 

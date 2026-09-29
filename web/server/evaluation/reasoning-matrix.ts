@@ -58,7 +58,7 @@ export type MatrixHand = {
   dealer: Seat;
   actorSeat: Seat;
   newPolicySeats: Seat[];
-  policyVersion: string;
+  selectionPolicyBySeat: [string, string, string, string];
   transitions: number;
   decisions: number;
   selectedActions: { seat: Seat; actionId: string }[];
@@ -175,7 +175,9 @@ function runHand(
   return {
     id: `${mode}/${style}/${seed}/${arm}`,
     seed, mode, style, arm, dealer, actorSeat, newPolicySeats,
-    policyVersion,
+    selectionPolicyBySeat: ([0, 1, 2, 3] as Seat[]).map((seat) =>
+      newPolicySeats.includes(seat) ? policyVersion : `style:${style}`,
+    ) as [string, string, string, string],
     transitions, decisions, selectedActions,
     bidsBySeat: state.bids.map((bid) => bid ?? 0),
     tricksBySeat: [...state.tricks],

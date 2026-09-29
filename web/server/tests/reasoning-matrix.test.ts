@@ -28,6 +28,10 @@ test('GR-08: matrix compares paired arms under each style with original deal see
   assert.ok(report.hands.every((hand) => hand.transitions <= REASONING_MATRIX_MANIFEST.maxTransitionsPerHand));
   assert.ok(report.hands.every((hand) => hand.decisions === 56));
   assert.ok(report.hands.every((hand) => hand.selectedActions.length === 56));
+  assert.ok(report.hands.filter((hand) => hand.arm === 'reference')
+    .every((hand) => hand.selectionPolicyBySeat.every((selector) => selector === `style:${hand.style}`)));
+  assert.ok(report.hands.filter((hand) => hand.arm !== 'reference')
+    .every((hand) => hand.newPolicySeats.every((seat) => hand.selectionPolicyBySeat[seat] === report.policyVersion)));
   assert.ok(report.hands.every((hand) => hand.providerCalls === 0));
   assert.ok(report.summaries.every((summary) => summary.fallbackCount === 0));
   assert.ok(report.summaries.every((summary) => summary.candidateMatchCompletions === 0));

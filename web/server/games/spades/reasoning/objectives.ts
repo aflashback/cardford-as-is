@@ -24,6 +24,7 @@ export type OutcomeAssessment = {
   evidence: 'exact-given-projection';
   /** Ordinal within compareOutcomes only; never a probability or calibrated strength. */
   preferenceRank?: number;
+  comparisonBasis?: 'exact-terminal-result' | 'provisional-score-margin-heuristic';
   limitations: string[];
 };
 
@@ -78,6 +79,14 @@ export function compareOutcomes(
     result.focal.score - Math.max(...result.competitors.filter((entry) => entry !== result.focal).map((entry) => entry.score));
   const sorted = outcomes.toSorted((a, b) =>
     tier(b) - tier(a) || margin(b) - margin(a) || b.focal.score - a.focal.score || plans.findIndex((p) => p.id === a.id) - plans.findIndex((p) => p.id === b.id));
-  sorted.forEach((outcome, index) => { outcome.preferenceRank = index + 1; });
+  const comparisonBasis = outcomes.every((outcome) => outcome.matchStatus !== 'continuing')
+    ? 'exact-terminal-result' as const
+    : 'provisional-score-margin-heuristic' as const;
+  sorted.forEach((outcome, index) => {
+    outcome.preferenceRank = index + 1;
+    outcome.comparisonBasis = comparisonBasis;
+    if (comparisonBasis === 'provisional-score-margin-heuristic')
+      outcome.limitations.push('Preference by score margin is a heuristic across continuing match states; a lower own score can rank higher and future hands may reverse the result.');
+  });
   return outcomes;
 }

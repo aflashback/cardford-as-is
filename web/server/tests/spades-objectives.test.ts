@@ -68,6 +68,18 @@ test('GR-04 S12 evaluates an ordinary opposing set with exact Solo scoring', () 
   assert.equal(compared[0].evidence, 'exact-given-projection');
 });
 
+test('GR-04 provisional margin ranking is labelled heuristic when own score and margin disagree', () => {
+  const obs = observe(bidAll(spadesDeal([[], [], [], []], 'spades-solo'), [4, 5, 5, 5]), 0);
+  const ranked = compareOutcomes(obs, [
+    { id: 'lower-own-score', tricks: [3, 4, 3, 3] },
+    { id: 'higher-own-score', tricks: [4, 5, 2, 2] },
+  ]);
+  assert.ok(ranked[0].focal.score < ranked[1].focal.score);
+  assert.equal(ranked[0].preferenceRank, 1);
+  assert.equal(ranked[0].comparisonBasis, 'provisional-score-margin-heuristic');
+  assert.match(ranked[0].limitations.join(' '), /heuristic.*continuing/i);
+});
+
 test('GR-04 S12 compares team opponents and tenth-bag cost through the frozen scorer', () => {
   const state = bidAll(spadesDeal([[], [], [], []]), [2, 3, 2, 3]);
   state.bags = [9, 0, 9, 0];
