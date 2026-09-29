@@ -6,6 +6,8 @@ This is the primary product specification. The game views are a useful starting 
 
 ## One strategy, two uses
 
+**Evaluation refinement:** [CR-STRAT-008](decisions/CR-STRAT-008-coverage-and-evaluation.md) and its [protocol](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md) add blind rendered-cue review and a fresh immediate/delayed unaided-transfer study. If Jev selects a different action, only reasons supported for that action may be shown; policy wins and model agreement do not establish teaching value.
+
 Bots and coach use the same player-information boundary, tactics, candidate evaluation and verified reasons. A bot applies its selected action. The coach decides what to reveal, when to speak and how to compare the player's accepted choice. It also remembers teaching exposure and selects useful review moments. Assessment audits the shared strategy's evidence; simply disagreeing with the bot is not a mistake.
 
 | Moment | Coach behavior |

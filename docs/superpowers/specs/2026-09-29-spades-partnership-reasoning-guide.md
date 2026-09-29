@@ -1,8 +1,10 @@
 # Spades partnership reasoning guide
 
-**Version:** `spades-partnership-guide-0.1.0`, 29 September 2026. **Status:** authored reasoning and proposed tactics. The diamond examples below are executable; the 60 scenario recipes are not 60 implemented or independently validated strategies.
+**Version:** `spades-partnership-guide-0.2.0`, 29 September 2026. **Status:** authored reasoning and proposed tactics: 60 foundation recipes plus six compound child scenarios. The diamond examples below are executable; the wider recipes are not implemented or independently validated strategies.
 
 **Purpose:** explain what a capable partner notices, what they can infer, and how that changes a decision. This supplies detail beneath the existing S01–S14 / P01–P12 catalog. [Implementation plan](../plans/2026-09-29-partnership-inference.md) · [Decision record](../../../planning/decisions/CR-STRAT-007-partnership-inference-guide.md) · [Example validation](../../../qa/implementation/partnership-guide-validation.md).
+
+**Coverage review:** [Success criteria and discovery method](2026-09-29-scenario-coverage-and-success.md) govern how we find gaps without fitting the system to this example. [Future Jev and coaching evaluation](../plans/2026-09-29-scenario-and-jev-evaluation.md) separates probabilities, action agreement, match results and unaided learning. The A♦–Q♦ sequence is one development family; card identity is not a rule trigger.
 
 ## 1. The reasoning contract
 
@@ -211,6 +213,21 @@ The same sequence must be checked across **seat order × own suit length × part
 
 Advanced continuations also combine these recipes: a **crossruff** alternates T01/T07 and E03 but fails when an opponent overruffs or removes trump; an **endplay** uses E06/X01 to make an opponent lead, but succeeds only if that opponent has no safe exit; a **guard-preserving discard** combines L05/E04/X01 to avoid releasing control of a second suit. A possible **squeeze** needs such a forced resource conflict, a retained threat and a usable entry. Do not announce these plans merely because few cards remain; their reachable cases belong in the entries/endgame milestone.
 
+### Six compound child scenarios found in the coverage review
+
+These are additional recipes awaiting complete legal fixtures, not new test results. Keep them under their parent mechanisms rather than inflating the top-level catalog. Suit names illustrate the pattern; they are not special-case inputs.
+
+| Child ID | Observation and candidate plan | Changed-condition counterexample | Short cue |
+|---|---|---|---|
+| SP-E03.crossruff | South is heart-void; North is publicly club-void. South can lead a club for North to ruff, then a heart return could let South ruff. Check both players' resources, both transfers and who acts after each ruff. | North has no trump/heart return, or East can overruff North. One successful transfer does not establish the return. | “Keep both ruffs and the return available.” |
+| SP-T05.guard | Partner wins a club trick; club-void South can discard 5♥ from K♥5♥ or a low diamond. With A♥ outstanding, retaining 5♥ leaves an underplay that may protect K♥ on a later heart lead. | A♥ is gone, our Nil makes K♥ itself a disposal priority, or a different discard destroys a necessary entry/ruff plan. | “Keep a low heart to protect your king.” |
+| SP-T05.first-trump | West leads 3♥, North plays A♥, East follows 4♥; South is fourth and heart-void, spades unbroken. Discarding 2♣ leaves North the trick and keeps spade leads restricted; ruffing 2♠ transfers the lead and breaks spades. | North is live Nil, or South needs the lead for a supported continuation. Compare both consequences; breaking spades is not always bad. | “Discard to keep partner's lead and delay spades.” |
+| SP-N07.cover-window | North leads 3♣; East, still on a live Nil, plays 9♣. South can underplay; West, East's partner, is fourth and a legal West cover remains feasible. Keeping East ahead applies pressure but does not settle Nil failure. | If public/own information excludes every legal West cover, underplaying guarantees East takes this trick and fails Nil; use the stronger supported cue. Our own contract can also require taking the trick. | “Their partner still has a chance to cover.” |
+| SP-O02.second-cycle | Both our Nils have failed. Nine old bags plus ten team tricks already total nineteen; one more failed-Nil trick creates the second ten-bag penalty and adds no ordinary overtrick point. | A terminal match consequence may dominate the penalty. Score both complete team results; do not apply the ordinary extra-trick value of −99 here. | “Another trick costs the next 100-point penalty.” |
+| SP-X01.endplay | Near the end, consider losing a low club to East so East must lead toward our protected heart winner. Verify the forced winner, lack of a safe exit and usable entry across the available information. | East retains a safe lead or another player can ruff. A cooperative rollout is not proof of a forced return. | “Give up the club only if the return is forced.” |
+
+First-trump, guard and Nil-cover-window cases belong in the ordinary-play discovery batch. Crossruff is a multi-trick interaction. Second bag cycles and endplays are deliberate stress cases; their frequency is unmeasured.
+
 ## 4. Resolve competing plans explicitly
 
 No universal priority list can replace scoring and future consequences. Use the following conflicts as required paired cases.
@@ -312,4 +329,4 @@ The scenario recipes and counterworlds above are original authored analysis for 
 - [Cowling et al., AIIDE 2013](https://edpowley.com/academic/papers/aiide13.pdf) evaluates Spades search and authored knowledge together; plausible-looking play and measured strength need separate checks. This supports testing our proposed tactics and their conflicts rather than declaring the guide sufficient evidence of strength.
 - [Bidding in Spades](https://arxiv.org/html/1912.11323v2) studies contextual bidding, Nil and endgame adjustments. Its learned estimates and outcomes are not calibration for our rules or bots.
 
-**Recommended next slice:** H01/H02/L01/L02/W02/W04/T01/T03, using the diamond sequence and changed-context siblings. It has a clear user benefit, counterexamples and a bounded implementation surface; expand to entries, Nil conflicts and match objectives through the linked plan.
+**Recommended first acceptance batch:** secure partner versus a pending threat (W01/W02), guarded discards and the first-trump consequence (T05 children), Nil rescue/cover windows (N03/N07), contextual bidding (B01/B02), and contract/bag conflict (O01/O02), plus one ambiguous-sequence group (H01/L02). The diamond example occupies only that last group. Author and validate these across multiple suits, seats, objectives and styles before widening implementation.

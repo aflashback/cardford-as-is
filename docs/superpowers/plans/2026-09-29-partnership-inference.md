@@ -2,15 +2,17 @@
 
 > For agentic workers: use `superpowers:subagent-driven-development` for bounded independent tasks, or `superpowers:executing-plans` for sequential execution. Freeze the interfaces before parallel implementation. Check off only work actually completed.
 
-**Goal:** turn the 60 authored partnership recipes into inspectable, deterministic decisions shared by bots and coach, with evidence for each deduction and explicit alternatives for uncertain interpretations.
+**Goal:** turn the 60 foundation recipes and their compound children into inspectable, deterministic decisions shared by bots and coach, with evidence for each deduction and explicit alternatives for uncertain interpretations.
 
-**Architecture:** extend the existing typed game packs. Add game-owned evidence, hypotheses, tactics, objective comparisons and reachable cases; share only the record contracts, registry, validation and reporting. Start with the A♦–Q♦ family. Preserve current behavior outside each reviewed slice.
+**Architecture:** extend the existing typed game packs. Add game-owned evidence, hypotheses, tactics, objective comparisons and reachable cases; share only the record contracts, registry, validation and reporting. Begin with independently discovered decisions spanning ordinary control, discards, trump, Nil, bidding and score objectives. Preserve current behavior outside each reviewed slice.
 
 **Tech stack:** strict TypeScript, existing Node 24 reducers/test runner, existing server records/worker path and authored coaching templates. No new runtime model or framework.
 
 **Spec:** [Partnership reasoning guide](../specs/2026-09-29-spades-partnership-reasoning-guide.md). **Requirements:** [CR-STRAT-007, PI-01–08](../../../planning/decisions/CR-STRAT-007-partnership-inference-guide.md). **Starting implementation:** `751ebc9`, `spades-tactics-2.1.0`. This plan refines unfinished GR-04–08 work; it does not mark the earlier plan's open tasks complete.
 
 **Status:** planned. This request produced the guide, this plan and a documentation-example verifier. Runtime implementation has not started in this iteration.
+
+**Later concept review:** [coverage and success](../specs/2026-09-29-scenario-coverage-and-success.md), [evaluation protocol](2026-09-29-scenario-and-jev-evaluation.md) and [CR-STRAT-008](../../../planning/decisions/CR-STRAT-008-coverage-and-evaluation.md) broaden the first acceptance batch and define independent discovery before strategy implementation. Diamond examples remain development fixtures; complete the offline authoring/review work first.
 
 ## Global constraints
 
@@ -40,7 +42,7 @@
 **Contract:** generic `EvidenceRef`, `ScenarioDescriptor`, `HypothesisRecord`, `TacticAssessment`, `CaseRubric` and evidence-status fields. Predicates and card/objective types stay in the game module. Use discriminated game analyses or typed adapters, not unchecked casts. Do not build a text-rule interpreter.
 
 - [ ] Freeze tests for current Hearts, Spades Solo/Partners, forced actions and historical saved advice. Add failing checks for duplicate subcase IDs, unknown parents and unresolved tactics/cues.
-- [ ] Register the 60 `SP-*` IDs under their existing S/P parents. Keep broad-family recognition compatible; never rename those historical IDs. Separate recognition, fact-proof, authored-label, independent-review and outcome-evaluation status.
+- [ ] Register the 60 foundation `SP-*` IDs under their existing S/P parents and the six compound child IDs under their foundation parents. Keep broad-family recognition compatible; never rename those historical IDs. Separate recognition, fact-proof, authored-label, independent-review and outcome-evaluation status.
 - [ ] Split Spades-shaped facts out of the shared analysis contract with a versioned compatibility reader. Preserve the old record shape as historical data; do not rewrite stored advice.
 - [ ] Add a test-only individual pack with no bids/trump/partner fields. Assert the shared reporting/registration path accepts it without Spades defaults.
 - [ ] Run `node --test --test-isolation=none web/server/tests/partnership-catalog.test.ts web/server/tests/module-seam.test.ts web/server/tests/strategy.test.ts` and `npm run typecheck`. Commit the parity and authoring milestone.
@@ -78,16 +80,17 @@
 
 ## Milestone 4 — First actionable slice and conflict resolution (PI-03/05)
 
-**Files:** modify Spades `policy.ts` and `entries.ts`; add `tactics.ts`, `resolution.ts`, `content.ts`; modify `web/server/coaching/templates.ts`; add `web/server/tests/partnership-diamond.test.ts`.
+**Files:** modify Spades `policy.ts`, `entries.ts`, `nil.ts`, `bidding.ts` and `objectives.ts` for the selected batch; add `tactics.ts`, `resolution.ts`, `content.ts`; modify `web/server/coaching/templates.ts`; add `web/server/tests/partnership-first-batch.test.ts` and the focused `partnership-diamond.test.ts`.
 
-**First slice:** SP-H01/H02/L01/L02/W02/W04/T01/T03, plus H03 when we hold K.
+**First acceptance batch:** W01/W02, T05.guard/T05.first-trump, N03/N07.cover-window, B01/B02, O01/O02, plus H01/L02 as one ambiguous sequence family. Use the guide's `SP-` IDs. This replaces a diamond-only first slice; `partnership-diamond.test.ts` remains a focused sub-suite.
 
 - [ ] Author accepted alternatives and forbidden claims before examining the new selector's choice. Include: own K plus low diamond under partner Q; fourth-seat opponent still pending; known-void opponent with possible spades; partner void with/without possible spades; overruff before/after partner.
+- [ ] Add independently sourced ordinary cases: keep a guarded heart during a club discard; compare the first spade with a discard; leave the opposing Nil's fourth-seat cover window explicit; respond to partner's bid; change priorities at a bag boundary. These are separate mechanisms, not renamed diamond derivatives.
 - [ ] Require every candidate tactic to state its immediate outcome, resource cost, served objective and continuation/cancellation condition. Preserve the current fallback where there is no supported preference.
 - [ ] Replace only this slice's conflicting additive effects with named comparisons: preserve control, transfer lead, secure credit, protect Nil, avoid bag cost. Unresolved comparisons use a documented stable tie rule; never silently let duplicate clues outvote an exact consequence.
 - [ ] Assert K cannot protect Q from a spade while a legally playable trump sometimes can; a known suit void changes the return plan; and a mere J follower does not have the effect of a proved void.
 - [ ] Bind authored cue IDs to actual rendered templates. Assert live advice refers to South's legal turn, review can explain North's earlier lead, and neither says K ownership or a ruff is certain from the two tricks.
-- [ ] Run `node --test web/server/tests/partnership-diamond.test.ts`, targeted coach/record tests and typecheck. Commit. Report actual action/cue changes; if the old selector already chose correctly, keep that choice and report the new explanation/evidence only.
+- [ ] Run `node --test --test-isolation=none web/server/tests/partnership-first-batch.test.ts web/server/tests/partnership-diamond.test.ts`, targeted coach/record tests and typecheck. Commit. Report actual action/cue changes; if the old selector already chose correctly, keep that choice and report the new explanation/evidence only.
 
 **Done when:** both a bot and the coach use the same evidence-driven slice, with paired cases showing justified context sensitivity.
 
@@ -132,6 +135,8 @@
 **Done when:** a maintainer can review and change a single scenario without searching through unrelated weights or regenerating historical advice.
 
 ## Milestone 8 — Local verification and evidence (PI-08)
+
+Use the [scenario and Jev evaluation protocol](2026-09-29-scenario-and-jev-evaluation.md) for discovery, probabilities, match comparisons, provider readiness and human transfer. The local integration checks below do not establish those experimental results.
 
 - [ ] Run `npm run test:all`, `npm run typecheck`, `npm run build`, `npm run contracts:check`, `npm run lint:boundaries`, `npm run check:artifacts`, `npm run test:ui` and the new scenario report check. Save actual commands/results and failure seeds.
 - [ ] Play local Solo and Partners, including the diamond decision, Nil conflict, near-bag context, quiet hand and saved review. Confirm legal highlighting, whose turn it is, short cues and original advice retrieval. Fix observed defects and rerun affected checks.

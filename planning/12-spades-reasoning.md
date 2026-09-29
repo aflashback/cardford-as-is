@@ -4,6 +4,8 @@
 
 **Partnership detail:** [CR-STRAT-007](decisions/CR-STRAT-007-partnership-inference-guide.md) adds the [60-scenario reasoning guide](../docs/superpowers/specs/2026-09-29-spades-partnership-reasoning-guide.md) and [implementation plan](../docs/superpowers/plans/2026-09-29-partnership-inference.md). These authored recipes explain hypotheses, counterexamples, decisions and cues; they do not certify partnership mastery or change the rules.
 
+**Coverage/evaluation review:** [CR-STRAT-008](decisions/CR-STRAT-008-coverage-and-evaluation.md) adds six compound child scenarios, broadens the first acceptance batch, and links [independent discovery](../docs/superpowers/specs/2026-09-29-scenario-coverage-and-success.md) to [future probability, Jev and learning evaluations](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md). These are documentation requirements; new scenarios and numerical forecasts remain unimplemented.
+
 ## Product and information contract
 
 - **TABLE-01:** `tableType` is independent of `mode`. `practice-bots` has human South and three bots; `human-only` is a future four-human table, unavailable until its own lifecycle/access/fair-play gate passes. Solo/partnership describes competitors, never whether seats are human.

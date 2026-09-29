@@ -4,6 +4,8 @@ Specification, 26 September 2026. The browser game exists; the service, probabil
 
 **Current reasoning update:** [CR-STRAT-005](12-spades-reasoning.md) supersedes tactical/analysis behavior below. Runtime and storage status are in the [local handoff](../qa/implementation/LOCAL-V1-REPORT.md).
 
+**Evaluation refinement:** [CR-STRAT-008](decisions/CR-STRAT-008-coverage-and-evaluation.md) adds a [future research protocol](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md) for full-legal-set Jev, deterministic and hybrid comparisons. Its isolated experimental matches are distinct from ordinary practice bots and do not activate Jev. The existing shortlist/promotion study remains separate; provider contract drift must be resolved before a new live run.
+
 ## What V1 commits to
 
 - Keep usable game interactions, three modes and landscape phone gate; visual styling remains flexible.

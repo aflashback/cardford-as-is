@@ -1,5 +1,11 @@
 # Planning changes
 
+## 2026-09-29 — Scenario coverage and future Jev evaluations
+
+[CR-STRAT-008](decisions/CR-STRAT-008-coverage-and-evaluation.md), EV-01–08, reviews the design against experienced-player learning, concise coaching and credible bots. Added six compound child scenarios, independent discovery and a broader first acceptance batch. The diamond sequence remains one development family. Per-game scenario foundations are maintained through versioned counterexamples; no exhaustive coverage or fixed probability per scenario is claimed.
+
+The [evaluation plan](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md) separates local scenario play, direct full-legal-set Jev, analysis-assisted Jev and shortlist loss. It specifies event calibration, blind labels, grouped holdouts, complete matches, failure reporting, provider gates and unaided transfer. [Review evidence](../qa/implementation/scenario-coverage-review.md). Documentation only; no strategy implementation, provider request or new strength/learning result.
+
 ## 2026-09-29 — Partnership inference guide and plan
 
 [CR-STRAT-007](decisions/CR-STRAT-007-partnership-inference-guide.md) adds 60 authored scenario recipes with observations, alternative explanations, proposed decisions, exceptions and coach cues. The A♦–Q♦ example is checked against four complete legal deals with identical player observations. The plan extends typed game packs with evidence, revisable hypotheses, explicit conflicts, scenario rubrics and real cue bindings; other games reuse the authoring structure with their own rules. [Five documentation checks passed](../qa/implementation/partnership-guide-validation.md). No production strategy or provider activation changed; playing strength remains unproven for the proposed tactics.
