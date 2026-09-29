@@ -2,6 +2,8 @@
 
 **CR-STRAT-005 · 29 September 2026 · Owner-authorized design and implementation.** Supersedes the permanent bot-only interpretation in the preceding review. Rules/scoring remain the three frozen profiles. This document governs the new reasoning work; earlier strategic prose remains supporting context.
 
+**Partnership detail:** [CR-STRAT-007](decisions/CR-STRAT-007-partnership-inference-guide.md) adds the [60-scenario reasoning guide](../docs/superpowers/specs/2026-09-29-spades-partnership-reasoning-guide.md) and [implementation plan](../docs/superpowers/plans/2026-09-29-partnership-inference.md). These authored recipes explain hypotheses, counterexamples, decisions and cues; they do not certify partnership mastery or change the rules.
+
 ## Product and information contract
 
 - **TABLE-01:** `tableType` is independent of `mode`. `practice-bots` has human South and three bots; `human-only` is a future four-human table, unavailable until its own lifecycle/access/fair-play gate passes. Solo/partnership describes competitors, never whether seats are human.
