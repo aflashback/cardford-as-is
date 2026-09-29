@@ -1,5 +1,15 @@
 # Planning changes
 
+## 2026-09-29 — Scenario coverage and future Jev evaluations
+
+[CR-STRAT-008](decisions/CR-STRAT-008-coverage-and-evaluation.md), EV-01–08, reviews the design against experienced-player learning, concise coaching and credible bots. Added six compound child scenarios, independent discovery and a broader first acceptance batch. The diamond sequence remains one development family. Per-game scenario foundations are maintained through versioned counterexamples; no exhaustive coverage or fixed probability per scenario is claimed.
+
+The [evaluation plan](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md) separates local scenario play, direct full-legal-set Jev, analysis-assisted Jev and shortlist loss. It specifies event calibration, blind labels, grouped holdouts, complete matches, failure reporting, provider gates and unaided transfer. [Review evidence](../qa/implementation/scenario-coverage-review.md). Documentation only; no strategy implementation, provider request or new strength/learning result.
+
+## 2026-09-29 — Partnership inference guide and plan
+
+[CR-STRAT-007](decisions/CR-STRAT-007-partnership-inference-guide.md) adds 60 authored scenario recipes with observations, alternative explanations, proposed decisions, exceptions and coach cues. The A♦–Q♦ example is checked against four complete legal deals with identical player observations. The plan extends typed game packs with evidence, revisable hypotheses, explicit conflicts, scenario rubrics and real cue bindings; other games reuse the authoring structure with their own rules. [Five documentation checks passed](../qa/implementation/partnership-guide-validation.md). No production strategy or provider activation changed; playing strength remains unproven for the proposed tactics.
+
 ## 2026-09-29 — Spades reasoning and retained analysis
 
 [CR-STRAT-005](12-spades-reasoning.md) records the owner instruction: table type preserves future four-human play; current practice has one human and three bots; setup says **three trained players**; end-game results replace live notes; every human decision retains safe analysis regardless of cues. Solo tactics feed a partnership objective/exception layer shared by bots and coach. Rules/scoring are unchanged. [Implementation evidence](../qa/implementation/SPADES-REASONING-REPORT.md).
@@ -58,6 +68,10 @@ flowchart TD
   classDef service fill:#E5F5EF,stroke:#65A68C,color:#173F33;
   classDef gate fill:#FFF3D9,stroke:#C7A253,color:#594219;
 ```
+
+## 2026-09-29 — Typed game reasoning candidate
+
+Recorded owner approval of approach A in [CR-STRAT-006](decisions/CR-STRAT-006-typed-game-reasoning.md). Added static per-game pack routing, a 26-family Spades casebook, private selection traces, contextual bids, exact projected-score helpers, bounded late-hand continuations, and limited partnership Nil, signal and entry reasoning. Local tests, build and browser play passed; [implementation evidence](../qa/implementation/TYPED-REASONING-IMPLEMENTATION.md) records a negative baseline-style partnership slice and unfinished independent review. No Jev call or hosted release occurred.
 
 ## 2026-09-26 — Mermaid design diagrams
 

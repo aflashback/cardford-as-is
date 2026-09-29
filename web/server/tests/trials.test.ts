@@ -31,6 +31,10 @@ test('TRIAL: isolated one-trick illustrations end at completed trick in every mo
     assert.equal(trial.status, 'available');
     if (trial.status !== 'available') continue;
     assert.equal(trial.label, 'Possible continuation');
+    assert.equal(
+      trial.policyVersion,
+      mode === 'hearts' ? 'hearts-baseline-1.0.0' : 'spades-tactics-2.1.0',
+    );
     assert.equal(trial.frames.length, 5);
     assert.equal(trial.plays.length, 4);
     assert.equal(trial.frames.at(-1)?.phase, 'trick-end');

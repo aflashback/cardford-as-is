@@ -1,6 +1,10 @@
 # Game reasoning: two approaches for review
 
+<<<<<<< HEAD
 **29 September 2026 · Proposal, not approved · Inspected commit `934c5c5`.**
+=======
+**29 September 2026 · Approach A approved by owner · Inspected commit `934c5c5`.**
+>>>>>>> codex/spades-reasoning
 
 ## Recommendation
 

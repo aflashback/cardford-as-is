@@ -2,7 +2,13 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createGame, fullDeck, type PrivateGame, type Card, type Play } from '../game/index.ts';
 import { observe } from '../observations/index.ts';
-import { chooseAction, POLICY_VERSION } from '../strategy/index.ts';
+import {
+  analyzeDecision,
+  chooseAction,
+  getReasoningPack,
+  registeredReasoningModes,
+  POLICY_VERSION,
+} from '../strategy/index.ts';
 import { explain } from '../coaching/templates.ts';
 function position(hand: Card[], trick: Play[] = []): PrivateGame {
   const state = createGame({ id: 'strategy', mode: 'spades-partners', dealer: 3 }, fullDeck());
@@ -18,6 +24,22 @@ const trick: Play[] = [
   { seat: 2, card: 'HK' },
   { seat: 3, card: 'H3' },
 ];
+test('POLICY: Hearts has a distinct pack identity while Spades keeps its recorded version', () => {
+  const hearts = observe(createGame({ id: 'pack-hearts', mode: 'hearts', dealer: 3 }, fullDeck()), 0);
+  const spades = observe(createGame({ id: 'pack-spades', mode: 'spades-solo', dealer: 3 }, fullDeck()), 0);
+  assert.equal(analyzeDecision(hearts).policyVersion, 'hearts-baseline-1.0.0');
+  assert.equal(analyzeDecision(spades).policyVersion, POLICY_VERSION);
+  assert.equal(analyzeDecision(hearts).action.kind, 'pass');
+  assert.equal(analyzeDecision(spades).action.kind, 'bid');
+  assert.deepEqual(registeredReasoningModes().sort(), ['hearts', 'spades-partners', 'spades-solo']);
+  assert.equal(getReasoningPack('spades-partners'), getReasoningPack('spades-solo'));
+  assert.throws(() => getReasoningPack('bridge'), /No unique reasoning pack/);
+  const waiting = createGame({ id: 'pack-wait', mode: 'hearts', dealer: 3 }, fullDeck());
+  waiting.phase = 'hand-end';
+  waiting.turn = null;
+  assert.equal(observe(waiting, 0).legalActions.length, 0);
+  assert.equal(explain(observe(waiting, 0)).policyVersion, 'hearts-baseline-1.0.0');
+});
 test('POLICY: coach and bot cover live Nil after positive contract met', () => {
   const state = position(own, trick);
   state.bids = [3, 3, 0, 3];

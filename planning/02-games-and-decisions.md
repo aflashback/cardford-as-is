@@ -103,6 +103,8 @@ The [Bidding in Spades study](https://arxiv.org/html/1912.11323v2) combines cont
 
 ## Keep Jev's contribution measurable
 
+**Evaluation refinement, CR-STRAT-008:** the [new protocol](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md) adds direct Jev over all legal Spades actions, deterministic scenario play and analysis-assisted Jev. The shortlist comparison below remains a separate experiment to isolate shortlist loss. Event forecasts, Choice distributions and action rubrics have distinct meanings; no provider is activated by this design update.
+
 V1 defaults to local code. Internal modes are `off` (no requests), `shadow` (record Jev separately, never apply/show/grade with it) and `recommend` (requested suggestions after promotion). Normal bots remain local. Jev-controlled bots are a separate experiment. Record mode and `code`, `jev`, `forced` or explicit `fallback` provenance; shadow responses never overwrite the applied choice. Jev is the only remote strategic model. No model supplies arithmetic, rules or fabricated reasoning.
 
 Use three evaluation arms: **full-reference code → shortlisted code → Jev on the same shortlist**. The first comparison measures shortlist loss; the second isolates Jev selection. The full reference evaluates all legal actions with a larger fixed offline budget and remains an estimate. Pair deals, rotate seats and compare multiple opponent-policy families, stratifying mode, phase, Nil, bags and endgame. Save bypass/fallback rates and report both eligible-decision effects and whole-game results.

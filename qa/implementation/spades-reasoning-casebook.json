@@ -1,0 +1,1003 @@
+{
+  "schemaVersion": "1.0.0",
+  "casebookVersion": "spades-casebook-1.0.0",
+  "policyVersion": "spades-tactics-2.1.0",
+  "scenarios": [
+    {
+      "id": "S01",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s01-legal-001"
+      ],
+      "cueIds": [
+        "s01-legal-cue"
+      ],
+      "casebookCaseIds": [
+        "s01-legal-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S02",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s02-void-001"
+      ],
+      "cueIds": [
+        "s02-void-cue"
+      ],
+      "casebookCaseIds": [
+        "s02-void-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S03",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s03-ownership-001"
+      ],
+      "cueIds": [
+        "s03-ownership-cue"
+      ],
+      "casebookCaseIds": [
+        "s03-ownership-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S04",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s04-turn-order-001"
+      ],
+      "cueIds": [
+        "s04-turn-order-cue"
+      ],
+      "casebookCaseIds": [
+        "s04-turn-order-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S05",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s05-safe-nil-001"
+      ],
+      "cueIds": [
+        "s05-safe-nil-cue"
+      ],
+      "casebookCaseIds": [
+        "s05-safe-nil-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S06",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s06-forced-nil-001"
+      ],
+      "cueIds": [
+        "s06-forced-nil-cue"
+      ],
+      "casebookCaseIds": [
+        "s06-forced-nil-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S07",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s07-failed-nil-001"
+      ],
+      "cueIds": [
+        "s07-failed-nil-cue"
+      ],
+      "casebookCaseIds": [
+        "s07-failed-nil-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S08",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s08-contract-001"
+      ],
+      "cueIds": [
+        "s08-contract-cue"
+      ],
+      "casebookCaseIds": [
+        "s08-contract-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S09",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s09-bag-001"
+      ],
+      "cueIds": [
+        "s09-bag-cue"
+      ],
+      "casebookCaseIds": [
+        "s09-bag-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S10",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s10-lead-001"
+      ],
+      "cueIds": [
+        "s10-lead-cue"
+      ],
+      "casebookCaseIds": [
+        "s10-lead-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S11",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "s11-ruff-001"
+      ],
+      "cueIds": [
+        "s11-ruff-cue"
+      ],
+      "casebookCaseIds": [
+        "s11-ruff-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S12",
+      "status": "partial",
+      "caseIds": [
+        "s12-opposing-nil-001"
+      ],
+      "cueIds": [
+        "s12-opponent-nil-cue"
+      ],
+      "casebookCaseIds": [
+        "s12-opposing-nil-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S13",
+      "status": "partial",
+      "caseIds": [
+        "s13-contextual-bid-001"
+      ],
+      "cueIds": [
+        "s13-bid-cue"
+      ],
+      "casebookCaseIds": [
+        "s13-contextual-bid-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "S14",
+      "status": "partial",
+      "caseIds": [
+        "s14-late-hand-001"
+      ],
+      "cueIds": [
+        "s14-late-score-cue"
+      ],
+      "casebookCaseIds": [
+        "s14-late-hand-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P01",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p01-partner-current-001"
+      ],
+      "cueIds": [
+        "p01-partner-current-cue"
+      ],
+      "casebookCaseIds": [
+        "p01-partner-current-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P02",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p02-partner-nil-cover-001"
+      ],
+      "cueIds": [
+        "p02-partner-nil-cover-cue"
+      ],
+      "casebookCaseIds": [
+        "p02-partner-nil-cover-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P03",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p03-partner-no-cover-001"
+      ],
+      "cueIds": [
+        "p03-partner-no-cover-cue"
+      ],
+      "casebookCaseIds": [
+        "p03-partner-no-cover-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P04",
+      "status": "partial",
+      "caseIds": [
+        "p04-double-nil-001"
+      ],
+      "cueIds": [
+        "p04-double-nil-cue"
+      ],
+      "casebookCaseIds": [
+        "p04-double-nil-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P05",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p05-partner-failed-nil-001"
+      ],
+      "cueIds": [
+        "p05-partner-failed-nil-cue"
+      ],
+      "casebookCaseIds": [
+        "p05-partner-failed-nil-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P06",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p06-partner-void-001"
+      ],
+      "cueIds": [
+        "p06-partner-void-cue"
+      ],
+      "casebookCaseIds": [
+        "p06-partner-void-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P07",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p07-partner-spade-void-001"
+      ],
+      "cueIds": [
+        "p07-partner-spade-void-cue"
+      ],
+      "casebookCaseIds": [
+        "p07-partner-spade-void-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P08",
+      "status": "partial",
+      "caseIds": [
+        "p08-public-play-001"
+      ],
+      "cueIds": [
+        "p08-public-hints-cue"
+      ],
+      "casebookCaseIds": [
+        "p08-public-play-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P09",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p09-partner-security-001"
+      ],
+      "cueIds": [
+        "p09-partner-security-cue"
+      ],
+      "casebookCaseIds": [
+        "p09-partner-security-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P10",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p10-team-contract-001"
+      ],
+      "cueIds": [
+        "p10-team-contract-cue"
+      ],
+      "casebookCaseIds": [
+        "p10-team-contract-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P11",
+      "status": "partial",
+      "caseIds": [
+        "p11-entry-001"
+      ],
+      "cueIds": [
+        "p11-entry-cue"
+      ],
+      "casebookCaseIds": [
+        "p11-entry-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    },
+    {
+      "id": "P12",
+      "status": "implemented-unreviewed",
+      "caseIds": [
+        "p12-mode-objective-001"
+      ],
+      "cueIds": [
+        "p12-mode-objective-cue"
+      ],
+      "casebookCaseIds": [
+        "p12-mode-objective-001"
+      ],
+      "linkStatus": "linked-to-casebook",
+      "cueRegistration": "not-verified",
+      "recognition": "matched",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed"
+    }
+  ],
+  "cases": [
+    {
+      "id": "s12-opposing-nil-001",
+      "caseGroupId": "s12-opposing-nil",
+      "requirementId": "GR-04",
+      "scenarioId": "S12",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93011,
+      "tacticId": "S12.opponent-nil",
+      "cueId": "s12-opponent-nil-cue",
+      "selectedActionId": "play:CA",
+      "legalActionCount": 12,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "An opposing live Nil changes score consequences, but a scenario match does not identify the best card.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s13-contextual-bid-001",
+      "caseGroupId": "s13-public-bids",
+      "requirementId": "GR-04",
+      "scenarioId": "S13",
+      "mode": "spades-partners",
+      "phase": "bid",
+      "fixture": "opening",
+      "seed": 93012,
+      "tacticId": "S13.structure",
+      "cueId": "s13-bid-cue",
+      "selectedActionId": "bid:3",
+      "legalActionCount": 14,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Earlier public bids are visible but do not prove concealed-card ownership; bid strength is unreviewed.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s14-late-hand-001",
+      "caseGroupId": "s14-late-hand",
+      "requirementId": "GR-04",
+      "scenarioId": "S14",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "late-hand",
+      "seed": 93013,
+      "tacticId": "S14.late-score",
+      "cueId": "s14-late-score-cue",
+      "selectedActionId": "play:HJ",
+      "legalActionCount": 3,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Late-hand recognition must not be presented as a solved remaining-hand or match outcome.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p04-double-nil-001",
+      "caseGroupId": "p04-double-nil",
+      "requirementId": "GR-04",
+      "scenarioId": "P04",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93014,
+      "tacticId": "P04.double-nil",
+      "cueId": "p04-double-nil-cue",
+      "selectedActionId": "play:C2",
+      "legalActionCount": 11,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Both live Nil commitments may conflict; no unconditional sacrifice rule is established.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p08-public-play-001",
+      "caseGroupId": "p08-public-play",
+      "requirementId": "GR-05",
+      "scenarioId": "P08",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "after-one-trick",
+      "seed": 93015,
+      "tacticId": "P08.public-hints",
+      "cueId": "p08-public-hints-cue",
+      "selectedActionId": "play:HA",
+      "legalActionCount": 8,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Partner public play may suggest a preference but cannot prove a private card or convention.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p11-entry-001",
+      "caseGroupId": "p11-entry",
+      "requirementId": "GR-06",
+      "scenarioId": "P11",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93016,
+      "tacticId": "P11.entries",
+      "cueId": "p11-entry-cue",
+      "selectedActionId": "play:DA",
+      "legalActionCount": 11,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "An entry concern needs continuation evidence before preferring a card.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s01-legal-001",
+      "caseGroupId": "s01-legal",
+      "requirementId": "GR-08",
+      "scenarioId": "S01",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93101,
+      "tacticId": "S01.legal-set",
+      "cueId": "s01-legal-cue",
+      "selectedActionId": "play:HA",
+      "legalActionCount": 12,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "The legal action count comes from the reducer, not strategy.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s02-void-001",
+      "caseGroupId": "s02-void",
+      "requirementId": "GR-08",
+      "scenarioId": "S02",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "void-play",
+      "seed": null,
+      "tacticId": "S02.void",
+      "cueId": "s02-void-cue",
+      "selectedActionId": "play:D2",
+      "legalActionCount": 13,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Failing to follow the led suit proves only that suit is void.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s03-ownership-001",
+      "caseGroupId": "s03-ownership",
+      "requirementId": "GR-08",
+      "scenarioId": "S03",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93103,
+      "tacticId": "S03.ownership",
+      "cueId": "s03-ownership-cue",
+      "selectedActionId": "play:H4",
+      "legalActionCount": 10,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "An unseen high card has possible owners, not a known owner.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s04-turn-order-001",
+      "caseGroupId": "s04-turn-order",
+      "requirementId": "GR-08",
+      "scenarioId": "S04",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "turn-order",
+      "seed": 93104,
+      "tacticId": "S04.turn-order",
+      "cueId": "s04-turn-order-cue",
+      "selectedActionId": "play:C3",
+      "legalActionCount": 3,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A current trick winner may change while later actors remain.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s05-safe-nil-001",
+      "caseGroupId": "s05-safe-nil",
+      "requirementId": "GR-08",
+      "scenarioId": "S05",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "safe-nil",
+      "seed": null,
+      "tacticId": "S05.live-nil",
+      "cueId": "s05-safe-nil-cue",
+      "selectedActionId": "play:H2",
+      "legalActionCount": 2,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A lower legal card keeps this live Nil out of the current trick.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s06-forced-nil-001",
+      "caseGroupId": "s06-forced-nil",
+      "requirementId": "GR-08",
+      "scenarioId": "S06",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "forced-nil",
+      "seed": null,
+      "tacticId": "S06.no-underplay",
+      "cueId": "s06-forced-nil-cue",
+      "selectedActionId": "play:HK",
+      "legalActionCount": 2,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Every available card currently wins; the fourth-seat outcome is exact.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s07-failed-nil-001",
+      "caseGroupId": "s07-failed-nil",
+      "requirementId": "GR-08",
+      "scenarioId": "S07",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "failed-nil",
+      "seed": null,
+      "tacticId": "S07.failed-nil",
+      "cueId": "s07-failed-nil-cue",
+      "selectedActionId": "play:C2",
+      "legalActionCount": 12,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A Nil already broken cannot earn its success award.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s08-contract-001",
+      "caseGroupId": "s08-contract",
+      "requirementId": "GR-08",
+      "scenarioId": "S08",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93108,
+      "tacticId": "S08.contract",
+      "cueId": "s08-contract-cue",
+      "selectedActionId": "play:H5",
+      "legalActionCount": 9,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A positive bid still needs credited tricks.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s09-bag-001",
+      "caseGroupId": "s09-bag",
+      "requirementId": "GR-08",
+      "scenarioId": "S09",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "contract-made-nil",
+      "seed": null,
+      "tacticId": "S09.contract-met",
+      "cueId": "s09-bag-cue",
+      "selectedActionId": "play:HA",
+      "legalActionCount": 2,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "An extra credited trick can add a bag after the contract is met.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s10-lead-001",
+      "caseGroupId": "s10-lead",
+      "requirementId": "GR-08",
+      "scenarioId": "S10",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93110,
+      "tacticId": "S10.lead-choice",
+      "cueId": "s10-lead-cue",
+      "selectedActionId": "play:HA",
+      "legalActionCount": 11,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A lead heuristic does not guarantee the trick.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "s11-ruff-001",
+      "caseGroupId": "s11-ruff",
+      "requirementId": "GR-08",
+      "scenarioId": "S11",
+      "mode": "spades-solo",
+      "phase": "play",
+      "fixture": "void-play",
+      "seed": null,
+      "tacticId": "S11.trump-choice",
+      "cueId": "s11-ruff-cue",
+      "selectedActionId": "play:D2",
+      "legalActionCount": 13,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Being void permits off-suit play; trump is optional.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p01-partner-current-001",
+      "caseGroupId": "p01-partner-current",
+      "requirementId": "GR-08",
+      "scenarioId": "P01",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "partner-current",
+      "seed": null,
+      "tacticId": "P01.partner-current",
+      "cueId": "p01-partner-current-cue",
+      "selectedActionId": "play:H2",
+      "legalActionCount": 2,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A positive-bidding partner is provisionally winning this trick.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p02-partner-nil-cover-001",
+      "caseGroupId": "p02-partner-nil-cover",
+      "requirementId": "GR-08",
+      "scenarioId": "P02",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "contract-made-nil",
+      "seed": null,
+      "tacticId": "P02.live-nil-cover",
+      "cueId": "p02-partner-nil-cover-cue",
+      "selectedActionId": "play:HA",
+      "legalActionCount": 2,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Covering the Nil partner removes that player from the current lead.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p03-partner-no-cover-001",
+      "caseGroupId": "p03-partner-no-cover",
+      "requirementId": "GR-08",
+      "scenarioId": "P03",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "partner-no-cover",
+      "seed": null,
+      "tacticId": "P03.no-cover",
+      "cueId": "p03-partner-no-cover-cue",
+      "selectedActionId": "play:H2",
+      "legalActionCount": 2,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "No legal card overtakes the Nil partner in this position.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p05-partner-failed-nil-001",
+      "caseGroupId": "p05-partner-failed-nil",
+      "requirementId": "GR-08",
+      "scenarioId": "P05",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "partner-failed-nil",
+      "seed": null,
+      "tacticId": "P05.failed-partner",
+      "cueId": "p05-partner-failed-nil-cue",
+      "selectedActionId": "play:C2",
+      "legalActionCount": 11,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "The partner Nil has already failed; their tricks do not credit the positive contract.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p06-partner-void-001",
+      "caseGroupId": "p06-partner-void",
+      "requirementId": "GR-05",
+      "scenarioId": "P06",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "partner-void",
+      "seed": null,
+      "tacticId": "P06.partner-void",
+      "cueId": "p06-partner-void-cue",
+      "selectedActionId": "play:CK",
+      "legalActionCount": 12,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A public side-suit void permits a possible ruff but does not prove trump ownership.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p07-partner-spade-void-001",
+      "caseGroupId": "p07-partner-spade-void",
+      "requirementId": "GR-05",
+      "scenarioId": "P07",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "partner-spade-void",
+      "seed": null,
+      "tacticId": "P07.no-partner-trump",
+      "cueId": "p07-partner-spade-void-cue",
+      "selectedActionId": "play:SA",
+      "legalActionCount": 12,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "A public spade void excludes a future partner ruff.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p09-partner-security-001",
+      "caseGroupId": "p09-partner-security",
+      "requirementId": "GR-08",
+      "scenarioId": "P09",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "partner-current",
+      "seed": null,
+      "tacticId": "P09.partner-security",
+      "cueId": "p09-partner-security-cue",
+      "selectedActionId": "play:H2",
+      "legalActionCount": 2,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Partner is ahead now; later opponents can threaten that winner.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p10-team-contract-001",
+      "caseGroupId": "p10-team-contract",
+      "requirementId": "GR-08",
+      "scenarioId": "P10",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93119,
+      "tacticId": "P10.team-contract",
+      "cueId": "p10-team-contract-cue",
+      "selectedActionId": "play:CA",
+      "legalActionCount": 10,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Only positive bidders contribute partnership contract credit.",
+      "counterexampleIds": []
+    },
+    {
+      "id": "p12-mode-objective-001",
+      "caseGroupId": "p12-mode-objective",
+      "requirementId": "GR-08",
+      "scenarioId": "P12",
+      "mode": "spades-partners",
+      "phase": "play",
+      "fixture": "opening",
+      "seed": 93120,
+      "tacticId": "P12.mode-objective",
+      "cueId": "p12-mode-objective-cue",
+      "selectedActionId": "play:CA",
+      "legalActionCount": 13,
+      "recognition": "matched",
+      "rubricStatus": "passed",
+      "independentLabel": "unlabelled",
+      "strength": "not-assessed",
+      "rubric": "Partnership and individual competition have different objectives.",
+      "counterexampleIds": []
+    }
+  ],
+  "limitations": [
+    "Case recognition and rubric references do not establish strategic strength.",
+    "Independent accepted-action labels have not been supplied for these cases.",
+    "Missing catalog case/cue links are explicit maintainer work, not silently inferred.",
+    "Casebook cue IDs are maintainer anchors; no authored-content cue registry has been validated."
+  ]
+}

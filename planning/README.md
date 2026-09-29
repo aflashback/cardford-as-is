@@ -15,6 +15,9 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 | [Brand and domain](brand-and-domain.md) | Current naming decision, selected visual direction, previous domain plan and unverified setup. |
 | [Cardford design guide and SVGs](brand/cardford/DESIGN-GUIDE.md) | Selected Open Hand artwork, reusable assets, usage rules and validation. |
 | [12 — Spades reasoning](12-spades-reasoning.md) | Table types, solo core, partnership overlays, scenarios and saved analysis. |
+| [Partnership reasoning guide](../docs/superpowers/specs/2026-09-29-spades-partnership-reasoning-guide.md) | 60 foundation recipes plus six compound children, counterexamples and linked implementation plan. |
+| [Scenario coverage review](../docs/superpowers/specs/2026-09-29-scenario-coverage-and-success.md) | Product success, systematic discovery, probability meanings and protection against overfitting. |
+| [Scenario and Jev evaluation plan](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md) | Future deterministic/direct-Jev/hybrid comparisons, calibration, complete matches and unaided learning. |
 | [02 — Games and decisions](02-games-and-decisions.md) | Exact rules, player knowledge, tactics, probabilities and Jev's role. |
 | [03 — Local runtime](03-local-runtime.md) | OpenRouter, state ownership, persistence and failures. |
 | [04 — Coaching and evidence](04-coaching-and-evidence.md) | Assistance, feedback, mistake categories and progress. |
