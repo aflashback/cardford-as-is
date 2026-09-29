@@ -1,5 +1,9 @@
 # Web changes
 
+## 2026-09-28 — CardFord game entry and quiet table
+
+Use the supplied CardFord SVG assets in the header, loading and portrait rotate screen. New games use a full-page pace/game flow and start from the chosen game card. Remove table notes and redundant top-of-table text; keep seat counters and recap. [Decision](../planning/decisions/CR-UX-005-game-entry.md) · [validation](../qa/implementation/cardford-minimal-ui-acceptance.md).
+
 ## 2026-09-28 — CardFord name
 
 The owner renamed the product to CardFord. The site, browser title, accessible game picker and generated API title now use CardFord. Historical domain and technical identifiers remain unchanged. [CR-BRAND-002](../planning/brand-and-domain.md) and [acceptance](../qa/implementation/cardford-brand-acceptance.md).

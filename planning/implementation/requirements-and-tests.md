@@ -54,10 +54,10 @@ Source: [product/views](../01-product-and-views.md), [UI-V1 evidence](../../web/
 
 | ID / owner | Browser scenario | Observable acceptance |
 |---|---|---|
-| UX-01 / W07 | `table.spec.ts`: `visual-baseline` | Four compact seats, readable blue table, hand below/right coach; current scores/objective appropriate to mode; public brand CardFord. No decoration or extra onboarding redesign. |
+| UX-01 / W07 | `table.spec.ts`: `visual-baseline` | Four compact seats, readable blue table, hand below/right coach; seat bid/trick counters and recap scores appropriate to mode; public brand CardFord. No decoration or extra onboarding redesign. |
 | UX-02 / W07 | `table.spec.ts`: `prepare-then-play` | Single activation selects. Double gesture off-turn prepares only; wait into own turn with zero command, then fresh on-turn double gesture/Enter plays exactly once. |
 | UX-03 / W07 | `table.spec.ts`: `legal-choice-parity` | All legal cards remain selectable even if absent from shortlist; illegal prepared card clears/rejects on current revision. Bid/pass require explicit confirmation. |
-| UX-04 / W07 | `table.spec.ts`: `three-game-setup` | Correct names/default; solo opposite seat never Partner; game picker cancel has no side effects; start retires former game internally only after successful command. |
+| UX-04 / W07 | `table.spec.ts`: `three-game-setup` | Correct names/default; solo opposite seat never Partner; new-game flow cancel has no side effects; game-card activation retires former game internally only after successful command. |
 | UX-05 / W07 | `pause.spec.ts`: `pause-reasons` | Pause/dialog/review/background/rotation cancel stale timers; prepared result may finish but no accepted advance; resume refetches then starts fresh delay. |
 | UX-06 / W07 | `pause.spec.ts`: `game-speed` | 1×=900/2100 ms, 1.2×=750/1750 ms, 1.4×≈643/1500 ms; reading time unchanged; preference survives reload and speed changes preserve pause. |
 | UX-07 / W07/W18 | `accessibility.spec.ts`: `responsive-input` | At 667×375 each exposed card target ≥44 CSS px; no clipped key controls; iPad both orientations; <700px portrait table gate only; no artificial page rotation. |
@@ -68,11 +68,13 @@ Source: [product/views](../01-product-and-views.md), [UI-V1 evidence](../../web/
 | UX-12 / W08/W14–W16 | `demo/subscription/family.spec.ts`: `portrait-account` | Login/offer/payment return/subscription/family works in portrait with no table gate; chosen offer and saved table survive redirect; cancellation and billing repair are easy to reach. |
 | UX-13 / W07 | `table.spec.ts`: unavailable cards and prepared-card invalidation | Active-seat cues and numeric counts replace repeated visible status copy. Server legal actions alone determine unavailable cards; legal exceptions stay available. Accessible turn/card labels remain. |
 | UX-14 / W07 | `table.spec.ts`: inline last trick | Latest public trick sits outside the table on the left, with four seat positions and winner marking, no visible names or dialog, and zero notes/unlock requests. Fits desktop/tablet/landscape phones; clears for a new hand. |
-| UX-15 / W07/W13 | `table.spec.ts`: compact notes and keyboard details | Short labels and optional explanations in game/settings/notes/recap/review dialogs; keyboard expansion, focus trapping/restoration and provenance/usage context are preserved. |
+| UX-15 / W07/W13 | `table.spec.ts`: compact copy and keyboard details | Short labels and optional explanations in settings/recap/review dialogs; keyboard expansion, focus trapping/restoration and provenance/usage context are preserved. Historical notes UI is superseded by UX-20. |
 | UX-16 / W07 | `table.spec.ts`: hand-end and match-end Play again | Existing next-hand command continues match scores; existing new-game command restarts the same mode after match completion. Each requires explicit activation. |
 | UX-17 / W07 | `table.spec.ts`: responsive table geometry | A separate left column reserves last-trick space and the table shrinks to fit. Narrow landscape hands scroll horizontally with keyboard focus reveal; short tablet pages scroll vertically to retain the hand. Phone portrait retains the rotation screen. |
 
 UX-13–17 implement the later owner direction in [CR-UX-004](../decisions/CR-UX-004-table-cues.md). Actual results: [cue and copy verification](../../qa/implementation/ui-cues-acceptance.md) and [external last-trick verification](../../qa/implementation/ui-external-trick-acceptance.md).
+
+UX-18–20 implement [CR-UX-005](../decisions/CR-UX-005-game-entry.md): use supplied CardFord SVGs at entry points, replace the modal game picker with paced full-page setup and card activation, and remove the specified table clutter. Actual results: [minimal UI verification](../../qa/implementation/cardford-minimal-ui-acceptance.md).
 
 Initial explanation budgets: 6-word heading, 18-word cue, 35-word context/suggestion. Expansion may be longer. Test useful meaning and layout, not brittle exact copy except required labels.
 

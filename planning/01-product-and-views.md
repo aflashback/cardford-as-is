@@ -20,19 +20,19 @@ The visual reference is [App.tsx](../web/src/App.tsx), [styles.css](../web/src/s
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
 flowchart TD
   accTitle: CardFord table views
-  accDescr: The live table connects to optional coaching, notes, paused review and recaps. The player chooses when to start the next game.
-  A("Choose one of three games"):::view
+  accDescr: A full-page setup flow starts a game. The live table connects to optional coaching, paused review and recaps.
+  A("Set pace, then choose a game"):::view
   B("Live table"):::view
   C("Coach"):::view
-  D("Table notes"):::view
+  D("Last trick cue"):::view
   E("Paused review"):::view
   F("Hand recap"):::view
   G("Match result"):::view
-  A -- "Start game" --> B
+  A -- "Select game card" --> B
   B -- "Help" --> C
   C -- "Return" --> B
   B --> D
-  D -- "Close" --> B
+  D -- "Continue" --> B
   B -- "Revisit" --> E
   E -- "Return to table" --> B
   B -- "Hand ends" --> F
@@ -49,19 +49,18 @@ Optional views return to the current table. Help does not commit a move; review 
 | Public demo | Finite example game and authored coaching; replayable without login. No dynamic coaching or live full-game access for unpaid users. |
 | Membership | Selected offer survives sign-in; paid access resumes the saved table. Show coaching hands remaining/reset and an optional upgrade. Expiry pauses play without deleting the game. |
 | Account and family | Independent member accounts; clear paid-by relationship; payer manages seats/billing without access to private member games. These routes work in portrait on phones. |
-| Table | Four seats; active seat; current trick and winner; hand/trick number; scores, bags and contract where relevant. Opposite seat is labeled Partner only in partnerships. |
-| Game picker | Hearts Solo, Spades Solo, Spades Partners. Explicit Start game replaces the current table; preserve the former game internally as abandoned. Cancel changes nothing. |
+| Table | Four seats; active seat; current and last trick; seat trick/bid counters where relevant. Cumulative scores appear in recap, not above the table. Opposite seat is labeled Partner only in partnerships. |
+| New game | Full-page flow: set pace, then choose Hearts Solo, Spades Solo or Spades Partners. Activating a game card replaces the current table; preserve the former game internally as abandoned. Cancel changes nothing. |
 | Hearts pass | Select/deselect exactly three cards, then confirm. Exchange all four bundles atomically. Mark received cards until the player's first play. Hold hands skip this phase. |
 | Spades bid | Integer 0–13, Nil shortcut and explicit confirmation. Show earlier public bids; no artificial restriction on their sum. |
 | Play | Double-click/double-tap during another player's turn prepares and raises a card; it never auto-plays when the turn arrives. During the player's turn, double-click/double-tap plays that legal card. Single activation selects; Enter is the keyboard play equivalent. Remove the Play card button; keep bid/pass confirmation. Recheck legality at play time; every legal card remains available, including cards outside the coach's shortlist. |
 | Coach | Notice → Consider → Suggestion, plus the existing direct-suggestion shortcut. One cue at a time; dismissal never erases recorded exposure. Advice never commits a move. |
-| Table notes | Public played counts and known voids; expandable played cards, table rules and Hearts private pass memory. Last trick lives directly on the table. Label public facts and private pass knowledge separately. No old-game navigation. |
-| Settings | Coaching: When I ask; Occasional cues; After the hand. Game speed: 1×, 1.2×, 1.4×, persisted. Keep these together; no model, skill-level or strategy configuration screen. |
+| Settings | Coaching: When I ask; Occasional cues; After the hand. Game speed is set in the new-game flow (1×, 1.2×, 1.4×, persisted). No model, skill-level or strategy configuration screen. |
 | Pause | Preserve position and selections. Dialogs, backgrounding and the phone rotation gate suspend progression. Resume starts a fresh animation delay. |
 | Hand recap | Existing score comparison plus at most one supported strength, one review moment and one next focus. Back to table/Play again always available. Play again continues the match; expand evidence within this dialog. |
-| Match result | Name the winner and final standings, then Play again to restart the same mode. Other modes remain in the game picker. No archive or replay library. |
+| Match result | Name the winner and final standings, then Play again to restart the same mode. Other modes remain in the new-game flow. No archive or replay library. |
 
-Table notes' **unplayed** count includes the player's hand; it must not be labeled unknown. Detailed memory is optional assistance. Score, bids, legal-card availability and the visible trick are ordinary game information.
+Historical table-notes behavior is superseded by [CR-UX-005](decisions/CR-UX-005-game-entry.md); there is no notes control on the current table. Score, bids, legal-card availability and the visible trick remain ordinary game information.
 
 Use “Play to 500” for Spades: scoring is simultaneous and tied leaders continue. Requested advice must adapt to a credible Hearts moon plan or Nil situation; omit the default hand-objective caption.
 

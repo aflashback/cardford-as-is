@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import type { NotesView, SessionView } from '../shared/contracts';
+import type { SessionView } from '../shared/contracts';
 
 function fixture(): SessionView {
   return {
@@ -113,12 +113,23 @@ async function mount(page: Page, value: SessionView = fixture()) {
   };
 }
 
+test('connection screen shows CardFord logo when the table cannot load', async ({ page }, testInfo) => {
+  await page.route(
+    (url) => url.pathname.startsWith('/api/'),
+    (route) => route.fulfill({ status: 503, json: { error: 'Unavailable' } }),
+  );
+  await page.goto('/');
+  await expect(page.getByRole('img', { name: 'CardFord' })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('cardford-loading.png') });
+});
+
 test('single card activation selects; fresh double activation commits one server command', async ({
   page,
 }) => {
   const { commands } = await mount(page);
   await expect(page).toHaveTitle('Spades — CardFord');
   await expect(page.getByRole('link', { name: 'CardFord choose game' })).toBeVisible();
+  await expect(page.locator('.brand-symbol')).toBeVisible();
   await expect(page.getByText('Tricks Coach')).toHaveCount(0);
   const card = page.getByRole('button', { name: '2 of clubs', exact: true });
   await card.click();
@@ -238,15 +249,57 @@ test('late refresh cannot overwrite a newly accepted game', async ({ page }) => 
   await page.getByRole('button', { name: 'Resume', exact: true }).click();
   await expect.poll(() => reads).toBe(3);
   await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
   await page
     .locator('.game-option')
     .filter({ has: page.locator('.game-art-hearts') })
     .click();
-  await page.getByRole('button', { name: 'Start game', exact: true }).click();
   await expect(page.locator('.game-switch')).toContainText('Hearts');
   release?.();
   await page.waitForTimeout(250);
   await expect(page.locator('.game-switch')).toContainText('Hearts');
+});
+
+test('new game wizard saves pace and starts from the chosen card', async ({ page }, testInfo) => {
+  const initial = fixture();
+  const harness = await mount(page, initial);
+  const requests: unknown[] = [];
+  await page.route('**/api/preferences', (route) => {
+    const body = route.request().postDataJSON() as { preferences: SessionView['preferences'] };
+    requests.push(body);
+    const updated = { ...initial, preferences: body.preferences };
+    harness.setState(updated);
+    return route.fulfill({ json: updated });
+  });
+  await page.route('**/api/sessions', (route) => {
+    requests.push(route.request().postDataJSON());
+    const next = fixture();
+    next.game.mode = 'hearts';
+    next.game.id = 'wizard-game';
+    next.preferences.gameSpeed = 1.2;
+    return route.fulfill({ json: next });
+  });
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await expect(page.getByRole('main', { name: 'New game setup' })).toBeVisible();
+  await expect(page.getByRole('dialog', { name: 'Choose game' })).toHaveCount(0);
+  await page.getByRole('button', { name: '1.2×' }).click();
+  await expect(page.getByRole('button', { name: '1.2×' })).toHaveAttribute('aria-pressed', 'true');
+  expect(requests).toHaveLength(0);
+  await page.getByRole('button', { name: 'Close new game setup' }).click();
+  await expect(page.getByRole('main', { name: 'New game setup' })).toHaveCount(0);
+  expect(requests).toHaveLength(0);
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await expect(page.getByRole('button', { name: '1×', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '1.2×' }).click();
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await expect(page.getByText('You and three well trained players.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Start game' })).toHaveCount(0);
+  await page.screenshot({ path: testInfo.outputPath('cardford-wizard.png') });
+  await page.locator('.game-option').filter({ has: page.locator('.game-art-hearts') }).click();
+  await expect(page.getByRole('main', { name: 'New game setup' })).toHaveCount(0);
+  expect(requests).toHaveLength(2);
+  expect(requests[0]).toMatchObject({ preferences: { gameSpeed: 1.2 } });
+  expect(requests[1]).toMatchObject({ mode: 'hearts', expectedActiveGameId: initial.game.id });
 });
 
 test('retry after lost response keeps exactly the original mutation envelope', async ({ page }) => {
@@ -580,8 +633,11 @@ test('last trick stays beside the table with seat positions, no names and no not
   ]) {
     await page.setViewportSize({ width, height });
     await expect(page.getByRole('heading', { name: /Turn your phone/ })).toBeVisible();
+    await expect(page.locator('.rotate-watermark')).toBeVisible();
+    await expect(page.locator('.rotate-logo')).toBeVisible();
     await expect(page.getByRole('region', { name: 'Card table' })).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    if (width === 390) await page.screenshot({ path: testInfo.outputPath('cardford-portrait.png') });
   }
 });
 
@@ -619,43 +675,18 @@ for (const phase of ['hand-end', 'match-end'] as const) {
   });
 }
 
-test('compact notes keep rules expandable by keyboard and settings use short labels', async ({
+test('table stays minimal and coach settings do not contain game speed', async ({
   page,
 }, testInfo) => {
   const harness = await mount(page);
-  const notes: NotesView = {
-    memory: [
-      { suit: 'C', played: 4, remaining: 9, voidSeats: [], playedCards: ['C2', 'C4', 'C7', 'CQ'] },
-      { suit: 'D', played: 0, remaining: 13, voidSeats: [] },
-      { suit: 'H', played: 0, remaining: 13, voidSeats: [] },
-      { suit: 'S', played: 0, remaining: 13, voidSeats: [] },
-    ],
-    outgoing: [],
-    received: [],
-    history: [],
-  };
-  await page.route('**/api/session/notes', (route) => route.fulfill({ json: notes }));
-  await page.getByRole('button', { name: 'Table notes', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: 'Table notes', exact: true });
-  await expect(dialog.getByText('9 unplayed')).toBeVisible();
-  await expect(dialog.getByText('Last trick', { exact: true })).toHaveCount(0);
-  await expect(dialog.getByText('Your pass · private', { exact: true })).toHaveCount(0);
-  await expect(dialog.getByText(/Nil: ±100/)).not.toBeVisible();
-  await page.screenshot({ path: testInfo.outputPath('cues-notes.png') });
-  await page.keyboard.press('Tab');
-  await expect(dialog.getByText('Played cards', { exact: true })).toBeFocused();
-  await page.keyboard.press('Tab');
-  await expect(dialog.getByText('Table rules', { exact: true })).toBeFocused();
-  await page.keyboard.press('Enter');
-  await expect(dialog.getByText(/Nil: ±100/)).toBeVisible();
-  await page.keyboard.press('Tab');
-  await expect(dialog.getByRole('button', { name: 'Close dialog' })).toBeFocused();
-  await page.keyboard.press('Escape');
-  await expect(page.getByRole('button', { name: 'Table notes', exact: true })).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Table notes' })).toHaveCount(0);
+  await expect(page.getByText(/Hand 1|Trick 1 of 13|Low score wins/)).toHaveCount(0);
+  await expect(page.getByRole('region', { name: 'Game score' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'When I ask', exact: true })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Occasional cues', exact: true })).toBeVisible();
-  await expect(page.getByRole('button', { name: '1.2×', exact: true })).toBeVisible();
+  const dialog = page.getByRole('dialog', { name: 'Settings' });
+  await expect(dialog.getByRole('button', { name: 'When I ask', exact: true })).toBeVisible();
+  await expect(dialog.getByRole('button', { name: 'Occasional cues', exact: true })).toBeVisible();
+  await expect(dialog.getByText('Game speed')).toHaveCount(0);
   await page.screenshot({ path: testInfo.outputPath('cues-settings.png') });
   expect(harness.commands).toHaveLength(0);
 });

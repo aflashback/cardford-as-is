@@ -13,12 +13,11 @@ import {
   Pause,
   Play,
   RotateCcw,
-  RotateCw,
   Settings2,
   Sparkles,
   X,
 } from 'lucide-react';
-import type { AdviceView, Card, GameView, Mode, NotesView, Seat } from '../shared/contracts';
+import type { AdviceView, Card, GameView, Mode, Seat } from '../shared/contracts';
 import { cardLabel, cardRank, cardSuit } from './api/display';
 import { useSession } from './api/useSession';
 import { api } from './api/client';
@@ -33,7 +32,7 @@ const modeNames: Record<Mode, string> = {
   'spades-solo': 'Spades',
   'spades-partners': 'Spades',
 };
-type Modal = 'games' | 'notes' | 'settings' | 'pause' | 'review' | null;
+type Modal = 'games' | 'settings' | 'pause' | 'review' | null;
 
 type HintLevel = 0 | 1 | 2 | 3;
 
@@ -244,7 +243,10 @@ function LiveTable() {
   if (!controller.session)
     return (
       <main className="account-page">
-        <h1>CardFord</h1>
+        <div className="loading-logo" role="img" aria-label="CardFord">
+          <img src="/brand/cardford-symbol.svg" alt="" />
+          <span>CardFord</span>
+        </div>
         <p role="status">{controller.error || 'Opening your table…'}</p>
         <button className="primary-button" onClick={() => void controller.retry()}>
           Reconnect
@@ -267,11 +269,10 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   const [advice, setAdvice] = useState<AdviceView | null>(null);
   const [advicePending, setAdvicePending] = useState(false);
   const [unlockLevel, setUnlockLevel] = useState<1 | 2 | 3 | null>(null);
-  const [notes, setNotes] = useState<NotesView | null>(null);
-  const [notesUnlock, setNotesUnlock] = useState(false);
   const lastNudge = useRef({ hand: '', trick: 0 });
   const [modal, setModal] = useState<Modal>('pause');
-  const [newMode, setNewMode] = useState<Mode | null>(null);
+  const [wizardStep, setWizardStep] = useState<'pace' | 'game'>('pace');
+  const [wizardSpeed, setWizardSpeed] = useState<typeof gameSpeed>(gameSpeed);
   const [toast, setToast] = useState('');
   const [showRecap, setShowRecap] = useState(true);
   const [pageVisible, setPageVisible] = useState(!document.hidden);
@@ -313,21 +314,35 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
     try {
       await controller.refresh();
       setModal(null);
-      setNewMode(null);
     } catch {
       setToast('Could not reconnect. Your table is paused.');
     }
   };
   const setCoachMode = (value: typeof coachMode) =>
     void controller.preferences({ coachMode: value, gameSpeed });
-  const setGameSpeed = (value: typeof gameSpeed) =>
-    void controller.preferences({ coachMode, gameSpeed: value });
+  const openWizard = () => {
+    setWizardSpeed(gameSpeed);
+    setWizardStep('pace');
+    setModal('games');
+  };
   useEffect(() => {
     if (shellRef.current) {
       if (dialogOpen) shellRef.current.setAttribute('inert', '');
       else shellRef.current.removeAttribute('inert');
     }
   }, [dialogOpen, viewport.portraitPhone]);
+  useEffect(() => {
+    if (modal !== 'games') return;
+    document.querySelector<HTMLElement>('.wizard-content h1')?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        void closeModal();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [modal, wizardStep]);
   useEffect(() => {
     document.title = `${modeNames[game.mode]} — CardFord`;
   }, [game.mode]);
@@ -455,22 +470,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       if (decisionRef.current === decision) setAdvicePending(false);
     }
   }
-  async function loadNotes(unlock = false) {
-    try {
-      if (unlock || !session.access.handUnlocked) await controller.unlock(1);
-      setNotes(await api('/api/session/notes', 'NotesView', controller.envelope()));
-      setNotesUnlock(false);
-    } catch (e) {
-      setToast(e instanceof Error ? e.message : 'Notes unavailable.');
-    }
-  }
-  function openNotes() {
-    setModal('notes');
-    setNotes(null);
-    const needsConfirm = !session.access.handUnlocked && session.access.remainingHands !== null;
-    setNotesUnlock(needsConfirm);
-    if (!needsConfirm) void loadNotes();
-  }
   async function commit() {
     if (paused || controller.busy) return;
     const ok =
@@ -533,8 +532,14 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       setHint(0);
       setShowRecap(true);
       setModal(null);
-      setNewMode(null);
     }
+  }
+  async function startWizardGame(mode: Mode) {
+    if (wizardSpeed !== gameSpeed && !(await controller.preferences({ coachMode, gameSpeed: wizardSpeed }))) {
+      setToast('Could not save game speed. Try again.');
+      return;
+    }
+    await startGame(mode);
   }
   async function continueHand() {
     if (await controller.mutate('/api/session/next-hand')) {
@@ -561,17 +566,15 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   const commitLabel =
     game.phase === 'pass' ? `Pass ${selected.length} of 3` : bid === 0 ? 'Bid Nil' : `Bid ${bid}`;
   const commitEnabled = !controller.busy && (game.phase === 'pass' ? selected.length === 3 : myTurn);
-  const getMemory = () => notes?.memory ?? [];
   return (
     <>
       {viewport.portraitPhone ? (
         <div className="rotate-gate" role="alert">
-          <div className="rotate-device">
-            <RotateCw size={38} strokeWidth={1.4} />
+          <img className="rotate-watermark" src="/brand/cardford-symbol-mono.svg" alt="" aria-hidden="true" />
+          <div className="rotate-logo" role="img" aria-label="CardFord">
+            <img src="/brand/cardford-symbol.svg" alt="" />
+            <span>CardFord</span>
           </div>
-          <span className="wordmark">
-            CardFord<span>♠</span>
-          </span>
           <h1>
             Turn your phone
             <br />
@@ -592,15 +595,14 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                setModal('games');
+                openWizard();
               }}
               aria-label="CardFord choose game"
             >
-              <span className="wordmark">
-                CardFord<span>♠</span>
-              </span>
+              <img className="brand-symbol" src="/brand/cardford-symbol.svg" alt="" />
+              <span className="brand-name">CardFord</span>
             </a>
-            <button className="game-switch" onClick={() => setModal('games')} aria-label="Choose game">
+            <button className="game-switch" onClick={openWizard} aria-label="Choose game">
               <span className={isHearts ? 'heart-symbol' : ''}>{isHearts ? '♥' : '♠'}</span>
               <b>{modeNames[game.mode]}</b>
               <span className="game-variant">{isTeam ? 'Partners' : 'Solo'}</span>
@@ -617,10 +619,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               >
                 <RotateCcw size={18} />
               </button>
-              <button className="text-button notes-button" aria-label="Table notes" onClick={openNotes}>
-                <Eye size={18} />
-                <span>Table notes</span>
-              </button>
               <button className="icon-button" aria-label="Settings" onClick={() => setModal('settings')}>
                 <Settings2 size={19} />
               </button>
@@ -631,28 +629,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
           </header>
 
           <main className="game-shell">
-            <section className="score-strip" aria-label="Game score">
-              <div className="hand-number">
-                <span className="status-light" /> Hand {game.handNumber}
-                <span className="hand-divider">/</span>
-                <span className="trick-number">
-                  Trick{' '}
-                  {Math.max(1, Math.min(13, game.history.length + (game.phase === 'trick-end' ? 0 : 1)))} of
-                  13
-                </span>
-              </div>
-              <div className="scoreboard">
-                {(isTeam ? [0, 1] : [0, 1, 2, 3]).map((seat) => (
-                  <div className={`score-item ${seat === 0 ? 'your-score' : ''}`} key={seat}>
-                    <span>{isTeam ? (seat === 0 ? 'You & Maya' : 'Leo & Theo') : names[seat]}</span>
-                    <b>{game.scores[seat]}</b>
-                    {!isHearts && <small className="bag-count">{game.bags[seat]} bags</small>}
-                  </div>
-                ))}
-                <span className="target-score">{isHearts ? 'Low score wins' : 'Play to 500'}</span>
-              </div>
-            </section>
-
             <div className="play-space">
               <div className="table-stage">
                 <div className="last-trick-rail">
@@ -974,38 +950,65 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       )}
 
       {!viewport.portraitPhone && modal === 'games' && (
-        <Dialog title="Choose game" onClose={closeModal} wide>
-          <p className="dialog-intro">You and three computer players.</p>
-          <div className="game-options">
-            {(['hearts', 'spades-solo', 'spades-partners'] as Mode[]).map((mode) => (
-              <button
-                key={mode}
-                className={`game-option ${newMode === mode ? 'chosen' : ''}`}
-                onClick={() => setNewMode(mode)}
-              >
-                <div className={`game-art game-art-${mode}`}>
-                  <span>{mode === 'hearts' ? '♥' : '♠'}</span>
-                  {mode === 'spades-partners' && <span>♠</span>}
-                </div>
-                <h3>{modeNames[mode]}</h3>
-                <span className="mode-label">{mode === 'spades-partners' ? 'Partners' : 'Solo'}</span>
-                <span className="option-check">
-                  {newMode === mode ? <Check size={16} /> : <ArrowUpRight size={16} />}
-                </span>
-              </button>
-            ))}
-          </div>
-          <div className="dialog-bottom">
-            <p>{newMode ? 'Replaces your current game.' : ''}</p>
-            <button
-              className="primary-button"
-              disabled={!newMode}
-              onClick={() => newMode && startGame(newMode)}
-            >
-              Start game <ArrowRight size={16} />
+        <main className="new-game-wizard" aria-label="New game setup">
+          <header className="wizard-header">
+            <img src="/brand/cardford-symbol.svg" alt="" />
+            <span>New game</span>
+            <button className="icon-button" onClick={closeModal} aria-label="Close new game setup">
+              <X size={20} />
             </button>
+          </header>
+          <div className="wizard-content">
+            <p className="wizard-progress">{wizardStep === 'pace' ? '1 / 2' : '2 / 2'}</p>
+            {wizardStep === 'pace' ? (
+              <>
+                <h1 tabIndex={-1}>Set the pace</h1>
+                <p className="wizard-lead">Game speed</p>
+                <div className="wizard-speed-options">
+                  {([1, 1.2, 1.4] as const).map((speed) => (
+                    <button
+                      key={speed}
+                      className={wizardSpeed === speed ? 'chosen' : ''}
+                      aria-pressed={wizardSpeed === speed}
+                      onClick={() => setWizardSpeed(speed)}
+                    >
+                      {speed}×
+                    </button>
+                  ))}
+                </div>
+                <button className="primary-button wizard-next" disabled={controller.busy} onClick={() => setWizardStep('game')}>
+                  Choose game <ArrowRight size={17} />
+                </button>
+              </>
+            ) : (
+              <>
+                <h1 tabIndex={-1}>Choose a game</h1>
+                <p className="wizard-lead">You and three well trained players.</p>
+                <div className="game-options">
+                  {(['hearts', 'spades-solo', 'spades-partners'] as Mode[]).map((mode) => (
+                    <button
+                      key={mode}
+                      className="game-option"
+                      disabled={controller.busy}
+                      onClick={() => void startWizardGame(mode)}
+                    >
+                      <div className={`game-art game-art-${mode}`}>
+                        <span>{mode === 'hearts' ? '♥' : '♠'}</span>
+                        {mode === 'spades-partners' && <span>♠</span>}
+                      </div>
+                      <h3>{modeNames[mode]}</h3>
+                      <span className="mode-label">{mode === 'spades-partners' ? 'Partners' : 'Solo'}</span>
+                      <span className="option-check"><ArrowUpRight size={16} /></span>
+                    </button>
+                  ))}
+                </div>
+                <button className="text-button wizard-back" onClick={() => setWizardStep('pace')}>
+                  Back to game speed
+                </button>
+              </>
+            )}
           </div>
-        </Dialog>
+        </main>
       )}
       {!viewport.portraitPhone && modal === 'settings' && (
         <Dialog title="Settings" onClose={closeModal}>
@@ -1047,109 +1050,10 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               </button>
             ))}
           </div>
-          <fieldset className="speed-settings">
-            <legend>Game speed</legend>
-            <div className="speed-options">
-              {([1, 1.2, 1.4] as const).map((speed) => (
-                <button
-                  key={speed}
-                  className={gameSpeed === speed ? 'chosen' : ''}
-                  aria-pressed={gameSpeed === speed}
-                  onClick={() => setGameSpeed(speed)}
-                >
-                  {speed}×
-                </button>
-              ))}
-            </div>
-          </fieldset>
+
           <button className="primary-button full-button" onClick={closeModal}>
             Done
           </button>
-        </Dialog>
-      )}
-      {!viewport.portraitPhone && modal === 'notes' && (
-        <Dialog title="Table notes" onClose={closeModal} wide>
-          <>
-            {notesUnlock && (
-              <div className="fixture-notice">
-                <p>Unlock notes and all help for this hand.</p>
-                <button className="hint-button" onClick={() => void loadNotes(true)}>
-                  Use coached hand
-                </button>
-                <button className="text-button" onClick={closeModal}>
-                  Not now
-                </button>
-              </div>
-            )}
-            <div className="notes-layout">
-              <section>
-                <h3>Public cards played</h3>
-                <div className="suit-memory">
-                  {getMemory().map((row) => (
-                    <div className="suit-memory-row" key={row.suit}>
-                      <span
-                        className={`memory-suit ${row.suit === 'H' || row.suit === 'D' ? 'heart-symbol' : ''}`}
-                      >
-                        {suitSymbols[row.suit]}
-                      </span>
-                      <div className="suit-track">
-                        <span style={{ width: `${(row.played / 13) * 100}%` }} />
-                      </div>
-                      <b>
-                        {row.played}
-                        <span> / 13</span>
-                      </b>
-                      <small>{row.remaining} unplayed</small>
-                    </div>
-                  ))}
-                </div>
-                <details>
-                  <summary>Played cards</summary>
-                  {getMemory().map((row) => (
-                    <p key={row.suit}>
-                      {row.playedCards?.map(cardLabel).join(', ') ||
-                        `${row.played} cards played in ${row.suit}`}
-                    </p>
-                  ))}
-                </details>
-              </section>
-              <section>
-                <h3 className="notes-subtitle">Known voids</h3>
-                <div className="void-list">
-                  {getMemory().some((row) => row.voidSeats.length) ? (
-                    getMemory()
-                      .filter((row) => row.voidSeats.length)
-                      .map((row) => (
-                        <span key={row.suit}>
-                          {row.voidSeats.map((seat) => names[seat]).join(', ')}{' '}
-                          <b>no {suitSymbols[row.suit]}</b>
-                        </span>
-                      ))
-                  ) : (
-                    <p className="small-copy">None revealed yet.</p>
-                  )}
-                </div>
-                {isHearts && (
-                  <details className="notes-details">
-                    <summary>Your pass · private</summary>
-                    <p className="small-copy">
-                      Sent: {notes?.outgoing.map(cardLabel).join(', ') || 'None'}
-                      <br />
-                      Received: {notes?.received.map(cardLabel).join(', ') || 'None'}
-                    </p>
-                  </details>
-                )}
-                <details className="table-rules">
-                  <summary>Table rules</summary>
-                  <p>
-                    {isHearts
-                      ? 'Pass left, right, across, then hold. Hearts: 1 point. Queen of spades: 13. Shoot the moon: 26 to everyone else. Game ends at 100.'
-                      : `${isTeam ? 'You and Maya share a contract. ' : 'Each player has their own contract. '}Nil: ±100. Ten bags cost 100 points. No blind Nil. Play to 500.`}
-                  </p>
-                </details>
-              </section>
-            </div>
-          </>
         </Dialog>
       )}
       {!viewport.portraitPhone && modal === 'pause' && (
@@ -1161,7 +1065,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
             <Play size={17} />
             Resume
           </button>
-          <button className="text-button full-button" onClick={() => setModal('games')}>
+          <button className="text-button full-button" onClick={openWizard}>
             <RotateCcw size={17} />
             Choose another game
           </button>
@@ -1205,7 +1109,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               </div>
               <details className="recap-details">
                 <summary>What counts?</summary>
-                <p>Turns with cues or table notes open. No skill rating.</p>
+                <p>Turns with coaching help opened. No skill rating.</p>
               </details>
             </div>
           </div>

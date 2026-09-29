@@ -128,3 +128,50 @@
   .app-shell{position:relative;height:max(850px,var(--app-height));overflow:visible}
   .runtime-label{position:absolute}
 }
+
+/* CardFord identity and a full-page game setup flow. */
+.brand{gap:8px;min-width:0}
+.brand-symbol{width:32px;height:32px;display:block;flex:none}
+.brand-name{font:800 27px/1 'Manrope Variable',sans-serif;letter-spacing:-1.4px;color:#13304d}
+.loading-logo,.rotate-logo{display:flex;align-items:center;gap:8px;font:800 clamp(30px,7vw,52px)/1 'Manrope Variable',sans-serif;letter-spacing:-2px;white-space:nowrap}
+.loading-logo{margin:0 0 22px}
+.loading-logo img,.rotate-logo img{width:1.35em;height:1.35em;flex:none}
+.rotate-gate{position:relative;isolation:isolate;overflow:hidden}
+.rotate-watermark{position:absolute;width:min(90vw,440px);height:auto;opacity:.09;filter:grayscale(1);z-index:-1;pointer-events:none}
+.rotate-logo{color:#f6f4ed;font-size:clamp(29px,8vw,40px);margin-bottom:20px}
+.new-game-wizard{position:fixed;inset:0;z-index:30;background:#edf1f2;color:#13304d;overflow:auto;padding:max(18px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(22px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
+.wizard-header{max-width:960px;margin:auto;display:flex;align-items:center;gap:10px;font:750 20px 'Manrope Variable',sans-serif}
+.wizard-header>img{width:36px;height:36px}
+.wizard-header>.icon-button{margin-left:auto}
+.wizard-content{max-width:960px;margin:clamp(25px,6vh,64px) auto 0}
+.wizard-progress{font-size:12px;color:#69828b;margin-bottom:14px}
+.wizard-content h1{font:700 clamp(30px,4vw,48px)/1.1 'Manrope Variable',sans-serif;letter-spacing:-1.5px;outline-offset:8px}
+.wizard-lead{margin:13px 0 26px;color:#5e7680;font-size:15px}
+.wizard-speed-options{display:flex;gap:12px;flex-wrap:wrap}
+.wizard-speed-options button{min-width:105px;min-height:68px;border:1px solid #cfdbde;border-radius:12px;background:#fff;font-size:22px;font-weight:650}
+.wizard-speed-options button.chosen{border:2px solid #527d78;background:#edf5f1}
+.wizard-next{margin-top:32px}
+.new-game-wizard .game-options{grid-template-columns:repeat(3,minmax(0,1fr))}
+.new-game-wizard .game-option{min-height:215px}
+.new-game-wizard .game-option:focus-visible{outline:3px solid #527d78;outline-offset:3px}
+.wizard-back{margin-top:18px;background:transparent;color:#456a75;border:1px solid #cbdadd}
+.wizard-back:hover{background:#e5ebed}
+@media (max-width:700px){
+  .new-game-wizard .game-options{grid-template-columns:1fr}
+  .new-game-wizard .game-option{min-height:125px;display:grid;grid-template-columns:110px 1fr;align-items:center;column-gap:16px}
+  .new-game-wizard .game-art{grid-row:span 2;height:90px;margin:0}
+  .new-game-wizard .mode-label{margin-left:0;justify-self:start}
+  .brand-symbol{width:26px;height:26px}
+  .brand-name{font-size:20px}
+}
+@media (max-height:520px) and (orientation:landscape){
+  .new-game-wizard{padding-top:12px}
+  .wizard-content{margin-top:12px}
+  .wizard-content h1{font-size:25px}
+  .wizard-lead{margin:5px 0 10px;font-size:12px}
+  .wizard-speed-options button{min-height:48px}
+  .wizard-next{margin-top:14px}
+  .new-game-wizard .game-option{min-height:128px}
+  .new-game-wizard .game-art{height:53px}
+  .new-game-wizard .game-art>span{height:39px;width:28px;font-size:22px}
+}

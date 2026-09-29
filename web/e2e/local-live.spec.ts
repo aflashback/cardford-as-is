@@ -29,11 +29,11 @@ async function open(page: Page) {
 }
 async function newGame(page: Page, mode: Mode) {
   await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
   await page
     .locator('.game-option')
     .filter({ has: page.locator(`.game-art-${mode}`) })
     .click();
-  await page.getByRole('button', { name: 'Start game', exact: true }).click();
   await expect.poll(async () => (await current(page)).game.mode).toBe(mode);
 }
 async function waitHuman(page: Page) {
