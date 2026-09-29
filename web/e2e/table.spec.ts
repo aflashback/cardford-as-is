@@ -292,10 +292,13 @@ test('new game wizard saves pace and starts from the chosen card', async ({ page
   await expect(page.getByRole('button', { name: '1×', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: '1.2×' }).click();
   await page.getByRole('button', { name: 'Choose game', exact: true }).click();
-  await expect(page.getByText('You and three well trained players.')).toBeVisible();
+  await expect(page.getByText('You and three trained players.')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Start game' })).toHaveCount(0);
   await page.screenshot({ path: testInfo.outputPath('cardford-wizard.png') });
-  await page.locator('.game-option').filter({ has: page.locator('.game-art-hearts') }).click();
+  await page
+    .locator('.game-option')
+    .filter({ has: page.locator('.game-art-hearts') })
+    .click();
   await expect(page.getByRole('main', { name: 'New game setup' })).toHaveCount(0);
   expect(requests).toHaveLength(2);
   expect(requests[0]).toMatchObject({ preferences: { gameSpeed: 1.2 } });
@@ -648,6 +651,17 @@ for (const phase of ['hand-end', 'match-end'] as const) {
     ended.game.turn = null;
     ended.game.hand = [];
     ended.game.legalActions = [];
+    ended.game.history = [
+      {
+        winner: 2,
+        plays: [
+          { seat: 0, card: 'C2' },
+          { seat: 1, card: 'C3' },
+          { seat: 2, card: 'CA' },
+          { seat: 3, card: 'C4' },
+        ],
+      },
+    ];
     const harness = await mount(page, ended);
     const requests: unknown[] = [];
     const next = fixture();
@@ -662,6 +676,12 @@ for (const phase of ['hand-end', 'match-end'] as const) {
     });
     const recap = page.getByRole('dialog');
     await expect(recap.getByRole('button', { name: 'Play again', exact: true })).toBeVisible();
+    if (phase === 'match-end') {
+      await recap.getByText('Final hand: trick winners', { exact: true }).click();
+      await expect(recap.getByText(/Trick 1: Maya/)).toBeVisible();
+    } else {
+      await expect(recap.getByText('Final hand: trick winners')).toHaveCount(0);
+    }
     await expect(recap.getByText('Turns with cues or table notes open. No skill rating.')).not.toBeVisible();
     await recap.getByRole('button', { name: 'Play again', exact: true }).click();
     await expect(page.getByRole('dialog')).toHaveCount(0);
@@ -675,9 +695,7 @@ for (const phase of ['hand-end', 'match-end'] as const) {
   });
 }
 
-test('table stays minimal and coach settings do not contain game speed', async ({
-  page,
-}, testInfo) => {
+test('table stays minimal and coach settings do not contain game speed', async ({ page }, testInfo) => {
   const harness = await mount(page);
   await expect(page.getByRole('button', { name: 'Table notes' })).toHaveCount(0);
   await expect(page.getByText(/Hand 1|Trick 1 of 13|Low score wins/)).toHaveCount(0);

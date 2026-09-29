@@ -976,14 +976,18 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                     </button>
                   ))}
                 </div>
-                <button className="primary-button wizard-next" disabled={controller.busy} onClick={() => setWizardStep('game')}>
+                <button
+                  className="primary-button wizard-next"
+                  disabled={controller.busy}
+                  onClick={() => setWizardStep('game')}
+                >
                   Choose game <ArrowRight size={17} />
                 </button>
               </>
             ) : (
               <>
                 <h1 tabIndex={-1}>Choose a game</h1>
-                <p className="wizard-lead">You and three well trained players.</p>
+                <p className="wizard-lead">You and three trained players.</p>
                 <div className="game-options">
                   {(['hearts', 'spades-solo', 'spades-partners'] as Mode[]).map((mode) => (
                     <button
@@ -998,7 +1002,9 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                       </div>
                       <h3>{modeNames[mode]}</h3>
                       <span className="mode-label">{mode === 'spades-partners' ? 'Partners' : 'Solo'}</span>
-                      <span className="option-check"><ArrowUpRight size={16} /></span>
+                      <span className="option-check">
+                        <ArrowUpRight size={16} />
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -1113,6 +1119,27 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               </details>
             </div>
           </div>
+          {game.phase === 'match-end' && (
+            <details className="recap-details">
+              <summary>Final hand: trick winners</summary>
+              <ol>
+                {game.history.map((trick, index) => (
+                  <li key={index}>
+                    Trick {index + 1}: {names[trick.winner]} —{' '}
+                    {trick.plays.map((play) => cardLabel(play.card)).join(', ')}
+                  </li>
+                ))}
+              </ol>
+              <p>
+                {names
+                  .map(
+                    (name, seat) =>
+                      `${name}: ${game.tricks[seat]} tricks${isHearts ? '' : `, bid ${game.bids[seat] === 0 ? 'Nil' : game.bids[seat]}`}`,
+                  )
+                  .join(' · ')}
+              </p>
+            </details>
+          )}
           <div className="dialog-bottom">
             <button className="text-button" onClick={() => setShowRecap(false)}>
               <Eye size={16} />

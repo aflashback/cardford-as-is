@@ -154,7 +154,7 @@ Use evidence filenames such as `qa/implementation/W04-commands-<run-id>.md` and 
 |---|---|
 | TABLE-01/02 | Internal practice table metadata; future human-only remains separately gated; setup copy reads three trained players. |
 | KNOW-05, STRAT-07–10 | `spades-reasoning.test.ts`: reachable solo then partnership facts/tactics, hidden-hand invariance and bot/coach agreement; `evaluation/spades-reasoning.ts`: seeded full hands and frozen baseline. |
-| COACH-09/10 | `saved-analysis.test.ts`: analysis exists with hints off/quota exhausted, no automatic charge/exposure, stable original review and explicit legacy absence. |
+| COACH-09/10 | `saved-analysis.test.ts`: analysis exists with hints off/quota exhausted, no automatic charge/exposure, stable original review and explicit legacy absence. `spades-full-hand.spec.ts`: quiet complete hands, saved-advice reveal and switching decisions without stale advice. |
 | COACH-11 | `table.spec.ts`: game-end final-hand trick results, no live Table notes. |
 
 Scenario family definitions and limits are in [CR-STRAT-005](../12-spades-reasoning.md). Passing these cases is scoped correctness evidence, not all-deal optimality or player-learning proof.

@@ -1,5 +1,7 @@
 import type { PrivateGame, AcceptedAction } from '../game/index.ts';
 import type { SeatObservation } from '../observations/types.ts';
+import type { DecisionAnalysis } from '../strategy/types.ts';
+import type { Advice } from '../coaching/templates.ts';
 import type {
   AdviceView,
   GameAction,
@@ -32,7 +34,15 @@ export interface DecisionRecord {
   before: ReviewFrame;
   after: ReviewFrame;
 }
+export interface SavedDecisionAnalysis {
+  analysis: DecisionAnalysis;
+  adviceSnapshot: Advice;
+}
 export interface GameDocument {
+  /** Missing only in legacy documents; multiplayer is not an enabled runtime. */
+  tableType?: 'practice-bots';
+  /** Private analysis is independent of coaching access and issued guidance. */
+  decisionAnalyses?: Record<string, SavedDecisionAnalysis>;
   state: PrivateGame;
   control: { tab: string; token: string };
   stats: SessionStats;

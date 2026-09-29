@@ -14,7 +14,10 @@ import {
   type GameAction,
 } from '../game/index.ts';
 import { observe, type SeatObservation } from '../observations/index.ts';
-import { chooseAction, POLICY_VERSION } from '../strategy/index.ts';
+import {
+  chooseBaselineAction as chooseAction,
+  BASELINE_POLICY_VERSION as POLICY_VERSION,
+} from '../strategy/baseline.ts';
 type Policy = 'local-baseline-1.0.0' | 'first-legal-1.0.0';
 type Manifest = {
   id: string;

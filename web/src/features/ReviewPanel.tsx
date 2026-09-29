@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type {
+  AdviceView,
   CoachAccess,
   CommandEnvelope,
   ReviewIndex,
@@ -26,6 +27,8 @@ export function ReviewPanel({
   const [busy, setBusy] = useState(false);
   const [sourceAccess, setSourceAccess] = useState<CoachAccess | null>(null);
   const [pendingCard, setPendingCard] = useState<string | null>(null);
+  const [advice, setAdvice] = useState<AdviceView | null>(null);
+  const [pendingAdvice, setPendingAdvice] = useState(false);
   useEffect(() => {
     void api('/api/session/reviews?scope=match', 'ReviewIndex')
       .then(setIndex)
@@ -38,6 +41,8 @@ export function ReviewPanel({
     setStep(0);
     setSourceAccess(null);
     setPendingCard(null);
+    setAdvice(null);
+    setPendingAdvice(false);
     try {
       const result = await api(`/api/session/reviews/${encodeURIComponent(decisionId)}?step=0`, 'ReviewView');
       setReview(result);
@@ -56,8 +61,40 @@ export function ReviewPanel({
       setBusy(false);
     }
   }
+  async function originalAdvice(unlock = false) {
+    if (!review || busy || !sourceAccess) return;
+    if (!sourceAccess.handUnlocked && sourceAccess.remainingHands !== null && !unlock) {
+      setPendingAdvice(true);
+      setPendingCard(null);
+      return;
+    }
+    setBusy(true);
+    setError('');
+    try {
+      const source = review.frames[0]?.game;
+      if (!source) throw new Error('Original decision is unavailable.');
+      const command = envelope();
+      const result = await api('/api/coaching/hand-unlocks', 'HandUnlockView', {
+        requestId: crypto.randomUUID(),
+        gameId: source.id,
+        handId: `${source.id}:${source.handNumber}`,
+        decisionId: review.decisionId,
+        expectedRevision: command.expectedRevision,
+        requestedLevel: 3,
+        controlLeaseToken: command.controlLeaseToken,
+      });
+      setSourceAccess(result.access);
+      setAdvice(result.advice);
+      setPendingAdvice(false);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Original advice unavailable.');
+    } finally {
+      setBusy(false);
+    }
+  }
   async function alternative(card: string, unlock = false) {
     if (!review || busy || !sourceAccess) return;
+    setPendingAdvice(false);
     if (!sourceAccess.handUnlocked && sourceAccess.remainingHands !== null && !unlock) {
       setPendingCard(card);
       return;
@@ -140,6 +177,42 @@ export function ReviewPanel({
             {frame.game.trick.map((play) => `Seat ${play.seat}: ${cardLabel(play.card)}`).join('; ') ||
               'No cards played'}
           </p>
+          {!trial && step === 0 && sourceAccess && (
+            <section aria-label="Original coach advice">
+              {advice ? (
+                <>
+                  <h4>Advice at your decision</h4>
+                  <p>
+                    {advice.focus}: {advice.notice}
+                  </p>
+                  <p>{advice.reason}</p>
+                  <p>{advice.suggestion}</p>
+                </>
+              ) : (
+                <button className="text-button" disabled={busy} onClick={() => void originalAdvice()}>
+                  Show original coach advice
+                </button>
+              )}
+              {pendingAdvice && (
+                <div className="fixture-notice">
+                  <p>
+                    Use one coached hand to reveal its saved advice. This keeps the original help record
+                    unchanged.
+                  </p>
+                  <button
+                    className="primary-button"
+                    disabled={busy}
+                    onClick={() => void originalAdvice(true)}
+                  >
+                    Use coached hand
+                  </button>
+                  <button className="text-button" disabled={busy} onClick={() => setPendingAdvice(false)}>
+                    Not now
+                  </button>
+                </div>
+              )}
+            </section>
+          )}
           {frame.notes.length > 0 && (
             <details>
               <summary>Details</summary>

@@ -1,8 +1,10 @@
 import { cardLabel, cardSuit } from '../game/cards.ts';
-import { trickWinner } from '../game/rules.ts';
-import type { Card, Seat, Suit } from '../game/kernel/types.ts';
+import { actionId } from '../game/rules.ts';
+import type { Card, Suit } from '../game/kernel/types.ts';
 import { assertObservation, type SeatObservation } from '../observations/index.ts';
-import { chooseAction, POLICY_VERSION } from '../strategy/index.ts';
+import { analyzeDecision, POLICY_VERSION } from '../strategy/index.ts';
+import type { DecisionAnalysis } from '../strategy/types.ts';
+
 export type Advice = {
   focus: string;
   notice: string;
@@ -14,23 +16,53 @@ export type Advice = {
   highlightSuit?: Suit;
   provenance: 'code' | 'forced';
   policyVersion: string;
+  reasonIds: string[];
+  evidence: 'exact' | 'heuristic';
 };
-/** Original templates use only verified predicates and the same selected action as bots. */
-export function explain(obs: SeatObservation): Advice {
+
+/** Display a small set of complete reasons; the saved analysis keeps every reason. */
+function reasonText(analysis: DecisionAnalysis, preferred: string[] = []): string {
+  const selected = analysis.candidates.find((candidate) => candidate.disposition === 'selected');
+  const available = selected?.reasonIds ?? [];
+  const ids = [...new Set([...preferred, ...available])].filter((id) => available.includes(id));
+  const statements: string[] = [];
+  for (const id of ids) {
+    const reason = analysis.reasons.find((entry) => entry.id === id);
+    if (!reason || [...statements, reason.text].join(' ').length > 1700) continue;
+    statements.push(reason.text);
+    if (statements.length === 2) break;
+  }
+  return statements.join(' ');
+}
+
+/** Original templates consume the same selected action and reason IDs as bots. */
+export function explain(obs: SeatObservation, suppliedAnalysis?: DecisionAnalysis): Advice {
   assertObservation(obs);
-  const base = {
-    provenance: obs.legalActions.length === 1 ? ('forced' as const) : ('code' as const),
-    policyVersion: POLICY_VERSION,
-  };
   if (!obs.legalActions.length)
     return {
-      ...base,
+      provenance: 'code',
+      policyVersion: POLICY_VERSION,
+      reasonIds: [],
+      evidence: 'exact',
       focus: obs.phase === 'hand-end' || obs.phase === 'match-end' ? 'Hand complete' : 'Watch the table',
       notice: 'No decision for you right now.',
       reason: 'The memory aid shows facts from this hand’s public plays.',
       suggestion: '',
     };
-  const action = chooseAction(obs);
+  const analysis = suppliedAnalysis ?? analyzeDecision(obs);
+  if (
+    analysis.action.seat !== obs.seat ||
+    !obs.legalActions.some((action) => actionId(action) === actionId(analysis.action))
+  )
+    throw new Error('Analysis does not match this legal decision.');
+  const selected = analysis.candidates.find((candidate) => candidate.disposition === 'selected');
+  const base = {
+    provenance: analysis.provenance,
+    policyVersion: analysis.policyVersion,
+    reasonIds: [...(selected?.reasonIds ?? [])],
+    evidence: selected?.evidence ?? ('heuristic' as const),
+  };
+  const action = analysis.action;
   if (action.kind === 'pass')
     return {
       ...base,
@@ -39,22 +71,21 @@ export function explain(obs: SeatObservation): Advice {
       reason:
         'This local starting plan favors passing high cards. Keeping queen protection, a short suit or a possible moon plan can favor another. Received cards can change your suits.',
       suggestion: 'Consider these three together. Recheck your suits after receiving.',
-      pass: action.cards,
+      pass: [...action.cards],
     };
   if (action.kind === 'bid')
     return {
       ...base,
       focus: obs.mode === 'spades-partners' ? 'Your team contract' : 'Your own contract',
       notice: 'Count likely tricks before bidding.',
-      reason:
-        'High cards and spade length suggest a starting bid. These heuristic weights are not calibrated probabilities.',
+      reason: reasonText(analysis),
       suggestion: `Consider ${action.bid}. It is a starting estimate, not a guarantee.`,
       bid: action.bid,
     };
   const card = action.card;
   const led = obs.trick.length ? cardSuit(obs.trick[0].card) : undefined;
   const payload = { ...base, card, ...(led ? { highlightSuit: led } : {}) };
-  if (obs.legalActions.length === 1)
+  if (analysis.provenance === 'forced')
     return {
       ...payload,
       focus: 'One legal play',
@@ -62,93 +93,131 @@ export function explain(obs: SeatObservation): Advice {
       reason: 'The rules leave no strategic choice on this turn.',
       suggestion: `Play ${cardLabel(card)}.`,
     };
-  const remaining = 3 - obs.trick.length;
-  const below =
-    obs.trick.length > 0 && trickWinner([...obs.trick, { seat: obs.seat, card }], obs.mode) !== obs.seat;
-  if (obs.mode !== 'hearts' && obs.bids[obs.seat] === 0) {
-    const live = obs.tricks[obs.seat] === 0;
+  if (obs.mode === 'hearts') {
+    const suitNames = { C: 'clubs', D: 'diamonds', H: 'hearts', S: 'spades' };
     return {
       ...payload,
-      focus: live ? 'Protect your Nil' : 'Avoid more bags',
-      notice: live ? 'You bid Nil: take no tricks.' : 'Your Nil has already broken.',
-      reason: !live
-        ? obs.mode === 'spades-partners'
-          ? 'Extra tricks add bags; they do not help your partner’s contract.'
-          : 'Extra tricks add bags even after your Nil has broken.'
-        : !obs.trick.length
-          ? 'A low lead may help avoid a trick, but the other hands are unknown.'
-          : below
-            ? remaining > 0
-              ? 'Stay below the current winner. Others still have a play.'
-              : 'Staying below the winner avoids this trick.'
-            : remaining > 0
-              ? 'Every legal card puts you ahead for now. Another player may still overtake.'
-              : 'Every legal card wins this trick, so your Nil cannot survive it.',
-      suggestion: !obs.trick.length
-        ? `Consider ${cardLabel(card)} as a low lead.`
-        : below
-          ? `Consider ${cardLabel(card)} to stay below the current winner.`
-          : `Consider ${cardLabel(card)}; no legal card stays below the current winner.`,
+      focus: led ? `${suitNames[led]} were led` : 'Choose your lead',
+      notice: led
+        ? obs.hand.some((entry) => cardSuit(entry) === led)
+          ? `${suitNames[led]} were led. You must follow suit.`
+          : `You have no ${suitNames[led]} to follow.`
+        : `${obs.legalActions.length} cards are legal to lead.`,
+      reason: 'Hearts and the queen carry points. A lower card does not always avoid taking the trick.',
+      suggestion: `Consider ${cardLabel(card)}. Other plans can be reasonable.`,
     };
   }
-  const partner = ((obs.seat + 2) % 4) as Seat;
-  if (obs.mode === 'spades-partners' && obs.trick.length && trickWinner(obs.trick, obs.mode) === partner) {
-    if (obs.bids[partner] === 0) {
-      const cover = obs.legalActions.some(
-        (a) =>
-          a.kind === 'play' &&
-          trickWinner([...obs.trick, { seat: obs.seat, card: a.card }], obs.mode) === obs.seat,
-      );
-      const live = obs.tricks[partner] === 0;
-      return {
-        ...payload,
-        focus: live ? 'Cover your partner’s Nil' : 'Partner’s Nil has broken',
-        notice: 'Your Nil partner is winning so far.',
-        reason: !live
-          ? 'The Nil bonus is already lost. Extra tricks by the Nil bidder add bags without contract credit.'
-          : cover
-            ? remaining > 0
-              ? 'You can overtake your partner. An opponent still has a play.'
-              : 'You can take this trick off your partner; all opponents have played.'
-            : remaining > 0
-              ? 'No legal card can cover your partner. An opponent still has a play.'
-              : 'No legal card can cover your partner, and all opponents have played.',
-        suggestion:
-          live && cover
-            ? `Consider ${cardLabel(card)} to take the trick off your partner.`
-            : live
-              ? `No covering play is available; consider ${cardLabel(card)}.`
-              : `Consider ${cardLabel(card)}. The contract and bags still matter.`,
-      };
-    }
-    return {
-      ...payload,
-      focus: 'Partner is currently ahead',
-      notice: 'Your partner has the winning card so far.',
-      reason:
-        remaining > 0
-          ? `${remaining} opponent ${remaining === 1 ? 'is' : 'are'} still to play; the trick can change.`
-          : 'All opponents have played. Taking the next lead yourself can still be useful.',
-      suggestion: below
-        ? `Consider ${cardLabel(card)} to leave partner ahead for now.`
-        : `Consider ${cardLabel(card)} if taking the lead fits your next play.`,
-    };
-  }
-  const suitNames = { C: 'clubs', D: 'diamonds', H: 'hearts', S: 'spades' };
-  return {
+
+  const facts = analysis.facts;
+  const outcome = facts.cardOutcomes.find((entry) => entry.actionId === actionId(action));
+  const winsNow = outcome?.currentWinner === obs.seat;
+  const has = (id: string) => base.reasonIds.includes(id);
+  const reason = (...ids: string[]) => reasonText(analysis, ids);
+  const lead = obs.trick.length === 0;
+  const cue = (focus: string, notice: string, explanation: string, suggestion: string): Advice => ({
     ...payload,
-    focus: led ? `${suitNames[led]} were led` : 'Choose your lead',
-    notice: led
-      ? obs.hand.some((c) => cardSuit(c) === led)
-        ? `${suitNames[led]} were led. You must follow suit.`
-        : `You have no ${suitNames[led]} to follow.`
-      : `${obs.legalActions.length} cards are legal to lead.`,
-    reason:
-      obs.mode === 'hearts'
-        ? 'Hearts and the queen carry points. A lower card does not always avoid taking the trick.'
-        : obs.mode === 'spades-partners'
-          ? 'Watch your team’s remaining bid. Saving a high card or taking the lead can each help.'
-          : 'Watch your own remaining bid. Saving a high card or taking the lead can each help.',
-    suggestion: `Consider ${cardLabel(card)}. Other plans can be reasonable.`,
-  };
+    focus,
+    notice,
+    reason: explanation,
+    suggestion,
+  });
+
+  // Selected partnership cover precedes own failed-Nil/bag wording.
+  if (outcome?.coversPartnerNil)
+    return cue(
+      'Cover your partner’s Nil',
+      facts.ownNil === 'live'
+        ? 'Both Nil commitments are still live.'
+        : 'Your Nil partner is currently ahead.',
+      facts.ownNil === 'live'
+        ? reason('P04.cover-tradeoff', 'P04.double-nil')
+        : reason('P02.live-nil-cover', 'S04.turn-order'),
+      `Consider ${cardLabel(card)} to take the trick off your partner.`,
+    );
+  if (has('P02.covering-lead') || has('P02.cover-before-partner'))
+    return cue(
+      'Give your Nil partner cover',
+      'Your partner’s Nil is still live.',
+      reason(has('P02.covering-lead') ? 'P02.covering-lead' : 'P02.cover-before-partner', 'S04.turn-order'),
+      `Consider ${cardLabel(card)} to give your partner room to duck.`,
+    );
+  if (has('P03.no-cover'))
+    return cue(
+      'No legal Nil cover',
+      'Your Nil partner is currently ahead.',
+      reason('P03.no-cover', 'S04.turn-order'),
+      `No covering play is available; consider ${cardLabel(card)}.`,
+    );
+  if (facts.ownNil === 'live') {
+    const canUnderplay = facts.cardOutcomes.some((entry) => entry.currentWinner !== obs.seat);
+    return cue(
+      'Protect your Nil',
+      facts.partnerNil === 'live' ? 'Both Nil commitments are still live.' : 'You bid Nil: take no tricks.',
+      reason(
+        !lead && !winsNow ? 'S05.shed-risk' : 'S06.no-underplay',
+        facts.partnerNil === 'live' ? 'P04.double-nil' : 'S04.turn-order',
+      ),
+      lead
+        ? `Consider ${cardLabel(card)} as a low lead.`
+        : !winsNow
+          ? `Consider ${cardLabel(card)} to stay below the current winner.`
+          : canUnderplay
+            ? `Consider ${cardLabel(card)} only with its Nil tradeoff in mind.`
+            : `Consider ${cardLabel(card)}; no legal card stays below the current winner.`,
+    );
+  }
+  if (facts.ownNil === 'failed')
+    return cue(
+      'Avoid more bags',
+      'Your Nil has already broken.',
+      reason('S07.failed-nil', 'S09.limit-bags'),
+      `Consider ${cardLabel(card)} while limiting further bags.`,
+    );
+  if (facts.partner !== null && facts.currentWinner === facts.partner && facts.partnerNil === 'none')
+    return cue(
+      winsNow ? 'Consider taking the lead' : 'Partner is currently ahead',
+      'Your partner has the winning card so far.',
+      reason(winsNow ? 'P09.protect-partner' : 'P01.conserve-under-partner', 'S04.turn-order'),
+      winsNow
+        ? `Consider ${cardLabel(card)} if taking the lead serves the team.`
+        : `Consider ${cardLabel(card)} to leave partner ahead for now.`,
+    );
+  if (has('P06.offer-ruff'))
+    return cue(
+      'Offer partner a possible ruff',
+      'Your partner has shown a void in this suit.',
+      reason('P06.offer-ruff', 'P06.partner-void'),
+      `Consider leading ${cardLabel(card)}; a partner ruff is a possibility.`,
+    );
+  if (has('S12.leave-nil-winning'))
+    return cue(
+      'Pressure the opposing Nil',
+      'An opposing Nil is currently winning.',
+      reason('S12.leave-nil-winning', 'S04.turn-order'),
+      `Consider ${cardLabel(card)} to leave that player ahead.`,
+    );
+  if ((facts.contractNeeded ?? 0) > 0) {
+    const need = facts.contractNeeded!;
+    const tactic = lead
+      ? has('S10.cash-control')
+        ? 'S10.cash-control'
+        : 'S10.develop-suit'
+      : winsNow
+        ? 'S08.economical-winner'
+        : 'S08.preserve-control';
+    return cue(
+      facts.partner === null ? 'Your own contract' : 'Your team contract',
+      `${need} credited ${need === 1 ? 'trick is' : 'tricks are'} still needed.`,
+      reason(tactic, 'S04.turn-order'),
+      winsNow && !lead
+        ? `Consider ${cardLabel(card)} for the current lead.`
+        : `Consider ${cardLabel(card)} while preserving useful control.`,
+    );
+  }
+  return cue(
+    'Manage the bags',
+    'The positive contract is met.',
+    reason('S09.contract-met', lead ? 'S09.low-lead' : 'S09.limit-bags'),
+    `Consider ${cardLabel(card)} while weighing extra-trick risk.`,
+  );
 }

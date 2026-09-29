@@ -9,12 +9,12 @@ import {
   type GameAction as DomainAction,
 } from '../game/index.ts';
 import { observe, type SeatObservation } from '../observations/index.ts';
-import { chooseAction } from '../strategy/index.ts';
+import { analyzeDecision, chooseAction } from '../strategy/index.ts';
 import { explain } from '../coaching/templates.ts';
 import { shuffledDeck, randomDealer } from '../game-deal.ts';
 import { ownedTransaction, idempotent, saveGame, savePlayer } from '../records/repository.ts';
 import type { Database, Transaction } from '../records/database.ts';
-import type { GameRow, PlayerRow } from '../records/types.ts';
+import type { GameRow, PlayerRow, SavedDecisionAnalysis } from '../records/types.ts';
 import type {
   ActionsRequest,
   AdviceRequest,
@@ -72,8 +72,23 @@ function frame(game: GameRow, action: ReviewFrame['action'] = null): ReviewFrame
     notes: [],
   };
 }
+/** Freeze a human decision without issuing guidance or consuming a coached hand. */
+function ensureHumanAnalysis(
+  game: GameRow,
+  obs = observe(game.document.state, 0),
+): SavedDecisionAnalysis | undefined {
+  if (!obs.legalActions.length) return undefined;
+  const id = decisionId(game);
+  const saved = game.document.decisionAnalyses?.[id];
+  if (saved) return saved;
+  const analysis = analyzeDecision(obs);
+  const result = { analysis, adviceSnapshot: explain(obs, analysis) };
+  (game.document.decisionAnalyses ??= {})[id] = result;
+  return result;
+}
 async function persistAdvance(client: Transaction, game: GameRow, event: unknown) {
   game.revision++;
+  ensureHumanAnalysis(game);
   game.document.frames.push(frame(game));
   await client.query('INSERT INTO game_events(game_id,revision,event) VALUES($1,$2,$3)', [
     game.id,
@@ -99,6 +114,8 @@ async function insertGame(
     player_id: player.id,
     revision: 0,
     document: {
+      tableType: 'practice-bots',
+      decisionAnalyses: {},
       state: createGame({ id, mode, dealer: randomDealer() }, deck),
       control: { tab, token: leaseToken() },
       stats: { decisions: 0, helped: 0, suggestions: 0 },
@@ -110,6 +127,7 @@ async function insertGame(
       actions: [],
     },
   };
+  ensureHumanAnalysis(game);
   game.document.frames.push(frame(game));
   await client.query('INSERT INTO games(id,player_id,document) VALUES($1,$2,$3)', [
     id,
@@ -128,6 +146,8 @@ export class GameService {
   async session(context: RequestContext) {
     return ownedTransaction(this.pool, context.token, async (client, player, existing) => {
       const game = existing ?? (await insertGame(client, player, 'spades-partners', context.tab));
+      if (existing && !game.document.decisionAnalyses?.[decisionId(game)] && ensureHumanAnalysis(game))
+        await saveGame(client, game);
       return sessionView(client, player, game, context.tab);
     });
   }
@@ -171,6 +191,7 @@ export class GameService {
       const before = frame(game, body.action),
         obs = observe(game.document.state, 0),
         id = decisionId(game);
+      ensureHumanAnalysis(game, obs);
       let accepted: Parameters<typeof apply>[1];
       if (body.action.kind === 'pass') {
         const passes: Four<Card[]> = [body.action.cards, [], [], []];
@@ -314,6 +335,9 @@ export class GameService {
     unlock: boolean,
     source?: { observation: SeatObservation; id: string },
   ): Promise<AdviceView> {
+    const id = source?.id ?? decisionId(game);
+    const issued = game.document.savedAdvice[`${id}:${requestedLevel}`];
+    if (issued) return issued;
     const obs = source?.observation ?? observe(game.document.state, 0);
     if (!obs.legalActions.length && requestedLevel !== 1)
       invalid('Move suggestions are available at your decision.');
@@ -326,8 +350,14 @@ export class GameService {
         'QUOTA_EXHAUSTED',
         'All four coached hands are used today. You can keep playing.',
       );
-    const advice = explain(obs);
-    const id = source?.id ?? decisionId(game);
+    const saved = game.document.decisionAnalyses?.[id];
+    if (source && !saved)
+      throw new ApiFailure(
+        409,
+        'INVALID_COMMAND',
+        'Original decision analysis is unavailable for this legacy decision.',
+      );
+    const advice = saved?.adviceSnapshot ?? ensureHumanAnalysis(game, obs)?.adviceSnapshot ?? explain(obs);
     const view: AdviceView = {
       focus: advice.focus,
       notice: advice.notice,
@@ -426,16 +456,16 @@ export class GameService {
     return ownedTransaction(this.pool, context.token, async (_client, _player, game) => {
       requireGame(game);
       return {
-        cases: game.document.decisions
-          .slice(-1000)
-          .map((d) => ({
-            decisionId: d.id,
-            handNumber: d.handNumber,
-            action: d.action,
-            assisted: d.assisted,
-            status: 'not-assessed',
-            summary: 'Your decision and the information available then.',
-          })),
+        cases: game.document.decisions.slice(-1000).map((d) => ({
+          decisionId: d.id,
+          handNumber: d.handNumber,
+          action: d.action,
+          assisted: d.assisted,
+          status: 'not-assessed',
+          summary: game.document.decisionAnalyses?.[d.id]
+            ? 'Your decision and the information available then.'
+            : 'Original decision analysis is unavailable. Your choice and public replay remain available.',
+        })),
       };
     });
   }
