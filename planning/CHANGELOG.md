@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-09-28 — CardFord name
+
+[CR-BRAND-002](brand-and-domain.md) supersedes the earlier product name. Current product and implementation entry points use CardFord. The earlier `trickscoach.com` plan is unverified and is not treated as a CardFord domain choice. No technical identifier, schema URI or deployment changes.
+
 ## 2026-09-27 — Future play and membership consideration
 
 Recorded [CR-FUTURE-001](11-future-play-and-membership.md): people may return for enjoyable bots after needing less coaching, or later for human matches. Compared paid-only/play-only, bounded free and broad free access; recommend evaluating bounded free play against retention, cost and lost paid revenue before committing. Kept coaching progress, provisional placement and competitive rating distinct, including a fair path without coach history.

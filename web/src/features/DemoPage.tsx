@@ -35,7 +35,7 @@ export function DemoPage() {
     <main className="account-page demo-page">
       <header>
         <a className="wordmark" href="#">
-          Tricks Coach
+          CardFord
         </a>
         <a className="text-button" href="#account">
           Account

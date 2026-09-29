@@ -1,4 +1,4 @@
-# Tricks Coach — local V1
+# CardFord — local V1
 
 Open **http://127.0.0.1:4173**. The application runs on Node and PostgreSQL. The existing table now uses server-owned state; the browser receives only your hand and public information.
 

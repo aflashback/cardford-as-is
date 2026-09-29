@@ -8,7 +8,7 @@ const pool = createPool(config.databaseUrl);
 await migrate(pool);
 const app = await createApp(config, pool);
 await app.listen({ host: config.host, port: config.port });
-console.log(`Tricks Coach is ready at ${config.origin} (local identity, fixture billing, Jev off).`);
+console.log(`CardFord is ready at ${config.origin} (local identity, fixture billing, Jev off).`);
 const stop = async () => {
   await app.close();
   await pool.end();

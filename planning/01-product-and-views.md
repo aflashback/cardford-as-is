@@ -1,6 +1,6 @@
 # Product and views
 
-**Product:** Tricks Coach · **Chosen primary domain:** `trickscoach.com`. [CR-BRAND-001](brand-and-domain.md) records the owner-approved name and pending manual Vercel setup. Use the exact plural name in future public-facing copy; Jev remains the strategic model/provider name. This documentation update does not change the prototype UI.
+**Product:** CardFord. [CR-BRAND-002](brand-and-domain.md) records the owner's current name decision. The previous `trickscoach.com` domain plan is unverified and is not a new CardFord domain decision. Jev remains the strategic model/provider name.
 
 Commercial entry, membership and family behavior are defined in [06](06-commercialization.md); the server boundary is in [07](07-hosted-architecture.md). The current prototype does not implement them.
 
@@ -19,7 +19,7 @@ The visual reference is [App.tsx](../web/src/App.tsx), [styles.css](../web/src/s
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
 flowchart TD
-  accTitle: Tricks Coach table views
+  accTitle: CardFord table views
   accDescr: The live table connects to optional coaching, notes, paused review and recaps. The player chooses when to start the next game.
   A("Choose one of three games"):::view
   B("Live table"):::view

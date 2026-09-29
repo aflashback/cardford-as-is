@@ -1,6 +1,6 @@
-# Tricks Coach V1 specifications
+# CardFord V1 specifications
 
-**Tricks Coach** is the owner-approved product name; **trickscoach.com** is the chosen primary domain. The owner will add it to Vercel manually on 26 September 2026; completion is unverified. [Naming decision and setup status](brand-and-domain.md).
+**CardFord** is the current owner-approved product name. The earlier `trickscoach.com` domain plan is unverified; a CardFord domain has not been chosen. [Naming decision and setup status](brand-and-domain.md).
 
 Implementation target, grounded in the playable [web prototype](../web/README.md). On 27 September 2026 the owner confirmed the latest planning baseline with earlier safeguards retained, a simple monorepo, the existing UX, a B2C learning product, in-app subscription management and Stripe payments. [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md) records that authority and its compatibility effects. Earlier analysis remains supporting research; the original pack is preserved.
 
@@ -12,7 +12,7 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 | [Current monorepo plan](2026-09-27-monorepo-implementation-plan.md) | W00–W19 files, interfaces, dependencies, patterns, tests, Stripe and release gates. |
 | [Requirements and tests](implementation/requirements-and-tests.md) | Stable IDs, named fixtures and concrete rule/UX/service/payment assertions. |
 | [01 — Product and views](01-product-and-views.md) | Preserve the coded experience; define missing interactions. |
-| [Brand and domain](brand-and-domain.md) | Tricks Coach, trickscoach.com and the owner-managed Vercel setup. |
+| [Brand and domain](brand-and-domain.md) | CardFord name, previous domain plan and unverified setup. |
 | [02 — Games and decisions](02-games-and-decisions.md) | Exact rules, player knowledge, tactics, probabilities and Jev's role. |
 | [03 — Local runtime](03-local-runtime.md) | OpenRouter, state ownership, persistence and failures. |
 | [04 — Coaching and evidence](04-coaching-and-evidence.md) | Assistance, feedback, mistake categories and progress. |

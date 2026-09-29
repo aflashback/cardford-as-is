@@ -14,7 +14,7 @@ The [security research](security/hardening.md) compares a browser-engine baselin
 
 ## A02 — Stack and deployment
 
-The product is **Tricks Coach**, with chosen primary domain **trickscoach.com**. The owner will add it to Vercel manually on 26 September 2026; domain mapping, DNS, HTTPS and deployment have not been verified here. This domain decision leaves the API/database hosting vendor and region choices below open. See [CR-BRAND-001](brand-and-domain.md).
+The product is **CardFord**. The prior `trickscoach.com` domain plan has not been verified and is not a CardFord domain decision. Domain mapping, DNS, HTTPS and deployment remain unverified. Hosting vendor and region choices below remain open. See [CR-BRAND-002](brand-and-domain.md).
 
 | Component | Proposed choice |
 |---|---|

@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Tricks Coach local V1",
+    "title": "CardFord local V1",
     "version": "1.0.0"
   },
   "paths": {

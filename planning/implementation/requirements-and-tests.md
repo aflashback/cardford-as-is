@@ -54,7 +54,7 @@ Source: [product/views](../01-product-and-views.md), [UI-V1 evidence](../../web/
 
 | ID / owner | Browser scenario | Observable acceptance |
 |---|---|---|
-| UX-01 / W07 | `table.spec.ts`: `visual-baseline` | Four compact seats, readable blue table, hand below/right coach; current scores/objective appropriate to mode; public brand Tricks Coach. No decoration or extra onboarding redesign. |
+| UX-01 / W07 | `table.spec.ts`: `visual-baseline` | Four compact seats, readable blue table, hand below/right coach; current scores/objective appropriate to mode; public brand CardFord. No decoration or extra onboarding redesign. |
 | UX-02 / W07 | `table.spec.ts`: `prepare-then-play` | Single activation selects. Double gesture off-turn prepares only; wait into own turn with zero command, then fresh on-turn double gesture/Enter plays exactly once. |
 | UX-03 / W07 | `table.spec.ts`: `legal-choice-parity` | All legal cards remain selectable even if absent from shortlist; illegal prepared card clears/rejects on current revision. Bid/pass require explicit confirmation. |
 | UX-04 / W07 | `table.spec.ts`: `three-game-setup` | Correct names/default; solo opposite seat never Partner; game picker cancel has no side effects; start retires former game internally only after successful command. |

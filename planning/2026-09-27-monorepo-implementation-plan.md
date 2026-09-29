@@ -1,8 +1,8 @@
-# Tricks Coach Monorepo Implementation Plan
+# CardFord Monorepo Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans to implement this plan task-by-task after the owner initiates the build. Steps use checkbox (`- [ ]`) syntax for tracking. Do not treat this planning request as build authorization.
 
-**Goal:** Turn the existing three-mode browser prototype into a reliable, server-authoritative Tricks Coach application with useful coaching, current-game review, authenticated membership, in-app subscription management and Stripe payments.
+**Goal:** Turn the existing three-mode browser prototype into a reliable, server-authoritative CardFord application with useful coaching, current-game review, authenticated membership, in-app subscription management and Stripe payments.
 
 **Architecture:** One TypeScript monorepo organized as a modular application. Preserve the React/Vite views; move private game, strategy, coaching, access and records into a Node/Fastify service backed by PostgreSQL. Use bounded workers from the same codebase for expensive analysis; public contracts are generated from one schema source.
 
@@ -16,7 +16,7 @@
 
 ## B2C product focus and proportional engineering
 
-Tricks Coach is a consumer product for individual people learning to play Hearts and Spades well. A family plan is a consumer payment relationship. Product success means useful, understandable guidance during real games, easy practice and review, and a simple subscription experience. The initial audience already knows basic rules; this clarification does not add a beginner curriculum.
+CardFord is a consumer product for individual people learning to play Hearts and Spades well. A family plan is a consumer payment relationship. Product success means useful, understandable guidance during real games, easy practice and review, and a simple subscription experience. The initial audience already knows basic rules; this clarification does not add a beginner curriculum.
 
 Preserve the existing experience and deliver a playable server-backed hand early. Security and durable payment/game records protect consumer trust; they are not a reason to build enterprise product features. Do not add organizations, workspaces, corporate tenants, SAML/SCIM, configurable RBAC, enterprise administration/reporting, custom invoicing or procurement flows.
 
@@ -55,7 +55,7 @@ The owner explicitly chose the latest planning baseline, retaining earlier safeg
 |---|---|
 | `planning/01`–`05` | Current views, rules, observation-only strategy, coaching, review, runtime and Jev activation. Read full files, not diagrams alone. |
 | `planning/06-commercialization.md`, `07`, `08`, `09`, `10` | Membership, server authority, T01–T49, stage gates, capacity and launch dependencies. Later hosted rules override local-harness shortcuts. |
-| `planning/brand-and-domain.md` | BRAND-01–03: Tricks Coach public name; retain Jev technical identifiers; verify domain setup separately. |
+| `planning/brand-and-domain.md` | BRAND-04: CardFord public name; retain Jev and other technical identifiers; choose and verify any future domain separately. |
 | `planning/security/` | Use hardening report, context/hashes, proposal, diagrams and implementation handoff for route policies, publication fences, cache authorization and abuse limits. These are design evidence, not a completed security audit. |
 | `web/src`, `web/tests`, `web/package*.json` | Preserve useful interactions and audited rule fixtures; inspect and extract code deliberately. Current code is browser-authoritative and is not the commercial architecture. |
 | `web/qa/UI-V1.md`, `VERIFICATION.md`, screenshots and browser logs | UI regression references. Use `ui-v1-desktop.png`, `ui-v1-phone.png`, `ui-v1-ipad.png`, `ui-v1-settings-phone.png` as the latest visual baseline. Older images explain history. |
@@ -412,7 +412,7 @@ assert.equal(await h.currentRevision(), before + 1);
 
 **Interfaces:** `useSession()` exposes only generated views, typed mutation status and commands; local selection/help-panel/animation state is separate from accepted game state.
 
-- [ ] Capture visual and behavior baselines at desktop, iPad portrait/landscape and 667×375 landscape phone. Preserve blue table, four simple avatars, right coach and hand below; update public name to Tricks Coach.
+- [ ] Capture visual and behavior baselines at desktop, iPad portrait/landscape and 667×375 landscape phone. Preserve blue table, four simple avatars, right coach and hand below; use the CardFord public name.
 - [ ] Retain the table-only rotation gate at width below 700 CSS pixels and height greater than width, safe-area/visible-viewport handling and at least 44 CSS pixels of exposed card target at 667-pixel landscape width. Legality, selection, suggestion and winner marks must differ beyond color.
 - [ ] Remove browser engine/coach imports and aggregate storage from the production path. Keep preferences locally as convenience, synchronize through the service, and clear private view state on sign-out. An old prototype route must not remain publicly reachable.
 - [ ] Retain on-turn double-click/tap play, off-turn preparation without autoplay, Space/select and Enter/play, all legal options, bid/pass confirmation and received-card markers. Server rechecks every action; duplicate input results in one accepted command.

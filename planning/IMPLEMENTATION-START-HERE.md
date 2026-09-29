@@ -1,8 +1,8 @@
-# Start implementing Tricks Coach
+# Start implementing CardFord
 
 **Audience:** a coding agent returning without the original conversation. **Product:** B2C Hearts/Spades practice and coaching. **Status:** owner-authorized local implementation now exists. Start with [local run instructions](../LOCAL-README.md) and the actual [packet status/evidence](../qa/implementation/status.md), rather than restarting W00. [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md) records the local build scope and no-pipeline/no-push direction.
 
-The owner wants one simple monorepo, the latest Tricks Coach specification, the existing user experience, in-app subscription management and Stripe payments. Do not restart product ideation or request a visual redesign. The current table and interactions are good enough to build on.
+The owner wants one simple monorepo, the latest CardFord specification, the existing user experience, in-app subscription management and Stripe payments. Do not restart product ideation or request a visual redesign. The current table and interactions are good enough to build on.
 
 **Future scope boundary:** [CR-FUTURE-001](11-future-play-and-membership.md) considers free/play-only membership and human matching. It authorizes planning only. Continue the existing packets without adding free grants, matchmaking, ratings or new subscription products; any activation needs a separate approved specification.
 
@@ -42,7 +42,7 @@ Use the master plan's completion report format. Public behavior needs a requirem
 - Account, subscription and family management work in portrait; the table-only landscape gate does not block them.
 - B2C means useful help and easy practice, not enterprise organizations, SSO, corporate roles or administration dashboards.
 
-Latest visual references: [desktop](../web/qa/ui-v1-desktop.png), [phone](../web/qa/ui-v1-phone.png), [iPad](../web/qa/ui-v1-ipad.png), [settings](../web/qa/ui-v1-settings-phone.png), [interaction evidence](../web/qa/UI-V1.md). Do not copy historical Jev branding into new public copy; use Tricks Coach.
+Latest visual references: [desktop](../web/qa/ui-v1-desktop.png), [phone](../web/qa/ui-v1-phone.png), [iPad](../web/qa/ui-v1-ipad.png), [settings](../web/qa/ui-v1-settings-phone.png), [interaction evidence](../web/qa/UI-V1.md). Do not copy historical branding into new public copy; use CardFord.
 
 ## Implementation boundaries
 

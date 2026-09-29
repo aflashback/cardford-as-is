@@ -1,8 +1,8 @@
-# Tricks Coach web prototype
+# CardFord web prototype
 
 A playable UX build for a card-game coach. The table comes first; help stays optional.
 
-The owner selected **Tricks Coach** and **trickscoach.com** on 26 September 2026. Manual Vercel domain setup is planned for that date and remains unverified. This documentation update does not rename app UI, package identifiers or storage. See the [brand and domain decision](../planning/brand-and-domain.md).
+The owner selected **CardFord** on 28 September 2026. The earlier `trickscoach.com` domain plan remains unverified; no CardFord domain has been selected. See the [brand decision](../planning/brand-and-domain.md).
 
 ## Run
 

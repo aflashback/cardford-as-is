@@ -36,7 +36,7 @@ const routes = [
   ['post','/api/session/reviews/{decisionId}/trials','TrialRequest','ReviewTrial'],
   ['post','/api/subscription/preview','BillingPreviewRequest','BillingPreview'], ['post','/api/subscription/change','BillingConfirmRequest','BillingOperation'], ['get','/api/family',null,'FamilyView'], ['post','/api/family','FamilyCommand','FamilyView'], ['get','/api/account/export',null,'ExportView'], ['post','/api/account/delete','AccountDeleteRequest','AccountDeleteView'], ['get','/api/account',null,'AccountView'], ['post','/api/account','AccountCommand','AccountView'],
 ];
-const openapi = { openapi: '3.1.0', info: { title: 'Tricks Coach local V1', version: '1.0.0' }, paths: {}, components: { schemas: Object.fromEntries(names.map(n => [n, { $ref: `./contracts.schema.json#/$defs/${n}` }])) } };
+const openapi = { openapi: '3.1.0', info: { title: 'CardFord local V1', version: '1.0.0' }, paths: {}, components: { schemas: Object.fromEntries(names.map(n => [n, { $ref: `./contracts.schema.json#/$defs/${n}` }])) } };
 for (const [method,path,input,output] of routes) {
   const operation = { responses: { '200': { description: 'Validated public view', content: { 'application/json': { schema: { $ref: `#/components/schemas/${output}` } } } }, default: { description: 'Safe typed error', content: { 'application/json': { schema: { $ref: '#/components/schemas/ApiError' } } } } } };
   if (input) operation.requestBody = { required: true, content: { 'application/json': { schema: { $ref: `#/components/schemas/${input}` } } } };

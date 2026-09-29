@@ -85,7 +85,7 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
     <main className="account-page">
       <header>
         <a className="wordmark" href="#">
-          Tricks Coach
+          CardFord
         </a>
         <a className="text-button" href="#">
           Return to table

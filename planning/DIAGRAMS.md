@@ -1,4 +1,4 @@
-# Diagram index — Tricks Coach
+# Diagram index — CardFord
 
 Each authored document now has an editable Mermaid visual summary. Open the linked document to see the diagram beside its requirements. A diagram clarifies the text; it does not approve a proposal or establish a test result.
 
@@ -9,7 +9,7 @@ Each authored document now has an editable Mermaid visual summary. Open the link
 flowchart TD
   accTitle: Navigate the diagram collection
   accDescr: Current specifications connect product experience to delivery gates, with supporting research and prototype evidence. Preserved references provide historical context.
-  A("Tricks Coach"):::view --> B("Current specifications"):::service
+  A("CardFord"):::view --> B("Current specifications"):::service
   B --> C{"Delivery and evidence gates"}:::gate
   A --> D("Supporting research"):::service
   A --> E[("Prototype evidence")]:::data

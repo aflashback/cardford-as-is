@@ -117,6 +117,9 @@ test('single card activation selects; fresh double activation commits one server
   page,
 }) => {
   const { commands } = await mount(page);
+  await expect(page).toHaveTitle('Spades — CardFord');
+  await expect(page.getByRole('link', { name: 'CardFord choose game' })).toBeVisible();
+  await expect(page.getByText('Tricks Coach')).toHaveCount(0);
   const card = page.getByRole('button', { name: '2 of clubs', exact: true });
   await card.click();
   await expect(card).toHaveAttribute('aria-pressed', 'true');

@@ -244,7 +244,7 @@ function LiveTable() {
   if (!controller.session)
     return (
       <main className="account-page">
-        <h1>Tricks Coach</h1>
+        <h1>CardFord</h1>
         <p role="status">{controller.error || 'Opening your table…'}</p>
         <button className="primary-button" onClick={() => void controller.retry()}>
           Reconnect
@@ -329,7 +329,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
     }
   }, [dialogOpen, viewport.portraitPhone]);
   useEffect(() => {
-    document.title = `${modeNames[game.mode]} — Tricks Coach`;
+    document.title = `${modeNames[game.mode]} — CardFord`;
   }, [game.mode]);
   useEffect(() => {
     const onVisibility = () => {
@@ -570,7 +570,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
             <RotateCw size={38} strokeWidth={1.4} />
           </div>
           <span className="wordmark">
-            Tricks Coach<span>♠</span>
+            CardFord<span>♠</span>
           </span>
           <h1>
             Turn your phone
@@ -594,10 +594,10 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                 e.preventDefault();
                 setModal('games');
               }}
-              aria-label="Tricks Coach choose game"
+              aria-label="CardFord choose game"
             >
               <span className="wordmark">
-                Tricks Coach<span>♠</span>
+                CardFord<span>♠</span>
               </span>
             </a>
             <button className="game-switch" onClick={() => setModal('games')} aria-label="Choose game">
@@ -661,7 +661,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                 <section className="table-zone" aria-label="Card table">
                   <div className="table-felt">
                     <div className="table-line" />
-                    <span className="table-brand">Tricks Coach</span>
+                    <span className="table-brand">CardFord</span>
                   </div>
                   {([1, 2, 3] as Seat[]).map((seat) => (
                     <Player

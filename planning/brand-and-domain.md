@@ -1,4 +1,14 @@
-# Tricks Coach — brand and domain
+# CardFord — brand and domain
+
+## CR-BRAND-002 — CardFord product name
+
+**Owner approved: 28 September 2026.** Use **CardFord** as the product name in the live site, browser title and current product documentation. This supersedes the product-name requirement BRAND-01 below. The earlier **Tricks Coach** decision remains below as historical context. The owner did not select a replacement domain in this request: `trickscoach.com` remains a historical planned domain, with setup unverified, and is not presented as a CardFord domain decision. No domain, DNS, deployment, package, persisted identifier, schema URI, game rule or provider change is authorized by this name change.
+
+**BRAND-04 acceptance:** the current app surfaces and accessible picker name show CardFord; the browser title and generated API title show CardFord; no visible app surface shows the former product name. Build, generated-contract check and browser checks pass. The original name, domain history and immutable evidence may retain the former spelling.
+
+Alternative: rename every technical identifier and domain string. Rejected because it risks breaking contracts and implies domain ownership that has not been established. Compatibility impact is public display copy and metadata only; no migration is needed. Evidence: [branding acceptance](../qa/implementation/cardford-brand-acceptance.md).
+
+## Historical decision — superseded product name
 
 ## CR-BRAND-001 — Product identity
 

@@ -6,7 +6,7 @@
 
 | Status | Decision |
 |---|---|
-| Owner confirmed | Product name **Tricks Coach**; chosen primary domain **trickscoach.com**. The owner will add it to Vercel manually on 26 September 2026. Setup remains unverified. [CR-BRAND-001](brand-and-domain.md). |
+| Owner confirmed | Product name **CardFord**. The prior `trickscoach.com` domain plan remains unverified and is not a CardFord domain decision. [CR-BRAND-002](brand-and-domain.md). |
 | Owner confirmed | Target people who already know the rules and want to make stronger decisions against others. |
 | Current launch direction | Only the fixed, authored coached demo is available without a subscription; no timed trial. A future free full-game tier is now under consideration, not approved. See [CR-FUTURE-001](11-future-play-and-membership.md). |
 | Owner proposed | Monthly 4.99/9.99 individual plans, with four daily coaching sessions versus unlimited; 17.99 family with three unlimited and two limited users. Values remain adjustable. |
@@ -83,7 +83,7 @@ Source updates were prepared against exact hashes of current documents. Original
 
 ## Launch decisions that remain open
 
-The product name and primary domain are decided. Pending handoff: the owner adds `trickscoach.com` to Vercel manually on 26 September 2026; afterward, verify project mapping, DNS, HTTPS and the expected site response. Apply **Tricks Coach** to app/page copy when implementing public branding. This documentation change completes neither UI branding nor domain setup; see [BRAND-01–03](brand-and-domain.md).
+The product name is **CardFord**. A CardFord domain remains undecided. The earlier `trickscoach.com` handoff was not verified. Any future domain requires a separate choice, project mapping, DNS, HTTPS and expected-site checks. CardFord app/page copy is implemented locally; this does not complete domain setup or deployment. See [BRAND-04](brand-and-domain.md).
 
 - Currency, regional price/tax display, exact monthly prices, coaching unit feedback and sustainable unlimited capacity.
 - Whether family means a household or an invited group; acceptance of payer-inclusive seats and the reassignment policy.
