@@ -9,6 +9,9 @@ The [evaluation plan](../docs/superpowers/plans/2026-09-29-scenario-and-jev-eval
 ## 2026-09-29 — Partnership inference guide and plan
 
 [CR-STRAT-007](decisions/CR-STRAT-007-partnership-inference-guide.md) adds 60 authored scenario recipes with observations, alternative explanations, proposed decisions, exceptions and coach cues. The A♦–Q♦ example is checked against four complete legal deals with identical player observations. The plan extends typed game packs with evidence, revisable hypotheses, explicit conflicts, scenario rubrics and real cue bindings; other games reuse the authoring structure with their own rules. [Five documentation checks passed](../qa/implementation/partnership-guide-validation.md). No production strategy or provider activation changed; playing strength remains unproven for the proposed tactics.
+## 2026-09-29 — Clarify the original multi-game contract
+
+Updated [document 12](../docs/12-multi-game-extensibility.md) for the owner-confirmed three-mode scope: a game may support individual competition, partnership competition or both through validated variants. It now names Hearts Solo, Spades Solo and Spades Partners, preserves their frozen profiles, and requires variant-specific scoring, coaching and evaluation evidence. Added a current-scope pointer to the original [README](../README.md). Documentation only; no rule, schema, runtime policy or historical record changed.
 
 ## 2026-09-29 — Spades reasoning and retained analysis
 

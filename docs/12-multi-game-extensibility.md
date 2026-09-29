@@ -1,25 +1,25 @@
 # 12 — Four-player multi-game platform contract
 
-**Authority:** owner update incorporated into specification 0.2.0. This applies to the initial architecture, not just a future roadmap.
+**Authority:** owner update incorporated into specification 0.2.0, updated for the later owner-approved three-mode build ([CR-IMPL-002](../planning/decisions/CR-IMPL-002-contract-freeze.md)) and Spades reasoning contract ([CR-STRAT-005](../planning/12-spades-reasoning.md)). The original partnership-only catalog limit is superseded. This update clarifies supported variants; it does not change either frozen Spades rule profile or establish coaching quality.
 
 ## A. Product boundary
 
-All supported games have four seats. A supported rule variant uses either four individual competitors or two teams of two. Start with partnership Spades; do not ship a second playable game in the first release. The architecture must be reusable across card games without assuming all of them involve bidding, trump or tricks. The initial executable lifecycle is sequential turns; simultaneous or sealed actions are an explicit later capability, not silently claimed support.
+All supported games have four seats. A game may support individual competition (four competitors), partnership competition (two teams of two), or both, but must declare and validate each supported variant. The current playable modes are Hearts Solo, Spades Solo and Spades Partners. This does not make both competition modes available for every game. The architecture must be reusable across card games without assuming all of them involve bidding, trump or tricks. The initial executable lifecycle is sequential turns; simultaneous or sealed actions are an explicit later capability, not silently claimed support.
 
-One human controls South initially, and Jev controls the other three seats. Keep `controller` (human/Jev/demo), seat geometry, competition membership and information visibility separate. Adding other human seats or online multiplayer is later work, not implied by supporting four seats.
+Current practice tables have one human controlling South and three computer-controlled seats. Keep controller, seat geometry, competition membership and information visibility separate: Solo means individual scoring, not one occupied seat; in Spades Partners the opposite computer-controlled seat is South's teammate. Adding other human seats or online multiplayer is later work, not implied by supporting four seats.
 
 ## B. Small shared kernel and trusted game modules
 
 | Shared platform | Each game module |
 |---|---|
 | Session ownership, commands, idempotency, storage, worker leases, retries | Pure game state and transitions, module phases and legal action enumeration |
-| Four seat IDs and explicit competitor partitions | Legal deck, dealing, turn direction, bids/tricks/trump only where applicable |
+| Four seat IDs and explicit competitor partitions | Supported variants and their legal deck, dealing, turn direction, bids/tricks/trump only where applicable |
 | Generic lifecycle and typed event/replay dispatch | Scoring, objective, round/match completion and tie semantics |
 | Jev HTTP transport, validation, deadlines and provenance | Actor-safe projection, exact features, prompt context and candidate descriptions |
 | Hint/review/retry framework, assistance-aware progress | Original lessons, skills, predicate-backed templates and drill answer keys |
 | Accessible cards, seat badges, public zones and coach panel | Optional status fields, score presentation and special action/board controls |
 
-Modules are trusted TypeScript packages checked into the same repository and registered at build time. No user-uploaded executable plugins, runtime code downloads, separate game microservices or universal scripting language. Configuration selects a reviewed rule profile; it is not arbitrary executable rules.
+Modules are trusted TypeScript packages checked into the same repository and registered at build time. A game with both competition modes may share card mechanics, but each supported variant must select a reviewed rule profile, scoring interpretation, objective and coaching context before a decision is made. No user-uploaded executable plugins, runtime code downloads, separate game microservices or universal scripting language. Configuration is not arbitrary executable rules.
 
 Suggested future repository boundaries:
 
@@ -48,7 +48,7 @@ The following is an interface specification, **not implemented application code*
 
 | Interface operation | Inputs → output | Contract |
 |---|---|---|
-| `manifest` | Immutable descriptor | Game/version, rules, supported competition, required capabilities, schema IDs |
+| `manifest` | Immutable descriptor | Game/version, supported variants and rule profiles, competition for each variant, required capabilities, schema IDs |
 | `validateConfiguration` | Rule profile + competition + session mode → accepted config or errors | Reject unsupported combinations; no automatic fallback |
 | `create` | Validated config + explicit shuffled deck/random material → private state + events | No hidden clock/network; server persists randomness/deal privately |
 | `getTurn` | Private state → lifecycle + module phase + active seat | One active seat in an actionable v1 state; none when round/session complete |
@@ -82,7 +82,15 @@ The engine may share small card utilities, but rank ordering and trick winner fu
 ]}
 ```
 
-Every seat appears exactly once, IDs are unique, group count/size match mode, and the selected rule profile approves the arrangement. Spades 1.0 approves only the first partition. The kernel supports both structures; the game is not forced to support both. Changing a teams Boolean is not enough to invent individual Spades rules. Membership and rule profiles are immutable for a session.
+Every seat appears exactly once, IDs are unique, group count/size match mode, and the selected variant and rule profile approve the arrangement. The kernel supports both structures; a game is not forced to support both. Changing a teams Boolean is not enough to invent individual-play rules or coaching objectives. Variant, membership and rule profile are immutable for a session.
+
+| Game family | Current catalog mode | Competition | Frozen rule profile |
+|---|---|---|---|
+| Hearts | `hearts` | Four individuals | `hearts-training-1.0.0` |
+| Spades | `spades-solo` | Four individuals | `spades-solo-training-1.0.0` |
+| Spades | `spades-partners` | Two teams: South/North and West/East | `spades-training-1.0.0` |
+
+Spades Solo and Partners share card legality and trick resolution under their named profiles. Solo scores each seat's bid, Nil and bags separately; Partners combines positive bids and credited tricks for each team, while Nil remains an individual commitment. The module supplies the matching objective and coaching facts: the opposite seat is an opponent in Solo and a teammate only in Partners. Hearts currently supports individual competition only. A future game may add its second mode only with its own validated rules, scoring, objective, safe observations, coaching and acceptance evidence.
 
 A module supplies the objective and terminal ranking. The platform never assumes higher score is better, winning a trick is good, or a partner exists. Score summaries are display entries with module-computed values and labels. Winners are an explicit set of competitor IDs supplied by the module, not determined by generic UI sorting. Team membership does not share private hands, strategy scratchpads or human hints.
 
@@ -100,7 +108,7 @@ For future hidden simultaneous decisions, add a pending-action set and atomic re
 
 ## F. Contracts, storage and versioning
 
-Every session and decision carries `gameId`, `moduleVersion`, `ruleProfileId`, `observationSchemaVersion`, `featureVersion`, `promptVersion` and competition. Provider transport is shared; prompt objectives and facts are game-specific. Progress keys are game/skill/content-version scoped; do not merge bid skill into another game's unrelated score.
+Every session and decision carries `gameId`, selected variant/catalog mode, `moduleVersion`, `ruleProfileId`, `observationSchemaVersion`, `featureVersion`, `promptVersion` and competition. Provider transport is shared; prompt objectives and facts are game- and variant-specific. Progress keys include game, variant, skill and content version; do not merge Solo and Partners coaching progress or another game's unrelated score.
 
 The transport uses closed discriminated unions of installed module schemas. A stable common envelope plus `oneOf` module payloads is extensible without allowing unvalidated blobs. Extending the registry regenerates the union, validates examples and adds compatibility tests. Game-specific schema branches may use the same human-readable card identifiers without leaking details across games.
 
@@ -108,18 +116,18 @@ Private state is module-owned JSON validated on save/load; public JSON is indepe
 
 ## G. Capability gate and second-module proof
 
-At startup, verify manifest/schema presence, required engine/UI handlers, supported competition, deck renderability and compatible contract versions. Exclude incomplete modules from `GET /games`; reject forged game selection server-side. Only Spades appears in the first production catalog.
+At startup, verify manifest/schema presence, required engine/UI handlers, supported variant and competition, deck renderability and compatible contract versions. Exclude incomplete modes from `GET /games`; reject forged or unsupported game/variant combinations server-side. The current catalog exposes `hearts`, `spades-solo` and `spades-partners`; the test-only module is excluded.
 
 Use a tiny test-only individual module without bids, trump or tricks to prove no shared-layer assumption depends on Spades. Test its session → safe observation → generic mocked Jev Choice → action → state → replay → four-score table flow. It does not prove Hearts strategy or rules; it proves modularity. Tests must also prove unsupported modes fail closed.
 
-A production new-game pull request includes its rule source research, exact variant, schema branch, reducer, legal actions, visibility projections, prompt and features, score/terminal cases, original coaching content, deterministic and hidden-information tests, UI capability adapters, and its **own** Jev evaluation. Spades quality scores cannot be carried across games.
+A production new-game or new-variant pull request includes its rule source research, exact variant, schema branch, reducer, legal actions, visibility projections, prompt and features, score/terminal cases, original coaching content, deterministic and hidden-information tests, UI capability adapters, and its **own** strategic evaluation. Shared mechanics may reuse correctness tests, but Solo and Partners require separate objective, coaching and outcome evidence. Results from one variant or game cannot establish coaching quality in another.
 
 ## H. Minimal visual contract
 
 Four seats remain North/East/South/West. Each is one initial/icon with concise status. Central content is cards or a small game-specific public zone; the hand is readable and touchable. The coach is a panel, not an animated character. Team labels and game details are data-driven. No 3D, casino decoration or avatar-production backlog. Responsive behavior follows document 06.
 
-## I. Initial lifecycle mapping and startup versions
+## I. Lifecycle mapping and versions
 
 Spades `BIDDING`/`PLAYING` maps to `awaiting_action`. `HAND_COMPLETE` maps to `round_complete` for a continuing match, but to `session_complete` for a guided/practice single-hand session. `MATCH_COMPLETE` maps to `session_complete`. Neither completed lifecycle has an active seat or legal gameplay candidates. Hand/review endpoints remain available after completion.
 
-The first registered module uses `gameId=spades`, `moduleVersion=1.0.0`, `observationSchemaVersion=1.0.0`, the named training rule profile and separately versioned prompt/features. The declaration is a planned compatibility baseline, not proof that a module exists. W02 must define and register the private-state/event schemas before persistence is implemented. Public manifests may expose schema IDs, never raw private-state schemas or contents.
+The Spades variants retain separately named frozen rule profiles from section D, independently versioned observations, prompts and features, and a versioned module/decision record. New variants must register their private-state and event schemas before persistence. Existing sessions retain their selected variant and original interpretation; no variant switch or silent rescoring occurs on resume or replay. Public manifests may expose schema IDs, never raw private-state schemas or contents.

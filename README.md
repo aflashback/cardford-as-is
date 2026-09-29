@@ -2,6 +2,8 @@
 
 **Version:** 0.2.0 · **Prepared:** 26 September 2026 · **Status:** proposed implementation baseline
 
+**Current scope note (29 September 2026):** This original specification records the first partnership-only plan. Later owner-approved decisions and the local build added Hearts Solo and Spades Solo alongside Spades Partners. For current variant support, use the updated [multi-game contract](docs/12-multi-game-extensibility.md), [three-mode rule profiles](planning/02-games-and-decisions.md) and [Spades reasoning contract](planning/12-spades-reasoning.md). The original release and Jev-first statements below remain historical context.
+
 ## The decision
 
 Build a coaching-first, responsive web application for four-player card games, starting with partnership Spades. The shared platform supports individual competition or two teams of two through explicit competition configuration; only Spades is implemented in the first release. One person plays South; Jev controls North, East and West. Code owns the game. Jev owns bounded strategic choices. Original, evidence-backed templates explain the situation without a generative model at runtime.
