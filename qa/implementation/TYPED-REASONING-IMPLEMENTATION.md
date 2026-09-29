@@ -21,6 +21,7 @@
 | `npm run lint:boundaries` and `npm run check:artifacts` | Passed |
 | `npm run test:ui` | 30 passed, including live full Solo and Partners hands, quiet play, exact recap and saved-advice review |
 | Casebook generator and grouped style matrix | 26/26 recognition/rubric/link checks; 12 original deal groups, 180 hands, 108 paired comparisons |
+| `node web/server/evaluation/spades-reasoning.ts` | Completed 512 synthetic hands; Solo margin +4.68, Partners one-seat +3.55, both-teammate +0.35 against baseline over 24 deal seeds. Partnership own-score changes were negative (−2.88/−4.60). |
 
 The [matrix report](typed-spades-casebook-and-matrix.md) records baseline-style partnership margins of **−8.67** (one changed seat) and **−17.33** (both teammates) against the local baseline. The [pinned diagnostic](spades-policy-2.0-vs-2.1-diagnostic.json) found zero bid, play or score changes between policy versions across those 180 hands; the losses predate this candidate and this matrix does not exercise its new tactics. Only two matrix hands contain Nil; none reaches a bag penalty or match completion. These are exploratory results, not evidence of partnership mastery.
 
