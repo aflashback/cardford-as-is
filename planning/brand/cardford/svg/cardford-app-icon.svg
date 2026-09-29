@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" role="img" aria-labelledby="cardford-app-icon-title cardford-app-icon-desc">
+  <title id="cardford-app-icon-title">Cardford app icon</title>
+  <desc id="cardford-app-icon-desc">Ivory playing cards and a red diamond on a blue square.</desc>
+  <rect width="180" height="180" rx="30" fill="#2B57E6"/>
+  <g transform="translate(8 9) scale(1.01)" stroke-linejoin="round">
+    <rect x="19" y="37" width="75" height="108" rx="10" transform="rotate(-18 56.5 91)" fill="#F6F4ED"/>
+    <rect x="46" y="22" width="75" height="116" rx="10" transform="rotate(-7 83.5 80)" fill="#2B57E6" stroke="#F6F4ED" stroke-width="7"/>
+    <rect x="71" y="40" width="71" height="108" rx="10" fill="#F6F4ED" stroke="#13304D" stroke-width="8"/>
+    <path d="M106 76 120 94 106 112 92 94Z" fill="#CA282B"/>
+  </g>
+</svg>

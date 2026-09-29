@@ -12,7 +12,8 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 | [Current monorepo plan](2026-09-27-monorepo-implementation-plan.md) | W00–W19 files, interfaces, dependencies, patterns, tests, Stripe and release gates. |
 | [Requirements and tests](implementation/requirements-and-tests.md) | Stable IDs, named fixtures and concrete rule/UX/service/payment assertions. |
 | [01 — Product and views](01-product-and-views.md) | Preserve the coded experience; define missing interactions. |
-| [Brand and domain](brand-and-domain.md) | CardFord name, previous domain plan and unverified setup. |
+| [Brand and domain](brand-and-domain.md) | Current naming decision, selected visual direction, previous domain plan and unverified setup. |
+| [Cardford design guide and SVGs](brand/cardford/DESIGN-GUIDE.md) | Selected Open Hand artwork, reusable assets, usage rules and validation. |
 | [12 — Spades reasoning](12-spades-reasoning.md) | Table types, solo core, partnership overlays, scenarios and saved analysis. |
 | [02 — Games and decisions](02-games-and-decisions.md) | Exact rules, player knowledge, tactics, probabilities and Jev's role. |
 | [03 — Local runtime](03-local-runtime.md) | OpenRouter, state ownership, persistence and failures. |

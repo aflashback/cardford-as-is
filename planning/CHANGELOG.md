@@ -4,6 +4,10 @@
 
 [CR-STRAT-005](12-spades-reasoning.md) records the owner instruction: table type preserves future four-human play; current practice has one human and three bots; setup says **three trained players**; end-game results replace live notes; every human decision retains safe analysis regardless of cues. Solo tactics feed a partnership objective/exception layer shared by bots and coach. Rules/scoring are unchanged. [Implementation evidence](../qa/implementation/SPADES-REASONING-REPORT.md).
 
+## 2026-09-28 — Selected Cardford visual direction
+
+Recorded [CR-BRAND-003](brand-and-domain.md) and created the [Open Hand SVG family and design guide](brand/cardford/DESIGN-GUIDE.md). The selected banner keeps only **Card games. Your way**, without a final period. Ten SVGs parsed and rendered; [validation](brand/cardford/VALIDATION.md) distinguishes those checks from app integration or domain verification. A capitalization difference between the selected artwork and the app display name remains open before publication.
+
 ## 2026-09-28 — CardFord name
 
 [CR-BRAND-002](brand-and-domain.md) supersedes the earlier product name. Current product and implementation entry points use CardFord. The earlier `trickscoach.com` plan is unverified and is not treated as a CardFord domain choice. No technical identifier, schema URI or deployment changes.

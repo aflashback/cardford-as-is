@@ -8,6 +8,20 @@
 
 Alternative: rename every technical identifier and domain string. Rejected because it risks breaking contracts and implies domain ownership that has not been established. Compatibility impact is public display copy and metadata only; no migration is needed. Evidence: [branding acceptance](../qa/implementation/cardford-brand-acceptance.md).
 
+## CR-BRAND-003 — Selected visual identity
+
+**Owner selected: 28 September 2026.** The owner chose the first Cardford “Open Hand” direction: three fanned playing cards with a red diamond, a prominent full-word name and the motto **Card games. Your way**. The owner then removed the extra banner headline and the final period after “way.” The [selected board](cardford-open-hand-selected.png), [vector asset set](brand/cardford/DESIGN-GUIDE.md), [decision log](brand/cardford/DECISION-LOG.md) and [validation log](brand/cardford/VALIDATION.md) record the result.
+
+| Requirement | Decision and evidence |
+|---|---|
+| BRAND-05 — Visual mark | Use the selected three-card symbol and full-word logo, with the documented primary, reverse, one-color, app-icon and stamp forms. Ten SVGs parse and render; compare them with the selected raster board before publishing. |
+| BRAND-06 — Motto and banner | Exact motto: **Card games. Your way**. The banner has no second headline. Text checks found no removed headline or terminal motto period in the SVG set. |
+| BRAND-07 — Usage | Follow the [design guide](brand/cardford/DESIGN-GUIDE.md) for palette, type, spacing, accessibility and responsive use. The fixed header and banner SVGs are visual examples; application integration is separate. |
+
+Reason: cards make the category clear without tying the product to coaching or to one game's rules. Alternatives shown were a four-suit seal and a card-corner monogram; the owner chose the fanned-card direction. This change adds artwork and guidance only. Rules, scoring, contracts, provider behavior, persisted identifiers and domain configuration are unaffected. App-store, trademark, domain and deployment checks are not implied.
+
+**Open spelling defect:** the selected artwork says **Cardford**, while CR-BRAND-002 and the current app display copy say **CardFord**. The owner has been asked which capitalization should be final. Do not ship a mismatched wordmark and app name; align the SVGs, raster board and guide after the choice is confirmed.
+
 ## Historical decision — superseded product name
 
 ## CR-BRAND-001 — Product identity
@@ -26,9 +40,9 @@ Alternatives considered: the earlier Card Coach/jev-test working labels and sing
 
 Compatibility: this is a product-naming decision. Rules, scoring, game scope, model integration, public contracts and stored data are unchanged. The original v0.2 specification pack, its manifest and historical evidence remain preserved; their old working titles are historical, not the current brand.
 
-## Domain handoff
+## Historical domain handoff
 
-The name is approved. Domain setup and live verification remain pending.
+At the time of CR-BRAND-001, the name was approved. Domain setup and live verification were not confirmed. The following diagram records that earlier plan, not the current CardFord domain decision.
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
