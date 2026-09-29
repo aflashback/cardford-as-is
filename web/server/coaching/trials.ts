@@ -1,6 +1,6 @@
 import { apply, actionId, type GameAction, type Play } from '../game/index.ts';
 import { observe, assertObservation, type SeatObservation } from '../observations/index.ts';
-import { chooseAction, POLICY_VERSION } from '../strategy/index.ts';
+import { chooseAction, getReasoningPack } from '../strategy/index.ts';
 import { sampleWorld, SAMPLER_VERSION, SampleUnavailableError } from '../strategy/sampler.ts';
 export type TrialResult =
   | {
@@ -57,7 +57,7 @@ export function simulateTrial(
     plays,
     seed,
     samplerVersion: SAMPLER_VERSION,
-    policyVersion: POLICY_VERSION,
+    policyVersion: getReasoningPack(observation.mode).policyVersion,
     limitations: [
       'One uniformly sampled feasible deal; this is not the original hidden deal or a quality grade.',
       'The named local policy is uncalibrated. This illustration stops after one trick.',

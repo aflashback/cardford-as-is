@@ -2,7 +2,7 @@ import { cardLabel, cardSuit } from '../game/cards.ts';
 import { actionId } from '../game/rules.ts';
 import type { Card, Suit } from '../game/kernel/types.ts';
 import { assertObservation, type SeatObservation } from '../observations/index.ts';
-import { analyzeDecision, POLICY_VERSION } from '../strategy/index.ts';
+import { analyzeDecision, getReasoningPack } from '../strategy/index.ts';
 import type { DecisionAnalysis } from '../strategy/types.ts';
 
 export type Advice = {
@@ -41,7 +41,7 @@ export function explain(obs: SeatObservation, suppliedAnalysis?: DecisionAnalysi
   if (!obs.legalActions.length)
     return {
       provenance: 'code',
-      policyVersion: POLICY_VERSION,
+      policyVersion: getReasoningPack(obs.mode).policyVersion,
       reasonIds: [],
       evidence: 'exact',
       focus: obs.phase === 'hand-end' || obs.phase === 'match-end' ? 'Hand complete' : 'Watch the table',
