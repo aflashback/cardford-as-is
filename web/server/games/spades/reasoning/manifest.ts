@@ -1,6 +1,6 @@
 import type { ReasoningPack } from '../../../strategy/registry.ts';
-import { buildFacts } from '../../../strategy/facts.ts';
-import { analyzeSpades } from '../../../strategy/spades.ts';
+import { buildFacts } from './knowledge.ts';
+import { analyzeSpades } from './policy.ts';
 
 export const SPADES_POLICY_VERSION = 'spades-tactics-2.0.0';
 

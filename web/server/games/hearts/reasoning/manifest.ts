@@ -34,6 +34,18 @@ export const heartsReasoning: ReasoningPack = {
         evidence: forced ? 'exact' : 'heuristic',
       })),
       limitations: ['Hearts delegates to the retained baseline; this version adds Spades tactics only.'],
+      trace: {
+        schemaVersion: '1.0.0',
+        policyVersion: HEARTS_POLICY_VERSION,
+        catalogVersion: 'hearts-baseline-catalog-1.0.0',
+        selectedActionId: actionId(action),
+        selectedBy: forced ? 'forced' : 'baseline',
+        scenarioChecks: [],
+        candidates: obs.legalActions.map((candidate, tieOrder) => ({
+          actionId: actionId(candidate), score: null, effects: [], tieOrder,
+        })),
+        limitations: ['Hearts retains its uncalibrated local baseline.'],
+      },
     };
   },
 };

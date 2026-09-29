@@ -60,4 +60,22 @@ export type DecisionAnalysis = {
     evidence: 'exact' | 'heuristic';
   }[];
   limitations: string[];
+  /** Private audit data. Historical records may predate this trace. */
+  trace?: DecisionTrace;
+};
+
+export type DecisionTrace = {
+  schemaVersion: '1.0.0';
+  policyVersion: string;
+  catalogVersion: string;
+  selectedActionId: string;
+  selectedBy: 'forced' | 'heuristic-rank' | 'baseline';
+  scenarioChecks: { id: string; result: 'matched' | 'not-matched' | 'not-applicable' }[];
+  candidates: {
+    actionId: string;
+    score: number | null;
+    effects: { id: string; delta: number }[];
+    tieOrder: number;
+  }[];
+  limitations: string[];
 };
