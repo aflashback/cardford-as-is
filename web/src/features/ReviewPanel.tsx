@@ -63,6 +63,11 @@ export function ReviewPanel({
   }
   async function originalAdvice(unlock = false) {
     if (!review || busy || !sourceAccess) return;
+    if (!sourceAccess.handUnlocked && sourceAccess.remainingHands === 0) {
+      setError('All coached hands are used today. You can still review your original play.');
+      setPendingAdvice(false);
+      return;
+    }
     if (!sourceAccess.handUnlocked && sourceAccess.remainingHands !== null && !unlock) {
       setPendingAdvice(true);
       setPendingCard(null);

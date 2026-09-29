@@ -708,3 +708,59 @@ test('table stays minimal and coach settings do not contain game speed', async (
   await page.screenshot({ path: testInfo.outputPath('cues-settings.png') });
   expect(harness.commands).toHaveLength(0);
 });
+
+test('review explains exhausted allowance without offering an unusable coached-hand unlock', async ({
+  page,
+}) => {
+  const value = fixture();
+  value.access = {
+    ...value.access,
+    plan: 'practice',
+    remainingHands: 0,
+    handUnlocked: false,
+    canCoach: false,
+    canStartWork: false,
+  };
+  await mount(page, value);
+  await page.route('**/api/session/reviews?scope=match', (route) =>
+    route.fulfill({
+      json: {
+        cases: [
+          {
+            decisionId: 'record-1',
+            handNumber: 1,
+            action: { kind: 'play', card: 'C2' },
+            assisted: false,
+            status: 'not-assessed',
+            summary: 'Original decision',
+          },
+        ],
+      },
+    }),
+  );
+  await page.route('**/api/session/reviews/record-1?step=0', (route) =>
+    route.fulfill({
+      json: {
+        decisionId: 'record-1',
+        label: 'Original',
+        liveRevision: value.revision,
+        frames: [
+          { game: value.game, action: { kind: 'play', card: 'C2' }, decisionId: 'record-1', notes: [] },
+        ],
+      },
+    }),
+  );
+  await page.route('**/api/coaching/access?*', (route) => route.fulfill({ json: value.access }));
+  const unlockRequests: string[] = [];
+  page.on('request', (request) => {
+    if (request.url().endsWith('/api/coaching/hand-unlocks')) unlockRequests.push(request.url());
+  });
+  await page.getByRole('button', { name: 'Review current game', exact: true }).click();
+  await page.getByRole('button', { name: 'Hand 1: Original decision', exact: true }).click();
+  await page.getByRole('button', { name: 'Show original coach advice', exact: true }).click();
+  await expect(page.getByRole('alert')).toHaveText(
+    'All coached hands are used today. You can still review your original play.',
+  );
+  await expect(page.getByRole('button', { name: 'Use coached hand', exact: true })).toHaveCount(0);
+  expect(unlockRequests).toEqual([]);
+});

@@ -405,18 +405,25 @@ export class GameService {
   }
   async unlock(context: RequestContext, body: HandUnlockRequest) {
     const envelope = { ...body, commandId: body.requestId };
-    return this.change(context, envelope, 'unlock', async (client, player, game) => {
-      const source =
-        body.decisionId === decisionId(game)
-          ? undefined
-          : game.document.decisions.find((d) => d.id === body.decisionId);
-      if (body.decisionId !== decisionId(game) && !source)
-        throw new ApiFailure(404, 'NOT_FOUND', 'That decision is not in this current game.');
-      const handNumber = source?.handNumber ?? game.document.state.handNumber;
-      if (body.handId !== `${game.id}:${handNumber}`)
-        throw new ApiFailure(409, 'STALE_REVISION', 'That hand changed.');
-      const advice = await this.issueAdvice(client, player, game, body.requestedLevel, true, source);
-      return { access: await coachAccess(client, player, game, handNumber), advice };
+    return ownedTransaction(this.pool, context.token, async (client, player, game) => {
+      ownedGame(game, body.gameId);
+      return idempotent(client, player.id, body.requestId, { route: 'unlock', body: envelope }, async () => {
+        const source =
+          body.decisionId === decisionId(game)
+            ? undefined
+            : game.document.decisions.find((d) => d.id === body.decisionId);
+        if (body.decisionId !== decisionId(game) && !source)
+          throw new ApiFailure(404, 'NOT_FOUND', 'That decision is not in this current game.');
+        const handNumber = source?.handNumber ?? game.document.state.handNumber;
+        if (body.handId !== `${game.id}:${handNumber}`)
+          throw new ApiFailure(409, 'STALE_REVISION', 'That hand changed.');
+        const saved = game.document.savedAdvice[`${body.decisionId}:${body.requestedLevel}`];
+        if (saved) return { access: await coachAccess(client, player, game, handNumber), advice: saved };
+        await requireCoverage(client, player, game);
+        revision(game, envelope, context.tab);
+        const advice = await this.issueAdvice(client, player, game, body.requestedLevel, true, source);
+        return { access: await coachAccess(client, player, game, handNumber), advice };
+      });
     });
   }
   async notes(context: RequestContext, body: CommandEnvelope): Promise<NotesView> {

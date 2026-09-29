@@ -108,6 +108,130 @@ test('owned saved advice remains readable after expiry without generating new le
   );
 });
 
+test('unlock reads issued historical advice after expiry without revealing new levels or changing help records', async (t) => {
+  const pool = await testDatabase(t);
+  if (!pool) return;
+  const user = await account(pool);
+  const body = {
+    requestId: randomUUID(),
+    gameId: user.view.game.id,
+    handId: `${user.view.game.id}:1`,
+    decisionId: user.view.decisionId,
+    expectedRevision: user.view.revision,
+    controlLeaseToken: user.view.controlLeaseToken,
+    requestedLevel: 3 as const,
+  };
+  const issued = await user.service.unlock(user.context, body);
+  await user.service.action(user.context, {
+    ...envelope(user.view),
+    action: user.view.game.legalActions[0]!,
+  });
+  await expired(pool, user.id);
+  const before = (await pool.query('SELECT revision,document FROM games WHERE id=$1', [body.gameId])).rows[0];
+  assert.deepEqual(await user.service.unlock(user.context, body), issued);
+  const read = { ...body, requestId: randomUUID(), controlLeaseToken: 'view-only' };
+  const saved = await user.service.unlock(user.context, read);
+  assert.deepEqual(saved.advice, issued.advice);
+  assert.equal(saved.access.coverage, 'expired');
+  assert.equal(saved.access.handUnlocked, true);
+  assert.equal(saved.access.canStartWork, false);
+  assert.deepEqual(await user.service.unlock(user.context, read), saved);
+  await assert.rejects(
+    user.service.unlock(user.context, { ...read, expectedRevision: read.expectedRevision + 1 }),
+    /already used for another command/,
+  );
+  await assert.rejects(
+    user.service.unlock(user.context, { ...body, requestId: randomUUID(), requestedLevel: 2 }),
+    /expired/,
+  );
+  assert.deepEqual(
+    (await pool.query('SELECT revision,document FROM games WHERE id=$1', [body.gameId])).rows[0],
+    before,
+  );
+  assert.equal(
+    (await pool.query('SELECT count(*) FROM coached_hands WHERE player_id=$1', [user.id])).rows[0].count,
+    '1',
+  );
+});
+
+test('cached unlock validates the owned current game, decision and source hand after expiry', async (t) => {
+  const pool = await testDatabase(t);
+  if (!pool) return;
+  const user = await account(pool);
+  const body = {
+    requestId: randomUUID(),
+    gameId: user.view.game.id,
+    handId: `${user.view.game.id}:1`,
+    decisionId: user.view.decisionId,
+    expectedRevision: user.view.revision,
+    controlLeaseToken: user.view.controlLeaseToken,
+    requestedLevel: 3 as const,
+  };
+  await user.service.unlock(user.context, body);
+  await expired(pool, user.id);
+  await assert.rejects(
+    user.service.unlock(user.context, { ...body, requestId: randomUUID(), handId: `${body.gameId}:2` }),
+    /That hand changed/,
+  );
+  await assert.rejects(
+    user.service.unlock(user.context, { ...body, requestId: randomUUID(), gameId: randomUUID() }),
+    /no longer your current table/,
+  );
+  await assert.rejects(
+    user.service.unlock(user.context, { ...body, requestId: randomUUID(), decisionId: randomUUID() }),
+    /not in this current game/,
+  );
+  const other = await account(pool);
+  await assert.rejects(
+    other.service.unlock(other.context, { ...body, requestId: randomUUID() }),
+    /no longer your current table/,
+  );
+});
+
+test('exact unlock retries from a bot turn return their response after the decision passes', async (t) => {
+  const pool = await testDatabase(t);
+  if (!pool) return;
+  const user = await account(pool);
+  let view = await user.service.action(user.context, {
+    ...envelope(user.view),
+    action: user.view.game.legalActions[0]!,
+  });
+  if (view.game.legalActions.length)
+    view = await user.service.action(user.context, {
+      ...envelope(view),
+      action: view.game.legalActions[0]!,
+    });
+  assert.equal(view.game.legalActions.length, 0);
+  assert.notEqual(view.game.turn, 0);
+  const body = {
+    requestId: randomUUID(),
+    gameId: view.game.id,
+    handId: `${view.game.id}:${view.game.handNumber}`,
+    decisionId: view.decisionId,
+    expectedRevision: view.revision,
+    controlLeaseToken: view.controlLeaseToken,
+    requestedLevel: 1 as const,
+  };
+  const issued = await user.service.unlock(user.context, body);
+  const prepared = await user.service.prepare(user.context, envelope(view));
+  view = await user.service.advance(user.context, {
+    ...envelope(view),
+    kind: 'bot',
+    preparedDecisionId: prepared.preparedDecisionId,
+  });
+  assert.notEqual(view.decisionId, body.decisionId);
+  await expired(pool, user.id);
+  const before = (await pool.query('SELECT revision,document FROM games WHERE id=$1', [body.gameId])).rows[0];
+  assert.deepEqual(await user.service.unlock(user.context, body), issued);
+  await assert.rejects(
+    user.service.unlock(user.context, { ...body, requestId: randomUUID() }),
+    /not in this current game/,
+  );
+  assert.deepEqual(
+    (await pool.query('SELECT revision,document FROM games WHERE id=$1', [body.gameId])).rows[0],
+    before,
+  );
+});
 test('read routes reject unknown and malformed query fields', async (t) => {
   const pool = await testDatabase(t);
   if (!pool) return;
