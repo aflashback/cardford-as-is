@@ -55,6 +55,10 @@ flowchart TD
   classDef gate fill:#FFF3D9,stroke:#C7A253,color:#594219;
 ```
 
+## 2026-09-29 — Typed game reasoning candidate
+
+Recorded owner approval of approach A in [CR-STRAT-006](decisions/CR-STRAT-006-typed-game-reasoning.md). Added static per-game pack routing, a 26-family Spades casebook, private selection traces, contextual bids, exact projected-score helpers, bounded late-hand continuations, and limited partnership Nil, signal and entry reasoning. Local tests, build and browser play passed; [implementation evidence](../qa/implementation/TYPED-REASONING-IMPLEMENTATION.md) records a negative baseline-style partnership slice and unfinished independent review. No Jev call or hosted release occurred.
+
 ## 2026-09-26 — Mermaid design diagrams
 
 Added 34 concise visual summaries across 29 authored planning, research, prototype and review documents. Standardized the existing architecture/security diagrams, added accessible titles/descriptions and a [diagram index](DIAGRAMS.md) with a rendered gallery. All diagrams passed local rendering checks with networking disabled. Historical and proposed flows retain explicit status. The diagrams explain existing decisions; original imported files, exported chats and application code are preserved.

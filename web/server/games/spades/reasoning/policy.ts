@@ -2,9 +2,12 @@ import { cardRank, cardSuit } from '../../../game/cards.ts';
 import { SEATS, type GameAction, type Seat, type Suit } from '../../../game/kernel/types.ts';
 import { actionId } from '../../../game/rules.ts';
 import type { SeatObservation } from '../../../observations/index.ts';
-import { suggestBid } from '../../../strategy/baseline.ts';
 import type { CardOutcome, DecisionAnalysis, DecisionFacts, DecisionReason } from '../../../strategy/types.ts';
 import { SPADES_SCENARIOS } from './catalog.ts';
+import { assessBids } from './bidding.ts';
+import { inferPartnerBehavior } from './signals.ts';
+import { assessEntryRoute } from './entries.ts';
+import { assessDoubleNil } from './nil.ts';
 
 /** Deterministic, conditional tactical priorities. Scores are ordering weights, never probabilities. */
 export function analyzeSpades(
@@ -39,6 +42,7 @@ export function analyzeSpades(
   const liveOwn = facts.ownNil === 'live';
   const livePartner = facts.partnerNil === 'live';
   const bothNil = liveOwn && livePartner;
+  const doubleNilConsequences = new Map(assessDoubleNil(obs, facts).map((entry) => [entry.actionId, entry.result]));
   const losingActions = obs.legalActions.filter(
     (a) => a.kind === 'play' && outcomes.get(actionId(a))!.currentWinner !== obs.seat,
   );
@@ -46,13 +50,15 @@ export function analyzeSpades(
   const winnerIsOpponentNil = facts.currentWinner !== null && opponentNils.includes(facts.currentWinner);
 
   if (obs.phase === 'bid') {
-    const bid = suggestBid(obs.hand);
+    const bidAssessment = assessBids(obs);
+    const bid = bidAssessment.selectedBid;
     const selected = obs.legalActions.find((a) => a.kind === 'bid' && a.bid === bid)!;
     shared(
       'S13.structure',
       'heuristic',
-      'This bid uses the retained hand-structure heuristic: high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities.',
+      'Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities.',
     );
+    shared('S13.contextual-bid', 'heuristic', bidAssessment.reasons.join(' '));
     if (obs.bids.some((b) => b !== null))
       shared(
         'S13.public-bids',
@@ -79,15 +85,13 @@ export function analyzeSpades(
         disposition: actionId(a) === actionId(selected) ? 'selected' : 'alternative',
         evidence: 'heuristic',
       })),
-      limitations: [
-        'Bidding retains the uncalibrated baseline heuristic; contextual bidding and Nil success need separate evaluation.',
-      ],
+      limitations: bidAssessment.limitations,
       trace: {
         schemaVersion: '1.0.0',
         policyVersion,
         catalogVersion: 'spades-catalog-1.0.0',
         selectedActionId: actionId(selected),
-        selectedBy: 'baseline',
+        selectedBy: 'heuristic-rank',
         scenarioChecks: SPADES_SCENARIOS.map((entry) => ({
           id: entry.id,
           result: !entry.modes.includes(obs.mode as 'spades-solo' | 'spades-partners') || !entry.phases.includes('bid')
@@ -96,10 +100,16 @@ export function analyzeSpades(
               ? 'matched' as const
               : 'not-matched' as const,
         })),
-        candidates: obs.legalActions.map((a, tieOrder) => ({
-          actionId: actionId(a), score: null, effects: [], tieOrder,
-        })),
-        limitations: ['Bid selection retains an uncalibrated hand-structure heuristic.'],
+        candidates: obs.legalActions.map((a, tieOrder) => {
+          const candidate = bidAssessment.candidates[tieOrder];
+          const effects = [
+            { id: 'S13.heuristic-distance', delta: -candidate.heuristicDistance },
+            { id: 'S13.feasibility', delta: candidate.contractFeasible ? 0 : -100 },
+            { id: 'S13.known-failed-nil', delta: candidate.nilFeasible ? 0 : -200 },
+          ];
+          return { actionId: actionId(a), score: effects.reduce((sum, effect) => sum + effect.delta, 0), effects, tieOrder };
+        }),
+        limitations: bidAssessment.limitations,
       },
     };
   }
@@ -190,7 +200,11 @@ export function analyzeSpades(
       'fact',
       'Positive partnership bids share one contract; each positive bidder can cover the other. Nil tricks never count toward it.',
     );
-    scenarioIds.add('P12');
+    shared(
+      'P12.mode-objective',
+      'fact',
+      'This table scores the two opposite seats together. A teammate trick can serve the shared positive contract; Solo scores each seat separately.',
+    );
     if (facts.currentWinner === partner && obs.bids[partner] !== 0) {
       shared('P01.partner-current', 'fact', 'Your positive-bidding partner is currently winning this trick.');
       const underplay = facts.cardOutcomes.some((o) => o.currentWinner === partner);
@@ -246,11 +260,14 @@ export function analyzeSpades(
         'fact',
         'Your partner is publicly void in spades and cannot ruff a future side-suit trick.',
       );
+    const partnerHints = inferPartnerBehavior(obs);
     if ([...obs.history.flatMap((t) => t.plays), ...obs.trick].some((p) => p.seat === partner))
       shared(
         'P08.public-hints',
         'heuristic',
-        'Partner leads and discards can suggest suit preferences, but no signaling convention or hidden high-card ownership is assumed.',
+        partnerHints.length
+          ? `${partnerHints.at(-1)!.evidence} ${partnerHints.at(-1)!.counterexample} A winning high card does not identify an unplayed higher card's owner; no signaling convention is assumed.`
+          : 'Partner has played publicly, but no suit preference follows from that alone; no signaling convention is assumed.',
       );
     if (!obs.trick.length || (facts.ledSuit && facts.suitLengths[facts.ledSuit] === 0))
       shared(
@@ -281,6 +298,15 @@ export function analyzeSpades(
         effects.push({ id: effectId, delta });
       };
       effect('tie.economical-rank', -rank / 100); // ordering only, not an outcome estimate
+
+      if (doubleNilConsequences.get(id) === 'both-survive-this-trick') {
+        effect('P04.keep-both-live', 1000);
+        reason(
+          'P04.keep-both-live',
+          'fact',
+          'This completed trick belongs to an opponent, so both Nil commitments remain live for now. Their final success still depends on later tricks.',
+        );
+      }
 
       if (liveOwn) {
         if (!lead && !winsNow) {
@@ -386,6 +412,15 @@ export function analyzeSpades(
 
       // Partnership objective is applied to every candidate before the final selection.
       if (partner !== null) {
+        const entryRoute = assessEntryRoute(obs, facts, action);
+        if (entryRoute) {
+          effect('P11.route-to-ruff', entryRoute.weight);
+          reason(
+            'P11.route-to-ruff',
+            'heuristic',
+            `Taking this trick ${entryRoute.certainNextLead ? 'secures' : 'may earn'} the next lead. You retain ${entryRoute.offerSuit} to offer your publicly void partner a possible ruff${entryRoute.overruffRisk ? ', with a known overruff risk' : ''}. Partner trump ownership remains uncertain.`,
+          );
+        }
         if (!liveOwn && outcome.coversPartnerNil) {
           effect('P02.cover-action', 1000);
           effect('P02.cover-resource-cost', -(rank + (suit === 'S' ? 10 : 0)));

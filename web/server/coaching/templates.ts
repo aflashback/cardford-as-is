@@ -122,6 +122,14 @@ export function explain(obs: SeatObservation, suppliedAnalysis?: DecisionAnalysi
     suggestion,
   });
 
+  if (has('P04.keep-both-live'))
+    return cue(
+      'Keep both Nils live',
+      'An opponent is guaranteed this trick.',
+      reason('P04.keep-both-live', 'P04.double-nil'),
+      `Consider ${cardLabel(card)}; later tricks can still break either Nil.`,
+    );
+
   // Selected partnership cover precedes own failed-Nil/bag wording.
   if (outcome?.coversPartnerNil)
     return cue(
@@ -188,6 +196,13 @@ export function explain(obs: SeatObservation, suppliedAnalysis?: DecisionAnalysi
       'Your partner has shown a void in this suit.',
       reason('P06.offer-ruff', 'P06.partner-void'),
       `Consider leading ${cardLabel(card)}; a partner ruff is a possibility.`,
+    );
+  if (has('P11.route-to-ruff'))
+    return cue(
+      'Plan the next lead',
+      'You may gain the lead while your partner is publicly void in a side suit.',
+      reason('P11.route-to-ruff', 'S04.turn-order'),
+      `Consider ${cardLabel(card)} to keep a possible partner-ruff route.`,
     );
   if (has('S12.leave-nil-winning'))
     return cue(

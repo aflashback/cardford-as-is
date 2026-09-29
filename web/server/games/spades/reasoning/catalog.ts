@@ -21,6 +21,34 @@ export type ScenarioDefinition = {
 const both: SpadesMode[] = ['spades-solo', 'spades-partners'];
 const team: SpadesMode[] = ['spades-partners'];
 const partial = new Set(['S12', 'S13', 'S14', 'P04', 'P08', 'P11']);
+const reviewLinks: Record<string, { caseId: string; cueId: string }> = {
+  S01: { caseId: 's01-legal-001', cueId: 's01-legal-cue' },
+  S02: { caseId: 's02-void-001', cueId: 's02-void-cue' },
+  S03: { caseId: 's03-ownership-001', cueId: 's03-ownership-cue' },
+  S04: { caseId: 's04-turn-order-001', cueId: 's04-turn-order-cue' },
+  S05: { caseId: 's05-safe-nil-001', cueId: 's05-safe-nil-cue' },
+  S06: { caseId: 's06-forced-nil-001', cueId: 's06-forced-nil-cue' },
+  S07: { caseId: 's07-failed-nil-001', cueId: 's07-failed-nil-cue' },
+  S08: { caseId: 's08-contract-001', cueId: 's08-contract-cue' },
+  S09: { caseId: 's09-bag-001', cueId: 's09-bag-cue' },
+  S10: { caseId: 's10-lead-001', cueId: 's10-lead-cue' },
+  S11: { caseId: 's11-ruff-001', cueId: 's11-ruff-cue' },
+  S12: { caseId: 's12-opposing-nil-001', cueId: 's12-opponent-nil-cue' },
+  S13: { caseId: 's13-contextual-bid-001', cueId: 's13-bid-cue' },
+  S14: { caseId: 's14-late-hand-001', cueId: 's14-late-score-cue' },
+  P04: { caseId: 'p04-double-nil-001', cueId: 'p04-double-nil-cue' },
+  P01: { caseId: 'p01-partner-current-001', cueId: 'p01-partner-current-cue' },
+  P02: { caseId: 'p02-partner-nil-cover-001', cueId: 'p02-partner-nil-cover-cue' },
+  P03: { caseId: 'p03-partner-no-cover-001', cueId: 'p03-partner-no-cover-cue' },
+  P05: { caseId: 'p05-partner-failed-nil-001', cueId: 'p05-partner-failed-nil-cue' },
+  P06: { caseId: 'p06-partner-void-001', cueId: 'p06-partner-void-cue' },
+  P07: { caseId: 'p07-partner-spade-void-001', cueId: 'p07-partner-spade-void-cue' },
+  P08: { caseId: 'p08-public-play-001', cueId: 'p08-public-hints-cue' },
+  P09: { caseId: 'p09-partner-security-001', cueId: 'p09-partner-security-cue' },
+  P10: { caseId: 'p10-team-contract-001', cueId: 'p10-team-contract-cue' },
+  P11: { caseId: 'p11-entry-001', cueId: 'p11-entry-cue' },
+  P12: { caseId: 'p12-mode-objective-001', cueId: 'p12-mode-objective-cue' },
+};
 const row = (
   id: string,
   title: string,
@@ -34,8 +62,8 @@ const row = (
   phases,
   evidence,
   status: partial.has(id) ? 'partial' : 'implemented-unreviewed',
-  caseIds: [],
-  cueIds: [],
+  caseIds: reviewLinks[id] ? [reviewLinks[id].caseId] : [],
+  cueIds: reviewLinks[id] ? [reviewLinks[id].cueId] : [],
 });
 
 /** A taxonomy and review ledger; entries do not assert a tactic is correct. */
