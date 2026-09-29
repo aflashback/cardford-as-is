@@ -1,6 +1,6 @@
 # Spades reasoning — local evidence
 
-**Status:** implemented tactical foundation; partnership mastery remains unproven. Started 2026-09-29 03:18:41 UTC, with an owner limit of one hour. Base `be1189c`; design commit `48e959b`; implementation `44b9ea8`; branch `codex/spades-reasoning`.
+**Status:** implemented tactical foundation; partnership mastery remains unproven. Started 2026-09-29 03:18:41 UTC, with an owner limit of one hour. Base `be1189c`; design commit `48e959b`; implementation `44b9ea8`, access fixes `687b2c6`; branch `codex/spades-reasoning`.
 
 ## Delivered
 
@@ -9,18 +9,18 @@
 - Every human decision retains its original analysis/advice, including forced moves and quiet play. Hidden analysis neither charges nor marks assistance. Current-game review can reveal that saved advice later.
 - Independent table type, **three trained players** copy, and final-hand trick winners at match end. Future four-human tables remain specified, unavailable locally.
 
-Validation completed 2026-09-29 03:53 UTC, within 35 minutes. Integration preserves the existing unrelated brand edits.
+Validation completed 2026-09-29 04:02 UTC, within 44 minutes. Integration preserves the existing unrelated brand edits.
 
 ## Passed checks
 
 | Command/check | Result |
 |---|---|
-| `node --env-file=C:\repos\test-jev\.env.local --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts` | 179 passed; 0 failed/skipped |
+| `node --env-file=C:\repos\test-jev\.env.local --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts` | 182 passed; 0 failed/skipped |
 | `npm run typecheck`, `npm run build` | Passed; existing bundle-size warning remains |
 | `npm run contracts:check`, `npm run lint:boundaries`, `npm run check:artifacts` | Passed |
 | `node web/server/evaluation/spades-reasoning.ts qa/implementation/spades-reasoning-comparison.json` | 512 complete hands; legal play/conservation/independent score checks passed |
 | Frozen `local-policy.ts` manifest, output `.local/frozen-baseline-verification.json` | 384 compatibility hands passed; baseline source preserved |
-| Isolated Playwright `table.spec.ts` | 19 fixture checks passed |
+| Isolated Playwright `table.spec.ts` | 20 fixture checks passed |
 | Isolated `local-live.spec.ts -g 'live spades'` | Solo and Partners setup, cues, play and durable review passed |
 | `spades-full-hand.spec.ts` | 2 complete quiet hands; scores, 14 reviews, saved advice, unchanged assistance and zero console errors passed |
 
@@ -40,7 +40,7 @@ Deal rotations are correlated. These exploratory results **do not establish stro
 
 ## Fixes and remaining work
 
-Fixed observed Nil-cover wording, impossible-rescue claims, fourth-seat opponent claims, incomplete-history void inference, unavailable-trump wording, long advice, stale review advice and a font/CSP build defect.
+Fixed observed Nil-cover wording, impossible-rescue claims, fourth-seat opponent claims, incomplete-history void inference, unavailable-trump wording, long advice, stale review advice, saved-advice expiry/retry access, exhausted-allowance wording and a font/CSP build defect.
 
 Next milestone: contextual bidding, soft partner signals, multi-trick entries, double-Nil tradeoffs, opponent contract denial and match-end objectives; independently label these cases and compare multiple opponent styles before claiming mastery. See the partial-scenario table in the design.
 
