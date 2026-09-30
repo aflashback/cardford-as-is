@@ -10,13 +10,20 @@ Development cases only. Sequence numbers address the saved record, including its
 - **Impossible future plan, seq31,35,39 (SP-X01, SP-X02):** Jason initially retains hope of winning with a club/diamond queen. His own packet already proves Maya will lead and sweep the six remaining hearts after the current forced S9. `check-public-proof.mjs` verifies the premises without reading the full deal. Sarah and Leo recognize the sweep at seq32 and34; Jason recognizes it by seq43. A legal discard can have an invalid explanation without changing the outcome.
 - **Equivalent actions (SP-X01):** once the sweep is proved, ranking discards as strategic mistakes would be misleading. A concise coach cue could state “No remaining card can interrupt the heart run”; repeated advice should stay quiet. This is a proposed cue, not a runtime change.
 
-## Solo void, decisions collected so far
+## Solo void
 
 - **Opening variability:** identical first observation hashes produced bids9 in spread and10 here. Partners similarly produced8 and9. These are fresh model responses, not knowledge of the hidden deal.
 - **Preserve honors under a ruff, seq6–8:** Leo ruffs H4 with S2. Jason spends H2 and Sarah H3, retaining HQ/HK and HA. A low ruff need not remove the side-suit honors Maya must later overcome.
 - **Inference versus plan, seq21–30 (SP-T06):** Maya correctly places all opposing trumps with Leo after both other players show voids. She continues drawing SK and SA, leaving Leo with the last spade. Her explanation describes reducing trump threats but does not compare keeping an entry against exhausting her own trumps. This is a plan-comparison candidate, not a proved inferior-move label.
 - **Control and cashing, seq30,33 (SP-X01):** Leo knows S7 is the last trump, wins the heart lead, then leads DK with DQ retained. With DA and every spade gone, both diamonds are established winners. This supports a concrete multi-trick plan from public facts and his own cards.
-- **Contract feasibility, seq37 (S14):** once Leo leads the unbeatable DQ, his fourth trick is assured. Maya has5 tricks and at most4 thereafter, so her bid10 is already unreachable. This is a public arithmetic conclusion; the unfinished hand's final trick counts remain unreported.
+- **Contract feasibility, seq37 (S14):** once Leo leads the unbeatable DQ, his fourth trick is assured. Maya has5 tricks and at most4 thereafter, so her bid10 is already unreachable. The hand ends 5/4/3/1 tricks and −100/40/21/10 points. Decisions 39–56 used reconstructed seat-only contexts.
+
+## Solo concentrated
+
+- **Opening variability, seq1:** Maya bid5 from the same opening cards and public state that produced bids9 and10 in the other Solo runs. This is response variability, not knowledge of the hidden distribution.
+- **Contract versus plan, seq13–29:** Maya cashed the remaining four top spades and made exactly five tricks. This path succeeded for her bid; no alternative line was continued, so it is not an optimality label.
+- **Impossible future entry, seq36/40/43/47:** Maya kept higher hearts “in case I regain the lead.” The public record already accounted for all spades and all hearts outside her hand. She had only hearts, so she could not regain the lead by discarding on another suit. A coach could state this public fact once, then stay quiet on forced discards.
+- **Final arithmetic, seq53–56:** Sarah won the final diamond trick and finished with three against a bid of one, scoring 12 points and two bags. A win by another seat was no longer possible from the public plays and remaining cards.
 
 ## Interpretation and next comparisons
 

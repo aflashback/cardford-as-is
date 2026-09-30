@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "agent-lab-proposal-1.0.0",
+  "status": "planned-unplayed",
+  "baseFile": "deals.json",
+  "names": ["Maya", "Leo", "Jason", "Sarah"],
+  "note": "Materialize each proposal from its base episode; never include baseEpisodeId, transforms, or intendedCoverage in a player packet.",
+  "proposals": [
+    {
+      "id": "solo-void-partner-leads",
+      "mode": "spades-solo",
+      "baseEpisodeId": "solo-void",
+      "dealer": 1,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "transforms": [],
+      "intendedCoverage": ["changed bid and first-lead order", "Maya bids after Jason and Sarah", "individual objective"]
+    },
+    {
+      "id": "partners-void-partner-leads",
+      "mode": "spades-partners",
+      "baseEpisodeId": "partners-void",
+      "dealer": 1,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "transforms": [],
+      "intendedCoverage": ["changed bid and first-lead order", "teammate Jason bids and leads first", "team objective"]
+    },
+    {
+      "id": "solo-void-trumps-at-jason",
+      "mode": "spades-solo",
+      "baseEpisodeId": "solo-void",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "transforms": [{"type": "swapHands", "seats": [1, 2]}],
+      "intendedCoverage": ["long-trump holding at Jason instead of Leo", "Maya has unchanged opening observation", "individual objective"]
+    },
+    {
+      "id": "partners-void-trumps-at-jason",
+      "mode": "spades-partners",
+      "baseEpisodeId": "partners-void",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "transforms": [{"type": "swapHands", "seats": [1, 2]}],
+      "intendedCoverage": ["long-trump holding at teammate instead of opponent", "Maya has unchanged opening observation", "partner information remains hidden"]
+    },
+    {
+      "id": "solo-spread-late-score-bags",
+      "mode": "spades-solo",
+      "baseEpisodeId": "solo-spread",
+      "dealer": 3,
+      "scores": [468, 492, 450, 475],
+      "bags": [9, 1, 0, 1],
+      "transforms": [],
+      "intendedCoverage": ["synthetic late-match stress", "Maya one bag from penalty", "opponent near 500", "individual objective"]
+    },
+    {
+      "id": "partners-spread-late-score-bags",
+      "mode": "spades-partners",
+      "baseEpisodeId": "partners-spread",
+      "dealer": 3,
+      "scores": [468, 492, 468, 492],
+      "bags": [9, 1, 9, 1],
+      "transforms": [],
+      "intendedCoverage": ["synthetic late-match stress", "Maya and Jason share nine team bags", "opponent team near 500", "team objective"]
+    },
+    {
+      "id": "solo-spread-honor-gap",
+      "mode": "spades-solo",
+      "baseEpisodeId": "solo-spread",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "transforms": [
+        {"type": "swapCards", "seats": [0, 2], "cards": ["S10", "S9"]},
+        {"type": "swapCards", "seats": [0, 3], "cards": ["SQ", "S7"]}
+      ],
+      "intendedCoverage": ["Maya has five spades but not the five highest", "small rank-swap counterfactual to spread", "individual objective"]
+    },
+    {
+      "id": "partners-spread-honor-gap",
+      "mode": "spades-partners",
+      "baseEpisodeId": "partners-spread",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "transforms": [
+        {"type": "swapCards", "seats": [0, 2], "cards": ["S10", "S9"]},
+        {"type": "swapCards", "seats": [0, 3], "cards": ["SQ", "S7"]}
+      ],
+      "intendedCoverage": ["Maya has five spades but not the five highest", "teammate holds S10 and opponent holds SQ", "no private ownership in Maya packet"]
+    }
+  ]
+}

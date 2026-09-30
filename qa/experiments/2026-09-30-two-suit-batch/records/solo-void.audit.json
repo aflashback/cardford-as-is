@@ -1,11 +1,11 @@
 {
   "episodeId": "solo-void",
-  "complete": false,
-  "accepted": 38,
+  "complete": true,
+  "accepted": 56,
   "rejected": 0,
-  "boundaryChecks": 38,
-  "tricks": 8,
-  "uniquePlayed": 32,
+  "boundaryChecks": 56,
+  "tricks": 13,
+  "uniquePlayed": 52,
   "comparisons": [
     {
       "seq": 1,
@@ -624,11 +624,322 @@
         "S08"
       ],
       "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 39,
+      "seat": 3,
+      "agent": "play:D10",
+      "forced": true,
+      "d0": "play:D10",
+      "d1": "play:D10",
+      "d1SelectedBy": "forced",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S08"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 40,
+      "seat": 0,
+      "agent": "play:H7",
+      "forced": false,
+      "d0": "play:H7",
+      "d1": "play:H7",
+      "d1SelectedBy": "tactical-order",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S02",
+        "S11",
+        "S08"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 41,
+      "seat": 1,
+      "agent": "play:CJ",
+      "forced": false,
+      "d0": "play:C2",
+      "d1": "play:C5",
+      "d1SelectedBy": "search-tiebreak",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S09",
+        "S10"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 42,
+      "seat": 2,
+      "agent": "play:CQ",
+      "forced": false,
+      "d0": "play:CA",
+      "d1": "play:CQ",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S08"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 43,
+      "seat": 3,
+      "agent": "play:CK",
+      "forced": false,
+      "d0": "play:CK",
+      "d1": "play:CK",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S08"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 44,
+      "seat": 0,
+      "agent": "play:H8",
+      "forced": false,
+      "d0": "play:H8",
+      "d1": "play:H8",
+      "d1SelectedBy": "tactical-order",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S02",
+        "S11",
+        "S08"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 45,
+      "seat": 3,
+      "agent": "play:C4",
+      "forced": false,
+      "d0": "play:C4",
+      "d1": "play:C10",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S09",
+        "S10",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 46,
+      "seat": 0,
+      "agent": "play:H9",
+      "forced": false,
+      "d0": "play:H9",
+      "d1": "play:H9",
+      "d1SelectedBy": "tactical-order",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S02",
+        "S11",
+        "S08",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 47,
+      "seat": 1,
+      "agent": "play:C8",
+      "forced": false,
+      "d0": "play:C2",
+      "d1": "play:C8",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S09",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 48,
+      "seat": 2,
+      "agent": "play:C9",
+      "forced": false,
+      "d0": "play:C9",
+      "d1": "play:C9",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S08",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 49,
+      "seat": 2,
+      "agent": "play:HK",
+      "forced": false,
+      "d0": "play:HK",
+      "d1": "play:HK",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S08",
+        "S10",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 50,
+      "seat": 3,
+      "agent": "play:C7",
+      "forced": false,
+      "d0": "play:C10",
+      "d1": "play:C10",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S02",
+        "S11",
+        "S09",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 51,
+      "seat": 0,
+      "agent": "play:H10",
+      "forced": false,
+      "d0": "play:H10",
+      "d1": "play:H10",
+      "d1SelectedBy": "tactical-order",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S08",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 52,
+      "seat": 1,
+      "agent": "play:C2",
+      "forced": false,
+      "d0": "play:C5",
+      "d1": "play:C5",
+      "d1SelectedBy": "search",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S02",
+        "S11",
+        "S09",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 53,
+      "seat": 2,
+      "agent": "play:CA",
+      "forced": true,
+      "d0": "play:CA",
+      "d1": "play:CA",
+      "d1SelectedBy": "forced",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S09",
+        "S10",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 54,
+      "seat": 3,
+      "agent": "play:C10",
+      "forced": true,
+      "d0": "play:C10",
+      "d1": "play:C10",
+      "d1SelectedBy": "forced",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S09",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 55,
+      "seat": 0,
+      "agent": "play:HJ",
+      "forced": true,
+      "d0": "play:HJ",
+      "d1": "play:HJ",
+      "d1SelectedBy": "forced",
+      "scenarioIds": [
+        "S01",
+        "S03",
+        "S04",
+        "S02",
+        "S11",
+        "S08",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
+    },
+    {
+      "seq": 56,
+      "seat": 1,
+      "agent": "play:C5",
+      "forced": true,
+      "d0": "play:C5",
+      "d1": "play:C5",
+      "d1SelectedBy": "forced",
+      "scenarioIds": [
+        "S01",
+        "S04",
+        "S09",
+        "S14"
+      ],
+      "agreementIsNotCorrectness": true
     }
   ],
   "result": {
-    "phase": "play",
-    "turn": 3,
+    "phase": "hand-end",
+    "turn": 2,
     "bids": [
       10,
       4,
@@ -637,20 +948,20 @@
     ],
     "tricks": [
       5,
+      4,
       3,
-      0,
-      0
+      1
     ],
     "scores": [
-      0,
-      0,
-      0,
-      0
+      -100,
+      40,
+      21,
+      10
     ],
     "bags": [
       0,
       0,
-      0,
+      1,
       0
     ],
     "history": [
@@ -821,7 +1132,126 @@
           }
         ],
         "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "DQ"
+          },
+          {
+            "seat": 2,
+            "card": "C6"
+          },
+          {
+            "seat": 3,
+            "card": "D10"
+          },
+          {
+            "seat": 0,
+            "card": "H7"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "CJ"
+          },
+          {
+            "seat": 2,
+            "card": "CQ"
+          },
+          {
+            "seat": 3,
+            "card": "CK"
+          },
+          {
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "winner": 3
+      },
+      {
+        "plays": [
+          {
+            "seat": 3,
+            "card": "C4"
+          },
+          {
+            "seat": 0,
+            "card": "H9"
+          },
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          }
+        ],
+        "winner": 2
+      },
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "HK"
+          },
+          {
+            "seat": 3,
+            "card": "C7"
+          },
+          {
+            "seat": 0,
+            "card": "H10"
+          },
+          {
+            "seat": 1,
+            "card": "C2"
+          }
+        ],
+        "winner": 2
+      },
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "CA"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          },
+          {
+            "seat": 0,
+            "card": "HJ"
+          },
+          {
+            "seat": 1,
+            "card": "C5"
+          }
+        ],
+        "winner": 2
       }
-    ]
+    ],
+    "handResult": {
+      "points": [
+        -100,
+        40,
+        21,
+        10
+      ],
+      "bags": [
+        0,
+        0,
+        1,
+        0
+      ]
+    }
   }
 }

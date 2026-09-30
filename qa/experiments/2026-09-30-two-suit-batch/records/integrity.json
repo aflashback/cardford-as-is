@@ -1,5 +1,5 @@
 {
-  "status": "incomplete",
+  "status": "passed",
   "episodes": [
     {
       "episodeId": "solo-spread",
@@ -36,10 +36,10 @@
     },
     {
       "episodeId": "solo-void",
-      "status": "incomplete",
-      "decisions": 38,
+      "status": "passed",
+      "decisions": 56,
       "rejected": 0,
-      "forced": 4,
+      "forced": 9,
       "bids": [
         10,
         4,
@@ -48,27 +48,57 @@
       ],
       "tricks": [
         5,
+        4,
         3,
-        0,
-        0
+        1
       ],
       "scores": [
+        -100,
+        40,
+        21,
+        10
+      ],
+      "bags": [
         0,
         0,
-        0,
+        1,
         0
+      ],
+      "differencesFromD0": 16,
+      "differencesFromD1": 13
+    },
+    {
+      "episodeId": "solo-concentrated",
+      "status": "passed",
+      "decisions": 56,
+      "rejected": 0,
+      "forced": 8,
+      "bids": [
+        5,
+        3,
+        2,
+        1
+      ],
+      "tricks": [
+        5,
+        3,
+        2,
+        3
+      ],
+      "scores": [
+        50,
+        30,
+        20,
+        12
       ],
       "bags": [
         0,
         0,
         0,
-        0
-      ]
-    },
-    {
-      "episodeId": "solo-concentrated",
-      "status": "not-run",
-      "decisions": 0
+        2
+      ],
+      "differencesFromD0": 21,
+      "differencesFromD1": 31
     },
     {
       "episodeId": "partners-spread",
@@ -138,8 +168,36 @@
     },
     {
       "episodeId": "partners-concentrated",
-      "status": "not-run",
-      "decisions": 0
+      "status": "passed",
+      "decisions": 56,
+      "rejected": 0,
+      "forced": 7,
+      "bids": [
+        5,
+        3,
+        2,
+        1
+      ],
+      "tricks": [
+        5,
+        3,
+        3,
+        2
+      ],
+      "scores": [
+        71,
+        41,
+        71,
+        41
+      ],
+      "bags": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "differencesFromD0": 16,
+      "differencesFromD1": 18
     }
   ],
   "openingComparisons": [
@@ -154,6 +212,10 @@
         {
           "episodeId": "solo-void",
           "bid": 10
+        },
+        {
+          "episodeId": "solo-concentrated",
+          "bid": 5
         }
       ],
       "interpretation": "Any first-bid difference within this mode is response variability, not hidden-distribution knowledge."
@@ -169,14 +231,18 @@
         {
           "episodeId": "partners-void",
           "bid": 9
+        },
+        {
+          "episodeId": "partners-concentrated",
+          "bid": 5
         }
       ],
       "interpretation": "Any first-bid difference within this mode is response variability, not hidden-distribution knowledge."
     }
   ],
-  "completed": 3,
+  "completed": 6,
   "planned": 6,
-  "decisions": 206,
+  "decisions": 336,
   "jevCalls": 0,
   "scope": "Saved record integrity and engine replay reports. Manual message transport and model internals are not independently audited. Policy disagreement is not correctness."
 }

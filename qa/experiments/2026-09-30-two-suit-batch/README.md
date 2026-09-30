@@ -2,14 +2,14 @@
 
 Owner-authorized follow-up to the [initial pilot](../2026-09-30-agent-scenario-lab/README.md). Six planned complete hands: three authored distributions, paired across Solo and Partners. Maya's thirteen cards, opening seat and zero starting scores/bags are fixed. See [design](design.md) for full fixtures and limitations; players never receive it.
 
-**Actual completion and findings:** [results](results.md). **Remaining collection:** [continuation](continuation.md). Planned fixtures are not completed games.
+**Actual completion and findings:** [results](results.md). **Paused collection and choices:** [continuation](continuation.md). The separate [eight-hand proposal](next-batch-proposal.md) is unplayed.
 
 ## Frozen protocol
 
 - Each hand uses four fresh player contexts: Maya, Leo, Jason and Sarah. Tool task names use opaque numbers, without distribution labels. Each seat sees its own cards, rules, public history and full legal set. No player sees another player's justification or a reference recommendation.
-- `templates/invocation.txt` is the exact initial template. Later messages contain the code-generated compact packet plus “Choose one action under the same protocol.” Compact history preserves every public play and winner. `templates/player.md` and `spades-rules.md` retain the readable protocol/rules.
+- `templates/invocation.txt` is the intended initial template. Later messages contain a compact seat packet plus “Choose one action under the same protocol.” Compact history preserves every public play and winner. `templates/player.md` and `spades-rules.md` retain the readable protocol/rules. Manual delivery and context reconstruction mean exact per-player prompt delivery is not independently proved.
 - Players respond with one action and one paragraph, including forced actions. Code rejects malformed/illegal replies without changing the game. No automatic player or reference-policy fallback is permitted.
-- Root routes Solo; a separate observer routes Partners. Each advances only one player at a time. Completed player tasks free concurrency slots; no same-hand simultaneous choices occur.
+- Solo and Partners were routed one decision at a time. Completed player tasks free concurrency slots; no same-hand simultaneous choices occur.
 - Raw replies, structured observations, compact delivery text and their hashes are saved. The invocation template hash is frozen with the deal. Manual transport is documented, not independently audited by the replay check. Text-only/tool restrictions are instructions; a hard per-player tool sandbox is unavailable here.
 - All cases are development material. Runtime rules, bot/coach policy and provider activation are unchanged. Frontier subagents participate only offline; no Jev call is part of this batch. Exact model snapshots are not exposed by the collaboration API.
 

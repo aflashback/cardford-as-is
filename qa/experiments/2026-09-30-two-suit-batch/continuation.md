@@ -1,23 +1,17 @@
-# Resume collection
+# Collection pause
 
-Stopped for the earlier one-hour budget, not an engine error. Read `results.md` and `records/integrity.json` for the actual snapshot. Do not restart completed games or infer missing actions.
+The original six authored hands are complete: three deals in Solo and the same three in Partners. Each has 56 accepted decisions and a passing replay audit. Collection is paused at the owner's request. Do not start another hand until the owner asks to resume.
 
-## Solo void
+`solo-void` decisions 39–56 used reconstructed seat-only player contexts because the original contexts were unavailable. Manual packet corrections are listed in `transport-incidents.json`. These records are useful for discovering questions but are not pristine controlled model trials.
 
-38 accepted decisions; next is Sarah, seat3, decision39. No response is pending and decision39 has not been requested. Existing contexts: `/root/s02_maya`, `/root/s02_leo`, `/root/s02_jason`, `/root/s02_sarah`. Continue the existing context if available. Generate the exact current packet with:
+The separate [eight-hand proposal](next-batch-proposal.md) is validated as 52-card setups and remains **unplayed**. It is one possible continuation, not an automatic next step. The other option is to review the consequential decisions in the six completed hands and select counterfactual branches or unseen evaluation deals. Keep Solo and Partners results separate.
+
+To verify the paused state from repository root:
 
 ```text
-node qa/experiments/2026-09-30-two-suit-batch/referee.mjs text solo-void
+node qa/experiments/2026-09-30-two-suit-batch/verify-records.mjs
+node qa/experiments/2026-09-30-two-suit-batch/check-public-proof.mjs
+node qa/experiments/2026-09-30-two-suit-batch/materialize-next-batch.mjs validate
 ```
 
-Send it to `/root/s02_sarah` preceded by “Choose one action under the same protocol.” Accept only the exact final response through the referee. Continue until56 decisions, then audit. Never give any player this file, the complete deal, review notes, another player's reasons or an outcome prediction.
-
-If contexts are unavailable, label the resumed segment as reconstructed context: start from `templates/invocation.txt` with the current packet, then provide only that seat's own prior responses if needed. Do not claim exact continuation of the original model context.
-
-## Concentrated pair
-
-`solo-concentrated` and `partners-concentrated` are frozen, validated and not run. Use fresh opaque player task names `s03_maya/leo/jason/sarah` and `p03_maya/leo/jason/sarah`, fork history none. Use the frozen invocation template, own cards and full public packet only. Preserve the original Maya opening observation; do not reveal the distribution name or intended lesson.
-
-## After collection
-
-Audit each episode; run `verify-records.mjs`, `check-public-proof.mjs`, then `write-summary.mjs`. Update reviews and this continuation file to match actual evidence. Keep all cases in development. Add repeated runs and varied score/seat/opponent contexts before probabilities or strategic promotion. Do not silently turn missing agent moves into deterministic bot moves.
+No Jev or OpenRouter call occurred in this collection. No runtime policy was changed.

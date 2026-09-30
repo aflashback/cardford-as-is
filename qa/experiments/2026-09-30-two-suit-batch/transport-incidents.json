@@ -22,6 +22,39 @@
       "actionAcceptedFromIncorrectPacket": false,
       "handling": "Interrupted the running player immediately before any final response, then supplied the full corrected canonical packet. State remained at 26 accepted decisions. Accepted decision 27 only from the response to the corrected packet.",
       "limitation": "The player context contains the erroneous prior packet and corrected resend; this is not a pristine automated-transport episode."
+    },
+    {
+      "episodeId": "solo-void",
+      "beforeDecision": 47,
+      "agent": "s02r_leo",
+      "type": "dealer-transcription-corrected",
+      "incorrectField": "history trick5 Leo S4",
+      "correctField": "history trick5 Leo S5",
+      "actionAcceptedFromIncorrectPacket": null,
+      "handling": "Sent the correction before the player's final response. The accepted C8 was legal and its stated reason did not rely on trick5.",
+      "limitation": "The corrected message's arrival before reasoning is unverified; manual transport and the reconstructed player context limit this decision's use as clean strategic evidence."
+    },
+    {
+      "episodeId": "partners-concentrated",
+      "beforeDecision": 18,
+      "agent": "p03_leo",
+      "type": "dealer-transcription-corrected",
+      "incorrectField": "history trick1 Jason C3 and Sarah D4",
+      "correctField": "history trick1 Jason H2 and Sarah H3",
+      "actionAcceptedFromIncorrectPacket": false,
+      "handling": "Withdrew the first reply, supplied the corrected full packet and accepted only the second response. Game state did not advance on the first reply.",
+      "limitation": "The player context saw both packets; this is not a pristine automated-transport decision."
+    },
+    {
+      "episodeId": "solo-concentrated",
+      "beforeDecision": 55,
+      "agent": "s03_leo",
+      "type": "dealer-transcription-corrected",
+      "incorrectField": "history omitted trick6 and misstated trick5",
+      "correctField": "history includes trick5 [0:SK 1:S6 2:D3 3:D8] and trick6 [0:SA 1:S7 2:C6 3:C7]",
+      "actionAcceptedFromIncorrectPacket": false,
+      "handling": "Withdrew the incorrect packet before acceptance, supplied the full corrected packet and asked the player to confirm the corrected trick5 and trick6. Accepted only the confirmed response.",
+      "limitation": "The player context saw an incorrect prior packet; this final forced action is not clean strategic evidence."
     }
   ]
 }
