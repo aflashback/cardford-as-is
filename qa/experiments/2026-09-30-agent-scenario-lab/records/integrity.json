@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "episodes": [
+    {
+      "episodeId": "solo-control-01",
+      "status": "passed",
+      "decisions": 56,
+      "rejected": 0,
+      "forced": 12,
+      "differencesFromD0": 11,
+      "differencesFromD1": 13,
+      "comparisonsAreNotCorrectnessLabels": true
+    },
+    {
+      "episodeId": "partners-nil-race-01",
+      "status": "passed",
+      "decisions": 56,
+      "rejected": 0,
+      "forced": 13,
+      "differencesFromD0": 19,
+      "differencesFromD1": 17,
+      "comparisonsAreNotCorrectnessLabels": true
+    }
+  ],
+  "scope": "Saved record integrity plus existing engine replay reports; not an audit of model internals or manual transport messages."
+}

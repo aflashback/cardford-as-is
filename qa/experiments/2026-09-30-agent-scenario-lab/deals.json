@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "agent-lab-deals-1.0.0",
+  "names": ["Maya", "Leo", "Jason", "Sarah"],
+  "episodes": [
+    {
+      "id": "solo-control-01",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "origin": "authored deal, zero-start legal hand",
+      "intendedCoverage": ["strong versus weak bidding", "Nil escape", "suit development", "contract versus bags"],
+      "hands": [
+        ["CA", "C6", "DA", "DQ", "D7", "HK", "H5", "SA", "SK", "SQ", "SJ", "S9", "S3"],
+        ["CK", "CQ", "CJ", "C8", "C3", "DK", "DJ", "D9", "D5", "HA", "H8", "H3", "S7"],
+        ["C2", "C4", "C7", "C9", "D2", "D4", "D6", "H2", "H4", "H7", "H9", "S2", "S4"],
+        ["C10", "C5", "D10", "D8", "D3", "HQ", "HJ", "H10", "H6", "S10", "S8", "S6", "S5"]
+      ]
+    },
+    {
+      "id": "partners-nil-race-01",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "scores": [430, 445, 430, 445],
+      "bags": [8, 8, 8, 8],
+      "origin": "authored deal with synthetic carried scores/bags; prior-match reachability not claimed",
+      "intendedCoverage": ["partner Nil cover", "opposing Nil attack", "team contract", "bag boundary", "match-end score"],
+      "hands": [
+        ["CA", "CK", "C6", "DQ", "D8", "D3", "HA", "HK", "H8", "SA", "SK", "S8", "S5"],
+        ["CQ", "C9", "C7", "DA", "D10", "D7", "HQ", "HJ", "H9", "SQ", "SJ", "S9", "S6"],
+        ["C2", "C4", "C5", "C8", "D2", "D4", "D6", "H2", "H3", "H5", "H6", "S2", "S3"],
+        ["CJ", "C10", "C3", "DK", "DJ", "D9", "D5", "H10", "H7", "H4", "S10", "S7", "S4"]
+      ]
+    }
+  ]
+}

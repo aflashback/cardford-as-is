@@ -1,0 +1,41 @@
+{
+  "episodeId": "partners-nil-race-01",
+  "targetDecision": 45,
+  "status": "passed",
+  "purpose": "Counterexample to claimed exact ownership; not a strategic acceptance label",
+  "swap": {
+    "fromJasonToMaya": "C2",
+    "fromMayaToJason": "S5"
+  },
+  "replayedDecisionsPerDeal": 44,
+  "productionReducerReplaysLegal": true,
+  "sarahPacketMatchesSavedDecision": true,
+  "sarahPacketIdenticalAcrossDeals": true,
+  "originalPacketHash": "431dd4ad6214c5ac40ac48fe9bc731e0c0b8388e342ee7eb0b22a99b394675eb",
+  "alternativePacketHash": "431dd4ad6214c5ac40ac48fe9bc731e0c0b8388e342ee7eb0b22a99b394675eb",
+  "observerOnlyActualRemaining": {
+    "Maya": [
+      "S5",
+      "SK",
+      "SA"
+    ],
+    "Jason": [
+      "C2",
+      "H2",
+      "S2"
+    ]
+  },
+  "observerOnlyAlternativeRemaining": {
+    "Maya": [
+      "C2",
+      "SK",
+      "SA"
+    ],
+    "Jason": [
+      "H2",
+      "S2",
+      "S5"
+    ]
+  },
+  "conclusion": "Sarah cannot deduce from her seq45 packet that Jason holds C2, H2 and exactly one spade."
+}

@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-09-30 — Authored-deal scenario research
+
+The owner requested primary research and text-only player simulations on deliberate Solo and Partners deals. The [scenario lab](../qa/experiments/2026-09-30-agent-scenario-lab/README.md) stores the protocol, separate player packets, exact responses, production-engine replay checks and review candidates. The [follow-up plan](../qa/experiments/2026-09-30-agent-scenario-lab/follow-up-plan.md) refines the existing evaluation work. Runtime behavior, defaults and provider activation are unchanged; no Jev call is part of this experiment. These records support scenario discovery, not claims of strategic strength or validated probabilities. See the lab results for completed checks and limits.
+
 ## 2026-09-29 — Game plan layer and strength gate
 
 [CR-STRAT-009](decisions/CR-STRAT-009-game-plan-and-strength-gate.md) records the owner request to improve bot and coaching quality with a game plan that is generic across four-seat individual and partnership games. It freezes `spades-tactics-2.1.0` as baseline D0, adds selectable Spades plan profiles 3.0.0 to 3.4.0, a case store for the six partial families, and a strength gate that reports Solo and Partners separately. [Design](../docs/superpowers/specs/2026-09-29-game-plan-and-strength-gate.md). The live default policy, Hearts behaviour, rules and scoring are unchanged. No Jev request was made. Promotion of any profile needs human-reviewed labels or a written waiver, and owner approval.

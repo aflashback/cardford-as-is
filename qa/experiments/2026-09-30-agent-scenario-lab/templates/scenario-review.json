@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "offline-scenario-review-template-1.0.0",
+  "caseId": "GAME-FAMILY-NUMBER",
+  "status": "discovered-not-validated",
+  "partition": "development",
+  "game": "module-id",
+  "ruleProfile": "versioned-profile-id",
+  "competition": "individual-or-partnership",
+  "source": {
+    "episodeId": "saved-episode-id",
+    "decisionSequences": [],
+    "replayPrefix": "path-to-immutable-record"
+  },
+  "strategicQuestion": "What tradeoff does the player face?",
+  "seatVisibleFacts": [],
+  "uncertainInferences": [],
+  "candidateActions": [],
+  "agentJustification": "Reference the saved paragraph; do not treat it as a correct label.",
+  "reviewerAcceptableActions": null,
+  "counterexamples": [],
+  "mutationsToTest": [],
+  "botRequirement": "Candidate code behavior pending independent review and evaluation.",
+  "coachRequirement": "Short factual cue, uncertainty where needed, and abstention conditions.",
+  "evidenceNeeded": [
+    "Blind review using only the seat observation",
+    "Reachable alternative histories and hidden deals consistent with that observation",
+    "Action and explanation consistency",
+    "Regression checks and fresh-deal comparative evaluation"
+  ]
+}

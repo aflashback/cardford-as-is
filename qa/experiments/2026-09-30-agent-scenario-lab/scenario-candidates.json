@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "agent-lab-candidates-1.0.0",
+  "status": "discovered-not-strategically-validated",
+  "partition": "development",
+  "sourceRecords": "records/{episodeId}.json; seq identifies the exact seat packet and explanation",
+  "casebook": "docs/superpowers/specs/2026-09-29-spades-partnership-reasoning-guide.md",
+  "cases": [
+    {
+      "id": "LAB-01", "episodeId": "solo-control-01", "seq": [1, 2, 3, 4], "families": ["S13", "SP-B03", "SP-B05"],
+      "question": "How do strong trump control, weak honors and earlier bids alter bidding?",
+      "observed": "The four agents chose 8, 2, Nil, 2 from deliberately contrasting hands.",
+      "uncertainty": "One realized trick count cannot validate a bid or estimate its success probability.",
+      "nextTest": "Hold card play fixed; compare bids across fresh companion deals and score contexts.",
+      "coachCandidate": "Identify the actual winners and escape risks supporting the bid."
+    },
+    {
+      "id": "LAB-02", "episodeId": "solo-control-01", "seq": [7, 11, 18, 22, 35, 47], "families": ["SP-N01"],
+      "question": "Which safe underplay preserves future Nil exits?",
+      "observed": "Jason sheds high followers beneath winners, uses H2 under H3, and later keeps C2+D2 while off lead.",
+      "fact": "These selected underplays cannot win the current trick. At seq47 the retained side-suit twos cannot win a later trick while following or discarding.",
+      "nextTest": "Add trapped side-suit winners and long weak trump; highest rank alone must not select cross-suit discards.",
+      "coachCandidate": "Keep an exit for the next lead."
+    },
+    {
+      "id": "LAB-03", "episodeId": "solo-control-01", "seq": [13, 24, 32, 33], "families": ["S10", "S11", "SP-T06"],
+      "question": "When should a small trump be used before drawing trump?",
+      "observed": "Maya creates side-suit voids, wins with S3 in last seat, then leads unbeatable trump.",
+      "fact": "At seq32 no player remains to overruff S3; the four top spades remain in Maya's hand.",
+      "nextTest": "Move the ruff to second seat; change the remaining contract; add a partner whose trump or Nil needs protection.",
+      "coachCandidate": "This last-seat ruff preserves your higher spades."
+    },
+    {
+      "id": "LAB-04", "episodeId": "solo-control-01", "seq": [25, 26, 38], "families": ["SP-H02", "P08"],
+      "question": "Does a withheld honor reveal its owner or promise later control?",
+      "observed": "Maya tries to draw DK with D7. Leo holds DK but plays D9, then later discards DK to retain a lower diamond.",
+      "uncertainty": "Each player's explanation is private. Other seats see the actions but cannot know Leo's objective or exact holding at seq26.",
+      "nextTest": "Vary contract need, bags, Nil and seat order while preserving the public honor sequence.",
+      "coachCandidate": "A missing honor may be deliberately held back."
+    },
+    {
+      "id": "LAB-05", "episodeId": "solo-control-01", "seq": [38, 43, 44, 45], "families": ["S02", "SP-X01"],
+      "question": "When does an uncertain holding become a proved holding?",
+      "observed": "Leo and Jason discard on spade leads. Sarah can then place unseen SA+S9 with Maya; Maya can place the outstanding S10 with Sarah.",
+      "fact": "Follow-suit rules, own cards and public card counts jointly establish these remaining trump owners.",
+      "nextTest": "Remove one observed void or one earlier card; certainty must disappear.",
+      "coachCandidate": "Both other players are out of spades."
+    },
+    {
+      "id": "LAB-06", "episodeId": "solo-control-01", "seq": [45, 50], "families": ["SP-O03", "SP-X01", "S14"],
+      "question": "Can we concede a trick while retaining contract control and still setting an opponent?",
+      "observed": "Maya leads S9 into Sarah's proved S10 and retains SA+DQ, then completes the contract.",
+      "uncertainty": "The line's outcomes are countable here; its long-term bag preference is not generally optimal by definition.",
+      "nextTest": "Give Sarah one existing trick, move the bag threshold, or remove the established diamond winner.",
+      "coachCandidate": "You can give up this trick and retain the needed winners."
+    },
+    {
+      "id": "LAB-07", "episodeId": "partners-nil-race-01", "seq": [5, 9, 13, 17, 36, 44], "families": ["SP-N04", "SP-N10", "P11"],
+      "question": "How does a Nil coverer preserve later protection while making the positive contract?",
+      "observed": "Maya cashes side-suit winners, then underplays already safe tricks and retains top trump.",
+      "uncertainty": "This hand does not establish a universal high-lead or Nil-first rule.",
+      "nextTest": "Introduce a dangerous singleton in partner's hand, fewer cover resources and a larger positive contract.",
+      "coachCandidate": "Partner is already safe here; preserve the later cover."
+    },
+    {
+      "id": "LAB-08", "episodeId": "partners-nil-race-01", "seq": [43, 44, 45], "families": ["SP-N07", "SP-O02", "SP-O06"],
+      "question": "When does attacking Nil justify accepting a bag penalty?",
+      "observed": "Sarah spends S10 to take control and later leads S4 at Jason's Nil; Maya ducks S10 while keeping her top trump.",
+      "uncertainty": "A stated attack and a successful attack are different evidence. Score consequences must include both teams.",
+      "nextTest": "Move both teams' scores and bags; compare low-trump attack with resource pressure against the coverer.",
+      "coachCandidate": "Compare the Nil swing with the bag penalty and final scores."
+    },
+    {
+      "id": "LAB-09", "episodeId": "partners-nil-race-01", "seq": [33, 35, 45, 50], "families": ["SP-X02", "SP-O06", "P08"],
+      "question": "Does the explanation claim more than the seat information establishes?",
+      "observed": "Review found an omitted bag-penalty score route, an overly broad honor-cover claim, unsupported exact ownership and an impossible late Nil-break hope.",
+      "fact": "The executable seq45 counterexample replays44 legal decisions on two deals with identical Sarah packets but different Jason holdings.",
+      "evidence": "partners-observer.md P5-P7 and records/partners-nil-race-01.counterexample.json",
+      "nextTest": "Attach code-checkable premises to certainty claims; test alternative compatible deals and complete scored continuations. Keep action quality distinct from explanation validity.",
+      "coachCandidate": "State only the card owners and score routes established by the evidence."
+    }
+  ]
+}
