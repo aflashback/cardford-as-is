@@ -26,8 +26,11 @@ declare module 'fastify' {
 
 export async function createApp(config: Config, pool: Database) {
   const app = Fastify({ logger: false, bodyLimit: 32768, trustProxy: false });
-  const service = new GameService(pool);
-  const trials = new TrialService(pool);
+  const policies: Partial<Record<string, string>> = config.spadesPolicy
+    ? { 'spades-solo': config.spadesPolicy, 'spades-partners': config.spadesPolicy }
+    : {};
+  const service = new GameService(pool, { policies });
+  const trials = new TrialService(pool, policies);
   app.addHook('onClose', async () => trials.close());
   await app.register(cookie);
   app.addHook('onRoute', (options) => {

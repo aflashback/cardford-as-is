@@ -21,8 +21,11 @@ interface Job {
 export class TrialService {
   readonly database: Database;
   readonly workers = new TrialPool();
-  constructor(database: Database) {
+  /** Named policy per mode for simulated seats; a mode without an entry uses the live default. */
+  readonly policies: Partial<Record<string, string>>;
+  constructor(database: Database, policies: Partial<Record<string, string>> = {}) {
     this.database = database;
+    this.policies = { ...policies };
   }
   async run(context: RequestContext, body: TrialRequest): Promise<ReviewTrial> {
     const prepared = await ownedTransaction(this.database, context.token, async (client, player, game) => {
@@ -97,6 +100,7 @@ export class TrialService {
       prepared.source.observation,
       { kind: 'play', seat: 0, card: body.alternative.card },
       prepared.job.seed,
+      this.policies[prepared.source.observation.mode],
     );
     const published = await ownedTransaction(this.database, context.token, async (client, player, game) => {
       const lease = (

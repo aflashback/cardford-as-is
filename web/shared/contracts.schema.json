@@ -628,6 +628,55 @@
             2,
             3
           ]
+        },
+        "outcome": {
+          "enum": [
+            "suggestion",
+            "several-reasonable"
+          ]
+        },
+        "explanation": {
+          "enum": [
+            "supported",
+            "facts-only"
+          ]
+        },
+        "consideredCards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "consideredBids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "evidence": {
+          "enum": [
+            "exact",
+            "heuristic",
+            "sampled-estimate"
+          ]
+        },
+        "policyVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "cueVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
         }
       },
       "required": [

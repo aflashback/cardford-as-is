@@ -9,8 +9,15 @@ import {
   type GameAction as DomainAction,
 } from '../game/index.ts';
 import { observe, type SeatObservation } from '../observations/index.ts';
-import { analyzeDecision, chooseAction } from '../strategy/index.ts';
+import {
+  analyzeDecision,
+  costOf,
+  getReasoningPack,
+  getReasoningProfile,
+  type DecisionAnalysis,
+} from '../strategy/index.ts';
 import { explain } from '../coaching/templates.ts';
+import { projectAdvice } from '../coaching/project.ts';
 import { shuffledDeck, randomDealer } from '../game-deal.ts';
 import { ownedTransaction, idempotent, saveGame, savePlayer } from '../records/repository.ts';
 import type { Database, Transaction } from '../records/database.ts';
@@ -41,6 +48,36 @@ import { coachAccess, decisionId, observationView, publicAction, sessionView } f
 export interface RequestContext {
   token: string;
   tab: string;
+}
+/** A named policy per mode. A mode without an entry uses the live default. */
+export interface StrategyOptions {
+  policies?: Partial<Record<string, string>>;
+  /** Test seam: observes every analysis call. Production uses the registered packs. */
+  analyze?: (observation: SeatObservation, policyVersion: string | undefined) => DecisionAnalysis;
+}
+class Strategy {
+  readonly policies: Partial<Record<string, string>>;
+  readonly run: NonNullable<StrategyOptions['analyze']>;
+  constructor(options: StrategyOptions = {}) {
+    this.policies = { ...options.policies };
+    for (const [mode, policy] of Object.entries(this.policies))
+      if (policy !== undefined) getReasoningProfile(policy, mode);
+    this.run = options.analyze ?? analyzeDecision;
+  }
+  policyFor(mode: string): string | undefined {
+    return this.policies[mode];
+  }
+  /** STRAT-12: bounded-search analysis is never computed while a transaction is open. */
+  inline(mode: string): boolean {
+    const policy = this.policyFor(mode);
+    return costOf(policy ? getReasoningProfile(policy, mode) : getReasoningPack(mode)) === 'inline';
+  }
+  get searching(): boolean {
+    return Object.keys(this.policies).some((mode) => !this.inline(mode));
+  }
+  analyze(observation: SeatObservation): DecisionAnalysis {
+    return this.run(observation, this.policyFor(observation.mode));
+  }
 }
 const leaseToken = () => randomBytes(24).toString('base64url');
 function requireGame(game: GameRow | null): asserts game is GameRow {
@@ -75,20 +112,23 @@ function frame(game: GameRow, action: ReviewFrame['action'] = null): ReviewFrame
 /** Freeze a human decision without issuing guidance or consuming a coached hand. */
 function ensureHumanAnalysis(
   game: GameRow,
+  strategy: Strategy,
   obs = observe(game.document.state, 0),
 ): SavedDecisionAnalysis | undefined {
   if (!obs.legalActions.length) return undefined;
   const id = decisionId(game);
   const saved = game.document.decisionAnalyses?.[id];
   if (saved) return saved;
-  const analysis = analyzeDecision(obs);
+  // Inside a transaction only inline analysis may run; searched analysis is frozen separately.
+  if (!strategy.inline(obs.mode)) return undefined;
+  const analysis = strategy.analyze(obs);
   const result = { analysis, adviceSnapshot: explain(obs, analysis) };
   (game.document.decisionAnalyses ??= {})[id] = result;
   return result;
 }
-async function persistAdvance(client: Transaction, game: GameRow, event: unknown) {
+async function persistAdvance(client: Transaction, game: GameRow, event: unknown, strategy: Strategy) {
   game.revision++;
-  ensureHumanAnalysis(game);
+  ensureHumanAnalysis(game, strategy);
   game.document.frames.push(frame(game));
   await client.query('INSERT INTO game_events(game_id,revision,event) VALUES($1,$2,$3)', [
     game.id,
@@ -106,6 +146,7 @@ async function insertGame(
   player: PlayerRow,
   mode: NewSessionRequest['mode'],
   tab: string,
+  strategy: Strategy,
 ): Promise<GameRow> {
   const id = randomUUID();
   const deck = shuffledDeck();
@@ -127,7 +168,7 @@ async function insertGame(
       actions: [],
     },
   };
-  ensureHumanAnalysis(game);
+  ensureHumanAnalysis(game, strategy);
   game.document.frames.push(frame(game));
   await client.query('INSERT INTO games(id,player_id,document) VALUES($1,$2,$3)', [
     id,
@@ -140,18 +181,60 @@ async function insertGame(
 }
 export class GameService {
   readonly pool: Database;
-  constructor(pool: Database) {
+  readonly strategy: Strategy;
+  constructor(pool: Database, options: StrategyOptions = {}) {
     this.pool = pool;
+    this.strategy = new Strategy(options);
   }
-  async session(context: RequestContext) {
-    return ownedTransaction(this.pool, context.token, async (client, player, existing) => {
-      const game = existing ?? (await insertGame(client, player, 'spades-partners', context.tab));
-      if (existing && !game.document.decisionAnalyses?.[decisionId(game)] && ensureHumanAnalysis(game))
-        await saveGame(client, game);
-      return sessionView(client, player, game, context.tab);
+  /**
+   * STRAT-12: read the pending human decision, analyse it with no transaction open, then
+   * commit against the same decision identity. A decision that moved on is discarded.
+   */
+  private async freezeAnalysis(token: string): Promise<void> {
+    if (!this.strategy.searching) return;
+    const pending = await ownedTransaction(this.pool, token, async (_client, _player, game) => {
+      if (!game) return null;
+      const id = decisionId(game);
+      if (game.document.decisionAnalyses?.[id]) return null;
+      const observation = observe(game.document.state, 0);
+      if (!observation.legalActions.length || this.strategy.inline(observation.mode)) return null;
+      return { gameId: game.id, id, observation };
+    });
+    if (!pending) return;
+    const analysis = this.strategy.analyze(pending.observation);
+    const result = { analysis, adviceSnapshot: explain(pending.observation, analysis) };
+    await ownedTransaction(this.pool, token, async (client, _player, game) => {
+      if (!game || game.id !== pending.gameId || decisionId(game) !== pending.id) return;
+      if (game.document.decisionAnalyses?.[pending.id]) return;
+      (game.document.decisionAnalyses ??= {})[pending.id] = result;
+      await saveGame(client, game);
     });
   }
+  private async frozen<T>(token: string, work: () => Promise<T>, before = false): Promise<T> {
+    if (before) await this.freezeAnalysis(token);
+    const result = await work();
+    await this.freezeAnalysis(token);
+    return result;
+  }
+  async session(context: RequestContext) {
+    return this.frozen(context.token, () =>
+      ownedTransaction(this.pool, context.token, async (client, player, existing) => {
+        const game =
+          existing ?? (await insertGame(client, player, 'spades-partners', context.tab, this.strategy));
+        if (
+          existing &&
+          !game.document.decisionAnalyses?.[decisionId(game)] &&
+          ensureHumanAnalysis(game, this.strategy)
+        )
+          await saveGame(client, game);
+        return sessionView(client, player, game, context.tab);
+      }),
+    );
+  }
   async newSession(context: RequestContext, body: NewSessionRequest) {
+    return this.frozen(context.token, () => this.replaceSession(context, body));
+  }
+  private async replaceSession(context: RequestContext, body: NewSessionRequest) {
     return ownedTransaction(this.pool, context.token, async (client, player, game) =>
       idempotent(client, player.id, body.commandId, { route: 'sessions', body }, async () => {
         await requireCoverage(client, player, game);
@@ -163,7 +246,7 @@ export class GameService {
           );
         if (game && game.document.control.tab !== context.tab)
           throw new ApiFailure(409, 'LEASE_LOST', 'Take control before replacing the table.');
-        const next = await insertGame(client, player, body.mode, context.tab);
+        const next = await insertGame(client, player, body.mode, context.tab, this.strategy);
         return sessionView(client, player, next, context.tab);
       }),
     );
@@ -187,16 +270,20 @@ export class GameService {
     });
   }
   async action(context: RequestContext, body: ActionsRequest) {
+    return this.frozen(context.token, () => this.applyAction(context, body), true);
+  }
+  private async applyAction(context: RequestContext, body: ActionsRequest) {
     return this.change(context, body, 'action', async (client, player, game) => {
       const before = frame(game, body.action),
         obs = observe(game.document.state, 0),
         id = decisionId(game);
-      ensureHumanAnalysis(game, obs);
+      ensureHumanAnalysis(game, this.strategy, obs);
       let accepted: Parameters<typeof apply>[1];
       if (body.action.kind === 'pass') {
         const passes: Four<Card[]> = [body.action.cards, [], [], []];
         for (const seat of [1, 2, 3] as const) {
-          const action = chooseAction(observe(game.document.state, seat));
+          // Sealed pass choices stay on the inline default; they are never searched.
+          const action = analyzeDecision(observe(game.document.state, seat)).action;
           if (action.kind !== 'pass') invalid('Not a passing phase.');
           passes[seat] = action.cards;
         }
@@ -215,7 +302,7 @@ export class GameService {
         if (level > 0) game.document.stats.helped++;
         if (level >= 3) game.document.stats.suggestions++;
       }
-      await persistAdvance(client, game, { kind: 'action', action: accepted });
+      await persistAdvance(client, game, { kind: 'action', action: accepted }, this.strategy);
       game.document.decisions.push({
         id,
         handNumber: obs.handNumber,
@@ -254,7 +341,8 @@ export class GameService {
         invalid('No computer decision to prepare.');
       return observe(state, state.turn);
     });
-    const action = chooseAction(snapshot);
+    // Computer decisions are always computed with no transaction open.
+    const action = this.strategy.analyze(snapshot).action;
     return this.change(context, body, 'prepare', async (client, player, game) => {
       const existing = (
         await client.query<{ id: string }>('SELECT id FROM jobs WHERE game_id=$1 AND revision=$2', [
@@ -276,6 +364,9 @@ export class GameService {
     });
   }
   async advance(context: RequestContext, body: AdvanceRequest) {
+    return this.frozen(context.token, () => this.applyAdvance(context, body));
+  }
+  private async applyAdvance(context: RequestContext, body: AdvanceRequest) {
     return this.change(context, body, 'advance', async (client, player, game) => {
       if (body.kind === 'collect-trick') {
         try {
@@ -298,11 +389,14 @@ export class GameService {
         game.document.actions.push({ kind: 'action', action: job.result });
         await client.query("UPDATE jobs SET status='accepted' WHERE id=$1", [body.preparedDecisionId]);
       }
-      await persistAdvance(client, game, { kind: body.kind });
+      await persistAdvance(client, game, { kind: body.kind }, this.strategy);
       return sessionView(client, player, game, context.tab);
     });
   }
   async nextHand(context: RequestContext, body: CommandEnvelope) {
+    return this.frozen(context.token, () => this.applyNextHand(context, body));
+  }
+  private async applyNextHand(context: RequestContext, body: CommandEnvelope) {
     return this.change(context, body, 'next-hand', async (client, player, game) => {
       const deck = shuffledDeck();
       try {
@@ -313,7 +407,7 @@ export class GameService {
       game.document.deals.push(deck);
       game.document.actions.push({ kind: 'next-hand', deck });
       game.document.stats = { decisions: 0, helped: 0, suggestions: 0 };
-      await persistAdvance(client, game, { kind: 'next-hand', deck });
+      await persistAdvance(client, game, { kind: 'next-hand', deck }, this.strategy);
       return sessionView(client, player, game, context.tab);
     });
   }
@@ -357,24 +451,13 @@ export class GameService {
         'INVALID_COMMAND',
         'Original decision analysis is unavailable for this legacy decision.',
       );
-    const advice = saved?.adviceSnapshot ?? ensureHumanAnalysis(game, obs)?.adviceSnapshot ?? explain(obs);
-    const view: AdviceView = {
-      focus: advice.focus,
-      notice: advice.notice,
-      reason: requestedLevel >= 2 ? advice.reason : '',
-      suggestion: requestedLevel === 3 ? advice.suggestion : '',
-      source: advice.provenance,
-      decisionId: id,
-      requestedLevel,
-      ...(requestedLevel === 3
-        ? {
-            ...(advice.card ? { card: advice.card } : {}),
-            ...(advice.pass ? { pass: advice.pass } : {}),
-            ...(advice.bid !== undefined ? { bid: advice.bid } : {}),
-          }
-        : {}),
-      ...(advice.highlightSuit ? { highlightSuit: advice.highlightSuit } : {}),
-    };
+    const frozenAdvice =
+      saved?.adviceSnapshot ?? ensureHumanAnalysis(game, this.strategy, obs)?.adviceSnapshot;
+    if (!frozenAdvice && obs.legalActions.length && !this.strategy.inline(obs.mode))
+      throw new ApiFailure(409, 'STALE_REVISION', 'The table changed. Refresh the confirmed position.');
+    const advice = frozenAdvice ?? explain(obs);
+    // COACH-14: one projection decides what each help level may show.
+    const view: AdviceView = projectAdvice(advice, requestedLevel, id);
     if (!access.handUnlocked)
       await client.query(
         "INSERT INTO coached_hands(player_id,game_id,hand_number,period) VALUES($1,$2,$3,(now() AT TIME ZONE 'UTC')::date) ON CONFLICT DO NOTHING",
@@ -388,6 +471,7 @@ export class GameService {
     return view;
   }
   async advice(context: RequestContext, body: AdviceRequest) {
+    await this.freezeAnalysis(context.token);
     const saved = await ownedTransaction(this.pool, context.token, async (client, player, game) => {
       ownedGame(game, body.gameId);
       const result = game.document.savedAdvice[`${body.decisionId}:${body.requestedLevel}`];
@@ -404,6 +488,7 @@ export class GameService {
     });
   }
   async unlock(context: RequestContext, body: HandUnlockRequest) {
+    await this.freezeAnalysis(context.token);
     const envelope = { ...body, commandId: body.requestId };
     return ownedTransaction(this.pool, context.token, async (client, player, game) => {
       ownedGame(game, body.gameId);

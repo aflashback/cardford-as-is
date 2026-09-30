@@ -8,6 +8,7 @@ interface Pending {
   observation: SeatObservation;
   alternative: GameAction;
   seed: number;
+  policyVersion?: string;
   resolve: (result: TrialResult) => void;
   timer: NodeJS.Timeout;
 }
@@ -19,7 +20,12 @@ export class TrialPool {
   private slots: Slot[] = [];
   private queue: Pending[] = [];
   private closed = false;
-  run(observation: SeatObservation, alternative: GameAction, seed: number): Promise<TrialResult> {
+  run(
+    observation: SeatObservation,
+    alternative: GameAction,
+    seed: number,
+    policyVersion?: string,
+  ): Promise<TrialResult> {
     if (this.closed || this.queue.length >= 6)
       return Promise.resolve({
         status: 'unavailable',
@@ -32,6 +38,7 @@ export class TrialPool {
         observation,
         alternative,
         seed,
+        ...(policyVersion ? { policyVersion } : {}),
         resolve,
         timer: setTimeout(() => {
           this.queue = this.queue.filter((item) => item !== request);
@@ -88,6 +95,7 @@ export class TrialPool {
         observation: item.observation,
         alternative: item.alternative,
         seed: item.seed,
+        ...(item.policyVersion ? { policyVersion: item.policyVersion } : {}),
       });
     }
   }

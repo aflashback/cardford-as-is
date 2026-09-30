@@ -52,6 +52,45 @@ Database tests require the separate `_test` database. Browser checks use install
 
 The backup rehearsal writes a private ignored `.local/local-backup.dump`, restores to a uniquely named disposable database, verifies counts and drops only that disposable database. Production backup encryption, retention and recovery objectives are still hosting decisions.
 
+## Spades policy profiles and the strength gate
+
+The default Spades policy is `spades-tactics-2.1.0`. It is also frozen as comparison baseline D0. Plan profiles `spades-plan-3.0.0` to `spades-plan-3.4.0` are selectable for a local trial and for evaluation; none is the default. See [CR-STRAT-009](planning/decisions/CR-STRAT-009-game-plan-and-strength-gate.md).
+
+Run the app with a named profile:
+
+```powershell
+$env:SPADES_POLICY='spades-plan-3.4.0'
+npm start
+```
+
+The startup line prints the active policy. Remove the variable to return to the default. Saved analyses keep the policy version that produced them.
+
+Strength gate and evidence:
+
+```powershell
+node web/server/evaluation/gate/index.ts <manifest.json> --workers 12 --out .local/gate/<run-id>
+```
+
+Per-hand rows stay in ignored `.local/gate/`. Summaries and reports are committed under `qa/evaluation/`. A confirmation seed range can be read once.
+
+## Working from a git worktree
+
+A worktree has no `.env.local` and port 4173 usually belongs to the main checkout.
+
+```powershell
+npm ci
+podman start tricks-coach-postgres          # never run db:up in a worktree
+node --env-file=C:epos	est-jev.env.local web/server/records/migrate.ts
+node --env-file=C:epos	est-jev.env.local --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts
+npm run build
+$env:PORT='4187'; $env:APP_ORIGIN='http://127.0.0.1:4187'
+node --env-file=C:epos	est-jev.env.local web/server/index.ts
+$env:TRICKS_LIVE_URL='http://127.0.0.1:4187'
+npm exec -- playwright test -c web/e2e/worktree.config.ts
+```
+
+`web/e2e/worktree.config.ts` refuses port 4173 and never starts a server, so it cannot test another checkout by accident.
+
 ## Configuration and secrets
 
 Use [`.env.local.example`](.env.local.example). `APP_ENV=local`, `IDENTITY_MODE=local-test`, `BILLING_MODE=fixture`, `JEV_MODE=off` and `JEV_MAX_REQUESTS=0` are deliberate. Hosted startup rejects local fixtures and remains disabled until managed identity is configured. Do not use `VITE_` names for secrets.

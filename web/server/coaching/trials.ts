@@ -1,6 +1,6 @@
 import { apply, actionId, type GameAction, type Play } from '../game/index.ts';
 import { observe, assertObservation, type SeatObservation } from '../observations/index.ts';
-import { chooseAction, getReasoningPack } from '../strategy/index.ts';
+import { chooseAction, getReasoningPack, getReasoningProfile } from '../strategy/index.ts';
 import { sampleWorld, SAMPLER_VERSION, SampleUnavailableError } from '../strategy/sampler.ts';
 export type TrialResult =
   | {
@@ -19,6 +19,8 @@ export function simulateTrial(
   observation: SeatObservation,
   alternative: GameAction,
   seed: number,
+  /** Named policy for the simulated seats; absent means the live default. */
+  policyVersion?: string,
 ): TrialResult {
   assertObservation(observation);
   if (
@@ -44,7 +46,7 @@ export function simulateTrial(
   for (let step = 0; step < 3 && state.phase === 'play'; step++) {
     if (state.turn === null) throw new Error('Sampled trick has no active seat.');
     // The simulated actor receives its own sampled hand, never the human observation or full aggregate.
-    const choice = chooseAction(observe(state, state.turn));
+    const choice = chooseAction(observe(state, state.turn), policyVersion);
     if (choice.kind !== 'play') throw new Error('Sampled continuation left the playing phase.');
     state = apply(state, choice);
     plays.push({ seat: choice.seat, card: choice.card });
@@ -57,7 +59,10 @@ export function simulateTrial(
     plays,
     seed,
     samplerVersion: SAMPLER_VERSION,
-    policyVersion: getReasoningPack(observation.mode).policyVersion,
+    policyVersion: (policyVersion
+      ? getReasoningProfile(policyVersion, observation.mode)
+      : getReasoningPack(observation.mode)
+    ).policyVersion,
     limitations: [
       'One uniformly sampled feasible deal; this is not the original hidden deal or a quality grade.',
       'The named local policy is uncalibrated. This illustration stops after one trick.',

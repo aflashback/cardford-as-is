@@ -57,3 +57,10 @@ Owner update: support future four-player individual or two-pair card games and n
 ## ADR-014 — Minimal table, not graphical game production
 
 Owner update: cards must display properly, four players need only simple icons/avatars. Decision: semantic HTML/CSS cards, four compact seat badges, flat background, concise coaching panel, no 3D/character assets or elaborate animations. Responsive and accessible input takes priority over visual effects. This supersedes any earlier decorative design interpretation.
+
+## ADR-015 — Bounded local playouts for code policies
+
+ADR-012 excluded runtime search so that the first build measured Jev alone. CR-IMPL-001 already superseded that ban for local code strategy. [CR-STRAT-009](../planning/decisions/CR-STRAT-009-game-plan-and-strength-gate.md) confirms it for bounded, deterministic local playouts used by selectable code policies. ADR-002 is unchanged: Jev remains the only remote strategic model, and no model is called at runtime. Playout estimates are internal and are never shown as percentages.
+
+**Known numbering defect:** ADR-013 and ADR-014 each appear twice in this document, once in the baseline table and once as a later section. Cite them with their title until the owner renumbers them.
+

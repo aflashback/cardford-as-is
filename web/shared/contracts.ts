@@ -285,6 +285,21 @@ export interface AdviceView {
   source: 'code' | 'jev' | 'forced' | 'fallback';
   decisionId: string;
   requestedLevel: 1 | 2 | 3;
+  outcome?: 'suggestion' | 'several-reasonable';
+  explanation?: 'supported' | 'facts-only';
+  /**
+   * @minItems 2
+   * @maxItems 3
+   */
+  consideredCards?: Card[];
+  /**
+   * @minItems 2
+   * @maxItems 3
+   */
+  consideredBids?: number[];
+  evidence?: 'exact' | 'heuristic' | 'sampled-estimate';
+  policyVersion?: string;
+  cueVersion?: string;
 }
 export interface CommandEnvelope {
   commandId: string;

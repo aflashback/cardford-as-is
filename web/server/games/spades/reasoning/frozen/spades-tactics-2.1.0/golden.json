@@ -1,0 +1,448 @@
+{
+  "schemaVersion": "1.0.0",
+  "policyVersion": "spades-tactics-2.1.0",
+  "sourceCommit": "87c253819fe86502de41f5dc67ea8740b86a2feb",
+  "dealGenerator": "lcg-1664525-mod",
+  "seeds": [
+    610001,
+    610002,
+    610003,
+    610004,
+    610005,
+    610006,
+    610007,
+    610008,
+    610009,
+    610010,
+    610011,
+    610012,
+    610013,
+    610014,
+    610015,
+    610016,
+    610017,
+    610018,
+    610019,
+    610020,
+    610021,
+    610022,
+    610023,
+    610024
+  ],
+  "hands": [
+    {
+      "mode": "spades-solo",
+      "seed": 610001,
+      "decisions": 56,
+      "sha256": "55175999a87c25030a5a46dafef79b1eef102b75b22407491b7208328aeba080"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610002,
+      "decisions": 56,
+      "sha256": "624c60e2c8870c9626149ffa9c7cece1c4fd2b13553fc1c7c58ecb6b069d17c0"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610003,
+      "decisions": 56,
+      "sha256": "d5dad396fc0f9acbb54bb3195ecec7b61128d906dd3c966db7f51e4c18d4cb28"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610004,
+      "decisions": 56,
+      "sha256": "f8dcb1fc773f16e9d860f29a9548886383d49830aebcf50f92190d957391bfd4"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610005,
+      "decisions": 56,
+      "sha256": "8c5bd1776026b5c0ede597262800f735f265d31ee1dfa5c318eb8091e7923e2f"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610006,
+      "decisions": 56,
+      "sha256": "574319a4661d79a8e728de2e3891b27112c56d6aefc5b3068eb0b01cf342ca7c"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610007,
+      "decisions": 56,
+      "sha256": "3eb6ffb48157f2c84b63b820ac4dad879b6a3761ff84bab839e22b2086a13e09"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610008,
+      "decisions": 56,
+      "sha256": "0433e55e34cb85877592b485f18c8066557b34a2ad929148f55589da69b2e491"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610009,
+      "decisions": 56,
+      "sha256": "55e37755ae27edfccc0f021651c1242053674e8f87ca2d3d58d885ed43ea7afa"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610010,
+      "decisions": 56,
+      "sha256": "3554b380beb6a36cec44b2bf830ce98aa5c7181991a10566b1b5b8e2e1e51a80"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610011,
+      "decisions": 56,
+      "sha256": "09d4e09eb828c87b59748ceb02c2c7f0813259cc23fd00d132bc7371818f0181"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610012,
+      "decisions": 56,
+      "sha256": "766719848adb347c7928ac57cef2694457e86a9d603a7e1ef611b9fa455ff692"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610013,
+      "decisions": 56,
+      "sha256": "a59313598477cee5dd5b9ba600f4b7863005a4486f6953e3172b30d11d87ca8f"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610014,
+      "decisions": 56,
+      "sha256": "491c449ce5babf19bfe54452a17f5f8a493b094d67d8c603f64cdc535f4a3352"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610015,
+      "decisions": 56,
+      "sha256": "2f27744682bd54cbcfae164fe4780ca3365d89d0e80ee1de8bf7539f4af08a96"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610016,
+      "decisions": 56,
+      "sha256": "8fd70b48adef3e95db3aed6e701d61853fa114ce812d9f12161c4fda4cf0a401"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610017,
+      "decisions": 56,
+      "sha256": "b50bfe97c47f04bf8cfc33027c3a81274ecf3f4e6bf065a7698f0042543cc360"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610018,
+      "decisions": 56,
+      "sha256": "3cd65959e03fa31361a48e9d2bfad68457ce571c11b3bc5faa1e1325765581c3"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610019,
+      "decisions": 56,
+      "sha256": "2a4884e341a9ade8ec3b3aed8230863c22334cdaedc403fb016a41e44ad93622"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610020,
+      "decisions": 56,
+      "sha256": "6531b886d7d6f0bb1efc9ebb0505802954d873b14cf1716e4a0743f9a3d4cf51"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610021,
+      "decisions": 56,
+      "sha256": "577eda6d95c67116489552848fd875268e934306bdeac3b9f842a52b044295ce"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610022,
+      "decisions": 56,
+      "sha256": "fb4461ade7c8c41cb062e38c789ab329263577c4feace44138f56f8446cb492b"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610023,
+      "decisions": 56,
+      "sha256": "0cf180eda7e27e9c787f5f01721ba3872089f2ce9c84fa672ece8aaed1209bfe"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 610024,
+      "decisions": 56,
+      "sha256": "136acce1df248b1413c2ff5a88495f5a609ec5c6b8435155e9e9a35c0de847a5"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610001,
+      "decisions": 56,
+      "sha256": "4d38d5142889f8d0947012dca670865fe800158f74fac9ac9a74f605fa5289fe"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610002,
+      "decisions": 56,
+      "sha256": "8007cce016deceb7022eb79d476b3ea21766d293539b0322c2e6a853ac94c770"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610003,
+      "decisions": 56,
+      "sha256": "0b42c5d7e2b648770abaa1d40a147fedea3d3d859fabfb170f16ca708f962bac"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610004,
+      "decisions": 56,
+      "sha256": "4608b9fe8fc9f285afcfdbae1b72e84a4962ac2fd4e1ece288cd424961a735d8"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610005,
+      "decisions": 56,
+      "sha256": "2522fdb184d50daa899023ac9a8779e41c8408f6b3fb0b84d979e96200c5b9c8"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610006,
+      "decisions": 56,
+      "sha256": "c8c57f910e909c3b32d17d96a7804e589638fe0adf69275eac15eace65d99db5"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610007,
+      "decisions": 56,
+      "sha256": "f7fb05247f3e79f4f23bf0520af83c225a578e5f7f9d764282771149be467791"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610008,
+      "decisions": 56,
+      "sha256": "481b2f00e0d875103d448259274c4e2c860dfdd202ff76a2fb7cb59e65900888"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610009,
+      "decisions": 56,
+      "sha256": "00ed3c9708fbcb971f298fced364c9738e73b9c06ae603d577a25866e96be999"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610010,
+      "decisions": 56,
+      "sha256": "b59f977223eee6c97c6c7ec0985d3f0586b04bcae1ad62728897b0e86a6371e4"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610011,
+      "decisions": 56,
+      "sha256": "fedf2c424cb269f4ba9ceabcd20c824c62a7b279923f5bfb699ea92911b44deb"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610012,
+      "decisions": 56,
+      "sha256": "3a2324b49d3b7ea8e95dc1505df66eaf3e9dcd62419c0e0ef36df6b9492358ee"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610013,
+      "decisions": 56,
+      "sha256": "8c8591db3f3b1360bc705ac4521237208a7256a408f89da099b2ae5c71673d51"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610014,
+      "decisions": 56,
+      "sha256": "a2f9ab5bb29fc41520a8aac1d311e5fbc0e516c171e75f8e9473421457fbec35"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610015,
+      "decisions": 56,
+      "sha256": "bf18f4c3e0069a70b0395ac990b06fd4633b1c44b6b253e1eec0e5bcf581e750"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610016,
+      "decisions": 56,
+      "sha256": "ecf9ed3abd8d6fdde5ae56041f0a520342259eea8f58025600d2c4f1b12d67db"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610017,
+      "decisions": 56,
+      "sha256": "113587a09d06f5975b4be27845f29b97fd6a8b928eaaa4795bffc18113110e1e"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610018,
+      "decisions": 56,
+      "sha256": "ca01320009704f92faf72143fcfbc315930a7da6633e041f27d91c1aff3c6ecb"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610019,
+      "decisions": 56,
+      "sha256": "77d5aad6817b9de37963853a1e13190b270704c63f21a88a5abf17883b28b7bb"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610020,
+      "decisions": 56,
+      "sha256": "ef87f6f6069fa711af93e64adbead10a111924084ac08bf84b33e6031ef77635"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610021,
+      "decisions": 56,
+      "sha256": "7d652bb4e9b18969943e4487cca22fcb3efe2f39fa468f02e9de762ec5bbb9a4"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610022,
+      "decisions": 56,
+      "sha256": "eaa0b87f0c87e121a2c9633eef588ae4f5e8e0b1fe7a893740b4c2aeb062cd50"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610023,
+      "decisions": 56,
+      "sha256": "772340aa83ca6278568af6af9688d4b05466e5cd75b2972f6d54351889dbe635"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610024,
+      "decisions": 56,
+      "sha256": "20d465d7e5641d346dc85115ea2b475989c7066c14c9179f6e40aa7c3e87d266"
+    }
+  ],
+  "samples": [
+    {
+      "mode": "spades-solo",
+      "seed": 610001,
+      "actions": [
+        "2:bid:3",
+        "3:bid:4",
+        "0:bid:0",
+        "1:bid:4",
+        "2:play:C3",
+        "3:play:C10",
+        "0:play:C8",
+        "1:play:CJ",
+        "1:play:CA",
+        "2:play:C9",
+        "3:play:S7",
+        "0:play:CQ",
+        "3:play:HA",
+        "0:play:H7",
+        "1:play:H5",
+        "2:play:H10",
+        "3:play:HK",
+        "0:play:H6",
+        "1:play:H9",
+        "2:play:HJ",
+        "3:play:D2",
+        "0:play:D4",
+        "1:play:D9",
+        "2:play:DJ",
+        "2:play:SA",
+        "3:play:S9",
+        "0:play:S8",
+        "1:play:S2",
+        "2:play:D3",
+        "3:play:D5",
+        "0:play:D8",
+        "1:play:DA",
+        "1:play:HQ",
+        "2:play:S4",
+        "3:play:H2",
+        "0:play:H4",
+        "2:play:D6",
+        "3:play:D10",
+        "0:play:C7",
+        "1:play:S5",
+        "1:play:CK",
+        "2:play:DK",
+        "3:play:SQ",
+        "0:play:C6",
+        "3:play:H3",
+        "0:play:C5",
+        "1:play:S6",
+        "2:play:DQ",
+        "1:play:C2",
+        "2:play:D7",
+        "3:play:H8",
+        "0:play:C4",
+        "0:play:S3",
+        "1:play:S10",
+        "2:play:SJ",
+        "3:play:SK"
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 610001,
+      "actions": [
+        "2:bid:3",
+        "3:bid:4",
+        "0:bid:0",
+        "1:bid:4",
+        "2:play:DK",
+        "3:play:D2",
+        "0:play:D8",
+        "1:play:DA",
+        "1:play:CA",
+        "2:play:C3",
+        "3:play:C10",
+        "0:play:CQ",
+        "1:play:CK",
+        "2:play:C9",
+        "3:play:H2",
+        "0:play:C8",
+        "1:play:CJ",
+        "2:play:SA",
+        "3:play:H3",
+        "0:play:C7",
+        "2:play:DQ",
+        "3:play:D5",
+        "0:play:D4",
+        "1:play:D9",
+        "2:play:DJ",
+        "3:play:D10",
+        "0:play:H7",
+        "1:play:S2",
+        "1:play:C2",
+        "2:play:SJ",
+        "3:play:SQ",
+        "0:play:C6",
+        "3:play:SK",
+        "0:play:S8",
+        "1:play:S5",
+        "2:play:S4",
+        "3:play:HA",
+        "0:play:H6",
+        "1:play:H5",
+        "2:play:H10",
+        "3:play:HK",
+        "0:play:H4",
+        "1:play:H9",
+        "2:play:HJ",
+        "3:play:H8",
+        "0:play:C5",
+        "1:play:HQ",
+        "2:play:D3",
+        "1:play:S6",
+        "2:play:D6",
+        "3:play:S7",
+        "0:play:S3",
+        "3:play:S9",
+        "0:play:C4",
+        "1:play:S10",
+        "2:play:D7"
+      ]
+    }
+  ]
+}

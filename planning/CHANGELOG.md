@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-09-29 — Game plan layer and strength gate
+
+[CR-STRAT-009](decisions/CR-STRAT-009-game-plan-and-strength-gate.md) records the owner request to improve bot and coaching quality with a game plan that is generic across four-seat individual and partnership games. It freezes `spades-tactics-2.1.0` as baseline D0, adds selectable Spades plan profiles 3.0.0 to 3.4.0, a case store for the six partial families, and a strength gate that reports Solo and Partners separately. [Design](../docs/superpowers/specs/2026-09-29-game-plan-and-strength-gate.md). The live default policy, Hearts behaviour, rules and scoring are unchanged. No Jev request was made. Promotion of any profile needs human-reviewed labels or a written waiver, and owner approval.
+
 ## 2026-09-29 — Scenario coverage and future Jev evaluations
 
 [CR-STRAT-008](decisions/CR-STRAT-008-coverage-and-evaluation.md), EV-01–08, reviews the design against experienced-player learning, concise coaching and credible bots. Added six compound child scenarios, independent discovery and a broader first acceptance batch. The diamond sequence remains one development family. Per-game scenario foundations are maintained through versioned counterexamples; no exhaustive coverage or fixed probability per scenario is claimed.

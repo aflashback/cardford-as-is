@@ -249,3 +249,232 @@ export function sampleWorld(observation: SeatObservation, seed: number): Private
   if (obs.handResult) state.handResult = structuredClone(obs.handResult);
   return state;
 }
+
+/** Many worlds from one observation. Each draw equals `sampleWorld(observation, seed).hands`. */
+export type WorldSampler = {
+  draw(seed: number): Four<Card[]>;
+};
+const COUNT_BUDGET = 250000;
+const DECK_ORDER = new Map<Card, number>(fullDeck().map((card, index) => [card, index]));
+const byDeckOrder = (a: Card, b: Card) => DECK_ORDER.get(a)! - DECK_ORDER.get(b)!;
+/** Same draws as `below(BigInt(limit), random)` for a limit that fits in 31 bits. */
+function belowSmall(limit: number, random: () => number): number {
+  if (limit <= 0) throw new SampleUnavailableError('impossible');
+  if (limit === 1) return 0;
+  const mask = 2 ** (32 - Math.clz32(limit)) - 1;
+  for (let attempt = 0; attempt < 256; attempt++) {
+    const value = random() & mask;
+    if (value < limit) return value;
+  }
+  throw new SampleUnavailableError('budget-exhausted');
+}
+type Choice = { allocation: Allocation; remaining: Allocation; ways: bigint };
+type Step = { total: bigint; choices: Choice[] };
+/**
+ * Prepare-once form of `sampleWorld` for callers that draw many worlds from one observation.
+ * The observation is validated once, and the permitted-seat groups and the counting table are
+ * built once. `draw(seed)` replays the random sequence of `sampleWorld(observation, seed)`.
+ * Same sampler, same version: `SAMPLER_VERSION` describes both.
+ */
+export function createWorldSampler(observation: SeatObservation): WorldSampler {
+  assertObservation(observation);
+  const obs = observation;
+  const publicCards = new Set<Card>();
+  for (const trick of obs.history)
+    for (const p of trick.plays) {
+      if (publicCards.has(p.card)) unavailable();
+      publicCards.add(p.card);
+    }
+  for (const p of obs.trick) {
+    if (publicCards.has(p.card)) {
+      if (
+        obs.phase !== 'trick-end' ||
+        !obs.history.at(-1)?.plays.some((q) => q.card === p.card && q.seat === p.seat)
+      )
+        unavailable();
+    } else publicCards.add(p.card);
+  }
+  if (
+    obs.hand.some((c) => publicCards.has(c)) ||
+    obs.handSizes.reduce((a, b) => a + b, 0) + publicCards.size !== 52
+  )
+    unavailable();
+  if (
+    obs.heartsBroken !== [...publicCards].some((c) => cardSuit(c) === 'H') ||
+    obs.spadesBroken !== [...publicCards].some((c) => cardSuit(c) === 'S')
+  )
+    unavailable();
+  const fixed: Four<Card[]> = four(() => []);
+  fixed[obs.seat] = [...obs.hand];
+  const unknownSeats = SEATS.filter((s) => s !== obs.seat);
+  const known = new Set(obs.hand);
+  const voids = getMemory(obs);
+  const restrictedTo = new Map<Seat, 'H' | 'S'>(),
+    penaltyOnly = new Set<Seat>();
+  const chronology = [...obs.history.map((t) => t.plays), ...(obs.phase === 'trick-end' ? [] : [obs.trick])];
+  let heartsBroken = false,
+    spadesBroken = false;
+  for (let trickIndex = 0; trickIndex < chronology.length; trickIndex++) {
+    const plays = chronology[trickIndex];
+    if (!plays.length) continue;
+    const lead = cardSuit(plays[0].card);
+    if (obs.mode === 'hearts' && lead === 'H' && !heartsBroken) restrictedTo.set(plays[0].seat, 'H');
+    if (obs.mode !== 'hearts' && lead === 'S' && !spadesBroken) restrictedTo.set(plays[0].seat, 'S');
+    for (const play of plays) {
+      if (
+        obs.mode === 'hearts' &&
+        trickIndex === 0 &&
+        lead === 'C' &&
+        cardSuit(play.card) !== 'C' &&
+        (cardSuit(play.card) === 'H' || play.card === 'SQ')
+      )
+        penaltyOnly.add(play.seat);
+      if (cardSuit(play.card) === 'H') heartsBroken = true;
+      if (cardSuit(play.card) === 'S') spadesBroken = true;
+    }
+  }
+  const openingLead =
+    obs.mode === 'hearts' && obs.phase === 'play' && !obs.history.length && !obs.trick.length;
+  const openingSeat = obs.turn;
+  const forbidden = (seat: Seat, card: Card) =>
+    voids.find((m) => m.suit === cardSuit(card))!.voidSeats.includes(seat) ||
+    (restrictedTo.has(seat) && cardSuit(card) !== restrictedTo.get(seat)) ||
+    (penaltyOnly.has(seat) && cardSuit(card) !== 'H' && card !== 'SQ') ||
+    (openingLead && card === 'C2' && seat !== openingSeat);
+  if (obs.hand.some((c) => forbidden(obs.seat, c))) unavailable();
+  for (const holding of obs.knownHoldings) {
+    if (
+      known.has(holding.card) ||
+      publicCards.has(holding.card) ||
+      holding.seat === obs.seat ||
+      forbidden(holding.seat, holding.card)
+    )
+      unavailable();
+    known.add(holding.card);
+    fixed[holding.seat].push(holding.card);
+  }
+  const expectedHoldings =
+    obs.pass.to === null
+      ? []
+      : obs.pass.outgoing
+          .filter((c) => !publicCards.has(c))
+          .map((card) => `${obs.pass.to}:${card}`)
+          .sort();
+  if (
+    JSON.stringify(expectedHoldings) !==
+    JSON.stringify(obs.knownHoldings.map((h) => `${h.seat}:${h.card}`).sort())
+  )
+    unavailable();
+  const caps = unknownSeats.map((s) => obs.handSizes[s] - fixed[s].length) as Allocation;
+  if (caps.some((c) => c < 0)) unavailable();
+  const unknown = fullDeck().filter((c) => !known.has(c) && !publicCards.has(c));
+  if (unknown.length !== caps.reduce((a, b) => a + b, 0)) unavailable();
+  const masks = new Map<string, { cards: Card[]; allowed: boolean[] }>();
+  for (const card of unknown) {
+    const allowed = unknownSeats.map((seat) => !forbidden(seat, card));
+    const key = allowed.map((a) => (a ? '1' : '0')).join('');
+    const group = masks.get(key) ?? { cards: [], allowed };
+    group.cards.push(card);
+    masks.set(key, group);
+  }
+  const groups = [...masks.values()];
+  const categories = groups.map((g) => g.cards),
+    allowed = groups.map((g) => g.allowed);
+  let operations = 0;
+  const cache = new Map<string, bigint>();
+  function allocations(index: number, capacity: Allocation): Allocation[] {
+    const n = categories[index].length,
+      limits = capacity.map((c, s) => (allowed[index][s] ? Math.min(c, n) : 0));
+    const result: Allocation[] = [];
+    for (let a = 0; a <= limits[0]; a++)
+      for (let b = 0; b <= limits[1]; b++) {
+        const c = n - a - b;
+        if (c >= 0 && c <= limits[2]) result.push([a, b, c]);
+      }
+    return result;
+  }
+  function weight(index: number, allocation: Allocation): bigint {
+    return (
+      choose(categories[index].length, allocation[0]) *
+      choose(categories[index].length - allocation[0], allocation[1])
+    );
+  }
+  function count(index: number, capacity: Allocation): bigint {
+    if (++operations > COUNT_BUDGET) throw new SampleUnavailableError('budget-exhausted');
+    if (index === groups.length) return capacity.every((c) => c === 0) ? 1n : 0n;
+    const key = `${index}:${capacity.join(',')}`;
+    const saved = cache.get(key);
+    if (saved !== undefined) return saved;
+    let result = 0n;
+    for (const allocation of allocations(index, capacity)) {
+      const remaining = capacity.map((c, s) => c - allocation[s]) as Allocation;
+      result += weight(index, allocation) * count(index + 1, remaining);
+    }
+    cache.set(key, result);
+    return result;
+  }
+  if (count(0, caps) === 0n) throw new SampleUnavailableError('impossible');
+  // Every state a draw can reach was counted above, so a draw only reads the table.
+  const counted = operations;
+  const value = (index: number, capacity: Allocation): bigint =>
+    index === groups.length ? (capacity.every((c) => c === 0) ? 1n : 0n) : cache.get(`${index}:${capacity.join(',')}`)!;
+  const steps = new Map<string, Step>();
+  function stepAt(index: number, capacity: Allocation): Step {
+    const key = `${index}:${capacity.join(',')}`;
+    let step = steps.get(key);
+    if (!step) {
+      step = {
+        total: value(index, capacity),
+        choices: allocations(index, capacity).map((allocation) => {
+          const remaining = capacity.map((c, s) => c - allocation[s]) as Allocation;
+          return { allocation, remaining, ways: weight(index, allocation) * value(index + 1, remaining) };
+        }),
+      };
+      steps.set(key, step);
+    }
+    return step;
+  }
+  for (const hand of fixed) hand.sort(byDeckOrder);
+  return {
+    draw(seed: number): Four<Card[]> {
+      if (!Number.isInteger(seed) || seed < 0 || seed > 0xffffffff)
+        throw new Error('A uint32 sampling seed is required.');
+      const random = randomSource(seed);
+      const hands = fixed.map((hand) => [...hand]) as Four<Card[]>;
+      // One table read per counted state, as in `sampleWorld`, so the work budget ends a draw identically.
+      let work = counted;
+      const read = () => {
+        if (++work > COUNT_BUDGET) throw new SampleUnavailableError('budget-exhausted');
+      };
+      let capacity = caps;
+      for (let index = 0; index < groups.length; index++) {
+        const step = stepAt(index, capacity);
+        read();
+        let draw = below(step.total, random);
+        let selected: Choice | undefined;
+        for (const choice of step.choices) {
+          read();
+          if (draw < choice.ways) {
+            selected = choice;
+            break;
+          }
+          draw -= choice.ways;
+        }
+        if (!selected) throw new SampleUnavailableError('impossible');
+        const cards = [...categories[index]];
+        for (let i = cards.length - 1; i > 0; i--) {
+          const j = belowSmall(i + 1, random);
+          [cards[i], cards[j]] = [cards[j], cards[i]];
+        }
+        let offset = 0;
+        for (let s = 0; s < 3; s++) {
+          hands[unknownSeats[s]].push(...cards.slice(offset, offset + selected.allocation[s]));
+          offset += selected.allocation[s];
+        }
+        capacity = selected.remaining;
+      }
+      for (const hand of hands) hand.sort(byDeckOrder);
+      return hands;
+    },
+  };
+}

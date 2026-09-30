@@ -6,6 +6,8 @@
 
 **Coverage/evaluation review:** [CR-STRAT-008](decisions/CR-STRAT-008-coverage-and-evaluation.md) adds six compound child scenarios, broadens the first acceptance batch, and links [independent discovery](../docs/superpowers/specs/2026-09-29-scenario-coverage-and-success.md) to [future probability, Jev and learning evaluations](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md). These are documentation requirements; new scenarios and numerical forecasts remain unimplemented.
 
+**Game plan and strength gate:** [CR-STRAT-009](decisions/CR-STRAT-009-game-plan-and-strength-gate.md) freezes `spades-tactics-2.1.0` as baseline D0 and adds selectable plan profiles and a measured gate. The partial-scenario table below keeps its statuses until gate evidence and human-reviewed labels exist.
+
 ## Product and information contract
 
 - **TABLE-01:** `tableType` is independent of `mode`. `practice-bots` has human South and three bots; `human-only` is a future four-human table, unavailable until its own lifecycle/access/fair-play gate passes. Solo/partnership describes competitors, never whether seats are human.

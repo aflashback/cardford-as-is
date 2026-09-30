@@ -41,6 +41,9 @@ export function readConfig(env: NodeJS.ProcessEnv = process.env) {
   if (!['off', 'shadow', 'recommend'].includes(jevMode)) throw new Error('Invalid JEV_MODE.');
   if (jevMode !== 'off')
     throw new Error('Jev runtime promotion is disabled; use the bounded evaluation command.');
+  const spadesPolicy = env.SPADES_POLICY?.trim() || null;
+  if (spadesPolicy !== null && !/^[a-z0-9][a-z0-9.+-]{0,63}$/.test(spadesPolicy))
+    throw new Error('Invalid SPADES_POLICY.');
   return {
     appEnv,
     host,
@@ -50,6 +53,8 @@ export function readConfig(env: NodeJS.ProcessEnv = process.env) {
     identityMode: 'local-test' as const,
     billingMode: 'fixture' as const,
     jevMode: 'off' as const,
+    /** Local trial only: a named Spades policy profile. Null keeps the live default. */
+    spadesPolicy,
   };
 }
 export type Config = ReturnType<typeof readConfig>;

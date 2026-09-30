@@ -1,0 +1,4126 @@
+{
+  "schemaVersion": "1.0.0",
+  "recordedFrom": "commit 87c2538 shared renderer web/server/coaching/templates.ts (wording unchanged; Advice type moved to coaching/types.ts)",
+  "dealGenerator": "shuffled(fullDeck(), createRandom(seed)); dealer = seed % 4",
+  "policyVersions": {
+    "spades-solo": "spades-tactics-2.1.0",
+    "spades-partners": "spades-tactics-2.1.0",
+    "hearts": "hearts-baseline-1.0.0"
+  },
+  "hands": [
+    {
+      "mode": "spades-solo",
+      "seed": 3300001,
+      "decisions": 57,
+      "sha256": "55cdf3101ed7347ea87d0a1a38204fd5b4d6c1b30c139124ee68b9e7a60b5a13"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300002,
+      "decisions": 57,
+      "sha256": "2aec3fca12a1769b6bfb718551935ccc50d830c0a0be9681c89caed37d79e094"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300003,
+      "decisions": 57,
+      "sha256": "a99de787fbc506a06354c602e8e6e05db3ee457e11d382242731dc9eb5224042"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300004,
+      "decisions": 57,
+      "sha256": "812b8afc2e58ccf83e4a86460abdd135bec5d55e05dfb7f39aec20beff448a88"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300005,
+      "decisions": 57,
+      "sha256": "88440606872272aebf5b93ecf609d2067acf3702f904befa661f53c45d21f563"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300006,
+      "decisions": 57,
+      "sha256": "8afa66b82080d482a1b473697a6c6b78a33a6ec769ed8340d24563c1959dd8ff"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300007,
+      "decisions": 57,
+      "sha256": "18f8c51c1554a3daa8ad4a73b142120d1018bd7a7829069156fa7e760a0d73be"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300008,
+      "decisions": 57,
+      "sha256": "de2aacdeb4b7b2807e1cacd28b61838180b0fe6c931c9c8695d5b2a9342e69c7"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300009,
+      "decisions": 57,
+      "sha256": "968281a07cc9b01c75179065d09780f160138fffc8ae74c6917d3761fd1564f2"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300010,
+      "decisions": 57,
+      "sha256": "2bb934f2590ca1eca503dae547be5a9463edf8bca890fd4f92c8ed98bd6834a0"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300011,
+      "decisions": 57,
+      "sha256": "316aee56d70e1b3fad2e2e272f6edc37a18e12e7be5476601e830d4bc2738907"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300012,
+      "decisions": 57,
+      "sha256": "aa7821cea866d6a3f6a6ecc0e3b38bd9e0d73c85a0973df9526ff1264852dfc9"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300013,
+      "decisions": 57,
+      "sha256": "8cab3038cc89b82da5e123632f5beb95e6aa7cd7cf042efe18e068231fe4955e"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300014,
+      "decisions": 57,
+      "sha256": "1c8c35ec3cc2a7ea95dab90869b5edbcf569a9f95876b3bec01e22e2af14da42"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300015,
+      "decisions": 57,
+      "sha256": "73b7e2d62f511badb7d5cde24029a8acd5f5ce1a8d4694c29be2dd3f603a04c6"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300016,
+      "decisions": 57,
+      "sha256": "a75ad1305ef4ad9c788139c5b6dac55ac23cb2adf885851f0b2b6b0cd8969957"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300017,
+      "decisions": 57,
+      "sha256": "7bcf8fa1157297e9ffa54f4d39f46503417b2b17f4ff5161125fa183ce93db77"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300018,
+      "decisions": 57,
+      "sha256": "dbbc02b7ce115620a38369be51d4f51eb8405005e307a8ffe5c0b44839a9ed3d"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300019,
+      "decisions": 57,
+      "sha256": "589fd1234dfabe804a4af3717ae1aee319bf342ca5aa57a5fa28a5c297f83b26"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300020,
+      "decisions": 57,
+      "sha256": "c06581919f1845ebea8187860f3622f78f23b4b905a2c54eb00be3d03271b422"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300021,
+      "decisions": 57,
+      "sha256": "6c9444f3b01ced23b59db109185ee818a430816ac2c4dc6f538d7139e503f2e3"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300022,
+      "decisions": 57,
+      "sha256": "a900e56c1f54f0cb4c6bc636e8af68db757f4ddbfe735c7f643e5f53af131eed"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300023,
+      "decisions": 57,
+      "sha256": "e42fff7403446e9cd114812029f3e4fdb660a8bc0b7b306d192d1e1fd7103d13"
+    },
+    {
+      "mode": "spades-solo",
+      "seed": 3300024,
+      "decisions": 57,
+      "sha256": "f92b31480f3d24051be9d0f709afc37b9cb78095fe4c3d573004172cb06bc0d1"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300001,
+      "decisions": 57,
+      "sha256": "41387e63bdd66f8ab08801575ddebc48d3d7222581670b72cfa88cf0be23b3b2"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300002,
+      "decisions": 57,
+      "sha256": "376c31c60f9f7168f7aff17d2fc5bc5d84aed6570ff9ade7b05364f9f6e2799b"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300003,
+      "decisions": 57,
+      "sha256": "7880b078cfde3a20e9cc33bc418f541102d53062e7cd8bb54b02440204be017c"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300004,
+      "decisions": 57,
+      "sha256": "f16d73e1578ec483ac20a688b1b770a214da92e9745cab4d80896cb0b14593d5"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300005,
+      "decisions": 57,
+      "sha256": "bdf97cd5dd127443105c791ee36a51cdb11d9ee16f557bb347aa21280df2ad70"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300006,
+      "decisions": 57,
+      "sha256": "459b8ec5ee2b3bfa933fff0ef00cc75d1671baed08c889ad18e46013856dffcb"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300007,
+      "decisions": 57,
+      "sha256": "1b04666e5b43afe4cc477dbed861fde53e820f72980fff2aa1abcb04cb60d1df"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300008,
+      "decisions": 57,
+      "sha256": "8ea98af436801c9dd65c46cb8983a65788e71e02bc6a84ba450f07d5836af838"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300009,
+      "decisions": 57,
+      "sha256": "3cd5a617c49a6da12aa5758a3f645bc1f92319b528aee4b1e3a04f89f4dede96"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300010,
+      "decisions": 57,
+      "sha256": "43052d71f29c5434aebcb79c79ac8b49b3b9b5d7be6f76de0eeec455dc6c3b87"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300011,
+      "decisions": 57,
+      "sha256": "87689ce54a8848525d21364971787f572f61c260abc5e26cd524d46181baf22f"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300012,
+      "decisions": 57,
+      "sha256": "64ab96f6379870ec06d5af22f417e18ac98842921c39859f7a1f9efade503cdb"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300013,
+      "decisions": 57,
+      "sha256": "ff1c09314e0c48fa523baaf1e58dcab42400123edece1a6662bb568ec684ed04"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300014,
+      "decisions": 57,
+      "sha256": "f261ecfbc98fe9674c56f039f8ea1e401ede45327d3242d26c40931fe580892b"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300015,
+      "decisions": 57,
+      "sha256": "d7d2af0076d5071f3afc42ecc6dcf1ecb06a1ed5d6777a1aaf9c8046e3a57d4d"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300016,
+      "decisions": 57,
+      "sha256": "3f2b00e176ab9e43c7fad08f0ee20cdaa61bd7f9f419ec4cffcdeafc274b675c"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300017,
+      "decisions": 57,
+      "sha256": "337c560a33bcc3df8c55ea2fb69244823bbdc36eec763f383867060cde3cbcec"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300018,
+      "decisions": 57,
+      "sha256": "ac3b8c58dd5884ef4e4fefa1698620586e80d26f60c551fee2697ef4d146abf5"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300019,
+      "decisions": 57,
+      "sha256": "3da9397ca1692ca02a77daed46418170ffd75b03321114ef03215ef580e21f42"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300020,
+      "decisions": 57,
+      "sha256": "2920b176a961aa4d399660c4af2ab0bbb8e0ffbb3a4c58bb6f6d57f93e46f44f"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300021,
+      "decisions": 57,
+      "sha256": "beadda983196c6d59126e705056140b17e0d6e66f959cf2e51eec30f3a5ec4ff"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300022,
+      "decisions": 57,
+      "sha256": "87f693bf0a9a14bb407657f10601a0d8e2d6078c6410d903c3afe6e98268c2ab"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300023,
+      "decisions": 57,
+      "sha256": "da2820ac0c66ea013e1839b4339d10c0f48df0b0852d1181010b4d263d99b157"
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300024,
+      "decisions": 57,
+      "sha256": "12308d32e594066f1d5aaedfec059927b933228a14e890de90925c7fd24f90cf"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300001,
+      "decisions": 57,
+      "sha256": "675cf257fcf088dde5da0a7e5be06c2f25819c5538ae1834a71d018f2788facf"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300002,
+      "decisions": 57,
+      "sha256": "38f3aae57405284e41d85ed724ff6304d734a04ad8d42c82525a83ed624f1eac"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300003,
+      "decisions": 57,
+      "sha256": "56302793e5423cfa7ac21f6b484bb3661619af82dfe9ead3a59455401610a750"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300004,
+      "decisions": 57,
+      "sha256": "0d2a5619542efed6a78f7a944e22d07db7d9455971a00ae43daf0c6f42627a28"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300005,
+      "decisions": 57,
+      "sha256": "de43619cd9db10acc58cb3c57ffd463ad61a1f0ccd37214fda891c8e7a72cfe4"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300006,
+      "decisions": 57,
+      "sha256": "1eb94dded5087aaea24eed52d1c229e924fc192f9f28befb406c4a694f8d3c6b"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300007,
+      "decisions": 57,
+      "sha256": "f0eee143397f3f7cafeef8872ab9fa8d598199a1d9bb93bac0f9b44ebc9b4c36"
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300008,
+      "decisions": 57,
+      "sha256": "0275c591609a47b7c12042266c7549e35ec6a4a018f2d6a29bce4918b8c33c4c"
+    }
+  ],
+  "samples": [
+    {
+      "mode": "spades-solo",
+      "seed": 3300001,
+      "advice": [
+        {
+          "seat": 2,
+          "actionId": "bid:3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your own contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 3; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 3. It is a starting estimate, not a guarantee.",
+            "bid": 3
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "bid:3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid",
+              "S13.public-bids"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your own contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 3; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 3. It is a starting estimate, not a guarantee.",
+            "bid": 3
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "bid:4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid",
+              "S13.public-bids"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your own contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 4; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 4. It is a starting estimate, not a guarantee.",
+            "bid": 4
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "bid:2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid",
+              "S13.public-bids"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your own contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 2; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 2. It is a starting estimate, not a guarantee.",
+            "bid": 2
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:DA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "DA",
+            "focus": "Your own contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 11 legal card actions are available under this rule profile.",
+            "suggestion": "Consider Ace of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:D2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "D2",
+            "highlightSuit": "D",
+            "focus": "Your own contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 2 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:D9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "D9",
+            "highlightSuit": "D",
+            "focus": "Your own contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 9 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "D3",
+            "highlightSuit": "D",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 3 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.develop-suit",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "H3",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "A low lead from a shorter suit can develop a future void while preserving higher cards. 10 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 3 of Hearts while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:H9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "H9",
+            "highlightSuit": "H",
+            "focus": "Your own contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 9 of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "H10",
+            "highlightSuit": "H",
+            "focus": "Your own contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 10 of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:HJ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "HJ",
+            "highlightSuit": "H",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider Jack of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:C3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.develop-suit",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "C3",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "A low lead from a shorter suit can develop a future void while preserving higher cards. 8 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 3 of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:C7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "C7",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 7 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "C8",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 8 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:CJ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "CJ",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider Jack of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:DK",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "DK",
+            "focus": "Your own contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 5 legal card actions are available under this rule profile.",
+            "suggestion": "Consider King of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "D6",
+            "highlightSuit": "D",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 6 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:D4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "D4",
+            "highlightSuit": "D",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 4 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:D5",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "exact",
+            "card": "D5",
+            "highlightSuit": "D",
+            "focus": "One legal play",
+            "notice": "5 of Diamonds is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 5 of Diamonds."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:C4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.develop-suit",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "C4",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "A low lead from a shorter suit can develop a future void while preserving higher cards. 4 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 4 of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:C6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "C6",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 6 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:C9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "C9",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 9 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "C10",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 10 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:CA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "CA",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 5 legal card actions are available under this rule profile.",
+            "suggestion": "Consider Ace of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:C5",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "exact",
+            "card": "C5",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "5 of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 5 of Clubs."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:CK",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "exact",
+            "card": "CK",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "King of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play King of Clubs."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:CQ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "exact",
+            "card": "CQ",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "Queen of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Queen of Clubs."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "C2",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 4 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 2 of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:SQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "SQ",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider Queen of Spades for the current lead."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "D7",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 7 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "H4",
+            "highlightSuit": "C",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 4 of Hearts while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:SA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "SA",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 6 legal card actions are available under this rule profile.",
+            "suggestion": "Consider Ace of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "S2",
+            "highlightSuit": "S",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 2 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:S10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "S10",
+            "highlightSuit": "S",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 10 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "S4",
+            "highlightSuit": "S",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 4 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H5",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.low-lead",
+              "S01.legal-set",
+              "S03.ownership",
+              "S09.contract-met",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "H5",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. A lower lead may help avoid an unwanted trick; it cannot guarantee another player will win.",
+            "suggestion": "Consider 5 of Hearts while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:H7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "H7",
+            "highlightSuit": "H",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 7 of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H6",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "exact",
+            "card": "H6",
+            "highlightSuit": "H",
+            "focus": "One legal play",
+            "notice": "6 of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 6 of Hearts."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:HQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "HQ",
+            "highlightSuit": "H",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider Queen of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:H2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.low-lead",
+              "S01.legal-set",
+              "S03.ownership",
+              "S09.contract-met",
+              "S10.lead-choice"
+            ],
+            "evidence": "heuristic",
+            "card": "H2",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. A lower lead may help avoid an unwanted trick; it cannot guarantee another player will win.",
+            "suggestion": "Consider 2 of Hearts while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H8",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S09.limit-bags",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S09.contract-met"
+            ],
+            "evidence": "exact",
+            "card": "H8",
+            "highlightSuit": "H",
+            "focus": "One legal play",
+            "notice": "8 of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 8 of Hearts."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:HK",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract"
+            ],
+            "evidence": "exact",
+            "card": "HK",
+            "highlightSuit": "H",
+            "focus": "One legal play",
+            "notice": "King of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play King of Hearts."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:SJ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract"
+            ],
+            "evidence": "heuristic",
+            "card": "SJ",
+            "highlightSuit": "H",
+            "focus": "Your own contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider Jack of Spades for the current lead."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:DQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "S14.late-score"
+            ],
+            "evidence": "heuristic",
+            "card": "DQ",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 3 legal card actions are available under this rule profile.",
+            "suggestion": "Consider Queen of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:HA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.limit-bags",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S09.contract-met",
+              "S14.late-score"
+            ],
+            "evidence": "heuristic",
+            "card": "HA",
+            "highlightSuit": "D",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "suggestion": "Consider Ace of Hearts while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:S7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.limit-bags",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S09.contract-met",
+              "S14.late-score"
+            ],
+            "evidence": "heuristic",
+            "card": "S7",
+            "highlightSuit": "D",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "suggestion": "Consider 7 of Spades while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D8",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "S14.late-score"
+            ],
+            "evidence": "exact",
+            "card": "D8",
+            "highlightSuit": "D",
+            "focus": "One legal play",
+            "notice": "8 of Diamonds is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 8 of Diamonds."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:S9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.low-lead",
+              "S01.legal-set",
+              "S03.ownership",
+              "S09.contract-met",
+              "S10.lead-choice",
+              "S14.late-score"
+            ],
+            "evidence": "heuristic",
+            "card": "S9",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. A lower lead may help avoid an unwanted trick; it cannot guarantee another player will win.",
+            "suggestion": "Consider 9 of Spades while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "S14.late-score"
+            ],
+            "evidence": "heuristic",
+            "card": "S3",
+            "highlightSuit": "S",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 3 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:D10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "S14.late-score"
+            ],
+            "evidence": "heuristic",
+            "card": "D10",
+            "highlightSuit": "S",
+            "focus": "Your own contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 10 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.limit-bags",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S09.contract-met",
+              "S14.late-score"
+            ],
+            "evidence": "heuristic",
+            "card": "S8",
+            "highlightSuit": "S",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "suggestion": "Consider 8 of Spades while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:SK",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S09.low-lead",
+              "S01.legal-set",
+              "S03.ownership",
+              "S09.contract-met",
+              "S10.lead-choice",
+              "S14.late-score"
+            ],
+            "evidence": "exact",
+            "card": "SK",
+            "focus": "One legal play",
+            "notice": "King of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play King of Spades."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S5",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "S14.late-score"
+            ],
+            "evidence": "exact",
+            "card": "S5",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "5 of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 5 of Spades."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:DJ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "S14.late-score"
+            ],
+            "evidence": "exact",
+            "card": "DJ",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "Jack of Diamonds is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Jack of Diamonds."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S6",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S09.limit-bags",
+              "S01.legal-set",
+              "S04.turn-order",
+              "S09.contract-met",
+              "S14.late-score"
+            ],
+            "evidence": "exact",
+            "card": "S6",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "6 of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 6 of Spades."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "none",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [],
+            "evidence": "exact",
+            "focus": "Hand complete",
+            "notice": "No decision for you right now.",
+            "reason": "The memory aid shows facts from this hand’s public plays.",
+            "suggestion": ""
+          }
+        }
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "seed": 3300001,
+      "advice": [
+        {
+          "seat": 2,
+          "actionId": "bid:3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your team contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 3; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 3. It is a starting estimate, not a guarantee.",
+            "bid": 3
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "bid:3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid",
+              "S13.public-bids"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your team contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 3; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 3. It is a starting estimate, not a guarantee.",
+            "bid": 3
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "bid:4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid",
+              "S13.public-bids"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your team contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 4; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 4. It is a starting estimate, not a guarantee.",
+            "bid": 4
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "bid:2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S13.structure",
+              "S13.contextual-bid",
+              "S13.public-bids"
+            ],
+            "evidence": "heuristic",
+            "focus": "Your team contract",
+            "notice": "Count likely tricks before bidding.",
+            "reason": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities. Hand structure suggests bid 2; this is an uncalibrated heuristic.",
+            "suggestion": "Consider 2. It is a starting estimate, not a guarantee.",
+            "bid": 2
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:DA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "DA",
+            "focus": "Your team contract",
+            "notice": "7 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 11 legal card actions are available under this rule profile.",
+            "suggestion": "Consider Ace of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:D2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective"
+            ],
+            "evidence": "heuristic",
+            "card": "D2",
+            "highlightSuit": "D",
+            "focus": "Your team contract",
+            "notice": "5 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 2 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:D9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "D9",
+            "highlightSuit": "D",
+            "focus": "Partner is currently ahead",
+            "notice": "Your partner has the winning card so far.",
+            "reason": "Underplaying preserves your resources, but an opponent still to act may overtake your partner. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 9 of Diamonds to leave partner ahead for now."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "D3",
+            "highlightSuit": "D",
+            "focus": "Your team contract",
+            "notice": "5 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 3 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.develop-suit",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "H3",
+            "focus": "Your team contract",
+            "notice": "6 credited tricks are still needed.",
+            "reason": "A low lead from a shorter suit can develop a future void while preserving higher cards. 10 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 3 of Hearts while preserving useful control."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:H9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "H9",
+            "highlightSuit": "H",
+            "focus": "Your team contract",
+            "notice": "5 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 9 of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "H10",
+            "highlightSuit": "H",
+            "focus": "Your team contract",
+            "notice": "6 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 10 of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:HJ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "HJ",
+            "highlightSuit": "H",
+            "focus": "Your team contract",
+            "notice": "5 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider Jack of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:C3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.develop-suit",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "C3",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "A low lead from a shorter suit can develop a future void while preserving higher cards. 8 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 3 of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:C7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "C7",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "6 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 7 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "C8",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 8 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:CJ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "CJ",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "6 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider Jack of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:DK",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "DK",
+            "focus": "Your team contract",
+            "notice": "5 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 5 legal card actions are available under this rule profile.",
+            "suggestion": "Consider King of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "D6",
+            "highlightSuit": "D",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 6 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:D4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "D4",
+            "highlightSuit": "D",
+            "focus": "Partner is currently ahead",
+            "notice": "Your partner has the winning card so far.",
+            "reason": "Underplaying preserves your resources, but an opponent still to act may overtake your partner. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 4 of Diamonds to leave partner ahead for now."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:D5",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "exact",
+            "card": "D5",
+            "highlightSuit": "D",
+            "focus": "One legal play",
+            "notice": "5 of Diamonds is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 5 of Diamonds."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:C4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.develop-suit",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "C4",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "A low lead from a shorter suit can develop a future void while preserving higher cards. 4 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 4 of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:C6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "C6",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 6 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:C9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "C9",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 9 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "C10",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 10 of Clubs for the current lead."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:CA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "CA",
+            "focus": "Your team contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 5 legal card actions are available under this rule profile.",
+            "suggestion": "Consider Ace of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:C5",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "exact",
+            "card": "C5",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "5 of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 5 of Clubs."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:CK",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P08.public-hints"
+            ],
+            "evidence": "exact",
+            "card": "CK",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "King of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play King of Clubs."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:CQ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "exact",
+            "card": "CQ",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "Queen of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Queen of Clubs."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "C2",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. 4 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 2 of Clubs while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:SQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "SQ",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "4 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider Queen of Spades for the current lead."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "D7",
+            "highlightSuit": "C",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 7 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P06.partner-void",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "H4",
+            "highlightSuit": "C",
+            "focus": "Partner is currently ahead",
+            "notice": "Your partner has the winning card so far.",
+            "reason": "Underplaying preserves resources behind your partner; no remaining opponent response can overtake the current winner under the known constraints. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 4 of Hearts to leave partner ahead for now."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:SA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "P11.preserve-ruff",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "SA",
+            "focus": "Your team contract",
+            "notice": "3 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. Leading spades may remove trump your partner could use to ruff a publicly void side suit.",
+            "suggestion": "Consider Ace of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "S2",
+            "highlightSuit": "S",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 2 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:S10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "S10",
+            "highlightSuit": "S",
+            "focus": "Partner is currently ahead",
+            "notice": "Your partner has the winning card so far.",
+            "reason": "Underplaying preserves resources behind your partner; no remaining opponent response can overtake the current winner under the known constraints. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 10 of Spades to leave partner ahead for now."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "S4",
+            "highlightSuit": "S",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 4 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:SK",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "P11.preserve-ruff",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "SK",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. Leading spades may remove trump your partner could use to ruff a publicly void side suit.",
+            "suggestion": "Consider King of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "S3",
+            "highlightSuit": "S",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 3 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:SJ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P08.public-hints"
+            ],
+            "evidence": "exact",
+            "card": "SJ",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "Jack of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Jack of Spades."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "S6",
+            "highlightSuit": "S",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 6 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:S9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.cash-control",
+              "P11.preserve-ruff",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "S9",
+            "focus": "Your team contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter. Leading spades may remove trump your partner could use to ruff a publicly void side suit.",
+            "suggestion": "Consider 9 of Spades while preserving useful control."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S5",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "exact",
+            "card": "S5",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "5 of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 5 of Spades."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "H6",
+            "highlightSuit": "S",
+            "focus": "Partner is currently ahead",
+            "notice": "Your partner has the winning card so far.",
+            "reason": "Underplaying preserves resources behind your partner; no remaining opponent response can overtake the current winner under the known constraints. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 6 of Hearts to leave partner ahead for now."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S8",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "exact",
+            "card": "S8",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "8 of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 8 of Spades."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H5",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.low-lead",
+              "S01.legal-set",
+              "S03.ownership",
+              "S09.contract-met",
+              "S10.lead-choice",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P07.no-partner-trump",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "H5",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. A lower lead may help avoid an unwanted trick; it cannot guarantee another player will win.",
+            "suggestion": "Consider 5 of Hearts while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:H7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.economical-winner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "H7",
+            "highlightSuit": "H",
+            "focus": "Your team contract",
+            "notice": "2 credited tricks are still needed.",
+            "reason": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 2 players still have to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider 7 of Hearts for the current lead."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:DQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.limit-bags",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S09.contract-met",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "DQ",
+            "highlightSuit": "H",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "suggestion": "Consider Queen of Diamonds while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:H2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S08.contract",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "H2",
+            "highlightSuit": "H",
+            "focus": "Partner is currently ahead",
+            "notice": "Your partner has the winning card so far.",
+            "reason": "Underplaying preserves resources behind your partner; no remaining opponent response can overtake the current winner under the known constraints. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 2 of Hearts to leave partner ahead for now."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S10.develop-suit",
+              "S01.legal-set",
+              "S03.ownership",
+              "S08.contract",
+              "S10.lead-choice",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "D8",
+            "focus": "Your team contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "A low lead from a shorter suit can develop a future void while preserving higher cards. 2 legal card actions are available under this rule profile.",
+            "suggestion": "Consider 8 of Diamonds while preserving useful control."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:D10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.limit-bags",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S09.contract-met",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints"
+            ],
+            "evidence": "heuristic",
+            "card": "D10",
+            "highlightSuit": "D",
+            "focus": "Manage the bags",
+            "notice": "The positive contract is met.",
+            "reason": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty. When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "suggestion": "Consider 10 of Diamonds while weighing extra-trick risk."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:HQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "HQ",
+            "highlightSuit": "D",
+            "focus": "Your team contract",
+            "notice": "1 credited trick is still needed.",
+            "reason": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "suggestion": "Consider Queen of Hearts while preserving useful control."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S09.limit-bags",
+              "P01.conserve-under-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S09.contract-met",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P07.no-partner-trump",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "heuristic",
+            "card": "H8",
+            "highlightSuit": "D",
+            "focus": "Partner is currently ahead",
+            "notice": "Your partner has the winning card so far.",
+            "reason": "Underplaying preserves resources behind your partner; no remaining opponent response can overtake the current winner under the known constraints. You play fourth, so the winner after your card is exact.",
+            "suggestion": "Consider 8 of Hearts to leave partner ahead for now."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:DJ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S09.low-lead",
+              "S01.legal-set",
+              "S03.ownership",
+              "S09.contract-met",
+              "S10.lead-choice",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P06.partner-void",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "exact",
+            "card": "DJ",
+            "focus": "One legal play",
+            "notice": "Jack of Diamonds is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Jack of Diamonds."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:HA",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "exact",
+            "card": "HA",
+            "highlightSuit": "D",
+            "focus": "One legal play",
+            "notice": "Ace of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Ace of Hearts."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:S7",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S09.limit-bags",
+              "P09.protect-partner",
+              "S01.legal-set",
+              "S03.ownership",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S09.contract-met",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P01.partner-current",
+              "P09.partner-security",
+              "P07.no-partner-trump",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "exact",
+            "card": "S7",
+            "highlightSuit": "D",
+            "focus": "One legal play",
+            "notice": "7 of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 7 of Spades."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:HK",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [
+              "S01.forced",
+              "S08.preserve-control",
+              "S01.legal-set",
+              "S04.turn-order",
+              "S02.void",
+              "S11.trump-choice",
+              "S08.contract",
+              "S14.late-score",
+              "P10.team-contract",
+              "P12.mode-objective",
+              "P06.partner-void",
+              "P08.public-hints",
+              "P11.entries"
+            ],
+            "evidence": "exact",
+            "card": "HK",
+            "highlightSuit": "D",
+            "focus": "One legal play",
+            "notice": "King of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play King of Hearts."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "none",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "spades-tactics-2.1.0",
+            "reasonIds": [],
+            "evidence": "exact",
+            "focus": "Hand complete",
+            "notice": "No decision for you right now.",
+            "reason": "The memory aid shows facts from this hand’s public plays.",
+            "suggestion": ""
+          }
+        }
+      ]
+    },
+    {
+      "mode": "hearts",
+      "seed": 3300001,
+      "advice": [
+        {
+          "seat": 0,
+          "actionId": "pass:SQ,SK,SA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "focus": "Plan the whole pass",
+            "notice": "Choose three cards before committing.",
+            "reason": "This local starting plan favors passing high cards. Keeping queen protection, a short suit or a possible moon plan can favor another. Received cards can change your suits.",
+            "suggestion": "Consider these three together. Recheck your suits after receiving.",
+            "pass": [
+              "SQ",
+              "SK",
+              "SA"
+            ]
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "pass:CK,HJ,HK",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "focus": "Plan the whole pass",
+            "notice": "Choose three cards before committing.",
+            "reason": "This local starting plan favors passing high cards. Keeping queen protection, a short suit or a possible moon plan can favor another. Received cards can change your suits.",
+            "suggestion": "Consider these three together. Recheck your suits after receiving.",
+            "pass": [
+              "CK",
+              "HJ",
+              "HK"
+            ]
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "pass:CQ,DQ,DA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "focus": "Plan the whole pass",
+            "notice": "Choose three cards before committing.",
+            "reason": "This local starting plan favors passing high cards. Keeping queen protection, a short suit or a possible moon plan can favor another. Received cards can change your suits.",
+            "suggestion": "Consider these three together. Recheck your suits after receiving.",
+            "pass": [
+              "CQ",
+              "DQ",
+              "DA"
+            ]
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "pass:CA,HQ,HA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "focus": "Plan the whole pass",
+            "notice": "Choose three cards before committing.",
+            "reason": "This local starting plan favors passing high cards. Keeping queen protection, a short suit or a possible moon plan can favor another. Received cards can change your suits.",
+            "suggestion": "Consider these three together. Recheck your suits after receiving.",
+            "pass": [
+              "CA",
+              "HQ",
+              "HA"
+            ]
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C2",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "C2",
+            "focus": "One legal play",
+            "notice": "2 of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 2 of Clubs."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:C4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "C4",
+            "highlightSuit": "C",
+            "focus": "clubs were led",
+            "notice": "clubs were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 4 of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:C3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "C3",
+            "highlightSuit": "C",
+            "focus": "clubs were led",
+            "notice": "clubs were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 3 of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:C7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "C7",
+            "highlightSuit": "C",
+            "focus": "clubs were led",
+            "notice": "clubs were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 7 of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:D4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D4",
+            "focus": "Choose your lead",
+            "notice": "7 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 4 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:D2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D2",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "diamonds were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 2 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:D9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D9",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "diamonds were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 9 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D8",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "diamonds were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 8 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:C5",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "C5",
+            "focus": "Choose your lead",
+            "notice": "6 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 5 of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:C6",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "C6",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "6 of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 6 of Clubs."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:C9",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "C9",
+            "highlightSuit": "C",
+            "focus": "clubs were led",
+            "notice": "clubs were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 9 of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "C8",
+            "highlightSuit": "C",
+            "focus": "clubs were led",
+            "notice": "clubs were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 8 of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:D10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D10",
+            "focus": "Choose your lead",
+            "notice": "5 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 10 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:D5",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D5",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "diamonds were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 5 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:DK",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "DK",
+            "highlightSuit": "D",
+            "focus": "One legal play",
+            "notice": "King of Diamonds is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play King of Diamonds."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D7",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "diamonds were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 7 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:S7",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S7",
+            "focus": "Choose your lead",
+            "notice": "4 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 7 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S5",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S5",
+            "highlightSuit": "S",
+            "focus": "spades were led",
+            "notice": "spades were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 5 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:S10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S10",
+            "highlightSuit": "S",
+            "focus": "spades were led",
+            "notice": "spades were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 10 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S8",
+            "highlightSuit": "S",
+            "focus": "spades were led",
+            "notice": "spades were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 8 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:DJ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "DJ",
+            "focus": "Choose your lead",
+            "notice": "3 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Jack of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:DQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "DQ",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "diamonds were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Queen of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:HA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "HA",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "You have no diamonds to follow.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Ace of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "D6",
+            "highlightSuit": "D",
+            "focus": "diamonds were led",
+            "notice": "diamonds were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 6 of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:H2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "H2",
+            "focus": "Choose your lead",
+            "notice": "7 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 2 of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H5",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "H5",
+            "highlightSuit": "H",
+            "focus": "hearts were led",
+            "notice": "hearts were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 5 of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:H7",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "H7",
+            "highlightSuit": "H",
+            "focus": "One legal play",
+            "notice": "7 of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 7 of Hearts."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "H6",
+            "highlightSuit": "H",
+            "focus": "hearts were led",
+            "notice": "hearts were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 6 of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S2",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S2",
+            "focus": "Choose your lead",
+            "notice": "6 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 2 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:SJ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "SJ",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "Jack of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Jack of Spades."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S6",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S6",
+            "highlightSuit": "S",
+            "focus": "spades were led",
+            "notice": "spades were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 6 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:S9",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "S9",
+            "highlightSuit": "S",
+            "focus": "One legal play",
+            "notice": "9 of Spades is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 9 of Spades."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "H3",
+            "focus": "Choose your lead",
+            "notice": "5 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 3 of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:H9",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "H9",
+            "highlightSuit": "H",
+            "focus": "One legal play",
+            "notice": "9 of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 9 of Hearts."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H8",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "H8",
+            "highlightSuit": "H",
+            "focus": "hearts were led",
+            "notice": "hearts were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 8 of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:SQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "SQ",
+            "highlightSuit": "H",
+            "focus": "hearts were led",
+            "notice": "You have no hearts to follow.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Queen of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:S4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S4",
+            "focus": "Choose your lead",
+            "notice": "4 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 4 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:HQ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "HQ",
+            "highlightSuit": "S",
+            "focus": "spades were led",
+            "notice": "You have no spades to follow.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Queen of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:S3",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "S3",
+            "highlightSuit": "S",
+            "focus": "spades were led",
+            "notice": "spades were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 3 of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:HK",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "HK",
+            "highlightSuit": "S",
+            "focus": "spades were led",
+            "notice": "You have no spades to follow.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider King of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:C10",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "C10",
+            "focus": "Choose your lead",
+            "notice": "3 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 10 of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:CJ",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "CJ",
+            "highlightSuit": "C",
+            "focus": "clubs were led",
+            "notice": "clubs were led. You must follow suit.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Jack of Clubs. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:SA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "SA",
+            "highlightSuit": "C",
+            "focus": "clubs were led",
+            "notice": "You have no clubs to follow.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Ace of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:CK",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "CK",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "King of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play King of Clubs."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:H4",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "H4",
+            "focus": "Choose your lead",
+            "notice": "2 cards are legal to lead.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider 4 of Hearts. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:DA",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "DA",
+            "highlightSuit": "H",
+            "focus": "hearts were led",
+            "notice": "You have no hearts to follow.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider Ace of Diamonds. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:H10",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "H10",
+            "highlightSuit": "H",
+            "focus": "One legal play",
+            "notice": "10 of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 10 of Hearts."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:SK",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "heuristic",
+            "card": "SK",
+            "highlightSuit": "H",
+            "focus": "hearts were led",
+            "notice": "You have no hearts to follow.",
+            "reason": "Hearts and the queen carry points. A lower card does not always avoid taking the trick.",
+            "suggestion": "Consider King of Spades. Other plans can be reasonable."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "play:CA",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "CA",
+            "focus": "One legal play",
+            "notice": "Ace of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Ace of Clubs."
+          }
+        },
+        {
+          "seat": 1,
+          "actionId": "play:D3",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "D3",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "3 of Diamonds is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play 3 of Diamonds."
+          }
+        },
+        {
+          "seat": 2,
+          "actionId": "play:HJ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "HJ",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "Jack of Hearts is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Jack of Hearts."
+          }
+        },
+        {
+          "seat": 3,
+          "actionId": "play:CQ",
+          "advice": {
+            "provenance": "forced",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [
+              "hearts.baseline"
+            ],
+            "evidence": "exact",
+            "card": "CQ",
+            "highlightSuit": "C",
+            "focus": "One legal play",
+            "notice": "Queen of Clubs is your only legal card.",
+            "reason": "The rules leave no strategic choice on this turn.",
+            "suggestion": "Play Queen of Clubs."
+          }
+        },
+        {
+          "seat": 0,
+          "actionId": "none",
+          "advice": {
+            "provenance": "code",
+            "policyVersion": "hearts-baseline-1.0.0",
+            "reasonIds": [],
+            "evidence": "exact",
+            "focus": "Hand complete",
+            "notice": "No decision for you right now.",
+            "reason": "The memory aid shows facts from this hand’s public plays.",
+            "suggestion": ""
+          }
+        }
+      ]
+    }
+  ]
+}

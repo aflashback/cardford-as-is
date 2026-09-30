@@ -158,3 +158,39 @@ Use evidence filenames such as `qa/implementation/W04-commands-<run-id>.md` and 
 | COACH-11 | `table.spec.ts`: game-end final-hand trick results, no live Table notes. |
 
 Scenario family definitions and limits are in [CR-STRAT-005](../12-spades-reasoning.md). Passing these cases is scoped correctness evidence, not all-deal optimality or player-learning proof.
+
+## CR-STRAT-006 to CR-STRAT-008 registration
+
+These IDs were defined in their change records and are registered here by reference.
+
+| IDs | Source | Evidence target |
+|---|---|---|
+| GR-01–GR-08 | [CR-STRAT-006](../decisions/CR-STRAT-006-typed-game-reasoning.md) | Typed packs, catalog, trace and grouped evaluation as listed in that record. |
+| PI-01–PI-08 | [CR-STRAT-007](../decisions/CR-STRAT-007-partnership-inference-guide.md) | Documentation only; runtime implementation of the recipes has not started. |
+| EV-01–EV-08 | [CR-STRAT-008](../decisions/CR-STRAT-008-coverage-and-evaluation.md) | Discovery, event definitions, separated experiments, provider gate and reporting rules. |
+
+## CR-STRAT-009 game plan and strength gate
+
+| ID | Suite | Observable acceptance |
+|---|---|---|
+| GP-01 | `competition.test.ts` | Accessor partition equals the engine's scoring groups for every catalog mode; unknown mode throws. |
+| GP-02 | `spades-plan.test.ts`, `plan-determinism.test.ts` | Stance, goals and revisions follow exact facts; identical plan when concealed cards are permuted. |
+| GP-03 | `spades-playout-model.test.ts` | Event schema; sampled frequencies within the stated multiple of standard error of an exact enumeration on small endings. |
+| GP-04 | `plan-evaluator.test.ts`, `spades-playout-kernel.test.ts` | Common worlds, paired differences, work-count budgets, reported truncation, seat-view continuation. |
+| GP-05 | `plan-genericity.test.ts` | Spades, Hearts and the test module reach selection through one orchestrator. |
+| GP-06 | `plan-genericity.test.ts`, `hearts-plan.test.ts` | Vocabulary and import-boundary scans pass; non-opposite partnership variant works. |
+| SG-01 | `frozen-baseline.test.ts` | Snapshot hashes pinned; 48 golden hands reproduced; benchmark pinned. |
+| SG-02 | `spades-playout-kernel.test.ts` | Legal sets, trick winners and scores equal the production engine on random legal hands. |
+| SG-03 | `spades-playout-model.test.ts` | Objective identity recorded; team utility in Partners, seat utility in Solo. |
+| SG-04 | `spades-cases.test.ts` | Every case replays in both modes; twins share cards, history and legal set; no case claims independent review. |
+| SG-05 | `gate-seeds`, `gate-inference`, `gate-rule`, `gate-runner`, `gate-styles`, `spades-gate-adapter` tests | Seed ledger disjoint; intervals deterministic; ordered decision rule; identical rows with 1 and 4 workers. |
+| SG-06 | `jev-offline.test.ts` | No leakage in J0 or J1 payloads; nothing is sent; J0 and J1 outcomes read blocked. |
+| STRAT-12 | `analysis-outside-transaction.test.ts` | No bounded-search analysis call while a transaction is open; every human decision still has saved analysis. |
+| COACH-12 | `coach-fidelity.test.ts` | Swap test: forcing each legal action yields zero contradicting sentences. |
+| COACH-13 | `coach-copy-budget.test.ts` | Word budgets met; Solo cues contain no teammate wording. |
+| COACH-14 | `coach-abstention.test.ts` | `several-reasonable` carries no single card; considered choices appear only at level 3. |
+| COACH-15 | `fact-checkers.test.ts` | Every predicate has a checker; wrong claims are reported false; guarantee claims are never confirmed from one deal. |
+| UX-21 | `table.spec.ts` | Advice panel renders both outcomes at each level with unchanged stage labels. |
+
+Evidence for this record is written under `qa/evaluation/`. Passing these suites is scoped correctness evidence. The strength gate reports are the only source for any statement about playing results.
+

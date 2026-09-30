@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "requirementId": "SG-01",
+  "policyVersion": "spades-tactics-2.1.0",
+  "sourceCommit": "87c253819fe86502de41f5dc67ea8740b86a2feb",
+  "frozenOn": "2026-09-29",
+  "transformation": "Import specifiers rewritten for the snapshot directory; the retained bidder import points at the local copy. No other change.",
+  "hash": "sha256 of UTF-8 text with CRLF normalized to LF",
+  "files": [
+    {
+      "snapshot": "policy.ts",
+      "source": "web/server/games/spades/reasoning/policy.ts",
+      "sourceSha256": "a359f215a8ee0fe58829f94434c3e0d7e9de67b7bb95942b623427a4d5755b7d",
+      "snapshotSha256": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9"
+    },
+    {
+      "snapshot": "bidding.ts",
+      "source": "web/server/games/spades/reasoning/bidding.ts",
+      "sourceSha256": "d3088d7f675c20f34258a503b4ece5eea4c00d4eae3b25985be6340412ebcdfb",
+      "snapshotSha256": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a"
+    },
+    {
+      "snapshot": "knowledge.ts",
+      "source": "web/server/games/spades/reasoning/knowledge.ts",
+      "sourceSha256": "b81c6883769db1b9a77be78ffc5e4400315a3ee024fa600f6fcb3c30acbd1c5d",
+      "snapshotSha256": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a"
+    },
+    {
+      "snapshot": "nil.ts",
+      "source": "web/server/games/spades/reasoning/nil.ts",
+      "sourceSha256": "4401dc6b12e0c191bb6f0f960e41d0337f76ae70b70b8bc21272b4dc9b550018",
+      "snapshotSha256": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35"
+    },
+    {
+      "snapshot": "entries.ts",
+      "source": "web/server/games/spades/reasoning/entries.ts",
+      "sourceSha256": "f7c9585a587036fae0f0cd4ff25cb336a2202ccca6ac25a8d68cb4523f47d054",
+      "snapshotSha256": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832"
+    },
+    {
+      "snapshot": "signals.ts",
+      "source": "web/server/games/spades/reasoning/signals.ts",
+      "sourceSha256": "8e8fa86fe6d0e71d80a373ce4d454349172b1514cd58a423a9a264675c490941",
+      "snapshotSha256": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078"
+    },
+    {
+      "snapshot": "catalog.ts",
+      "source": "web/server/games/spades/reasoning/catalog.ts",
+      "sourceSha256": "037aabd016ea80909587c400e2ef88095c5696028b6530ec080afe9458cb6427",
+      "snapshotSha256": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025"
+    },
+    {
+      "snapshot": "retained-bidder.ts",
+      "source": "web/server/strategy/baseline.ts",
+      "sourceSha256": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929",
+      "snapshotSha256": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88"
+    }
+  ],
+  "golden": {
+    "file": "golden.json",
+    "sha256": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8"
+  },
+  "benchmark": {
+    "policyVersion": "local-baseline-1.0.0",
+    "source": "web/server/strategy/baseline.ts",
+    "sourceSha256": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929",
+    "golden": "../local-baseline-1.0.0.golden.json",
+    "goldenSha256": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9"
+  }
+}
