@@ -17,4 +17,3 @@ A recurring choice was low-card conservation under an established winner; the me
 Manual transport correction before `partners-void` sequence 27: Sarah's prior D6 was briefly transcribed as S6. The player was interrupted before replying and received the full corrected canonical packet; no action was accepted from the erroneous delivery. The prior message remains in context, so this episode is not pristine. See `transport-incidents.json`; replay audits check stored canonical packets, not independent identity with every manually routed message.
 
 Coverage remains narrow: two authored Partners deals, one trajectory each, zero starting scores/bags, no match-level win, no statistical or expert validation, no live Jev. The third planned Partners fixture is missing.
-
