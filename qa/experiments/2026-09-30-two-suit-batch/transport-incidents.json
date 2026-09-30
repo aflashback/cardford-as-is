@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "manual-transport-incidents-1.0.0",
+  "incidents": [
+    {
+      "episodeId": "solo-spread",
+      "beforeDecision": 12,
+      "agent": "/root/s01_jason",
+      "type": "dealer-transcription-corrected",
+      "incorrectField": "tricks=0,0,0,0",
+      "correctField": "tricks=0,0,0,1",
+      "actionAcceptedFromIncorrectPacket": false,
+      "handling": "Interrupted the running player before receiving its final response, then supplied the full corrected packet and explicitly withdrew the prior packet. Game state did not advance.",
+      "limitation": "The player context contains the corrected transcription incident; this is not a pristine automated-transport episode."
+    },
+    {
+      "episodeId": "partners-void",
+      "beforeDecision": 27,
+      "agent": "/root/batch_observer/p02_jason",
+      "type": "dealer-transcription-corrected",
+      "incorrectField": "history trick5 Sarah S6",
+      "correctField": "history trick5 Sarah D6",
+      "actionAcceptedFromIncorrectPacket": false,
+      "handling": "Interrupted the running player immediately before any final response, then supplied the full corrected canonical packet. State remained at 26 accepted decisions. Accepted decision 27 only from the response to the corrected packet.",
+      "limitation": "The player context contains the erroneous prior packet and corrected resend; this is not a pristine automated-transport episode."
+    }
+  ]
+}

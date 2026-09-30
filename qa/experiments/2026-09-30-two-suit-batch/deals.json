@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "agent-lab-deals-1.0.0",
+  "names": ["Maya", "Leo", "Jason", "Sarah"],
+  "episodes": [
+    {
+      "id": "solo-spread",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "origin": "authored two-suit deal; zero-start legal hand; paired across variants",
+      "intendedCoverage": ["remaining spades spread 3/3/2", "remaining hearts spread 2/2/1", "two-suit hand development", "individual contract and bags"],
+      "hands": [
+        ["S10", "SJ", "SQ", "SK", "SA", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "HJ"],
+        ["C2", "C5", "C8", "CJ", "D2", "D5", "D8", "DJ", "H2", "HQ", "S2", "S5", "S8"],
+        ["C3", "C6", "C9", "CQ", "D3", "D6", "D9", "DQ", "H3", "HK", "S3", "S6", "S9"],
+        ["C4", "C7", "C10", "CK", "CA", "D4", "D7", "D10", "DK", "DA", "HA", "S4", "S7"]
+      ]
+    },
+    {
+      "id": "solo-void",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "origin": "authored two-suit deal; zero-start legal hand; paired across variants",
+      "intendedCoverage": ["heart-void opponent with six spades", "remaining hearts split 3/2", "trump length against high trump", "individual contract and bags"],
+      "hands": [
+        ["S10", "SJ", "SQ", "SK", "SA", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "HJ"],
+        ["C2", "C5", "C8", "CJ", "DQ", "DK", "DA", "S2", "S3", "S4", "S5", "S6", "S7"],
+        ["C3", "C6", "C9", "CQ", "CA", "D2", "D5", "D8", "DJ", "H2", "HQ", "HK", "S8"],
+        ["C4", "C7", "C10", "CK", "D3", "D4", "D6", "D7", "D9", "D10", "H3", "HA", "S9"]
+      ]
+    },
+    {
+      "id": "solo-concentrated",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "origin": "authored two-suit deal; zero-start legal hand; paired across variants",
+      "intendedCoverage": ["all eight remaining spades in one heart-void opponent", "hearts held by the two trump-void seats", "extreme trump length", "individual contract and bags"],
+      "hands": [
+        ["S10", "SJ", "SQ", "SK", "SA", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "HJ"],
+        ["C2", "C5", "C8", "D2", "D5", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
+        ["C3", "C6", "C9", "CQ", "CA", "D3", "D6", "D9", "DQ", "DA", "H2", "HQ", "HK"],
+        ["C4", "C7", "C10", "CJ", "CK", "D4", "D7", "D8", "D10", "DJ", "DK", "H3", "HA"]
+      ]
+    },
+    {
+      "id": "partners-spread",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "origin": "authored two-suit deal; zero-start legal hand; paired across variants",
+      "intendedCoverage": ["remaining spades spread 3/3/2", "remaining hearts spread 2/2/1", "two-suit hand development", "team contract and bags"],
+      "hands": [
+        ["S10", "SJ", "SQ", "SK", "SA", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "HJ"],
+        ["C2", "C5", "C8", "CJ", "D2", "D5", "D8", "DJ", "H2", "HQ", "S2", "S5", "S8"],
+        ["C3", "C6", "C9", "CQ", "D3", "D6", "D9", "DQ", "H3", "HK", "S3", "S6", "S9"],
+        ["C4", "C7", "C10", "CK", "CA", "D4", "D7", "D10", "DK", "DA", "HA", "S4", "S7"]
+      ]
+    },
+    {
+      "id": "partners-void",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "origin": "authored two-suit deal; zero-start legal hand; paired across variants",
+      "intendedCoverage": ["heart-void opponent with six spades", "remaining hearts split 3/2", "trump length against high trump", "team contract and bags"],
+      "hands": [
+        ["S10", "SJ", "SQ", "SK", "SA", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "HJ"],
+        ["C2", "C5", "C8", "CJ", "DQ", "DK", "DA", "S2", "S3", "S4", "S5", "S6", "S7"],
+        ["C3", "C6", "C9", "CQ", "CA", "D2", "D5", "D8", "DJ", "H2", "HQ", "HK", "S8"],
+        ["C4", "C7", "C10", "CK", "D3", "D4", "D6", "D7", "D9", "D10", "H3", "HA", "S9"]
+      ]
+    },
+    {
+      "id": "partners-concentrated",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "scores": [0, 0, 0, 0],
+      "bags": [0, 0, 0, 0],
+      "origin": "authored two-suit deal; zero-start legal hand; paired across variants",
+      "intendedCoverage": ["all eight remaining spades in one heart-void opponent", "hearts held by the two trump-void seats", "extreme trump length", "team contract and bags"],
+      "hands": [
+        ["S10", "SJ", "SQ", "SK", "SA", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "HJ"],
+        ["C2", "C5", "C8", "D2", "D5", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"],
+        ["C3", "C6", "C9", "CQ", "CA", "D3", "D6", "D9", "DQ", "DA", "H2", "HQ", "HK"],
+        ["C4", "C7", "C10", "CJ", "CK", "D4", "D7", "D8", "D10", "DJ", "DK", "H3", "HA"]
+      ]
+    }
+  ]
+}

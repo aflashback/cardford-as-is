@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "sourceEpisode": "solo-spread",
+  "sourceDecision": 31,
+  "input": "Jason own hand plus public history only",
+  "proof": {
+    "voidClubs": true,
+    "voidDiamonds": true,
+    "allSpadesAccounted": true,
+    "mayaRemaining": 6,
+    "heartsOutsidePacket": 6,
+    "onlyHearts": true,
+    "ownsAllRemainingHearts": true
+  },
+  "earlierDecision": 23,
+  "earlierProof": {
+    "voidClubs": true,
+    "voidDiamonds": false,
+    "allSpadesAccounted": false,
+    "mayaRemaining": 8,
+    "heartsOutsidePacket": 6,
+    "onlyHearts": false,
+    "ownsAllRemainingHearts": false
+  },
+  "conclusion": "After Jason follows with S9, Maya leads and wins all six remaining tricks. Jason cannot later win with either queen.",
+  "scope": "Specific fact-check, not a general solver or a runtime policy change."
+}

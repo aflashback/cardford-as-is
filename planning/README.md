@@ -19,6 +19,7 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 | [Scenario coverage review](../docs/superpowers/specs/2026-09-29-scenario-coverage-and-success.md) | Product success, systematic discovery, probability meanings and protection against overfitting. |
 | [Scenario and Jev evaluation plan](../docs/superpowers/plans/2026-09-29-scenario-and-jev-evaluation.md) | Future deterministic/direct-Jev/hybrid comparisons, calibration, complete matches and unaided learning. |
 | [Authored-deal scenario lab](../qa/experiments/2026-09-30-agent-scenario-lab/README.md) | Offline reasoning-agent pilot, reusable player/observer templates, raw decisions, research and proposed next evaluations. |
+| [Two-suit scenario batch](../qa/experiments/2026-09-30-two-suit-batch/README.md) | Six authored Solo/Partners fixtures with fixed Maya cards, saved player decisions, explicit completion status and public-information fact checks. |
 | [02 — Games and decisions](02-games-and-decisions.md) | Exact rules, player knowledge, tactics, probabilities and Jev's role. |
 | [03 — Local runtime](03-local-runtime.md) | OpenRouter, state ownership, persistence and failures. |
 | [04 — Coaching and evidence](04-coaching-and-evidence.md) | Assistance, feedback, mistake categories and progress. |

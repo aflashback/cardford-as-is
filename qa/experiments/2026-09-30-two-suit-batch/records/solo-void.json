@@ -1,0 +1,6709 @@
+{
+  "schemaVersion": "agent-lab-record-1.1.0",
+  "episodeId": "solo-void",
+  "sourceCommit": "29b88e3",
+  "dealHash": "de30b0e1ef5651a429fc6997f4ba439639b3ed94cb8f91844e833116214e6fc1",
+  "promptHash": "efad0f67158449f145cfc7838cd0e7e10f2268469e5157a7adb4bb34c45dfd0d",
+  "provider": "frontier-subagent-research",
+  "observedProviderModel": "not exposed by collaboration tool",
+  "jevCalls": 0,
+  "decisions": [
+    {
+      "seq": 1,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9"
+        ]
+      },
+      "packetHash": "d7ced761433d59c7da1d6e13fae602c2fdc107ed4f37ed0be9d53c67d6c19432",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=bid; hand=H4 H5 H6 H7 H8 H9 H10 HJ S10 SJ SQ SK SA; bids=-,-,-,-; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=false; history=none; current=none; legal=bid:0 bid:1 bid:10 bid:11 bid:12 bid:13 bid:2 bid:3 bid:4 bid:5 bid:6 bid:7 bid:8 bid:9.",
+      "deliveryHash": "8f5a0b7c316571d07c06077595ab7c7f4a4f005878fa88ed6f3a64e20445e9c1",
+      "rawResponse": "BID: 10\n\nMy five highest spades should control trump once it breaks. Eight hearts provide a long suit to establish, though concentrated opposing trumps or repeated heart losses could reduce the return.\r\n",
+      "responseHash": "2b257d5d496c375a83552f52475568b03114303d8e07ce781be0dc747ab4c8be",
+      "justification": "My five highest spades should control trump once it breaks. Eight hearts provide a long suit to establish, though concentrated opposing trumps or repeated heart losses could reduce the return.",
+      "action": {
+        "kind": "bid",
+        "seat": 0,
+        "bid": 10
+      },
+      "forced": false
+    },
+    {
+      "seq": 2,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "bids": [
+          10,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9"
+        ]
+      },
+      "packetHash": "027addc119d2554b896b78a910aea5aa64c092a155d6cda70e2db32785e7507c",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=bid; hand=C2 C5 C8 CJ DQ DK DA S2 S3 S4 S5 S6 S7; bids=10,-,-,-; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=false; history=none; current=none; legal=bid:0 bid:1 bid:10 bid:11 bid:12 bid:13 bid:2 bid:3 bid:4 bid:5 bid:6 bid:7 bid:8 bid:9.",
+      "deliveryHash": "380784b1f0aa4357c7eebcc85d9846bf071b55dd0b4b99850a0cf4c9c5f49f89",
+      "rawResponse": "BID: 4\n\nDiamond ace, king and queen offer strength, while my heart void and six spades create ruffing chances. Every spade is low, and Maya’s ten bid warrants caution.\r\n",
+      "responseHash": "4f6068e6dbc9f6664a4facdc6c3994fcd2707ba9d87510e9b3af247a5df439ab",
+      "justification": "Diamond ace, king and queen offer strength, while my heart void and six spades create ruffing chances. Every spade is low, and Maya’s ten bid warrants caution.",
+      "action": {
+        "kind": "bid",
+        "seat": 1,
+        "bid": 4
+      },
+      "forced": false
+    },
+    {
+      "seq": 3,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        "bids": [
+          10,
+          4,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9"
+        ]
+      },
+      "packetHash": "d960dcd3b344f847e37d689a46790a9b27c13b86591f6d25b574b0fde1fa0df8",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=bid; hand=C3 C6 C9 CQ CA D2 D5 D8 DJ H2 HQ HK S8; bids=10,4,-,-; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=false; history=none; current=none; legal=bid:0 bid:1 bid:10 bid:11 bid:12 bid:13 bid:2 bid:3 bid:4 bid:5 bid:6 bid:7 bid:8 bid:9.",
+      "deliveryHash": "93e3570c8cdf84a55598a204a1a0e0a18e716bed262778842a38a88772816637",
+      "rawResponse": "BID: 2\n\nThe club ace and heart king-queen give me reasonable chances at two tricks. My lone spade offers limited protection, so a third trick is too uncertain to promise.\r\n",
+      "responseHash": "d5bc8579de649cf2735cd587f56a15908578f9f1bf9779edacdd0e5d7a9432ab",
+      "justification": "The club ace and heart king-queen give me reasonable chances at two tricks. My lone spade offers limited protection, so a third trick is too uncertain to promise.",
+      "action": {
+        "kind": "bid",
+        "seat": 2,
+        "bid": 2
+      },
+      "forced": false
+    },
+    {
+      "seq": 4,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9"
+        ]
+      },
+      "packetHash": "f776a6a380938e071a0b73269b6b6f1874a5a92aac8117fb03fed89f612f9f02",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=bid; hand=C4 C7 C10 CK D3 D4 D6 D7 D9 D10 H3 HA S9; bids=10,4,2,-; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=false; history=none; current=none; legal=bid:0 bid:1 bid:10 bid:11 bid:12 bid:13 bid:2 bid:3 bid:4 bid:5 bid:6 bid:7 bid:8 bid:9.",
+      "deliveryHash": "489d477acd9132aa3897c002dfe22e1fd9a9a23140215380ac972130f93bc5dc",
+      "rawResponse": "BID: 1\n\nThe heart ace is my clearest trick. The club king and lone nine of spades offer possible extras, but neither is secure against the strong opposing bids.\r\n",
+      "responseHash": "978f389db52950b753df93683351c0915d4cd0eb8fa75103afb676d114a6ea59",
+      "justification": "The heart ace is my clearest trick. The club king and lone nine of spades offer possible extras, but neither is secure against the strong opposing bids.",
+      "action": {
+        "kind": "bid",
+        "seat": 3,
+        "bid": 1
+      },
+      "forced": false
+    },
+    {
+      "seq": 5,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "play:H10",
+          "play:H4",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ"
+        ]
+      },
+      "packetHash": "188cc5fdda7d0c9cf0191b15f9bfd0d57579e9d2ef7190b9ec12bb0c3f438a30",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H4 H5 H6 H7 H8 H9 H10 HJ S10 SJ SQ SK SA; bids=10,4,2,1; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=false; history=none; current=none; legal=play:H10 play:H4 play:H5 play:H6 play:H7 play:H8 play:H9 play:HJ.",
+      "deliveryHash": "a67dd5ce53e77c4bb2551c934be2f321a05a80928ed00bf112b82c1fafa651ff",
+      "rawResponse": "PLAY: H4\n\nLeading my lowest heart starts clearing the missing heart honors while preserving my stronger hearts. An opponent’s club or diamond return would let me trump and begin drawing opposing spades.\r\n",
+      "responseHash": "228fe999335e0f715904307f09fbe58077baf4cace5724d18b6b4af63539147d",
+      "justification": "Leading my lowest heart starts clearing the missing heart honors while preserving my stronger hearts. An opponent’s club or diamond return would let me trump and begin drawing opposing spades.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "H4"
+      },
+      "forced": false
+    },
+    {
+      "seq": 6,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "spadesBroken": false,
+        "legalActions": [
+          "play:C2",
+          "play:C5",
+          "play:C8",
+          "play:CJ",
+          "play:DA",
+          "play:DK",
+          "play:DQ",
+          "play:S2",
+          "play:S3",
+          "play:S4",
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "2588c55ce0b5acef09d25e423f7cc43bf6e1d996abe5d8a5edd6ffc40fb92b04",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK DA S2 S3 S4 S5 S6 S7; bids=10,4,2,1; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=false; history=none; current=0:H4; legal=play:C2 play:C5 play:C8 play:CJ play:DA play:DK play:DQ play:S2 play:S3 play:S4 play:S5 play:S6 play:S7.",
+      "deliveryHash": "e392fde680f176aabd76d68afaec98cd41b53efa11b1bfba25e143d76f7a1827",
+      "rawResponse": "PLAY: S2\n\nI am void in hearts, so my lowest spade can take this trick while preserving diamond winners. Jason or Sarah could still overtrump if also void.\r\n",
+      "responseHash": "679b80f8d48dc79774f807ef93fa7c28199d608725aa96bf78792a71d07ee63c",
+      "justification": "I am void in hearts, so my lowest spade can take this trick while preserving diamond winners. Jason or Sarah could still overtrump if also void.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "S2"
+      },
+      "forced": false
+    },
+    {
+      "seq": 7,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "S2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H2",
+          "play:HK",
+          "play:HQ"
+        ]
+      },
+      "packetHash": "a3490e1c8e66ce51c9bb71b99f123ca1a82047084fc832d62b62b8fad1ae844a",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C3 C6 C9 CQ CA D2 D5 D8 DJ H2 HQ HK S8; bids=10,4,2,1; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=none; current=0:H4 1:S2; legal=play:H2 play:HK play:HQ.",
+      "deliveryHash": "6e19f8af7a3fa7e189bacb6241a3d2dbaaa6c62e9106ecd1471c30c7d25e3ffc",
+      "rawResponse": "PLAY: H2\n\nLeo has already trumped the heart lead, so neither heart honor can win this trick. Playing my low heart preserves both honors for later chances to make my bid.\r\n",
+      "responseHash": "23d8c0ee4d580308eef3c62cfe1e2d24bce2ede63b8141f17ef9778a8906e8ea",
+      "justification": "Leo has already trumped the heart lead, so neither heart honor can win this trick. Playing my low heart preserves both honors for later chances to make my bid.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "H2"
+      },
+      "forced": false
+    },
+    {
+      "seq": 8,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "S2"
+          },
+          {
+            "seat": 2,
+            "card": "H2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H3",
+          "play:HA"
+        ]
+      },
+      "packetHash": "78151ec2f4e75d2b108ce49890eb92c8781cfed7d8f6ff681572c287fd64448f",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D3 D4 D6 D7 D9 D10 H3 HA S9; bids=10,4,2,1; tricks=0,0,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=none; current=0:H4 1:S2 2:H2; legal=play:H3 play:HA.",
+      "deliveryHash": "8445c67fd578e732955045ae184d95be65a1317c2bd6612b60970fd4aa1a6724",
+      "rawResponse": "PLAY: H3\n\nLeo has already trumped with the two of spades, so my heart ace cannot win this trick. Playing the three preserves the ace for a later chance to make my bid.\r\n",
+      "responseHash": "7fa1d442658782e9ceca54cab5b00085b6502321baabc1b3b8b56d7d7626b53e",
+      "justification": "Leo has already trumped with the two of spades, so my heart ace cannot win this trick. Playing the three preserves the ace for a later chance to make my bid.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "H3"
+      },
+      "forced": false
+    },
+    {
+      "seq": 9,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C2",
+          "play:C5",
+          "play:C8",
+          "play:CJ",
+          "play:DA",
+          "play:DK",
+          "play:DQ",
+          "play:S3",
+          "play:S4",
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "f8906bd83eed6c87254e19aa1fd7e7f24fe08b2c2bac108587962c5a6b594a1b",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK DA S3 S4 S5 S6 S7; bids=10,4,2,1; tricks=0,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1; current=none; legal=play:C2 play:C5 play:C8 play:CJ play:DA play:DK play:DQ play:S3 play:S4 play:S5 play:S6 play:S7.",
+      "deliveryHash": "dc4c48013fbe807f6891161c529c2d3cfbcf54f0f5361b52b0b2d0a22db30cf4",
+      "rawResponse": "PLAY: DA\n\nWith one trick secured, I will cash the diamond ace toward my four bid. Leading diamonds preserves my remaining spades for ruffs, though a diamond void could threaten this trick.\r\n",
+      "responseHash": "4e8351a07b338964559dd7580a038344e59ef0a141e8a963af2c9382332b30ba",
+      "justification": "With one trick secured, I will cash the diamond ace toward my four bid. Leading diamonds preserves my remaining spades for ruffs, though a diamond void could threaten this trick.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "DA"
+      },
+      "forced": false
+    },
+    {
+      "seq": 10,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "DA"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:D2",
+          "play:D5",
+          "play:D8",
+          "play:DJ"
+        ]
+      },
+      "packetHash": "675db92139e46f08368d79323b10a16f13385331dd2a842522a8538bc71aabb0",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C3 C6 C9 CQ CA D2 D5 D8 DJ HQ HK S8; bids=10,4,2,1; tricks=0,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1; current=1:DA; legal=play:D2 play:D5 play:D8 play:DJ.",
+      "deliveryHash": "ec2d344249d725147228e4a10cc3f5b907dc09f81678859432de96bf5aaddf75",
+      "rawResponse": "PLAY: D2\n\nLeo’s diamond ace beats every diamond in my hand. I’ll follow with the two, preserving my higher diamonds for possible tricks later.\r\n",
+      "responseHash": "fe63dd9f3af55ab7ce35262fda6498daca7b1d1cea1b7948c9b5091716d34b18",
+      "justification": "Leo’s diamond ace beats every diamond in my hand. I’ll follow with the two, preserving my higher diamonds for possible tricks later.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "D2"
+      },
+      "forced": false
+    },
+    {
+      "seq": 11,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "HA",
+          "S9"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "DA"
+          },
+          {
+            "seat": 2,
+            "card": "D2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:D10",
+          "play:D3",
+          "play:D4",
+          "play:D6",
+          "play:D7",
+          "play:D9"
+        ]
+      },
+      "packetHash": "5d090d1d35e5bfb36145d41442e126e11755ca2bd6d173acec7cbdc6ace58aa4",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D3 D4 D6 D7 D9 D10 HA S9; bids=10,4,2,1; tricks=0,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1; current=1:DA 2:D2; legal=play:D10 play:D3 play:D4 play:D6 play:D7 play:D9.",
+      "deliveryHash": "c5475f2d0f6140018de02812a236b8b4ed27a24cd868bb6ab9b95d915b7bdd1b",
+      "rawResponse": "PLAY: D3\n\nLeo’s diamond ace currently wins, and none of my diamonds can beat it. I’ll shed the three and retain higher diamonds in case they become useful later.\r\n",
+      "responseHash": "e945f67af042102c768f9a20006b00df519f0cc3d790f513cbf8d9b773cb55f4",
+      "justification": "Leo’s diamond ace currently wins, and none of my diamonds can beat it. I’ll shed the three and retain higher diamonds in case they become useful later.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "D3"
+      },
+      "forced": false
+    },
+    {
+      "seq": 12,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "DA"
+          },
+          {
+            "seat": 2,
+            "card": "D2"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H10",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ",
+          "play:S10",
+          "play:SA",
+          "play:SJ",
+          "play:SK",
+          "play:SQ"
+        ]
+      },
+      "packetHash": "ec2499b55c9a1feb2db019a891c9c0be76e4ae55860c0be4bd9108edd49bb545",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H5 H6 H7 H8 H9 H10 HJ S10 SJ SQ SK SA; bids=10,4,2,1; tricks=0,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1; current=1:DA 2:D2 3:D3; legal=play:H10 play:H5 play:H6 play:H7 play:H8 play:H9 play:HJ play:S10 play:SA play:SJ play:SK play:SQ.",
+      "deliveryHash": "656130475223321fd73749a76b35efc8e58cb1b15e2a8d2e656ef123841a190e",
+      "rawResponse": "PLAY: S10\n\nI am void in diamonds, and the ten of spades wins this trick as the final card. Taking the lead lets me draw opposing trumps before developing my long hearts.\r\n",
+      "responseHash": "d86bc60adda7047030c4b1e458a2b17b4dccb067a18f61cc676d6e4d13b64c3b",
+      "justification": "I am void in diamonds, and the ten of spades wins this trick as the final card. Taking the lead lets me draw opposing trumps before developing my long hearts.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "S10"
+      },
+      "forced": false
+    },
+    {
+      "seq": 13,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H10",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ",
+          "play:SA",
+          "play:SJ",
+          "play:SK",
+          "play:SQ"
+        ]
+      },
+      "packetHash": "87ce81ce4d22791e91479af348d926e1a0df28b41f2d7d61ef26830f062f4549",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H5 H6 H7 H8 H9 H10 HJ SJ SQ SK SA; bids=10,4,2,1; tricks=1,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0; current=none; legal=play:H10 play:H5 play:H6 play:H7 play:H8 play:H9 play:HJ play:SA play:SJ play:SK play:SQ.",
+      "deliveryHash": "c3c97cc5b91aec2cfc314012f03ffc0aee68cd16b00ddf225eb4f76f2fadbe1f",
+      "rawResponse": "PLAY: SJ\n\nEvery remaining spade in my hand outranks the opposing spades. Leading the jack takes another trick and removes trumps that could otherwise interrupt my long hearts.\r\n",
+      "responseHash": "db7ca6f3ad9ae90e948265a431e3a588cf8c9a620d1cad118f04e3cb789042c6",
+      "justification": "Every remaining spade in my hand outranks the opposing spades. Leading the jack takes another trick and removes trumps that could otherwise interrupt my long hearts.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "SJ"
+      },
+      "forced": false
+    },
+    {
+      "seq": 14,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S3",
+          "play:S4",
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "7e665dfb2f4896d79e73b51e3dd477e9c265f285afc6427aab231277c4c99df4",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK S3 S4 S5 S6 S7; bids=10,4,2,1; tricks=1,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0; current=0:SJ; legal=play:S3 play:S4 play:S5 play:S6 play:S7.",
+      "deliveryHash": "e46b8f27b8fe0b2e8f2af5f2b0a913b155d95102582c5ec2f0cd857c75baa893",
+      "rawResponse": "PLAY: S3\n\nMaya’s jack beats every spade I hold, so I will follow with my lowest. Preserving higher spades may help later, although Maya’s diamond void threatens my remaining diamond honors.\r\n",
+      "responseHash": "1e4002850d6994a9209ab33e55d80f4958506d6cd7d3d7b6ffff059565c20ed3",
+      "justification": "Maya’s jack beats every spade I hold, so I will follow with my lowest. Preserving higher spades may help later, although Maya’s diamond void threatens my remaining diamond honors.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "S3"
+      },
+      "forced": false
+    },
+    {
+      "seq": 15,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D5",
+          "D8",
+          "DJ",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S3"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S8"
+        ]
+      },
+      "packetHash": "1f215a40144f83fb60cfeb0286f89ef51e4aee4e2d87d04bbb0011246030c09c",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C3 C6 C9 CQ CA D5 D8 DJ HQ HK S8; bids=10,4,2,1; tricks=1,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0; current=0:SJ 1:S3; legal=play:S8.",
+      "deliveryHash": "e4b339e2eea557e7a4c9dd31116d24fee2aeabcb4e097048da64cb72ec6db5fb",
+      "rawResponse": "PLAY: S8\n\nI must follow spades with my only spade, the eight. Maya’s jack already beats it, leaving me dependent on side suits for my two tricks.\r\n",
+      "responseHash": "265a41114af654c159cd4ecb44b6166e453640ccaf363b4d325988c2c5d9a87b",
+      "justification": "I must follow spades with my only spade, the eight. Maya’s jack already beats it, leaving me dependent on side suits for my two tricks.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "S8"
+      },
+      "forced": true
+    },
+    {
+      "seq": 16,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "HA",
+          "S9"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S3"
+          },
+          {
+            "seat": 2,
+            "card": "S8"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S9"
+        ]
+      },
+      "packetHash": "047505b1f5b3641fbe3ee4fd79b29117e2207623c642584c5623acd7e6202c40",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D4 D6 D7 D9 D10 HA S9; bids=10,4,2,1; tricks=1,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0; current=0:SJ 1:S3 2:S8; legal=play:S9.",
+      "deliveryHash": "5d1b3cb17114702fbb13959c0188383532d10d87a7f2aaaddafe369eb306b784",
+      "rawResponse": "PLAY: S9\n\nThe nine is my only spade, so I must follow suit with it. Maya’s jack beats it, leaving my heart ace and club king as potential ways to make my bid.\r\n",
+      "responseHash": "5e2c9100ad8c0a2e11d31cb57a4e97f0b149c14fe5ea6b47df45c1397fa38bfd",
+      "justification": "The nine is my only spade, so I must follow suit with it. Maya’s jack beats it, leaving my heart ace and club king as potential ways to make my bid.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "S9"
+      },
+      "forced": true
+    },
+    {
+      "seq": 17,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          2,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H10",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ",
+          "play:SA",
+          "play:SK",
+          "play:SQ"
+        ]
+      },
+      "packetHash": "5374d07abba3fb2f3dd5be9010e287de43cebef9797187e212f622cd2001736a",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H5 H6 H7 H8 H9 H10 HJ SQ SK SA; bids=10,4,2,1; tricks=2,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0; current=none; legal=play:H10 play:H5 play:H6 play:H7 play:H8 play:H9 play:HJ play:SA play:SK play:SQ.",
+      "deliveryHash": "2b6712d7e8d2f694084c109aa5e6c821ce058e79ca1fb0786c6498e6939efca8",
+      "rawResponse": "PLAY: SQ\n\nFour opposing spades remain unplayed. The queen wins this round and continues removing trumps, protecting the heart tricks I need for my ten-trick bid.\r\n",
+      "responseHash": "a8d71ff9615c858dafa47c2080c35d7eedeafb457de0ebdb84d05aa41a4e5448",
+      "justification": "Four opposing spades remain unplayed. The queen wins this round and continues removing trumps, protecting the heart tricks I need for my ten-trick bid.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "SQ"
+      },
+      "forced": false
+    },
+    {
+      "seq": 18,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          2,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SQ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S4",
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "ac6c13b554cd8bccc507cce976db2f66027d668b397c2b9fc8472098866fcbe7",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK S4 S5 S6 S7; bids=10,4,2,1; tricks=2,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0; current=0:SQ; legal=play:S4 play:S5 play:S6 play:S7.",
+      "deliveryHash": "47c3a8eb3c2369eed1dfe86cd82423c07c5e8f377713c672ffdc2b8bf17ced48",
+      "rawResponse": "PLAY: S4\n\nNone of my spades can beat the queen, so I will spend the lowest. Keeping the higher three preserves what little trump strength remains for reaching my four-trick contract.\r\n",
+      "responseHash": "84c67185dc4a64b2cd66b1c68593036f12a2c8da22891b6d0aa7777bfb8defe2",
+      "justification": "None of my spades can beat the queen, so I will spend the lowest. Keeping the higher three preserves what little trump strength remains for reaching my four-trick contract.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "S4"
+      },
+      "forced": false
+    },
+    {
+      "seq": 19,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D5",
+          "D8",
+          "DJ",
+          "HQ",
+          "HK"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          2,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SQ"
+          },
+          {
+            "seat": 1,
+            "card": "S4"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C3",
+          "play:C6",
+          "play:C9",
+          "play:CA",
+          "play:CQ",
+          "play:D5",
+          "play:D8",
+          "play:DJ",
+          "play:HK",
+          "play:HQ"
+        ]
+      },
+      "packetHash": "dc573bfa2f3cab6d6793aece6636b34c814dcf787d97714544e9f7d63740959e",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C3 C6 C9 CQ CA D5 D8 DJ HQ HK; bids=10,4,2,1; tricks=2,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0; current=0:SQ 1:S4; legal=play:C3 play:C6 play:C9 play:CA play:CQ play:D5 play:D8 play:DJ play:HK play:HQ.",
+      "deliveryHash": "6ac0bdc4c3f16c2ed2fa2d81408497429f368679ef678dbb01ec50eda731b97e",
+      "rawResponse": "PLAY: D5\n\nWith no spades left, I can discard freely. The diamond five has little winning potential; keeping my club ace and heart honors preserves my clearest chances of making two tricks.\r\n",
+      "responseHash": "c39aa5652e3719ac51558e3c8bffbc787bf313a25bf423c77854a9fe777c9983",
+      "justification": "With no spades left, I can discard freely. The diamond five has little winning potential; keeping my club ace and heart honors preserves my clearest chances of making two tricks.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "D5"
+      },
+      "forced": false
+    },
+    {
+      "seq": 20,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "HA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          2,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SQ"
+          },
+          {
+            "seat": 1,
+            "card": "S4"
+          },
+          {
+            "seat": 2,
+            "card": "D5"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C10",
+          "play:C4",
+          "play:C7",
+          "play:CK",
+          "play:D10",
+          "play:D4",
+          "play:D6",
+          "play:D7",
+          "play:D9",
+          "play:HA"
+        ]
+      },
+      "packetHash": "31e41a143510d6deff0139ade1d17006b03b7cc31f6b6106819bc0127332868e",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D4 D6 D7 D9 D10 HA; bids=10,4,2,1; tricks=2,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0; current=0:SQ 1:S4 2:D5; legal=play:C10 play:C4 play:C7 play:CK play:D10 play:D4 play:D6 play:D7 play:D9 play:HA.",
+      "deliveryHash": "96d52cf26ec0e8d291dbad25abfb5034c57dde4d3ace66b0912d1068d567a05c",
+      "rawResponse": "PLAY: D4\n\nI have no spades, so I can discard freely. The diamond four has little winning value; keeping my heart ace and club king preserves my strongest chances to fulfill my one-trick bid.\r\n",
+      "responseHash": "b5d7e3f196f1cc09da1fd7c603e6e7944f32a41d8b31f96783e34e86fc40db8b",
+      "justification": "I have no spades, so I can discard freely. The diamond four has little winning value; keeping my heart ace and club king preserves my strongest chances to fulfill my one-trick bid.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "D4"
+      },
+      "forced": false
+    },
+    {
+      "seq": 21,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "SK",
+          "SA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          3,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H10",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ",
+          "play:SA",
+          "play:SK"
+        ]
+      },
+      "packetHash": "3035f89a0cd1ea74e8cb292bedda18de2ae1dd0615f0674626be9e1b85144f1a",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H5 H6 H7 H8 H9 H10 HJ SK SA; bids=10,4,2,1; tricks=3,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0; current=none; legal=play:H10 play:H5 play:H6 play:H7 play:H8 play:H9 play:HJ play:SA play:SK.",
+      "deliveryHash": "68bdfe7fa183b8797a2abd6a12d4dae7e124cc1f9fa1b4b62c9edcfaccf703b9",
+      "rawResponse": "PLAY: SK\n\nJason and Sarah have shown they are out of spades, so Leo holds the three remaining opposing trumps. Drawing another removes one threat, although his extra trump now makes my contract difficult.\r\n",
+      "responseHash": "2bca8427ebb934a342dfcedfd20d6f8ec07221c42fd9d9c6b07d709a9bc8247b",
+      "justification": "Jason and Sarah have shown they are out of spades, so Leo holds the three remaining opposing trumps. Drawing another removes one threat, although his extra trump now makes my contract difficult.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "SK"
+      },
+      "forced": false
+    },
+    {
+      "seq": 22,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          3,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SK"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "84a695c10c1dddcc79fe6105d13b55ad1c6c24f8f1fa1ae7aa997f8089a7280c",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK S5 S6 S7; bids=10,4,2,1; tricks=3,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0; current=0:SK; legal=play:S5 play:S6 play:S7.",
+      "deliveryHash": "f3e8f57411b50ea425696d015f22a913c1cfa745bb56e014f972d782b56ca029",
+      "rawResponse": "PLAY: S5\n\nI must follow spades, and none can beat the king. Playing the five preserves my higher trumps; Jason and Sarah have both shown they are out of spades.\r\n",
+      "responseHash": "e045ab747f79e516bdb3ceb0c079b0eaf5cbba68e8f797842144dc064d3b9d84",
+      "justification": "I must follow spades, and none can beat the king. Playing the five preserves my higher trumps; Jason and Sarah have both shown they are out of spades.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "S5"
+      },
+      "forced": false
+    },
+    {
+      "seq": 23,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D8",
+          "DJ",
+          "HQ",
+          "HK"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          3,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SK"
+          },
+          {
+            "seat": 1,
+            "card": "S5"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C3",
+          "play:C6",
+          "play:C9",
+          "play:CA",
+          "play:CQ",
+          "play:D8",
+          "play:DJ",
+          "play:HK",
+          "play:HQ"
+        ]
+      },
+      "packetHash": "e88aef332a42e453e871653fa79dd9b609b4cfbbc185f307bb33d45d4a7be7fb",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C3 C6 C9 CQ CA D8 DJ HQ HK; bids=10,4,2,1; tricks=3,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0; current=0:SK 1:S5; legal=play:C3 play:C6 play:C9 play:CA play:CQ play:D8 play:DJ play:HK play:HQ.",
+      "deliveryHash": "6d8ff422b558186d8f6eef8ded3c1a6bd41aa5768c246d920d8a74f6f685878e",
+      "rawResponse": "PLAY: D8\n\nI cannot win this trump trick. Discarding the diamond eight preserves my diamond jack, club ace and queen, and heart honors as potential routes to my two tricks.\r\n",
+      "responseHash": "8fc2e34841e4900594bebb6fef52425ee8eb16b174bc8bebfa8e7f85efc0662c",
+      "justification": "I cannot win this trump trick. Discarding the diamond eight preserves my diamond jack, club ace and queen, and heart honors as potential routes to my two tricks.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "D8"
+      },
+      "forced": false
+    },
+    {
+      "seq": 24,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "HA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          3,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SK"
+          },
+          {
+            "seat": 1,
+            "card": "S5"
+          },
+          {
+            "seat": 2,
+            "card": "D8"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C10",
+          "play:C4",
+          "play:C7",
+          "play:CK",
+          "play:D10",
+          "play:D6",
+          "play:D7",
+          "play:D9",
+          "play:HA"
+        ]
+      },
+      "packetHash": "b53bd9ff5d08781b8ba331db13f0527542c240965c9e3674885b7c850e4774e0",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D6 D7 D9 D10 HA; bids=10,4,2,1; tricks=3,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0; current=0:SK 1:S5 2:D8; legal=play:C10 play:C4 play:C7 play:CK play:D10 play:D6 play:D7 play:D9 play:HA.",
+      "deliveryHash": "c8e67a5f1ea4624e9b69015f2cbc95a3d7e1e1a2f443255b3aba7405ef506cc9",
+      "rawResponse": "PLAY: D6\n\nMaya’s king of spades cannot be beaten by my remaining cards. I’ll discard the diamond six, preserving higher diamonds and my heart ace and club king for later winning chances.\r\n",
+      "responseHash": "3d4883d0bb777e952109fc855caa4a6c5946d460b9a882ea30fc17cfae1144cc",
+      "justification": "Maya’s king of spades cannot be beaten by my remaining cards. I’ll discard the diamond six, preserving higher diamonds and my heart ace and club king for later winning chances.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "D6"
+      },
+      "forced": false
+    },
+    {
+      "seq": 25,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "SA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          4,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H10",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ",
+          "play:SA"
+        ]
+      },
+      "packetHash": "ff6de73b2afd919f3fc1ccfd24cea667af8772b4c9dd0e47b467b79f1daa7ac7",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H5 H6 H7 H8 H9 H10 HJ SA; bids=10,4,2,1; tricks=4,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0; current=none; legal=play:H10 play:H5 play:H6 play:H7 play:H8 play:H9 play:HJ play:SA.",
+      "deliveryHash": "86e45cd20f37c2b8b9b85b94c6012e54efd3d93f716c98f0c816fa28ed7c1e52",
+      "rawResponse": "PLAY: SA\n\nLeo still holds two spades. Cashing my ace secures a fifth trick and removes one of them, limiting his remaining trump strength before I must return to hearts.\r\n",
+      "responseHash": "4e61a9065f364b1a7e3fb28013597f88cd449783e415fef445514b3a958fd42f",
+      "justification": "Leo still holds two spades. Cashing my ace secures a fifth trick and removes one of them, limiting his remaining trump strength before I must return to hearts.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "SA"
+      },
+      "forced": false
+    },
+    {
+      "seq": 26,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "S6",
+          "S7"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          4,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SA"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "df5f571de83532d1a514679c0ffd7fe88155bc3f8da617eb08df83cedd78832f",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK S6 S7; bids=10,4,2,1; tricks=4,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0; current=0:SA; legal=play:S6 play:S7.",
+      "deliveryHash": "c884a998141cbb6dcbaaa491e0f225b49ff7823f54c4701dede7e9cbd1e71e93",
+      "rawResponse": "PLAY: S6\n\nI must follow the ace and cannot beat it. Keeping the seven leaves me the final outstanding spade after this trick, providing a sure winner when I can use it.\r\n",
+      "responseHash": "542d831f9aa196bb73e7ab9f35e4d7731f58d73932ed4e29b0efac708fc07a5b",
+      "justification": "I must follow the ace and cannot beat it. Keeping the seven leaves me the final outstanding spade after this trick, providing a sure winner when I can use it.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "S6"
+      },
+      "forced": false
+    },
+    {
+      "seq": 27,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "DJ",
+          "HQ",
+          "HK"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          4,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SA"
+          },
+          {
+            "seat": 1,
+            "card": "S6"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C3",
+          "play:C6",
+          "play:C9",
+          "play:CA",
+          "play:CQ",
+          "play:DJ",
+          "play:HK",
+          "play:HQ"
+        ]
+      },
+      "packetHash": "c8823599d0e84cc591a58cd76806e2505ccfe5edf76ee54607ed30dc73bd7a99",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C3 C6 C9 CQ CA DJ HQ HK; bids=10,4,2,1; tricks=4,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0; current=0:SA 1:S6; legal=play:C3 play:C6 play:C9 play:CA play:CQ play:DJ play:HK play:HQ.",
+      "deliveryHash": "1d1420888db0bf5c783d064017745f87d289cbb7b2629870bfa1b0ea4a0c9130",
+      "rawResponse": "PLAY: C3\n\nThe club three offers little chance of taking a trick. Discarding it keeps my higher cards across three suits, preserving options while Maya continues drawing out spades.\r\n",
+      "responseHash": "29f8ab5d0be7d9819e2d1d06e2a1e69d65e069eee1df4931bbe859dbabcce364",
+      "justification": "The club three offers little chance of taking a trick. Discarding it keeps my higher cards across three suits, preserving options while Maya continues drawing out spades.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "C3"
+      },
+      "forced": false
+    },
+    {
+      "seq": 28,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D7",
+          "D9",
+          "D10",
+          "HA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          4,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SA"
+          },
+          {
+            "seat": 1,
+            "card": "S6"
+          },
+          {
+            "seat": 2,
+            "card": "C3"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C10",
+          "play:C4",
+          "play:C7",
+          "play:CK",
+          "play:D10",
+          "play:D7",
+          "play:D9",
+          "play:HA"
+        ]
+      },
+      "packetHash": "617e9dfbd457472c7a13ae174230fe933e65ebeeb76cf95fb48fa14b05019eb4",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D7 D9 D10 HA; bids=10,4,2,1; tricks=4,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0; current=0:SA 1:S6 2:C3; legal=play:C10 play:C4 play:C7 play:CK play:D10 play:D7 play:D9 play:HA.",
+      "deliveryHash": "c7467069eeaa047f98f6765e3dae886e018c580a66c633317631ad7abf973fae",
+      "rawResponse": "PLAY: D7\n\nThe spade ace wins this trick regardless of my discard. I’ll shed the diamond seven and keep my stronger cards, especially the heart ace, as the remaining trump supply dwindles.\r\n",
+      "responseHash": "07a350b3d802cf6627330fa028c43fb41b6101a4bd2f04da52cdfd2a08b7966c",
+      "justification": "The spade ace wins this trick regardless of my discard. I’ll shed the diamond seven and keep my stronger cards, especially the heart ace, as the remaining trump supply dwindles.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "D7"
+      },
+      "forced": false
+    },
+    {
+      "seq": 29,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H10",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ"
+        ]
+      },
+      "packetHash": "5d3463930aa69b6a1001cdea3028b3f9188dd8b7963304d5faec7ebc1dadf4c1",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H5 H6 H7 H8 H9 H10 HJ; bids=10,4,2,1; tricks=5,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0; current=none; legal=play:H10 play:H5 play:H6 play:H7 play:H8 play:H9 play:HJ.",
+      "deliveryHash": "eb7e82ac6b8548092df1686a207e7959494a50b5494250a6354f77144e72da44",
+      "rawResponse": "PLAY: H5\n\nHearts are my only remaining suit. Leading the lowest preserves my higher cards while forcing any remaining heart holders to follow; Leo’s last spade can still take this trick.\r\n",
+      "responseHash": "b4bdd27a7f59292e7b57f2ccd69b080c85b1ece23a5eb000314fc1ebc5388791",
+      "justification": "Hearts are my only remaining suit. Leading the lowest preserves my higher cards while forcing any remaining heart holders to follow; Leo’s last spade can still take this trick.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "H5"
+      },
+      "forced": false
+    },
+    {
+      "seq": 30,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "S7"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H5"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C2",
+          "play:C5",
+          "play:C8",
+          "play:CJ",
+          "play:DK",
+          "play:DQ",
+          "play:S7"
+        ]
+      },
+      "packetHash": "2c52f9dd87c8535b923c5446bf9f7e7691da4854423e77de621eec3b6533e12e",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK S7; bids=10,4,2,1; tricks=5,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0; current=0:H5; legal=play:C2 play:C5 play:C8 play:CJ play:DK play:DQ play:S7.",
+      "deliveryHash": "bfe2272c0bb680c07f9d50145b2d0434efe38c67b554a7f637347562c03b7a0b",
+      "rawResponse": "PLAY: S7\n\nMy last spade guarantees this trick because all other trumps have been played. Taking the lead lets me cash the diamond king and queen, securing my four-trick bid.\r\n",
+      "responseHash": "43d9d63672799deea4e3efde0b8253fc1023552ac0f9ec6c94c08f10b34964d2",
+      "justification": "My last spade guarantees this trick because all other trumps have been played. Taking the lead lets me cash the diamond king and queen, securing my four-trick bid.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "S7"
+      },
+      "forced": false
+    },
+    {
+      "seq": 31,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "DJ",
+          "HQ",
+          "HK"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H5"
+          },
+          {
+            "seat": 1,
+            "card": "S7"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:HK",
+          "play:HQ"
+        ]
+      },
+      "packetHash": "9dc2d360e28c6d2e02d2b11cce7abe6576649cdab426541e6ee2c40007ebafb9",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C6 C9 CQ CA DJ HQ HK; bids=10,4,2,1; tricks=5,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0; current=0:H5 1:S7; legal=play:HK play:HQ.",
+      "deliveryHash": "ee7636908f38296d56c929009664f251d2a6227fece01999f429c89e2cbf3d2f",
+      "rawResponse": "PLAY: HQ\n\nLeo has trumped again, and I must follow hearts. I’ll spend the queen and keep the king; after this trick, every spade will have been played.\r\n",
+      "responseHash": "b3a435a5b3738a35ef64d38a56ae1f5b4a435bdb70b21cecafdd5760f85554f4",
+      "justification": "Leo has trumped again, and I must follow hearts. I’ll spend the queen and keep the king; after this trick, every spade will have been played.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "HQ"
+      },
+      "forced": false
+    },
+    {
+      "seq": 32,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D9",
+          "D10",
+          "HA"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H5"
+          },
+          {
+            "seat": 1,
+            "card": "S7"
+          },
+          {
+            "seat": 2,
+            "card": "HQ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:HA"
+        ]
+      },
+      "packetHash": "1fcd49cc6d3e0577844510aacc664e1a1fbb8afeb8b6fbb00c97df973460c31e",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D9 D10 HA; bids=10,4,2,1; tricks=5,1,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0; current=0:H5 1:S7 2:HQ; legal=play:HA.",
+      "deliveryHash": "48b85d662e8c9a05ab289bf2d8fb4a690712a504c96657218626a2446d846426",
+      "rawResponse": "PLAY: HA\n\nThe ace is my only heart, so I must play it despite Leo’s trump. That uses the last outstanding spade; my club king is now my strongest remaining chance to make my bid.\r\n",
+      "responseHash": "37d01931186f35666de5c3960446bf6e9d82c840abd62f169f160bb6f9cb6a2a",
+      "justification": "The ace is my only heart, so I must play it despite Leo’s trump. That uses the last outstanding spade; my club king is now my strongest remaining chance to make my bid.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "HA"
+      },
+      "forced": true
+    },
+    {
+      "seq": 33,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          2,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H5"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              },
+              {
+                "seat": 2,
+                "card": "HQ"
+              },
+              {
+                "seat": 3,
+                "card": "HA"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C2",
+          "play:C5",
+          "play:C8",
+          "play:CJ",
+          "play:DK",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "057b4ae4c37c3be28ec8b16c416cf2d08a571838ef4f0beafcb5176a3c28b43b",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ DK; bids=10,4,2,1; tricks=5,2,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0/7[0:H5 1:S7 2:HQ 3:HA]winner1; current=none; legal=play:C2 play:C5 play:C8 play:CJ play:DK play:DQ.",
+      "deliveryHash": "93f9db797b450d495719290084c5c5faa063f3d7ed53731a986b85d376afc5ae",
+      "rawResponse": "PLAY: DK\n\nAll spades and the diamond ace are gone, so the king is a certain winner. I will take my third trick and retain the queen to complete my contract.\r\n",
+      "responseHash": "32c74c69618dc8d723a34ec2e3cedeed7ad2159b5dbedcff34296dbde13e2907",
+      "justification": "All spades and the diamond ace are gone, so the king is a certain winner. I will take my third trick and retain the queen to complete my contract.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "DK"
+      },
+      "forced": false
+    },
+    {
+      "seq": 34,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "DJ",
+          "HK"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          2,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H5"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              },
+              {
+                "seat": 2,
+                "card": "HQ"
+              },
+              {
+                "seat": 3,
+                "card": "HA"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "DK"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:DJ"
+        ]
+      },
+      "packetHash": "9a8e18a85c387582614999efef040fb076649bb2d285ebbefa66f71d109d5c5f",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C6 C9 CQ CA DJ HK; bids=10,4,2,1; tricks=5,2,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0/7[0:H5 1:S7 2:HQ 3:HA]winner1; current=1:DK; legal=play:DJ.",
+      "deliveryHash": "935b789bf7795ef97184c8ec04af8f5708a35d4592109ab9120f0c787d0d0e82",
+      "rawResponse": "PLAY: DJ\n\nThe jack is my only diamond, so I must follow with it. My club ace and now-high heart king remain certain winners if I can gain the lead.\r\n",
+      "responseHash": "86ae83943071ec14506a524091025d0dea6ac66365fa51b5edf02303904c1138",
+      "justification": "The jack is my only diamond, so I must follow with it. My club ace and now-high heart king remain certain winners if I can gain the lead.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "DJ"
+      },
+      "forced": true
+    },
+    {
+      "seq": 35,
+      "agent": "/root/s02_sarah",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D9",
+          "D10"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          2,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H5"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              },
+              {
+                "seat": 2,
+                "card": "HQ"
+              },
+              {
+                "seat": 3,
+                "card": "HA"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "DK"
+          },
+          {
+            "seat": 2,
+            "card": "DJ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:D10",
+          "play:D9"
+        ]
+      },
+      "packetHash": "fa06f2c1aa4e4eca6ea979d3dbcafac8f72fa61bd714248a949882a2106870fd",
+      "deliveryText": "Game=spades-solo; seat=3 Sarah; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C4 C7 C10 CK D9 D10; bids=10,4,2,1; tricks=5,2,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0/7[0:H5 1:S7 2:HQ 3:HA]winner1; current=1:DK 2:DJ; legal=play:D10 play:D9.",
+      "deliveryHash": "7cc17249f44260a7be1ec796a636aee2473b991d58b0a89538a0fe38578e1150",
+      "rawResponse": "PLAY: D9\n\nNeither diamond can beat Leo’s king, so I’ll play the nine. Keeping the ten retains the higher card, although the unplayed diamond queen still prevents it from being a certain winner.\r\n",
+      "responseHash": "994e01d642007820b13003b9f110474a9ae5e999d1b50e14e8eebd70764ed0fc",
+      "justification": "Neither diamond can beat Leo’s king, so I’ll play the nine. Keeping the ten retains the higher card, although the unplayed diamond queen still prevents it from being a certain winner.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "D9"
+      },
+      "forced": false
+    },
+    {
+      "seq": 36,
+      "agent": "/root/s02_maya",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          2,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H5"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              },
+              {
+                "seat": 2,
+                "card": "HQ"
+              },
+              {
+                "seat": 3,
+                "card": "HA"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "DK"
+          },
+          {
+            "seat": 2,
+            "card": "DJ"
+          },
+          {
+            "seat": 3,
+            "card": "D9"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H10",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:HJ"
+        ]
+      },
+      "packetHash": "38e9ecb2b7989bb47e2b1da02e484f0697ea8d3ab8049225424d8d66649ec110",
+      "deliveryText": "Game=spades-solo; seat=0 Maya; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=H6 H7 H8 H9 H10 HJ; bids=10,4,2,1; tricks=5,2,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0/7[0:H5 1:S7 2:HQ 3:HA]winner1; current=1:DK 2:DJ 3:D9; legal=play:H10 play:H6 play:H7 play:H8 play:H9 play:HJ.",
+      "deliveryHash": "13591e1fd5fe0979c85254fa7bad8e6c184f1eabb47946fac9356d9740972a3c",
+      "rawResponse": "PLAY: H6\n\nI cannot win this diamond trick with my remaining hearts. Discarding the six preserves my highest hearts, though the outstanding heart king and lack of an entry threaten my contract.\r\n",
+      "responseHash": "9508ebfbd14298c456c84696c54775cfff74b5dbff1e52c529b1d225c4b76e4f",
+      "justification": "I cannot win this diamond trick with my remaining hearts. Discarding the six preserves my highest hearts, though the outstanding heart king and lack of an entry threaten my contract.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "H6"
+      },
+      "forced": false
+    },
+    {
+      "seq": 37,
+      "agent": "/root/s02_leo",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          3,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H5"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              },
+              {
+                "seat": 2,
+                "card": "HQ"
+              },
+              {
+                "seat": 3,
+                "card": "HA"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DK"
+              },
+              {
+                "seat": 2,
+                "card": "DJ"
+              },
+              {
+                "seat": 3,
+                "card": "D9"
+              },
+              {
+                "seat": 0,
+                "card": "H6"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C2",
+          "play:C5",
+          "play:C8",
+          "play:CJ",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "c6d325d4f2c995de550b138a7c8269908f082d1a31e39486702e806c0e931878",
+      "deliveryText": "Game=spades-solo; seat=1 Leo; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C2 C5 C8 CJ DQ; bids=10,4,2,1; tricks=5,3,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0/7[0:H5 1:S7 2:HQ 3:HA]winner1/8[1:DK 2:DJ 3:D9 0:H6]winner1; current=none; legal=play:C2 play:C5 play:C8 play:CJ play:DQ.",
+      "deliveryHash": "681535da3c235a72855e298c80d5ac8def6628c5dba42a27dae674bdd337096e",
+      "rawResponse": "PLAY: DQ\n\nThe diamond queen is now unbeatable because the higher diamonds and every spade have been played. Cashing it secures my fourth trick and fulfills my bid.\r\n",
+      "responseHash": "cf88b901721fa2dffaf03432f687b6570a991a4c5aa62959f3368e435551ff05",
+      "justification": "The diamond queen is now unbeatable because the higher diamonds and every spade have been played. Cashing it secures my fourth trick and fulfills my bid.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "DQ"
+      },
+      "forced": false
+    },
+    {
+      "seq": 38,
+      "agent": "/root/s02_jason",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "HK"
+        ],
+        "bids": [
+          10,
+          4,
+          2,
+          1
+        ],
+        "tricks": [
+          5,
+          3,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "S2"
+              },
+              {
+                "seat": 2,
+                "card": "H2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DA"
+              },
+              {
+                "seat": 2,
+                "card": "D2"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "S3"
+              },
+              {
+                "seat": 2,
+                "card": "S8"
+              },
+              {
+                "seat": 3,
+                "card": "S9"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SQ"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              },
+              {
+                "seat": 2,
+                "card": "D5"
+              },
+              {
+                "seat": 3,
+                "card": "D4"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SK"
+              },
+              {
+                "seat": 1,
+                "card": "S5"
+              },
+              {
+                "seat": 2,
+                "card": "D8"
+              },
+              {
+                "seat": 3,
+                "card": "D6"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SA"
+              },
+              {
+                "seat": 1,
+                "card": "S6"
+              },
+              {
+                "seat": 2,
+                "card": "C3"
+              },
+              {
+                "seat": 3,
+                "card": "D7"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H5"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              },
+              {
+                "seat": 2,
+                "card": "HQ"
+              },
+              {
+                "seat": 3,
+                "card": "HA"
+              }
+            ],
+            "winner": 1
+          },
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "DK"
+              },
+              {
+                "seat": 2,
+                "card": "DJ"
+              },
+              {
+                "seat": 3,
+                "card": "D9"
+              },
+              {
+                "seat": 0,
+                "card": "H6"
+              }
+            ],
+            "winner": 1
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "DQ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C6",
+          "play:C9",
+          "play:CA",
+          "play:CQ",
+          "play:HK"
+        ]
+      },
+      "packetHash": "19ba9c2c0c89f83e19b68cfed9758a216e3bbd0f173ded4f29c92db7f3143ca0",
+      "deliveryText": "Game=spades-solo; seat=2 Jason; dealer=3; teams=[[0],[1],[2],[3]]; phase=play; hand=C6 C9 CQ CA HK; bids=10,4,2,1; tricks=5,3,0,0; scores=0,0,0,0; bags=0,0,0,0; broken=true; history=1[0:H4 1:S2 2:H2 3:H3]winner1/2[1:DA 2:D2 3:D3 0:S10]winner0/3[0:SJ 1:S3 2:S8 3:S9]winner0/4[0:SQ 1:S4 2:D5 3:D4]winner0/5[0:SK 1:S5 2:D8 3:D6]winner0/6[0:SA 1:S6 2:C3 3:D7]winner0/7[0:H5 1:S7 2:HQ 3:HA]winner1/8[1:DK 2:DJ 3:D9 0:H6]winner1; current=1:DQ; legal=play:C6 play:C9 play:CA play:CQ play:HK.",
+      "deliveryHash": "5fc6bca8cb93b1142b9515795f2e623d567fca9115fee69d6ab8be40292808d7",
+      "rawResponse": "PLAY: C6\n\nI’m void in diamonds and cannot take this trick. Discarding the club six preserves my club ace and heart king, both unbeaten now that all spades and the heart ace are gone.\r\n",
+      "responseHash": "dc9d60b768b232f4906801072f1d46fa7acf98fe0fa893c6a6c76f3ee05e8ac7",
+      "justification": "I’m void in diamonds and cannot take this trick. Discarding the club six preserves my club ace and heart king, both unbeaten now that all spades and the heart ace are gone.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "C6"
+      },
+      "forced": false
+    }
+  ],
+  "rejections": [],
+  "invocationTemplateHash": "350993a4c073d87293d720c9b2e150fd573c1dc78b29aa5968dd0f0be900a4ac",
+  "result": {
+    "phase": "play",
+    "turn": 3,
+    "bids": [
+      10,
+      4,
+      2,
+      1
+    ],
+    "tricks": [
+      5,
+      3,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "history": [
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "S2"
+          },
+          {
+            "seat": 2,
+            "card": "H2"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "DA"
+          },
+          {
+            "seat": 2,
+            "card": "D2"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          },
+          {
+            "seat": 0,
+            "card": "S10"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S3"
+          },
+          {
+            "seat": 2,
+            "card": "S8"
+          },
+          {
+            "seat": 3,
+            "card": "S9"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SQ"
+          },
+          {
+            "seat": 1,
+            "card": "S4"
+          },
+          {
+            "seat": 2,
+            "card": "D5"
+          },
+          {
+            "seat": 3,
+            "card": "D4"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SK"
+          },
+          {
+            "seat": 1,
+            "card": "S5"
+          },
+          {
+            "seat": 2,
+            "card": "D8"
+          },
+          {
+            "seat": 3,
+            "card": "D6"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SA"
+          },
+          {
+            "seat": 1,
+            "card": "S6"
+          },
+          {
+            "seat": 2,
+            "card": "C3"
+          },
+          {
+            "seat": 3,
+            "card": "D7"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H5"
+          },
+          {
+            "seat": 1,
+            "card": "S7"
+          },
+          {
+            "seat": 2,
+            "card": "HQ"
+          },
+          {
+            "seat": 3,
+            "card": "HA"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "DK"
+          },
+          {
+            "seat": 2,
+            "card": "DJ"
+          },
+          {
+            "seat": 3,
+            "card": "D9"
+          },
+          {
+            "seat": 0,
+            "card": "H6"
+          }
+        ],
+        "winner": 1
+      }
+    ]
+  }
+}

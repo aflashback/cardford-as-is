@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "agent-lab-candidates-1.0.0",
+  "status": "discovered-not-strategically-validated",
+  "partition": "development",
+  "cases": [
+    {
+      "id": "TWO-SUIT-01", "episodeId": "solo-spread", "seq": [1, 13, 17, 21, 28, 29], "families": ["S13", "SP-T06"],
+      "question": "How should five certain trump winners and eight unestablished hearts affect bidding and the order of suit development?",
+      "observed": "Maya bids9 and interleaves two trump rounds, another heart lead, a trump entry and a final trump lead.",
+      "fact": "Each of Maya's five top spades must win its own trick in this ruleset; extra heart tricks depend on the remaining distribution and play.",
+      "exception": "A heart-void opponent with longer trump can outlast the draw; partner's ruffs or Nil may change the cost of drawing.",
+      "nextTest": "Fresh complete continuations across companion deals, bids and seating; no hidden-distribution label in the player's input.",
+      "coachCandidate": "Count five trump winners; test whether the hearts can become winners."
+    },
+    {
+      "id": "TWO-SUIT-02", "episodeId": "solo-spread", "seq": [22, 25, 26, 27], "families": ["S12", "S14"],
+      "question": "How does reaching the contract change the value of retaining honors?",
+      "observed": "Leo has made his bid and seeks to avoid bags; Jason still needs a trick.",
+      "exception": "A completed personal contract does not by itself establish the best match-level action; setting opponents and future bag thresholds matter.",
+      "nextTest": "Replay this public shape with changed scores, bags and contract needs; use the exact variant scorer.",
+      "coachCandidate": "Compare your remaining contract need with the effect on opponents."
+    },
+    {
+      "id": "TWO-SUIT-03", "episodeId": "solo-spread", "seq": [31, 32, 34, 35, 39, 43], "families": ["SP-X01", "SP-X02"],
+      "question": "When can public voids and card counts disprove a future winning route?",
+      "observed": "Jason still describes his queens as potential winners after the sweep is provable, then recognizes it later.",
+      "fact": "records/public-proof.json proves the six-heart sweep from Jason's seq31 packet alone.",
+      "exception": "An unaccounted trump or an unproved club/diamond void invalidates this proof; the earlier seq23 packet does not prove it.",
+      "nextTest": "Attach explicit premises to explanation claims; add reachable counterexamples with retained trump or another lead route.",
+      "coachCandidate": "The remaining hearts control the hand; your queens cannot gain the lead."
+    },
+    {
+      "id": "TWO-SUIT-04", "episodeId": "solo-spread", "seq": [34, 36, 38, 40, 42, 44, 46, 48, 50], "families": ["SP-X01"],
+      "question": "Should the coach distinguish between outcome-equivalent discards?",
+      "fact": "After the public sweep proof, these defenders cannot alter the remaining trick winners with any legal discard.",
+      "exception": "Do not generalize rank equivalence when a remaining suit entry or trump can change control.",
+      "nextTest": "Mark the acceptable action set, test a counterexample, and suppress repeated cues when no meaningful choice remains.",
+      "coachCandidate": "Several discards have the same result."
+    }
+  ]
+}

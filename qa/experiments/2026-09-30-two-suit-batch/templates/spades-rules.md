@@ -1,0 +1,11 @@
+# Spades rules template v1
+
+Four seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.
+
+Follow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.
+
+Competition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.
+
+For each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.
+
+Add the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.

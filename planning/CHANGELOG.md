@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-09-30 — Expanded two-suit scenario collection
+
+Owner authorized continuing beyond the initial pilot. The [two-suit batch](../qa/experiments/2026-09-30-two-suit-batch/README.md) freezes six authored hands: three companion distributions paired across Solo and Partners, with Maya's same five top spades and eight hearts. Fresh text-only player contexts receive only seat information. Saved records and audits distinguish complete, incomplete and not-run episodes. New review material separates valid actions, invalid explanations and equivalent choices. This is offline development evidence; runtime policy and provider activation are unchanged. No Jev calls or strength/probability claims are implied.
+
 ## 2026-09-30 — Authored-deal scenario research
 
 The owner requested primary research and text-only player simulations on deliberate Solo and Partners deals. The [scenario lab](../qa/experiments/2026-09-30-agent-scenario-lab/README.md) stores the protocol, separate player packets, exact responses, production-engine replay checks and review candidates. The [follow-up plan](../qa/experiments/2026-09-30-agent-scenario-lab/follow-up-plan.md) refines the existing evaluation work. Runtime behavior, defaults and provider activation are unchanged; no Jev call is part of this experiment. These records support scenario discovery, not claims of strategic strength or validated probabilities. See the lab results for completed checks and limits.
