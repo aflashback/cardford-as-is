@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-09-30
+
+Added [automated authored-hand research collection](qa/experiments/2026-09-30-expanded-batch/results.md), exact prompt/response evidence, an owner-directed Sol-to-Luna model switch, preserved historical choices, and checks of specific public-card explanations. Completion is reported per hand; runtime rules, bots and coaching policies are unchanged.
+
 ## Unreleased — 2026-09-29
 
 Owner-directed [CR-STRAT-009](planning/decisions/CR-STRAT-009-game-plan-and-strength-gate.md): generic game plan layer, frozen Spades baseline, selectable Spades plan profiles, case store and strength gate. Default policies, rules, scoring and the Jev boundary are unchanged.

@@ -1,0 +1,116 @@
+{
+  "episodeId": "partners-spread-late-score-bags",
+  "status": "partial",
+  "complete": false,
+  "accepted": 19,
+  "rejected": 0,
+  "forced": 1,
+  "boundaryChecks": 19,
+  "decisionsWithTransportEvidence": 19,
+  "tricks": 3,
+  "uniquePlayed": 12,
+  "result": {
+    "phase": "play",
+    "turn": 3,
+    "bids": [
+      5,
+      0,
+      1,
+      5
+    ],
+    "tricks": [
+      2,
+      0,
+      0,
+      1
+    ],
+    "scores": [
+      468,
+      492,
+      468,
+      492
+    ],
+    "bags": [
+      9,
+      1,
+      9,
+      1
+    ],
+    "history": [
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "H2"
+          },
+          {
+            "seat": 2,
+            "card": "H3"
+          },
+          {
+            "seat": 3,
+            "card": "HA"
+          }
+        ],
+        "winner": 3
+      },
+      {
+        "plays": [
+          {
+            "seat": 3,
+            "card": "C4"
+          },
+          {
+            "seat": 0,
+            "card": "S10"
+          },
+          {
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "seat": 2,
+            "card": "C3"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SA"
+          },
+          {
+            "seat": 1,
+            "card": "S2"
+          },
+          {
+            "seat": 2,
+            "card": "S3"
+          },
+          {
+            "seat": 3,
+            "card": "S4"
+          }
+        ],
+        "winner": 0
+      }
+    ],
+    "handResult": null
+  },
+  "sourceCommit": "de3a843bb20a95c383c2f6cc2c052c6a3438a0de",
+  "configuredModel": "gpt-6-luna",
+  "modelCounts": {
+    "gpt-6.1-sol": 0,
+    "gpt-6-luna": 19
+  },
+  "reasoningEffort": "xhigh",
+  "transportMode": "fresh-stateless-per-decision",
+  "jevCalls": 0,
+  "scope": "Transcript integrity, legal replay, card conservation, trick resolution, score arithmetic and own-information projection. No claim of model quality or exact backend snapshot."
+}

@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "episode": "partners-void-partner-leads",
+      "seq": 31,
+      "fact": "SA has already been played. No spade can overtake the current SK.",
+      "input": "seat packet only"
+    },
+    {
+      "episode": "partners-void-partner-leads",
+      "seq": 35,
+      "fact": "Sarah has publicly failed to follow a spade lead, so she cannot trump this trick.",
+      "input": "seat packet only"
+    },
+    {
+      "episode": "solo-void-trumps-at-jason",
+      "seq": 33,
+      "fact": "All thirteen spades have been played. Nobody can trump a later lead.",
+      "input": "seat packet only"
+    },
+    {
+      "episode": "solo-void-trumps-at-jason",
+      "seq": 37,
+      "fact": "All thirteen spades have been played. Nobody can trump a later lead.",
+      "input": "seat packet only"
+    },
+    {
+      "episode": "solo-void-trumps-at-jason",
+      "seq": 35,
+      "fact": "Maya owns every remaining heart, has only hearts and cannot win the current other-suit trick. Others cannot lead a heart, so she cannot regain the lead this hand.",
+      "input": "seat packet only"
+    },
+    {
+      "episode": "partners-void-trumps-at-jason",
+      "seq": 21,
+      "fact": "Both opponents have proved they hold no spades; Jason has proved he holds no hearts. All three spades outside Maya own hand must belong to Jason. Leading another spade makes her partner spend one.",
+      "input": "seat packet only",
+      "implication": "Compare a heart lead and a later return of the lead; no optimal-action claim."
+    }
+  ],
+  "scope": "Six specific public-information checks; no general error rate or strategic ranking."
+}

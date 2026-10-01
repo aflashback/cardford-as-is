@@ -1,0 +1,693 @@
+{
+  "schemaVersion": "agent-lab-deals-1.0.0",
+  "names": [
+    "Maya",
+    "Leo",
+    "Jason",
+    "Sarah"
+  ],
+  "episodes": [
+    {
+      "id": "solo-void-partner-leads",
+      "mode": "spades-solo",
+      "dealer": 1,
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "changed bid and first-lead order",
+        "Maya bids after Jason and Sarah",
+        "individual objective"
+      ],
+      "hands": [
+        [
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "id": "partners-void-partner-leads",
+      "mode": "spades-partners",
+      "dealer": 1,
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "changed bid and first-lead order",
+        "teammate Jason bids and leads first",
+        "team objective"
+      ],
+      "hands": [
+        [
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "id": "solo-void-trumps-at-jason",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "long-trump holding at Jason instead of Leo",
+        "Maya has unchanged opening observation",
+        "individual objective"
+      ],
+      "hands": [
+        [
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "id": "partners-void-trumps-at-jason",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "long-trump holding at teammate instead of opponent",
+        "Maya has unchanged opening observation",
+        "partner information remains hidden"
+      ],
+      "hands": [
+        [
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "id": "solo-spread-late-score-bags",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "scores": [
+        468,
+        492,
+        450,
+        475
+      ],
+      "bags": [
+        9,
+        1,
+        0,
+        1
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "synthetic late-match stress",
+        "Maya one bag from penalty",
+        "opponent near 500",
+        "individual objective"
+      ],
+      "hands": [
+        [
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "S2",
+          "S5",
+          "S8"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "HK",
+          "S3",
+          "S6",
+          "S9"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "CA",
+          "D4",
+          "D7",
+          "D10",
+          "DK",
+          "DA",
+          "HA",
+          "S4",
+          "S7"
+        ]
+      ]
+    },
+    {
+      "id": "partners-spread-late-score-bags",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "scores": [
+        468,
+        492,
+        468,
+        492
+      ],
+      "bags": [
+        9,
+        1,
+        9,
+        1
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "synthetic late-match stress",
+        "Maya and Jason share nine team bags",
+        "opponent team near 500",
+        "team objective"
+      ],
+      "hands": [
+        [
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "S2",
+          "S5",
+          "S8"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "HK",
+          "S3",
+          "S6",
+          "S9"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "CA",
+          "D4",
+          "D7",
+          "D10",
+          "DK",
+          "DA",
+          "HA",
+          "S4",
+          "S7"
+        ]
+      ]
+    },
+    {
+      "id": "solo-spread-honor-gap",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "Maya has five spades but not the five highest",
+        "small rank-swap counterfactual to spread",
+        "individual objective"
+      ],
+      "hands": [
+        [
+          "S9",
+          "SJ",
+          "S7",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "S2",
+          "S5",
+          "S8"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "HK",
+          "S3",
+          "S6",
+          "S10"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "CA",
+          "D4",
+          "D7",
+          "D10",
+          "DK",
+          "DA",
+          "HA",
+          "S4",
+          "SQ"
+        ]
+      ]
+    },
+    {
+      "id": "partners-spread-honor-gap",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "origin": "planned authored stress fixture; not a played or reachable match-prefix claim",
+      "intendedCoverage": [
+        "Maya has five spades but not the five highest",
+        "teammate holds S10 and opponent holds SQ",
+        "no private ownership in Maya packet"
+      ],
+      "hands": [
+        [
+          "S9",
+          "SJ",
+          "S7",
+          "SK",
+          "SA",
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ"
+        ],
+        [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "S2",
+          "S5",
+          "S8"
+        ],
+        [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "HK",
+          "S3",
+          "S6",
+          "S10"
+        ],
+        [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "CA",
+          "D4",
+          "D7",
+          "D10",
+          "DK",
+          "DA",
+          "HA",
+          "S4",
+          "SQ"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "episodeId": "partners-void-trumps-at-jason",
+  "status": "partial",
+  "complete": false,
+  "accepted": 44,
+  "rejected": 0,
+  "forced": 5,
+  "boundaryChecks": 44,
+  "decisionsWithTransportEvidence": 44,
+  "tricks": 10,
+  "uniquePlayed": 40,
+  "result": {
+    "phase": "play",
+    "turn": 3,
+    "bids": [
+      8,
+      3,
+      4,
+      3
+    ],
+    "tricks": [
+      5,
+      0,
+      4,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "history": [
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "HJ"
+          },
+          {
+            "seat": 1,
+            "card": "HQ"
+          },
+          {
+            "seat": 2,
+            "card": "S2"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "winner": 2
+      },
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "DA"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          },
+          {
+            "seat": 0,
+            "card": "SA"
+          },
+          {
+            "seat": 1,
+            "card": "D2"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SK"
+          },
+          {
+            "seat": 1,
+            "card": "S8"
+          },
+          {
+            "seat": 2,
+            "card": "S3"
+          },
+          {
+            "seat": 3,
+            "card": "S9"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SQ"
+          },
+          {
+            "seat": 1,
+            "card": "H2"
+          },
+          {
+            "seat": 2,
+            "card": "S4"
+          },
+          {
+            "seat": 3,
+            "card": "C4"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "S10"
+          },
+          {
+            "seat": 1,
+            "card": "C3"
+          },
+          {
+            "seat": 2,
+            "card": "S5"
+          },
+          {
+            "seat": 3,
+            "card": "D4"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "D5"
+          },
+          {
+            "seat": 2,
+            "card": "S6"
+          },
+          {
+            "seat": 3,
+            "card": "D6"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "seat": 2,
+            "card": "S7"
+          },
+          {
+            "seat": 3,
+            "card": "HA"
+          }
+        ],
+        "winner": 2
+      },
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "DK"
+          },
+          {
+            "seat": 3,
+            "card": "D7"
+          },
+          {
+            "seat": 0,
+            "card": "H5"
+          },
+          {
+            "seat": 1,
+            "card": "D8"
+          }
+        ],
+        "winner": 2
+      },
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "DQ"
+          },
+          {
+            "seat": 3,
+            "card": "D9"
+          },
+          {
+            "seat": 0,
+            "card": "H6"
+          },
+          {
+            "seat": 1,
+            "card": "DJ"
+          }
+        ],
+        "winner": 2
+      },
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "C2"
+          },
+          {
+            "seat": 3,
+            "card": "CK"
+          },
+          {
+            "seat": 0,
+            "card": "H7"
+          },
+          {
+            "seat": 1,
+            "card": "C6"
+          }
+        ],
+        "winner": 3
+      }
+    ],
+    "handResult": null
+  },
+  "sourceCommit": "de3a843bb20a95c383c2f6cc2c052c6a3438a0de",
+  "configuredModel": "gpt-6-luna",
+  "modelCounts": {
+    "gpt-6.1-sol": 0,
+    "gpt-6-luna": 44
+  },
+  "reasoningEffort": "xhigh",
+  "transportMode": "fresh-stateless-per-decision",
+  "jevCalls": 0,
+  "scope": "Transcript integrity, legal replay, card conservation, trick resolution, score arithmetic and own-information projection. No claim of model quality or exact backend snapshot."
+}

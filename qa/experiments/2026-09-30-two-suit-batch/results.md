@@ -28,7 +28,7 @@ Production replay, packet/response hashes and hidden-hand projection checks are 
 
 No runtime bot/coach changes, Jev calls or OpenRouter usage. Provider: offline frontier subagents; exact model snapshot unavailable. No observed player tool actions; instruction-only restrictions and manual routing do not prove a hard sandbox. Corrected transport incidents are retained in transport-incidents.json.
 
-Collection stops at these six hands at the owner's request. Manual-routing corrections and reconstructed player context are disclosed in transport-incidents.json and continuation.md; no scripted fallback filled missing moves.
+This original batch ends at six completed hands. The owner subsequently resumed the eight proposed cases in the [expanded batch](../2026-09-30-expanded-batch/results.md). Manual-routing corrections and reconstructed player context in this original batch are disclosed in transport-incidents.json and continuation.md; no scripted fallback filled missing moves.
 
 ## Evidence
 
@@ -36,4 +36,4 @@ Collection stops at these six hands at the owner's request. Manual-routing corre
 - [Deals and intended coverage](design.md), [frozen protocol](README.md), [raw records and integrity](records/integrity.json), [unplayed next-batch proposal](next-batch-proposal.md).
 - Repeat: node qa/experiments/2026-09-30-two-suit-batch/referee.mjs audit EPISODE_ID; then node qa/experiments/2026-09-30-two-suit-batch/verify-records.mjs; then node qa/experiments/2026-09-30-two-suit-batch/check-public-proof.mjs; then node qa/experiments/2026-09-30-two-suit-batch/write-summary.mjs.
 
-Next: owner chooses whether to collect more controlled hands or review decisions and design the next evaluation phase. These discovery records alone do not justify runtime promotion.
+Follow-up: use the expanded batch's current records and continuation point, then review consequential choices before runtime promotion. These discovery records alone do not justify runtime promotion.

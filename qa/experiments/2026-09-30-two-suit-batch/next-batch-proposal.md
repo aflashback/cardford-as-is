@@ -1,6 +1,6 @@
 # Next authored Spades sample — proposal only
 
-**Status: eight planned, zero played.** The original six episodes are complete; collection is paused at the owner's request. This file proposes four matched Solo/Partners pairs for development discovery. No bid, trick count, strategy verdict, probability, or coaching claim follows from these fixtures. The original `deals.json`, records, and frozen text-player protocol remain unchanged.
+**Status superseded by [expanded collection results](../2026-09-30-expanded-batch/results.md).** The owner resumed these eight cases. This document and its JSON remain the original fixture definitions; the JSON's `planned-unplayed` label is historical. Actual completed, partial and unstarted counts come from the expanded records. The original six hands remain frozen. No optimal-bid, probability or strength claim follows from an authored setup alone.
 
 ## What each pair asks
 
@@ -21,7 +21,7 @@ For controlled style robustness later, reuse the *same* materialized deal, deale
 
 ## Collection and interpretation
 
-1. Await the owner's choice to resume collection or review the six completed hands first. Keep the original batch frozen.
+1. Use the expanded collection's saved continuation point. Keep the original six-hand batch and these fixture definitions frozen.
 2. Materialize the next proposals and run engine/deck validation. Use fresh opaque player task names. Give each player only the frozen rules, its own hand, public state, and legal choices. Never include fixture ID, intended lesson, transforms, another hand, or another player's reason.
 3. Save every accepted decision, public packet, explanation, trick, and score. Replay/audit the full hand. Count invalid or missing responses separately; do not silently substitute bot moves.
 4. Review a few consequential bid/play moments before seeing the bot or coach answer. Record several reasonable alternatives, publicly provable facts, questionable explanations, and whether a short cue would help. A realized win does not prove the move was best.

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "owner-directed-model-switch-1.0.0",
+  "reason": "Owner requested GPT-6 Luna at extra-high and retained the one-hour limit.",
+  "previousModel": "gpt-6.1-sol",
+  "nextModel": "gpt-6-luna",
+  "reasoningEffort": "xhigh",
+  "acceptedSolDecisions": 49,
+  "prefixes": {
+    "solo-void-partner-leads": 13,
+    "partners-void-partner-leads": 20,
+    "solo-void-trumps-at-jason": 16
+  },
+  "cancelledInFlightRequests": 3,
+  "cancelledUsage": "unavailable",
+  "handling": "Stopped the identified experiment runner and current player requests. No response from cancelled requests was accepted. Resume each saved seat packet with Luna. Preserve the initial referee and exact Sol prefix records in this directory.",
+  "interpretation": "The three continued hands have mixed model provenance and cannot serve as clean Sol versus Luna comparisons."
+}

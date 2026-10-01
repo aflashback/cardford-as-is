@@ -1,0 +1,52 @@
+{
+  "episodeId": "solo-spread-honor-gap",
+  "status": "not-run",
+  "complete": false,
+  "accepted": 0,
+  "rejected": 0,
+  "forced": 0,
+  "boundaryChecks": 0,
+  "decisionsWithTransportEvidence": 0,
+  "tricks": 0,
+  "uniquePlayed": 0,
+  "result": {
+    "phase": "bid",
+    "turn": 0,
+    "bids": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "history": [],
+    "handResult": null
+  },
+  "sourceCommit": "de3a843bb20a95c383c2f6cc2c052c6a3438a0de",
+  "configuredModel": "gpt-6-luna",
+  "modelCounts": {
+    "gpt-6.1-sol": 0,
+    "gpt-6-luna": 0
+  },
+  "reasoningEffort": "xhigh",
+  "transportMode": "fresh-stateless-per-decision",
+  "jevCalls": 0,
+  "scope": "Transcript integrity, legal replay, card conservation, trick resolution, score arithmetic and own-information projection. No claim of model quality or exact backend snapshot."
+}

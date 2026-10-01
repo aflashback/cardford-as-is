@@ -2,7 +2,7 @@
 
 Owner-authorized follow-up to the [initial pilot](../2026-09-30-agent-scenario-lab/README.md). Six planned complete hands: three authored distributions, paired across Solo and Partners. Maya's thirteen cards, opening seat and zero starting scores/bags are fixed. See [design](design.md) for full fixtures and limitations; players never receive it.
 
-**Actual completion and findings:** [results](results.md). **Paused collection and choices:** [continuation](continuation.md). The separate [eight-hand proposal](next-batch-proposal.md) is unplayed.
+**Actual completion and findings:** [results](results.md). The owner resumed the separate [eight-hand proposal](next-batch-proposal.md); see [expanded collection results](../2026-09-30-expanded-batch/results.md) for its actual status. This original six-hand batch remains frozen.
 
 ## Frozen protocol
 

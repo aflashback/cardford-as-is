@@ -1,0 +1,339 @@
+{
+  "episodeId": "solo-void-partner-leads",
+  "status": "complete",
+  "complete": true,
+  "accepted": 56,
+  "rejected": 0,
+  "forced": 10,
+  "boundaryChecks": 56,
+  "decisionsWithTransportEvidence": 56,
+  "tricks": 13,
+  "uniquePlayed": 52,
+  "result": {
+    "phase": "hand-end",
+    "turn": 1,
+    "bids": [
+      9,
+      4,
+      2,
+      2
+    ],
+    "tricks": [
+      5,
+      6,
+      0,
+      2
+    ],
+    "scores": [
+      -90,
+      42,
+      -20,
+      20
+    ],
+    "bags": [
+      0,
+      2,
+      0,
+      0
+    ],
+    "history": [
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "CA"
+          },
+          {
+            "seat": 3,
+            "card": "C4"
+          },
+          {
+            "seat": 0,
+            "card": "S10"
+          },
+          {
+            "seat": 1,
+            "card": "C2"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S2"
+          },
+          {
+            "seat": 2,
+            "card": "S8"
+          },
+          {
+            "seat": 3,
+            "card": "S9"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SQ"
+          },
+          {
+            "seat": 1,
+            "card": "S3"
+          },
+          {
+            "seat": 2,
+            "card": "C3"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SK"
+          },
+          {
+            "seat": 1,
+            "card": "S4"
+          },
+          {
+            "seat": 2,
+            "card": "D2"
+          },
+          {
+            "seat": 3,
+            "card": "D4"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SA"
+          },
+          {
+            "seat": 1,
+            "card": "S5"
+          },
+          {
+            "seat": 2,
+            "card": "H2"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "C5"
+          },
+          {
+            "seat": 2,
+            "card": "HQ"
+          },
+          {
+            "seat": 3,
+            "card": "HA"
+          }
+        ],
+        "winner": 3
+      },
+      {
+        "plays": [
+          {
+            "seat": 3,
+            "card": "D6"
+          },
+          {
+            "seat": 0,
+            "card": "H5"
+          },
+          {
+            "seat": 1,
+            "card": "DA"
+          },
+          {
+            "seat": 2,
+            "card": "D5"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "DQ"
+          },
+          {
+            "seat": 2,
+            "card": "D8"
+          },
+          {
+            "seat": 3,
+            "card": "D7"
+          },
+          {
+            "seat": 0,
+            "card": "H6"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "S6"
+          },
+          {
+            "seat": 2,
+            "card": "C6"
+          },
+          {
+            "seat": 3,
+            "card": "C7"
+          },
+          {
+            "seat": 0,
+            "card": "H7"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "S7"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          },
+          {
+            "seat": 3,
+            "card": "D9"
+          },
+          {
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "CQ"
+          },
+          {
+            "seat": 3,
+            "card": "CK"
+          },
+          {
+            "seat": 0,
+            "card": "H9"
+          }
+        ],
+        "winner": 3
+      },
+      {
+        "plays": [
+          {
+            "seat": 3,
+            "card": "D10"
+          },
+          {
+            "seat": 0,
+            "card": "H10"
+          },
+          {
+            "seat": 1,
+            "card": "DK"
+          },
+          {
+            "seat": 2,
+            "card": "DJ"
+          }
+        ],
+        "winner": 1
+      },
+      {
+        "plays": [
+          {
+            "seat": 1,
+            "card": "CJ"
+          },
+          {
+            "seat": 2,
+            "card": "HK"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          },
+          {
+            "seat": 0,
+            "card": "HJ"
+          }
+        ],
+        "winner": 1
+      }
+    ],
+    "handResult": {
+      "points": [
+        -90,
+        42,
+        -20,
+        20
+      ],
+      "bags": [
+        0,
+        2,
+        0,
+        0
+      ]
+    }
+  },
+  "sourceCommit": "de3a843bb20a95c383c2f6cc2c052c6a3438a0de",
+  "configuredModel": "mixed-per-decision",
+  "modelCounts": {
+    "gpt-6.1-sol": 13,
+    "gpt-6-luna": 43
+  },
+  "reasoningEffort": "xhigh",
+  "transportMode": "fresh-stateless-per-decision",
+  "jevCalls": 0,
+  "scope": "Transcript integrity, legal replay, card conservation, trick resolution, score arithmetic and own-information projection. No claim of model quality or exact backend snapshot."
+}

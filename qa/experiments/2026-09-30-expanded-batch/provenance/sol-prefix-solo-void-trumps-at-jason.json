@@ -1,0 +1,2784 @@
+{
+  "schemaVersion": "expanded-agent-lab-record-2.0.0",
+  "episodeId": "solo-void-trumps-at-jason",
+  "sourceCommit": "de3a843bb20a95c383c2f6cc2c052c6a3438a0de",
+  "frozenInputs": {
+    "qa/experiments/2026-09-30-expanded-batch/referee.mjs": "8c6d0ab5a2402d347624b3556219a3f56b247d8091266c0b6db69be1a964e297",
+    "qa/experiments/2026-09-30-expanded-batch/deals.json": "2fd1e5d56a1d49df81ff95ae50e876c59a29312f3e4ecb66c0af8170a1400ffc",
+    "qa/experiments/2026-09-30-two-suit-batch/templates/player.md": "217c2f65e8e694515462a6facb1a7ddc7be9eee612d3db3ea48f9d5a67fce624",
+    "qa/experiments/2026-09-30-two-suit-batch/templates/spades-rules.md": "83db70fece7081c6978ca8f2b9f4f6501f4c91b86449b935ff46a18ed8d93f16",
+    "qa/experiments/2026-09-30-two-suit-batch/templates/invocation.txt": "350993a4c073d87293d720c9b2e150fd573c1dc78b29aa5968dd0f0be900a4ac",
+    "qa/experiments/2026-09-30-two-suit-batch/materialize-next-batch.mjs": "6a71bf4afb5c56fab4b6a324eeee53338d389104ee12e1796fe4d276b317412b",
+    "qa/experiments/2026-09-30-two-suit-batch/next-batch-proposal.json": "23347e2fd868385b876564f331331bd3dc26b9361202025ceb53aa615134f979",
+    "qa/experiments/2026-09-30-two-suit-batch/deals.json": "f9f0558ad89c9c0a3c86528549fffc8bc994124b760d8e69865775eea959161b",
+    "web/server/game/index.ts": "af94b466c0eff667657f546dd486c7ebae4e5a853e4b03fd5166b6fde8341586",
+    "web/server/game/cards.ts": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b",
+    "web/server/game/rules.ts": "3827d8b36c5ed7f81714eb0d2a5d2b2ea86aac6cae460fc9ba53bb4eee2bd830",
+    "web/server/game/kernel/types.ts": "52315676d8dda75160e9445a4a5fbd977cfaa84214cbc26485dac9f3f3bb0937",
+    "web/server/game/spades/score.ts": "9e2a97cf28d1c99750315c28a6955790ff3470d6c051e975f16d6a1095d279dd",
+    "web/server/game/hearts/score.ts": "afd66c4dcf5bad2cbbb96beca3238de1e536411610839ea3601531d69a3d6192",
+    "web/server/observations/index.ts": "6ffff02121a3ee8821c0c1c8ee7c03cb02e54c57c343fcb805adb02db046ad82",
+    "web/server/observations/types.ts": "0a073cec3252ccb80d71f8059e46ca7af97e274039f6b88cbd997a5a11de8975"
+  },
+  "frozenInputsHash": "697c949650bd62c984e555ade114b8a864ce34c031a5feb8499e37ff981b6274",
+  "dealHash": "dfd1c487d705c51a4a6505cba62238c109035924b7d92c0e96566c796d24f6ec",
+  "configurationHash": "1ffea0e974113a4816faf99449ae92d56413a986d3220108c8fa7bc536327904",
+  "promptTemplateHash": "217c2f65e8e694515462a6facb1a7ddc7be9eee612d3db3ea48f9d5a67fce624",
+  "rulesTemplateHash": "83db70fece7081c6978ca8f2b9f4f6501f4c91b86449b935ff46a18ed8d93f16",
+  "provider": "offline-codex-cli-research",
+  "configuredModel": "gpt-6.1-sol",
+  "reasoningEffort": "xhigh",
+  "observedModel": "not independently attested; inspect supplied transport metadata",
+  "transportMode": "fresh-stateless-per-decision",
+  "jevCalls": 0,
+  "decisions": [
+    {
+      "seq": 1,
+      "agentId": "cli_maya",
+      "agentIdHash": "33de50ce7aa662a368461e37138d8b2a9b753d5749645729eda3082a5f9407d5",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "turn": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13"
+        ]
+      },
+      "packetHash": "799cc452c7fcb2f6f3f7c9182f8b602aed148412c479b2b69c5db464251e610d",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Maya, seat 0, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Maya\",\"seat\":0,\"turn\":0,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"bid\",\"hand\":[\"H4\",\"H5\",\"H6\",\"H7\",\"H8\",\"H9\",\"H10\",\"HJ\",\"S10\",\"SJ\",\"SQ\",\"SK\",\"SA\"],\"handSizes\":[13,13,13,13],\"bids\":[null,null,null,null],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[],\"spadesBroken\":false,\"legalActions\":[\"bid:0\",\"bid:1\",\"bid:2\",\"bid:3\",\"bid:4\",\"bid:5\",\"bid:6\",\"bid:7\",\"bid:8\",\"bid:9\",\"bid:10\",\"bid:11\",\"bid:12\",\"bid:13\"]}\n",
+      "deliveredPromptHash": "371f9e3b8fb6d74f8ee699b38cb15e52301d7f0c10e075b2321ac6bac60526c4",
+      "rawResponse": "BID: 10\n\nThe five highest spades provide strong trump control, while my club and diamond voids offer chances to ruff and gain the lead. Once lower trumps are drawn, my eight hearts can produce several winners. Ten allows room for losses to the missing heart honors, though early opposing ruffs remain a risk.",
+      "rawResponseHash": "a14ac7880afcac891b536c8f4f1b37eceb310d730f303a7e7cc5e4f7264ec345",
+      "justification": "The five highest spades provide strong trump control, while my club and diamond voids offer chances to ruff and gain the lead. Once lower trumps are drawn, my eight hearts can produce several winners. Ten allows room for losses to the missing heart honors, though early opposing ruffs remain a risk.",
+      "action": {
+        "kind": "bid",
+        "seat": 0,
+        "bid": 10
+      },
+      "actionHash": "fa6a69a388bcb9e755e76e9fef4d2d6c891276d94dfa53e8a9553b69d73c32a9",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:04:54.381Z",
+        "finishedAt": "2026-10-01T00:06:49.133Z",
+        "threadId": "01a0f4c7-4293-78c0-b087-aea3cdca31f1",
+        "exitCode": 0,
+        "timedOut": false,
+        "deliveredPromptHash": "371f9e3b8fb6d74f8ee699b38cb15e52301d7f0c10e075b2321ac6bac60526c4",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11106,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2619,
+          "reasoning_output_tokens": 2545
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:04:54.551928Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-01-1.json",
+        "evidenceHash": "1cb0601c7aea64377bd2f5cb25962d4360aec452788e89172faab6357d8a4ecd"
+      },
+      "transportMetadataHash": "bb7d3ce9fcdf91f57da6e55727bac16ce0f3f43508a2fb26f8afaf32cfb4212d",
+      "beforeStateHash": "8e47a8cff9ab5ea62a54b1a220988c3702b347cfef3a5b51dd64066e642330a0",
+      "afterStateHash": "4d497e6242eee5aa891be14cb3660a78e5ed83825c91ca4cfce9b4583bce6b1e"
+    },
+    {
+      "seq": 2,
+      "agentId": "cli_leo",
+      "agentIdHash": "8137f7ef091db0306fda5c336fb79a85f3e1e41dfd79550d1efae3505508fdf2",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "turn": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          10,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13"
+        ]
+      },
+      "packetHash": "567c92fd8161c68994b59841f2e85ef0c44e76841f8bd96acdf6a7e4a26b7f10",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Leo, seat 1, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Leo\",\"seat\":1,\"turn\":1,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"bid\",\"hand\":[\"C3\",\"C6\",\"C9\",\"CQ\",\"CA\",\"D2\",\"D5\",\"D8\",\"DJ\",\"H2\",\"HQ\",\"HK\",\"S8\"],\"handSizes\":[13,13,13,13],\"bids\":[10,null,null,null],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[],\"spadesBroken\":false,\"legalActions\":[\"bid:0\",\"bid:1\",\"bid:2\",\"bid:3\",\"bid:4\",\"bid:5\",\"bid:6\",\"bid:7\",\"bid:8\",\"bid:9\",\"bid:10\",\"bid:11\",\"bid:12\",\"bid:13\"]}\n",
+      "deliveredPromptHash": "138d600b2c6fcf231fa04b09f0706399c9f834fb7ee20f3113e6c47d82a4b181",
+      "rawResponse": "BID: 2\n\nCA and the HK–HQ combination give me a reasonable route to two tricks. CQ could add another, but my lone S8 and weak diamonds limit control. Maya’s bid of 10 favors a conservative contract, although her actual holdings and the remaining opponents’ strength are unknown.",
+      "rawResponseHash": "5280b17d5993adb0be9156db7f6245091d67380f4417ec69b30d716bf546e457",
+      "justification": "CA and the HK–HQ combination give me a reasonable route to two tricks. CQ could add another, but my lone S8 and weak diamonds limit control. Maya’s bid of 10 favors a conservative contract, although her actual holdings and the remaining opponents’ strength are unknown.",
+      "action": {
+        "kind": "bid",
+        "seat": 1,
+        "bid": 2
+      },
+      "actionHash": "f67e74b711efd5a0a176af280ccb34d08dc3818ba1cfdcfaf08be3f1141391a3",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:06:49.148Z",
+        "finishedAt": "2026-10-01T00:07:13.438Z",
+        "threadId": "01a0f4c9-030f-7651-aea0-8f932e97ba0b",
+        "exitCode": 0,
+        "timedOut": false,
+        "deliveredPromptHash": "138d600b2c6fcf231fa04b09f0706399c9f834fb7ee20f3113e6c47d82a4b181",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11105,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 440,
+          "reasoning_output_tokens": 372
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:06:49.364709Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-02-1.json",
+        "evidenceHash": "4f670a32fe734c4fa5c0caaef91498dfbba05e11e10b91787092b2f61e390c64"
+      },
+      "transportMetadataHash": "518bdda47ba0d9089e06a4c48439dab944f44c6fcdafffa08a6f2ea363ec944f",
+      "beforeStateHash": "4d497e6242eee5aa891be14cb3660a78e5ed83825c91ca4cfce9b4583bce6b1e",
+      "afterStateHash": "2f6e589b7d2f9ba72ccf865212d335f242272deb6c511f565552bcc2bf2adf47"
+    },
+    {
+      "seq": 3,
+      "agentId": "cli_jason",
+      "agentIdHash": "78004a8c5cb02f78ab4e0b599b5d148d3ad7c5fc5bfc435750ee8ad4ab1f6c7c",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "turn": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          10,
+          2,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13"
+        ]
+      },
+      "packetHash": "8ed0748aff74be884ff472845d66ef5784fadde757ca88d4f860f76fbb2f4f84",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Jason, seat 2, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Jason\",\"seat\":2,\"turn\":2,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"bid\",\"hand\":[\"C2\",\"C5\",\"C8\",\"CJ\",\"DQ\",\"DK\",\"DA\",\"S2\",\"S3\",\"S4\",\"S5\",\"S6\",\"S7\"],\"handSizes\":[13,13,13,13],\"bids\":[10,2,null,null],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[],\"spadesBroken\":false,\"legalActions\":[\"bid:0\",\"bid:1\",\"bid:2\",\"bid:3\",\"bid:4\",\"bid:5\",\"bid:6\",\"bid:7\",\"bid:8\",\"bid:9\",\"bid:10\",\"bid:11\",\"bid:12\",\"bid:13\"]}\n",
+      "deliveredPromptHash": "73c2ece1a0b08956e3079ad12323d76896353c6d7e157aafa185cbe9c1272fb8",
+      "rawResponse": "BID: 3\n\nMy diamond ace, king, and queen offer potential winners, and my heart void creates ruffing opportunities with six spades. All seven higher spades are held by opponents, however, and Maya’s ten bid suggests substantial strength. Three is a cautious contract that accounts for the risk of my low trumps being drawn out.",
+      "rawResponseHash": "ccdd104af280ed441600ab75224a390ca1fa8a106a57c1e5859cebbeb7ad250f",
+      "justification": "My diamond ace, king, and queen offer potential winners, and my heart void creates ruffing opportunities with six spades. All seven higher spades are held by opponents, however, and Maya’s ten bid suggests substantial strength. Three is a cautious contract that accounts for the risk of my low trumps being drawn out.",
+      "action": {
+        "kind": "bid",
+        "seat": 2,
+        "bid": 3
+      },
+      "actionHash": "5506a77c8cb435a51aed270d36846b60c84fae48366d0fcae06bcdab96268376",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:07:13.453Z",
+        "finishedAt": "2026-10-01T00:08:13.053Z",
+        "threadId": "01a0f4c9-61b1-7813-b1ab-e75a11067a25",
+        "exitCode": 0,
+        "timedOut": false,
+        "deliveredPromptHash": "73c2ece1a0b08956e3079ad12323d76896353c6d7e157aafa185cbe9c1272fb8",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11107,
+          "cached_input_tokens": 9728,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1253,
+          "reasoning_output_tokens": 1175
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:07:13.589441Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-03-1.json",
+        "evidenceHash": "eb8ec548ca5117ee9557e96e274de5a0a15c4858831488c8de767f1029fb1bcf"
+      },
+      "transportMetadataHash": "e5eb5805c3dbb73166cb196c83ceba50826517c6aa0d4ce191d0f932a59ece70",
+      "beforeStateHash": "2f6e589b7d2f9ba72ccf865212d335f242272deb6c511f565552bcc2bf2adf47",
+      "afterStateHash": "d8a60a218bbfad85f8059dd012216b3f8280317e339cab5a18cc98134d143dcc"
+    },
+    {
+      "seq": 4,
+      "agentId": "cli_sarah",
+      "agentIdHash": "3c4265a5a48e9f0b0991dcdf415a12eeb8e0a081e538a30ea8471e0e5862e5aa",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "turn": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "bid",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13"
+        ]
+      },
+      "packetHash": "2e80aecaac81d572977f0287d37048083634b32ed58a8db564dad7f11cfb7cbb",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Sarah, seat 3, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Sarah\",\"seat\":3,\"turn\":3,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"bid\",\"hand\":[\"C4\",\"C7\",\"C10\",\"CK\",\"D3\",\"D4\",\"D6\",\"D7\",\"D9\",\"D10\",\"H3\",\"HA\",\"S9\"],\"handSizes\":[13,13,13,13],\"bids\":[10,2,3,null],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[],\"spadesBroken\":false,\"legalActions\":[\"bid:0\",\"bid:1\",\"bid:2\",\"bid:3\",\"bid:4\",\"bid:5\",\"bid:6\",\"bid:7\",\"bid:8\",\"bid:9\",\"bid:10\",\"bid:11\",\"bid:12\",\"bid:13\"]}\n",
+      "deliveredPromptHash": "bfb2a98a093b4ec1b05919a292280828a642c2e84ce913f0e5a363fa509fd57a",
+      "rawResponse": "BID: 1\n\nThe heart ace is my clearest trick. The club king and lone S9 could produce another, but neither is reliable, and my six diamonds lack high cards. With opponents already bidding 15 tricks, bidding one gives me a manageable contract while keeping opportunities to disrupt theirs.",
+      "rawResponseHash": "675ac3b9badb2cb8236ef7242ed5d4fdcea1cabcd09a5988ed46d2590a1768e0",
+      "justification": "The heart ace is my clearest trick. The club king and lone S9 could produce another, but neither is reliable, and my six diamonds lack high cards. With opponents already bidding 15 tricks, bidding one gives me a manageable contract while keeping opportunities to disrupt theirs.",
+      "action": {
+        "kind": "bid",
+        "seat": 3,
+        "bid": 1
+      },
+      "actionHash": "49d5d4898889d9edf7fe67c90e5c5b336c7eae8d333b28f1f5f6b40083eaeab7",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:08:13.071Z",
+        "finishedAt": "2026-10-01T00:08:33.017Z",
+        "threadId": "01a0f4ca-4aaa-7f03-b9ca-05df88ad73ff",
+        "exitCode": 0,
+        "timedOut": false,
+        "deliveredPromptHash": "bfb2a98a093b4ec1b05919a292280828a642c2e84ce913f0e5a363fa509fd57a",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11110,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 357,
+          "reasoning_output_tokens": 290
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:08:13.230276Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-04-1.json",
+        "evidenceHash": "cdda58281591376928526136000a535a353cd1eac826ffc27fce8c23521ef026"
+      },
+      "transportMetadataHash": "109c5a81ea81efea929fd73ff6390a83ebdea88ef6faf58efd7cd2010b0a9a8c",
+      "beforeStateHash": "d8a60a218bbfad85f8059dd012216b3f8280317e339cab5a18cc98134d143dcc",
+      "afterStateHash": "412f998e8bced72db330d25f47bcaef285c9b471a2ef2c488ee592f4a4515a2c"
+    },
+    {
+      "seq": 5,
+      "agentId": "cli_maya",
+      "agentIdHash": "33de50ce7aa662a368461e37138d8b2a9b753d5749645729eda3082a5f9407d5",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "turn": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H4",
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "play:H4",
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:H10",
+          "play:HJ"
+        ]
+      },
+      "packetHash": "34a3fc2edea9934650f7da42a720ed876ada6e4b2c9c97455b54e6d3402d0686",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Maya, seat 0, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Maya\",\"seat\":0,\"turn\":0,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"H4\",\"H5\",\"H6\",\"H7\",\"H8\",\"H9\",\"H10\",\"HJ\",\"S10\",\"SJ\",\"SQ\",\"SK\",\"SA\"],\"handSizes\":[13,13,13,13],\"bids\":[10,2,3,1],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[],\"spadesBroken\":false,\"legalActions\":[\"play:H4\",\"play:H5\",\"play:H6\",\"play:H7\",\"play:H8\",\"play:H9\",\"play:H10\",\"play:HJ\"]}\n",
+      "deliveredPromptHash": "64e7bfe3baded6e4e9e764767eafa4ea5d6b8919adc03da9b3eb60bac4eb2b1b",
+      "rawResponse": "PLAY: H4\n\nLeading H4 starts developing my eight-card heart suit while preserving five high spades for trump control once spades are broken. Making my ten-trick bid requires heart winners alongside my spades; the locations of the three higher hearts and opponents’ trump lengths remain uncertain.",
+      "rawResponseHash": "972744ecfee0c24bbb17373f87b49bb680d305ad72456823a8750fde0cd36cd4",
+      "justification": "Leading H4 starts developing my eight-card heart suit while preserving five high spades for trump control once spades are broken. Making my ten-trick bid requires heart winners alongside my spades; the locations of the three higher hearts and opponents’ trump lengths remain uncertain.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "H4"
+      },
+      "actionHash": "a802dc64e16ab6717de3a5fa33a36c6925184d2b7dd0bb27ff7268f4d982ed0f",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:10:09.306Z",
+        "finishedAt": "2026-10-01T00:10:40.107Z",
+        "threadId": "01a0f4cc-10b8-7b20-a980-550dc55e98ae",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "64e7bfe3baded6e4e9e764767eafa4ea5d6b8919adc03da9b3eb60bac4eb2b1b",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11085,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 564,
+          "reasoning_output_tokens": 499
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:10:09.469265Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-05-1.json",
+        "evidenceHash": "3893c2752567216b0d83cd0fa145510a1da01e7945f45a45d842cbdb9b21fe80"
+      },
+      "transportMetadataHash": "320d48c86d8abb0e4ed33f923c5bb4a102be24dae4757613dbf63d13074bd2cc",
+      "beforeStateHash": "412f998e8bced72db330d25f47bcaef285c9b471a2ef2c488ee592f4a4515a2c",
+      "afterStateHash": "af495e8c74c92402a7ae03c6a2587cea74846ce277be82ca03dbdd9a1be8b01f"
+    },
+    {
+      "seq": 6,
+      "agentId": "cli_leo",
+      "agentIdHash": "8137f7ef091db0306fda5c336fb79a85f3e1e41dfd79550d1efae3505508fdf2",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "turn": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HQ",
+          "HK",
+          "S8"
+        ],
+        "handSizes": [
+          12,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "spadesBroken": false,
+        "legalActions": [
+          "play:H2",
+          "play:HQ",
+          "play:HK"
+        ]
+      },
+      "packetHash": "6bb76423c48c2acff1455956718782cba97fe6bc09c7099b7bb3b6552eb2f1ff",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Leo, seat 1, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Leo\",\"seat\":1,\"turn\":1,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C3\",\"C6\",\"C9\",\"CQ\",\"CA\",\"D2\",\"D5\",\"D8\",\"DJ\",\"H2\",\"HQ\",\"HK\",\"S8\"],\"handSizes\":[12,13,13,13],\"bids\":[10,2,3,1],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[{\"seat\":0,\"card\":\"H4\"}],\"spadesBroken\":false,\"legalActions\":[\"play:H2\",\"play:HQ\",\"play:HK\"]}\n",
+      "deliveredPromptHash": "eafd594f7bb307e1b4d9c8eba439d8aa47f5eadaf65b4367258cf1050ba05739",
+      "rawResponse": "PLAY: HQ\n\nThe queen can win this opening heart lead unless Jason or Sarah plays the ace or trumps. If the ace beats it, my king becomes the highest remaining heart. With the club ace offering another route to my two-trick contract, contesting this trick also helps challenge Maya’s bid of ten.",
+      "rawResponseHash": "87af7042ff667364bbcead10f3249f4121ce8900e8f1949d8b29bd996e992a07",
+      "justification": "The queen can win this opening heart lead unless Jason or Sarah plays the ace or trumps. If the ace beats it, my king becomes the highest remaining heart. With the club ace offering another route to my two-trick contract, contesting this trick also helps challenge Maya’s bid of ten.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "HQ"
+      },
+      "actionHash": "5170b5e60ca9ea1300d14a2e8f8442b1b28ed8cb222e9dff42abd03aac7f56f2",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:10:40.130Z",
+        "finishedAt": "2026-10-01T00:11:21.840Z",
+        "threadId": "01a0f4cc-8911-7701-a153-94c576617c13",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "eafd594f7bb307e1b4d9c8eba439d8aa47f5eadaf65b4367258cf1050ba05739",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11074,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 695,
+          "reasoning_output_tokens": 625
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:10:40.278119Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-06-1.json",
+        "evidenceHash": "70acbaec7f26f4d703371543a971efb9fba0b162aa3e7d8590ff984527e91dbb"
+      },
+      "transportMetadataHash": "c3aea116c397c9dc382710117b2617a92cf85af0a3a19048ea637c15263fb35b",
+      "beforeStateHash": "af495e8c74c92402a7ae03c6a2587cea74846ce277be82ca03dbdd9a1be8b01f",
+      "afterStateHash": "d77406679d2022089660c48a68fb83362b1210a0b0538b62e31fc8c2142ab263"
+    },
+    {
+      "seq": 7,
+      "agentId": "cli_jason",
+      "agentIdHash": "78004a8c5cb02f78ab4e0b599b5d148d3ad7c5fc5bfc435750ee8ad4ab1f6c7c",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "turn": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "handSizes": [
+          12,
+          12,
+          13,
+          13
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "HQ"
+          }
+        ],
+        "spadesBroken": false,
+        "legalActions": [
+          "play:C2",
+          "play:C5",
+          "play:C8",
+          "play:CJ",
+          "play:DQ",
+          "play:DK",
+          "play:DA",
+          "play:S2",
+          "play:S3",
+          "play:S4",
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "1195df0b5af4370ae23537f676bdb2e2407aac2e9e4e37c70aff3b0f2f23d063",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Jason, seat 2, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Jason\",\"seat\":2,\"turn\":2,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C2\",\"C5\",\"C8\",\"CJ\",\"DQ\",\"DK\",\"DA\",\"S2\",\"S3\",\"S4\",\"S5\",\"S6\",\"S7\"],\"handSizes\":[12,12,13,13],\"bids\":[10,2,3,1],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"}],\"spadesBroken\":false,\"legalActions\":[\"play:C2\",\"play:C5\",\"play:C8\",\"play:CJ\",\"play:DQ\",\"play:DK\",\"play:DA\",\"play:S2\",\"play:S3\",\"play:S4\",\"play:S5\",\"play:S6\",\"play:S7\"]}\n",
+      "deliveredPromptHash": "c00bbe4be617f393cf9366d8dbfae0e889e5d09bc06d2d9ee0f0d48b46fc0bdc",
+      "rawResponse": "PLAY: S2\n\nI am void in hearts, so S2 beats the current HQ with my cheapest trump. Taking an early trick advances my three-trick contract and pressures Maya’s ten-trick bid, though Sarah could still overtrump.",
+      "rawResponseHash": "cbd38e66371087fd26f266f4396016af047508df893d8ef47ff633d31b91de30",
+      "justification": "I am void in hearts, so S2 beats the current HQ with my cheapest trump. Taking an early trick advances my three-trick contract and pressures Maya’s ten-trick bid, though Sarah could still overtrump.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "S2"
+      },
+      "actionHash": "b07a70482982ed4a7e0f0bb708d08df88e5897ac956a684d1b8191b314d87c91",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:11:21.868Z",
+        "finishedAt": "2026-10-01T00:11:47.011Z",
+        "threadId": "01a0f4cd-2c26-7851-8b25-0ebdd4c13467",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "c00bbe4be617f393cf9366d8dbfae0e889e5d09bc06d2d9ee0f0d48b46fc0bdc",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11123,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 470,
+          "reasoning_output_tokens": 414
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:11:22.026911Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-07-1.json",
+        "evidenceHash": "5d29d3953b3e0b967db8ff8950514bf7f09bbffdb17dab539bcb5188834f5dd1"
+      },
+      "transportMetadataHash": "9a8252cf1ef261449772c706dc8ed04a1a156a079d7e9842c264bf8891912864",
+      "beforeStateHash": "d77406679d2022089660c48a68fb83362b1210a0b0538b62e31fc8c2142ab263",
+      "afterStateHash": "7cbf0253c6c51da67107ce44441f19b9e49a231135d7cc631f685eee72ab56a3"
+    },
+    {
+      "seq": 8,
+      "agentId": "cli_sarah",
+      "agentIdHash": "3c4265a5a48e9f0b0991dcdf415a12eeb8e0a081e538a30ea8471e0e5862e5aa",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "turn": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "H3",
+          "HA",
+          "S9"
+        ],
+        "handSizes": [
+          12,
+          12,
+          12,
+          13
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "HQ"
+          },
+          {
+            "seat": 2,
+            "card": "S2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H3",
+          "play:HA"
+        ]
+      },
+      "packetHash": "e281f9a0bbdf012698e1ba97de9805576dcfd2dc2d307cfefdbc1ed1b530cbe0",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Sarah, seat 3, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Sarah\",\"seat\":3,\"turn\":3,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C4\",\"C7\",\"C10\",\"CK\",\"D3\",\"D4\",\"D6\",\"D7\",\"D9\",\"D10\",\"H3\",\"HA\",\"S9\"],\"handSizes\":[12,12,12,13],\"bids\":[10,2,3,1],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[],\"currentTrick\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"}],\"spadesBroken\":true,\"legalActions\":[\"play:H3\",\"play:HA\"]}\n",
+      "deliveredPromptHash": "1db4eada35882e66ad7f34ffc69ee049ce5e9ee69b79c1cfa1b7d624b169b115",
+      "rawResponse": "PLAY: H3\n\nJason’s S2 already trumps both legal heart plays, so H3 sheds a low card while preserving HA for a later chance to make my one-trick bid. That ace’s eventual success depends on whether opponents can trump a future heart trick.",
+      "rawResponseHash": "8501bc39c6afb6e84b51e62eb7211e8e4272f124994d11bc3b35dee9d3aaf9cd",
+      "justification": "Jason’s S2 already trumps both legal heart plays, so H3 sheds a low card while preserving HA for a later chance to make my one-trick bid. That ace’s eventual success depends on whether opponents can trump a future heart trick.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "H3"
+      },
+      "actionHash": "5544a59d3e1f79f81a0b028d45d6086bd19a49063b4e18f11f27d362064134a2",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:11:47.037Z",
+        "finishedAt": "2026-10-01T00:12:00.509Z",
+        "threadId": "01a0f4cd-8e81-72d1-b066-3f23ef1f66ca",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "1db4eada35882e66ad7f34ffc69ee049ce5e9ee69b79c1cfa1b7d624b169b115",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11090,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 192,
+          "reasoning_output_tokens": 131
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:11:47.205969Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-08-1.json",
+        "evidenceHash": "51c478e34c930ea0212ec28b6de0668acc8d332c3e495565c7bf68f71c4bbd98"
+      },
+      "transportMetadataHash": "f1efd58cf08726b9454bcb58d6d181196f391c12766394e53c0a36e1c45942cb",
+      "beforeStateHash": "7cbf0253c6c51da67107ce44441f19b9e49a231135d7cc631f685eee72ab56a3",
+      "afterStateHash": "4670884fa58395f95c40a5acf26f4eb7ddcdf8a6022cda08a5c3eb90967f36c3"
+    },
+    {
+      "seq": 9,
+      "agentId": "cli_jason",
+      "agentIdHash": "78004a8c5cb02f78ab4e0b599b5d148d3ad7c5fc5bfc435750ee8ad4ab1f6c7c",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "turn": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "DA",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "handSizes": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C2",
+          "play:C5",
+          "play:C8",
+          "play:CJ",
+          "play:DQ",
+          "play:DK",
+          "play:DA",
+          "play:S3",
+          "play:S4",
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "3a6187bf69f0b1af4135bbdb8de50ee320c9a30b9802eb120de23f6580b4e007",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Jason, seat 2, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Jason\",\"seat\":2,\"turn\":2,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C2\",\"C5\",\"C8\",\"CJ\",\"DQ\",\"DK\",\"DA\",\"S3\",\"S4\",\"S5\",\"S6\",\"S7\"],\"handSizes\":[12,12,12,12],\"bids\":[10,2,3,1],\"tricks\":[0,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2}],\"currentTrick\":[],\"spadesBroken\":true,\"legalActions\":[\"play:C2\",\"play:C5\",\"play:C8\",\"play:CJ\",\"play:DQ\",\"play:DK\",\"play:DA\",\"play:S3\",\"play:S4\",\"play:S5\",\"play:S6\",\"play:S7\"]}\n",
+      "deliveredPromptHash": "c0f6f2f72d5819fda14396b6d80f8294b05942b85e599e28e582da895cc622ce",
+      "rawResponse": "PLAY: DA\n\nI have one trick toward my bid of three. Leading the diamond ace aims to secure a second trick while preserving my remaining spades for later ruffs. An opponent could trump if void in diamonds, but no diamonds have yet been played.",
+      "rawResponseHash": "410cdae4a43fe39e018d09cc0c3ea9834014ff7a36d85f233f494202d8d0be9c",
+      "justification": "I have one trick toward my bid of three. Leading the diamond ace aims to secure a second trick while preserving my remaining spades for later ruffs. An opponent could trump if void in diamonds, but no diamonds have yet been played.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "DA"
+      },
+      "actionHash": "4ec54f812f09ba1530b722500a2b3b749785d5b92db8fe1bcdb81739608cd1db",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:12:00.539Z",
+        "finishedAt": "2026-10-01T00:12:21.292Z",
+        "threadId": "01a0f4cd-c33a-7070-b044-da2425486003",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "c0f6f2f72d5819fda14396b6d80f8294b05942b85e599e28e582da895cc622ce",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11142,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 393,
+          "reasoning_output_tokens": 335
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:12:00.703335Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-09-1.json",
+        "evidenceHash": "7a83aa20edfa80cf8e098c80fa7aeb625068a19a86acbeccda666ae5bbb86e29"
+      },
+      "transportMetadataHash": "42301721b79ba96c57012a7b9de1129c84305827980278e861169f2ab73d435b",
+      "beforeStateHash": "4670884fa58395f95c40a5acf26f4eb7ddcdf8a6022cda08a5c3eb90967f36c3",
+      "afterStateHash": "e8dac7e96a4bcc5bfb276f7a9c4e491f2f322829d1840bde976e63391140fd49"
+    },
+    {
+      "seq": 10,
+      "agentId": "cli_sarah",
+      "agentIdHash": "3c4265a5a48e9f0b0991dcdf415a12eeb8e0a081e538a30ea8471e0e5862e5aa",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "turn": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "HA",
+          "S9"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          12
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "DA"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:D3",
+          "play:D4",
+          "play:D6",
+          "play:D7",
+          "play:D9",
+          "play:D10"
+        ]
+      },
+      "packetHash": "2f47eb3907494f19415e3402aee12b874ef2e1011a294897915e2a0cab613eb2",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Sarah, seat 3, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Sarah\",\"seat\":3,\"turn\":3,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C4\",\"C7\",\"C10\",\"CK\",\"D3\",\"D4\",\"D6\",\"D7\",\"D9\",\"D10\",\"HA\",\"S9\"],\"handSizes\":[12,12,11,12],\"bids\":[10,2,3,1],\"tricks\":[0,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2}],\"currentTrick\":[{\"seat\":2,\"card\":\"DA\"}],\"spadesBroken\":true,\"legalActions\":[\"play:D3\",\"play:D4\",\"play:D6\",\"play:D7\",\"play:D9\",\"play:D10\"]}\n",
+      "deliveredPromptHash": "8cf27fe76092e89ee13ceeb487c9a0ce8d135695429ca56e915ba9abedf14cc3",
+      "rawResponse": "PLAY: D3\n\nJason’s diamond ace beats every card I can legally play, so I shed my lowest diamond and preserve stronger diamonds for later tricks. I still need one trick to make my bid. Keeping winning options matters because my heart ace is vulnerable to trumping: Jason showed a heart void in the first trick.",
+      "rawResponseHash": "dff0f1589991728a67909e046cb1a7243271fb24e54d607428b7720b0a40c4c7",
+      "justification": "Jason’s diamond ace beats every card I can legally play, so I shed my lowest diamond and preserve stronger diamonds for later tricks. I still need one trick to make my bid. Keeping winning options matters because my heart ace is vulnerable to trumping: Jason showed a heart void in the first trick.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "D3"
+      },
+      "actionHash": "e16128d5f833bf654a869f1f6246732e452d8f1b1bf2c61416faa01f2c3b24b6",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:12:21.320Z",
+        "finishedAt": "2026-10-01T00:12:50.399Z",
+        "threadId": "01a0f4ce-1459-75c3-a210-e77f5758eaec",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "8cf27fe76092e89ee13ceeb487c9a0ce8d135695429ca56e915ba9abedf14cc3",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11129,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 522,
+          "reasoning_output_tokens": 451
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:12:21.470439Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-10-1.json",
+        "evidenceHash": "a886828b57fc122b69dc6e992b0a142d5a033dee02ca04cced85a3d206fdd1f0"
+      },
+      "transportMetadataHash": "ccd5b85b7a6f11ae63d214ea1f8c343315a79d0bdd619b3c28e662bf35b08dee",
+      "beforeStateHash": "e8dac7e96a4bcc5bfb276f7a9c4e491f2f322829d1840bde976e63391140fd49",
+      "afterStateHash": "6b4b67bedef2597d0391e3cde769de6bdc0a1968a79a75fd5249ff4f9199f384"
+    },
+    {
+      "seq": 11,
+      "agentId": "cli_maya",
+      "agentIdHash": "33de50ce7aa662a368461e37138d8b2a9b753d5749645729eda3082a5f9407d5",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "turn": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "S10",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "DA"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:H10",
+          "play:HJ",
+          "play:S10",
+          "play:SJ",
+          "play:SQ",
+          "play:SK",
+          "play:SA"
+        ]
+      },
+      "packetHash": "f4c9a66c4b658160d934c325575c284438f58cc46b8d56e01507a07d37625e77",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Maya, seat 0, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Maya\",\"seat\":0,\"turn\":0,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"H5\",\"H6\",\"H7\",\"H8\",\"H9\",\"H10\",\"HJ\",\"S10\",\"SJ\",\"SQ\",\"SK\",\"SA\"],\"handSizes\":[12,12,11,11],\"bids\":[10,2,3,1],\"tricks\":[0,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2}],\"currentTrick\":[{\"seat\":2,\"card\":\"DA\"},{\"seat\":3,\"card\":\"D3\"}],\"spadesBroken\":true,\"legalActions\":[\"play:H5\",\"play:H6\",\"play:H7\",\"play:H8\",\"play:H9\",\"play:H10\",\"play:HJ\",\"play:S10\",\"play:SJ\",\"play:SQ\",\"play:SK\",\"play:SA\"]}\n",
+      "deliveredPromptHash": "ea21db8ba754d58ad3eebf0462107e702355f0e1a9e1a789d43790895d92124c",
+      "rawResponse": "PLAY: S10\n\nS10 guarantees this trick because I hold every higher spade. I need ten tricks and have none yet, so taking the lead lets me draw opposing trumps before playing my long heart suit. Jason has shown a heart void, making those hearts vulnerable while he retains spades.",
+      "rawResponseHash": "d30ecffed1fd1f97e4a046dfbfe70540a28db69a4ec0c84e10469f5bab9831b4",
+      "justification": "S10 guarantees this trick because I hold every higher spade. I need ten tricks and have none yet, so taking the lead lets me draw opposing trumps before playing my long heart suit. Jason has shown a heart void, making those hearts vulnerable while he retains spades.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "S10"
+      },
+      "actionHash": "f482376c3cb7bd548fbd546529a69fa2ec675db9040534facdb313c4b8f271fb",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:12:50.430Z",
+        "finishedAt": "2026-10-01T00:13:13.437Z",
+        "threadId": "01a0f4ce-860c-7251-8201-5dca3c0aa23e",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "ea21db8ba754d58ad3eebf0462107e702355f0e1a9e1a789d43790895d92124c",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11160,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 441,
+          "reasoning_output_tokens": 374
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:12:50.576557Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-11-1.json",
+        "evidenceHash": "fdbb136ce3e7b9dec6b5e575dbb1340919b413a7b22a5603e02524696fb1ef7e"
+      },
+      "transportMetadataHash": "21ad9cf540b0506184610761324d81cd7c7963f013fa15d31840a1b5704d3499",
+      "beforeStateHash": "6b4b67bedef2597d0391e3cde769de6bdc0a1968a79a75fd5249ff4f9199f384",
+      "afterStateHash": "f587a54b230960aa4bd77f1bbfd82ca45407733e926c8a492f60578980a4fef8"
+    },
+    {
+      "seq": 12,
+      "agentId": "cli_leo",
+      "agentIdHash": "8137f7ef091db0306fda5c336fb79a85f3e1e41dfd79550d1efae3505508fdf2",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "turn": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D2",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HK",
+          "S8"
+        ],
+        "handSizes": [
+          11,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "DA"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          },
+          {
+            "seat": 0,
+            "card": "S10"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:D2",
+          "play:D5",
+          "play:D8",
+          "play:DJ"
+        ]
+      },
+      "packetHash": "5a16581b47a7ee1a8ed447f2876219a02c8ce67ae4fbb5d3a3a690778218109e",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Leo, seat 1, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Leo\",\"seat\":1,\"turn\":1,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C3\",\"C6\",\"C9\",\"CQ\",\"CA\",\"D2\",\"D5\",\"D8\",\"DJ\",\"H2\",\"HK\",\"S8\"],\"handSizes\":[11,12,11,11],\"bids\":[10,2,3,1],\"tricks\":[0,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2}],\"currentTrick\":[{\"seat\":2,\"card\":\"DA\"},{\"seat\":3,\"card\":\"D3\"},{\"seat\":0,\"card\":\"S10\"}],\"spadesBroken\":true,\"legalActions\":[\"play:D2\",\"play:D5\",\"play:D8\",\"play:DJ\"]}\n",
+      "deliveredPromptHash": "f1ab87484d90232711f0380f502614dcf9274ad61a50ef28e2cde5f1df3e99d3",
+      "rawResponse": "PLAY: D2\n\nMaya’s S10 already trumps Jason’s DA, so none of my legal diamonds can win this trick. Playing D2 preserves DJ as a possible later winner while I work toward my two-trick contract; the opponents’ remaining holdings are uncertain.",
+      "rawResponseHash": "2b4eb70fade48f836321536995433018bf73942319efe34a533daefc746fba4d",
+      "justification": "Maya’s S10 already trumps Jason’s DA, so none of my legal diamonds can win this trick. Playing D2 preserves DJ as a possible later winner while I work toward my two-trick contract; the opponents’ remaining holdings are uncertain.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "D2"
+      },
+      "actionHash": "0322d8b05b9a45e42435716b64e55feba52b8ba45fa99e73aca0fcb8e2b94e5e",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:13:13.471Z",
+        "finishedAt": "2026-10-01T00:13:37.724Z",
+        "threadId": "01a0f4ce-e015-76e2-844d-82bf4ae60c9c",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "f1ab87484d90232711f0380f502614dcf9274ad61a50ef28e2cde5f1df3e99d3",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11137,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 502,
+          "reasoning_output_tokens": 440
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:13:13.625689Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-12-1.json",
+        "evidenceHash": "e193b58893fc8a79cb3755abbf0fddec40a77f48be2f6b7ea75d4fa7a601b1c1"
+      },
+      "transportMetadataHash": "763ef373915926583daff9b78249470a47b12b166e3ab65e86446b09134a9f7f",
+      "beforeStateHash": "f587a54b230960aa4bd77f1bbfd82ca45407733e926c8a492f60578980a4fef8",
+      "afterStateHash": "264f4225ec5b23468263cc2defae6c554631ee82d27a3c3b71ff7d903c771d97"
+    },
+    {
+      "seq": 13,
+      "agentId": "cli_maya",
+      "agentIdHash": "33de50ce7aa662a368461e37138d8b2a9b753d5749645729eda3082a5f9407d5",
+      "seat": 0,
+      "name": "Maya",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Maya",
+        "seat": 0,
+        "turn": 0,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "H5",
+          "H6",
+          "H7",
+          "H8",
+          "H9",
+          "H10",
+          "HJ",
+          "SJ",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        "handSizes": [
+          11,
+          11,
+          11,
+          11
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "DA"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              },
+              {
+                "seat": 1,
+                "card": "D2"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H5",
+          "play:H6",
+          "play:H7",
+          "play:H8",
+          "play:H9",
+          "play:H10",
+          "play:HJ",
+          "play:SJ",
+          "play:SQ",
+          "play:SK",
+          "play:SA"
+        ]
+      },
+      "packetHash": "5642f844d8018d18a9f6805ff6d01dff311bc7f7e97187ad38de37dff45108f6",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Maya, seat 0, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Maya\",\"seat\":0,\"turn\":0,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"H5\",\"H6\",\"H7\",\"H8\",\"H9\",\"H10\",\"HJ\",\"SJ\",\"SQ\",\"SK\",\"SA\"],\"handSizes\":[11,11,11,11],\"bids\":[10,2,3,1],\"tricks\":[1,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2},{\"plays\":[{\"seat\":2,\"card\":\"DA\"},{\"seat\":3,\"card\":\"D3\"},{\"seat\":0,\"card\":\"S10\"},{\"seat\":1,\"card\":\"D2\"}],\"winner\":0}],\"currentTrick\":[],\"spadesBroken\":true,\"legalActions\":[\"play:H5\",\"play:H6\",\"play:H7\",\"play:H8\",\"play:H9\",\"play:H10\",\"play:HJ\",\"play:SJ\",\"play:SQ\",\"play:SK\",\"play:SA\"]}\n",
+      "deliveredPromptHash": "75d754c8116746ca85629a7596cca36f6d28d98b913a7df2cb2bf57c2cc40bb4",
+      "rawResponse": "PLAY: SJ\n\nSJ is guaranteed to win and starts removing opposing trumps, especially useful because Jason showed he is void in hearts. I need nine of the remaining eleven tricks to make my bid. Keeping three high spades preserves entries while I establish hearts against the unplayed ace and king.",
+      "rawResponseHash": "7108d7b6363f28a2d8d1c10bc314eca26b26c6e608622bfdc50039bedfeeb017",
+      "justification": "SJ is guaranteed to win and starts removing opposing trumps, especially useful because Jason showed he is void in hearts. I need nine of the remaining eleven tricks to make my bid. Keeping three high spades preserves entries while I establish hearts against the unplayed ace and king.",
+      "action": {
+        "kind": "play",
+        "seat": 0,
+        "card": "SJ"
+      },
+      "actionHash": "8e102b9cab9a75d7a4a3e6dfedcde6b86bd79f3b71b5c6d72808e7c4c1fd49e3",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:13:37.758Z",
+        "finishedAt": "2026-10-01T00:14:34.854Z",
+        "threadId": "01a0f4cf-3efd-7913-ad94-b4e1779bb44f",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "75d754c8116746ca85629a7596cca36f6d28d98b913a7df2cb2bf57c2cc40bb4",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11178,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1088,
+          "reasoning_output_tokens": 1023
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:13:37.922397Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-13-1.json",
+        "evidenceHash": "312fe52f0599333a07863f069c1bf8e39488cc56e0072a5d5a274ac854bdcec2"
+      },
+      "transportMetadataHash": "eb8fe9cd8a7cca04b06865e5b13bad0a26185d646c9094a0e8dfca0a384c1852",
+      "beforeStateHash": "264f4225ec5b23468263cc2defae6c554631ee82d27a3c3b71ff7d903c771d97",
+      "afterStateHash": "8a822a8fb50fa8624ca4387d6cea526522945bb55ad02a7f88e0e90fb389d904"
+    },
+    {
+      "seq": 14,
+      "agentId": "cli_leo",
+      "agentIdHash": "8137f7ef091db0306fda5c336fb79a85f3e1e41dfd79550d1efae3505508fdf2",
+      "seat": 1,
+      "name": "Leo",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Leo",
+        "seat": 1,
+        "turn": 1,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "CA",
+          "D5",
+          "D8",
+          "DJ",
+          "H2",
+          "HK",
+          "S8"
+        ],
+        "handSizes": [
+          10,
+          11,
+          11,
+          11
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "DA"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              },
+              {
+                "seat": 1,
+                "card": "D2"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S8"
+        ]
+      },
+      "packetHash": "739da7ccc4400ba388d34a5d784dba23e71f3e89fd1ece306b40c662095f1256",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Leo, seat 1, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Leo\",\"seat\":1,\"turn\":1,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C3\",\"C6\",\"C9\",\"CQ\",\"CA\",\"D5\",\"D8\",\"DJ\",\"H2\",\"HK\",\"S8\"],\"handSizes\":[10,11,11,11],\"bids\":[10,2,3,1],\"tricks\":[1,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2},{\"plays\":[{\"seat\":2,\"card\":\"DA\"},{\"seat\":3,\"card\":\"D3\"},{\"seat\":0,\"card\":\"S10\"},{\"seat\":1,\"card\":\"D2\"}],\"winner\":0}],\"currentTrick\":[{\"seat\":0,\"card\":\"SJ\"}],\"spadesBroken\":true,\"legalActions\":[\"play:S8\"]}\n",
+      "deliveredPromptHash": "6e6e45aaf58751998e903ff2558c7bcb4114336096beee970eeb7f944dd61ba2",
+      "rawResponse": "PLAY: S8\n\nS8 is my only spade and the sole legal play, so following suit is forced. It cannot beat Maya’s SJ. I still need two tricks, with CA and HK offering later chances, though opponents may trump them.",
+      "rawResponseHash": "78b12f0682acd8cf2ff9263fb43c85edc546ffaf24ef5d34b2ffdd13c118739e",
+      "justification": "S8 is my only spade and the sole legal play, so following suit is forced. It cannot beat Maya’s SJ. I still need two tricks, with CA and HK offering later chances, though opponents may trump them.",
+      "action": {
+        "kind": "play",
+        "seat": 1,
+        "card": "S8"
+      },
+      "actionHash": "2f76f5f1b047e962e52da3238f1f13e96e5325fb6445d74883e72dd8affe33c6",
+      "forced": true,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:14:34.894Z",
+        "finishedAt": "2026-10-01T00:14:47.672Z",
+        "threadId": "01a0f4d0-1e4c-7821-b827-16903f765407",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "6e6e45aaf58751998e903ff2558c7bcb4114336096beee970eeb7f944dd61ba2",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11147,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 207,
+          "reasoning_output_tokens": 150
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:14:35.089218Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-14-1.json",
+        "evidenceHash": "9e7133058a613f5e8c12f64dcf0c3459306fe0c7102243701cc115afbb58aacf"
+      },
+      "transportMetadataHash": "71fe5eff3c32509d2c8cbfe4d5054474f67e8c0225dcbf1b8218945fcf486e71",
+      "beforeStateHash": "8a822a8fb50fa8624ca4387d6cea526522945bb55ad02a7f88e0e90fb389d904",
+      "afterStateHash": "8453d2d86ff9623649fe89b008fdb2d59ebdf58f098ca4ec5138a28207520749"
+    },
+    {
+      "seq": 15,
+      "agentId": "cli_jason",
+      "agentIdHash": "78004a8c5cb02f78ab4e0b599b5d148d3ad7c5fc5bfc435750ee8ad4ab1f6c7c",
+      "seat": 2,
+      "name": "Jason",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Jason",
+        "seat": 2,
+        "turn": 2,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C5",
+          "C8",
+          "CJ",
+          "DQ",
+          "DK",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7"
+        ],
+        "handSizes": [
+          10,
+          10,
+          11,
+          11
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "DA"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              },
+              {
+                "seat": 1,
+                "card": "D2"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S8"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S3",
+          "play:S4",
+          "play:S5",
+          "play:S6",
+          "play:S7"
+        ]
+      },
+      "packetHash": "ddbd3405c4188727edd88f8d271106ac45d17ebac651510768c5ba6f6f9242ef",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Jason, seat 2, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Jason\",\"seat\":2,\"turn\":2,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C2\",\"C5\",\"C8\",\"CJ\",\"DQ\",\"DK\",\"S3\",\"S4\",\"S5\",\"S6\",\"S7\"],\"handSizes\":[10,10,11,11],\"bids\":[10,2,3,1],\"tricks\":[1,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2},{\"plays\":[{\"seat\":2,\"card\":\"DA\"},{\"seat\":3,\"card\":\"D3\"},{\"seat\":0,\"card\":\"S10\"},{\"seat\":1,\"card\":\"D2\"}],\"winner\":0}],\"currentTrick\":[{\"seat\":0,\"card\":\"SJ\"},{\"seat\":1,\"card\":\"S8\"}],\"spadesBroken\":true,\"legalActions\":[\"play:S3\",\"play:S4\",\"play:S5\",\"play:S6\",\"play:S7\"]}\n",
+      "deliveredPromptHash": "cf397ffebbdfcd051e643890d76808ea45b87a90ffa5cb9bfc9909ff771364be",
+      "rawResponse": "PLAY: S3\n\nMaya’s SJ already beats every legal card, so I follow suit with my lowest spade. I have one trick toward my bid of three and still need two more; retaining my higher trumps leaves options, though the opponents’ unplayed high spades remain a threat.",
+      "rawResponseHash": "9e5526a7b2816fae35e7f4649f8f779c23802d3716740a9beb2f455e83f91793",
+      "justification": "Maya’s SJ already beats every legal card, so I follow suit with my lowest spade. I have one trick toward my bid of three and still need two more; retaining my higher trumps leaves options, though the opponents’ unplayed high spades remain a threat.",
+      "action": {
+        "kind": "play",
+        "seat": 2,
+        "card": "S3"
+      },
+      "actionHash": "720e6311491bd33c9d70eab44c9b542ba42bd0ac6cf5a0ec5fd3061fafe4a0ef",
+      "forced": false,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:14:47.708Z",
+        "finishedAt": "2026-10-01T00:15:11.307Z",
+        "threadId": "01a0f4d0-5020-77e3-80bc-d7282a1938b8",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "cf397ffebbdfcd051e643890d76808ea45b87a90ffa5cb9bfc9909ff771364be",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11173,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 538,
+          "reasoning_output_tokens": 471
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:14:47.845327Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-15-1.json",
+        "evidenceHash": "616398eb85242ee08d9ac1b992be64a8a61ce6d4235d0dce0d73851769b20e0f"
+      },
+      "transportMetadataHash": "61898ef79e29a59f37cf56ac46d64de38efd5da272d00eb93a6de38178b2bcf5",
+      "beforeStateHash": "8453d2d86ff9623649fe89b008fdb2d59ebdf58f098ca4ec5138a28207520749",
+      "afterStateHash": "526f72d21fdfa19f8e929617c53fe3b65c1804cb5e844ff539aa13ffb041bfd7"
+    },
+    {
+      "seq": 16,
+      "agentId": "cli_sarah",
+      "agentIdHash": "3c4265a5a48e9f0b0991dcdf415a12eeb8e0a081e538a30ea8471e0e5862e5aa",
+      "seat": 3,
+      "name": "Sarah",
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "moduleVersion": "1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "promptVersion": "expanded-stateless-player-1.0.0",
+        "name": "Sarah",
+        "seat": 3,
+        "turn": 3,
+        "names": [
+          "Maya",
+          "Leo",
+          "Jason",
+          "Sarah"
+        ],
+        "dealer": 3,
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "phase": "play",
+        "hand": [
+          "C4",
+          "C7",
+          "C10",
+          "CK",
+          "D4",
+          "D6",
+          "D7",
+          "D9",
+          "D10",
+          "HA",
+          "S9"
+        ],
+        "handSizes": [
+          10,
+          10,
+          10,
+          11
+        ],
+        "bids": [
+          10,
+          2,
+          3,
+          1
+        ],
+        "tricks": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "H4"
+              },
+              {
+                "seat": 1,
+                "card": "HQ"
+              },
+              {
+                "seat": 2,
+                "card": "S2"
+              },
+              {
+                "seat": 3,
+                "card": "H3"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "DA"
+              },
+              {
+                "seat": 3,
+                "card": "D3"
+              },
+              {
+                "seat": 0,
+                "card": "S10"
+              },
+              {
+                "seat": 1,
+                "card": "D2"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S8"
+          },
+          {
+            "seat": 2,
+            "card": "S3"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S9"
+        ]
+      },
+      "packetHash": "7874203c81a7f5ef8b121a56b351d53683f9b387f0c7d8c8334e2f7b5b050226",
+      "deliveredPrompt": "This is a fresh, stateless invocation for exactly one decision. Your complete current hand and all public history appear below.\n\n# Text player protocol v1\n\nYou are Sarah, seat 3, playing spades-solo in an offline research game. Try your best to win under the supplied rule profile and public match state. This is an experiment, not a claim of expert play.\n\nUse ONLY the current seat packet: your own remaining cards, all public bids, completed/current tricks, scores, bags, turn, competition membership and the complete legal action set. The full public history is supplied each turn, so reason from it rather than inventing remembered cards. Other players' hands, private explanations, scenario labels, reference recommendations and future events are unavailable. Treat unproved holdings and intentions as uncertain.\n\nTEXT ONLY. Do not use tools, files, shell, browser, scripts, other agents, messages, or outside context. Do not seek hidden information or coordinate privately. Do not announce a plan before the response. If data is incomplete, return exactly INVALID_INPUT. Never invent a legal move.\n\nReturn exactly one of these forms, with one blank line and one short paragraph of 15-100 words:\n\nBID: <integer 0 through 13>\n\n<Brief decision justification: cite relevant facts, intended benefit and any material uncertainty. This is an explanation for review, not a transcript of internal reasoning.>\n\nor\n\nPLAY: <card ID from the legal set>\n\n<Brief decision justification in one paragraph.>\n\nNo JSON, Markdown fences, headings, extra actions, questions, commands, probabilities without evidence, or other output. A forced card still gets a short explanation and is marked forced by the referee. Any response outside the grammar is ignored, recorded as rejected and requested again without advancing play. No fallback player chooses in your place.\n\n# Spades rules template v1\n\nFour seats act clockwise 0,1,2,3; names Maya, Leo, Jason, Sarah. Standard 52-card deck. Card IDs are suit C/D/H/S followed by 2..10,J,Q,K,A; A high. Each player starts with 13 cards. Spades are always trump. No jokers, blind Nil, passing, table talk or agreed signaling conventions. The seat after the dealer bids first and leads the first trick. Public bids are placed clockwise, each integer 0..13 exactly once. Zero means Nil: an individual promise to take no tricks. Any bid 0..13 is legal, even when combined bids exceed 13.\n\nFollow the led suit when holding it. Otherwise any card is legal; trumping is optional. A lead of spades is allowed only after a spade has been played, unless the leader holds only spades. Highest spade wins a trick containing spades; otherwise highest card of the led suit wins. Off-suit non-trump cannot win. Winner leads next. All 13 tricks are played before scoring or checking victory.\n\nCompetition is declared in each packet. SOLO: four independent scores; everyone else is an opponent. PARTNERS: seats 0+2 versus 1+3; positive bids and tricks of positive bidders are pooled for each team. Partners never see each other's cards. Nil stays individual, including when both teammates bid Nil.\n\nFor each scoring competitor let B be total positive bids and C tricks taken by its positive bidders. If C >= B, positive-contract points are 10*B plus max(0,C-B); otherwise they are -10*B. A Nil bidder adds +100 for zero tricks or -100 otherwise. Tricks taken by a failed Nil bidder NEVER help a positive contract and add bags but no overtrick points. Bags added are max(0,C-B) plus all failed-Nil tricks. Each accumulated 10 bags costs 100 points, leaving the remainder. With no positive bids, positive-contract points are zero. Existing bags remain when a contract fails.\n\nAdd the hand's points to the public scores. After the complete hand, if someone has at least 500, the unique highest-scoring competitor wins the match. A tied highest score means continue. If nobody reaches 500, continue. Try to maximize your prospect of winning under these rules; in Partners this means your team's result. No player knows future deals. Each research episode stops after this hand, while the scoring goal and match-end check still apply.\n\n\n{\"game\":\"spades-solo\",\"ruleProfile\":\"spades-solo-training-1.0.0\",\"moduleVersion\":\"1.0.0\",\"observationSchemaVersion\":\"1.0.0\",\"featureVersion\":\"1.0.0\",\"promptVersion\":\"expanded-stateless-player-1.0.0\",\"name\":\"Sarah\",\"seat\":3,\"turn\":3,\"names\":[\"Maya\",\"Leo\",\"Jason\",\"Sarah\"],\"dealer\":3,\"competition\":[[0],[1],[2],[3]],\"phase\":\"play\",\"hand\":[\"C4\",\"C7\",\"C10\",\"CK\",\"D4\",\"D6\",\"D7\",\"D9\",\"D10\",\"HA\",\"S9\"],\"handSizes\":[10,10,10,11],\"bids\":[10,2,3,1],\"tricks\":[1,0,1,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"completedTricks\":[{\"plays\":[{\"seat\":0,\"card\":\"H4\"},{\"seat\":1,\"card\":\"HQ\"},{\"seat\":2,\"card\":\"S2\"},{\"seat\":3,\"card\":\"H3\"}],\"winner\":2},{\"plays\":[{\"seat\":2,\"card\":\"DA\"},{\"seat\":3,\"card\":\"D3\"},{\"seat\":0,\"card\":\"S10\"},{\"seat\":1,\"card\":\"D2\"}],\"winner\":0}],\"currentTrick\":[{\"seat\":0,\"card\":\"SJ\"},{\"seat\":1,\"card\":\"S8\"},{\"seat\":2,\"card\":\"S3\"}],\"spadesBroken\":true,\"legalActions\":[\"play:S9\"]}\n",
+      "deliveredPromptHash": "f15037b4db393500ba44d244c657937df0f3649f749726468f249e31920cd8d6",
+      "rawResponse": "PLAY: S9\n\nS9 is my only spade, making this play forced by the follow-suit rule. Maya’s SJ wins this trick. I retain HA as a potential way to fulfill my one-trick bid, although it could be trumped.",
+      "rawResponseHash": "9d831c3cfff11a557bf78966f461ee10e42c6a169eb48fbd29f26a5fef3ef894",
+      "justification": "S9 is my only spade, making this play forced by the follow-suit rule. Maya’s SJ wins this trick. I retain HA as a potential way to fulfill my one-trick bid, although it could be trumped.",
+      "action": {
+        "kind": "play",
+        "seat": 3,
+        "card": "S9"
+      },
+      "actionHash": "8f6874e8fe6142d3fe40c4ee77b90b21935c151f1fd6170b29d74b06c4484b0a",
+      "forced": true,
+      "configuredModel": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "transportMode": "fresh-stateless-per-decision",
+      "transportMetadata": {
+        "transport": "codex-exec-stdin",
+        "configuredModel": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "cliVersion": "codex-cli 0.159.2",
+        "startedAt": "2026-10-01T00:15:11.345Z",
+        "finishedAt": "2026-10-01T00:15:23.886Z",
+        "threadId": "01a0f4d0-acfe-7222-bbf1-917e685fd7d6",
+        "exitCode": 0,
+        "timedOut": false,
+        "timeoutMs": 600000,
+        "deliveredPromptHash": "f15037b4db393500ba44d244c657937df0f3649f749726468f249e31920cd8d6",
+        "responseMessageCount": 1,
+        "toolEvents": [],
+        "usage": {
+          "input_tokens": 11167,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 212,
+          "reasoning_output_tokens": 153
+        },
+        "failures": [],
+        "stderr": "2026-10-01T00:15:11.619378Z  WARN codex_core::shell_snapshot: Failed to create shell snapshot for powershell: Shell snapshot not supported yet for PowerShell\n",
+        "transportConfigHash": "3faf010ba7cbcb85009022998597bf9cbf20641b2f17e29b9f1c2d70c1d8e47b",
+        "modelSnapshot": "not independently exposed; configured model and CLI success recorded",
+        "evidenceFile": "transport/solo-void-trumps-at-jason-16-1.json",
+        "evidenceHash": "2fb1b6afccadc98e016aa8c742d1a70d6110991c1eae41abfd0cc3fe0ff2d4b2"
+      },
+      "transportMetadataHash": "d6dcefd088e421b1f8f5efdb1088e34ce22aaeb2a62c20f107cf46e431fcf5ed",
+      "beforeStateHash": "526f72d21fdfa19f8e929617c53fe3b65c1804cb5e844ff539aa13ffb041bfd7",
+      "afterStateHash": "6e4ba97ad16d9697cdf0866b2bf2fd9c8761b10b5823939c7d9f132fd17ee19f"
+    }
+  ],
+  "rejections": [],
+  "result": {
+    "phase": "play",
+    "turn": 0,
+    "bids": [
+      10,
+      2,
+      3,
+      1
+    ],
+    "tricks": [
+      2,
+      0,
+      1,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "history": [
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "seat": 1,
+            "card": "HQ"
+          },
+          {
+            "seat": 2,
+            "card": "S2"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "winner": 2
+      },
+      {
+        "plays": [
+          {
+            "seat": 2,
+            "card": "DA"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          },
+          {
+            "seat": 0,
+            "card": "S10"
+          },
+          {
+            "seat": 1,
+            "card": "D2"
+          }
+        ],
+        "winner": 0
+      },
+      {
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S8"
+          },
+          {
+            "seat": 2,
+            "card": "S3"
+          },
+          {
+            "seat": 3,
+            "card": "S9"
+          }
+        ],
+        "winner": 0
+      }
+    ],
+    "handResult": null
+  },
+  "resultHash": "d7c431c7e2a54e3a1fd831f5bd4ab861f179511902c3b6f6ee4ccee9be430d24",
+  "recordHash": "269bf51902193228ac2ea2ce0e247174de4f40ddfa197dfd028350ce40a27e92"
+}
