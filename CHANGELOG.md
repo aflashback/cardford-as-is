@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-02
+
+[CR-STRAT-010](planning/decisions/CR-STRAT-010-observed-cases-and-browser-baseline.md): add selectable `spades-cases-4.0.0` and authored cues for partner spade conservation, lost lead access, proved remaining sweeps and unbeatable leads. Preserve the existing default and frozen baseline. Pin each game's policy and retain private original bot analyses; saved decisions and later trials retain their source policy. Add source-linked counterexamples and a [real browser baseline protocol](qa/experiments/2026-10-02-browser-baseline/README.md), with separate Luna player/observer evidence. Runtime Jev stays off; strategic-strength and human-learning gates remain open.
+
 ## Unreleased — 2026-10-01
 
 Added RD-01–RD-04 selected opening deals for local training and repeatable tests: server-only versioned JSON fixtures, an opt-in practice picker, saved-deal replay and strict validation/visibility checks. Normal games retain cryptographic Fisher–Yates shuffling. Hosted fixture overrides remain blocked. [CR-DEV-001](planning/decisions/CR-DEV-001-selected-deals.md) · [usage](planning/dev-deals.md) · [acceptance](qa/implementation/selected-deals-acceptance.md).

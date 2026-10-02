@@ -1,5 +1,9 @@
 # Web changes
 
+## 2026-10-02 — Observed Spades cases and original decision records
+
+`SPADES_POLICY=spades-cases-4.0.0` selects the new local bot/coach candidate. Its exact public-card proofs distinguish lost lead access from equivalent discards; its partner-spade preference is conditional. Each new game now pins its policy. Original bot analyses are private, committed with accepted moves, and excluded from public views. Historical human advice remains unchanged; continuation trials use the recorded source policy. [Change record](../planning/decisions/CR-STRAT-010-observed-cases-and-browser-baseline.md).
+
 ## 2026-10-01 — Selected opening deals
 
 [CR-DEV-001](../planning/decisions/CR-DEV-001-selected-deals.md): local/test servers may load private, versioned full deals through `DEV_SCENARIOS_FILE`. New-game setup then offers a Practice deal picker and labels selected hands. Replay this deal restores the saved opening cards/dealer in a fresh game, including after fixture edits. Normal starts stay random. [Run instructions](../planning/dev-deals.md).

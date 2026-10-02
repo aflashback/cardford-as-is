@@ -4,7 +4,8 @@ import { ownedTransaction, saveGame } from '../records/repository.ts';
 import type { Database } from '../records/database.ts';
 import { coachAccess, observationView } from './views.ts';
 import { ApiFailure } from './errors.ts';
-import type { RequestContext } from './game-service.ts';
+import { resolveGamePolicy, type RequestContext } from './game-service.ts';
+import { getReasoningProfile } from '../strategy/index.ts';
 import { TrialPool } from '../coaching/trial-pool.ts';
 import { fingerprint } from '../billing/store.ts';
 
@@ -21,11 +22,9 @@ interface Job {
 export class TrialService {
   readonly database: Database;
   readonly workers = new TrialPool();
-  /** Named policy per mode for simulated seats; a mode without an entry uses the live default. */
-  readonly policies: Partial<Record<string, string>>;
-  constructor(database: Database, policies: Partial<Record<string, string>> = {}) {
+  // Retain the constructor call shape; continuation policy comes from the recorded source or game pin.
+  constructor(database: Database, _policies: Partial<Record<string, string>> = {}) {
     this.database = database;
-    this.policies = { ...policies };
   }
   async run(context: RequestContext, body: TrialRequest): Promise<ReviewTrial> {
     const prepared = await ownedTransaction(this.database, context.token, async (client, player, game) => {
@@ -54,6 +53,17 @@ export class TrialService {
       const source = game.document.decisions.find((d) => d.id === body.decisionId);
       if (!source || source.action.kind !== 'play')
         throw new ApiFailure(400, 'INVALID_COMMAND', 'Choose a recorded card decision.');
+      const original = game.document.decisionAnalyses?.[source.id];
+      const sourceVersions = new Set([original?.analysis.policyVersion, original?.adviceSnapshot.policyVersion,
+        ...Object.values(game.document.savedAdvice ?? {}).filter(advice => advice.decisionId === source.id)
+          .map(advice => advice.policyVersion)].filter((value): value is string => typeof value === 'string'));
+      if (sourceVersions.size > 1)
+        throw new ApiFailure(409, 'INVALID_COMMAND', 'The recorded source policy is ambiguous; the original advice is preserved.');
+      const unpinned = game.document.reasoningPolicy === undefined;
+      const policyVersion = [...sourceVersions][0] ?? resolveGamePolicy(game);
+      try { getReasoningProfile(policyVersion, source.observation.mode); }
+      catch { throw new ApiFailure(409, 'INVALID_COMMAND', 'The recorded source policy is unavailable; the original advice is preserved.'); }
+      if (unpinned && game.document.reasoningPolicy) await saveGame(client, game);
       const access = await coachAccess(client, player, game, source.handNumber);
       if (!access.canStartWork || !access.handUnlocked)
         throw new ApiFailure(403, 'FORBIDDEN', 'Unlock coaching for the selected hand first.');
@@ -93,14 +103,14 @@ export class TrialService {
           [id, player.id, game.id, body.commandId, digest, game.revision, player.access_generation, seed],
         )
       ).rows[0];
-      return { cached: null, job, source, playerId: player.id };
+      return { cached: null, job, source, playerId: player.id, policyVersion };
     });
     if (prepared.cached) return prepared.cached;
     const result = await this.workers.run(
       prepared.source.observation,
       { kind: 'play', seat: 0, card: body.alternative.card },
       prepared.job.seed,
-      this.policies[prepared.source.observation.mode],
+      prepared.policyVersion,
     );
     const published = await ownedTransaction(this.database, context.token, async (client, player, game) => {
       const lease = (

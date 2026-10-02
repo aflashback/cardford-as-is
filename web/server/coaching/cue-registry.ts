@@ -1,6 +1,7 @@
 import { heartsLegacyCues } from '../games/hearts/coaching/cues-legacy.ts';
 import { spadesLegacyCues } from '../games/spades/coaching/cues-legacy.ts';
 import { spadesPlanCues } from '../games/spades/coaching/cues-v2.ts';
+import { observedSpadesCues } from '../games/spades/cases/cues.ts';
 import type { DecisionAnalysis } from '../strategy/types.ts';
 import type { CuePack } from './types.ts';
 
@@ -23,6 +24,7 @@ const registrations: readonly CueRegistration[] = [
   { pack: spadesLegacyCues, forced: 'shared', legacyModes: ['spades-solo', 'spades-partners'] },
   { pack: heartsLegacyCues, forced: 'shared', legacyModes: ['hearts'] },
   { pack: spadesPlanCues, forced: 'own', legacyModes: [] },
+  { pack: observedSpadesCues, forced: 'own', legacyModes: [] },
 ];
 
 export function listCuePacks(): CuePack[] {

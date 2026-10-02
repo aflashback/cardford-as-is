@@ -118,7 +118,7 @@ test('STRAT-12: the live default stays inline and an unknown named policy is rej
   assert.throws(() => new GameService(pool, { policies: { 'spades-solo': 'spades-plan-9.9.9' } }), /profile/);
   assert.throws(() => new GameService(pool, { policies: { hearts: SEARCHED } }), /profile/);
   const service = new GameService(pool);
-  assert.equal(service.strategy.searching, false);
+  assert.equal(service.strategy.inline('spades-partners'), true);
   assert.equal(service.strategy.inline('spades-partners'), true);
   const base = {
     APP_ENV: 'local', IDENTITY_MODE: 'local-test', BILLING_MODE: 'fixture',

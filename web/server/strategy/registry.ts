@@ -5,6 +5,7 @@ import { heartsReasoning } from '../games/hearts/reasoning/manifest.ts';
 import { heartsPlanProfiles } from '../games/hearts/plan/profiles.ts';
 import { spadesReasoning } from '../games/spades/reasoning/manifest.ts';
 import { spadesPlanProfiles } from '../games/spades/plan/profiles.ts';
+import { observedSpadesProfile } from '../games/spades/cases/profile.ts';
 
 /** Trusted, build-time registered strategy modules. */
 export interface ReasoningPack {
@@ -22,7 +23,7 @@ export type Policy = (observation: SeatObservation) => DecisionAnalysis;
 /** Live defaults: exactly one pack per catalog mode. Changing one is a recorded owner decision. */
 const packs: readonly ReasoningPack[] = [heartsReasoning, spadesReasoning];
 /** Every selectable policy, including the defaults. Non-default profiles serve evaluation and local trials. */
-const profiles: readonly ReasoningPack[] = [...packs, ...spadesPlanProfiles, ...heartsPlanProfiles];
+const profiles: readonly ReasoningPack[] = [...packs, ...spadesPlanProfiles, ...heartsPlanProfiles, observedSpadesProfile];
 
 export function getReasoningPack(mode: string): ReasoningPack {
   const matches = packs.filter((pack) => pack.modes.includes(mode as Mode));
@@ -41,6 +42,16 @@ export function getReasoningProfile(policyVersion: string, mode: string): Reason
   );
   if (matches.length !== 1) throw new Error(`No unique reasoning profile ${policyVersion} for mode: ${mode}`);
   return matches[0];
+}
+
+/** Historical documents without a pin retain their original, explicitly supported policy. */
+export function getLegacyReasoningProfile(mode: string): ReasoningPack {
+  switch (mode) {
+    case 'hearts': return getReasoningProfile('hearts-baseline-1.0.0', mode);
+    case 'spades-solo':
+    case 'spades-partners': return getReasoningProfile('spades-tactics-2.1.0', mode);
+    default: throw new Error(`No legacy reasoning profile for mode: ${mode}`);
+  }
 }
 
 export function listReasoningProfiles(mode: string): string[] {

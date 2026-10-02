@@ -1,4 +1,4 @@
-import type { PrivateGame, AcceptedAction } from '../game/index.ts';
+import type { PrivateGame, AcceptedAction, GameAction as DomainAction, Seat } from '../game/index.ts';
 import type { SeatObservation } from '../observations/types.ts';
 import type { DecisionAnalysis } from '../strategy/types.ts';
 import type { Advice } from '../coaching/templates.ts';
@@ -39,7 +39,41 @@ export interface SavedDecisionAnalysis {
   analysis: DecisionAnalysis;
   adviceSnapshot: Advice;
 }
+/** AUDIT-01: attribution identifies evidence for the future pin, not every historical move. */
+export interface ReasoningPolicyPin {
+  policyVersion: string;
+  attribution: 'new-session' | 'legacy-saved-analysis' | 'legacy-default';
+}
+/** Private job data, never a player or strategy input envelope. */
+export interface PreparedBotDecision {
+  kind: 'bot-decision';
+  schemaVersion: '1.0.0';
+  decisionId: string;
+  revision: number;
+  seat: Seat;
+  policyVersion: string;
+  action: DomainAction;
+  observation: SeatObservation;
+  analysis: DecisionAnalysis;
+}
+/** AUDIT-02/03: immutable evidence of the action actually accepted, including legacy absence. */
+export interface BotDecisionAudit {
+  schemaVersion: '1.0.0';
+  decisionId: string;
+  revision: number;
+  handNumber: number;
+  seat: Seat;
+  action: DomainAction;
+  policyVersion: string | null;
+  originalAnalysis: 'available' | 'unavailable-legacy-job';
+  observation: SeatObservation | null;
+  analysis: DecisionAnalysis | null;
+}
 export interface GameDocument {
+  /** Missing in legacy documents until future policy attribution is resolved. */
+  reasoningPolicy?: ReasoningPolicyPin;
+  /** Original bot evidence is private and separate from human coaching history. */
+  botDecisionAudits?: Record<string, BotDecisionAudit>;
   /** RD-03: immutable provenance for the selected opening deal, never strategy input. */
   openingScenario?: { metadata: DevScenarioView; dealer: PrivateGame['dealer'] };
   /** Missing only in legacy documents; multiplayer is not an enabled runtime. */

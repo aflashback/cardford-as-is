@@ -1,4 +1,5 @@
 import { randomUUID, randomBytes } from 'node:crypto';
+import { isDeepStrictEqual } from 'node:util';
 import {
   createGame,
   apply,
@@ -8,12 +9,14 @@ import {
   type Card,
   type GameAction as DomainAction,
 } from '../game/index.ts';
-import { observe, type SeatObservation } from '../observations/index.ts';
+import { observe, assertObservation, type SeatObservation } from '../observations/index.ts';
 import {
   analyzeDecision,
   costOf,
   getReasoningPack,
   getReasoningProfile,
+  getLegacyReasoningProfile,
+  readSavedAnalysis,
   type DecisionAnalysis,
 } from '../strategy/index.ts';
 import { explain } from '../coaching/templates.ts';
@@ -22,7 +25,7 @@ import { shuffledDeck, randomDealer } from '../game-deal.ts';
 import type { DevScenarioDeal } from '../dev-scenarios.ts';
 import { ownedTransaction, idempotent, saveGame, savePlayer } from '../records/repository.ts';
 import type { Database, Transaction } from '../records/database.ts';
-import type { GameRow, PlayerRow, SavedDecisionAnalysis } from '../records/types.ts';
+import type { GameRow, PlayerRow, SavedDecisionAnalysis, ReasoningPolicyPin, PreparedBotDecision, BotDecisionAudit } from '../records/types.ts';
 import type {
   ActionsRequest,
   AdviceRequest,
@@ -56,6 +59,35 @@ export interface StrategyOptions {
   /** Test seam: observes every analysis call. Production uses the registered packs. */
   analyze?: (observation: SeatObservation, policyVersion: string | undefined) => DecisionAnalysis;
 }
+/** Resolve only future execution. Existing saved analyses and advice remain untouched. */
+export function resolveGamePolicy(game: GameRow): string {
+  let pin = game.document.reasoningPolicy;
+  if (pin === undefined) {
+    const versions = new Set<string>();
+    for (const saved of Object.values(game.document.decisionAnalyses ?? {})) {
+      if (typeof saved.analysis?.policyVersion === 'string') versions.add(saved.analysis.policyVersion);
+      if (typeof saved.adviceSnapshot?.policyVersion === 'string') versions.add(saved.adviceSnapshot.policyVersion);
+    }
+    for (const saved of Object.values(game.document.savedAdvice ?? {}))
+      if (typeof saved.policyVersion === 'string') versions.add(saved.policyVersion);
+    for (const audit of Object.values(game.document.botDecisionAudits ?? {}))
+      if (audit.policyVersion !== null) versions.add(audit.policyVersion);
+    if (versions.size > 1)
+      throw new ApiFailure(409, 'INVALID_COMMAND', 'Legacy policy evidence is ambiguous; the original history is preserved.');
+    const version = [...versions][0];
+    let legacyDefault: string;
+    try { legacyDefault = getLegacyReasoningProfile(game.document.state.mode).policyVersion; }
+    catch { throw new ApiFailure(409, 'INVALID_COMMAND', 'The historical policy for this game is unavailable.'); }
+    pin = { policyVersion: version ?? legacyDefault, attribution: version ? 'legacy-saved-analysis' : 'legacy-default' };
+  }
+  if (!pin || typeof pin.policyVersion !== 'string' ||
+    !['new-session', 'legacy-saved-analysis', 'legacy-default'].includes(pin.attribution))
+    throw new ApiFailure(409, 'INVALID_COMMAND', 'The recorded policy pin is invalid.');
+  try { getReasoningProfile(pin.policyVersion, game.document.state.mode); }
+  catch { throw new ApiFailure(409, 'INVALID_COMMAND', 'The recorded policy is unavailable; the original history is preserved.'); }
+  game.document.reasoningPolicy ??= pin;
+  return pin.policyVersion;
+}
 class Strategy {
   readonly policies: Partial<Record<string, string>>;
   readonly run: NonNullable<StrategyOptions['analyze']>;
@@ -69,15 +101,17 @@ class Strategy {
     return this.policies[mode];
   }
   /** STRAT-12: bounded-search analysis is never computed while a transaction is open. */
-  inline(mode: string): boolean {
-    const policy = this.policyFor(mode);
+  inline(mode: string, policy = this.policyFor(mode)): boolean {
     return costOf(policy ? getReasoningProfile(policy, mode) : getReasoningPack(mode)) === 'inline';
   }
-  get searching(): boolean {
-    return Object.keys(this.policies).some((mode) => !this.inline(mode));
+  newPin(mode: string): ReasoningPolicyPin {
+    return { policyVersion: this.policyFor(mode) ?? getReasoningPack(mode).policyVersion, attribution: 'new-session' };
   }
-  analyze(observation: SeatObservation): DecisionAnalysis {
-    return this.run(observation, this.policyFor(observation.mode));
+  policyForGame(game: GameRow): string {
+    return resolveGamePolicy(game);
+  }
+  analyze(observation: SeatObservation, policy = this.policyFor(observation.mode)): DecisionAnalysis {
+    return this.run(structuredClone(observation), policy);
   }
 }
 const leaseToken = () => randomBytes(24).toString('base64url');
@@ -116,16 +150,64 @@ function ensureHumanAnalysis(
   strategy: Strategy,
   obs = observe(game.document.state, 0),
 ): SavedDecisionAnalysis | undefined {
+  const policy = strategy.policyForGame(game);
   if (!obs.legalActions.length) return undefined;
   const id = decisionId(game);
   const saved = game.document.decisionAnalyses?.[id];
   if (saved) return saved;
   // Inside a transaction only inline analysis may run; searched analysis is frozen separately.
-  if (!strategy.inline(obs.mode)) return undefined;
-  const analysis = strategy.analyze(obs);
+  if (!strategy.inline(obs.mode, policy)) return undefined;
+  const analysis = strategy.analyze(obs, policy);
+  validateOriginalAnalysis(obs, analysis, policy);
   const result = { analysis, adviceSnapshot: explain(obs, analysis) };
   (game.document.decisionAnalyses ??= {})[id] = result;
   return result;
+}
+function validateOriginalAnalysis(observation: SeatObservation, analysis: DecisionAnalysis, policy: string): void {
+  assertObservation(observation);
+  if (!readSavedAnalysis(analysis) || analysis.policyVersion !== policy ||
+      !observation.legalActions.some(action => isDeepStrictEqual(action, analysis.action)) ||
+      analysis.action.seat !== observation.seat ||
+      analysis.provenance !== (observation.legalActions.length === 1 ? 'forced' : 'code'))
+    invalid('Original analysis does not match this legal decision and policy.');
+}
+function botAudit(game: GameRow, prepared: PreparedBotDecision | null, action: DomainAction): BotDecisionAudit {
+  return {
+    schemaVersion: '1.0.0', decisionId: decisionId(game), revision: game.revision,
+    handNumber: game.document.state.handNumber, seat: action.seat, action: structuredClone(action),
+    policyVersion: prepared?.policyVersion ?? null,
+    originalAnalysis: prepared ? 'available' : 'unavailable-legacy-job',
+    observation: prepared ? structuredClone(prepared.observation) : null,
+    analysis: prepared ? structuredClone(prepared.analysis) : null,
+  };
+}
+/** Strict private job reader. Old bid/play jobs retain an explicit absence of original analysis. */
+function readBotJob(value: unknown, game: GameRow, strategy: Strategy): { action: Exclude<DomainAction, { kind: 'pass' }>; prepared: PreparedBotDecision | null } {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) invalid('Invalid computer decision.');
+  const row = value as Record<string, unknown>;
+  let prepared: PreparedBotDecision | null = null;
+  let action: unknown = value;
+  if (row.kind === 'bot-decision') {
+    const keys = ['kind', 'schemaVersion', 'decisionId', 'revision', 'seat', 'policyVersion', 'action', 'observation', 'analysis'];
+    if (Object.keys(row).length !== keys.length || keys.some(key => !Object.hasOwn(row, key)) || row.schemaVersion !== '1.0.0')
+      invalid('Invalid prepared computer decision envelope.');
+    prepared = row as unknown as PreparedBotDecision;
+    if (prepared.decisionId !== decisionId(game) || prepared.revision !== game.revision ||
+        prepared.seat !== game.document.state.turn || prepared.policyVersion !== strategy.policyForGame(game))
+      invalid('Prepared computer decision does not match this revision, seat and policy.');
+    const current = observe(game.document.state, prepared.seat);
+    assertObservation(prepared.observation);
+    if (!isDeepStrictEqual(prepared.observation, current)) invalid('Prepared observation does not match this decision.');
+    validateOriginalAnalysis(prepared.observation, prepared.analysis, prepared.policyVersion);
+    if (!isDeepStrictEqual(prepared.action, prepared.analysis.action)) invalid('Prepared action does not match its original analysis.');
+    action = prepared.action;
+  }
+  const currentSeat = game.document.state.turn;
+  if (currentSeat === null || currentSeat === 0 || !['bid', 'play'].includes(game.document.state.phase))
+    invalid('Invalid computer decision.');
+  const legal = observe(game.document.state, currentSeat).legalActions.find(candidate => isDeepStrictEqual(candidate, action));
+  if (!legal || legal.kind === 'pass') invalid('Invalid computer decision.');
+  return { action: legal, prepared };
 }
 async function persistAdvance(client: Transaction, game: GameRow, event: unknown, strategy: Strategy) {
   game.revision++;
@@ -157,6 +239,8 @@ async function insertGame(
     player_id: player.id,
     revision: 0,
     document: {
+      reasoningPolicy: strategy.newPin(mode),
+      botDecisionAudits: {},
       tableType: 'practice-bots',
       decisionAnalyses: {},
       state: createGame({ id, mode, dealer: scenario?.dealer ?? randomDealer() }, deck),
@@ -198,20 +282,23 @@ export class GameService {
    * commit against the same decision identity. A decision that moved on is discarded.
    */
   private async freezeAnalysis(token: string): Promise<void> {
-    if (!this.strategy.searching) return;
-    const pending = await ownedTransaction(this.pool, token, async (_client, _player, game) => {
+    const pending = await ownedTransaction(this.pool, token, async (client, _player, game) => {
       if (!game) return null;
+      const unpinned = game.document.reasoningPolicy === undefined;
+      const policy = this.strategy.policyForGame(game);
+      if (unpinned) await saveGame(client, game);
       const id = decisionId(game);
       if (game.document.decisionAnalyses?.[id]) return null;
       const observation = observe(game.document.state, 0);
-      if (!observation.legalActions.length || this.strategy.inline(observation.mode)) return null;
-      return { gameId: game.id, id, observation };
+      if (!observation.legalActions.length || this.strategy.inline(observation.mode, policy)) return null;
+      return { gameId: game.id, id, observation, policy };
     });
     if (!pending) return;
-    const analysis = this.strategy.analyze(pending.observation);
+    const analysis = this.strategy.analyze(pending.observation, pending.policy);
+    validateOriginalAnalysis(pending.observation, analysis, pending.policy);
     const result = { analysis, adviceSnapshot: explain(pending.observation, analysis) };
     await ownedTransaction(this.pool, token, async (client, _player, game) => {
-      if (!game || game.id !== pending.gameId || decisionId(game) !== pending.id) return;
+      if (!game || game.id !== pending.gameId || decisionId(game) !== pending.id || this.strategy.policyForGame(game) !== pending.policy) return;
       if (game.document.decisionAnalyses?.[pending.id]) return;
       (game.document.decisionAnalyses ??= {})[pending.id] = result;
       await saveGame(client, game);
@@ -228,12 +315,12 @@ export class GameService {
       ownedTransaction(this.pool, context.token, async (client, player, existing) => {
         const game =
           existing ?? (await insertGame(client, player, 'spades-partners', context.tab, this.strategy));
-        if (
-          existing &&
-          !game.document.decisionAnalyses?.[decisionId(game)] &&
-          ensureHumanAnalysis(game, this.strategy)
-        )
-          await saveGame(client, game);
+        if (existing) {
+          const unpinned = game.document.reasoningPolicy === undefined;
+          const missing = !game.document.decisionAnalyses?.[decisionId(game)];
+          const result = ensureHumanAnalysis(game, this.strategy);
+          if (unpinned || (missing && result)) await saveGame(client, game);
+        }
         return sessionView(client, player, game, context.tab);
       }),
     );
@@ -297,22 +384,62 @@ export class GameService {
     });
   }
   async action(context: RequestContext, body: ActionsRequest) {
-    return this.frozen(context.token, () => this.applyAction(context, body), true);
+    return this.frozen(context.token, async () => {
+      const passes = body.action.kind === 'pass' ? await this.preparePasses(context, body) : null;
+      return this.applyAction(context, body, passes);
+    }, true);
   }
-  private async applyAction(context: RequestContext, body: ActionsRequest) {
+  /** Sealed bot choices use their own original observations and run before the commit transaction. */
+  private async preparePasses(context: RequestContext, body: ActionsRequest): Promise<PreparedBotDecision[] | null> {
+    const snapshots = await ownedTransaction(this.pool, context.token, async (client, player, game) => {
+      ownedGame(game, body.gameId);
+      // An already accepted pass is replayed by the normal idempotency reader below.
+      if (game.document.state.phase !== 'pass') return null;
+      await requireCoverage(client, player, game);
+      if ((await client.query('SELECT 1 FROM commands WHERE player_id=$1 AND command_id=$2', [player.id, body.commandId])).rowCount) {
+        // Validate the original digest before any new pass preparation or revision/lease check.
+        await idempotent(client, player.id, body.commandId, { route: 'action', body }, async () => {
+          invalid('The accepted action command is unavailable.');
+        });
+        return null;
+      }
+      revision(game, body, context.tab);
+      const unpinned = game.document.reasoningPolicy === undefined;
+      const policyVersion = this.strategy.policyForGame(game);
+      if (unpinned) await saveGame(client, game);
+      return ([1, 2, 3] as const).map(seat => ({
+        kind: 'bot-decision' as const, schemaVersion: '1.0.0' as const,
+        decisionId: `${decisionId(game)}:pass:${seat}`, revision: game.revision, seat, policyVersion,
+        observation: observe(game.document.state, seat),
+      }));
+    });
+    return snapshots?.map(snapshot => {
+      const analysis = this.strategy.analyze(snapshot.observation, snapshot.policyVersion);
+      validateOriginalAnalysis(snapshot.observation, analysis, snapshot.policyVersion);
+      return { ...snapshot, analysis, action: structuredClone(analysis.action) };
+    }) ?? null;
+  }
+  private async applyAction(context: RequestContext, body: ActionsRequest, preparedPasses: PreparedBotDecision[] | null) {
     return this.change(context, body, 'action', async (client, player, game) => {
       const before = frame(game, body.action),
         obs = observe(game.document.state, 0),
         id = decisionId(game);
       ensureHumanAnalysis(game, this.strategy, obs);
       let accepted: Parameters<typeof apply>[1];
+      const passAudits: BotDecisionAudit[] = [];
       if (body.action.kind === 'pass') {
         const passes: Four<Card[]> = [body.action.cards, [], [], []];
         for (const seat of [1, 2, 3] as const) {
-          // Sealed pass choices stay on the inline default; they are never searched.
-          const action = analyzeDecision(observe(game.document.state, seat)).action;
+          const prepared = preparedPasses?.find(choice => choice.seat === seat);
+          if (!prepared || prepared.decisionId !== `${id}:pass:${seat}` || prepared.revision !== game.revision ||
+            prepared.policyVersion !== this.strategy.policyForGame(game) ||
+            !isDeepStrictEqual(prepared.observation, observe(game.document.state, seat)) ||
+            !isDeepStrictEqual(prepared.action, prepared.analysis.action)) invalid('The prepared pass no longer matches this decision.');
+          const action = prepared.action;
           if (action.kind !== 'pass') invalid('Not a passing phase.');
           passes[seat] = action.cards;
+          if (game.document.botDecisionAudits?.[prepared.decisionId]) invalid('This computer decision was already recorded.');
+          passAudits.push({ ...botAudit(game, prepared, action), decisionId: prepared.decisionId });
         }
         accepted = { kind: 'pass-bundle', passes };
       } else accepted = { ...body.action, seat: 0 };
@@ -322,6 +449,7 @@ export class GameService {
         invalid('That action is not legal in the current position.');
       }
       game.document.actions.push({ kind: 'action', action: accepted });
+      for (const audit of passAudits) (game.document.botDecisionAudits ??= {})[audit.decisionId] = audit;
       const level = Math.max(game.document.exposure[id] ?? 0, game.document.pendingExposure ?? 0);
       game.document.pendingExposure = 0;
       if (obs.legalActions.length > 1) {
@@ -366,11 +494,18 @@ export class GameService {
       const state = game.document.state;
       if (state.turn === null || state.turn === 0 || !['bid', 'play'].includes(state.phase))
         invalid('No computer decision to prepare.');
-      return observe(state, state.turn);
+      const unpinned = game.document.reasoningPolicy === undefined;
+      const policyVersion = this.strategy.policyForGame(game);
+      if (unpinned) await saveGame(client, game);
+      return { observation: observe(state, state.turn), policyVersion, decisionId: decisionId(game), revision: game.revision, seat: state.turn };
     });
     // Computer decisions are always computed with no transaction open.
-    const action = this.strategy.analyze(snapshot).action;
+    const analysis = this.strategy.analyze(snapshot.observation, snapshot.policyVersion);
+    validateOriginalAnalysis(snapshot.observation, analysis, snapshot.policyVersion);
+    const result: PreparedBotDecision = { kind: 'bot-decision', schemaVersion: '1.0.0', ...snapshot,
+      action: structuredClone(analysis.action), analysis };
     return this.change(context, body, 'prepare', async (client, player, game) => {
+      if (this.strategy.policyForGame(game) !== snapshot.policyVersion) invalid('The recorded policy changed during preparation.');
       const existing = (
         await client.query<{ id: string }>('SELECT id FROM jobs WHERE game_id=$1 AND revision=$2', [
           game.id,
@@ -380,13 +515,13 @@ export class GameService {
       const id = existing?.id ?? randomUUID();
       await client.query(
         "INSERT INTO jobs(id,player_id,game_id,revision,access_generation,status,result,expires_at) VALUES($1,$2,$3,$4,$5,'ready',$6,now()+interval '10 minutes') ON CONFLICT(game_id,revision) DO UPDATE SET result=EXCLUDED.result,status='ready',expires_at=EXCLUDED.expires_at,access_generation=EXCLUDED.access_generation",
-        [id, player.id, game.id, game.revision, player.access_generation, action],
+        [id, player.id, game.id, game.revision, player.access_generation, result],
       );
       return {
         preparedDecisionId: id,
         decisionId: decisionId(game),
         revision: game.revision,
-        source: snapshot.legalActions.length === 1 ? 'forced' : 'code',
+        source: snapshot.observation.legalActions.length === 1 ? 'forced' : 'code',
       };
     });
   }
@@ -404,16 +539,19 @@ export class GameService {
         game.document.actions.push({ kind: 'collect' });
       } else {
         const job = (
-          await client.query<{ result: DomainAction; access_generation: number }>(
+          await client.query<{ result: unknown; access_generation: number }>(
             "SELECT result,access_generation FROM jobs WHERE id=$1 AND player_id=$2 AND game_id=$3 AND revision=$4 AND status='ready' AND expires_at>now()",
             [body.preparedDecisionId, player.id, game.id, game.revision],
           )
         ).rows[0];
         if (!job || job.access_generation !== player.access_generation)
           throw new ApiFailure(409, 'STALE_REVISION', 'Prepare this decision again.');
-        if (job.result.kind === 'pass' || job.result.seat === 0) invalid('Invalid computer decision.');
-        game.document.state = apply(game.document.state, job.result);
-        game.document.actions.push({ kind: 'action', action: job.result });
+        const { action, prepared } = readBotJob(job.result, game, this.strategy);
+        const audit = botAudit(game, prepared, action);
+        if (game.document.botDecisionAudits?.[audit.decisionId]) invalid('This computer decision already has a committed audit.');
+        game.document.state = apply(game.document.state, action);
+        game.document.actions.push({ kind: 'action', action });
+        (game.document.botDecisionAudits ??= {})[audit.decisionId] = audit;
         await client.query("UPDATE jobs SET status='accepted' WHERE id=$1", [body.preparedDecisionId]);
       }
       await persistAdvance(client, game, { kind: body.kind }, this.strategy);
@@ -480,7 +618,7 @@ export class GameService {
       );
     const frozenAdvice =
       saved?.adviceSnapshot ?? ensureHumanAnalysis(game, this.strategy, obs)?.adviceSnapshot;
-    if (!frozenAdvice && obs.legalActions.length && !this.strategy.inline(obs.mode))
+    if (!frozenAdvice && obs.legalActions.length && !this.strategy.inline(obs.mode, this.strategy.policyForGame(game)))
       throw new ApiFailure(409, 'STALE_REVISION', 'The table changed. Refresh the confirmed position.');
     const advice = frozenAdvice ?? explain(obs);
     // COACH-14: one projection decides what each help level may show.

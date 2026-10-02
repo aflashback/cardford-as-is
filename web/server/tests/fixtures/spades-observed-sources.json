@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "observed-source-ledger-1.0.0",
+  "sources": [
+    {
+      "id": "partner-resource",
+      "batch": "2026-09-30-expanded-batch",
+      "episode": "partners-void-trumps-at-jason",
+      "seq": 21,
+      "recordPath": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-trumps-at-jason.json",
+      "recordSha256": "9a344280fcb5c6658d2b5a073b9dde258a9725b189f7561e26b417346c5acec1",
+      "dealSha256": "3d3107bd734ec76d0a9c43c6a7c3a86687528515a0c657f6ba8b506915654f38",
+      "packetSha256": "d32a148b48a66b393a537f230fc188517987a82a3d7ebe7701535ed22114d5d4",
+      "partition": "development"
+    },
+    {
+      "id": "partner-resource-last-entry",
+      "batch": "2026-09-30-expanded-batch",
+      "episode": "partners-void-trumps-at-jason",
+      "seq": 25,
+      "recordPath": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-trumps-at-jason.json",
+      "recordSha256": "9a344280fcb5c6658d2b5a073b9dde258a9725b189f7561e26b417346c5acec1",
+      "dealSha256": "3d3107bd734ec76d0a9c43c6a7c3a86687528515a0c657f6ba8b506915654f38",
+      "packetSha256": "0cc00bf3a12e6a3a89dbcad7815ae14feb8dcfb403448af92d5eaf02d9f71c9a",
+      "partition": "development"
+    },
+    {
+      "id": "no-entry",
+      "batch": "2026-09-30-expanded-batch",
+      "episode": "solo-void-trumps-at-jason",
+      "seq": 35,
+      "recordPath": "qa/experiments/2026-09-30-expanded-batch/records/solo-void-trumps-at-jason.json",
+      "recordSha256": "7ff60dc82025eb50d2d1c45cf0460b666db500c6249a6cb94417cd672138a99e",
+      "dealSha256": "dfd1c487d705c51a4a6505cba62238c109035924b7d92c0e96566c796d24f6ec",
+      "packetSha256": "f4496b28747ff79e5f7c835ec4589d31dcce4ce96f2911e039fe79624718a539",
+      "partition": "development"
+    },
+    {
+      "id": "sweep",
+      "batch": "2026-09-30-two-suit-batch",
+      "episode": "solo-spread",
+      "seq": 35,
+      "recordPath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-spread.json",
+      "recordSha256": "c680319a1a0a18d521945ec70112a408985e62f155ead075c618477a2fc2fb22",
+      "dealSha256": "180d23dec45476d751c60a0e79833e56e4ef235dae77025395ae812fba296bc3",
+      "packetSha256": "b4eded1aed0c9f9f30b9959e53a4975679717fa3846b1667b6a8d6613f0c36b4",
+      "partition": "development"
+    },
+    {
+      "id": "sweep-forced",
+      "batch": "2026-09-30-two-suit-batch",
+      "episode": "solo-spread",
+      "seq": 31,
+      "recordPath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-spread.json",
+      "recordSha256": "c680319a1a0a18d521945ec70112a408985e62f155ead075c618477a2fc2fb22",
+      "dealSha256": "180d23dec45476d751c60a0e79833e56e4ef235dae77025395ae812fba296bc3",
+      "packetSha256": "0e0e2e32bc8feed478bdd8314d5bda9c298604f65db0c92d393b92befa0a39b0",
+      "partition": "development"
+    },
+    {
+      "id": "sweep-earlier",
+      "batch": "2026-09-30-two-suit-batch",
+      "episode": "solo-spread",
+      "seq": 23,
+      "recordPath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-spread.json",
+      "recordSha256": "c680319a1a0a18d521945ec70112a408985e62f155ead075c618477a2fc2fb22",
+      "dealSha256": "180d23dec45476d751c60a0e79833e56e4ef235dae77025395ae812fba296bc3",
+      "packetSha256": "dcba6484a8ae88433edf499313a35b6cbbff560edc996c20f23355aa82ec4e4d",
+      "partition": "development"
+    },
+    {
+      "id": "unbeatable-lead",
+      "batch": "2026-09-30-expanded-batch",
+      "episode": "solo-void-trumps-at-jason",
+      "seq": 33,
+      "recordPath": "qa/experiments/2026-09-30-expanded-batch/records/solo-void-trumps-at-jason.json",
+      "recordSha256": "7ff60dc82025eb50d2d1c45cf0460b666db500c6249a6cb94417cd672138a99e",
+      "dealSha256": "dfd1c487d705c51a4a6505cba62238c109035924b7d92c0e96566c796d24f6ec",
+      "packetSha256": "857fac661950e83add8c52e750e0750e51d4905d2339a84a20a4b2b2df19f0b9",
+      "partition": "development"
+    },
+    {
+      "id": "nil-underplay",
+      "batch": "2026-09-30-agent-scenario-lab",
+      "episode": "solo-control-01",
+      "seq": 7,
+      "recordPath": "qa/experiments/2026-09-30-agent-scenario-lab/records/solo-control-01.json",
+      "recordSha256": "d2d7977527a573b9ad08405c08514246856495972640710e8748d042d6d7bf29",
+      "dealSha256": "efded7d97b37730c7000b9a4fcc6b489118e78d5d365a7a6de929fd8be5c8772",
+      "packetSha256": "52aba8ff6e8519d039184ecec815af003726d02f64d72893fbaf2af03f23e353",
+      "partition": "development"
+    },
+    {
+      "id": "withheld-honor",
+      "batch": "2026-09-30-agent-scenario-lab",
+      "episode": "solo-control-01",
+      "seq": 26,
+      "recordPath": "qa/experiments/2026-09-30-agent-scenario-lab/records/solo-control-01.json",
+      "recordSha256": "d2d7977527a573b9ad08405c08514246856495972640710e8748d042d6d7bf29",
+      "dealSha256": "efded7d97b37730c7000b9a4fcc6b489118e78d5d365a7a6de929fd8be5c8772",
+      "packetSha256": "1dc7abfff9631b27fd4245168e3fc3280f81f77ab936b59d45a9361b2cf13989",
+      "partition": "development"
+    },
+    {
+      "id": "ownership-counterexample",
+      "batch": "2026-09-30-agent-scenario-lab",
+      "episode": "partners-nil-race-01",
+      "seq": 45,
+      "recordPath": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+      "recordSha256": "e24a3cf6bc896d95de2adb87c1c22659bfa2baa276f2ca6852e98a93613ca16e",
+      "dealSha256": "f94e23a371b5c52c258299dfa8ae0ccfa5e233a25d409a573f9a8b6e1d3766af",
+      "packetSha256": "431dd4ad6214c5ac40ac48fe9bc731e0c0b8388e342ee7eb0b22a99b394675eb",
+      "partition": "development"
+    },
+    {
+      "id": "partner-threat",
+      "batch": "2026-09-30-agent-scenario-lab",
+      "episode": "partners-nil-race-01",
+      "seq": 35,
+      "recordPath": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+      "recordSha256": "e24a3cf6bc896d95de2adb87c1c22659bfa2baa276f2ca6852e98a93613ca16e",
+      "dealSha256": "f94e23a371b5c52c258299dfa8ae0ccfa5e233a25d409a573f9a8b6e1d3766af",
+      "packetSha256": "ca3d71ccea380248dec0b1cb78269d151ce8afc9e18cc593d583fac148a40a33",
+      "partition": "development"
+    },
+    {
+      "id": "bid-lower-bound",
+      "batch": "2026-09-30-two-suit-batch",
+      "episode": "solo-spread",
+      "seq": 1,
+      "recordPath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-spread.json",
+      "recordSha256": "c680319a1a0a18d521945ec70112a408985e62f155ead075c618477a2fc2fb22",
+      "dealSha256": "180d23dec45476d751c60a0e79833e56e4ef235dae77025395ae812fba296bc3",
+      "packetSha256": "d7ced761433d59c7da1d6e13fae602c2fdc107ed4f37ed0be9d53c67d6c19432",
+      "partition": "development"
+    },
+    {
+      "id": "no-entry-outside-heart",
+      "batch": "2026-09-30-two-suit-batch",
+      "episode": "solo-void",
+      "seq": 36,
+      "recordPath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-void.json",
+      "recordSha256": "9166d88fa0a1fe1c63c022540a0fa156dca33a12f9a22d23736f45e3bb30d42e",
+      "dealSha256": "de30b0e1ef5651a429fc6997f4ba439639b3ed94cb8f91844e833116214e6fc1",
+      "packetSha256": "38e9ecb2b7989bb47e2b1da02e484f0697ea8d3ab8049225424d8d66649ec110",
+      "partition": "development"
+    },
+    {
+      "id": "partner-not-yet-void",
+      "batch": "2026-09-30-expanded-batch",
+      "episode": "partners-void-trumps-at-jason",
+      "seq": 5,
+      "recordPath": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-trumps-at-jason.json",
+      "recordSha256": "9a344280fcb5c6658d2b5a073b9dde258a9725b189f7561e26b417346c5acec1",
+      "dealSha256": "3d3107bd734ec76d0a9c43c6a7c3a86687528515a0c657f6ba8b506915654f38",
+      "packetSha256": "1722cc4d31e103a3a64dfbbf3ef77fbf564975858414b6d1559d62e18768347b",
+      "partition": "development"
+    },
+    {
+      "id": "opponent-trump-not-excluded",
+      "batch": "2026-09-30-expanded-batch",
+      "episode": "partners-void-trumps-at-jason",
+      "seq": 17,
+      "recordPath": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-trumps-at-jason.json",
+      "recordSha256": "9a344280fcb5c6658d2b5a073b9dde258a9725b189f7561e26b417346c5acec1",
+      "dealSha256": "3d3107bd734ec76d0a9c43c6a7c3a86687528515a0c657f6ba8b506915654f38",
+      "packetSha256": "5fe38d447bd403971aebde24512cdfe8adfc1cdf3e6d7d27b0d7466557c30a00",
+      "partition": "development"
+    },
+    {
+      "id": "partner-resource-no-entry",
+      "batch": "2026-09-30-expanded-batch",
+      "episode": "partners-void-trumps-at-jason",
+      "seq": 29,
+      "recordPath": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-trumps-at-jason.json",
+      "recordSha256": "9a344280fcb5c6658d2b5a073b9dde258a9725b189f7561e26b417346c5acec1",
+      "dealSha256": "3d3107bd734ec76d0a9c43c6a7c3a86687528515a0c657f6ba8b506915654f38",
+      "packetSha256": "8c110dcac6ea6d3614242ce2ff472c46984561d7d1d62c1b2cbf71b3bf6a6aa5",
+      "partition": "development"
+    }
+  ]
+}

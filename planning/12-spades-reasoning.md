@@ -8,6 +8,8 @@
 
 **Game plan and strength gate:** [CR-STRAT-009](decisions/CR-STRAT-009-game-plan-and-strength-gate.md) freezes `spades-tactics-2.1.0` as baseline D0 and adds selectable plan profiles and a measured gate. The partial-scenario table below keeps its statuses until gate evidence and human-reviewed labels exist.
 
+**Observed cases and browser baseline:** [CR-STRAT-010](decisions/CR-STRAT-010-observed-cases-and-browser-baseline.md) admits four narrow additions from the saved discovery hands through selectable `spades-cases-4.0.0`. It adds private original bot records and policy pinning, plus a separate real-browser comparison. This does not supersede the strength gate or promote the default. [Case ledger](../qa/experiments/2026-10-02-browser-baseline/case-ledger.md) · [maintenance guide](observed-case-maintenance.md).
+
 ## Product and information contract
 
 - **TABLE-01:** `tableType` is independent of `mode`. `practice-bots` has human South and three bots; `human-only` is a future four-human table, unavailable until its own lifecycle/access/fair-play gate passes. Solo/partnership describes competitors, never whether seats are human.

@@ -20,6 +20,12 @@ import type { CardOutcome, DecisionFacts, DecisionReason, ReasonClaim } from '..
  * action of the acting seat, written as `play:<card>`.
  */
 export const SPADES_CLAIM_PREDICATES = {
+  /** { suit } own single side-suit monopoly cannot regain the lead. */
+  'case-no-entry': 'all-consistent-worlds',
+  /** { winner, suit } every legal defender play leaves the same proved remaining sweep. */
+  'case-public-sweep': 'all-consistent-worlds',
+  /** { partner, suit, entry } exact resources supporting the conditional partner preference. */
+  'case-partner-resource': 'all-consistent-worlds',
   /** { count } legal actions of the acting seat. */
   'legal-count': 'state-exact',
   /** { actionId? } exactly one legal action exists. */

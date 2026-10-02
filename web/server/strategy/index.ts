@@ -20,6 +20,7 @@ export {
   costOf,
   getReasoningPack,
   getReasoningProfile,
+  getLegacyReasoningProfile,
   listReasoningProfiles,
   registeredReasoningModes,
   type Policy,
