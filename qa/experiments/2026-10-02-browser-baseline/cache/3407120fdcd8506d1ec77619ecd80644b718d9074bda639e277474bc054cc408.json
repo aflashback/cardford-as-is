@@ -1,0 +1,228 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "H5",
+      "HK",
+      "S3",
+      "SJ",
+      "SQ",
+      "SK"
+    ],
+    "handSizes": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "bids": [
+      7,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      4,
+      2,
+      0,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DA"
+          },
+          {
+            "seat": 1,
+            "card": "D5"
+          },
+          {
+            "seat": 2,
+            "card": "D6"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "seat": 1,
+            "card": "C3"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "C7"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 3,
+            "card": "D8"
+          },
+          {
+            "seat": 0,
+            "card": "DQ"
+          },
+          {
+            "seat": 1,
+            "card": "DK"
+          },
+          {
+            "seat": 2,
+            "card": "D4"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "DJ"
+          },
+          {
+            "seat": 2,
+            "card": "D2"
+          },
+          {
+            "seat": 3,
+            "card": "D10"
+          },
+          {
+            "seat": 0,
+            "card": "D7"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "D9"
+          },
+          {
+            "seat": 2,
+            "card": "H9"
+          },
+          {
+            "seat": 3,
+            "card": "S5"
+          },
+          {
+            "seat": 0,
+            "card": "S9"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "SA"
+          },
+          {
+            "seat": 1,
+            "card": "S7"
+          },
+          {
+            "seat": 2,
+            "card": "S4"
+          },
+          {
+            "seat": 3,
+            "card": "S6"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:H5",
+      "play:HK",
+      "play:S3",
+      "play:SJ",
+      "play:SQ",
+      "play:SK"
+    ]
+  },
+  "packetHash": "e554e8fcc34704f8c4b62ac01aeae5138d8ba4fbfdb6f23cd26063f9b3e74fd6",
+  "action": {
+    "kind": "play",
+    "card": "SK"
+  },
+  "reason": "I need three more tricks to make my bid, and SK is the highest spade left since SA has already been played, so leading it should secure a trick. I can’t tell who holds the remaining spades or whether the other high cards will also win later.",
+  "source": "luna",
+  "transportFile": "transport/control-solo-baseline-player-09-1790918357033-1.json"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "browser-recorder-amendment-1.0.0",
+  "at": "2026-10-02T06:10:17.664Z",
+  "recorderVersion": "1.0.4",
+  "path": "qa/experiments/2026-10-02-browser-baseline/run-browser.mjs",
+  "preservedOriginal": "provenance/run-browser-1.0.3.mjs",
+  "before": "35250b932edf280fd3ce5de02f6abe953018c66dbbe211cacfdf36f655e30d16",
+  "after": "b446e613d333a53831b12e86e48e7925f5f1fcc71858309f4c0deec8e2013a8a",
+  "timing": "After five complete hands; no additional session created.",
+  "changes": [
+    "Await the terminal recap render after Resume, then its dismissal, before locating Take control; immediate count could race React rendering.",
+    "Save DOM-only dialog/button/error diagnostics on future interruptions, without screenshots or authentication fields."
+  ],
+  "retained": "Runtime, fixtures, templates, accepted choices and completed results unchanged.",
+  "interruption": "provenance/interruption-5.json"
+}

@@ -1,0 +1,119 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C3",
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "S3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      12,
+      11,
+      11,
+      11
+    ],
+    "bids": [
+      1,
+      5,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 1,
+        "card": "CA"
+      },
+      {
+        "seat": 2,
+        "card": "S10"
+      },
+      {
+        "seat": 3,
+        "card": "C2"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:C3",
+      "play:C6",
+      "play:C9",
+      "play:CQ"
+    ]
+  },
+  "packetHash": "632d907664dc97321ed7ff0a7a6a5c15888718ddad98428e593415ec1cd41420",
+  "action": {
+    "kind": "play",
+    "card": "C3"
+  },
+  "reason": "North’s S10 is already winning, and I must follow clubs, so none of my legal cards can take the trick. I’ll discard the lowest club and keep CQ as a possible future winner; the other players’ holdings are unknown.",
+  "source": "luna",
+  "transportFile": "transport/sweep-solo-candidate-player-03-1790919538761-1.json"
+}

@@ -1,0 +1,13 @@
+{
+  "recorderVersion": "1.0.2",
+  "original": "transport/sweep-solo-candidate-player-11-1790919697129-1.json",
+  "originalAccepted": false,
+  "promptHash": "702c7ea52cec753d7bc349b63fb50e29d2702bf187fe3eaded449742e8517a22",
+  "packetHash": "1e7e90720fb3702947d4b04f3e9478c30d555246c4c9de0c875a5f455b603546",
+  "action": {
+    "kind": "play",
+    "card": "D9"
+  },
+  "rule": "Earliest transport-valid response with one legal action and one paragraph; accept inline separators.",
+  "at": "2026-10-02T05:59:56.080Z"
+}

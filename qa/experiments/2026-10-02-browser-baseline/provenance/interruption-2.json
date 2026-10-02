@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-02T05:29:55.299Z",
+  "message": "Connection terminated due to connection timeout",
+  "stack": "Error: Connection terminated due to connection timeout\n    at C:\\repos\\test-jev\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async privateAudit (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:237:18)\n    at async play (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:319:65)\n    at async file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:340:27",
+  "sessions": 2
+}

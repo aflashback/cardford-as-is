@@ -1,0 +1,226 @@
+{
+  "runId": "resources-solo-baseline",
+  "stage": "trick-7",
+  "packet": {
+    "throughTrick": 7,
+    "packet": {
+      "game": "spades-solo",
+      "ruleProfile": "spades-solo-training-1.0.0",
+      "seat": 0,
+      "dealer": 1,
+      "phase": "play",
+      "competition": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "hand": [
+        "C8",
+        "CJ",
+        "DQ",
+        "DK",
+        "DA",
+        "S7"
+      ],
+      "handSizes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "bids": [
+        3,
+        2,
+        5,
+        2
+      ],
+      "tricks": [
+        1,
+        1,
+        5,
+        0
+      ],
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "completedTricks": [
+        {
+          "winner": 1,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H4"
+            },
+            {
+              "seat": 3,
+              "card": "HQ"
+            },
+            {
+              "seat": 0,
+              "card": "C2"
+            },
+            {
+              "seat": 1,
+              "card": "HA"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 1,
+              "card": "C4"
+            },
+            {
+              "seat": 2,
+              "card": "S10"
+            },
+            {
+              "seat": 3,
+              "card": "C3"
+            },
+            {
+              "seat": 0,
+              "card": "C5"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SA"
+            },
+            {
+              "seat": 3,
+              "card": "S8"
+            },
+            {
+              "seat": 0,
+              "card": "S2"
+            },
+            {
+              "seat": 1,
+              "card": "S9"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SK"
+            },
+            {
+              "seat": 3,
+              "card": "D2"
+            },
+            {
+              "seat": 0,
+              "card": "S3"
+            },
+            {
+              "seat": 1,
+              "card": "D3"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SQ"
+            },
+            {
+              "seat": 3,
+              "card": "H2"
+            },
+            {
+              "seat": 0,
+              "card": "S4"
+            },
+            {
+              "seat": 1,
+              "card": "H3"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SJ"
+            },
+            {
+              "seat": 3,
+              "card": "D5"
+            },
+            {
+              "seat": 0,
+              "card": "S5"
+            },
+            {
+              "seat": 1,
+              "card": "D4"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H5"
+            },
+            {
+              "seat": 3,
+              "card": "HK"
+            },
+            {
+              "seat": 0,
+              "card": "S6"
+            },
+            {
+              "seat": 1,
+              "card": "D6"
+            }
+          ]
+        }
+      ],
+      "currentTrick": [],
+      "spadesBroken": true,
+      "legalActions": [
+        "play:C8",
+        "play:CJ",
+        "play:DQ",
+        "play:DK",
+        "play:DA",
+        "play:S7"
+      ]
+    }
+  },
+  "capturedAt": "2026-10-02T06:20:24.094Z"
+}

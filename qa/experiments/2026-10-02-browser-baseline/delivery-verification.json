@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-02T06:43:57.262Z",
+  "status": "passed",
+  "implementationCommit": "3a435de",
+  "discoveryRecordsHashIdentical": 14,
+  "evidenceJsonFilesParsedAndScanned": 384,
+  "forbiddenAuthKeyNamesFound": 0,
+  "verifiedHands": 12,
+  "verifiedDecisions": 672,
+  "sessions": 14,
+  "roles": {
+    "human": 168,
+    "bot": 504
+  },
+  "scope": "Final archive integrity and exact authentication-key-name scan; runtime/build hashes checked separately by freeze-code.mjs."
+}

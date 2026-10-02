@@ -1,0 +1,205 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "H3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 3,
+            "card": "CA"
+          },
+          {
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "seat": 1,
+            "card": "C4"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S8"
+          },
+          {
+            "seat": 0,
+            "card": "S2"
+          },
+          {
+            "seat": 1,
+            "card": "S9"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "seat": 3,
+            "card": "D2"
+          },
+          {
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "seat": 1,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H5"
+          },
+          {
+            "seat": 3,
+            "card": "HK"
+          },
+          {
+            "seat": 0,
+            "card": "S4"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DA"
+          },
+          {
+            "seat": 1,
+            "card": "D4"
+          },
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "D5"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:C8",
+      "play:CJ",
+      "play:DQ",
+      "play:DK",
+      "play:S5",
+      "play:S6",
+      "play:S7"
+    ]
+  },
+  "packetHash": "ab03d77eb63cd6b4ba0427641ca65998bb802136b21a6ce51d8320934e659200",
+  "action": {
+    "kind": "play",
+    "card": "DK"
+  },
+  "reason": "The ace of diamonds has already been played, so DK is likely to win if the others follow suit and could help our team reach its remaining contract tricks. An opponent may still trump it, and the unseen hands are uncertain.",
+  "source": "luna",
+  "transportFile": "transport/resources-partners-candidate-player-08-1790922726797-1.json"
+}

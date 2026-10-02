@@ -1,0 +1,224 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S7"
+    ],
+    "handSizes": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      1,
+      0,
+      5,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "H3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 3,
+            "card": "CA"
+          },
+          {
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "seat": 1,
+            "card": "C4"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S8"
+          },
+          {
+            "seat": 0,
+            "card": "S2"
+          },
+          {
+            "seat": 1,
+            "card": "S9"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "seat": 3,
+            "card": "D2"
+          },
+          {
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "seat": 1,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SQ"
+          },
+          {
+            "seat": 3,
+            "card": "H2"
+          },
+          {
+            "seat": 0,
+            "card": "S4"
+          },
+          {
+            "seat": 1,
+            "card": "D4"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SJ"
+          },
+          {
+            "seat": 3,
+            "card": "C3"
+          },
+          {
+            "seat": 0,
+            "card": "S5"
+          },
+          {
+            "seat": 1,
+            "card": "D6"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H5"
+          },
+          {
+            "seat": 3,
+            "card": "HK"
+          },
+          {
+            "seat": 0,
+            "card": "S6"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:C8",
+      "play:CJ",
+      "play:DQ",
+      "play:DK",
+      "play:DA",
+      "play:S7"
+    ]
+  },
+  "packetHash": "fe8c024277cede4169987b2bb69ded67fb7c45bdbd0a3ed8cf9ac6c3cc67c5e4",
+  "action": {
+    "kind": "play",
+    "card": "DA"
+  },
+  "reason": "Our partnership has six tricks toward an eight-trick contract, so we need two more in the six tricks left. The ace is our best chance to take one now; an opponent could still be void and ruff it.",
+  "source": "luna",
+  "transportFile": "transport/resources-partners-baseline-player-09-1790922525540-1.json"
+}

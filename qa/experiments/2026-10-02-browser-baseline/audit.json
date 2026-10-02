@@ -1,0 +1,4144 @@
+{
+  "schemaVersion": "browser-audit-1.0.0",
+  "source": "real-browser-against-runtime-bots",
+  "jevCalls": 0,
+  "sessionsCreated": 14,
+  "sessionsPerMode": {
+    "spades-solo": 6,
+    "spades-partners": 8
+  },
+  "measuredComplete": 12,
+  "replayedDecisions": 672,
+  "decisions": 672,
+  "roles": {
+    "human": 168,
+    "bot": 504
+  },
+  "forced": {
+    "human": 27,
+    "bot": 101
+  },
+  "severalReasonable": {
+    "human": 0,
+    "bot": 0
+  },
+  "shadowDisagreements": {
+    "human": 0,
+    "bot": 3
+  },
+  "cueClaimChecks": {
+    "decisions": 672,
+    "inputClaims": 1208,
+    "confirmed": 1208,
+    "false": 0,
+    "notCheckable": 0,
+    "legacyWithoutTypedClaims": 336,
+    "byPredicate": {
+      "own-suit-count": {
+        "confirmed": 18,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "bid-matches-count": {
+        "confirmed": 22,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "nil-bid-rule": {
+        "confirmed": 2,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "contract-need": {
+        "confirmed": 153,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "goal-progress": {
+        "confirmed": 179,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "action-is-master": {
+        "confirmed": 18,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "trump-beats-side-suit": {
+        "confirmed": 18,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "plan-stance": {
+        "confirmed": 208,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "action-wins-now": {
+        "confirmed": 170,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "current-winner": {
+        "confirmed": 63,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "nil-status": {
+        "confirmed": 29,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "action-suit-position": {
+        "confirmed": 14,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "action-lowest-winner": {
+        "confirmed": 17,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "actors-after": {
+        "confirmed": 34,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "forced-action": {
+        "confirmed": 64,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "legal-count": {
+        "confirmed": 56,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "own-void-in-led-suit": {
+        "confirmed": 73,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "guaranteed-winner": {
+        "confirmed": 33,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "contract-met": {
+        "confirmed": 10,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "case-no-entry": {
+        "confirmed": 14,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "public-bid": {
+        "confirmed": 6,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "public-void": {
+        "confirmed": 6,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "case-partner-resource": {
+        "confirmed": 1,
+        "false": 0,
+        "notCheckable": 0
+      }
+    }
+  },
+  "reasonClaimChecks": {
+    "decisions": 672,
+    "inputClaims": 5109,
+    "confirmed": 5109,
+    "false": 0,
+    "notCheckable": 0,
+    "legacyWithoutTypedClaims": 336,
+    "byPredicate": {
+      "plan-stance": {
+        "confirmed": 322,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "bids-placed": {
+        "confirmed": 18,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "legal-count": {
+        "confirmed": 488,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "concealed-cards-remain": {
+        "confirmed": 306,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "trump-optional": {
+        "confirmed": 414,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "contract-need": {
+        "confirmed": 259,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "nil-tricks-no-credit": {
+        "confirmed": 402,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "trump-beats-side-suit": {
+        "confirmed": 78,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "opposing-nil-live": {
+        "confirmed": 83,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "nil-award": {
+        "confirmed": 78,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "action-is-master": {
+        "confirmed": 65,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "actors-after": {
+        "confirmed": 241,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "action-wins-now": {
+        "confirmed": 889,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "nil-status": {
+        "confirmed": 105,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "failed-nil-bags": {
+        "confirmed": 13,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "forced-action": {
+        "confirmed": 64,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "own-void-in-led-suit": {
+        "confirmed": 108,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "guaranteed-winner": {
+        "confirmed": 197,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "contract-met": {
+        "confirmed": 53,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "next-bag-delta": {
+        "confirmed": 53,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "match-after-hand": {
+        "confirmed": 72,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "case-no-entry": {
+        "confirmed": 14,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "team-contract-rule": {
+        "confirmed": 156,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "mode-objective": {
+        "confirmed": 156,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "acts-later": {
+        "confirmed": 14,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "has-played": {
+        "confirmed": 46,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "current-winner": {
+        "confirmed": 36,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "winner-after-action": {
+        "confirmed": 103,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "trick-event": {
+        "confirmed": 104,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "public-void": {
+        "confirmed": 103,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "retains-suit": {
+        "confirmed": 18,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "cannot-hold-suit": {
+        "confirmed": 50,
+        "false": 0,
+        "notCheckable": 0
+      },
+      "case-partner-resource": {
+        "confirmed": 1,
+        "false": 0,
+        "notCheckable": 0
+      }
+    }
+  },
+  "cases": {
+    "CASE-01": {
+      "original": 1,
+      "shadow": 3,
+      "originalByRole": {
+        "human": 0,
+        "bot": 1
+      },
+      "shadowByRole": {
+        "human": 0,
+        "bot": 3
+      }
+    },
+    "CASE-02": {
+      "original": 14,
+      "shadow": 31,
+      "originalByRole": {
+        "human": 0,
+        "bot": 14
+      },
+      "shadowByRole": {
+        "human": 0,
+        "bot": 31
+      }
+    },
+    "CASE-03": {
+      "original": 0,
+      "shadow": 0,
+      "originalByRole": {
+        "human": 0,
+        "bot": 0
+      },
+      "shadowByRole": {
+        "human": 0,
+        "bot": 0
+      }
+    },
+    "CASE-04": {
+      "original": 33,
+      "shadow": 68,
+      "originalByRole": {
+        "human": 6,
+        "bot": 27
+      },
+      "shadowByRole": {
+        "human": 14,
+        "bot": 54
+      }
+    }
+  },
+  "groups": [
+    {
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "plannedHands": 3,
+      "recordedHands": 3,
+      "completeHands": 3,
+      "incompleteHands": 0,
+      "recordedIncompletePlayerDecisions": 0,
+      "sessionsCreated": 3,
+      "bootstrapSessions": 0,
+      "decisions": 168,
+      "roles": {
+        "human": 42,
+        "bot": 126
+      },
+      "forced": {
+        "human": 7,
+        "bot": 25
+      },
+      "severalReasonable": {
+        "human": 0,
+        "bot": 0
+      },
+      "shadowDisagreements": {
+        "human": 0,
+        "bot": 0
+      },
+      "cueClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 0,
+        "confirmed": 0,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 168,
+        "byPredicate": {}
+      },
+      "reasonClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 0,
+        "confirmed": 0,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 168,
+        "byPredicate": {}
+      },
+      "cases": {
+        "CASE-01": {
+          "original": 0,
+          "shadow": 0,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 0
+          }
+        },
+        "CASE-02": {
+          "original": 0,
+          "shadow": 9,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 9
+          }
+        },
+        "CASE-03": {
+          "original": 0,
+          "shadow": 0,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 0
+          }
+        },
+        "CASE-04": {
+          "original": 0,
+          "shadow": 21,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 6,
+            "bot": 15
+          }
+        }
+      },
+      "formatRevalidations": {
+        "recordedCommittedChoices": 42,
+        "verifiedCompleteChoices": 42,
+        "formatRevalidatedCommittedChoices": 1,
+        "verifiedCompleteRecoveries": 1,
+        "incompleteHandRecoveries": 0,
+        "reusedRecoveryChoices": 1,
+        "reusedAcrossArms": 1,
+        "uniqueRevalidationFilesUsed": 1,
+        "originalRejectedAttemptsUsed": 1
+      },
+      "observer": {
+        "attempts": 12,
+        "validTransport": 11,
+        "invalidTransport": 1,
+        "accepted": 11,
+        "rejected": 1,
+        "acceptanceUnavailable": 0,
+        "timedOut": 1,
+        "toolEventAttempts": 0
+      }
+    },
+    {
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "plannedHands": 3,
+      "recordedHands": 3,
+      "completeHands": 3,
+      "incompleteHands": 0,
+      "recordedIncompletePlayerDecisions": 0,
+      "sessionsCreated": 3,
+      "bootstrapSessions": 0,
+      "decisions": 168,
+      "roles": {
+        "human": 42,
+        "bot": 126
+      },
+      "forced": {
+        "human": 7,
+        "bot": 25
+      },
+      "severalReasonable": {
+        "human": 0,
+        "bot": 0
+      },
+      "shadowDisagreements": {
+        "human": 0,
+        "bot": 0
+      },
+      "cueClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 591,
+        "confirmed": 591,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 0,
+        "byPredicate": {
+          "own-suit-count": {
+            "confirmed": 12,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "bid-matches-count": {
+            "confirmed": 11,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-bid-rule": {
+            "confirmed": 1,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-need": {
+            "confirmed": 80,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "goal-progress": {
+            "confirmed": 89,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-is-master": {
+            "confirmed": 5,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "trump-beats-side-suit": {
+            "confirmed": 5,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "plan-stance": {
+            "confirmed": 98,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-wins-now": {
+            "confirmed": 83,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "current-winner": {
+            "confirmed": 29,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-status": {
+            "confirmed": 9,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-suit-position": {
+            "confirmed": 10,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-lowest-winner": {
+            "confirmed": 8,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "actors-after": {
+            "confirmed": 16,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "forced-action": {
+            "confirmed": 32,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "legal-count": {
+            "confirmed": 28,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "own-void-in-led-suit": {
+            "confirmed": 38,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "guaranteed-winner": {
+            "confirmed": 21,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-met": {
+            "confirmed": 7,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "case-no-entry": {
+            "confirmed": 9,
+            "false": 0,
+            "notCheckable": 0
+          }
+        }
+      },
+      "reasonClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 1994,
+        "confirmed": 1994,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 0,
+        "byPredicate": {
+          "plan-stance": {
+            "confirmed": 159,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "bids-placed": {
+            "confirmed": 9,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "legal-count": {
+            "confirmed": 243,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "concealed-cards-remain": {
+            "confirmed": 153,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "trump-optional": {
+            "confirmed": 208,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-need": {
+            "confirmed": 131,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-tricks-no-credit": {
+            "confirmed": 118,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "trump-beats-side-suit": {
+            "confirmed": 39,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "opposing-nil-live": {
+            "confirmed": 52,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-award": {
+            "confirmed": 52,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-is-master": {
+            "confirmed": 32,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "actors-after": {
+            "confirmed": 117,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-wins-now": {
+            "confirmed": 439,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-status": {
+            "confirmed": 26,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "failed-nil-bags": {
+            "confirmed": 13,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "forced-action": {
+            "confirmed": 32,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "own-void-in-led-suit": {
+            "confirmed": 55,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "guaranteed-winner": {
+            "confirmed": 21,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-met": {
+            "confirmed": 25,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "next-bag-delta": {
+            "confirmed": 25,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "match-after-hand": {
+            "confirmed": 36,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "case-no-entry": {
+            "confirmed": 9,
+            "false": 0,
+            "notCheckable": 0
+          }
+        }
+      },
+      "cases": {
+        "CASE-01": {
+          "original": 0,
+          "shadow": 0,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 0
+          }
+        },
+        "CASE-02": {
+          "original": 9,
+          "shadow": 9,
+          "originalByRole": {
+            "human": 0,
+            "bot": 9
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 9
+          }
+        },
+        "CASE-03": {
+          "original": 0,
+          "shadow": 0,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 0
+          }
+        },
+        "CASE-04": {
+          "original": 21,
+          "shadow": 21,
+          "originalByRole": {
+            "human": 6,
+            "bot": 15
+          },
+          "shadowByRole": {
+            "human": 6,
+            "bot": 15
+          }
+        }
+      },
+      "formatRevalidations": {
+        "recordedCommittedChoices": 42,
+        "verifiedCompleteChoices": 42,
+        "formatRevalidatedCommittedChoices": 1,
+        "verifiedCompleteRecoveries": 1,
+        "incompleteHandRecoveries": 0,
+        "reusedRecoveryChoices": 0,
+        "reusedAcrossArms": 0,
+        "uniqueRevalidationFilesUsed": 1,
+        "originalRejectedAttemptsUsed": 1
+      },
+      "observer": {
+        "attempts": 12,
+        "validTransport": 11,
+        "invalidTransport": 1,
+        "accepted": 11,
+        "rejected": 1,
+        "acceptanceUnavailable": 0,
+        "timedOut": 1,
+        "toolEventAttempts": 0
+      }
+    },
+    {
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "plannedHands": 3,
+      "recordedHands": 3,
+      "completeHands": 3,
+      "incompleteHands": 0,
+      "recordedIncompletePlayerDecisions": 0,
+      "sessionsCreated": 4,
+      "bootstrapSessions": 1,
+      "decisions": 168,
+      "roles": {
+        "human": 42,
+        "bot": 126
+      },
+      "forced": {
+        "human": 7,
+        "bot": 25
+      },
+      "severalReasonable": {
+        "human": 0,
+        "bot": 0
+      },
+      "shadowDisagreements": {
+        "human": 0,
+        "bot": 2
+      },
+      "cueClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 0,
+        "confirmed": 0,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 168,
+        "byPredicate": {}
+      },
+      "reasonClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 0,
+        "confirmed": 0,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 168,
+        "byPredicate": {}
+      },
+      "cases": {
+        "CASE-01": {
+          "original": 0,
+          "shadow": 2,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 2
+          }
+        },
+        "CASE-02": {
+          "original": 0,
+          "shadow": 8,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 8
+          }
+        },
+        "CASE-03": {
+          "original": 0,
+          "shadow": 0,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 0
+          }
+        },
+        "CASE-04": {
+          "original": 0,
+          "shadow": 14,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 2,
+            "bot": 12
+          }
+        }
+      },
+      "formatRevalidations": {
+        "recordedCommittedChoices": 42,
+        "verifiedCompleteChoices": 42,
+        "formatRevalidatedCommittedChoices": 0,
+        "verifiedCompleteRecoveries": 0,
+        "incompleteHandRecoveries": 0,
+        "reusedRecoveryChoices": 0,
+        "reusedAcrossArms": 0,
+        "uniqueRevalidationFilesUsed": 0,
+        "originalRejectedAttemptsUsed": 0
+      },
+      "observer": {
+        "attempts": 12,
+        "validTransport": 12,
+        "invalidTransport": 0,
+        "accepted": 12,
+        "rejected": 0,
+        "acceptanceUnavailable": 0,
+        "timedOut": 0,
+        "toolEventAttempts": 0
+      }
+    },
+    {
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "plannedHands": 3,
+      "recordedHands": 3,
+      "completeHands": 3,
+      "incompleteHands": 0,
+      "recordedIncompletePlayerDecisions": 0,
+      "sessionsCreated": 4,
+      "bootstrapSessions": 1,
+      "decisions": 168,
+      "roles": {
+        "human": 42,
+        "bot": 126
+      },
+      "forced": {
+        "human": 6,
+        "bot": 26
+      },
+      "severalReasonable": {
+        "human": 0,
+        "bot": 0
+      },
+      "shadowDisagreements": {
+        "human": 0,
+        "bot": 1
+      },
+      "cueClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 617,
+        "confirmed": 617,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 0,
+        "byPredicate": {
+          "own-suit-count": {
+            "confirmed": 6,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "bid-matches-count": {
+            "confirmed": 11,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "public-bid": {
+            "confirmed": 6,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-bid-rule": {
+            "confirmed": 1,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-status": {
+            "confirmed": 20,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-is-master": {
+            "confirmed": 13,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "trump-beats-side-suit": {
+            "confirmed": 13,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "plan-stance": {
+            "confirmed": 110,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-need": {
+            "confirmed": 73,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "goal-progress": {
+            "confirmed": 90,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-wins-now": {
+            "confirmed": 87,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-lowest-winner": {
+            "confirmed": 9,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "actors-after": {
+            "confirmed": 18,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "current-winner": {
+            "confirmed": 34,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-suit-position": {
+            "confirmed": 4,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "forced-action": {
+            "confirmed": 32,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "legal-count": {
+            "confirmed": 28,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "own-void-in-led-suit": {
+            "confirmed": 35,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "public-void": {
+            "confirmed": 6,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "case-no-entry": {
+            "confirmed": 5,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "guaranteed-winner": {
+            "confirmed": 12,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-met": {
+            "confirmed": 3,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "case-partner-resource": {
+            "confirmed": 1,
+            "false": 0,
+            "notCheckable": 0
+          }
+        }
+      },
+      "reasonClaimChecks": {
+        "decisions": 168,
+        "inputClaims": 3115,
+        "confirmed": 3115,
+        "false": 0,
+        "notCheckable": 0,
+        "legacyWithoutTypedClaims": 0,
+        "byPredicate": {
+          "plan-stance": {
+            "confirmed": 163,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "bids-placed": {
+            "confirmed": 9,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "legal-count": {
+            "confirmed": 245,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "concealed-cards-remain": {
+            "confirmed": 153,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "trump-optional": {
+            "confirmed": 206,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-need": {
+            "confirmed": 128,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-tricks-no-credit": {
+            "confirmed": 284,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "trump-beats-side-suit": {
+            "confirmed": 39,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "team-contract-rule": {
+            "confirmed": 156,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "mode-objective": {
+            "confirmed": 156,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-status": {
+            "confirmed": 79,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "acts-later": {
+            "confirmed": 14,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-wins-now": {
+            "confirmed": 450,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "action-is-master": {
+            "confirmed": 33,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "actors-after": {
+            "confirmed": 124,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "opposing-nil-live": {
+            "confirmed": 31,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "nil-award": {
+            "confirmed": 26,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "has-played": {
+            "confirmed": 46,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "current-winner": {
+            "confirmed": 36,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "guaranteed-winner": {
+            "confirmed": 176,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "winner-after-action": {
+            "confirmed": 103,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "trick-event": {
+            "confirmed": 104,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "forced-action": {
+            "confirmed": 32,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "own-void-in-led-suit": {
+            "confirmed": 53,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "public-void": {
+            "confirmed": 103,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "retains-suit": {
+            "confirmed": 18,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "cannot-hold-suit": {
+            "confirmed": 50,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "contract-met": {
+            "confirmed": 28,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "next-bag-delta": {
+            "confirmed": 28,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "match-after-hand": {
+            "confirmed": 36,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "case-no-entry": {
+            "confirmed": 5,
+            "false": 0,
+            "notCheckable": 0
+          },
+          "case-partner-resource": {
+            "confirmed": 1,
+            "false": 0,
+            "notCheckable": 0
+          }
+        }
+      },
+      "cases": {
+        "CASE-01": {
+          "original": 1,
+          "shadow": 1,
+          "originalByRole": {
+            "human": 0,
+            "bot": 1
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 1
+          }
+        },
+        "CASE-02": {
+          "original": 5,
+          "shadow": 5,
+          "originalByRole": {
+            "human": 0,
+            "bot": 5
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 5
+          }
+        },
+        "CASE-03": {
+          "original": 0,
+          "shadow": 0,
+          "originalByRole": {
+            "human": 0,
+            "bot": 0
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 0
+          }
+        },
+        "CASE-04": {
+          "original": 12,
+          "shadow": 12,
+          "originalByRole": {
+            "human": 0,
+            "bot": 12
+          },
+          "shadowByRole": {
+            "human": 0,
+            "bot": 12
+          }
+        }
+      },
+      "formatRevalidations": {
+        "recordedCommittedChoices": 42,
+        "verifiedCompleteChoices": 42,
+        "formatRevalidatedCommittedChoices": 0,
+        "verifiedCompleteRecoveries": 0,
+        "incompleteHandRecoveries": 0,
+        "reusedRecoveryChoices": 0,
+        "reusedAcrossArms": 0,
+        "uniqueRevalidationFilesUsed": 0,
+        "originalRejectedAttemptsUsed": 0
+      },
+      "observer": {
+        "attempts": 12,
+        "validTransport": 11,
+        "invalidTransport": 1,
+        "accepted": 11,
+        "rejected": 1,
+        "acceptanceUnavailable": 0,
+        "timedOut": 1,
+        "toolEventAttempts": 0
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "scenarioId": "baseline-control-solo",
+      "mode": "spades-solo",
+      "baselineRun": "control-solo-baseline",
+      "candidateRun": "control-solo-candidate",
+      "status": "complete",
+      "baselineStatus": "complete",
+      "candidateStatus": "complete",
+      "candidateMinusBaseline": {
+        "southPoints": 0,
+        "southMargin": 0,
+        "competitorPoints": [
+          {
+            "seats": [
+              0
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              1
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              2
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              3
+            ],
+            "points": 0
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "baseline-control-partners",
+      "mode": "spades-partners",
+      "baselineRun": "control-partners-baseline",
+      "candidateRun": "control-partners-candidate",
+      "status": "complete",
+      "baselineStatus": "complete",
+      "candidateStatus": "complete",
+      "candidateMinusBaseline": {
+        "southPoints": 0,
+        "southMargin": 0,
+        "competitorPoints": [
+          {
+            "seats": [
+              0,
+              2
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              1,
+              3
+            ],
+            "points": 0
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "baseline-sweep-solo",
+      "mode": "spades-solo",
+      "baselineRun": "sweep-solo-baseline",
+      "candidateRun": "sweep-solo-candidate",
+      "status": "complete",
+      "baselineStatus": "complete",
+      "candidateStatus": "complete",
+      "candidateMinusBaseline": {
+        "southPoints": 0,
+        "southMargin": 0,
+        "competitorPoints": [
+          {
+            "seats": [
+              0
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              1
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              2
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              3
+            ],
+            "points": 0
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "baseline-sweep-partners",
+      "mode": "spades-partners",
+      "baselineRun": "sweep-partners-baseline",
+      "candidateRun": "sweep-partners-candidate",
+      "status": "complete",
+      "baselineStatus": "complete",
+      "candidateStatus": "complete",
+      "candidateMinusBaseline": {
+        "southPoints": 0,
+        "southMargin": 0,
+        "competitorPoints": [
+          {
+            "seats": [
+              0,
+              2
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              1,
+              3
+            ],
+            "points": 0
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "baseline-resources-solo",
+      "mode": "spades-solo",
+      "baselineRun": "resources-solo-baseline",
+      "candidateRun": "resources-solo-candidate",
+      "status": "complete",
+      "baselineStatus": "complete",
+      "candidateStatus": "complete",
+      "candidateMinusBaseline": {
+        "southPoints": 0,
+        "southMargin": 0,
+        "competitorPoints": [
+          {
+            "seats": [
+              0
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              1
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              2
+            ],
+            "points": 0
+          },
+          {
+            "seats": [
+              3
+            ],
+            "points": 0
+          }
+        ]
+      }
+    },
+    {
+      "scenarioId": "baseline-resources-partners",
+      "mode": "spades-partners",
+      "baselineRun": "resources-partners-baseline",
+      "candidateRun": "resources-partners-candidate",
+      "status": "complete",
+      "baselineStatus": "complete",
+      "candidateStatus": "complete",
+      "candidateMinusBaseline": {
+        "southPoints": 2,
+        "southMargin": 2,
+        "competitorPoints": [
+          {
+            "seats": [
+              0,
+              2
+            ],
+            "points": 2
+          },
+          {
+            "seats": [
+              1,
+              3
+            ],
+            "points": 0
+          }
+        ]
+      }
+    }
+  ],
+  "pairedByMode": [
+    {
+      "mode": "spades-solo",
+      "plannedPairs": 3,
+      "completePairs": 3,
+      "meanCandidateMinusBaselineSouthPoints": 0,
+      "meanCandidateMinusBaselineSouthMargin": 0
+    },
+    {
+      "mode": "spades-partners",
+      "plannedPairs": 3,
+      "completePairs": 3,
+      "meanCandidateMinusBaselineSouthPoints": 0.6666666666666666,
+      "meanCandidateMinusBaselineSouthMargin": 0.6666666666666666
+    }
+  ],
+  "factualFailures": [],
+  "formatRevalidations": {
+    "recordedCommittedChoices": 168,
+    "verifiedCompleteChoices": 168,
+    "formatRevalidatedCommittedChoices": 2,
+    "verifiedCompleteRecoveries": 2,
+    "incompleteHandRecoveries": 0,
+    "reusedRecoveryChoices": 1,
+    "reusedAcrossArms": 1,
+    "uniqueRevalidationFilesUsed": 1,
+    "originalRejectedAttemptsUsed": 1,
+    "recordedRevalidationFiles": 1,
+    "files": [
+      "revalidations/702c7ea52cec753d7bc349b63fb50e29d2702bf187fe3eaded449742e8517a22.json"
+    ],
+    "committedChoices": [
+      {
+        "runId": "sweep-solo-candidate",
+        "mode": "spades-solo",
+        "arm": "candidate",
+        "index": 11,
+        "decisionId": "1fd297a6-16a1-4f7f-b787-edb333dea1ea:1:51",
+        "source": "luna",
+        "verifiedComplete": true,
+        "acceptedRevision": 52,
+        "formatRecovery": "revalidations/702c7ea52cec753d7bc349b63fb50e29d2702bf187fe3eaded449742e8517a22.json",
+        "originalTransportFile": "transport/sweep-solo-candidate-player-11-1790919697129-1.json",
+        "evidence": {
+          "run": "runs/sweep-solo-candidate.json",
+          "playerDecisionIndex": 10
+        },
+        "originalRunId": "sweep-solo-candidate",
+        "originalArm": "candidate",
+        "reusedAcrossArms": false,
+        "recorderVersion": "1.0.2"
+      },
+      {
+        "runId": "sweep-solo-baseline",
+        "mode": "spades-solo",
+        "arm": "baseline",
+        "index": 11,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:51",
+        "source": "reused-identical-packet",
+        "verifiedComplete": true,
+        "acceptedRevision": 52,
+        "formatRecovery": "revalidations/702c7ea52cec753d7bc349b63fb50e29d2702bf187fe3eaded449742e8517a22.json",
+        "originalTransportFile": "transport/sweep-solo-candidate-player-11-1790919697129-1.json",
+        "evidence": {
+          "run": "runs/sweep-solo-baseline.json",
+          "playerDecisionIndex": 10
+        },
+        "originalRunId": "sweep-solo-candidate",
+        "originalArm": "candidate",
+        "reusedAcrossArms": true,
+        "recorderVersion": "1.0.2"
+      }
+    ]
+  },
+  "analysisComparison": {
+    "representation": "JSON-persisted",
+    "originalEvidenceModified": false,
+    "normalization": "Fresh recomputed analysis/advice passes through JSON stringify/parse: negative zero becomes zero, undefined object fields are omitted, undefined array entries become null. Stored original evidence is compared as read."
+  },
+  "transport": {
+    "player": {
+      "attempts": 82,
+      "validTransport": 82,
+      "invalidTransport": 0,
+      "accepted": 77,
+      "rejected": 5,
+      "acceptanceUnavailable": 0,
+      "timedOut": 0,
+      "toolEventAttempts": 0
+    },
+    "observer": {
+      "queuedPackets": 48,
+      "attempts": 48,
+      "validTransport": 45,
+      "invalidTransport": 3,
+      "accepted": 45,
+      "rejected": 3,
+      "acceptanceUnavailable": 0,
+      "timedOut": 3,
+      "toolEventAttempts": 0,
+      "awaitingResponse": 0,
+      "publicCheckpoints": {
+        "attempts": 36,
+        "validTransport": 33,
+        "invalidTransport": 3,
+        "accepted": 33,
+        "rejected": 3,
+        "acceptanceUnavailable": 0,
+        "timedOut": 3,
+        "toolEventAttempts": 0
+      },
+      "retrospective": {
+        "attempts": 12,
+        "validTransport": 12,
+        "invalidTransport": 0,
+        "accepted": 12,
+        "rejected": 0,
+        "acceptanceUnavailable": 0,
+        "timedOut": 0,
+        "toolEventAttempts": 0
+      }
+    },
+    "unreadableEvidence": [],
+    "files": [
+      {
+        "file": "transport/control-partners-baseline-observer-retrospective.json",
+        "role": "observer",
+        "runId": "control-partners-baseline",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-observer-trick-11.json",
+        "role": "observer",
+        "runId": "control-partners-baseline",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-observer-trick-3.json",
+        "role": "observer",
+        "runId": "control-partners-baseline",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-observer-trick-7.json",
+        "role": "observer",
+        "runId": "control-partners-baseline",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-01-1790919083996-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-02-1790919094620-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-03-1790919121538-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-05-1790919139578-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-06-1790919157518-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-07-1790919177625-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-08-1790919192304-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-09-1790919241395-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-10-1790919262080-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-11-1790919307833-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-12-1790919334325-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-baseline-player-13-1790919371156-1.json",
+        "role": "player",
+        "runId": "control-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-candidate-observer-retrospective.json",
+        "role": "observer",
+        "runId": "control-partners-candidate",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-candidate-observer-trick-11.json",
+        "role": "observer",
+        "runId": "control-partners-candidate",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-candidate-observer-trick-3.json",
+        "role": "observer",
+        "runId": "control-partners-candidate",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-partners-candidate-observer-trick-7.json",
+        "role": "observer",
+        "runId": "control-partners-candidate",
+        "stage": "trick-7",
+        "validTransport": false,
+        "accepted": false,
+        "rejection": "Invalid observer transport or JSON; no judgment accepted.",
+        "timedOut": true,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-observer-retrospective.json",
+        "role": "observer",
+        "runId": "control-solo-baseline",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-observer-trick-11.json",
+        "role": "observer",
+        "runId": "control-solo-baseline",
+        "stage": "trick-11",
+        "validTransport": false,
+        "accepted": false,
+        "rejection": "Invalid observer transport or JSON; no judgment accepted.",
+        "timedOut": true,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-observer-trick-3.json",
+        "role": "observer",
+        "runId": "control-solo-baseline",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-observer-trick-7.json",
+        "role": "observer",
+        "runId": "control-solo-baseline",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-01-1790918132874-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-02-1790918148964-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-03-1790918208703-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-04-1790918225001-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-05-1790918280231-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-07-1790918301449-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": false,
+        "rejection": "Expected one bid/card and one reasoning paragraph",
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-07-1790918320008-2.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-08-1790918338984-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-09-1790918357033-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-10-1790918376727-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-11-1790918416480-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-12-1790918444203-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": false,
+        "rejection": "Expected one bid/card and one reasoning paragraph",
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-12-1790918523240-2.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-baseline-player-13-1790918552683-1.json",
+        "role": "player",
+        "runId": "control-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-candidate-observer-retrospective.json",
+        "role": "observer",
+        "runId": "control-solo-candidate",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-candidate-observer-trick-11.json",
+        "role": "observer",
+        "runId": "control-solo-candidate",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-candidate-observer-trick-3.json",
+        "role": "observer",
+        "runId": "control-solo-candidate",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/control-solo-candidate-observer-trick-7.json",
+        "role": "observer",
+        "runId": "control-solo-candidate",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-observer-retrospective.json",
+        "role": "observer",
+        "runId": "resources-partners-baseline",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-observer-trick-11.json",
+        "role": "observer",
+        "runId": "resources-partners-baseline",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-observer-trick-3.json",
+        "role": "observer",
+        "runId": "resources-partners-baseline",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-observer-trick-7.json",
+        "role": "observer",
+        "runId": "resources-partners-baseline",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-01-1790922368636-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-02-1790922406480-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-03-1790922430616-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-04-1790922445160-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-05-1790922458257-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-06-1790922472424-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-07-1790922486169-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-08-1790922507070-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-09-1790922525540-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-10-1790922555391-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-11-1790922576717-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-baseline-player-13-1790922610371-1.json",
+        "role": "player",
+        "runId": "resources-partners-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-observer-retrospective.json",
+        "role": "observer",
+        "runId": "resources-partners-candidate",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-observer-trick-11.json",
+        "role": "observer",
+        "runId": "resources-partners-candidate",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-observer-trick-3.json",
+        "role": "observer",
+        "runId": "resources-partners-candidate",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-observer-trick-7.json",
+        "role": "observer",
+        "runId": "resources-partners-candidate",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-06-1790922671816-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-07-1790922693019-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-08-1790922726797-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-09-1790922758682-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-10-1790922784482-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-11-1790922806339-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-12-1790922824512-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-partners-candidate-player-13-1790922849896-1.json",
+        "role": "player",
+        "runId": "resources-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-observer-retrospective.json",
+        "role": "observer",
+        "runId": "resources-solo-baseline",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-observer-trick-11.json",
+        "role": "observer",
+        "runId": "resources-solo-baseline",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-observer-trick-3.json",
+        "role": "observer",
+        "runId": "resources-solo-baseline",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-observer-trick-7.json",
+        "role": "observer",
+        "runId": "resources-solo-baseline",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-01-1790921880806-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-02-1790921894018-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-03-1790921916699-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-04-1790921928873-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-05-1790921947032-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-06-1790921960171-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-07-1790921972837-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-08-1790921986715-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-09-1790922024118-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-10-1790922127897-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-11-1790922156604-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-baseline-player-13-1790922236582-1.json",
+        "role": "player",
+        "runId": "resources-solo-baseline",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-candidate-observer-retrospective.json",
+        "role": "observer",
+        "runId": "resources-solo-candidate",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-candidate-observer-trick-11.json",
+        "role": "observer",
+        "runId": "resources-solo-candidate",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-candidate-observer-trick-3.json",
+        "role": "observer",
+        "runId": "resources-solo-candidate",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/resources-solo-candidate-observer-trick-7.json",
+        "role": "observer",
+        "runId": "resources-solo-candidate",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-baseline-observer-retrospective.json",
+        "role": "observer",
+        "runId": "sweep-partners-baseline",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-baseline-observer-trick-11.json",
+        "role": "observer",
+        "runId": "sweep-partners-baseline",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-baseline-observer-trick-3.json",
+        "role": "observer",
+        "runId": "sweep-partners-baseline",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-baseline-observer-trick-7.json",
+        "role": "observer",
+        "runId": "sweep-partners-baseline",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-observer-retrospective.json",
+        "role": "observer",
+        "runId": "sweep-partners-candidate",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-observer-trick-11.json",
+        "role": "observer",
+        "runId": "sweep-partners-candidate",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-observer-trick-3.json",
+        "role": "observer",
+        "runId": "sweep-partners-candidate",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-observer-trick-7.json",
+        "role": "observer",
+        "runId": "sweep-partners-candidate",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-01-1790921505191-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-02-1790921528972-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-03-1790921549825-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-04-1790921564074-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-05-1790921579386-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-08-1790921604728-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-09-1790921629234-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-10-1790921653869-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-11-1790921684310-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-12-1790921705313-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-partners-candidate-player-13-1790921744492-1.json",
+        "role": "player",
+        "runId": "sweep-partners-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-baseline-observer-retrospective.json",
+        "role": "observer",
+        "runId": "sweep-solo-baseline",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-baseline-observer-trick-11.json",
+        "role": "observer",
+        "runId": "sweep-solo-baseline",
+        "stage": "trick-11",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-baseline-observer-trick-3.json",
+        "role": "observer",
+        "runId": "sweep-solo-baseline",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-baseline-observer-trick-7.json",
+        "role": "observer",
+        "runId": "sweep-solo-baseline",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-observer-retrospective.json",
+        "role": "observer",
+        "runId": "sweep-solo-candidate",
+        "stage": "retrospective",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-observer-trick-11.json",
+        "role": "observer",
+        "runId": "sweep-solo-candidate",
+        "stage": "trick-11",
+        "validTransport": false,
+        "accepted": false,
+        "rejection": "Invalid observer transport or JSON; no judgment accepted.",
+        "timedOut": true,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-observer-trick-3.json",
+        "role": "observer",
+        "runId": "sweep-solo-candidate",
+        "stage": "trick-3",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-observer-trick-7.json",
+        "role": "observer",
+        "runId": "sweep-solo-candidate",
+        "stage": "trick-7",
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-01-1790919483273-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-02-1790919509532-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-03-1790919538761-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-04-1790919554169-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-05-1790919566909-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-08-1790919595138-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-09-1790919613595-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": false,
+        "rejection": "Expected one bid/card and one reasoning paragraph",
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-09-1790919638455-2.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-10-1790919674703-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-11-1790919697129-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": false,
+        "rejection": "Expected one bid/card and one reasoning paragraph",
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-11-1790919720481-2.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": false,
+        "rejection": "Expected one bid/card and one reasoning paragraph",
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-12-1790920801030-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      },
+      {
+        "file": "transport/sweep-solo-candidate-player-13-1790920888803-1.json",
+        "role": "player",
+        "runId": "sweep-solo-candidate",
+        "stage": null,
+        "validTransport": true,
+        "accepted": true,
+        "rejection": null,
+        "timedOut": false,
+        "toolEvents": 0
+      }
+    ]
+  },
+  "evidence": {
+    "manifest": "manifest.json",
+    "sessions": "sessions.json",
+    "sourceReplay": "source-audit.json",
+    "caseLedger": "case-ledger.md",
+    "publicViews": "public/",
+    "observerJobs": [
+      "observer-jobs/control-partners-baseline-retrospective.json",
+      "observer-jobs/control-partners-baseline-trick-11.json",
+      "observer-jobs/control-partners-baseline-trick-3.json",
+      "observer-jobs/control-partners-baseline-trick-7.json",
+      "observer-jobs/control-partners-candidate-retrospective.json",
+      "observer-jobs/control-partners-candidate-trick-11.json",
+      "observer-jobs/control-partners-candidate-trick-3.json",
+      "observer-jobs/control-partners-candidate-trick-7.json",
+      "observer-jobs/control-solo-baseline-retrospective.json",
+      "observer-jobs/control-solo-baseline-trick-11.json",
+      "observer-jobs/control-solo-baseline-trick-3.json",
+      "observer-jobs/control-solo-baseline-trick-7.json",
+      "observer-jobs/control-solo-candidate-retrospective.json",
+      "observer-jobs/control-solo-candidate-trick-11.json",
+      "observer-jobs/control-solo-candidate-trick-3.json",
+      "observer-jobs/control-solo-candidate-trick-7.json",
+      "observer-jobs/resources-partners-baseline-retrospective.json",
+      "observer-jobs/resources-partners-baseline-trick-11.json",
+      "observer-jobs/resources-partners-baseline-trick-3.json",
+      "observer-jobs/resources-partners-baseline-trick-7.json",
+      "observer-jobs/resources-partners-candidate-retrospective.json",
+      "observer-jobs/resources-partners-candidate-trick-11.json",
+      "observer-jobs/resources-partners-candidate-trick-3.json",
+      "observer-jobs/resources-partners-candidate-trick-7.json",
+      "observer-jobs/resources-solo-baseline-retrospective.json",
+      "observer-jobs/resources-solo-baseline-trick-11.json",
+      "observer-jobs/resources-solo-baseline-trick-3.json",
+      "observer-jobs/resources-solo-baseline-trick-7.json",
+      "observer-jobs/resources-solo-candidate-retrospective.json",
+      "observer-jobs/resources-solo-candidate-trick-11.json",
+      "observer-jobs/resources-solo-candidate-trick-3.json",
+      "observer-jobs/resources-solo-candidate-trick-7.json",
+      "observer-jobs/sweep-partners-baseline-retrospective.json",
+      "observer-jobs/sweep-partners-baseline-trick-11.json",
+      "observer-jobs/sweep-partners-baseline-trick-3.json",
+      "observer-jobs/sweep-partners-baseline-trick-7.json",
+      "observer-jobs/sweep-partners-candidate-retrospective.json",
+      "observer-jobs/sweep-partners-candidate-trick-11.json",
+      "observer-jobs/sweep-partners-candidate-trick-3.json",
+      "observer-jobs/sweep-partners-candidate-trick-7.json",
+      "observer-jobs/sweep-solo-baseline-retrospective.json",
+      "observer-jobs/sweep-solo-baseline-trick-11.json",
+      "observer-jobs/sweep-solo-baseline-trick-3.json",
+      "observer-jobs/sweep-solo-baseline-trick-7.json",
+      "observer-jobs/sweep-solo-candidate-retrospective.json",
+      "observer-jobs/sweep-solo-candidate-trick-11.json",
+      "observer-jobs/sweep-solo-candidate-trick-3.json",
+      "observer-jobs/sweep-solo-candidate-trick-7.json"
+    ],
+    "decisions": "baseline-decisions.jsonl",
+    "packets": "seat-packets.jsonl",
+    "codeSnapshot": "code-snapshot.json"
+  },
+  "hands": [
+    {
+      "id": "control-solo-baseline",
+      "scenarioId": "baseline-control-solo",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0",
+      "status": "complete",
+      "gameId": "182f3541-c642-4c2f-a4fd-b9ecc8e303dd",
+      "bids": [
+        7,
+        3,
+        0,
+        2
+      ],
+      "tricks": [
+        9,
+        3,
+        0,
+        1
+      ],
+      "points": [
+        72,
+        30,
+        100,
+        -20
+      ],
+      "marginForSouth": 35.333333333333336,
+      "contracts": [
+        {
+          "seats": [
+            0
+          ],
+          "bid": 7,
+          "creditedTricks": 9,
+          "made": true,
+          "nil": [],
+          "points": 72,
+          "bags": 2
+        },
+        {
+          "seats": [
+            1
+          ],
+          "bid": 3,
+          "creditedTricks": 3,
+          "made": true,
+          "nil": [],
+          "points": 30,
+          "bags": 0
+        },
+        {
+          "seats": [
+            2
+          ],
+          "bid": 0,
+          "creditedTricks": 0,
+          "made": null,
+          "nil": [
+            {
+              "seat": 2,
+              "made": true
+            }
+          ],
+          "points": 100,
+          "bags": 0
+        },
+        {
+          "seats": [
+            3
+          ],
+          "bid": 2,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -20,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 13,
+      "playerSources": {
+        "luna": 12,
+        "reused-identical-packet": 0,
+        "forced": 2
+      },
+      "caseCounts": {},
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/control-solo-baseline.json",
+        "privateAudit": "private/control-solo-baseline.json"
+      }
+    },
+    {
+      "id": "control-solo-candidate",
+      "scenarioId": "baseline-control-solo",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0",
+      "status": "complete",
+      "gameId": "dec2c779-cf20-493b-a6f8-9269917ccbac",
+      "bids": [
+        7,
+        3,
+        0,
+        2
+      ],
+      "tricks": [
+        9,
+        3,
+        0,
+        1
+      ],
+      "points": [
+        72,
+        30,
+        100,
+        -20
+      ],
+      "marginForSouth": 35.333333333333336,
+      "contracts": [
+        {
+          "seats": [
+            0
+          ],
+          "bid": 7,
+          "creditedTricks": 9,
+          "made": true,
+          "nil": [],
+          "points": 72,
+          "bags": 2
+        },
+        {
+          "seats": [
+            1
+          ],
+          "bid": 3,
+          "creditedTricks": 3,
+          "made": true,
+          "nil": [],
+          "points": 30,
+          "bags": 0
+        },
+        {
+          "seats": [
+            2
+          ],
+          "bid": 0,
+          "creditedTricks": 0,
+          "made": null,
+          "nil": [
+            {
+              "seat": 2,
+              "made": true
+            }
+          ],
+          "points": 100,
+          "bags": 0
+        },
+        {
+          "seats": [
+            3
+          ],
+          "bid": 2,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -20,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 13,
+      "playerSources": {
+        "luna": 0,
+        "reused-identical-packet": 12,
+        "forced": 2
+      },
+      "caseCounts": {
+        "CASE-04": 4,
+        "CASE-02": 1
+      },
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/control-solo-candidate.json",
+        "privateAudit": "private/control-solo-candidate.json"
+      }
+    },
+    {
+      "id": "control-partners-baseline",
+      "scenarioId": "baseline-control-partners",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0",
+      "status": "complete",
+      "gameId": "40a3258a-5561-4b10-b2b9-b8ded85b3055",
+      "bids": [
+        6,
+        3,
+        0,
+        2
+      ],
+      "tricks": [
+        8,
+        4,
+        0,
+        1
+      ],
+      "points": [
+        162,
+        50,
+        162,
+        50
+      ],
+      "marginForSouth": 112,
+      "contracts": [
+        {
+          "seats": [
+            0,
+            2
+          ],
+          "bid": 6,
+          "creditedTricks": 8,
+          "made": true,
+          "nil": [
+            {
+              "seat": 2,
+              "made": true
+            }
+          ],
+          "points": 162,
+          "bags": 2
+        },
+        {
+          "seats": [
+            1,
+            3
+          ],
+          "bid": 5,
+          "creditedTricks": 5,
+          "made": true,
+          "nil": [],
+          "points": 50,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 12,
+      "playerSources": {
+        "luna": 12,
+        "reused-identical-packet": 0,
+        "forced": 2
+      },
+      "caseCounts": {},
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/control-partners-baseline.json",
+        "privateAudit": "private/control-partners-baseline.json"
+      }
+    },
+    {
+      "id": "control-partners-candidate",
+      "scenarioId": "baseline-control-partners",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0",
+      "status": "complete",
+      "gameId": "ff0f6387-ccf6-4edf-84fd-c029c98bde2e",
+      "bids": [
+        6,
+        3,
+        0,
+        2
+      ],
+      "tricks": [
+        8,
+        4,
+        0,
+        1
+      ],
+      "points": [
+        162,
+        50,
+        162,
+        50
+      ],
+      "marginForSouth": 112,
+      "contracts": [
+        {
+          "seats": [
+            0,
+            2
+          ],
+          "bid": 6,
+          "creditedTricks": 8,
+          "made": true,
+          "nil": [
+            {
+              "seat": 2,
+              "made": true
+            }
+          ],
+          "points": 162,
+          "bags": 2
+        },
+        {
+          "seats": [
+            1,
+            3
+          ],
+          "bid": 5,
+          "creditedTricks": 5,
+          "made": true,
+          "nil": [],
+          "points": 50,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 12,
+      "playerSources": {
+        "luna": 0,
+        "reused-identical-packet": 12,
+        "forced": 2
+      },
+      "caseCounts": {
+        "CASE-02": 1
+      },
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/control-partners-candidate.json",
+        "privateAudit": "private/control-partners-candidate.json"
+      }
+    },
+    {
+      "id": "sweep-solo-candidate",
+      "scenarioId": "baseline-sweep-solo",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0",
+      "status": "complete",
+      "gameId": "1fd297a6-16a1-4f7f-b787-edb333dea1ea",
+      "bids": [
+        1,
+        5,
+        5,
+        1
+      ],
+      "tricks": [
+        0,
+        1,
+        12,
+        0
+      ],
+      "points": [
+        -10,
+        -50,
+        57,
+        -10
+      ],
+      "marginForSouth": -9,
+      "contracts": [
+        {
+          "seats": [
+            0
+          ],
+          "bid": 1,
+          "creditedTricks": 0,
+          "made": false,
+          "nil": [],
+          "points": -10,
+          "bags": 0
+        },
+        {
+          "seats": [
+            1
+          ],
+          "bid": 5,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -50,
+          "bags": 0
+        },
+        {
+          "seats": [
+            2
+          ],
+          "bid": 5,
+          "creditedTricks": 12,
+          "made": true,
+          "nil": [],
+          "points": 57,
+          "bags": 7
+        },
+        {
+          "seats": [
+            3
+          ],
+          "bid": 1,
+          "creditedTricks": 0,
+          "made": false,
+          "nil": [],
+          "points": -10,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 10,
+      "playerSources": {
+        "luna": 11,
+        "reused-identical-packet": 0,
+        "forced": 3
+      },
+      "caseCounts": {
+        "CASE-04": 10,
+        "CASE-02": 1
+      },
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/sweep-solo-candidate.json",
+        "privateAudit": "private/sweep-solo-candidate.json"
+      }
+    },
+    {
+      "id": "sweep-solo-baseline",
+      "scenarioId": "baseline-sweep-solo",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0",
+      "status": "complete",
+      "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+      "bids": [
+        1,
+        5,
+        5,
+        1
+      ],
+      "tricks": [
+        0,
+        1,
+        12,
+        0
+      ],
+      "points": [
+        -10,
+        -50,
+        57,
+        -10
+      ],
+      "marginForSouth": -9,
+      "contracts": [
+        {
+          "seats": [
+            0
+          ],
+          "bid": 1,
+          "creditedTricks": 0,
+          "made": false,
+          "nil": [],
+          "points": -10,
+          "bags": 0
+        },
+        {
+          "seats": [
+            1
+          ],
+          "bid": 5,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -50,
+          "bags": 0
+        },
+        {
+          "seats": [
+            2
+          ],
+          "bid": 5,
+          "creditedTricks": 12,
+          "made": true,
+          "nil": [],
+          "points": 57,
+          "bags": 7
+        },
+        {
+          "seats": [
+            3
+          ],
+          "bid": 1,
+          "creditedTricks": 0,
+          "made": false,
+          "nil": [],
+          "points": -10,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 10,
+      "playerSources": {
+        "luna": 0,
+        "reused-identical-packet": 11,
+        "forced": 3
+      },
+      "caseCounts": {},
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/sweep-solo-baseline.json",
+        "privateAudit": "private/sweep-solo-baseline.json"
+      }
+    },
+    {
+      "id": "sweep-partners-candidate",
+      "scenarioId": "baseline-sweep-partners",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0",
+      "status": "complete",
+      "gameId": "11539646-6e63-4a2f-ad12-a67bed6b10b4",
+      "bids": [
+        1,
+        5,
+        5,
+        1
+      ],
+      "tricks": [
+        0,
+        1,
+        12,
+        0
+      ],
+      "points": [
+        66,
+        -60,
+        66,
+        -60
+      ],
+      "marginForSouth": 126,
+      "contracts": [
+        {
+          "seats": [
+            0,
+            2
+          ],
+          "bid": 6,
+          "creditedTricks": 12,
+          "made": true,
+          "nil": [],
+          "points": 66,
+          "bags": 6
+        },
+        {
+          "seats": [
+            1,
+            3
+          ],
+          "bid": 6,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -60,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 10,
+      "playerSources": {
+        "luna": 11,
+        "reused-identical-packet": 0,
+        "forced": 3
+      },
+      "caseCounts": {
+        "CASE-04": 10,
+        "CASE-02": 1
+      },
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/sweep-partners-candidate.json",
+        "privateAudit": "private/sweep-partners-candidate.json"
+      }
+    },
+    {
+      "id": "sweep-partners-baseline",
+      "scenarioId": "baseline-sweep-partners",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0",
+      "status": "complete",
+      "gameId": "4546b320-95fa-42b5-a00d-c96ddaf7b12e",
+      "bids": [
+        1,
+        5,
+        5,
+        1
+      ],
+      "tricks": [
+        0,
+        1,
+        12,
+        0
+      ],
+      "points": [
+        66,
+        -60,
+        66,
+        -60
+      ],
+      "marginForSouth": 126,
+      "contracts": [
+        {
+          "seats": [
+            0,
+            2
+          ],
+          "bid": 6,
+          "creditedTricks": 12,
+          "made": true,
+          "nil": [],
+          "points": 66,
+          "bags": 6
+        },
+        {
+          "seats": [
+            1,
+            3
+          ],
+          "bid": 6,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -60,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 10,
+      "playerSources": {
+        "luna": 0,
+        "reused-identical-packet": 11,
+        "forced": 3
+      },
+      "caseCounts": {},
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/sweep-partners-baseline.json",
+        "privateAudit": "private/sweep-partners-baseline.json"
+      }
+    },
+    {
+      "id": "resources-solo-baseline",
+      "scenarioId": "baseline-resources-solo",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0",
+      "status": "complete",
+      "gameId": "392537da-35cf-4e81-b839-c4b12b4cf41a",
+      "bids": [
+        3,
+        2,
+        5,
+        2
+      ],
+      "tricks": [
+        5,
+        1,
+        5,
+        2
+      ],
+      "points": [
+        32,
+        -20,
+        50,
+        20
+      ],
+      "marginForSouth": 15.333333333333332,
+      "contracts": [
+        {
+          "seats": [
+            0
+          ],
+          "bid": 3,
+          "creditedTricks": 5,
+          "made": true,
+          "nil": [],
+          "points": 32,
+          "bags": 2
+        },
+        {
+          "seats": [
+            1
+          ],
+          "bid": 2,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -20,
+          "bags": 0
+        },
+        {
+          "seats": [
+            2
+          ],
+          "bid": 5,
+          "creditedTricks": 5,
+          "made": true,
+          "nil": [],
+          "points": 50,
+          "bags": 0
+        },
+        {
+          "seats": [
+            3
+          ],
+          "bid": 2,
+          "creditedTricks": 2,
+          "made": true,
+          "nil": [],
+          "points": 20,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 9,
+      "playerSources": {
+        "luna": 12,
+        "reused-identical-packet": 0,
+        "forced": 2
+      },
+      "caseCounts": {},
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/resources-solo-baseline.json",
+        "privateAudit": "private/resources-solo-baseline.json"
+      }
+    },
+    {
+      "id": "resources-solo-candidate",
+      "scenarioId": "baseline-resources-solo",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0",
+      "status": "complete",
+      "gameId": "629c485f-5c11-4c0d-ab97-e81de53e01b3",
+      "bids": [
+        3,
+        2,
+        5,
+        2
+      ],
+      "tricks": [
+        5,
+        1,
+        5,
+        2
+      ],
+      "points": [
+        32,
+        -20,
+        50,
+        20
+      ],
+      "marginForSouth": 15.333333333333332,
+      "contracts": [
+        {
+          "seats": [
+            0
+          ],
+          "bid": 3,
+          "creditedTricks": 5,
+          "made": true,
+          "nil": [],
+          "points": 32,
+          "bags": 2
+        },
+        {
+          "seats": [
+            1
+          ],
+          "bid": 2,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -20,
+          "bags": 0
+        },
+        {
+          "seats": [
+            2
+          ],
+          "bid": 5,
+          "creditedTricks": 5,
+          "made": true,
+          "nil": [],
+          "points": 50,
+          "bags": 0
+        },
+        {
+          "seats": [
+            3
+          ],
+          "bid": 2,
+          "creditedTricks": 2,
+          "made": true,
+          "nil": [],
+          "points": 20,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 9,
+      "playerSources": {
+        "luna": 0,
+        "reused-identical-packet": 12,
+        "forced": 2
+      },
+      "caseCounts": {
+        "CASE-04": 7,
+        "CASE-02": 7
+      },
+      "shadowDisagreements": [],
+      "evidence": {
+        "run": "runs/resources-solo-candidate.json",
+        "privateAudit": "private/resources-solo-candidate.json"
+      }
+    },
+    {
+      "id": "resources-partners-baseline",
+      "scenarioId": "baseline-resources-partners",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0",
+      "status": "complete",
+      "gameId": "58b970d5-ce7f-4cdd-b5d6-303f36a66861",
+      "bids": [
+        3,
+        2,
+        5,
+        2
+      ],
+      "tricks": [
+        5,
+        1,
+        5,
+        2
+      ],
+      "points": [
+        82,
+        -40,
+        82,
+        -40
+      ],
+      "marginForSouth": 122,
+      "contracts": [
+        {
+          "seats": [
+            0,
+            2
+          ],
+          "bid": 8,
+          "creditedTricks": 10,
+          "made": true,
+          "nil": [],
+          "points": 82,
+          "bags": 2
+        },
+        {
+          "seats": [
+            1,
+            3
+          ],
+          "bid": 4,
+          "creditedTricks": 3,
+          "made": false,
+          "nil": [],
+          "points": -40,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 10,
+      "playerSources": {
+        "luna": 12,
+        "reused-identical-packet": 0,
+        "forced": 2
+      },
+      "caseCounts": {},
+      "shadowDisagreements": [
+        {
+          "decisionId": "58b970d5-ce7f-4cdd-b5d6-303f36a66861:1:24",
+          "seat": 2,
+          "old": "play:SQ",
+          "candidate": "play:H5"
+        },
+        {
+          "decisionId": "58b970d5-ce7f-4cdd-b5d6-303f36a66861:1:29",
+          "seat": 2,
+          "old": "play:SJ",
+          "candidate": "play:H5"
+        }
+      ],
+      "evidence": {
+        "run": "runs/resources-partners-baseline.json",
+        "privateAudit": "private/resources-partners-baseline.json"
+      }
+    },
+    {
+      "id": "resources-partners-candidate",
+      "scenarioId": "baseline-resources-partners",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0",
+      "status": "complete",
+      "gameId": "c6c05ce9-9533-419b-8b24-11484f615afd",
+      "bids": [
+        3,
+        2,
+        5,
+        2
+      ],
+      "tricks": [
+        6,
+        0,
+        6,
+        1
+      ],
+      "points": [
+        84,
+        -40,
+        84,
+        -40
+      ],
+      "marginForSouth": 124,
+      "contracts": [
+        {
+          "seats": [
+            0,
+            2
+          ],
+          "bid": 8,
+          "creditedTricks": 12,
+          "made": true,
+          "nil": [],
+          "points": 84,
+          "bags": 4
+        },
+        {
+          "seats": [
+            1,
+            3
+          ],
+          "bid": 4,
+          "creditedTricks": 1,
+          "made": false,
+          "nil": [],
+          "points": -40,
+          "bags": 0
+        }
+      ],
+      "acceptedActions": 56,
+      "forcedActions": 10,
+      "playerSources": {
+        "luna": 8,
+        "reused-identical-packet": 5,
+        "forced": 1
+      },
+      "caseCounts": {
+        "CASE-04": 2,
+        "CASE-01": 1,
+        "CASE-02": 3
+      },
+      "shadowDisagreements": [
+        {
+          "decisionId": "c6c05ce9-9533-419b-8b24-11484f615afd:1:24",
+          "seat": 2,
+          "old": "play:SQ",
+          "candidate": "play:H5"
+        }
+      ],
+      "evidence": {
+        "run": "runs/resources-partners-candidate.json",
+        "privateAudit": "private/resources-partners-candidate.json"
+      }
+    }
+  ]
+}

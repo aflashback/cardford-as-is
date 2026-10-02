@@ -55,15 +55,17 @@ Files: `qa/experiments/2026-10-02-browser-baseline/{manifest.json,dev-deals.json
 
 - [x] Freeze six opening fixtures and 12 paired run IDs before play; separate model/transport provenance from runtime policy provenance. `manifest.json` and `dev-deals.json` were frozen before the first browser hand.
 - [x] Build with both registered policies. Start two loopback servers using the existing database and `.env.local`, explicit old/candidate `SPADES_POLICY`, and the same selected-deal catalog. Ports 4191/4192; source/build/input hashes saved. No `db:up` or secret output.
-- [ ] Use browser DOM and network inspection; no screenshots. Player actions must click the real bid/card controls. All other seats are normal server bots.
-- [ ] Run Luna player and independent Luna observer with isolated inputs. Save every accepted response, invalid/failed attempt and actual browser commit. No substitute action if an agent call fails.
-- [ ] Save complete original bot/human analysis privately after each hand. Verify authoritative replay agrees with browser actions, final scores, scenario and policy pin.
-- [ ] Report three paired outcomes per mode, case coverage and factual cue checks. Mark missed case families and every partial/aborted game.
-- [ ] Keep Jev calls at zero. Archive safe decision packets for its later comparison; retain separate private replay material.
+- [x] Use browser DOM and network inspection; no screenshots. Player actions must click the real bid/card controls. All other seats are normal server bots.
+- [x] Run Luna player and independent Luna observer with isolated inputs. Save every accepted response, invalid/failed attempt and actual browser commit. No substitute action if an agent call fails.
+- [x] Save complete original bot/human analysis privately after each hand. Verify authoritative replay agrees with browser actions, final scores, scenario and policy pin.
+- [x] Report three paired outcomes per mode, case coverage and factual cue checks. Mark missed case families and every partial/aborted game.
+- [x] Keep Jev calls at zero. Archive safe decision packets for its later comparison; retain separate private replay material.
 
 ## 5. Delivery
 
-- [ ] Run relevant unit/integration checks, build, contract/source-boundary checks and `git diff --check`.
-- [ ] Update concise results, change records, changelog and the existing visual review site.
-- [ ] Commit only this task's changes, merge to `main` if a task branch was used, and verify clean status.
-- [ ] Report actual implementation, exact checks, browser counts, limitations, commit and next unfinished evaluation gate. Do not promote the default on this small sample.
+- [x] Run relevant unit/integration checks, build, contract/source-boundary checks and `git diff --check`.
+- [x] Update concise results, change records, changelog and the existing visual review site.
+- [x] Commit only this task's changes, merge to `main` if a task branch was used, and verify clean status.
+- [x] Report actual implementation, exact checks, browser counts, limitations, commit and next unfinished evaluation gate. Do not promote the default on this small sample.
+
+Acceptance: [implementation and browser report](../../../qa/implementation/OBSERVED-SPADES-CASES-REPORT.md). All 12 measured hands are verified; 14 total sessions, 672 decisions, 45 accepted observer reviews and three recorded timeouts. Candidate remains opt-in.

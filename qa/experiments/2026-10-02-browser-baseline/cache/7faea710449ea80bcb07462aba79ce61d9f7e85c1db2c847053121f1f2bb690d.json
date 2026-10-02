@@ -1,0 +1,84 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "CA",
+      "D7",
+      "DQ",
+      "DA",
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "bids": [
+      6,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:C6",
+      "play:CA",
+      "play:D7",
+      "play:DQ",
+      "play:DA",
+      "play:H5",
+      "play:HK"
+    ]
+  },
+  "packetHash": "d394bf007e5fb9315bad0c1a2aaa4b80d541445016144ea4be90b8f0f38533d8",
+  "action": {
+    "kind": "play",
+    "card": "C6"
+  },
+  "reason": "I’ll lead low to avoid taking an early trick that could threaten North’s Nil, while keeping my club ace and strong spades for later. I can’t know whether North is void in clubs or who will win this trick.",
+  "source": "luna",
+  "transportFile": "transport/control-partners-baseline-player-02-1790919094620-1.json"
+}

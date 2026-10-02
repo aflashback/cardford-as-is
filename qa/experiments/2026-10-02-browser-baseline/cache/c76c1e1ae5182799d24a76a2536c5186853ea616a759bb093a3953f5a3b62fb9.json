@@ -1,0 +1,153 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      10,
+      10,
+      9,
+      9
+    ],
+    "bids": [
+      1,
+      5,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      1,
+      2,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "CA"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C2"
+          },
+          {
+            "seat": 0,
+            "card": "C3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S2"
+          },
+          {
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "seat": 1,
+            "card": "S4"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "SK"
+      },
+      {
+        "seat": 3,
+        "card": "S5"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:S6",
+      "play:S9"
+    ]
+  },
+  "packetHash": "c9d6c8216b1a6e6848778ae753abe8021c983c3be7baeb1620d23f45fd86f532",
+  "action": {
+    "kind": "play",
+    "card": "S6"
+  },
+  "reason": "SK is currently unbeatable because SA has already been played, so I’ll shed S6 and keep S9 for a later trick. West’s card is still unknown.",
+  "source": "luna",
+  "transportFile": "transport/sweep-solo-candidate-player-05-1790919566909-1.json"
+}

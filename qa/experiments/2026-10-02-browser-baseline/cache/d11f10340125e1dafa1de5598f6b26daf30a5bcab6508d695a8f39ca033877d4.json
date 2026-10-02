@@ -1,0 +1,118 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C5",
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      12,
+      11,
+      11,
+      11
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 1,
+        "card": "C4"
+      },
+      {
+        "seat": 2,
+        "card": "S10"
+      },
+      {
+        "seat": 3,
+        "card": "C3"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:C5",
+      "play:C8",
+      "play:CJ"
+    ]
+  },
+  "packetHash": "08c5993049f7ebde3616a1f049b2804beb558e4774a753c768a6f81f898f0558",
+  "action": {
+    "kind": "play",
+    "card": "C5"
+  },
+  "reason": "North’s S10 is currently winning, so spending a higher club is unlikely to gain this trick. I’ll keep C8 and CJ for a later club lead; I can’t know whether an opponent will trump then.",
+  "source": "luna",
+  "transportFile": "transport/resources-solo-baseline-player-03-1790921916699-1.json"
+}

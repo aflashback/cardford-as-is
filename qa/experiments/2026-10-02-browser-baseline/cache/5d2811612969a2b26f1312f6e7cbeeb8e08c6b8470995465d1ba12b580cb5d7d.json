@@ -1,0 +1,190 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      8,
+      8,
+      7,
+      7
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      0,
+      4,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "H3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 3,
+            "card": "CA"
+          },
+          {
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "seat": 1,
+            "card": "C4"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S8"
+          },
+          {
+            "seat": 0,
+            "card": "S2"
+          },
+          {
+            "seat": 1,
+            "card": "S9"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "seat": 3,
+            "card": "D2"
+          },
+          {
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "seat": 1,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SQ"
+          },
+          {
+            "seat": 3,
+            "card": "H2"
+          },
+          {
+            "seat": 0,
+            "card": "S4"
+          },
+          {
+            "seat": 1,
+            "card": "D4"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "SJ"
+      },
+      {
+        "seat": 3,
+        "card": "C3"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:S5",
+      "play:S6",
+      "play:S7"
+    ]
+  },
+  "packetHash": "65fb48eb949811721ac1cd65a2e0a7d3b3929d3cbac3b2d96d969aca7da5591a",
+  "action": {
+    "kind": "play",
+    "card": "S5"
+  },
+  "reason": "North’s SJ is currently winning, and all higher spades have already been played, so I can’t improve the trick. I’ll spend my lowest spade and preserve S6 and S7; an unseen card could still change who wins only if it can beat SJ, but none remains.",
+  "source": "luna",
+  "transportFile": "transport/resources-partners-baseline-player-07-1790922486169-1.json"
+}

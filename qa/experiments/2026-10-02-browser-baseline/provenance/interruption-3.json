@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-02T05:42:32.360Z",
+  "message": "No valid player choice; position retained with no substitute move.",
+  "stack": "Error: No valid player choice; position retained with no substitute move.\n    at playerChoice (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:196:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async play (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:327:46)\n    at async file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:340:27",
+  "sessions": 7
+}

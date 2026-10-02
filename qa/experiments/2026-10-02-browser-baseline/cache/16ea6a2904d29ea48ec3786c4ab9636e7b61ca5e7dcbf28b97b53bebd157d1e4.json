@@ -1,0 +1,88 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C3",
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "HK",
+      "S3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      13,
+      13,
+      12,
+      12
+    ],
+    "bids": [
+      1,
+      5,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "H4"
+      },
+      {
+        "seat": 3,
+        "card": "HQ"
+      }
+    ],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:H3",
+      "play:HK"
+    ]
+  },
+  "packetHash": "dc571ca0365220a6efde4421ab3586d67e60d63aab8c2b211799b9ca34cd2e28",
+  "action": {
+    "kind": "play",
+    "card": "HK"
+  },
+  "reason": "HK beats East’s queen and may secure a useful trick for our team; West could still overtake with the ace, which I can’t rule out.",
+  "source": "luna",
+  "transportFile": "transport/sweep-partners-candidate-player-02-1790921528972-1.json"
+}

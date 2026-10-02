@@ -1,0 +1,149 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "D7",
+      "DQ",
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      10,
+      10,
+      10,
+      9
+    ],
+    "bids": [
+      7,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      2,
+      0,
+      0,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DA"
+          },
+          {
+            "seat": 1,
+            "card": "D5"
+          },
+          {
+            "seat": 2,
+            "card": "D6"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "seat": 1,
+            "card": "C3"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "C7"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 3,
+        "card": "D8"
+      }
+    ],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:D7",
+      "play:DQ"
+    ]
+  },
+  "packetHash": "e47c4ba2357d362a85d520116dea14433e71d9ddbb4dcababc1c3062c80bdc8c",
+  "action": {
+    "kind": "play",
+    "card": "DQ"
+  },
+  "reason": "DQ gives me a chance to win this trick and move closer to my bid of seven; North may still hold a higher diamond, so the win isn’t certain.",
+  "source": "luna",
+  "transportFile": "transport/control-solo-baseline-player-05-1790918280231-1.json"
+}

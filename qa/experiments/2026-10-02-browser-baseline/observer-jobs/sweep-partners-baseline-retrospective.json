@@ -1,0 +1,2301 @@
+{
+  "runId": "sweep-partners-baseline",
+  "stage": "retrospective",
+  "packet": {
+    "result": {
+      "game": "spades-partners",
+      "ruleProfile": "spades-training-1.0.0",
+      "seat": 0,
+      "dealer": 1,
+      "phase": "hand-end",
+      "competition": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "hand": [],
+      "handSizes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bids": [
+        1,
+        5,
+        5,
+        1
+      ],
+      "tricks": [
+        0,
+        1,
+        12,
+        0
+      ],
+      "scores": [
+        66,
+        -60,
+        66,
+        -60
+      ],
+      "bags": [
+        6,
+        0,
+        6,
+        0
+      ],
+      "completedTricks": [
+        {
+          "winner": 1,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H4"
+            },
+            {
+              "seat": 3,
+              "card": "HQ"
+            },
+            {
+              "seat": 0,
+              "card": "HK"
+            },
+            {
+              "seat": 1,
+              "card": "HA"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 1,
+              "card": "CA"
+            },
+            {
+              "seat": 2,
+              "card": "S10"
+            },
+            {
+              "seat": 3,
+              "card": "C2"
+            },
+            {
+              "seat": 0,
+              "card": "C3"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SA"
+            },
+            {
+              "seat": 3,
+              "card": "S2"
+            },
+            {
+              "seat": 0,
+              "card": "S3"
+            },
+            {
+              "seat": 1,
+              "card": "S4"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SK"
+            },
+            {
+              "seat": 3,
+              "card": "S5"
+            },
+            {
+              "seat": 0,
+              "card": "S6"
+            },
+            {
+              "seat": 1,
+              "card": "S7"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SQ"
+            },
+            {
+              "seat": 3,
+              "card": "S8"
+            },
+            {
+              "seat": 0,
+              "card": "S9"
+            },
+            {
+              "seat": 1,
+              "card": "C4"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "HJ"
+            },
+            {
+              "seat": 3,
+              "card": "H2"
+            },
+            {
+              "seat": 0,
+              "card": "H3"
+            },
+            {
+              "seat": 1,
+              "card": "D4"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H10"
+            },
+            {
+              "seat": 3,
+              "card": "D2"
+            },
+            {
+              "seat": 0,
+              "card": "C6"
+            },
+            {
+              "seat": 1,
+              "card": "C7"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H5"
+            },
+            {
+              "seat": 3,
+              "card": "C5"
+            },
+            {
+              "seat": 0,
+              "card": "D3"
+            },
+            {
+              "seat": 1,
+              "card": "D7"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H6"
+            },
+            {
+              "seat": 3,
+              "card": "D5"
+            },
+            {
+              "seat": 0,
+              "card": "D6"
+            },
+            {
+              "seat": 1,
+              "card": "C10"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H7"
+            },
+            {
+              "seat": 3,
+              "card": "C8"
+            },
+            {
+              "seat": 0,
+              "card": "C9"
+            },
+            {
+              "seat": 1,
+              "card": "D10"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H8"
+            },
+            {
+              "seat": 3,
+              "card": "D8"
+            },
+            {
+              "seat": 0,
+              "card": "D9"
+            },
+            {
+              "seat": 1,
+              "card": "CK"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H9"
+            },
+            {
+              "seat": 3,
+              "card": "CJ"
+            },
+            {
+              "seat": 0,
+              "card": "CQ"
+            },
+            {
+              "seat": 1,
+              "card": "DK"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SJ"
+            },
+            {
+              "seat": 3,
+              "card": "DJ"
+            },
+            {
+              "seat": 0,
+              "card": "DQ"
+            },
+            {
+              "seat": 1,
+              "card": "DA"
+            }
+          ]
+        }
+      ],
+      "currentTrick": [],
+      "spadesBroken": true,
+      "legalActions": []
+    },
+    "selection": "At most eight original bot decisions: matched cases first, bids second, then chronological moves. Full audits retained separately.",
+    "decisions": [
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:0",
+        "seat": 2,
+        "action": {
+          "bid": 5,
+          "kind": "bid",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "hand": [
+            "H4",
+            "H5",
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ",
+            "S10",
+            "SJ",
+            "SQ",
+            "SK",
+            "SA"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "bid",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "history": [],
+          "handSizes": [
+            13,
+            13,
+            13,
+            13
+          ],
+          "handNumber": 1,
+          "heartsBroken": false,
+          "legalActions": [
+            {
+              "bid": 0,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 1,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 2,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 3,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 4,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 5,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 6,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 7,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 8,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 9,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 10,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 11,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 12,
+              "kind": "bid",
+              "seat": 2
+            },
+            {
+              "bid": 13,
+              "kind": "bid",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S13.structure",
+            "kind": "heuristic",
+            "text": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities."
+          },
+          {
+            "id": "S13.contextual-bid",
+            "kind": "heuristic",
+            "text": "Hand structure suggests bid 5; this is an uncalibrated heuristic."
+          }
+        ]
+      },
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:1",
+        "seat": 3,
+        "action": {
+          "bid": 1,
+          "kind": "bid",
+          "seat": 3
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            null,
+            null,
+            5,
+            null
+          ],
+          "hand": [
+            "C2",
+            "C5",
+            "C8",
+            "CJ",
+            "D2",
+            "D5",
+            "D8",
+            "DJ",
+            "H2",
+            "HQ",
+            "S2",
+            "S5",
+            "S8"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 3,
+          "turn": 3,
+          "phase": "bid",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "history": [],
+          "handSizes": [
+            13,
+            13,
+            13,
+            13
+          ],
+          "handNumber": 1,
+          "heartsBroken": false,
+          "legalActions": [
+            {
+              "bid": 0,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 1,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 2,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 3,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 4,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 5,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 6,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 7,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 8,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 9,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 10,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 11,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 12,
+              "kind": "bid",
+              "seat": 3
+            },
+            {
+              "bid": 13,
+              "kind": "bid",
+              "seat": 3
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S13.structure",
+            "kind": "heuristic",
+            "text": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities."
+          },
+          {
+            "id": "S13.contextual-bid",
+            "kind": "heuristic",
+            "text": "Hand structure suggests bid 1; this is an uncalibrated heuristic."
+          },
+          {
+            "id": "S13.public-bids",
+            "kind": "fact",
+            "text": "Earlier bids are public commitments; they do not prove which unplayed cards anyone holds."
+          }
+        ]
+      },
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:3",
+        "seat": 1,
+        "action": {
+          "bid": 5,
+          "kind": "bid",
+          "seat": 1
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            1,
+            null,
+            5,
+            1
+          ],
+          "hand": [
+            "C4",
+            "C7",
+            "C10",
+            "CK",
+            "CA",
+            "D4",
+            "D7",
+            "D10",
+            "DK",
+            "DA",
+            "HA",
+            "S4",
+            "S7"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 1,
+          "turn": 1,
+          "phase": "bid",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 1,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 1."
+            },
+            {
+              "id": 4,
+              "bid": 1,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 1."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "history": [],
+          "handSizes": [
+            13,
+            13,
+            13,
+            13
+          ],
+          "handNumber": 1,
+          "heartsBroken": false,
+          "legalActions": [
+            {
+              "bid": 0,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 1,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 2,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 3,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 4,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 5,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 6,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 7,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 8,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 9,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 10,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 11,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 12,
+              "kind": "bid",
+              "seat": 1
+            },
+            {
+              "bid": 13,
+              "kind": "bid",
+              "seat": 1
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S13.structure",
+            "kind": "heuristic",
+            "text": "Hand structure estimates high cards, trump length and protected side-suit honors. Its weights are not calibrated probabilities."
+          },
+          {
+            "id": "S13.contextual-bid",
+            "kind": "heuristic",
+            "text": "Hand structure suggests bid 5; this is an uncalibrated heuristic."
+          },
+          {
+            "id": "S13.public-bids",
+            "kind": "fact",
+            "text": "Earlier bids are public commitments; they do not prove which unplayed cards anyone holds."
+          }
+        ]
+      },
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:4",
+        "seat": 2,
+        "action": {
+          "card": "H4",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "hand": [
+            "H4",
+            "H5",
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ",
+            "S10",
+            "SJ",
+            "SQ",
+            "SK",
+            "SA"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 1,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 1."
+            },
+            {
+              "id": 4,
+              "bid": 1,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 1."
+            },
+            {
+              "id": 5,
+              "bid": 5,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 5."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "history": [],
+          "handSizes": [
+            13,
+            13,
+            13,
+            13
+          ],
+          "handNumber": 1,
+          "heartsBroken": false,
+          "legalActions": [
+            {
+              "card": "H4",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H5",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "HJ",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "8 legal card actions are available under this rule profile."
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner."
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your team contract still needs 6 credited tricks; only positive bidders supply that credit."
+          },
+          {
+            "id": "S10.lead-choice",
+            "kind": "heuristic",
+            "text": "Compare cashing control with developing a short suit. A side-suit master may still be trumped."
+          },
+          {
+            "id": "P10.team-contract",
+            "kind": "fact",
+            "text": "Positive partnership bids share one contract; each positive bidder can cover the other. Nil tricks never count toward it."
+          },
+          {
+            "id": "P12.mode-objective",
+            "kind": "fact",
+            "text": "This table scores the two opposite seats together. A teammate trick can serve the shared positive contract; Solo scores each seat separately."
+          },
+          {
+            "id": "P11.entries",
+            "kind": "heuristic",
+            "text": "Consider who gains the next lead and whether spending trump removes a later partnership entry or ruff."
+          },
+          {
+            "id": "S10.develop-suit",
+            "kind": "heuristic",
+            "text": "A low lead from a shorter suit can develop a future void while preserving higher cards.",
+            "actionIds": [
+              "play:H4",
+              "play:H5",
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10",
+              "play:HJ"
+            ]
+          }
+        ]
+      },
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:5",
+        "seat": 3,
+        "action": {
+          "card": "HQ",
+          "kind": "play",
+          "seat": 3
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "hand": [
+            "C2",
+            "C5",
+            "C8",
+            "CJ",
+            "D2",
+            "D5",
+            "D8",
+            "DJ",
+            "H2",
+            "HQ",
+            "S2",
+            "S5",
+            "S8"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 3,
+          "turn": 3,
+          "phase": "play",
+          "trick": [
+            {
+              "card": "H4",
+              "seat": 2
+            }
+          ],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 1,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 1."
+            },
+            {
+              "id": 4,
+              "bid": 1,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 1."
+            },
+            {
+              "id": 5,
+              "bid": 5,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 5."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 1,
+              "remaining": 12,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "history": [],
+          "handSizes": [
+            13,
+            13,
+            12,
+            13
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H2",
+              "kind": "play",
+              "seat": 3
+            },
+            {
+              "card": "HQ",
+              "kind": "play",
+              "seat": 3
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "2 legal card actions are available under this rule profile."
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner."
+          },
+          {
+            "id": "S04.turn-order",
+            "kind": "fact",
+            "text": "2 players still have to play; a current winner is provisional unless every possible response is excluded."
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your team contract still needs 6 credited tricks; only positive bidders supply that credit."
+          },
+          {
+            "id": "P10.team-contract",
+            "kind": "fact",
+            "text": "Positive partnership bids share one contract; each positive bidder can cover the other. Nil tricks never count toward it."
+          },
+          {
+            "id": "P12.mode-objective",
+            "kind": "fact",
+            "text": "This table scores the two opposite seats together. A teammate trick can serve the shared positive contract; Solo scores each seat separately."
+          },
+          {
+            "id": "S08.preserve-control",
+            "kind": "heuristic",
+            "text": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick.",
+            "actionIds": [
+              "play:H2"
+            ]
+          },
+          {
+            "id": "S08.economical-winner",
+            "kind": "heuristic",
+            "text": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks.",
+            "actionIds": [
+              "play:HQ"
+            ]
+          }
+        ]
+      },
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:7",
+        "seat": 1,
+        "action": {
+          "card": "HA",
+          "kind": "play",
+          "seat": 1
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "hand": [
+            "C4",
+            "C7",
+            "C10",
+            "CK",
+            "CA",
+            "D4",
+            "D7",
+            "D10",
+            "DK",
+            "DA",
+            "HA",
+            "S4",
+            "S7"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 1,
+          "turn": 1,
+          "phase": "play",
+          "trick": [
+            {
+              "card": "H4",
+              "seat": 2
+            },
+            {
+              "card": "HQ",
+              "seat": 3
+            },
+            {
+              "card": "HK",
+              "seat": 0
+            }
+          ],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 1,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 1."
+            },
+            {
+              "id": 4,
+              "bid": 1,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 1."
+            },
+            {
+              "id": 5,
+              "bid": 5,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 5."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "HK",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played King of Hearts."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 3,
+              "remaining": 10,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "history": [],
+          "handSizes": [
+            12,
+            13,
+            12,
+            12
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "HA",
+              "kind": "play",
+              "seat": 1
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "1 legal card action is available under this rule profile."
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner."
+          },
+          {
+            "id": "S04.turn-order",
+            "kind": "fact",
+            "text": "You play fourth, so the winner after your card is exact."
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your team contract still needs 6 credited tricks; only positive bidders supply that credit."
+          },
+          {
+            "id": "P10.team-contract",
+            "kind": "fact",
+            "text": "Positive partnership bids share one contract; each positive bidder can cover the other. Nil tricks never count toward it."
+          },
+          {
+            "id": "P12.mode-objective",
+            "kind": "fact",
+            "text": "This table scores the two opposite seats together. A teammate trick can serve the shared positive contract; Solo scores each seat separately."
+          },
+          {
+            "id": "P08.public-hints",
+            "kind": "heuristic",
+            "text": "Partner has played publicly, but no suit preference follows from that alone; no signaling convention is assumed."
+          },
+          {
+            "id": "S08.economical-winner",
+            "kind": "heuristic",
+            "text": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks.",
+            "actionIds": [
+              "play:HA"
+            ]
+          },
+          {
+            "id": "S01.forced",
+            "kind": "fact",
+            "text": "Only one legal action exists, so this move is forced rather than a strategic preference."
+          }
+        ]
+      },
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:9",
+        "seat": 1,
+        "action": {
+          "card": "CA",
+          "kind": "play",
+          "seat": 1
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "hand": [
+            "C4",
+            "C7",
+            "C10",
+            "CK",
+            "CA",
+            "D4",
+            "D7",
+            "D10",
+            "DK",
+            "DA",
+            "S4",
+            "S7"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 1,
+          "turn": 1,
+          "phase": "play",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 1,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 1."
+            },
+            {
+              "id": 4,
+              "bid": 1,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 1."
+            },
+            {
+              "id": 5,
+              "bid": 5,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 5."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "HK",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played King of Hearts."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 4,
+              "remaining": 9,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "HK",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            }
+          ],
+          "handSizes": [
+            12,
+            12,
+            12,
+            12
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "C4",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "C7",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "C10",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "CK",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "CA",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "D4",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "D7",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "D10",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "DK",
+              "kind": "play",
+              "seat": 1
+            },
+            {
+              "card": "DA",
+              "kind": "play",
+              "seat": 1
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "10 legal card actions are available under this rule profile."
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner."
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your team contract still needs 5 credited tricks; only positive bidders supply that credit."
+          },
+          {
+            "id": "S10.lead-choice",
+            "kind": "heuristic",
+            "text": "Compare cashing control with developing a short suit. A side-suit master may still be trumped."
+          },
+          {
+            "id": "P10.team-contract",
+            "kind": "fact",
+            "text": "Positive partnership bids share one contract; each positive bidder can cover the other. Nil tricks never count toward it."
+          },
+          {
+            "id": "P12.mode-objective",
+            "kind": "fact",
+            "text": "This table scores the two opposite seats together. A teammate trick can serve the shared positive contract; Solo scores each seat separately."
+          },
+          {
+            "id": "P08.public-hints",
+            "kind": "heuristic",
+            "text": "Partner has played publicly, but no suit preference follows from that alone; no signaling convention is assumed."
+          },
+          {
+            "id": "P11.entries",
+            "kind": "heuristic",
+            "text": "Consider who gains the next lead and whether spending trump removes a later partnership entry or ruff."
+          },
+          {
+            "id": "S10.develop-suit",
+            "kind": "heuristic",
+            "text": "A low lead from a shorter suit can develop a future void while preserving higher cards.",
+            "actionIds": [
+              "play:C4",
+              "play:C7",
+              "play:C10",
+              "play:CK",
+              "play:D4",
+              "play:D7",
+              "play:D10",
+              "play:DK"
+            ]
+          },
+          {
+            "id": "S10.cash-control",
+            "kind": "heuristic",
+            "text": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter.",
+            "actionIds": [
+              "play:CA",
+              "play:DA"
+            ]
+          }
+        ]
+      },
+      {
+        "decision": "4546b320-95fa-42b5-a00d-c96ddaf7b12e:1:10",
+        "seat": 2,
+        "action": {
+          "card": "S10",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "hand": [
+            "H5",
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ",
+            "S10",
+            "SJ",
+            "SQ",
+            "SK",
+            "SA"
+          ],
+          "mode": "spades-partners",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [
+            {
+              "card": "CA",
+              "seat": 1
+            }
+          ],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 1,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 1."
+            },
+            {
+              "id": 4,
+              "bid": 1,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 1."
+            },
+            {
+              "id": 5,
+              "bid": 5,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 5."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "HK",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played King of Hearts."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "CA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Clubs."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 1,
+              "remaining": 12,
+              "voidSeats": []
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 4,
+              "remaining": 9,
+              "voidSeats": []
+            },
+            {
+              "suit": "S",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "HK",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            }
+          ],
+          "handSizes": [
+            12,
+            11,
+            12,
+            12
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H5",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "HJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "S10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SQ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SK",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SA",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": false,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "12 legal card actions are available under this rule profile."
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner."
+          },
+          {
+            "id": "S04.turn-order",
+            "kind": "fact",
+            "text": "2 players still have to play; a current winner is provisional unless every possible response is excluded."
+          },
+          {
+            "id": "S02.void",
+            "kind": "fact",
+            "text": "You have no card of the led suit, so any card in your hand is legal."
+          },
+          {
+            "id": "S11.trump-choice",
+            "kind": "fact",
+            "text": "There is no obligation to trump or overtrump in this profile."
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your team contract still needs 6 credited tricks; only positive bidders supply that credit."
+          },
+          {
+            "id": "P10.team-contract",
+            "kind": "fact",
+            "text": "Positive partnership bids share one contract; each positive bidder can cover the other. Nil tricks never count toward it."
+          },
+          {
+            "id": "P12.mode-objective",
+            "kind": "fact",
+            "text": "This table scores the two opposite seats together. A teammate trick can serve the shared positive contract; Solo scores each seat separately."
+          },
+          {
+            "id": "P08.public-hints",
+            "kind": "heuristic",
+            "text": "Partner has played publicly, but no suit preference follows from that alone; no signaling convention is assumed."
+          },
+          {
+            "id": "P11.entries",
+            "kind": "heuristic",
+            "text": "Consider who gains the next lead and whether spending trump removes a later partnership entry or ruff."
+          },
+          {
+            "id": "S08.preserve-control",
+            "kind": "heuristic",
+            "text": "This does not take the current lead. Compare the control left in your hand before saving a card for a later contract trick.",
+            "actionIds": [
+              "play:H5",
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10",
+              "play:HJ"
+            ]
+          },
+          {
+            "id": "S08.economical-winner",
+            "kind": "heuristic",
+            "text": "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks.",
+            "actionIds": [
+              "play:S10",
+              "play:SJ",
+              "play:SQ",
+              "play:SK",
+              "play:SA"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "capturedAt": "2026-10-02T06:17:58.032Z"
+}

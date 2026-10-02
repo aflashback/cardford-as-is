@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "browser-baseline-1.0.0",
+  "frozenBeforePlay": true,
+  "dependencyCommit": "21cf9df",
+  "player": {
+    "model": "gpt-6-luna",
+    "effort": "xhigh",
+    "seat": 0,
+    "context": "Fresh own-hand and public-history packet; coaching hidden; no tools."
+  },
+  "observer": {
+    "model": "gpt-6-luna",
+    "effort": "xhigh",
+    "context": "Public packet checkpoints while playing; original bot audits only after completion; no feedback to player."
+  },
+  "runtime": {
+    "jev": "off",
+    "source": "deterministic code",
+    "identities": 2,
+    "bootstrapPartnersSessions": 2
+  },
+  "limits": {
+    "measuredHands": 12,
+    "measuredPerMode": 6,
+    "totalCreatedExpected": 14,
+    "maxCreated": 20,
+    "maxCreatedPerMode": 10
+  },
+  "protocol": {
+    "forcedActions": "Apply the sole legal action through DOM, record forced, no player model call.",
+    "matchingPackets": "Reuse exactly matching recorded Luna choice across arms; record source.",
+    "retries": "At most two attempts on unchanged packet; never substitute a move.",
+    "outcomes": "Descriptive paired table outcomes; no isolated bot strength or representative win-rate claim.",
+    "caseMisses": "Report without extra games or changing fixtures."
+  },
+  "catalogHash": "2e72db18a50353ce23439b244a57be178f66b6b7029f48898cda6c4274477096",
+  "fixtures": [
+    {
+      "id": "baseline-control-solo",
+      "mode": "spades-solo",
+      "source": "qa/experiments/2026-09-30-agent-scenario-lab/deals.json#solo-control-01",
+      "sourceDealHash": "efded7d97b37730c7000b9a4fcc6b489118e78d5d365a7a6de929fd8be5c8772",
+      "rotation": 0,
+      "openingScores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "openingBags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cases": [
+        "CASE-04",
+        "Nil regression"
+      ],
+      "limitation": "Partners is a new zero-start mode twin of the Solo control deal.",
+      "scenarioHash": "f9ef2e2b45e5c0d739ed7f6d2ee65ce8b8001e26fd23743329decda9c7a8b9bc"
+    },
+    {
+      "id": "baseline-control-partners",
+      "mode": "spades-partners",
+      "source": "qa/experiments/2026-09-30-agent-scenario-lab/deals.json#solo-control-01",
+      "sourceDealHash": "efded7d97b37730c7000b9a4fcc6b489118e78d5d365a7a6de929fd8be5c8772",
+      "rotation": 0,
+      "openingScores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "openingBags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cases": [
+        "CASE-04",
+        "Nil regression"
+      ],
+      "limitation": "Partners is a new zero-start mode twin of the Solo control deal.",
+      "scenarioHash": "9470ad2445f4ad8e54f2892992a82098b478a184c3cb215804c3f6c97d20d6de"
+    },
+    {
+      "id": "baseline-sweep-solo",
+      "mode": "spades-solo",
+      "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#solo-spread",
+      "sourceDealHash": "180d23dec45476d751c60a0e79833e56e4ef235dae77025395ae812fba296bc3",
+      "rotation": 2,
+      "openingScores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "openingBags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cases": [
+        "CASE-03",
+        "CASE-04"
+      ],
+      "limitation": "Opening shape does not guarantee the archived public proof becomes reachable.",
+      "scenarioHash": "586098b3c006c80c6c2c52ff51e530603eb1daa7d949b9785dee4dca41ae3b31"
+    },
+    {
+      "id": "baseline-sweep-partners",
+      "mode": "spades-partners",
+      "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#partners-spread",
+      "sourceDealHash": "408a45d6681114ca50993c76aa01f44934dfca62517a12dac708963b87a3184b",
+      "rotation": 2,
+      "openingScores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "openingBags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cases": [
+        "CASE-03",
+        "CASE-04"
+      ],
+      "limitation": "Opening shape does not guarantee the archived public proof becomes reachable.",
+      "scenarioHash": "ced2bf14b153e32ad1d823d30d510230cbaeab8f0a5b0168599914a9fb20485f"
+    },
+    {
+      "id": "baseline-resources-solo",
+      "mode": "spades-solo",
+      "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#solo-void-trumps-at-jason",
+      "sourceDealHash": "dfd1c487d705c51a4a6505cba62238c109035924b7d92c0e96566c796d24f6ec",
+      "rotation": 2,
+      "openingScores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "openingBags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cases": [
+        "CASE-01",
+        "CASE-02",
+        "CASE-04"
+      ],
+      "limitation": "CASE-01 additionally needs an unmet positive team contract when its public premises become known.",
+      "scenarioHash": "a68cabfb709f88554bea651af3e7eb560c8153509a1ffbe1eb67f88a5d50bb9f"
+    },
+    {
+      "id": "baseline-resources-partners",
+      "mode": "spades-partners",
+      "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#partners-void-trumps-at-jason",
+      "sourceDealHash": "3d3107bd734ec76d0a9c43c6a7c3a86687528515a0c657f6ba8b506915654f38",
+      "rotation": 2,
+      "openingScores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "openingBags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cases": [
+        "CASE-01",
+        "CASE-02",
+        "CASE-04"
+      ],
+      "limitation": "CASE-01 additionally needs an unmet positive team contract when its public premises become known.",
+      "scenarioHash": "8102c1674e9980e8f2da23c89a8d71095d336c3adacc044c6849fa4cc7d11f24"
+    }
+  ],
+  "runs": [
+    {
+      "id": "control-solo-baseline",
+      "scenarioId": "baseline-control-solo",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0"
+    },
+    {
+      "id": "control-solo-candidate",
+      "scenarioId": "baseline-control-solo",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0"
+    },
+    {
+      "id": "control-partners-baseline",
+      "scenarioId": "baseline-control-partners",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0"
+    },
+    {
+      "id": "control-partners-candidate",
+      "scenarioId": "baseline-control-partners",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0"
+    },
+    {
+      "id": "sweep-solo-candidate",
+      "scenarioId": "baseline-sweep-solo",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0"
+    },
+    {
+      "id": "sweep-solo-baseline",
+      "scenarioId": "baseline-sweep-solo",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0"
+    },
+    {
+      "id": "sweep-partners-candidate",
+      "scenarioId": "baseline-sweep-partners",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0"
+    },
+    {
+      "id": "sweep-partners-baseline",
+      "scenarioId": "baseline-sweep-partners",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0"
+    },
+    {
+      "id": "resources-solo-baseline",
+      "scenarioId": "baseline-resources-solo",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0"
+    },
+    {
+      "id": "resources-solo-candidate",
+      "scenarioId": "baseline-resources-solo",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0"
+    },
+    {
+      "id": "resources-partners-baseline",
+      "scenarioId": "baseline-resources-partners",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "policy": "spades-tactics-2.1.0"
+    },
+    {
+      "id": "resources-partners-candidate",
+      "scenarioId": "baseline-resources-partners",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "policy": "spades-cases-4.0.0"
+    }
+  ]
+}

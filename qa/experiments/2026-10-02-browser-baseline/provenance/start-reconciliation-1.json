@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-02T06:06:12.400Z",
+  "pendingStart": {
+    "runId": "sweep-solo-baseline",
+    "arm": "baseline",
+    "mode": "spades-solo",
+    "previousGameId": "40a3258a-5561-4b10-b2b9-b8ded85b3055",
+    "createdAt": "2026-10-02T06:02:45.307Z"
+  },
+  "httpStatus": 409,
+  "activeGameId": "40a3258a-5561-4b10-b2b9-b8ded85b3055",
+  "ownedGames": [
+    {
+      "id": "182f3541-c642-4c2f-a4fd-b9ecc8e303dd",
+      "revision": 69,
+      "mode": "spades-solo"
+    },
+    {
+      "id": "40a3258a-5561-4b10-b2b9-b8ded85b3055",
+      "revision": 69,
+      "mode": "spades-partners"
+    },
+    {
+      "id": "946d3b84-c1dc-4fe9-b801-6d51d80dfe40",
+      "revision": 0,
+      "mode": "spades-partners"
+    }
+  ],
+  "conclusion": "No new session was created; existing active game unchanged. Clear only this rejected start reservation and retry through DOM after acquiring control."
+}

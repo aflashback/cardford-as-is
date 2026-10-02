@@ -1,0 +1,142 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "CA",
+      "D7",
+      "DQ",
+      "DA",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      10,
+      10,
+      10,
+      10
+    ],
+    "bids": [
+      6,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "C7"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "HA"
+          },
+          {
+            "seat": 2,
+            "card": "H9"
+          },
+          {
+            "seat": 3,
+            "card": "H6"
+          },
+          {
+            "seat": 0,
+            "card": "H5"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "H3"
+          },
+          {
+            "seat": 2,
+            "card": "H2"
+          },
+          {
+            "seat": 3,
+            "card": "H10"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:CA",
+      "play:D7",
+      "play:DQ",
+      "play:DA"
+    ]
+  },
+  "packetHash": "9d3e09bcc30e256ff906f011adecf0ac55e2b6c5db645e39a26c199fd5e06c4d",
+  "action": {
+    "kind": "play",
+    "card": "CA"
+  },
+  "reason": "I’ll lead the club ace to try to secure a side-suit trick while keeping my high spades for later. An opponent who is void could still trump it, and the play history doesn’t show who is now out of clubs.",
+  "source": "luna",
+  "transportFile": "transport/control-partners-baseline-player-05-1790919139578-1.json"
+}

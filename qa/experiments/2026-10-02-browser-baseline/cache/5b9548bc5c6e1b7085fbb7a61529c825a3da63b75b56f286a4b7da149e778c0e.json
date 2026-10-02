@@ -1,0 +1,127 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "D7",
+      "DQ",
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      11,
+      11,
+      11,
+      11
+    ],
+    "bids": [
+      7,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      2,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DA"
+          },
+          {
+            "seat": 1,
+            "card": "D5"
+          },
+          {
+            "seat": 2,
+            "card": "D6"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "seat": 1,
+            "card": "C3"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:C6",
+      "play:D7",
+      "play:DQ",
+      "play:H5",
+      "play:HK"
+    ]
+  },
+  "packetHash": "40e555b3ff9ae55821b7f856abc7545219689c06d48a76b16a0e3e0d4228a4e4",
+  "action": {
+    "kind": "play",
+    "card": "C6"
+  },
+  "reason": "I’m shedding my singleton club to create a chance to trump clubs later, while keeping DQ and HK as possible winners. The six spades give me a strong path toward my seven-trick bid, though the other players’ remaining cards are unknown.",
+  "source": "luna",
+  "transportFile": "transport/control-solo-baseline-player-04-1790918225001-1.json"
+}

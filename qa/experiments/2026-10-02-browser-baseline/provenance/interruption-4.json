@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-02T06:03:30.393Z",
+  "message": "Timed out: selected game commit",
+  "stack": "Error: Timed out: selected game commit\n    at until (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:88:9)\n    at async choose (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:158:17)\n    at async play (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:324:19)\n    at async file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:362:27",
+  "sessions": 7
+}

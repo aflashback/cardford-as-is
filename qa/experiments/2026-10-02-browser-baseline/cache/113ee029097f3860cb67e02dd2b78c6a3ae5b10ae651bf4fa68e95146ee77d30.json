@@ -1,0 +1,137 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      11,
+      11,
+      10,
+      10
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "C4"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C3"
+          },
+          {
+            "seat": 0,
+            "card": "C5"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "SA"
+      },
+      {
+        "seat": 3,
+        "card": "S8"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:S2",
+      "play:S3",
+      "play:S4",
+      "play:S5",
+      "play:S6",
+      "play:S7"
+    ]
+  },
+  "packetHash": "2441b9b6b872a181be1e99491938c3a5a3310a8b15feaffef6aad61fd6d1e0cb",
+  "action": {
+    "kind": "play",
+    "card": "S2"
+  },
+  "reason": "North’s SA is unbeatable, so I’ll discard my lowest spade and preserve the higher ones.",
+  "source": "luna",
+  "transportFile": "transport/resources-solo-baseline-player-04-1790921928873-1.json"
+}

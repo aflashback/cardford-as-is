@@ -2,7 +2,7 @@
 
 **Owner authorization:** 2 October 2026: plan and implement useful cases from the collected sessions; then a Luna player and separate Luna observer evaluate real browser games against three programmed bots. Maximum 10 Solo and 10 Partners games. Wait for selected-deal implementation, tests and merge before integration or browser evaluation.
 
-**Status:** implementation verified; browser baseline in progress. Dependency `21cf9df` is tested and merged into `main`. This record authorizes a selectable local candidate, not a strategic-strength claim or default promotion.
+**Status:** implemented in `3a435de`; 348 tests passed and 12 measured browser hands verified. [Acceptance report](../../qa/implementation/OBSERVED-SPADES-CASES-REPORT.md). Dependency `21cf9df` is tested and merged into `main`. This record authorizes a selectable local candidate, not a strategic-strength claim or default promotion.
 
 ## Evidence and admission
 

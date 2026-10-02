@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-02T05:37:51.249Z",
+  "method": "DOM only, local review HTML; no game session and no screenshots",
+  "checks": [
+    "four new case cards",
+    "Solo/Partners switch",
+    "both historical examples",
+    "desktop/mobile page width",
+    "no page errors"
+  ],
+  "widths": [
+    {
+      "viewport": 1280,
+      "document": 1280
+    },
+    {
+      "viewport": 390,
+      "document": 390
+    }
+  ]
+}

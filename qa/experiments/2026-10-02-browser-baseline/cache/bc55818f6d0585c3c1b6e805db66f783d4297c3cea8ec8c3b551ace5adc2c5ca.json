@@ -1,0 +1,92 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C3",
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "HK",
+      "S3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      13,
+      13,
+      12,
+      12
+    ],
+    "bids": [
+      1,
+      5,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "H4"
+      },
+      {
+        "seat": 3,
+        "card": "HQ"
+      }
+    ],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:H3",
+      "play:HK"
+    ]
+  },
+  "packetHash": "216cc79c550a2ae9a8da9148d005ea44ae0dbce9407c65626d0524b376b2529f",
+  "action": {
+    "kind": "play",
+    "card": "HK"
+  },
+  "reason": "HK currently beats HQ and gives me a chance to take a trick toward my bid of one; West could still overtake with HA.",
+  "source": "luna",
+  "transportFile": "transport/sweep-solo-candidate-player-02-1790919509532-1.json"
+}

@@ -1,0 +1,91 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "bid",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C2",
+      "C5",
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "bids": [
+      null,
+      null,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "bid:0",
+      "bid:1",
+      "bid:2",
+      "bid:3",
+      "bid:4",
+      "bid:5",
+      "bid:6",
+      "bid:7",
+      "bid:8",
+      "bid:9",
+      "bid:10",
+      "bid:11",
+      "bid:12",
+      "bid:13"
+    ]
+  },
+  "packetHash": "26c89209cd8e2ec78492b534e2bdb4aebbbb0976e0804394494d44538014d511",
+  "action": {
+    "kind": "bid",
+    "bid": 3
+  },
+  "reason": "The ace, king, and queen of diamonds should take about two tricks, and the six low spades may earn another if the higher trumps are drawn first. That extra trick is uncertain, but North’s bid of 5 gives our team a useful target of 8.",
+  "source": "luna",
+  "transportFile": "transport/resources-partners-baseline-player-01-1790922368636-1.json"
+}

@@ -1,0 +1,156 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      10,
+      10,
+      9,
+      9
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      1,
+      2,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "C4"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C3"
+          },
+          {
+            "seat": 0,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S8"
+          },
+          {
+            "seat": 0,
+            "card": "S2"
+          },
+          {
+            "seat": 1,
+            "card": "S9"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "SK"
+      },
+      {
+        "seat": 3,
+        "card": "D2"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:S3",
+      "play:S4",
+      "play:S5",
+      "play:S6",
+      "play:S7"
+    ]
+  },
+  "packetHash": "e0f545a78153fbac85c391d64de5be3d437d218eb3f73430eabaa0e3ee5270c2",
+  "action": {
+    "kind": "play",
+    "card": "S3"
+  },
+  "reason": "North’s SK is currently winning, and none of my spades can beat it. I’ll shed the lowest spade and keep the higher ones for later; West may still overtake North.",
+  "source": "luna",
+  "transportFile": "transport/resources-solo-baseline-player-05-1790921947032-1.json"
+}

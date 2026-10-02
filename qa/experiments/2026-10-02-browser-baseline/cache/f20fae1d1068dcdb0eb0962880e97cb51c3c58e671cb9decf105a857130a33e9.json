@@ -1,0 +1,161 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "D7",
+      "DQ",
+      "DA",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      9,
+      9,
+      9,
+      9
+    ],
+    "bids": [
+      6,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      2,
+      2,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "C7"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "HA"
+          },
+          {
+            "seat": 2,
+            "card": "H9"
+          },
+          {
+            "seat": 3,
+            "card": "H6"
+          },
+          {
+            "seat": 0,
+            "card": "H5"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "H3"
+          },
+          {
+            "seat": 2,
+            "card": "H2"
+          },
+          {
+            "seat": 3,
+            "card": "H10"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "seat": 1,
+            "card": "C3"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:D7",
+      "play:DQ",
+      "play:DA"
+    ]
+  },
+  "packetHash": "d122f339ffb144cef48221d722e18eb9d35ebb8ce1bbb5ecf1ca33792958d5ed",
+  "action": {
+    "kind": "play",
+    "card": "D7"
+  },
+  "reason": "Lead the lowest diamond to give North a chance to discard safely while keeping the higher diamond entries and strong spades for later tricks. I can’t tell who holds the higher diamonds, so North may still be forced to win the trick.",
+  "source": "luna",
+  "transportFile": "transport/control-partners-baseline-player-06-1790919157518-1.json"
+}

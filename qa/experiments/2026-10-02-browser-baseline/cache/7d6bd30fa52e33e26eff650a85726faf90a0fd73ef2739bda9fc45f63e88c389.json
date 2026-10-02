@@ -1,0 +1,203 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      8,
+      7,
+      7,
+      7
+    ],
+    "bids": [
+      7,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      2,
+      2,
+      0,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DA"
+          },
+          {
+            "seat": 1,
+            "card": "D5"
+          },
+          {
+            "seat": 2,
+            "card": "D6"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "seat": 1,
+            "card": "C3"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "C7"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 3,
+            "card": "D8"
+          },
+          {
+            "seat": 0,
+            "card": "DQ"
+          },
+          {
+            "seat": 1,
+            "card": "DK"
+          },
+          {
+            "seat": 2,
+            "card": "D4"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "DJ"
+          },
+          {
+            "seat": 2,
+            "card": "D2"
+          },
+          {
+            "seat": 3,
+            "card": "D10"
+          },
+          {
+            "seat": 0,
+            "card": "D7"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 1,
+        "card": "D9"
+      },
+      {
+        "seat": 2,
+        "card": "H9"
+      },
+      {
+        "seat": 3,
+        "card": "S5"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:H5",
+      "play:HK",
+      "play:S3",
+      "play:S9",
+      "play:SJ",
+      "play:SQ",
+      "play:SK",
+      "play:SA"
+    ]
+  },
+  "packetHash": "0e05e921da090a4c0aa4dc91dec5c46fb0864e3e52a194c22705448c6b5f3de8",
+  "action": {
+    "kind": "play",
+    "card": "S9"
+  },
+  "reason": "S9 beats East’s S5, giving me a third trick toward my bid of seven while preserving my higher spades. I can’t know whether an unseen opponent holds a higher spade.",
+  "source": "luna",
+  "transportFile": "transport/control-solo-baseline-player-07-1790918320008-2.json"
+}

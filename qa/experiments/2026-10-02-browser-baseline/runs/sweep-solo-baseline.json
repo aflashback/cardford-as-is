@@ -1,0 +1,6394 @@
+{
+  "schemaVersion": "browser-hand-1.0.0",
+  "id": "sweep-solo-baseline",
+  "scenarioId": "baseline-sweep-solo",
+  "mode": "spades-solo",
+  "arm": "baseline",
+  "policy": "spades-tactics-2.1.0",
+  "status": "complete",
+  "playerDecisions": [
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "bid",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "HK",
+          "S3",
+          "S6",
+          "S9"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          null,
+          null,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [],
+        "spadesBroken": false,
+        "legalActions": [
+          "bid:0",
+          "bid:1",
+          "bid:2",
+          "bid:3",
+          "bid:4",
+          "bid:5",
+          "bid:6",
+          "bid:7",
+          "bid:8",
+          "bid:9",
+          "bid:10",
+          "bid:11",
+          "bid:12",
+          "bid:13"
+        ]
+      },
+      "packetHash": "0300285c0333325ee07cd402ad3875eac5e4ed6ad1e36b4e00dcd86585a92b89",
+      "action": {
+        "kind": "bid",
+        "bid": 1
+      },
+      "reason": "The king of hearts may take a trick, and a queen or spade could win if the higher cards have already gone. But none is secure, so I expect a weak hand and bid one; the opponents’ bids don’t reveal their exact holdings.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-01-1790919483273-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 1,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 2,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:2",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "bid",
+          "hand": [
+            "C3",
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ",
+            "H3",
+            "HK",
+            "S3",
+            "S6",
+            "S9"
+          ],
+          "handCounts": [
+            13,
+            13,
+            13,
+            13
+          ],
+          "bids": [
+            null,
+            null,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [],
+          "history": [],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": false,
+          "handResult": null,
+          "currentWinner": null,
+          "legalActions": [
+            {
+              "kind": "bid",
+              "bid": 0
+            },
+            {
+              "kind": "bid",
+              "bid": 1
+            },
+            {
+              "kind": "bid",
+              "bid": 2
+            },
+            {
+              "kind": "bid",
+              "bid": 3
+            },
+            {
+              "kind": "bid",
+              "bid": 4
+            },
+            {
+              "kind": "bid",
+              "bid": 5
+            },
+            {
+              "kind": "bid",
+              "bid": 6
+            },
+            {
+              "kind": "bid",
+              "bid": 7
+            },
+            {
+              "kind": "bid",
+              "bid": 8
+            },
+            {
+              "kind": "bid",
+              "bid": 9
+            },
+            {
+              "kind": "bid",
+              "bid": 10
+            },
+            {
+              "kind": "bid",
+              "bid": 11
+            },
+            {
+              "kind": "bid",
+              "bid": 12
+            },
+            {
+              "kind": "bid",
+              "bid": 13
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 0,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:10:27.764Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 2,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:2",
+        "action": {
+          "kind": "bid",
+          "bid": 1
+        },
+        "input": "real DOM click",
+        "selector": "button:Bid 1",
+        "enabled": true
+      },
+      "acceptedRevision": 3
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "HK",
+          "S3",
+          "S6",
+          "S9"
+        ],
+        "handSizes": [
+          13,
+          13,
+          12,
+          12
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          }
+        ],
+        "spadesBroken": false,
+        "legalActions": [
+          "play:H3",
+          "play:HK"
+        ]
+      },
+      "packetHash": "216cc79c550a2ae9a8da9148d005ea44ae0dbce9407c65626d0524b376b2529f",
+      "action": {
+        "kind": "play",
+        "card": "HK"
+      },
+      "reason": "HK currently beats HQ and gives me a chance to take a trick toward my bid of one; West could still overtake with HA.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-02-1790919509532-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 2,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 6,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:6",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C3",
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ",
+            "H3",
+            "HK",
+            "S3",
+            "S6",
+            "S9"
+          ],
+          "handCounts": [
+            13,
+            13,
+            12,
+            12
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "H4"
+            },
+            {
+              "seat": 3,
+              "card": "HQ"
+            }
+          ],
+          "history": [],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": false,
+          "handResult": null,
+          "currentWinner": 3,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "H3"
+            },
+            {
+              "kind": "play",
+              "card": "HK"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 1,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:10:30.647Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 6,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:6",
+        "action": {
+          "kind": "play",
+          "card": "HK"
+        },
+        "input": "real DOM click",
+        "selector": "button:King of hearts",
+        "enabled": true
+      },
+      "acceptedRevision": 7
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C3",
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "S3",
+          "S6",
+          "S9"
+        ],
+        "handSizes": [
+          12,
+          11,
+          11,
+          11
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 1,
+            "card": "CA"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C3",
+          "play:C6",
+          "play:C9",
+          "play:CQ"
+        ]
+      },
+      "packetHash": "632d907664dc97321ed7ff0a7a6a5c15888718ddad98428e593415ec1cd41420",
+      "action": {
+        "kind": "play",
+        "card": "C3"
+      },
+      "reason": "North’s S10 is already winning, and I must follow clubs, so none of my legal cards can take the trick. I’ll discard the lowest club and keep CQ as a possible future winner; the other players’ holdings are unknown.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-03-1790919538761-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 3,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 12,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:12",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C3",
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ",
+            "H3",
+            "S3",
+            "S6",
+            "S9"
+          ],
+          "handCounts": [
+            12,
+            11,
+            11,
+            11
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 1,
+              "card": "CA"
+            },
+            {
+              "seat": 2,
+              "card": "S10"
+            },
+            {
+              "seat": 3,
+              "card": "C2"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "C3"
+            },
+            {
+              "kind": "play",
+              "card": "C6"
+            },
+            {
+              "kind": "play",
+              "card": "C9"
+            },
+            {
+              "kind": "play",
+              "card": "CQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 2,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:10:37.461Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 12,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:12",
+        "action": {
+          "kind": "play",
+          "card": "C3"
+        },
+        "input": "real DOM click",
+        "selector": "button:3 of clubs",
+        "enabled": true
+      },
+      "acceptedRevision": 13
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "S3",
+          "S6",
+          "S9"
+        ],
+        "handSizes": [
+          11,
+          11,
+          10,
+          10
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S3",
+          "play:S6",
+          "play:S9"
+        ]
+      },
+      "packetHash": "b6043be6b5ae979d41798229abab6ac7610af8f5c757e26a79122f064c78f576",
+      "action": {
+        "kind": "play",
+        "card": "S3"
+      },
+      "reason": "North’s ace is currently winning, and West cannot beat it with a spade. I’ll use my lowest spade and preserve higher ones for later; West’s remaining cards are unknown.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-04-1790919554169-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 4,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 16,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:16",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ",
+            "H3",
+            "S3",
+            "S6",
+            "S9"
+          ],
+          "handCounts": [
+            11,
+            11,
+            10,
+            10
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "SA"
+            },
+            {
+              "seat": 3,
+              "card": "S2"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "S3"
+            },
+            {
+              "kind": "play",
+              "card": "S6"
+            },
+            {
+              "kind": "play",
+              "card": "S9"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 3,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:10:42.794Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 16,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:16",
+        "action": {
+          "kind": "play",
+          "card": "S3"
+        },
+        "input": "real DOM click",
+        "selector": "button:3 of spades",
+        "enabled": true
+      },
+      "acceptedRevision": 17
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "S6",
+          "S9"
+        ],
+        "handSizes": [
+          10,
+          10,
+          9,
+          9
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "seat": 3,
+            "card": "S5"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S6",
+          "play:S9"
+        ]
+      },
+      "packetHash": "c9d6c8216b1a6e6848778ae753abe8021c983c3be7baeb1620d23f45fd86f532",
+      "action": {
+        "kind": "play",
+        "card": "S6"
+      },
+      "reason": "SK is currently unbeatable because SA has already been played, so I’ll shed S6 and keep S9 for a later trick. West’s card is still unknown.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-05-1790919566909-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 5,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 21,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:21",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ",
+            "H3",
+            "S6",
+            "S9"
+          ],
+          "handCounts": [
+            10,
+            10,
+            9,
+            9
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            2,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "SK"
+            },
+            {
+              "seat": 3,
+              "card": "S5"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "S6"
+            },
+            {
+              "kind": "play",
+              "card": "S9"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 4,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:10:47.619Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 21,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:21",
+        "action": {
+          "kind": "play",
+          "card": "S6"
+        },
+        "input": "real DOM click",
+        "selector": "button:6 of spades",
+        "enabled": true
+      },
+      "acceptedRevision": 22
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3",
+          "S9"
+        ],
+        "handSizes": [
+          9,
+          9,
+          8,
+          8
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          3,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "SQ"
+          },
+          {
+            "seat": 3,
+            "card": "S8"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:S9"
+        ]
+      },
+      "packetHash": "1a518dcf73add8b2fb84f9e883978b157194f30593517e00c75e16d48a7510e1",
+      "action": {
+        "kind": "play",
+        "card": "S9"
+      },
+      "reason": "Only legal action.",
+      "source": "forced",
+      "transportFile": null,
+      "recorderVersion": "1.0.4",
+      "index": 6,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 26,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:26",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ",
+            "H3",
+            "S9"
+          ],
+          "handCounts": [
+            9,
+            9,
+            8,
+            8
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            3,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "SQ"
+            },
+            {
+              "seat": 3,
+              "card": "S8"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "S9"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 5,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:10:54.008Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 26,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:26",
+        "action": {
+          "kind": "play",
+          "card": "S9"
+        },
+        "input": "real DOM click",
+        "selector": "button:9 of spades",
+        "enabled": true
+      },
+      "acceptedRevision": 28
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ",
+          "H3"
+        ],
+        "handSizes": [
+          8,
+          8,
+          7,
+          7
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          4,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "HJ"
+          },
+          {
+            "seat": 3,
+            "card": "H2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:H3"
+        ]
+      },
+      "packetHash": "a16a495efef4e47d173bb3d9151b1043c04e71070965cdeaddc474bd34644aa6",
+      "action": {
+        "kind": "play",
+        "card": "H3"
+      },
+      "reason": "Only legal action.",
+      "source": "forced",
+      "transportFile": null,
+      "recorderVersion": "1.0.4",
+      "index": 7,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 31,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:31",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ",
+            "H3"
+          ],
+          "handCounts": [
+            8,
+            8,
+            7,
+            7
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            4,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "HJ"
+            },
+            {
+              "seat": 3,
+              "card": "H2"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "H3"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 5,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:10:58.877Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 31,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:31",
+        "action": {
+          "kind": "play",
+          "card": "H3"
+        },
+        "input": "real DOM click",
+        "selector": "button:3 of hearts",
+        "enabled": true
+      },
+      "acceptedRevision": 32
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C6",
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ"
+        ],
+        "handSizes": [
+          7,
+          7,
+          6,
+          6
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          5,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "HJ"
+              },
+              {
+                "seat": 3,
+                "card": "H2"
+              },
+              {
+                "seat": 0,
+                "card": "H3"
+              },
+              {
+                "seat": 1,
+                "card": "D4"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "H5"
+          },
+          {
+            "seat": 3,
+            "card": "D2"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C6",
+          "play:C9",
+          "play:CQ",
+          "play:D3",
+          "play:D6",
+          "play:D9",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "95f177b9cde6267e814ff23bd4bedd1890488d24f4e3ed43ed138b9789308357",
+      "action": {
+        "kind": "play",
+        "card": "C6"
+      },
+      "reason": "I can’t follow hearts and have no spades to trump, so this trick is likely out of reach. I’ll discard a low club and keep my higher cards for a chance to make my bid later; West’s card is still unknown.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-08-1790919595138-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 8,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 36,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:36",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C6",
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ"
+          ],
+          "handCounts": [
+            7,
+            7,
+            6,
+            6
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            5,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "H5"
+            },
+            {
+              "seat": 3,
+              "card": "D2"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "HJ"
+                },
+                {
+                  "seat": 3,
+                  "card": "H2"
+                },
+                {
+                  "seat": 0,
+                  "card": "H3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D4"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "C6"
+            },
+            {
+              "kind": "play",
+              "card": "C9"
+            },
+            {
+              "kind": "play",
+              "card": "CQ"
+            },
+            {
+              "kind": "play",
+              "card": "D3"
+            },
+            {
+              "kind": "play",
+              "card": "D6"
+            },
+            {
+              "kind": "play",
+              "card": "D9"
+            },
+            {
+              "kind": "play",
+              "card": "DQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 5,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:11:03.335Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 36,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:36",
+        "action": {
+          "kind": "play",
+          "card": "C6"
+        },
+        "input": "real DOM click",
+        "selector": "button:6 of clubs",
+        "enabled": true
+      },
+      "acceptedRevision": 37
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C9",
+          "CQ",
+          "D3",
+          "D6",
+          "D9",
+          "DQ"
+        ],
+        "handSizes": [
+          6,
+          6,
+          5,
+          5
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          6,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "HJ"
+              },
+              {
+                "seat": 3,
+                "card": "H2"
+              },
+              {
+                "seat": 0,
+                "card": "H3"
+              },
+              {
+                "seat": 1,
+                "card": "D4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H5"
+              },
+              {
+                "seat": 3,
+                "card": "D2"
+              },
+              {
+                "seat": 0,
+                "card": "C6"
+              },
+              {
+                "seat": 1,
+                "card": "C7"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C9",
+          "play:CQ",
+          "play:D3",
+          "play:D6",
+          "play:D9",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "2521d0bc56f93874bfc49acce8d70323c2868f6d5379c5ef99f63b27b7b6f903",
+      "action": {
+        "kind": "play",
+        "card": "D3"
+      },
+      "reason": "I can’t win this trick with my remaining cards, so I’ll discard my lowest card and keep the higher clubs and diamonds for a later chance to take a trick. West may still trump with the last spade.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-09-1790919638455-2.json",
+      "recorderVersion": "1.0.4",
+      "index": 9,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 41,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:41",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C9",
+            "CQ",
+            "D3",
+            "D6",
+            "D9",
+            "DQ"
+          ],
+          "handCounts": [
+            6,
+            6,
+            5,
+            5
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            6,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "H6"
+            },
+            {
+              "seat": 3,
+              "card": "C5"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "HJ"
+                },
+                {
+                  "seat": 3,
+                  "card": "H2"
+                },
+                {
+                  "seat": 0,
+                  "card": "H3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H5"
+                },
+                {
+                  "seat": 3,
+                  "card": "D2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C7"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "C9"
+            },
+            {
+              "kind": "play",
+              "card": "CQ"
+            },
+            {
+              "kind": "play",
+              "card": "D3"
+            },
+            {
+              "kind": "play",
+              "card": "D6"
+            },
+            {
+              "kind": "play",
+              "card": "D9"
+            },
+            {
+              "kind": "play",
+              "card": "DQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 6,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:11:07.832Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 41,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:41",
+        "action": {
+          "kind": "play",
+          "card": "D3"
+        },
+        "input": "real DOM click",
+        "selector": "button:3 of diamonds",
+        "enabled": true
+      },
+      "acceptedRevision": 42
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C9",
+          "CQ",
+          "D6",
+          "D9",
+          "DQ"
+        ],
+        "handSizes": [
+          5,
+          5,
+          4,
+          4
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          7,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "HJ"
+              },
+              {
+                "seat": 3,
+                "card": "H2"
+              },
+              {
+                "seat": 0,
+                "card": "H3"
+              },
+              {
+                "seat": 1,
+                "card": "D4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H5"
+              },
+              {
+                "seat": 3,
+                "card": "D2"
+              },
+              {
+                "seat": 0,
+                "card": "C6"
+              },
+              {
+                "seat": 1,
+                "card": "C7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H6"
+              },
+              {
+                "seat": 3,
+                "card": "C5"
+              },
+              {
+                "seat": 0,
+                "card": "D3"
+              },
+              {
+                "seat": 1,
+                "card": "D7"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "H7"
+          },
+          {
+            "seat": 3,
+            "card": "D5"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C9",
+          "play:CQ",
+          "play:D6",
+          "play:D9",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "d9984b169db7b55c66f69a70af735390c1ae8313f4b37557c257cc11a4648c4f",
+      "action": {
+        "kind": "play",
+        "card": "D6"
+      },
+      "reason": "I’m void in hearts and can’t beat North’s H7, so I’ll shed my lowest diamond and keep the higher cards for a chance to take my required trick later. West may still overtake North.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-10-1790919674703-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 10,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 46,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:46",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C9",
+            "CQ",
+            "D6",
+            "D9",
+            "DQ"
+          ],
+          "handCounts": [
+            5,
+            5,
+            4,
+            4
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            7,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "H7"
+            },
+            {
+              "seat": 3,
+              "card": "D5"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "HJ"
+                },
+                {
+                  "seat": 3,
+                  "card": "H2"
+                },
+                {
+                  "seat": 0,
+                  "card": "H3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H5"
+                },
+                {
+                  "seat": 3,
+                  "card": "D2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H6"
+                },
+                {
+                  "seat": 3,
+                  "card": "C5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D7"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "C9"
+            },
+            {
+              "kind": "play",
+              "card": "CQ"
+            },
+            {
+              "kind": "play",
+              "card": "D6"
+            },
+            {
+              "kind": "play",
+              "card": "D9"
+            },
+            {
+              "kind": "play",
+              "card": "DQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 7,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:11:12.419Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 46,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:46",
+        "action": {
+          "kind": "play",
+          "card": "D6"
+        },
+        "input": "real DOM click",
+        "selector": "button:6 of diamonds",
+        "enabled": true
+      },
+      "acceptedRevision": 47
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C9",
+          "CQ",
+          "D9",
+          "DQ"
+        ],
+        "handSizes": [
+          4,
+          4,
+          3,
+          3
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          8,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "HJ"
+              },
+              {
+                "seat": 3,
+                "card": "H2"
+              },
+              {
+                "seat": 0,
+                "card": "H3"
+              },
+              {
+                "seat": 1,
+                "card": "D4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H5"
+              },
+              {
+                "seat": 3,
+                "card": "D2"
+              },
+              {
+                "seat": 0,
+                "card": "C6"
+              },
+              {
+                "seat": 1,
+                "card": "C7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H6"
+              },
+              {
+                "seat": 3,
+                "card": "C5"
+              },
+              {
+                "seat": 0,
+                "card": "D3"
+              },
+              {
+                "seat": 1,
+                "card": "D7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H7"
+              },
+              {
+                "seat": 3,
+                "card": "D5"
+              },
+              {
+                "seat": 0,
+                "card": "D6"
+              },
+              {
+                "seat": 1,
+                "card": "C10"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "H8"
+          },
+          {
+            "seat": 3,
+            "card": "C8"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C9",
+          "play:CQ",
+          "play:D9",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "1e7e90720fb3702947d4b04f3e9478c30d555246c4c9de0c875a5f455b603546",
+      "action": {
+        "kind": "play",
+        "card": "D9"
+      },
+      "reason": "I can’t win this heart trick, so I’ll discard a low card from diamonds and keep my clubs, where fewer higher cards remain. The unseen cards and West’s play could still change which suit gives me a chance to win later.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-11-1790919697129-1.json",
+      "formatRecovery": "revalidations/702c7ea52cec753d7bc349b63fb50e29d2702bf187fe3eaded449742e8517a22.json",
+      "recorderVersion": "1.0.4",
+      "index": 11,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 51,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:51",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C9",
+            "CQ",
+            "D9",
+            "DQ"
+          ],
+          "handCounts": [
+            4,
+            4,
+            3,
+            3
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            8,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "H8"
+            },
+            {
+              "seat": 3,
+              "card": "C8"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "HJ"
+                },
+                {
+                  "seat": 3,
+                  "card": "H2"
+                },
+                {
+                  "seat": 0,
+                  "card": "H3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H5"
+                },
+                {
+                  "seat": 3,
+                  "card": "D2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H6"
+                },
+                {
+                  "seat": 3,
+                  "card": "C5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H7"
+                },
+                {
+                  "seat": 3,
+                  "card": "D5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C10"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "C9"
+            },
+            {
+              "kind": "play",
+              "card": "CQ"
+            },
+            {
+              "kind": "play",
+              "card": "D9"
+            },
+            {
+              "kind": "play",
+              "card": "DQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 8,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:11:20.830Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 51,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:51",
+        "action": {
+          "kind": "play",
+          "card": "D9"
+        },
+        "input": "real DOM click",
+        "selector": "button:9 of diamonds",
+        "enabled": true
+      },
+      "acceptedRevision": 52
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "C9",
+          "CQ",
+          "DQ"
+        ],
+        "handSizes": [
+          3,
+          3,
+          2,
+          2
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          9,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "HJ"
+              },
+              {
+                "seat": 3,
+                "card": "H2"
+              },
+              {
+                "seat": 0,
+                "card": "H3"
+              },
+              {
+                "seat": 1,
+                "card": "D4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H5"
+              },
+              {
+                "seat": 3,
+                "card": "D2"
+              },
+              {
+                "seat": 0,
+                "card": "C6"
+              },
+              {
+                "seat": 1,
+                "card": "C7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H6"
+              },
+              {
+                "seat": 3,
+                "card": "C5"
+              },
+              {
+                "seat": 0,
+                "card": "D3"
+              },
+              {
+                "seat": 1,
+                "card": "D7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H7"
+              },
+              {
+                "seat": 3,
+                "card": "D5"
+              },
+              {
+                "seat": 0,
+                "card": "D6"
+              },
+              {
+                "seat": 1,
+                "card": "C10"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H8"
+              },
+              {
+                "seat": 3,
+                "card": "C8"
+              },
+              {
+                "seat": 0,
+                "card": "D9"
+              },
+              {
+                "seat": 1,
+                "card": "D10"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "H9"
+          },
+          {
+            "seat": 3,
+            "card": "D8"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:C9",
+          "play:CQ",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "3c0657fe98baed8f9f85f1eada90068eb8cc16efb58bd8cfcea5df6416df7a13",
+      "action": {
+        "kind": "play",
+        "card": "C9"
+      },
+      "reason": "North’s H9 is winning, and every spade has been played, so I can’t take this trick. C9 is my safest discard; I’ll keep CQ for a chance at my one-trick bid, though the remaining club honors may block it.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-12-1790920801030-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 12,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 56,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:56",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "C9",
+            "CQ",
+            "DQ"
+          ],
+          "handCounts": [
+            3,
+            3,
+            2,
+            2
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            9,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "H9"
+            },
+            {
+              "seat": 3,
+              "card": "D8"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "HJ"
+                },
+                {
+                  "seat": 3,
+                  "card": "H2"
+                },
+                {
+                  "seat": 0,
+                  "card": "H3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H5"
+                },
+                {
+                  "seat": 3,
+                  "card": "D2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H6"
+                },
+                {
+                  "seat": 3,
+                  "card": "C5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H7"
+                },
+                {
+                  "seat": 3,
+                  "card": "D5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C10"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H8"
+                },
+                {
+                  "seat": 3,
+                  "card": "C8"
+                },
+                {
+                  "seat": 0,
+                  "card": "D9"
+                },
+                {
+                  "seat": 1,
+                  "card": "D10"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "C9"
+            },
+            {
+              "kind": "play",
+              "card": "CQ"
+            },
+            {
+              "kind": "play",
+              "card": "DQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 9,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:11:28.163Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 56,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:56",
+        "action": {
+          "kind": "play",
+          "card": "C9"
+        },
+        "input": "real DOM click",
+        "selector": "button:9 of clubs",
+        "enabled": true
+      },
+      "acceptedRevision": 57
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "CQ",
+          "DQ"
+        ],
+        "handSizes": [
+          2,
+          2,
+          1,
+          1
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          10,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "HJ"
+              },
+              {
+                "seat": 3,
+                "card": "H2"
+              },
+              {
+                "seat": 0,
+                "card": "H3"
+              },
+              {
+                "seat": 1,
+                "card": "D4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H5"
+              },
+              {
+                "seat": 3,
+                "card": "D2"
+              },
+              {
+                "seat": 0,
+                "card": "C6"
+              },
+              {
+                "seat": 1,
+                "card": "C7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H6"
+              },
+              {
+                "seat": 3,
+                "card": "C5"
+              },
+              {
+                "seat": 0,
+                "card": "D3"
+              },
+              {
+                "seat": 1,
+                "card": "D7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H7"
+              },
+              {
+                "seat": 3,
+                "card": "D5"
+              },
+              {
+                "seat": 0,
+                "card": "D6"
+              },
+              {
+                "seat": 1,
+                "card": "C10"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H8"
+              },
+              {
+                "seat": 3,
+                "card": "C8"
+              },
+              {
+                "seat": 0,
+                "card": "D9"
+              },
+              {
+                "seat": 1,
+                "card": "D10"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H9"
+              },
+              {
+                "seat": 3,
+                "card": "D8"
+              },
+              {
+                "seat": 0,
+                "card": "C9"
+              },
+              {
+                "seat": 1,
+                "card": "CK"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 3,
+            "card": "CJ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:CQ",
+          "play:DQ"
+        ]
+      },
+      "packetHash": "99260d56c7f2efa484f02636043f028db23b760977f576b444161472ed408eff",
+      "action": {
+        "kind": "play",
+        "card": "CQ"
+      },
+      "reason": "I can’t win this heart trick with either card, so I’ll discard CQ and keep DQ for the final trick; it may beat a lower diamond if the lead allows it, though the remaining higher cards make that uncertain.",
+      "source": "reused-identical-packet",
+      "transportFile": "transport/sweep-solo-candidate-player-13-1790920888803-1.json",
+      "recorderVersion": "1.0.4",
+      "index": 13,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 61,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:61",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "CQ",
+            "DQ"
+          ],
+          "handCounts": [
+            2,
+            2,
+            1,
+            1
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            10,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "H10"
+            },
+            {
+              "seat": 3,
+              "card": "CJ"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "HJ"
+                },
+                {
+                  "seat": 3,
+                  "card": "H2"
+                },
+                {
+                  "seat": 0,
+                  "card": "H3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H5"
+                },
+                {
+                  "seat": 3,
+                  "card": "D2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H6"
+                },
+                {
+                  "seat": 3,
+                  "card": "C5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H7"
+                },
+                {
+                  "seat": 3,
+                  "card": "D5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C10"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H8"
+                },
+                {
+                  "seat": 3,
+                  "card": "C8"
+                },
+                {
+                  "seat": 0,
+                  "card": "D9"
+                },
+                {
+                  "seat": 1,
+                  "card": "D10"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H9"
+                },
+                {
+                  "seat": 3,
+                  "card": "D8"
+                },
+                {
+                  "seat": 0,
+                  "card": "C9"
+                },
+                {
+                  "seat": 1,
+                  "card": "CK"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "CQ"
+            },
+            {
+              "kind": "play",
+              "card": "DQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 10,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:11:32.867Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 61,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:61",
+        "action": {
+          "kind": "play",
+          "card": "CQ"
+        },
+        "input": "real DOM click",
+        "selector": "button:Queen of clubs",
+        "enabled": true
+      },
+      "acceptedRevision": 62
+    },
+    {
+      "packet": {
+        "game": "spades-solo",
+        "ruleProfile": "spades-solo-training-1.0.0",
+        "seat": 0,
+        "dealer": 1,
+        "phase": "play",
+        "competition": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "hand": [
+          "DQ"
+        ],
+        "handSizes": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "bids": [
+          1,
+          5,
+          5,
+          1
+        ],
+        "tricks": [
+          0,
+          1,
+          11,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "completedTricks": [
+          {
+            "winner": 1,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H4"
+              },
+              {
+                "seat": 3,
+                "card": "HQ"
+              },
+              {
+                "seat": 0,
+                "card": "HK"
+              },
+              {
+                "seat": 1,
+                "card": "HA"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 1,
+                "card": "CA"
+              },
+              {
+                "seat": 2,
+                "card": "S10"
+              },
+              {
+                "seat": 3,
+                "card": "C2"
+              },
+              {
+                "seat": 0,
+                "card": "C3"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SA"
+              },
+              {
+                "seat": 3,
+                "card": "S2"
+              },
+              {
+                "seat": 0,
+                "card": "S3"
+              },
+              {
+                "seat": 1,
+                "card": "S4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "S5"
+              },
+              {
+                "seat": 0,
+                "card": "S6"
+              },
+              {
+                "seat": 1,
+                "card": "S7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "SQ"
+              },
+              {
+                "seat": 3,
+                "card": "S8"
+              },
+              {
+                "seat": 0,
+                "card": "S9"
+              },
+              {
+                "seat": 1,
+                "card": "C4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "HJ"
+              },
+              {
+                "seat": 3,
+                "card": "H2"
+              },
+              {
+                "seat": 0,
+                "card": "H3"
+              },
+              {
+                "seat": 1,
+                "card": "D4"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H5"
+              },
+              {
+                "seat": 3,
+                "card": "D2"
+              },
+              {
+                "seat": 0,
+                "card": "C6"
+              },
+              {
+                "seat": 1,
+                "card": "C7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H6"
+              },
+              {
+                "seat": 3,
+                "card": "C5"
+              },
+              {
+                "seat": 0,
+                "card": "D3"
+              },
+              {
+                "seat": 1,
+                "card": "D7"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H7"
+              },
+              {
+                "seat": 3,
+                "card": "D5"
+              },
+              {
+                "seat": 0,
+                "card": "D6"
+              },
+              {
+                "seat": 1,
+                "card": "C10"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H8"
+              },
+              {
+                "seat": 3,
+                "card": "C8"
+              },
+              {
+                "seat": 0,
+                "card": "D9"
+              },
+              {
+                "seat": 1,
+                "card": "D10"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H9"
+              },
+              {
+                "seat": 3,
+                "card": "D8"
+              },
+              {
+                "seat": 0,
+                "card": "C9"
+              },
+              {
+                "seat": 1,
+                "card": "CK"
+              }
+            ]
+          },
+          {
+            "winner": 2,
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H10"
+              },
+              {
+                "seat": 3,
+                "card": "CJ"
+              },
+              {
+                "seat": 0,
+                "card": "CQ"
+              },
+              {
+                "seat": 1,
+                "card": "DK"
+              }
+            ]
+          }
+        ],
+        "currentTrick": [
+          {
+            "seat": 2,
+            "card": "SJ"
+          },
+          {
+            "seat": 3,
+            "card": "DJ"
+          }
+        ],
+        "spadesBroken": true,
+        "legalActions": [
+          "play:DQ"
+        ]
+      },
+      "packetHash": "b433d642e1cdcbacdfaf7b0ef583bbd3b40a8f0030544815fa04597e9e0806f6",
+      "action": {
+        "kind": "play",
+        "card": "DQ"
+      },
+      "reason": "Only legal action.",
+      "source": "forced",
+      "transportFile": null,
+      "recorderVersion": "1.0.4",
+      "index": 14,
+      "before": {
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 66,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:66",
+        "source": "code",
+        "game": {
+          "mode": "spades-solo",
+          "phase": "play",
+          "hand": [
+            "DQ"
+          ],
+          "handCounts": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "bids": [
+            1,
+            5,
+            5,
+            1
+          ],
+          "tricks": [
+            0,
+            1,
+            11,
+            0
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "trick": [
+            {
+              "seat": 2,
+              "card": "SJ"
+            },
+            {
+              "seat": 3,
+              "card": "DJ"
+            }
+          ],
+          "history": [
+            {
+              "winner": 1,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H4"
+                },
+                {
+                  "seat": 3,
+                  "card": "HQ"
+                },
+                {
+                  "seat": 0,
+                  "card": "HK"
+                },
+                {
+                  "seat": 1,
+                  "card": "HA"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 1,
+                  "card": "CA"
+                },
+                {
+                  "seat": 2,
+                  "card": "S10"
+                },
+                {
+                  "seat": 3,
+                  "card": "C2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C3"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SA"
+                },
+                {
+                  "seat": 3,
+                  "card": "S2"
+                },
+                {
+                  "seat": 0,
+                  "card": "S3"
+                },
+                {
+                  "seat": 1,
+                  "card": "S4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SK"
+                },
+                {
+                  "seat": 3,
+                  "card": "S5"
+                },
+                {
+                  "seat": 0,
+                  "card": "S6"
+                },
+                {
+                  "seat": 1,
+                  "card": "S7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "SQ"
+                },
+                {
+                  "seat": 3,
+                  "card": "S8"
+                },
+                {
+                  "seat": 0,
+                  "card": "S9"
+                },
+                {
+                  "seat": 1,
+                  "card": "C4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "HJ"
+                },
+                {
+                  "seat": 3,
+                  "card": "H2"
+                },
+                {
+                  "seat": 0,
+                  "card": "H3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D4"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H5"
+                },
+                {
+                  "seat": 3,
+                  "card": "D2"
+                },
+                {
+                  "seat": 0,
+                  "card": "C6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H6"
+                },
+                {
+                  "seat": 3,
+                  "card": "C5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D3"
+                },
+                {
+                  "seat": 1,
+                  "card": "D7"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H7"
+                },
+                {
+                  "seat": 3,
+                  "card": "D5"
+                },
+                {
+                  "seat": 0,
+                  "card": "D6"
+                },
+                {
+                  "seat": 1,
+                  "card": "C10"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H8"
+                },
+                {
+                  "seat": 3,
+                  "card": "C8"
+                },
+                {
+                  "seat": 0,
+                  "card": "D9"
+                },
+                {
+                  "seat": 1,
+                  "card": "D10"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H9"
+                },
+                {
+                  "seat": 3,
+                  "card": "D8"
+                },
+                {
+                  "seat": 0,
+                  "card": "C9"
+                },
+                {
+                  "seat": 1,
+                  "card": "CK"
+                }
+              ]
+            },
+            {
+              "winner": 2,
+              "plays": [
+                {
+                  "seat": 2,
+                  "card": "H10"
+                },
+                {
+                  "seat": 3,
+                  "card": "CJ"
+                },
+                {
+                  "seat": 0,
+                  "card": "CQ"
+                },
+                {
+                  "seat": 1,
+                  "card": "DK"
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "dealer": 1,
+          "handNumber": 1,
+          "spadesBroken": true,
+          "handResult": null,
+          "currentWinner": 2,
+          "legalActions": [
+            {
+              "kind": "play",
+              "card": "DQ"
+            }
+          ]
+        },
+        "stats": {
+          "helped": 0,
+          "decisions": 11,
+          "suggestions": 0
+        }
+      },
+      "dom": {
+        "at": "2026-10-02T06:11:37.730Z",
+        "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+        "revision": 66,
+        "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:66",
+        "action": {
+          "kind": "play",
+          "card": "DQ"
+        },
+        "input": "real DOM click",
+        "selector": "button:Queen of diamonds",
+        "enabled": true
+      },
+      "acceptedRevision": 67
+    }
+  ],
+  "observerCheckpoints": [
+    3,
+    7,
+    11
+  ],
+  "recorderRevisions": [
+    "1.0.4"
+  ],
+  "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+  "startedAt": "2026-10-02T06:10:26.149Z",
+  "terminal": {
+    "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+    "revision": 69,
+    "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:69",
+    "source": "code",
+    "game": {
+      "mode": "spades-solo",
+      "phase": "hand-end",
+      "hand": [],
+      "handCounts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bids": [
+        1,
+        5,
+        5,
+        1
+      ],
+      "tricks": [
+        0,
+        1,
+        12,
+        0
+      ],
+      "scores": [
+        -10,
+        -50,
+        57,
+        -10
+      ],
+      "bags": [
+        0,
+        0,
+        7,
+        0
+      ],
+      "trick": [],
+      "history": [
+        {
+          "winner": 1,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H4"
+            },
+            {
+              "seat": 3,
+              "card": "HQ"
+            },
+            {
+              "seat": 0,
+              "card": "HK"
+            },
+            {
+              "seat": 1,
+              "card": "HA"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 1,
+              "card": "CA"
+            },
+            {
+              "seat": 2,
+              "card": "S10"
+            },
+            {
+              "seat": 3,
+              "card": "C2"
+            },
+            {
+              "seat": 0,
+              "card": "C3"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SA"
+            },
+            {
+              "seat": 3,
+              "card": "S2"
+            },
+            {
+              "seat": 0,
+              "card": "S3"
+            },
+            {
+              "seat": 1,
+              "card": "S4"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SK"
+            },
+            {
+              "seat": 3,
+              "card": "S5"
+            },
+            {
+              "seat": 0,
+              "card": "S6"
+            },
+            {
+              "seat": 1,
+              "card": "S7"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SQ"
+            },
+            {
+              "seat": 3,
+              "card": "S8"
+            },
+            {
+              "seat": 0,
+              "card": "S9"
+            },
+            {
+              "seat": 1,
+              "card": "C4"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "HJ"
+            },
+            {
+              "seat": 3,
+              "card": "H2"
+            },
+            {
+              "seat": 0,
+              "card": "H3"
+            },
+            {
+              "seat": 1,
+              "card": "D4"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H5"
+            },
+            {
+              "seat": 3,
+              "card": "D2"
+            },
+            {
+              "seat": 0,
+              "card": "C6"
+            },
+            {
+              "seat": 1,
+              "card": "C7"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H6"
+            },
+            {
+              "seat": 3,
+              "card": "C5"
+            },
+            {
+              "seat": 0,
+              "card": "D3"
+            },
+            {
+              "seat": 1,
+              "card": "D7"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H7"
+            },
+            {
+              "seat": 3,
+              "card": "D5"
+            },
+            {
+              "seat": 0,
+              "card": "D6"
+            },
+            {
+              "seat": 1,
+              "card": "C10"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H8"
+            },
+            {
+              "seat": 3,
+              "card": "C8"
+            },
+            {
+              "seat": 0,
+              "card": "D9"
+            },
+            {
+              "seat": 1,
+              "card": "D10"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H9"
+            },
+            {
+              "seat": 3,
+              "card": "D8"
+            },
+            {
+              "seat": 0,
+              "card": "C9"
+            },
+            {
+              "seat": 1,
+              "card": "CK"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H10"
+            },
+            {
+              "seat": 3,
+              "card": "CJ"
+            },
+            {
+              "seat": 0,
+              "card": "CQ"
+            },
+            {
+              "seat": 1,
+              "card": "DK"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SJ"
+            },
+            {
+              "seat": 3,
+              "card": "DJ"
+            },
+            {
+              "seat": 0,
+              "card": "DQ"
+            },
+            {
+              "seat": 1,
+              "card": "DA"
+            }
+          ]
+        }
+      ],
+      "turn": 2,
+      "dealer": 1,
+      "handNumber": 1,
+      "spadesBroken": true,
+      "handResult": {
+        "points": [
+          -10,
+          -50,
+          57,
+          -10
+        ],
+        "bags": [
+          0,
+          0,
+          7,
+          0
+        ]
+      },
+      "currentWinner": null,
+      "legalActions": []
+    },
+    "stats": {
+      "helped": 0,
+      "decisions": 11,
+      "suggestions": 0
+    }
+  },
+  "privateAudit": {
+    "file": "private/sweep-solo-baseline.json",
+    "hash": "dea9f152a1efe0f84ae945d294539a2caf2625256e2655d963a6b3da4c4c6512",
+    "botDecisions": 42,
+    "humanDecisions": 14,
+    "verification": {
+      "fixture": "exact",
+      "replay": "exact",
+      "humanChoices": 14,
+      "botChoices": 42,
+      "openingScores": "zero",
+      "openingBags": "zero"
+    }
+  },
+  "coachUiCheck": {
+    "decisionId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0:1:6",
+    "index": 1,
+    "policyVersion": "spades-tactics-2.1.0",
+    "publicPolicyVersion": null,
+    "cueVersion": null,
+    "recorderVersion": "1.0.4",
+    "text": [
+      "Your own contract: 1 credited trick is still needed.",
+      "This takes the current lead toward the contract. Prefer an economical winner while retaining stronger control for later tricks. 1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+      "Consider King of Hearts for the current lead."
+    ],
+    "originalSnapshotMatches": true,
+    "historyUnchanged": true,
+    "duringPlayAssistance": 0
+  },
+  "completedAt": "2026-10-02T06:11:41.443Z"
+}

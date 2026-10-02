@@ -1,0 +1,108 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "CA",
+      "D7",
+      "DQ",
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      12,
+      12,
+      12,
+      12
+    ],
+    "bids": [
+      7,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DA"
+          },
+          {
+            "seat": 1,
+            "card": "D5"
+          },
+          {
+            "seat": 2,
+            "card": "D6"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:C6",
+      "play:CA",
+      "play:D7",
+      "play:DQ",
+      "play:H5",
+      "play:HK"
+    ]
+  },
+  "packetHash": "e13b0e72909cabc6d54a93a0e037eb33f9361ff9ffd0cb3a70a44f2d5f14dc94",
+  "action": {
+    "kind": "play",
+    "card": "CA"
+  },
+  "reason": "The ace is a likely sure trick, and I need six more to make my bid of seven. I also hold several high spades, though their eventual winners depend on how the other players use theirs.",
+  "source": "luna",
+  "transportFile": "transport/control-solo-baseline-player-03-1790918208703-1.json"
+}

@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-02T05:24:41.034Z",
+  "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'spades-tactics-2.1.0'\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'spades-tactics-2.1.0'\n\n    at reviewCoach (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:273:56)\n    at async play (file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:305:29)\n    at async file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:325:27",
+  "sessions": 2
+}

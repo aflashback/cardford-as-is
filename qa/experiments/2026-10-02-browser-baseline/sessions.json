@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "browser-sessions-1.0.0",
+  "sessions": [
+    {
+      "gameId": "946d3b84-c1dc-4fe9-b801-6d51d80dfe40",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "role": "bootstrap",
+      "runId": null,
+      "createdAt": "2026-10-02T05:15:31.916Z"
+    },
+    {
+      "gameId": "182f3541-c642-4c2f-a4fd-b9ecc8e303dd",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "role": "measured",
+      "runId": "control-solo-baseline",
+      "createdAt": "2026-10-02T05:15:32.492Z"
+    },
+    {
+      "gameId": "41db58dc-4097-491a-8f04-5c4075a5468e",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "role": "bootstrap",
+      "runId": null,
+      "createdAt": "2026-10-02T05:30:20.553Z"
+    },
+    {
+      "gameId": "dec2c779-cf20-493b-a6f8-9269917ccbac",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "role": "measured",
+      "runId": "control-solo-candidate",
+      "createdAt": "2026-10-02T05:30:21.099Z"
+    },
+    {
+      "gameId": "40a3258a-5561-4b10-b2b9-b8ded85b3055",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "role": "measured",
+      "runId": "control-partners-baseline",
+      "createdAt": "2026-10-02T05:31:23.794Z"
+    },
+    {
+      "gameId": "ff0f6387-ccf6-4edf-84fd-c029c98bde2e",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "role": "measured",
+      "runId": "control-partners-candidate",
+      "createdAt": "2026-10-02T05:36:58.706Z"
+    },
+    {
+      "gameId": "1fd297a6-16a1-4f7f-b787-edb333dea1ea",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "role": "measured",
+      "runId": "sweep-solo-candidate",
+      "createdAt": "2026-10-02T05:38:01.526Z"
+    },
+    {
+      "gameId": "bdee5f2f-e33a-4221-8056-48ffedc1efc0",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "role": "measured",
+      "runId": "sweep-solo-baseline",
+      "createdAt": "2026-10-02T06:10:25.977Z"
+    },
+    {
+      "gameId": "11539646-6e63-4a2f-ad12-a67bed6b10b4",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "role": "measured",
+      "runId": "sweep-partners-candidate",
+      "createdAt": "2026-10-02T06:11:43.378Z"
+    },
+    {
+      "gameId": "4546b320-95fa-42b5-a00d-c96ddaf7b12e",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "role": "measured",
+      "runId": "sweep-partners-baseline",
+      "createdAt": "2026-10-02T06:16:58.119Z"
+    },
+    {
+      "gameId": "392537da-35cf-4e81-b839-c4b12b4cf41a",
+      "mode": "spades-solo",
+      "arm": "baseline",
+      "role": "measured",
+      "runId": "resources-solo-baseline",
+      "createdAt": "2026-10-02T06:17:59.141Z"
+    },
+    {
+      "gameId": "629c485f-5c11-4c0d-ab97-e81de53e01b3",
+      "mode": "spades-solo",
+      "arm": "candidate",
+      "role": "measured",
+      "runId": "resources-solo-candidate",
+      "createdAt": "2026-10-02T06:25:03.845Z"
+    },
+    {
+      "gameId": "58b970d5-ce7f-4cdd-b5d6-303f36a66861",
+      "mode": "spades-partners",
+      "arm": "baseline",
+      "role": "measured",
+      "runId": "resources-partners-baseline",
+      "createdAt": "2026-10-02T06:26:06.856Z"
+    },
+    {
+      "gameId": "c6c05ce9-9533-419b-8b24-11484f615afd",
+      "mode": "spades-partners",
+      "arm": "candidate",
+      "role": "measured",
+      "runId": "resources-partners-candidate",
+      "createdAt": "2026-10-02T06:30:50.113Z"
+    }
+  ]
+}

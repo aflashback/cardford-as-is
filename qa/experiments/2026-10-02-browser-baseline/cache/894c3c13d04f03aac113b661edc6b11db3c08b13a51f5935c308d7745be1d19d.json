@@ -1,0 +1,218 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      7,
+      7,
+      6,
+      6
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      1,
+      5,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "C4"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C3"
+          },
+          {
+            "seat": 0,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S8"
+          },
+          {
+            "seat": 0,
+            "card": "S2"
+          },
+          {
+            "seat": 1,
+            "card": "S9"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "seat": 3,
+            "card": "D2"
+          },
+          {
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "seat": 1,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SQ"
+          },
+          {
+            "seat": 3,
+            "card": "H2"
+          },
+          {
+            "seat": 0,
+            "card": "S4"
+          },
+          {
+            "seat": 1,
+            "card": "H3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SJ"
+          },
+          {
+            "seat": 3,
+            "card": "D5"
+          },
+          {
+            "seat": 0,
+            "card": "S5"
+          },
+          {
+            "seat": 1,
+            "card": "D4"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "H5"
+      },
+      {
+        "seat": 3,
+        "card": "HK"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:C8",
+      "play:CJ",
+      "play:DQ",
+      "play:DK",
+      "play:DA",
+      "play:S6",
+      "play:S7"
+    ]
+  },
+  "packetHash": "f38a3f13c05249ccd8b7905eeaa662704e03695d359a66ecdd8e2a299dbec8e6",
+  "action": {
+    "kind": "play",
+    "card": "S6"
+  },
+  "reason": "I’m void in hearts, and S6 will trump East’s HK; all higher spades have already been played, so West cannot overtrump. I’ll keep S7 as another likely winner.",
+  "source": "luna",
+  "transportFile": "transport/resources-solo-baseline-player-08-1790921986715-1.json"
+}

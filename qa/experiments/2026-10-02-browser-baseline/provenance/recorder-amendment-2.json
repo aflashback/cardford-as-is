@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "browser-recorder-amendment-1.0.0",
+  "at": "2026-10-02T05:44:46.378Z",
+  "recorderVersion": "1.0.2",
+  "path": "qa/experiments/2026-10-02-browser-baseline/run-browser.mjs",
+  "preservedOriginal": "provenance/run-browser-1.0.1.mjs",
+  "before": "f9db7b5a82b79320ebc3a90cde31255f991b662d08f1bd3cd8c8965765c9b9c9",
+  "after": "99d78260b8d73bfaa59e5417bce330610d051b1ea90f19a29082c5f7a4fb26fe",
+  "timing": "After four verified complete hands and ten South choices in sweep-solo-candidate. Both original choice11 responses selected legal D9, but used an inline dash.",
+  "changes": [
+    "Accept one selected legal bid/card followed by one paragraph, whether separated by newline or inline whitespace/dash; reject additional action markers.",
+    "Before making any new model call, revalidate the earliest original transport-valid rejected response for the exact packet under the repaired format parser. Preserve original rejection and write a separate recovery record; no new attempt or substitute action.",
+    "Process up to two independent observer packets concurrently. Same packets, templates, model, effort and no-feedback boundary."
+  ],
+  "retained": "Runtime, fixtures, player/observer templates, game history and original transport evidence are unchanged.",
+  "completedHands": 4,
+  "partialHand": "sweep-solo-candidate",
+  "interruption": "provenance/interruption-3.json"
+}

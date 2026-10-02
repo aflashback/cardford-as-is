@@ -1,0 +1,106 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C5",
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      12,
+      12,
+      12,
+      11
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "H3"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 3,
+        "card": "CA"
+      }
+    ],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:C5",
+      "play:C8",
+      "play:CJ"
+    ]
+  },
+  "packetHash": "6014a2035cd021ae27c19aa12831620f4d877def91b02b0c9d48cf3620ed8100",
+  "action": {
+    "kind": "play",
+    "card": "C5"
+  },
+  "reason": "East’s ace of clubs currently wins the trick, so I’ll follow with my lowest club and keep C8 and CJ for later. I can’t tell whether either opponent holds a higher club.",
+  "source": "luna",
+  "transportFile": "transport/resources-partners-baseline-player-03-1790922430616-1.json"
+}

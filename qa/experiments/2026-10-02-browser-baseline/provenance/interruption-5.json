@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-02T06:08:10.458Z",
+  "message": "locator.click: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Take control', exact: true })\u001b[22m\n",
+  "stack": "locator.click: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Take control', exact: true })\u001b[22m\n\n    at choose (C:\\repos\\test-jev\\qa\\experiments\\2026-10-02-browser-baseline\\run-browser.mjs:155:75)\n    at async play (C:\\repos\\test-jev\\qa\\experiments\\2026-10-02-browser-baseline\\run-browser.mjs:335:19)\n    at async file:///C:/repos/test-jev/qa/experiments/2026-10-02-browser-baseline/run-browser.mjs:373:27",
+  "sessions": 7
+}

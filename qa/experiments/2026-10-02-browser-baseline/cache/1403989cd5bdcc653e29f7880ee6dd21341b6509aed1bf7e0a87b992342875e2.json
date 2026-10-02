@@ -1,0 +1,205 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "DQ",
+      "DA",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "bids": [
+      6,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      3,
+      3,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C8"
+          },
+          {
+            "seat": 2,
+            "card": "C7"
+          },
+          {
+            "seat": 3,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "HA"
+          },
+          {
+            "seat": 2,
+            "card": "H9"
+          },
+          {
+            "seat": 3,
+            "card": "H6"
+          },
+          {
+            "seat": 0,
+            "card": "H5"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "H3"
+          },
+          {
+            "seat": 2,
+            "card": "H2"
+          },
+          {
+            "seat": 3,
+            "card": "H10"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "seat": 1,
+            "card": "C3"
+          },
+          {
+            "seat": 2,
+            "card": "C9"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          }
+        ]
+      },
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "D7"
+          },
+          {
+            "seat": 1,
+            "card": "D9"
+          },
+          {
+            "seat": 2,
+            "card": "D6"
+          },
+          {
+            "seat": 3,
+            "card": "D3"
+          }
+        ]
+      },
+      {
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "CK"
+          },
+          {
+            "seat": 2,
+            "card": "C4"
+          },
+          {
+            "seat": 3,
+            "card": "D8"
+          },
+          {
+            "seat": 0,
+            "card": "S3"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:DQ",
+      "play:DA",
+      "play:S9",
+      "play:SJ",
+      "play:SQ",
+      "play:SK",
+      "play:SA"
+    ]
+  },
+  "packetHash": "bb8afd09644f549773fd323bc134f5b35e56a5101eb1ee28098a0411509b16db",
+  "action": {
+    "kind": "play",
+    "card": "SA"
+  },
+  "reason": "The spade ace guarantees a trick, moving South from three toward the six-trick contract; I’ll keep the king and queen for later control. I don’t know how many spades the others hold.",
+  "source": "luna",
+  "transportFile": "transport/control-partners-baseline-player-08-1790919192304-1.json"
+}

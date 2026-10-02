@@ -1,0 +1,95 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "bid",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C3",
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "HK",
+      "S3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "bids": [
+      null,
+      null,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "bid:0",
+      "bid:1",
+      "bid:2",
+      "bid:3",
+      "bid:4",
+      "bid:5",
+      "bid:6",
+      "bid:7",
+      "bid:8",
+      "bid:9",
+      "bid:10",
+      "bid:11",
+      "bid:12",
+      "bid:13"
+    ]
+  },
+  "packetHash": "0300285c0333325ee07cd402ad3875eac5e4ed6ad1e36b4e00dcd86585a92b89",
+  "action": {
+    "kind": "bid",
+    "bid": 1
+  },
+  "reason": "The king of hearts may take a trick, and a queen or spade could win if the higher cards have already gone. But none is secure, so I expect a weak hand and bid one; the opponents’ bids don’t reveal their exact holdings.",
+  "source": "luna",
+  "transportFile": "transport/sweep-solo-candidate-player-01-1790919483273-1.json"
+}

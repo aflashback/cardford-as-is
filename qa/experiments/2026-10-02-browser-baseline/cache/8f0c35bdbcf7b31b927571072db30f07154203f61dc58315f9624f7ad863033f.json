@@ -1,0 +1,149 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      10,
+      10,
+      9,
+      9
+    ],
+    "bids": [
+      1,
+      5,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      1,
+      2,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "CA"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C2"
+          },
+          {
+            "seat": 0,
+            "card": "C3"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "SA"
+          },
+          {
+            "seat": 3,
+            "card": "S2"
+          },
+          {
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "seat": 1,
+            "card": "S4"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "SK"
+      },
+      {
+        "seat": 3,
+        "card": "S5"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:S6",
+      "play:S9"
+    ]
+  },
+  "packetHash": "f898c8326ba603893e9cdc0d0915c062f46c8b1a9dcc1f6f693eb71b266bbaf0",
+  "action": {
+    "kind": "play",
+    "card": "S6"
+  },
+  "reason": "North’s king currently leads, and S6 follows suit while preserving S9 for a later trick. West may still overtake the king, so North’s win is uncertain.",
+  "source": "luna",
+  "transportFile": "transport/sweep-partners-candidate-player-05-1790921579386-1.json"
+}

@@ -1,0 +1,130 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "S3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      11,
+      11,
+      10,
+      10
+    ],
+    "bids": [
+      1,
+      5,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "CA"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C2"
+          },
+          {
+            "seat": 0,
+            "card": "C3"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "SA"
+      },
+      {
+        "seat": 3,
+        "card": "S2"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:S3",
+      "play:S6",
+      "play:S9"
+    ]
+  },
+  "packetHash": "070170b6b30ba13130cb0140bb39141e7a26c11268aa607b6a58271b0ee60567",
+  "action": {
+    "kind": "play",
+    "card": "S3"
+  },
+  "reason": "North’s SA is already unbeatable, so I’ll follow with my lowest spade and keep S6 and S9. I can’t know what West holds, but no card can overtake the ace.",
+  "source": "luna",
+  "transportFile": "transport/sweep-partners-candidate-player-04-1790921564074-1.json"
+}

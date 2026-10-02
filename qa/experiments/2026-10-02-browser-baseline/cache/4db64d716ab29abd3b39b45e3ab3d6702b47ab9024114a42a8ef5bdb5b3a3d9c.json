@@ -1,0 +1,134 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "C9",
+      "CQ",
+      "D3",
+      "D6",
+      "D9",
+      "DQ",
+      "H3",
+      "S3",
+      "S6",
+      "S9"
+    ],
+    "handSizes": [
+      11,
+      11,
+      10,
+      10
+    ],
+    "bids": [
+      1,
+      5,
+      5,
+      1
+    ],
+    "tricks": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [
+      {
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "H4"
+          },
+          {
+            "seat": 3,
+            "card": "HQ"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          },
+          {
+            "seat": 1,
+            "card": "HA"
+          }
+        ]
+      },
+      {
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "CA"
+          },
+          {
+            "seat": 2,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "C2"
+          },
+          {
+            "seat": 0,
+            "card": "C3"
+          }
+        ]
+      }
+    ],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "SA"
+      },
+      {
+        "seat": 3,
+        "card": "S2"
+      }
+    ],
+    "spadesBroken": true,
+    "legalActions": [
+      "play:S3",
+      "play:S6",
+      "play:S9"
+    ]
+  },
+  "packetHash": "b6043be6b5ae979d41798229abab6ac7610af8f5c757e26a79122f064c78f576",
+  "action": {
+    "kind": "play",
+    "card": "S3"
+  },
+  "reason": "North’s ace is currently winning, and West cannot beat it with a spade. I’ll use my lowest spade and preserve higher ones for later; West’s remaining cards are unknown.",
+  "source": "luna",
+  "transportFile": "transport/sweep-solo-candidate-player-04-1790919554169-1.json"
+}

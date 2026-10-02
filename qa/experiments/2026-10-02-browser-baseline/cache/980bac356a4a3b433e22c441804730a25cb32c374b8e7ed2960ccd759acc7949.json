@@ -1,0 +1,88 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "CA",
+      "D7",
+      "DQ",
+      "DA",
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "bids": [
+      7,
+      3,
+      0,
+      2
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:C6",
+      "play:CA",
+      "play:D7",
+      "play:DQ",
+      "play:DA",
+      "play:H5",
+      "play:HK"
+    ]
+  },
+  "packetHash": "33f702dc5cdb5f18049c73ce9c531f78803f4ec293a5b9dc1515d47ad346cedc",
+  "action": {
+    "kind": "play",
+    "card": "DA"
+  },
+  "reason": "I’ll lead the diamond ace to try to secure an early trick and keep my spades for later control. Someone void in diamonds could ruff it, so the trick isn’t certain.",
+  "source": "luna",
+  "transportFile": "transport/control-solo-baseline-player-02-1790918148964-1.json"
+}

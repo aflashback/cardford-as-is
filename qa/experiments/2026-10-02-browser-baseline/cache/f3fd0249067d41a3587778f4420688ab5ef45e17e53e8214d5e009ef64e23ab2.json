@@ -1,0 +1,91 @@
+{
+  "packet": {
+    "game": "spades-partners",
+    "ruleProfile": "spades-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "bid",
+    "competition": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "CA",
+      "D7",
+      "DQ",
+      "DA",
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "bids": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "bid:0",
+      "bid:1",
+      "bid:2",
+      "bid:3",
+      "bid:4",
+      "bid:5",
+      "bid:6",
+      "bid:7",
+      "bid:8",
+      "bid:9",
+      "bid:10",
+      "bid:11",
+      "bid:12",
+      "bid:13"
+    ]
+  },
+  "packetHash": "aa139ab9f91a3353785e6bd16285a2012d6624f3d170def2ed2ecdb5667f2124",
+  "action": {
+    "kind": "bid",
+    "bid": 6
+  },
+  "reason": "I have six spades headed by A-K-Q-J, plus the club and diamond aces, so six tricks looks attainable; the king of hearts may add another. The queen of diamonds and heart king are less certain, and I don’t know what North holds.",
+  "source": "luna",
+  "transportFile": "transport/control-partners-baseline-player-01-1790919083996-1.json"
+}

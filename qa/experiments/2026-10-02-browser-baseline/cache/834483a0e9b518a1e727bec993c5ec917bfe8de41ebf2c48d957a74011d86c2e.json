@@ -1,0 +1,95 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "bid",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C2",
+      "C5",
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "bids": [
+      null,
+      null,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "bid:0",
+      "bid:1",
+      "bid:2",
+      "bid:3",
+      "bid:4",
+      "bid:5",
+      "bid:6",
+      "bid:7",
+      "bid:8",
+      "bid:9",
+      "bid:10",
+      "bid:11",
+      "bid:12",
+      "bid:13"
+    ]
+  },
+  "packetHash": "16d467bd30e9cace2bf6eb36a73b86742f35c70922cbeeda11fc1cfa66a0a9de",
+  "action": {
+    "kind": "bid",
+    "bid": 3
+  },
+  "reason": "The ace and king of diamonds look like likely tricks, and my seven low spades may take a couple once higher spades are gone. The low spade ranks make those tricks uncertain, so I’m bidding conservatively.",
+  "source": "luna",
+  "transportFile": "transport/resources-solo-baseline-player-01-1790921880806-1.json"
+}

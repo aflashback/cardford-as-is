@@ -1,0 +1,5934 @@
+{
+  "runId": "resources-solo-candidate",
+  "stage": "retrospective",
+  "packet": {
+    "result": {
+      "game": "spades-solo",
+      "ruleProfile": "spades-solo-training-1.0.0",
+      "seat": 0,
+      "dealer": 1,
+      "phase": "hand-end",
+      "competition": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "hand": [],
+      "handSizes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bids": [
+        3,
+        2,
+        5,
+        2
+      ],
+      "tricks": [
+        5,
+        1,
+        5,
+        2
+      ],
+      "scores": [
+        32,
+        -20,
+        50,
+        20
+      ],
+      "bags": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "completedTricks": [
+        {
+          "winner": 1,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H4"
+            },
+            {
+              "seat": 3,
+              "card": "HQ"
+            },
+            {
+              "seat": 0,
+              "card": "C2"
+            },
+            {
+              "seat": 1,
+              "card": "HA"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 1,
+              "card": "C4"
+            },
+            {
+              "seat": 2,
+              "card": "S10"
+            },
+            {
+              "seat": 3,
+              "card": "C3"
+            },
+            {
+              "seat": 0,
+              "card": "C5"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SA"
+            },
+            {
+              "seat": 3,
+              "card": "S8"
+            },
+            {
+              "seat": 0,
+              "card": "S2"
+            },
+            {
+              "seat": 1,
+              "card": "S9"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SK"
+            },
+            {
+              "seat": 3,
+              "card": "D2"
+            },
+            {
+              "seat": 0,
+              "card": "S3"
+            },
+            {
+              "seat": 1,
+              "card": "D3"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SQ"
+            },
+            {
+              "seat": 3,
+              "card": "H2"
+            },
+            {
+              "seat": 0,
+              "card": "S4"
+            },
+            {
+              "seat": 1,
+              "card": "H3"
+            }
+          ]
+        },
+        {
+          "winner": 2,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "SJ"
+            },
+            {
+              "seat": 3,
+              "card": "D5"
+            },
+            {
+              "seat": 0,
+              "card": "S5"
+            },
+            {
+              "seat": 1,
+              "card": "D4"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 2,
+              "card": "H5"
+            },
+            {
+              "seat": 3,
+              "card": "HK"
+            },
+            {
+              "seat": 0,
+              "card": "S6"
+            },
+            {
+              "seat": 1,
+              "card": "D6"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "DA"
+            },
+            {
+              "seat": 1,
+              "card": "D7"
+            },
+            {
+              "seat": 2,
+              "card": "HJ"
+            },
+            {
+              "seat": 3,
+              "card": "D8"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "S7"
+            },
+            {
+              "seat": 1,
+              "card": "C7"
+            },
+            {
+              "seat": 2,
+              "card": "H10"
+            },
+            {
+              "seat": 3,
+              "card": "C6"
+            }
+          ]
+        },
+        {
+          "winner": 3,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "CJ"
+            },
+            {
+              "seat": 1,
+              "card": "CK"
+            },
+            {
+              "seat": 2,
+              "card": "H9"
+            },
+            {
+              "seat": 3,
+              "card": "CA"
+            }
+          ]
+        },
+        {
+          "winner": 3,
+          "plays": [
+            {
+              "seat": 3,
+              "card": "CQ"
+            },
+            {
+              "seat": 0,
+              "card": "C8"
+            },
+            {
+              "seat": 1,
+              "card": "C10"
+            },
+            {
+              "seat": 2,
+              "card": "H8"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 3,
+              "card": "DJ"
+            },
+            {
+              "seat": 0,
+              "card": "DK"
+            },
+            {
+              "seat": 1,
+              "card": "D9"
+            },
+            {
+              "seat": 2,
+              "card": "H7"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "DQ"
+            },
+            {
+              "seat": 1,
+              "card": "D10"
+            },
+            {
+              "seat": 2,
+              "card": "H6"
+            },
+            {
+              "seat": 3,
+              "card": "C9"
+            }
+          ]
+        }
+      ],
+      "currentTrick": [],
+      "spadesBroken": true,
+      "legalActions": []
+    },
+    "selection": "At most eight original bot decisions: matched cases first, bids second, then chronological moves. Full audits retained separately.",
+    "decisions": [
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:14",
+        "seat": 2,
+        "action": {
+          "card": "SA",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "H5",
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ",
+            "SJ",
+            "SQ",
+            "SK",
+            "SA"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 4,
+              "remaining": 9,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 3,
+              "remaining": 10,
+              "voidSeats": [
+                0
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 1,
+              "remaining": 12,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            }
+          ],
+          "handSizes": [
+            11,
+            11,
+            11,
+            11
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H5",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "HJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SQ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SK",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SA",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "11 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 11
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 33
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your contract needs 4 credited tricks; only positive bidders supply that credit.",
+            "claims": [
+              {
+                "args": {
+                  "scope": "individual",
+                  "needed": 4,
+                  "contract": 5,
+                  "credited": 1
+                },
+                "predicate": "contract-need"
+              },
+              {
+                "args": {},
+                "predicate": "nil-tricks-no-credit"
+              }
+            ]
+          },
+          {
+            "id": "S10.lead-choice",
+            "kind": "heuristic",
+            "text": "Compare cashing control with developing a short suit. A side-suit master may still be trumped.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-beats-side-suit"
+              }
+            ]
+          },
+          {
+            "id": "S10.develop-suit",
+            "kind": "heuristic",
+            "text": "A low lead from a shorter suit can develop a future void while preserving higher cards.",
+            "claims": [],
+            "actionIds": [
+              "play:H5",
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10",
+              "play:HJ",
+              "play:SJ",
+              "play:SQ",
+              "play:SK"
+            ]
+          },
+          {
+            "id": "S10.cash-control",
+            "kind": "heuristic",
+            "text": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter.",
+            "claims": [
+              {
+                "args": {
+                  "master": true,
+                  "actionId": "play:SA"
+                },
+                "predicate": "action-is-master"
+              }
+            ],
+            "actionIds": [
+              "play:SA"
+            ]
+          },
+          {
+            "id": "CASE-04.unbeatable-lead",
+            "kind": "fact",
+            "text": "No legal response can beat the selected lead.",
+            "claims": [
+              {
+                "args": {
+                  "winner": 2,
+                  "actionId": "play:SA"
+                },
+                "predicate": "guaranteed-winner"
+              }
+            ],
+            "actionIds": [
+              "play:SA"
+            ]
+          },
+          {
+            "id": "PLAN.stance",
+            "kind": "fact",
+            "text": "One plan: make your contract.",
+            "claims": [
+              {
+                "args": {
+                  "stanceId": "spades.make-contract"
+                },
+                "predicate": "plan-stance"
+              }
+            ],
+            "actionIds": [
+              "play:SA"
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "supported"
+          },
+          "families": [],
+          "stanceId": "spades.make-contract",
+          "selectedBy": "tactical-order",
+          "planSupported": true,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      },
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:19",
+        "seat": 2,
+        "action": {
+          "card": "SK",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "H5",
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ",
+            "SJ",
+            "SQ",
+            "SK"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 18,
+              "card": "SA",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Ace of Spades."
+            },
+            {
+              "id": 19,
+              "card": "S8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Spades."
+            },
+            {
+              "id": 20,
+              "card": "S2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Spades."
+            },
+            {
+              "id": 21,
+              "card": "S9",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 9 of Spades."
+            },
+            {
+              "id": 22,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 3."
+            },
+            {
+              "id": 23,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 4,
+              "remaining": 9,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 0,
+              "remaining": 13,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 3,
+              "remaining": 10,
+              "voidSeats": [
+                0
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 5,
+              "remaining": 8,
+              "voidSeats": []
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            1,
+            2,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SA",
+                  "seat": 2
+                },
+                {
+                  "card": "S8",
+                  "seat": 3
+                },
+                {
+                  "card": "S2",
+                  "seat": 0
+                },
+                {
+                  "card": "S9",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            }
+          ],
+          "handSizes": [
+            10,
+            10,
+            10,
+            10
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H5",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "HJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SQ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SK",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "10 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 10
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 30
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your contract needs 3 credited tricks; only positive bidders supply that credit.",
+            "claims": [
+              {
+                "args": {
+                  "scope": "individual",
+                  "needed": 3,
+                  "contract": 5,
+                  "credited": 2
+                },
+                "predicate": "contract-need"
+              },
+              {
+                "args": {},
+                "predicate": "nil-tricks-no-credit"
+              }
+            ]
+          },
+          {
+            "id": "S10.lead-choice",
+            "kind": "heuristic",
+            "text": "Compare cashing control with developing a short suit. A side-suit master may still be trumped.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-beats-side-suit"
+              }
+            ]
+          },
+          {
+            "id": "S10.develop-suit",
+            "kind": "heuristic",
+            "text": "A low lead from a shorter suit can develop a future void while preserving higher cards.",
+            "claims": [],
+            "actionIds": [
+              "play:H5",
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10",
+              "play:HJ",
+              "play:SJ",
+              "play:SQ"
+            ]
+          },
+          {
+            "id": "S10.cash-control",
+            "kind": "heuristic",
+            "text": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter.",
+            "claims": [
+              {
+                "args": {
+                  "master": true,
+                  "actionId": "play:SK"
+                },
+                "predicate": "action-is-master"
+              }
+            ],
+            "actionIds": [
+              "play:SK"
+            ]
+          },
+          {
+            "id": "CASE-04.unbeatable-lead",
+            "kind": "fact",
+            "text": "No legal response can beat the selected lead.",
+            "claims": [
+              {
+                "args": {
+                  "winner": 2,
+                  "actionId": "play:SK"
+                },
+                "predicate": "guaranteed-winner"
+              }
+            ],
+            "actionIds": [
+              "play:SK"
+            ]
+          },
+          {
+            "id": "PLAN.stance",
+            "kind": "fact",
+            "text": "One plan: make your contract.",
+            "claims": [
+              {
+                "args": {
+                  "stanceId": "spades.make-contract"
+                },
+                "predicate": "plan-stance"
+              }
+            ],
+            "actionIds": [
+              "play:SK"
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "supported"
+          },
+          "families": [],
+          "stanceId": "spades.make-contract",
+          "selectedBy": "tactical-order",
+          "planSupported": true,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      },
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:24",
+        "seat": 2,
+        "action": {
+          "card": "SQ",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "H5",
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ",
+            "SJ",
+            "SQ"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 18,
+              "card": "SA",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Ace of Spades."
+            },
+            {
+              "id": 19,
+              "card": "S8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Spades."
+            },
+            {
+              "id": 20,
+              "card": "S2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Spades."
+            },
+            {
+              "id": 21,
+              "card": "S9",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 9 of Spades."
+            },
+            {
+              "id": 22,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 3."
+            },
+            {
+              "id": 23,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 24,
+              "card": "SK",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played King of Spades."
+            },
+            {
+              "id": 25,
+              "card": "D2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Diamonds."
+            },
+            {
+              "id": 26,
+              "card": "S3",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 3 of Spades."
+            },
+            {
+              "id": 27,
+              "card": "D3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Diamonds."
+            },
+            {
+              "id": 28,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 4."
+            },
+            {
+              "id": 29,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 4,
+              "remaining": 9,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 2,
+              "remaining": 11,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 3,
+              "remaining": 10,
+              "voidSeats": [
+                0
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 7,
+              "remaining": 6,
+              "voidSeats": [
+                1,
+                3
+              ]
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            1,
+            3,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SA",
+                  "seat": 2
+                },
+                {
+                  "card": "S8",
+                  "seat": 3
+                },
+                {
+                  "card": "S2",
+                  "seat": 0
+                },
+                {
+                  "card": "S9",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SK",
+                  "seat": 2
+                },
+                {
+                  "card": "D2",
+                  "seat": 3
+                },
+                {
+                  "card": "S3",
+                  "seat": 0
+                },
+                {
+                  "card": "D3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            }
+          ],
+          "handSizes": [
+            9,
+            9,
+            9,
+            9
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H5",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "HJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SQ",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "9 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 9
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 27
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your contract needs 2 credited tricks; only positive bidders supply that credit.",
+            "claims": [
+              {
+                "args": {
+                  "scope": "individual",
+                  "needed": 2,
+                  "contract": 5,
+                  "credited": 3
+                },
+                "predicate": "contract-need"
+              },
+              {
+                "args": {},
+                "predicate": "nil-tricks-no-credit"
+              }
+            ]
+          },
+          {
+            "id": "S10.lead-choice",
+            "kind": "heuristic",
+            "text": "Compare cashing control with developing a short suit. A side-suit master may still be trumped.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-beats-side-suit"
+              }
+            ]
+          },
+          {
+            "id": "S10.develop-suit",
+            "kind": "heuristic",
+            "text": "A low lead from a shorter suit can develop a future void while preserving higher cards.",
+            "claims": [],
+            "actionIds": [
+              "play:H5",
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10",
+              "play:HJ",
+              "play:SJ"
+            ]
+          },
+          {
+            "id": "S10.cash-control",
+            "kind": "heuristic",
+            "text": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter.",
+            "claims": [
+              {
+                "args": {
+                  "master": true,
+                  "actionId": "play:SQ"
+                },
+                "predicate": "action-is-master"
+              }
+            ],
+            "actionIds": [
+              "play:SQ"
+            ]
+          },
+          {
+            "id": "CASE-04.unbeatable-lead",
+            "kind": "fact",
+            "text": "No legal response can beat the selected lead.",
+            "claims": [
+              {
+                "args": {
+                  "winner": 2,
+                  "actionId": "play:SQ"
+                },
+                "predicate": "guaranteed-winner"
+              }
+            ],
+            "actionIds": [
+              "play:SQ"
+            ]
+          },
+          {
+            "id": "PLAN.stance",
+            "kind": "fact",
+            "text": "One plan: make your contract.",
+            "claims": [
+              {
+                "args": {
+                  "stanceId": "spades.make-contract"
+                },
+                "predicate": "plan-stance"
+              }
+            ],
+            "actionIds": [
+              "play:SQ"
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "supported"
+          },
+          "families": [],
+          "stanceId": "spades.make-contract",
+          "selectedBy": "tactical-order",
+          "planSupported": true,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      },
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:29",
+        "seat": 2,
+        "action": {
+          "card": "SJ",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "H5",
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ",
+            "SJ"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 18,
+              "card": "SA",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Ace of Spades."
+            },
+            {
+              "id": 19,
+              "card": "S8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Spades."
+            },
+            {
+              "id": 20,
+              "card": "S2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Spades."
+            },
+            {
+              "id": 21,
+              "card": "S9",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 9 of Spades."
+            },
+            {
+              "id": 22,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 3."
+            },
+            {
+              "id": 23,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 24,
+              "card": "SK",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played King of Spades."
+            },
+            {
+              "id": 25,
+              "card": "D2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Diamonds."
+            },
+            {
+              "id": 26,
+              "card": "S3",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 3 of Spades."
+            },
+            {
+              "id": 27,
+              "card": "D3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Diamonds."
+            },
+            {
+              "id": 28,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 4."
+            },
+            {
+              "id": 29,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 30,
+              "card": "SQ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Queen of Spades."
+            },
+            {
+              "id": 31,
+              "card": "H2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Hearts."
+            },
+            {
+              "id": 32,
+              "card": "S4",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 4 of Spades."
+            },
+            {
+              "id": 33,
+              "card": "H3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Hearts."
+            },
+            {
+              "id": 34,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 5."
+            },
+            {
+              "id": 35,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 4,
+              "remaining": 9,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 2,
+              "remaining": 11,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 5,
+              "remaining": 8,
+              "voidSeats": [
+                0
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 9,
+              "remaining": 4,
+              "voidSeats": [
+                1,
+                3
+              ]
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            0,
+            1,
+            4,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SA",
+                  "seat": 2
+                },
+                {
+                  "card": "S8",
+                  "seat": 3
+                },
+                {
+                  "card": "S2",
+                  "seat": 0
+                },
+                {
+                  "card": "S9",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SK",
+                  "seat": 2
+                },
+                {
+                  "card": "D2",
+                  "seat": 3
+                },
+                {
+                  "card": "S3",
+                  "seat": 0
+                },
+                {
+                  "card": "D3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SQ",
+                  "seat": 2
+                },
+                {
+                  "card": "H2",
+                  "seat": 3
+                },
+                {
+                  "card": "S4",
+                  "seat": 0
+                },
+                {
+                  "card": "H3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            }
+          ],
+          "handSizes": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H5",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "HJ",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "SJ",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "8 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 8
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 24
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your contract needs 1 credited trick; only positive bidders supply that credit.",
+            "claims": [
+              {
+                "args": {
+                  "scope": "individual",
+                  "needed": 1,
+                  "contract": 5,
+                  "credited": 4
+                },
+                "predicate": "contract-need"
+              },
+              {
+                "args": {},
+                "predicate": "nil-tricks-no-credit"
+              }
+            ]
+          },
+          {
+            "id": "S10.lead-choice",
+            "kind": "heuristic",
+            "text": "Compare cashing control with developing a short suit. A side-suit master may still be trumped.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-beats-side-suit"
+              }
+            ]
+          },
+          {
+            "id": "S10.develop-suit",
+            "kind": "heuristic",
+            "text": "A low lead from a shorter suit can develop a future void while preserving higher cards.",
+            "claims": [],
+            "actionIds": [
+              "play:H5",
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10",
+              "play:HJ"
+            ]
+          },
+          {
+            "id": "S10.cash-control",
+            "kind": "heuristic",
+            "text": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter.",
+            "claims": [
+              {
+                "args": {
+                  "master": true,
+                  "actionId": "play:SJ"
+                },
+                "predicate": "action-is-master"
+              }
+            ],
+            "actionIds": [
+              "play:SJ"
+            ]
+          },
+          {
+            "id": "CASE-04.unbeatable-lead",
+            "kind": "fact",
+            "text": "No legal response can beat the selected lead.",
+            "claims": [
+              {
+                "args": {
+                  "winner": 2,
+                  "actionId": "play:SJ"
+                },
+                "predicate": "guaranteed-winner"
+              }
+            ],
+            "actionIds": [
+              "play:SJ"
+            ]
+          },
+          {
+            "id": "PLAN.stance",
+            "kind": "fact",
+            "text": "One plan: make your contract.",
+            "claims": [
+              {
+                "args": {
+                  "stanceId": "spades.make-contract"
+                },
+                "predicate": "plan-stance"
+              }
+            ],
+            "actionIds": [
+              "play:SJ"
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "supported"
+          },
+          "families": [],
+          "stanceId": "spades.make-contract",
+          "selectedBy": "tactical-order",
+          "planSupported": true,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      },
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:41",
+        "seat": 2,
+        "action": {
+          "card": "HJ",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "HJ"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [
+            {
+              "card": "DA",
+              "seat": 0
+            },
+            {
+              "card": "D7",
+              "seat": 1
+            }
+          ],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 18,
+              "card": "SA",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Ace of Spades."
+            },
+            {
+              "id": 19,
+              "card": "S8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Spades."
+            },
+            {
+              "id": 20,
+              "card": "S2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Spades."
+            },
+            {
+              "id": 21,
+              "card": "S9",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 9 of Spades."
+            },
+            {
+              "id": 22,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 3."
+            },
+            {
+              "id": 23,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 24,
+              "card": "SK",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played King of Spades."
+            },
+            {
+              "id": 25,
+              "card": "D2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Diamonds."
+            },
+            {
+              "id": 26,
+              "card": "S3",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 3 of Spades."
+            },
+            {
+              "id": 27,
+              "card": "D3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Diamonds."
+            },
+            {
+              "id": 28,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 4."
+            },
+            {
+              "id": 29,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 30,
+              "card": "SQ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Queen of Spades."
+            },
+            {
+              "id": 31,
+              "card": "H2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Hearts."
+            },
+            {
+              "id": 32,
+              "card": "S4",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 4 of Spades."
+            },
+            {
+              "id": 33,
+              "card": "H3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Hearts."
+            },
+            {
+              "id": 34,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 5."
+            },
+            {
+              "id": 35,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 36,
+              "card": "SJ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Jack of Spades."
+            },
+            {
+              "id": 37,
+              "card": "D5",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 5 of Diamonds."
+            },
+            {
+              "id": 38,
+              "card": "S5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Spades."
+            },
+            {
+              "id": 39,
+              "card": "D4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Diamonds."
+            },
+            {
+              "id": 40,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 6."
+            },
+            {
+              "id": 41,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 42,
+              "card": "H5",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 5 of Hearts."
+            },
+            {
+              "id": 43,
+              "card": "HK",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played King of Hearts."
+            },
+            {
+              "id": 44,
+              "card": "S6",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 6 of Spades."
+            },
+            {
+              "id": 45,
+              "card": "D6",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 6 of Diamonds."
+            },
+            {
+              "id": 46,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 7."
+            },
+            {
+              "id": 47,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 48,
+              "card": "DA",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played Ace of Diamonds."
+            },
+            {
+              "id": 49,
+              "card": "D7",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 7 of Diamonds."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 4,
+              "remaining": 9,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 7,
+              "remaining": 6,
+              "voidSeats": []
+            },
+            {
+              "suit": "H",
+              "played": 7,
+              "remaining": 6,
+              "voidSeats": [
+                0,
+                1
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 12,
+              "remaining": 1,
+              "voidSeats": [
+                1,
+                3
+              ]
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            1,
+            1,
+            5,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SA",
+                  "seat": 2
+                },
+                {
+                  "card": "S8",
+                  "seat": 3
+                },
+                {
+                  "card": "S2",
+                  "seat": 0
+                },
+                {
+                  "card": "S9",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SK",
+                  "seat": 2
+                },
+                {
+                  "card": "D2",
+                  "seat": 3
+                },
+                {
+                  "card": "S3",
+                  "seat": 0
+                },
+                {
+                  "card": "D3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SQ",
+                  "seat": 2
+                },
+                {
+                  "card": "H2",
+                  "seat": 3
+                },
+                {
+                  "card": "S4",
+                  "seat": 0
+                },
+                {
+                  "card": "H3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SJ",
+                  "seat": 2
+                },
+                {
+                  "card": "D5",
+                  "seat": 3
+                },
+                {
+                  "card": "S5",
+                  "seat": 0
+                },
+                {
+                  "card": "D4",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "H5",
+                  "seat": 2
+                },
+                {
+                  "card": "HK",
+                  "seat": 3
+                },
+                {
+                  "card": "S6",
+                  "seat": 0
+                },
+                {
+                  "card": "D6",
+                  "seat": 1
+                }
+              ],
+              "winner": 0
+            }
+          ],
+          "handSizes": [
+            5,
+            5,
+            6,
+            6
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "HJ",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "6 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 6
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 16
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S04.turn-order",
+            "kind": "fact",
+            "text": "1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "claims": [
+              {
+                "args": {
+                  "count": 1
+                },
+                "predicate": "actors-after"
+              }
+            ]
+          },
+          {
+            "id": "S02.void",
+            "kind": "fact",
+            "text": "You have no card of the led suit, so any card in your hand is legal.",
+            "claims": [
+              {
+                "args": {
+                  "suit": "D"
+                },
+                "predicate": "own-void-in-led-suit"
+              },
+              {
+                "args": {
+                  "count": 6
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S11.trump-choice",
+            "kind": "fact",
+            "text": "There is no obligation to trump or overtrump in this profile.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S09.contract-met",
+            "kind": "fact",
+            "text": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty.",
+            "claims": [
+              {
+                "args": {
+                  "contract": 5,
+                  "credited": 5
+                },
+                "predicate": "contract-met"
+              },
+              {
+                "args": {
+                  "delta": 1
+                },
+                "predicate": "next-bag-delta"
+              }
+            ]
+          },
+          {
+            "id": "S09.limit-bags",
+            "kind": "heuristic",
+            "text": "When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "claims": [],
+            "actionIds": [
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10",
+              "play:HJ"
+            ]
+          },
+          {
+            "id": "CASE-02.no-entry",
+            "kind": "fact",
+            "text": "This seat cannot win another trick: it owns every remaining card of its only side suit and cannot regain the lead.",
+            "claims": [
+              {
+                "args": {
+                  "suit": "H"
+                },
+                "predicate": "case-no-entry"
+              }
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "facts-only"
+          },
+          "families": [],
+          "stanceId": "spades.limit-bags",
+          "selectedBy": "tactical-order",
+          "planSupported": false,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      },
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:46",
+        "seat": 2,
+        "action": {
+          "card": "H10",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [
+            {
+              "card": "S7",
+              "seat": 0
+            },
+            {
+              "card": "C7",
+              "seat": 1
+            }
+          ],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 18,
+              "card": "SA",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Ace of Spades."
+            },
+            {
+              "id": 19,
+              "card": "S8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Spades."
+            },
+            {
+              "id": 20,
+              "card": "S2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Spades."
+            },
+            {
+              "id": 21,
+              "card": "S9",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 9 of Spades."
+            },
+            {
+              "id": 22,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 3."
+            },
+            {
+              "id": 23,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 24,
+              "card": "SK",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played King of Spades."
+            },
+            {
+              "id": 25,
+              "card": "D2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Diamonds."
+            },
+            {
+              "id": 26,
+              "card": "S3",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 3 of Spades."
+            },
+            {
+              "id": 27,
+              "card": "D3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Diamonds."
+            },
+            {
+              "id": 28,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 4."
+            },
+            {
+              "id": 29,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 30,
+              "card": "SQ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Queen of Spades."
+            },
+            {
+              "id": 31,
+              "card": "H2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Hearts."
+            },
+            {
+              "id": 32,
+              "card": "S4",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 4 of Spades."
+            },
+            {
+              "id": 33,
+              "card": "H3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Hearts."
+            },
+            {
+              "id": 34,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 5."
+            },
+            {
+              "id": 35,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 36,
+              "card": "SJ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Jack of Spades."
+            },
+            {
+              "id": 37,
+              "card": "D5",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 5 of Diamonds."
+            },
+            {
+              "id": 38,
+              "card": "S5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Spades."
+            },
+            {
+              "id": 39,
+              "card": "D4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Diamonds."
+            },
+            {
+              "id": 40,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 6."
+            },
+            {
+              "id": 41,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 42,
+              "card": "H5",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 5 of Hearts."
+            },
+            {
+              "id": 43,
+              "card": "HK",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played King of Hearts."
+            },
+            {
+              "id": 44,
+              "card": "S6",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 6 of Spades."
+            },
+            {
+              "id": 45,
+              "card": "D6",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 6 of Diamonds."
+            },
+            {
+              "id": 46,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 7."
+            },
+            {
+              "id": 47,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 48,
+              "card": "DA",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played Ace of Diamonds."
+            },
+            {
+              "id": 49,
+              "card": "D7",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 7 of Diamonds."
+            },
+            {
+              "id": 50,
+              "card": "HJ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Jack of Hearts."
+            },
+            {
+              "id": 51,
+              "card": "D8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Diamonds."
+            },
+            {
+              "id": 52,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 8."
+            },
+            {
+              "id": 53,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 54,
+              "card": "S7",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 7 of Spades."
+            },
+            {
+              "id": 55,
+              "card": "C7",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 7 of Clubs."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 5,
+              "remaining": 8,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 8,
+              "remaining": 5,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "H",
+              "played": 8,
+              "remaining": 5,
+              "voidSeats": [
+                0,
+                1
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 13,
+              "remaining": 0,
+              "voidSeats": [
+                1,
+                3
+              ]
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            2,
+            1,
+            5,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SA",
+                  "seat": 2
+                },
+                {
+                  "card": "S8",
+                  "seat": 3
+                },
+                {
+                  "card": "S2",
+                  "seat": 0
+                },
+                {
+                  "card": "S9",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SK",
+                  "seat": 2
+                },
+                {
+                  "card": "D2",
+                  "seat": 3
+                },
+                {
+                  "card": "S3",
+                  "seat": 0
+                },
+                {
+                  "card": "D3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SQ",
+                  "seat": 2
+                },
+                {
+                  "card": "H2",
+                  "seat": 3
+                },
+                {
+                  "card": "S4",
+                  "seat": 0
+                },
+                {
+                  "card": "H3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SJ",
+                  "seat": 2
+                },
+                {
+                  "card": "D5",
+                  "seat": 3
+                },
+                {
+                  "card": "S5",
+                  "seat": 0
+                },
+                {
+                  "card": "D4",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "H5",
+                  "seat": 2
+                },
+                {
+                  "card": "HK",
+                  "seat": 3
+                },
+                {
+                  "card": "S6",
+                  "seat": 0
+                },
+                {
+                  "card": "D6",
+                  "seat": 1
+                }
+              ],
+              "winner": 0
+            },
+            {
+              "plays": [
+                {
+                  "card": "DA",
+                  "seat": 0
+                },
+                {
+                  "card": "D7",
+                  "seat": 1
+                },
+                {
+                  "card": "HJ",
+                  "seat": 2
+                },
+                {
+                  "card": "D8",
+                  "seat": 3
+                }
+              ],
+              "winner": 0
+            }
+          ],
+          "handSizes": [
+            4,
+            4,
+            5,
+            5
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H10",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "5 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 5
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 13
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S04.turn-order",
+            "kind": "fact",
+            "text": "1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "claims": [
+              {
+                "args": {
+                  "count": 1
+                },
+                "predicate": "actors-after"
+              }
+            ]
+          },
+          {
+            "id": "S02.void",
+            "kind": "fact",
+            "text": "You have no card of the led suit, so any card in your hand is legal.",
+            "claims": [
+              {
+                "args": {
+                  "suit": "S"
+                },
+                "predicate": "own-void-in-led-suit"
+              },
+              {
+                "args": {
+                  "count": 5
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S11.trump-choice",
+            "kind": "fact",
+            "text": "There is no obligation to trump or overtrump in this profile.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S09.contract-met",
+            "kind": "fact",
+            "text": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty.",
+            "claims": [
+              {
+                "args": {
+                  "contract": 5,
+                  "credited": 5
+                },
+                "predicate": "contract-met"
+              },
+              {
+                "args": {
+                  "delta": 1
+                },
+                "predicate": "next-bag-delta"
+              }
+            ]
+          },
+          {
+            "id": "S09.limit-bags",
+            "kind": "heuristic",
+            "text": "When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "claims": [],
+            "actionIds": [
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9",
+              "play:H10"
+            ]
+          },
+          {
+            "id": "CASE-02.no-entry",
+            "kind": "fact",
+            "text": "This seat cannot win another trick: it owns every remaining card of its only side suit and cannot regain the lead.",
+            "claims": [
+              {
+                "args": {
+                  "suit": "H"
+                },
+                "predicate": "case-no-entry"
+              }
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "facts-only"
+          },
+          "families": [],
+          "stanceId": "spades.limit-bags",
+          "selectedBy": "tactical-order",
+          "planSupported": false,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      },
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:51",
+        "seat": 2,
+        "action": {
+          "card": "H9",
+          "kind": "play",
+          "seat": 2
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "H6",
+            "H7",
+            "H8",
+            "H9"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 2,
+          "turn": 2,
+          "phase": "play",
+          "trick": [
+            {
+              "card": "CJ",
+              "seat": 0
+            },
+            {
+              "card": "CK",
+              "seat": 1
+            }
+          ],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 18,
+              "card": "SA",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Ace of Spades."
+            },
+            {
+              "id": 19,
+              "card": "S8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Spades."
+            },
+            {
+              "id": 20,
+              "card": "S2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Spades."
+            },
+            {
+              "id": 21,
+              "card": "S9",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 9 of Spades."
+            },
+            {
+              "id": 22,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 3."
+            },
+            {
+              "id": 23,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 24,
+              "card": "SK",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played King of Spades."
+            },
+            {
+              "id": 25,
+              "card": "D2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Diamonds."
+            },
+            {
+              "id": 26,
+              "card": "S3",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 3 of Spades."
+            },
+            {
+              "id": 27,
+              "card": "D3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Diamonds."
+            },
+            {
+              "id": 28,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 4."
+            },
+            {
+              "id": 29,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 30,
+              "card": "SQ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Queen of Spades."
+            },
+            {
+              "id": 31,
+              "card": "H2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Hearts."
+            },
+            {
+              "id": 32,
+              "card": "S4",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 4 of Spades."
+            },
+            {
+              "id": 33,
+              "card": "H3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Hearts."
+            },
+            {
+              "id": 34,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 5."
+            },
+            {
+              "id": 35,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 36,
+              "card": "SJ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Jack of Spades."
+            },
+            {
+              "id": 37,
+              "card": "D5",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 5 of Diamonds."
+            },
+            {
+              "id": 38,
+              "card": "S5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Spades."
+            },
+            {
+              "id": 39,
+              "card": "D4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Diamonds."
+            },
+            {
+              "id": 40,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 6."
+            },
+            {
+              "id": 41,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 42,
+              "card": "H5",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 5 of Hearts."
+            },
+            {
+              "id": 43,
+              "card": "HK",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played King of Hearts."
+            },
+            {
+              "id": 44,
+              "card": "S6",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 6 of Spades."
+            },
+            {
+              "id": 45,
+              "card": "D6",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 6 of Diamonds."
+            },
+            {
+              "id": 46,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 7."
+            },
+            {
+              "id": 47,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 48,
+              "card": "DA",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played Ace of Diamonds."
+            },
+            {
+              "id": 49,
+              "card": "D7",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 7 of Diamonds."
+            },
+            {
+              "id": 50,
+              "card": "HJ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Jack of Hearts."
+            },
+            {
+              "id": 51,
+              "card": "D8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Diamonds."
+            },
+            {
+              "id": 52,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 8."
+            },
+            {
+              "id": 53,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 54,
+              "card": "S7",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 7 of Spades."
+            },
+            {
+              "id": 55,
+              "card": "C7",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 7 of Clubs."
+            },
+            {
+              "id": 56,
+              "card": "H10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Hearts."
+            },
+            {
+              "id": 57,
+              "card": "C6",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 6 of Clubs."
+            },
+            {
+              "id": 58,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 9."
+            },
+            {
+              "id": 59,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 60,
+              "card": "CJ",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played Jack of Clubs."
+            },
+            {
+              "id": 61,
+              "card": "CK",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played King of Clubs."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 8,
+              "remaining": 5,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 8,
+              "remaining": 5,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "H",
+              "played": 9,
+              "remaining": 4,
+              "voidSeats": [
+                0,
+                1
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 13,
+              "remaining": 0,
+              "voidSeats": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            3,
+            1,
+            5,
+            0
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SA",
+                  "seat": 2
+                },
+                {
+                  "card": "S8",
+                  "seat": 3
+                },
+                {
+                  "card": "S2",
+                  "seat": 0
+                },
+                {
+                  "card": "S9",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SK",
+                  "seat": 2
+                },
+                {
+                  "card": "D2",
+                  "seat": 3
+                },
+                {
+                  "card": "S3",
+                  "seat": 0
+                },
+                {
+                  "card": "D3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SQ",
+                  "seat": 2
+                },
+                {
+                  "card": "H2",
+                  "seat": 3
+                },
+                {
+                  "card": "S4",
+                  "seat": 0
+                },
+                {
+                  "card": "H3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SJ",
+                  "seat": 2
+                },
+                {
+                  "card": "D5",
+                  "seat": 3
+                },
+                {
+                  "card": "S5",
+                  "seat": 0
+                },
+                {
+                  "card": "D4",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "H5",
+                  "seat": 2
+                },
+                {
+                  "card": "HK",
+                  "seat": 3
+                },
+                {
+                  "card": "S6",
+                  "seat": 0
+                },
+                {
+                  "card": "D6",
+                  "seat": 1
+                }
+              ],
+              "winner": 0
+            },
+            {
+              "plays": [
+                {
+                  "card": "DA",
+                  "seat": 0
+                },
+                {
+                  "card": "D7",
+                  "seat": 1
+                },
+                {
+                  "card": "HJ",
+                  "seat": 2
+                },
+                {
+                  "card": "D8",
+                  "seat": 3
+                }
+              ],
+              "winner": 0
+            },
+            {
+              "plays": [
+                {
+                  "card": "S7",
+                  "seat": 0
+                },
+                {
+                  "card": "C7",
+                  "seat": 1
+                },
+                {
+                  "card": "H10",
+                  "seat": 2
+                },
+                {
+                  "card": "C6",
+                  "seat": 3
+                }
+              ],
+              "winner": 0
+            }
+          ],
+          "handSizes": [
+            3,
+            3,
+            4,
+            4
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "H6",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H7",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H8",
+              "kind": "play",
+              "seat": 2
+            },
+            {
+              "card": "H9",
+              "kind": "play",
+              "seat": 2
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "4 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 4
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 10
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S04.turn-order",
+            "kind": "fact",
+            "text": "1 player still has to play; a current winner is provisional unless every possible response is excluded.",
+            "claims": [
+              {
+                "args": {
+                  "count": 1
+                },
+                "predicate": "actors-after"
+              }
+            ]
+          },
+          {
+            "id": "S02.void",
+            "kind": "fact",
+            "text": "You have no card of the led suit, so any card in your hand is legal.",
+            "claims": [
+              {
+                "args": {
+                  "suit": "C"
+                },
+                "predicate": "own-void-in-led-suit"
+              },
+              {
+                "args": {
+                  "count": 4
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S11.trump-choice",
+            "kind": "fact",
+            "text": "There is no obligation to trump or overtrump in this profile.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S09.contract-met",
+            "kind": "fact",
+            "text": "The positive contract is met. The next ordinary bag changes this hand's score by +1 before any later bag penalty.",
+            "claims": [
+              {
+                "args": {
+                  "contract": 5,
+                  "credited": 5
+                },
+                "predicate": "contract-met"
+              },
+              {
+                "args": {
+                  "delta": 1
+                },
+                "predicate": "next-bag-delta"
+              }
+            ]
+          },
+          {
+            "id": "S09.limit-bags",
+            "kind": "heuristic",
+            "text": "When no credited contract trick is needed from this seat, prefer avoiding an extra trick and shedding a higher loser.",
+            "claims": [],
+            "actionIds": [
+              "play:H6",
+              "play:H7",
+              "play:H8",
+              "play:H9"
+            ]
+          },
+          {
+            "id": "CASE-02.no-entry",
+            "kind": "fact",
+            "text": "This seat cannot win another trick: it owns every remaining card of its only side suit and cannot regain the lead.",
+            "claims": [
+              {
+                "args": {
+                  "suit": "H"
+                },
+                "predicate": "case-no-entry"
+              }
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "facts-only"
+          },
+          "families": [],
+          "stanceId": "spades.limit-bags",
+          "selectedBy": "tactical-order",
+          "planSupported": false,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      },
+      {
+        "decision": "629c485f-5c11-4c0d-ab97-e81de53e01b3:1:54",
+        "seat": 3,
+        "action": {
+          "card": "CQ",
+          "kind": "play",
+          "seat": 3
+        },
+        "observation": {
+          "bags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bids": [
+            3,
+            2,
+            5,
+            2
+          ],
+          "hand": [
+            "C9",
+            "CQ",
+            "DJ"
+          ],
+          "mode": "spades-solo",
+          "pass": {
+            "to": null,
+            "from": null,
+            "incoming": [],
+            "outgoing": []
+          },
+          "seat": 3,
+          "turn": 3,
+          "phase": "play",
+          "trick": [],
+          "dealer": 1,
+          "events": [
+            {
+              "id": 1,
+              "type": "hand-started",
+              "message": "Hand 1 dealt. North bid first."
+            },
+            {
+              "id": 2,
+              "bid": 5,
+              "seat": 2,
+              "type": "bid-placed",
+              "message": "North bid 5."
+            },
+            {
+              "id": 3,
+              "bid": 2,
+              "seat": 3,
+              "type": "bid-placed",
+              "message": "East bid 2."
+            },
+            {
+              "id": 4,
+              "bid": 3,
+              "seat": 0,
+              "type": "bid-placed",
+              "message": "You bid 3."
+            },
+            {
+              "id": 5,
+              "bid": 2,
+              "seat": 1,
+              "type": "bid-placed",
+              "message": "West bid 2."
+            },
+            {
+              "id": 6,
+              "card": "H4",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 4 of Hearts."
+            },
+            {
+              "id": 7,
+              "card": "HQ",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Queen of Hearts."
+            },
+            {
+              "id": 8,
+              "card": "C2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Clubs."
+            },
+            {
+              "id": 9,
+              "card": "HA",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played Ace of Hearts."
+            },
+            {
+              "id": 10,
+              "seat": 1,
+              "type": "trick-resolved",
+              "message": "West won trick 1."
+            },
+            {
+              "id": 11,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 12,
+              "card": "C4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Clubs."
+            },
+            {
+              "id": 13,
+              "card": "S10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Spades."
+            },
+            {
+              "id": 14,
+              "card": "C3",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 3 of Clubs."
+            },
+            {
+              "id": 15,
+              "card": "C5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Clubs."
+            },
+            {
+              "id": 16,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 2."
+            },
+            {
+              "id": 17,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 18,
+              "card": "SA",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Ace of Spades."
+            },
+            {
+              "id": 19,
+              "card": "S8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Spades."
+            },
+            {
+              "id": 20,
+              "card": "S2",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 2 of Spades."
+            },
+            {
+              "id": 21,
+              "card": "S9",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 9 of Spades."
+            },
+            {
+              "id": 22,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 3."
+            },
+            {
+              "id": 23,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 24,
+              "card": "SK",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played King of Spades."
+            },
+            {
+              "id": 25,
+              "card": "D2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Diamonds."
+            },
+            {
+              "id": 26,
+              "card": "S3",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 3 of Spades."
+            },
+            {
+              "id": 27,
+              "card": "D3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Diamonds."
+            },
+            {
+              "id": 28,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 4."
+            },
+            {
+              "id": 29,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 30,
+              "card": "SQ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Queen of Spades."
+            },
+            {
+              "id": 31,
+              "card": "H2",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 2 of Hearts."
+            },
+            {
+              "id": 32,
+              "card": "S4",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 4 of Spades."
+            },
+            {
+              "id": 33,
+              "card": "H3",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 3 of Hearts."
+            },
+            {
+              "id": 34,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 5."
+            },
+            {
+              "id": 35,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 36,
+              "card": "SJ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Jack of Spades."
+            },
+            {
+              "id": 37,
+              "card": "D5",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 5 of Diamonds."
+            },
+            {
+              "id": 38,
+              "card": "S5",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 5 of Spades."
+            },
+            {
+              "id": 39,
+              "card": "D4",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 4 of Diamonds."
+            },
+            {
+              "id": 40,
+              "seat": 2,
+              "type": "trick-resolved",
+              "message": "North won trick 6."
+            },
+            {
+              "id": 41,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 42,
+              "card": "H5",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 5 of Hearts."
+            },
+            {
+              "id": 43,
+              "card": "HK",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played King of Hearts."
+            },
+            {
+              "id": 44,
+              "card": "S6",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 6 of Spades."
+            },
+            {
+              "id": 45,
+              "card": "D6",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 6 of Diamonds."
+            },
+            {
+              "id": 46,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 7."
+            },
+            {
+              "id": 47,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 48,
+              "card": "DA",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played Ace of Diamonds."
+            },
+            {
+              "id": 49,
+              "card": "D7",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 7 of Diamonds."
+            },
+            {
+              "id": 50,
+              "card": "HJ",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played Jack of Hearts."
+            },
+            {
+              "id": 51,
+              "card": "D8",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 8 of Diamonds."
+            },
+            {
+              "id": 52,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 8."
+            },
+            {
+              "id": 53,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 54,
+              "card": "S7",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played 7 of Spades."
+            },
+            {
+              "id": 55,
+              "card": "C7",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played 7 of Clubs."
+            },
+            {
+              "id": 56,
+              "card": "H10",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 10 of Hearts."
+            },
+            {
+              "id": 57,
+              "card": "C6",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played 6 of Clubs."
+            },
+            {
+              "id": 58,
+              "seat": 0,
+              "type": "trick-resolved",
+              "message": "You won trick 9."
+            },
+            {
+              "id": 59,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            },
+            {
+              "id": 60,
+              "card": "CJ",
+              "seat": 0,
+              "type": "card-played",
+              "message": "You played Jack of Clubs."
+            },
+            {
+              "id": 61,
+              "card": "CK",
+              "seat": 1,
+              "type": "card-played",
+              "message": "West played King of Clubs."
+            },
+            {
+              "id": 62,
+              "card": "H9",
+              "seat": 2,
+              "type": "card-played",
+              "message": "North played 9 of Hearts."
+            },
+            {
+              "id": 63,
+              "card": "CA",
+              "seat": 3,
+              "type": "card-played",
+              "message": "East played Ace of Clubs."
+            },
+            {
+              "id": 64,
+              "seat": 3,
+              "type": "trick-resolved",
+              "message": "East won trick 10."
+            },
+            {
+              "id": 65,
+              "type": "trick-collected",
+              "message": "Completed trick cleared from the table."
+            }
+          ],
+          "memory": [
+            {
+              "suit": "C",
+              "played": 9,
+              "remaining": 4,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "D",
+              "played": 8,
+              "remaining": 5,
+              "voidSeats": [
+                2
+              ]
+            },
+            {
+              "suit": "H",
+              "played": 10,
+              "remaining": 3,
+              "voidSeats": [
+                0,
+                1
+              ]
+            },
+            {
+              "suit": "S",
+              "played": 13,
+              "remaining": 0,
+              "voidSeats": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "scores": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "tricks": [
+            3,
+            1,
+            5,
+            1
+          ],
+          "history": [
+            {
+              "plays": [
+                {
+                  "card": "H4",
+                  "seat": 2
+                },
+                {
+                  "card": "HQ",
+                  "seat": 3
+                },
+                {
+                  "card": "C2",
+                  "seat": 0
+                },
+                {
+                  "card": "HA",
+                  "seat": 1
+                }
+              ],
+              "winner": 1
+            },
+            {
+              "plays": [
+                {
+                  "card": "C4",
+                  "seat": 1
+                },
+                {
+                  "card": "S10",
+                  "seat": 2
+                },
+                {
+                  "card": "C3",
+                  "seat": 3
+                },
+                {
+                  "card": "C5",
+                  "seat": 0
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SA",
+                  "seat": 2
+                },
+                {
+                  "card": "S8",
+                  "seat": 3
+                },
+                {
+                  "card": "S2",
+                  "seat": 0
+                },
+                {
+                  "card": "S9",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SK",
+                  "seat": 2
+                },
+                {
+                  "card": "D2",
+                  "seat": 3
+                },
+                {
+                  "card": "S3",
+                  "seat": 0
+                },
+                {
+                  "card": "D3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SQ",
+                  "seat": 2
+                },
+                {
+                  "card": "H2",
+                  "seat": 3
+                },
+                {
+                  "card": "S4",
+                  "seat": 0
+                },
+                {
+                  "card": "H3",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "SJ",
+                  "seat": 2
+                },
+                {
+                  "card": "D5",
+                  "seat": 3
+                },
+                {
+                  "card": "S5",
+                  "seat": 0
+                },
+                {
+                  "card": "D4",
+                  "seat": 1
+                }
+              ],
+              "winner": 2
+            },
+            {
+              "plays": [
+                {
+                  "card": "H5",
+                  "seat": 2
+                },
+                {
+                  "card": "HK",
+                  "seat": 3
+                },
+                {
+                  "card": "S6",
+                  "seat": 0
+                },
+                {
+                  "card": "D6",
+                  "seat": 1
+                }
+              ],
+              "winner": 0
+            },
+            {
+              "plays": [
+                {
+                  "card": "DA",
+                  "seat": 0
+                },
+                {
+                  "card": "D7",
+                  "seat": 1
+                },
+                {
+                  "card": "HJ",
+                  "seat": 2
+                },
+                {
+                  "card": "D8",
+                  "seat": 3
+                }
+              ],
+              "winner": 0
+            },
+            {
+              "plays": [
+                {
+                  "card": "S7",
+                  "seat": 0
+                },
+                {
+                  "card": "C7",
+                  "seat": 1
+                },
+                {
+                  "card": "H10",
+                  "seat": 2
+                },
+                {
+                  "card": "C6",
+                  "seat": 3
+                }
+              ],
+              "winner": 0
+            },
+            {
+              "plays": [
+                {
+                  "card": "CJ",
+                  "seat": 0
+                },
+                {
+                  "card": "CK",
+                  "seat": 1
+                },
+                {
+                  "card": "H9",
+                  "seat": 2
+                },
+                {
+                  "card": "CA",
+                  "seat": 3
+                }
+              ],
+              "winner": 3
+            }
+          ],
+          "handSizes": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "handNumber": 1,
+          "heartsBroken": true,
+          "legalActions": [
+            {
+              "card": "C9",
+              "kind": "play",
+              "seat": 3
+            },
+            {
+              "card": "CQ",
+              "kind": "play",
+              "seat": 3
+            },
+            {
+              "card": "DJ",
+              "kind": "play",
+              "seat": 3
+            }
+          ],
+          "spadesBroken": true,
+          "knownHoldings": [],
+          "moduleVersion": "1.0.0",
+          "passDirection": "left",
+          "ruleProfileId": "spades-solo-training-1.0.0",
+          "featureVersion": "1.0.0",
+          "observationSchemaVersion": "1.0.0"
+        },
+        "reasons": [
+          {
+            "id": "S01.legal-set",
+            "kind": "fact",
+            "text": "3 legal card actions are available under this rule profile.",
+            "claims": [
+              {
+                "args": {
+                  "count": 3
+                },
+                "predicate": "legal-count"
+              }
+            ]
+          },
+          {
+            "id": "S03.ownership",
+            "kind": "fact",
+            "text": "Unplayed higher cards remain possible holdings; choosing a low card or declining to trump does not reveal their owner.",
+            "claims": [
+              {
+                "args": {
+                  "count": 9
+                },
+                "predicate": "concealed-cards-remain"
+              },
+              {
+                "args": {},
+                "predicate": "trump-optional"
+              }
+            ]
+          },
+          {
+            "id": "S08.contract",
+            "kind": "fact",
+            "text": "Your contract needs 1 credited trick; only positive bidders supply that credit.",
+            "claims": [
+              {
+                "args": {
+                  "scope": "individual",
+                  "needed": 1,
+                  "contract": 2,
+                  "credited": 1
+                },
+                "predicate": "contract-need"
+              },
+              {
+                "args": {},
+                "predicate": "nil-tricks-no-credit"
+              }
+            ]
+          },
+          {
+            "id": "S10.lead-choice",
+            "kind": "heuristic",
+            "text": "Compare cashing control with developing a short suit. A side-suit master may still be trumped.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "trump-beats-side-suit"
+              }
+            ]
+          },
+          {
+            "id": "S14.late-score",
+            "kind": "heuristic",
+            "text": "Late-hand choices depend on contracts, Nil and bag penalties. Match victory is checked only after the complete hand is scored; this tactical policy does not solve the remaining hand.",
+            "claims": [
+              {
+                "args": {},
+                "predicate": "match-after-hand"
+              }
+            ]
+          },
+          {
+            "id": "S10.develop-suit",
+            "kind": "heuristic",
+            "text": "A low lead from a shorter suit can develop a future void while preserving higher cards.",
+            "claims": [],
+            "actionIds": [
+              "play:C9",
+              "play:DJ"
+            ]
+          },
+          {
+            "id": "S10.cash-control",
+            "kind": "heuristic",
+            "text": "This is the highest unplayed card of its suit. Cashing it may help the contract, while possible ruffs still matter.",
+            "claims": [
+              {
+                "args": {
+                  "master": true,
+                  "actionId": "play:CQ"
+                },
+                "predicate": "action-is-master"
+              }
+            ],
+            "actionIds": [
+              "play:CQ"
+            ]
+          },
+          {
+            "id": "CASE-04.unbeatable-lead",
+            "kind": "fact",
+            "text": "No legal response can beat the selected lead.",
+            "claims": [
+              {
+                "args": {
+                  "winner": 3,
+                  "actionId": "play:CQ"
+                },
+                "predicate": "guaranteed-winner"
+              }
+            ],
+            "actionIds": [
+              "play:CQ"
+            ]
+          },
+          {
+            "id": "PLAN.stance",
+            "kind": "fact",
+            "text": "One plan: make your contract.",
+            "claims": [
+              {
+                "args": {
+                  "stanceId": "spades.make-contract"
+                },
+                "predicate": "plan-stance"
+              }
+            ],
+            "actionIds": [
+              "play:CQ"
+            ]
+          }
+        ],
+        "policyDecision": {
+          "coach": {
+            "outcome": "suggestion",
+            "explanation": "supported"
+          },
+          "families": [],
+          "stanceId": "spades.make-contract",
+          "selectedBy": "tactical-order",
+          "planSupported": true,
+          "selectionRule": {
+            "version": "selection-rule-1.0.0",
+            "tieBreak": "tactical-order",
+            "noiseBand": {
+              "z": 1.5,
+              "floor": 1
+            },
+            "practicalTie": 1,
+            "minEffectiveWorlds": 8
+          },
+          "tiedActionIds": [],
+          "mergedActionIds": {},
+          "resultingStances": {},
+          "comparableActionIds": [],
+          "notSearchedActionIds": []
+        }
+      }
+    ]
+  },
+  "capturedAt": "2026-10-02T06:26:05.795Z"
+}

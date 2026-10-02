@@ -1,0 +1,103 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 1,
+    "phase": "play",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C2",
+      "C5",
+      "C8",
+      "CJ",
+      "DQ",
+      "DK",
+      "DA",
+      "S2",
+      "S3",
+      "S4",
+      "S5",
+      "S6",
+      "S7"
+    ],
+    "handSizes": [
+      13,
+      13,
+      12,
+      12
+    ],
+    "bids": [
+      3,
+      2,
+      5,
+      2
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [
+      {
+        "seat": 2,
+        "card": "H4"
+      },
+      {
+        "seat": 3,
+        "card": "HQ"
+      }
+    ],
+    "spadesBroken": false,
+    "legalActions": [
+      "play:C2",
+      "play:C5",
+      "play:C8",
+      "play:CJ",
+      "play:DQ",
+      "play:DK",
+      "play:DA",
+      "play:S2",
+      "play:S3",
+      "play:S4",
+      "play:S5",
+      "play:S6",
+      "play:S7"
+    ]
+  },
+  "packetHash": "361af5ac3b0b151914bf4623d93e62985f63b6cc75a7d7de389f7f053c56a119",
+  "action": {
+    "kind": "play",
+    "card": "C2"
+  },
+  "reason": "I’m void in hearts, so I can discard; C2 is unlikely to win later, while my low spades and high diamonds may help me take tricks. East may still win this trick, and West’s play is unknown.",
+  "source": "luna",
+  "transportFile": "transport/resources-solo-baseline-player-02-1790921894018-1.json"
+}

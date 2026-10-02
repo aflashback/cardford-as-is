@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "browser-recorder-amendment-1.0.0",
+  "at": "2026-10-02T05:26:42.957Z",
+  "recorderVersion": "1.0.1",
+  "path": "qa/experiments/2026-10-02-browser-baseline/run-browser.mjs",
+  "before": "9f78b1825534a6f7dfcb5d5b881cce94ff16691daba5c3ca6ee31e6b76a694bf",
+  "after": "f9db7b5a82b79320ebc3a90cde31255f991b662d08f1bd3cd8c8965765c9b9c9",
+  "preservedOriginal": "provenance/run-browser-1.0.0.mjs",
+  "timing": "After all 56 actions of control-solo-baseline; before its coach UI verification completed and before any other measured hand.",
+  "changes": [
+    "Accept a single newline between the action line and reasoning paragraph, as the unchanged player template specifies.",
+    "Check legacy public advice policy absence against its unchanged projection; verify policy from the private original analysis. Candidate advice still must expose the exact policy.",
+    "Record the recorder revision on subsequent choices and coach UI checks.",
+    "On completed-hand resume, dismiss the recap before acquiring the browser control lease; restore the recap in the same tab without changing the game."
+  ],
+  "retained": "Original runtime, templates, fixtures and code-snapshot remain unchanged. Both unnecessary first-hand formatting rejections and the completed game are retained. No move or result is replaced.",
+  "firstHandChoices": 14,
+  "measuredHandsCreated": 1,
+  "totalSessionsCreated": 2,
+  "interruption": "provenance/interruption-1.json"
+}

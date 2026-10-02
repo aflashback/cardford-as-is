@@ -1,0 +1,222 @@
+{
+  "runId": "control-partners-candidate",
+  "stage": "trick-7",
+  "packet": {
+    "throughTrick": 7,
+    "packet": {
+      "game": "spades-partners",
+      "ruleProfile": "spades-training-1.0.0",
+      "seat": 0,
+      "dealer": 3,
+      "phase": "play",
+      "competition": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "hand": [
+        "DQ",
+        "DA",
+        "S9",
+        "SJ",
+        "SQ",
+        "SK"
+      ],
+      "handSizes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "bids": [
+        6,
+        3,
+        0,
+        2
+      ],
+      "tricks": [
+        4,
+        3,
+        0,
+        0
+      ],
+      "scores": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "bags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "completedTricks": [
+        {
+          "winner": 1,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "C6"
+            },
+            {
+              "seat": 1,
+              "card": "C8"
+            },
+            {
+              "seat": 2,
+              "card": "C7"
+            },
+            {
+              "seat": 3,
+              "card": "C5"
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "plays": [
+            {
+              "seat": 1,
+              "card": "HA"
+            },
+            {
+              "seat": 2,
+              "card": "H9"
+            },
+            {
+              "seat": 3,
+              "card": "H6"
+            },
+            {
+              "seat": 0,
+              "card": "H5"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 1,
+              "card": "H3"
+            },
+            {
+              "seat": 2,
+              "card": "H2"
+            },
+            {
+              "seat": 3,
+              "card": "H10"
+            },
+            {
+              "seat": 0,
+              "card": "HK"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "CA"
+            },
+            {
+              "seat": 1,
+              "card": "C3"
+            },
+            {
+              "seat": 2,
+              "card": "C9"
+            },
+            {
+              "seat": 3,
+              "card": "C10"
+            }
+          ]
+        },
+        {
+          "winner": 1,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "D7"
+            },
+            {
+              "seat": 1,
+              "card": "D9"
+            },
+            {
+              "seat": 2,
+              "card": "D6"
+            },
+            {
+              "seat": 3,
+              "card": "D3"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 1,
+              "card": "CK"
+            },
+            {
+              "seat": 2,
+              "card": "C4"
+            },
+            {
+              "seat": 3,
+              "card": "D8"
+            },
+            {
+              "seat": 0,
+              "card": "S3"
+            }
+          ]
+        },
+        {
+          "winner": 0,
+          "plays": [
+            {
+              "seat": 0,
+              "card": "SA"
+            },
+            {
+              "seat": 1,
+              "card": "S7"
+            },
+            {
+              "seat": 2,
+              "card": "S4"
+            },
+            {
+              "seat": 3,
+              "card": "S5"
+            }
+          ]
+        }
+      ],
+      "currentTrick": [],
+      "spadesBroken": true,
+      "legalActions": [
+        "play:DQ",
+        "play:DA",
+        "play:S9",
+        "play:SJ",
+        "play:SQ",
+        "play:SK"
+      ]
+    }
+  },
+  "capturedAt": "2026-10-02T05:37:31.230Z"
+}

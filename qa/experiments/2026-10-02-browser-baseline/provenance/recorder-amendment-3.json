@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "browser-recorder-amendment-1.0.0",
+  "at": "2026-10-02T06:06:07.402Z",
+  "recorderVersion": "1.0.3",
+  "path": "qa/experiments/2026-10-02-browser-baseline/run-browser.mjs",
+  "preservedOriginal": "provenance/run-browser-1.0.2.mjs",
+  "before": "99d78260b8d73bfaa59e5417bce330610d051b1ea90f19a29082c5f7a4fb26fe",
+  "after": "35250b932edf280fd3ce5de02f6abe953018c66dbbe211cacfdf36f655e30d16",
+  "timing": "After five complete hands. The next baseline start received HTTP409; no new game is recorded and its pending start requires reconciliation.",
+  "changes": [
+    "Acquire the existing completed table control lease through real DOM before starting a different selected game after reopening a browser profile.",
+    "Record allowlisted HTTP error code/message alongside status for failed browser requests."
+  ],
+  "retained": "Runtime, fixtures, templates, accepted choices and completed results unchanged.",
+  "interruption": "provenance/interruption-4.json"
+}

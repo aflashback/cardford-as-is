@@ -1,0 +1,95 @@
+{
+  "packet": {
+    "game": "spades-solo",
+    "ruleProfile": "spades-solo-training-1.0.0",
+    "seat": 0,
+    "dealer": 3,
+    "phase": "bid",
+    "competition": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "hand": [
+      "C6",
+      "CA",
+      "D7",
+      "DQ",
+      "DA",
+      "H5",
+      "HK",
+      "S3",
+      "S9",
+      "SJ",
+      "SQ",
+      "SK",
+      "SA"
+    ],
+    "handSizes": [
+      13,
+      13,
+      13,
+      13
+    ],
+    "bids": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "tricks": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "scores": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "bags": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "completedTricks": [],
+    "currentTrick": [],
+    "spadesBroken": false,
+    "legalActions": [
+      "bid:0",
+      "bid:1",
+      "bid:2",
+      "bid:3",
+      "bid:4",
+      "bid:5",
+      "bid:6",
+      "bid:7",
+      "bid:8",
+      "bid:9",
+      "bid:10",
+      "bid:11",
+      "bid:12",
+      "bid:13"
+    ]
+  },
+  "packetHash": "7c3c8c4385f1c3c4f6f1acad0b6d0085d756c49b96112940a5c2cd32c7e5c28e",
+  "action": {
+    "kind": "bid",
+    "bid": 7
+  },
+  "reason": "I have four high spades plus the 9, two side-suit aces, and a heart king that may take a trick. The 9 and side honors are uncertain, so seven feels safer than counting every possible winner.",
+  "source": "luna",
+  "transportFile": "transport/control-solo-baseline-player-01-1790918132874-1.json"
+}
