@@ -216,6 +216,7 @@ export function analyzeHeartsPlan(
       planSupported,
       families: decision ? ['play'] : [],
       comparableActionIds: comparable,
+      tiedActionIds: decision?.tiedIds ?? [],
       notSearchedActionIds: decision?.notSearchedIds ?? [],
       mergedActionIds: decision?.merged ?? {},
       resultingStances: decision?.resultingStances ?? {},
