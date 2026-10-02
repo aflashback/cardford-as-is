@@ -19,6 +19,7 @@ import {
 import { explain } from '../coaching/templates.ts';
 import { projectAdvice } from '../coaching/project.ts';
 import { shuffledDeck, randomDealer } from '../game-deal.ts';
+import type { DevScenarioDeal } from '../dev-scenarios.ts';
 import { ownedTransaction, idempotent, saveGame, savePlayer } from '../records/repository.ts';
 import type { Database, Transaction } from '../records/database.ts';
 import type { GameRow, PlayerRow, SavedDecisionAnalysis } from '../records/types.ts';
@@ -147,9 +148,10 @@ async function insertGame(
   mode: NewSessionRequest['mode'],
   tab: string,
   strategy: Strategy,
+  scenario?: DevScenarioDeal,
 ): Promise<GameRow> {
   const id = randomUUID();
-  const deck = shuffledDeck();
+  const deck = scenario ? [...scenario.deck] : shuffledDeck();
   const game: GameRow = {
     id,
     player_id: player.id,
@@ -157,7 +159,10 @@ async function insertGame(
     document: {
       tableType: 'practice-bots',
       decisionAnalyses: {},
-      state: createGame({ id, mode, dealer: randomDealer() }, deck),
+      state: createGame({ id, mode, dealer: scenario?.dealer ?? randomDealer() }, deck),
+      ...(scenario
+        ? { openingScenario: { metadata: { ...scenario.metadata }, dealer: scenario.dealer } }
+        : {}),
       control: { tab, token: leaseToken() },
       stats: { decisions: 0, helped: 0, suggestions: 0 },
       exposure: {},
@@ -182,9 +187,11 @@ async function insertGame(
 export class GameService {
   readonly pool: Database;
   readonly strategy: Strategy;
-  constructor(pool: Database, options: StrategyOptions = {}) {
+  readonly scenarios: readonly DevScenarioDeal[];
+  constructor(pool: Database, options: StrategyOptions = {}, scenarios: readonly DevScenarioDeal[] = []) {
     this.pool = pool;
     this.strategy = new Strategy(options);
+    this.scenarios = structuredClone(scenarios);
   }
   /**
    * STRAT-12: read the pending human decision, analyse it with no transaction open, then
@@ -246,7 +253,27 @@ export class GameService {
           );
         if (game && game.document.control.tab !== context.tab)
           throw new ApiFailure(409, 'LEASE_LOST', 'Take control before replacing the table.');
-        const next = await insertGame(client, player, body.mode, context.tab, this.strategy);
+        let scenario: DevScenarioDeal | undefined;
+        if (body.scenarioId !== undefined || body.replayScenario) {
+          if (!this.scenarios.length)
+            throw new ApiFailure(403, 'FORBIDDEN', 'Selected deals are disabled on this server.');
+          if (body.replayScenario) {
+            if (!game?.document.openingScenario || game.document.state.handNumber !== 1)
+              throw new ApiFailure(
+                400,
+                'INVALID_COMMAND',
+                'Choose a selected opening deal before replaying it.',
+              );
+            scenario = {
+              metadata: { ...game.document.openingScenario.metadata },
+              dealer: game.document.openingScenario.dealer,
+              deck: [...game.document.deals[0]],
+            };
+          } else scenario = this.scenarios.find((item) => item.metadata.id === body.scenarioId);
+          if (!scenario || scenario.metadata.mode !== body.mode)
+            throw new ApiFailure(400, 'INVALID_COMMAND', 'Choose a listed deal for the selected game.');
+        }
+        const next = await insertGame(client, player, body.mode, context.tab, this.strategy, scenario);
         return sessionView(client, player, next, context.tab);
       }),
     );

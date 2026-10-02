@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
 export const workspaceRoot = fileURLToPath(new URL('../../', import.meta.url));
 export function loadLocalEnvironment() {
@@ -10,6 +11,9 @@ export function readConfig(env: NodeJS.ProcessEnv = process.env) {
   if (!['local', 'test', 'staging', 'production'].includes(env.APP_ENV ?? ''))
     throw new Error('APP_ENV must be explicit.');
   const appEnv = env.APP_ENV as 'local' | 'test' | 'staging' | 'production';
+  const scenarioPath = env.DEV_SCENARIOS_FILE?.trim() || null;
+  if (scenarioPath && appEnv !== 'local' && appEnv !== 'test')
+    throw new Error('DEV_SCENARIOS_FILE is permitted only in local and test environments.');
   const hosted = appEnv === 'staging' || appEnv === 'production';
   if (
     hosted &&
@@ -55,6 +59,8 @@ export function readConfig(env: NodeJS.ProcessEnv = process.env) {
     jevMode: 'off' as const,
     /** Local trial only: a named Spades policy profile. Null keeps the live default. */
     spadesPolicy,
+    /** RD-02: no selected-deal override unless the server explicitly opts in. */
+    devScenariosFile: scenarioPath ? resolve(workspaceRoot, scenarioPath) : null,
   };
 }
 export type Config = ReturnType<typeof readConfig>;

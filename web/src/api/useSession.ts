@@ -6,6 +6,7 @@ import type {
   Mode,
   Preferences,
   SessionView,
+  NewSessionRequest,
 } from '../../shared/contracts';
 import { api, ApiFailure } from './client';
 
@@ -79,10 +80,15 @@ export function useSession() {
     [submit, envelope],
   );
   const action = (action: GameAction) => mutate('/api/session/actions', { action });
-  const newGame = (mode: Mode) =>
+  const newGame = (mode: Mode, selection: Pick<NewSessionRequest, 'scenarioId' | 'replayScenario'> = {}) =>
     submit({
       path: '/api/sessions',
-      body: { commandId: crypto.randomUUID(), mode, expectedActiveGameId: current.current?.game.id ?? null },
+      body: {
+        commandId: crypto.randomUUID(),
+        mode,
+        expectedActiveGameId: current.current?.game.id ?? null,
+        ...selection,
+      },
     });
   const preferences = (preferences: Preferences) =>
     submit({

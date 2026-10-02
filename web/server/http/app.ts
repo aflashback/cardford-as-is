@@ -17,6 +17,7 @@ import { BillingFailure } from '../billing/store.ts';
 import type { Transaction } from '../records/database.ts';
 import { exportAccount, deleteLocalAccount } from '../access/account-data.ts';
 import { TrialService } from './trial-service.ts';
+import { loadDevScenarios } from '../dev-scenarios.ts';
 
 declare module 'fastify' {
   interface FastifyContextConfig {
@@ -25,11 +26,14 @@ declare module 'fastify' {
 }
 
 export async function createApp(config: Config, pool: Database) {
+  if (config.devScenariosFile && config.appEnv !== 'local' && config.appEnv !== 'test')
+    throw new Error('Selected deals require a local or test environment.');
+  const scenarios = await loadDevScenarios(config.devScenariosFile);
   const app = Fastify({ logger: false, bodyLimit: 32768, trustProxy: false });
   const policies: Partial<Record<string, string>> = config.spadesPolicy
     ? { 'spades-solo': config.spadesPolicy, 'spades-partners': config.spadesPolicy }
     : {};
-  const service = new GameService(pool, { policies });
+  const service = new GameService(pool, { policies }, scenarios);
   const trials = new TrialService(pool, policies);
   app.addHook('onClose', async () => trials.close());
   await app.register(cookie);
@@ -68,12 +72,10 @@ export async function createApp(config: Config, pool: Database) {
       return reply.status(error.status).send({ code: error.code, message: error.message });
     if ((error as { statusCode?: number }).statusCode === 400)
       return reply.status(400).send({ code: 'INVALID_COMMAND', message: 'Malformed request.' });
-    return reply
-      .status(503)
-      .send({
-        code: 'SERVICE_UNAVAILABLE',
-        message: 'The server could not complete this request. Your last confirmed table is saved.',
-      });
+    return reply.status(503).send({
+      code: 'SERVICE_UNAVAILABLE',
+      message: 'The server could not complete this request. Your last confirmed table is saved.',
+    });
   });
   async function context(
     request: FastifyRequest,
@@ -165,6 +167,9 @@ export async function createApp(config: Config, pool: Database) {
     return { status: 'ready', mode: 'local', provider: 'off', payments: 'fixture' };
   });
   get('/api/session', 'SessionView', (ctx) => service.session(ctx), true);
+  get('/api/dev/scenarios', 'DevScenariosView', async () => ({
+    scenarios: scenarios.map(({ metadata }) => ({ ...metadata })),
+  }));
   post('/api/sessions', 'NewSessionRequest', 'SessionView', (ctx, body) => service.newSession(ctx, body));
   post('/api/session/control', 'CommandEnvelope', 'SessionView', (ctx, body) => service.control(ctx, body));
   post('/api/session/actions', 'ActionsRequest', 'SessionView', (ctx, body) => service.action(ctx, body));

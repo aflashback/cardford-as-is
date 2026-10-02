@@ -116,5 +116,8 @@ export async function sessionView(
     source: 'code',
     controlLeaseToken: game.document.control.tab === tab ? game.document.control.token : 'view-only',
     stats: { ...game.document.stats },
+    ...(game.document.state.handNumber === 1 && game.document.openingScenario
+      ? { scenario: { ...game.document.openingScenario.metadata } }
+      : {}),
   };
 }

@@ -9,7 +9,7 @@ await migrate(pool);
 const app = await createApp(config, pool);
 await app.listen({ host: config.host, port: config.port });
 console.log(
-  `CardFord is ready at ${config.origin} (local identity, fixture billing, Jev off, Spades policy ${config.spadesPolicy ?? 'live default'}).`,
+  `CardFord is ready at ${config.origin} (local identity, fixture billing, Jev off, Spades policy ${config.spadesPolicy ?? 'live default'}, selected deals ${config.devScenariosFile ? 'enabled' : 'off'}).`,
 );
 const stop = async () => {
   await app.close();

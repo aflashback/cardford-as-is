@@ -555,6 +555,9 @@
         },
         "stats": {
           "$ref": "#/$defs/SessionStats"
+        },
+        "scenario": {
+          "$ref": "#/$defs/DevScenarioView"
         }
       },
       "required": [
@@ -745,6 +748,13 @@
               "type": "null"
             }
           ]
+        },
+        "scenarioId": {
+          "$ref": "#/$defs/ScenarioId"
+        },
+        "replayScenario": {
+          "const": true,
+          "type": "boolean"
         }
       },
       "required": [
@@ -752,7 +762,17 @@
         "mode",
         "expectedActiveGameId"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "not": {
+        "required": [
+          "scenarioId",
+          "replayScenario"
+        ],
+        "properties": {
+          "scenarioId": {},
+          "replayScenario": {}
+        }
+      }
     },
     "ActionsRequest": {
       "title": "ActionsRequest",
@@ -2432,6 +2452,59 @@
         "billing"
       ],
       "additionalProperties": false
+    },
+    "ScenarioId": {
+      "title": "ScenarioId",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+      "maxLength": 64
+    },
+    "DevScenarioView": {
+      "title": "DevScenarioView",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/ScenarioId"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "maxLength": 32
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "label",
+        "mode"
+      ]
+    },
+    "DevScenariosView": {
+      "title": "DevScenariosView",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DevScenarioView"
+          },
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "scenarios"
+      ]
     }
   },
   "anyOf": [
@@ -2608,6 +2681,15 @@
     },
     {
       "$ref": "#/$defs/ExportView"
+    },
+    {
+      "$ref": "#/$defs/ScenarioId"
+    },
+    {
+      "$ref": "#/$defs/DevScenarioView"
+    },
+    {
+      "$ref": "#/$defs/DevScenariosView"
     }
   ]
 }

@@ -59,3 +59,6 @@ export const validateFamilyCommand: ValidateFunction<ContractTypes['FamilyComman
 export const validateAccountDeleteRequest: ValidateFunction<ContractTypes['AccountDeleteRequest']>;
 export const validateAccountDeleteView: ValidateFunction<ContractTypes['AccountDeleteView']>;
 export const validateExportView: ValidateFunction<ContractTypes['ExportView']>;
+export const validateScenarioId: ValidateFunction<ContractTypes['ScenarioId']>;
+export const validateDevScenarioView: ValidateFunction<ContractTypes['DevScenarioView']>;
+export const validateDevScenariosView: ValidateFunction<ContractTypes['DevScenariosView']>;

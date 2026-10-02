@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import type { SessionView } from '../shared/contracts';
+import type { DevScenarioView, SessionView } from '../shared/contracts';
 
 function fixture(): SessionView {
   return {
@@ -51,7 +51,7 @@ function fixture(): SessionView {
     stats: { decisions: 0, helped: 0, suggestions: 0 },
   };
 }
-async function mount(page: Page, value: SessionView = fixture()) {
+async function mount(page: Page, value: SessionView = fixture(), scenarios: DevScenarioView[] = []) {
   let state = structuredClone(value);
   const commands: Record<string, unknown>[] = [];
   await page.route(
@@ -59,6 +59,7 @@ async function mount(page: Page, value: SessionView = fixture()) {
     async (route) => {
       const url = new URL(route.request().url());
       expect(route.request().headers()['x-tricks-tab']).toBeTruthy();
+      if (url.pathname === '/api/dev/scenarios') return route.fulfill({ json: { scenarios } });
       if (route.request().method() !== 'GET') expect(route.request().headers()['x-tricks-client']).toBe('1');
       if (url.pathname === '/api/session/actions') {
         const body = route.request().postDataJSON() as Record<string, unknown>;
@@ -235,6 +236,8 @@ test('late refresh cannot overwrite a newly accepted game', async ({ page }) => 
     (url) => url.pathname.startsWith('/api/'),
     async (route) => {
       if (new URL(route.request().url()).pathname === '/api/sessions') return route.fulfill({ json: next });
+      if (new URL(route.request().url()).pathname === '/api/dev/scenarios')
+        return route.fulfill({ json: { scenarios: [] } });
       reads++;
       if (reads === 3) {
         await new Promise<void>((resolve) => {
@@ -323,6 +326,126 @@ test('retry after lost response keeps exactly the original mutation envelope', a
   await expect(page.locator('.hand-card')).toHaveCount(3);
   expect(bodies).toHaveLength(2);
   expect(bodies[1]).toEqual(bodies[0]);
+});
+
+test('selected deals stage locally, restrict the game and label the resulting table', async ({
+  page,
+}, testInfo) => {
+  const scenario: DevScenarioView = {
+    id: 'partners-opening-a',
+    version: '1.0.0',
+    label: 'Opening A',
+    mode: 'spades-partners',
+  };
+  const initial = fixture();
+  const controls = await mount(page, initial, [scenario]);
+  const requests: Record<string, unknown>[] = [];
+  await page.route('**/api/sessions', (route) => {
+    requests.push(route.request().postDataJSON());
+    const next = { ...fixture(), scenario };
+    next.game.id = 'selected-game';
+    controls.setState(next);
+    return route.fulfill({ json: next });
+  });
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  const picker = page.getByLabel('Practice deal');
+  await picker.selectOption(scenario.id);
+  expect(requests).toHaveLength(0);
+  await expect(page.locator('.game-option').filter({ has: page.locator('.game-art-hearts') })).toBeDisabled();
+  await expect(
+    page.locator('.game-option').filter({ has: page.locator('.game-art-spades-solo') }),
+  ).toBeDisabled();
+  await page.getByRole('button', { name: 'Close new game setup' }).click();
+  expect(requests).toHaveLength(0);
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await expect(picker).toHaveValue('');
+  await picker.selectOption(scenario.id);
+  await page.screenshot({ path: testInfo.outputPath('selected-deal-picker.png') });
+  await page
+    .locator('.game-option')
+    .filter({ has: page.locator('.game-art-spades-partners') })
+    .click();
+  await expect(page.locator('.scenario-badge')).toHaveText('Selected deal: Opening A');
+  expect(requests).toHaveLength(1);
+  expect(requests[0]).toMatchObject({
+    mode: scenario.mode,
+    scenarioId: scenario.id,
+    expectedActiveGameId: initial.game.id,
+  });
+  expect(Object.keys(requests[0]).sort()).toEqual([
+    'commandId',
+    'expectedActiveGameId',
+    'mode',
+    'scenarioId',
+  ]);
+  await page.screenshot({ path: testInfo.outputPath('selected-deal-table.png') });
+});
+
+test('Replay this deal requests the saved setup and creates a fresh table', async ({ page }) => {
+  const scenario: DevScenarioView = {
+    id: 'partners-opening-a',
+    version: '1.0.0',
+    label: 'Opening A',
+    mode: 'spades-partners',
+  };
+  const initial = { ...fixture(), scenario };
+  const controls = await mount(page, initial, [scenario]);
+  const end = structuredClone(initial);
+  end.game.phase = 'hand-end';
+  end.game.hand = [];
+  end.game.handCounts = [0, 0, 0, 0];
+  end.game.turn = null;
+  end.game.legalActions = [];
+  end.game.handResult = { points: [30, 20, 30, 20], bags: [0, 0, 0, 0] };
+  controls.setState(end);
+  const requests: Record<string, unknown>[] = [];
+  await page.route('**/api/sessions', (route) => {
+    requests.push(route.request().postDataJSON());
+    const fresh = { ...fixture(), scenario };
+    fresh.game.id = 'replayed-game';
+    controls.setState(fresh);
+    return route.fulfill({ json: fresh });
+  });
+  await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Replay this deal', exact: true }).click();
+  await expect(page.locator('.scenario-badge')).toHaveText('Selected deal: Opening A');
+  await expect(page.getByRole('button', { name: 'Replay this deal', exact: true })).toHaveCount(0);
+  expect(requests).toHaveLength(1);
+  expect(requests[0]).toMatchObject({
+    replayScenario: true,
+    mode: scenario.mode,
+    expectedActiveGameId: initial.game.id,
+  });
+  expect(requests[0]).not.toHaveProperty('scenarioId');
+});
+
+test('a saved selected hand continues normally when the scenario catalog is disabled', async ({ page }) => {
+  const ended = fixture();
+  ended.scenario = { id: 'opening-a', version: '1.0.0', label: 'Opening A', mode: ended.game.mode };
+  ended.game.phase = 'hand-end';
+  ended.game.hand = [];
+  ended.game.handCounts = [0, 0, 0, 0];
+  ended.game.turn = null;
+  ended.game.legalActions = [];
+  ended.game.handResult = { points: [30, 20, 30, 20], bags: [0, 0, 0, 0] };
+  const harness = await mount(page, ended);
+  const requests: unknown[] = [];
+  const next = fixture();
+  next.game.handNumber = 2;
+  await page.route('**/api/session/next-hand', (route) => {
+    requests.push(route.request().postDataJSON());
+    harness.setState(next);
+    return route.fulfill({ json: next });
+  });
+  await expect(page.locator('.scenario-badge')).toHaveText('Selected deal: Opening A');
+  await expect(page.getByRole('button', { name: 'Replay this deal', exact: true })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Play again', exact: true }).click();
+  await expect(page.locator('.scenario-badge')).toHaveCount(0);
+  expect(requests).toHaveLength(1);
+  expect(requests[0]).toMatchObject({ gameId: ended.game.id, expectedRevision: ended.revision });
 });
 
 test('billing preview is server-defined and requires explicit confirmation', async ({ page }) => {

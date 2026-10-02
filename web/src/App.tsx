@@ -17,7 +17,15 @@ import {
   Sparkles,
   X,
 } from 'lucide-react';
-import type { AdviceView, Card, GameView, Mode, Seat } from '../shared/contracts';
+import type {
+  AdviceView,
+  Card,
+  DevScenarioView,
+  GameView,
+  Mode,
+  NewSessionRequest,
+  Seat,
+} from '../shared/contracts';
 import { cardLabel, cardRank, cardSuit } from './api/display';
 import { useSession } from './api/useSession';
 import { api } from './api/client';
@@ -273,9 +281,23 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   const [modal, setModal] = useState<Modal>('pause');
   const [wizardStep, setWizardStep] = useState<'pace' | 'game'>('pace');
   const [wizardSpeed, setWizardSpeed] = useState<typeof gameSpeed>(gameSpeed);
+  const [scenarios, setScenarios] = useState<DevScenarioView[]>([]);
+  const [wizardScenario, setWizardScenario] = useState('');
+  const canReplayScenario = !!session.scenario && scenarios.length > 0;
   const [toast, setToast] = useState('');
   const [showRecap, setShowRecap] = useState(true);
   const [pageVisible, setPageVisible] = useState(!document.hidden);
+  useEffect(() => {
+    let active = true;
+    void api('/api/dev/scenarios', 'DevScenariosView')
+      .then((view) => {
+        if (active) setScenarios(view.scenarios);
+      })
+      .catch(() => undefined);
+    return () => {
+      active = false;
+    };
+  }, []);
   const lastCardTap = useRef<{ card: Card; turn: string; at: number } | null>(null);
   const lastPlayedTurn = useRef('');
   const shellRef = useRef<HTMLDivElement>(null);
@@ -322,6 +344,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
     void controller.preferences({ coachMode: value, gameSpeed });
   const openWizard = () => {
     setWizardSpeed(gameSpeed);
+    setWizardScenario('');
     setWizardStep('pace');
     setModal('games');
   };
@@ -526,8 +549,11 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
     if (double && myTurn && game.phase === 'play') void playChosenCard(card);
     else chooseCard(card, double);
   }
-  async function startGame(mode: Mode) {
-    if (await controller.newGame(mode)) {
+  async function startGame(
+    mode: Mode,
+    selection: Pick<NewSessionRequest, 'scenarioId' | 'replayScenario'> = {},
+  ) {
+    if (await controller.newGame(mode, selection)) {
       setSelected([]);
       setHint(0);
       setShowRecap(true);
@@ -539,13 +565,18 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       setToast('Could not save game speed. Try again.');
       return;
     }
-    await startGame(mode);
+    await startGame(mode, wizardScenario ? { scenarioId: wizardScenario } : {});
   }
   async function continueHand() {
     if (await controller.mutate('/api/session/next-hand')) {
       setShowRecap(true);
       setHint(0);
     }
+  }
+  async function playAgain() {
+    if (canReplayScenario) await startGame(game.mode, { replayScenario: true });
+    else if (game.phase === 'match-end') await startGame(game.mode);
+    else await continueHand();
   }
   const taskText =
     game.phase === 'pass'
@@ -608,6 +639,11 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               <span className="game-variant">{isTeam ? 'Partners' : 'Solo'}</span>
               <ChevronDown size={16} />
             </button>
+            {session.scenario && (
+              <span className="scenario-badge" role="status">
+                Selected deal: {session.scenario.label}
+              </span>
+            )}
             <nav className="top-actions" aria-label="Table controls">
               <a className="icon-button" href="#account" aria-label="Account">
                 ◎
@@ -856,9 +892,9 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                     <button
                       className="primary-button"
                       disabled={controller.busy}
-                      onClick={() => (game.phase === 'match-end' ? startGame(game.mode) : continueHand())}
+                      onClick={() => void playAgain()}
                     >
-                      Play again
+                      {canReplayScenario ? 'Replay this deal' : 'Play again'}
                       <RotateCcw size={16} />
                     </button>
                   ) : game.phase === 'pass' || game.phase === 'bid' ? (
@@ -988,12 +1024,34 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               <>
                 <h1 tabIndex={-1}>Choose a game</h1>
                 <p className="wizard-lead">You and three trained players.</p>
+                {scenarios.length > 0 && (
+                  <label className="scenario-picker">
+                    Practice deal
+                    <select
+                      value={wizardScenario}
+                      onChange={(event) => setWizardScenario(event.target.value)}
+                    >
+                      <option value="">Random deal</option>
+                      {scenarios.map((scenario) => (
+                        <option key={scenario.id} value={scenario.id}>
+                          {modeNames[scenario.mode]}{' '}
+                          {scenario.mode === 'spades-partners' ? 'Partners' : 'Solo'} — {scenario.label}
+                        </option>
+                      ))}
+                    </select>
+                    <small>Selected cards for one practice hand.</small>
+                  </label>
+                )}
                 <div className="game-options">
                   {(['hearts', 'spades-solo', 'spades-partners'] as Mode[]).map((mode) => (
                     <button
                       key={mode}
                       className="game-option"
-                      disabled={controller.busy}
+                      disabled={
+                        controller.busy ||
+                        (!!wizardScenario &&
+                          scenarios.find((item) => item.id === wizardScenario)?.mode !== mode)
+                      }
                       onClick={() => void startWizardGame(mode)}
                     >
                       <div className={`game-art game-art-${mode}`}>
@@ -1145,12 +1203,8 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
               <Eye size={16} />
               Back to table
             </button>
-            <button
-              className="primary-button"
-              disabled={controller.busy}
-              onClick={() => (game.phase === 'match-end' ? startGame(game.mode) : continueHand())}
-            >
-              Play again
+            <button className="primary-button" disabled={controller.busy} onClick={() => void playAgain()}>
+              {canReplayScenario ? 'Replay this deal' : 'Play again'}
               <RotateCcw size={16} />
             </button>
           </div>

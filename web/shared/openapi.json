@@ -5,6 +5,32 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/dev/scenarios": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevScenariosView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/session": {
       "get": {
         "responses": {
@@ -1139,6 +1165,15 @@
       },
       "ExportView": {
         "$ref": "./contracts.schema.json#/$defs/ExportView"
+      },
+      "ScenarioId": {
+        "$ref": "./contracts.schema.json#/$defs/ScenarioId"
+      },
+      "DevScenarioView": {
+        "$ref": "./contracts.schema.json#/$defs/DevScenarioView"
+      },
+      "DevScenariosView": {
+        "$ref": "./contracts.schema.json#/$defs/DevScenariosView"
       }
     }
   }

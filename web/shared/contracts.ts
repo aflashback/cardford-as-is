@@ -61,7 +61,10 @@ export type PublicContracts =
   | FamilyCommand
   | AccountDeleteRequest
   | AccountDeleteView
-  | ExportView;
+  | ExportView
+  | ScenarioId
+  | DevScenarioView
+  | DevScenariosView;
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
 export type Seat = 0 | 1 | 2 | 3;
 export type Card = string;
@@ -86,6 +89,7 @@ export type GameAction =
     };
 export type Plan = 'demo' | 'practice' | 'unlimited' | 'family';
 export type PaidPlan = 'practice' | 'unlimited' | 'family';
+export type ScenarioId = string;
 export type AdvanceRequest =
   | {
       commandId: string;
@@ -268,6 +272,13 @@ export interface SessionView {
   source: 'code' | 'demo';
   controlLeaseToken: string;
   stats: SessionStats;
+  scenario?: DevScenarioView;
+}
+export interface DevScenarioView {
+  id: ScenarioId;
+  version: string;
+  label: string;
+  mode: Mode;
 }
 export interface AdviceView {
   focus: string;
@@ -311,6 +322,8 @@ export interface NewSessionRequest {
   commandId: string;
   mode: Mode;
   expectedActiveGameId: string | null;
+  scenarioId?: ScenarioId;
+  replayScenario?: true;
 }
 export interface ActionsRequest {
   commandId: string;
@@ -624,6 +637,12 @@ export interface ExportView {
    */
   billing: BillingOperation[];
 }
+export interface DevScenariosView {
+  /**
+   * @maxItems 100
+   */
+  scenarios: DevScenarioView[];
+}
 
 export interface ContractTypes {
   Mode: Mode;
@@ -684,5 +703,8 @@ export interface ContractTypes {
   AccountDeleteRequest: AccountDeleteRequest;
   AccountDeleteView: AccountDeleteView;
   ExportView: ExportView;
+  ScenarioId: ScenarioId;
+  DevScenarioView: DevScenarioView;
+  DevScenariosView: DevScenariosView;
 }
 export type ContractName = keyof ContractTypes;

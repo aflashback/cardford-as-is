@@ -28,3 +28,16 @@ test('unknown flags, ports and public secrets are rejected', () => {
   assert.throws(() => readConfig({ ...local, JEV_MODE: 'auto' }), /JEV_MODE/);
   assert.throws(() => readConfig({ ...local, VITE_OPENROUTER_API_KEY: 'fake-canary' }), /VITE_/);
 });
+
+test('RD-02: selected deals require an explicit server-only local/test file', () => {
+  assert.equal(readConfig(local).devScenariosFile, null);
+  assert.ok(readConfig({ ...local, DEV_SCENARIOS_FILE: 'examples/dev-deals.json' }).devScenariosFile);
+  assert.ok(
+    readConfig({ ...local, APP_ENV: 'test', DEV_SCENARIOS_FILE: 'examples/dev-deals.json' }).devScenariosFile,
+  );
+  for (const APP_ENV of ['staging', 'production'])
+    assert.throws(
+      () => readConfig({ ...local, APP_ENV, DEV_SCENARIOS_FILE: 'examples/dev-deals.json' }),
+      /only in local and test/,
+    );
+});

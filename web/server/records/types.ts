@@ -8,6 +8,7 @@ import type {
   Preferences,
   ReviewFrame,
   SessionStats,
+  DevScenarioView,
 } from '../../shared/contracts.ts';
 
 export interface PlayerProfile {
@@ -39,6 +40,8 @@ export interface SavedDecisionAnalysis {
   adviceSnapshot: Advice;
 }
 export interface GameDocument {
+  /** RD-03: immutable provenance for the selected opening deal, never strategy input. */
+  openingScenario?: { metadata: DevScenarioView; dealer: PrivateGame['dealer'] };
   /** Missing only in legacy documents; multiplayer is not an enabled runtime. */
   tableType?: 'practice-bots';
   /** Private analysis is independent of coaching access and issued guidance. */

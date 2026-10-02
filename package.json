@@ -11,6 +11,7 @@
   },
   "scripts": {
     "dev": "node scripts/dev.mjs",
+    "start:scenarios": "node scripts/dev-scenarios.mjs",
     "start": "node web/server/index.ts",
     "db:up": "node scripts/database.mjs up",
     "db:migrate": "node web/server/records/migrate.ts",

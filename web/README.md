@@ -1,5 +1,7 @@
 # CardFord web prototype
 
+**Current runtime note:** the prototype notes below are historical. The current app uses a server-authoritative engine and PostgreSQL; run commands from `C:\repos\test-jev`. For local selected-card training, editable fixtures and current start commands, see [the selected-deal guide](../planning/dev-deals.md).
+
 A playable UX build for a card-game coach. The table comes first; help stays optional.
 
 The owner selected **CardFord** on 28 September 2026. The earlier `trickscoach.com` domain plan remains unverified; no CardFord domain has been selected. See the [brand decision](../planning/brand-and-domain.md).

@@ -179,3 +179,21 @@ function assertTypedProjection(view: GameView): string {
 test('generated view fields retain precise compile-time types', () => {
   assert.equal(assertTypedProjection(game), 'hearts:null:C2');
 });
+
+test('RD-02: selected-deal requests allow one selector and reject caller card material', () => {
+  const request = { commandId: 'fixture-1', mode: 'hearts', expectedActiveGameId: null };
+  assert.equal(validateContract('NewSessionRequest', request), true);
+  assert.equal(validateContract('NewSessionRequest', { ...request, scenarioId: 'hearts-opening-a' }), true);
+  assert.equal(validateContract('NewSessionRequest', { ...request, replayScenario: true }), true);
+  assert.equal(
+    validateContract('NewSessionRequest', {
+      ...request,
+      scenarioId: 'hearts-opening-a',
+      replayScenario: true,
+    }),
+    false,
+  );
+  assert.equal(validateContract('NewSessionRequest', { ...request, replayScenario: false }), false);
+  for (const field of ['deck', 'hands', 'dealer', 'seed', 'scenarioVersion'])
+    assert.equal(validateContract('NewSessionRequest', { ...request, [field]: [] }), false);
+});

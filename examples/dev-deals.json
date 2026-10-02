@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "1.0.0",
+  "scenarios": [
+    {
+      "id": "hearts-opening-a",
+      "version": "1.0.0",
+      "label": "Opening A",
+      "mode": "hearts",
+      "dealer": 3,
+      "hands": {
+        "south": [
+          "C2",
+          "C4",
+          "C7",
+          "D3",
+          "D9",
+          "H3",
+          "H6",
+          "H10",
+          "HQ",
+          "S2",
+          "S6",
+          "SQ",
+          "SK"
+        ],
+        "west": [
+          "C3",
+          "C8",
+          "CJ",
+          "D2",
+          "D5",
+          "DJ",
+          "H2",
+          "H7",
+          "HJ",
+          "S3",
+          "S7",
+          "S10",
+          "SA"
+        ],
+        "north": [
+          "C5",
+          "C9",
+          "CQ",
+          "D4",
+          "D6",
+          "D10",
+          "DQ",
+          "H4",
+          "H8",
+          "HK",
+          "S4",
+          "S8",
+          "SJ"
+        ],
+        "east": [
+          "C6",
+          "C10",
+          "CK",
+          "CA",
+          "D7",
+          "D8",
+          "DK",
+          "DA",
+          "H5",
+          "H9",
+          "HA",
+          "S5",
+          "S9"
+        ]
+      }
+    },
+    {
+      "id": "spades-solo-opening-a",
+      "version": "1.0.0",
+      "label": "Opening A",
+      "mode": "spades-solo",
+      "dealer": 3,
+      "hands": {
+        "south": [
+          "CA",
+          "CK",
+          "CQ",
+          "DA",
+          "DK",
+          "DQ",
+          "HA",
+          "HK",
+          "HQ",
+          "SA",
+          "SK",
+          "SQ",
+          "SJ"
+        ],
+        "west": [
+          "C3",
+          "C7",
+          "C10",
+          "D3",
+          "D7",
+          "D9",
+          "DJ",
+          "H5",
+          "H8",
+          "H10",
+          "S5",
+          "S7",
+          "S9"
+        ],
+        "north": [
+          "C2",
+          "C4",
+          "C6",
+          "C8",
+          "D2",
+          "D4",
+          "D6",
+          "H2",
+          "H4",
+          "H6",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "east": [
+          "C5",
+          "C9",
+          "CJ",
+          "D5",
+          "D8",
+          "D10",
+          "H3",
+          "H7",
+          "H9",
+          "HJ",
+          "S6",
+          "S8",
+          "S10"
+        ]
+      }
+    },
+    {
+      "id": "spades-partners-opening-a",
+      "version": "1.0.0",
+      "label": "Opening A",
+      "mode": "spades-partners",
+      "dealer": 3,
+      "hands": {
+        "south": [
+          "CA",
+          "CK",
+          "CQ",
+          "DA",
+          "DK",
+          "DQ",
+          "HA",
+          "HK",
+          "HQ",
+          "SA",
+          "SK",
+          "SQ",
+          "SJ"
+        ],
+        "west": [
+          "C3",
+          "C7",
+          "C10",
+          "D3",
+          "D7",
+          "D9",
+          "DJ",
+          "H5",
+          "H8",
+          "H10",
+          "S5",
+          "S7",
+          "S9"
+        ],
+        "north": [
+          "C2",
+          "C4",
+          "C6",
+          "C8",
+          "D2",
+          "D4",
+          "D6",
+          "H2",
+          "H4",
+          "H6",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "east": [
+          "C5",
+          "C9",
+          "CJ",
+          "D5",
+          "D8",
+          "D10",
+          "H3",
+          "H7",
+          "H9",
+          "HJ",
+          "S6",
+          "S8",
+          "S10"
+        ]
+      }
+    }
+  ]
+}

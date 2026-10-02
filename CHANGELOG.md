@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — 2026-10-01
+
+Added RD-01–RD-04 selected opening deals for local training and repeatable tests: server-only versioned JSON fixtures, an opt-in practice picker, saved-deal replay and strict validation/visibility checks. Normal games retain cryptographic Fisher–Yates shuffling. Hosted fixture overrides remain blocked. [CR-DEV-001](planning/decisions/CR-DEV-001-selected-deals.md) · [usage](planning/dev-deals.md) · [acceptance](qa/implementation/selected-deals-acceptance.md).
+
+Repaired a pre-existing missing Hearts plan trace field so the combined branch typechecks; live Hearts choices are unchanged.
+
 ## Unreleased — 2026-09-30
 
 Added [automated authored-hand research collection](qa/experiments/2026-09-30-expanded-batch/results.md), exact prompt/response evidence, an owner-directed Sol-to-Luna model switch, preserved historical choices, and checks of specific public-card explanations. Completion is reported per hand; runtime rules, bots and coaching policies are unchanged.

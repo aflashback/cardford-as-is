@@ -156,6 +156,10 @@
 .new-game-wizard .game-option:focus-visible{outline:3px solid #527d78;outline-offset:3px}
 .wizard-back{margin-top:18px;background:transparent;color:#456a75;border:1px solid #cbdadd}
 .wizard-back:hover{background:#e5ebed}
+.scenario-picker{display:flex;flex-direction:column;gap:8px;max-width:520px;margin-bottom:22px;font-size:14px;font-weight:650}
+.scenario-picker select{min-height:44px;padding:10px 12px;border:1px solid #cfdbde;border-radius:8px;background:#fff;color:inherit;font:inherit}
+.scenario-picker small{font-size:12px;font-weight:400;color:#5e7680}
+.scenario-badge{max-width:220px;font-size:12px;color:#456a75;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media (max-width:700px){
   .new-game-wizard .game-options{grid-template-columns:1fr}
   .new-game-wizard .game-option{min-height:125px;display:grid;grid-template-columns:110px 1fr;align-items:center;column-gap:16px}
