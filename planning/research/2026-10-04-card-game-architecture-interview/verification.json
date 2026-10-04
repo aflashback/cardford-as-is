@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "research-verification-1.0.0",
+  "date": "2026-10-04",
+  "sourceCommit": "09b4903",
+  "scope": "Read-only implementation investigation, two-agent interview, source research and documentation",
+  "participants": [
+    { "role": "architecture interviewer", "model": "gpt-6-astra", "reasoningEffort": "xhigh" },
+    { "role": "reasoning interviewer", "model": "gpt-6.1-sol", "reasoningEffort": "xhigh" }
+  ],
+  "checks": [
+    {
+      "command": "node --test web/server/tests/module-seam.test.ts",
+      "status": "blocked",
+      "reason": "Sandbox child-process spawn EPERM; architecture agent then used no-isolation runner"
+    },
+    {
+      "command": "node --test --test-isolation=none web/server/tests/module-seam.test.ts",
+      "status": "passed",
+      "passed": 2,
+      "failed": 0,
+      "limitation": "Isolated counter-module only; not production integration or hidden-token planner proof"
+    },
+    {
+      "command": "node qa/experiments/2026-10-02-browser-baseline/audit-browser.mjs --check",
+      "status": "passed",
+      "measuredCompleteHands": 12,
+      "decisions": 672,
+      "createdSessions": 14,
+      "typedCueClaimsConfirmed": 1208,
+      "typedAnalysisClaimsConfirmed": 5109,
+      "legacyRecordsWithoutTypedClaims": 336,
+      "falseTypedClaims": 0,
+      "notCheckableTypedClaims": 0,
+      "limitation": "Rechecks archived browser decisions, not new browser play or strategy strength"
+    },
+    {
+      "method": "Inline Node SHA-256 comparison of source-audit.json recordPath entries against recordFileHash",
+      "status": "passed",
+      "recordHashesMatched": 14,
+      "unstartedSetupsWithoutRecords": 2,
+      "note": "First ad hoc checker failed on the two unstarted entries; corrected to distinguish absent records from hash mismatches"
+    },
+    {
+      "method": "Inline Node existence check for Markdown local link targets in this packet",
+      "status": "passed",
+      "localTargetsChecked": 49,
+      "note": "Initial check found verification.json before it was written; final check follows its creation. This checks file paths, not external availability or line/anchor semantics"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ],
+  "openVerificationDefects": [
+    "plan-genericity.test.ts referenced by GP-05/GP-06 is absent",
+    "Concealed-token support fixture has no importing test",
+    "Production GameService bypasses generic GameModule",
+    "Independent strategic labels, formal promotion run and human transfer evidence remain absent"
+  ],
+  "provider": {
+    "runtimeJevMode": "off",
+    "newJevOrOpenRouterRequests": 0,
+    "historicalObservedModel": "typesafe/jev-1.13-20260917",
+    "historicalOutcome": "One response rejected; valid live integration not passed"
+  },
+  "notRun": [
+    "Full application suite; historical 348-pass report is not a new run",
+    "New browser games or database-backed production module conformance",
+    "Tarneeb/Trix implementation or gameplay",
+    "Formal strength or human learning evaluation"
+  ],
+  "changes": [
+    "Research packet, planning index and changelog",
+    "Expanded-batch README completion-count correction; raw records untouched"
+  ]
+}

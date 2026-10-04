@@ -8,6 +8,7 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 
 | Read | Purpose |
 |---|---|
+| [Card-game architecture interview](research/2026-10-04-card-game-architecture-interview/README.md) | Two-agent review of implementation/evidence and Tarneeb/Trix architecture; prerequisites for a later main plan. |
 | [Implementation handoff](IMPLEMENTATION-START-HERE.md) | Fresh-agent reading order, task selection, preserved B2C UX and evidence reporting. |
 | [Current monorepo plan](2026-09-27-monorepo-implementation-plan.md) | W00–W19 files, interfaces, dependencies, patterns, tests, Stripe and release gates. |
 | [Requirements and tests](implementation/requirements-and-tests.md) | Stable IDs, named fixtures and concrete rule/UX/service/payment assertions. |

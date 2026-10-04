@@ -16,7 +16,7 @@ Production reducers check legality, trick winners, scores and completion. All ac
 
 ## Evidence and scope
 
-Eight complete hands contain 448 decisions and 104 tricks. These are authored development cases; they do not measure general strength, calibrated probabilities or optimal play. The late-score pair begins from a synthetic score/bag state whose match prefix has not been proved reachable. Keep Solo and Partners conclusions separate.
+Eight hands were planned. The saved collection contains **three complete hands, three partial hands and two unstarted setups: 258 accepted decisions**. See `results.md` and `records/integrity.json`; the earlier sentence claiming eight complete hands was incorrect and was corrected on 4 October 2026. These are authored development cases; they do not measure general strength, calibrated probabilities or optimal play. The late-score pair begins from a synthetic score/bag state whose match prefix has not been proved reachable. Keep Solo and Partners conclusions separate.
 
 Jev and OpenRouter are not used. The runtime bots, coach and rules are unchanged. `configuredModel` records the requested CLI model; an exact backend model snapshot is not independently exposed.
 

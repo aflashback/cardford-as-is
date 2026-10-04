@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-04 — Multi-game architecture interview and plan prerequisites
+
+Added the [two-agent interview packet](research/2026-10-04-card-game-architecture-interview/README.md): inspected production versus documented seams, preserved questions/answers/challenge, researched Tarneeb/Trix profile differences, and proposed typed boundaries, algorithm comparisons and acceptance prerequisites. This is investigation input for a later implementation plan, not new approved runtime behavior. Corrected the expanded-batch README's eight-complete claim to match saved evidence: three complete, three partial and two unstarted hands. Raw records, game code, provider settings and defaults are unchanged.
+
 ## 2026-09-30 — Expanded two-suit scenario collection
 
 Owner authorized continuing beyond the initial pilot. The [two-suit batch](../qa/experiments/2026-09-30-two-suit-batch/README.md) freezes six authored hands: three companion distributions paired across Solo and Partners, with Maya's same five top spades and eight hearts. Fresh text-only player contexts receive only seat information. Saved records and audits distinguish complete, incomplete and not-run episodes. New review material separates valid actions, invalid explanations and equivalent choices. This is offline development evidence; runtime policy and provider activation are unchanged. No Jev calls or strength/probability claims are implied.
