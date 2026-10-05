@@ -1,0 +1,805 @@
+{
+  "schemaVersion": "spades-review-private-index-1.0.0",
+  "visibility": "private-review-administrator",
+  "sources": [
+    {
+      "path": "qa/experiments/2026-09-30-agent-scenario-lab/deals.json",
+      "sha256": "0c061ea5557bff963c03b0a722f8a0978187d15879053d5206ff06a6920a69c8"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+      "sha256": "e24a3cf6bc896d95de2adb87c1c22659bfa2baa276f2ca6852e98a93613ca16e"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/solo-control-01.json",
+      "sha256": "d2d7977527a573b9ad08405c08514246856495972640710e8748d042d6d7bf29"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-expanded-batch/deals.json",
+      "sha256": "2fd1e5d56a1d49df81ff95ae50e876c59a29312f3e4ecb66c0af8170a1400ffc"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-spread-late-score-bags.json",
+      "sha256": "0c1baa5610c4ee535c5884ea19bb61f8213621db943a1b0474ce0f028059b921"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-partner-leads.json",
+      "sha256": "5e2cbb3b890607b4fc3fd970d9a90def863ad94f66555e2187cf1074b7d74f79"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-trumps-at-jason.json",
+      "sha256": "9a344280fcb5c6658d2b5a073b9dde258a9725b189f7561e26b417346c5acec1"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-spread-late-score-bags.json",
+      "sha256": "679547700dea359bb3f1344248c47181c24b63ff500141f62b823a183f418b18"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-void-partner-leads.json",
+      "sha256": "4f96f17f46ddce60559eb20c342d2a3ac19c0c59808a87c326455957b75115cf"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-void-trumps-at-jason.json",
+      "sha256": "7ff60dc82025eb50d2d1c45cf0460b666db500c6249a6cb94417cd672138a99e"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-two-suit-batch/deals.json",
+      "sha256": "f9f0558ad89c9c0a3c86528549fffc8bc994124b760d8e69865775eea959161b"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-two-suit-batch/records/partners-concentrated.json",
+      "sha256": "f056675bf06ff4b634d57fede49cca028e96d3688f9c5f04a0be483826caa415"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-two-suit-batch/records/partners-spread.json",
+      "sha256": "855b0ed1704941b4d0db0b7744d5c0eb109623a6b9d41846eae79320356b1151"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-two-suit-batch/records/partners-void.json",
+      "sha256": "f02283be19a3cdd379ef8ccbbda50d62163ca3b60e976c6c3a3ac02062dc1005"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-two-suit-batch/records/solo-concentrated.json",
+      "sha256": "ef7dea3da79f6fc943ba300752dcca0b043be0100964373a712e3b6ec4453a0f"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-two-suit-batch/records/solo-spread.json",
+      "sha256": "c680319a1a0a18d521945ec70112a408985e62f155ead075c618477a2fc2fb22"
+    },
+    {
+      "path": "qa/experiments/2026-09-30-two-suit-batch/records/solo-void.json",
+      "sha256": "9166d88fa0a1fe1c63c022540a0fa156dca33a12f9a22d23736f45e3bb30d42e"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/audit.json",
+      "sha256": "c5d14ae90340aa4382047bc883ad91c7bf2b901d5aeaf92203f413decc3b22a1"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/dev-deals.json",
+      "sha256": "654b62545a76954977be01cb46fe1a4fcbbea4fbb1209e6a28e468e15ff428a6"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/manifest.json",
+      "sha256": "870c3f86b139f6ea079611d4e46b0f450fe6d9f4243b62e96211bd3942fc5c02"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/control-partners-baseline.json",
+      "sha256": "eb94e2d1b6e2c07443814520b72911a912deb7b2c2e57df486ade7b665a2cfd9"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/control-partners-candidate.json",
+      "sha256": "9908696085f64abd375b80af30d5fae217d361d7148f8ec3e4eac5b9404d0051"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/control-solo-baseline.json",
+      "sha256": "0e26f66c7420619a90ae41afcbbdd3ef294f5d155246608a18f31bdf5eadee67"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/control-solo-candidate.json",
+      "sha256": "293f4dfef926efc56371837f9c2901604b7f36b15c8b10e89a78bb90a252cf75"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/resources-partners-baseline.json",
+      "sha256": "254b03068ddb1f674c68e2c1a42cfc8b91c2b95987564dbcf2299d9b8f7f38dc"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/resources-partners-candidate.json",
+      "sha256": "d1d05b250c6695d3cc7f03c568b6fad435643f0e21fa4253a26a73ed17b65b39"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/resources-solo-baseline.json",
+      "sha256": "d732c07dec5f7f02d18a56382c3d36d469d862a309b0bcd837b4569d83b5a233"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/resources-solo-candidate.json",
+      "sha256": "b8d97fe13952d5daba0169409048b4a35ceb88ccb0bdb16036b8b03d983cc82f"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/sweep-partners-baseline.json",
+      "sha256": "087283af1296e0a593bbeeaccc99d47831ad0e5e074255f31b708d0b1a9b428b"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/sweep-partners-candidate.json",
+      "sha256": "93fa5eddc390c7b6c8d7496383ad6ce7bbf47ed19f614a0d13a5f87aa03e2b96"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/sweep-solo-baseline.json",
+      "sha256": "d33b667085dea3378fde0ce36ee3b1ad4919015a84434ec4947ae547a5dab06e"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/private/sweep-solo-candidate.json",
+      "sha256": "78aa70a2aee333d3f363d6b6bb683e4e51ca7d5a59fc4ce6702ad6687978c834"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/control-partners-baseline.json",
+      "sha256": "36229110dbf82edc5bb72c4b4968b806b004e126d80b27f5c2c722c011eca9e0"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/control-partners-candidate.json",
+      "sha256": "bd1212c97542ddd46130fbff646195d67e9e310c2491d5e6a1af890dd8f393d1"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/control-solo-baseline.json",
+      "sha256": "854336e9180e8b2bfb0b145e24e3162c45c3262663432be526777fe2698238e8"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/control-solo-candidate.json",
+      "sha256": "baef60182bc4856859cebb85a7902b1eaddc7888e4cd2f75a3dd220bf73317a0"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/resources-partners-baseline.json",
+      "sha256": "1564549738c1539c5afa7c1adf2be2bbc6962ec76adacf3b7e7bdc3aa0d47c66"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/resources-partners-candidate.json",
+      "sha256": "87f3656d88571dd83c0b0a32dc76c05c9d459adaf8ad66585a48c04e4a595eb5"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/resources-solo-baseline.json",
+      "sha256": "aca25baecb3c4c26872e061cbdf4ad6252af26e734c440525a2dfa5d484b206f"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/resources-solo-candidate.json",
+      "sha256": "439f87e477ea3402b39006dc1fd3690f7ec80ce7b7785ceaac5934ebd3230b16"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-partners-baseline.json",
+      "sha256": "e22ef13ecf5a67c8a20d62a20e37b3c753567ad14c752dc7094074a934e8e035"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-partners-candidate.json",
+      "sha256": "77756dd3f9f090ebbf43db2c60f6108555fac77736e665561f0c6be99154caeb"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-solo-baseline.json",
+      "sha256": "4da845c268641f00df793742f23c4771dee8aeb7861a4c9f3eb55824b19b3b03"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-solo-candidate.json",
+      "sha256": "b8e564c5bee9aea2b74d1697862e5d602253b20988c0f27bb221c1df1d7f628b"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+      "sha256": "ee14ccdb1d47938836aba00b0e6630f98d4b84b1af7b188e5b79c30e6c42210c"
+    },
+    {
+      "path": "qa/experiments/2026-10-02-browser-baseline/source-audit.json",
+      "sha256": "f11cb9f7d1939617bf69e84d7e3418cc23f4c4c0a1c144acc8d02ce4dda4f3c2"
+    }
+  ],
+  "grouping": [
+    {
+      "familyId": "family-001",
+      "sourceFamily": "authored-control",
+      "split": "development-only"
+    },
+    {
+      "familyId": "family-002",
+      "sourceFamily": "authored-nil-race",
+      "split": "development-only"
+    },
+    {
+      "familyId": "family-003",
+      "sourceFamily": "authored-two-suit-and-extensions",
+      "split": "development-only"
+    }
+  ],
+  "cases": [
+    {
+      "id": "case-001",
+      "packetHash": "54227e78c85d7b7ce0b8d1da8262826914ddb1d2577f3eaba5975dd49dfe977d",
+      "familyId": "family-003",
+      "stratum": "score-pressure-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-spread-late-score-bags.json",
+          "seq": 26,
+          "episode": "solo-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-002",
+      "packetHash": "0485e4b7a0dcc8916fdcef2a939cf6345d799ec409efbbf1a5705ec43571903b",
+      "familyId": "family-003",
+      "stratum": "entry-resource-context",
+      "sources": [
+        {
+          "archive": "two-suit-batch",
+          "path": "qa/experiments/2026-09-30-two-suit-batch/records/solo-spread.json",
+          "seq": 14,
+          "episode": "solo-spread",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-003",
+      "packetHash": "0dc6b23c9e57ac1a4023a7194e4d06858493de00ff184f29381453ea73a6843d",
+      "familyId": "family-001",
+      "stratum": "nil-attack-context",
+      "sources": [
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 136,
+          "runId": "control-partners-baseline",
+          "arm": "baseline",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        },
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 192,
+          "runId": "control-partners-candidate",
+          "arm": "candidate",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-004",
+      "packetHash": "0f21b022f1e29c18cf5521cab7e6a63bb32ea13bb6a7145c3e9e6b17a7bbe5c2",
+      "familyId": "family-003",
+      "stratum": "public-void-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-void-trumps-at-jason.json",
+          "seq": 43,
+          "episode": "solo-void-trumps-at-jason",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-005",
+      "packetHash": "f13719a7619193cf96df4286f930cfb9bae3c394473703d959d6916ae9521724",
+      "familyId": "family-001",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "agent-scenario-lab",
+          "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/solo-control-01.json",
+          "seq": 3,
+          "episode": "solo-control-01",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-006",
+      "packetHash": "0b66904cd8e976094dc100b6892af85650a3079d4b2dd1b0a7cf39fd028e6e8d",
+      "familyId": "family-003",
+      "stratum": "nil-attack-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-spread-late-score-bags.json",
+          "seq": 13,
+          "episode": "partners-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-007",
+      "packetHash": "1623698990fa8911097a40b6b8fd8e94d89a331a66a3abafe88323b133be9314",
+      "familyId": "family-001",
+      "stratum": "nil-attack-context",
+      "sources": [
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 27,
+          "runId": "control-solo-baseline",
+          "arm": "baseline",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        },
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 83,
+          "runId": "control-solo-candidate",
+          "arm": "candidate",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-008",
+      "packetHash": "55ac44468b6f924c3eef7aea5ac55a4f3e1421033225f81eeffb9dc1ef9340e6",
+      "familyId": "family-003",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 450,
+          "runId": "resources-solo-baseline",
+          "arm": "baseline",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        },
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 506,
+          "runId": "resources-solo-candidate",
+          "arm": "candidate",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-009",
+      "packetHash": "5ddbc52b5b23e97d6b824b18007a630d8fdebf0fd08553b8a7196bce4a50a79f",
+      "familyId": "family-001",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 113,
+          "runId": "control-partners-baseline",
+          "arm": "baseline",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        },
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 169,
+          "runId": "control-partners-candidate",
+          "arm": "candidate",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-010",
+      "packetHash": "0b2fa6009c97d61bfb95150bed49f0bdaf34c80195ba5fbd846681700f1e41fc",
+      "familyId": "family-003",
+      "stratum": "public-void-context",
+      "sources": [
+        {
+          "archive": "two-suit-batch",
+          "path": "qa/experiments/2026-09-30-two-suit-batch/records/solo-concentrated.json",
+          "seq": 22,
+          "episode": "solo-concentrated",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-011",
+      "packetHash": "0202c719da5ffcd7d5019dbf9a4a1988b0fefd3e2dbe2d216effbb94b92a6cf3",
+      "familyId": "family-003",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "two-suit-batch",
+          "path": "qa/experiments/2026-09-30-two-suit-batch/records/solo-void.json",
+          "seq": 2,
+          "episode": "solo-void",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-012",
+      "packetHash": "3bc854c97d9793fb0372c9542ecbb71069c5a0b87b962dedf60223634f2f3de1",
+      "familyId": "family-003",
+      "stratum": "score-pressure-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-spread-late-score-bags.json",
+          "seq": 14,
+          "episode": "solo-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-013",
+      "packetHash": "099e4f4b0405cfc472684de8c844570513b39da93b27089999242260282737a8",
+      "familyId": "family-002",
+      "stratum": "nil-cover-context",
+      "sources": [
+        {
+          "archive": "agent-scenario-lab",
+          "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+          "seq": 21,
+          "episode": "partners-nil-race-01",
+          "status": "complete",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-014",
+      "packetHash": "1c9f018199284a6ee754eabccc49f4fcdd5a91f1fb8c6df45a5fb60141b68827",
+      "familyId": "family-003",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-spread-late-score-bags.json",
+          "seq": 1,
+          "episode": "solo-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-015",
+      "packetHash": "026f3beb4f2043ccac6edb347f617e9b8942ad0e4cbcb20a7d82cc461caa1bb2",
+      "familyId": "family-003",
+      "stratum": "entry-resource-context",
+      "sources": [
+        {
+          "archive": "two-suit-batch",
+          "path": "qa/experiments/2026-09-30-two-suit-batch/records/partners-void.json",
+          "seq": 18,
+          "episode": "partners-void",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-016",
+      "packetHash": "14603339bf14f767702f73fd9d1447eb03aa1c385e4b7d7e0445e43b0326232a",
+      "familyId": "family-003",
+      "stratum": "nil-cover-context",
+      "sources": [
+        {
+          "archive": "two-suit-batch",
+          "path": "qa/experiments/2026-09-30-two-suit-batch/records/partners-spread.json",
+          "seq": 44,
+          "episode": "partners-spread",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-017",
+      "packetHash": "08dbe4ba85fce703ef32100fe72d83fa216a8fb6db679001c2008f91fedac19a",
+      "familyId": "family-003",
+      "stratum": "public-void-context",
+      "sources": [
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 584,
+          "runId": "resources-partners-baseline",
+          "arm": "baseline",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-018",
+      "packetHash": "1cd0755dd193c0f4c48422ff88d851c0e43dfc01ab8be449a5b8a4ecfa55ca3c",
+      "familyId": "family-003",
+      "stratum": "score-pressure-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-spread-late-score-bags.json",
+          "seq": 9,
+          "episode": "solo-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-019",
+      "packetHash": "30863734928060de9a25d65f30d9ad31a9645e6294927b639f0e026bd3ce2830",
+      "familyId": "family-001",
+      "stratum": "nil-attack-context",
+      "sources": [
+        {
+          "archive": "agent-scenario-lab",
+          "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/solo-control-01.json",
+          "seq": 9,
+          "episode": "solo-control-01",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-020",
+      "packetHash": "581238903c0a87d3cc643b3cc92db27daab01b95f38b900787bfe83bf69a0e3f",
+      "familyId": "family-001",
+      "stratum": "entry-resource-context",
+      "sources": [
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 33,
+          "runId": "control-solo-baseline",
+          "arm": "baseline",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        },
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 89,
+          "runId": "control-solo-candidate",
+          "arm": "candidate",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-021",
+      "packetHash": "020916d58675fc80c4600f7470e9a896cc91b04a287fde34f29fab4e6da76ce8",
+      "familyId": "family-001",
+      "stratum": "public-void-context",
+      "sources": [
+        {
+          "archive": "agent-scenario-lab",
+          "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/solo-control-01.json",
+          "seq": 35,
+          "episode": "solo-control-01",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-022",
+      "packetHash": "0ceaf78d9db9bea130338285d23b50208c720fbc5f79af7365cf275ac4f85e77",
+      "familyId": "family-003",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-partner-leads.json",
+          "seq": 4,
+          "episode": "partners-void-partner-leads",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-023",
+      "packetHash": "0bdb589ba01a947e43a3acedd6ad0b0cc0bded6ac838c23a61bfadd61c73a2ce",
+      "familyId": "family-003",
+      "stratum": "score-pressure-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-spread-late-score-bags.json",
+          "seq": 17,
+          "episode": "partners-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-024",
+      "packetHash": "28d10564323a3162de65ee15fdeb15837187605a859844e2ebf53501860eef39",
+      "familyId": "family-003",
+      "stratum": "score-pressure-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-spread-late-score-bags.json",
+          "seq": 11,
+          "episode": "partners-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-025",
+      "packetHash": "bb17fc39c80329b1933de558d8e4c95fd737ed47b3f8cba9d79389b6a99e2a18",
+      "familyId": "family-002",
+      "stratum": "entry-resource-context",
+      "sources": [
+        {
+          "archive": "agent-scenario-lab",
+          "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+          "seq": 29,
+          "episode": "partners-nil-race-01",
+          "status": "complete",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-026",
+      "packetHash": "0ed431c3218308a2746c8004e61698f05aa8d74c775c97405d907d6c2f4ae4de",
+      "familyId": "family-003",
+      "stratum": "public-void-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-partner-leads.json",
+          "seq": 25,
+          "episode": "partners-void-partner-leads",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-027",
+      "packetHash": "0e54fcc83fa19d4123aeba54334d005b42a25cd4fcd03ddaaf17390c2527b346",
+      "familyId": "family-002",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "agent-scenario-lab",
+          "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+          "seq": 3,
+          "episode": "partners-nil-race-01",
+          "status": "complete",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-028",
+      "packetHash": "0b476df0b24fde4c773d5256047b882ce70482f70e22c005a6a956688537884b",
+      "familyId": "family-003",
+      "stratum": "entry-resource-context",
+      "sources": [
+        {
+          "archive": "browser-baseline",
+          "path": "qa/experiments/2026-10-02-browser-baseline/seat-packets.jsonl",
+          "line": 641,
+          "runId": "resources-partners-candidate",
+          "arm": "candidate",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-029",
+      "packetHash": "1c4ea952ff42b0e861d1768c16f3ecb151416fef77580f0b30f66df65d63a066",
+      "familyId": "family-002",
+      "stratum": "score-pressure-context",
+      "sources": [
+        {
+          "archive": "agent-scenario-lab",
+          "path": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+          "seq": 43,
+          "episode": "partners-nil-race-01",
+          "status": "complete",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    },
+    {
+      "id": "case-030",
+      "packetHash": "0a44cf02cd97738e1f474f17fb23f48ff3295cce4a40ff0b1604c8656b70ed71",
+      "familyId": "family-003",
+      "stratum": "public-void-context",
+      "sources": [
+        {
+          "archive": "two-suit-batch",
+          "path": "qa/experiments/2026-09-30-two-suit-batch/records/partners-void.json",
+          "seq": 49,
+          "episode": "partners-void",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-031",
+      "packetHash": "06349abb45ebf6d513b5b41a86add922cd252a86a75a01dd7ebfed4452052157",
+      "familyId": "family-003",
+      "stratum": "bidding",
+      "sources": [
+        {
+          "archive": "two-suit-batch",
+          "path": "qa/experiments/2026-09-30-two-suit-batch/records/partners-spread.json",
+          "seq": 4,
+          "episode": "partners-spread",
+          "status": "complete",
+          "syntheticScorePrefix": false
+        }
+      ],
+      "syntheticScorePrefix": false
+    },
+    {
+      "id": "case-032",
+      "packetHash": "53e501a5a161a0e54b66cad12dbae7f825b6dd7312bec1d0247d9d216e91987f",
+      "familyId": "family-003",
+      "stratum": "entry-resource-context",
+      "sources": [
+        {
+          "archive": "expanded-batch",
+          "path": "qa/experiments/2026-09-30-expanded-batch/records/solo-spread-late-score-bags.json",
+          "seq": 21,
+          "episode": "solo-spread-late-score-bags",
+          "status": "partial",
+          "syntheticScorePrefix": true
+        }
+      ],
+      "syntheticScorePrefix": true
+    }
+  ]
+}

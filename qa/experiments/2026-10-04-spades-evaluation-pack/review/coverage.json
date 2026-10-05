@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "spades-review-coverage-1.0.0",
+  "selectedCases": 32,
+  "modes": {
+    "spades-solo": 15,
+    "spades-partners": 17
+  },
+  "replay": {
+    "textDecisions": 706,
+    "browserDecisions": 672,
+    "textHands": {
+      "complete": 11,
+      "partial": 3,
+      "unstarted": 2
+    }
+  },
+  "deduplication": {
+    "inputObservations": 1378,
+    "excludedForced": 244,
+    "uniqueNonforcedPackets": 880,
+    "duplicateNonforcedOccurrences": 254,
+    "selectedUniquePackets": 32
+  },
+  "strata": [
+    {
+      "stratum": "bidding",
+      "mode": "spades-solo",
+      "requested": 4,
+      "availableUnique": 35,
+      "selected": 4,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "bidding",
+      "mode": "spades-partners",
+      "requested": 4,
+      "availableUnique": 36,
+      "selected": 4,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "nil-cover-context",
+      "mode": "spades-partners",
+      "requested": 2,
+      "availableUnique": 30,
+      "selected": 2,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "nil-attack-context",
+      "mode": "spades-solo",
+      "requested": 2,
+      "availableUnique": 41,
+      "selected": 2,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "nil-attack-context",
+      "mode": "spades-partners",
+      "requested": 2,
+      "availableUnique": 48,
+      "selected": 2,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "entry-resource-context",
+      "mode": "spades-solo",
+      "requested": 3,
+      "availableUnique": 25,
+      "selected": 3,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "entry-resource-context",
+      "mode": "spades-partners",
+      "requested": 3,
+      "availableUnique": 25,
+      "selected": 3,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "public-void-context",
+      "mode": "spades-solo",
+      "requested": 3,
+      "availableUnique": 261,
+      "selected": 3,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "public-void-context",
+      "mode": "spades-partners",
+      "requested": 3,
+      "availableUnique": 264,
+      "selected": 3,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "score-pressure-context",
+      "mode": "spades-solo",
+      "requested": 3,
+      "availableUnique": 18,
+      "selected": 3,
+      "status": "context-filled-unreviewed"
+    },
+    {
+      "stratum": "score-pressure-context",
+      "mode": "spades-partners",
+      "requested": 3,
+      "availableUnique": 46,
+      "selected": 3,
+      "status": "context-filled-unreviewed"
+    }
+  ],
+  "relatedSourceFamilies": 3,
+  "sourceArchiveCases": {
+    "agent-scenario-lab": 7,
+    "two-suit-batch": 7,
+    "expanded-batch": 11,
+    "browser-baseline": 7
+  },
+  "labels": {
+    "independentReviewed": 0,
+    "unknown": 32,
+    "contested": 0
+  },
+  "holes": [
+    "All acceptable-action labels and independent reviewer identities are unfilled.",
+    "Signal context is public play and established voids; intentional signal interpretation has no independent label.",
+    "Score-pressure cases use synthetic carried scores/bags; no reachable complete match prefix is proved.",
+    "No fresh held-out deals, unfamiliar teammates, natural prevalence sample or strategy-strength result.",
+    "No independent counterworld/exception labels or exact end-position answer keys in this extraction.",
+    "Nil cover has no Solo counterpart because Solo has no teammate."
+  ],
+  "limitations": [
+    "Context selection is not an assertion that a tactical recommendation applies.",
+    "Related deals, rotations and cross-arm duplicate observations are dependent development material.",
+    "One reviewer must see one case at a time; combining private hands from different cases reveals information.",
+    "Public bid order/current hand history is complete. Private prior agent paragraphs are excluded and not recoverable actor memory.",
+    "Archived player answers, coach cues and outcomes are withheld; Jev/provider calls are zero."
+  ]
+}

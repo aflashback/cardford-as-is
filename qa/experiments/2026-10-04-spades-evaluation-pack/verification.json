@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "spades-evaluation-pack-verification-1.0.0",
+  "date": "2026-10-04",
+  "requirements": ["EVALPACK-01", "EVALPACK-02", "EVALPACK-03", "EVALPACK-04", "EVALPACK-05"],
+  "runtimeChanges": false,
+  "provider": { "mode": "offline-local-code", "requests": 0, "observedModelId": null, "credentialReads": 0 },
+  "checks": [
+    {
+      "command": "node --test --test-isolation=none web/server/tests/spades-review-pack.test.ts web/server/tests/spades-human-labels.test.ts web/server/tests/spades-match-pilot.test.ts web/server/tests/spades-pilot-report.test.ts web/server/tests/frozen-baseline.test.ts",
+      "status": "passed", "passed": 27, "failed": 0, "skipped": 0, "durationMs": 16964.1265
+    },
+    { "command": "npm run typecheck", "status": "passed", "scope": "frontend and server" },
+    { "command": "npm run lint:boundaries", "status": "passed" },
+    { "command": "npm run contracts:check", "status": "passed" },
+    { "command": "git diff --check", "status": "passed" }
+  ],
+  "environment": { "node": "v24.19.0", "branch": "main", "testIsolation": "none", "reason": "Default child-process isolation was blocked by EPERM before execution; the repository-supported single-process command passed." },
+  "reviewPack": { "cases": 32, "solo": 15, "partners": 17, "sourceDecisionsReplayed": 1378, "sourceFamilies": 3, "humanReviewed": 0 },
+  "pilot": { "status": "not-run-yet", "manifest": "pilot/pilot-manifest.json", "results": "pilot/results.json" },
+  "pending": ["Independent human labels; owner deferred reviewers", "Human coached/uncoached learning study", "Fresh preregistered confirmation with an approved estimand", "Separately authorized bounded Jev comparison"],
+  "notRun": ["Browser gameplay in this offline milestone", "Full application/database suite", "Pilot cue factuality checks", "Per-decision latency measurement"],
+  "strengthOrLearningProven": false,
+  "defaultsPromoted": false
+}

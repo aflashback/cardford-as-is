@@ -1,0 +1,81 @@
+{
+  "documentType": "non-executable-confirmation-planning-template",
+  "schemaVersion": "1.0.0",
+  "executable": false,
+  "status": "not-preregistered",
+  "results": null,
+  "reasonBlocked": "Select and approve the estimand, fill all unresolved fields, validate infrastructure, then commit a separate executable manifest before reading sealed data.",
+  "authority": "planning/decisions/CR-STRAT-009-game-plan-and-strength-gate.md",
+  "proposal": {
+    "id": null,
+    "ownerApprovalReference": null,
+    "estimandChoice": null,
+    "allowedChoices": ["existing-SG-per-hand", "new-single-seat-full-match"],
+    "requiredChangeRecordForNewEstimand": null,
+    "targetedMode": null,
+    "preregisteredCommit": null,
+    "manifestHash": null
+  },
+  "freeze": {
+    "referencePolicy": "spades-tactics-2.1.0",
+    "candidatePolicy": null,
+    "previousAcceptedProfile": null,
+    "baselineFloorPolicy": "local-baseline-1.0.0",
+    "policySourceHashes": null,
+    "ruleProfileByMode": {
+      "spades-solo": "spades-solo-training-1.0.0",
+      "spades-partners": "spades-training-1.0.0"
+    },
+    "engineAdapterAndGeneratorVersionsAndHashes": null,
+    "caseAndHumanLabelManifestHashes": null,
+    "opponentAndTeammateStyleHashes": null,
+    "styleAdmissionEvidence": null,
+    "cellWeightsAndPlacements": null,
+    "seedLedgerEntryAndExactRange": null,
+    "unreadSeedVerification": null,
+    "heldOutStyleAllocation": null,
+    "computeAndMatchLimits": null,
+    "outputArtifactPaths": null
+  },
+  "existingSGReferenceOnly": {
+    "appliesToNewFullMatchEstimand": false,
+    "population": "reference-trajectory in-match hands",
+    "soloPrimary": "rotation-averaged paired difference in own hand points minus mean other-seat points",
+    "partnersPrimary": "paired team-minus-opponent hand margin with both teammates evaluated",
+    "nonInferiorityPointsPerHand": { "spades-solo": 2.5, "spades-partners": 5 },
+    "minimumChangedSeeds": 200,
+    "minimumChangedDecisions": 500,
+    "bootstrapResamples": 10000,
+    "cluster": "initial seed; all related rotations, styles, teammates and modes retained together",
+    "method": "cluster-bootstrap-1.0.0; BCa below 400 clusters, percentile otherwise",
+    "subgroupAdjustment": "Bonferroni",
+    "baselineHarmFloorPointsPerHand": -5,
+    "orderedStatusRule": ["blocked", "unchanged", "worse", "improved", "non-inferior", "inconclusive"],
+    "guards": ["own or team score not Worse", "no adjusted style subgroup Worse", "report D0 and candidate baseline-floor contrasts"],
+    "favorableStatusesRequireEvidenceMinimums": true,
+    "profileSequence": "version order; contrast D0 and previously accepted profile using a new unread range"
+  },
+  "analysisToPreregister": {
+    "primaryEstimandPerMode": null,
+    "practicalGainAndHarmBoundsPerMode": null,
+    "sampleSizeRationaleAndPilotEvidence": null,
+    "confidenceLevelAndMultiplicityFamily": null,
+    "fixedBootstrapSeed": null,
+    "censoringAndMissingDataRules": null,
+    "fixedStoppingRule": null,
+    "coverageAndSafetyCheckEvidence": null,
+    "coachDenominators": "all unforced evaluated-seat decisions; show measured, uncheckable and not-run counts separately",
+    "decisionAndPromotionRule": null
+  },
+  "promotionPrerequisites": {
+    "humanLabelsOrWrittenWaiverReference": null,
+    "zeroFalseFactsEvidence": null,
+    "informationSafetyEvidence": null,
+    "targetModeImprovedAndOtherModeAcceptable": null,
+    "guardsMetEvidence": null,
+    "recordedOwnerApproval": null
+  },
+  "providerMode": "local-code; no provider calls",
+  "observedModelId": null,
+  "liveDefaultChangeAuthorizedByThisTemplate": false
+}
