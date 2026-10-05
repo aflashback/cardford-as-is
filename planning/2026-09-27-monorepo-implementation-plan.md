@@ -33,7 +33,7 @@ Start with one application and PostgreSQL. Use a small jobs table/outbox and exp
 - Every started game is stored internally. No player-facing game archive.
 - Optional help never narrows the human's legal moves or commits one for them.
 - Start with `JEV_MODE=off`. Shadow results never affect visible advice, applied actions or human grades.
-- Public unpaid access is only the finite authored demo. Live play requires coverage; coaching additionally requires the appropriate hand unlock and work permission.
+- [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) supersedes paid-only access: demo transitions require online server responses; live play requires a scoped server grant (free/access-trial/paid as configured), and coaching separately requires its tool/allowance permission. Final launch offers remain unselected. Execute the current [multi-game plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) for these amendments.
 - State changes are authorized, revision-checked, idempotent and durably recorded. No transaction or database connection remains held during provider calls or CPU analysis.
 - Subscription management is in the app; payments use Stripe. The server owns offers, purchases, coverage and allowance.
 - Card art, teaching text and layout must be original or clearly licensed. Keep semantic cards and simple avatars; no 3D, image generation or avatar subsystem.

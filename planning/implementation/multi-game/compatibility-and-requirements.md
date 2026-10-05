@@ -18,6 +18,10 @@ Proposed acceptance requirements for [the main plan](../../../docs/superpowers/p
 | MG-12 | Standard selected Tarneeb/Jawaker profiles only; new variant requires its own rules/objective/evidence | M00/M08/M09; frozen rule sources/scoring fixtures |
 | MG-13 | Independent per-variant/horizon evidence gates playing-strength, calibration and learning claims/promotion | M11/M12; sealed manifests/gate/human study and owner decision |
 | MG-14 | Jev only runtime strategic model; forced/off/unsupported/capped calls send nothing, all legal options retained | M06/M11; provider fixtures/ledger/eligibility tests |
+| MG-15 | Online finite demo: every frame/choice/replay requires a validated server response; no offline continuation | M01/M04; demo-service/demo-online tests |
+| MG-16 | Configurable verified free/access-trial/paid grants by exact game/variant; play/coach/read separation and stable quotas | M01/M03/M04; access-policy/access-offers tests |
+| MG-17 | One React frontend and public assets with isolated transport/lifecycle; native feasibility remains explicit and deferred | M01/M04/M12; client-boundary/resume tests and later device evidence |
+| MG-18 | First playable web slice has private correct play, durable recovery, bounded failure/work and usable keyboard/touch controls | M04/M06; basic quality checklist and current-game journeys |
 
 ## Migration and rollback
 

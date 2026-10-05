@@ -10,6 +10,8 @@
 
 **Spec:** [Interview/research packet](../../../planning/research/2026-10-04-card-game-architecture-interview/README.md), [platform contract](../../12-multi-game-extensibility.md), [current reasoning](../../../planning/12-spades-reasoning.md), CR-STRAT-006–010 and the owner's recorded [Jawaker rule selection](../../../planning/research/2026-10-04-card-game-architecture-interview/08-standard-rule-reconciliation.md).
 
+**Owner amendment:** [CR-IMPL-004](../../../planning/decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) requires an online demo, configurable launch access/coaching limits, frontend reuse readiness and basic first-app quality. Its [execution packet](../../../planning/implementation/multi-game/launch-access-and-client.md) is part of M00–M04/M06/M12. Actual native packaging and final free/trial offers remain later selections.
+
 ## Global Constraints
 
 - “All supported games have four seats.” Competition is four individuals or two teams of two; controllers and visibility are separate.
@@ -19,6 +21,8 @@
 - “All state changes are authorized, version checked, idempotent and persisted.” Never keep a transaction open across provider/expensive policy work.
 - Public schemas generate DTOs/validators; strict validation rejects unexpected sensitive fields. Private domain types stay independent.
 - Existing rules, policy snapshots and original advice remain immutable. Versions travel with records; unavailable/ambiguous history fails closed or read-only.
+- Demo open/choice/replay requires a successful application-server response. Free/access-trial/paid permissions are versioned server policy by exact game/variant and operation; final launch values stay configurable.
+- Preserve one React/Vite frontend and public assets; isolate transport/platform differences for a later Capacitor assessment. First deliver correct, recoverable, usable, bounded web play; larger capacity/native work follows.
 - Preserve the current minimal table, coaching preferences and three playable modes. Standard Tarneeb only; selected Jack-centered Jawaker Trix only. Hosted rollout, real-player multiplayer, ratings, admin editor, reinforcement learning and ISMCTS implementation are excluded.
 
 ## Review Focus
@@ -43,6 +47,7 @@
 | [Cases and evaluation](../../../planning/implementation/multi-game/cases-and-evaluation.md) | Typed catalog, source ledger, blind labels, experiments, Jev/human gates |
 | [Game packets](../../../planning/implementation/multi-game/game-packets.md) | Standard rule freeze, state/actions, arithmetic fixtures, new-game integration |
 | [Compatibility and requirements](../../../planning/implementation/multi-game/compatibility-and-requirements.md) | Migration/rollback, requirements and task/test map |
+| [Launch access and client](../../../planning/implementation/multi-game/launch-access-and-client.md) | Online demo, configurable offers, mobile reuse recommendation and basic quality |
 
 These packets define the referenced future exports. `Create` paths and tests are future work; `Modify` paths were inspected. Code snippets below are proposed assertions, not executed tests. All MG requirements are proposed acceptance requirements, not fulfilled behavior.
 
@@ -72,21 +77,24 @@ M02 and M03 can run independently after contract freeze. M05 can progress beside
 
 Each task ends with a focused commit and evidence under `qa/implementation/multi-game/`. Record passed/failed/blocked/not-run, exact commands, versions/hashes and next unfinished task. Never mark a checkbox from planned assertions. Use the existing distinct `_test` database guard and local server environment; no key printing or new infrastructure.
 
+**First working-app gate:** M00–M04 deliver preserved real game journeys, the online example, configurable local access fixtures and reconnect/review. M06 adds production genericity evidence. M05 can progress alongside this work; strategy expansion, human studies, native builds and large-load campaigns do not block functional completion. Existing security, correctness and durable-command checks remain required.
+
 ## M00 — Baseline, decisions and execution manifest
 
-**Owner:** integrator. **Requirements:** MG-01, MG-12. **Dependencies:** none.
+**Owner:** integrator. **Requirements:** MG-01, MG-12, MG-15–18. **Dependencies:** none.
 
 **Create:** `planning/decisions/CR-ARCH-001-multi-game-production-boundary.md`, `qa/implementation/multi-game/status.md`, `qa/implementation/multi-game/baseline.json`, `docs/rules/tarneeb-partners.md`, `docs/rules/trix-solo.md`, `docs/rules/trix-complex-partners.md` during execution. **Modify:** `planning/implementation/requirements-and-tests.md` only to index adopted MG IDs.
 
 - [ ] Inspect Git changes/worktrees; preserve and attribute other work. Record source/lockfile/schema/policy/archive hashes, installed versions and existing journal behavior in baseline.json.
 - [ ] Run `npm run contracts:check`, `npm run typecheck`, `npm run test:all`, `npm run build`; save actual results. If `TEST_DATABASE_URL` is unavailable, run pure tests and mark durable acceptance blocked; do not substitute the saved-games database.
 - [ ] Record CR-ARCH-001 reason, alternatives, compatibility and owner authority for this migration. Preserve the earlier flat-contract freeze as V1; record proposed V2 changes before depending on them.
+- [ ] Read CR-IMPL-004; record demo/access gaps and a basic first-app acceptance checklist. Keep final offer values unselected and native/capacity work deferred; inspect later evaluation commits without rerunning their experiments.
 - [ ] Freeze Jawaker's specified Trix mechanics. Resolve its narrow opening/doubling/tie omissions from sources; explicitly record interpretation/fixtures. Record the selected Tarneeb lead/scoring profile and Solo meaning when the pending owner answers arrive. No invented individual Tarneeb profile or alternate Trix layout.
 - [ ] Commit the baseline and decision dossier. Gate: shared migration may proceed; each new-game rule branch requires a complete named profile before reducer implementation.
 
 ## M01 — Freeze module, packet and V2 document contracts
 
-**Owner:** contracts/integrator. **Requirements:** MG-01–03. **Dependencies:** M00 baseline.
+**Owner:** contracts/integrator. **Requirements:** MG-01–03, MG-15–17. **Dependencies:** M00 baseline.
 
 **Create:** `web/server/game/kernel/seats.ts`, `module.ts`, `session.ts`; `web/server/records/game-document.ts`; `web/shared/games/hearts.schema.json`, `spades.schema.json`; `web/server/tests/module-contract.test.ts`, `game-document.test.ts`. **Modify:** `web/server/game/kernel/registry.ts`, `web/shared/contracts.schema.json`, `web/scripts/generate-contracts.mjs`.
 
@@ -95,6 +103,7 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 - [ ] Add schema/codec tests rejecting mixed game payloads, extra private fields, invalid competitor partitions and uninstalled versions. Example assertion: `assert.throws(() => decodeDocument({documentVersion:'2.0.0', pin:{gameId:'uninstalled'}}));` Export `decodeDocument(raw: unknown): BoundSession` from `game-document.ts`.
 - [ ] Run `node --test --test-isolation=none web/server/tests/module-contract.test.ts web/server/tests/game-document.test.ts`; record real initial failure.
 - [ ] Implement pure typed declarations/codecs, registration descriptors/new-session factory and exhaustive registered branch decoding. Bundle only registered public fragments; create strict private validators independently. No heterogeneous unchecked casts or arbitrary public JSON.
+- [ ] Freeze online demo frame/choice DTOs, access offer/decision schemas, generic coached-unit metadata and the client platform port with M04's owner. Keep launch policy separate from domain rules and preserved V1 DTOs.
 - [ ] Generate and check contracts; rerun targeted tests and typecheck. Keep V1 bodies stable; add mixed V1-action/V2-candidate rejection and >255-candidate eligibility assertions.
 - [ ] Commit `feat: define versioned game module contracts`. Gate: signatures/schema pins frozen for parallel work, existing modes still build/play through V1.
 
@@ -112,26 +121,33 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 ## M03 — Validate saved documents and prepared work
 
-**Owner:** persistence/backend. **Requirements:** MG-03, MG-05, MG-09. **Dependencies:** M01; integrate M02 registrations when ready.
+**Owner:** persistence/backend. **Requirements:** MG-03, MG-05, MG-09, MG-16. **Dependencies:** M01; integrate M02 registrations when ready.
 
 **Modify:** `web/server/records/types.ts`, `repository.ts`, `game-document.ts`, `web/server/http/trial-service.ts`, `web/server/tests/saved-analysis.test.ts`, `policy-pinning.test.ts`. **Create:** `web/server/tests/module-storage.test.ts`, `tests/fixtures/legacy-module-document.json`.
 
 - [ ] Add `_test` database tests: malformed stored state rejects; old original analysis/choice hashes survive resume; unsupported module is read-only; prepared choice cannot commit after actor/revision/window/access change.
 - [ ] Run `node --env-file=.env.local --test --test-isolation=none web/server/tests/module-storage.test.ts`; capture real failure. The existing guard requires a distinct provisioned test database.
 - [ ] Query document JSON as unknown, decode envelope/version before private payload, validate again on save, and store immutable typed prepared/audit records. Migrate new sessions to V2 lazily; do not bulk rewrite history. Reuse existing SQL tables/analysis fences; atomic Hearts bundles need no new per-seat job migration.
+- [ ] Persist access-trial activation, applied grant/offer references and stable allowance buckets where required by M04; add a forward migration only for missing fields. Prove policy/grant/device changes do not reset usage or invalidate purchased terms. Replay alternative-trial records stay independent.
 - [ ] Verify restart across two app instances, idempotent command retry and byte-preserved original advice. Trials retain parent/future-exposure provenance and corresponding reducers; no later information backfills earlier advice.
 - [ ] Commit `feat: validate versioned game persistence`. Gate: corrupted/ambiguous records cannot become playable by selecting a convenient default.
 
 ## M04 — Wire service dispatch and table adapters end to end
 
-**Owner:** backend + frontend after M01 freeze; integrator owns shared edits. **Requirements:** MG-04–06, MG-09. **Dependencies:** M02/M03.
+**Owner:** backend + frontend after M01 freeze; integrator owns shared edits. **Requirements:** MG-04–06, MG-09, MG-15–18. **Dependencies:** M02/M03.
 
 **Modify:** `web/server/http/game-service.ts`, `views.ts`, `app.ts`, `trial-service.ts`, `web/src/App.tsx`, `api/useSession.ts`, `api/display.ts`, `features/ReviewPanel.tsx`; affected schema generation. **Create:** `web/src/games/registry.tsx`, `hearts.tsx`, `spades.tsx`, `web/server/tests/module-service.test.ts`, `web/e2e/module-migration.spec.ts`.
+
+**Additional files/interfaces:** the [launch/client packet](../../../planning/implementation/multi-game/launch-access-and-client.md) names the demo service/content, offer resolver, platform port, account/client changes and acceptance tests. Split these into focused reviewed commits inside M04; freeze shared DTOs in M01.
 
 - [ ] Add real service tests for V2 candidate commit/legacy command compatibility, atomic sealed passing, generic automatic/chance/review nodes and rejection of unsupported controls. Assert rejected commands increment neither revision nor event count.
 - [ ] Run the new test to record failure; keep existing `integration.test.ts`, `access-review.test.ts` and `trials.test.ts` as regressions.
 - [ ] Replace direct combined-engine/mode switches with `BoundSession` operations. Prepare from frozen seat packets outside transactions; commit under the same existing fences. Observe all Hearts seats before bundle application. Keep human next-round confirmation and existing pause/advance behavior.
-- [ ] Render seats/competition, safe public zones, score entries and game controls from registered adapters. Preserve current copy, keyboard/touch gestures, coach modes, review and billing screens. Public views/exports/trials omit private audits/deals/hashes; UI never imports the authoritative server module.
+- [ ] Render seats/competition, safe public zones, score entries and game controls from registered adapters. Preserve table gestures, coach modes and review; update example/access copy where CR-IMPL-004 requires it. Public views/exports/trials omit private audits/deals/hashes; UI never imports the authoritative server module.
+- [ ] Test/implement server-fetched authored demo frames, choices and replay; disconnected commands cannot advance the example. Run `node --test --test-isolation=none web/server/tests/demo-service.test.ts` and `demo-online` UI checks; no engine/provider work or offline fallback graph.
+- [ ] Test/implement the versioned offer resolver: requested variant eligibility, play/coach/read separation, trial expiry, finite quota, no stacking/reset and purchased/saved access. Run `access-policy.test.ts` and database-backed `access-offers.test.ts`; retain explicit local fixtures until real hosted identity/grants pass their later gate.
+- [ ] Add the web platform/transport port and URL validation without native dependencies; test reconnect/foreground and ambiguous-command reconciliation. Run `client-platform-boundary.test.ts` and `client-resume` UI checks. Preserve hosted startup/origin protection.
+- [ ] Record basic quality on a complete current-game journey: private correct moves, durable reload, bounded failure/reconnect, keyboard/touch/readable controls and sanitized diagnostics. Fix measured blocking delays; first-app acceptance requires no large-load campaign or proven strategy improvement.
 - [ ] Run `npm run contracts:check`, typecheck, targeted server regressions and `npm run test:ui`. Commit `refactor: dispatch live sessions through game adapters`. Gate: the actual current-game user journey still works, not merely direct module calls.
 
 ## M05 — Replace continuation information/horizon boundary
@@ -148,7 +164,7 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 ## M06 — Prove genericity through the production path
 
-**Owner:** QA. **Requirements:** MG-04, MG-06–08. **Dependencies:** M04/M05.
+**Owner:** QA. **Requirements:** MG-04, MG-06–08, MG-18. **Dependencies:** M04/M05.
 
 **Modify:** `web/server/tests/support/token-module.ts`, `module-seam.test.ts`. **Create:** `web/server/tests/module-production.test.ts`, `plan-genericity.test.ts`, `web/e2e/module-conformance.spec.ts`; test-only registered token module and client adapter in `web/server/tests/support/token-registration.ts` and `web/src/games/test-token.tsx`.
 
@@ -221,13 +237,14 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 ## M12 — Complete browser evidence, human evaluation and promotion record
 
-**Owner:** QA/product reviewer. **Requirements:** MG-06, MG-11, MG-13. **Dependencies:** relevant M11 study manifest; correctness journeys can start after M08/M09.
+**Owner:** QA/product reviewer. **Requirements:** MG-06, MG-11, MG-13, MG-17–18. **Dependencies:** relevant M11 study manifest; correctness journeys can start after M08/M09.
 
 **Create:** `web/e2e/multi-game.live.spec.ts`, `multi-game.config.ts`, `qa/evaluation/multi-game/human-study.md`, `qa/implementation/multi-game/report.md`. **Modify:** defaults/catalog only after their documented acceptance and owner-authorized promotion.
 
 - [ ] Write/run real local server browser journeys through DOM/dev-tools evidence, including all phases, saved coach review, restart, pause and stale retries. Save opening/packet/action/bot/coach/result provenance and all unused/aborted starts. No player screenshot input, API mocks or injected engine moves.
 - [ ] Use `npx playwright test -c web/e2e/multi-game.config.ts`. Require its config to use `TRICKS_LIVE_URL`, one worker, real server and recorded start budget. Reconcile old campaign limits before resuming it; new campaign needs its own recorded budget. Correctness games are not a statistical strength test.
 - [ ] Freeze the human study before recruiting: cue comprehension followed by unaided immediate/delayed unfamiliar choices, assistance/exposure records and independent accepted sets. No fictitious human results or unsolicited recruitment messages.
+- [ ] Record a later native feasibility milestone after the stable web slice: reuse its build in a Capacitor shell and validate hosted auth/transport, resume/Back, safe areas/touch, purchase channel and one complete game on Android/iOS. Tooling/device blockers stay explicit; do not scaffold/publish native projects during the engine migration.
 - [ ] Run relevant targeted suites, `npm run contracts:check`, `npm run lint:boundaries`, `npm run typecheck`, `npm run test:all`, `npm run build`, `npm run test:ui`; report actual failures/skips. Preserved old-game goldens and immutable histories are release gates.
 - [ ] Commit final evidence. Promote only after applicable strength/safety/human-label gates and explicit recorded owner approval; empirical gaps stay partial. Commit/merge completed work to local main; do not push/deploy or enable live charges/models without authorization.
 

@@ -2,7 +2,7 @@
 
 The current product and subscription specification is [06 — Commercialization](06-commercialization.md). It supersedes the earlier permanent free-game offer and decision-based coaching allowance.
 
-Latest owner direction: unpaid visitors get only the fixed authored demo; full play requires membership. Prices and family limits are proposals. See [07 — Hosted architecture](07-hosted-architecture.md), [08 — Test gates](08-commercial-testing.md) and [09 — Delivery and evidence](09-delivery-and-evidence.md). No payment or service implementation is claimed.
+Latest owner direction: [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) requires an online authored demo and configurable server-issued free/access-trial/paid grants scoped by game/variant and coaching allowance. Final launch offers, prices and family limits remain undecided. See [07 — Hosted architecture](07-hosted-architecture.md), [08 — Test gates](08-commercial-testing.md) and [09 — Delivery and evidence](09-delivery-and-evidence.md). This is specification guidance, not activation evidence.
 
 ## Follow the current access design
 
@@ -12,7 +12,7 @@ flowchart TD
   accTitle: Current access specification
   accDescr: The moved access page leads to the current commercial policy, enforced by hosted architecture and tested by the acceptance suite.
   A("This moved access page"):::muted --> B("06 · Commercialization"):::view
-  B --> C{"Demo or paid live access"}:::gate
+  B --> C{"Online demo or scoped live grant"}:::gate
   C --> D("07 · Server enforcement"):::service
   D --> E{"08 · Acceptance checks"}:::gate
   E --> F("09 · Delivery sequence"):::view

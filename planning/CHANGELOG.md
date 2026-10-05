@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-04 — Online demo, configurable launch offers and frontend reuse
+
+[CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) records the owner's four notes. Updated the main plan and active access/architecture/test guidance: server-required demo transitions; game/variant-scoped free/access-trial/paid grants with separate coaching limits; one React frontend with a later Capacitor assessment; basic reliability/recovery/usability before capacity/native work. Added [MG-15–18 and execution files/tests](implementation/multi-game/launch-access-and-client.md). Final offers/native builds remain unselected. Documentation only; existing demo/access code and runtime defaults are unchanged.
+
 ## 2026-10-04 — Detailed multi-game reasoning implementation plan
 
 Added the [M00–M12 plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) and four implementation packets: typed production modules, actor-safe continuation planning, maintained cases/source ledger, standard-game profiles and independent evaluation. Preserves current Hearts/Spades play, policy/history versions, atomic Hearts passing and selected Jawaker Trix rules. Two independent agents reviewed the plan; unresolved Tarneeb profile choices gate only that branch. [Planning verification](../qa/plans/2026-10-04-multi-game-plan-review.md) distinguishes documentation checks from future tests. No game code, defaults, provider activation or strategy-strength claims changed.

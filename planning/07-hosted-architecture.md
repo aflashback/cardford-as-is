@@ -8,7 +8,7 @@ A player can read/change JavaScript, inspect their own decrypted requests, scrip
 
 Enforce access even when the protocol and client are fully known. Keep engine/coach implementation off the downloaded bundle and disclose only necessary views. This reduces source exposure, but cannot prevent independent implementations of public card rules, learning from outputs or redistribution of legitimately received advice. TypeScript is suitable when trusted code runs on the server. [OWASP REST guidance](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html).
 
-This strengthens the earlier browser-engine recommendation: commercial games use a server-owned engine, bots and coach. The browser renders, takes input and animates confirmed transitions. Offline live play is not part of this phase; the finite demo can work offline once loaded.
+This strengthens the earlier browser-engine recommendation: commercial games use a server-owned engine, bots and coach. The browser renders, takes input and animates confirmed transitions. Under [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md), live play and every demo frame/choice/replay require the application server; loaded demo content cannot advance offline.
 
 The [security research](security/hardening.md) compares a browser-engine baseline with this design, evaluates Workers/Wasm/session bundles and records implementation work. Success means a fully understood or modified client still cannot obtain unauthorized service work. It does not mean preventing inspection of the interface.
 
@@ -34,14 +34,18 @@ For sensitive JSON bodies, explicitly configure Ajv `removeAdditional: false`, `
 
 Keep the proposed stack: changing the server language would not change subscription enforcement. Profile expensive strategy work in bounded server workers before considering Rust/Go/Wasm. Support a tested matrix of maintained Chrome, Edge, Firefox and Safari releases on target devices; a device from 2020 is different from an unpatched browser from 2020. Record exact versions in T39. Optional browser workers are for responsiveness, never access control; no Wasm/threading requirement for ordinary play.
 
+For future Android/iOS reuse, retain React DOM/Vite and isolate API transport/lifecycle behind a small platform port. The recommended later Capacitor assessment reuses the public web build; hosted authentication/native-origin networking and device behavior must pass before release. Current local startup protection remains intact. See [the client/quality packet](implementation/multi-game/launch-access-and-client.md#keep-one-frontend-mg-17).
+
 Proposed service boundary; public demo content stays separate from protected work.
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
 flowchart TD
   accTitle: Proposed hosted trust boundary
-  accDescr: Public demo content reaches the browser directly. Protected game and coaching work passes an access check; private records and optional Jev remain behind the service.
-  DEMO("CDN and fixed demo") --> UI("Browser views")
+  accDescr: Public assets reach the browser; demo choices require server-authored frames. Protected game and coaching work passes an access check; private records and optional Jev remain behind the service.
+  ASSETS("CDN public UI assets") --> UI("Browser views")
+  UI --> DEMO("Online authored demo service")
+  DEMO -->|"Validated frame"| UI
   UI --> ACCESS{"Allowed operation?"}
   ACCESS --> GAME("Engine and bots")
   GAME --> DB[("Private records")]
@@ -56,7 +60,8 @@ flowchart TD
   classDef data fill:#F1EBFC,stroke:#A68AC9,color:#392B52;
   classDef gate fill:#FFF3D9,stroke:#C7A253,color:#594219;
   classDef muted fill:#F1F5F9,stroke:#94A3B8,color:#334155,stroke-dasharray:4 3;
-  class DEMO,UI view;
+  class ASSETS,UI view;
+  class DEMO service;
   class GAME,COACH,BILLING service;
   class DB data;
   class ACCESS gate;
@@ -67,7 +72,7 @@ Proposed boundaries under `web/`:
 
 ```text
 src/                 views, input, session client, demo player, account UI
-public/demo/         finite frames and authored guidance, no live evaluator
+server/demo/         finite authored content, served by online frame controller
 shared/              public DTO schemas/types and display utilities
 server/game/         engine, full state, dealing and seat observations
 server/strategy/     tactics, sampler, bots and worker policy
@@ -102,14 +107,14 @@ Keep identity-provider tokens on the backend. Validate issuer/audience/signature
 
 | Operation | Required authority |
 |---|---|
-| Fixed demo, public plans | Public finite content only; no live engine or analysis work. |
+| Fixed demo, public plans | Public finite content; demo frames/choices require online responses; no live engine or analysis work. |
 | Start/advance a live game | Valid session, owned game where applicable, active play coverage, control lease and legal revision/action. |
 | Generate guidance, assessment or alternative trial | Valid session, owned current-game decision, active coaching coverage, hand unlock/reservation and work budget. |
 | Read owned saved coaching or factual current-game replay | Valid session, ownership and current-game/retention scope; previously delivered coaching remains readable after plan expiry. No new computation or hidden information. |
 | Manage billing or family seats | Valid session and the specific billing/family role; this grants no access to members' private games. |
 | Payment webhook | Verified provider signature and server-bound purchase; no browser session substitutes for it. |
 
-**Future compatibility:** this operation split can later distinguish an approved free/play-only grant from paid coaching. Current play coverage remains paid; do not bypass A04 or add grants now. Human matches also need seat-specific authority and shared scheduling, not merely a different plan flag. [F04–F05](11-future-play-and-membership.md#f04--necessary-design-implications) records that separate design/migration work.
+**Launch flexibility:** this operation split now supports preparation of versioned free/access-trial/paid grants by game/variant, separate coaching tools/quotas and owned saved reads. Resolve the requested new-game target, preserve usage across policy/grant changes and select final launch values before activation. Human matches still need separate seat-specific authority/scheduling. [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) and [F04–F05](11-future-play-and-membership.md#f04--necessary-design-implications) record these boundaries.
 
 Use current session/access generations from the authoritative store at protected boundaries. Replicas may not rely on a stale positive permission cache. Revoking a session blocks its subsequent requests; security revocation also cancels/fences unfinished work initiated by it. Ordinary sign-out blocks retrieval through that session but may let already-authorized work finish for recovery after sign-in. Coverage expiry/removal stops new work and publication unless another valid grant remains. Recheck before dispatch and at result commit; a request timeout alone does not stop a worker. Work committed before revocation remains subject to the saved-result read policy.
 
@@ -158,7 +163,7 @@ The checkout return page queries server access. Periodic reconciliation repairs 
 
 Accepted moves, coaching reservations/results, grant changes and family mutations create required server records. The client cannot suppress these while receiving the accepted operation. If the essential transaction/journal fails, reject it, retain the last confirmed view and offer recovery. That failure is not automatic evidence of tampering.
 
-An outbox exporter or optional analytics outage does not prevent committed operations. Monitor/bound backlog; pause new mutations if the database cannot safely accept their essential records. Blocking analytics, declining optional consent, missing heartbeats, devtools and ad blockers do not by themselves disable accounts or prove cheating. Offline demo viewing is not fully observable.
+An outbox exporter or optional analytics outage does not prevent committed operations. Monitor/bound backlog; pause new mutations if the database cannot safely accept their essential records. Blocking analytics, declining optional consent, missing heartbeats, devtools and ad blockers do not by themselves disable accounts or prove cheating. Demo transitions require online responses; a delivered frame still does not prove it was viewed.
 
 Record event ID, server time, player/session correlation, game/hand/decision/revision, operation, outcome/reason, grant/usage changes, policy versions, timings and known provider cost. Derive funnel, retention and paid usage from these records. UI click/display signals are best-effort and untrusted; a heartbeat is not attestation.
 

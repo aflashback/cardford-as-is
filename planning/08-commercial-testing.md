@@ -24,13 +24,13 @@ Every run records code revision or source hashes, rules/policy/schema versions, 
 
 | ID / requirement | Concrete check | Required result |
 |---|---|---|
-| T01 / P02 | Traverse every authored demo branch; replay in incognito, clear storage, alter clock, invent node IDs and create another unpaid account. | Complete accessible finite paths; zero live engine/evaluator/provider calls. Same material only; no extra entitlement, usage/progress record or generated advice. |
-| T02 / P02, A01 | Send invented demo seeds/positions, substitute live IDs, request live advice and alternative trials directly. | No runtime evaluator/provider invocation and no live game access without a paid grant. |
+| T01 / P02 | Traverse every authored demo branch online; disconnect before open/choice/replay and reconnect; clear storage, alter clock and invent nodes. | Each transition requires a validated response; no offline advancement. Complete finite paths; zero live engine/evaluator/provider calls or progress/quota gain. |
+| T02 / P02, A01 | Send invented demo seeds/positions, substitute live IDs, request live advice and alternative trials directly. | No runtime evaluator/provider invocation through demo; live operations require applicable scoped play/coaching grants. |
 | T03 / A01–A03 | Inspect production module graph, chunks, lazy routes, maps, service-worker caches and alternate deployment routes. | No server engine/strategy, keys, mock-grant bypass or legacy browser app in public artifacts; demo remains finite. |
 | T04 / A03 | Compare legal fixtures with identical player knowledge but different hidden holdings. Inspect normal/error/replay/job responses. | Same observation and seeded analysis; no hidden hand, seed, private pass or future-event leak. |
 | T05 / A03 | Check production shuffle path and ID generator, then replay a stored original deal. | CSPRNG path is mandatory outside fixtures; no caller seed, clock-derived deal or seed-derived ID; deterministic replay uses recorded deal/events. Statistical distribution tests alone do not prove secrecy. |
 | T06 / A04 | Player B requests A's game, decision, job, review or cached answer with a valid B login. | Denied without payload or cross-owner cache leakage. |
-| T07 / P02, P05 | Forge localStorage plan, expiry, family owner, price, usage or a successful checkout URL. | Server access unchanged. Unpaid users get demo/account access and authorized owned saved content, never new live play or coaching. |
+| T07 / P02, P05 | Forge localStorage plan, expiry, family owner, price, usage or a successful checkout URL; switch requested game/offer after quota exhaustion. | Server access unchanged. Free/access-trial/paid grants apply only to configured targets/tools/quotas; no reset/stacking or cross-game expansion. Owned saved reads retain their policy. |
 | T08 / A02, A04 | Send missing/expired/revoked sessions, forged callbacks, cross-origin mutations and script-bearing display names/provider text. | No unauthorized operation or script execution; cookie/security headers and safe recovery hold; an allowed origin is not itself authorization. |
 | T09 / A04 | Concurrent identical commands, same ID/different payload, stale revision, illegal cards and out-of-turn actions. | At most one accepted transition; deterministic retry, conflict/rejection and correct safe view. |
 | T10 / A04 | Transfer control between two signed-in devices; leave an old tab issuing commands. | One control lease, no divergent tables; family members can each control their own game. |
@@ -106,6 +106,8 @@ Research and proposed work packages: [security review](security/hardening.md). A
 | T49 / A10, S07 | Simulate Jev latency tails, 429/503, credit exhaustion and outage across all dispatch replicas. Before enabling/expanding a Jev workload, separately run an explicitly budgeted live capacity experiment on the exact Decisions endpoint/model. | Shared attempts/concurrency/spend bounds; no retry storm; application deadlines include queue wait; ordinary authorized code-based play continues within capacity. An off deployment requires no paid provider experiment. Enabled Jev capacity/cost remains unverified until separately evidenced; extra keys are not the scaling mechanism. |
 
 ## Release gates and proposed suite ownership
+
+**First working-app scope, CR-IMPL-004:** basic rules/privacy, ownership/revision/idempotency, durable reload/reconnect, bounded failures and keyboard/touch usability are the current implementation gates. Use the [MG-15–18 packet](implementation/multi-game/launch-access-and-client.md) for online demo, scoped offers and client recovery. G2/G3 hosted/payments and large-load/capacity checks below remain later release work; they do not delay a functioning local web slice. Strategy/learning claims keep their separate gates.
 
 Planned evidence gates; these are not completed tests.
 

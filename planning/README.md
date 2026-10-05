@@ -9,6 +9,7 @@ Implementation target, grounded in the playable [web prototype](../web/README.md
 | Read | Purpose |
 |---|---|
 | [Multi-game reasoning implementation plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) | M00–M12 production module migration, maintained cases, Tarneeb/Trix, compatibility and independent evaluation; planning only. |
+| [Launch access and client readiness](implementation/multi-game/launch-access-and-client.md) | Online demo, configurable game/coaching grants, React/Capacitor reuse recommendation and basic quality; MG-15–18. |
 | [Card-game architecture interview](research/2026-10-04-card-game-architecture-interview/README.md) | Two-agent review of implementation/evidence and Tarneeb/Trix architecture; input for the multi-game plan. |
 | [Implementation handoff](IMPLEMENTATION-START-HERE.md) | Fresh-agent reading order, task selection, preserved B2C UX and evidence reporting. |
 | [Current monorepo plan](2026-09-27-monorepo-implementation-plan.md) | W00–W19 files, interfaces, dependencies, patterns, tests, Stripe and release gates. |
@@ -66,7 +67,7 @@ The latest commercial decisions in 06–10 supersede conflicting local/free-play
 - Players know the basic rules. Help improves decisions during real play.
 - Preserve the existing table, dialogs and responsive layouts.
 - Jev runs through OpenRouter when enabled. Local rule/coach testing comes first; commercial play uses a hosted authoritative Node service and authenticated membership.
-- At launch, unpaid access is only a finite authored demo. Proposed paid plans meter coached hands; browser edits cannot confer server access. [Future free/play-only options](11-future-play-and-membership.md) are under consideration, not approved offers.
+- Demo transitions require the application server. Versioned free/access-trial/paid offers may select games/variants and coaching limits; final launch values remain undecided. Browser edits confer no access. [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md).
 - Required action/usage records are written by the server. Optional analytics and client display reports cannot prove integrity.
 - Every started game is stored internally. No player-facing game archive.
 - All project artifacts remain under `C:\repos\test-jev`.

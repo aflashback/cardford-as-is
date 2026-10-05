@@ -35,6 +35,7 @@ type Operation<A, Q> =
   | { kind: 'continue-round' };
 type Transition<S, E> = { state: S; events: readonly E[] };
 type Candidate<A, C> = { id: string; action: A; public: C };
+type AccessUnit = { id: string; kind: string; atAdmissionBoundary: boolean };
 interface Module<S, O, A, E, Q, C, V, F, G> {
   readonly pin: Pin;
   readonly stateCodec: Codec<S>;
@@ -48,10 +49,13 @@ interface Module<S, O, A, E, Q, C, V, F, G> {
   projectEvent(event: E, viewer: Seat): Json | null;
   facts(input: O): F;
   table(input: O): V;
+  accessUnit(state: S): AccessUnit | null;
 }
 ```
 
 `Q` contains typed request/result variants owned by the game, such as a complete shuffled deck; no shared deck size or rank ordering. The factory parses configuration before calling `create`. `projectEvent` output is validated by the module's closed actor-event schema; it is not an unvalidated public JSON blob. Codecs reject unknown fields, malformed cards, unsupported pins and non-finite numbers; they never strip sensitive fields to make an observation pass.
+
+`accessUnit` exposes only stable game-owned unit identity/kind/admission boundaries, not permission or private state. M04's server policy decides access. Current Hearts/Spades map their existing coached hands; a new game must declare its own unit instead of inheriting a 13-trick assumption. The ID is stable within that session across reloads/offer changes. This is the CR-IMPL-004 launch-policy seam, not billing inside the reducer.
 
 ### Binding heterogeneous modules without unchecked casts
 
@@ -63,6 +67,7 @@ Create `web/server/games/registrations.ts` with an exhaustive `(gameId, moduleVe
 interface BoundSession {
   readonly pin: Pin;
   node(): Node<Json>;
+  accessUnit(): AccessUnit | null;
   serializePrivate(): Json; // repository use only, never a provider/view
   packet(actor: Seat): RegisteredActorPacket;
   view(actor: Seat): RegisteredSessionView;

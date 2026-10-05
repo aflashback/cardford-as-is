@@ -6,7 +6,7 @@ The owner wants one simple monorepo, the latest CardFord specification, the exis
 
 **Current architecture work:** the [multi-game reasoning plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) defines M00–M12 and its contract/case/game packets. It is a plan, not completed implementation. For that work, start M00 → M01 against the existing application; do not restart the original W00 build. Preserve current rules, original saved advice and policy pins. Remaining Tarneeb profile questions gate its branch only.
 
-**Future scope boundary:** [CR-FUTURE-001](11-future-play-and-membership.md) considers free/play-only membership and human matching. It authorizes planning only. Continue the existing packets without adding free grants, matchmaking, ratings or new subscription products; any activation needs a separate approved specification.
+**Launch/client amendment:** [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) adds online demo, configurable free/access-trial/paid grant preparation, frontend reuse readiness and basic first-app quality to the current plan. Final offers and native packaging remain later selections. [CR-FUTURE-001](11-future-play-and-membership.md) still leaves human matching/ratings outside this work.
 
 ## First-run reading order
 

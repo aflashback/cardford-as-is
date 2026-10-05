@@ -10,7 +10,7 @@
 |---|---|
 | Owner confirmed | Product name **CardFord**. The prior `trickscoach.com` domain plan remains unverified and is not a CardFord domain decision. [CR-BRAND-002](brand-and-domain.md). |
 | Owner confirmed | Target people who already know the rules and want to make stronger decisions against others. |
-| Current launch direction | Only the fixed, authored coached demo is available without a subscription; no timed trial. A future free full-game tier is now under consideration, not approved. See [CR-FUTURE-001](11-future-play-and-membership.md). |
+| Current launch direction | Online authored demo plus configurable scoped free/access-trial/paid offers; games/coaching limits chosen at launch. No offer activated by this plan. See [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md). |
 | Owner proposed | Monthly 4.99/9.99 individual plans, with four daily coaching sessions versus unlimited; 17.99 family with three unlimited and two limited users. Values remain adjustable. |
 | Owner confirmed | Separate member accounts/profiles, one payer and visible paid-by relationship. Upgrade can be requested at any time. |
 | Owner confirmed | Worldwide market; incorporate after testing and before launch. App Store and human multiplayer are later phases. |

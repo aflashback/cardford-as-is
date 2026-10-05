@@ -4,6 +4,8 @@
 
 The current launch offer remains the finite free example plus subscribed live play in [06](06-commercialization.md). The local implementation and its remaining hosted gates are recorded in [status](../qa/implementation/status.md). Future ideas below are not additional W00–W19 acceptance requirements.
 
+**Owner update, 4 October — [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md):** preparing flexible free/access-trial/paid grant policies is now part of the current implementation plan. Final launch games, tools, limits and durations remain unselected. This supersedes the categorical planning prohibition and paid-only assumptions above/F04 for offer preparation; broad free access, real-player matching, ratings and new prices remain future decisions. The demo requires online server responses.
+
 **CR-STRAT-005:** future human play remains possible through `tableType=human-only`; current `practice-bots` always has one human and three bots. Table type is independent of game and solo/partnership competition. Human-only remains unavailable until its gates pass.
 
 ## F01 — A reason to stay after learning

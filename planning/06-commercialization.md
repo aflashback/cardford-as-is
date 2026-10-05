@@ -6,6 +6,8 @@ Read with [the architecture](07-hosted-architecture.md), [test gates](08-commerc
 
 **Future consideration, 27 September:** [CR-FUTURE-001](11-future-play-and-membership.md) evaluates free or play-only membership for people returning mainly for the bots, and later human games. The offer below remains the launch proposal. Free access is no longer ruled out forever; introducing it requires separate demand, cost and access-policy decisions.
 
+**Owner update, 4 October:** [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) requires an online example and configurable launch offers. Free/access-trial/paid grants may cover selected games/variants and coaching tools/allowances. Final launch values are undecided; the paid offers below remain hypotheses, not a mandatory paid-only access rule. [Implementation packet](implementation/multi-game/launch-access-and-client.md).
+
 ## P01 — Who pays and why
 
 Players already know Hearts or Spades. They want to compete better: notice what a play reveals, weigh plausible alternatives, understand their own decisions and practice applying those ideas in new hands. A useful message is: **“Understand the table. Make better decisions against other players.”**
@@ -14,15 +16,15 @@ The coach explains observable evidence and uncertainty. It cannot know why an op
 
 Retention must come from useful guidance on fresh decisions and a meaningful next focus. A few useful tips are a successful demonstration, but repeat use and willingness to pay still need a pilot. No beginner curriculum, human multiplayer, overall competitive rating, drill catalog or old-game archive is added to the first commercial scope.
 
-## P02 — Fixed demonstration, no timed trial
+## P02 — Online fixed demonstration and configurable access
 
-A visitor can open a labelled **Example game** without an account or card. It shows a fixed deal and finite, authored sequence of decisions, coaching, original playback and a sample alternative. Any selectable branches are also finite and authored. The coaching is hardcoded; no dynamic evaluator or Jev request runs for a visitor.
+A visitor can open a labelled **Example game** without an account or card. It shows a fixed deal and finite, authored sequence of decisions, coaching, original playback and a sample alternative. Every open/choice/replay requires a validated server frame. On connection failure the last confirmed frame is inert until reconnect; no offline continuation. The coaching is authored; no dynamic evaluator or Jev request runs for this demo.
 
-Visitors may repeat it indefinitely. Reloads, new accounts, cookies and clocks cannot turn this content into personalized coaching because the public demo has no such capability. Publish only the demonstration frames and copy, with a content version. Do not ship a general engine, accept arbitrary seeds or positions, or embed a paid API credential in the demo. The example can be copied; copying it does not confer service access.
+Visitors may repeat it online. Reloads, new accounts, cookies and clocks cannot turn this content into personalized coaching because the demo has no such capability. Serve allowlisted frames/choices with a content version and no-store responses; keep its graph off the client bundle and offline caches. Do not ship a general engine, accept arbitrary seeds/positions or embed a paid API credential. Previously received text does not confer live service access.
 
 After a meaningful choice, explanation and replay, offer **Play new hands with coaching** and show the plans. Let the visitor finish and replay the example. Do not invent weaknesses to create purchase pressure. An optional first-visit flag only hides repeated introductory prompts; it does not prove one visit per person or grant access. Every selectable card/help/replay branch maps to authored frames; demo activity never contributes to usage, progress or rating.
 
-**Confirmed owner decision:** visitors and unsubscribed accounts have only the fixed demo for interactive play. Full games require an active individual or family entitlement. This supersedes permanent free play. An unpaid account can still manage billing, its data and previously delivered material; it cannot start/advance live games or generate coaching.
+**Current owner decision:** full games require an applicable server-issued play grant, which may be paid, free or an access trial under the selected versioned launch policy. Coaching has separate tool/allowance permission. Signing in alone grants neither. Previously delivered owned content/account management retain their read policy. No free/trial values or live grants are activated by this specification update.
 
 ### Demo and member access
 
@@ -30,12 +32,12 @@ After a meaningful choice, explanation and replay, offer **Play new hands with c
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
 flowchart TD
   accTitle: From example to subscribed play
-  accDescr: Visitors can repeat the fixed authored example. Full games require verified active individual or family coverage; coaching then follows the member allowance.
+  accDescr: Visitors can repeat the online authored example. Full games require verified scoped play coverage; coaching follows a separate permission and allowance.
   A("Visitor"):::view
   B("Fixed Example game"):::view
-  C("Choose a plan"):::view
+  C("Choose an available offer"):::view
   D("Sign in and activate"):::view
-  E{"Active verified coverage?"}:::gate
+  E{"Verified scoped play grant?"}:::gate
   F("Account and saved material"):::muted
   G("Full games"):::view
   H("Coaching by allowance"):::view
@@ -118,9 +120,9 @@ Repeated help within a ready hand shares its unlock. New analysis still requires
 
 ## P05 — Accounts, upgrades and failure behavior
 
-Use managed sign-in with an email code and supported social sign-in. Keep the demo anonymous. Ask for an account when a paid plan is selected, linking payment and recovery to a stable owner; preserve that selection across login. Billing, login and family pages support phone portrait. The landscape gate applies only to the table.
+Use managed sign-in with an email code and supported social sign-in. Keep the online demo anonymous. Ask for an account when a live offer is activated, linking its access/usage and any payment to a stable owner; preserve that selection across login. Billing, login and family pages support phone portrait. The landscape gate applies only to the table.
 
-The server creates checkout from an allowlisted offer; the browser cannot supply a trusted price, role or quota. Show currency, total due now, renewal interval, tax and cancellation terms before confirmation. Do not attach a free-trial configuration. Link and Apple Pay are payment methods, not the game's login identity.
+The server creates checkout from an allowlisted offer; the browser cannot supply a trusted price, role or quota. Show currency, total due now, renewal interval, tax and cancellation terms before confirmation. A configured application access trial does not automatically create a Stripe trial; payment-trial terms remain a separate launch choice. Link and Apple Pay are payment methods, not the game's login identity.
 
 Allow an upgrade request at any time. Show a server-generated proration preview; grant the higher tier after required payment is confirmed. An incomplete upgrade preserves the prior paid tier and usage. Downgrades take effect at renewal. Cancellation stops renewal while retaining paid-through access. Keep **Manage subscription** and cancellation easy to find.
 

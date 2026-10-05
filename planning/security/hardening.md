@@ -8,7 +8,7 @@ I inspected the prototype's engine/coach imports, full game state and browser sa
 
 ## Constraints
 
-Preserve the game views, Hearts/Spades modes, evidence-based coach and OpenRouter-only Jev integration. Unpaid visitors receive a finite authored example; paid users receive new games. Keep the proposed coached-hand allowance, individual/family grants and current-game review. No production deployment or new product code in this work.
+Preserve the game views, Hearts/Spades modes, evidence-based coach and OpenRouter-only Jev integration. [CR-IMPL-004](../decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) updates access preparation: an online authored example and verified game/variant-scoped free/access-trial/paid grants, with separate coaching tools/allowances. Current-game review and purchased/saved permissions remain protected. No production deployment or new product code in this documentation work.
 
 ## Opportunity Portfolio
 
