@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "verifiedOn": "2026-10-05",
+  "method": "Live web page reads; selected English and Arabic rule text reconciled with repository owner decision. No downloaded snapshot or source-content hash.",
+  "sources": [
+    { "id": "jawaker-trix-en", "url": "https://blog.jawaker.com/en/trix-rules-en/", "displayedDate": "2020-11-02", "role": "selected authority" },
+    { "id": "jawaker-trix-ar", "url": "https://blog.jawaker.com/trix-rules/", "displayedDate": "2020-11-19", "role": "selected original-language authority" },
+    { "id": "jawaker-complex-en", "url": "https://blog.jawaker.com/en/trix-complex-en/", "displayedDate": "2020-12-06", "role": "selected authority" },
+    { "id": "jawaker-complex-ar", "url": "https://blog.jawaker.com/trix-complex-rules/", "displayedDate": "2020-12-06", "role": "selected original-language authority" },
+    { "id": "jawaker-closed-doubling", "url": "https://blog.jawaker.com/en/closed-doubling-en/", "displayedDate": "2025-11-14", "role": "later external change; excluded from selected public-reveal profile" },
+    { "id": "waraq-tarneeb", "url": "https://playwaraq.com/tarneeb/rules", "displayedDate": null, "role": "owner-preferred starting source" },
+    { "id": "tarneeb-masters", "url": "https://www.tarneeb.com/rules", "displayedDate": null, "role": "official discrepancy corroboration; copyright is not publication date" },
+    { "id": "jawaker-tarneeb", "url": "https://blog.jawaker.com/en/tarneeb-rules-en/", "displayedDate": "2020-10-13", "role": "official discrepancy corroboration" },
+    { "id": "pagat-trix", "url": "https://www.pagat.com/compendium/trex.html", "displayedDate": "2022-04-18", "role": "rank/direction corroboration; other variants excluded" },
+    { "id": "pagat-tarneeb", "url": "https://www.pagat.com/auctionwhist/tarneeb.html", "displayedDate": "2021-04-07", "role": "base-rule discrepancy corroboration; other editions excluded" }
+  ],
+  "dossiers": [
+    { "path": "docs/rules/tarneeb-partners.md", "version": "0.1.0", "candidateProfile": "tarneeb-partners-standard-1.0.0-draft.1", "completeExecutableProfile": false, "blockedFields": ["TAR-01", "TAR-02", "TAR-03", "TAR-04", "TAR-06", "TAR-07", "TAR-08", "TAR-SOLO"] },
+    { "path": "docs/rules/trix-solo.md", "version": "0.1.0", "candidateProfile": "trix-solo-jawaker-1.0.0-draft.1", "completeExecutableProfile": false, "blockedFields": ["TRX-D01", "TRX-D02"] },
+    { "path": "docs/rules/trix-complex-partners.md", "version": "0.1.0", "candidateProfile": "trix-complex-partners-jawaker-1.0.0-draft.1", "completeExecutableProfile": false, "blockedFields": ["TRX-D01", "TRX-D02"] }
+  ],
+  "actualChecks": {
+    "liveSourceReads": "passed",
+    "localMarkdownFileTargets": "passed; all three dossier targets checked with PowerShell Test-Path; heading fragments reviewed manually",
+    "gameEngineTests": "not run; no new gameplay implementation in M00",
+    "strategyExperiments": "not run",
+    "browserGameSessions": "not run",
+    "humanRuleReview": "deferred"
+  },
+  "scope": "M00 rule research; planned fixture tables are not engine acceptance evidence; no catalog activation"
+}

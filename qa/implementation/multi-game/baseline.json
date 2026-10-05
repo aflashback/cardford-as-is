@@ -1,0 +1,93 @@
+{
+  "stage": "baseline",
+  "recordedAt": "2026-10-05T04:23:22.867Z",
+  "sourceRevision": "d66a046240a309fe25b6b79da52594d8ead2b5f0",
+  "sourceTree": "90029f3f57890d9c88fdfe76bf4a0948b52aa202",
+  "branch": "",
+  "initialChanges": "",
+  "worktrees": "C:/repos/test-jev                                                 d66a046 [codex/partner-cases-m00-m01]\nC:/repos/test-jev/.claude/worktrees/cardford-bots-coaching-bd3916 94a59cb [claude/cardford-bots-coaching-bd3916]\nC:/repos/test-jev/.local/m00-baseline                             d66a046 (detached HEAD)\nC:/Users/AliA/.codex/worktrees/spades-reasoning/test-jev          c81d322 [codex/spades-reasoning]\nC:/Users/AliA/.codex/worktrees/v1-build/test-jev                  e89ddf6 [v1/ui]\nC:/Users/AliA/.codex/worktrees/v1-contracts/test-jev              af141b4 [v1/billing]\nC:/Users/AliA/.codex/worktrees/v1-domain/test-jev                 e1e5023 [v1/provider-ledger]",
+  "node": "v24.19.0",
+  "installed": {
+    "typescript": "5.9.3",
+    "react": "19.3.0",
+    "vite": "6.4.3",
+    "fastify": "5.12.5",
+    "pg": "8.23.0",
+    "ajv": "8.20.0"
+  },
+  "hashes": {
+    "lockfile": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3",
+    "publicSchema": "d1a27b315dd690cab044194f4e19c1930d9af0917a24f99ce4c8fb7ea8ffe75a",
+    "publicTypes": "7dcc2a5a4e94d0b74b758b071d2fc7b89941c03cce8fd1167d60bf2fa3d57f48",
+    "frozenAndPilotArchive": "4e0b477eceed64a22f400b3d92f8c3127350314a0047960f40830c313e76c0bd",
+    "archiveFileCount": 42
+  },
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "checks": [
+    {
+      "command": "npm run contracts:check",
+      "exitCode": 0,
+      "elapsedMs": 1149,
+      "counts": {},
+      "log": "baseline-contracts-check.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 1,
+      "elapsedMs": 821,
+      "counts": {},
+      "log": "baseline-typecheck.log"
+    },
+    {
+      "command": "npm run test:all",
+      "exitCode": 0,
+      "elapsedMs": 183299,
+      "counts": {
+        "tests": 371,
+        "pass": 371,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "baseline-test-all.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "elapsedMs": 6684,
+      "counts": {},
+      "log": "baseline-build.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "cwd": "C:/repos/test-jev/.local/m00-baseline",
+      "exitCode": 0,
+      "elapsedMs": 7308,
+      "counts": {},
+      "repairOf": "baseline-typecheck.log",
+      "note": "Workspace web/node_modules junction added; unchanged source typecheck rerun passed."
+    }
+  ],
+  "status": "passed-after-workspace-dependency-link-repair",
+  "database": {
+    "kind": "isolated-test",
+    "host": "127.0.0.1",
+    "port": 54330,
+    "database": "cardford_m00_test",
+    "savedDatabaseChanged": false
+  },
+  "journal": {
+    "version": "1.0.0",
+    "operations": [
+      "action",
+      "collect-trick",
+      "next-hand"
+    ],
+    "originalPolicyPinsPreserved": true
+  }
+}
