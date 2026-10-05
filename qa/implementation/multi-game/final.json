@@ -1,0 +1,67 @@
+{
+  "stage": "final",
+  "recordedAt": "2026-10-05T04:51:16.090Z",
+  "sourceRevision": "d66a046240a309fe25b6b79da52594d8ead2b5f0",
+  "sourceTree": "90029f3f57890d9c88fdfe76bf4a0948b52aa202",
+  "branch": "codex/partner-cases-m00-m01",
+  "initialChanges": "M docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md\n M planning/implementation/multi-game/contracts.md\n M planning/implementation/requirements-and-tests.md\n M web/scripts/generate-contracts.mjs\n M web/server/coaching/cue-registry.ts\n M web/server/game/kernel/registry.ts\n M web/server/game/kernel/types.ts\n M web/server/games/spades/evaluation/claims/check.ts\n M web/server/games/spades/plan/claims.ts\n M web/server/strategy/registry.ts\n M web/shared/contracts.schema.json\n M web/shared/contracts.ts\n M web/shared/openapi.json\n M web/shared/validation.ts\n M web/shared/validators.d.mts\n M web/shared/validators.mjs\n?? .claude/\n?? docs/rules/\n?? planning/decisions/CR-ARCH-001-multi-game-production-boundary.md\n?? qa/experiments/2026-10-05-partner-resource/\n?? qa/implementation/multi-game/\n?? web/server/access/contracts.ts\n?? web/server/evaluation/partner-cases/\n?? web/server/evaluation/partner-jev.ts\n?? web/server/game/kernel/codec.ts\n?? web/server/game/kernel/module.ts\n?? web/server/game/kernel/seats.ts\n?? web/server/game/kernel/session.ts\n?? web/server/games/spades/evaluation/claims/partner-resource.ts\n?? web/server/games/spades/partner-resource/\n?? web/server/records/game-document.ts\n?? web/server/tests/game-document.test.ts\n?? web/server/tests/module-contract.test.ts\n?? web/server/tests/partner-jev.test.ts\n?? web/server/tests/spades-partner-resource.test.ts\n?? web/server/tests/support/module-contract-fixture.ts\n?? web/server/tests/support/module-contract-types.ts\n?? web/shared/games/\n?? web/src/platform/",
+  "worktrees": "C:/repos/test-jev                                                 d66a046 [codex/partner-cases-m00-m01]\nC:/repos/test-jev/.claude/worktrees/cardford-bots-coaching-bd3916 94a59cb [claude/cardford-bots-coaching-bd3916]\nC:/repos/test-jev/.local/m00-baseline                             d66a046 (detached HEAD)\nC:/Users/AliA/.codex/worktrees/spades-reasoning/test-jev          c81d322 [codex/spades-reasoning]\nC:/Users/AliA/.codex/worktrees/v1-build/test-jev                  e89ddf6 [v1/ui]\nC:/Users/AliA/.codex/worktrees/v1-contracts/test-jev              af141b4 [v1/billing]\nC:/Users/AliA/.codex/worktrees/v1-domain/test-jev                 e1e5023 [v1/provider-ledger]",
+  "node": "v24.19.0",
+  "installed": {
+    "typescript": "5.9.3",
+    "react": "19.3.0",
+    "vite": "6.4.3",
+    "fastify": "5.12.5",
+    "pg": "8.23.0",
+    "ajv": "8.20.0"
+  },
+  "hashes": {
+    "lockfile": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3",
+    "publicSchema": "e50ddf65d662edcd437511936aa0d049fc4c9bcef5879f4b36b5b65c7db6c3fd",
+    "publicTypes": "6281197f5f19bad84d042582bef7c8b659d96c94887b6ec094cebb43f6488b81",
+    "frozenAndPilotArchive": "c596370c223aa578bcc2ad9e3087b734623db2132d0af18853a6fb75cc8d5cd3",
+    "archiveFileCount": 42
+  },
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "checks": [
+    {
+      "command": "npm run contracts:check",
+      "exitCode": 0,
+      "elapsedMs": 965,
+      "counts": {},
+      "log": "final-contracts-check.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "elapsedMs": 6359,
+      "counts": {},
+      "log": "final-typecheck.log"
+    },
+    {
+      "command": "npm run test:all",
+      "exitCode": 0,
+      "elapsedMs": 176712,
+      "counts": {
+        "tests": 417,
+        "pass": 417,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "final-test-all.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "elapsedMs": 6718,
+      "counts": {},
+      "log": "final-build.log"
+    }
+  ]
+}

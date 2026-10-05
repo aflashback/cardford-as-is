@@ -25,6 +25,7 @@ import type { ReasonClaim } from '../../../../strategy/types.ts';
 import { SPADES_CLAIM_PREDICATES } from '../../plan/claims.ts';
 import { checkRule, type SpadesMode } from './rules.ts';
 import { checkObservedCase } from './observed.ts';
+import { checkPartnerResource } from './partner-resource.ts';
 import {
   CLAIM_WORLD_BOUND,
   dealViolation,
@@ -320,6 +321,7 @@ const rule =
 
 /** One checker per predicate of the closed vocabulary. */
 export const SPADES_CLAIM_CHECKERS: Record<string, ClaimChecker> = {
+  'partner-safe-ruff-resource': (context, args) => checkPartnerResource(context.state,context.seat,args,context.bound),
   'case-no-entry': (context, args) => checkObservedCase(context.state, context.seat, 'case-no-entry', args, context.bound),
   'case-public-sweep': (context, args) => checkObservedCase(context.state, context.seat, 'case-public-sweep', args, context.bound),
   'case-partner-resource': (context, args) => checkObservedCase(context.state, context.seat, 'case-partner-resource', args, context.bound),

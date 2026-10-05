@@ -1,0 +1,86 @@
+{
+  "recordedAt": "2026-10-05T04:52:29.498Z",
+  "scope": "M00-M01 contracts and targeted partnership family",
+  "review": "independent read-only code review; human strategy review deferred",
+  "initialFocusedTests": {
+    "tests": 43,
+    "pass": 43
+  },
+  "findings": [
+    {
+      "id": "REV-01",
+      "priority": "P2",
+      "issue": "New-session selectors could resolve different schema pins by registration order.",
+      "repair": "Reject duplicate selectors before registry construction.",
+      "status": "fixed-and-independently-rechecked"
+    },
+    {
+      "id": "REV-02",
+      "priority": "P2",
+      "issue": "Saved audit analysis omitted selected-action fact and ordered-interval checks.",
+      "repair": "Use the same parseRegisteredAnalysis semantic validator on preparation and document decoding.",
+      "status": "fixed-and-independently-rechecked"
+    }
+  ],
+  "redRegressionRun": {
+    "command": "node --test --test-isolation=none web/server/tests/game-document.test.ts",
+    "pass": 8,
+    "fail": 3
+  },
+  "greenIndependentRereview": {
+    "command": "node --test --test-isolation=none web/server/tests/module-contract.test.ts web/server/tests/game-document.test.ts",
+    "tests": 28,
+    "pass": 28,
+    "fail": 0,
+    "remainingP1P2": 0
+  },
+  "earlierScopedRepairs": [
+    "Reject missing UI handlers and changed module pins during saved decode.",
+    "Generate self-contained public schema fragments and valid OpenAPI references.",
+    "Bound every independent public-feasibility checker call.",
+    "Restrict Jev ledger to the dedicated database and check actual connected name.",
+    "Cap local admission and HTTP dispatch at one despite retry-capable ports."
+  ],
+  "additionalChecks": [
+    {
+      "command": "npm run lint:boundaries",
+      "exitCode": 0,
+      "reachableBrowserModules": 13
+    },
+    {
+      "command": "npm run check:artifacts",
+      "exitCode": 0
+    },
+    {
+      "command": "node qa/implementation/multi-game/preservation.mjs",
+      "exitCode": 0,
+      "preservedFiles": 49,
+      "changedV1Definitions": []
+    },
+    {
+      "command": "node web/server/evaluation/partner-jev.ts",
+      "exitCode": 0,
+      "status": "not-run-explicit-live-flag-required",
+      "requests": 0
+    }
+  ],
+  "measurementSource": {
+    "archivedSourceHashesHash": "5a2a43246d2d3d661d9f7c4b7b0e3b0afec901266f5573b6d40a7d4cffbad779",
+    "currentSourceHashesHash": "b78986503345a032a7fb91eb06870a60158ac8f6d31b9a4a10eae82d7c654d4a",
+    "changedFilesSinceMeasurement": [
+      "web/server/game/kernel/registry.ts",
+      "web/server/game/kernel/session.ts",
+      "web/server/records/game-document.ts"
+    ],
+    "partnershipPolicyAndHarnessUnchanged": true,
+    "archivedResultsUnchanged": true,
+    "currentManifestEligibleForJev": false,
+    "reason": "No changed fresh decision; later M01 review repairs also require a new source manifest for any future comparison."
+  },
+  "provider": {
+    "requests": 0,
+    "observedModel": null,
+    "newCostUsd": 0,
+    "runtimeMode": "off"
+  }
+}

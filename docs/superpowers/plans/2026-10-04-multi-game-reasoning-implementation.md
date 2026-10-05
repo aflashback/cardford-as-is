@@ -49,7 +49,9 @@
 | [Compatibility and requirements](../../../planning/implementation/multi-game/compatibility-and-requirements.md) | Migration/rollback, requirements and task/test map |
 | [Launch access and client](../../../planning/implementation/multi-game/launch-access-and-client.md) | Online demo, configurable offers, mobile reuse recommendation and basic quality |
 
-These packets define the referenced future exports. `Create` paths and tests are future work; `Modify` paths were inspected. Code snippets below are proposed assertions, not executed tests. All MG requirements are proposed acceptance requirements, not fulfilled behavior.
+**Execution update, 5 October 2026:** the owner authorized the targeted partnership slice and M00–M01. The unchanged starting application was verified, the additive M01 foundation was implemented, and the partnership family received authored cases and a fresh development measurement. [Milestone evidence](../../../qa/implementation/multi-game/status.md) records actual acceptance and remaining gates. M00's unresolved new-game rule choices and M02 onward remain pending. Human review remains deferred.
+
+The packets describe the full intended boundary. Checked steps below have execution evidence; unchecked steps and illustrative assertions remain planned work. M01 contracts do not establish production V2 integration or complete MG acceptance.
 
 ## Dependency and ownership order
 
@@ -85,12 +87,12 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 **Create:** `planning/decisions/CR-ARCH-001-multi-game-production-boundary.md`, `qa/implementation/multi-game/status.md`, `qa/implementation/multi-game/baseline.json`, `docs/rules/tarneeb-partners.md`, `docs/rules/trix-solo.md`, `docs/rules/trix-complex-partners.md` during execution. **Modify:** `planning/implementation/requirements-and-tests.md` only to index adopted MG IDs.
 
-- [ ] Inspect Git changes/worktrees; preserve and attribute other work. Record source/lockfile/schema/policy/archive hashes, installed versions and existing journal behavior in baseline.json.
-- [ ] Run `npm run contracts:check`, `npm run typecheck`, `npm run test:all`, `npm run build`; save actual results. If `TEST_DATABASE_URL` is unavailable, run pure tests and mark durable acceptance blocked; do not substitute the saved-games database.
-- [ ] Record CR-ARCH-001 reason, alternatives, compatibility and owner authority for this migration. Preserve the earlier flat-contract freeze as V1; record proposed V2 changes before depending on them.
-- [ ] Read CR-IMPL-004; record demo/access gaps and a basic first-app acceptance checklist. Keep final offer values unselected and native/capacity work deferred; inspect later evaluation commits without rerunning their experiments.
+- [x] Inspect Git changes/worktrees; preserve and attribute other work. Record source/lockfile/schema/policy/archive hashes, installed versions and existing journal behavior in baseline.json.
+- [x] Run `npm run contracts:check`, `npm run typecheck`, `npm run test:all`, `npm run build`; save actual results. If `TEST_DATABASE_URL` is unavailable, run pure tests and mark durable acceptance blocked; do not substitute the saved-games database.
+- [x] Record CR-ARCH-001 reason, alternatives, compatibility and owner authority for this migration. Preserve the earlier flat-contract freeze as V1; record proposed V2 changes before depending on them.
+- [x] Read CR-IMPL-004; record demo/access gaps and a basic first-app acceptance checklist. Keep final offer values unselected and native/capacity work deferred; inspect later evaluation commits without rerunning their experiments.
 - [ ] Freeze Jawaker's specified Trix mechanics. Resolve its narrow opening/doubling/tie omissions from sources; explicitly record interpretation/fixtures. Record the selected Tarneeb lead/scoring profile and Solo meaning when the pending owner answers arrive. No invented individual Tarneeb profile or alternate Trix layout.
-- [ ] Commit the baseline and decision dossier. Gate: shared migration may proceed; each new-game rule branch requires a complete named profile before reducer implementation.
+- [x] Commit the baseline and decision dossier. Gate: shared migration may proceed; each new-game rule branch requires a complete named profile before reducer implementation.
 
 ## M01 — Freeze module, packet and V2 document contracts
 
@@ -100,12 +102,12 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 **Interfaces:** the [contracts packet](../../../planning/implementation/multi-game/contracts.md) defines `Module`, `bindSession`, `BoundSession`, `Codec`, `Pin`, `Node`, `Operation`, generated registered public unions and V2 discriminator.
 
-- [ ] Add schema/codec tests rejecting mixed game payloads, extra private fields, invalid competitor partitions and uninstalled versions. Example assertion: `assert.throws(() => decodeDocument({documentVersion:'2.0.0', pin:{gameId:'uninstalled'}}));` Export `decodeDocument(raw: unknown): BoundSession` from `game-document.ts`.
-- [ ] Run `node --test --test-isolation=none web/server/tests/module-contract.test.ts web/server/tests/game-document.test.ts`; record real initial failure.
-- [ ] Implement pure typed declarations/codecs, registration descriptors/new-session factory and exhaustive registered branch decoding. Bundle only registered public fragments; create strict private validators independently. No heterogeneous unchecked casts or arbitrary public JSON.
-- [ ] Freeze online demo frame/choice DTOs, access offer/decision schemas, generic coached-unit metadata and the client platform port with M04's owner. Keep launch policy separate from domain rules and preserved V1 DTOs.
-- [ ] Generate and check contracts; rerun targeted tests and typecheck. Keep V1 bodies stable; add mixed V1-action/V2-candidate rejection and >255-candidate eligibility assertions.
-- [ ] Commit `feat: define versioned game module contracts`. Gate: signatures/schema pins frozen for parallel work, existing modes still build/play through V1.
+- [x] Add schema/codec tests rejecting mixed game payloads, extra private fields, invalid competitor partitions and uninstalled versions. Example assertion: `assert.throws(() => decodeDocument({documentVersion:'2.0.0', pin:{gameId:'uninstalled'}}));` Export `decodeDocument(raw: unknown): BoundSession` from `game-document.ts`.
+- [x] Run `node --test --test-isolation=none web/server/tests/module-contract.test.ts web/server/tests/game-document.test.ts`; record real initial failure.
+- [x] Implement pure typed declarations/codecs, registration descriptors/new-session factory and exhaustive registered branch decoding. Bundle only registered public fragments; create strict private validators independently. No heterogeneous unchecked casts or arbitrary public JSON.
+- [x] Freeze online demo frame/choice DTOs, access offer/decision schemas, generic coached-unit metadata and the client platform port with M04's owner. Keep launch policy separate from domain rules and preserved V1 DTOs.
+- [x] Generate and check contracts; rerun targeted tests and typecheck. Keep V1 bodies stable; add mixed V1-action/V2-candidate rejection and >255-candidate eligibility assertions.
+- [x] Commit `feat: define versioned game module contracts`. Gate: signatures/schema pins frozen for parallel work, existing modes still build/play through V1.
 
 ## M02 — Extract current game-owned modules and legacy readers
 

@@ -6,6 +6,7 @@ import { heartsPlanProfiles } from '../games/hearts/plan/profiles.ts';
 import { spadesReasoning } from '../games/spades/reasoning/manifest.ts';
 import { spadesPlanProfiles } from '../games/spades/plan/profiles.ts';
 import { observedSpadesProfile } from '../games/spades/cases/profile.ts';
+import { partnerResourceProfile } from '../games/spades/partner-resource/profile.ts';
 
 /** Trusted, build-time registered strategy modules. */
 export interface ReasoningPack {
@@ -23,7 +24,7 @@ export type Policy = (observation: SeatObservation) => DecisionAnalysis;
 /** Live defaults: exactly one pack per catalog mode. Changing one is a recorded owner decision. */
 const packs: readonly ReasoningPack[] = [heartsReasoning, spadesReasoning];
 /** Every selectable policy, including the defaults. Non-default profiles serve evaluation and local trials. */
-const profiles: readonly ReasoningPack[] = [...packs, ...spadesPlanProfiles, ...heartsPlanProfiles, observedSpadesProfile];
+const profiles: readonly ReasoningPack[] = [...packs, ...spadesPlanProfiles, ...heartsPlanProfiles, observedSpadesProfile, partnerResourceProfile];
 
 export function getReasoningPack(mode: string): ReasoningPack {
   const matches = packs.filter((pack) => pack.modes.includes(mode as Mode));

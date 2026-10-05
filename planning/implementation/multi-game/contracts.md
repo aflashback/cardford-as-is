@@ -1,12 +1,12 @@
 # Multi-game implementation contracts
 
-Target interfaces for [the main plan](../../../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md). **Proposed, not implemented.** Existing game records, rule profiles and policy pins remain immutable. Keep the current `web` workspace and lockfile; these are dependency boundaries, not new packages or services.
+Target interfaces for [the main plan](../../../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md). **M01 foundation implemented 5 October 2026:** typed modules/facade, registration and document codecs, closed public fragments, demo/access/coached-unit DTOs, game-owned reasoning facets and the client platform declaration. [Execution evidence](../../../qa/implementation/multi-game/status.md) distinguishes these contracts from M02–M04 production adapters, storage and dispatch, which remain pending. Existing game records, rule profiles and policy pins remain immutable. Keep the current `web` workspace and lockfile; these are dependency boundaries, not new packages or services.
 
 ## Production module boundary
 
 Create `web/server/game/kernel/module.ts` and `web/server/game/kernel/session.ts`. Move the independent seat/competition definitions into `kernel/seats.ts` and retain compatibility re-exports for frozen consumers. Seat IDs retain the current 0–3 mapping; turn order is module-owned, not numeric increment in shared code.
 
-The following declarations are the contract for these future files. Public `RegisteredActorPacket`, `RegisteredSessionView` and `RegisteredAnalysis` are generated closed unions described below. Domain state/action types are independent of HTTP DTOs.
+The declarations below explain the frozen boundary; the exported types in `kernel/module.ts` and `kernel/session.ts` are the compiled source of truth. Public `RegisteredActorPacket`, `RegisteredSessionView` and `RegisteredAnalysis` are generated closed unions described below. Domain state/action types are independent of HTTP DTOs. Installing the current games and their exhaustive decoder remains M02.
 
 ```ts
 type Seat = 0 | 1 | 2 | 3;

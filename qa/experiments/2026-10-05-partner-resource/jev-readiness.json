@@ -1,0 +1,16 @@
+{
+  "status": "not-run-no-changed-fresh-decision",
+  "experimentId": "partner-resource-fresh-shadow-2026-10-05-001",
+  "arm": "J0",
+  "requestedModel": "typesafe/jev-1.13",
+  "observedModel": null,
+  "requests": 0,
+  "newCostUsd": 0,
+  "maxRequests": 1,
+  "maxCostUsd": 0.01,
+  "deadlineMs": 8000,
+  "runtimeMode": "off",
+  "promotion": false,
+  "humanReview": "owner-deferred",
+  "reason": "Fresh development sample completed with zero changed actions against both references. No first-difference packet exists. Live dispatch precondition is unmet."
+}

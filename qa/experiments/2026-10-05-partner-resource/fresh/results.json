@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": "partner-resource-measurement-1.0.0",
+  "status": "complete",
+  "elapsedMs": 16412,
+  "sourceStable": true,
+  "sourceHashesHash": "5a2a43246d2d3d661d9f7c4b7b0e3b0afec901266f5573b6d40a7d4cffbad779",
+  "summaries": {
+    "spades-plan-3.0.0": {
+      "hands": 64,
+      "shadowUnforced": 2890,
+      "offerActivations": 0,
+      "secureActivations": 42,
+      "changedActions": 0,
+      "illegalActions": 0,
+      "checkedClaims": 42,
+      "falseClaims": 0,
+      "notCheckableClaims": 0,
+      "pairedRows": 256,
+      "changedPairActionStreams": 0,
+      "marginDeltaSum": 0
+    },
+    "spades-cases-4.0.0": {
+      "hands": 64,
+      "shadowUnforced": 2890,
+      "offerActivations": 0,
+      "secureActivations": 42,
+      "changedActions": 0,
+      "illegalActions": 0,
+      "checkedClaims": 42,
+      "falseClaims": 0,
+      "notCheckableClaims": 0,
+      "pairedRows": 256,
+      "changedPairActionStreams": 0,
+      "marginDeltaSum": 0
+    }
+  },
+  "firstDifference": null,
+  "providerMode": "offline",
+  "observedModelId": null,
+  "plannedSeedCount": 64,
+  "independentSeedCount": 64,
+  "visitedSeeds": [
+    64100001,
+    64100002,
+    64100003,
+    64100004,
+    64100005,
+    64100006,
+    64100007,
+    64100008,
+    64100009,
+    64100010,
+    64100011,
+    64100012,
+    64100013,
+    64100014,
+    64100015,
+    64100016,
+    64100017,
+    64100018,
+    64100019,
+    64100020,
+    64100021,
+    64100022,
+    64100023,
+    64100024,
+    64100025,
+    64100026,
+    64100027,
+    64100028,
+    64100029,
+    64100030,
+    64100031,
+    64100032,
+    64100033,
+    64100034,
+    64100035,
+    64100036,
+    64100037,
+    64100038,
+    64100039,
+    64100040,
+    64100041,
+    64100042,
+    64100043,
+    64100044,
+    64100045,
+    64100046,
+    64100047,
+    64100048,
+    64100049,
+    64100050,
+    64100051,
+    64100052,
+    64100053,
+    64100054,
+    64100055,
+    64100056,
+    64100057,
+    64100058,
+    64100059,
+    64100060,
+    64100061,
+    64100062,
+    64100063,
+    64100064
+  ],
+  "pairedCoverage": [
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100001,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100002,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100003,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100004,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100005,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100006,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100007,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100008,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100009,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100010,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100011,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100012,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100013,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100014,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100015,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100016,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100017,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100018,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100019,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100020,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100021,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100022,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100023,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100024,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100025,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100026,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100027,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100028,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100029,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100030,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100031,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100032,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100033,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100034,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100035,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100036,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100037,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100038,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100039,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100040,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100041,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100042,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100043,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100044,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100045,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100046,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100047,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100048,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100049,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100050,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100051,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100052,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100053,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100054,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100055,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100056,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100057,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100058,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100059,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100060,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100061,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100062,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100063,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-plan-3.0.0",
+      "seed": 64100064,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100001,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100002,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100003,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100004,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100005,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100006,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100007,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100008,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100009,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100010,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100011,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100012,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100013,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100014,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100015,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100016,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100017,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100018,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100019,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100020,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100021,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100022,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100023,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100024,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100025,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100026,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100027,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100028,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100029,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100030,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100031,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100032,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100033,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100034,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100035,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100036,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100037,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100038,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100039,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100040,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100041,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100042,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100043,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100044,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100045,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100046,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100047,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100048,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100049,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100050,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100051,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100052,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100053,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100054,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100055,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100056,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100057,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100058,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100059,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100060,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100061,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100062,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100063,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reference": "spades-cases-4.0.0",
+      "seed": 64100064,
+      "actors": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "strengthClaim": "not-established",
+  "teachingBenefit": "not-established",
+  "humanReview": "not-run-owner-deferred"
+}

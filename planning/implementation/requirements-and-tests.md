@@ -194,3 +194,15 @@ These IDs were defined in their change records and are registered here by refere
 
 Evidence for this record is written under `qa/evaluation/`. Passing these suites is scoped correctness evidence. The strength gate reports are the only source for any statement about playing results.
 
+## CR-ARCH-001 foundation and partnership slice
+
+The owner initiated M00–M01 and targeted partnership cases on 5 October 2026. The [adopted MG map](multi-game/compatibility-and-requirements.md) remains the requirement definition; this index does not replace current rules or claim later milestone acceptance.
+
+| IDs | Current slice / evidence | Later gate |
+|---|---|---|
+| MG-01–03 | Versioned module/facade, competition, public fragments and private-document conformance; `module-contract.test.ts`, `game-document.test.ts` | M02 production game adapters; M03 validated persistence |
+| MG-15–17 | Online demo/access/coached-unit/client-port contract freeze | M03–M04 durable access, server demo and client integration |
+| MG-07, MG-09–12; PR-01–03, PR-05 | Reachable partner-resource cases, exceptions, actor invariance, shared bot/coach choices and checked cues; `spades-partner-resource.test.ts` | Human acceptable-action/cue review remains deferred |
+| MG-13–14; PR-04 | Fresh bounded development run and conditional cap-one Jev shadow diagnostic | Independent strength/learning confirmation and promotion remain separate |
+
+PR-01–05 are recorded by [CR-ARCH-001](../decisions/CR-ARCH-001-multi-game-production-boundary.md) and the [slice change log](../../qa/implementation/multi-game/CHANGELOG.md). Actual statuses, commands/counts and limitations belong to [milestone evidence](../../qa/implementation/multi-game/status.md).

@@ -20,6 +20,8 @@ import type { CardOutcome, DecisionFacts, DecisionReason, ReasonClaim } from '..
  * action of the acting seat, written as `play:<card>`.
  */
 export const SPADES_CLAIM_PREDICATES = {
+  /** { partner, suit, entry, trumpFloor } exact safe ruff resource; strategic preference remains conditional. */
+  'partner-safe-ruff-resource': 'all-consistent-worlds',
   /** { suit } own single side-suit monopoly cannot regain the lead. */
   'case-no-entry': 'all-consistent-worlds',
   /** { winner, suit } every legal defender play leaves the same proved remaining sweep. */
