@@ -23,3 +23,5 @@ I agree with extracting a production registry and preserving proven orchestratio
 RQ1–RQ6 were sent verbatim to the architect. They ask about production dispatch, multi-phase horizons, game-owned hard/soft knowledge, actor-view isolation, payoff vectors/comparison rules, and evidence for rewrite with historical compatibility. Preserve reusable budget/evidence arithmetic while testing whether the full planner API fits.
 
 **Closing:** The architect accepted C1 and revised reuse to budget/pairing/evidence components. I accept that revision; production horizon/reveal tests and actor projection remain prerequisites. Responses are preserved in `03-architecture-answers.md`.
+
+**Later rule-source decision:** After the interview, the owner selected Jawaker as the Trix authority, including its Jack-centered layout. That decision supersedes this exchange's open-profile wording; see [08](08-standard-rule-reconciliation.md). The interview answer remains unchanged as a historical record.

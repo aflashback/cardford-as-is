@@ -4,6 +4,8 @@
 
 The owner wants one simple monorepo, the latest CardFord specification, the existing user experience, in-app subscription management and Stripe payments. Do not restart product ideation or request a visual redesign. The current table and interactions are good enough to build on.
 
+**Current architecture work:** the [multi-game reasoning plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) defines M00–M12 and its contract/case/game packets. It is a plan, not completed implementation. For that work, start M00 → M01 against the existing application; do not restart the original W00 build. Preserve current rules, original saved advice and policy pins. Remaining Tarneeb profile questions gate its branch only.
+
 **Future scope boundary:** [CR-FUTURE-001](11-future-play-and-membership.md) considers free/play-only membership and human matching. It authorizes planning only. Continue the existing packets without adding free grants, matchmaking, ratings or new subscription products; any activation needs a separate approved specification.
 
 ## First-run reading order

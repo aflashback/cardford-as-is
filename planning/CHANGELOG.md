@@ -1,5 +1,13 @@
 # Planning changes
 
+## 2026-10-04 — Detailed multi-game reasoning implementation plan
+
+Added the [M00–M12 plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) and four implementation packets: typed production modules, actor-safe continuation planning, maintained cases/source ledger, standard-game profiles and independent evaluation. Preserves current Hearts/Spades play, policy/history versions, atomic Hearts passing and selected Jawaker Trix rules. Two independent agents reviewed the plan; unresolved Tarneeb profile choices gate only that branch. [Planning verification](../qa/plans/2026-10-04-multi-game-plan-review.md) distinguishes documentation checks from future tests. No game code, defaults, provider activation or strategy-strength claims changed.
+
+## 2026-10-04 — Select Jawaker as the Trix rules authority
+
+The owner selected Jawaker's standard Trix and Trix Complex rules, including Jack-centered card layout. Research references, architecture notes and implementation prerequisites now use this as the sole planned Trix layout; the seven-centered Waraq description is rejected and no alternate layout mode is planned. This updates design guidance only; there is no Trix engine to change yet.
+
 ## 2026-10-04 — Multi-game architecture interview and plan prerequisites
 
 Added the [two-agent interview packet](research/2026-10-04-card-game-architecture-interview/README.md): inspected production versus documented seams, preserved questions/answers/challenge, researched Tarneeb/Trix profile differences, and proposed typed boundaries, algorithm comparisons and acceptance prerequisites. This is investigation input for a later implementation plan, not new approved runtime behavior. Corrected the expanded-batch README's eight-complete claim to match saved evidence: three complete, three partial and two unstarted hands. Raw records, game code, provider settings and defaults are unchanged.

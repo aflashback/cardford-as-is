@@ -28,3 +28,5 @@
 **Reasoning reply:** “Your revised preservation of arithmetic/evidence rather than whole PlanningPack addresses my substantive disagreement.”
 
 **Final revision:** Retain that narrowed recommendation; require production-path horizon and public-reveal evidence before selecting a planner API.
+
+**Later rule-source decision:** After the interview, the owner selected Jawaker as the Trix authority, including its Jack-centered layout. This supersedes the open profile statement above; see [08](08-standard-rule-reconciliation.md). The interview answer remains unchanged as a historical record.

@@ -6,10 +6,10 @@ Proposed prerequisites, 4 October 2026. PRE identifiers are research tracking ID
 
 **PRE-01 — Variant dossier.** For each supported variant, select a source and record deck/ranks, turn direction, deal schedule, bidding/auction/pass, trump/contract selection, legal play, public disclosures, doubles, score breakdown, ties and termination. Include examples and contradictions resolved with the owner. Solo is not inferred from a partnership toggle.
 
-The owner selected standard gameplay, preferred Waraq references and corroboration; Syrian/Egyptian editions are excluded. The narrow unresolved decisions are listed in [08](08-standard-rule-reconciliation.md), rather than a backlog of regional variants:
+The owner selected standard gameplay and the rule references described in [08](08-standard-rule-reconciliation.md); Syrian/Egyptian Tarneeb editions are excluded. The narrow unresolved decisions are listed there, rather than a backlog of regional variants:
 
 - **Tarneeb:** Solo's meaning; first leader; ordinary successful-bid scoring; all-pass dealer; unbid sweep; match threshold/ties. The common auction/trump mechanics are researched; the failed bid-13 penalty is corroborated, not a conflict.
-- **Trix:** use corroborated Jack layout and ordinary five-contract / Complex two-contract schedules as proposed targets; freeze opening actors, penalty-play restrictions, doubles inclusion/timing/self-capture and tied final scores. Flexible combinations and alternative team-ranking editions are excluded.
+- **Trix:** implement the selected Jawaker Jack-centered layout in standard and Complex play. Keep trick ranking Ace-high; only layout order puts cards above and below the Jack. Standard has five requests per kingdom; Complex has two. Resolve only unspecified opening/penalty edge details against Jawaker before implementation.
 - **Product budgets:** permitted decision latency/work/memory and which horizons matter in coached single-hand versus full-match sessions. Measure candidate costs before fixing limits.
 
 The source-supported distinctions are in [05](05-evidence-and-variant-research.md). These block new-game reducers/objectives, not the shared architecture review.
@@ -51,8 +51,8 @@ Track recognition, factual proof, action effect, cue fidelity, reviewed labels, 
 |---|---|
 | Tarneeb auction pass, chosen trump, reversed direction | Distinct typed actions; correct next actor and score after resume |
 | Tarneeb first lead, all-pass redeal, both teams crossing target | Exact chosen profile; redeal consumes explicit chance input; winner/tie is module-owned |
-| Trix layout origin/order and opening actor | Profile fixture distinguishes Jack/Ace-high target from Waraq's incompatible seven/Ace-low description |
-| Trix public doubling, if included | Revealed card appears only after its event; earlier packets/advice remain unchanged |
+| Trix layout origin/order and opening actor | Fixture starts each suit at Jack, builds through Ace above and 2 below; no seven-centered alternative |
+| Selected Trix Complex public doubling | Revealed card appears only after its event; earlier packets/advice remain unchanged |
 | Trix layout blocked seat / finished player | Pass only when no legal extension; skip finished players; no false suit-void inference |
 | Trix contract selection and kingdom horizon | Consumed contract stays consumed; future deals follow the profile; declared longer objective survives restart |
 | Identical actor information, changed hidden hands/partner plan | Identical policy inputs and deterministic outputs with fixed seed; no scratchpad sharing |

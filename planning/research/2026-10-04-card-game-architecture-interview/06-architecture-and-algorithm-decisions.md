@@ -35,7 +35,7 @@ The shared shell owns four seat identities, controller/access configuration, com
 
 Use typed module schemas with a common envelope and generated closed public unions. Avoid an unchecked JSON blob and a universal state carrying every game's fields. Sealed decisions need a declared pending-actor/reveal capability; today's Hearts implementation is not proof of generic simultaneous-turn support.
 
-Trick strength and layout adjacency are separate phase-specific operations. A universal `cardRank` cannot safely determine both. Standard-only scope does not justify importing inconsistent source instructions; [08](08-standard-rule-reconciliation.md) resolves the preferred references into explicit proposed targets and open points.
+Trick strength and layout adjacency are separate phase-specific operations. A universal `cardRank` cannot safely determine both. Trix uses Ace-high trick ranking and the selected Jawaker layout order: Jack anchors each suit; Queens and Kings extend upward to Ace, while 10 through 2 extend downward. Waraq's conflicting seven-centered layout is not supported. See [08](08-standard-rule-reconciliation.md).
 
 ## Decisions need a declared goal and horizon
 
@@ -75,4 +75,4 @@ Uniform feasible sampling is a declared prior, not an observed frequency of how 
 
 Bots and coach should consume the same safe analysis and versioned tactics. Coach wording explains the chosen action with checked facts, exceptions and uncertainty; cue visibility does not alter analysis. Difficulty may later select a reviewed policy/budget profile. A future maintainer backend can edit approved configurations, but a runtime scripting editor is unnecessary now.
 
-Published strategy prose enters the case catalog as a hypothesis with a counterexample, not as an exact fact or measured probability. The [Waraq checks](08-standard-rule-reconciliation.md#strategy-admission-tests) illustrate why this admission gate is necessary.
+Published strategy prose enters the case catalog as a hypothesis with a counterexample, not as an exact fact or measured probability. The [strategy checks](08-standard-rule-reconciliation.md#strategy-admission-tests) illustrate why this admission gate is necessary.

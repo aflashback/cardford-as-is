@@ -1,6 +1,8 @@
 # Standard gameplay: preferred references and corrections
 
-Owner update during the interview: use Waraq rules/strategy and corroborate other sources; **standard gameplay only**, excluding Syrian/Egyptian Tarneeb editions. Checked 4 October 2026. Proposals below are plan inputs, not implemented/frozen rule changes.
+Owner rule decision: use Waraq for Tarneeb and Jawaker for Trix. For Trix, Jawaker is the authority for standard and Complex Partners rules; its Jack-centered layout is the only planned layout. Checked 4 October 2026. These are implementation-plan inputs, not implemented game code. Standard gameplay only; Syrian/Egyptian Tarneeb editions are excluded.
+
+The earlier interview files retain their original chronology. This later rule choice supersedes their Trix questions and any earlier recommendation to choose between layout variants.
 
 ## Tarneeb
 
@@ -20,13 +22,13 @@ All references describe partnership play. **Tarneeb Solo still needs a meaning:*
 
 ## Trix and Trix Complex Partners
 
-[Waraq rules](https://playwaraq.com/trix/rules) describe four kingdoms, five separate individual contracts and ordinary penalty/finish scores. However, its layout starts at sevens with Ace below 2, and its “Complex” label does not describe combined penalties or partners.
+Waraq's [Trix rules](https://playwaraq.com/trix/rules) describe four kingdoms, five separate individual contracts and ordinary penalty/finish scores, but use a seven-centered layout and do not specify the selected Complex Partners rules. This layout is rejected for CardFord; there will be no seven-centered compatibility mode.
 
-The [Jawaker Arabic Trix original](https://blog.jawaker.com/trix-rules/) and [Pagat](https://www.pagat.com/compendium/trex.html) corroborate **Jack-centered layout toward Ace and 2**, compulsory play when possible and fresh deals between contracts. Recommend this as the standard target. Do not import Waraq's Sevens layout into Trix.
+The owner-selected [Jawaker English Trix rules](https://blog.jawaker.com/en/trix-rules-en/) specify **Jack-centered layout toward Ace and 2**, mandatory play when a legal card is available, and pass otherwise. The [Arabic original](https://blog.jawaker.com/trix-rules/) and [Pagat](https://www.pagat.com/compendium/trex.html) corroborate this layout. Each suit sequence starts at Jack; Queens through Ace extend upward, 10 through 2 downward. This is the sole planned layout for standard and Complex Trix.
 
-For **Complex Partners**, recommend the [Jawaker Arabic Complex profile](https://blog.jawaker.com/trix-complex-rules/): two contracts per kingdom—combined penalties and layout—with fresh cards between them, ownership passing right after both, opposite-seat scores combined. Its Arabic wording also resolves the English doubling defect: doubled-card taker loses double; revealer receives the original-card bonus. Ordinary Trix has five contracts per kingdom, not this two-contract schedule.
+For **Complex Partners**, use the [Jawaker Complex rules](https://blog.jawaker.com/en/trix-complex-en/): two requests per kingdom—combined penalties and layout—with fresh cards between them, ownership passing after both, and opposite-seat scores combined. The [Arabic original](https://blog.jawaker.com/trix-complex-rules/) confirms Ace in the layout and resolves the English doubling wording: the doubled-card taker loses double; the revealer receives the original-card bonus. Ordinary Trix has five requests per kingdom, not this two-request Complex schedule.
 
-Freeze the remaining details: opening actor, heart-leading/penalty-discard restrictions, whether doubles are enabled, their timing and self-capture cases, and tied final totals. Publisher pages omit some edges; Pagat's extra conventions must not be silently imported. Flexible combined-contract and alternative partnership-ranking editions are excluded.
+Implement the Jawaker profile as stated and resolve only details its rules do not specify, including the first actor for each sequence, any lead restrictions, and tied final totals. Do not import conflicting Waraq layout rules or unrelated variations. Preserve Jawaker's double actions and point effects in Complex; verify timing and self-capture behavior against the selected rules before encoding those edge cases.
 
 ## Strategy admission tests
 
