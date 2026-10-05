@@ -64,7 +64,31 @@ export type PublicContracts =
   | ExportView
   | ScenarioId
   | DevScenarioView
-  | DevScenariosView;
+  | DevScenariosView
+  | VersionedComponent
+  | ModulePin
+  | CoachedUnit
+  | ReasoningObjective
+  | ReasoningHorizon
+  | ReasoningEstimate
+  | ReasoningScenario
+  | ReasoningFact
+  | RegisteredActorPacket
+  | RegisteredSessionView
+  | RegisteredAnalysis
+  | RegisteredActorEvent
+  | RegisteredTarget
+  | RegisteredSelector
+  | V2ActionsRequest
+  | VersionedActionsRequest
+  | V2NewSessionRequest
+  | VersionedNewSessionRequest
+  | DemoFrameRequest
+  | DemoFrame
+  | AccessAllowance
+  | AccessOffer
+  | AccessOfferPolicy
+  | AccessDecision;
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
 export type Seat = 0 | 1 | 2 | 3;
 export type Card = string;
@@ -154,6 +178,102 @@ export type FamilyCommand =
   | {
       commandId: string;
       action: 'leave';
+    };
+export type RegisteredActorPacket = HeartsActorPacket | SpadesActorPacket;
+export type HeartsCandidate =
+  | {
+      kind: 'play';
+      card: Card;
+    }
+  | {
+      kind: 'pass';
+      /**
+       * @minItems 3
+       * @maxItems 3
+       */
+      cards: Card[];
+    };
+export type SpadesCandidate =
+  | {
+      kind: 'play';
+      card: Card;
+    }
+  | {
+      kind: 'bid';
+      bid: number;
+    };
+export type RegisteredSessionView = HeartsSessionView | SpadesSessionView;
+export type RegisteredAnalysis = HeartsAnalysis | SpadesAnalysis;
+export type RegisteredActorEvent = HeartsActorEvent | SpadesActorEvent;
+export type RegisteredTarget =
+  | {
+      gameId: 'hearts';
+      variantId: 'solo';
+    }
+  | {
+      gameId: 'spades';
+      variantId: 'solo' | 'partners';
+    };
+export type VersionedActionsRequest = ActionsRequest | V2ActionsRequest;
+export type VersionedNewSessionRequest = NewSessionRequest | V2NewSessionRequest;
+export type DemoFrameRequest =
+  | {
+      kind: 'open';
+      contentVersion: string;
+    }
+  | {
+      kind: 'choose';
+      contentVersion: string;
+      nodeId: string;
+      choiceId: string;
+    }
+  | {
+      kind: 'replay';
+      contentVersion: string;
+    };
+export type AccessAllowance =
+  | {
+      kind: 'unlimited';
+    }
+  | {
+      kind: 'limited';
+      limit: number;
+      unit: string;
+      period: 'day' | 'week' | 'month' | 'grant';
+      timezone: string;
+      bucketId: string;
+    };
+export type AccessDecision =
+  | {
+      accessGeneration: number;
+      applied: {
+        offer: VersionedComponent;
+        grantId: string;
+      }[];
+      remaining: number | null;
+      continuation: 'pause-at-expiry' | 'finish-admitted-unit' | 'owned-result';
+      allowed: true;
+      reason: 'grant' | 'admitted-unit' | 'existing-unlock' | 'owned-result';
+    }
+  | {
+      accessGeneration: number;
+      applied: {
+        offer: VersionedComponent;
+        grantId: string;
+      }[];
+      remaining: number | null;
+      continuation: 'pause-at-expiry' | 'finish-admitted-unit' | 'owned-result';
+      allowed: false;
+      reason:
+        | 'disabled'
+        | 'no-grant'
+        | 'wrong-target'
+        | 'wrong-tool'
+        | 'expired'
+        | 'revoked'
+        | 'exhausted'
+        | 'not-owned'
+        | 'not-admitted';
     };
 
 export interface Play {
@@ -643,6 +763,312 @@ export interface DevScenariosView {
    */
   scenarios: DevScenarioView[];
 }
+export interface VersionedComponent {
+  id: string;
+  version: string;
+}
+export interface ModulePin {
+  gameId: string;
+  variantId: string;
+  moduleVersion: string;
+  ruleProfileId: string;
+  stateSchemaVersion: string;
+  observationSchemaVersion: string;
+  publicSchemaVersion: string;
+  eventSchemaVersion: string;
+}
+export interface CoachedUnit {
+  id: string;
+  kind: string;
+  atAdmissionBoundary: boolean;
+}
+export interface ReasoningObjective {
+  id: string;
+  version: string;
+  metric: string;
+  direction: 'higher' | 'lower';
+}
+export interface ReasoningHorizon {
+  id: string;
+  version: string;
+  scope: string;
+}
+export interface ReasoningEstimate {
+  competitorId: string;
+  metric: string;
+  event: string;
+  unit: string;
+  population: string;
+  value: number;
+  estimator: VersionedComponent;
+  uncertainty: {
+    method: VersionedComponent;
+    lower: number;
+    upper: number;
+  } | null;
+}
+export interface ReasoningScenario {
+  id: string;
+  version: string;
+  applicability: 'applies' | 'possible' | 'excluded';
+  evidence: string[];
+  exceptions: string[];
+}
+export interface ReasoningFact {
+  id: string;
+  kind: 'exact' | 'inferred';
+  summary: string;
+  evidence: string[];
+  candidateId: string | null;
+}
+export interface HeartsActorPacket {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'hearts';
+  variantId: 'solo';
+  seat: Seat;
+  phase: string;
+  observation: HeartsObservation;
+  /**
+   * @minItems 1
+   */
+  candidates: {
+    id: string;
+    public: HeartsCandidate;
+  }[];
+}
+export interface HeartsObservation {
+  /**
+   * @maxItems 13
+   */
+  hand: Card[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  handCounts: number[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  scores: number[];
+  turn: Seat | null;
+  dealer: Seat;
+  roundNumber: number;
+  /**
+   * @maxItems 4
+   */
+  trick: Play[];
+  /**
+   * @maxItems 13
+   */
+  history: Trick[];
+  heartsBroken: boolean;
+  passDirection: 'left' | 'right' | 'across' | 'hold';
+  pass: {
+    /**
+     * @maxItems 3
+     */
+    outgoing: Card[];
+    /**
+     * @maxItems 3
+     */
+    incoming: Card[];
+    to: Seat | null;
+    from: Seat | null;
+  };
+}
+export interface SpadesActorPacket {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'spades';
+  variantId: 'solo' | 'partners';
+  seat: Seat;
+  phase: string;
+  observation: SpadesObservation;
+  /**
+   * @minItems 1
+   */
+  candidates: {
+    id: string;
+    public: SpadesCandidate;
+  }[];
+}
+export interface SpadesObservation {
+  /**
+   * @maxItems 13
+   */
+  hand: Card[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  handCounts: number[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  scores: number[];
+  turn: Seat | null;
+  dealer: Seat;
+  roundNumber: number;
+  /**
+   * @maxItems 4
+   */
+  trick: Play[];
+  /**
+   * @maxItems 13
+   */
+  history: Trick[];
+  spadesBroken: boolean;
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  bids: (number | null)[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  tricks: number[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  bags: number[];
+}
+export interface HeartsSessionView {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'hearts';
+  variantId: 'solo';
+  seat: Seat;
+  phase: string;
+  table: HeartsObservation;
+  accessUnit: CoachedUnit | null;
+}
+export interface SpadesSessionView {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'spades';
+  variantId: 'solo' | 'partners';
+  seat: Seat;
+  phase: string;
+  table: SpadesObservation;
+  accessUnit: CoachedUnit | null;
+}
+export interface HeartsAnalysis {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'hearts';
+  variantId: 'solo';
+  origin: 'code' | 'demo' | 'forced' | 'jev';
+  selectedCandidateId: string;
+  objective: ReasoningObjective;
+  horizon: ReasoningHorizon;
+  facts: ReasoningFact[];
+  estimates: ReasoningEstimate[];
+  scenarios: ReasoningScenario[];
+  assumptions: string[];
+}
+export interface SpadesAnalysis {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'spades';
+  variantId: 'solo' | 'partners';
+  origin: 'code' | 'demo' | 'forced' | 'jev';
+  selectedCandidateId: string;
+  objective: ReasoningObjective;
+  horizon: ReasoningHorizon;
+  facts: ReasoningFact[];
+  estimates: ReasoningEstimate[];
+  scenarios: ReasoningScenario[];
+  assumptions: string[];
+}
+export interface HeartsActorEvent {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'hearts';
+  variantId: 'solo';
+  eventSchemaVersion: '2.0.0';
+  id: string;
+  type:
+    | 'hand-started'
+    | 'card-played'
+    | 'cards-passed'
+    | 'trick-resolved'
+    | 'trick-collected'
+    | 'moon-shot'
+    | 'hand-scored';
+  message: string;
+  seat: Seat | null;
+  card: Card | null;
+  bid: null;
+}
+export interface SpadesActorEvent {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'spades';
+  variantId: 'solo' | 'partners';
+  eventSchemaVersion: '2.0.0';
+  id: string;
+  type: 'hand-started' | 'bid-placed' | 'card-played' | 'trick-resolved' | 'trick-collected' | 'hand-scored';
+  message: string;
+  seat: Seat | null;
+  card: Card | null;
+  bid: number | null;
+}
+export interface RegisteredSelector {
+  target: RegisteredTarget;
+  moduleVersion: string;
+  ruleProfileId: string;
+}
+export interface V2ActionsRequest {
+  commandId: string;
+  gameId: string;
+  expectedRevision: number;
+  controlLeaseToken: string;
+  publicSchemaVersion: '2.0.0';
+  candidateId: string;
+}
+export interface V2NewSessionRequest {
+  commandId: string;
+  gameId: string;
+  expectedRevision: number;
+  controlLeaseToken: string;
+  publicSchemaVersion: '2.0.0';
+  selector: RegisteredSelector;
+}
+export interface DemoFrame {
+  contentVersion: string;
+  nodeId: string;
+  label: 'demo';
+  title: string;
+  body: string;
+  cards: Card[];
+  choices: {
+    id: string;
+    label: string;
+  }[];
+  complete: boolean;
+}
+export interface AccessOffer {
+  id: string;
+  version: string;
+  enabled: boolean;
+  kind: 'free' | 'access-trial' | 'paid';
+  /**
+   * @minItems 1
+   */
+  targets: RegisteredTarget[];
+  play: boolean;
+  coach: {
+    tools: string[];
+    allowance: AccessAllowance;
+  };
+  continuation: 'pause-at-expiry' | 'finish-admitted-unit';
+  activation: 'automatic' | 'verified-purchase' | 'once-per-identity';
+  validitySeconds: number | null;
+}
+export interface AccessOfferPolicy {
+  id: string;
+  version: string;
+  accessGeneration: number;
+  precedence: string[];
+  offers: AccessOffer[];
+}
 
 export interface ContractTypes {
   Mode: Mode;
@@ -706,5 +1132,41 @@ export interface ContractTypes {
   ScenarioId: ScenarioId;
   DevScenarioView: DevScenarioView;
   DevScenariosView: DevScenariosView;
+  VersionedComponent: VersionedComponent;
+  ModulePin: ModulePin;
+  CoachedUnit: CoachedUnit;
+  ReasoningObjective: ReasoningObjective;
+  ReasoningHorizon: ReasoningHorizon;
+  ReasoningEstimate: ReasoningEstimate;
+  ReasoningScenario: ReasoningScenario;
+  ReasoningFact: ReasoningFact;
+  RegisteredActorPacket: RegisteredActorPacket;
+  RegisteredSessionView: RegisteredSessionView;
+  RegisteredAnalysis: RegisteredAnalysis;
+  RegisteredActorEvent: RegisteredActorEvent;
+  RegisteredTarget: RegisteredTarget;
+  RegisteredSelector: RegisteredSelector;
+  V2ActionsRequest: V2ActionsRequest;
+  VersionedActionsRequest: VersionedActionsRequest;
+  V2NewSessionRequest: V2NewSessionRequest;
+  VersionedNewSessionRequest: VersionedNewSessionRequest;
+  DemoFrameRequest: DemoFrameRequest;
+  DemoFrame: DemoFrame;
+  AccessAllowance: AccessAllowance;
+  AccessOffer: AccessOffer;
+  AccessOfferPolicy: AccessOfferPolicy;
+  AccessDecision: AccessDecision;
+  HeartsCandidate: HeartsCandidate;
+  HeartsObservation: HeartsObservation;
+  HeartsActorPacket: HeartsActorPacket;
+  HeartsSessionView: HeartsSessionView;
+  HeartsAnalysis: HeartsAnalysis;
+  HeartsActorEvent: HeartsActorEvent;
+  SpadesCandidate: SpadesCandidate;
+  SpadesObservation: SpadesObservation;
+  SpadesActorPacket: SpadesActorPacket;
+  SpadesSessionView: SpadesSessionView;
+  SpadesAnalysis: SpadesAnalysis;
+  SpadesActorEvent: SpadesActorEvent;
 }
 export type ContractName = keyof ContractTypes;

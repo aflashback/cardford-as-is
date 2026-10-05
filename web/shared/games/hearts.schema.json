@@ -1,0 +1,436 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/games/hearts.schema.json",
+  "$defs": {
+    "HeartsCandidate": {
+      "title": "HeartsCandidate",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play"
+            },
+            "card": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "pass"
+            },
+            "cards": {
+              "type": "array",
+              "items": {
+                "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+              },
+              "minItems": 3,
+              "maxItems": 3,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "cards"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "HeartsObservation": {
+      "title": "HeartsObservation",
+      "type": "object",
+      "properties": {
+        "hand": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+          },
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "handCounts": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dealer": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "roundNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trick": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Play"
+          },
+          "maxItems": 4
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Trick"
+          },
+          "maxItems": 13
+        },
+        "heartsBroken": {
+          "type": "boolean"
+        },
+        "passDirection": {
+          "enum": [
+            "left",
+            "right",
+            "across",
+            "hold"
+          ]
+        },
+        "pass": {
+          "type": "object",
+          "properties": {
+            "outgoing": {
+              "type": "array",
+              "items": {
+                "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+              },
+              "maxItems": 3,
+              "uniqueItems": true
+            },
+            "incoming": {
+              "type": "array",
+              "items": {
+                "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+              },
+              "maxItems": 3,
+              "uniqueItems": true
+            },
+            "to": {
+              "anyOf": [
+                {
+                  "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "from": {
+              "anyOf": [
+                {
+                  "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "outgoing",
+            "incoming",
+            "to",
+            "from"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "hand",
+        "handCounts",
+        "scores",
+        "turn",
+        "dealer",
+        "roundNumber",
+        "trick",
+        "history",
+        "heartsBroken",
+        "passDirection",
+        "pass"
+      ],
+      "additionalProperties": false
+    },
+    "HeartsActorPacket": {
+      "title": "HeartsActorPacket",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "hearts"
+        },
+        "variantId": {
+          "const": "solo"
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "observation": {
+          "$ref": "#/$defs/HeartsObservation"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "public": {
+                "$ref": "#/$defs/HeartsCandidate"
+              }
+            },
+            "required": [
+              "id",
+              "public"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "observation",
+        "candidates"
+      ],
+      "additionalProperties": false
+    },
+    "HeartsSessionView": {
+      "title": "HeartsSessionView",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "hearts"
+        },
+        "variantId": {
+          "const": "solo"
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "table": {
+          "$ref": "#/$defs/HeartsObservation"
+        },
+        "accessUnit": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/CoachedUnit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "table",
+        "accessUnit"
+      ],
+      "additionalProperties": false
+    },
+    "HeartsAnalysis": {
+      "title": "HeartsAnalysis",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "hearts"
+        },
+        "variantId": {
+          "const": "solo"
+        },
+        "origin": {
+          "enum": [
+            "code",
+            "demo",
+            "forced",
+            "jev"
+          ]
+        },
+        "selectedCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "objective": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningObjective"
+        },
+        "horizon": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningHorizon"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningFact"
+          }
+        },
+        "estimates": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningEstimate"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningScenario"
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "origin",
+        "selectedCandidateId",
+        "objective",
+        "horizon",
+        "facts",
+        "estimates",
+        "scenarios",
+        "assumptions"
+      ],
+      "additionalProperties": false
+    },
+    "HeartsActorEvent": {
+      "title": "HeartsActorEvent",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "hearts"
+        },
+        "variantId": {
+          "const": "solo"
+        },
+        "eventSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "type": {
+          "enum": [
+            "hand-started",
+            "card-played",
+            "cards-passed",
+            "trick-resolved",
+            "trick-collected",
+            "moon-shot",
+            "hand-scored"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "seat": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "card": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bid": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "eventSchemaVersion",
+        "id",
+        "type",
+        "message",
+        "seat",
+        "card",
+        "bid"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

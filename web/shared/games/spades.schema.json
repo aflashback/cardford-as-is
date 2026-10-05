@@ -1,0 +1,433 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/games/spades.schema.json",
+  "$defs": {
+    "SpadesCandidate": {
+      "title": "SpadesCandidate",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play"
+            },
+            "card": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "bid"
+            },
+            "bid": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          "required": [
+            "kind",
+            "bid"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SpadesObservation": {
+      "title": "SpadesObservation",
+      "type": "object",
+      "properties": {
+        "hand": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+          },
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "handCounts": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dealer": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "roundNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trick": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Play"
+          },
+          "maxItems": 4
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Trick"
+          },
+          "maxItems": 13
+        },
+        "spadesBroken": {
+          "type": "boolean"
+        },
+        "bids": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "tricks": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "bags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "hand",
+        "handCounts",
+        "scores",
+        "turn",
+        "dealer",
+        "roundNumber",
+        "trick",
+        "history",
+        "spadesBroken",
+        "bids",
+        "tricks",
+        "bags"
+      ],
+      "additionalProperties": false
+    },
+    "SpadesActorPacket": {
+      "title": "SpadesActorPacket",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "spades"
+        },
+        "variantId": {
+          "enum": [
+            "solo",
+            "partners"
+          ]
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "observation": {
+          "$ref": "#/$defs/SpadesObservation"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "public": {
+                "$ref": "#/$defs/SpadesCandidate"
+              }
+            },
+            "required": [
+              "id",
+              "public"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "observation",
+        "candidates"
+      ],
+      "additionalProperties": false
+    },
+    "SpadesSessionView": {
+      "title": "SpadesSessionView",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "spades"
+        },
+        "variantId": {
+          "enum": [
+            "solo",
+            "partners"
+          ]
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "table": {
+          "$ref": "#/$defs/SpadesObservation"
+        },
+        "accessUnit": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/CoachedUnit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "table",
+        "accessUnit"
+      ],
+      "additionalProperties": false
+    },
+    "SpadesAnalysis": {
+      "title": "SpadesAnalysis",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "spades"
+        },
+        "variantId": {
+          "enum": [
+            "solo",
+            "partners"
+          ]
+        },
+        "origin": {
+          "enum": [
+            "code",
+            "demo",
+            "forced",
+            "jev"
+          ]
+        },
+        "selectedCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "objective": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningObjective"
+        },
+        "horizon": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningHorizon"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningFact"
+          }
+        },
+        "estimates": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningEstimate"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningScenario"
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "origin",
+        "selectedCandidateId",
+        "objective",
+        "horizon",
+        "facts",
+        "estimates",
+        "scenarios",
+        "assumptions"
+      ],
+      "additionalProperties": false
+    },
+    "SpadesActorEvent": {
+      "title": "SpadesActorEvent",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "spades"
+        },
+        "variantId": {
+          "enum": [
+            "solo",
+            "partners"
+          ]
+        },
+        "eventSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "type": {
+          "enum": [
+            "hand-started",
+            "bid-placed",
+            "card-played",
+            "trick-resolved",
+            "trick-collected",
+            "hand-scored"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "seat": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "card": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bid": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 13
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "eventSchemaVersion",
+        "id",
+        "type",
+        "message",
+        "seat",
+        "card",
+        "bid"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

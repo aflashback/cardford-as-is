@@ -1174,6 +1174,114 @@
       },
       "DevScenariosView": {
         "$ref": "./contracts.schema.json#/$defs/DevScenariosView"
+      },
+      "VersionedComponent": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedComponent"
+      },
+      "ModulePin": {
+        "$ref": "./contracts.schema.json#/$defs/ModulePin"
+      },
+      "CoachedUnit": {
+        "$ref": "./contracts.schema.json#/$defs/CoachedUnit"
+      },
+      "ReasoningObjective": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningObjective"
+      },
+      "ReasoningHorizon": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningHorizon"
+      },
+      "ReasoningEstimate": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningEstimate"
+      },
+      "ReasoningScenario": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningScenario"
+      },
+      "ReasoningFact": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningFact"
+      },
+      "RegisteredActorPacket": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredActorPacket"
+      },
+      "RegisteredSessionView": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredSessionView"
+      },
+      "RegisteredAnalysis": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredAnalysis"
+      },
+      "RegisteredActorEvent": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredActorEvent"
+      },
+      "RegisteredTarget": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredTarget"
+      },
+      "RegisteredSelector": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredSelector"
+      },
+      "V2ActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/V2ActionsRequest"
+      },
+      "VersionedActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedActionsRequest"
+      },
+      "V2NewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/V2NewSessionRequest"
+      },
+      "VersionedNewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedNewSessionRequest"
+      },
+      "DemoFrameRequest": {
+        "$ref": "./contracts.schema.json#/$defs/DemoFrameRequest"
+      },
+      "DemoFrame": {
+        "$ref": "./contracts.schema.json#/$defs/DemoFrame"
+      },
+      "AccessAllowance": {
+        "$ref": "./contracts.schema.json#/$defs/AccessAllowance"
+      },
+      "AccessOffer": {
+        "$ref": "./contracts.schema.json#/$defs/AccessOffer"
+      },
+      "AccessOfferPolicy": {
+        "$ref": "./contracts.schema.json#/$defs/AccessOfferPolicy"
+      },
+      "AccessDecision": {
+        "$ref": "./contracts.schema.json#/$defs/AccessDecision"
+      },
+      "HeartsCandidate": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsCandidate"
+      },
+      "HeartsObservation": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsObservation"
+      },
+      "HeartsActorPacket": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsActorPacket"
+      },
+      "HeartsSessionView": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsSessionView"
+      },
+      "HeartsAnalysis": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsAnalysis"
+      },
+      "HeartsActorEvent": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsActorEvent"
+      },
+      "SpadesCandidate": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesCandidate"
+      },
+      "SpadesObservation": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesObservation"
+      },
+      "SpadesActorPacket": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesActorPacket"
+      },
+      "SpadesSessionView": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesSessionView"
+      },
+      "SpadesAnalysis": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesAnalysis"
+      },
+      "SpadesActorEvent": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesActorEvent"
       }
     }
   }

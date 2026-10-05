@@ -8,6 +8,33 @@ const { Ajv2020 } = require('ajv/dist/2020.js');
 const standalone = require('ajv/dist/standalone/index.js').default;
 const base = resolve(dirname(fileURLToPath(import.meta.url)), '../shared');
 const schema = JSON.parse(await readFile(resolve(base, 'contracts.schema.json'), 'utf8'));
+// Only these public fragments may enter the active bundle. Private schemas and
+// arbitrary filesystem/network references are never resolved by the compiler.
+const publicFragments = ['hearts', 'spades'];
+const references = new Map();
+const schemaLocations = new Map();
+for (const name of Object.keys(schema.$defs)) references.set(`${schema.$id}#/$defs/${name}`, `#/$defs/${name}`);
+for (const game of publicFragments) {
+  const path = `./games/${game}.schema.json`;
+  const fragment = JSON.parse(await readFile(resolve(base, path), 'utf8'));
+  for (const [name, definition] of Object.entries(fragment.$defs)) {
+    if (Object.hasOwn(schema.$defs, name)) throw new Error(`Duplicate public definition: ${name}`);
+    schema.$defs[name] = definition;
+    references.set(`${path}#/$defs/${name}`, `#/$defs/${name}`);
+    schemaLocations.set(name, `${path}#/$defs/${name}`);
+  }
+}
+function resolvePublicReferences(value) {
+  if (Array.isArray(value)) { value.forEach(resolvePublicReferences); return; }
+  if (value === null || typeof value !== 'object') return;
+  if ('$ref' in value) {
+    if (references.has(value.$ref)) value.$ref = references.get(value.$ref);
+    else if (!value.$ref.startsWith('#/$defs/') || !Object.hasOwn(schema.$defs, value.$ref.slice(8)))
+      throw new Error(`Unregistered public schema reference: ${value.$ref}`);
+  }
+  Object.values(value).forEach(resolvePublicReferences);
+}
+resolvePublicReferences(schema);
 const names = Object.keys(schema.$defs);
 const banner = '/* Generated from contracts.schema.json. Do not edit; run npm run contracts:generate. */';
 const types = await compile(schema, 'PublicContracts', { bannerComment: banner, additionalProperties: false, enableConstEnums: false, format: true, style: { singleQuote: true, semi: true, printWidth: 120 }, unknownAny: true, ignoreMinAndMaxItems: true });
@@ -37,7 +64,7 @@ const routes = [
   ['post','/api/session/reviews/{decisionId}/trials','TrialRequest','ReviewTrial'],
   ['post','/api/subscription/preview','BillingPreviewRequest','BillingPreview'], ['post','/api/subscription/change','BillingConfirmRequest','BillingOperation'], ['get','/api/family',null,'FamilyView'], ['post','/api/family','FamilyCommand','FamilyView'], ['get','/api/account/export',null,'ExportView'], ['post','/api/account/delete','AccountDeleteRequest','AccountDeleteView'], ['get','/api/account',null,'AccountView'], ['post','/api/account','AccountCommand','AccountView'],
 ];
-const openapi = { openapi: '3.1.0', info: { title: 'CardFord local V1', version: '1.0.0' }, paths: {}, components: { schemas: Object.fromEntries(names.map(n => [n, { $ref: `./contracts.schema.json#/$defs/${n}` }])) } };
+const openapi = { openapi: '3.1.0', info: { title: 'CardFord local V1', version: '1.0.0' }, paths: {}, components: { schemas: Object.fromEntries(names.map(n => [n, { $ref: schemaLocations.get(n) ?? `./contracts.schema.json#/$defs/${n}` }])) } };
 for (const [method,path,input,output] of routes) {
   const operation = { responses: { '200': { description: 'Validated public view', content: { 'application/json': { schema: { $ref: `#/components/schemas/${output}` } } } }, default: { description: 'Safe typed error', content: { 'application/json': { schema: { $ref: '#/components/schemas/ApiError' } } } } } };
   if (input) operation.requestBody = { required: true, content: { 'application/json': { schema: { $ref: `#/components/schemas/${input}` } } } };

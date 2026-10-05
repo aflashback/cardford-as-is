@@ -1,6 +1,7 @@
 /** Private domain types. HTTP DTOs are generated separately from public schemas. */
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
-export type Seat = 0 | 1 | 2 | 3;
+import type { Seat } from './seats.ts';
+export type { Seat } from './seats.ts';
 export type Card = string;
 export type Suit = 'C' | 'D' | 'H' | 'S';
 export type Four<T> = [T, T, T, T];

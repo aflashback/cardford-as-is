@@ -64,6 +64,42 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   ScenarioId: compiled.validateScenarioId,
   DevScenarioView: compiled.validateDevScenarioView,
   DevScenariosView: compiled.validateDevScenariosView,
+  VersionedComponent: compiled.validateVersionedComponent,
+  ModulePin: compiled.validateModulePin,
+  CoachedUnit: compiled.validateCoachedUnit,
+  ReasoningObjective: compiled.validateReasoningObjective,
+  ReasoningHorizon: compiled.validateReasoningHorizon,
+  ReasoningEstimate: compiled.validateReasoningEstimate,
+  ReasoningScenario: compiled.validateReasoningScenario,
+  ReasoningFact: compiled.validateReasoningFact,
+  RegisteredActorPacket: compiled.validateRegisteredActorPacket,
+  RegisteredSessionView: compiled.validateRegisteredSessionView,
+  RegisteredAnalysis: compiled.validateRegisteredAnalysis,
+  RegisteredActorEvent: compiled.validateRegisteredActorEvent,
+  RegisteredTarget: compiled.validateRegisteredTarget,
+  RegisteredSelector: compiled.validateRegisteredSelector,
+  V2ActionsRequest: compiled.validateV2ActionsRequest,
+  VersionedActionsRequest: compiled.validateVersionedActionsRequest,
+  V2NewSessionRequest: compiled.validateV2NewSessionRequest,
+  VersionedNewSessionRequest: compiled.validateVersionedNewSessionRequest,
+  DemoFrameRequest: compiled.validateDemoFrameRequest,
+  DemoFrame: compiled.validateDemoFrame,
+  AccessAllowance: compiled.validateAccessAllowance,
+  AccessOffer: compiled.validateAccessOffer,
+  AccessOfferPolicy: compiled.validateAccessOfferPolicy,
+  AccessDecision: compiled.validateAccessDecision,
+  HeartsCandidate: compiled.validateHeartsCandidate,
+  HeartsObservation: compiled.validateHeartsObservation,
+  HeartsActorPacket: compiled.validateHeartsActorPacket,
+  HeartsSessionView: compiled.validateHeartsSessionView,
+  HeartsAnalysis: compiled.validateHeartsAnalysis,
+  HeartsActorEvent: compiled.validateHeartsActorEvent,
+  SpadesCandidate: compiled.validateSpadesCandidate,
+  SpadesObservation: compiled.validateSpadesObservation,
+  SpadesActorPacket: compiled.validateSpadesActorPacket,
+  SpadesSessionView: compiled.validateSpadesSessionView,
+  SpadesAnalysis: compiled.validateSpadesAnalysis,
+  SpadesActorEvent: compiled.validateSpadesActorEvent,
 };
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
   return validators[name];
@@ -135,3 +171,39 @@ export const validateExportView = contractValidator('ExportView');
 export const validateScenarioId = contractValidator('ScenarioId');
 export const validateDevScenarioView = contractValidator('DevScenarioView');
 export const validateDevScenariosView = contractValidator('DevScenariosView');
+export const validateVersionedComponent = contractValidator('VersionedComponent');
+export const validateModulePin = contractValidator('ModulePin');
+export const validateCoachedUnit = contractValidator('CoachedUnit');
+export const validateReasoningObjective = contractValidator('ReasoningObjective');
+export const validateReasoningHorizon = contractValidator('ReasoningHorizon');
+export const validateReasoningEstimate = contractValidator('ReasoningEstimate');
+export const validateReasoningScenario = contractValidator('ReasoningScenario');
+export const validateReasoningFact = contractValidator('ReasoningFact');
+export const validateRegisteredActorPacket = contractValidator('RegisteredActorPacket');
+export const validateRegisteredSessionView = contractValidator('RegisteredSessionView');
+export const validateRegisteredAnalysis = contractValidator('RegisteredAnalysis');
+export const validateRegisteredActorEvent = contractValidator('RegisteredActorEvent');
+export const validateRegisteredTarget = contractValidator('RegisteredTarget');
+export const validateRegisteredSelector = contractValidator('RegisteredSelector');
+export const validateV2ActionsRequest = contractValidator('V2ActionsRequest');
+export const validateVersionedActionsRequest = contractValidator('VersionedActionsRequest');
+export const validateV2NewSessionRequest = contractValidator('V2NewSessionRequest');
+export const validateVersionedNewSessionRequest = contractValidator('VersionedNewSessionRequest');
+export const validateDemoFrameRequest = contractValidator('DemoFrameRequest');
+export const validateDemoFrame = contractValidator('DemoFrame');
+export const validateAccessAllowance = contractValidator('AccessAllowance');
+export const validateAccessOffer = contractValidator('AccessOffer');
+export const validateAccessOfferPolicy = contractValidator('AccessOfferPolicy');
+export const validateAccessDecision = contractValidator('AccessDecision');
+export const validateHeartsCandidate = contractValidator('HeartsCandidate');
+export const validateHeartsObservation = contractValidator('HeartsObservation');
+export const validateHeartsActorPacket = contractValidator('HeartsActorPacket');
+export const validateHeartsSessionView = contractValidator('HeartsSessionView');
+export const validateHeartsAnalysis = contractValidator('HeartsAnalysis');
+export const validateHeartsActorEvent = contractValidator('HeartsActorEvent');
+export const validateSpadesCandidate = contractValidator('SpadesCandidate');
+export const validateSpadesObservation = contractValidator('SpadesObservation');
+export const validateSpadesActorPacket = contractValidator('SpadesActorPacket');
+export const validateSpadesSessionView = contractValidator('SpadesSessionView');
+export const validateSpadesAnalysis = contractValidator('SpadesAnalysis');
+export const validateSpadesActorEvent = contractValidator('SpadesActorEvent');
