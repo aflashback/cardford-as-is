@@ -1,0 +1,220 @@
+{
+  "stage": "final",
+  "recordedAt": "2026-10-05T16:51:34.235Z",
+  "sourceRevision": "ea09f81c3fe799350dac0d802795892ed4e39e8a",
+  "sourceTree": "c04c9da3992815a1d8bde6251b2e5a67184656db",
+  "branch": "codex/current-game-modules-m02",
+  "initialChanges": "M docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md\n M planning/IMPLEMENTATION-START-HERE.md\n M planning/implementation/multi-game/contracts.md\n M planning/implementation/requirements-and-tests.md\n M qa/implementation/multi-game/CHANGELOG.md\n M qa/implementation/multi-game/status.md\n M web/server/game/index.ts\n M web/server/game/kernel/registry.ts\n M web/server/game/kernel/types.ts\n M web/server/game/replay.ts\n M web/server/game/rules.ts\n M web/server/observations/index.ts\n M web/server/records/game-document.ts\n?? .claude/\n?? planning/decisions/CR-ARCH-002-current-game-module-extraction.md\n?? qa/implementation/multi-game/m02/\n?? web/server/game/compatibility.ts\n?? web/server/game/legacy/\n?? web/server/games/hearts/codec.ts\n?? web/server/games/hearts/compatibility.ts\n?? web/server/games/hearts/engine.ts\n?? web/server/games/hearts/module.ts\n?? web/server/games/hearts/observation.ts\n?? web/server/games/hearts/projection.ts\n?? web/server/games/hearts/schema.json\n?? web/server/games/hearts/state.ts\n?? web/server/games/registrations.ts\n?? web/server/games/spades/compatibility.ts\n?? web/server/games/spades/engine.ts\n?? web/server/games/spades/module.ts\n?? web/server/games/spades/observation.ts\n?? web/server/games/spades/rules.ts\n?? web/server/games/spades/schema.json\n?? web/server/games/spades/state.ts\n?? web/server/records/game-document-codec.ts\n?? web/server/tests/fixtures/legacy-module-document.json\n?? web/server/tests/hearts-module-validation.test.ts\n?? web/server/tests/module-parity.test.ts\n?? web/server/tests/spades-module-validation.test.ts\n?? web/server/tests/support/module-parity.ts",
+  "worktrees": "C:/repos/test-jev                                                 ea09f81 [codex/current-game-modules-m02]\nC:/repos/test-jev/.claude/worktrees/cardford-bots-coaching-bd3916 94a59cb [claude/cardford-bots-coaching-bd3916]\nC:/repos/test-jev/.local/m00-baseline                             d66a046 (detached HEAD)\nC:/Users/AliA/.codex/worktrees/spades-reasoning/test-jev          c81d322 [codex/spades-reasoning]\nC:/Users/AliA/.codex/worktrees/v1-build/test-jev                  e89ddf6 [v1/ui]\nC:/Users/AliA/.codex/worktrees/v1-contracts/test-jev              af141b4 [v1/billing]\nC:/Users/AliA/.codex/worktrees/v1-domain/test-jev                 e1e5023 [v1/provider-ledger]",
+  "node": "v24.19.0",
+  "installed": {
+    "typescript": "5.9.3",
+    "react": "19.3.0",
+    "vite": "6.4.3",
+    "fastify": "5.12.5",
+    "pg": "8.23.0",
+    "ajv": "8.20.0"
+  },
+  "hashes": {
+    "lockfile": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3",
+    "publicSchema": "e50ddf65d662edcd437511936aa0d049fc4c9bcef5879f4b36b5b65c7db6c3fd",
+    "publicTypes": "6281197f5f19bad84d042582bef7c8b659d96c94887b6ec094cebb43f6488b81",
+    "frozenAndPilotArchive": "6aa430e4a0a37975d59a0a856b05e39078da00a9e19d6659573f99ae07c8a1f5",
+    "archiveFileCount": 44
+  },
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "testIsolation": "none",
+  "testPlatform": "podman-wsl-native",
+  "hostOperatingSystem": "win32",
+  "snapshotIntegrity": {
+    "before": {
+      "verified": true,
+      "verifiedAt": "2026-10-05T16:51:33.729Z",
+      "guestRoot": "/tmp/cardford-m02-2dSEmL/checkout",
+      "sourceManifestSha256": "138290131f771fb7ae2f9b42a71c4d6411637a645e5d6e637bfccfb34d40b843",
+      "sourceFileCount": 1137,
+      "dependencyEntryCount": 12964,
+      "testFileCount": 61,
+      "nativePathCheck": {
+        "realpath": "/tmp/cardford-m02-2dSEmL/checkout",
+        "nativeDeviceDistinct": true,
+        "rootMode": "700",
+        "environmentMode": "600",
+        "environmentBytesMatch": true
+      }
+    },
+    "after": {
+      "verified": true,
+      "verifiedAt": "2026-10-05T16:55:50.923Z",
+      "guestRoot": "/tmp/cardford-m02-2dSEmL/checkout",
+      "sourceManifestSha256": "138290131f771fb7ae2f9b42a71c4d6411637a645e5d6e637bfccfb34d40b843",
+      "sourceFileCount": 1137,
+      "dependencyEntryCount": 12964,
+      "testFileCount": 61,
+      "nativePathCheck": {
+        "realpath": "/tmp/cardford-m02-2dSEmL/checkout",
+        "nativeDeviceDistinct": true,
+        "rootMode": "700",
+        "environmentMode": "600",
+        "environmentBytesMatch": true
+      }
+    }
+  },
+  "testSelection": {
+    "globs": [
+      "web/tests/*.test.ts",
+      "web/server/tests/*.test.ts"
+    ],
+    "files": {
+      "web/server/tests/access-review.test.ts": "4a03d18a67a247fb20a6a2af6d2118a1bc85ecf14477dcba6b42c90566e0fd15",
+      "web/server/tests/account-data.test.ts": "4d27438ce87445446cb5a36dad8b9f6f129f95311ce8862fe00e0c4d6b4ab6f0",
+      "web/server/tests/analysis-outside-transaction.test.ts": "c2690eb72ace519f754ec1f5031e03be50ebbb6377a392d2fda27be1b35d0d68",
+      "web/server/tests/billing-stripe-management.test.ts": "724f8d14726e775cb6c704c63d5fcfbcc3332bcbf8f7be977106526345e209ad",
+      "web/server/tests/billing.test.ts": "76738ca7566b313372a72b58af91554b75bd93daf9f0c8124720ffc75c069dd6",
+      "web/server/tests/coach-legacy-parity.test.ts": "389d044a6b85e02f1f066ea8038e7798964cccfc12ba1188b02eba7b5b74ea2c",
+      "web/server/tests/coaching-analysis.test.ts": "3ac9b1887d28f89a58fd56c68c6da2415208d81b1eeb906da2be979ec82fc15b",
+      "web/server/tests/config.test.ts": "ea746bb19aa60d041a4ffc54a039704f7543bfd4a4acf7c728543eab32cf4eb3",
+      "web/server/tests/contracts.test.ts": "eb7e1a3994d432691ce83d4068c95baab9ef9ce36c499b3f371cc30755efb13a",
+      "web/server/tests/dev-scenarios-integration.test.ts": "fe010b6da46a1a6dbb43360ee9af1d2764c7b18aa487964cfb5bd750c9e4f9c3",
+      "web/server/tests/dev-scenarios.test.ts": "01ecc341f341cff16674f61590b75b6fa6c660c3c5ccde9bb9291d59e6d8b739",
+      "web/server/tests/facts-history.test.ts": "c08e8009c7685fb2b083a9626eb79fbecfa23141ca535cd9ffeffe2e60e68b4b",
+      "web/server/tests/family.test.ts": "bdeb57493efd42497c81723f6243092779417c906dd17fec50edc6b5701dfd7f",
+      "web/server/tests/frozen-baseline.test.ts": "543aa8cf207d2c73c33230fdfa974913baad98f1733a93cfa31bd19c133f9880",
+      "web/server/tests/game-document.test.ts": "0c99c952e194cba708a8d2288dd0c3a5afc1d9243578407c7a5be7b3553ce33c",
+      "web/server/tests/gate-inference.test.ts": "72fbae6a3fc8f124f52bc1cda35964ea2fcc4c81ba5490ce99a9819aec9b9538",
+      "web/server/tests/gate-rule.test.ts": "68d438210da9d95cf267e7344892ee362fe79b60e7a0c33f46a258403885f5fd",
+      "web/server/tests/hearts-module-validation.test.ts": "c856e1ea33e452e881d393549ee9157ba65bbc2ebdfa6bf18864c9048d024758",
+      "web/server/tests/hearts-plan.test.ts": "3404fcbaf300915c20c6c92fb5eff9dcddd8c7d3564cc2644a67c4553acf739a",
+      "web/server/tests/integration.test.ts": "25416050b2a16ab949063b256669a64f0ab0ef126dc67ef8a2545f9a47778846",
+      "web/server/tests/jev-offline.test.ts": "13d74ef66b16050539350f95e5c24cf77ab53c8a26c707346030e16c3de1d23f",
+      "web/server/tests/module-contract.test.ts": "dd9f59239856560f0854ad37cd879c25f232f5f4146cf3fc0190074679d434f7",
+      "web/server/tests/module-parity.test.ts": "69eeaab243ff19577840d24235bf125e23237d90a37fe90a8e5a89b4c374c91e",
+      "web/server/tests/module-seam.test.ts": "83502fc80da19d3058e84fe4f7733a5535a0062fb4d0a75a5d6079bc8b1980fc",
+      "web/server/tests/observations.test.ts": "b194f631984ad982576624355c7be7b3d1f03c74c085206a88a751d041c96254",
+      "web/server/tests/openrouter.test.ts": "4d1a025cba86ca36cd4b4465955d50ee3035bb1678a71b3023bb3d3ee81c64c4",
+      "web/server/tests/partner-jev.test.ts": "04640e5b88ba2fd36fd1e719b7e28dedc65f58e4f2314cf5be7a47fba3b1f8ed",
+      "web/server/tests/policy-pinning.test.ts": "817bc222d8ffddf8bad8d81e36df304c9acec2689078d5c9c33fa37b1a6cb7f3",
+      "web/server/tests/provider-ledger.test.ts": "96b82223ae53da4c9c1983c204b44cd4c89ab871ddaf2452d8a6a5b583d685d3",
+      "web/server/tests/reasoning-casebook.test.ts": "6b5aca587916e4c7a95078250de2a44e6a8acf62204abb916017408f958f0ada",
+      "web/server/tests/reasoning-catalog.test.ts": "ebb4a0c59fdcbd5c1630b69077c9fff10379ee4cfe73a06c653b796e0823111a",
+      "web/server/tests/reasoning-continuations.test.ts": "e6a4c3d17fb6e49ca20076027a1abba917601d72cc63fde68aba31969320a08d",
+      "web/server/tests/reasoning-matrix.test.ts": "2fe5a68c73e517984b02b635444a50ae6a956aa1e5d87f37048af13e6e94490a",
+      "web/server/tests/reasoning-trace.test.ts": "0641a783cc40e46d6847258f1703f88c3c63f34dbcffa43b64b64327390addf9",
+      "web/server/tests/replay.test.ts": "68281ae6dcd2069700d5684fe3ded30464cb0149259312b1ff46aadcfdc18313",
+      "web/server/tests/rules.test.ts": "d363285a0681c290951bf7f5078d7944631675d9459be2d959ac9214d1f4f9dd",
+      "web/server/tests/sampler.test.ts": "c0b1e2de7b3fe06eddbdcaf873763ec37886dc882e97a59f1b9fc63d8724a7c7",
+      "web/server/tests/saved-analysis.test.ts": "38647afc40488f692b648809a2c3f38a3680037a45ad39b9d3a24ccbae929b65",
+      "web/server/tests/spades-double-nil.test.ts": "8aada72eea008ca0b93a7dd7aab5e5381a8e43abc6fb3222cf9bf3fe44533e72",
+      "web/server/tests/spades-entries.test.ts": "c0be072ee8a514991a6d3adac41d336b1f46eef71d80a9ac41efebdd7cff8d8f",
+      "web/server/tests/spades-human-labels.test.ts": "2a142d7417a7f1f216c8177cec463ac4cab3c121b360f978844d547860cad117",
+      "web/server/tests/spades-match-pilot.test.ts": "9c6b964140995b525ae3280e202ab9db4a61fb6b6d71dfd49ff8fe9905f3ff24",
+      "web/server/tests/spades-module-validation.test.ts": "ebf8a7e7e624319aee7a906744550857ca89ffed71b1bbb2057e533b013de17b",
+      "web/server/tests/spades-objectives.test.ts": "70ff9a86516a8b6d106d0f32cdb1953f8b456bb4d5488251c5915ce38f1decc7",
+      "web/server/tests/spades-observed-cases.test.ts": "920d4978c5456fefdd16cb9767988fd472635589dc6b736c9bb45c610d78e131",
+      "web/server/tests/spades-partner-resource.test.ts": "9b705aa25358ab7913a77c4ce59706951ea2e0dfb5d202278dbad0e99568017c",
+      "web/server/tests/spades-pilot-report.test.ts": "07dd37bbca8cd96331cf63cfbc3276dec926cd16e63ae98af85a44bcd6eb3fa7",
+      "web/server/tests/spades-playout-budget.test.ts": "4a7696404804dde8ac27eae43d4d8749064a3ba054756a28f14e75ffab9b85a3",
+      "web/server/tests/spades-playout-kernel.test.ts": "32d62ad939167f338c4117591d65794a26c429ecd496f814c4b7904100e39f7a",
+      "web/server/tests/spades-playout-model.test.ts": "dddddee0874be9d17bc1d5bc24ca46488cc4e6abb4e43fa001e9468fd959fa00",
+      "web/server/tests/spades-policy-integration.test.ts": "2799467dbcbec628b919dd211182ee2c3daac2ce137ec925b890a4c9d72b5bad",
+      "web/server/tests/spades-reasoning.test.ts": "3630e7a815ef1371d4f904eae85b0a6414b6a84553aa50dd7750d104c3e00f5a",
+      "web/server/tests/spades-review-pack.test.ts": "5fd87cf5bb300a75c489b68d14ac7a11811b3375fbfa53006c276fe5b3d6f49c",
+      "web/server/tests/spades-signals.test.ts": "6634e14a561923fbcfd2ce890f854682d24caf5f8321356dcd02d8e509b2f276",
+      "web/server/tests/strategy-reasons.test.ts": "acf9a0ba7313e176572d71a78d52137c87bc1085f85a5f012a79e365d2bf58bc",
+      "web/server/tests/strategy.test.ts": "596e93e967eca5c9593c12fb0483ac801d95ddfe3d90234c838bb3ce1bb1bf64",
+      "web/server/tests/trials.test.ts": "7015d0eb06c08ae42e15026623df51a434321d8fc65fb397dbe9b7b9cc60f060",
+      "web/server/tests/world-sampler-parity.test.ts": "a52be63ad8d6e945686f3e70f36ee1030b32cf2c25e6c6fdd13ea75917c87500",
+      "web/tests/coach.test.ts": "11a03ea46e409deb2de08c05aa7b3642e24000f81c86558f0e8fdfb09a920cb5",
+      "web/tests/game.test.ts": "47397716287cb86d047b39cad6996bb5aa6eb204fca679096d095b5a44a505ce",
+      "web/tests/storage.test.ts": "3d2d0a8a0922a392f81540947b0d732989950b3e436a819130cfdb8ed127bed5"
+    },
+    "fileCount": 61,
+    "manifestSha256": "0cd1a8402b78ae1aea5e0050c2c86dbacb32498c61dc18e459f7d49b2d170831"
+  },
+  "testRuntime": {
+    "node": "v24.19.0",
+    "dedicatedTestDatabase": true,
+    "expectedDatabase": true,
+    "loopback": true,
+    "sourceOverridesAbsent": true,
+    "distribution": "podman-machine-default",
+    "operatingSystem": "linux",
+    "runtime": "/mnt/c/repos/test-jev/.local/m02-linux-node/node-v24.19.0-linux-x64/bin/node",
+    "provenance": "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-x64.tar.xz",
+    "archiveSha256": "14b342e71204f811bde6153be8e04b62aef63c236fef92b55f9c83154b409647",
+    "database": "Existing VM loopback test database; .local/m00-test.env; no new listener.",
+    "sourceLocation": "/tmp/cardford-m02-2dSEmL/checkout",
+    "filesystem": "VM-native temporary byte-identical copy",
+    "copiedInputs": {
+      "sourceFiles": 1137,
+      "sourceManifestSha256": "138290131f771fb7ae2f9b42a71c4d6411637a645e5d6e637bfccfb34d40b843",
+      "dependencyEntries": 12964,
+      "dependencyManifestSha256": "57a915617ca7c35f0b897051e8fd11107906824ed61e40b0037b9ecc8d819b2c",
+      "dependencyCopyBehavior": "Copied every installed regular dependency byte without installation; dependency links remapped to equivalent targets inside the native snapshot; no link points to the mounted checkout.",
+      "environment": "Private copies of original .env.local and .local/m00-test.env; excluded from manifests and credential digests."
+    }
+  },
+  "checks": [
+    {
+      "command": "npm run contracts:check",
+      "operatingSystem": "win32",
+      "exitCode": 0,
+      "elapsedMs": 941,
+      "counts": {},
+      "log": "final-contracts-check.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "operatingSystem": "win32",
+      "exitCode": 0,
+      "elapsedMs": 6979,
+      "counts": {},
+      "log": "final-typecheck.log"
+    },
+    {
+      "command": "wsl -d podman-machine-default --cd /tmp/cardford-m02-2dSEmL/checkout -- /mnt/c/repos/test-jev/.local/m02-linux-node/node-v24.19.0-linux-x64/bin/node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none --test-reporter=spec web/tests/*.test.ts web/server/tests/*.test.ts",
+      "operatingSystem": "linux",
+      "exitCode": 0,
+      "elapsedMs": 209586,
+      "counts": {
+        "tests": 449,
+        "pass": 449,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "final-test-all.log"
+    },
+    {
+      "command": "npm run build",
+      "operatingSystem": "win32",
+      "exitCode": 0,
+      "elapsedMs": 6401,
+      "counts": {},
+      "log": "final-build.log"
+    }
+  ],
+  "completedAt": "2026-10-05T16:57:07.086Z",
+  "testOutputSha256": "36a24d6f05ba4d94afce85ac4a8980e28094fe235852a6282a8ce17786e136c4",
+  "invocation": "$env:M02_TEST_PLATFORM = 'podman-wsl-native'\n$env:M02_TEST_ISOLATION = 'none'\nnode --env-file=.env.local --env-file=.local/m00-test.env qa/implementation/multi-game/m02/verify.mjs final",
+  "acceptance": {
+    "scope": "M02 current-game modules and V1 compatibility",
+    "passed": true,
+    "tests": "449/449 Linux/WSL, native-filesystem immutable copy, unchanged assertions and thresholds",
+    "host": "Windows contracts/typecheck/build passed separately",
+    "limitation": "Windows database connection failures remain unresolved; this result does not establish Windows latency, hosted activation, native UI or strategy strength.",
+    "preservedAttempts": [
+      "pre-retry.json",
+      "pre-tunnel.json",
+      "pre-process.json",
+      "pre-vm.json",
+      "pre-native.json"
+    ],
+    "sourceManifest": "native-source-manifest.json"
+  }
+}

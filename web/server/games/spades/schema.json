@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/private/spades/2.0.0",
+  "$defs": {
+    "Card": {
+      "type": "string",
+      "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+    },
+    "Seat": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "Play": {
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        }
+      },
+      "required": ["seat", "card"],
+      "additionalProperties": false
+    },
+    "Trick": {
+      "type": "object",
+      "properties": {
+        "plays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Play"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "winner": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": ["plays", "winner"],
+      "additionalProperties": false
+    },
+    "EmptyPass": {
+      "type": "object",
+      "properties": {
+        "outgoing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 0
+        },
+        "incoming": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 0
+        },
+        "to": {
+          "type": "null"
+        },
+        "from": {
+          "type": "null"
+        }
+      },
+      "required": ["outgoing", "incoming", "to", "from"],
+      "additionalProperties": false
+    },
+    "HandResult": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "bags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "winner": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": ["points", "bags"],
+      "additionalProperties": false
+    },
+    "SpadesEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "type": {
+          "enum": [
+            "hand-started",
+            "bid-placed",
+            "card-played",
+            "trick-resolved",
+            "trick-collected",
+            "hand-scored"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        },
+        "bid": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        }
+      },
+      "required": ["id", "type", "message"],
+      "additionalProperties": false
+    },
+    "SpadesState": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "mode": {
+          "enum": ["spades-solo", "spades-partners"]
+        },
+        "moduleVersion": {
+          "const": "2.0.0"
+        },
+        "stateSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "ruleProfileId": {
+          "enum": ["spades-solo-training-1.0.0", "spades-training-1.0.0"]
+        },
+        "eventSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "phase": {
+          "enum": ["bid", "play", "trick-end", "hand-end", "match-end"]
+        },
+        "hands": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Card"
+            },
+            "minItems": 0,
+            "maxItems": 13,
+            "uniqueItems": true
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "bids": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "tricks": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "bags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "trick": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Play"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Trick"
+          },
+          "minItems": 0,
+          "maxItems": 13
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dealer": {
+          "$ref": "#/$defs/Seat"
+        },
+        "handNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "spadesBroken": {
+          "type": "boolean"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SpadesEvent"
+          },
+          "minItems": 1,
+          "maxItems": 100000
+        },
+        "handResult": {
+          "$ref": "#/$defs/HandResult"
+        },
+        "awaitingDeal": {
+          "type": "boolean"
+        },
+        "compatibility": {
+          "type": "object",
+          "properties": {
+            "heartsBroken": {
+              "type": "boolean"
+            },
+            "passDirection": {
+              "enum": ["left", "right", "across", "hold"]
+            },
+            "passes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/EmptyPass"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "required": ["heartsBroken", "passDirection", "passes"],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "mode",
+        "moduleVersion",
+        "stateSchemaVersion",
+        "ruleProfileId",
+        "eventSchemaVersion",
+        "phase",
+        "hands",
+        "bids",
+        "tricks",
+        "scores",
+        "bags",
+        "trick",
+        "history",
+        "turn",
+        "dealer",
+        "handNumber",
+        "spadesBroken",
+        "events",
+        "awaitingDeal",
+        "compatibility"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,497 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/private/hearts-2.0.0.json",
+  "title": "HeartsState",
+  "description": "Server-only Hearts state. The strict codec additionally checks complete card conservation, replay legality, pass ownership, flags, turn, scoring and version invariants. Never registered in browser artifacts.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "moduleVersion": {
+      "const": "2.0.0"
+    },
+    "stateSchemaVersion": {
+      "const": "2.0.0"
+    },
+    "ruleProfileId": {
+      "const": "hearts-training-1.0.0"
+    },
+    "eventSchemaVersion": {
+      "const": "2.0.0"
+    },
+    "phase": {
+      "enum": ["pass", "play", "trick-end", "hand-end", "match-end", "awaiting-deal"]
+    },
+    "hands": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/Card"
+        },
+        "minItems": 0,
+        "maxItems": 13,
+        "uniqueItems": true
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "tricks": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 13
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "scores": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "trick": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Play"
+      },
+      "minItems": 0,
+      "maxItems": 4
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Trick"
+      },
+      "minItems": 0,
+      "maxItems": 13
+    },
+    "turn": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Seat"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "dealer": {
+      "$ref": "#/$defs/Seat"
+    },
+    "handNumber": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "heartsBroken": {
+      "type": "boolean"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/HeartsEvent"
+      },
+      "minItems": 0,
+      "maxItems": 100000
+    },
+    "handResult": {
+      "$ref": "#/$defs/HandResult"
+    },
+    "passDirection": {
+      "enum": ["left", "right", "across", "hold"]
+    },
+    "passes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PassMemory"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "v1Compatibility": {
+      "type": "object",
+      "properties": {
+        "moduleVersion": {
+          "const": "1.0.0"
+        },
+        "eventSchemaVersion": {
+          "const": "1.0.0"
+        },
+        "spadesBroken": {
+          "type": "boolean"
+        }
+      },
+      "required": ["moduleVersion", "eventSchemaVersion", "spadesBroken"],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "moduleVersion",
+    "stateSchemaVersion",
+    "ruleProfileId",
+    "eventSchemaVersion",
+    "phase",
+    "hands",
+    "tricks",
+    "scores",
+    "trick",
+    "history",
+    "turn",
+    "dealer",
+    "handNumber",
+    "heartsBroken",
+    "events",
+    "passDirection",
+    "passes",
+    "v1Compatibility"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Seat": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "Card": {
+      "type": "string",
+      "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+    },
+    "Play": {
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        }
+      },
+      "required": ["seat", "card"],
+      "additionalProperties": false
+    },
+    "Trick": {
+      "type": "object",
+      "properties": {
+        "plays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Play"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "winner": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": ["plays", "winner"],
+      "additionalProperties": false
+    },
+    "PassMemory": {
+      "type": "object",
+      "properties": {
+        "outgoing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "incoming": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": ["outgoing", "incoming", "to", "from"],
+      "additionalProperties": false
+    },
+    "HandResult": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 26
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "winner": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": ["points"],
+      "additionalProperties": false
+    },
+    "HeartsEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "type": {
+          "enum": [
+            "hand-started",
+            "card-played",
+            "cards-passed",
+            "trick-resolved",
+            "trick-collected",
+            "moon-shot",
+            "hand-scored"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        }
+      },
+      "required": ["id", "type", "message"],
+      "additionalProperties": false
+    },
+    "HeartsObservation": {
+      "type": "object",
+      "properties": {
+        "moduleVersion": {
+          "const": "2.0.0"
+        },
+        "ruleProfileId": {
+          "const": "hearts-training-1.0.0"
+        },
+        "phase": {
+          "enum": ["pass", "play", "trick-end", "hand-end", "match-end", "awaiting-deal"]
+        },
+        "tricks": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "trick": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Play"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Trick"
+          },
+          "minItems": 0,
+          "maxItems": 13
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dealer": {
+          "$ref": "#/$defs/Seat"
+        },
+        "handNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "heartsBroken": {
+          "type": "boolean"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/HeartsEvent"
+          },
+          "minItems": 0,
+          "maxItems": 100000
+        },
+        "handResult": {
+          "$ref": "#/$defs/HandResult"
+        },
+        "passDirection": {
+          "enum": ["left", "right", "across", "hold"]
+        },
+        "observationSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "featureVersion": {
+          "const": "1.0.0"
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "hand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "handCounts": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "pass": {
+          "$ref": "#/$defs/PassMemory"
+        },
+        "unitId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "moduleVersion",
+        "ruleProfileId",
+        "phase",
+        "tricks",
+        "scores",
+        "trick",
+        "history",
+        "turn",
+        "dealer",
+        "handNumber",
+        "heartsBroken",
+        "events",
+        "passDirection",
+        "observationSchemaVersion",
+        "featureVersion",
+        "seat",
+        "hand",
+        "handCounts",
+        "pass",
+        "unitId"
+      ],
+      "additionalProperties": false
+    },
+    "HeartsConfiguration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "dealer": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": ["id", "dealer"],
+      "additionalProperties": false
+    },
+    "HeartsChance": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "request-deal"
+            },
+            "roundNumber": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": ["kind", "roundNumber"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "deal"
+            },
+            "deck": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Card"
+              },
+              "minItems": 52,
+              "maxItems": 52,
+              "uniqueItems": true
+            }
+          },
+          "required": ["kind", "deck"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

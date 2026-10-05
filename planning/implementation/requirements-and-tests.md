@@ -200,9 +200,22 @@ The owner initiated M00–M01 and targeted partnership cases on 5 October 2026. 
 
 | IDs | Current slice / evidence | Later gate |
 |---|---|---|
-| MG-01–03 | Versioned module/facade, competition, public fragments and private-document conformance; `module-contract.test.ts`, `game-document.test.ts` | M02 production game adapters; M03 validated persistence |
+| MG-01–03 | Versioned module/facade, competition, public fragments and private-document conformance; `module-contract.test.ts`, `game-document.test.ts` | M03 validated persistence; M04 service/client activation |
 | MG-15–17 | Online demo/access/coached-unit/client-port contract freeze | M03–M04 durable access, server demo and client integration |
 | MG-07, MG-09–12; PR-01–03, PR-05 | Reachable partner-resource cases, exceptions, actor invariance, shared bot/coach choices and checked cues; `spades-partner-resource.test.ts` | Human acceptable-action/cue review remains deferred |
 | MG-13–14; PR-04 | Fresh bounded development run and conditional cap-one Jev shadow diagnostic | Independent strength/learning confirmation and promotion remain separate |
 
 PR-01–05 are recorded by [CR-ARCH-001](../decisions/CR-ARCH-001-multi-game-production-boundary.md) and the [slice change log](../../qa/implementation/multi-game/CHANGELOG.md). Actual statuses, commands/counts and limitations belong to [milestone evidence](../../qa/implementation/multi-game/status.md).
+
+## CR-ARCH-002 current-game extraction
+
+The owner's next-item instruction authorizes M02. Hearts Solo, Spades Solo and Spades Partners now have independent native state, rules, reducers, safe projections and strict private codecs. Explicit registrations supply the frozen module interfaces; the V1 service facade uses game-owned reducers and retains original pins, journals and policy analysis.
+
+| Requirement | M02 acceptance | Remaining work |
+|---|---|---|
+| MG-02 | Native current-game modules; ten-hand original corpus and frozen policy goldens in `module-parity.test.ts` | New-game modules remain M08–M09 |
+| MG-03 | Strict native/V1 private-state validation; corruption regressions in `hearts-module-validation.test.ts` and `spades-module-validation.test.ts` | Persisted unknown-data load/save and durable V2 documents in M03 |
+| MG-04 | Exact typed registrations and game-owned V1 reducer dispatch | Bound V2 service/persistence/replay integration in M03–M04 |
+| MG-09 | Original reducer/observation oracles, policy attribution, journal boundaries, unsupported-version read-only reader and immutable artifact checks | Durable original saved-document/advice integration in M03–M04 |
+
+[CR-ARCH-002](../decisions/CR-ARCH-002-current-game-module-extraction.md), [M02 change log](../../qa/implementation/multi-game/m02/CHANGELOG.md) and [M02 acceptance](../../qa/implementation/multi-game/m02/status.md) define the scoped result. These entries do not mark the full MG requirements or later milestones complete.

@@ -12,7 +12,10 @@ export type ReplayCommand =
   | { type: 'action'; action: AcceptedAction }
   | { type: 'collect-trick' }
   | { type: 'next-hand'; deal: Card[] };
-/** Private journal only. Public replay must project each restored observation separately. */
+/** V1 journal dispatcher through game-owned compatibility reducers. Collection remains a
+ * distinct command/revision; public replay projects each restored observation separately.
+ * Native V2 persistence/journal activation remains M03-M04.
+ */
 export function replay(
   config: GameConfig,
   initialDeal: Card[],

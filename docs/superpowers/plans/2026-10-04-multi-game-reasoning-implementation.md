@@ -49,7 +49,7 @@
 | [Compatibility and requirements](../../../planning/implementation/multi-game/compatibility-and-requirements.md) | Migration/rollback, requirements and task/test map |
 | [Launch access and client](../../../planning/implementation/multi-game/launch-access-and-client.md) | Online demo, configurable offers, mobile reuse recommendation and basic quality |
 
-**Execution update, 5 October 2026:** the owner authorized the targeted partnership slice and M00–M01. The unchanged starting application was verified, the additive M01 foundation was implemented, and the partnership family received authored cases and a fresh development measurement. [Milestone evidence](../../../qa/implementation/multi-game/status.md) records actual acceptance and remaining gates. M00's unresolved new-game rule choices and M02 onward remain pending. Human review remains deferred.
+**Execution update, 5 October 2026:** M00–M02 and the targeted partnership slice have recorded acceptance. M02 installs native current-game modules, strict readers and V1 compatibility; [M02 evidence](../../../qa/implementation/multi-game/m02/status.md) records 449/449 Linux/WSL tests and separate passing Windows contracts/typecheck/build, with earlier environment failures retained. M03 persistence and prepared work is next. M00's unresolved new-game rule choices and later milestones remain pending. Human review remains deferred.
 
 The packets describe the full intended boundary. Checked steps below have execution evidence; unchecked steps and illustrative assertions remain planned work. M01 contracts do not establish production V2 integration or complete MG acceptance.
 
@@ -115,17 +115,17 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 **Create:** `web/server/games/registrations.ts`, `web/server/game/legacy/v1.ts`; `web/server/games/spades/module.ts`, `state.ts`, `engine.ts`, `observation.ts`, `schema.json`; equivalent five files under `games/hearts/`; `web/server/tests/module-parity.test.ts`, `web/server/tests/support/module-parity.ts`. **Modify:** `web/server/game/index.ts`, `kernel/types.ts`, `observations/index.ts`, `game/replay.ts` into explicit compatibility exports/adapters.
 
-- [ ] Add parity tests over saved legal action logs and frozen goldens, including Hearts passing, collection revisions, Nil/bags and both Spades competitors. Assert `assert.deepEqual(replayThroughModule(saved), replayV1(saved));`; define these test helpers in `tests/support/module-parity.ts` and compare state, events, revision, original safe packets and selected baseline actions.
-- [ ] Run the new parity test and existing `frozen-baseline.test.ts`, `replay.test.ts`, `observations.test.ts` before changes; preserve actual failures/seeds.
-- [ ] Bind installed Hearts and both Spades variants to typed modules. Move native state/rules/projections into their game boundary; keep original V1 readers and journal semantics. Compatibility policies remain game-owned adapters to pinned safe input, never shared fake bids/bags.
-- [ ] Rerun parity plus `rules.test.ts`, `hearts-plan.test.ts`, `policy-pinning.test.ts`. No changed default choices/score semantics; unsupported old versions become read-only.
-- [ ] Commit `refactor: bind current games to registered modules`. Gate: no new-game assumption in kernel and frozen V1 replay/strategy attribution preserved.
+- [x] Add parity tests over saved legal action logs and frozen goldens, including Hearts passing, collection revisions, Nil/bags and both Spades competitors. Assert `assert.deepEqual(replayThroughModule(saved), replayV1(saved));`; define these test helpers in `tests/support/module-parity.ts` and compare state, events, revision, original safe packets and selected baseline actions.
+- [x] Run the new parity test and existing `frozen-baseline.test.ts`, `replay.test.ts`, `observations.test.ts` before changes; preserve actual failures/seeds.
+- [x] Bind installed Hearts and both Spades variants to typed modules. Move native state/rules/projections into their game boundary; keep original V1 readers and journal semantics. Compatibility policies remain game-owned adapters to pinned safe input, never shared fake bids/bags.
+- [x] Rerun parity plus `rules.test.ts`, `hearts-plan.test.ts`, `policy-pinning.test.ts`. No changed default choices/score semantics; unsupported old versions become read-only.
+- [x] Commit `refactor: bind current games to registered modules`. Gate: no new-game assumption in kernel and frozen V1 replay/strategy attribution preserved.
 
 ## M03 — Validate saved documents and prepared work
 
 **Owner:** persistence/backend. **Requirements:** MG-03, MG-05, MG-09, MG-16. **Dependencies:** M01; integrate M02 registrations when ready.
 
-**Modify:** `web/server/records/types.ts`, `repository.ts`, `game-document.ts`, `web/server/http/trial-service.ts`, `web/server/tests/saved-analysis.test.ts`, `policy-pinning.test.ts`. **Create:** `web/server/tests/module-storage.test.ts`, `tests/fixtures/legacy-module-document.json`.
+**Modify:** `web/server/records/types.ts`, `repository.ts`, `game-document.ts`, `web/server/http/trial-service.ts`, `web/server/tests/saved-analysis.test.ts`, `policy-pinning.test.ts`. **Create:** `web/server/tests/module-storage.test.ts`. Reuse the frozen `tests/fixtures/legacy-module-document.json` captured in M02; add separate persistence fixtures rather than regenerating its original expectations.
 
 - [ ] Add `_test` database tests: malformed stored state rejects; old original analysis/choice hashes survive resume; unsupported module is read-only; prepared choice cannot commit after actor/revision/window/access change.
 - [ ] Run `node --env-file=.env.local --test --test-isolation=none web/server/tests/module-storage.test.ts`; capture real failure. The existing guard requires a distinct provisioned test database.

@@ -1,4 +1,8 @@
-# M00–M01 and targeted partnership execution
+# Multi-game architecture execution
+
+Current slice: [M02 current-game modules](m02/status.md), branch `codex/current-game-modules-m02`, start `ea09f81`. M02 is complete: native Hearts/Spades modules, strict readers, parity and independent review passed; full Linux/WSL acceptance passed 449/449 from a byte-identical VM-native copy. Windows contracts/typecheck/build passed separately. Earlier Windows connection errors and mounted-source wall-cap failures remain recorded, with unchanged assertions/thresholds. Windows connectivity and latency remain unverified by the Linux result. Temporary tunnels were removed; tests use the original isolated test database. M03 persistence and prepared work is next, followed by M04 service/client integration. Human reviews and live Jev comparisons remain deferred.
+
+## M00–M01 and partnership record
 
 Scope: the owner's 5 October 2026 build instruction. Source start: `d66a046240a309fe25b6b79da52594d8ead2b5f0`. Working branch: `codex/partner-cases-m00-m01`. Human strategy/cue reviews and learning studies remain deferred.
 
@@ -27,7 +31,7 @@ Focused commits: M00 baseline/rule dossiers `e9abf34`; M01 module contracts `8ab
 
 The kernel exports typed rules/lifecycle, codecs, scoring/objectives, player knowledge, decisions and scenarios. Each registration captures its concrete private state/action types inside a checked facade. Public Hearts/Spades fragments generate closed packets/views/analysis; private V2 documents require exact immutable pins. Duplicate selectors, missing handlers, mixed payloads, concealed extra fields, malformed competitor partitions and invalid saved analysis fail closed. Sealed choices are frozen before one reducer transition; 286 Hearts choices remain complete and exceed the provider's 255-candidate limit explicitly.
 
-Demo/access/coached-unit DTOs and the client platform port are declarations for M03–M04. No V2 module is installed in production yet. Current policies, rules, saved advice and V1 journal operations retain their meaning. The preservation check covers 49 original files and all 61 original V1 schema definitions.
+Demo/access/coached-unit DTOs and the client platform port are declarations for M03–M04. M01 did not install the native games. M02 now supplies their registrations and V1 compatibility dispatch; V2 persisted sessions and HTTP/client activation remain M03–M04. Current policies, rules, saved advice and V1 journal operations retain their meaning. The original M00–M01 preservation check covers 49 files and all 61 original V1 schema definitions; M02 has its own preservation report.
 
 The partnership rule requires public proof of a positive partner's usable trump, a known void, no possible winning opposing ruff, the actor's retained master trump entry, a needed positive contract and no live opposing Nil. It can now offer a safe ruff from more than one side suit. The useful fixture changes `SJ` to `H5`; an unsafe overruff blocks the trigger. A secure partner winner prompts conservation of another winner. Bot and coach use the same selected actor analysis, with optional partner cooperation and future value stated as conditional.
 
@@ -63,4 +67,4 @@ The verifier records exact command, exit code, counts, elapsed time, versions an
 - One React frontend with platform/transport port and reconnect reconciliation.
 - Bounded provider/decision work, explicit failure/cutoff, usable keyboard/touch controls.
 
-These are acceptance targets; M00–M01 do not mark them implemented. Next unfinished implementation milestone: M02 current-game module extraction, then M03 persistence and M04 production dispatch/client integration.
+These are acceptance targets; M00–M01 do not mark them implemented. M02 acceptance is recorded separately. The next implementation milestone is M03 persistence, then M04 production dispatch/client integration.

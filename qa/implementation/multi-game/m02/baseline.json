@@ -1,0 +1,35 @@
+{
+  "milestone": "M02",
+  "sourceRevision": "ea09f81c3fe799350dac0d802795892ed4e39e8a",
+  "branch": "codex/current-game-modules-m02",
+  "recordedAt": "2026-10-05T14:59:32.871Z",
+  "originalSources": {
+    "web/server/game/index.ts": "af94b466c0eff667657f546dd486c7ebae4e5a853e4b03fd5166b6fde8341586",
+    "web/server/game/kernel/types.ts": "188d6b7fa621ff3fe567ebee6e77514254302265598acd907d533344a8b770ea",
+    "web/server/game/rules.ts": "3827d8b36c5ed7f81714eb0d2a5d2b2ea86aac6cae460fc9ba53bb4eee2bd830",
+    "web/server/observations/index.ts": "6ffff02121a3ee8821c0c1c8ee7c03cb02e54c57c343fcb805adb02db046ad82"
+  },
+  "baselineChecks": [
+    {
+      "command": "node --test --test-isolation=none web/server/tests/frozen-baseline.test.ts web/server/tests/replay.test.ts web/server/tests/observations.test.ts",
+      "exitCode": 0,
+      "tests": 14,
+      "pass": 14,
+      "fail": 0
+    }
+  ],
+  "initialParityRed": {
+    "command": "node --test --test-isolation=none web/server/tests/module-parity.test.ts",
+    "exitCode": 1,
+    "pass": 0,
+    "fail": 1,
+    "reason": "ERR_MODULE_NOT_FOUND games/hearts/module.ts"
+  },
+  "ruling": "Freeze old rules, reducer and observation before independent game extraction; do not use current dispatch as both sides of parity tests.",
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "humanReview": "owner-deferred"
+}

@@ -1,0 +1,119 @@
+{
+  "stage": "final",
+  "recordedAt": "2026-10-05T15:53:02.620Z",
+  "sourceRevision": "ea09f81c3fe799350dac0d802795892ed4e39e8a",
+  "sourceTree": "c04c9da3992815a1d8bde6251b2e5a67184656db",
+  "branch": "codex/current-game-modules-m02",
+  "initialChanges": "M planning/IMPLEMENTATION-START-HERE.md\n M planning/implementation/multi-game/contracts.md\n M planning/implementation/requirements-and-tests.md\n M web/server/game/index.ts\n M web/server/game/kernel/registry.ts\n M web/server/game/kernel/types.ts\n M web/server/game/replay.ts\n M web/server/game/rules.ts\n M web/server/observations/index.ts\n M web/server/records/game-document.ts\n?? .claude/\n?? planning/decisions/CR-ARCH-002-current-game-module-extraction.md\n?? qa/implementation/multi-game/m02/\n?? web/server/game/compatibility.ts\n?? web/server/game/legacy/\n?? web/server/games/hearts/codec.ts\n?? web/server/games/hearts/compatibility.ts\n?? web/server/games/hearts/engine.ts\n?? web/server/games/hearts/module.ts\n?? web/server/games/hearts/observation.ts\n?? web/server/games/hearts/projection.ts\n?? web/server/games/hearts/schema.json\n?? web/server/games/hearts/state.ts\n?? web/server/games/registrations.ts\n?? web/server/games/spades/compatibility.ts\n?? web/server/games/spades/engine.ts\n?? web/server/games/spades/module.ts\n?? web/server/games/spades/observation.ts\n?? web/server/games/spades/rules.ts\n?? web/server/games/spades/schema.json\n?? web/server/games/spades/state.ts\n?? web/server/records/game-document-codec.ts\n?? web/server/tests/fixtures/legacy-module-document.json\n?? web/server/tests/hearts-module-validation.test.ts\n?? web/server/tests/module-parity.test.ts\n?? web/server/tests/spades-module-validation.test.ts\n?? web/server/tests/support/module-parity.ts",
+  "worktrees": "C:/repos/test-jev                                                 ea09f81 [codex/current-game-modules-m02]\nC:/repos/test-jev/.claude/worktrees/cardford-bots-coaching-bd3916 94a59cb [claude/cardford-bots-coaching-bd3916]\nC:/repos/test-jev/.local/m00-baseline                             d66a046 (detached HEAD)\nC:/Users/AliA/.codex/worktrees/spades-reasoning/test-jev          c81d322 [codex/spades-reasoning]\nC:/Users/AliA/.codex/worktrees/v1-build/test-jev                  e89ddf6 [v1/ui]\nC:/Users/AliA/.codex/worktrees/v1-contracts/test-jev              af141b4 [v1/billing]\nC:/Users/AliA/.codex/worktrees/v1-domain/test-jev                 e1e5023 [v1/provider-ledger]",
+  "node": "v24.19.0",
+  "installed": {
+    "typescript": "5.9.3",
+    "react": "19.3.0",
+    "vite": "6.4.3",
+    "fastify": "5.12.5",
+    "pg": "8.23.0",
+    "ajv": "8.20.0"
+  },
+  "hashes": {
+    "lockfile": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3",
+    "publicSchema": "e50ddf65d662edcd437511936aa0d049fc4c9bcef5879f4b36b5b65c7db6c3fd",
+    "publicTypes": "6281197f5f19bad84d042582bef7c8b659d96c94887b6ec094cebb43f6488b81",
+    "frozenAndPilotArchive": "6aa430e4a0a37975d59a0a856b05e39078da00a9e19d6659573f99ae07c8a1f5",
+    "archiveFileCount": 44
+  },
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "checks": [
+    {
+      "command": "npm run contracts:check",
+      "exitCode": 0,
+      "elapsedMs": 988,
+      "counts": {},
+      "log": "final-contracts-check.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "elapsedMs": 6664,
+      "counts": {},
+      "log": "final-typecheck.log"
+    },
+    {
+      "command": "npm run test:all",
+      "exitCode": 1,
+      "elapsedMs": 1212628,
+      "counts": {
+        "tests": 449,
+        "pass": 441,
+        "fail": 8,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "pre-process-test-all.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "elapsedMs": 6636,
+      "counts": {},
+      "log": "final-build.log"
+    }
+  ],
+  "failureDetails": [
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:127:3",
+      "test": "AUDIT-01: continuation resolves issued original advice before a different future game pin",
+      "elapsedMs": 2018.2833,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    },
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:127:3",
+      "test": "AUDIT-01: continuation resolves the game pin when original source analysis is absent",
+      "elapsedMs": 312.3373,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    },
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:149:1",
+      "test": "AUDIT-01: Hearts sealed bot passes use the pinned policy outside transactions",
+      "elapsedMs": 326.1113,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    },
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:179:1",
+      "test": "AUDIT-02: an accepted sealed pass replays across hands and changed-body reuse rejects without new bot evidence",
+      "elapsedMs": 312.406,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    },
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:207:1",
+      "test": "AUDIT-01: restarting with another default retains the original policy and authored advice",
+      "elapsedMs": 25772.2909,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    },
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:224:1",
+      "test": "AUDIT-01: a searched game resumed under an inline default freezes human and bot analysis outside transactions",
+      "elapsedMs": 302.5153,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    },
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:241:1",
+      "test": "AUDIT-01: legacy single-policy evidence migrates a future pin; absent evidence is explicitly attributed",
+      "elapsedMs": 313.0812,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    },
+    {
+      "location": "web\\server\\tests\\policy-pinning.test.ts:253:1",
+      "test": "AUDIT-01: conflicting or unsupported legacy policy evidence fails closed without rewriting history",
+      "elapsedMs": 313.4806,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54331"
+    }
+  ],
+  "testOutputSha256": "21aaad8e4415ef56c320965d55e2affce4b2ab155d25147e31b10eb14dc2986f",
+  "invocation": "node --env-file=.env.local --env-file=.local/m02-test.env qa/implementation/multi-game/m02/verify.mjs final"
+}

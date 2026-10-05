@@ -1,0 +1,327 @@
+{
+  "requirement": "MG-09",
+  "start": "ea09f81c3fe799350dac0d802795892ed4e39e8a",
+  "passed": true,
+  "preserved": [
+    {
+      "file": "package-lock.json",
+      "original": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3",
+      "current": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/CHANGELOG.md",
+      "original": "1ed20d57c9d833030c6e0973f7660c4e2737701cda0145f58230f479c717ac81",
+      "current": "1ed20d57c9d833030c6e0973f7660c4e2737701cda0145f58230f479c717ac81"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/README.md",
+      "original": "27cdebc1081e7f0fd1b4617f9d93ab6ec3bc0c98db2ec2ea345209f6a6087f49",
+      "current": "27cdebc1081e7f0fd1b4617f9d93ab6ec3bc0c98db2ec2ea345209f6a6087f49"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/confirmation-template.json",
+      "original": "c7e53a373943ce9434fc63bba08d5efce08599162b1bdd7debcac8b8caa24cdf",
+      "current": "c7e53a373943ce9434fc63bba08d5efce08599162b1bdd7debcac8b8caa24cdf"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/findings.md",
+      "original": "46e8a3effc36af4cf948520a48cb8fb170a16d849d5eecaf4967a92689b58ce5",
+      "current": "46e8a3effc36af4cf948520a48cb8fb170a16d849d5eecaf4967a92689b58ce5"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/human-learning.md",
+      "original": "547dab3411fae17cce7ced1a8207b12f8a5e6c78a742fe957d2ec668bacbfb88",
+      "current": "547dab3411fae17cce7ced1a8207b12f8a5e6c78a742fe957d2ec668bacbfb88"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/human-review.md",
+      "original": "a3cda7bfde5651ba6405b2377af85a91ebe6695026f2dc0ed2b3c69aa998d8bf",
+      "current": "a3cda7bfde5651ba6405b2377af85a91ebe6695026f2dc0ed2b3c69aa998d8bf"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/analyze-parity.mjs",
+      "original": "072cb9476946e21634bfc43bb5868049a9b958bfa350d7448b8155797e64a9a5",
+      "current": "072cb9476946e21634bfc43bb5868049a9b958bfa350d7448b8155797e64a9a5"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/diagnostic.json",
+      "original": "92e0d778228bd5048c22f2e396077bb4cfee678f88244e88aa22181a48f48220",
+      "current": "92e0d778228bd5048c22f2e396077bb4cfee678f88244e88aa22181a48f48220"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/pilot-checkpoint.json",
+      "original": "a387638db840da853ebdf3ee01b9f9f95c77c75173028668502ed6e0b6b547de",
+      "current": "a387638db840da853ebdf3ee01b9f9f95c77c75173028668502ed6e0b6b547de"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/pilot-manifest.json",
+      "original": "33ce62f39c21d1c0b23d2ca9690e33552ed299163456c491120bdff8d6efadf4",
+      "current": "33ce62f39c21d1c0b23d2ca9690e33552ed299163456c491120bdff8d6efadf4"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/pilot-pairs.jsonl",
+      "original": "178648e7266c4a17693d4bdc2c16c108331ebf0b591350e89669b4d500d2f2b3",
+      "current": "178648e7266c4a17693d4bdc2c16c108331ebf0b591350e89669b4d500d2f2b3"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/results.json",
+      "original": "553b9f0d480e37e444b2200cda30c16b029277d87eaa9405c8663b7e0939f9c9",
+      "current": "553b9f0d480e37e444b2200cda30c16b029277d87eaa9405c8663b7e0939f9c9"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/results.md",
+      "original": "c3a4d10bfb522ef2e695450b89e2ebeef74f02c63e74e03c17ad6c3723f9532e",
+      "current": "c3a4d10bfb522ef2e695450b89e2ebeef74f02c63e74e03c17ad6c3723f9532e"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/pilot/run.json",
+      "original": "f5b18af1242095ba1e4ba3a5adbff25899a323f8ea5620408a9e5258b6ff7294",
+      "current": "f5b18af1242095ba1e4ba3a5adbff25899a323f8ea5620408a9e5258b6ff7294"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/protocol.md",
+      "original": "5e59f54e71755307997039facd0df5ae7937d7b313389ec04fe701dd51904a4c",
+      "current": "5e59f54e71755307997039facd0df5ae7937d7b313389ec04fe701dd51904a4c"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/review/README.md",
+      "original": "d8326eba8d0c9ead64d77963a4f83a92be72cc939796f442200e4436372d279b",
+      "current": "d8326eba8d0c9ead64d77963a4f83a92be72cc939796f442200e4436372d279b"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/review/cases.json",
+      "original": "127d78b61f8a065227111034b26c2035b40afe64df06c3dafdaacf2d951251c1",
+      "current": "127d78b61f8a065227111034b26c2035b40afe64df06c3dafdaacf2d951251c1"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/review/coverage.json",
+      "original": "11a877925f87e7a2b95f34a3069146503cd2d84d0d41c126fcb47adf9497d239",
+      "current": "11a877925f87e7a2b95f34a3069146503cd2d84d0d41c126fcb47adf9497d239"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/review/human-labels.json",
+      "original": "7359f2387aa55dda5a4f7729003a6965f6d741717b58e18ba5cc96462f48ed4d",
+      "current": "7359f2387aa55dda5a4f7729003a6965f6d741717b58e18ba5cc96462f48ed4d"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/review/private/source-index.json",
+      "original": "483c1a8851619935341a64e17b91b39a48f9a9070d32142b3382f63b89c28a26",
+      "current": "483c1a8851619935341a64e17b91b39a48f9a9070d32142b3382f63b89c28a26"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/rule-handout.md",
+      "original": "43060db49bacdfbb7e128bad0e724189c51253447c13590ae06695c24d281ff1",
+      "current": "43060db49bacdfbb7e128bad0e724189c51253447c13590ae06695c24d281ff1"
+    },
+    {
+      "file": "qa/experiments/2026-10-04-spades-evaluation-pack/verification.json",
+      "original": "001c10866e42078f0ce9a1fdeef6311d48372fb6a6b3e703ed5a87e4e745a8d9",
+      "current": "001c10866e42078f0ce9a1fdeef6311d48372fb6a6b3e703ed5a87e4e745a8d9"
+    },
+    {
+      "file": "web/server/evaluation/spades-pack/cli.ts",
+      "original": "bcc759d1715e34514bb2ba916dc31cf9b94419cc80045455992395e0a79cc054",
+      "current": "bcc759d1715e34514bb2ba916dc31cf9b94419cc80045455992395e0a79cc054"
+    },
+    {
+      "file": "web/server/evaluation/spades-pack/labels.ts",
+      "original": "5c67e0be7e1d454e4f52f4cabce4825edf7d0740bd9d30c34058b000765698c0",
+      "current": "5c67e0be7e1d454e4f52f4cabce4825edf7d0740bd9d30c34058b000765698c0"
+    },
+    {
+      "file": "web/server/evaluation/spades-pack/pilot.ts",
+      "original": "b5eedb71f4c304f401436c58c05debf52bcab2238938d730f90baa7279b86f23",
+      "current": "b5eedb71f4c304f401436c58c05debf52bcab2238938d730f90baa7279b86f23"
+    },
+    {
+      "file": "web/server/evaluation/spades-pack/report.ts",
+      "original": "1be6b8ec973efe5d2a900d161ef18747549f822bfba40b371c9aefea85d48e4e",
+      "current": "1be6b8ec973efe5d2a900d161ef18747549f822bfba40b371c9aefea85d48e4e"
+    },
+    {
+      "file": "web/server/evaluation/spades-pack/review.ts",
+      "original": "a218b20474f25178c4696a6480328bc408e202e182146be5d7a54113b07e777f",
+      "current": "a218b20474f25178c4696a6480328bc408e202e182146be5d7a54113b07e777f"
+    },
+    {
+      "file": "web/server/game/cards.ts",
+      "original": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b",
+      "current": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b"
+    },
+    {
+      "file": "web/server/games/hearts/reasoning/manifest.ts",
+      "original": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a",
+      "current": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a"
+    },
+    {
+      "file": "web/server/games/spades/cases/cues.ts",
+      "original": "7f604aa63fe8592b903bdef043b131bcfe4affb10f49f809838cc9684c61368e",
+      "current": "7f604aa63fe8592b903bdef043b131bcfe4affb10f49f809838cc9684c61368e"
+    },
+    {
+      "file": "web/server/games/spades/cases/profile.ts",
+      "original": "50a3372243120d0251ac2b12b06565ca7dee8b29f3b740ae4e13e1901f23f894",
+      "current": "50a3372243120d0251ac2b12b06565ca7dee8b29f3b740ae4e13e1901f23f894"
+    },
+    {
+      "file": "web/server/games/spades/cases/proofs.ts",
+      "original": "e5a3906f8cff62a4f5a10308bf665299a0d15ddfadfc950b64f9b31e4a03e90b",
+      "current": "e5a3906f8cff62a4f5a10308bf665299a0d15ddfadfc950b64f9b31e4a03e90b"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/golden.ts",
+      "original": "a1603263dea6d9b1ab773c32ecfc210a1e1576cb7ae8725d7385b45a6b2b780d",
+      "current": "a1603263dea6d9b1ab773c32ecfc210a1e1576cb7ae8725d7385b45a6b2b780d"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/local-baseline-1.0.0.golden.json",
+      "original": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9",
+      "current": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/bidding.ts",
+      "original": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a",
+      "current": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/catalog.ts",
+      "original": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025",
+      "current": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/entries.ts",
+      "original": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832",
+      "current": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/golden.json",
+      "original": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8",
+      "current": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/index.ts",
+      "original": "487cceb779f2d7ed30a87e5f0f281634cb3064ed9d36c4abbb26f7f572eb82da",
+      "current": "487cceb779f2d7ed30a87e5f0f281634cb3064ed9d36c4abbb26f7f572eb82da"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/knowledge.ts",
+      "original": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a",
+      "current": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/manifest.json",
+      "original": "d860fe20c969b41daccc6fae04f76f17d156a5002d8cae39ab02075ebb77ee9f",
+      "current": "d860fe20c969b41daccc6fae04f76f17d156a5002d8cae39ab02075ebb77ee9f"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/nil.ts",
+      "original": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35",
+      "current": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/policy.ts",
+      "original": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9",
+      "current": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/retained-bidder.ts",
+      "original": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88",
+      "current": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/signals.ts",
+      "original": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078",
+      "current": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078"
+    },
+    {
+      "file": "web/server/games/spades/reasoning/manifest.ts",
+      "original": "60ac4f3ada3752b9d7cf6902ace80a9a3d1b6a8afcc32cbcdcaab7d3d300de3d",
+      "current": "60ac4f3ada3752b9d7cf6902ace80a9a3d1b6a8afcc32cbcdcaab7d3d300de3d"
+    }
+  ],
+  "snapshots": [
+    {
+      "original": "web/server/game/index.ts",
+      "frozen": "web/server/game/legacy/v1.ts",
+      "originalBodyHash": "072dc744327514650084223e53bc758deef9cc8b03450c3bca54b613b8aebbbe",
+      "frozenBodyHash": "072dc744327514650084223e53bc758deef9cc8b03450c3bca54b613b8aebbbe"
+    },
+    {
+      "original": "web/server/game/rules.ts",
+      "frozen": "web/server/game/legacy/rules.ts",
+      "originalBodyHash": "b17f0713004bee9a7efd61058a7f9254051dc520bdc8ab9610521af585452cf5",
+      "frozenBodyHash": "b17f0713004bee9a7efd61058a7f9254051dc520bdc8ab9610521af585452cf5"
+    },
+    {
+      "original": "web/server/observations/index.ts",
+      "frozen": "web/server/game/legacy/observation.ts",
+      "originalBodyHash": "a0be9968024a593a8a26e9df0565d3425802bf085aa006e5e412c7eb99ace5af",
+      "frozenBodyHash": "a0be9968024a593a8a26e9df0565d3425802bf085aa006e5e412c7eb99ace5af"
+    }
+  ],
+  "publicContracts": [
+    {
+      "file": "web/shared/contracts.schema.json",
+      "original": "e50ddf65d662edcd437511936aa0d049fc4c9bcef5879f4b36b5b65c7db6c3fd",
+      "current": "e50ddf65d662edcd437511936aa0d049fc4c9bcef5879f4b36b5b65c7db6c3fd"
+    },
+    {
+      "file": "web/shared/contracts.ts",
+      "original": "6281197f5f19bad84d042582bef7c8b659d96c94887b6ec094cebb43f6488b81",
+      "current": "6281197f5f19bad84d042582bef7c8b659d96c94887b6ec094cebb43f6488b81"
+    },
+    {
+      "file": "web/shared/openapi.json",
+      "original": "ef7d7d13cde3cb060299090483480f31854f227c9deb57f9e5d2485f732ce018",
+      "current": "ef7d7d13cde3cb060299090483480f31854f227c9deb57f9e5d2485f732ce018"
+    },
+    {
+      "file": "web/shared/validation.ts",
+      "original": "ae8d85853c17801703a1468168c4d6a1cac7a3c890050c9b382845579adb73d0",
+      "current": "ae8d85853c17801703a1468168c4d6a1cac7a3c890050c9b382845579adb73d0"
+    },
+    {
+      "file": "web/shared/validators.d.mts",
+      "original": "99f2bc53cc2c71e4ffab88e0c01e575315930356a458e907a18f133bafa6833f",
+      "current": "99f2bc53cc2c71e4ffab88e0c01e575315930356a458e907a18f133bafa6833f"
+    },
+    {
+      "file": "web/shared/validators.mjs",
+      "original": "97fb229c52827a4c9be38ba432e45fe07d0107122f7adc50cde674e74eff8a9f",
+      "current": "97fb229c52827a4c9be38ba432e45fe07d0107122f7adc50cde674e74eff8a9f"
+    },
+    {
+      "file": "web/shared/games/hearts.schema.json",
+      "original": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91",
+      "current": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91"
+    },
+    {
+      "file": "web/shared/games/spades.schema.json",
+      "original": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb",
+      "current": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb"
+    }
+  ],
+  "partnershipArchive": [
+    {
+      "file": "qa/experiments/2026-10-05-partner-resource/fresh/manifest.json",
+      "original": "7693b1822b49af95459802fe52caba6f34f7cb47af67c2a73a723790c1d3bd07",
+      "current": "7693b1822b49af95459802fe52caba6f34f7cb47af67c2a73a723790c1d3bd07"
+    },
+    {
+      "file": "qa/experiments/2026-10-05-partner-resource/fresh/results.json",
+      "original": "b73b7c5a76adbfe31aab02ebba865c84ef2b5918615da54d5b4c1fee7b12f7dd",
+      "current": "b73b7c5a76adbfe31aab02ebba865c84ef2b5918615da54d5b4c1fee7b12f7dd"
+    },
+    {
+      "file": "qa/experiments/2026-10-05-partner-resource/fresh/fixture-report.json",
+      "original": "43fdcf0bb5bc3be48bce3c17c753c833fd57025383ba7e50dd5a3b3497813480",
+      "current": "43fdcf0bb5bc3be48bce3c17c753c833fd57025383ba7e50dd5a3b3497813480"
+    },
+    {
+      "file": "qa/experiments/2026-10-05-partner-resource/fresh/pairs.private.jsonl",
+      "original": "ecb70ba8eefd4c17524374c4944ae4e1ce6bb277515bb49e1189d733c94251e1",
+      "current": "ecb70ba8eefd4c17524374c4944ae4e1ce6bb277515bb49e1189d733c94251e1"
+    }
+  ],
+  "ruling": "Rules/replay facade paths are intentionally extracted; unchanged function bodies are retained independently and behavior is checked against saved legal logs. All other prior preservation entries stay unchanged."
+}

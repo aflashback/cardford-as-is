@@ -29,7 +29,7 @@ import {
   type BoundTransition,
 } from './session.ts';
 import type { Module, Pin, RegistrationAdapters, VersionedComponent } from './module.ts';
-import { parseDocumentEnvelope, type GameDocument } from '../../records/game-document.ts';
+import { parseDocumentEnvelope, type GameDocument } from '../../records/game-document-codec.ts';
 
 export type RegistrationSelector = Readonly<{
   gameId: string;
@@ -270,6 +270,4 @@ export function createRegistry(
     },
   });
 }
-/** M02 installs concrete modules. V1 continues through its existing code path. */
-export const registeredSessions = createRegistry([], { engine: [], ui: [], schemas: [] });
-export const createRegisteredSession = registeredSessions.createRegisteredSession;
+// Installed game factories live in games/registrations.ts; this kernel has no game import.

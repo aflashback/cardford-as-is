@@ -1,0 +1,120 @@
+{
+  "stage": "final",
+  "recordedAt": "2026-10-05T16:16:23.267Z",
+  "sourceRevision": "ea09f81c3fe799350dac0d802795892ed4e39e8a",
+  "sourceTree": "c04c9da3992815a1d8bde6251b2e5a67184656db",
+  "branch": "codex/current-game-modules-m02",
+  "initialChanges": "M docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md\n M planning/IMPLEMENTATION-START-HERE.md\n M planning/implementation/multi-game/contracts.md\n M planning/implementation/requirements-and-tests.md\n M qa/implementation/multi-game/CHANGELOG.md\n M qa/implementation/multi-game/status.md\n M web/server/game/index.ts\n M web/server/game/kernel/registry.ts\n M web/server/game/kernel/types.ts\n M web/server/game/replay.ts\n M web/server/game/rules.ts\n M web/server/observations/index.ts\n M web/server/records/game-document.ts\n?? .claude/\n?? planning/decisions/CR-ARCH-002-current-game-module-extraction.md\n?? qa/implementation/multi-game/m02/\n?? web/server/game/compatibility.ts\n?? web/server/game/legacy/\n?? web/server/games/hearts/codec.ts\n?? web/server/games/hearts/compatibility.ts\n?? web/server/games/hearts/engine.ts\n?? web/server/games/hearts/module.ts\n?? web/server/games/hearts/observation.ts\n?? web/server/games/hearts/projection.ts\n?? web/server/games/hearts/schema.json\n?? web/server/games/hearts/state.ts\n?? web/server/games/registrations.ts\n?? web/server/games/spades/compatibility.ts\n?? web/server/games/spades/engine.ts\n?? web/server/games/spades/module.ts\n?? web/server/games/spades/observation.ts\n?? web/server/games/spades/rules.ts\n?? web/server/games/spades/schema.json\n?? web/server/games/spades/state.ts\n?? web/server/records/game-document-codec.ts\n?? web/server/tests/fixtures/legacy-module-document.json\n?? web/server/tests/hearts-module-validation.test.ts\n?? web/server/tests/module-parity.test.ts\n?? web/server/tests/spades-module-validation.test.ts\n?? web/server/tests/support/module-parity.ts",
+  "worktrees": "C:/repos/test-jev                                                 ea09f81 [codex/current-game-modules-m02]\nC:/repos/test-jev/.claude/worktrees/cardford-bots-coaching-bd3916 94a59cb [claude/cardford-bots-coaching-bd3916]\nC:/repos/test-jev/.local/m00-baseline                             d66a046 (detached HEAD)\nC:/Users/AliA/.codex/worktrees/spades-reasoning/test-jev          c81d322 [codex/spades-reasoning]\nC:/Users/AliA/.codex/worktrees/v1-build/test-jev                  e89ddf6 [v1/ui]\nC:/Users/AliA/.codex/worktrees/v1-contracts/test-jev              af141b4 [v1/billing]\nC:/Users/AliA/.codex/worktrees/v1-domain/test-jev                 e1e5023 [v1/provider-ledger]",
+  "node": "v24.19.0",
+  "installed": {
+    "typescript": "5.9.3",
+    "react": "19.3.0",
+    "vite": "6.4.3",
+    "fastify": "5.12.5",
+    "pg": "8.23.0",
+    "ajv": "8.20.0"
+  },
+  "hashes": {
+    "lockfile": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3",
+    "publicSchema": "e50ddf65d662edcd437511936aa0d049fc4c9bcef5879f4b36b5b65c7db6c3fd",
+    "publicTypes": "6281197f5f19bad84d042582bef7c8b659d96c94887b6ec094cebb43f6488b81",
+    "frozenAndPilotArchive": "6aa430e4a0a37975d59a0a856b05e39078da00a9e19d6659573f99ae07c8a1f5",
+    "archiveFileCount": 44
+  },
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "testIsolation": "process",
+  "checks": [
+    {
+      "command": "npm run contracts:check",
+      "exitCode": 0,
+      "elapsedMs": 954,
+      "counts": {},
+      "log": "final-contracts-check.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "elapsedMs": 6876,
+      "counts": {},
+      "log": "final-typecheck.log"
+    },
+    {
+      "command": "node --env-file=.env.local --test --test-isolation=process --test-concurrency=1 --test-reporter=spec web/tests/*.test.ts web/server/tests/*.test.ts",
+      "exitCode": 1,
+      "elapsedMs": 323635,
+      "counts": {
+        "tests": 449,
+        "pass": 441,
+        "fail": 8,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "pre-vm-test-all.log"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "elapsedMs": 6303,
+      "counts": {},
+      "log": "final-build.log"
+    }
+  ],
+  "failureDetails": [
+    {
+      "location": "web\\server\\tests\\provider-ledger.test.ts:42:1",
+      "test": "PROVIDER LEDGER: 50 concurrent reservations through two real pools admit exactly one cap-one attempt",
+      "elapsedMs": 5758.2821,
+      "error": "Error: Provider attempt admission storage is unavailable."
+    },
+    {
+      "location": "web\\server\\tests\\provider-ledger.test.ts:107:1",
+      "test": "PROVIDER LEDGER: reservation releases its DB transaction; missing completion row fails closed",
+      "elapsedMs": 3074.559,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54330"
+    },
+    {
+      "location": "web\\server\\tests\\saved-analysis.test.ts:62:1",
+      "test": "COACH-09: quiet exhausted play stores human analysis without guidance, assistance or charge",
+      "elapsedMs": 321.2725,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54330"
+    },
+    {
+      "location": "web\\server\\tests\\saved-analysis.test.ts:96:1",
+      "test": "COACH-10: later authorized review reveals the original saved explanation and policy",
+      "elapsedMs": 313.6282,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54330"
+    },
+    {
+      "location": "web\\server\\tests\\saved-analysis.test.ts:131:1",
+      "test": "COACH-10: legacy review keeps issued advice but cannot invent missing original analysis",
+      "elapsedMs": 310.3693,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54330"
+    },
+    {
+      "location": "web\\server\\tests\\saved-analysis.test.ts:171:1",
+      "test": "COACH-09: rejected actions roll back fallback analysis and accepted retries persist exactly once",
+      "elapsedMs": 309.0061,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54330"
+    },
+    {
+      "location": "web\\server\\tests\\saved-analysis.test.ts:198:3",
+      "test": "COACH-09: each spades-solo human turn is saved before play, including forced decisions",
+      "elapsedMs": 324.7624,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54330"
+    },
+    {
+      "location": "web\\server\\tests\\saved-analysis.test.ts:198:3",
+      "test": "COACH-09: each spades-partners human turn is saved before play, including forced decisions",
+      "elapsedMs": 3079.7763,
+      "error": "Error: connect ETIMEDOUT 127.0.0.1:54330"
+    }
+  ],
+  "testOutputSha256": "ff2e738945e59ee13caee81dd745bcd4ff54cb34decaa61fce098e70117ba7d7",
+  "invocation": "M02_TEST_ISOLATION=process; node --env-file=.env.local --env-file=.local/m00-test.env qa/implementation/multi-game/m02/verify.mjs final"
+}

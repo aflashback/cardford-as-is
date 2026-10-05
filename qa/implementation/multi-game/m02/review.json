@@ -1,0 +1,511 @@
+{
+  "recordedAt": "2026-10-05T17:02:12.920Z",
+  "scope": "M02 current-game modules, exact registrations and V1 compatibility/readers",
+  "review": "Independent read-only code review and corruption probes; human strategy review deferred",
+  "corpus": {
+    "file": "web/server/tests/fixtures/legacy-module-document.json",
+    "sha256": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f",
+    "commands": 684,
+    "hands": 10,
+    "originalAnalyses": 33,
+    "seeds": [
+      714001,
+      714002,
+      714003
+    ]
+  },
+  "findings": [
+    {
+      "id": "M02-REV-01",
+      "priority": "P2",
+      "issue": "Saved Spades history accepted illegal trump leads and failure to follow suit.",
+      "repair": "Reconstruct initial hands and replay native legality chronologically.",
+      "status": "fixed-and-independently-rechecked"
+    },
+    {
+      "id": "M02-REV-02",
+      "priority": "P2",
+      "issue": "Saved Spades results could invent score, bags or match winners.",
+      "repair": "Recompute exact scoring and validate initial totals and terminal winner.",
+      "status": "fixed-and-independently-rechecked"
+    },
+    {
+      "id": "M02-REV-03",
+      "priority": "P2",
+      "issue": "Completed Hearts state/observation could be relabeled as an actionable phase.",
+      "repair": "Require a round/session boundary for all 13 completed tricks.",
+      "status": "fixed-and-independently-rechecked"
+    },
+    {
+      "id": "M02-REV-04",
+      "priority": "P2",
+      "issue": "Strict Hearts V1 conversion stripped unexpected fields before validation.",
+      "repair": "Validate raw fields and preserve nested input through strict game-owned decoding; trusted typed projections remain explicit.",
+      "status": "fixed-and-independently-rechecked"
+    },
+    {
+      "id": "M02-REV-05",
+      "priority": "P2",
+      "issue": "Hearts first-hand cumulative totals could differ from zero or scored points.",
+      "repair": "Require zero before scoring and exact result totals afterward in state and observation codecs.",
+      "status": "fixed-and-independently-rechecked"
+    }
+  ],
+  "redRuns": [
+    {
+      "command": "node --test --test-isolation=none web/server/tests/module-parity.test.ts",
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "reason": "Initial missing game module before extraction; ERR_MODULE_NOT_FOUND."
+    },
+    {
+      "command": "node --test --test-isolation=none web/server/tests/spades-module-validation.test.ts",
+      "tests": 5,
+      "pass": 0,
+      "fail": 5,
+      "reason": "Corruption inputs accepted before validation repair."
+    },
+    {
+      "command": "node --test --test-isolation=none web/server/tests/hearts-module-validation.test.ts",
+      "tests": 9,
+      "pass": 4,
+      "fail": 5,
+      "reason": "Raw extra fields and first-hand cumulative score regressions before repair."
+    }
+  ],
+  "intermediateIntegration": {
+    "tests": 13,
+    "pass": 9,
+    "fail": 4,
+    "defects": [
+      "Three corpus hashes used a different canonical serializer from the captured expected hash. Test helper now uses the original capture serializer; expected hashes unchanged.",
+      "Native Hearts observation unit ID contained the private game ID. Replaced with session-scoped hand number.",
+      "Kernel installed-singleton reexport created a module-first import cycle. Installed factories moved out of the kernel and document parsing split into a pure codec."
+    ]
+  },
+  "targetedIntegratedAcceptance": {
+    "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/module-parity.test.ts web/server/tests/hearts-module-validation.test.ts web/server/tests/spades-module-validation.test.ts web/server/tests/frozen-baseline.test.ts web/server/tests/replay.test.ts web/server/tests/observations.test.ts web/server/tests/rules.test.ts web/server/tests/hearts-plan.test.ts web/server/tests/policy-pinning.test.ts",
+    "tests": 77,
+    "pass": 77,
+    "fail": 0,
+    "elapsedMs": 166787.439,
+    "note": "Before the final six Hearts and five Spades regression tests were added; final full suite checks all frozen source."
+  },
+  "independentRechecks": [
+    {
+      "command": "node --test --test-isolation=none web/server/tests/game-document.test.ts web/server/tests/module-contract.test.ts",
+      "tests": 28,
+      "pass": 28,
+      "fail": 0
+    },
+    {
+      "command": "node --test --test-isolation=none web/server/tests/hearts-module-validation.test.ts web/server/tests/spades-module-validation.test.ts",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0
+    },
+    {
+      "isolatedImports": 8,
+      "pass": 8,
+      "extraProbes": "Exact policy/rule pins, three-game catalog, hidden canaries, unavailable capability handlers, missing/unknown legacy versions, all original corruption cases."
+    }
+  ],
+  "remainingP1P2": 0,
+  "finalAcceptance": {
+    "evidence": "final.json",
+    "testRuntime": {
+      "node": "v24.19.0",
+      "dedicatedTestDatabase": true,
+      "expectedDatabase": true,
+      "loopback": true,
+      "sourceOverridesAbsent": true,
+      "distribution": "podman-machine-default",
+      "operatingSystem": "linux",
+      "runtime": "/mnt/c/repos/test-jev/.local/m02-linux-node/node-v24.19.0-linux-x64/bin/node",
+      "provenance": "https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-x64.tar.xz",
+      "archiveSha256": "14b342e71204f811bde6153be8e04b62aef63c236fef92b55f9c83154b409647",
+      "database": "Existing VM loopback test database; .local/m00-test.env; no new listener.",
+      "sourceLocation": "/tmp/cardford-m02-2dSEmL/checkout",
+      "filesystem": "VM-native temporary byte-identical copy",
+      "copiedInputs": {
+        "sourceFiles": 1137,
+        "sourceManifestSha256": "138290131f771fb7ae2f9b42a71c4d6411637a645e5d6e637bfccfb34d40b843",
+        "dependencyEntries": 12964,
+        "dependencyManifestSha256": "57a915617ca7c35f0b897051e8fd11107906824ed61e40b0037b9ecc8d819b2c",
+        "dependencyCopyBehavior": "Copied every installed regular dependency byte without installation; dependency links remapped to equivalent targets inside the native snapshot; no link points to the mounted checkout.",
+        "environment": "Private copies of original .env.local and .local/m00-test.env; excluded from manifests and credential digests."
+      }
+    },
+    "testIsolation": "none",
+    "snapshotIntegrity": {
+      "before": {
+        "verified": true,
+        "verifiedAt": "2026-10-05T16:51:33.729Z",
+        "guestRoot": "/tmp/cardford-m02-2dSEmL/checkout",
+        "sourceManifestSha256": "138290131f771fb7ae2f9b42a71c4d6411637a645e5d6e637bfccfb34d40b843",
+        "sourceFileCount": 1137,
+        "dependencyEntryCount": 12964,
+        "testFileCount": 61,
+        "nativePathCheck": {
+          "realpath": "/tmp/cardford-m02-2dSEmL/checkout",
+          "nativeDeviceDistinct": true,
+          "rootMode": "700",
+          "environmentMode": "600",
+          "environmentBytesMatch": true
+        }
+      },
+      "after": {
+        "verified": true,
+        "verifiedAt": "2026-10-05T16:55:50.923Z",
+        "guestRoot": "/tmp/cardford-m02-2dSEmL/checkout",
+        "sourceManifestSha256": "138290131f771fb7ae2f9b42a71c4d6411637a645e5d6e637bfccfb34d40b843",
+        "sourceFileCount": 1137,
+        "dependencyEntryCount": 12964,
+        "testFileCount": 61,
+        "nativePathCheck": {
+          "realpath": "/tmp/cardford-m02-2dSEmL/checkout",
+          "nativeDeviceDistinct": true,
+          "rootMode": "700",
+          "environmentMode": "600",
+          "environmentBytesMatch": true
+        }
+      }
+    },
+    "testFiles": 61,
+    "testManifestSha256": "0cd1a8402b78ae1aea5e0050c2c86dbacb32498c61dc18e459f7d49b2d170831",
+    "command": "wsl -d podman-machine-default --cd /tmp/cardford-m02-2dSEmL/checkout -- /mnt/c/repos/test-jev/.local/m02-linux-node/node-v24.19.0-linux-x64/bin/node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none --test-reporter=spec web/tests/*.test.ts web/server/tests/*.test.ts",
+    "counts": {
+      "tests": 449,
+      "pass": 449,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "elapsedMs": 209586,
+    "hostChecks": [
+      {
+        "operatingSystem": "windows",
+        "command": "npm run contracts:check",
+        "exitCode": 0,
+        "elapsedMs": 941
+      },
+      {
+        "operatingSystem": "windows",
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "elapsedMs": 6979
+      },
+      {
+        "operatingSystem": "windows",
+        "command": "npm run build",
+        "exitCode": 0,
+        "elapsedMs": 6401
+      }
+    ],
+    "limitation": "Linux/WSL test acceptance does not establish Windows database connectivity, latency, hosted quality or native usability."
+  },
+  "additionalChecks": [
+    {
+      "command": "npm run lint:boundaries",
+      "exitCode": 0,
+      "reachableBrowserModules": 13
+    },
+    {
+      "command": "npm run check:artifacts",
+      "exitCode": 0,
+      "reachableBrowserModules": 13
+    },
+    {
+      "command": "node qa/implementation/multi-game/m02/preservation.mjs",
+      "exitCode": 0,
+      "preservedFiles": 47,
+      "frozenBodies": 3,
+      "publicFiles": 8,
+      "partnershipArchiveFiles": 4
+    },
+    {
+      "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/saved-analysis.test.ts",
+      "exitCode": 0,
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "elapsedMs": 16844.8329
+    },
+    {
+      "command": "wsl -d podman-machine-default --cd /mnt/c/repos/test-jev -- /mnt/c/repos/test-jev/.local/m02-linux-node/node-v24.19.0-linux-x64/bin/node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none --test-reporter=spec web/server/tests/saved-analysis.test.ts",
+      "operatingSystem": "linux",
+      "exitCode": 0,
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "elapsedMs": 12249.363033
+    },
+    {
+      "command": "wsl -d podman-machine-default --cd /tmp/cardford-m02-2dSEmL/checkout -- /mnt/c/repos/test-jev/.local/m02-linux-node/node-v24.19.0-linux-x64/bin/node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none --test-reporter=spec web/server/tests/spades-match-pilot.test.ts",
+      "operatingSystem": "linux",
+      "exitCode": 0,
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "elapsedMs": 6078.535384,
+      "log": ".local/m02-native-pilot.log",
+      "testOutputSha256": "1529a26a39d96895bacecd2d2d2c09d305e3c4955c88830be4fa85a73e380d8e"
+    }
+  ],
+  "initialFullVerification": {
+    "evidence": "pre-retry.json",
+    "tests": 449,
+    "pass": 445,
+    "fail": 4,
+    "failure": "Four saved-analysis database connections returned ETIMEDOUT 127.0.0.1:54330. Assertions in the other 445 tests passed; no source change was made before the six-test group passed on retry. The isolated container stayed up; no configuration change or restart was needed. A clean full acceptance run was then repeated once."
+  },
+  "secondFullVerification": {
+    "evidence": "pre-tunnel.json",
+    "tests": 449,
+    "pass": 444,
+    "fail": 5,
+    "failure": "A different policy-pinning group hit connection setup/termination errors. All native/parity/validation tests passed again; production source remained unchanged."
+  },
+  "thirdFullVerification": {
+    "evidence": "pre-process.json",
+    "tests": 449,
+    "pass": 441,
+    "fail": 8,
+    "elapsedMs": 1212628,
+    "failure": "The verified SSH tunnel also hit eight policy-pinning TCP connection errors. The tunnel is not an established remedy or proof that WSL forwarding caused all failures."
+  },
+  "fourthFullVerification": {
+    "evidence": "pre-vm.json",
+    "tests": 449,
+    "pass": 441,
+    "fail": 8,
+    "elapsedMs": 323635,
+    "failure": "Fresh Windows test-file processes also encountered eight provider-ledger/saved-analysis database errors. All native/parity/codec checks passed; isolation did not resolve the transport problem."
+  },
+  "fifthFullVerification": {
+    "evidence": "pre-native.json",
+    "operatingSystem": "linux",
+    "sourceLocation": "/mnt/c/repos/test-jev",
+    "tests": 449,
+    "pass": 447,
+    "fail": 2,
+    "elapsedMs": 307694,
+    "failure": "All database cases passed. Two pilot wall-cap fixtures stopped before their intended delayed decisions. Recursive source hashing inside the deadline was independently identified as a plausible mounted-filesystem contributor; the exact expiry point was not instrumented. Assertions and thresholds remained unchanged for the passing native-copy check."
+  },
+  "databaseTransportDiagnosis": {
+    "observed": "TCP setup errors occurred in both combined-process and isolated-file Windows runs. Podman SSH management also intermittently failed, and the verified tunnel had similar errors; the exact cause is unconfirmed. PostgreSQL remained available and below its connection limit.",
+    "concurrency": "Installed Node v24.19.0 source forces concurrency=1 when isolation=none; adding a concurrency flag would be a no-op.",
+    "originalRouteReadOnlyProbes": {
+      "attempts": 80,
+      "passed": 80
+    },
+    "tunnelRouteReadOnlyProbes": {
+      "attempts": 80,
+      "passed": 80
+    },
+    "attemptedWorkaround": "A temporary hidden, host-key-verified SSH tunnel connected localhost54331 through the local VM address to its existing localhost54330 test database. It did not resolve all failures; the helper and private route overrides were removed. Original data, container, saved-game configuration and assertions remain unchanged.",
+    "acceptanceEnvironment": ".local/m00-test.env",
+    "acceptanceTestRunner": "Existing local Podman WSL VM runs a byte-identical native-filesystem copy using the same two file globs with Node24.19.0/isolationnone against its existing loopback test database. Source/test/fixture hashes are checked before and after. Windows contracts/typecheck/build remain separate. Test assertions and timing thresholds are unchanged; results do not prove Windows latency or the cause of Windows connection errors.",
+    "unusedInteractiveTunnelProbe": "80/80 read-only connection probes passed, but latency did not improve; helper stopped.",
+    "rejectedOptionalRelay": {
+      "approval": "automatic review rejected",
+      "action": "Custom TCP relay bound to the VM address",
+      "reason": "Possible test database exposure beyond localhost; testing authorization did not authorize broader network exposure.",
+      "started": false,
+      "fallback": "Execute unchanged tests inside the existing local test VM against its existing loopback database, with no new listener; no permission is pending for milestone completion."
+    }
+  },
+  "runtimeSource": {
+    "algorithm": "sha256 of JSON-encoded sorted path-to-sha256 manifest",
+    "combinedSha256": "20941436c07c0495c9dcea9ac68893c8d592cd979a8226acfe1323fd346bcfc9",
+    "files": {
+      "web/server/access/account-data.ts": "d60e4bacd04c5c9239fbd1ec24340aeeab1133113553f8da86460543ab4e8421",
+      "web/server/access/contracts.ts": "f0b6b463fc72558a10372cd8eadd976d8c41d98da4ab403feab9066927c05d79",
+      "web/server/access/family.ts": "e3efb7319c01bf688320f422bf1133353fc518ded086ab68edb87d57e0a3df14",
+      "web/server/billing/database-test.ts": "5920dc7713d47a620f92c4a646b25d9c232cafbebce6e066195b6219059177f1",
+      "web/server/billing/purchases.ts": "076fc2bf9bae1ff9670f7ce102fcb2c4a561c5a98f5821263c1c79a447b34fd3",
+      "web/server/billing/service.ts": "dc27195ef8498aabaeb2f905e7a5a513f38a628364798d2dfc3ce51e7862db41",
+      "web/server/billing/store.ts": "fd6364faa271d51be072a2f2163296ddfe22d46907eea7cf6fd4c50ec8e21b07",
+      "web/server/billing/stripe.ts": "93f94b8400cc3f825a134adf947547c640b911bfc4b1953adb6c170dd6495c66",
+      "web/server/coaching/cue-registry.ts": "dc0a5877c406d9acfbbffac5609e55cfd81d1d30bdc1561ac33e26af4c12235d",
+      "web/server/coaching/project.ts": "ef9c2bbb60f96e1b28076c1d5e6f0d389973363d0638ec31c0c776e5b57f50c9",
+      "web/server/coaching/templates.ts": "7bf54d47e62612ebf60c7779125dc180af1d800ed3242811b8880ddf5af1c2f5",
+      "web/server/coaching/trial-pool.ts": "e349af29612b17251a14c5b4d99cd596ecbe7c232f4a85ed8fe231667b8f0a7f",
+      "web/server/coaching/trial-worker.ts": "223d4fe17deaa66f273b569c1006a01ac86eaebd7ccb46710eedd896d9836a57",
+      "web/server/coaching/trials.ts": "6e9299120f20d7f80d9036221916366049fa7f3f10f869d2115f6060fee39b96",
+      "web/server/coaching/types.ts": "d80468eb4efd2d168978882784da9d738b25e4cf5b1dff50490ef73c0ce63b8f",
+      "web/server/config.ts": "e8b1706838331c7ffef217cc76e247cf402a21b444601900b073f3ca1475e066",
+      "web/server/dev-scenarios.ts": "439d7eba3502fb600fe3a4df8890909cebd56ba8b6a2b8b1fba18a2ad9909b5d",
+      "web/server/evaluation/evidence/jev-smoke.json": "1058bca9c1829d840424cdaef7b391cc680ac3c4efabb1f473933d80f5f8792d",
+      "web/server/evaluation/evidence/local-policy-smoke.json": "ed9d7b0f04fac6f6232c6b69457c547f4be9d27e3a1e75b7e7287c2f97e64163",
+      "web/server/evaluation/gate/contracts.ts": "18a27462d64aec02ac6a73f6a76b9c2e0e5fec485a995279f8ebd587aae3a59f",
+      "web/server/evaluation/gate/deals.ts": "6378b209750de89d49865060405fa93db9d9a19c2728790fd38967f7a0350135",
+      "web/server/evaluation/gate/index.ts": "7abe1c6d6698be6bd2449e5057ec452161c22e24aac2b1db04013b9b76267ee4",
+      "web/server/evaluation/gate/inference.ts": "0446ac0bb7e80735ed4e56e56e3ad44d99663d15c254694d719e8068589c3b33",
+      "web/server/evaluation/gate/report.ts": "643720480b43e2d844abba2b0f6e74ed19ec72f24264309fe2908b4d5496b138",
+      "web/server/evaluation/gate/rule.ts": "b662675b255f6eff1bf4f8ae7e1860be9edf599b2c0ca7b388cc008c1d627575",
+      "web/server/evaluation/gate/runner.ts": "69c6baa1640d23dcb0f54dd05e80b51a727109abf820a0c8b571df456d98176c",
+      "web/server/evaluation/gate/seeds.ts": "42d4f122b0f4add3e0f331404ce5bc30ab1ad8e1223db4ce538d2bcc4e741264",
+      "web/server/evaluation/gate/worker.ts": "adff724c382eaca6338e3571a0ddd672e7a206c1893467785631e5695fffbea7",
+      "web/server/evaluation/jev-offline/fixtures.ts": "e2f769e11ab29d4526334c2780757d8e1f19aa7bfdc72a23c3c646de74c56e50",
+      "web/server/evaluation/jev-offline/payloads.ts": "1a7cfa7254704cd40099c48b36e7c046135209c70d2de843b0bd12967b70645f",
+      "web/server/evaluation/jev-offline/report.ts": "a282da89bb4f90c7ae1d0c152b152d865d60ac8ec19d48c77d64d5e029e2b490",
+      "web/server/evaluation/jev-offline/selectors.ts": "6f13c67a3620cf4a0cc8a6143284c1d94765c5a1f3a641816ca241ad5945fdf3",
+      "web/server/evaluation/jev-smoke-manifest.json": "60ae7b84c24b48583d181fa968ce7b2953c237ab4c6a62dbd77a933046685f2f",
+      "web/server/evaluation/jev-smoke.ts": "53f4ca240d89a98eb179cda7391d07353e27be7f312498a6a1cb5b59e1e7e0f6",
+      "web/server/evaluation/local-policy-manifest.json": "16f2501baa711d8cbe7149c973fc17a6c699726dbe80cb420eb9b6bf2db68b3a",
+      "web/server/evaluation/local-policy.ts": "f4547f50b603b3934cb56c3357b321db6c8e24582ffd3777cb89ebbaf16b0310",
+      "web/server/evaluation/partner-cases/cli.ts": "e60b35ab45c7593f3bd04bfc5529ba9953a6d37fd12a65a2fbb96da716c231b9",
+      "web/server/evaluation/partner-cases/fixtures.ts": "506f2b6283e995b24d70693e3400fcfd2239467cbbe1a20cfffdd1e872af45fb",
+      "web/server/evaluation/partner-cases/measurement.ts": "7b7e24278ee26df84d6e2b82668b023a0583cee6664650ad04f27a22b7d1dfe4",
+      "web/server/evaluation/partner-jev.ts": "7302a78cf7547645549415aadebd4fa14b39d53c0287581c1cf23f5058a95518",
+      "web/server/evaluation/reasoning-matrix.ts": "51bd77388e53df7b883b950fb18f41bf03e70061c8ecea5920f62ec334cf2db2",
+      "web/server/evaluation/spades-pack/cli.ts": "bcc759d1715e34514bb2ba916dc31cf9b94419cc80045455992395e0a79cc054",
+      "web/server/evaluation/spades-pack/labels.ts": "5c67e0be7e1d454e4f52f4cabce4825edf7d0740bd9d30c34058b000765698c0",
+      "web/server/evaluation/spades-pack/pilot.ts": "b5eedb71f4c304f401436c58c05debf52bcab2238938d730f90baa7279b86f23",
+      "web/server/evaluation/spades-pack/report.ts": "1be6b8ec973efe5d2a900d161ef18747549f822bfba40b371c9aefea85d48e4e",
+      "web/server/evaluation/spades-pack/review.ts": "a218b20474f25178c4696a6480328bc408e202e182146be5d7a54113b07e777f",
+      "web/server/evaluation/spades-reasoning.ts": "a4c316c16108f70bc87dae495dde97f625086166aae94976971c1504d5a9a143",
+      "web/server/game-deal.ts": "f7536ea4ac64c7024ef83c27d40ce63ad24dbf6a12161b03444e8d0bd3be65a3",
+      "web/server/game/cards.ts": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b",
+      "web/server/game/compatibility.ts": "f197ae4a91d2d6847ffd160a145f600f58bf420b06f0b6817a416147a94fdd99",
+      "web/server/game/hearts/score.ts": "afd66c4dcf5bad2cbbb96beca3238de1e536411610839ea3601531d69a3d6192",
+      "web/server/game/index.ts": "83bac53a27cdd2b27a4e65574bfd493b4bc6b88e927bd155f9d5e16433df52e7",
+      "web/server/game/kernel/codec.ts": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b",
+      "web/server/game/kernel/competition.ts": "0ef3d125a820c937b0d312ca371e3f2ca779b4ae5a7c6f3eea2d8189438b8791",
+      "web/server/game/kernel/module.ts": "a5d5c959dccdcaffc985987d26989f3adda15db348a877117776ca0ffceb5cbc",
+      "web/server/game/kernel/registry.ts": "89cfcd4f26339b62c951c61e626ae4e66837f06ab6f1389bc21ea03d84eb69db",
+      "web/server/game/kernel/seats.ts": "8fc1c935c2fd9a3957b9d378ab463578218900aa35ed9e354b9e3ac891d4f362",
+      "web/server/game/kernel/session.ts": "b80c1a6c64ce4869499235ec090c4f2ca0c68a3c3489892181d29cb0d3d2fff6",
+      "web/server/game/kernel/types.ts": "1a4be0a87ab0e8e27fb79f292a56d336c69c73df09f1cfac708ce786366d1966",
+      "web/server/game/legacy/observation.ts": "2378edfb7c09a0b413b54db440a294427f072bf43875395bd71ee7514362c987",
+      "web/server/game/legacy/reader.ts": "7eb002bde46e840ff9f3b960049ca5821a36a9d98191d2c8337338a728ad5800",
+      "web/server/game/legacy/rules.ts": "ca1eb881dc9d1f094d88f450cbeae4035e1d813cb0b3d92dc9b11e43d6982f58",
+      "web/server/game/legacy/types.ts": "4e4a1c991cffb43f97d8cde2a366097fcf0417cbe7467aab603bf324c65b19a8",
+      "web/server/game/legacy/v1.ts": "0139636c9a176706f30ce8340c4d0c8d47d4e66efc4bf2ad89c4ffe9763b347b",
+      "web/server/game/replay.ts": "e4c0034d36b2be03a52cf694abff0761fc01572f51552e288515bc24ee6db80a",
+      "web/server/game/rules.ts": "6e5042531cacb80cf3ff11d2dab89cb0ea75a391576360c70d2a2b2dce2b7047",
+      "web/server/game/spades/score.ts": "9e2a97cf28d1c99750315c28a6955790ff3470d6c051e975f16d6a1095d279dd",
+      "web/server/games/hearts/coaching/cues-legacy.ts": "17bae315afdce429e09025769e53e044b32c975e60c6b6fffa4f1c9f7bbba07d",
+      "web/server/games/hearts/codec.ts": "7df116e83e47c0f90d73aaf2b8cba442391fd13ec9c104cac5512aa6d0a81428",
+      "web/server/games/hearts/compatibility.ts": "9c4ee02f3ee3b02bdba30898cf4966056a5effc031107296b7eadf1e05fe95bb",
+      "web/server/games/hearts/engine.ts": "1a293d24e35e7e1199e7f685f33453489aad7d6e3ec5873a7d1ff4702a8eae17",
+      "web/server/games/hearts/module.ts": "b69ab450e50b57f18c0a59b9268521deecdf9c4de4cdf3664348804358f5591a",
+      "web/server/games/hearts/observation.ts": "83f527bfb345e1b529d35e15e06768c8ed1459d8100729ace4d5f599303c5254",
+      "web/server/games/hearts/plan/kernel.ts": "87daf62cbfe828997e75bb671a9b2965842124bb866cb07537a623021d66defc",
+      "web/server/games/hearts/plan/model.ts": "492c8e10f9d55ad743788436f385ff9929f4dfc4a5fb80c4454ee94b42ed61d3",
+      "web/server/games/hearts/plan/pack.ts": "cdabcb038cac4156528ceb833a1ff7eac443e9aa646ffff334d0760a8930c600",
+      "web/server/games/hearts/plan/planner.ts": "33eb46af8a1b26d97c0b70b53498fd219fc123d91bfc86a2e689c4c85f397491",
+      "web/server/games/hearts/plan/policy.ts": "8be7b1c427e41be5b21c099bd9be7ac36a7e346ebac02da156fe348aa049c2ed",
+      "web/server/games/hearts/plan/profiles.ts": "bebc3d9d431aaded1a2b9a925c66fb8e679c84fcd266e4c0a977e5c39406361f",
+      "web/server/games/hearts/plan/stance.ts": "519ae3745217b3b611ce57ea369bca77113645f45f5533bf580fe81e3d8c27e9",
+      "web/server/games/hearts/projection.ts": "dda46e939d2103df200c75077dc6e18f8e60edf565fa5622fe05d8567fcec36e",
+      "web/server/games/hearts/reasoning/manifest.ts": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a",
+      "web/server/games/hearts/schema.json": "fa57d6b5c0d4b2283eef134f3fb06e8a3e413bbb2269986fc054d1633802f19a",
+      "web/server/games/hearts/state.ts": "e708b372bcaa28bc80d57ceba4a0fc1d5e726e98791382cedeed96fdb87e0b22",
+      "web/server/games/registrations.ts": "67ccde3caecf04a0b6c07ddf26ff25f94384593f39c93654517c630c3f6ab7aa",
+      "web/server/games/spades/cases/cues.ts": "7f604aa63fe8592b903bdef043b131bcfe4affb10f49f809838cc9684c61368e",
+      "web/server/games/spades/cases/profile.ts": "50a3372243120d0251ac2b12b06565ca7dee8b29f3b740ae4e13e1901f23f894",
+      "web/server/games/spades/cases/proofs.ts": "e5a3906f8cff62a4f5a10308bf665299a0d15ddfadfc950b64f9b31e4a03e90b",
+      "web/server/games/spades/coaching/cues-legacy.ts": "83b92cab4a00d6f1d0193455f98bce05b48c11e3869d1b79aed0a0e5cf59de8b",
+      "web/server/games/spades/coaching/cues-v2.ts": "eb299757640fd08c0b128d12654e671b9a4814f1f3897dcb59a44e856a601ba6",
+      "web/server/games/spades/coaching/legacy-golden.json": "052f5422bb4ab4ebe5aaa6f4ec3e025bf7ed8912880d1dfbae76abdddd018cb3",
+      "web/server/games/spades/coaching/legacy-golden.ts": "8e59b109b6d1a2b03a288bfede09f047bb3b3be9a91e837485f7ef3e941eb529",
+      "web/server/games/spades/compatibility.ts": "c176d5d879541f0c1403f3555d96be10e922d5b9ed2a3f186015c4eeaf4001df",
+      "web/server/games/spades/engine.ts": "d20ef7ff61f739004f531eb6bac41cbd935103927309d8bb8e6569ed4055b6ee",
+      "web/server/games/spades/evaluation/adapter.ts": "6cdc683727ffd640f2e2f0cd30839d0c1a90ddd908b538027a43ae8555acd565",
+      "web/server/games/spades/evaluation/claims/check.ts": "8bfba0b026a3891a8994ee97854a7e724f75909308b875dbb4909aefedd872bf",
+      "web/server/games/spades/evaluation/claims/legacy.ts": "249dc3352408f869c222b3275cf06c5939802b8977d5eb9dd85b2274640dfd51",
+      "web/server/games/spades/evaluation/claims/observed.ts": "e8af13b46dbb1152af1212204191a2ee31dc7956e1efc53a239349ff16e344f6",
+      "web/server/games/spades/evaluation/claims/partner-resource.ts": "917f2c2df22303bad76f85d41c1eca3d6d7d3f1c3af9a252af4911ce44f5eccd",
+      "web/server/games/spades/evaluation/claims/rules.ts": "570ce211914ca01e31a9afcb9df98f13c22fd14dd18e3240d02d397b406050bd",
+      "web/server/games/spades/evaluation/claims/worlds.ts": "33213bc48c6896b41349a5a75f9b6f3aee67540b6f80f661b432d37acc2a80b0",
+      "web/server/games/spades/evaluation/metrics.ts": "3bb35c37574f10c91350ed7b1040b29f6447f70c361ef10e8d8d00f9f0149d2b",
+      "web/server/games/spades/evaluation/placements.ts": "4a290b34ecf23b8ce3ed48b752c3e386996decb1c1d4300e3fd6098dc2c1837a",
+      "web/server/games/spades/evaluation/shadow.ts": "0c999b102cd72af2107a1adb453ee34093aa6ea80fdb65af4b59e94283165413",
+      "web/server/games/spades/evaluation/styles.ts": "13b00cb88e130b6038ac58ce32603466266dc8a0bce68cd9a555373c152c8ed5",
+      "web/server/games/spades/module.ts": "8c8f7864ea007f9367689df288818ac4fc66e4dec44adde38d8b101d9d9180bd",
+      "web/server/games/spades/observation.ts": "680888b061a4e0b0ec1eed2ec97ec65d891a62b7295ef4472622c68e247bd574",
+      "web/server/games/spades/partner-resource/cues.ts": "2a008518a6497bad6743d0a40069c7493e99f58a6d0569aab9f0b5e51fe26254",
+      "web/server/games/spades/partner-resource/profile.ts": "ce407088c1c080868c6a767eaa7ffb4be3ba9a69527e0617043eadda8ec17a86",
+      "web/server/games/spades/partner-resource/proofs.ts": "c8da5a309aacb99f52cca84a0e0f47516458c06871fb5d8405940a3a7362e311",
+      "web/server/games/spades/plan/claims.ts": "6d882ddc8ffd79d979bba402b24365a218059b833969ee22799112b1a70ebaf3",
+      "web/server/games/spades/plan/pack.ts": "989387dcfff14db1cd31a260b89495e2c44b67b872858c39276b16e18e5feecc",
+      "web/server/games/spades/plan/planner.ts": "e9faccace64e7d6ab473da913a1880ef7a08a86ca62d9d8d3b82b2a7fef5f8e2",
+      "web/server/games/spades/plan/profiles.ts": "6fd6d636e22b49526d58e7de9c0ed0d9ea2b56e51df8818818b0fd09d764a786",
+      "web/server/games/spades/plan/stance.ts": "28187b50c19a453d89faecd454f19fe9c1d05671ebfa96c3c1e3b95c39dfb2fa",
+      "web/server/games/spades/playout/kernel.ts": "3560d67affc712537028ad20c162d42ce9f382ca8e57ec9daede042a57a7323a",
+      "web/server/games/spades/playout/model.ts": "40452cb6d3e6090ea2b529dfdcd7dc163c27da6d8f25cba9b7746fe43b9ef215",
+      "web/server/games/spades/playout/policy.ts": "2bc631790dcf4813fe754f76b390d47a3c66ead4144a7e3b8c85a452ee071cf6",
+      "web/server/games/spades/reasoning/bidding.ts": "d3088d7f675c20f34258a503b4ece5eea4c00d4eae3b25985be6340412ebcdfb",
+      "web/server/games/spades/reasoning/casebook.ts": "f16bfc61cf10a0c557536892514941bff0e39a2c9a6c41e72fcc60857e13c8ef",
+      "web/server/games/spades/reasoning/catalog.ts": "037aabd016ea80909587c400e2ef88095c5696028b6530ec080afe9458cb6427",
+      "web/server/games/spades/reasoning/continuations.ts": "59f1a2d709a543de23366b92e9c21b1d4a69e8c186c191b46782b784b243cd29",
+      "web/server/games/spades/reasoning/entries.ts": "f7c9585a587036fae0f0cd4ff25cb336a2202ccca6ac25a8d68cb4523f47d054",
+      "web/server/games/spades/reasoning/frozen/golden.ts": "a1603263dea6d9b1ab773c32ecfc210a1e1576cb7ae8725d7385b45a6b2b780d",
+      "web/server/games/spades/reasoning/frozen/local-baseline-1.0.0.golden.json": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/bidding.ts": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/catalog.ts": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/entries.ts": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/golden.json": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/index.ts": "487cceb779f2d7ed30a87e5f0f281634cb3064ed9d36c4abbb26f7f572eb82da",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/knowledge.ts": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/manifest.json": "d860fe20c969b41daccc6fae04f76f17d156a5002d8cae39ab02075ebb77ee9f",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/nil.ts": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/policy.ts": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/retained-bidder.ts": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88",
+      "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/signals.ts": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078",
+      "web/server/games/spades/reasoning/knowledge.ts": "b81c6883769db1b9a77be78ffc5e4400315a3ee024fa600f6fcb3c30acbd1c5d",
+      "web/server/games/spades/reasoning/manifest.ts": "60ac4f3ada3752b9d7cf6902ace80a9a3d1b6a8afcc32cbcdcaab7d3d300de3d",
+      "web/server/games/spades/reasoning/nil.ts": "4401dc6b12e0c191bb6f0f960e41d0337f76ae70b70b8bc21272b4dc9b550018",
+      "web/server/games/spades/reasoning/objectives.ts": "b4b7105d41ada31406248b106b80e17032de4bb2f668ed0fed962388370f2f02",
+      "web/server/games/spades/reasoning/policy.ts": "a359f215a8ee0fe58829f94434c3e0d7e9de67b7bb95942b623427a4d5755b7d",
+      "web/server/games/spades/reasoning/signals.ts": "8e8fa86fe6d0e71d80a373ce4d454349172b1514cd58a423a9a264675c490941",
+      "web/server/games/spades/rules.ts": "53c1cd5e54d35f0cce9661dd79ea2dd8b5586fb48e80bbe87571c4c5a7708449",
+      "web/server/games/spades/schema.json": "61a9494aa976cded9ae41394ddd1df0e97717afa6e63a2486ff3ec1f83449011",
+      "web/server/games/spades/state.ts": "1db115603937d22fd0adade8d9b9f7a9d33dbb13c1e285501f19d4d1cabdbe48",
+      "web/server/http/app.ts": "1c00745b618ffd11a19e3efe1fa47a7ead877e917137850a6049000f7deb1c6f",
+      "web/server/http/errors.ts": "f7d0fa1fdc52395ed4234589915ec2ced34b1207a1a4718fe0217381d66003a3",
+      "web/server/http/game-service.ts": "254ff23fc77619edf2e7335565798c610b0218d4acb55459449d9e82e1db4e3c",
+      "web/server/http/trial-service.ts": "21068a0f84456e373c31c1b7c7cacb26722cf7bf81af0b6ac9cf565ed07a5f94",
+      "web/server/http/views.ts": "33f367ed95c17cb58adb7f2316035e2a4e39cecc5e3adb322e4715f786eb54ee",
+      "web/server/index.ts": "942080c1464af47faed70fec53c945eef58341898069eac8280818cbeb00ad78",
+      "web/server/observations/index.ts": "af35bf39336ac06a683ecc69463dcd993acbe8829cc7f9ae71d6e5dbbae28394",
+      "web/server/observations/types.ts": "0a073cec3252ccb80d71f8059e46ca7af97e274039f6b88cbd997a5a11de8975",
+      "web/server/providers/openrouter.ts": "e75d2a444784cfd31d6f573e49bdb78a63b32833a985e3a47d2eaa3d7ec80f37",
+      "web/server/providers/secrets.ts": "ef22bd0b055af4b48e700e3cac6fe5b3d05ee4e8f303e1f09c2cc83673c914e0",
+      "web/server/records/database.ts": "08e4af4d9e52ccff515b062e2c807095fce3acd9f8281d85824de2c3f66002ca",
+      "web/server/records/game-document-codec.ts": "4f0e61e9830679a8957d6d04e21bb660dbfb9d9bd659655c2548876026d1de08",
+      "web/server/records/game-document.ts": "d2ce12d9d1a7629e607bb82404bff18e8552437fedd79e58d61eb6e5be08dc04",
+      "web/server/records/migrate.ts": "08dcff514485969a746169537259e1c4e55203f52e1e636d7d95ba36f06036af",
+      "web/server/records/migrations.ts": "e4363ac79a06cf9b095fcd19be8cf0c3d9517749e715b248234eb685f902a895",
+      "web/server/records/repository.ts": "8768c12f6635fb8cbe155a03b7cea5fd91910f9766fa2b113a935320c8f21bcf",
+      "web/server/records/types.ts": "da56a6812248b808bee5938de983b3b310a436bdc6a12c7af1459d74849463e7",
+      "web/server/strategy/baseline.ts": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929",
+      "web/server/strategy/facts.ts": "91df66ea59713ca96b541122f3607d2ee9edf0ae9111436bed2db2f649888af1",
+      "web/server/strategy/index.ts": "7b0db3d2ae0597d4e672d85eceb56a97ba15015b761959b22b4bf319d692f0a1",
+      "web/server/strategy/plan/contract.ts": "2a6161a07b9230d75432cabb5fde60694c0faca126981848605572afc7eb4bb6",
+      "web/server/strategy/plan/evaluate.ts": "948a6d89e32155a82e6472ae3278b383b4ca62d8515247de5d33a07df4b64a1a",
+      "web/server/strategy/plan/random.ts": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883",
+      "web/server/strategy/plan/types.ts": "d4e2b6a93d629d7522419a85b3a6bb12c6f9cbd24da93f8088ff486809981257",
+      "web/server/strategy/registry.ts": "8a60dec8ebc60a67ac1d3b008e82eee13e1dbb2abd101122c892c808f5d62607",
+      "web/server/strategy/sampler.ts": "2f4ef123c0a9c0328e44d55e1e49e9b4720273de051ba9768ea6696f6b3f30ad",
+      "web/server/strategy/spades.ts": "fc7dd4b74fea705398193b04be3ddb4d4ad6075e5063eb486d88d7a9148ac5f4",
+      "web/server/strategy/types.ts": "a39cd57abe3252780370e8aabc7f2b7bd3959b15d76f5e22aa5634c58644fa0c"
+    }
+  },
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "notRun": [
+    "Live Jev",
+    "Human strategy/cue evaluation",
+    "V2 persisted journal integration (M03)",
+    "V2 HTTP/client activation (M04)",
+    "Hosted/native release validation"
+  ]
+}

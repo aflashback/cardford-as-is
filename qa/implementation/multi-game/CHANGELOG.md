@@ -1,5 +1,9 @@
 # Foundation and partnership change log
 
+## M02 current-game extraction
+
+The owner's next-item instruction authorizes current-game modules and V1 compatibility. [M02 change log](m02/CHANGELOG.md) records the scoped MG-02/MG-03/MG-04/MG-09 changes; [M02 status](m02/status.md) records acceptance and deferred M03–M04 work. Original M00–M01 results and partnership archives remain preserved.
+
 ## 5 October 2026
 
 - Adopted CR-ARCH-001 and MG-01–03/MG-15–17 contract preparation without activating V2 production sessions.
