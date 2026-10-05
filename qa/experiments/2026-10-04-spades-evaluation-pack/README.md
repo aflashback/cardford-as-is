@@ -9,7 +9,9 @@
 - [Paired engine protocol](protocol.md): frozen baseline versus the existing candidate, one changed seat, eight development deal families, both modes, four seats and two fixed environments. 128 pairs / 256 streams; 100 hands per stream, 20 minutes per invocation.
 - [Human learning study](human-learning.md) and [confirmation planning template](confirmation-template.json). Neither has been run or approved as a confirming study.
 
-The pilot uses production rules and match transitions, not text-agent play. It measures the programmed policies under fixed conditions. Jev is off; provider calls: **0**, observed model: **none**. No runtime strategy or default is changed.
+The pilot uses production rules and match transitions, not text-agent play. **Completed: 128 pairs / 256 terminal matches. Both modes produced identical moves and zero paired score difference.** There was no measured incremental playing gain in these eight development families. [Findings and next step](findings.md) explain the limit.
+
+Jev is off; provider calls: **0**, observed model: **none**. No runtime strategy or default is changed.
 
 ## Run from repository root
 
@@ -18,6 +20,8 @@ node web/server/evaluation/spades-pack/cli.ts prepare
 node web/server/evaluation/spades-pack/cli.ts run
 node web/server/evaluation/spades-pack/cli.ts audit
 node web/server/evaluation/spades-pack/cli.ts report
+# Optional supplemental case-activation reanalysis (five-minute budget):
+node qa/experiments/2026-10-04-spades-evaluation-pack/pilot/analyze-parity.mjs
 ```
 
 `prepare` preserves human annotations and rejects changed packets/source. `run` resumes complete pairs under the frozen manifest; changed source or tampered actions reject. `audit` is read-only and replays recorded actions without invoking the strategic selector. `report` derives summaries from audited records. A fresh source revision requires a separately identified experiment.

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "spades-parity-diagnostic-1.0.0",
+  "purpose": "supplemental-development-reanalysis",
+  "status": "complete",
+  "error": null,
+  "originalAdvice": false,
+  "originalPilotRowsRewritten": false,
+  "providerMode": "offline",
+  "observedModelId": null,
+  "manifestHash": "a49e0b3edf354fa2c82807dfacc970c2fb93433caf607ec81f5121b163bd1a62",
+  "rowsHash": "178648e7266c4a17693d4bdc2c16c108331ebf0b591350e89669b4d500d2f2b3",
+  "sourceCommit": "7aee013b65f3f326749c826421a989f6de440f71",
+  "scriptSHA256": "072cb9476946e21634bfc43bb5868049a9b958bfa350d7448b8155797e64a9a5",
+  "reference": "spades-tactics-2.1.0",
+  "candidate": "spades-cases-4.0.0",
+  "case01Parent": "spades-plan-3.0.0",
+  "archivePairs": 128,
+  "processedReferenceStreams": 128,
+  "maxWallMs": 300000,
+  "elapsedMs": 26476,
+  "before": {
+    "files": {
+      "pilot-manifest.json": "33ce62f39c21d1c0b23d2ca9690e33552ed299163456c491120bdff8d6efadf4",
+      "pilot-pairs.jsonl": "178648e7266c4a17693d4bdc2c16c108331ebf0b591350e89669b4d500d2f2b3",
+      "pilot-checkpoint.json": "a387638db840da853ebdf3ee01b9f9f95c77c75173028668502ed6e0b6b547de",
+      "run.json": "f5b18af1242095ba1e4ba3a5adbff25899a323f8ea5620408a9e5258b6ff7294",
+      "results.json": "553b9f0d480e37e444b2200cda30c16b029277d87eaa9405c8663b7e0939f9c9",
+      "results.md": "c3a4d10bfb522ef2e695450b89e2ebeef74f02c63e74e03c17ad6c3723f9532e"
+    },
+    "sourcePinsHash": "b0baefc4ac08f5e4f9a304e682b085e9a6cfd31a328548f917181b95ebbfe504",
+    "sourceFiles": 130,
+    "sourcePinsMatch": true,
+    "canonicalManifestHash": "a49e0b3edf354fa2c82807dfacc970c2fb93433caf607ec81f5121b163bd1a62",
+    "scriptHash": "072cb9476946e21634bfc43bb5868049a9b958bfa350d7448b8155797e64a9a5"
+  },
+  "after": {
+    "files": {
+      "pilot-manifest.json": "33ce62f39c21d1c0b23d2ca9690e33552ed299163456c491120bdff8d6efadf4",
+      "pilot-pairs.jsonl": "178648e7266c4a17693d4bdc2c16c108331ebf0b591350e89669b4d500d2f2b3",
+      "pilot-checkpoint.json": "a387638db840da853ebdf3ee01b9f9f95c77c75173028668502ed6e0b6b547de",
+      "run.json": "f5b18af1242095ba1e4ba3a5adbff25899a323f8ea5620408a9e5258b6ff7294",
+      "results.json": "553b9f0d480e37e444b2200cda30c16b029277d87eaa9405c8663b7e0939f9c9",
+      "results.md": "c3a4d10bfb522ef2e695450b89e2ebeef74f02c63e74e03c17ad6c3723f9532e"
+    },
+    "sourcePinsHash": "b0baefc4ac08f5e4f9a304e682b085e9a6cfd31a328548f917181b95ebbfe504",
+    "sourceFiles": 130,
+    "sourcePinsMatch": true,
+    "canonicalManifestHash": "a49e0b3edf354fa2c82807dfacc970c2fb93433caf607ec81f5121b163bd1a62",
+    "scriptHash": "072cb9476946e21634bfc43bb5868049a9b958bfa350d7448b8155797e64a9a5"
+  },
+  "unchanged": true,
+  "modes": {
+    "spades-solo": {
+      "referenceStreams": 64,
+      "referenceHands": 1425,
+      "recordedActionsReplayed": 79800,
+      "focalDecisions": 19950,
+      "focalForcedSkipped": 3949,
+      "focalUnforcedAnalyzed": 16001,
+      "unforcedByPhase": {
+        "bid": 1425,
+        "play": 14576
+      },
+      "observedPolicyVersionIds": {
+        "reference": {
+          "spades-tactics-2.1.0": 16001
+        },
+        "candidate": {
+          "spades-cases-4.0.0": 16001
+        },
+        "case01Parent": {}
+      },
+      "observedTraceVersionIds": {
+        "reference": {
+          "spades-tactics-2.1.0": 16001
+        },
+        "candidate": {
+          "spades-cases-4.0.0": 16001
+        },
+        "case01Parent": {}
+      },
+      "observedCandidateCatalogIds": {
+        "spades-cases-1.0.0": 16001
+      },
+      "candidateVsReferenceActionDifferences": 0,
+      "referenceVsRecordedActionDifferences": 0,
+      "casesMatched": {
+        "CASE-01": 0,
+        "CASE-02": 131,
+        "CASE-03": 20,
+        "CASE-04": 736
+      },
+      "casesWithReferenceActionDifference": {
+        "CASE-01": 0,
+        "CASE-02": 0,
+        "CASE-03": 0,
+        "CASE-04": 0
+      },
+      "case01Preference": {
+        "matched": 0,
+        "withPositivePreferenceEffect": 0,
+        "parentAnalyzed": 0,
+        "changedParentAction": 0,
+        "retainedParentAction": 0,
+        "parentActionAlreadyPreferred": 0
+      }
+    },
+    "spades-partners": {
+      "referenceStreams": 64,
+      "referenceHands": 716,
+      "recordedActionsReplayed": 40096,
+      "focalDecisions": 10024,
+      "focalForcedSkipped": 1969,
+      "focalUnforcedAnalyzed": 8055,
+      "unforcedByPhase": {
+        "bid": 716,
+        "play": 7339
+      },
+      "observedPolicyVersionIds": {
+        "reference": {
+          "spades-tactics-2.1.0": 8055
+        },
+        "candidate": {
+          "spades-cases-4.0.0": 8055
+        },
+        "case01Parent": {}
+      },
+      "observedTraceVersionIds": {
+        "reference": {
+          "spades-tactics-2.1.0": 8055
+        },
+        "candidate": {
+          "spades-cases-4.0.0": 8055
+        },
+        "case01Parent": {}
+      },
+      "observedCandidateCatalogIds": {
+        "spades-cases-1.0.0": 8055
+      },
+      "candidateVsReferenceActionDifferences": 0,
+      "referenceVsRecordedActionDifferences": 0,
+      "casesMatched": {
+        "CASE-01": 0,
+        "CASE-02": 66,
+        "CASE-03": 6,
+        "CASE-04": 360
+      },
+      "casesWithReferenceActionDifference": {
+        "CASE-01": 0,
+        "CASE-02": 0,
+        "CASE-03": 0,
+        "CASE-04": 0
+      },
+      "case01Preference": {
+        "matched": 0,
+        "withPositivePreferenceEffect": 0,
+        "parentAnalyzed": 0,
+        "changedParentAction": 0,
+        "retainedParentAction": 0,
+        "parentActionAlreadyPreferred": 0
+      }
+    }
+  },
+  "factsAccuracy": "not-measured",
+  "cueQuality": "not-measured",
+  "humanAcceptableActionLabels": "not-measured",
+  "strength": "not-estimated",
+  "interpretation": "Policy/trace IDs and action comparisons are supplemental reanalysis on original focal information sets. Case matches do not establish factual validity, cue quality, action quality, learning, or formal decision parity outside these sampled trajectories."
+}

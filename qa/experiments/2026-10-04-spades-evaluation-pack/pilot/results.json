@@ -1,0 +1,311 @@
+{
+  "schemaVersion": "spades-pilot-report-1.0.0",
+  "purpose": "development-pilot",
+  "modes": [
+    {
+      "mode": "spades-solo",
+      "plannedPairs": 64,
+      "observedPairs": 64,
+      "pendingPairs": 0,
+      "completeAllocationFamilies": 8,
+      "plannedFamilies": 8,
+      "pairsWithTrajectoryChange": 0,
+      "familiesWithTrajectoryChange": 0,
+      "pairedBoundedFinalMarginMean": 0,
+      "observedFamilyStandardDeviation": 0,
+      "plannedCellEventualWinDifferenceBounds": {
+        "lower": 0,
+        "upper": 0,
+        "interpretation": "Logical bounds for these planned cells, including unknown capped/unstarted results; not a confidence interval or general win probability."
+      },
+      "arms": [
+        {
+          "arm": "reference",
+          "observedStreams": 64,
+          "terminalMatches": 64,
+          "handCappedMatches": 0,
+          "terminalWins": 40,
+          "hands": 1425,
+          "decisions": 79800,
+          "evaluatedDecisions": 19950,
+          "evaluatedUnforcedDecisions": 16001,
+          "meanOwnOrTeamPoints": 458.59375,
+          "metrics": {
+            "marginVsMax": -30787,
+            "contractPoints": 34440,
+            "nilPoints": 700,
+            "overtrickPoints": 1010,
+            "bagsAdded": 1013,
+            "bagPenalty": 68,
+            "bagPenaltyPoints": -6800,
+            "opposingContractsSet": 1101,
+            "opposingNilsBroken": 42,
+            "positiveContract": 1412,
+            "positiveContractMade": 1273,
+            "bidMinusCredited": -852,
+            "nilBid": 13,
+            "nilKept": 10,
+            "doubleNilBid": 0
+          }
+        },
+        {
+          "arm": "candidate",
+          "observedStreams": 64,
+          "terminalMatches": 64,
+          "handCappedMatches": 0,
+          "terminalWins": 40,
+          "hands": 1425,
+          "decisions": 79800,
+          "evaluatedDecisions": 19950,
+          "evaluatedUnforcedDecisions": 16001,
+          "meanOwnOrTeamPoints": 458.59375,
+          "metrics": {
+            "marginVsMax": -30787,
+            "contractPoints": 34440,
+            "nilPoints": 700,
+            "overtrickPoints": 1010,
+            "bagsAdded": 1013,
+            "bagPenalty": 68,
+            "bagPenaltyPoints": -6800,
+            "opposingContractsSet": 1101,
+            "opposingNilsBroken": 42,
+            "positiveContract": 1412,
+            "positiveContractMade": 1273,
+            "bidMinusCredited": -852,
+            "nilBid": 13,
+            "nilKept": 10,
+            "doubleNilBid": 0
+          }
+        }
+      ],
+      "families": [
+        {
+          "seed": 8000001,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000002,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000003,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000004,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000005,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000006,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000007,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000008,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        }
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "plannedPairs": 64,
+      "observedPairs": 64,
+      "pendingPairs": 0,
+      "completeAllocationFamilies": 8,
+      "plannedFamilies": 8,
+      "pairsWithTrajectoryChange": 0,
+      "familiesWithTrajectoryChange": 0,
+      "pairedBoundedFinalMarginMean": 0,
+      "observedFamilyStandardDeviation": 0,
+      "plannedCellEventualWinDifferenceBounds": {
+        "lower": 0,
+        "upper": 0,
+        "interpretation": "Logical bounds for these planned cells, including unknown capped/unstarted results; not a confidence interval or general win probability."
+      },
+      "arms": [
+        {
+          "arm": "reference",
+          "observedStreams": 64,
+          "terminalMatches": 64,
+          "handCappedMatches": 0,
+          "terminalWins": 53,
+          "hands": 716,
+          "decisions": 40096,
+          "evaluatedDecisions": 10024,
+          "evaluatedUnforcedDecisions": 8055,
+          "meanOwnOrTeamPoints": 514.421875,
+          "metrics": {
+            "marginVsMax": 18292,
+            "contractPoints": 33030,
+            "nilPoints": 4500,
+            "overtrickPoints": 893,
+            "bagsAdded": 906,
+            "bagPenalty": 55,
+            "bagPenaltyPoints": -5500,
+            "opposingContractsSet": 257,
+            "opposingNilsBroken": 0,
+            "positiveContract": 716,
+            "positiveContractMade": 666,
+            "bidMinusCredited": -834,
+            "nilBid": 65,
+            "nilKept": 55,
+            "doubleNilBid": 0
+          }
+        },
+        {
+          "arm": "candidate",
+          "observedStreams": 64,
+          "terminalMatches": 64,
+          "handCappedMatches": 0,
+          "terminalWins": 53,
+          "hands": 716,
+          "decisions": 40096,
+          "evaluatedDecisions": 10024,
+          "evaluatedUnforcedDecisions": 8055,
+          "meanOwnOrTeamPoints": 514.421875,
+          "metrics": {
+            "marginVsMax": 18292,
+            "contractPoints": 33030,
+            "nilPoints": 4500,
+            "overtrickPoints": 893,
+            "bagsAdded": 906,
+            "bagPenalty": 55,
+            "bagPenaltyPoints": -5500,
+            "opposingContractsSet": 257,
+            "opposingNilsBroken": 0,
+            "positiveContract": 716,
+            "positiveContractMade": 666,
+            "bidMinusCredited": -834,
+            "nilBid": 65,
+            "nilKept": 55,
+            "doubleNilBid": 0
+          }
+        }
+      ],
+      "families": [
+        {
+          "seed": 8000001,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000002,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000003,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000004,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000005,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000006,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000007,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        },
+        {
+          "seed": 8000008,
+          "observedPairs": 8,
+          "plannedPairs": 8,
+          "completeAllocation": true,
+          "pairedFinalMarginDifference": 0,
+          "trajectoryChanged": false
+        }
+      ]
+    }
+  ],
+  "promotion": false,
+  "humanActionQuality": "pending-independent-review",
+  "humanLearning": "not-run",
+  "cueFactuality": "not-run-in-this-pilot",
+  "decisionLatency": "not-measured",
+  "samplePlanning": {
+    "status": "not-established",
+    "reason": "Eight development families and pending labels do not establish a confirmation sample size. Define the estimand, practical effect and harm bounds; expand the pilot if needed before preregistration."
+  },
+  "limitations": [
+    "One changed seat with two fixed environments; this does not establish whole-team deployment quality.",
+    "All styles are related code policies; no human or independent strong-opponent benchmark.",
+    "Terminal and hand-cap scores have different horizons; point summaries are descriptive.",
+    "Related cells are clustered by initial family; hands, rotations and modes are not independent samples.",
+    "Successful recorded legal play does not independently establish action quality or teaching benefit."
+  ],
+  "manifestHash": "a49e0b3edf354fa2c82807dfacc970c2fb93433caf607ec81f5121b163bd1a62",
+  "rowsHash": "178648e7266c4a17693d4bdc2c16c108331ebf0b591350e89669b4d500d2f2b3",
+  "sourceCommit": "7aee013b65f3f326749c826421a989f6de440f71"
+}

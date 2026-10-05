@@ -1,6 +1,6 @@
 # Spades Evaluation Pack Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Produce an executable offline evaluation pack, pending blind human labels, and a bounded paired-match pilot.
 
@@ -34,9 +34,9 @@
 
 **Interfaces:** `buildReviewPack()` returns versioned cases, coverage and private source hashes; `projectReviewPacket(SeatObservation)` explicitly allowlists fields; `writeReviewPack(outDir)` writes neutral cases and empty labels, with original choices/provenance in a separate private index.
 
-- [ ] Test deduplication, allowed fields, complete public history and exact source provenance before accepting generated artifacts.
-- [ ] Extract approximately 32 decisions across bidding, live Nil, resources, public deductions and score pressure; mark synthetic starts/coverage holes in the maintainer index.
-- [ ] Run `node --test --test-isolation=none web/server/tests/spades-review-pack.test.ts`.
+- [x] Test deduplication, allowed fields, complete public history and exact source provenance before accepting generated artifacts.
+- [x] Extract approximately 32 decisions across bidding, live Nil, resources, public deductions and score pressure; mark synthetic starts/coverage holes in the maintainer index.
+- [x] Run `node --test --test-isolation=none web/server/tests/spades-review-pack.test.ts`.
 
 ## Task 2 — Paired full-match runner: EVALPACK-02/03
 
@@ -44,25 +44,31 @@
 
 **Interfaces:** `assertPilotManifest(unknown)` narrows validated input; `pilotSourceHashes()` freezes dependencies; `runPilot(manifest,{outDir,maxWallMs,onProgress})` returns completed paired streams and writes guarded checkpoints.
 
-- [ ] Test identical-policy controls, one-seat allocation, seed/style rejection, censorship, illegal-action failure and corrupted/stale checkpoints.
-- [ ] Use `walkSpadesRound` with seat-scoped policies and production `nextHand`; score and terminate under the frozen profile. Retain deal/action hashes and per-hand metrics.
-- [ ] Persist a pair only after both bounded arms finish; interruption leaves it pending for unchanged-manifest resume.
-- [ ] Run `node --test --test-isolation=none web/server/tests/spades-match-pilot.test.ts`.
+- [x] Test identical-policy controls, one-seat allocation, seed/style rejection, censorship, illegal-action failure and corrupted/stale checkpoints.
+- [x] Use `walkSpadesRound` with seat-scoped policies and production `nextHand`; score and terminate under the frozen profile. Retain deal/action hashes and per-hand metrics.
+- [x] Persist a pair only after both bounded arms finish; interruption leaves it pending for unchanged-manifest resume.
+- [x] Run `node --test --test-isolation=none web/server/tests/spades-match-pilot.test.ts`.
 
 ## Task 3 — Runnable preparation, reporting and pilot: EVALPACK-04
 
 **Files:** `web/server/evaluation/spades-pack/cli.ts`, `web/server/evaluation/spades-pack/report.ts`, `web/server/tests/spades-pilot-report.test.ts`, frozen manifest/checkpoint/results under `qa/experiments/2026-10-04-spades-evaluation-pack/pilot/`.
 
-- [ ] Test report grouping by family, censor handling and refusal to infer confirmation size from zero changes/tiny pilot data.
-- [ ] Implement `node web/server/evaluation/spades-pack/cli.ts prepare`, `run`, `report`, and `audit` with strict command handling and protected preparation.
-- [ ] Freeze source hashes and manifest before running; report descriptive paired results, observed variance, effective family count and omissions without promotion labels.
-- [ ] Run focused tests and `npm run typecheck`; execute the bounded pilot, retain interruption state if capped, and audit generated outputs.
+- [x] Test report grouping by family, censor handling and refusal to infer confirmation size from zero changes/tiny pilot data.
+- [x] Implement `node web/server/evaluation/spades-pack/cli.ts prepare`, `run`, `report`, and `audit` with strict command handling and protected preparation.
+- [x] Freeze source hashes and manifest before running; report descriptive paired results, observed variance, effective family count and omissions without promotion labels.
+- [x] Run focused tests and `npm run typecheck`; execute the bounded pilot, retain interruption state if capped, and audit generated outputs.
 
 ## Task 4 — Independent review and learning handoff: EVALPACK-05
 
 **Files:** pack `protocol.md`, `human-review.md`, `human-learning.md`, non-executable `confirmation-template.json`, `README.md`, `CHANGELOG.md` and `verification.json`.
 
-- [ ] Define independent acceptable-action labels, disagreement/unknown handling, reviewer blinding and exact-information endgame limits.
-- [ ] Define randomized coached/uncoached practice, novel unaided assessment and delayed retention; recruitment/results remain pending.
-- [ ] Explain that existing per-hand promotion thresholds cannot certify this single-seat full-match pilot; any new confirmation estimand needs a reviewed change record.
-- [ ] Review combined artifacts and results, commit this milestone on main, and report passed/failed/blocked/not-run checks separately.
+- [x] Define independent acceptable-action labels, disagreement/unknown handling, reviewer blinding and exact-information endgame limits.
+- [x] Define randomized coached/uncoached practice, novel unaided assessment and delayed retention; recruitment/results remain pending.
+- [x] Explain that existing per-hand promotion thresholds cannot certify this single-seat full-match pilot; any new confirmation estimand needs a reviewed change record.
+- [x] Review combined artifacts and results, commit this milestone on main, and report passed/failed/blocked/not-run checks separately.
+
+## Execution evidence
+
+Implemented EVALPACK-01–05. Final combined focused command: 27/27 passed; TypeScript, browser boundaries and generated-contract checks passed. Code/preparation commit: 7aee013. Pilot: 128/128 pairs, 256 terminal streams, eight families, zero action differences. Read-only replay and independent saved-record recomputation passed. Supplement: 24,056 unforced observations, CASE-01 never matched; CASE-02/03/04 affected explanations. See the pack's verification.json and findings.md.
+
+The checked tasks are evaluation infrastructure and preparation. Independent human labels, cue quality, learning effects, new tactic changes, Jev comparison and confirmation remain unfinished. Owner deferred reviewers. No runtime/default changes were made.

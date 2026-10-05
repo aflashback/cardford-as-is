@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "spades-match-pilot-1.0.0",
+  "manifestHash": "a49e0b3edf354fa2c82807dfacc970c2fb93433caf607ec81f5121b163bd1a62",
+  "sourceCommit": "7aee013b65f3f326749c826421a989f6de440f71",
+  "status": "complete",
+  "totalPairs": 128,
+  "completedPairs": 128,
+  "resumedPairs": 0,
+  "totalStreams": 256,
+  "rowsHash": "178648e7266c4a17693d4bdc2c16c108331ebf0b591350e89669b4d500d2f2b3",
+  "checkpointFile": "pilot-checkpoint.json",
+  "rowsFile": "pilot-pairs.jsonl"
+}
