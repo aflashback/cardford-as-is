@@ -1,0 +1,36 @@
+✔ COACH-12: the recorded legacy cue corpus covers 24 hands per Spades mode and 8 Hearts hands (1.8497ms)
+✔ COACH-12: legacy cue packs reproduce every recorded advice object for the live default policies (1345.1871ms)
+✔ COACH-12: legacy advice carries no cue version, outcome, explanation, considered choice or claim (0.3232ms)
+✔ COACH-12: the cue registry dispatches by the policy version recorded in the analysis (0.4348ms)
+✔ COACH-12: an unnamed policy keeps legacy wording only for analyses saved before the plan layer (0.1779ms)
+✔ COACH-12: plan-profile advice is rendered by cue version 2 and never by the legacy wording (3.8525ms)
+✔ MG-02: a scored Hearts hand cannot be decoded as an actionable private state (11.8687ms)
+✔ MG-02: a scored Hearts observation cannot be relabeled as a player decision (8.9624ms)
+✔ MG-02: private Hearts decoding rejects malformed versions, fields, flags and conservation (6.9737ms)
+✔ MG-02: nested Hearts projection allowlists exclude injected aggregate canaries (6.5718ms)
+✔ MG-09: strict V1 Hearts conversion rejects extra root fields before projection (7.3675ms)
+✔ MG-09: strict V1 Hearts conversion rejects extra event fields before projection (7.7614ms)
+✔ MG-09: strict V1 Hearts conversion rejects extra handResult fields before projection (7.4861ms)
+✔ MG-02: a first Hearts hand cannot carry fabricated prior scores (0.437ms)
+✔ MG-02: first Hearts scoring must update totals to the exact hand result (6.6351ms)
+✔ MG-02: current games install native V2 modules (0.1374ms)
+✔ MG-02/MG-09: saved hearts legal logs preserve frozen V1 states, events, observations, candidates and original analyses (21157.0155ms)
+✔ MG-02/MG-09: saved spades-solo legal logs preserve frozen V1 states, events, observations, candidates and original analyses (28949.8305ms)
+✔ MG-02/MG-09: saved spades-partners legal logs preserve frozen V1 states, events, observations, candidates and original analyses (28870.9069ms)
+✔ MG-02: complete Hearts pass space stays atomic, ordered and code-only at 286 choices (135.077ms)
+✔ MG-09: exact V1 snapshots keep original pins and scores; missing or unknown pins are read-only (408.4764ms)
+✔ MG-04: every native game keeps equal-knowledge hidden permutations out of packets, views, facts and analysis (311.4038ms)
+✔ MG-09: installed native documents reject unknown/mixed pins, corrupt payloads and unavailable handlers (24.6061ms)
+✔ MG-02/MG-09: actor, collection and deal handlers reject stale operations without mutating checkpoints (1338.8022ms)
+✔ MG-02: native spades-solo replays original spades-tactics-2.1.0 frozen golden seed 610001 (5325.2899ms)
+✔ MG-02: native spades-partners replays original spades-tactics-2.1.0 frozen golden seed 610001 (5264.7834ms)
+✔ MG-02: native spades-solo replays original local-baseline-1.0.0 frozen golden seed 610001 (5361.6922ms)
+✔ MG-02: native spades-partners replays original local-baseline-1.0.0 frozen golden seed 610001 (5289.3451ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 104155.2771

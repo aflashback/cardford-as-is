@@ -1,0 +1,32 @@
+# M04 — Current-game service integration
+
+6 October 2026 (Toronto). The owner authorized the next M04 step after M03 and clarified that the target is one **Go + PostgreSQL backend**, with the existing React/TypeScript frontend. Starting commit: `dc0e44a` on `codex/current-game-modules-m02`. Node remains frontend tooling and the temporary original service/reference while the replacement is verified. Use [native Windows](windows-development.md); the Go/Node comparison is closed.
+
+## First step: complete the original Hearts port
+
+The initial M04 audit found that the Go opening adapter offers `play:C2` after passing but cannot execute any play. Its observations and compact reader also only accept the opening hand. M03 passed its explicitly bounded storage gate; it did not establish a complete Hearts implementation. Close this prerequisite before connecting a replacement service to the existing UI.
+
+**M04A scope:** complete original V1 Hearts rules, actor-safe observations/views, immutable typed transitions and compact persistence. Preserve original `1.0.0` pins, event messages, candidate ordering, collection boundaries and scoring. This is a port, not a rules or strategy change. Requirements: the Hearts prerequisite for MG-02/03/04/09 and SYS-03/06/10/12. It does not close M04's end-to-end MG/SYS acceptance.
+
+| Owner | Files | Acceptance |
+|---|---|---|
+| Hearts | `server/internal/games/hearts/` | Atomic pass; full legal play/collect; points/moon; match/tie; dealer and all pass directions; safe dynamic observations; strict import and immutable transitions |
+| Independent compatibility | `server/internal/compatibility/parity_test.go`, new `qa/implementation/multi-game/m04/` corpus | Remove the opening-only exemption; compare unchanged original goldens plus separate deterministic TS reference cases, all four actors |
+| Record integration | `server/internal/records/*test.go` | Compact save/reopen/replay; actual later deals and hand IDs; exact selected-command binding; rejection without mutation; durable receipt/restart |
+| Integrator | Plans, evidence, integrated review/checks | Native Windows verification, preserved original sources/archives, scoped completion and the next dependency |
+
+Validate untrusted stored bytes at import. Keep trusted operations typed and immutable; do not replay history or round-trip JSON internally on every move. Serialize at explicit export, persistence and transport boundaries. The complete original observation retains its event archive; document that existing growth rather than truncate knowledge for speed.
+
+Record actual red/green results and source hashes in [M04 evidence](../../../qa/implementation/multi-game/m04/status.md). Run the full Go suite, native race checks and relevant original Hearts/contract regressions. PostgreSQL checks use only the separate native `_test` database and existing isolated schemas; no schema migration is expected for this step. No UI/browser acceptance is claimed while normal play still uses the original service.
+
+## Remaining sequence and activation gates
+
+These are reviewed dependencies, not implemented behavior. M04's original checklist remains open until its actual service/client journey passes.
+
+1. **Original policy and V2 session adapters.** Port the exact live defaults `hearts-baseline-1.0.0` and `spades-tactics-2.1.0`, including facts, reasons, exceptions, cue order and advice. Same-action parity is insufficient. Keep each optional saved policy executable under its own pins or explicitly read-only. M03 `RegisterPolicy` is storage eligibility, not an algorithm. The current Go `Snapshot` (`Apply/Export/Project`) is not M02's `BoundSession` lifecycle/candidate/sealed/automatic/chance/review contract. Preserve original V1 next-hand history separately from V2 continuation/chance boundaries. M05's new planning does not substitute for the original policy port.
+2. **Authenticated durable Go service.** Add the real local entry point and owner/session/control mapping; integrate prepared work, atomic publication and receipt-first recovery. Keep finite admission/HTTP/DB limits and no DB connection during CPU/provider work. Define supported historical readers and erasure handling before lifting M03's test-store activation guard. The current `/action` handler is a test harness, not a production listener. The native database timeout recurred in M04A's unchanged Spades growth regression: retain stage-specific diagnostics and reproduce cancellation/cleanup before claiming native full-path latency; do not hide it by raising limits. [Observed failure and review](../../../qa/implementation/multi-game/m04/review.md#native-database-follow-up).
+3. **Online demo and exact-target offers.** Implement the existing frozen demo DTOs with the same authored content and server-confirmed open/choice/replay. Replace the current contradictory zero-API demo test. Port the pure access resolver and authoritative reads/atomic unlocks; preserve purchased terms, original buckets and one trial per identity. Existing M03 storage supports UTC day/lifetime, whereas offer DTOs allow additional calendars. Validate/reject unsupported configuration until explicitly implemented; do not approximate it. `AccountView.offers` is still the legacy named-plan shape and must not silently carry arbitrary offers.
+4. **Platform response and preserved client.** Freeze a platform envelope around `RegisteredSessionView`: it currently lacks instance/revision/control/access/decision and some public result/competition fields needed by the UI. Define first-session bootstrap (V2 replacement requires an existing game), strict V1/V2 pending-command validation, and identity/receipt reconciliation on foreground. Add registered presentation adapters and the web platform/URL boundary without redesigning the table or adding native packaging.
+5. **Actual three-mode acceptance.** Run the preserved React interface against one Go listener, including complete games, sealed passing, pause/next-hand confirmation, original review, ambiguous response/reload/restart, revocation and saved reads. Then complete M04. Existing startup/Vite/Playwright paths continue to target Node until this cutover gate; no permanent proxy or dual authoritative writers.
+
+Full old V1 platform documents retain their original reader; no bulk rewriting or default repinning. Hosting, live charges/providers, human evaluation, new games and strategy-strength claims retain their later gates. This execution sequence changes neither product scope nor the existing visual design.

@@ -1,0 +1,26 @@
+FAIL	cardford/server/internal/compatibility [build failed]
+# cardford/server/internal/games/hearts
+server\internal\games\hearts\opening.go:67:119: undefined: checkedState
+server\internal\games\hearts\opening.go:69:81: undefined: createState
+server\internal\games\hearts\opening.go:70:117: undefined: applyTo
+server\internal\games\hearts\snapshot.go:13:12: undefined: createState
+server\internal\games\hearts\snapshot.go:17:11: undefined: checkedState
+server\internal\games\hearts\snapshot.go:32:15: undefined: applyTo
+server\internal\games\hearts\snapshot.go:36:14: undefined: checkedState
+server\internal\games\hearts\snapshot.go:46:7: undefined: observation
+server\internal\games\hearts\snapshot.go:52:25: undefined: view
+server\internal\games\hearts\storage.go:96:18: undefined: checkedState
+server\internal\games\hearts\storage.go:96:18: too many errors
+FAIL
+file:///C:/repos/test-jev/scripts/windows-env.mjs:17
+    throw Error(`${exe.split(/[\\/]/).at(-1)} exited ${r.status}: ${r.stderr ?? ''}`); return r.stdout ?? ''; }
+          ^
+
+Error: go.exe exited 1: 
+    at run (file:///C:/repos/test-jev/scripts/windows-env.mjs:17:11)
+    at file:///C:/repos/test-jev/scripts/windows-env.mjs:93:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

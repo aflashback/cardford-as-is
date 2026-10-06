@@ -1,0 +1,36 @@
+{"Time":"2026-10-06T11:13:26.8878283-04:00","Action":"start","Package":"cardford/server/internal/records"}
+{"Time":"2026-10-06T11:13:27.0502803-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordHeartsSealedOpeningRestoresKnownHoldings"}
+{"Time":"2026-10-06T11:13:27.0508012-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsSealedOpeningRestoresKnownHoldings","Output":"=== RUN   TestRecordHeartsSealedOpeningRestoresKnownHoldings\n"}
+{"Time":"2026-10-06T11:13:27.0554852-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsSealedOpeningRestoresKnownHoldings","Output":"--- PASS: TestRecordHeartsSealedOpeningRestoresKnownHoldings (0.00s)\n"}
+{"Time":"2026-10-06T11:13:27.0554852-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordHeartsSealedOpeningRestoresKnownHoldings","Elapsed":0}
+{"Time":"2026-10-06T11:13:27.0554852-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus"}
+{"Time":"2026-10-06T11:13:27.0554852-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus","Output":"=== RUN   TestRecordReplayFrozenOriginalCorpus\n"}
+{"Time":"2026-10-06T11:13:27.0571376-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/hearts"}
+{"Time":"2026-10-06T11:13:27.0571376-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/hearts","Output":"=== RUN   TestRecordReplayFrozenOriginalCorpus/hearts\n"}
+{"Time":"2026-10-06T11:13:27.5522467-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/hearts","Output":"--- PASS: TestRecordReplayFrozenOriginalCorpus/hearts (0.50s)\n"}
+{"Time":"2026-10-06T11:13:27.5530869-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/hearts","Elapsed":0.5}
+{"Time":"2026-10-06T11:13:27.5530869-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-solo"}
+{"Time":"2026-10-06T11:13:27.5530869-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-solo","Output":"=== RUN   TestRecordReplayFrozenOriginalCorpus/spades-solo\n"}
+{"Time":"2026-10-06T11:13:27.9243372-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-solo","Output":"--- PASS: TestRecordReplayFrozenOriginalCorpus/spades-solo (0.37s)\n"}
+{"Time":"2026-10-06T11:13:27.9250499-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-solo","Elapsed":0.37}
+{"Time":"2026-10-06T11:13:27.9250499-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-partners"}
+{"Time":"2026-10-06T11:13:27.9250499-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-partners","Output":"=== RUN   TestRecordReplayFrozenOriginalCorpus/spades-partners\n"}
+{"Time":"2026-10-06T11:13:28.3012611-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-partners","Output":"--- PASS: TestRecordReplayFrozenOriginalCorpus/spades-partners (0.38s)\n"}
+{"Time":"2026-10-06T11:13:28.3021018-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus/spades-partners","Elapsed":0.38}
+{"Time":"2026-10-06T11:13:28.3021018-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus","Output":"--- PASS: TestRecordReplayFrozenOriginalCorpus (1.25s)\n"}
+{"Time":"2026-10-06T11:13:28.3021018-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordReplayFrozenOriginalCorpus","Elapsed":1.25}
+{"Time":"2026-10-06T11:13:28.3021018-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay"}
+{"Time":"2026-10-06T11:13:28.3021018-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay","Output":"=== RUN   TestRecordHeartsProgressionCompactReopenAndReplay\n"}
+{"Time":"2026-10-06T11:13:33.9992889-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay","Output":"--- PASS: TestRecordHeartsProgressionCompactReopenAndReplay (5.70s)\n"}
+{"Time":"2026-10-06T11:13:33.9992889-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay","Elapsed":5.7}
+{"Time":"2026-10-06T11:13:33.9992889-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings"}
+{"Time":"2026-10-06T11:13:33.9992889-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings","Output":"=== RUN   TestRecordHeartsDecisionAndRejectedCommandBindings\n"}
+{"Time":"2026-10-06T11:13:34.0506687-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings","Output":"--- PASS: TestRecordHeartsDecisionAndRejectedCommandBindings (0.05s)\n"}
+{"Time":"2026-10-06T11:13:34.0516023-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings","Elapsed":0.05}
+{"Time":"2026-10-06T11:13:34.0516023-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly"}
+{"Time":"2026-10-06T11:13:34.0516023-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly","Output":"=== RUN   TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly\n"}
+{"Time":"2026-10-06T11:13:34.1442731-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly","Output":"--- PASS: TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly (0.09s)\n"}
+{"Time":"2026-10-06T11:13:34.1442731-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly","Elapsed":0.09}
+{"Time":"2026-10-06T11:13:34.1442731-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"PASS\n"}
+{"Time":"2026-10-06T11:13:34.1492849-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"ok  \tcardford/server/internal/records\t7.262s\n"}
+{"Time":"2026-10-06T11:13:34.1492849-04:00","Action":"pass","Package":"cardford/server/internal/records","Elapsed":7.2620000000000005}

@@ -1,0 +1,136 @@
+{
+  "operation": "checked",
+  "file": "qa/implementation/multi-game/m04/hearts-parity-corpus.json",
+  "sha256": "5228fac300405533bd6e3c76a845395272cd3ed94febb6efaadf2d8c6afa5e44",
+  "bytes": 701460,
+  "cases": [
+    {
+      "id": "m04-hearts-seeded-mixed",
+      "commands": 66,
+      "checkpoints": 67,
+      "rounds": [
+        {
+          "commandIndex": 65,
+          "handNumber": 1,
+          "passDirection": "left",
+          "phase": "hand-end",
+          "points": [
+            4,
+            3,
+            19,
+            0
+          ],
+          "scores": [
+            4,
+            3,
+            19,
+            0
+          ],
+          "winner": null
+        }
+      ]
+    },
+    {
+      "id": "m04-hearts-moon-tie-then-match",
+      "commands": 333,
+      "checkpoints": 334,
+      "rounds": [
+        {
+          "commandIndex": 65,
+          "handNumber": 1,
+          "passDirection": "left",
+          "phase": "hand-end",
+          "points": [
+            0,
+            26,
+            26,
+            26
+          ],
+          "scores": [
+            0,
+            26,
+            26,
+            26
+          ],
+          "winner": null
+        },
+        {
+          "commandIndex": 132,
+          "handNumber": 2,
+          "passDirection": "right",
+          "phase": "hand-end",
+          "points": [
+            26,
+            0,
+            26,
+            26
+          ],
+          "scores": [
+            26,
+            26,
+            52,
+            52
+          ],
+          "winner": null
+        },
+        {
+          "commandIndex": 199,
+          "handNumber": 3,
+          "passDirection": "across",
+          "phase": "hand-end",
+          "points": [
+            0,
+            26,
+            26,
+            26
+          ],
+          "scores": [
+            26,
+            52,
+            78,
+            78
+          ],
+          "winner": null
+        },
+        {
+          "commandIndex": 265,
+          "handNumber": 4,
+          "passDirection": "hold",
+          "phase": "hand-end",
+          "points": [
+            26,
+            0,
+            26,
+            26
+          ],
+          "scores": [
+            52,
+            52,
+            104,
+            104
+          ],
+          "winner": null
+        },
+        {
+          "commandIndex": 332,
+          "handNumber": 5,
+          "passDirection": "left",
+          "phase": "match-end",
+          "points": [
+            0,
+            26,
+            26,
+            26
+          ],
+          "scores": [
+            52,
+            78,
+            130,
+            130
+          ],
+          "winner": 0
+        }
+      ]
+    }
+  ]
+}

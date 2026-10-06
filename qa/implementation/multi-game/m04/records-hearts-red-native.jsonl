@@ -1,0 +1,26 @@
+{"Time":"2026-10-06T11:06:47.6303417-04:00","Action":"start","Package":"cardford/server/internal/records"}
+{"Time":"2026-10-06T11:06:47.7796228-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay"}
+{"Time":"2026-10-06T11:06:47.7796228-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay","Output":"=== RUN   TestRecordHeartsProgressionCompactReopenAndReplay\n"}
+{"Time":"2026-10-06T11:06:47.8091949-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay","Output":"    hearts_progression_test.go:142: command 1: invalid closed Hearts shape\n"}
+{"Time":"2026-10-06T11:06:47.8098677-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay","Output":"--- FAIL: TestRecordHeartsProgressionCompactReopenAndReplay (0.03s)\n"}
+{"Time":"2026-10-06T11:06:47.8098677-04:00","Action":"fail","Package":"cardford/server/internal/records","Test":"TestRecordHeartsProgressionCompactReopenAndReplay","Elapsed":0.03}
+{"Time":"2026-10-06T11:06:47.8098677-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings"}
+{"Time":"2026-10-06T11:06:47.8098677-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings","Output":"=== RUN   TestRecordHeartsDecisionAndRejectedCommandBindings\n"}
+{"Time":"2026-10-06T11:06:47.8629019-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings","Output":"    hearts_progression_test.go:326: invalid closed Hearts shape\n"}
+{"Time":"2026-10-06T11:06:47.8667615-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings","Output":"--- FAIL: TestRecordHeartsDecisionAndRejectedCommandBindings (0.06s)\n"}
+{"Time":"2026-10-06T11:06:47.8667615-04:00","Action":"fail","Package":"cardford/server/internal/records","Test":"TestRecordHeartsDecisionAndRejectedCommandBindings","Elapsed":0.06}
+{"Time":"2026-10-06T11:06:47.8667615-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"FAIL\n"}
+{"Time":"2026-10-06T11:06:48.077414-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"FAIL\tcardford/server/internal/records\t0.447s\n"}
+{"Time":"2026-10-06T11:06:48.077414-04:00","Action":"fail","Package":"cardford/server/internal/records","Elapsed":0.447}
+file:///C:/repos/test-jev/scripts/windows-env.mjs:17
+    throw Error(`${exe.split(/[\\/]/).at(-1)} exited ${r.status}: ${r.stderr ?? ''}`); return r.stdout ?? ''; }
+          ^
+
+Error: go.exe exited 1: 
+    at run (file:///C:/repos/test-jev/scripts/windows-env.mjs:17:11)
+    at file:///C:/repos/test-jev/scripts/windows-env.mjs:93:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

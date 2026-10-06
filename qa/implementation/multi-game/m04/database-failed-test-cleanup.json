@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-06T15:22:22.496Z",
+  "activity": [],
+  "isolatedStoreSchemas": [
+    "m03_store_f728f2d8e922da89"
+  ],
+  "failedFixture": [
+    {
+      "game_id": "growth",
+      "owner_id": "owner-growth",
+      "revision": "22"
+    }
+  ],
+  "cleanup": "Removed only the verified isolated schema from the failed growth test"
+}

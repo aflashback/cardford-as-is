@@ -83,7 +83,7 @@ func TestSnapshotOpeningParityAndIsolation(t *testing.T) {
 		t.Fatal("input mutation affected snapshot")
 	}
 	if _, err = opened.Apply(command); err == nil {
-		t.Fatal("unsupported later Hearts continuation accepted")
+		t.Fatal("duplicate sealed pass accepted")
 	}
 	good, _ := opened.Export()
 	var m map[string]any

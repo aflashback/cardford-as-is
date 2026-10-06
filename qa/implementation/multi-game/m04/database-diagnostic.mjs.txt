@@ -1,0 +1,24 @@
+import pg from 'pg';
+import { writeFileSync } from 'node:fs';
+const url = new URL(process.env.TEST_DATABASE_URL);
+if (url.hostname !== '127.0.0.1' || url.port !== '54331' || url.pathname !== '/cardford_windows_test') throw Error('Unexpected diagnostic database');
+const client = new pg.Client({ connectionString: url.href, connectionTimeoutMillis: 5000, query_timeout: 5000 });
+try {
+  await client.connect();
+  const activity = await client.query(`SELECT pid, application_name, state, wait_event_type, wait_event,
+    extract(epoch from now()-xact_start)::int AS transaction_seconds,
+    pg_blocking_pids(pid) AS blockers FROM pg_stat_activity
+    WHERE datname=current_database() AND pid<>pg_backend_pid() ORDER BY pid`);
+  const schemas = await client.query(`SELECT nspname FROM pg_namespace WHERE nspname LIKE 'm03_store_%' ORDER BY nspname`);
+  const result = { checkedAt: new Date().toISOString(), activity: activity.rows, isolatedStoreSchemas: schemas.rows.map(r=>r.nspname) };
+  if (process.argv.includes('--cleanup')) {
+    if (activity.rowCount !== 0 || schemas.rows.length !== 1 || schemas.rows[0].nspname !== 'm03_store_f728f2d8e922da89') throw Error('Unexpected test activity or schema inventory');
+    const saved = await client.query(`SELECT game_id, owner_id, revision FROM m03_store_f728f2d8e922da89.m03_games`);
+    if (saved.rows.length !== 1 || saved.rows[0].game_id !== 'growth' || saved.rows[0].owner_id !== 'owner-growth') throw Error('Unexpected retained fixture');
+    result.failedFixture = saved.rows;
+    await client.query('DROP SCHEMA m03_store_f728f2d8e922da89 CASCADE');
+    result.cleanup = 'Removed only the verified isolated schema from the failed growth test';
+  }
+  writeFileSync('qa/implementation/multi-game/m04/database-'+(process.argv.includes('--cleanup') ? 'failed-test-cleanup' : 'after-initial-failure')+'.json', JSON.stringify(result,null,2)+'\n');
+  console.log(JSON.stringify(result));
+} finally { await client.end(); }

@@ -1,0 +1,36 @@
+=== RUN   TestOriginalCorpus
+=== RUN   TestOriginalCorpus/hearts
+    parity_test.go:93: compatibility replay budget exceeded
+=== RUN   TestOriginalCorpus/spades-solo
+    parity_test.go:98: 210 exact checkpoints, all four actors
+=== RUN   TestOriginalCorpus/spades-partners
+    parity_test.go:98: 210 exact checkpoints, all four actors
+=== RUN   TestOriginalCorpus/original-hand-1
+=== RUN   TestOriginalCorpus/original-hand-2
+=== RUN   TestOriginalCorpus/original-hand-3
+=== RUN   TestOriginalCorpus/original-hand-4
+=== RUN   TestOriginalCorpus/complete-moon
+--- FAIL: TestOriginalCorpus (12.66s)
+    --- FAIL: TestOriginalCorpus/hearts (0.00s)
+    --- PASS: TestOriginalCorpus/spades-solo (6.26s)
+    --- PASS: TestOriginalCorpus/spades-partners (6.39s)
+    --- PASS: TestOriginalCorpus/original-hand-1 (0.00s)
+    --- PASS: TestOriginalCorpus/original-hand-2 (0.00s)
+    --- PASS: TestOriginalCorpus/original-hand-3 (0.00s)
+    --- PASS: TestOriginalCorpus/original-hand-4 (0.00s)
+    --- PASS: TestOriginalCorpus/complete-moon (0.00s)
+FAIL
+FAIL	cardford/server/internal/compatibility	12.911s
+FAIL
+file:///C:/repos/test-jev/scripts/windows-env.mjs:17
+    throw Error(`${exe.split(/[\\/]/).at(-1)} exited ${r.status}: ${r.stderr ?? ''}`); return r.stdout ?? ''; }
+          ^
+
+Error: go.exe exited 1: 
+    at run (file:///C:/repos/test-jev/scripts/windows-env.mjs:17:11)
+    at file:///C:/repos/test-jev/scripts/windows-env.mjs:93:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

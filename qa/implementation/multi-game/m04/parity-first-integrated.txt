@@ -1,0 +1,31 @@
+=== RUN   TestOriginalCorpus
+=== RUN   TestOriginalCorpus/hearts
+    parity_test.go:137: 267 exact checkpoints, all four actors; bounded reopen every 64 commands
+=== RUN   TestOriginalCorpus/spades-solo
+    parity_test.go:137: 210 exact checkpoints, all four actors; bounded reopen every 64 commands
+=== RUN   TestOriginalCorpus/spades-partners
+    parity_test.go:137: 210 exact checkpoints, all four actors; bounded reopen every 64 commands
+=== RUN   TestOriginalCorpus/original-hand-1
+=== RUN   TestOriginalCorpus/original-hand-2
+=== RUN   TestOriginalCorpus/original-hand-3
+=== RUN   TestOriginalCorpus/original-hand-4
+=== RUN   TestOriginalCorpus/complete-moon
+--- PASS: TestOriginalCorpus (9.20s)
+    --- PASS: TestOriginalCorpus/hearts (4.38s)
+    --- PASS: TestOriginalCorpus/spades-solo (2.37s)
+    --- PASS: TestOriginalCorpus/spades-partners (2.44s)
+    --- PASS: TestOriginalCorpus/original-hand-1 (0.00s)
+    --- PASS: TestOriginalCorpus/original-hand-2 (0.00s)
+    --- PASS: TestOriginalCorpus/original-hand-3 (0.00s)
+    --- PASS: TestOriginalCorpus/original-hand-4 (0.00s)
+    --- PASS: TestOriginalCorpus/complete-moon (0.00s)
+=== RUN   TestM04HeartsCorpus
+=== RUN   TestM04HeartsCorpus/m04-hearts-seeded-mixed
+    parity_test.go:183: 67 exact checkpoints, all four actors; bounded reopen every 64 commands
+=== RUN   TestM04HeartsCorpus/m04-hearts-moon-tie-then-match
+    parity_test.go:183: 334 exact checkpoints, all four actors; bounded reopen every 64 commands
+--- PASS: TestM04HeartsCorpus (7.12s)
+    --- PASS: TestM04HeartsCorpus/m04-hearts-seeded-mixed (0.49s)
+    --- PASS: TestM04HeartsCorpus/m04-hearts-moon-tie-then-match (6.62s)
+PASS
+ok  	cardford/server/internal/compatibility	16.469s

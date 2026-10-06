@@ -357,8 +357,13 @@ func TestRecordHeartsSealedOpeningRestoresKnownHoldings(t *testing.T) {
 			t.Fatal("remembered outgoing holdings lost")
 		}
 	}
-	if _, _, err = c.Advance(next, restored, []byte(`{"type":"action","action":{"kind":"play","seat":1,"card":"C2"}}`)); err == nil {
-		t.Fatal("opening-only Hearts implementation silently advanced play")
+	// Dealer 0 deals C2 to seat 1; that seat passes it left to seat 2.
+	played, playEvents, err := c.Advance(next, restored, []byte(`{"type":"action","action":{"kind":"play","seat":2,"card":"C2"}}`))
+	if err != nil {
+		t.Fatal("legal Hearts play did not advance after the sealed pass:", err)
+	}
+	if played.Revision != next.Revision+1 || played.Checkpoint.EventCount != next.Checkpoint.EventCount+1 || len(playEvents) != 1 {
+		t.Fatal("Hearts play lost its accepted revision or event")
 	}
 }
 func TestRecordReplayFrozenOriginalCorpus(t *testing.T) {
@@ -378,9 +383,6 @@ func TestRecordReplayFrozenOriginalCorpus(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, f := range fixtures.Cases {
-		if !strings.HasPrefix(f.Config.Mode, "spades-") {
-			continue
-		}
 		t.Run(f.Config.Mode, func(t *testing.T) {
 			c := codecFixture(t, f.Config.Mode)
 			m := PracticeMetadata(f.Config.Mode, f.Config.ID, "owner", codecPolicy())

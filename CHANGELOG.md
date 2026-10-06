@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-06 M04A
+
+Complete the original Go Hearts rules, player-safe observations and compact save/replay path beyond opening passing. Preserve V1 state/events/candidates, all passing directions, scoring/moon/tied-match behavior and original saved decisions. Independent fixtures verify 668 Hearts checkpoints; native Go/race and durable next-hand recovery pass. Strict compact imports now reject `events:null`. [Evidence, initial database failure and remaining M04 gates](qa/implementation/multi-game/m04/status.md). The existing UI and TypeScript service remain active while exact policy and service ports continue.
+
 ## Unreleased — 2026-10-06 M03
 
 Add private Go/PostgreSQL versioned records, exact replay anchors, compact current snapshots, append-only history, immutable original advice and atomic command/allowance receipts. Durable work now has duplicate suppression, finite attempt leases, stale-result fences and explicit retry; grant/trial/unit records preserve purchased terms and original charges. Migration 007 shares the existing Node migration ledger. [M03 scope, verification and limits](qa/implementation/multi-game/m03/status.md). The current TypeScript app and UI remain active; M04 owns replacement-service integration.

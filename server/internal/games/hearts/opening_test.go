@@ -43,7 +43,7 @@ func TestOpeningBoundaries(t *testing.T) {
 		t.Fatal(e)
 	}
 	if _, e = Apply(after, b); e == nil {
-		t.Fatal("accepted unsupported continuation")
+		t.Fatal("accepted duplicate sealed pass")
 	}
 	if _, e = Apply(raw, json.RawMessage(`{"type":"action","action":{"kind":"pass-bundle","passes":[]}}`)); e == nil {
 		t.Fatal("accepted incomplete bundle")

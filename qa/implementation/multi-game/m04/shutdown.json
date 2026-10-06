@@ -1,0 +1,7 @@
+{
+  "checkedAt": "2026-10-06T15:31:26.8113383Z",
+  "command": "node scripts/windows-env.mjs pg:stop",
+  "exitCode": 0,
+  "remainingProjectDatabaseListeners": 0,
+  "note": "The task-started native PostgreSQL cluster stopped gracefully; data retained. All verification processes returned completion."
+}

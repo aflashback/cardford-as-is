@@ -1,5 +1,9 @@
 # Foundation and partnership change log
 
+## M04A original Go Hearts prerequisite
+
+[Evidence](m04/status.md) records full rules/projection/storage parity, 668 exact Hearts checkpoints, strict corruption/rejection tests, compact replay and actual next-hand receipt/advice recovery. Native full Go, race and targeted original TS/contract checks pass; the initial unchanged-Spades database timeout is preserved with its passing rerun and unresolved cause. Original policy execution and full service/client activation remain the next M04 work.
+
 ## M02 current-game extraction
 
 The owner's next-item instruction authorizes current-game modules and V1 compatibility. [M02 change log](m02/CHANGELOG.md) records the scoped MG-02/MG-03/MG-04/MG-09 changes; [M02 status](m02/status.md) records acceptance and deferred M03–M04 work. Original M00–M01 results and partnership archives remain preserved.

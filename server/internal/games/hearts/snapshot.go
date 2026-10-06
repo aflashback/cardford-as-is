@@ -4,17 +4,12 @@ import (
 	"cardford/server/internal/gamekernel"
 	"encoding/json"
 	"fmt"
-	"strings"
 )
 
 type snapshot struct{ state *state }
 
 func Start(config json.RawMessage, deal []string) (gamekernel.Snapshot, error) {
 	s, err := createState(config, deal)
-	if err != nil {
-		return nil, err
-	}
-	s, err = checkedState(*s)
 	if err != nil {
 		return nil, err
 	}
@@ -30,10 +25,6 @@ func Open(raw json.RawMessage) (gamekernel.Snapshot, error) {
 func (s *snapshot) Export() (json.RawMessage, error) { return json.Marshal(s.state) }
 func (s *snapshot) Apply(command json.RawMessage) (gamekernel.Snapshot, error) {
 	next, err := applyTo(cloneState(s.state), command)
-	if err != nil {
-		return nil, err
-	}
-	next, err = checkedState(*next)
 	if err != nil {
 		return nil, err
 	}
@@ -55,11 +46,7 @@ func (s *snapshot) Project(seat int) (gamekernel.Projection, error) {
 	}
 	ids := []string{}
 	for _, a := range choices {
-		if a.Kind == "pass" {
-			ids = append(ids, "pass:"+strings.Join(a.Cards, ","))
-		} else {
-			ids = append(ids, "play:"+a.Card)
-		}
+		ids = append(ids, actionID(a))
 	}
 	return gamekernel.Projection{Observation: ob, View: v, CandidateIDs: ids}, nil
 }
@@ -88,5 +75,12 @@ func cloneState(s *state) *state {
 		n.History[i] = Trick{Plays: append([]Play{}, t.Plays...), Winner: t.Winner}
 	}
 	n.Events = append([]event{}, s.Events...)
+	if s.HandResult != nil {
+		r := *s.HandResult
+		if r.Winner != nil {
+			r.Winner = ptr(*r.Winner)
+		}
+		n.HandResult = &r
+	}
 	return &n
 }

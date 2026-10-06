@@ -8,6 +8,8 @@
 
 M00–M02 and their evidence stand. M02A now precedes future backend implementation in M03/M04/M05. M03 and M05 can then progress independently against frozen contracts; M04 integrates the durable service and preserved frontend. M06 must exercise the actual replacement service/storage/client path, including the non-card conformance fixture. New games, evaluation and promotion retain their existing gates.
 
+**M04 execution:** the [current sequence](m04-execution.md) first closes the original Go Hearts opening-only gap, then preserves exact policy behavior and freezes the missing service/client envelopes before activation. [M04 evidence](../../../qa/implementation/multi-game/m04/status.md) distinguishes this prerequisite from full service acceptance. Storage policy registration is not reasoning implementation; the `Snapshot` replay seam is not the V2 `BoundSession` contract.
+
 Use one root Go module for the planned `server/` tree: `cmd/cardford`, `internal/gamekernel`, `internal/games/{hearts,spades}`, `internal/records`, `internal/http`, `internal/analysis`, `internal/access` and `internal/providers`. M02A freezes these package ownership boundaries. Its implemented subset is the private `cmd/m02a` harness, contracts, game kernel, Spades, opening Hearts, HTTP and disposable records adapters; the production entry point and remaining packages are future work, not a microservice design. No game package imports HTTP, billing or another game's tactics. Game adapters can use small shared arithmetic/seat primitives; public DTOs stay independent from private state.
 
 | Existing plan/reference | Replacement responsibility |

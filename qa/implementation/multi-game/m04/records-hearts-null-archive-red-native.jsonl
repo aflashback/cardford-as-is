@@ -1,0 +1,22 @@
+{"Time":"2026-10-06T11:14:36.493861-04:00","Action":"start","Package":"cardford/server/internal/records"}
+{"Time":"2026-10-06T11:14:36.7442816-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordHeartsRejectsNullCompactEventPlaceholder"}
+{"Time":"2026-10-06T11:14:36.7448621-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsRejectsNullCompactEventPlaceholder","Output":"=== RUN   TestRecordHeartsRejectsNullCompactEventPlaceholder\n"}
+{"Time":"2026-10-06T11:14:36.7464299-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsRejectsNullCompactEventPlaceholder","Output":"    hearts_progression_test.go:436: compact events:null accepted instead of required empty array\n"}
+{"Time":"2026-10-06T11:14:36.7469543-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsRejectsNullCompactEventPlaceholder","Output":"    hearts_progression_test.go:439: archive import silently normalized malformed compact events:null\n"}
+{"Time":"2026-10-06T11:14:36.7469543-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordHeartsRejectsNullCompactEventPlaceholder","Output":"--- FAIL: TestRecordHeartsRejectsNullCompactEventPlaceholder (0.00s)\n"}
+{"Time":"2026-10-06T11:14:36.7469543-04:00","Action":"fail","Package":"cardford/server/internal/records","Test":"TestRecordHeartsRejectsNullCompactEventPlaceholder","Elapsed":0}
+{"Time":"2026-10-06T11:14:36.7469543-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"FAIL\n"}
+{"Time":"2026-10-06T11:14:36.9546887-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"FAIL\tcardford/server/internal/records\t0.461s\n"}
+{"Time":"2026-10-06T11:14:36.9546887-04:00","Action":"fail","Package":"cardford/server/internal/records","Elapsed":0.461}
+file:///C:/repos/test-jev/scripts/windows-env.mjs:17
+    throw Error(`${exe.split(/[\\/]/).at(-1)} exited ${r.status}: ${r.stderr ?? ''}`); return r.stdout ?? ''; }
+          ^
+
+Error: go.exe exited 1: 
+    at run (file:///C:/repos/test-jev/scripts/windows-env.mjs:17:11)
+    at file:///C:/repos/test-jev/scripts/windows-env.mjs:93:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

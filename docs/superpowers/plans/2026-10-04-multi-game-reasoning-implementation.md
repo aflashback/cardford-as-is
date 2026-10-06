@@ -160,6 +160,10 @@ Execute the [M02A checklist](../../../planning/implementation/multi-game/backend
 
 **Owner:** backend + frontend after M02A freeze; integrator owns shared edits. **Requirements:** MG-04–06, MG-09, MG-15–18, SYS-04–05/SYS-07–12. **Dependencies:** M02A/M03.
 
+**Started 6 October 2026:** follow the [M04 execution sequence](../../../planning/implementation/multi-game/m04-execution.md). The first step completes the original Go Hearts rules/observation/storage port; M02A's opening-only adapter cannot run a hand. Original policy execution and V2 session/platform envelopes must then pass their own gates before service activation. This prerequisite step does not complete the end-to-end checklist below. [Current evidence](../../../qa/implementation/multi-game/m04/status.md).
+
+- [x] M04A prerequisite: complete original Go Hearts rules, actor-safe projection and compact persistence; independent original/new corpus and native Go/race/SQL checks passed. Continue with exact original policies and V2 session/platform contracts; full M04 remains open.
+
 **Modify:** `web/server/http/game-service.ts`, `views.ts`, `app.ts`, `trial-service.ts`, `web/src/App.tsx`, `api/useSession.ts`, `api/display.ts`, `features/ReviewPanel.tsx`; affected schema generation. **Create:** `web/src/games/registry.tsx`, `hearts.tsx`, `spades.tsx`, `web/server/tests/module-service.test.ts`, `web/e2e/module-migration.spec.ts`.
 
 **Additional files/interfaces:** the [launch/client packet](../../../planning/implementation/multi-game/launch-access-and-client.md) names the demo service/content, offer resolver, platform port, account/client changes and acceptance tests. Split these into focused reviewed commits inside M04; freeze shared DTOs in M01.

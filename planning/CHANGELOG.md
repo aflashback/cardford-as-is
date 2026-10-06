@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-06 — M04A Hearts prerequisite and integration sequence
+
+The owner authorized the next M04 step. Review found the Go Hearts adapter could offer its first play but could not execute it. [M04A evidence](../qa/implementation/multi-game/m04/status.md) now accepts the complete original rules/observation/storage port. The [execution sequence](implementation/multi-game/m04-execution.md) makes original policy execution, V2 session/platform envelopes, access/demo and actual Go service/client recovery explicit prerequisites to activation. Go + PostgreSQL remains the single replacement backend; Node remains frontend tooling and the temporary original service/reference. Keep the reproduced native database timeout follow-up visible; the unchanged rerun passed without relaxing limits. No UI redesign or completed-M04 claim.
+
 ## 2026-10-06 — Comparison closeout and M03 durable records
 
 The owner authorized comparison cleanup, local environment selection and M03. Native Windows is now the default for subsequent local work; the historical Podman test container was stopped and its data retained. [Cleanup inventory and M03 evidence](../qa/implementation/multi-game/m03/status.md) distinguish completed checks from later activation. The [private record contract](implementation/multi-game/private-records.md) freezes versioned metadata, replay, decisions, work attempts, recovery and access-unit/allowance behavior. Go implements this responsibility under CR-ARCH-003; the old TypeScript file list remains a regression reference. M04 owns HTTP/client activation and the offer resolver; full game/policy parity, hosting, providers and human evaluation keep their separate gates.
