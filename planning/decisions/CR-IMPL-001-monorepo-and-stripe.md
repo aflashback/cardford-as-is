@@ -2,6 +2,8 @@
 
 **Recorded:** 27 September 2026. **Status:** owner direction confirmed; implementation has not been initiated by this planning request.
 
+**Later amendment, 5 October 2026:** [CR-ARCH-003](CR-ARCH-003-backend-stack-and-system-readiness.md) supersedes only IMPL-02's TypeScript-only backend restriction with a Go/PostgreSQL target and M02A compatibility gate; Rust is the alternative. Keep one repository, generated public schemas, server authority, the existing React UI and the other requirements below. This record's implementation-not-started status describes its original planning date; the current local app and M00–M02 evidence are linked from the [handoff](../IMPLEMENTATION-START-HERE.md).
+
 ## Owner decisions
 
 The owner requested an implementation plan based on all current artifacts, highlighting design patterns, best practices and principles, assuming a simple monorepo. When asked which baseline governs, the owner selected **“Latest Tricks Coach planning, with earlier safeguards retained.”** The owner then clarified: **“subscription management can be done within the app but payment will be with stripe”.**

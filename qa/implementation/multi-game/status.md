@@ -1,6 +1,8 @@
 # Multi-game architecture execution
 
-Current slice: [M02 current-game modules](m02/status.md), branch `codex/current-game-modules-m02`, start `ea09f81`. M02 is complete: native Hearts/Spades modules, strict readers, parity and independent review passed; full Linux/WSL acceptance passed 449/449 from a byte-identical VM-native copy. Windows contracts/typecheck/build passed separately. Earlier Windows connection errors and mounted-source wall-cap failures remain recorded, with unchanged assertions/thresholds. Windows connectivity and latency remain unverified by the Linux result. Temporary tunnels were removed; tests use the original isolated test database. M03 persistence and prepared work is next, followed by M04 service/client integration. Human reviews and live Jev comparisons remain deferred.
+Latest completed implementation: [M02 current-game modules](m02/status.md), branch `codex/current-game-modules-m02`, start `ea09f81`. M02 is complete: native Hearts/Spades modules, strict readers, parity and independent review passed; full Linux/WSL acceptance passed 449/449 from a byte-identical VM-native copy. Windows contracts/typecheck/build passed separately. Earlier Windows connection errors and mounted-source wall-cap failures remain recorded, with unchanged assertions/thresholds. Windows connectivity and latency remain unverified by the Linux result. Temporary tunnels were removed; tests use the original isolated test database.
+
+**Next: M02A**, following the [system review](system-review-2026-10-05.md) and [CR-ARCH-003](../../../planning/decisions/CR-ARCH-003-backend-stack-and-system-readiness.md): version-aware budget repair and Go/PostgreSQL compatibility, then M03/M04 integration. See the amendment below. Human reviews and live Jev comparisons remain deferred.
 
 ## M00–M01 and partnership record
 
@@ -67,4 +69,8 @@ The verifier records exact command, exit code, counts, elapsed time, versions an
 - One React frontend with platform/transport port and reconnect reconciliation.
 - Bounded provider/decision work, explicit failure/cutoff, usable keyboard/touch controls.
 
-These are acceptance targets; M00–M01 do not mark them implemented. M02 acceptance is recorded separately. The next implementation milestone is M03 persistence, then M04 production dispatch/client integration.
+These are acceptance targets; M00–M01 do not mark them implemented. M02 acceptance is recorded separately.
+
+## System review amendment — 5 October 2026
+
+The later [system review](system-review-2026-10-05.md) examined `aa36c855` without changing application code or rerunning the full suite. It reproduced the evaluator's terminal-root budget violation and identified concrete durable-record, preparation, recovery and growth gaps. [CR-ARCH-003](../../../planning/decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) adds **M02A as the next milestone**: version-aware budget correction and a Go/PostgreSQL compatibility slice, preserving the React UI and TypeScript reference. M03 persistence and M04 production dispatch/client integration follow that gate; M05 can run after M02A. The [backend readiness packet](../../../planning/implementation/multi-game/backend-readiness.md) owns pending SYS-01–12 acceptance. This amendment is planning/review evidence only; M02A and the runtime corrections are not implemented.

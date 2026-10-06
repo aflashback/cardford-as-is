@@ -4,7 +4,7 @@
 
 The owner wants one simple monorepo, the latest CardFord specification, the existing user experience, in-app subscription management and Stripe payments. Do not restart product ideation or request a visual redesign. The current table and interactions are good enough to build on.
 
-**Current architecture work:** the [multi-game reasoning plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) defines M00–M12 and its contract/case/game packets. M00–M02 and the targeted partnership slice have recorded acceptance; [M02 evidence](../qa/implementation/multi-game/m02/status.md) records completed current-game extraction and its platform-specific test results. The next milestone is M03 validated persistence and prepared work, followed by M04 service/client integration. Preserve current rules, original saved advice and policy pins. Remaining Tarneeb profile questions gate its branch only.
+**Current architecture work:** the [multi-game reasoning plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) defines the current milestones and contract/case/game packets. M00–M02 and the targeted partnership slice have recorded acceptance; [M02 evidence](../qa/implementation/multi-game/m02/status.md) records completed game-owned TypeScript extraction and its platform-specific test results. [CR-ARCH-003](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) now makes Go with PostgreSQL the preferred replacement backend, with TypeScript retained as the working reference. The next milestone is **M02A backend contracts and one compatibility slice**, defined by [backend readiness](implementation/multi-game/backend-readiness.md), before M03/M04/M05 backend implementation. This review authorizes planning, not a runtime port. Preserve React/Vite, current rules, original saved advice and policy pins. Remaining Tarneeb profile questions gate its branch only.
 
 **Launch/client amendment:** [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) adds online demo, configurable free/access-trial/paid grant preparation, frontend reuse readiness and basic first-app quality to the current plan. Final offers and native packaging remain later selections. [CR-FUTURE-001](11-future-play-and-membership.md) still leaves human matching/ratings outside this work.
 
@@ -12,15 +12,15 @@ The owner wants one simple monorepo, the latest CardFord specification, the exis
 
 1. Read root [AGENTS.md](../AGENTS.md) and its required original-spec sequence for the preserved engineering safeguards. Its old scope conflicts are resolved by the later explicit owner decision below; do not silently restore the Spades-only product.
 2. Read [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md). This records the owner's current authority, B2C focus, UX preservation and Stripe choice.
-3. Read sections 1–5 of the [monorepo implementation plan](2026-09-27-monorepo-implementation-plan.md), then the work packet you will execute and its prerequisites.
-4. Read the full current spec for that packet and the relevant [requirements/tests](implementation/requirements-and-tests.md). `planning/README.md` is the current artifact map. Historical docs, diagrams and synthetic examples are supporting inputs, not proof of implementation.
+3. Read [CR-ARCH-003](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md), the [multi-game plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md), [backend readiness/M02A](implementation/multi-game/backend-readiness.md), and current [multi-game status](../qa/implementation/multi-game/status.md). The earlier [monorepo plan](2026-09-27-monorepo-implementation-plan.md) remains the local-build and release reference; its backend-language assumptions are superseded.
+4. Read the full current spec for that packet and the relevant [requirements/tests](implementation/requirements-and-tests.md), [MG requirements](implementation/multi-game/compatibility-and-requirements.md), and SYS acceptance register in the backend packet. `planning/README.md` is the current artifact map. Historical docs, diagrams and synthetic examples are supporting inputs, not proof of implementation.
 5. Inspect actual files, local modifications, workspace scripts and prior `qa/implementation/` reports. Recheck completed work rather than relying on a stale checkbox. Inspect the latest UI screenshots and current code before editing UI.
 
 ## How to start and resume
 
-When the owner initiates implementation, start **W00**, then **W01**. If work already exists, select the earliest unfinished packet whose dependencies have executable evidence. Do not redo completed packets or replace existing work without inspection. W01 contract freeze is required before independent frontend/backend implementations diverge.
+Use the current M00–M02 evidence; do not restart W00/W01 or regenerate frozen expectations. When the owner initiates the next implementation work, start **M02A**: correct the demonstrated work-cap defect with version-aware evidence, freeze portable contracts and tooling, and prove one bounded Go/PostgreSQL compatibility slice. M03/M04/M05 follow that gate. No backend port is started by this review.
 
-Track packet status in `qa/implementation/status.md` when W00 creates that file. Use `not-started`, `in-progress`, `passed`, `blocked` or `partial`; record source revision/hashes and evidence links. A checkbox alone is not evidence. W05A and W05B are separate checkpoints. A packet whose live test lacks credentials may be partial with fixtures passed; do not mark live integration complete.
+Track current milestones in `qa/implementation/multi-game/status.md`, with M02A evidence under `qa/implementation/multi-game/m02a/`. Keep the existing `qa/implementation/status.md` as local-build/release evidence. Use `not-started`, `in-progress`, `passed`, `blocked` or `partial`; record source revision/hashes and evidence links. A checkbox alone is not evidence. A packet whose live test lacks credentials may be partial with fixtures passed; do not mark live integration complete. Existing Node commands remain TypeScript regression/oracle checks; the replacement path requires its own pinned Go/schema/differential checks before acceptance.
 
 For each packet:
 
@@ -48,25 +48,24 @@ Latest visual references: [desktop](../web/qa/ui-v1-desktop.png), [phone](../web
 
 ## Implementation boundaries
 
-Keep the existing `web/` project; one root workspace and lockfile. Server owns engine, private state, strategy, access and payment records; shared folders contain public schemas/generated types/display utilities only. Use PostgreSQL integration tests from the first durable slice. Local mock identity/grants are explicit and prohibited in hosted startup.
+Keep the existing `web/` React/Vite project and JavaScript lockfile in one repository. M02A freezes one Go module and backend package boundaries; Go tooling does not replace the npm lockfile. Server owns engine, private state, strategy, access and payment records; public JSON Schema remains the sole wire-contract source for generated Go and TypeScript bindings. Use PostgreSQL integration tests from the first durable slice. TypeScript remains the reference until replacement paths pass their gates; no dual authoritative writers or permanent hybrid is assumed. Local mock identity/grants are explicit and prohibited in hosted startup.
 
 Build ordinary local-code play first. Jev is optional and off by default; shadow cannot affect users or grades. Keep the complete legal set, observation-only strategy, independent assessment and honest provenance. No runtime generative coach or alternative model.
 
 Stripe collects payments and handles billing integration. Build ordinary plan/status/change/cancel/resume management in the app. Server-bound purchase records, verified Stripe events and reconciliation grant coverage; success URLs and client flags do not. Proposed prices/currency are not approved live offers.
 
-Separate initial product delivery from operations growth: no fleet, message broker, sharding or multi-region infrastructure during W00–W08. Use small SQL-backed jobs and one application with optional worker entrypoints. W19 owns the existing paid-launch reliability/capacity gates; larger tiers are future evidence gates.
+Separate functional delivery from operations growth: implement bounded service work and durable recovery under the backend packet. Hosting vendors, deployment, fleet, message broker, sharding, production SLOs and larger capacity campaigns remain deferred. W19 retains the existing paid-launch safeguards; native packaging and human evaluation have their own later gates.
 
 ## Known starting facts
 
-- Historical baseline: 38 prototype tests passed on 26 September 2026; this planning task did not rerun them. Rerun at W00.
-- The original 56-file pack and 7 recorded prototype source/test hashes matched during planning review.
-- `web/src/App.tsx` still imports the engine/coach and stores authoritative state in the browser; that is precisely the migration target.
-- Structured events are insufficient for full bid/pass replay; add them before claiming historical review.
-- No Git repository was present when the plan was written. W00 establishes version control when build begins; do not invent commit IDs.
-- No hosted identity/Stripe/Jev/load/physical-device/pilot acceptance is complete. All proposed scripts and test files need to be implemented by their owning packet.
+- The current TypeScript service owns rules, private state and PostgreSQL records; React receives the human hand and public information. Ordinary code coaching, replay and isolated review continuations exist. Identity and billing remain local fixtures; Jev is off.
+- M02 reports 449/449 Linux/WSL acceptance and separate passing Windows contracts/typecheck/build. Earlier Windows connectivity and mounted-source timing failures remain recorded; the Linux result does not establish Windows latency.
+- V2 persistence and HTTP/client activation, online demo, configurable offers and full recovery acceptance remain unfinished. M02A precedes their replacement-backend implementation.
+- The [system review](../qa/implementation/multi-game/system-review-2026-10-05.md) separates inspected defects from planned activation gaps. No Go/Rust service or language benchmark has been delivered.
+- The 38-test browser-local prototype baseline and original pack are historical evidence, not current service architecture. Hosted identity/Stripe, production capacity, physical devices and independent strategy/learning claims retain separate gates.
 
 ## Copyable implementation kickoff
 
-> Implement the next ready work packet from `planning/IMPLEMENTATION-START-HERE.md` and `planning/2026-09-27-monorepo-implementation-plan.md`, starting W00/W01 if no implementation evidence exists. Preserve the current B2C table/coaching UX. Use `planning/implementation/requirements-and-tests.md` for requirement IDs, fixtures and acceptance. Keep one simple monorepo, server-owned state and Stripe payments with in-app subscription management. Complete the packet's implementation and meaningful tests, update its evidence/status, then continue within the authorized scope. Do not activate live charges/deployment, change approved rule/safety semantics, invent test results, or expose credentials.
+> When implementation is authorized, execute M02A from `planning/implementation/multi-game/backend-readiness.md` under CR-ARCH-003 and the current multi-game plan. Preserve the React/Vite table/coaching UX and completed M00–M02 evidence. Use Go/PostgreSQL as the preferred replacement target and TypeScript as the independent reference; freeze portable schemas/semantics and prove the bounded compatibility slice before M03/M04/M05. Use MG/SYS and existing requirement IDs, record exact checks and mismatches, and update milestone evidence. Do not activate hosting/live charges, silently change frozen policy/rule semantics, invent tests or benchmarks, or expose credentials.
 
-The kickoff is a handoff prompt. The owner has since authorized local implementation; use current evidence to find unfinished work. Real identity, Stripe service acceptance, validated strategic grading, devices/pilot and paid launch are distinct from a working local fixture build.
+The kickoff is for a later implementation turn; this review changes plans and handoff only. Current local implementation remains usable. Real identity, Stripe service acceptance, validated strategic grading, devices/pilot and paid launch are distinct from a working local fixture build.

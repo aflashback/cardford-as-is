@@ -1,5 +1,7 @@
 # CardFord Monorepo Implementation Plan
 
+**Current execution amendment, 5 October 2026:** this W00–W19 plan is the historical local-build/release reference. The local app and M00–M02 foundations now exist. Use the [current multi-game plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) and [M02A backend packet](implementation/multi-game/backend-readiness.md) for next work. [CR-ARCH-003](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) supersedes the Node/TypeScript-only backend assumption below with a Go/PostgreSQL target and compatibility gate; preserve the existing React/Vite UI, public schemas, current evidence and the release requirements. Hosting/nonfunctional implementation remains deferred in the current review scope.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans to implement this plan task-by-task after the owner initiates the build. Steps use checkbox (`- [ ]`) syntax for tracking. Do not treat this planning request as build authorization.
 
 **Goal:** Turn the existing three-mode browser prototype into a reliable, server-authoritative CardFord application with useful coaching, current-game review, authenticated membership, in-app subscription management and Stripe payments.

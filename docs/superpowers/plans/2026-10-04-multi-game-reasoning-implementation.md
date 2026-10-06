@@ -4,13 +4,15 @@
 
 **Goal:** Make the real application support game-owned rules and information-faithful reasoning, preserve current play, and provide maintainable cases/evaluation for Spades, standard Tarneeb Partners and Jawaker Trix Solo/Complex Partners.
 
-**Architecture:** Migrate the production service to typed, versioned registered modules inside the existing monorepo. Retain storage/access/command infrastructure and original evidence; replace the world-consuming, round-only planning boundary while retaining useful budget/pairing arithmetic. Bots and coach consume the same game-owned analysis; strategic improvements require independent evidence.
+**Architecture:** Migrate the production service to typed, versioned registered modules inside the existing monorepo. Preserve storage/access/command semantics and original evidence while correcting the documented persistence/workflow gaps; replace the world-consuming, round-only planning boundary while retaining useful budget/pairing arithmetic. Bots and coach consume the same game-owned analysis; strategic improvements require independent evidence.
 
-**Tech Stack:** Existing Node 24, strict TypeScript, React/Vite, Fastify, PostgreSQL, JSON Schema/Ajv, Node test runner and Playwright; retain the installed lockfile. Current package declarations use TypeScript 5.9 and React 19.1, rather than the original speculative dependency floors. No dependency upgrade is required by this plan.
+**Tech Stack:** Current reference: Node 24, strict TypeScript, React/Vite, Fastify, PostgreSQL, JSON Schema/Ajv, Node tests and Playwright. Target backend: **Go + PostgreSQL**, with Rust as the evidence-backed alternative under [CR-ARCH-003](../../../planning/decisions/CR-ARCH-003-backend-stack-and-system-readiness.md). Preserve React/Vite and the installed JavaScript lockfile. M02A freezes the Go toolchain and portable contracts before further backend implementation. Current TypeScript paths/commands below remain historical implementation locations and regression references; the [backend packet's source mapping](../../../planning/implementation/multi-game/backend-readiness.md#delivery-order-and-file-ownership) governs future backend destinations and adds Go/cross-runtime checks. No frontend dependency upgrade is required.
 
 **Spec:** [Interview/research packet](../../../planning/research/2026-10-04-card-game-architecture-interview/README.md), [platform contract](../../12-multi-game-extensibility.md), [current reasoning](../../../planning/12-spades-reasoning.md), CR-STRAT-006–010 and the owner's recorded [Jawaker rule selection](../../../planning/research/2026-10-04-card-game-architecture-interview/08-standard-rule-reconciliation.md).
 
 **Owner amendment:** [CR-IMPL-004](../../../planning/decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) requires an online demo, configurable launch access/coaching limits, frontend reuse readiness and basic first-app quality. Its [execution packet](../../../planning/implementation/multi-game/launch-access-and-client.md) is part of M00–M04/M06/M12. Actual native packaging and final free/trial offers remain later selections.
+
+**System review amendment, 5 October:** [CR-ARCH-003](../../../planning/decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) adds M02A and SYS-01–12 after inspection of the implemented app. Preserve the approved UI. Resolve backend compatibility, durable history, work bounds and recovery before new-game expansion. Hosting and other nonfunctional implementation stay deferred; their owners/triggers remain listed in the [backend packet](../../../planning/implementation/multi-game/backend-readiness.md#resource-evidence-and-deferred-work).
 
 ## Global Constraints
 
@@ -48,8 +50,9 @@
 | [Game packets](../../../planning/implementation/multi-game/game-packets.md) | Standard rule freeze, state/actions, arithmetic fixtures, new-game integration |
 | [Compatibility and requirements](../../../planning/implementation/multi-game/compatibility-and-requirements.md) | Migration/rollback, requirements and task/test map |
 | [Launch access and client](../../../planning/implementation/multi-game/launch-access-and-client.md) | Online demo, configurable offers, mobile reuse recommendation and basic quality |
+| [Backend readiness](../../../planning/implementation/multi-game/backend-readiness.md) | M02A Go compatibility gate, platform records, bounded execution, SYS-01–12 and deferred concerns |
 
-**Execution update, 5 October 2026:** M00–M02 and the targeted partnership slice have recorded acceptance. M02 installs native current-game modules, strict readers and V1 compatibility; [M02 evidence](../../../qa/implementation/multi-game/m02/status.md) records 449/449 Linux/WSL tests and separate passing Windows contracts/typecheck/build, with earlier environment failures retained. M03 persistence and prepared work is next. M00's unresolved new-game rule choices and later milestones remain pending. Human review remains deferred.
+**Execution update, 5 October 2026:** M00–M02 and the targeted partnership slice have recorded acceptance. M02 installs native current-game modules, strict readers and V1 compatibility; [M02 evidence](../../../qa/implementation/multi-game/m02/status.md) records 449/449 Linux/WSL tests and separate passing Windows contracts/typecheck/build, with earlier environment failures retained. The subsequent [system review](../../../qa/implementation/multi-game/system-review-2026-10-05.md) records one reproduced evaluator budget defect and concrete integration/recovery gaps. **M02A is next**, followed by M03 persistence/prepared work and M04 service/client integration. M00's unresolved new-game rule choices and later milestones remain pending. Human review remains deferred.
 
 The packets describe the full intended boundary. Checked steps below have execution evidence; unchecked steps and illustrative assertions remain planned work. M01 contracts do not establish production V2 integration or complete MG acceptance.
 
@@ -59,10 +62,11 @@ The packets describe the full intended boundary. Checked steps below have execut
 flowchart LR
  M00[00 Baseline and rule freeze] --> M01[01 Contracts]
  M01 --> M02[02 Game modules]
- M01 --> M03[03 Persistence]
- M02 --> M04[04 Service and UI]
+ M02 --> M02A[02A Backend compatibility]
+ M02A --> M03[03 Persistence]
+ M02A --> M04[04 Service and UI]
  M03 --> M04
- M01 --> M05[05 Safe planning]
+ M02A --> M05[05 Safe planning]
  M04 --> M06[06 Production conformance]
  M05 --> M06
  M06 --> M07[07 Cases and research ledger]
@@ -75,11 +79,11 @@ flowchart LR
  M11 --> M12[12 Human evidence and promotion]
 ```
 
-M02 and M03 can run independently after contract freeze. M05 can progress beside them. After M06, game engines and catalog/import work can run in parallel. Only the integrator edits registry/generated unions/service boundaries. No parallel consumer invents a DTO. Rule gaps block the affected M08/M09 transition, not M01–M07. Spades case work in M10 can finish without waiting for a new game.
+M02 is complete. M02A freezes the replacement backend contracts before M03/M04/M05 backend implementation; planning and fixture preparation can continue independently. M03 and M05 can then run in parallel, with M04 depending on M03. After M06, game engines and catalog/import work can run in parallel. Only the integrator edits registry/generated unions/service boundaries. No parallel consumer invents a DTO. Rule gaps block the affected M08/M09 transition, not the current-game path. Spades case work in M10 can finish without waiting for a new game.
 
 Each task ends with a focused commit and evidence under `qa/implementation/multi-game/`. Record passed/failed/blocked/not-run, exact commands, versions/hashes and next unfinished task. Never mark a checkbox from planned assertions. Use the existing distinct `_test` database guard and local server environment; no key printing or new infrastructure.
 
-**First working-app gate:** M00–M04 deliver preserved real game journeys, the online example, configurable local access fixtures and reconnect/review. M06 adds production genericity evidence. M05 can progress alongside this work; strategy expansion, human studies, native builds and large-load campaigns do not block functional completion. Existing security, correctness and durable-command checks remain required.
+**First migrated working-app gate:** M00–M04, including M02A, deliver preserved real game journeys, the online example, configurable local access fixtures and reconnect/review. The current local app already works through V1. M06 adds replacement-service genericity evidence. M05 can progress alongside M03/M04; strategy expansion, human studies, native builds and large-load campaigns do not block functional completion. Existing security, correctness and durable-command checks remain required.
 
 ## M00 — Baseline, decisions and execution manifest
 
@@ -121,22 +125,34 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 - [x] Rerun parity plus `rules.test.ts`, `hearts-plan.test.ts`, `policy-pinning.test.ts`. No changed default choices/score semantics; unsupported old versions become read-only.
 - [x] Commit `refactor: bind current games to registered modules`. Gate: no new-game assumption in kernel and frozen V1 replay/strategy attribution preserved.
 
+## M02A — Validate the replacement backend boundary
+
+**Owner:** integrator/backend. **Requirements:** IMPL-02–04, MG-01–04, MG-09, SYS-01–02. **Dependencies:** completed M02 and CR-ARCH-003.
+
+Execute the [M02A checklist](../../../planning/implementation/multi-game/backend-readiness.md#m02a--backend-contract-and-compatibility-slice): correct the reproduced budget defect with version-aware regressions; freeze portable wire/digest/RNG/numeric semantics; build a bounded Go/SQL compatibility slice using independent original fixtures; record the local resource and parity evidence. Full game/service porting remains M03–M06. No hosting, UI redesign or real provider work.
+
+- [ ] Publish the portable contracts, exact dependencies and differential corpus; preserve the current implementation and immutable archives as oracles.
+- [ ] Complete the slice and record its go/no-go decision under `qa/implementation/multi-game/m02a/`. Freeze file ownership before parallel porting. A failed slice requires investigation, not silent reversion to the old Node-only plan.
+
 ## M03 — Validate saved documents and prepared work
 
-**Owner:** persistence/backend. **Requirements:** MG-03, MG-05, MG-09, MG-16. **Dependencies:** M01; integrate M02 registrations when ready.
+**Owner:** persistence/backend. **Requirements:** MG-03, MG-05, MG-09, MG-16, SYS-03–07/SYS-10. **Dependencies:** M02A; M02 registrations are the reference.
 
 **Modify:** `web/server/records/types.ts`, `repository.ts`, `game-document.ts`, `web/server/http/trial-service.ts`, `web/server/tests/saved-analysis.test.ts`, `policy-pinning.test.ts`. **Create:** `web/server/tests/module-storage.test.ts`. Reuse the frozen `tests/fixtures/legacy-module-document.json` captured in M02; add separate persistence fixtures rather than regenerating its original expectations.
 
 - [ ] Add `_test` database tests: malformed stored state rejects; old original analysis/choice hashes survive resume; unsupported module is read-only; prepared choice cannot commit after actor/revision/window/access change.
 - [ ] Run `node --env-file=.env.local --test --test-isolation=none web/server/tests/module-storage.test.ts`; capture real failure. The existing guard requires a distinct provisioned test database.
 - [ ] Query document JSON as unknown, decode envelope/version before private payload, validate again on save, and store immutable typed prepared/audit records. Migrate new sessions to V2 lazily; do not bulk rewrite history. Reuse existing SQL tables/analysis fences; atomic Hearts bundles need no new per-seat job migration.
+- [ ] Freeze/implement the separately versioned platform metadata, complete decision/advice binding and opening replay anchor from the backend packet. Validate actual policy/input/actor/revision compatibility, not only nonempty strings. Preserve every actual chance draw and replay against persisted checkpoints.
+- [ ] Suppress duplicate preparation before dispatch; issued receipts retain their original result. Capture starting access generation and recheck it at publication/commit. Test overlapping preparations, revoke/regrant, crash/reclaim and stale attempts across two instances.
+- [ ] Implement owned accepted-command reconciliation after revision advance, game replacement and coverage change, with current read/privacy authorization. Keep compact current snapshots and append-only history atomic with receipts; eliminate duplicated growing-history storage without losing historical knowledge or original advice.
 - [ ] Persist access-trial activation, applied grant/offer references and stable allowance buckets where required by M04; add a forward migration only for missing fields. Prove policy/grant/device changes do not reset usage or invalidate purchased terms. Replay alternative-trial records stay independent.
 - [ ] Verify restart across two app instances, idempotent command retry and byte-preserved original advice. Trials retain parent/future-exposure provenance and corresponding reducers; no later information backfills earlier advice.
 - [ ] Commit `feat: validate versioned game persistence`. Gate: corrupted/ambiguous records cannot become playable by selecting a convenient default.
 
 ## M04 — Wire service dispatch and table adapters end to end
 
-**Owner:** backend + frontend after M01 freeze; integrator owns shared edits. **Requirements:** MG-04–06, MG-09, MG-15–18. **Dependencies:** M02/M03.
+**Owner:** backend + frontend after M02A freeze; integrator owns shared edits. **Requirements:** MG-04–06, MG-09, MG-15–18, SYS-04–05/SYS-07–12. **Dependencies:** M02A/M03.
 
 **Modify:** `web/server/http/game-service.ts`, `views.ts`, `app.ts`, `trial-service.ts`, `web/src/App.tsx`, `api/useSession.ts`, `api/display.ts`, `features/ReviewPanel.tsx`; affected schema generation. **Create:** `web/src/games/registry.tsx`, `hearts.tsx`, `spades.tsx`, `web/server/tests/module-service.test.ts`, `web/e2e/module-migration.spec.ts`.
 
@@ -145,6 +161,8 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 - [ ] Add real service tests for V2 candidate commit/legacy command compatibility, atomic sealed passing, generic automatic/chance/review nodes and rejection of unsupported controls. Assert rejected commands increment neither revision nor event count.
 - [ ] Run the new test to record failure; keep existing `integration.test.ts`, `access-review.test.ts` and `trials.test.ts` as regressions.
 - [ ] Replace direct combined-engine/mode switches with `BoundSession` operations. Prepare from frozen seat packets outside transactions; commit under the same existing fences. Observe all Hearts seats before bundle application. Keep human next-round confirmation and existing pause/advance behavior.
+- [ ] Add bounded analysis admission/execution independent from HTTP handling, finite request/DB waits and cancellation publication checks. Existing review workers do not establish gameplay isolation. No database connection is held during CPU/provider work; local saturation checks preserve live-play capacity.
+- [ ] Pass the backend packet's three-mode recovery matrix: stalled HTTP, ambiguous mutation reconciliation, stable review-trial identity across lost responses/reload, supported read-only history, revoked access and explicit next-hand progression. Keep the current table/dialog/coach design.
 - [ ] Render seats/competition, safe public zones, score entries and game controls from registered adapters. Preserve table gestures, coach modes and review; update example/access copy where CR-IMPL-004 requires it. Public views/exports/trials omit private audits/deals/hashes; UI never imports the authoritative server module.
 - [ ] Test/implement server-fetched authored demo frames, choices and replay; disconnected commands cannot advance the example. Run `node --test --test-isolation=none web/server/tests/demo-service.test.ts` and `demo-online` UI checks; no engine/provider work or offline fallback graph.
 - [ ] Test/implement the versioned offer resolver: requested variant eligibility, play/coach/read separation, trial expiry, finite quota, no stacking/reset and purchased/saved access. Run `access-policy.test.ts` and database-backed `access-offers.test.ts`; retain explicit local fixtures until real hosted identity/grants pass their later gate.
@@ -154,7 +172,7 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 ## M05 — Replace continuation information/horizon boundary
 
-**Owner:** reasoning. **Requirements:** MG-07, MG-08. **Dependencies:** M01; use M02 modules for parity.
+**Owner:** reasoning. **Requirements:** MG-07, MG-08, SYS-02/SYS-08/SYS-12. **Dependencies:** M02A; use M02 modules for parity.
 
 **Create:** `web/server/strategy/rollout/types.ts`, `run.ts`, `actor-policy.ts`; `web/server/strategy/knowledge/types.ts`; `web/server/tests/actor-rollout-isolation.test.ts`, `rollout-horizon.test.ts`, `rollout-budget.test.ts`, `web/server/tests/support/rollout-fixtures.ts`. **Modify:** existing `strategy/plan/evaluate.ts` only to expose compatible arithmetic; adapt game-owned Spades/Hearts continuation models under new profiles, retaining V1 readers/pins.
 
@@ -162,6 +180,7 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 - [ ] Run the new tests; record actual failures from the unsafe/round-only API rather than assume the existing implementation leaks.
 - [ ] Implement the exact [referee/actor interfaces](../../../planning/implementation/multi-game/contracts.md#information-only-planning). Separate proven constraints, feasible holdings and positive-support soft weights. Add fresh synthetic chance, game-owned horizon/payoff/comparator and actor memory reconstruction; no defaultMove receives a complete world.
 - [ ] Assert work caps before exceedance, complete paired-world coverage, declared cutoff heuristics and no terminal outcome from truncation. Test contract pool retained across a new deal, layouts/automatic steps with no actor and bounded redeal/pass loops. Production reducer/scorer parity is required for any optimized simulation path.
+- [ ] Separate deterministic counted budgets from operational deadline/cancellation. Bound sampling/facts/model construction as well as moves; test terminal roots, candidate/world boundaries and cancellation during setup. Persist truthful stop reasons and exclude incomplete paired worlds. Carry M02A's version-aware budget correction forward.
 - [ ] Run new tests plus `world-sampler-parity.test.ts`, `spades-playout-kernel.test.ts`, `spades-playout-model.test.ts`, `spades-playout-budget.test.ts`. Commit `feat: add actor-scoped continuation planning`. Gate: selectable V2 only; old profiles/defaults untouched.
 
 ## M06 — Prove genericity through the production path
@@ -252,6 +271,6 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 ## Execution handoff
 
-First executable unit is **M00 → M01**, then M02/M03/M05 in parallel after the typed contract freeze. Use fresh reviewers for interface, hidden-information and legacy compatibility changes. Review each milestone's concrete diff/evidence before integration; stop optional testing once its risks/gates are covered.
+M00–M02 have scoped acceptance. **Next: M02A**, first the version-aware budget repair, then the Go/PostgreSQL contract/compatibility slice. After that freeze, M03 and M05 can progress in parallel; M04 integrates M03 with the preserved frontend. Use fresh reviewers for interface, hidden-information and legacy compatibility changes. Review each milestone's concrete diff/evidence before integration; stop optional testing once its risks/gates are covered.
 
 A rule or live-provider blocker is local to its branch. Continue authorized deterministic work; never invent the missing rule/model result, consume held-out seeds early or rewrite a research artifact to imply it passed. Subsequent execution reports list implemented IDs/commits, exact tests/results, provider mode/observed model, known defects, evidence paths and the next unfinished milestone.

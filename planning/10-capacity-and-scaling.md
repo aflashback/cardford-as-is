@@ -1,6 +1,6 @@
 # Capacity and scaling
 
-26 September 2026. Design extension to [07](07-hosted-architecture.md), with acceptance in [08](08-commercial-testing.md). No capacity benchmark or deployment has been performed. Keep TypeScript/Node; make capacity a measured property of the whole service.
+Original design: 26 September 2026. Amended 5 October by [CR-ARCH-003](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md): **Go/PostgreSQL is the preferred next backend; TypeScript/Node is the existing reference, and Rust is the evidence-backed alternative.** Capacity remains a measured property of the whole service. A historical short local load report exists, but no current sustained capacity tier or hosted deployment is established. Acceptance remains in [08](08-commercial-testing.md); hosting/capacity implementation is deferred by the current owner scope.
 
 ## S01 — What we are sizing
 
@@ -10,9 +10,9 @@ For V1, one active player normally owns one table with three bots. A table is du
 
 Future free play changes demand and who funds that work; human tables change the bot/connection/ownership mix. [F05](11-future-play-and-membership.md#f05--capacity-and-economics-change-by-play-mix) records cost/admission gates and the need for one shared match authority across player partitions. The calculations and player co-location proposal below remain scoped to current solo practice; no new capacity claim or infrastructure work follows from this consideration.
 
-## S02 — Retain the stack; scale separate workloads
+## S02 — Separate workloads within one modular backend
 
-Recommend one modular TypeScript codebase with independently deployable API and worker pools. A larger single server is useful for an early baseline but is not the growth plan. Splitting every component into a microservice or introducing a distributed actor framework now would add operations and coordination without evidence of a need.
+Use one modular backend and preserve React/Vite in the same repository. [M02A](implementation/multi-game/backend-readiness.md) validates the Go target and portable contracts before M03/M04 integration. Bounded analysis admission, compact current snapshots, append-only history and short transactions are required regardless of language. API and worker roles can scale independently later; no per-game microservices or distributed actor framework are required. The deployment diagram and tiers below are future design, not current implementation tasks.
 
 Proposed dispatch view; completion follows A04–A05. Bot preparation and live advancement remain distinct.
 

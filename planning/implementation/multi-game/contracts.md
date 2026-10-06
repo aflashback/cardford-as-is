@@ -4,6 +4,8 @@ Target interfaces for [the main plan](../../../docs/superpowers/plans/2026-10-04
 
 ## Production module boundary
 
+**Backend amendment:** [CR-ARCH-003](../../decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) retains these semantics and the compiled M01/M02 TypeScript reference while targeting Go/PostgreSQL. [M02A](backend-readiness.md) freezes language-neutral wire, digest, RNG and numeric behavior before porting. The proposed declarations below use TypeScript notation for explanation; they are not permission to add future backend implementations only in TypeScript. Public JSON schemas remain authoritative in both languages. Separately versioned platform/session/decision records and an immutable replay anchor must be defined before M03 activates the currently closed `2.0.0` module envelope.
+
 Create `web/server/game/kernel/module.ts` and `web/server/game/kernel/session.ts`. Move the independent seat/competition definitions into `kernel/seats.ts` and retain compatibility re-exports for frozen consumers. Seat IDs retain the current 0–3 mapping; turn order is module-owned, not numeric increment in shared code.
 
 The declarations below explain the frozen boundary; the exported types in `kernel/module.ts` and `kernel/session.ts` are the compiled source of truth. Public `RegisteredActorPacket`, `RegisteredSessionView` and `RegisteredAnalysis` are generated closed unions described below. Domain state/action types are independent of HTTP DTOs. M02 installs the current games and their exhaustive decoder in `games/registrations.ts`; `records/game-document-codec.ts` parses the envelope without importing installed games. [CR-ARCH-002](../../decisions/CR-ARCH-002-current-game-module-extraction.md) records this placement and the V1 compatibility boundary.
@@ -105,6 +107,8 @@ The same exhaustive registry exports `createRegisteredSession(selector, rawConfi
 - Hearts sealed passing initially retains one frozen atomic bundle in practice mode. All seat inputs precede all exchange mutations. No separate submission is exposed. A later separately persisted barrier requires a new journal/job version and logical identity `(game, revision, window, seat, purpose)`; today's `jobs UNIQUE(game_id,revision)` must not be bypassed.
 - At an automatic node, no policy decides the operation. New/redeal chance consumes privately persisted random material; confirmation before the next round remains a human control. Retain existing pause/advance behavior and separate collection revisions for V1.
 
+M03 implements the [platform record contract](backend-readiness.md#platform-records-and-replay-before-v2-activation), including session reasoning-policy pins, original actor packets/full analysis/advice, exposure, control/access admission metadata and opening configuration/chance anchor. The current module envelope/audit alone does not carry or validate all these fields. Use explicit separately versioned records and validated bindings; do not append undeclared fields to `2.0.0`. Issued prepared receipts are immutable, starting access generation is captured before computation, and owned accepted-command reconciliation remains available after preconditions for new work change.
+
 ## Information-only planning
 
 Create `web/server/strategy/rollout/types.ts`, `run.ts` and `actor-policy.ts`. Existing `strategy/plan` readers and profiles remain V1. A V2 referee contains complete **synthetic** worlds sampled from a permitted packet; the actual concealed deal is not an input to policy/search.
@@ -149,6 +153,13 @@ type VersionedComponent = { id: string; version: string };
 type RunBudget = {
   maxWorlds: number; maxSteps: number;
   maxCandidates: number; maxMemoryBytes: number;
+  maxSamplerOperations: number; maxSetupOperations: number;
+};
+// Runtime port, not a persisted/wire object. CPU code must check it.
+type ExecutionContext = {
+  cancelled(): boolean;
+  remainingMs(): number | null; // null only for declared offline fixed-work runs
+  admissionClass: 'live-play' | 'coach' | 'review' | 'offline';
 };
 type RunProvenance = {
   sampler: VersionedComponent; prior: VersionedComponent;
@@ -174,7 +185,9 @@ type PairedResult = {
   comparableIds: readonly string[]; unsampledIds: readonly string[];
   provenance: RunProvenance;
   work: { worlds: number; steps: number; peakMemoryBytes: number;
+    samplerOperations: number; setupOperations: number;
     stoppedBy: keyof RunBudget | null };
+  executionStatus: 'completed' | 'budget-exhausted' | 'cancelled' | 'deadline';
   coverage: { attempted: number; feasible: number; completed: number;
     excluded: number; failed: number;
     samples: readonly { id: string; weight: number }[];
@@ -193,11 +206,14 @@ declare function runPaired<W, O, C>(
   referee: Referee<W, O, C>,
   policiesBySeat: Readonly<Record<Seat, ActorPolicy<O, C>>>,
   horizon: Horizon, root: { seat: Seat; candidateIds: readonly string[] },
-  budget: RunBudget, comparison: Comparison, provenance: RunProvenance
+  budget: RunBudget, comparison: Comparison, provenance: RunProvenance,
+  execution: ExecutionContext
 ): PairedResult;
 ```
 
 The comparison is game-owned and versioned; `-1` means left is preferred, `0` equivalent and `1` right is preferred. Candidates are resolved from the root actor's permitted packet, including a sealed participant when supported; other sealed choices stay frozen until atomic application. Costs are counted before exceeding their caps. Validate provenance against the installed components; report null selection when no comparison is justified. Payoff does not imply shared partner information.
+
+These M05 budget/context additions are planned, not implemented M01 exports. Freeze the charged sampler/setup operation definitions and memory reservation accounting in M02A/M05; observed process memory is a separate measurement from deterministic reserved workspace. Guard every root, continuation and next-world operation, including terminal roots. Operational interruption covers setup, sampling, facts, cloning and encoding, not only the rollout loop. A canceled HTTP wait does not establish that its command was uncommitted. Store stop reason/partial coverage and recheck original authorization before publication; never silently downgrade a pinned policy to meet a deadline. See [work limits](backend-readiness.md#work-limits-and-operational-interruption).
 
 Sampling weight is finite and positive on every hard-feasible holding under the declared soft model; zero/invalid weight cannot silently turn a possible holding into an exact impossibility. Uniform sampling uses weight 1. Persist provenance, coverage and terminal/cutoff distinction with the decision, not only a free-text assumptions array. Uncertainty is absent rather than invented when an estimator cannot supply a justified interval.
 

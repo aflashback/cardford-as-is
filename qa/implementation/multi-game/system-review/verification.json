@@ -1,0 +1,36 @@
+{
+  "scope": "Documentation/link and evidence integrity checks, not application acceptance",
+  "reviewedHead": "aa36c85505bcd8f4c42e9967fe1df195e4f55fb9",
+  "docs": {
+    "docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md": "f9efd985b375daeb4eb0ea6b76a83978542832056a275b161b37d50559aa7eec",
+    "planning/10-capacity-and-scaling.md": "bb0b9b2004ad8616e57d1ee693c8056bd3026d1d618ff84a90cc1efe636f78ba",
+    "planning/CHANGELOG.md": "59409886a49d920bf19c527fe58704ec80ed3d4e76487362a2cdc1ce17084cda",
+    "planning/IMPLEMENTATION-START-HERE.md": "b920b5b5bec3f80bf2c38aab4ab9a88d039377c91f0edad3ac647e6524c48b8a",
+    "planning/README.md": "9683fa001bccfd86fea31d535c50a5c539deeec7f502018a6527c120dcad6b5e",
+    "planning/decisions/CR-ARCH-001-multi-game-production-boundary.md": "4a2e18c33f2c80782e7f47dfbb21ccce22290bd2b171d4e493a1b8752bf27a11",
+    "planning/decisions/CR-IMPL-001-monorepo-and-stripe.md": "5951facfd8b86a3d7aa92c785a656c0787a88ab44834b98942b0ea03a1a60226",
+    "planning/decisions/CR-ARCH-003-backend-stack-and-system-readiness.md": "72b17e508df0af4ab37af73b2f759618365636b17b9172316e169128529b538b",
+    "planning/implementation/multi-game/contracts.md": "ac9a5bc98844b468d74596122f2c39c6422fb679ed412ba164d37036f6b735aa",
+    "planning/implementation/multi-game/backend-readiness.md": "e8b6b4492190d22aec5e489cc0f932d5c7bf47534250d447df98837545e11112",
+    "planning/implementation/requirements-and-tests.md": "594d27f082e56e22821c7dd0d4b237e41cf7d7b29974309be43c00f23c6680ac",
+    "web/README.md": "cf00e49716b7a4ed1d11b22233efa420a8c769313b1e0878a90b371cf5fba34d",
+    "planning/2026-09-27-monorepo-implementation-plan.md": "0657834ee38860e1d18f68c35c717425e81309f5ffd311f75dce92538198780d",
+    "planning/security/hardening.md": "9df7eeaf2611aeb591bbab59f043d5e758f00eefe6023a1f5bc7f77c96dd4fc6",
+    "qa/implementation/multi-game/status.md": "356cda89ecbc4c37131abd4a028afb026e5071417a558a78b92fac0ed08ef16f",
+    "qa/implementation/multi-game/system-review-2026-10-05.md": "c2ed0e801fd2d0b3d8cb99873aa864f3482657611db57bbbbf2cb79ab1bd0789"
+  },
+  "localLinksChecked": 247,
+  "markdownAnchorsChecked": 12,
+  "runtime": {
+    "files": 173,
+    "combinedSha256": "20941436c07c0495c9dcea9ac68893c8d592cd979a8226acfe1323fd346bcfc9",
+    "matchesM02": true
+  },
+  "defectProbe": {
+    "sourceHashesMatch": true,
+    "reproducedInvariantFailure": true,
+    "fixed": false
+  },
+  "applicationTests": "not rerun; no application edits",
+  "failures": []
+}

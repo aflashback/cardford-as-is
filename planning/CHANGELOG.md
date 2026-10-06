@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-05 — System review and Go/PostgreSQL backend direction
+
+[CR-ARCH-003](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) replaces the old Node-only prescription with a Go/PostgreSQL target, Rust as an evidence-backed alternative, and the [M02A compatibility gate](implementation/multi-game/backend-readiness.md). Preserves the current React UI and completed M00–M02 evidence. The [review](../qa/implementation/multi-game/system-review-2026-10-05.md) records a reproduced terminal-root work-cap defect plus concrete persistence, prepared-result, replay, recovery and growth gaps. Added SYS-01–12 acceptance and strengthened M03–M05 dependencies/tests. Hosting and other nonfunctional implementation remain deferred and indexed. Documentation and one pure defect probe only; no backend port, runtime fix, strategy/default change, provider call, deployment or new full-suite acceptance.
+
 ## 2026-10-04 — Online demo, configurable launch offers and frontend reuse
 
 [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) records the owner's four notes. Updated the main plan and active access/architecture/test guidance: server-required demo transitions; game/variant-scoped free/access-trial/paid grants with separate coaching limits; one React frontend with a later Capacitor assessment; basic reliability/recovery/usability before capacity/native work. Added [MG-15–18 and execution files/tests](implementation/multi-game/launch-access-and-client.md). Final offers/native builds remain unselected. Documentation only; existing demo/access code and runtime defaults are unchanged.

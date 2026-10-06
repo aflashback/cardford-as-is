@@ -1,0 +1,99 @@
+{
+  "evidenceVersion": "1.0.0",
+  "kind": "pure-deterministic-defect-probe",
+  "command": "node qa/implementation/multi-game/system-review/budget-probe.ts",
+  "reviewedHead": "aa36c85505bcd8f4c42e9967fe1df195e4f55fb9",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "sourceHashes": {
+    "web/server/strategy/plan/evaluate.ts": "948a6d89e32155a82e6472ae3278b383b4ca62d8515247de5d33a07df4b64a1a",
+    "web/server/strategy/plan/types.ts": "d4e2b6a93d629d7522419a85b3a6bb12c6f9cbd24da93f8088ff486809981257",
+    "web/server/strategy/plan/random.ts": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883",
+    "qa/implementation/multi-game/system-review/budget-probe.ts": "201c949da6fe0a300da5761bc1726fec0e2cdede2cf1c2aadd6c5d78fe109487"
+  },
+  "inputs": {
+    "candidates": [
+      1,
+      2
+    ],
+    "budget": {
+      "worlds": 2,
+      "maxSteps": 1
+    },
+    "seed": 123,
+    "model": "system-review-terminal-root",
+    "modelVersion": "1.0.0"
+  },
+  "expectedInvariant": "applied operations and reported steps do not exceed maxSteps",
+  "observed": {
+    "appliedOperations": 4,
+    "reportedSteps": 4,
+    "status": "completed",
+    "reason": null,
+    "worldsUsed": 2,
+    "invariantHolds": false,
+    "expectedProcessExitCode": 1
+  },
+  "result": {
+    "schemaVersion": "1.0.0",
+    "modelId": "system-review-terminal-root",
+    "modelVersion": "1.0.0",
+    "allocationModel": "synthetic-fixed-world",
+    "continuationPolicy": "synthetic-terminal-root",
+    "seed": 123,
+    "budget": {
+      "worlds": 2,
+      "maxSteps": 1
+    },
+    "noiseBand": {
+      "z": 1.5,
+      "floor": 1
+    },
+    "status": "completed",
+    "worldsUsed": 2,
+    "effectiveWorlds": 2,
+    "steps": 4,
+    "leaderId": "1",
+    "comparableIds": [
+      "1",
+      "2"
+    ],
+    "candidates": [
+      {
+        "moveId": "1",
+        "mean": 1,
+        "standardError": 0,
+        "behindLeader": 0,
+        "behindLeaderStandardError": 0,
+        "comparable": true,
+        "events": {}
+      },
+      {
+        "moveId": "2",
+        "mean": 1,
+        "standardError": 0,
+        "behindLeader": 0,
+        "behindLeaderStandardError": 0,
+        "comparable": true,
+        "events": {}
+      }
+    ],
+    "limitations": [
+      "Sampled worlds follow a named allocation model; they are not the concealed deal.",
+      "Continuations follow a named playout policy for every seat, so values are model-dependent.",
+      "Utilities order candidates. They are not probabilities of winning and are never shown as percentages."
+    ]
+  },
+  "execution": {
+    "actualProcessExitCode": 1,
+    "capturedAtUtc": "2026-10-06T01:11:18.4029768Z",
+    "workingDirectory": "C:/repos/test-jev",
+    "stdoutCaptured": true,
+    "fullApplicationTestsRun": false,
+    "databaseWorkRun": false,
+    "providerWorkRun": false
+  }
+}

@@ -219,3 +219,11 @@ The owner's next-item instruction authorizes M02. Hearts Solo, Spades Solo and S
 | MG-09 | Original reducer/observation oracles, policy attribution, journal boundaries, unsupported-version read-only reader and immutable artifact checks | Durable original saved-document/advice integration in M03–M04 |
 
 [CR-ARCH-002](../decisions/CR-ARCH-002-current-game-module-extraction.md), [M02 change log](../../qa/implementation/multi-game/m02/CHANGELOG.md) and [M02 acceptance](../../qa/implementation/multi-game/m02/status.md) define the scoped result. These entries do not mark the full MG requirements or later milestones complete.
+
+## CR-ARCH-003 system readiness and backend target
+
+The [system review](../../qa/implementation/multi-game/system-review-2026-10-05.md) inspects the existing implementation. [CR-ARCH-003](../decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) adds M02A before further backend implementation, targets Go/PostgreSQL while preserving React/Vite, and overrides the older TypeScript-only backend prescription. Rust remains the evidence-backed alternative; no language performance winner has been measured.
+
+The authoritative [SYS-01–12 acceptance register](multi-game/backend-readiness.md#acceptance-register) extends MG requirements: portable parity, exact work caps, strict platform records, immutable prepared results, accepted-command reconciliation, replay/compact history, short transactions, bounded execution, recoverable transport/trials, safe historical reading and preserved full journeys. Every item is pending. The known terminal-root cap violation is reproduced by a pure probe; reporting it is not a fix. M02A first owns its version-aware correction; M03–M06 own the durable and end-to-end gates.
+
+Hosting, operational infrastructure, native packaging and large capacity campaigns remain deferred with owners/triggers in that packet. Basic functional correctness, privacy, bounded failure and recovery remain first-app requirements. Existing M00–M02 acceptance is retained as scoped historical evidence.

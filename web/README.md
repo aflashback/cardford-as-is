@@ -1,27 +1,29 @@
-# CardFord web prototype
+# CardFord web application
 
-**Current runtime note:** the prototype notes below are historical. The current app uses a server-authoritative engine and PostgreSQL; run commands from `C:\repos\test-jev`. For local selected-card training, editable fixtures and current start commands, see [the selected-deal guide](../planning/dev-deals.md).
+**Current runtime:** React/Vite uses the TypeScript server-authoritative engine and PostgreSQL. Run commands from `C:\repos\test-jev`; see [local setup/start instructions](../LOCAL-README.md) and [selected-deal training](../planning/dev-deals.md). Identity/billing are local fixtures and Jev is off. [M02](../qa/implementation/multi-game/m02/status.md) completed game-owned TypeScript extraction; V2 persistence and service/client activation remain unfinished.
+
+**Next backend direction:** [CR-ARCH-003](../planning/decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) prefers Go/PostgreSQL, with the current TypeScript service retained as the reference. [M02A](../planning/implementation/multi-game/backend-readiness.md) first freezes contracts and proves one bounded compatibility slice. Preserve this React/Vite UI and assets. This review starts no port; hosting, native packaging and advanced operational work remain later gates.
 
 A playable UX build for a card-game coach. The table comes first; help stays optional.
 
 The owner selected **CardFord** on 28 September 2026. The earlier `trickscoach.com` domain plan remains unverified; no CardFord domain has been selected. See the [brand decision](../planning/brand-and-domain.md).
 
-## Run
+## Run the current application
 
 ```powershell
-cd C:\repos\test-jev\web
-npm install
-npm run dev
-```
-
-Open `http://localhost:5173`. On an iPad or phone connected to the same Wi-Fi, use the Network address printed by Vite. Windows may require allowing local-network access. This is a development preview, not a hosted service.
-
-```powershell
+cd C:\repos\test-jev
 npm run build
-npm test
+npm start
 ```
 
-Node 24 can also run tests without subprocesses: `node --test --test-isolation=none tests/*.test.ts`.
+After completing the database/dependency setup in [LOCAL-README](../LOCAL-README.md), open `http://127.0.0.1:4173`. `npm run dev` runs the API on 4173 and Vite on 5173 with an API proxy; stop an existing app first to avoid port conflicts. Current local services bind to loopback. Physical-device access and hosted startup require their own environment work.
+
+```powershell
+npm run contracts:check
+npm run typecheck
+```
+
+See the local guide and [M02 evidence](../qa/implementation/multi-game/m02/status.md) for scoped verification commands and test-database requirements. Existing Node checks remain TypeScript regression/oracle checks; they cannot alone accept a replacement Go path.
 
 ## Included
 
@@ -43,19 +45,19 @@ Support targets 2020-or-newer phones running maintained browsers. Physical iOS/A
 
 ## Current boundary
 
-The games and local rules-based coach work without an API key. Jev, probability sampling and strategy evaluation are not connected yet. Recommendation quality, adaptive progress assessment and mistake categorization remain separate work; the UI does not pretend they are established.
+The games and code coach work without an API key. Server-side sampled review continuations and strategy/evaluation code exist; they do not establish strategy strength or learning benefit. Jev remains off and runtime promotion, independent assessment and hosted activation retain separate gates.
 
-The current game is saved in localStorage. Every started game's latest state and event trail are retained in this browser's IndexedDB for internal inspection, without an archive view. This is local prototype persistence, not central collection or cross-device sync. Clearing browser data removes it. Hidden cards are held locally for bot simulation, but coach input logic only uses the human hand and public plays.
+The current service persists private state and records in PostgreSQL. The browser receives the human hand and public information; it does not own hidden deals or authoritative transitions. Saved original advice and replay remain scoped to the current game, without a player-facing archive. The planned migration preserves rules, policy pins and original history while adding the [system acceptance](../planning/implementation/multi-game/backend-readiness.md) recovery and bounded-work cases.
 
-## Prototype boundary
+## Historical browser prototype boundary
 
-This describes the local prototype. The commercial server boundary is specified separately and remains to be implemented.
+The diagram and files below describe the earlier browser-local prototype only. That persistence/authority design has been replaced by the current local service. Managed identity, real billing and hosted launch remain unfinished.
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","lineColor":"#64748B","textColor":"#183153","primaryTextColor":"#183153","edgeLabelBackground":"#FFFFFF","clusterBkg":"#F8FAFC","clusterBorder":"#CBD5E1"},"flowchart":{"curve":"basis","htmlLabels":false,"nodeSpacing":24,"rankSpacing":36}}}%%
 flowchart TD
   accTitle: Prototype boundary
-  accDescr: The current browser prototype runs rules and a local coach and stores browser records; remote Jev remains planned.
+  accDescr: Historical browser prototype: rules and local coach stored browser records before the server-authoritative migration.
   A("Game interface"):::view --> B("Browser rules and bots"):::service
   A --> C("Local rules-based coach"):::service
   B --> D[("Current game: localStorage")]:::data
@@ -67,6 +69,6 @@ flowchart TD
   classDef muted fill:#F1F5F9,stroke:#94A3B8,color:#334155,stroke-dasharray:4 3;
 ```
 
-Code: `src/game.ts` rules, `src/coach.ts` advice, `src/storage.ts` persistence, `src/App.tsx` views, `src/styles.css` responsive design. Existing v0.2 files outside this folder remain reference material.
+Historical prototype modules: `src/game.ts`, `src/coach.ts` and `src/storage.ts`. Current UI: `src/App.tsx`, `src/api/`, `src/features/` and `src/styles.css`; the working reference backend is `server/`. Existing v0.2 files outside this folder remain reference material.
 
-See [V1 setup](../planning/05-v1-setup.md) for the next decision-pipeline work and [UI verification](qa/UI-V1.md) for the text, gesture and speed update.
+See the [current implementation handoff](../planning/IMPLEMENTATION-START-HERE.md) for M02A and later milestones. [Prototype UI verification](qa/UI-V1.md) remains the historical text, gesture and speed reference; current runtime evidence is in [local-build status](../qa/implementation/status.md) and [multi-game status](../qa/implementation/multi-game/status.md).

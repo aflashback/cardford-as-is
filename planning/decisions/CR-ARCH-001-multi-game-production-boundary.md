@@ -2,6 +2,8 @@
 
 Recorded 5 October 2026. Authority: the owner's instruction to build targeted partnership cases alongside M00–M01, with permission to rewrite the app where useful. Human reviews remain deferred. This adopts the architecture direction of the 4 October implementation plan; it does not activate its later milestones.
 
+Later on 5 October, [CR-ARCH-003](CR-ARCH-003-backend-stack-and-system-readiness.md) records the owner's backend review direction and Go/PostgreSQL target. It preserves the module/history/UI contracts below and adds M02A before further backend implementation. “Retain” means preserve those responsibilities and semantics, not a permanent requirement to keep Node or unchecked whole-document persistence.
+
 Each game supplies its rules, scoring/objectives, safe player knowledge, decisions, scenarios and presentation. The shared kernel supplies four-seat identity, competition/controller separation, lifecycle operations and versioned binding. Storage, access, revision/idempotency fencing and the React frontend retain their existing responsibilities. Game-specific tactics and card semantics stay inside the game module.
 
 M01 defines an additive V2 contract and validated facade. Existing V1 HTTP bodies, reducers, journal entries (`action`, `collect`, `next-hand`), default policy pins and issued advice retain their current meaning. A V2 module is installed only by an exhaustive typed registration; an unknown or missing version cannot resolve to the newest module. Closed public fragments generate types from the active public schema root; private state is validated independently. Production dispatch and persisted V2 activation follow in M02–M04, after parity and durable-command tests.

@@ -2,17 +2,19 @@
 
 **CardFord** is the current owner-approved product name. The earlier `trickscoach.com` domain plan is unverified; a CardFord domain has not been chosen. [Naming decision and setup status](brand-and-domain.md).
 
-Implementation target, grounded in the playable [web prototype](../web/README.md). On 27 September 2026 the owner confirmed the latest planning baseline with earlier safeguards retained, a simple monorepo, the existing UX, a B2C learning product, in-app subscription management and Stripe payments. [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md) records that authority and its compatibility effects. Earlier analysis remains supporting research; the original pack is preserved.
+Implementation target, grounded in the playable [web application](../web/README.md). On 27 September 2026 the owner confirmed the planning baseline with earlier safeguards retained, a simple monorepo, the existing UX, a B2C learning product, in-app subscription management and Stripe payments. [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md) records that authority and its compatibility effects. Earlier analysis remains supporting research; the original pack is preserved.
 
-**For implementation agents:** start at [IMPLEMENTATION-START-HERE.md](IMPLEMENTATION-START-HERE.md), then use the [current implementation plan](2026-09-27-monorepo-implementation-plan.md) and [requirements/test specification](implementation/requirements-and-tests.md). Local implementation now exists: see [run instructions](../LOCAL-README.md), [build cycle](LOCAL-V1-BUILD-CYCLE.md), [deployment guide](DEPLOYMENT-GUIDE.md) and [actual evidence](../qa/implementation/status.md). Planned hosted/paid-launch gates are not implied complete.
+**For implementation agents:** start at [IMPLEMENTATION-START-HERE.md](IMPLEMENTATION-START-HERE.md), then use the [multi-game plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) and [backend readiness/M02A](implementation/multi-game/backend-readiness.md). M00–M02 have recorded acceptance; [CR-ARCH-003](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) makes Go/PostgreSQL the preferred replacement target while the TypeScript service remains the working reference and React/Vite is preserved. Next implementation is M02A, not a restart of W00. This turn is review/planning only. See [local run instructions](../LOCAL-README.md), [current milestone evidence](../qa/implementation/multi-game/status.md), [local-build evidence](../qa/implementation/status.md) and the later [deployment guide](DEPLOYMENT-GUIDE.md). Hosted/paid-launch gates remain unfinished.
 
 | Read | Purpose |
 |---|---|
-| [Multi-game reasoning implementation plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) | M00–M12 production module migration, maintained cases, Tarneeb/Trix, compatibility and independent evaluation; planning only. |
+| [Multi-game reasoning implementation plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) | Completed M00–M02 foundations; M02A then remaining production migration, maintained cases, Tarneeb/Trix and independent evaluation. |
+| [Backend stack decision](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) | Go/PostgreSQL preferred target, TypeScript reference, preserved frontend and bounded compatibility gate; no replacement service implemented. |
+| [Backend readiness and system acceptance](implementation/multi-game/backend-readiness.md) | M02A execution packet, replacement responsibilities, SYS-01–12 acceptance and deferred hosting/NFR work. |
 | [Launch access and client readiness](implementation/multi-game/launch-access-and-client.md) | Online demo, configurable game/coaching grants, React/Capacitor reuse recommendation and basic quality; MG-15–18. |
 | [Card-game architecture interview](research/2026-10-04-card-game-architecture-interview/README.md) | Two-agent review of implementation/evidence and Tarneeb/Trix architecture; input for the multi-game plan. |
 | [Implementation handoff](IMPLEMENTATION-START-HERE.md) | Fresh-agent reading order, task selection, preserved B2C UX and evidence reporting. |
-| [Current monorepo plan](2026-09-27-monorepo-implementation-plan.md) | W00–W19 files, interfaces, dependencies, patterns, tests, Stripe and release gates. |
+| [Local-build and release plan](2026-09-27-monorepo-implementation-plan.md) | W00–W19 reference for original build, Stripe and release gates; backend-language assumptions superseded by CR-ARCH-003. |
 | [Requirements and tests](implementation/requirements-and-tests.md) | Stable IDs, named fixtures and concrete rule/UX/service/payment assertions. |
 | [01 — Product and views](01-product-and-views.md) | Preserve the coded experience; define missing interactions. |
 | [Brand and domain](brand-and-domain.md) | Current naming decision, selected visual direction, previous domain plan and unverified setup. |
@@ -59,14 +61,14 @@ flowchart TD
   classDef gate fill:#FFF3D9,stroke:#C7A253,color:#594219;
 ```
 
-The latest commercial decisions in 06–10 supersede conflicting local/free-play assumptions. They are specifications, not implemented capabilities. Prices and session/family details are labelled proposals; capacity tiers require measured evidence.
+Later numbered decisions resolve conflicts in earlier documents: CR-IMPL-004 governs configurable launch access and online demo; CR-ARCH-003 governs the replacement backend. Prices and session/family details remain labelled proposals; capacity tiers require measured evidence.
 
 ## Fixed direction
 
 - Full games: Hearts solo, Spades solo, Spades partners; four seats each.
 - Players know the basic rules. Help improves decisions during real play.
 - Preserve the existing table, dialogs and responsive layouts.
-- Jev runs through OpenRouter when enabled. Local rule/coach testing comes first; commercial play uses a hosted authoritative Node service and authenticated membership.
+- Jev runs through OpenRouter when enabled; ordinary play currently uses code with Jev off. Go/PostgreSQL is the preferred replacement backend, subject to M02A; the current TypeScript service remains the reference. Hosting and managed identity activation are later work.
 - Demo transitions require the application server. Versioned free/access-trial/paid offers may select games/variants and coaching limits; final launch values remain undecided. Browser edits confer no access. [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md).
 - Required action/usage records are written by the server. Optional analytics and client display reports cannot prove integrity.
 - Every started game is stored internally. No player-facing game archive.
@@ -74,13 +76,13 @@ The latest commercial decisions in 06–10 supersede conflicting local/free-play
 
 ## What exists today
 
-React/Vite game views, working local rules, simple bots, optional coaching, current-game recovery and browser-local internal records. The [UI update](../web/qa/UI-V1.md) adds concise copy, off-turn card preparation/on-turn double-tap play and persistent speed settings, with 38 passing tests and browser checks. These are existing app checks, not results for the planned pipeline.
+The React/Vite app uses a TypeScript authoritative service and PostgreSQL for private game state, commands and records. Hearts Solo, Spades Solo and Spades Partners have local code coaching, score recaps, current-game replay, isolated sampled continuations and fixture account/subscription/family controls. Browser-local engine/storage modules and the 38-test [prototype UI report](../web/qa/UI-V1.md) are historical references, not current authority.
 
-Jev, probability evaluation, service-backed records and learning assessment are planned work. This V1 specification update does not activate a service or make live Jev requests. The original pack remains reference material.
+[M02 evidence](../qa/implementation/multi-game/m02/status.md) records completed game-owned TypeScript extraction, 449/449 Linux/WSL acceptance and separate Windows contracts/typecheck/build checks, with platform limitations retained. V2 persistence/service/client activation, online demo and configurable offers are still pending. M02A now gates the replacement backend. Jev is off; hosted login/payments, strategy-strength and learning claims remain unverified. The [system review](../qa/implementation/multi-game/system-review-2026-10-05.md) distinguishes defects from planned work.
 
 ## Changes justified by the review
 
-Retain the UX; add a local authoritative service, structured decision records, asynchronous advice and evidence-based recaps. Compare whole Hearts pass plans locally before shortlisting for Jev. Separate assistance from independent improvement. Replace generic tips only when supported feedback exists.
+Retain the UX and use the existing service as the migration reference. M02A freezes portable contracts and a bounded Go compatibility slice; M03–M06 then prove durable records, service integration, recovery and complete journeys. Hosting and advanced operational implementation follow functional delivery. Code retains the complete Hearts pass set; the current provider contract marks its 286 choices unsupported rather than truncating them for Jev. Separate assistance from independent improvement. Replace generic tips only when supported feedback exists.
 
 Compare calibrated contextual bidding (A) with constrained-deal rollouts (B) before selecting a strategy; adaptive A/B (C) must justify its complexity. Bots and coach share one observation-only policy. V1 starts code-only, then evaluates Jev in shadow. A three-arm comparison separates shortlist loss from Jev benefit before requested suggestions are promoted. Monte Carlo confidence and provider confidence cannot validate human grades by themselves.
 

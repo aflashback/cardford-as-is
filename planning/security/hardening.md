@@ -1,6 +1,8 @@
 # Security Hardening Review: jev-test
 
-We can keep React/TypeScript and Node. The valuable change is to make the service authorize every protected operation even when the caller understands and replaces the entire browser client.
+**Backend amendment, 5 October 2026:** [CR-ARCH-003](../decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) targets Go/PostgreSQL with an M02A compatibility gate, retaining React/TypeScript and the current Node implementation as a reference. The Node stack statements below describe the earlier recommendation; server authority and hostile-browser protections remain required in every language. No hosted security/operations work is activated by this review.
+
+The service must authorize every protected operation even when the caller understands and replaces the entire browser client.
 
 ## Evidence Basis
 

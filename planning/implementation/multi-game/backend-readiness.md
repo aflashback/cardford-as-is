@@ -1,0 +1,103 @@
+# Backend readiness and system acceptance
+
+5 October 2026. Execution amendment to the [multi-game plan](../../../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md), adopted by [CR-ARCH-003](../../decisions/CR-ARCH-003-backend-stack-and-system-readiness.md). **All tasks here are pending.** The [review](../../../qa/implementation/multi-game/system-review-2026-10-05.md) describes the inspected TypeScript implementation, not a completed Go service.
+
+## Delivery order and file ownership
+
+M00–M02 and their evidence stand. M02A now precedes future backend implementation in M03/M04/M05. M03 and M05 can then progress independently against frozen contracts; M04 integrates the durable service and preserved frontend. M06 must exercise the actual replacement service/storage/client path, including the non-card conformance fixture. New games, evaluation and promotion retain their existing gates.
+
+Use one root Go module for the planned `server/` tree: `cmd/cardford`, `internal/gamekernel`, `internal/games/{hearts,spades}`, `internal/records`, `internal/http`, `internal/analysis`, `internal/access` and `internal/providers`. These are proposed package ownership boundaries to freeze in M02A, not created files or a microservice design. No game package imports HTTP, billing or another game's tactics. Game adapters can use small shared arithmetic/seat primitives; public DTOs stay independent from private state.
+
+| Existing plan/reference | Replacement responsibility |
+|---|---|
+| `web/server/game/kernel`, `games`, `observations` | Go game kernel and game-owned typed implementations; retain original TS corpus/readers as independent oracles. |
+| `web/server/records`, `http`, `access`, `billing` | Go persistence, command/service, access and billing adapters; preserve exact public behavior and existing PostgreSQL semantics. |
+| `web/server/strategy`, `coaching`, provider adapters | Go bounded analysis/job execution with game-owned policies; pinned original versions remain readable. |
+| `web/shared/contracts.schema.json` and registered public fragments | Continue as the sole active public schema source; generate checked Go and TS bindings. Private schemas never enter browser output. |
+| Existing SQL migrations | Keep one canonical migration sequence and the five installed migrations byte-preserved. Freeze packaging/checksum rules in M02A; use forward migrations only. |
+| `web/src`, Playwright journeys, public assets | Retain React/Vite and visual layout. Change only transport/recovery/adapters required by the functional contracts. |
+| Existing Node test commands in M03–M12 | TS regression/oracle commands; add the equivalent Go tests, schema checks and cross-runtime differential runner for each ported responsibility. Passing the old suite alone cannot accept a Go path. |
+
+Do not create a second editable contract tree, regenerate frozen expected results from the new implementation, permanently proxy all game decisions to Node, or run dual authoritative writers against the same game. Until a replacement policy/reader passes parity, route the entire supported session to the original implementation or keep the replacement unexposed. A legacy policy that cannot be reproduced must remain explicitly available through a compatible reader/implementation or become read-only; it cannot inherit a convenient new policy pin.
+
+## M02A — Backend contract and compatibility slice
+
+Owner: integrator/backend. Requirements: IMPL-02–04, MG-01–04/MG-09, SYS-01/SYS-02. No hosting or real provider work.
+
+- [ ] Fix the demonstrated terminal-root work-cap defect first with terminal-root, next-world, next-candidate and partially completed paired-world regressions. Count before every charged operation; exclude incomplete worlds from paired estimates. Record effects on each caller/policy and use a new behavior version where needed; preserve frozen code/evidence and original saved advice.
+- [ ] Freeze one Go toolchain/module and minimal HTTP/PostgreSQL/schema tooling. Verify closed objects, integer ranges, optional versus null, empty collections, unknown fields and date/ID serialization against the active public schemas. Decode untrusted JSON with checked validators; ordinary permissive struct decoding is insufficient.
+- [ ] Specify canonical input bytes/digests, deterministic candidate/tie order, integer widths, unsigned overflow/bit operations, floating arithmetic/rounding and seeded RNG semantics. Preserve current identifiers/digests where replay depends on them; version incompatible algorithms. Game dealing keeps secure unbiased randomness and records actual chance material. Test replay from saved deals/actions, not just a seed.
+- [ ] Export the frozen original corpus and result fixtures through a private test-only harness: three modes, complete hands, Hearts sealed passing including all 286 candidates, Spades Nil/bags/teams, collection revisions, scoring, visibility and saved policy choices. Reuse M02's independent original reducer/observation oracles; add missing boundary cases without rewriting old goldens.
+- [ ] Build one Go vertical slice through strict input → registered module → observation/legal choice → transition → safe response, plus a throwaway `_test` PostgreSQL save/reload. Exercise one complete Spades Partners hand and representative Hearts sealed-pass/scoring and Spades Solo cases. This is a seam/portability gate; complete three-mode port acceptance remains M03–M06.
+- [ ] Define finite per-job and per-request limits, bounded admission and cancellation semantics before measuring. Distinguish enforceable logical/reserved workspace limits from measured process peak memory; specify process containment separately when needed. Record same-machine Node reference/Go slice CPU, memory, serialized bytes and wall time with identical inputs/policies/work; use the optimized current kernel as the comparator. Tiny kernel results do not establish full app throughput. No full capacity campaign is required for this gate.
+- [ ] Publish exact source/toolchain/dependency hashes, test commands, mismatches, absent paths and a decision. Accept Go if the slice preserves behavior and satisfies the declared local budgets; if it fails, identify the cause before comparing a bounded Rust slice or proposing a justified Node exception. Do not require an automatic three-language rewrite.
+
+Completion: explicit portable contract and one proven Go seam, no new player-facing behavior, no changed default strategy by accident. Persist evidence under `qa/implementation/multi-game/m02a/`; keep M02 evidence immutable.
+
+## Acceptance register
+
+These IDs extend the existing MG requirements; they do not mark acceptance from a document review. Every item needs resulting-state assertions and actual evidence from its owning milestone.
+
+| ID / owner | Required behavior and acceptance |
+|---|---|
+| SYS-01 / M02A, M06 | Cross-language closed-schema, rules, scoring, visibility, canonical bytes and original-policy parity. Reject malformed/private/unknown input. Run all three modes through the eventual replacement, with the preserved React frontend. |
+| SYS-02 / M02A, M05 | Never exceed charged world/step/candidate/sampler/memory limits, including terminal roots and boundary transitions. Record incomplete/unsampled candidates and cutoff assumptions; no false completed status or silent weaker policy. |
+| SYS-03 / M03 | Load database JSON as unknown, validate before play and on save. Persist the separately versioned platform/session contract below. Unsupported pins cannot silently resume or be repinned. Corruption rejects without mutating records. |
+| SYS-04 / M03–M04 | Issued prepared receipts are immutable; capture access generation at admission and recheck it at publication/commit. Unique durable work identity suppresses duplicate computation before dispatch. Overlapping two-instance preparations with different result fixtures cannot replace the analysis of the first returned receipt. Revoke/regrant, lease/window/revision changes reject stale work without accepted audit or state changes. |
+| SYS-05 / M03–M04 | Authenticated owned-command reconciliation recovers the original accepted outcome after a lost response, even after revision advance, game replacement or coverage change. Apply current read/privacy authorization; never reopen denied new work or disclose another owner's result. Retry the same command/digest, do not authorize a second mutation. |
+| SYS-06 / M03 | Compact hot state plus append-only journal/decision/advice records, immutable opening configuration/chance anchor and every later actual chance draw. One atomic accepted transition updates snapshot, history and command receipt together. Full replay equals persisted checkpoints and original advice is byte-preserved. |
+| SYS-07 / M03–M04 | Separate safe read projections from command serialization only with proven ownership/access semantics. Keep short mutation locks, bounded pool/query/lock waits and no connection held during CPU/provider work. Two-instance tests retain single accepted revision/charge. |
+| SYS-08 / M04, M05 | Bounded analysis admission/execution independent from request handling; cancellation/deadline covers sampling, facts, cloning, rollout and serialization. Stale/canceled work cannot advance live play. Review jobs cannot consume all live-play capacity. Test saturation/retry/cancellation and original-policy behavior locally. |
+| SYS-09 / M04 | HTTP stalls settle into recoverable state. Preserve ambiguous mutation identity and reconcile before allowing duplicate action. Review trials reuse command/trial IDs through queued work, lost response, retry and reload. Timeout does not imply rollback. |
+| SYS-10 / M03–M04 | Supported safe historical readers show original advice/replay/export and explain blocked play; starting a supported new game leaves old history intact. Unknown data without a trusted safe reader fails closed. Read-only is not an unchecked projection of private JSON. |
+| SYS-11 / M04, M06 | Preserve the full experience matrix below plus server-driven demo and exact-variant offers. Generated adapters preserve all legal candidates, interaction pacing and optional coaching. No UI redesign or invented commercial offers. |
+| SYS-12 / M02A–M06 | Local resource evidence reports whole-path cost and long-history growth, with source/input hashes and unchanged policy budgets. Distinguish targets from observed results; language choice or an isolated playout microbenchmark cannot establish capacity. Larger hosted/load campaigns remain deferred. |
+
+## Platform records and replay before V2 activation
+
+The implemented `2.0.0` game envelope is a module foundation, not a complete platform record. Keep separately versioned repository records keyed to the game/document revision; define their schemas before M03. Do not add undeclared fields to the closed envelope or assume its audit strings prove valid policy/input bindings.
+
+- Session metadata: immutable module/rule/schema and reasoning-policy pins; exact game/variant/competition/controller identity. Mutable ownership/control/access references use explicit revisions/generations and authoritative grant/usage records.
+- Decision record: immutable owner/game/revision/actor/window/purpose, permitted packet version and digest, policy/budget/component versions, original complete analysis and selected candidate, original advice, access admission snapshot, issued receipt and attempt identity. Exposure records append what the player actually saw and when; they do not rewrite the decision.
+- Replay anchor: original validated configuration, actual opening chance material and initial checkpoint, with codec/rule pins and subsequent accepted commands/chance results. Preserve V1 journals/deals and their different collection boundaries. Actual concealed material remains private and is never an analysis input or public export.
+- Job attempt: durable unique logical identity, finite lease/expiry, attempt fence and explicit queued/running/completed/rejected/canceled state. Publishing a retry cannot replace the result attached to an issued receipt; unchanged completed work is reused before computation. Freeze the exact state machine/schema in M03 and test crash/reclaim races.
+- Audit binding: validate installed policy compatibility, actor/revision/window, packet digest, candidate eligibility and complete provenance. A nonempty `policyId` and a syntactically valid digest alone do not authorize a playable record.
+
+Bound current state by game requirements; retain historical events once. Compaction must preserve every public fact and permitted private memory needed by the pinned policy, including past exchanges/reveals. Use versioned checkpoints/event cursors and reconstruct frozen historical packets when necessary; do not discard knowledge to save bytes. Measure one, ten and many-hand record growth and per-command read/write bytes. Removing redundant whole-document saves is insufficient if each decision still embeds the entire expanding event history.
+
+## Work limits and operational interruption
+
+Deterministic work budgets and operational deadlines are different contracts. Offline replay uses fixed counted budgets and seeds; an execution context supplies cancellation, monotonic deadline and admission class. Go contexts or another runtime's equivalent require explicit checkpoints in CPU code. Cancellation of a waiting HTTP response does not prove that a durable command was never accepted.
+
+Count/reserve work before each operation and bound sampler/fact/model construction as well as playout steps. Persist truthful stop reasons and completion coverage. Partially evaluated worlds cannot enter paired terminal arithmetic. Never change policy quality to meet a wall-clock target without a new declared profile; return an explicit pending, unsupported, canceled, exhausted or failed outcome as appropriate to the frozen service contract. Expensive execution acquires no DB connection while waiting/running. Publication starts a fresh short authorized transaction and rechecks the original bindings.
+
+A bounded in-process executor is a valid first implementation if it isolates request handling and its CPU work cooperates with interruption. Use a bounded worker process when hard interruption/resource containment is required and test termination/reclaim behavior. Neither one goroutine per request nor an unbounded task pool satisfies SYS-08. Durable job recovery and priority reservations are application behavior; choosing a hosting fleet/broker is deferred.
+
+## Preserve the existing experience
+
+For **Hearts Solo, Spades Solo and Spades Partners**, retain current table/cards/avatars, coach panel, short cues, dialogs, setup and optional help. Extend the existing Playwright/service evidence across:
+
+1. Startup success/failure/reconnect; setup cancellation; complete legal bid/pass/play and atomic Hearts passing.
+2. Pause, dialog, background, review and portrait/rotation; resumption refetches before fresh pacing. Prepared cards never autoplay and advice never commits a move.
+3. Lost move/new-game responses, changed revision/coverage, duplicate retry, reload and server restart. Recover accepted outcomes without duplicate events, spending or games.
+4. Advice/unlock and review continuation, including queued/expired/interrupted work, lost responses and reload. Original advice remains separate from a possible continuation and later exposure.
+5. Access expiry/revocation and unsupported historical versions; safe supported history remains readable under the access contract, new work is denied when required, and a new supported game can be started without altering old records.
+6. Explicit next hand/match restart, online authored demo and exact-variant play/coach/read grants. Local fixtures test configurable offers; no production offer or hosted identity is implied.
+
+Setup cancellation, ordinary same-envelope retry, next-hand/restart, paused reload and original Spades advice already have evidence. Preserve and extend these journeys instead of declaring them absent. UI work is limited to transport states and functional integration needed to pass this matrix.
+
+## Resource evidence and deferred work
+
+Existing proposed local targets remain **unverified**: non-analysis API p95 below 300 ms; visible code-coaching p95 below one second where its declared policy budget permits. M02A must state the hardware, job limits and tested path before applying a target. M03–M06 add local mixed full-game checks (1/10/100 tables where appropriate), largest supported histories, all-pass/sealed/high-candidate positions, sampler fallback, overload and cancellation. Do not claim a capacity tier from these correctness-oriented checks.
+
+Report CPU/job, peak memory, runtime/GC or event-loop stalls, queue age, pool/lock wait, transaction duration, serialization cost, response bytes and persisted bytes/transition. Reuse identical policy, seeds, horizons and candidate budgets; predeclare numerical tolerance and preserve legal/replay/visibility exactness. Full pipeline timings include sampling, facts, cloning, encoding and storage. No benchmark work is performed by this planning amendment.
+
+| Deferred concern | Owner / activation trigger | Plan reference |
+|---|---|---|
+| Hosting vendor/region, TLS/networking, deployment pipeline, fleet/autoscaling, connection proxy, broker selection | Operations/owner before hosted activation, after functional service gates | [Hosted architecture](../../07-hosted-architecture.md), [deployment guide](../../DEPLOYMENT-GUIDE.md) |
+| Backup/restore/DR, production monitoring/alerts/SLOs, sustained scale and provider quotas/cost | Operations before paid launch and each claimed capacity tier | [Capacity](../../10-capacity-and-scaling.md), [commercial gates](../../08-commercial-testing.md) |
+| Real identity/Stripe service activation, final offers, legal/security/accessibility release audits | Relevant release owners before live access/charges; existing fixtures and basic access/usability remain functional requirements | [Launch/client](launch-access-and-client.md), [monorepo release plan](../../2026-09-27-monorepo-implementation-plan.md) |
+| Native packaging, store distribution, physical-device certification | Client owner after stable web slice and explicit platform selection | [Launch/client](launch-access-and-client.md) |
+| Human review, learning/strength claims, fresh comparative Jev work | Evaluation owner under separately declared evidence gates; human review remains deferred | [Cases/evaluation](cases-and-evaluation.md) |
+
+Do not implement these deferred concerns during this review or make them prerequisites for preparing functional contracts. Basic authorization, privacy, exact rules, durable recovery and bounded failure remain required for the first working app.
