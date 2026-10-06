@@ -10,6 +10,7 @@ import (
 )
 
 const PolicyVersion = "spades-tactics-2.1.0"
+const CatalogVersion = "spades-catalog-1.0.0"
 
 type bidCandidate struct {
 	bid                           int

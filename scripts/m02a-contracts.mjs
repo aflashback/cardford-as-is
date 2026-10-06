@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import * as validators from '../web/shared/validators.mjs';
+import * as validators from '../web/shared/local-service.validators.mjs';
 import { canonical } from '../web/server/game/kernel/codec.ts';
 import { canonicalJson } from '../web/server/evaluation/gate/runner.ts';
 import { createRandom, hashText } from '../web/server/strategy/plan/random.ts';
@@ -17,11 +17,15 @@ const sources = {};
 async function source(path) { const text = await readFile(resolve(root, path), 'utf8'); sources[path] = hash(text); return text; }
 await source('scripts/m02a-contracts.mjs');
 await source('web/shared/validators.mjs');
+await source('web/shared/local-service.validators.mjs');
 const generator = await source('web/scripts/generate-contracts.mjs');
 // Read the registration from the authoritative TS generator. Fail if its declaration changes.
 const registration = generator.match(/const publicFragments = (\[[^;]+\]);/);
 if (!registration || !/^\[\s*(?:'[a-z]+'\s*,?\s*)+\]$/.test(registration[1])) throw new Error('Unsupported public fragment registration; review the source generator.');
 const fragments = JSON.parse(registration[1].replaceAll("'", '"'));
+const platformRegistration = generator.match(/const publicPlatformFragments = (\[[^;]+\]);/);
+if (!platformRegistration || !/^\[\s*(?:'[a-z-]+'\s*,?\s*)+\]$/.test(platformRegistration[1])) throw new Error('Unsupported public platform registration; review the source generator.');
+const platformFragments = JSON.parse(platformRegistration[1].replaceAll("'", '"'));
 const schema = JSON.parse(await source('web/shared/contracts.schema.json'));
 const refs = new Map(Object.keys(schema.$defs).map(name => [`${schema.$id}#/$defs/${name}`, `#/$defs/${name}`]));
 for (const game of fragments) {
@@ -31,6 +35,16 @@ for (const game of fragments) {
     if (Object.hasOwn(schema.$defs, name)) throw new Error(`Duplicate definition ${name}`);
     schema.$defs[name] = value;
     refs.set(`./games/${game}.schema.json#/$defs/${name}`, `#/$defs/${name}`);
+  }
+}
+for (const platform of platformFragments) {
+  const path = `web/shared/${platform}.schema.json`;
+  const fragment = JSON.parse(await source(path));
+  for (const [name, value] of Object.entries(fragment.$defs)) {
+    if (Object.hasOwn(schema.$defs, name)) throw new Error(`Duplicate definition ${name}`);
+    schema.$defs[name] = value;
+    schema.anyOf.push({ $ref: `#/$defs/${name}` });
+    refs.set(`./${platform}.schema.json#/$defs/${name}`, `#/$defs/${name}`);
   }
 }
 const patterns = new Set();
@@ -202,9 +216,10 @@ const files = {
   'server/internal/contracts/schema.generated.json': JSON.stringify(schema,null,2)+'\n',
   'server/internal/contracts/bindings.generated.go': bindings,
   'server/internal/contracts/bindings.generated_test.go': bindingTests,
-  'qa/implementation/multi-game/m02a/contracts/validation-fixtures.json': JSON.stringify(fixtures,null,2)+'\n',
-  'qa/implementation/multi-game/m02a/contracts/semantics-fixtures.json': JSON.stringify(semantics,null,2)+'\n',
-  'qa/implementation/multi-game/m02a/contracts/manifest.json': JSON.stringify({requirement:'SYS-01 / M02A',node:process.version,icu:process.versions.icu,locale:new Intl.Collator().resolvedOptions().locale,fragments,sources,definitionCount:names.length,bindingKinds,fixtureCount:fixtures.length,deliberateBoundaryDifferences:fixtures.filter(f=>f.ajv!==f.boundary).map(f=>f.id)},null,2)+'\n',
+  // Active generation must never overwrite the frozen M02A acceptance archive.
+  'server/internal/contracts/testdata/validation-fixtures.json': JSON.stringify(fixtures,null,2)+'\n',
+  'server/internal/contracts/testdata/semantics-fixtures.json': JSON.stringify(semantics,null,2)+'\n',
+  'server/internal/contracts/testdata/manifest.json': JSON.stringify({requirement:'SYS-01 / active public contract generation',node:process.version,icu:process.versions.icu,locale:new Intl.Collator().resolvedOptions().locale,fragments,platformFragments,sources,definitionCount:names.length,bindingKinds,fixtureCount:fixtures.length,deliberateBoundaryDifferences:fixtures.filter(f=>f.ajv!==f.boundary).map(f=>f.id)},null,2)+'\n',
 };
 let stale=false;
 for (const [path,content] of Object.entries(files)) {

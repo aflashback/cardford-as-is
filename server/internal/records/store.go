@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"net"
 	"regexp"
 	"strings"
 	"time"
@@ -19,6 +20,8 @@ var (
 )
 
 type StoreOptions struct {
+	// LocalService activates only the separate loopback development schema.
+	LocalService bool
 	Schema       string
 	CreateSchema bool
 	QueryTimeout time.Duration
@@ -27,14 +30,15 @@ type StoreOptions struct {
 	Codec        *DocumentCodec
 }
 
-// Store is the unexposed M03 adapter. It requires an explicitly named schema in
-// an isolated test database; M04 must provide a reviewed activation path.
+// Store defaults to an isolated M03 test schema. Explicit local-service mode
+// permits only the separate loopback schema with an installed service codec.
 type Store struct {
 	pool         *pgxpool.Pool
 	schema       string
 	codec        *DocumentCodec
 	queryTimeout time.Duration
 	lockTimeout  time.Duration
+	localService bool
 }
 
 var schemaName = regexp.MustCompile(`^m03_[a-z0-9_]{1,48}$`)
@@ -44,7 +48,18 @@ func OpenStore(ctx context.Context, url string, options StoreOptions) (*Store, e
 	if err != nil {
 		return nil, fmt.Errorf("invalid M03 database configuration")
 	}
-	if !strings.HasSuffix(cfg.ConnConfig.Database, "_test") || !schemaName.MatchString(options.Schema) {
+	if options.LocalService {
+		ip := net.ParseIP(cfg.ConnConfig.Host)
+		if (ip == nil || !ip.IsLoopback()) || options.Schema != "cardford_go_local" || options.Codec == nil {
+			return nil, fmt.Errorf("local service requires loopback PostgreSQL, cardford_go_local schema and an explicit codec")
+		}
+		for _, fallback := range cfg.ConnConfig.Fallbacks {
+			ip := net.ParseIP(fallback.Host)
+			if ip == nil || !ip.IsLoopback() {
+				return nil, fmt.Errorf("local service database fallbacks must also be loopback")
+			}
+		}
+	} else if !strings.HasSuffix(cfg.ConnConfig.Database, "_test") || !schemaName.MatchString(options.Schema) {
 		return nil, fmt.Errorf("M03 requires separate _test database and explicit m03_ schema")
 	}
 	if options.QueryTimeout == 0 {
@@ -66,6 +81,7 @@ func OpenStore(ctx context.Context, url string, options StoreOptions) (*Store, e
 	cfg.MinConns = 0
 	cfg.ConnConfig.ConnectTimeout = options.QueryTimeout
 	cfg.ConnConfig.RuntimeParams["search_path"] = pgx.Identifier{options.Schema}.Sanitize()
+	cfg.ConnConfig.RuntimeParams["application_name"] = "cardford:" + options.Schema
 	cfg.ConnConfig.RuntimeParams["statement_timeout"] = fmt.Sprint(options.QueryTimeout.Milliseconds())
 	cfg.ConnConfig.RuntimeParams["lock_timeout"] = fmt.Sprint(options.LockTimeout.Milliseconds())
 	cfg.ConnConfig.RuntimeParams["idle_in_transaction_session_timeout"] = fmt.Sprint(options.QueryTimeout.Milliseconds())
@@ -75,11 +91,13 @@ func OpenStore(ctx context.Context, url string, options StoreOptions) (*Store, e
 	if err != nil {
 		return nil, fmt.Errorf("open M03 database: %w", err)
 	}
-	s := &Store{pool: pool, schema: options.Schema, codec: options.Codec, queryTimeout: options.QueryTimeout, lockTimeout: options.LockTimeout}
+	s := &Store{pool: pool, schema: options.Schema, codec: options.Codec, queryTimeout: options.QueryTimeout, lockTimeout: options.LockTimeout, localService: options.LocalService}
 	if options.CreateSchema {
 		_, err = pool.Exec(bounded, "CREATE SCHEMA IF NOT EXISTS "+pgx.Identifier{options.Schema}.Sanitize())
+		err = stageError("store.create-schema", err)
 	} else {
 		err = pool.Ping(bounded)
+		err = stageError("store.ping", err)
 	}
 	if err != nil {
 		pool.Close()
@@ -97,11 +115,15 @@ func (s *Store) table(name string) string { return pgx.Identifier{s.schema, name
 // withTx is only for bounded SQL and already-validated immutable records.
 // Game/policy/provider callbacks are never invoked while it owns a connection.
 func (s *Store) withTx(ctx context.Context, fn func(context.Context, pgx.Tx) error) error {
+	stage, _ := ctx.Value(databaseStageKey{}).(string)
+	if stage == "" {
+		stage = "transaction"
+	}
 	ctx, cancel := s.bounded(ctx)
 	defer cancel()
 	tx, err := s.pool.BeginTx(ctx, pgx.TxOptions{})
 	if err != nil {
-		return err
+		return stageError(stage+".begin", err)
 	}
 	defer func() {
 		rollback, cancel := context.WithTimeout(context.Background(), s.queryTimeout)
@@ -109,7 +131,29 @@ func (s *Store) withTx(ctx context.Context, fn func(context.Context, pgx.Tx) err
 		_ = tx.Rollback(rollback)
 	}()
 	if err = fn(ctx, tx); err != nil {
-		return err
+		return stageError(stage+".body", err)
 	}
-	return tx.Commit(ctx)
+	return stageError(stage+".commit", tx.Commit(ctx))
+}
+
+type databaseStageKey struct{}
+
+func databaseStage(ctx context.Context, stage string) context.Context {
+	return context.WithValue(ctx, databaseStageKey{}, stage)
+}
+
+// StageError retains the original error for errors.Is/As while identifying the
+// failed bounded database stage. It never contains credentials or query values.
+type StageError struct {
+	Stage string
+	Err   error
+}
+
+func (e *StageError) Error() string { return e.Stage + ": " + e.Err.Error() }
+func (e *StageError) Unwrap() error { return e.Err }
+func stageError(stage string, err error) error {
+	if err == nil {
+		return nil
+	}
+	return &StageError{stage, err}
 }

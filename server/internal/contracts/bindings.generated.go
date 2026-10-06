@@ -2833,5 +2833,562 @@ func (v SpadesActorEvent) MarshalJSON() ([]byte, error) {
 }
 func (v SpadesActorEvent) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
-var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent"}
+type LocalServiceWorkRetryRequest struct {
+	ControlLeaseToken string `json:"controlLeaseToken"`
+}
+
+func (v *LocalServiceWorkRetryRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceWorkRetryRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceWorkRetryRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceWorkRetryRequest(next)
+	return nil
+}
+func (v LocalServiceWorkRetryRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceWorkRetryRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceWorkRetryRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServiceEmptyRequest struct {
+}
+
+func (v *LocalServiceEmptyRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceEmptyRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceEmptyRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceEmptyRequest(next)
+	return nil
+}
+func (v LocalServiceEmptyRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceEmptyRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceEmptyRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// LocalServiceSelector preserves the complete validated JSON value, including null and union tags.
+type LocalServiceSelector struct{ raw json.RawMessage }
+
+func (v *LocalServiceSelector) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceSelector", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceSelector) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceSelector", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceSelector) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type LocalServiceNode struct {
+	Kind         string  `json:"kind"`
+	Phase        string  `json:"phase"`
+	Actor        *Seat   `json:"actor,omitempty"`
+	WindowID     *string `json:"windowId,omitempty"`
+	TransitionID *string `json:"transitionId,omitempty"`
+	RequestID    *string `json:"requestId,omitempty"`
+}
+
+func (v *LocalServiceNode) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceNode", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceNode
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceNode(next)
+	return nil
+}
+func (v LocalServiceNode) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceNode
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceNode", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// LocalServiceControl preserves the complete validated JSON value, including null and union tags.
+type LocalServiceControl struct{ raw json.RawMessage }
+
+func (v *LocalServiceControl) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceControl", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceControl) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceControl", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceControl) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// LocalServiceSession preserves the complete validated JSON value, including null and union tags.
+type LocalServiceSession struct{ raw json.RawMessage }
+
+func (v *LocalServiceSession) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceSession", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceSession) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceSession", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceSession) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// LocalServiceSessionView preserves the complete validated JSON value, including null and union tags.
+type LocalServiceSessionView struct{ raw json.RawMessage }
+
+func (v *LocalServiceSessionView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceSessionView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceSessionView) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceSessionView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceSessionView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// LocalServiceNewSessionRequest preserves the complete validated JSON value, including null and union tags.
+type LocalServiceNewSessionRequest struct{ raw json.RawMessage }
+
+func (v *LocalServiceNewSessionRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceNewSessionRequest", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceNewSessionRequest) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceNewSessionRequest", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceNewSessionRequest) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type LocalServiceControlRequest struct {
+	CommandID                 string  `json:"commandId"`
+	GameID                    string  `json:"gameId"`
+	ExpectedRevision          float64 `json:"expectedRevision"`
+	ExpectedControlGeneration float64 `json:"expectedControlGeneration"`
+}
+
+func (v *LocalServiceControlRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceControlRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceControlRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceControlRequest(next)
+	return nil
+}
+func (v LocalServiceControlRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceControlRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceControlRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalControlView struct {
+	ControlLeaseToken string  `json:"controlLeaseToken"`
+	ExpiresAt         string  `json:"expiresAt"`
+	AccessGeneration  float64 `json:"accessGeneration"`
+	ControlGeneration float64 `json:"controlGeneration"`
+}
+
+func (v *LocalControlView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalControlView", raw); err != nil {
+		return err
+	}
+	type wire LocalControlView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalControlView(next)
+	return nil
+}
+func (v LocalControlView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalControlView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalControlView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServiceActionRequest struct {
+	CommandID          string   `json:"commandId"`
+	GameID             string   `json:"gameId"`
+	ExpectedRevision   float64  `json:"expectedRevision"`
+	ControlLeaseToken  string   `json:"controlLeaseToken"`
+	CandidateID        string   `json:"candidateId"`
+	PreparedDecisionID string   `json:"preparedDecisionId"`
+	PreparedWorkIds    []string `json:"preparedWorkIds"`
+}
+
+func (v *LocalServiceActionRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceActionRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceActionRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceActionRequest(next)
+	return nil
+}
+func (v LocalServiceActionRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceActionRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceActionRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServicePrepareRequest struct {
+	GameID            string  `json:"gameId"`
+	ExpectedRevision  float64 `json:"expectedRevision"`
+	ControlLeaseToken string  `json:"controlLeaseToken"`
+	Purpose           string  `json:"purpose"`
+}
+
+func (v *LocalServicePrepareRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServicePrepareRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServicePrepareRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServicePrepareRequest(next)
+	return nil
+}
+func (v LocalServicePrepareRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServicePrepareRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServicePrepareRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServicePrepareView struct {
+	WorkID             string   `json:"workId"`
+	WorkIds            []string `json:"workIds"`
+	Status             string   `json:"status"`
+	GameID             string   `json:"gameId"`
+	Revision           float64  `json:"revision"`
+	Purpose            string   `json:"purpose"`
+	PreparedDecisionID *string  `json:"preparedDecisionId,omitempty"`
+	DecisionID         *string  `json:"decisionId,omitempty"`
+	Source             *string  `json:"source,omitempty"`
+}
+
+func (v *LocalServicePrepareView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServicePrepareView", raw); err != nil {
+		return err
+	}
+	type wire LocalServicePrepareView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServicePrepareView(next)
+	return nil
+}
+func (v LocalServicePrepareView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServicePrepareView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServicePrepareView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// LocalServiceAdvanceRequest preserves the complete validated JSON value, including null and union tags.
+type LocalServiceAdvanceRequest struct{ raw json.RawMessage }
+
+func (v *LocalServiceAdvanceRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceAdvanceRequest", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceAdvanceRequest) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceAdvanceRequest", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceAdvanceRequest) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type LocalServiceNextHandRequest struct {
+	CommandID         string  `json:"commandId"`
+	GameID            string  `json:"gameId"`
+	ExpectedRevision  float64 `json:"expectedRevision"`
+	ControlLeaseToken string  `json:"controlLeaseToken"`
+}
+
+func (v *LocalServiceNextHandRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceNextHandRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceNextHandRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceNextHandRequest(next)
+	return nil
+}
+func (v LocalServiceNextHandRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceNextHandRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceNextHandRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServiceCommandReceipt struct {
+	CommandID         string   `json:"commandId"`
+	GameID            string   `json:"gameId"`
+	Revision          float64  `json:"revision"`
+	ControlLeaseToken *string  `json:"controlLeaseToken,omitempty"`
+	ControlGeneration *float64 `json:"controlGeneration,omitempty"`
+}
+
+func (v *LocalServiceCommandReceipt) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceCommandReceipt", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceCommandReceipt
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceCommandReceipt(next)
+	return nil
+}
+func (v LocalServiceCommandReceipt) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceCommandReceipt
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceCommandReceipt", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServiceDecisionView struct {
+	DecisionID string     `json:"decisionId"`
+	GameID     string     `json:"gameId"`
+	Revision   float64    `json:"revision"`
+	Advice     AdviceView `json:"advice"`
+}
+
+func (v *LocalServiceDecisionView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceDecisionView", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceDecisionView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceDecisionView(next)
+	return nil
+}
+func (v LocalServiceDecisionView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceDecisionView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceDecisionView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServiceHealthView struct {
+	Status   string `json:"status"`
+	Mode     string `json:"mode"`
+	Identity string `json:"identity"`
+	Provider string `json:"provider"`
+	Payments string `json:"payments"`
+}
+
+func (v *LocalServiceHealthView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceHealthView", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceHealthView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceHealthView(next)
+	return nil
+}
+func (v LocalServiceHealthView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceHealthView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceHealthView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// LocalServiceReconcileRequest preserves the complete validated JSON value, including null and union tags.
+type LocalServiceReconcileRequest struct{ raw json.RawMessage }
+
+func (v *LocalServiceReconcileRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceReconcileRequest", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceReconcileRequest) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceReconcileRequest", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceReconcileRequest) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// LocalServiceRecoveredReceipt preserves the complete validated JSON value, including null and union tags.
+type LocalServiceRecoveredReceipt struct{ raw json.RawMessage }
+
+func (v *LocalServiceRecoveredReceipt) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceRecoveredReceipt", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceRecoveredReceipt) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceRecoveredReceipt", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceRecoveredReceipt) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt"}
 var supportedPatterns = map[string]bool{"^[CDHS](?:[2-9]|10|J|Q|K|A)$": true, "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": true, "^[1-9][0-9]{0,5}$": true, "^(0|[1-9][0-9]{0,5})$": true, "^[a-z0-9][a-z0-9-]{0,63}$": true, "^[0-9]+\\.[0-9]+\\.[0-9]+$": true, "^[^\\u0000-\\u001f\\u007f]+$": true}

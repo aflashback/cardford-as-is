@@ -2,6 +2,7 @@ package gamekernel
 
 import (
 	"cardford/server/internal/contracts"
+	"context"
 	"encoding/json"
 	"fmt"
 	"reflect"
@@ -35,6 +36,27 @@ type PreparedDecision struct {
 	ObservationSchemaVersion string          `json:"observationSchemaVersion"`
 	Analysis                 json.RawMessage `json:"analysis"`
 }
+
+// PrivateOutput is a game-owned, versioned persistence boundary. It is never
+// included in RegisteredAnalysis or an actor's public packet.
+type PrivateOutput struct {
+	Schema string
+	Bytes  json.RawMessage
+}
+type CompleteAnalysis struct {
+	CandidateID    string
+	Registered     json.RawMessage
+	Detail, Advice PrivateOutput
+}
+type CompletePreparation struct {
+	Prepared       PreparedDecision
+	Detail, Advice PrivateOutput
+}
+type PreparationBinding struct {
+	InputDigest  string
+	Packet       json.RawMessage
+	CandidateIDs []string
+}
 type BoundTransition struct {
 	Next          BoundSession
 	PrivateEvents []json.RawMessage
@@ -47,6 +69,12 @@ type BoundSession interface {
 	Packet(int) (json.RawMessage, error)
 	View(int) (json.RawMessage, error)
 	Prepare(int, string) (PreparedDecision, error)
+	PreparationBinding(int, string) (PreparationBinding, error)
+	PrepareComplete(context.Context, int, string, string) (CompletePreparation, error)
+	Persist(int) (json.RawMessage, []json.RawMessage, error)
+	EventCount() int
+	StorageIdentity() (string, string)
+	UnitID() string
 	Commit(int, string) (BoundTransition, error)
 	CommitSealed(string, []SeatChoice) (BoundTransition, error)
 	Advance(string) (BoundTransition, error)
@@ -95,6 +123,11 @@ type SessionModel[S, O, A any] struct {
 	View              func(O) (json.RawMessage, error)
 	EncodeObservation func(O) (json.RawMessage, error)
 	Analyze           func(O, string) (string, json.RawMessage, error)
+	AnalyzeComplete   func(context.Context, O, string, string) (CompleteAnalysis, error)
+	Persist           func(S, int) (json.RawMessage, []json.RawMessage, error)
+	EventCount        func(S) int
+	StorageIdentity   func(S) (string, string)
+	StorageUnit       func(S) string
 	Reduce            func(S, Operation[A]) (S, []json.RawMessage, error)
 	ProjectEvent      func(json.RawMessage, int) (json.RawMessage, error)
 }
@@ -362,15 +395,7 @@ func (b *boundSession[S, O, A]) Prepare(seat int, policyID string) (PreparedDeci
 	if err != nil {
 		return result, err
 	}
-	ob, err := b.model.EncodeObservation(input.observation)
-	if err != nil {
-		return result, err
-	}
-	data, err := json.Marshal(map[string]any{"pin": b.Pin(), "actor": seat, "policyId": policyID, "observation": ob, "packet": input.packet})
-	if err != nil {
-		return result, err
-	}
-	canonical, err := contracts.LegacyKernelCanonical(data)
+	digest, err := b.inputDigest(input, seat, policyID)
 	if err != nil {
 		return result, err
 	}
@@ -385,7 +410,7 @@ func (b *boundSession[S, O, A]) Prepare(seat int, policyID string) (PreparedDeci
 	if err != nil {
 		return result, err
 	}
-	return PreparedDecision{seat, id, contracts.SHA256(canonical), policyID, b.Pin().ObservationSchemaVersion, analysis}, nil
+	return PreparedDecision{seat, id, digest, policyID, b.Pin().ObservationSchemaVersion, analysis}, nil
 }
 func (b *boundSession[S, O, A]) apply(op Operation[A]) (BoundTransition, error) {
 	next, events, err := b.model.Reduce(b.state, op)

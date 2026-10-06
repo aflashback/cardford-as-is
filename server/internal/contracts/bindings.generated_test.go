@@ -208,6 +208,46 @@ func generatedWire(name string) wireValue {
 		return new(SpadesAnalysis)
 	case "SpadesActorEvent":
 		return new(SpadesActorEvent)
+	case "LocalServiceWorkRetryRequest":
+		return new(LocalServiceWorkRetryRequest)
+	case "LocalServiceEmptyRequest":
+		return new(LocalServiceEmptyRequest)
+	case "LocalServiceSelector":
+		return new(LocalServiceSelector)
+	case "LocalServiceNode":
+		return new(LocalServiceNode)
+	case "LocalServiceControl":
+		return new(LocalServiceControl)
+	case "LocalServiceSession":
+		return new(LocalServiceSession)
+	case "LocalServiceSessionView":
+		return new(LocalServiceSessionView)
+	case "LocalServiceNewSessionRequest":
+		return new(LocalServiceNewSessionRequest)
+	case "LocalServiceControlRequest":
+		return new(LocalServiceControlRequest)
+	case "LocalControlView":
+		return new(LocalControlView)
+	case "LocalServiceActionRequest":
+		return new(LocalServiceActionRequest)
+	case "LocalServicePrepareRequest":
+		return new(LocalServicePrepareRequest)
+	case "LocalServicePrepareView":
+		return new(LocalServicePrepareView)
+	case "LocalServiceAdvanceRequest":
+		return new(LocalServiceAdvanceRequest)
+	case "LocalServiceNextHandRequest":
+		return new(LocalServiceNextHandRequest)
+	case "LocalServiceCommandReceipt":
+		return new(LocalServiceCommandReceipt)
+	case "LocalServiceDecisionView":
+		return new(LocalServiceDecisionView)
+	case "LocalServiceHealthView":
+		return new(LocalServiceHealthView)
+	case "LocalServiceReconcileRequest":
+		return new(LocalServiceReconcileRequest)
+	case "LocalServiceRecoveredReceipt":
+		return new(LocalServiceRecoveredReceipt)
 	}
 	return nil
 }

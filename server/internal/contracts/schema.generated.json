@@ -4433,6 +4433,892 @@
         "bid"
       ],
       "additionalProperties": false
+    },
+    "LocalServiceWorkRetryRequest": {
+      "title": "LocalServiceWorkRetryRequest",
+      "type": "object",
+      "properties": {
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false
+    },
+    "LocalServiceEmptyRequest": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false,
+      "title": "LocalServiceEmptyRequest"
+    },
+    "LocalServiceSelector": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "hearts"
+            },
+            "variantId": {
+              "const": "solo"
+            },
+            "moduleVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "ruleProfileId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "spades"
+            },
+            "variantId": {
+              "enum": [
+                "solo",
+                "partners"
+              ]
+            },
+            "moduleVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "ruleProfileId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "title": "LocalServiceSelector"
+    },
+    "LocalServiceNode": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "actor",
+            "sealed",
+            "automatic",
+            "chance",
+            "round-complete",
+            "session-complete"
+          ]
+        },
+        "phase": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "actor": {
+          "$ref": "#/$defs/Seat"
+        },
+        "windowId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "transitionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "requestId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "kind",
+        "phase"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceNode"
+    },
+    "LocalServiceControl": {
+      "type": "object",
+      "properties": {
+        "owned": {
+          "type": "boolean"
+        },
+        "leaseToken": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "controlGeneration": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "owned",
+        "leaseToken",
+        "controlGeneration"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceControl"
+    },
+    "LocalServiceSession": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "playable": {
+          "type": "boolean"
+        },
+        "blockedReason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "view": {
+          "$ref": "#/$defs/RegisteredSessionView"
+        },
+        "control": {
+          "$ref": "#/$defs/LocalServiceControl"
+        },
+        "node": {
+          "$ref": "#/$defs/LocalServiceNode"
+        }
+      },
+      "required": [
+        "gameId",
+        "revision",
+        "playable",
+        "blockedReason",
+        "view",
+        "control",
+        "node"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceSession"
+    },
+    "LocalServiceSessionView": {
+      "type": "object",
+      "properties": {
+        "serviceSchemaVersion": {
+          "const": "1.0.0"
+        },
+        "activeGameId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "session": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalServiceSession"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "serviceSchemaVersion",
+        "activeGameId",
+        "session"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceSessionView"
+    },
+    "LocalServiceNewSessionRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "selector": {
+          "$ref": "#/$defs/LocalServiceSelector"
+        },
+        "expectedActiveGameId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expectedRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "controlLeaseToken": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "selector",
+        "expectedActiveGameId",
+        "expectedRevision",
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceNewSessionRequest"
+    },
+    "LocalServiceControlRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expectedControlGeneration": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "expectedControlGeneration"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceControlRequest"
+    },
+    "LocalControlView": {
+      "type": "object",
+      "properties": {
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expiresAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "accessGeneration": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "controlGeneration": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "controlLeaseToken",
+        "expiresAt",
+        "accessGeneration",
+        "controlGeneration"
+      ],
+      "additionalProperties": false,
+      "title": "LocalControlView"
+    },
+    "LocalServiceActionRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "candidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "preparedDecisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "preparedWorkIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "candidateId",
+        "preparedDecisionId",
+        "preparedWorkIds"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceActionRequest"
+    },
+    "LocalServicePrepareRequest": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "purpose": {
+          "enum": [
+            "human-analysis",
+            "bot-action",
+            "coach-advice"
+          ]
+        }
+      },
+      "required": [
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "purpose"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServicePrepareRequest"
+    },
+    "LocalServicePrepareView": {
+      "type": "object",
+      "properties": {
+        "workId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "workIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "running",
+            "completed",
+            "rejected",
+            "canceled"
+          ]
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "purpose": {
+          "enum": [
+            "human-analysis",
+            "bot-action",
+            "coach-advice"
+          ]
+        },
+        "preparedDecisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "source": {
+          "enum": [
+            "code",
+            "forced"
+          ]
+        }
+      },
+      "required": [
+        "workId",
+        "workIds",
+        "status",
+        "gameId",
+        "revision",
+        "purpose"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServicePrepareView"
+    },
+    "LocalServiceAdvanceRequest": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "gameId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "expectedRevision": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "controlLeaseToken": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "kind": {
+              "const": "bot"
+            },
+            "preparedDecisionId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "commandId",
+            "gameId",
+            "expectedRevision",
+            "controlLeaseToken",
+            "kind",
+            "preparedDecisionId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "gameId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "expectedRevision": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "controlLeaseToken": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "kind": {
+              "const": "automatic"
+            },
+            "transitionId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "commandId",
+            "gameId",
+            "expectedRevision",
+            "controlLeaseToken",
+            "kind",
+            "transitionId"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "title": "LocalServiceAdvanceRequest"
+    },
+    "LocalServiceNextHandRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceNextHandRequest"
+    },
+    "LocalServiceCommandReceipt": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "controlGeneration": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "revision"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceCommandReceipt"
+    },
+    "LocalServiceDecisionView": {
+      "type": "object",
+      "properties": {
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "advice": {
+          "$ref": "#/$defs/AdviceView"
+        }
+      },
+      "required": [
+        "decisionId",
+        "gameId",
+        "revision",
+        "advice"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceDecisionView"
+    },
+    "LocalServiceHealthView": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "ready"
+        },
+        "mode": {
+          "enum": [
+            "local",
+            "test"
+          ]
+        },
+        "identity": {
+          "const": "local-test"
+        },
+        "provider": {
+          "const": "off"
+        },
+        "payments": {
+          "const": "fixture"
+        }
+      },
+      "required": [
+        "status",
+        "mode",
+        "identity",
+        "provider",
+        "payments"
+      ],
+      "additionalProperties": false,
+      "title": "LocalServiceHealthView"
+    },
+    "LocalServiceReconcileRequest": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "new-session"
+            },
+            "request": {
+              "$ref": "#/$defs/LocalServiceNewSessionRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "control"
+            },
+            "request": {
+              "$ref": "#/$defs/LocalServiceControlRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "action"
+            },
+            "request": {
+              "$ref": "#/$defs/LocalServiceActionRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "advance"
+            },
+            "request": {
+              "$ref": "#/$defs/LocalServiceAdvanceRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "next-hand"
+            },
+            "request": {
+              "$ref": "#/$defs/LocalServiceNextHandRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "title": "LocalServiceReconcileRequest"
+    },
+    "LocalServiceRecoveredReceipt": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/LocalServiceCommandReceipt"
+        },
+        {
+          "$ref": "#/$defs/LocalControlView"
+        }
+      ],
+      "title": "LocalServiceRecoveredReceipt"
     }
   },
   "anyOf": [
@@ -4696,6 +5582,66 @@
     },
     {
       "$ref": "#/$defs/AccessDecision"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceWorkRetryRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceEmptyRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceSelector"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceNode"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceControl"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceSession"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceSessionView"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceNewSessionRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceControlRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalControlView"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceActionRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServicePrepareRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServicePrepareView"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceAdvanceRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceNextHandRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceCommandReceipt"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceDecisionView"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceHealthView"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceReconcileRequest"
+    },
+    {
+      "$ref": "#/$defs/LocalServiceRecoveredReceipt"
     }
   ]
 }

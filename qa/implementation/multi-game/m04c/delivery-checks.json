@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-06T20:32:39.975Z",
+  "checks": [
+    "go-full",
+    "go-race",
+    "go-vet",
+    "go-contracts",
+    "public-contracts",
+    "typecheck",
+    "service-command",
+    "boundary-check",
+    "edge-check",
+    "node-reference"
+  ],
+  "sourceSHA256": "513038ed12011c3301fc850de24f9ca90cb0c4921c1dc949466bc543f9e85b09",
+  "sourceAndOutputHashes": "match final captured bytes",
+  "originalReference": "passed",
+  "preservedFrom": "bbca6fe",
+  "preservedPaths": [
+    "web/src",
+    "web/tests",
+    "web/e2e",
+    "web/server",
+    ":!web/server/records/migrations/008-local-go-service.sql",
+    "web/shared",
+    ":!web/shared/local-service.*",
+    "package.json",
+    "package-lock.json",
+    "go.mod",
+    "go.sum",
+    "scripts/windows-env.mjs",
+    "scripts/windows-tools.json",
+    "qa/experiments",
+    "qa/implementation/multi-game/m02",
+    "qa/implementation/multi-game/m02a",
+    "qa/implementation/multi-game/m03",
+    "qa/implementation/multi-game/m04",
+    "qa/implementation/multi-game/m04b",
+    "qa/implementation/multi-game/performance-windows"
+  ],
+  "localMarkdownLinks": 346,
+  "privateDatabaseCredential": "absent from M04C evidence"
+}

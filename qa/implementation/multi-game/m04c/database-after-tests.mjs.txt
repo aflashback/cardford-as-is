@@ -1,0 +1,13 @@
+import pg from 'pg';
+import { writeFileSync } from 'node:fs';
+const url=new URL(process.env.TEST_DATABASE_URL);
+if(url.hostname!=='127.0.0.1'||url.port!=='54331'||url.pathname!=='/cardford_windows_test')throw Error('Unexpected database');
+const client=new pg.Client({connectionString:url.href,connectionTimeoutMillis:5000,query_timeout:5000});
+try {
+ await client.connect();
+ const activity=await client.query(`SELECT datname, application_name, state, wait_event_type, wait_event, pg_blocking_pids(pid) AS blockers FROM pg_stat_activity WHERE backend_type='client backend' AND pid<>pg_backend_pid() ORDER BY pid`);
+ const schemas=await client.query(`SELECT nspname FROM pg_namespace WHERE nspname LIKE 'm03_%' ORDER BY nspname`);
+ const result={checkedAt:new Date().toISOString(),activity:activity.rows,isolatedSchemas:schemas.rows.map(r=>r.nspname)};
+ writeFileSync('qa/implementation/multi-game/m04c/database-after-tests.json',JSON.stringify(result,null,2)+'\n');
+ console.log(JSON.stringify(result));
+} finally {await client.end();}

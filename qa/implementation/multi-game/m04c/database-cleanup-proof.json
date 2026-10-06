@@ -1,0 +1,188 @@
+{
+  "checkedAt": "2026-10-06T20:25:18.046Z",
+  "activity": [
+    {
+      "pid": 22204,
+      "application_name": "cardford:m03_store_0c30546d1873c1f1",
+      "backend_start": "2026-10-06T19:45:41.279Z",
+      "state_change": "2026-10-06T19:45:41.917Z",
+      "state": "idle",
+      "client_addr": "127.0.0.1",
+      "client_port": 46478,
+      "blockers": []
+    }
+  ],
+  "proof": [
+    {
+      "schema": "m03_service_299d5e229f432a36",
+      "tables": [
+        "analysis_jobs",
+        "billing_coverage",
+        "billing_events",
+        "billing_operations",
+        "billing_previews",
+        "billing_purchases",
+        "billing_reconcile_jobs",
+        "coached_hands",
+        "commands",
+        "family_assignments",
+        "family_commands",
+        "family_groups",
+        "family_invitations",
+        "game_events",
+        "games",
+        "jobs",
+        "m03_access",
+        "m03_access_trials",
+        "m03_allowance",
+        "m03_allowance_charges",
+        "m03_anchors",
+        "m03_command_decisions",
+        "m03_commands",
+        "m03_decisions",
+        "m03_events",
+        "m03_exposures",
+        "m03_games",
+        "m03_grants",
+        "m03_review_trials",
+        "m03_unit_admissions",
+        "m03_work",
+        "m03_work_attempts",
+        "m04_controls",
+        "m04_service_commands",
+        "m04_sessions",
+        "players",
+        "preparation_attempts",
+        "provider_attempts",
+        "schema_migrations",
+        "sessions"
+      ],
+      "migrations": [
+        {
+          "name": "001-local-platform.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        },
+        {
+          "name": "002-billing-family.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        },
+        {
+          "name": "003-account-data.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        },
+        {
+          "name": "004-analysis-jobs.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        },
+        {
+          "name": "005-analysis-attempt-fence.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        },
+        {
+          "name": "006-preparation-attempts.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        },
+        {
+          "name": "007-versioned-platform-records.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        },
+        {
+          "name": "008-local-go-service.sql",
+          "applied_at": "2026-10-06T19:44:34.246Z"
+        }
+      ],
+      "games": []
+    },
+    {
+      "schema": "m03_service_b2b7b9c7e655e158",
+      "tables": [],
+      "migrations": [],
+      "games": []
+    },
+    {
+      "schema": "m03_store_0ce949bd91a79c6d",
+      "tables": [
+        "analysis_jobs",
+        "billing_coverage",
+        "billing_events",
+        "billing_operations",
+        "billing_previews",
+        "billing_purchases",
+        "billing_reconcile_jobs",
+        "coached_hands",
+        "commands",
+        "family_assignments",
+        "family_commands",
+        "family_groups",
+        "family_invitations",
+        "game_events",
+        "games",
+        "jobs",
+        "m03_access",
+        "m03_access_trials",
+        "m03_allowance",
+        "m03_allowance_charges",
+        "m03_anchors",
+        "m03_command_decisions",
+        "m03_commands",
+        "m03_decisions",
+        "m03_events",
+        "m03_exposures",
+        "m03_games",
+        "m03_grants",
+        "m03_review_trials",
+        "m03_unit_admissions",
+        "m03_work",
+        "m03_work_attempts",
+        "m04_controls",
+        "m04_service_commands",
+        "m04_sessions",
+        "players",
+        "preparation_attempts",
+        "provider_attempts",
+        "schema_migrations",
+        "sessions"
+      ],
+      "migrations": [
+        {
+          "name": "001-local-platform.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        },
+        {
+          "name": "002-billing-family.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        },
+        {
+          "name": "003-account-data.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        },
+        {
+          "name": "004-analysis-jobs.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        },
+        {
+          "name": "005-analysis-attempt-fence.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        },
+        {
+          "name": "006-preparation-attempts.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        },
+        {
+          "name": "007-versioned-platform-records.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        },
+        {
+          "name": "008-local-go-service.sql",
+          "applied_at": "2026-10-06T19:45:36.521Z"
+        }
+      ],
+      "games": [
+        {
+          "game_id": "m04-cancellation",
+          "revision": "0"
+        }
+      ]
+    }
+  ]
+}

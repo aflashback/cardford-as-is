@@ -7,10 +7,15 @@ const { compile } = require('json-schema-to-typescript');
 const { Ajv2020 } = require('ajv/dist/2020.js');
 const standalone = require('ajv/dist/standalone/index.js').default;
 const base = resolve(dirname(fileURLToPath(import.meta.url)), '../shared');
+// Preserve the frozen original client artifacts. The second generated bundle
+// combines their schemas with registered service fragments without introducing
+// another editable definition tree.
+for (const includePlatform of [false, true]) {
 const schema = JSON.parse(await readFile(resolve(base, 'contracts.schema.json'), 'utf8'));
 // Only these public fragments may enter the active bundle. Private schemas and
 // arbitrary filesystem/network references are never resolved by the compiler.
 const publicFragments = ['hearts', 'spades'];
+const publicPlatformFragments = ['local-service'];
 const references = new Map();
 const schemaLocations = new Map();
 for (const name of Object.keys(schema.$defs)) references.set(`${schema.$id}#/$defs/${name}`, `#/$defs/${name}`);
@@ -20,6 +25,17 @@ for (const game of publicFragments) {
   for (const [name, definition] of Object.entries(fragment.$defs)) {
     if (Object.hasOwn(schema.$defs, name)) throw new Error(`Duplicate public definition: ${name}`);
     schema.$defs[name] = definition;
+    references.set(`${path}#/$defs/${name}`, `#/$defs/${name}`);
+    schemaLocations.set(name, `${path}#/$defs/${name}`);
+  }
+}
+for (const name of includePlatform ? publicPlatformFragments : []) {
+  const path = `./${name}.schema.json`;
+  const fragment = JSON.parse(await readFile(resolve(base, path), 'utf8'));
+  for (const [name, definition] of Object.entries(fragment.$defs)) {
+    if (Object.hasOwn(schema.$defs, name)) throw new Error(`Duplicate public definition: ${name}`);
+    schema.$defs[name] = definition;
+    schema.anyOf.push({ $ref: `#/$defs/${name}` });
     references.set(`${path}#/$defs/${name}`, `#/$defs/${name}`);
     schemaLocations.set(name, `${path}#/$defs/${name}`);
   }
@@ -80,7 +96,47 @@ for (const [method,path,input,output] of routes) {
   openapi.paths[path] ??= {};
   openapi.paths[path][method] = operation;
 }
-const files = { 'validators.mjs': compiled, 'validators.d.mts': declarations, 'contracts.ts': types + mapping, 'validation.ts': validation, 'openapi.json': JSON.stringify(openapi,null,2)+'\n' };
+// M04C is a separate local listener; these routes do not change the V1 client
+// contract or claim that its eventual platform UI envelope is implemented.
+const localServiceRoutes = [
+  ['get','/api/health',null,'LocalServiceHealthView'],
+  ['post','/api/local/session','LocalServiceEmptyRequest','IdentityView'],
+  ['get','/api/identity',null,'IdentityView'],
+  ['get','/api/session',null,'LocalServiceSessionView'],
+  ['get','/api/sessions/{id}',null,'LocalServiceSessionView'],
+  ['post','/api/sessions','LocalServiceNewSessionRequest','LocalServiceCommandReceipt'],
+  ['post','/api/session/control','LocalServiceControlRequest','LocalControlView'],
+  ['post','/api/session/actions','LocalServiceActionRequest','LocalServiceCommandReceipt'],
+  ['post','/api/session/prepare','LocalServicePrepareRequest','LocalServicePrepareView'],
+  ['post','/api/session/advance','LocalServiceAdvanceRequest','LocalServiceCommandReceipt'],
+  ['post','/api/session/next-hand','LocalServiceNextHandRequest','LocalServiceCommandReceipt'],
+  ['get','/api/work/{id}',null,'LocalServicePrepareView'],
+  ['post','/api/work/{id}/retry','LocalServiceWorkRetryRequest','LocalServicePrepareView'],
+  ['get','/api/decisions/{id}',null,'LocalServiceDecisionView'],
+  ['post','/api/commands/reconcile','LocalServiceReconcileRequest','LocalServiceRecoveredReceipt'],
+  ['post','/api/logout','LocalServiceEmptyRequest','AcceptedView'],
+  ['post','/api/account/delete','LocalServiceEmptyRequest','AccountDeleteView'],
+];
+const localOpenapi = { openapi: '3.1.0', info: { title: 'CardFord M04C local fixture service', version: '1.0.0' }, paths: {}, components: { ...openapi.components, securitySchemes: { localSession: { type: 'apiKey', in: 'cookie', name: 'cf_local_session' } } } };
+for (const [method,path,input,output] of localServiceRoutes) {
+  const content = { 'application/json': { schema: { $ref: `#/components/schemas/${output}` } } };
+  const operation = { responses: { '200': { description: 'Validated local service result', content }, default: { description: 'Safe typed error; reconcile an ambiguous command before retrying', content: { 'application/json': { schema: { $ref: '#/components/schemas/ApiError' } } } } }, parameters: [] };
+  if (output === 'LocalServicePrepareView') operation.responses['202'] = { description: 'Durable preparation pending; poll the listed work identities', content };
+  if (input) operation.requestBody = { required: true, content: { 'application/json': { schema: { $ref: `#/components/schemas/${input}` } } } };
+  if (path !== '/api/health') operation.parameters.push({ name: 'x-tricks-tab', in: 'header', required: true, schema: { type: 'string', minLength: 8, maxLength: 80 } });
+  if (method === 'post') operation.parameters.push({ name: 'x-tricks-client', in: 'header', required: true, schema: { const: '1' } });
+  if (path.includes('{id}')) operation.parameters.push({ name: 'id', in: 'path', required: true, schema: { type: 'string', minLength: 1, maxLength: 256 } });
+  if (path !== '/api/health' && path !== '/api/local/session') operation.security = [{ localSession: [] }];
+  localOpenapi.paths[path] ??= {};
+  localOpenapi.paths[path][method] = operation;
+}
+const files = includePlatform ? {
+  'local-service.validators.mjs': compiled,
+  'local-service.validators.d.mts': declarations.replaceAll('./contracts.ts', './local-service.contracts.ts'),
+  'local-service.contracts.ts': types + mapping,
+  'local-service.validation.ts': validation.replaceAll('./validators.mjs', './local-service.validators.mjs').replaceAll('./contracts.ts', './local-service.contracts.ts'),
+  'local-service.openapi.json': JSON.stringify(localOpenapi,null,2)+'\n',
+} : { 'validators.mjs': compiled, 'validators.d.mts': declarations, 'contracts.ts': types + mapping, 'validation.ts': validation, 'openapi.json': JSON.stringify(openapi,null,2)+'\n' };
 let stale = false;
 for (const [name,content] of Object.entries(files)) {
   const target = resolve(base,name);
@@ -91,3 +147,4 @@ for (const [name,content] of Object.entries(files)) {
 }
 if (stale) process.exitCode = 1;
 else console.log(process.argv.includes('--check') ? 'Contract artifacts are current.' : 'Generated contracts, validators and OpenAPI.');
+}

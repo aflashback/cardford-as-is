@@ -224,12 +224,18 @@ func (s *Store) readWork(ctx context.Context, q grantReader, field, value, owner
 func (s *Store) ReadWork(ctx context.Context, owner, id string) (PreparedWork, error) {
 	ctx, cancel := s.bounded(ctx)
 	defer cancel()
+	if err := s.authorize(ctx, s.pool, owner); err != nil {
+		return PreparedWork{}, err
+	}
 	var allowed bool
 	err := s.pool.QueryRow(ctx, "SELECT can_read FROM "+s.table("m03_access")+" WHERE owner_id=$1", owner).Scan(&allowed)
 	if err != nil || !allowed {
 		return PreparedWork{}, ErrReadDenied
 	}
 	w, _, err := s.readWork(ctx, s.pool, "work_id", id, owner, false)
+	if err == nil {
+		err = s.currentRead(ctx, owner)
+	}
 	return w, err
 }
 
@@ -431,6 +437,9 @@ func (s *Store) PublishWork(ctx context.Context, owner string, lease WorkLease, 
 func (s *Store) ReadPrepared(ctx context.Context, owner, id string) (DecisionRecord, error) {
 	ctx, cancel := s.bounded(ctx)
 	defer cancel()
+	if err := s.authorize(ctx, s.pool, owner); err != nil {
+		return DecisionRecord{}, err
+	}
 	var raw []byte
 	var receipt, decision string
 	err := s.pool.QueryRow(ctx, "SELECT d.record,w.receipt_id,w.decision_id FROM "+s.table("m03_work")+" w JOIN "+s.table("m03_decisions")+" d ON d.id=w.decision_id AND d.owner_id=w.owner_id AND d.game_id=w.game_id JOIN "+s.table("m03_access")+" a ON a.owner_id=w.owner_id WHERE w.work_id=$1 AND w.owner_id=$2 AND w.status='completed' AND a.can_read", id, owner).Scan(&raw, &receipt, &decision)
@@ -460,6 +469,9 @@ func (s *Store) ReadPrepared(ctx context.Context, owner, id string) (DecisionRec
 	}
 	if !SamePreparedBytes(d, verified) {
 		return DecisionRecord{}, ErrStorage
+	}
+	if err = s.currentRead(ctx, owner); err != nil {
+		return DecisionRecord{}, err
 	}
 	return verified, nil
 }

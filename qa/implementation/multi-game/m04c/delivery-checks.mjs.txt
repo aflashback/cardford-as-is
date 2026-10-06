@@ -1,0 +1,49 @@
+import { readFileSync, readdirSync, existsSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { resolve, dirname } from 'node:path';
+const folder = 'qa/implementation/multi-game/m04c';
+const names = ['go-full','go-race','go-vet','go-contracts','public-contracts','typecheck','service-command','boundary-check','edge-check','node-reference'];
+const sha = value => createHash('sha256').update(value).digest('hex');
+const reports = names.map(name => JSON.parse(readFileSync(`${folder}/${name}.json`)));
+for (const report of reports) {
+  if (report.exitCode !== 0 || !report.sourceUnchanged) throw Error(`Failed acceptance ${report.name}`);
+  if (sha(readFileSync(`${folder}/${report.output}`)) !== report.outputSHA256) throw Error(`Output drift ${report.name}`);
+  if (sha(JSON.stringify(report.source)) !== report.sourceSHA256) throw Error(`Manifest drift ${report.name}`);
+  for (const file of report.source) if (sha(readFileSync(file.path)) !== file.sha256) throw Error(`Source drift ${file.path}`);
+}
+if (new Set(reports.map(r=>r.sourceSHA256)).size !== 1) throw Error('Final source manifests differ');
+const original = JSON.parse(readFileSync(`${folder}/original-reference-manifest.json`));
+if (original.status !== 'passed' || !original.driftProof.onlySourcesArrayChanged || !original.failedEvidenceUnchanged) throw Error('Original reference reproduction did not pass');
+if (sha(readFileSync(original.helper.path)) !== original.helper.sha256) throw Error('Reference helper drift');
+if (sha(readFileSync(original.output.path)) !== original.output.sha256) throw Error('Reference output drift');
+for (const file of original.preservedFailedEvidence)
+  if (sha(readFileSync(`${folder}/${file.path}`)) !== file.sha256) throw Error('Failed reference evidence drift');
+for (const file of original.currentOriginalSources.sources)
+  if (sha(readFileSync(file.path)) !== file.sha256) throw Error(`Original source drift ${file.path}`);
+const preserved = ['web/src','web/tests','web/e2e','web/server',':!web/server/records/migrations/008-local-go-service.sql',
+ 'web/shared',':!web/shared/local-service.*','package.json','package-lock.json','go.mod','go.sum',
+ 'scripts/windows-env.mjs','scripts/windows-tools.json','qa/experiments',
+ ...['m02','m02a','m03','m04','m04b','performance-windows'].map(p=>`qa/implementation/multi-game/${p}`)];
+const diff = spawnSync('git',['diff','--exit-code','bbca6fe','--',...preserved],{encoding:'utf8',windowsHide:true});
+if (diff.status !== 0) throw Error('Preserved source/evidence paths changed');
+const docs = ['CHANGELOG.md','planning/CHANGELOG.md','planning/IMPLEMENTATION-START-HERE.md','planning/README.md',
+ 'planning/implementation/multi-game/m04-execution.md','planning/implementation/multi-game/m04c-execution.md',
+ 'planning/implementation/multi-game/backend-readiness.md','planning/implementation/multi-game/contracts.md',
+ 'planning/implementation/multi-game/private-records.md','planning/implementation/multi-game/windows-development.md',
+ 'planning/implementation/multi-game/launch-access-and-client.md','qa/implementation/multi-game/status.md',
+ 'docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md',
+ ...readdirSync(folder).filter(p=>p.endsWith('.md')).map(p=>`${folder}/${p}`)];
+let links=0;
+for (const file of docs) for (const match of readFileSync(file,'utf8').matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
+ const href=match[1].split('#')[0];if(!href||/^[a-z]+:/.test(href))continue;
+ const target=resolve(dirname(file),decodeURIComponent(href));
+ if(target!==resolve(`${folder}/delivery-checks.json`)&&!existsSync(target))throw Error(`Broken link ${file} -> ${href}`);links++;
+}
+const credentials=JSON.parse(readFileSync('.local/windows-postgres/credentials.json'));
+for(const file of readdirSync(folder))if(readFileSync(`${folder}/${file}`,'utf8').includes(credentials.password))throw Error(`Credential in evidence ${file}`);
+const result={checkedAt:new Date().toISOString(),checks:names,sourceSHA256:reports[0].sourceSHA256,
+ sourceAndOutputHashes:'match final captured bytes',originalReference:original.status,
+ preservedFrom:'bbca6fe',preservedPaths:preserved,localMarkdownLinks:links,
+ privateDatabaseCredential:'absent from M04C evidence'};
+writeFileSync(`${folder}/delivery-checks.json`,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

@@ -32,10 +32,18 @@ func workFixture(t *testing.T, dealer int, coach bool) (*Store, *Store, *Loaded,
 		t.Fatal(err)
 	}
 	t.Cleanup(func() {
+		s.Close()
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
-		_, _ = s.pool.Exec(ctx, "DROP SCHEMA "+pgx.Identifier{schema}.Sanitize()+" CASCADE")
-		s.Close()
+		admin, err := pgx.Connect(ctx, url)
+		if err != nil {
+			t.Error(err)
+			return
+		}
+		defer admin.Close(ctx)
+		if _, err = admin.Exec(ctx, "DROP SCHEMA "+pgx.Identifier{schema}.Sanitize()+" CASCADE"); err != nil {
+			t.Error(err)
+		}
 	})
 	if err = s.ApplyMigrations(context.Background(), filepath.Join("..", "..", "..", "web", "server", "records", "migrations")); err != nil {
 		t.Fatal(err)

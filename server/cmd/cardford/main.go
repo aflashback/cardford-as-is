@@ -1,0 +1,129 @@
+// cardford is the explicit local fixture Go service. It serves only the M04C
+// API; the preserved React application's current startup remains separate.
+package main
+
+import (
+	"context"
+	"errors"
+	"flag"
+	"fmt"
+	"net"
+	"net/http"
+	"os"
+	"os/signal"
+	"regexp"
+	"time"
+
+	transport "cardford/server/internal/http"
+	"cardford/server/internal/records"
+	"cardford/server/internal/service"
+	"github.com/jackc/pgx/v5/pgconn"
+)
+
+func main() {
+	migrations := flag.String("migrations", os.Getenv("CARDFORD_MIGRATIONS_DIR"), "canonical web/server/records/migrations directory (required)")
+	flag.Parse()
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer stop()
+	if err := run(ctx, *migrations); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+func run(ctx context.Context, migrations string) error {
+	cfg, err := transport.ReadLocalConfig(func(name string) string {
+		if name == "CARDFORD_MIGRATIONS_DIR" {
+			return migrations
+		}
+		return os.Getenv(name)
+	})
+	if err != nil {
+		return err
+	}
+	codec, err := records.NewServiceCodec()
+	if err != nil {
+		return fmt.Errorf("local policy initialization failed")
+	}
+	store, err := records.OpenStore(ctx, cfg.DatabaseURL, records.StoreOptions{LocalService: true, Schema: "cardford_go_local", CreateSchema: true, Codec: codec})
+	if err != nil {
+		return databaseFailure("local database initialization failed", err)
+	}
+	defer store.Close()
+	if err = store.ApplyMigrations(ctx, cfg.MigrationsDirectory); err != nil {
+		return databaseFailure("canonical database migration validation failed", err)
+	}
+	backend, err := service.New(store, codec)
+	if err != nil {
+		return fmt.Errorf("local service initialization failed")
+	}
+	defer backend.Close()
+	handler, err := transport.NewLocal(backend, transport.LocalOptions{Origin: cfg.Origin})
+	if err != nil {
+		return err
+	}
+	server, err := transport.NewLocalServer(cfg.Address, handler)
+	if err != nil {
+		return err
+	}
+	listener, err := net.Listen("tcp", cfg.Address)
+	if err != nil {
+		return fmt.Errorf("local listener could not bind its configured address")
+	}
+	finished := make(chan error, 1)
+	go func() { finished <- server.Serve(listener) }()
+	fmt.Printf("CardFord Go local fixture API: %s (identity=local-test, payments=fixture, provider=off)\n", cfg.Origin)
+	select {
+	case err = <-finished:
+		if errors.Is(err, http.ErrServerClosed) {
+			return nil
+		}
+		return fmt.Errorf("local HTTP listener stopped unexpectedly")
+	case <-ctx.Done():
+		shutdown, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		if err = server.Shutdown(shutdown); err != nil {
+			_ = server.Close()
+			return fmt.Errorf("local HTTP shutdown exceeded its deadline")
+		}
+		<-finished
+		return nil
+	}
+}
+
+// Driver errors may embed credentials, SQL values or private data. Report only
+// a known operation stage and error class, preserving useful timeout evidence.
+var migrationStage = regexp.MustCompile(`^migrations\.(apply|ledger-insert)-[0-9]{3}$`)
+
+func databaseFailure(operation string, err error) error {
+	stage := "database"
+	for current := err; current != nil; current = errors.Unwrap(current) {
+		tagged, ok := current.(*records.StageError)
+		if !ok {
+			continue
+		}
+		switch tagged.Stage {
+		case "store.create-schema", "store.ping", "transaction.begin", "transaction.body", "transaction.commit",
+			"migrations.read-canonical", "migrations.begin", "migrations.body", "migrations.commit", "migrations.advisory-lock",
+			"migrations.ledger-create", "migrations.ledger-query", "migrations.ledger-scan", "migrations.ledger-stream":
+			stage = tagged.Stage
+		default:
+			if migrationStage.MatchString(tagged.Stage) {
+				stage = tagged.Stage
+			}
+		}
+	}
+	kind := "failure"
+	var network net.Error
+	var sql *pgconn.PgError
+	switch {
+	case errors.Is(err, context.DeadlineExceeded):
+		kind = "deadline"
+	case errors.Is(err, context.Canceled):
+		kind = "canceled"
+	case errors.As(err, &network) && network.Timeout():
+		kind = "network-timeout"
+	case errors.As(err, &sql):
+		kind = "sql-error"
+	}
+	return fmt.Errorf("%s (stage=%s, class=%s)", operation, stage, kind)
+}

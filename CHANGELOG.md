@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-06 M04C
+
+Connect the original game policies and V2 sessions to an explicit local Go/PostgreSQL API with server-issued identity, tab leases, bounded preparation, saved original advice, atomic receipts and restart recovery. Add owner-scoped account erasure through forward migration 008 and strict generated local-service contracts while preserving the existing client artifacts. [Acceptance, native database observations and remaining M04 gates](qa/implementation/multi-game/m04c/status.md). The existing React interface and TypeScript service remain active until the later client cutover.
+
 ## Unreleased — 2026-10-06 M04B
 
 Port the exact original Hearts/Spades bot policies and coach output to Go, and add registered V2 sessions with atomic passing, immutable preparation, automatic steps and separate round/chance boundaries. Unsupported policy pins fail explicitly. Independent references cover 6,380 complete decisions, all help levels and 1,099 session checkpoints; review fixes remove internal observation JSON round trips and redundant clones while preserving numeric/Unicode import semantics. [Acceptance and remaining service gates](qa/implementation/multi-game/m04b/status.md). The existing UI and TypeScript service remain active.

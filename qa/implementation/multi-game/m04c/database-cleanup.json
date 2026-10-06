@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-06T20:27:05.989Z",
+  "database": "cardford_windows_test",
+  "dropped": [
+    "m03_service_299d5e229f432a36",
+    "m03_service_b2b7b9c7e655e158",
+    "m03_store_0ce949bd91a79c6d"
+  ],
+  "terminatedStaleTestBackend": true
+}

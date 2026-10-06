@@ -82,7 +82,9 @@ func (c *DocumentCodec) RegisterPolicy(p PolicyRegistration) error {
 	if !ok || r.readOnly {
 		return fmt.Errorf("policy requires an installed writable module")
 	}
-	if p.PacketVersion != p.Module.ObservationSchemaVersion || p.AnalysisSchema != "RegisteredAnalysis" || p.AdviceSchema != "AdviceView" {
+	original := p.Module.ModuleVersion == "1.0.0" && p.AnalysisSchema == "RegisteredAnalysis" && p.AdviceSchema == "AdviceView"
+	complete := p.Module.ModuleVersion == "2.0.0" && p.AnalysisSchema == OriginalAnalysisSchema && p.AdviceSchema == OriginalAdviceSchema
+	if p.PacketVersion != p.Module.ObservationSchemaVersion || (!original && !complete) {
 		return fmt.Errorf("unsupported policy input/output schema binding")
 	}
 	for _, old := range c.policies {
@@ -414,31 +416,39 @@ func (c *DocumentCodec) Start(m SessionMetadata, config json.RawMessage, chance 
 	return d, a, events, nil
 }
 func (c *DocumentCodec) Advance(d Document, s gamekernel.Snapshot, command json.RawMessage) (Document, []EventRecord, error) {
+	next, _, events, err := c.AdvanceBound(d, s, command)
+	return next, events, err
+}
+func (c *DocumentCodec) AdvanceBound(d Document, s gamekernel.Snapshot, command json.RawMessage) (Document, gamekernel.Snapshot, []EventRecord, error) {
 	b, err := c.bound(d, s)
 	if err != nil {
-		return Document{}, nil, err
+		return Document{}, nil, nil, err
 	}
 	r, _ := c.registration(d.Metadata)
 	if !c.disposition(d.Metadata, r).Playable {
-		return Document{}, nil, fmt.Errorf("session pin is read-only")
+		return Document{}, nil, nil, fmt.Errorf("session pin is read-only")
 	}
 	if d.Revision == maxRecordInteger || len(command) == 0 || len(command) > MaxHotBytes {
-		return Document{}, nil, fmt.Errorf("transition bounds")
+		return Document{}, nil, nil, fmt.Errorf("transition bounds")
 	}
 	if _, err = contracts.ParseJSON(command); err != nil {
-		return Document{}, nil, err
+		return Document{}, nil, nil, err
 	}
 	next, err := b.inner.Apply(command)
 	if err != nil {
-		return Document{}, nil, err
+		return Document{}, nil, nil, err
 	}
 	cp, events, err := checkpoint(next, d.Checkpoint, d.Metadata.GameID, d.Revision+1)
 	if err != nil {
-		return Document{}, nil, err
+		return Document{}, nil, nil, err
 	}
 	d.Revision++
 	d.Checkpoint = cp
-	return d, events, nil
+	bound, err := bindSnapshot(d, next)
+	if err != nil {
+		return Document{}, nil, nil, err
+	}
+	return d, bound, events, nil
 }
 func (c *DocumentCodec) ValidateAnchor(m SessionMetadata, a ReplayAnchor) error {
 	if a.RecordVersion != RecordVersion || a.GameID != m.GameID || len(a.Config) == 0 || len(a.Config) > MaxHotBytes || a.OpeningChance == nil {

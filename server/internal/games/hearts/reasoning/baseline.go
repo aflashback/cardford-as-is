@@ -1,6 +1,7 @@
 package reasoning
 
 import (
+	"context"
 	"fmt"
 	"math"
 	"sort"
@@ -9,11 +10,22 @@ import (
 )
 
 const PolicyVersion = "hearts-baseline-1.0.0"
+const CatalogVersion = "hearts-baseline-catalog-1.0.0"
 
 // Analyze ports the original Hearts manifest and local baseline without changing
 // its ranking, evidence labels, candidate order or private audit trace.
 func Analyze(obs d.Observation) (d.Analysis, error) {
-	if err := d.ValidateObservation(obs); err != nil {
+	return analyzeContext(context.Background(), obs)
+}
+func AnalyzeContext(ctx context.Context, obs d.Observation) (d.Analysis, error) {
+	result, err := analyzeContext(ctx, obs)
+	if err != nil {
+		return result, err
+	}
+	return result, ctx.Err()
+}
+func analyzeContext(ctx context.Context, obs d.Observation) (d.Analysis, error) {
+	if err := d.ValidateObservationContext(ctx, obs); err != nil {
 		return d.Analysis{}, err
 	}
 	if obs.Mode != "hearts" {
@@ -43,7 +55,7 @@ func Analyze(obs d.Observation) (d.Analysis, error) {
 		Trace: &d.Trace{
 			SchemaVersion:    "1.0.0",
 			PolicyVersion:    PolicyVersion,
-			CatalogVersion:   "hearts-baseline-catalog-1.0.0",
+			CatalogVersion:   CatalogVersion,
 			SelectedActionID: d.ActionID(action),
 			SelectedBy:       selectedBy,
 			ScenarioChecks:   []d.ScenarioCheck{},

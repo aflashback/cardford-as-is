@@ -2,6 +2,8 @@
 
 Amendment to M00–M04/M06/M12 of [the main plan](../../../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md), authorized by [CR-IMPL-004](../../decisions/CR-IMPL-004-online-demo-and-launch-readiness.md). **Planned, not implemented.**
 
+**Current execution target:** after [M04C](../../../qa/implementation/multi-game/m04c/status.md), M04D implements the authored online demo and exact-target access resolver in the Go service (`server/internal/demo`, `server/internal/access` and its existing HTTP/records boundaries). The TypeScript server paths below identify the original behavior and source material to port; they do not prescribe another permanent backend. Preserve the React components and connect them only through the later complete platform/client acceptance gate. Local fixture grants from M04C are not configurable offers or hosted identity.
+
 ## Online example: MG-15
 
 Current `web/src/features/DemoPage.tsx` embeds every example/edge and advances with local React state. Replace it with a finite server-authored frame endpoint; every open/choice/replay gets a validated server response before advancing. Losing connectivity retains an inert last-confirmed frame and offers reconnect. A connectivity flag or startup ping is insufficient. Rendered text can remain visible; the official client cannot continue the demo offline.

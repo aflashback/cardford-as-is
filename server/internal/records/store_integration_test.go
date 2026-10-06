@@ -62,10 +62,16 @@ func storeTestOpen(t *testing.T, codec *DocumentCodec) (*Store, *Store) {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() {
+		first.Close()
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
-		_, err := first.pool.Exec(ctx, "DROP SCHEMA "+pgx.Identifier{schema}.Sanitize()+" CASCADE")
-		first.Close()
+		admin, err := pgx.Connect(ctx, url)
+		if err != nil {
+			t.Error(err)
+			return
+		}
+		defer admin.Close(ctx)
+		_, err = admin.Exec(ctx, "DROP SCHEMA "+pgx.Identifier{schema}.Sanitize()+" CASCADE")
 		if err != nil {
 			t.Error(err)
 		}
@@ -394,12 +400,12 @@ func TestM03CanonicalMigrationCrossRuntimeLedger(t *testing.T) {
 			t.Fatalf("Node canonical migration reader: %v\n%s", err, output)
 		}
 	}
-	runNode() // Go -> Node: exact same seven checksums, no second ledger.
+	runNode() // Go -> Node: exact same canonical checksums, no second ledger.
 	if err := s.ApplyMigrations(context.Background(), storeMigrationDirectory()); err != nil {
 		t.Fatal(err)
 	}
 	var count int
-	if err := s.pool.QueryRow(context.Background(), `SELECT count(*) FROM schema_migrations`).Scan(&count); err != nil || count != 7 {
+	if err := s.pool.QueryRow(context.Background(), `SELECT count(*) FROM schema_migrations`).Scan(&count); err != nil || count != 8 {
 		t.Fatalf("canonical ledger %d %v", count, err)
 	}
 	// Node -> Go in a separate fresh schema verifies actual Node creation.

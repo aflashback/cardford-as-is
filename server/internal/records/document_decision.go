@@ -5,6 +5,7 @@ import (
 	"cardford/server/internal/gamekernel"
 	"cardford/server/internal/games/hearts"
 	"cardford/server/internal/games/spades"
+	"cardford/server/internal/legacydecision"
 	"encoding/json"
 	"fmt"
 	"reflect"
@@ -20,6 +21,18 @@ func (c *DocumentCodec) PermittedInput(d Document, s gamekernel.Snapshot, actor 
 	return p.Observation, digest, window, err
 }
 func (c *DocumentCodec) permittedProjection(d Document, s gamekernel.Snapshot, actor int) (gamekernel.Projection, string, string, error) {
+	if d.Metadata.Pin.ModuleVersion == "2.0.0" {
+		bound, err := c.Session(d, s)
+		if err != nil {
+			return gamekernel.Projection{}, "", "", err
+		}
+		input, err := bound.PreparationBinding(actor, d.Metadata.Policy.ID)
+		if err != nil {
+			return gamekernel.Projection{}, "", "", err
+		}
+		window, err := c.WindowID(d)
+		return gamekernel.Projection{Observation: input.Packet, CandidateIDs: input.CandidateIDs}, input.InputDigest, window, err
+	}
 	if _, err := c.bound(d, s); err != nil {
 		return gamekernel.Projection{}, "", "", err
 	}
@@ -132,11 +145,40 @@ func (c *DocumentCodec) ValidateHistoricalDecisionAt(d Document, s gamekernel.Sn
 	if !eligible {
 		return fmt.Errorf("selected candidate is not eligible for original actor")
 	}
+	if decision.AnalysisSchema == OriginalAnalysisSchema {
+		original, _, e := OriginalDecision(decision)
+		if e != nil {
+			return e
+		}
+		if _, e = gamekernel.ParseRegisteredAnalysis(original.Registered, gamekernel.Pin(d.Metadata.Pin), decision.SelectedCandidateID); e != nil {
+			return e
+		}
+		if len(original.Original.Candidates) != len(p.CandidateIDs) {
+			return fmt.Errorf("original full analysis candidate count mismatch")
+		}
+		ids := map[string]bool{}
+		for _, id := range p.CandidateIDs {
+			ids[id] = true
+		}
+		for _, candidate := range original.Original.Candidates {
+			if !ids[legacydecision.ActionID(candidate.Action)] {
+				return fmt.Errorf("original full analysis has ineligible candidate")
+			}
+		}
+	}
 	var analysis struct {
 		GameID    string `json:"gameId"`
 		VariantID string `json:"variantId"`
 	}
-	if err = json.Unmarshal(decision.Analysis, &analysis); err != nil {
+	analysisBytes := decision.Analysis
+	if decision.AnalysisSchema == OriginalAnalysisSchema {
+		original, _, e := OriginalDecision(decision)
+		if e != nil {
+			return e
+		}
+		analysisBytes = original.Registered
+	}
+	if err = json.Unmarshal(analysisBytes, &analysis); err != nil {
 		return err
 	}
 	if analysis.GameID != d.Metadata.Pin.GameID || analysis.VariantID != d.Metadata.Pin.VariantID {
@@ -153,6 +195,10 @@ func ValidateHistoricalDecision(d DecisionRecord) error {
 		return err
 	}
 	if err := validateDecisionPurpose(d.Actor, d.Purpose); err != nil {
+		return err
+	}
+	if d.AnalysisSchema == OriginalAnalysisSchema || d.AdviceSchema == OriginalAdviceSchema {
+		_, _, err := OriginalDecision(d)
 		return err
 	}
 	if d.AnalysisSchema != "RegisteredAnalysis" || d.AdviceSchema != "AdviceView" {
@@ -224,6 +270,9 @@ func (c *DocumentCodec) ValidateDecisionCommand(d DecisionRecord, raw json.RawMe
 	}
 	if err := validateDecisionPurpose(d.Actor, d.Purpose); err != nil {
 		return err
+	}
+	if d.PacketVersion == "2.0.0" {
+		return validateV2DecisionCommand(d, raw)
 	}
 	if _, err := contracts.ParseJSON(raw); err != nil {
 		return err

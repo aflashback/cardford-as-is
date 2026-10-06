@@ -1,0 +1,14 @@
+=== RUN   TestLocalServiceThreeModesAndReceiptRecovery
+=== RUN   TestLocalServiceThreeModesAndReceiptRecovery/hearts-solo
+=== RUN   TestLocalServiceThreeModesAndReceiptRecovery/spades-solo
+=== RUN   TestLocalServiceThreeModesAndReceiptRecovery/spades-partners
+--- PASS: TestLocalServiceThreeModesAndReceiptRecovery (28.90s)
+    --- PASS: TestLocalServiceThreeModesAndReceiptRecovery/hearts-solo (10.57s)
+    --- PASS: TestLocalServiceThreeModesAndReceiptRecovery/spades-solo (8.38s)
+    --- PASS: TestLocalServiceThreeModesAndReceiptRecovery/spades-partners (8.70s)
+=== RUN   TestLocalServiceAdviceControlDeletionAndRestart
+--- PASS: TestLocalServiceAdviceControlDeletionAndRestart (2.14s)
+=== RUN   TestSchedulerBoundsDedupAndCancellation
+--- PASS: TestSchedulerBoundsDedupAndCancellation (0.00s)
+PASS
+ok  	cardford/server/internal/service	31.308s

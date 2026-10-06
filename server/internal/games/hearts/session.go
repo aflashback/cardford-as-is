@@ -61,6 +61,7 @@ func bindHeartsSession(s *sessionState) (gamekernel.BoundSession, error) {
 			return json.Marshal(map[string]any{"publicSchemaVersion": "2.0.0", "gameId": "hearts", "variantId": "solo", "seat": o.Seat, "phase": o.Phase, "table": publicSessionObservation(o), "accessUnit": observationUnit(o)})
 		},
 		EncodeObservation: func(o sessionObservation) (json.RawMessage, error) { return json.Marshal(o) }, Analyze: analyzeSession,
+		AnalyzeComplete: analyzeSessionComplete, Persist: persistSession, EventCount: func(s *sessionState) int { return len(s.original.Events) }, StorageIdentity: func(s *sessionState) (string, string) { return s.original.ID, "hearts" }, StorageUnit: func(s *sessionState) string { return fmt.Sprintf("hand:%d", s.original.HandNumber) },
 		Reduce: reduceSession, ProjectEvent: projectSessionEvent,
 	}, s)
 }

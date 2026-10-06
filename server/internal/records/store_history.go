@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"time"
 
 	"cardford/server/internal/contracts"
 	"cardford/server/internal/gamekernel"
@@ -129,7 +130,11 @@ func (s *Store) Replay(ctx context.Context, ownerID, gameID string) (*Loaded, er
 	if err != nil {
 		return nil, err
 	}
-	return s.replayHistory(ctx, h, nil)
+	result, err := s.replayHistory(ctx, h, nil)
+	if err == nil {
+		err = s.currentRead(ctx, ownerID)
+	}
+	return result, err
 }
 
 // ReadDecision returns the original bytes only after current read authorization,
@@ -137,6 +142,9 @@ func (s *Store) Replay(ctx context.Context, ownerID, gameID string) (*Loaded, er
 func (s *Store) ReadDecision(ctx context.Context, ownerID, id string) (DecisionRecord, error) {
 	bounded, cancel := s.bounded(ctx)
 	defer cancel()
+	if err := s.authorize(bounded, s.pool, ownerID); err != nil {
+		return DecisionRecord{}, err
+	}
 	var raw []byte
 	var gameID string
 	var revision int64
@@ -184,6 +192,9 @@ func (s *Store) ReadDecision(ctx context.Context, ownerID, id string) (DecisionR
 	if !validated {
 		return DecisionRecord{}, storageError(fmt.Errorf("decision origin unavailable"))
 	}
+	if err = s.currentRead(ctx, ownerID); err != nil {
+		return DecisionRecord{}, err
+	}
 	return decision, nil
 }
 
@@ -192,20 +203,96 @@ func (s *Store) AppendExposure(ctx context.Context, exposure ExposureRecord) err
 	if err != nil {
 		return err
 	}
-	if err = ValidateExposure(exposure, decision); err != nil {
+	return s.appendValidatedExposure(ctx, exposure, decision)
+}
+
+// ReadDecisionForDelivery records a delivery attempt, not proof that a person
+// saw the response. Original advice is replay-validated once and never rerun.
+func (s *Store) ReadDecisionForDelivery(ctx context.Context, owner, id string) (DecisionRecord, error) {
+	d, err := s.ReadDecision(ctx, owner, id)
+	if err != nil {
+		return DecisionRecord{}, err
+	}
+	if d.Actor != 0 || d.Purpose != "coach-advice" {
+		return DecisionRecord{}, ErrReadDenied
+	}
+	exposureID, err := freshID()
+	if err != nil {
+		return DecisionRecord{}, err
+	}
+	exposure := ExposureRecord{RecordVersion: RecordVersion, ID: exposureID, DecisionID: d.ID, OwnerID: d.OwnerID, GameID: d.GameID, ReceiptID: d.ReceiptID, ExposedAt: time.Now().UTC().Format(time.RFC3339Nano), ContentDigest: contracts.SHA256(d.Advice)}
+	if err = s.appendValidatedExposure(ctx, exposure, d); err != nil {
+		return DecisionRecord{}, err
+	}
+	return d, nil
+}
+
+func (s *Store) appendValidatedExposure(ctx context.Context, exposure ExposureRecord, decision DecisionRecord) error {
+	if err := ValidateExposure(exposure, decision); err != nil {
 		return err
 	}
 	raw, err := json.Marshal(exposure)
 	if err != nil {
 		return err
 	}
+	decisionRaw, err := json.Marshal(decision)
+	if err != nil {
+		return err
+	}
+	// The source decision has already passed its exact historical reader. Only
+	// extract its game identity here; never rerun or regenerate the advice.
+	var identity struct {
+		GameID     string          `json:"gameId"`
+		VariantID  string          `json:"variantId"`
+		Registered json.RawMessage `json:"registered"`
+	}
+	if err = json.Unmarshal(decision.Analysis, &identity); err != nil {
+		return err
+	}
+	if len(identity.Registered) > 0 {
+		if err = json.Unmarshal(identity.Registered, &identity); err != nil {
+			return err
+		}
+	}
 	return s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
-		var canRead bool
-		if err := tx.QueryRow(ctx, `SELECT can_read FROM m03_access WHERE owner_id=$1 FOR UPDATE`, exposure.OwnerID).Scan(&canRead); err != nil {
+		var canRead, canCoach bool
+		if err := tx.QueryRow(ctx, `SELECT can_read,can_coach FROM m03_access WHERE owner_id=$1 FOR UPDATE`, exposure.OwnerID).Scan(&canRead, &canCoach); err != nil {
 			return err
 		}
 		if !canRead {
 			return ErrReadDenied
+		}
+		if err := s.authorize(ctx, tx, exposure.OwnerID); err != nil {
+			return err
+		}
+		var savedDecision []byte
+		if err := tx.QueryRow(ctx, "SELECT record FROM m03_decisions WHERE id=$1 AND owner_id=$2 AND game_id=$3", decision.ID, decision.OwnerID, decision.GameID).Scan(&savedDecision); err != nil {
+			return err
+		}
+		if !bytes.Equal(savedDecision, decisionRaw) {
+			return ErrStorage
+		}
+		if decision.Purpose == "coach-advice" {
+			var delivered bool
+			if err := tx.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM m03_exposures WHERE owner_id=$1 AND decision_id=$2)", decision.OwnerID, decision.ID).Scan(&delivered); err != nil {
+				return err
+			}
+			if !delivered {
+				if !canCoach {
+					return ErrAccess
+				}
+				grant, _, err := s.checkGrant(ctx, tx, decision.Access, decision.GameID, identity.GameID, identity.VariantID, true)
+				if err != nil {
+					return err
+				}
+				adviceTool := false
+				for _, tool := range grant.Terms.Tools {
+					adviceTool = adviceTool || tool == "advice"
+				}
+				if !adviceTool {
+					return ErrAccess
+				}
+			}
 		}
 		var original []byte
 		err := tx.QueryRow(ctx, `SELECT record FROM m03_exposures WHERE id=$1`, exposure.ID).Scan(&original)

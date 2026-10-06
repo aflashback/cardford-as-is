@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-06 — M04C local service and remaining integration
+
+The owner authorized the next step after M04B. [M04C](../qa/implementation/multi-game/m04c/status.md) connects the original Go policies and V2 sessions to local authentication/control, durable preparation, saved advice, atomic recovery and owner erasure. Its independent review and native acceptance retain the unresolved PostgreSQL timeout observations without changing limits. Add explicit native run instructions and the registered local-service contract; original app behavior and historical readers remain separate. Next is M04D authored online demo/exact-target offers in Go, then complete platform/client integration and preserved-UI acceptance. Full M04, hosted activation, human evaluation and strategic promotion remain open.
+
 ## 2026-10-06 — M04B original policies and registered sessions
 
 The owner authorized M04B. [Acceptance evidence](../qa/implementation/multi-game/m04b/status.md) records exact original bot/coach output, registered V2 lifecycle/preparation, independent import-boundary checks and native verification. Review removed redundant internal observation serialization/state copies, preserved original numeric/Unicode semantics and kept optional saved policies explicitly unavailable for new execution. M04C now owns authenticated durable service composition, full original prepared analysis/advice publication and receipt-first recovery; the platform/client, demo/access and real journey gates remain open. The current UI and TypeScript service remain active; no hosting, strategy promotion or provider activation.

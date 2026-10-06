@@ -1,0 +1,1355 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CardFord M04C local fixture service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceHealthView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/api/local/session": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceEmptyRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/identity": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceSessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/sessions/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceSessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/sessions": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceCommandReceipt"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceNewSessionRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session/control": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalControlView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceControlRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session/actions": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceCommandReceipt"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceActionRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session/prepare": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServicePrepareView"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Durable preparation pending; poll the listed work identities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServicePrepareView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServicePrepareRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session/advance": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceCommandReceipt"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceAdvanceRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session/next-hand": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceCommandReceipt"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceNextHandRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/work/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServicePrepareView"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Durable preparation pending; poll the listed work identities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServicePrepareView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/work/{id}/retry": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServicePrepareView"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Durable preparation pending; poll the listed work identities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServicePrepareView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceWorkRetryRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/decisions/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceDecisionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/commands/reconcile": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocalServiceRecoveredReceipt"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceReconcileRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/logout": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AcceptedView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceEmptyRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/account/delete": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDeleteView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceEmptyRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Mode": {
+        "$ref": "./contracts.schema.json#/$defs/Mode"
+      },
+      "Seat": {
+        "$ref": "./contracts.schema.json#/$defs/Seat"
+      },
+      "Card": {
+        "$ref": "./contracts.schema.json#/$defs/Card"
+      },
+      "Suit": {
+        "$ref": "./contracts.schema.json#/$defs/Suit"
+      },
+      "Phase": {
+        "$ref": "./contracts.schema.json#/$defs/Phase"
+      },
+      "GameAction": {
+        "$ref": "./contracts.schema.json#/$defs/GameAction"
+      },
+      "Play": {
+        "$ref": "./contracts.schema.json#/$defs/Play"
+      },
+      "Trick": {
+        "$ref": "./contracts.schema.json#/$defs/Trick"
+      },
+      "HandResult": {
+        "$ref": "./contracts.schema.json#/$defs/HandResult"
+      },
+      "GameView": {
+        "$ref": "./contracts.schema.json#/$defs/GameView"
+      },
+      "Preferences": {
+        "$ref": "./contracts.schema.json#/$defs/Preferences"
+      },
+      "Plan": {
+        "$ref": "./contracts.schema.json#/$defs/Plan"
+      },
+      "PaidPlan": {
+        "$ref": "./contracts.schema.json#/$defs/PaidPlan"
+      },
+      "CoachAccess": {
+        "$ref": "./contracts.schema.json#/$defs/CoachAccess"
+      },
+      "SessionStats": {
+        "$ref": "./contracts.schema.json#/$defs/SessionStats"
+      },
+      "SessionView": {
+        "$ref": "./contracts.schema.json#/$defs/SessionView"
+      },
+      "AdviceView": {
+        "$ref": "./contracts.schema.json#/$defs/AdviceView"
+      },
+      "CommandEnvelope": {
+        "$ref": "./contracts.schema.json#/$defs/CommandEnvelope"
+      },
+      "NewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/NewSessionRequest"
+      },
+      "ActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/ActionsRequest"
+      },
+      "PrepareRequest": {
+        "$ref": "./contracts.schema.json#/$defs/PrepareRequest"
+      },
+      "CommandStatusView": {
+        "$ref": "./contracts.schema.json#/$defs/CommandStatusView"
+      },
+      "IdentityView": {
+        "$ref": "./contracts.schema.json#/$defs/IdentityView"
+      },
+      "PrepareView": {
+        "$ref": "./contracts.schema.json#/$defs/PrepareView"
+      },
+      "AdvanceRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AdvanceRequest"
+      },
+      "NextHandRequest": {
+        "$ref": "./contracts.schema.json#/$defs/NextHandRequest"
+      },
+      "AdviceRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AdviceRequest"
+      },
+      "PreferencesRequest": {
+        "$ref": "./contracts.schema.json#/$defs/PreferencesRequest"
+      },
+      "HandUnlockRequest": {
+        "$ref": "./contracts.schema.json#/$defs/HandUnlockRequest"
+      },
+      "HandUnlockView": {
+        "$ref": "./contracts.schema.json#/$defs/HandUnlockView"
+      },
+      "ExposureRequest": {
+        "$ref": "./contracts.schema.json#/$defs/ExposureRequest"
+      },
+      "AcceptedView": {
+        "$ref": "./contracts.schema.json#/$defs/AcceptedView"
+      },
+      "ReviewFrame": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewFrame"
+      },
+      "ReviewCase": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewCase"
+      },
+      "ReviewIndex": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewIndex"
+      },
+      "ReviewView": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewView"
+      },
+      "TrialRequest": {
+        "$ref": "./contracts.schema.json#/$defs/TrialRequest"
+      },
+      "ReviewTrial": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewTrial"
+      },
+      "RecapView": {
+        "$ref": "./contracts.schema.json#/$defs/RecapView"
+      },
+      "SubscriptionView": {
+        "$ref": "./contracts.schema.json#/$defs/SubscriptionView"
+      },
+      "OfferView": {
+        "$ref": "./contracts.schema.json#/$defs/OfferView"
+      },
+      "AccountView": {
+        "$ref": "./contracts.schema.json#/$defs/AccountView"
+      },
+      "AccountCommand": {
+        "$ref": "./contracts.schema.json#/$defs/AccountCommand"
+      },
+      "ApiError": {
+        "$ref": "./contracts.schema.json#/$defs/ApiError"
+      },
+      "ReviewQuery": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewQuery"
+      },
+      "ReviewStepQuery": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewStepQuery"
+      },
+      "AccessQuery": {
+        "$ref": "./contracts.schema.json#/$defs/AccessQuery"
+      },
+      "SuitMemory": {
+        "$ref": "./contracts.schema.json#/$defs/SuitMemory"
+      },
+      "NotesView": {
+        "$ref": "./contracts.schema.json#/$defs/NotesView"
+      },
+      "BillingPreviewRequest": {
+        "$ref": "./contracts.schema.json#/$defs/BillingPreviewRequest"
+      },
+      "BillingPreview": {
+        "$ref": "./contracts.schema.json#/$defs/BillingPreview"
+      },
+      "BillingConfirmRequest": {
+        "$ref": "./contracts.schema.json#/$defs/BillingConfirmRequest"
+      },
+      "BillingOperation": {
+        "$ref": "./contracts.schema.json#/$defs/BillingOperation"
+      },
+      "FamilyMember": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyMember"
+      },
+      "FamilyInvitation": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyInvitation"
+      },
+      "FamilyView": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyView"
+      },
+      "FamilyCommand": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyCommand"
+      },
+      "AccountDeleteRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AccountDeleteRequest"
+      },
+      "AccountDeleteView": {
+        "$ref": "./contracts.schema.json#/$defs/AccountDeleteView"
+      },
+      "ExportView": {
+        "$ref": "./contracts.schema.json#/$defs/ExportView"
+      },
+      "ScenarioId": {
+        "$ref": "./contracts.schema.json#/$defs/ScenarioId"
+      },
+      "DevScenarioView": {
+        "$ref": "./contracts.schema.json#/$defs/DevScenarioView"
+      },
+      "DevScenariosView": {
+        "$ref": "./contracts.schema.json#/$defs/DevScenariosView"
+      },
+      "VersionedComponent": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedComponent"
+      },
+      "ModulePin": {
+        "$ref": "./contracts.schema.json#/$defs/ModulePin"
+      },
+      "CoachedUnit": {
+        "$ref": "./contracts.schema.json#/$defs/CoachedUnit"
+      },
+      "ReasoningObjective": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningObjective"
+      },
+      "ReasoningHorizon": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningHorizon"
+      },
+      "ReasoningEstimate": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningEstimate"
+      },
+      "ReasoningScenario": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningScenario"
+      },
+      "ReasoningFact": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningFact"
+      },
+      "RegisteredActorPacket": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredActorPacket"
+      },
+      "RegisteredSessionView": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredSessionView"
+      },
+      "RegisteredAnalysis": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredAnalysis"
+      },
+      "RegisteredActorEvent": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredActorEvent"
+      },
+      "RegisteredTarget": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredTarget"
+      },
+      "RegisteredSelector": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredSelector"
+      },
+      "V2ActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/V2ActionsRequest"
+      },
+      "VersionedActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedActionsRequest"
+      },
+      "V2NewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/V2NewSessionRequest"
+      },
+      "VersionedNewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedNewSessionRequest"
+      },
+      "DemoFrameRequest": {
+        "$ref": "./contracts.schema.json#/$defs/DemoFrameRequest"
+      },
+      "DemoFrame": {
+        "$ref": "./contracts.schema.json#/$defs/DemoFrame"
+      },
+      "AccessAllowance": {
+        "$ref": "./contracts.schema.json#/$defs/AccessAllowance"
+      },
+      "AccessOffer": {
+        "$ref": "./contracts.schema.json#/$defs/AccessOffer"
+      },
+      "AccessOfferPolicy": {
+        "$ref": "./contracts.schema.json#/$defs/AccessOfferPolicy"
+      },
+      "AccessDecision": {
+        "$ref": "./contracts.schema.json#/$defs/AccessDecision"
+      },
+      "HeartsCandidate": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsCandidate"
+      },
+      "HeartsObservation": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsObservation"
+      },
+      "HeartsActorPacket": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsActorPacket"
+      },
+      "HeartsSessionView": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsSessionView"
+      },
+      "HeartsAnalysis": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsAnalysis"
+      },
+      "HeartsActorEvent": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsActorEvent"
+      },
+      "SpadesCandidate": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesCandidate"
+      },
+      "SpadesObservation": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesObservation"
+      },
+      "SpadesActorPacket": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesActorPacket"
+      },
+      "SpadesSessionView": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesSessionView"
+      },
+      "SpadesAnalysis": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesAnalysis"
+      },
+      "SpadesActorEvent": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesActorEvent"
+      },
+      "LocalServiceWorkRetryRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceWorkRetryRequest"
+      },
+      "LocalServiceEmptyRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceEmptyRequest"
+      },
+      "LocalServiceSelector": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceSelector"
+      },
+      "LocalServiceNode": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceNode"
+      },
+      "LocalServiceControl": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceControl"
+      },
+      "LocalServiceSession": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceSession"
+      },
+      "LocalServiceSessionView": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceSessionView"
+      },
+      "LocalServiceNewSessionRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceNewSessionRequest"
+      },
+      "LocalServiceControlRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceControlRequest"
+      },
+      "LocalControlView": {
+        "$ref": "./local-service.schema.json#/$defs/LocalControlView"
+      },
+      "LocalServiceActionRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceActionRequest"
+      },
+      "LocalServicePrepareRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServicePrepareRequest"
+      },
+      "LocalServicePrepareView": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServicePrepareView"
+      },
+      "LocalServiceAdvanceRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceAdvanceRequest"
+      },
+      "LocalServiceNextHandRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceNextHandRequest"
+      },
+      "LocalServiceCommandReceipt": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceCommandReceipt"
+      },
+      "LocalServiceDecisionView": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceDecisionView"
+      },
+      "LocalServiceHealthView": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceHealthView"
+      },
+      "LocalServiceReconcileRequest": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceReconcileRequest"
+      },
+      "LocalServiceRecoveredReceipt": {
+        "$ref": "./local-service.schema.json#/$defs/LocalServiceRecoveredReceipt"
+      }
+    },
+    "securitySchemes": {
+      "localSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "cf_local_session"
+      }
+    }
+  }
+}

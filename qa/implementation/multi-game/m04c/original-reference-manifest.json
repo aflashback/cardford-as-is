@@ -1,0 +1,3264 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Reproduce unchanged frozen M04B oracle from original tracked inputs, and isolate additive inventory drift without changing original evidence.",
+  "startedAt": "2026-10-06T20:10:36.141Z",
+  "command": "node scripts/windows-env.mjs node .local/m04c/original-reference-check.mjs",
+  "runtime": {
+    "platform": "win32",
+    "arch": "x64",
+    "node": "v24.19.0",
+    "executable": "C:\\Program Files\\nodejs\\node.exe"
+  },
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "database": {
+    "used": false,
+    "credentialsRemovedFromChildEnvironment": true
+  },
+  "helper": {
+    "path": "qa/implementation/multi-game/m04c/original-reference-check.mjs.txt",
+    "sha256": "910deb9861a14277fa1a5e38601340a8fdb20db47257e5492fc1c4b7e48d187a"
+  },
+  "currentOriginalSources": {
+    "count": 251,
+    "mismatches": [],
+    "sources": [
+      {
+        "path": "qa/implementation/multi-game/m04/hearts-parity-corpus.json",
+        "sha256": "5228fac300405533bd6e3c76a845395272cd3ed94febb6efaadf2d8c6afa5e44",
+        "actualSHA256": "5228fac300405533bd6e3c76a845395272cd3ed94febb6efaadf2d8c6afa5e44"
+      },
+      {
+        "path": "qa/implementation/multi-game/m04b/generate-reference.ts",
+        "sha256": "1b3e9c52d355e799de60e3a3bebe5dc2b6d9c248b33ab93b18152c17e9333a1d",
+        "actualSHA256": "1b3e9c52d355e799de60e3a3bebe5dc2b6d9c248b33ab93b18152c17e9333a1d"
+      },
+      {
+        "path": "web/server/access/account-data.ts",
+        "sha256": "d60e4bacd04c5c9239fbd1ec24340aeeab1133113553f8da86460543ab4e8421",
+        "actualSHA256": "d60e4bacd04c5c9239fbd1ec24340aeeab1133113553f8da86460543ab4e8421"
+      },
+      {
+        "path": "web/server/access/contracts.ts",
+        "sha256": "f0b6b463fc72558a10372cd8eadd976d8c41d98da4ab403feab9066927c05d79",
+        "actualSHA256": "f0b6b463fc72558a10372cd8eadd976d8c41d98da4ab403feab9066927c05d79"
+      },
+      {
+        "path": "web/server/access/family.ts",
+        "sha256": "e3efb7319c01bf688320f422bf1133353fc518ded086ab68edb87d57e0a3df14",
+        "actualSHA256": "e3efb7319c01bf688320f422bf1133353fc518ded086ab68edb87d57e0a3df14"
+      },
+      {
+        "path": "web/server/billing/database-test.ts",
+        "sha256": "ea613b27d53123a43cb87ac87427906b24eec0c9fcdb433bc8fa520c15012ad5",
+        "actualSHA256": "ea613b27d53123a43cb87ac87427906b24eec0c9fcdb433bc8fa520c15012ad5"
+      },
+      {
+        "path": "web/server/billing/purchases.ts",
+        "sha256": "076fc2bf9bae1ff9670f7ce102fcb2c4a561c5a98f5821263c1c79a447b34fd3",
+        "actualSHA256": "076fc2bf9bae1ff9670f7ce102fcb2c4a561c5a98f5821263c1c79a447b34fd3"
+      },
+      {
+        "path": "web/server/billing/service.ts",
+        "sha256": "dc27195ef8498aabaeb2f905e7a5a513f38a628364798d2dfc3ce51e7862db41",
+        "actualSHA256": "dc27195ef8498aabaeb2f905e7a5a513f38a628364798d2dfc3ce51e7862db41"
+      },
+      {
+        "path": "web/server/billing/store.ts",
+        "sha256": "fd6364faa271d51be072a2f2163296ddfe22d46907eea7cf6fd4c50ec8e21b07",
+        "actualSHA256": "fd6364faa271d51be072a2f2163296ddfe22d46907eea7cf6fd4c50ec8e21b07"
+      },
+      {
+        "path": "web/server/billing/stripe.ts",
+        "sha256": "93f94b8400cc3f825a134adf947547c640b911bfc4b1953adb6c170dd6495c66",
+        "actualSHA256": "93f94b8400cc3f825a134adf947547c640b911bfc4b1953adb6c170dd6495c66"
+      },
+      {
+        "path": "web/server/coaching/cue-registry.ts",
+        "sha256": "dc0a5877c406d9acfbbffac5609e55cfd81d1d30bdc1561ac33e26af4c12235d",
+        "actualSHA256": "dc0a5877c406d9acfbbffac5609e55cfd81d1d30bdc1561ac33e26af4c12235d"
+      },
+      {
+        "path": "web/server/coaching/project.ts",
+        "sha256": "ef9c2bbb60f96e1b28076c1d5e6f0d389973363d0638ec31c0c776e5b57f50c9",
+        "actualSHA256": "ef9c2bbb60f96e1b28076c1d5e6f0d389973363d0638ec31c0c776e5b57f50c9"
+      },
+      {
+        "path": "web/server/coaching/templates.ts",
+        "sha256": "7bf54d47e62612ebf60c7779125dc180af1d800ed3242811b8880ddf5af1c2f5",
+        "actualSHA256": "7bf54d47e62612ebf60c7779125dc180af1d800ed3242811b8880ddf5af1c2f5"
+      },
+      {
+        "path": "web/server/coaching/trial-pool.ts",
+        "sha256": "e349af29612b17251a14c5b4d99cd596ecbe7c232f4a85ed8fe231667b8f0a7f",
+        "actualSHA256": "e349af29612b17251a14c5b4d99cd596ecbe7c232f4a85ed8fe231667b8f0a7f"
+      },
+      {
+        "path": "web/server/coaching/trial-worker.ts",
+        "sha256": "223d4fe17deaa66f273b569c1006a01ac86eaebd7ccb46710eedd896d9836a57",
+        "actualSHA256": "223d4fe17deaa66f273b569c1006a01ac86eaebd7ccb46710eedd896d9836a57"
+      },
+      {
+        "path": "web/server/coaching/trials.ts",
+        "sha256": "6e9299120f20d7f80d9036221916366049fa7f3f10f869d2115f6060fee39b96",
+        "actualSHA256": "6e9299120f20d7f80d9036221916366049fa7f3f10f869d2115f6060fee39b96"
+      },
+      {
+        "path": "web/server/coaching/types.ts",
+        "sha256": "d80468eb4efd2d168978882784da9d738b25e4cf5b1dff50490ef73c0ce63b8f",
+        "actualSHA256": "d80468eb4efd2d168978882784da9d738b25e4cf5b1dff50490ef73c0ce63b8f"
+      },
+      {
+        "path": "web/server/config.ts",
+        "sha256": "e8b1706838331c7ffef217cc76e247cf402a21b444601900b073f3ca1475e066",
+        "actualSHA256": "e8b1706838331c7ffef217cc76e247cf402a21b444601900b073f3ca1475e066"
+      },
+      {
+        "path": "web/server/dev-scenarios.ts",
+        "sha256": "439d7eba3502fb600fe3a4df8890909cebd56ba8b6a2b8b1fba18a2ad9909b5d",
+        "actualSHA256": "439d7eba3502fb600fe3a4df8890909cebd56ba8b6a2b8b1fba18a2ad9909b5d"
+      },
+      {
+        "path": "web/server/evaluation/evidence/jev-smoke.json",
+        "sha256": "1058bca9c1829d840424cdaef7b391cc680ac3c4efabb1f473933d80f5f8792d",
+        "actualSHA256": "1058bca9c1829d840424cdaef7b391cc680ac3c4efabb1f473933d80f5f8792d"
+      },
+      {
+        "path": "web/server/evaluation/evidence/local-policy-smoke.json",
+        "sha256": "ed9d7b0f04fac6f6232c6b69457c547f4be9d27e3a1e75b7e7287c2f97e64163",
+        "actualSHA256": "ed9d7b0f04fac6f6232c6b69457c547f4be9d27e3a1e75b7e7287c2f97e64163"
+      },
+      {
+        "path": "web/server/evaluation/gate/contracts.ts",
+        "sha256": "18a27462d64aec02ac6a73f6a76b9c2e0e5fec485a995279f8ebd587aae3a59f",
+        "actualSHA256": "18a27462d64aec02ac6a73f6a76b9c2e0e5fec485a995279f8ebd587aae3a59f"
+      },
+      {
+        "path": "web/server/evaluation/gate/deals.ts",
+        "sha256": "6378b209750de89d49865060405fa93db9d9a19c2728790fd38967f7a0350135",
+        "actualSHA256": "6378b209750de89d49865060405fa93db9d9a19c2728790fd38967f7a0350135"
+      },
+      {
+        "path": "web/server/evaluation/gate/index.ts",
+        "sha256": "7abe1c6d6698be6bd2449e5057ec452161c22e24aac2b1db04013b9b76267ee4",
+        "actualSHA256": "7abe1c6d6698be6bd2449e5057ec452161c22e24aac2b1db04013b9b76267ee4"
+      },
+      {
+        "path": "web/server/evaluation/gate/inference.ts",
+        "sha256": "0446ac0bb7e80735ed4e56e56e3ad44d99663d15c254694d719e8068589c3b33",
+        "actualSHA256": "0446ac0bb7e80735ed4e56e56e3ad44d99663d15c254694d719e8068589c3b33"
+      },
+      {
+        "path": "web/server/evaluation/gate/report.ts",
+        "sha256": "643720480b43e2d844abba2b0f6e74ed19ec72f24264309fe2908b4d5496b138",
+        "actualSHA256": "643720480b43e2d844abba2b0f6e74ed19ec72f24264309fe2908b4d5496b138"
+      },
+      {
+        "path": "web/server/evaluation/gate/rule.ts",
+        "sha256": "b662675b255f6eff1bf4f8ae7e1860be9edf599b2c0ca7b388cc008c1d627575",
+        "actualSHA256": "b662675b255f6eff1bf4f8ae7e1860be9edf599b2c0ca7b388cc008c1d627575"
+      },
+      {
+        "path": "web/server/evaluation/gate/runner.ts",
+        "sha256": "69c6baa1640d23dcb0f54dd05e80b51a727109abf820a0c8b571df456d98176c",
+        "actualSHA256": "69c6baa1640d23dcb0f54dd05e80b51a727109abf820a0c8b571df456d98176c"
+      },
+      {
+        "path": "web/server/evaluation/gate/seeds.ts",
+        "sha256": "42d4f122b0f4add3e0f331404ce5bc30ab1ad8e1223db4ce538d2bcc4e741264",
+        "actualSHA256": "42d4f122b0f4add3e0f331404ce5bc30ab1ad8e1223db4ce538d2bcc4e741264"
+      },
+      {
+        "path": "web/server/evaluation/gate/worker.ts",
+        "sha256": "adff724c382eaca6338e3571a0ddd672e7a206c1893467785631e5695fffbea7",
+        "actualSHA256": "adff724c382eaca6338e3571a0ddd672e7a206c1893467785631e5695fffbea7"
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/fixtures.ts",
+        "sha256": "e2f769e11ab29d4526334c2780757d8e1f19aa7bfdc72a23c3c646de74c56e50",
+        "actualSHA256": "e2f769e11ab29d4526334c2780757d8e1f19aa7bfdc72a23c3c646de74c56e50"
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/payloads.ts",
+        "sha256": "1a7cfa7254704cd40099c48b36e7c046135209c70d2de843b0bd12967b70645f",
+        "actualSHA256": "1a7cfa7254704cd40099c48b36e7c046135209c70d2de843b0bd12967b70645f"
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/report.ts",
+        "sha256": "a282da89bb4f90c7ae1d0c152b152d865d60ac8ec19d48c77d64d5e029e2b490",
+        "actualSHA256": "a282da89bb4f90c7ae1d0c152b152d865d60ac8ec19d48c77d64d5e029e2b490"
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/selectors.ts",
+        "sha256": "6f13c67a3620cf4a0cc8a6143284c1d94765c5a1f3a641816ca241ad5945fdf3",
+        "actualSHA256": "6f13c67a3620cf4a0cc8a6143284c1d94765c5a1f3a641816ca241ad5945fdf3"
+      },
+      {
+        "path": "web/server/evaluation/jev-smoke-manifest.json",
+        "sha256": "60ae7b84c24b48583d181fa968ce7b2953c237ab4c6a62dbd77a933046685f2f",
+        "actualSHA256": "60ae7b84c24b48583d181fa968ce7b2953c237ab4c6a62dbd77a933046685f2f"
+      },
+      {
+        "path": "web/server/evaluation/jev-smoke.ts",
+        "sha256": "53f4ca240d89a98eb179cda7391d07353e27be7f312498a6a1cb5b59e1e7e0f6",
+        "actualSHA256": "53f4ca240d89a98eb179cda7391d07353e27be7f312498a6a1cb5b59e1e7e0f6"
+      },
+      {
+        "path": "web/server/evaluation/local-policy-manifest.json",
+        "sha256": "16f2501baa711d8cbe7149c973fc17a6c699726dbe80cb420eb9b6bf2db68b3a",
+        "actualSHA256": "16f2501baa711d8cbe7149c973fc17a6c699726dbe80cb420eb9b6bf2db68b3a"
+      },
+      {
+        "path": "web/server/evaluation/local-policy.ts",
+        "sha256": "f4547f50b603b3934cb56c3357b321db6c8e24582ffd3777cb89ebbaf16b0310",
+        "actualSHA256": "f4547f50b603b3934cb56c3357b321db6c8e24582ffd3777cb89ebbaf16b0310"
+      },
+      {
+        "path": "web/server/evaluation/partner-cases/cli.ts",
+        "sha256": "e60b35ab45c7593f3bd04bfc5529ba9953a6d37fd12a65a2fbb96da716c231b9",
+        "actualSHA256": "e60b35ab45c7593f3bd04bfc5529ba9953a6d37fd12a65a2fbb96da716c231b9"
+      },
+      {
+        "path": "web/server/evaluation/partner-cases/fixtures.ts",
+        "sha256": "506f2b6283e995b24d70693e3400fcfd2239467cbbe1a20cfffdd1e872af45fb",
+        "actualSHA256": "506f2b6283e995b24d70693e3400fcfd2239467cbbe1a20cfffdd1e872af45fb"
+      },
+      {
+        "path": "web/server/evaluation/partner-cases/measurement.ts",
+        "sha256": "7b7e24278ee26df84d6e2b82668b023a0583cee6664650ad04f27a22b7d1dfe4",
+        "actualSHA256": "7b7e24278ee26df84d6e2b82668b023a0583cee6664650ad04f27a22b7d1dfe4"
+      },
+      {
+        "path": "web/server/evaluation/partner-jev.ts",
+        "sha256": "7302a78cf7547645549415aadebd4fa14b39d53c0287581c1cf23f5058a95518",
+        "actualSHA256": "7302a78cf7547645549415aadebd4fa14b39d53c0287581c1cf23f5058a95518"
+      },
+      {
+        "path": "web/server/evaluation/reasoning-matrix.ts",
+        "sha256": "51bd77388e53df7b883b950fb18f41bf03e70061c8ecea5920f62ec334cf2db2",
+        "actualSHA256": "51bd77388e53df7b883b950fb18f41bf03e70061c8ecea5920f62ec334cf2db2"
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/cli.ts",
+        "sha256": "bcc759d1715e34514bb2ba916dc31cf9b94419cc80045455992395e0a79cc054",
+        "actualSHA256": "bcc759d1715e34514bb2ba916dc31cf9b94419cc80045455992395e0a79cc054"
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/labels.ts",
+        "sha256": "5c67e0be7e1d454e4f52f4cabce4825edf7d0740bd9d30c34058b000765698c0",
+        "actualSHA256": "5c67e0be7e1d454e4f52f4cabce4825edf7d0740bd9d30c34058b000765698c0"
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/pilot.ts",
+        "sha256": "b5eedb71f4c304f401436c58c05debf52bcab2238938d730f90baa7279b86f23",
+        "actualSHA256": "b5eedb71f4c304f401436c58c05debf52bcab2238938d730f90baa7279b86f23"
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/report.ts",
+        "sha256": "1be6b8ec973efe5d2a900d161ef18747549f822bfba40b371c9aefea85d48e4e",
+        "actualSHA256": "1be6b8ec973efe5d2a900d161ef18747549f822bfba40b371c9aefea85d48e4e"
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/review.ts",
+        "sha256": "a218b20474f25178c4696a6480328bc408e202e182146be5d7a54113b07e777f",
+        "actualSHA256": "a218b20474f25178c4696a6480328bc408e202e182146be5d7a54113b07e777f"
+      },
+      {
+        "path": "web/server/evaluation/spades-reasoning.ts",
+        "sha256": "a4c316c16108f70bc87dae495dde97f625086166aae94976971c1504d5a9a143",
+        "actualSHA256": "a4c316c16108f70bc87dae495dde97f625086166aae94976971c1504d5a9a143"
+      },
+      {
+        "path": "web/server/game-deal.ts",
+        "sha256": "f7536ea4ac64c7024ef83c27d40ce63ad24dbf6a12161b03444e8d0bd3be65a3",
+        "actualSHA256": "f7536ea4ac64c7024ef83c27d40ce63ad24dbf6a12161b03444e8d0bd3be65a3"
+      },
+      {
+        "path": "web/server/game/cards.ts",
+        "sha256": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b",
+        "actualSHA256": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b"
+      },
+      {
+        "path": "web/server/game/compatibility.ts",
+        "sha256": "f197ae4a91d2d6847ffd160a145f600f58bf420b06f0b6817a416147a94fdd99",
+        "actualSHA256": "f197ae4a91d2d6847ffd160a145f600f58bf420b06f0b6817a416147a94fdd99"
+      },
+      {
+        "path": "web/server/game/hearts/score.ts",
+        "sha256": "afd66c4dcf5bad2cbbb96beca3238de1e536411610839ea3601531d69a3d6192",
+        "actualSHA256": "afd66c4dcf5bad2cbbb96beca3238de1e536411610839ea3601531d69a3d6192"
+      },
+      {
+        "path": "web/server/game/index.ts",
+        "sha256": "83bac53a27cdd2b27a4e65574bfd493b4bc6b88e927bd155f9d5e16433df52e7",
+        "actualSHA256": "83bac53a27cdd2b27a4e65574bfd493b4bc6b88e927bd155f9d5e16433df52e7"
+      },
+      {
+        "path": "web/server/game/kernel/codec.ts",
+        "sha256": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b",
+        "actualSHA256": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b"
+      },
+      {
+        "path": "web/server/game/kernel/competition.ts",
+        "sha256": "0ef3d125a820c937b0d312ca371e3f2ca779b4ae5a7c6f3eea2d8189438b8791",
+        "actualSHA256": "0ef3d125a820c937b0d312ca371e3f2ca779b4ae5a7c6f3eea2d8189438b8791"
+      },
+      {
+        "path": "web/server/game/kernel/module.ts",
+        "sha256": "a5d5c959dccdcaffc985987d26989f3adda15db348a877117776ca0ffceb5cbc",
+        "actualSHA256": "a5d5c959dccdcaffc985987d26989f3adda15db348a877117776ca0ffceb5cbc"
+      },
+      {
+        "path": "web/server/game/kernel/registry.ts",
+        "sha256": "89cfcd4f26339b62c951c61e626ae4e66837f06ab6f1389bc21ea03d84eb69db",
+        "actualSHA256": "89cfcd4f26339b62c951c61e626ae4e66837f06ab6f1389bc21ea03d84eb69db"
+      },
+      {
+        "path": "web/server/game/kernel/seats.ts",
+        "sha256": "8fc1c935c2fd9a3957b9d378ab463578218900aa35ed9e354b9e3ac891d4f362",
+        "actualSHA256": "8fc1c935c2fd9a3957b9d378ab463578218900aa35ed9e354b9e3ac891d4f362"
+      },
+      {
+        "path": "web/server/game/kernel/session.ts",
+        "sha256": "b80c1a6c64ce4869499235ec090c4f2ca0c68a3c3489892181d29cb0d3d2fff6",
+        "actualSHA256": "b80c1a6c64ce4869499235ec090c4f2ca0c68a3c3489892181d29cb0d3d2fff6"
+      },
+      {
+        "path": "web/server/game/kernel/types.ts",
+        "sha256": "1a4be0a87ab0e8e27fb79f292a56d336c69c73df09f1cfac708ce786366d1966",
+        "actualSHA256": "1a4be0a87ab0e8e27fb79f292a56d336c69c73df09f1cfac708ce786366d1966"
+      },
+      {
+        "path": "web/server/game/legacy/observation.ts",
+        "sha256": "2378edfb7c09a0b413b54db440a294427f072bf43875395bd71ee7514362c987",
+        "actualSHA256": "2378edfb7c09a0b413b54db440a294427f072bf43875395bd71ee7514362c987"
+      },
+      {
+        "path": "web/server/game/legacy/reader.ts",
+        "sha256": "7eb002bde46e840ff9f3b960049ca5821a36a9d98191d2c8337338a728ad5800",
+        "actualSHA256": "7eb002bde46e840ff9f3b960049ca5821a36a9d98191d2c8337338a728ad5800"
+      },
+      {
+        "path": "web/server/game/legacy/rules.ts",
+        "sha256": "ca1eb881dc9d1f094d88f450cbeae4035e1d813cb0b3d92dc9b11e43d6982f58",
+        "actualSHA256": "ca1eb881dc9d1f094d88f450cbeae4035e1d813cb0b3d92dc9b11e43d6982f58"
+      },
+      {
+        "path": "web/server/game/legacy/types.ts",
+        "sha256": "4e4a1c991cffb43f97d8cde2a366097fcf0417cbe7467aab603bf324c65b19a8",
+        "actualSHA256": "4e4a1c991cffb43f97d8cde2a366097fcf0417cbe7467aab603bf324c65b19a8"
+      },
+      {
+        "path": "web/server/game/legacy/v1.ts",
+        "sha256": "0139636c9a176706f30ce8340c4d0c8d47d4e66efc4bf2ad89c4ffe9763b347b",
+        "actualSHA256": "0139636c9a176706f30ce8340c4d0c8d47d4e66efc4bf2ad89c4ffe9763b347b"
+      },
+      {
+        "path": "web/server/game/replay.ts",
+        "sha256": "e4c0034d36b2be03a52cf694abff0761fc01572f51552e288515bc24ee6db80a",
+        "actualSHA256": "e4c0034d36b2be03a52cf694abff0761fc01572f51552e288515bc24ee6db80a"
+      },
+      {
+        "path": "web/server/game/rules.ts",
+        "sha256": "6e5042531cacb80cf3ff11d2dab89cb0ea75a391576360c70d2a2b2dce2b7047",
+        "actualSHA256": "6e5042531cacb80cf3ff11d2dab89cb0ea75a391576360c70d2a2b2dce2b7047"
+      },
+      {
+        "path": "web/server/game/spades/score.ts",
+        "sha256": "9e2a97cf28d1c99750315c28a6955790ff3470d6c051e975f16d6a1095d279dd",
+        "actualSHA256": "9e2a97cf28d1c99750315c28a6955790ff3470d6c051e975f16d6a1095d279dd"
+      },
+      {
+        "path": "web/server/games/hearts/coaching/cues-legacy.ts",
+        "sha256": "17bae315afdce429e09025769e53e044b32c975e60c6b6fffa4f1c9f7bbba07d",
+        "actualSHA256": "17bae315afdce429e09025769e53e044b32c975e60c6b6fffa4f1c9f7bbba07d"
+      },
+      {
+        "path": "web/server/games/hearts/codec.ts",
+        "sha256": "7df116e83e47c0f90d73aaf2b8cba442391fd13ec9c104cac5512aa6d0a81428",
+        "actualSHA256": "7df116e83e47c0f90d73aaf2b8cba442391fd13ec9c104cac5512aa6d0a81428"
+      },
+      {
+        "path": "web/server/games/hearts/compatibility.ts",
+        "sha256": "9c4ee02f3ee3b02bdba30898cf4966056a5effc031107296b7eadf1e05fe95bb",
+        "actualSHA256": "9c4ee02f3ee3b02bdba30898cf4966056a5effc031107296b7eadf1e05fe95bb"
+      },
+      {
+        "path": "web/server/games/hearts/engine.ts",
+        "sha256": "1a293d24e35e7e1199e7f685f33453489aad7d6e3ec5873a7d1ff4702a8eae17",
+        "actualSHA256": "1a293d24e35e7e1199e7f685f33453489aad7d6e3ec5873a7d1ff4702a8eae17"
+      },
+      {
+        "path": "web/server/games/hearts/module.ts",
+        "sha256": "b69ab450e50b57f18c0a59b9268521deecdf9c4de4cdf3664348804358f5591a",
+        "actualSHA256": "b69ab450e50b57f18c0a59b9268521deecdf9c4de4cdf3664348804358f5591a"
+      },
+      {
+        "path": "web/server/games/hearts/observation.ts",
+        "sha256": "83f527bfb345e1b529d35e15e06768c8ed1459d8100729ace4d5f599303c5254",
+        "actualSHA256": "83f527bfb345e1b529d35e15e06768c8ed1459d8100729ace4d5f599303c5254"
+      },
+      {
+        "path": "web/server/games/hearts/plan/kernel.ts",
+        "sha256": "87daf62cbfe828997e75bb671a9b2965842124bb866cb07537a623021d66defc",
+        "actualSHA256": "87daf62cbfe828997e75bb671a9b2965842124bb866cb07537a623021d66defc"
+      },
+      {
+        "path": "web/server/games/hearts/plan/model.ts",
+        "sha256": "492c8e10f9d55ad743788436f385ff9929f4dfc4a5fb80c4454ee94b42ed61d3",
+        "actualSHA256": "492c8e10f9d55ad743788436f385ff9929f4dfc4a5fb80c4454ee94b42ed61d3"
+      },
+      {
+        "path": "web/server/games/hearts/plan/pack.ts",
+        "sha256": "cdabcb038cac4156528ceb833a1ff7eac443e9aa646ffff334d0760a8930c600",
+        "actualSHA256": "cdabcb038cac4156528ceb833a1ff7eac443e9aa646ffff334d0760a8930c600"
+      },
+      {
+        "path": "web/server/games/hearts/plan/planner.ts",
+        "sha256": "33eb46af8a1b26d97c0b70b53498fd219fc123d91bfc86a2e689c4c85f397491",
+        "actualSHA256": "33eb46af8a1b26d97c0b70b53498fd219fc123d91bfc86a2e689c4c85f397491"
+      },
+      {
+        "path": "web/server/games/hearts/plan/policy.ts",
+        "sha256": "8be7b1c427e41be5b21c099bd9be7ac36a7e346ebac02da156fe348aa049c2ed",
+        "actualSHA256": "8be7b1c427e41be5b21c099bd9be7ac36a7e346ebac02da156fe348aa049c2ed"
+      },
+      {
+        "path": "web/server/games/hearts/plan/profiles.ts",
+        "sha256": "bebc3d9d431aaded1a2b9a925c66fb8e679c84fcd266e4c0a977e5c39406361f",
+        "actualSHA256": "bebc3d9d431aaded1a2b9a925c66fb8e679c84fcd266e4c0a977e5c39406361f"
+      },
+      {
+        "path": "web/server/games/hearts/plan/stance.ts",
+        "sha256": "519ae3745217b3b611ce57ea369bca77113645f45f5533bf580fe81e3d8c27e9",
+        "actualSHA256": "519ae3745217b3b611ce57ea369bca77113645f45f5533bf580fe81e3d8c27e9"
+      },
+      {
+        "path": "web/server/games/hearts/projection.ts",
+        "sha256": "dda46e939d2103df200c75077dc6e18f8e60edf565fa5622fe05d8567fcec36e",
+        "actualSHA256": "dda46e939d2103df200c75077dc6e18f8e60edf565fa5622fe05d8567fcec36e"
+      },
+      {
+        "path": "web/server/games/hearts/reasoning/manifest.ts",
+        "sha256": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a",
+        "actualSHA256": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a"
+      },
+      {
+        "path": "web/server/games/hearts/schema.json",
+        "sha256": "fa57d6b5c0d4b2283eef134f3fb06e8a3e413bbb2269986fc054d1633802f19a",
+        "actualSHA256": "fa57d6b5c0d4b2283eef134f3fb06e8a3e413bbb2269986fc054d1633802f19a"
+      },
+      {
+        "path": "web/server/games/hearts/state.ts",
+        "sha256": "e708b372bcaa28bc80d57ceba4a0fc1d5e726e98791382cedeed96fdb87e0b22",
+        "actualSHA256": "e708b372bcaa28bc80d57ceba4a0fc1d5e726e98791382cedeed96fdb87e0b22"
+      },
+      {
+        "path": "web/server/games/registrations.ts",
+        "sha256": "67ccde3caecf04a0b6c07ddf26ff25f94384593f39c93654517c630c3f6ab7aa",
+        "actualSHA256": "67ccde3caecf04a0b6c07ddf26ff25f94384593f39c93654517c630c3f6ab7aa"
+      },
+      {
+        "path": "web/server/games/spades/cases/cues.ts",
+        "sha256": "7f604aa63fe8592b903bdef043b131bcfe4affb10f49f809838cc9684c61368e",
+        "actualSHA256": "7f604aa63fe8592b903bdef043b131bcfe4affb10f49f809838cc9684c61368e"
+      },
+      {
+        "path": "web/server/games/spades/cases/profile.ts",
+        "sha256": "50a3372243120d0251ac2b12b06565ca7dee8b29f3b740ae4e13e1901f23f894",
+        "actualSHA256": "50a3372243120d0251ac2b12b06565ca7dee8b29f3b740ae4e13e1901f23f894"
+      },
+      {
+        "path": "web/server/games/spades/cases/proofs.ts",
+        "sha256": "e5a3906f8cff62a4f5a10308bf665299a0d15ddfadfc950b64f9b31e4a03e90b",
+        "actualSHA256": "e5a3906f8cff62a4f5a10308bf665299a0d15ddfadfc950b64f9b31e4a03e90b"
+      },
+      {
+        "path": "web/server/games/spades/coaching/cues-legacy.ts",
+        "sha256": "83b92cab4a00d6f1d0193455f98bce05b48c11e3869d1b79aed0a0e5cf59de8b",
+        "actualSHA256": "83b92cab4a00d6f1d0193455f98bce05b48c11e3869d1b79aed0a0e5cf59de8b"
+      },
+      {
+        "path": "web/server/games/spades/coaching/cues-v2.ts",
+        "sha256": "eb299757640fd08c0b128d12654e671b9a4814f1f3897dcb59a44e856a601ba6",
+        "actualSHA256": "eb299757640fd08c0b128d12654e671b9a4814f1f3897dcb59a44e856a601ba6"
+      },
+      {
+        "path": "web/server/games/spades/coaching/legacy-golden.json",
+        "sha256": "052f5422bb4ab4ebe5aaa6f4ec3e025bf7ed8912880d1dfbae76abdddd018cb3",
+        "actualSHA256": "052f5422bb4ab4ebe5aaa6f4ec3e025bf7ed8912880d1dfbae76abdddd018cb3"
+      },
+      {
+        "path": "web/server/games/spades/coaching/legacy-golden.ts",
+        "sha256": "8e59b109b6d1a2b03a288bfede09f047bb3b3be9a91e837485f7ef3e941eb529",
+        "actualSHA256": "8e59b109b6d1a2b03a288bfede09f047bb3b3be9a91e837485f7ef3e941eb529"
+      },
+      {
+        "path": "web/server/games/spades/compatibility.ts",
+        "sha256": "c176d5d879541f0c1403f3555d96be10e922d5b9ed2a3f186015c4eeaf4001df",
+        "actualSHA256": "c176d5d879541f0c1403f3555d96be10e922d5b9ed2a3f186015c4eeaf4001df"
+      },
+      {
+        "path": "web/server/games/spades/engine.ts",
+        "sha256": "d20ef7ff61f739004f531eb6bac41cbd935103927309d8bb8e6569ed4055b6ee",
+        "actualSHA256": "d20ef7ff61f739004f531eb6bac41cbd935103927309d8bb8e6569ed4055b6ee"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/adapter.ts",
+        "sha256": "6cdc683727ffd640f2e2f0cd30839d0c1a90ddd908b538027a43ae8555acd565",
+        "actualSHA256": "6cdc683727ffd640f2e2f0cd30839d0c1a90ddd908b538027a43ae8555acd565"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/check.ts",
+        "sha256": "8bfba0b026a3891a8994ee97854a7e724f75909308b875dbb4909aefedd872bf",
+        "actualSHA256": "8bfba0b026a3891a8994ee97854a7e724f75909308b875dbb4909aefedd872bf"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/legacy.ts",
+        "sha256": "249dc3352408f869c222b3275cf06c5939802b8977d5eb9dd85b2274640dfd51",
+        "actualSHA256": "249dc3352408f869c222b3275cf06c5939802b8977d5eb9dd85b2274640dfd51"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/observed.ts",
+        "sha256": "e8af13b46dbb1152af1212204191a2ee31dc7956e1efc53a239349ff16e344f6",
+        "actualSHA256": "e8af13b46dbb1152af1212204191a2ee31dc7956e1efc53a239349ff16e344f6"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/partner-resource.ts",
+        "sha256": "917f2c2df22303bad76f85d41c1eca3d6d7d3f1c3af9a252af4911ce44f5eccd",
+        "actualSHA256": "917f2c2df22303bad76f85d41c1eca3d6d7d3f1c3af9a252af4911ce44f5eccd"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/rules.ts",
+        "sha256": "570ce211914ca01e31a9afcb9df98f13c22fd14dd18e3240d02d397b406050bd",
+        "actualSHA256": "570ce211914ca01e31a9afcb9df98f13c22fd14dd18e3240d02d397b406050bd"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/worlds.ts",
+        "sha256": "33213bc48c6896b41349a5a75f9b6f3aee67540b6f80f661b432d37acc2a80b0",
+        "actualSHA256": "33213bc48c6896b41349a5a75f9b6f3aee67540b6f80f661b432d37acc2a80b0"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/metrics.ts",
+        "sha256": "3bb35c37574f10c91350ed7b1040b29f6447f70c361ef10e8d8d00f9f0149d2b",
+        "actualSHA256": "3bb35c37574f10c91350ed7b1040b29f6447f70c361ef10e8d8d00f9f0149d2b"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/placements.ts",
+        "sha256": "4a290b34ecf23b8ce3ed48b752c3e386996decb1c1d4300e3fd6098dc2c1837a",
+        "actualSHA256": "4a290b34ecf23b8ce3ed48b752c3e386996decb1c1d4300e3fd6098dc2c1837a"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/shadow.ts",
+        "sha256": "0c999b102cd72af2107a1adb453ee34093aa6ea80fdb65af4b59e94283165413",
+        "actualSHA256": "0c999b102cd72af2107a1adb453ee34093aa6ea80fdb65af4b59e94283165413"
+      },
+      {
+        "path": "web/server/games/spades/evaluation/styles.ts",
+        "sha256": "13b00cb88e130b6038ac58ce32603466266dc8a0bce68cd9a555373c152c8ed5",
+        "actualSHA256": "13b00cb88e130b6038ac58ce32603466266dc8a0bce68cd9a555373c152c8ed5"
+      },
+      {
+        "path": "web/server/games/spades/module.ts",
+        "sha256": "8c8f7864ea007f9367689df288818ac4fc66e4dec44adde38d8b101d9d9180bd",
+        "actualSHA256": "8c8f7864ea007f9367689df288818ac4fc66e4dec44adde38d8b101d9d9180bd"
+      },
+      {
+        "path": "web/server/games/spades/observation.ts",
+        "sha256": "680888b061a4e0b0ec1eed2ec97ec65d891a62b7295ef4472622c68e247bd574",
+        "actualSHA256": "680888b061a4e0b0ec1eed2ec97ec65d891a62b7295ef4472622c68e247bd574"
+      },
+      {
+        "path": "web/server/games/spades/partner-resource/cues.ts",
+        "sha256": "2a008518a6497bad6743d0a40069c7493e99f58a6d0569aab9f0b5e51fe26254",
+        "actualSHA256": "2a008518a6497bad6743d0a40069c7493e99f58a6d0569aab9f0b5e51fe26254"
+      },
+      {
+        "path": "web/server/games/spades/partner-resource/profile.ts",
+        "sha256": "ce407088c1c080868c6a767eaa7ffb4be3ba9a69527e0617043eadda8ec17a86",
+        "actualSHA256": "ce407088c1c080868c6a767eaa7ffb4be3ba9a69527e0617043eadda8ec17a86"
+      },
+      {
+        "path": "web/server/games/spades/partner-resource/proofs.ts",
+        "sha256": "c8da5a309aacb99f52cca84a0e0f47516458c06871fb5d8405940a3a7362e311",
+        "actualSHA256": "c8da5a309aacb99f52cca84a0e0f47516458c06871fb5d8405940a3a7362e311"
+      },
+      {
+        "path": "web/server/games/spades/plan/claims.ts",
+        "sha256": "6d882ddc8ffd79d979bba402b24365a218059b833969ee22799112b1a70ebaf3",
+        "actualSHA256": "6d882ddc8ffd79d979bba402b24365a218059b833969ee22799112b1a70ebaf3"
+      },
+      {
+        "path": "web/server/games/spades/plan/pack.ts",
+        "sha256": "989387dcfff14db1cd31a260b89495e2c44b67b872858c39276b16e18e5feecc",
+        "actualSHA256": "989387dcfff14db1cd31a260b89495e2c44b67b872858c39276b16e18e5feecc"
+      },
+      {
+        "path": "web/server/games/spades/plan/planner.ts",
+        "sha256": "e9faccace64e7d6ab473da913a1880ef7a08a86ca62d9d8d3b82b2a7fef5f8e2",
+        "actualSHA256": "e9faccace64e7d6ab473da913a1880ef7a08a86ca62d9d8d3b82b2a7fef5f8e2"
+      },
+      {
+        "path": "web/server/games/spades/plan/profiles.ts",
+        "sha256": "6fd6d636e22b49526d58e7de9c0ed0d9ea2b56e51df8818818b0fd09d764a786",
+        "actualSHA256": "6fd6d636e22b49526d58e7de9c0ed0d9ea2b56e51df8818818b0fd09d764a786"
+      },
+      {
+        "path": "web/server/games/spades/plan/stance.ts",
+        "sha256": "28187b50c19a453d89faecd454f19fe9c1d05671ebfa96c3c1e3b95c39dfb2fa",
+        "actualSHA256": "28187b50c19a453d89faecd454f19fe9c1d05671ebfa96c3c1e3b95c39dfb2fa"
+      },
+      {
+        "path": "web/server/games/spades/playout/kernel.ts",
+        "sha256": "3560d67affc712537028ad20c162d42ce9f382ca8e57ec9daede042a57a7323a",
+        "actualSHA256": "3560d67affc712537028ad20c162d42ce9f382ca8e57ec9daede042a57a7323a"
+      },
+      {
+        "path": "web/server/games/spades/playout/model.ts",
+        "sha256": "40452cb6d3e6090ea2b529dfdcd7dc163c27da6d8f25cba9b7746fe43b9ef215",
+        "actualSHA256": "40452cb6d3e6090ea2b529dfdcd7dc163c27da6d8f25cba9b7746fe43b9ef215"
+      },
+      {
+        "path": "web/server/games/spades/playout/policy.ts",
+        "sha256": "2bc631790dcf4813fe754f76b390d47a3c66ead4144a7e3b8c85a452ee071cf6",
+        "actualSHA256": "2bc631790dcf4813fe754f76b390d47a3c66ead4144a7e3b8c85a452ee071cf6"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/bidding.ts",
+        "sha256": "d3088d7f675c20f34258a503b4ece5eea4c00d4eae3b25985be6340412ebcdfb",
+        "actualSHA256": "d3088d7f675c20f34258a503b4ece5eea4c00d4eae3b25985be6340412ebcdfb"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/casebook.ts",
+        "sha256": "f16bfc61cf10a0c557536892514941bff0e39a2c9a6c41e72fcc60857e13c8ef",
+        "actualSHA256": "f16bfc61cf10a0c557536892514941bff0e39a2c9a6c41e72fcc60857e13c8ef"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/catalog.ts",
+        "sha256": "037aabd016ea80909587c400e2ef88095c5696028b6530ec080afe9458cb6427",
+        "actualSHA256": "037aabd016ea80909587c400e2ef88095c5696028b6530ec080afe9458cb6427"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/continuations.ts",
+        "sha256": "59f1a2d709a543de23366b92e9c21b1d4a69e8c186c191b46782b784b243cd29",
+        "actualSHA256": "59f1a2d709a543de23366b92e9c21b1d4a69e8c186c191b46782b784b243cd29"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/entries.ts",
+        "sha256": "f7c9585a587036fae0f0cd4ff25cb336a2202ccca6ac25a8d68cb4523f47d054",
+        "actualSHA256": "f7c9585a587036fae0f0cd4ff25cb336a2202ccca6ac25a8d68cb4523f47d054"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/golden.ts",
+        "sha256": "a1603263dea6d9b1ab773c32ecfc210a1e1576cb7ae8725d7385b45a6b2b780d",
+        "actualSHA256": "a1603263dea6d9b1ab773c32ecfc210a1e1576cb7ae8725d7385b45a6b2b780d"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/local-baseline-1.0.0.golden.json",
+        "sha256": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9",
+        "actualSHA256": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/bidding.ts",
+        "sha256": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a",
+        "actualSHA256": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/catalog.ts",
+        "sha256": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025",
+        "actualSHA256": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/entries.ts",
+        "sha256": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832",
+        "actualSHA256": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/golden.json",
+        "sha256": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8",
+        "actualSHA256": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/index.ts",
+        "sha256": "487cceb779f2d7ed30a87e5f0f281634cb3064ed9d36c4abbb26f7f572eb82da",
+        "actualSHA256": "487cceb779f2d7ed30a87e5f0f281634cb3064ed9d36c4abbb26f7f572eb82da"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/knowledge.ts",
+        "sha256": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a",
+        "actualSHA256": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/manifest.json",
+        "sha256": "d860fe20c969b41daccc6fae04f76f17d156a5002d8cae39ab02075ebb77ee9f",
+        "actualSHA256": "d860fe20c969b41daccc6fae04f76f17d156a5002d8cae39ab02075ebb77ee9f"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/nil.ts",
+        "sha256": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35",
+        "actualSHA256": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/policy.ts",
+        "sha256": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9",
+        "actualSHA256": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/retained-bidder.ts",
+        "sha256": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88",
+        "actualSHA256": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/signals.ts",
+        "sha256": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078",
+        "actualSHA256": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/knowledge.ts",
+        "sha256": "b81c6883769db1b9a77be78ffc5e4400315a3ee024fa600f6fcb3c30acbd1c5d",
+        "actualSHA256": "b81c6883769db1b9a77be78ffc5e4400315a3ee024fa600f6fcb3c30acbd1c5d"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/manifest.ts",
+        "sha256": "60ac4f3ada3752b9d7cf6902ace80a9a3d1b6a8afcc32cbcdcaab7d3d300de3d",
+        "actualSHA256": "60ac4f3ada3752b9d7cf6902ace80a9a3d1b6a8afcc32cbcdcaab7d3d300de3d"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/nil.ts",
+        "sha256": "4401dc6b12e0c191bb6f0f960e41d0337f76ae70b70b8bc21272b4dc9b550018",
+        "actualSHA256": "4401dc6b12e0c191bb6f0f960e41d0337f76ae70b70b8bc21272b4dc9b550018"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/objectives.ts",
+        "sha256": "b4b7105d41ada31406248b106b80e17032de4bb2f668ed0fed962388370f2f02",
+        "actualSHA256": "b4b7105d41ada31406248b106b80e17032de4bb2f668ed0fed962388370f2f02"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/policy.ts",
+        "sha256": "a359f215a8ee0fe58829f94434c3e0d7e9de67b7bb95942b623427a4d5755b7d",
+        "actualSHA256": "a359f215a8ee0fe58829f94434c3e0d7e9de67b7bb95942b623427a4d5755b7d"
+      },
+      {
+        "path": "web/server/games/spades/reasoning/signals.ts",
+        "sha256": "8e8fa86fe6d0e71d80a373ce4d454349172b1514cd58a423a9a264675c490941",
+        "actualSHA256": "8e8fa86fe6d0e71d80a373ce4d454349172b1514cd58a423a9a264675c490941"
+      },
+      {
+        "path": "web/server/games/spades/rules.ts",
+        "sha256": "53c1cd5e54d35f0cce9661dd79ea2dd8b5586fb48e80bbe87571c4c5a7708449",
+        "actualSHA256": "53c1cd5e54d35f0cce9661dd79ea2dd8b5586fb48e80bbe87571c4c5a7708449"
+      },
+      {
+        "path": "web/server/games/spades/schema.json",
+        "sha256": "61a9494aa976cded9ae41394ddd1df0e97717afa6e63a2486ff3ec1f83449011",
+        "actualSHA256": "61a9494aa976cded9ae41394ddd1df0e97717afa6e63a2486ff3ec1f83449011"
+      },
+      {
+        "path": "web/server/games/spades/state.ts",
+        "sha256": "1db115603937d22fd0adade8d9b9f7a9d33dbb13c1e285501f19d4d1cabdbe48",
+        "actualSHA256": "1db115603937d22fd0adade8d9b9f7a9d33dbb13c1e285501f19d4d1cabdbe48"
+      },
+      {
+        "path": "web/server/http/app.ts",
+        "sha256": "4368e66c20405e1ad3cff8fa96b54bff8ad2307e89cff57068a1e406794857f6",
+        "actualSHA256": "4368e66c20405e1ad3cff8fa96b54bff8ad2307e89cff57068a1e406794857f6"
+      },
+      {
+        "path": "web/server/http/errors.ts",
+        "sha256": "f7d0fa1fdc52395ed4234589915ec2ced34b1207a1a4718fe0217381d66003a3",
+        "actualSHA256": "f7d0fa1fdc52395ed4234589915ec2ced34b1207a1a4718fe0217381d66003a3"
+      },
+      {
+        "path": "web/server/http/game-service.ts",
+        "sha256": "92f8d430022f5f37185051328de2130a1b789d723f9149fd1c30fd37313020fa",
+        "actualSHA256": "92f8d430022f5f37185051328de2130a1b789d723f9149fd1c30fd37313020fa"
+      },
+      {
+        "path": "web/server/http/trial-service.ts",
+        "sha256": "7211838ef9928861efd94460b330af5646b65a3e2a661843640d814114fd35c5",
+        "actualSHA256": "7211838ef9928861efd94460b330af5646b65a3e2a661843640d814114fd35c5"
+      },
+      {
+        "path": "web/server/http/views.ts",
+        "sha256": "33f367ed95c17cb58adb7f2316035e2a4e39cecc5e3adb322e4715f786eb54ee",
+        "actualSHA256": "33f367ed95c17cb58adb7f2316035e2a4e39cecc5e3adb322e4715f786eb54ee"
+      },
+      {
+        "path": "web/server/index.ts",
+        "sha256": "942080c1464af47faed70fec53c945eef58341898069eac8280818cbeb00ad78",
+        "actualSHA256": "942080c1464af47faed70fec53c945eef58341898069eac8280818cbeb00ad78"
+      },
+      {
+        "path": "web/server/observations/index.ts",
+        "sha256": "af35bf39336ac06a683ecc69463dcd993acbe8829cc7f9ae71d6e5dbbae28394",
+        "actualSHA256": "af35bf39336ac06a683ecc69463dcd993acbe8829cc7f9ae71d6e5dbbae28394"
+      },
+      {
+        "path": "web/server/observations/types.ts",
+        "sha256": "0a073cec3252ccb80d71f8059e46ca7af97e274039f6b88cbd997a5a11de8975",
+        "actualSHA256": "0a073cec3252ccb80d71f8059e46ca7af97e274039f6b88cbd997a5a11de8975"
+      },
+      {
+        "path": "web/server/providers/openrouter.ts",
+        "sha256": "d0c3fa34f3e99a780b443f7789f982d17ae804d06ca77d5be72edddf909f852b",
+        "actualSHA256": "d0c3fa34f3e99a780b443f7789f982d17ae804d06ca77d5be72edddf909f852b"
+      },
+      {
+        "path": "web/server/providers/secrets.ts",
+        "sha256": "ef22bd0b055af4b48e700e3cac6fe5b3d05ee4e8f303e1f09c2cc83673c914e0",
+        "actualSHA256": "ef22bd0b055af4b48e700e3cac6fe5b3d05ee4e8f303e1f09c2cc83673c914e0"
+      },
+      {
+        "path": "web/server/records/database.ts",
+        "sha256": "08e4af4d9e52ccff515b062e2c807095fce3acd9f8281d85824de2c3f66002ca",
+        "actualSHA256": "08e4af4d9e52ccff515b062e2c807095fce3acd9f8281d85824de2c3f66002ca"
+      },
+      {
+        "path": "web/server/records/game-document-codec.ts",
+        "sha256": "4f0e61e9830679a8957d6d04e21bb660dbfb9d9bd659655c2548876026d1de08",
+        "actualSHA256": "4f0e61e9830679a8957d6d04e21bb660dbfb9d9bd659655c2548876026d1de08"
+      },
+      {
+        "path": "web/server/records/game-document.ts",
+        "sha256": "d2ce12d9d1a7629e607bb82404bff18e8552437fedd79e58d61eb6e5be08dc04",
+        "actualSHA256": "d2ce12d9d1a7629e607bb82404bff18e8552437fedd79e58d61eb6e5be08dc04"
+      },
+      {
+        "path": "web/server/records/migrate.ts",
+        "sha256": "08dcff514485969a746169537259e1c4e55203f52e1e636d7d95ba36f06036af",
+        "actualSHA256": "08dcff514485969a746169537259e1c4e55203f52e1e636d7d95ba36f06036af"
+      },
+      {
+        "path": "web/server/records/migrations.ts",
+        "sha256": "e4363ac79a06cf9b095fcd19be8cf0c3d9517749e715b248234eb685f902a895",
+        "actualSHA256": "e4363ac79a06cf9b095fcd19be8cf0c3d9517749e715b248234eb685f902a895"
+      },
+      {
+        "path": "web/server/records/repository.ts",
+        "sha256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f",
+        "actualSHA256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f"
+      },
+      {
+        "path": "web/server/records/state-validation.ts",
+        "sha256": "4fffd293a392aeb121e9f3c4c40b5d80fad8c77e29d0867ed7b72e979599c441",
+        "actualSHA256": "4fffd293a392aeb121e9f3c4c40b5d80fad8c77e29d0867ed7b72e979599c441"
+      },
+      {
+        "path": "web/server/records/types.ts",
+        "sha256": "da56a6812248b808bee5938de983b3b310a436bdc6a12c7af1459d74849463e7",
+        "actualSHA256": "da56a6812248b808bee5938de983b3b310a436bdc6a12c7af1459d74849463e7"
+      },
+      {
+        "path": "web/server/strategy/baseline.ts",
+        "sha256": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929",
+        "actualSHA256": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929"
+      },
+      {
+        "path": "web/server/strategy/facts.ts",
+        "sha256": "91df66ea59713ca96b541122f3607d2ee9edf0ae9111436bed2db2f649888af1",
+        "actualSHA256": "91df66ea59713ca96b541122f3607d2ee9edf0ae9111436bed2db2f649888af1"
+      },
+      {
+        "path": "web/server/strategy/index.ts",
+        "sha256": "7b0db3d2ae0597d4e672d85eceb56a97ba15015b761959b22b4bf319d692f0a1",
+        "actualSHA256": "7b0db3d2ae0597d4e672d85eceb56a97ba15015b761959b22b4bf319d692f0a1"
+      },
+      {
+        "path": "web/server/strategy/plan/contract.ts",
+        "sha256": "bce8d766d981eed2b1c77f367b1c86e93a40fa8fbfe34e925d9533ae323bc355",
+        "actualSHA256": "bce8d766d981eed2b1c77f367b1c86e93a40fa8fbfe34e925d9533ae323bc355"
+      },
+      {
+        "path": "web/server/strategy/plan/evaluate.ts",
+        "sha256": "967da678727ce322000db15d718290b5002556464753a073131d12216e371f28",
+        "actualSHA256": "967da678727ce322000db15d718290b5002556464753a073131d12216e371f28"
+      },
+      {
+        "path": "web/server/strategy/plan/random.ts",
+        "sha256": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883",
+        "actualSHA256": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883"
+      },
+      {
+        "path": "web/server/strategy/plan/types.ts",
+        "sha256": "a899542eef67aa98aaf8379e87320b00eda3e407187dc2f7eefbda96e845fdf7",
+        "actualSHA256": "a899542eef67aa98aaf8379e87320b00eda3e407187dc2f7eefbda96e845fdf7"
+      },
+      {
+        "path": "web/server/strategy/registry.ts",
+        "sha256": "8a60dec8ebc60a67ac1d3b008e82eee13e1dbb2abd101122c892c808f5d62607",
+        "actualSHA256": "8a60dec8ebc60a67ac1d3b008e82eee13e1dbb2abd101122c892c808f5d62607"
+      },
+      {
+        "path": "web/server/strategy/sampler.ts",
+        "sha256": "2f4ef123c0a9c0328e44d55e1e49e9b4720273de051ba9768ea6696f6b3f30ad",
+        "actualSHA256": "2f4ef123c0a9c0328e44d55e1e49e9b4720273de051ba9768ea6696f6b3f30ad"
+      },
+      {
+        "path": "web/server/strategy/spades.ts",
+        "sha256": "fc7dd4b74fea705398193b04be3ddb4d4ad6075e5063eb486d88d7a9148ac5f4",
+        "actualSHA256": "fc7dd4b74fea705398193b04be3ddb4d4ad6075e5063eb486d88d7a9148ac5f4"
+      },
+      {
+        "path": "web/server/strategy/types.ts",
+        "sha256": "a39cd57abe3252780370e8aabc7f2b7bd3959b15d76f5e22aa5634c58644fa0c",
+        "actualSHA256": "a39cd57abe3252780370e8aabc7f2b7bd3959b15d76f5e22aa5634c58644fa0c"
+      },
+      {
+        "path": "web/server/tests/access-review.test.ts",
+        "sha256": "4a03d18a67a247fb20a6a2af6d2118a1bc85ecf14477dcba6b42c90566e0fd15",
+        "actualSHA256": "4a03d18a67a247fb20a6a2af6d2118a1bc85ecf14477dcba6b42c90566e0fd15"
+      },
+      {
+        "path": "web/server/tests/account-data.test.ts",
+        "sha256": "4d27438ce87445446cb5a36dad8b9f6f129f95311ce8862fe00e0c4d6b4ab6f0",
+        "actualSHA256": "4d27438ce87445446cb5a36dad8b9f6f129f95311ce8862fe00e0c4d6b4ab6f0"
+      },
+      {
+        "path": "web/server/tests/analysis-outside-transaction.test.ts",
+        "sha256": "c2690eb72ace519f754ec1f5031e03be50ebbb6377a392d2fda27be1b35d0d68",
+        "actualSHA256": "c2690eb72ace519f754ec1f5031e03be50ebbb6377a392d2fda27be1b35d0d68"
+      },
+      {
+        "path": "web/server/tests/billing-stripe-management.test.ts",
+        "sha256": "724f8d14726e775cb6c704c63d5fcfbcc3332bcbf8f7be977106526345e209ad",
+        "actualSHA256": "724f8d14726e775cb6c704c63d5fcfbcc3332bcbf8f7be977106526345e209ad"
+      },
+      {
+        "path": "web/server/tests/billing.test.ts",
+        "sha256": "76738ca7566b313372a72b58af91554b75bd93daf9f0c8124720ffc75c069dd6",
+        "actualSHA256": "76738ca7566b313372a72b58af91554b75bd93daf9f0c8124720ffc75c069dd6"
+      },
+      {
+        "path": "web/server/tests/coach-legacy-parity.test.ts",
+        "sha256": "389d044a6b85e02f1f066ea8038e7798964cccfc12ba1188b02eba7b5b74ea2c",
+        "actualSHA256": "389d044a6b85e02f1f066ea8038e7798964cccfc12ba1188b02eba7b5b74ea2c"
+      },
+      {
+        "path": "web/server/tests/coaching-analysis.test.ts",
+        "sha256": "3ac9b1887d28f89a58fd56c68c6da2415208d81b1eeb906da2be979ec82fc15b",
+        "actualSHA256": "3ac9b1887d28f89a58fd56c68c6da2415208d81b1eeb906da2be979ec82fc15b"
+      },
+      {
+        "path": "web/server/tests/config.test.ts",
+        "sha256": "ea746bb19aa60d041a4ffc54a039704f7543bfd4a4acf7c728543eab32cf4eb3",
+        "actualSHA256": "ea746bb19aa60d041a4ffc54a039704f7543bfd4a4acf7c728543eab32cf4eb3"
+      },
+      {
+        "path": "web/server/tests/contracts.test.ts",
+        "sha256": "eb7e1a3994d432691ce83d4068c95baab9ef9ce36c499b3f371cc30755efb13a",
+        "actualSHA256": "eb7e1a3994d432691ce83d4068c95baab9ef9ce36c499b3f371cc30755efb13a"
+      },
+      {
+        "path": "web/server/tests/dev-scenarios-integration.test.ts",
+        "sha256": "fe010b6da46a1a6dbb43360ee9af1d2764c7b18aa487964cfb5bd750c9e4f9c3",
+        "actualSHA256": "fe010b6da46a1a6dbb43360ee9af1d2764c7b18aa487964cfb5bd750c9e4f9c3"
+      },
+      {
+        "path": "web/server/tests/dev-scenarios.test.ts",
+        "sha256": "01ecc341f341cff16674f61590b75b6fa6c660c3c5ccde9bb9291d59e6d8b739",
+        "actualSHA256": "01ecc341f341cff16674f61590b75b6fa6c660c3c5ccde9bb9291d59e6d8b739"
+      },
+      {
+        "path": "web/server/tests/facts-history.test.ts",
+        "sha256": "c08e8009c7685fb2b083a9626eb79fbecfa23141ca535cd9ffeffe2e60e68b4b",
+        "actualSHA256": "c08e8009c7685fb2b083a9626eb79fbecfa23141ca535cd9ffeffe2e60e68b4b"
+      },
+      {
+        "path": "web/server/tests/family.test.ts",
+        "sha256": "bdeb57493efd42497c81723f6243092779417c906dd17fec50edc6b5701dfd7f",
+        "actualSHA256": "bdeb57493efd42497c81723f6243092779417c906dd17fec50edc6b5701dfd7f"
+      },
+      {
+        "path": "web/server/tests/fixtures/legacy-module-document.json",
+        "sha256": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f",
+        "actualSHA256": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f"
+      },
+      {
+        "path": "web/server/tests/fixtures/spades-observed-sources.json",
+        "sha256": "8120e57357fbffc74b5ffb1a745320ff12f9873892a2e9f6c9c3ddbf1cd430e8",
+        "actualSHA256": "8120e57357fbffc74b5ffb1a745320ff12f9873892a2e9f6c9c3ddbf1cd430e8"
+      },
+      {
+        "path": "web/server/tests/frozen-baseline.test.ts",
+        "sha256": "543aa8cf207d2c73c33230fdfa974913baad98f1733a93cfa31bd19c133f9880",
+        "actualSHA256": "543aa8cf207d2c73c33230fdfa974913baad98f1733a93cfa31bd19c133f9880"
+      },
+      {
+        "path": "web/server/tests/game-document.test.ts",
+        "sha256": "0c99c952e194cba708a8d2288dd0c3a5afc1d9243578407c7a5be7b3553ce33c",
+        "actualSHA256": "0c99c952e194cba708a8d2288dd0c3a5afc1d9243578407c7a5be7b3553ce33c"
+      },
+      {
+        "path": "web/server/tests/gate-inference.test.ts",
+        "sha256": "72fbae6a3fc8f124f52bc1cda35964ea2fcc4c81ba5490ce99a9819aec9b9538",
+        "actualSHA256": "72fbae6a3fc8f124f52bc1cda35964ea2fcc4c81ba5490ce99a9819aec9b9538"
+      },
+      {
+        "path": "web/server/tests/gate-rule.test.ts",
+        "sha256": "68d438210da9d95cf267e7344892ee362fe79b60e7a0c33f46a258403885f5fd",
+        "actualSHA256": "68d438210da9d95cf267e7344892ee362fe79b60e7a0c33f46a258403885f5fd"
+      },
+      {
+        "path": "web/server/tests/hearts-module-validation.test.ts",
+        "sha256": "c856e1ea33e452e881d393549ee9157ba65bbc2ebdfa6bf18864c9048d024758",
+        "actualSHA256": "c856e1ea33e452e881d393549ee9157ba65bbc2ebdfa6bf18864c9048d024758"
+      },
+      {
+        "path": "web/server/tests/hearts-plan.test.ts",
+        "sha256": "3404fcbaf300915c20c6c92fb5eff9dcddd8c7d3564cc2644a67c4553acf739a",
+        "actualSHA256": "3404fcbaf300915c20c6c92fb5eff9dcddd8c7d3564cc2644a67c4553acf739a"
+      },
+      {
+        "path": "web/server/tests/integration.test.ts",
+        "sha256": "25416050b2a16ab949063b256669a64f0ab0ef126dc67ef8a2545f9a47778846",
+        "actualSHA256": "25416050b2a16ab949063b256669a64f0ab0ef126dc67ef8a2545f9a47778846"
+      },
+      {
+        "path": "web/server/tests/jev-offline.test.ts",
+        "sha256": "13d74ef66b16050539350f95e5c24cf77ab53c8a26c707346030e16c3de1d23f",
+        "actualSHA256": "13d74ef66b16050539350f95e5c24cf77ab53c8a26c707346030e16c3de1d23f"
+      },
+      {
+        "path": "web/server/tests/module-contract.test.ts",
+        "sha256": "dd9f59239856560f0854ad37cd879c25f232f5f4146cf3fc0190074679d434f7",
+        "actualSHA256": "dd9f59239856560f0854ad37cd879c25f232f5f4146cf3fc0190074679d434f7"
+      },
+      {
+        "path": "web/server/tests/module-parity.test.ts",
+        "sha256": "69eeaab243ff19577840d24235bf125e23237d90a37fe90a8e5a89b4c374c91e",
+        "actualSHA256": "69eeaab243ff19577840d24235bf125e23237d90a37fe90a8e5a89b4c374c91e"
+      },
+      {
+        "path": "web/server/tests/module-seam.test.ts",
+        "sha256": "83502fc80da19d3058e84fe4f7733a5535a0062fb4d0a75a5d6079bc8b1980fc",
+        "actualSHA256": "83502fc80da19d3058e84fe4f7733a5535a0062fb4d0a75a5d6079bc8b1980fc"
+      },
+      {
+        "path": "web/server/tests/observations.test.ts",
+        "sha256": "b194f631984ad982576624355c7be7b3d1f03c74c085206a88a751d041c96254",
+        "actualSHA256": "b194f631984ad982576624355c7be7b3d1f03c74c085206a88a751d041c96254"
+      },
+      {
+        "path": "web/server/tests/openrouter.test.ts",
+        "sha256": "7d36ea93ec733672fee557b271d20717615d58bf97b7376b2204917ebc32b07b",
+        "actualSHA256": "7d36ea93ec733672fee557b271d20717615d58bf97b7376b2204917ebc32b07b"
+      },
+      {
+        "path": "web/server/tests/partner-jev.test.ts",
+        "sha256": "04640e5b88ba2fd36fd1e719b7e28dedc65f58e4f2314cf5be7a47fba3b1f8ed",
+        "actualSHA256": "04640e5b88ba2fd36fd1e719b7e28dedc65f58e4f2314cf5be7a47fba3b1f8ed"
+      },
+      {
+        "path": "web/server/tests/plan-evaluator-budget.test.ts",
+        "sha256": "3abd1920d92203bbdd59a2bb3650ebce5c96d2b7228333c92b4eb2898008640d",
+        "actualSHA256": "3abd1920d92203bbdd59a2bb3650ebce5c96d2b7228333c92b4eb2898008640d"
+      },
+      {
+        "path": "web/server/tests/policy-pinning.test.ts",
+        "sha256": "817bc222d8ffddf8bad8d81e36df304c9acec2689078d5c9c33fa37b1a6cb7f3",
+        "actualSHA256": "817bc222d8ffddf8bad8d81e36df304c9acec2689078d5c9c33fa37b1a6cb7f3"
+      },
+      {
+        "path": "web/server/tests/preparation-recovery.test.ts",
+        "sha256": "1a56a90133ed96f68f0ee7fd0217adb43b3c26956a44a6c50e343ba7064f946b",
+        "actualSHA256": "1a56a90133ed96f68f0ee7fd0217adb43b3c26956a44a6c50e343ba7064f946b"
+      },
+      {
+        "path": "web/server/tests/provider-ledger.test.ts",
+        "sha256": "96b82223ae53da4c9c1983c204b44cd4c89ab871ddaf2452d8a6a5b583d685d3",
+        "actualSHA256": "96b82223ae53da4c9c1983c204b44cd4c89ab871ddaf2452d8a6a5b583d685d3"
+      },
+      {
+        "path": "web/server/tests/reasoning-casebook.test.ts",
+        "sha256": "6b5aca587916e4c7a95078250de2a44e6a8acf62204abb916017408f958f0ada",
+        "actualSHA256": "6b5aca587916e4c7a95078250de2a44e6a8acf62204abb916017408f958f0ada"
+      },
+      {
+        "path": "web/server/tests/reasoning-catalog.test.ts",
+        "sha256": "ebb4a0c59fdcbd5c1630b69077c9fff10379ee4cfe73a06c653b796e0823111a",
+        "actualSHA256": "ebb4a0c59fdcbd5c1630b69077c9fff10379ee4cfe73a06c653b796e0823111a"
+      },
+      {
+        "path": "web/server/tests/reasoning-continuations.test.ts",
+        "sha256": "e6a4c3d17fb6e49ca20076027a1abba917601d72cc63fde68aba31969320a08d",
+        "actualSHA256": "e6a4c3d17fb6e49ca20076027a1abba917601d72cc63fde68aba31969320a08d"
+      },
+      {
+        "path": "web/server/tests/reasoning-matrix.test.ts",
+        "sha256": "2fe5a68c73e517984b02b635444a50ae6a956aa1e5d87f37048af13e6e94490a",
+        "actualSHA256": "2fe5a68c73e517984b02b635444a50ae6a956aa1e5d87f37048af13e6e94490a"
+      },
+      {
+        "path": "web/server/tests/reasoning-trace.test.ts",
+        "sha256": "0641a783cc40e46d6847258f1703f88c3c63f34dbcffa43b64b64327390addf9",
+        "actualSHA256": "0641a783cc40e46d6847258f1703f88c3c63f34dbcffa43b64b64327390addf9"
+      },
+      {
+        "path": "web/server/tests/replay.test.ts",
+        "sha256": "68281ae6dcd2069700d5684fe3ded30464cb0149259312b1ff46aadcfdc18313",
+        "actualSHA256": "68281ae6dcd2069700d5684fe3ded30464cb0149259312b1ff46aadcfdc18313"
+      },
+      {
+        "path": "web/server/tests/rules.test.ts",
+        "sha256": "d363285a0681c290951bf7f5078d7944631675d9459be2d959ac9214d1f4f9dd",
+        "actualSHA256": "d363285a0681c290951bf7f5078d7944631675d9459be2d959ac9214d1f4f9dd"
+      },
+      {
+        "path": "web/server/tests/sampler.test.ts",
+        "sha256": "c0b1e2de7b3fe06eddbdcaf873763ec37886dc882e97a59f1b9fc63d8724a7c7",
+        "actualSHA256": "c0b1e2de7b3fe06eddbdcaf873763ec37886dc882e97a59f1b9fc63d8724a7c7"
+      },
+      {
+        "path": "web/server/tests/saved-analysis.test.ts",
+        "sha256": "38647afc40488f692b648809a2c3f38a3680037a45ad39b9d3a24ccbae929b65",
+        "actualSHA256": "38647afc40488f692b648809a2c3f38a3680037a45ad39b9d3a24ccbae929b65"
+      },
+      {
+        "path": "web/server/tests/spades-double-nil.test.ts",
+        "sha256": "8aada72eea008ca0b93a7dd7aab5e5381a8e43abc6fb3222cf9bf3fe44533e72",
+        "actualSHA256": "8aada72eea008ca0b93a7dd7aab5e5381a8e43abc6fb3222cf9bf3fe44533e72"
+      },
+      {
+        "path": "web/server/tests/spades-entries.test.ts",
+        "sha256": "c0be072ee8a514991a6d3adac41d336b1f46eef71d80a9ac41efebdd7cff8d8f",
+        "actualSHA256": "c0be072ee8a514991a6d3adac41d336b1f46eef71d80a9ac41efebdd7cff8d8f"
+      },
+      {
+        "path": "web/server/tests/spades-human-labels.test.ts",
+        "sha256": "2a142d7417a7f1f216c8177cec463ac4cab3c121b360f978844d547860cad117",
+        "actualSHA256": "2a142d7417a7f1f216c8177cec463ac4cab3c121b360f978844d547860cad117"
+      },
+      {
+        "path": "web/server/tests/spades-match-pilot.test.ts",
+        "sha256": "9c6b964140995b525ae3280e202ab9db4a61fb6b6d71dfd49ff8fe9905f3ff24",
+        "actualSHA256": "9c6b964140995b525ae3280e202ab9db4a61fb6b6d71dfd49ff8fe9905f3ff24"
+      },
+      {
+        "path": "web/server/tests/spades-module-validation.test.ts",
+        "sha256": "ebf8a7e7e624319aee7a906744550857ca89ffed71b1bbb2057e533b013de17b",
+        "actualSHA256": "ebf8a7e7e624319aee7a906744550857ca89ffed71b1bbb2057e533b013de17b"
+      },
+      {
+        "path": "web/server/tests/spades-objectives.test.ts",
+        "sha256": "70ff9a86516a8b6d106d0f32cdb1953f8b456bb4d5488251c5915ce38f1decc7",
+        "actualSHA256": "70ff9a86516a8b6d106d0f32cdb1953f8b456bb4d5488251c5915ce38f1decc7"
+      },
+      {
+        "path": "web/server/tests/spades-observed-cases.test.ts",
+        "sha256": "920d4978c5456fefdd16cb9767988fd472635589dc6b736c9bb45c610d78e131",
+        "actualSHA256": "920d4978c5456fefdd16cb9767988fd472635589dc6b736c9bb45c610d78e131"
+      },
+      {
+        "path": "web/server/tests/spades-partner-resource.test.ts",
+        "sha256": "9b705aa25358ab7913a77c4ce59706951ea2e0dfb5d202278dbad0e99568017c",
+        "actualSHA256": "9b705aa25358ab7913a77c4ce59706951ea2e0dfb5d202278dbad0e99568017c"
+      },
+      {
+        "path": "web/server/tests/spades-pilot-report.test.ts",
+        "sha256": "07dd37bbca8cd96331cf63cfbc3276dec926cd16e63ae98af85a44bcd6eb3fa7",
+        "actualSHA256": "07dd37bbca8cd96331cf63cfbc3276dec926cd16e63ae98af85a44bcd6eb3fa7"
+      },
+      {
+        "path": "web/server/tests/spades-playout-budget.test.ts",
+        "sha256": "4a7696404804dde8ac27eae43d4d8749064a3ba054756a28f14e75ffab9b85a3",
+        "actualSHA256": "4a7696404804dde8ac27eae43d4d8749064a3ba054756a28f14e75ffab9b85a3"
+      },
+      {
+        "path": "web/server/tests/spades-playout-kernel.test.ts",
+        "sha256": "32d62ad939167f338c4117591d65794a26c429ecd496f814c4b7904100e39f7a",
+        "actualSHA256": "32d62ad939167f338c4117591d65794a26c429ecd496f814c4b7904100e39f7a"
+      },
+      {
+        "path": "web/server/tests/spades-playout-model.test.ts",
+        "sha256": "dddddee0874be9d17bc1d5bc24ca46488cc4e6abb4e43fa001e9468fd959fa00",
+        "actualSHA256": "dddddee0874be9d17bc1d5bc24ca46488cc4e6abb4e43fa001e9468fd959fa00"
+      },
+      {
+        "path": "web/server/tests/spades-policy-integration.test.ts",
+        "sha256": "2799467dbcbec628b919dd211182ee2c3daac2ce137ec925b890a4c9d72b5bad",
+        "actualSHA256": "2799467dbcbec628b919dd211182ee2c3daac2ce137ec925b890a4c9d72b5bad"
+      },
+      {
+        "path": "web/server/tests/spades-reasoning.test.ts",
+        "sha256": "3630e7a815ef1371d4f904eae85b0a6414b6a84553aa50dd7750d104c3e00f5a",
+        "actualSHA256": "3630e7a815ef1371d4f904eae85b0a6414b6a84553aa50dd7750d104c3e00f5a"
+      },
+      {
+        "path": "web/server/tests/spades-review-pack.test.ts",
+        "sha256": "5fd87cf5bb300a75c489b68d14ac7a11811b3375fbfa53006c276fe5b3d6f49c",
+        "actualSHA256": "5fd87cf5bb300a75c489b68d14ac7a11811b3375fbfa53006c276fe5b3d6f49c"
+      },
+      {
+        "path": "web/server/tests/spades-signals.test.ts",
+        "sha256": "6634e14a561923fbcfd2ce890f854682d24caf5f8321356dcd02d8e509b2f276",
+        "actualSHA256": "6634e14a561923fbcfd2ce890f854682d24caf5f8321356dcd02d8e509b2f276"
+      },
+      {
+        "path": "web/server/tests/stored-state-boundary.test.ts",
+        "sha256": "bd01ba8c9a6be9ffc0caf2bf3328e5f8aff61f465d3a29bf53bfb7f8031ed48b",
+        "actualSHA256": "bd01ba8c9a6be9ffc0caf2bf3328e5f8aff61f465d3a29bf53bfb7f8031ed48b"
+      },
+      {
+        "path": "web/server/tests/strategy-reasons.test.ts",
+        "sha256": "acf9a0ba7313e176572d71a78d52137c87bc1085f85a5f012a79e365d2bf58bc",
+        "actualSHA256": "acf9a0ba7313e176572d71a78d52137c87bc1085f85a5f012a79e365d2bf58bc"
+      },
+      {
+        "path": "web/server/tests/strategy.test.ts",
+        "sha256": "596e93e967eca5c9593c12fb0483ac801d95ddfe3d90234c838bb3ce1bb1bf64",
+        "actualSHA256": "596e93e967eca5c9593c12fb0483ac801d95ddfe3d90234c838bb3ce1bb1bf64"
+      },
+      {
+        "path": "web/server/tests/support/module-contract-fixture.ts",
+        "sha256": "ecfc03515b3f1f6717bc9a8cfd26f9b88af0bf2978bc45c16b183f5069d93a9a",
+        "actualSHA256": "ecfc03515b3f1f6717bc9a8cfd26f9b88af0bf2978bc45c16b183f5069d93a9a"
+      },
+      {
+        "path": "web/server/tests/support/module-contract-types.ts",
+        "sha256": "e6c62b0c89b52bcfc4f05a4ecf2a84a9632c2f9949d36e6aadf6c94a7c0f4139",
+        "actualSHA256": "e6c62b0c89b52bcfc4f05a4ecf2a84a9632c2f9949d36e6aadf6c94a7c0f4139"
+      },
+      {
+        "path": "web/server/tests/support/module-parity.ts",
+        "sha256": "db97cf9cd69bdc65f9b46caecadd2989cba3714e878f45d5ae8ae541203ae5d7",
+        "actualSHA256": "db97cf9cd69bdc65f9b46caecadd2989cba3714e878f45d5ae8ae541203ae5d7"
+      },
+      {
+        "path": "web/server/tests/support/observed-spades.ts",
+        "sha256": "4d06728c7ea5162bf7ac1aec6b0fc856134b7a34e0b93fe2caaeb5ca405a8346",
+        "actualSHA256": "4d06728c7ea5162bf7ac1aec6b0fc856134b7a34e0b93fe2caaeb5ca405a8346"
+      },
+      {
+        "path": "web/server/tests/support/spades-fixtures.ts",
+        "sha256": "459e9b9d7ff84247b373e0e54ea06dd97e17bdd328d3de4826f285f2e445cc12",
+        "actualSHA256": "459e9b9d7ff84247b373e0e54ea06dd97e17bdd328d3de4826f285f2e445cc12"
+      },
+      {
+        "path": "web/server/tests/support/token-module.ts",
+        "sha256": "1175ddff6ae265d90d450100e85f48888c7e3c66b71ffba56317b49edac6aba1",
+        "actualSHA256": "1175ddff6ae265d90d450100e85f48888c7e3c66b71ffba56317b49edac6aba1"
+      },
+      {
+        "path": "web/server/tests/trials.test.ts",
+        "sha256": "7015d0eb06c08ae42e15026623df51a434321d8fc65fb397dbe9b7b9cc60f060",
+        "actualSHA256": "7015d0eb06c08ae42e15026623df51a434321d8fc65fb397dbe9b7b9cc60f060"
+      },
+      {
+        "path": "web/server/tests/world-sampler-parity.test.ts",
+        "sha256": "a52be63ad8d6e945686f3e70f36ee1030b32cf2c25e6c6fdd13ea75917c87500",
+        "actualSHA256": "a52be63ad8d6e945686f3e70f36ee1030b32cf2c25e6c6fdd13ea75917c87500"
+      },
+      {
+        "path": "web/shared/contracts.schema.json",
+        "sha256": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2",
+        "actualSHA256": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2"
+      },
+      {
+        "path": "web/shared/contracts.ts",
+        "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f",
+        "actualSHA256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f"
+      },
+      {
+        "path": "web/shared/games/hearts.schema.json",
+        "sha256": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91",
+        "actualSHA256": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91"
+      },
+      {
+        "path": "web/shared/games/spades.schema.json",
+        "sha256": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb",
+        "actualSHA256": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb"
+      },
+      {
+        "path": "web/shared/openapi.json",
+        "sha256": "ca47d15c98f8dea6e6f6b96b0dbc227e3a60a436d7053577a1b02cd43b285761",
+        "actualSHA256": "ca47d15c98f8dea6e6f6b96b0dbc227e3a60a436d7053577a1b02cd43b285761"
+      },
+      {
+        "path": "web/shared/validation.ts",
+        "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2",
+        "actualSHA256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2"
+      }
+    ]
+  },
+  "discoveryDifference": {
+    "added": [
+      {
+        "path": "web/shared/local-service.contracts.ts",
+        "sha256": "b302c7a38cb16ea633ccbab808159132d5a748da39f2e82984eda522d3a94289"
+      },
+      {
+        "path": "web/shared/local-service.openapi.json",
+        "sha256": "76c276d7de6d13c7c74839983e9951b2dfd6e638a8ea8077179e9ee228b66e3c"
+      },
+      {
+        "path": "web/shared/local-service.schema.json",
+        "sha256": "eb6ee23584af4bc43d2f4577c67b9671e5c70cfd565da30aab94505b05af829a"
+      },
+      {
+        "path": "web/shared/local-service.validation.ts",
+        "sha256": "3cc5b986b78d2bb30216b5ee171842834b7cbef61803ee1d9a3a00bc9d91bd3f"
+      }
+    ],
+    "missing": []
+  },
+  "snapshot": {
+    "commit": "bbca6feb7566dbcae11c8b6e42c3c6119e2a6421",
+    "tree": "15270d90af8574ef949a4fc82627e760ababe7bc",
+    "archiveInputs": [
+      "web/server",
+      "web/shared",
+      "qa/implementation/multi-game/m04/hearts-parity-corpus.json",
+      "qa/implementation/multi-game/m04b/generate-reference.ts",
+      "qa/implementation/multi-game/m04b/reference-corpus.json",
+      "package.json",
+      "web/package.json"
+    ],
+    "directory": ".local/m04c/original-reference-bbca6fe-1791317436505/original",
+    "archive": ".local/m04c/original-reference-bbca6fe-1791317436505/original-inputs.tar",
+    "archiveSHA256": "77d87e972089a862c301637bb42edff029dded02c0cd895dba0829b86cedc741",
+    "totalFiles": 267,
+    "totalBytes": 12199632,
+    "files": [
+      {
+        "path": "package.json",
+        "gitBlob": "93d5d788d385e82a0c36c3fd03f990dbccf1c27d",
+        "bytes": 1715,
+        "sha256": "a8dfcd834723b4f486eca1bd9c10dffd9b0240ccff200f1882aba6ce05b39429",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "qa/implementation/multi-game/m04/hearts-parity-corpus.json",
+        "gitBlob": "66edbb4fef520b46a63160a11b128d02c4121f73",
+        "bytes": 701460,
+        "sha256": "5228fac300405533bd6e3c76a845395272cd3ed94febb6efaadf2d8c6afa5e44",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "qa/implementation/multi-game/m04b/generate-reference.ts",
+        "gitBlob": "f4649d93071c9e38d1fce64fbe128eba44afd474",
+        "bytes": 11245,
+        "sha256": "1b3e9c52d355e799de60e3a3bebe5dc2b6d9c248b33ab93b18152c17e9333a1d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "qa/implementation/multi-game/m04b/reference-corpus.json",
+        "gitBlob": "18bf210b27c1912cfb83b819840f01ff0084be1f",
+        "bytes": 7501608,
+        "sha256": "7cd5ebea78f73837b9a5aa7c771e6f78acf9222155d78ff3ed2292673b7cc7dc",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/package.json",
+        "gitBlob": "3f52171d0c3fc3bee24394e7d0d981e8dd2c7012",
+        "bytes": 1206,
+        "sha256": "6acd2e5da1a0125c36de186358ddf5650a71ec14cf2eafb105ae4884d3cffe95",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/access/account-data.ts",
+        "gitBlob": "1a1658f009c94edf21e917edee850fc89c7a7e47",
+        "bytes": 7507,
+        "sha256": "d60e4bacd04c5c9239fbd1ec24340aeeab1133113553f8da86460543ab4e8421",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/access/contracts.ts",
+        "gitBlob": "35a05a2f053fc30564b14c5cf4680b80fd683ab9",
+        "bytes": 11232,
+        "sha256": "f0b6b463fc72558a10372cd8eadd976d8c41d98da4ab403feab9066927c05d79",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/access/family.ts",
+        "gitBlob": "fc974e668d00317f9a3f90c5890e77865a512d91",
+        "bytes": 14284,
+        "sha256": "e3efb7319c01bf688320f422bf1133353fc518ded086ab68edb87d57e0a3df14",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/billing/README.md",
+        "gitBlob": "672693fa3ba89c321789f8b3a9402062c4b52092",
+        "bytes": 8136,
+        "sha256": "b61380248512304491538435f945506387a019491006238aa6a3148123526dee",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/billing/database-test.ts",
+        "gitBlob": "d652aca7abe0ed6d2e5d706bc37dccdb92c2c874",
+        "bytes": 2258,
+        "sha256": "ea613b27d53123a43cb87ac87427906b24eec0c9fcdb433bc8fa520c15012ad5",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/billing/purchases.ts",
+        "gitBlob": "e9d10e2225f3ac5e77858d9664004a91506f294a",
+        "bytes": 9212,
+        "sha256": "076fc2bf9bae1ff9670f7ce102fcb2c4a561c5a98f5821263c1c79a447b34fd3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/billing/service.ts",
+        "gitBlob": "bc77370f6210d4156cabd75699bcd5d180905743",
+        "bytes": 5852,
+        "sha256": "dc27195ef8498aabaeb2f905e7a5a513f38a628364798d2dfc3ce51e7862db41",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/billing/store.ts",
+        "gitBlob": "18ae64de3cde5e1d8eadb667d9f966dc92255818",
+        "bytes": 2194,
+        "sha256": "fd6364faa271d51be072a2f2163296ddfe22d46907eea7cf6fd4c50ec8e21b07",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/billing/stripe.ts",
+        "gitBlob": "c2258be7de76e18b482764eea59358ac38d2d290",
+        "bytes": 12776,
+        "sha256": "93f94b8400cc3f825a134adf947547c640b911bfc4b1953adb6c170dd6495c66",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/coaching/cue-registry.ts",
+        "gitBlob": "f68603b99471f876218ac3751ef502334f66dab7",
+        "bytes": 2852,
+        "sha256": "dc0a5877c406d9acfbbffac5609e55cfd81d1d30bdc1561ac33e26af4c12235d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/coaching/project.ts",
+        "gitBlob": "fb0e86faae153cc205141d664e76c50ba8127a43",
+        "bytes": 3268,
+        "sha256": "ef9c2bbb60f96e1b28076c1d5e6f0d389973363d0638ec31c0c776e5b57f50c9",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/coaching/templates.ts",
+        "gitBlob": "2e02d9ad983419886217792b0232e4378da5f0a7",
+        "bytes": 2493,
+        "sha256": "7bf54d47e62612ebf60c7779125dc180af1d800ed3242811b8880ddf5af1c2f5",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/coaching/trial-pool.ts",
+        "gitBlob": "98eb0b18edacfe63349bff73ecd9c7a1a07841cd",
+        "bytes": 3778,
+        "sha256": "e349af29612b17251a14c5b4d99cd596ecbe7c232f4a85ed8fe231667b8f0a7f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/coaching/trial-worker.ts",
+        "gitBlob": "e6315aad177374d32595babd0da858cdd4ea72bb",
+        "bytes": 759,
+        "sha256": "223d4fe17deaa66f273b569c1006a01ac86eaebd7ccb46710eedd896d9836a57",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/coaching/trials.ts",
+        "gitBlob": "24cd529d84eb4296982cf4b881bc337e0eeb38ca",
+        "bytes": 3089,
+        "sha256": "6e9299120f20d7f80d9036221916366049fa7f3f10f869d2115f6060fee39b96",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/coaching/types.ts",
+        "gitBlob": "59c5713bd3a0f0e47f24ec5a101964bc29b6255a",
+        "bytes": 1921,
+        "sha256": "d80468eb4efd2d168978882784da9d738b25e4cf5b1dff50490ef73c0ce63b8f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/config.ts",
+        "gitBlob": "636ac97d08dc22d91d4fa00e71b424333ad31cfd",
+        "bytes": 3264,
+        "sha256": "e8b1706838331c7ffef217cc76e247cf402a21b444601900b073f3ca1475e066",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/dev-scenarios.ts",
+        "gitBlob": "0440b5464d452ae751f2b46cead98ba13d7e1f7e",
+        "bytes": 3184,
+        "sha256": "439d7eba3502fb600fe3a4df8890909cebd56ba8b6a2b8b1fba18a2ad9909b5d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/evidence/README.md",
+        "gitBlob": "f092d8a7bbf3e5457b8034f924d90f427cbc8f66",
+        "bytes": 2503,
+        "sha256": "e0001bedf6b7b8ec4ba9b212c7113a62c27e21ae8fcda210ae2924c3fb6a571f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/evidence/jev-interface.md",
+        "gitBlob": "1132689645d4e5b5e012b29ff6bab7f36b241e0f",
+        "bytes": 4795,
+        "sha256": "fbe85e57ac8fceed9898cbdb4e6bd89c5e4e1da44fca6b6378c6c8e7ca42e94f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/evidence/jev-smoke.json",
+        "gitBlob": "ad6ba724ac69178d52fb4a91a203bc17effa8482",
+        "bytes": 207,
+        "sha256": "1058bca9c1829d840424cdaef7b391cc680ac3c4efabb1f473933d80f5f8792d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/evidence/local-policy-smoke.json",
+        "gitBlob": "f448328aa619e941f8b574038b13389c927d8b31",
+        "bytes": 109718,
+        "sha256": "ed9d7b0f04fac6f6232c6b69457c547f4be9d27e3a1e75b7e7287c2f97e64163",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/contracts.ts",
+        "gitBlob": "d8c1cc604f865ba4e998525078a178219ccfd379",
+        "bytes": 8298,
+        "sha256": "18a27462d64aec02ac6a73f6a76b9c2e0e5fec485a995279f8ebd587aae3a59f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/deals.ts",
+        "gitBlob": "51a815e25c77668963db1d330b56ed9151a7ffa3",
+        "bytes": 2403,
+        "sha256": "6378b209750de89d49865060405fa93db9d9a19c2728790fd38967f7a0350135",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/index.ts",
+        "gitBlob": "6fbd8025c92ff63df31868f0817af6db7f13b1ba",
+        "bytes": 7520,
+        "sha256": "7abe1c6d6698be6bd2449e5057ec452161c22e24aac2b1db04013b9b76267ee4",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/inference.ts",
+        "gitBlob": "79a6e4470f68f5742d82c9266ac61593d8733152",
+        "bytes": 15114,
+        "sha256": "0446ac0bb7e80735ed4e56e56e3ad44d99663d15c254694d719e8068589c3b33",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/report.ts",
+        "gitBlob": "2dfc26419240e8f53dee5948a183cffffe1fbaf9",
+        "bytes": 48681,
+        "sha256": "643720480b43e2d844abba2b0f6e74ed19ec72f24264309fe2908b4d5496b138",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/rule.ts",
+        "gitBlob": "87a01433de51037c0d6c188eb7e5304f539d6f40",
+        "bytes": 10004,
+        "sha256": "b662675b255f6eff1bf4f8ae7e1860be9edf599b2c0ca7b388cc008c1d627575",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/runner.ts",
+        "gitBlob": "de8247c31a4807d7f09c89117a595ba2602b7be1",
+        "bytes": 19666,
+        "sha256": "69c6baa1640d23dcb0f54dd05e80b51a727109abf820a0c8b571df456d98176c",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/seeds.ts",
+        "gitBlob": "b479ac9ead486c7276db7b48efa18fbc66f413eb",
+        "bytes": 14003,
+        "sha256": "42d4f122b0f4add3e0f331404ce5bc30ab1ad8e1223db4ce538d2bcc4e741264",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/gate/worker.ts",
+        "gitBlob": "660371bbf453d3ed736dd2ba5b06639888b107b0",
+        "bytes": 14805,
+        "sha256": "adff724c382eaca6338e3571a0ddd672e7a206c1893467785631e5695fffbea7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/README.md",
+        "gitBlob": "af6520340c8d559c37f86d16e24a7498a66a0b2d",
+        "bytes": 9354,
+        "sha256": "14a5126ed3d85738662964f44b01db4248d536af53297fff0fbb373dd21ed4f4",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/fixtures.ts",
+        "gitBlob": "c61573c142f7173832ae38d3c44d93ee1e8b46d7",
+        "bytes": 16599,
+        "sha256": "e2f769e11ab29d4526334c2780757d8e1f19aa7bfdc72a23c3c646de74c56e50",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/payloads.ts",
+        "gitBlob": "80b3f92a2662d2e60df8ae939083972b02397750",
+        "bytes": 18149,
+        "sha256": "1a7cfa7254704cd40099c48b36e7c046135209c70d2de843b0bd12967b70645f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/report.ts",
+        "gitBlob": "f4e337a1e69d130abad4efc2130a22bca923adce",
+        "bytes": 10873,
+        "sha256": "a282da89bb4f90c7ae1d0c152b152d865d60ac8ec19d48c77d64d5e029e2b490",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/jev-offline/selectors.ts",
+        "gitBlob": "9836bd2e912f5b0f488e3f47249540c7081fa32b",
+        "bytes": 6409,
+        "sha256": "6f13c67a3620cf4a0cc8a6143284c1d94765c5a1f3a641816ca241ad5945fdf3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/jev-smoke-manifest.json",
+        "gitBlob": "611ed46fcca8dbcbeb09af5316fe929b276efc0e",
+        "bytes": 634,
+        "sha256": "60ae7b84c24b48583d181fa968ce7b2953c237ab4c6a62dbd77a933046685f2f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/jev-smoke.ts",
+        "gitBlob": "45fffe26ed3fac073368befa7eeb6a766c3f9be3",
+        "bytes": 9208,
+        "sha256": "53f4ca240d89a98eb179cda7391d07353e27be7f312498a6a1cb5b59e1e7e0f6",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/local-policy-manifest.json",
+        "gitBlob": "14610ad0872840653cc2120313feeef549c7e1f3",
+        "bytes": 1272,
+        "sha256": "16f2501baa711d8cbe7149c973fc17a6c699726dbe80cb420eb9b6bf2db68b3a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/local-policy.ts",
+        "gitBlob": "e6e795454296567c38793dd6b9927ba3c3508a29",
+        "bytes": 7139,
+        "sha256": "f4547f50b603b3934cb56c3357b321db6c8e24582ffd3777cb89ebbaf16b0310",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/partner-cases/cli.ts",
+        "gitBlob": "b555a1898c731282223c7e458eda17362c06bf8a",
+        "bytes": 663,
+        "sha256": "e60b35ab45c7593f3bd04bfc5529ba9953a6d37fd12a65a2fbb96da716c231b9",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/partner-cases/fixtures.ts",
+        "gitBlob": "cd1eb0fd2dde38f1cebb8fa8d542151ac89a438d",
+        "bytes": 4747,
+        "sha256": "506f2b6283e995b24d70693e3400fcfd2239467cbbe1a20cfffdd1e872af45fb",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/partner-cases/measurement.ts",
+        "gitBlob": "4390dc3964a9d74573e727b30423f4079529f064",
+        "bytes": 11536,
+        "sha256": "7b7e24278ee26df84d6e2b82668b023a0583cee6664650ad04f27a22b7d1dfe4",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/partner-jev.ts",
+        "gitBlob": "4fa708fd159204309e09ec06a6a79abd67ddfdd0",
+        "bytes": 13727,
+        "sha256": "7302a78cf7547645549415aadebd4fa14b39d53c0287581c1cf23f5058a95518",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/reasoning-matrix.ts",
+        "gitBlob": "f70e2b700342ea8d69e7dc334d94597e8c250379",
+        "bytes": 13836,
+        "sha256": "51bd77388e53df7b883b950fb18f41bf03e70061c8ecea5920f62ec334cf2db2",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/cli.ts",
+        "gitBlob": "ed21007d4b58d46b5ec9112ad128c10fd13923a4",
+        "bytes": 5114,
+        "sha256": "bcc759d1715e34514bb2ba916dc31cf9b94419cc80045455992395e0a79cc054",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/labels.ts",
+        "gitBlob": "1f3bf4c9035755cc7d509c548ac21b6b0c735ca6",
+        "bytes": 3366,
+        "sha256": "5c67e0be7e1d454e4f52f4cabce4825edf7d0740bd9d30c34058b000765698c0",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/pilot.ts",
+        "gitBlob": "fe7a10f6340bdddeb0c8bae5f5e6bb9e2bd12a03",
+        "bytes": 29509,
+        "sha256": "b5eedb71f4c304f401436c58c05debf52bcab2238938d730f90baa7279b86f23",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/report.ts",
+        "gitBlob": "3e344578c9215766578f4c61a6f163ae3b01067b",
+        "bytes": 6923,
+        "sha256": "1be6b8ec973efe5d2a900d161ef18747549f822bfba40b371c9aefea85d48e4e",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/spades-pack/review.ts",
+        "gitBlob": "f8510c81319826acd483ca51efaa22af455c99b8",
+        "bytes": 25484,
+        "sha256": "a218b20474f25178c4696a6480328bc408e202e182146be5d7a54113b07e777f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/evaluation/spades-reasoning.ts",
+        "gitBlob": "dfe3dffce747eb1e3e5b24fc4e47ae9aa3b40253",
+        "bytes": 20720,
+        "sha256": "a4c316c16108f70bc87dae495dde97f625086166aae94976971c1504d5a9a143",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game-deal.ts",
+        "gitBlob": "a75a43b88ea32226a4a17aefb6e3ec4f39656c51",
+        "bytes": 497,
+        "sha256": "f7536ea4ac64c7024ef83c27d40ce63ad24dbf6a12161b03444e8d0bd3be65a3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/cards.ts",
+        "gitBlob": "81612d87b18b8f88f842ca923e856ca6355374d2",
+        "bytes": 1169,
+        "sha256": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/compatibility.ts",
+        "gitBlob": "70d3aeba52f16ebe82462fc93bdce0e3be4dc761",
+        "bytes": 3202,
+        "sha256": "f197ae4a91d2d6847ffd160a145f600f58bf420b06f0b6817a416147a94fdd99",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/hearts/score.ts",
+        "gitBlob": "232cc6c16abe9fa33f5ab3cafbe4771d9cbf6fd1",
+        "bytes": 494,
+        "sha256": "afd66c4dcf5bad2cbbb96beca3238de1e536411610839ea3601531d69a3d6192",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/index.ts",
+        "gitBlob": "fe091822d3767d3ce1d0e786c9a466db4b04a41e",
+        "bytes": 324,
+        "sha256": "83bac53a27cdd2b27a4e65574bfd493b4bc6b88e927bd155f9d5e16433df52e7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/kernel/codec.ts",
+        "gitBlob": "e9c699047f1e406179b9e20b938e59293db23fca",
+        "bytes": 2952,
+        "sha256": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/kernel/competition.ts",
+        "gitBlob": "6ff360e7ca914339628d5c50a94c5ab129e328f6",
+        "bytes": 2165,
+        "sha256": "0ef3d125a820c937b0d312ca371e3f2ca779b4ae5a7c6f3eea2d8189438b8791",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/kernel/module.ts",
+        "gitBlob": "a1f33d52e8e93c8bc8c1a7c98ba72a3780f378cc",
+        "bytes": 4749,
+        "sha256": "a5d5c959dccdcaffc985987d26989f3adda15db348a877117776ca0ffceb5cbc",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/kernel/registry.ts",
+        "gitBlob": "22a871eb12d3dafec9e862f48549b599fff16673",
+        "bytes": 11562,
+        "sha256": "89cfcd4f26339b62c951c61e626ae4e66837f06ab6f1389bc21ea03d84eb69db",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/kernel/seats.ts",
+        "gitBlob": "56c8fc392daac5f7570b9d0458eb12a214e160e6",
+        "bytes": 2234,
+        "sha256": "8fc1c935c2fd9a3957b9d378ab463578218900aa35ed9e354b9e3ac891d4f362",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/kernel/session.ts",
+        "gitBlob": "455170e0fd917772e7a79207c5fb7807008aa4dc",
+        "bytes": 12394,
+        "sha256": "b80c1a6c64ce4869499235ec090c4f2ca0c68a3c3489892181d29cb0d3d2fff6",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/kernel/types.ts",
+        "gitBlob": "7c060b05e1b27469c3a4346fbac979d912dd4034",
+        "bytes": 132,
+        "sha256": "1a4be0a87ab0e8e27fb79f292a56d336c69c73df09f1cfac708ce786366d1966",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/legacy/observation.ts",
+        "gitBlob": "f0f18f6b2efbc45adb18157a64ca632145da8e14",
+        "bytes": 11223,
+        "sha256": "2378edfb7c09a0b413b54db440a294427f072bf43875395bd71ee7514362c987",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/legacy/reader.ts",
+        "gitBlob": "d4486da2cee5cca639fea6e21dc2b26d436f7368",
+        "bytes": 7163,
+        "sha256": "7eb002bde46e840ff9f3b960049ca5821a36a9d98191d2c8337338a728ad5800",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/legacy/rules.ts",
+        "gitBlob": "4bad5ebb62b8bc9d3d5708edd2b044a0a2d53454",
+        "bytes": 2353,
+        "sha256": "ca1eb881dc9d1f094d88f450cbeae4035e1d813cb0b3d92dc9b11e43d6982f58",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/legacy/types.ts",
+        "gitBlob": "d5abcf00130b89b837f33b2bb3cf183614525670",
+        "bytes": 2707,
+        "sha256": "4e4a1c991cffb43f97d8cde2a366097fcf0417cbe7467aab603bf324c65b19a8",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/legacy/v1.ts",
+        "gitBlob": "209d650f945e83c67fcfc500ff72f1ce81e6f9b7",
+        "bytes": 9615,
+        "sha256": "0139636c9a176706f30ce8340c4d0c8d47d4e66efc4bf2ad89c4ffe9763b347b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/replay.ts",
+        "gitBlob": "215e6ecffa684ea5da51cea5121cc19f81d7515c",
+        "bytes": 1181,
+        "sha256": "e4c0034d36b2be03a52cf694abff0761fc01572f51552e288515bc24ee6db80a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/rules.ts",
+        "gitBlob": "b1e49bdad51159734d6b5f88011cc9eca9062728",
+        "bytes": 1057,
+        "sha256": "6e5042531cacb80cf3ff11d2dab89cb0ea75a391576360c70d2a2b2dce2b7047",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/game/spades/score.ts",
+        "gitBlob": "24641261d25d534f54c6edcae34dde1fc0c88e58",
+        "bytes": 1086,
+        "sha256": "9e2a97cf28d1c99750315c28a6955790ff3470d6c051e975f16d6a1095d279dd",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/coaching/cues-legacy.ts",
+        "gitBlob": "2a44dd93ae006912468c4e2bb02d05762b5b1e75",
+        "bytes": 2612,
+        "sha256": "17bae315afdce429e09025769e53e044b32c975e60c6b6fffa4f1c9f7bbba07d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/codec.ts",
+        "gitBlob": "8000ac4e0aa69fd6b8c16010f86fdd34ca3161f6",
+        "bytes": 14853,
+        "sha256": "7df116e83e47c0f90d73aaf2b8cba442391fd13ec9c104cac5512aa6d0a81428",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/compatibility.ts",
+        "gitBlob": "97560dcb0e4487d38725ea52ce4d95ea08daad94",
+        "bytes": 5814,
+        "sha256": "9c4ee02f3ee3b02bdba30898cf4966056a5effc031107296b7eadf1e05fe95bb",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/engine.ts",
+        "gitBlob": "9567fa148048445c66aa12fef4d8d1c748632920",
+        "bytes": 9660,
+        "sha256": "1a293d24e35e7e1199e7f685f33453489aad7d6e3ec5873a7d1ff4702a8eae17",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/module.ts",
+        "gitBlob": "93a4386af3f0fdef05e2e2917daace88d5106e92",
+        "bytes": 11973,
+        "sha256": "b69ab450e50b57f18c0a59b9268521deecdf9c4de4cdf3664348804358f5591a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/observation.ts",
+        "gitBlob": "619d3c99c45f44abe43003a6005d8ccc9c778f3f",
+        "bytes": 11102,
+        "sha256": "83f527bfb345e1b529d35e15e06768c8ed1459d8100729ace4d5f599303c5254",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/plan/kernel.ts",
+        "gitBlob": "5998096cf5aaa75b18862bf8495734f5df2d097d",
+        "bytes": 13134,
+        "sha256": "87daf62cbfe828997e75bb671a9b2965842124bb866cb07537a623021d66defc",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/plan/model.ts",
+        "gitBlob": "c2584a15ba80213e128a49e3474a7d00dd123531",
+        "bytes": 6163,
+        "sha256": "492c8e10f9d55ad743788436f385ff9929f4dfc4a5fb80c4454ee94b42ed61d3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/plan/pack.ts",
+        "gitBlob": "db467f0746d484ba844e48fd1b08a485208b4db3",
+        "bytes": 8022,
+        "sha256": "cdabcb038cac4156528ceb833a1ff7eac443e9aa646ffff334d0760a8930c600",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/plan/planner.ts",
+        "gitBlob": "67f79ad4904f50534a83e82f83c5988033509fc6",
+        "bytes": 10297,
+        "sha256": "33eb46af8a1b26d97c0b70b53498fd219fc123d91bfc86a2e689c4c85f397491",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/plan/policy.ts",
+        "gitBlob": "23c873dc51aa98f5375f355c2ca7e425aa48808e",
+        "bytes": 8216,
+        "sha256": "8be7b1c427e41be5b21c099bd9be7ac36a7e346ebac02da156fe348aa049c2ed",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/plan/profiles.ts",
+        "gitBlob": "8ee08fc63ef53fd34cbecde7d11b8ffa50799952",
+        "bytes": 10422,
+        "sha256": "bebc3d9d431aaded1a2b9a925c66fb8e679c84fcd266e4c0a977e5c39406361f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/plan/stance.ts",
+        "gitBlob": "68cb82a05c26b70d73104b544c4a36a3ebb9a727",
+        "bytes": 4414,
+        "sha256": "519ae3745217b3b611ce57ea369bca77113645f45f5533bf580fe81e3d8c27e9",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/projection.ts",
+        "gitBlob": "b51a3f1a2ee8a0dd869112141ca976407cb55130",
+        "bytes": 1130,
+        "sha256": "dda46e939d2103df200c75077dc6e18f8e60edf565fa5622fe05d8567fcec36e",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/reasoning/manifest.ts",
+        "gitBlob": "cc798511b3deae14ee54ed5796eaf002626d49f6",
+        "bytes": 1936,
+        "sha256": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/schema.json",
+        "gitBlob": "e907f3e5c0888a1587da4ae7c21c0697a05023c1",
+        "bytes": 10906,
+        "sha256": "fa57d6b5c0d4b2283eef134f3fb06e8a3e413bbb2269986fc054d1633802f19a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/hearts/state.ts",
+        "gitBlob": "a8d1ae5144015b92bdb4c7d63fac8c45e76b97ef",
+        "bytes": 1982,
+        "sha256": "e708b372bcaa28bc80d57ceba4a0fc1d5e726e98791382cedeed96fdb87e0b22",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/registrations.ts",
+        "gitBlob": "7e4fe40f35d8021bca7ae97c298833279b06ccc6",
+        "bytes": 1537,
+        "sha256": "67ccde3caecf04a0b6c07ddf26ff25f94384593f39c93654517c630c3f6ab7aa",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/cases/cues.ts",
+        "gitBlob": "5c6e01b4889a8b8903badbf7f18b6f35a8bbba31",
+        "bytes": 4599,
+        "sha256": "7f604aa63fe8592b903bdef043b131bcfe4affb10f49f809838cc9684c61368e",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/cases/profile.ts",
+        "gitBlob": "267991311c148b55a12d420367610574875dc257",
+        "bytes": 6426,
+        "sha256": "50a3372243120d0251ac2b12b06565ca7dee8b29f3b740ae4e13e1901f23f894",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/cases/proofs.ts",
+        "gitBlob": "0e7e244871a01d0382735bd925a3dd96d6c6ce11",
+        "bytes": 4653,
+        "sha256": "e5a3906f8cff62a4f5a10308bf665299a0d15ddfadfc950b64f9b31e4a03e90b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/coaching/cues-legacy.ts",
+        "gitBlob": "47d32fe9261556468370ef47f74339da3264f4a8",
+        "bytes": 8067,
+        "sha256": "83b92cab4a00d6f1d0193455f98bce05b48c11e3869d1b79aed0a0e5cf59de8b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/coaching/cues-v2.ts",
+        "gitBlob": "1c4ac61912c3bd4e9f437991edc7278ef1655054",
+        "bytes": 48224,
+        "sha256": "eb299757640fd08c0b128d12654e671b9a4814f1f3897dcb59a44e856a601ba6",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/coaching/legacy-golden.json",
+        "gitBlob": "ef7ee8e4d5c9fdd29fe98184cff124fcabcf6e91",
+        "bytes": 153695,
+        "sha256": "052f5422bb4ab4ebe5aaa6f4ec3e025bf7ed8912880d1dfbae76abdddd018cb3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/coaching/legacy-golden.ts",
+        "gitBlob": "0f074e99c2b2f4fe755a24592c4c41ce843398a3",
+        "bytes": 5703,
+        "sha256": "8e59b109b6d1a2b03a288bfede09f047bb3b3be9a91e837485f7ef3e941eb529",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/compatibility.ts",
+        "gitBlob": "137d515f398a09f33961e47988253c148d4cfc98",
+        "bytes": 5236,
+        "sha256": "c176d5d879541f0c1403f3555d96be10e922d5b9ed2a3f186015c4eeaf4001df",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/engine.ts",
+        "gitBlob": "3216e7005ca996df16425f6d578cd3327eda1b6a",
+        "bytes": 7351,
+        "sha256": "d20ef7ff61f739004f531eb6bac41cbd935103927309d8bb8e6569ed4055b6ee",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/adapter.ts",
+        "gitBlob": "b6be3f7aa00b8593c89ddacbcc55b35cee5f8361",
+        "bytes": 12353,
+        "sha256": "6cdc683727ffd640f2e2f0cd30839d0c1a90ddd908b538027a43ae8555acd565",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/check.ts",
+        "gitBlob": "ab34fab9a21eed501a2931e4ac7855b8f08087fc",
+        "bytes": 30311,
+        "sha256": "8bfba0b026a3891a8994ee97854a7e724f75909308b875dbb4909aefedd872bf",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/legacy.ts",
+        "gitBlob": "e07027ec9340b04ce35483adb2a5249ec87be96a",
+        "bytes": 7093,
+        "sha256": "249dc3352408f869c222b3275cf06c5939802b8977d5eb9dd85b2274640dfd51",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/observed.ts",
+        "gitBlob": "35fc55e7025870282324548afe047d9dc45254a4",
+        "bytes": 4422,
+        "sha256": "e8af13b46dbb1152af1212204191a2ee31dc7956e1efc53a239349ff16e344f6",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/partner-resource.ts",
+        "gitBlob": "3fc7ce0edf07827d12715364690e29fddf7421bf",
+        "bytes": 3784,
+        "sha256": "917f2c2df22303bad76f85d41c1eca3d6d7d3f1c3af9a252af4911ce44f5eccd",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/rules.ts",
+        "gitBlob": "3e5259319de3f8ad2e85e47d699600fa1c66c47f",
+        "bytes": 9148,
+        "sha256": "570ce211914ca01e31a9afcb9df98f13c22fd14dd18e3240d02d397b406050bd",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/claims/worlds.ts",
+        "gitBlob": "2979cbddf0fc8cc097143b3e63abce7c071e8b99",
+        "bytes": 11603,
+        "sha256": "33213bc48c6896b41349a5a75f9b6f3aee67540b6f80f661b432d37acc2a80b0",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/metrics.ts",
+        "gitBlob": "76f964399202f110749d58baf90bba71c4ddea05",
+        "bytes": 9107,
+        "sha256": "3bb35c37574f10c91350ed7b1040b29f6447f70c361ef10e8d8d00f9f0149d2b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/placements.ts",
+        "gitBlob": "9475cf41f2cafa80b2a23bda805d52179ba95dac",
+        "bytes": 4612,
+        "sha256": "4a290b34ecf23b8ce3ed48b752c3e386996decb1c1d4300e3fd6098dc2c1837a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/shadow.ts",
+        "gitBlob": "4813c5064586e6c3cc25e233cae9a2c2f7a526d1",
+        "bytes": 8915,
+        "sha256": "0c999b102cd72af2107a1adb453ee34093aa6ea80fdb65af4b59e94283165413",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/evaluation/styles.ts",
+        "gitBlob": "21fc5444431f9730a8b916c5585744783cc33afe",
+        "bytes": 14365,
+        "sha256": "13b00cb88e130b6038ac58ce32603466266dc8a0bce68cd9a555373c152c8ed5",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/module.ts",
+        "gitBlob": "17fb9de953b7c73b59079d5d8a5a4ffdd99fa8dd",
+        "bytes": 15113,
+        "sha256": "8c8f7864ea007f9367689df288818ac4fc66e4dec44adde38d8b101d9d9180bd",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/observation.ts",
+        "gitBlob": "65a5ee857d0b9beb13fb87de57e745820e30a6d8",
+        "bytes": 7655,
+        "sha256": "680888b061a4e0b0ec1eed2ec97ec65d891a62b7295ef4472622c68e247bd574",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/partner-resource/cues.ts",
+        "gitBlob": "1ba94be6ce1d35bd8b53ccdb625a346ca5e04d86",
+        "bytes": 3011,
+        "sha256": "2a008518a6497bad6743d0a40069c7493e99f58a6d0569aab9f0b5e51fe26254",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/partner-resource/profile.ts",
+        "gitBlob": "d0e14e90214fe4032c16399ec641fae019102c17",
+        "bytes": 7197,
+        "sha256": "ce407088c1c080868c6a767eaa7ffb4be3ba9a69527e0617043eadda8ec17a86",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/partner-resource/proofs.ts",
+        "gitBlob": "bbcbba675dd2d4b8d4637779610ecdc6c2245c7d",
+        "bytes": 4510,
+        "sha256": "c8da5a309aacb99f52cca84a0e0f47516458c06871fb5d8405940a3a7362e311",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/plan/claims.ts",
+        "gitBlob": "35a0cd5481b91c5210d6a99e2fd9c0e799c27339",
+        "bytes": 25792,
+        "sha256": "6d882ddc8ffd79d979bba402b24365a218059b833969ee22799112b1a70ebaf3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/plan/pack.ts",
+        "gitBlob": "199e288d6e883943b0803afdb13cf98bc7e19295",
+        "bytes": 7719,
+        "sha256": "989387dcfff14db1cd31a260b89495e2c44b67b872858c39276b16e18e5feecc",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/plan/planner.ts",
+        "gitBlob": "902c4c19f4cbb14dfe1ec1303381b1fe563780b9",
+        "bytes": 13393,
+        "sha256": "e9faccace64e7d6ab473da913a1880ef7a08a86ca62d9d8d3b82b2a7fef5f8e2",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/plan/profiles.ts",
+        "gitBlob": "2c3e81e9bf6a725fb6606a0cbdd1f3af025dc49b",
+        "bytes": 11896,
+        "sha256": "6fd6d636e22b49526d58e7de9c0ed0d9ea2b56e51df8818818b0fd09d764a786",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/plan/stance.ts",
+        "gitBlob": "7b1c66acf343a6e2a8fc53e058e57a910f8d393c",
+        "bytes": 4408,
+        "sha256": "28187b50c19a453d89faecd454f19fe9c1d05671ebfa96c3c1e3b95c39dfb2fa",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/playout/kernel.ts",
+        "gitBlob": "e856145dfc58af0dd2cbea17f6566a77b7ae3acf",
+        "bytes": 11511,
+        "sha256": "3560d67affc712537028ad20c162d42ce9f382ca8e57ec9daede042a57a7323a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/playout/model.ts",
+        "gitBlob": "f785ad3f294bd650bce0ddfe7c3b7600b32439c9",
+        "bytes": 14900,
+        "sha256": "40452cb6d3e6090ea2b529dfdcd7dc163c27da6d8f25cba9b7746fe43b9ef215",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/playout/policy.ts",
+        "gitBlob": "2ca65efa214bdcbcae621c01b835bc72da7cb656",
+        "bytes": 8019,
+        "sha256": "2bc631790dcf4813fe754f76b390d47a3c66ead4144a7e3b8c85a452ee071cf6",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/bidding.ts",
+        "gitBlob": "7fe078b7cb7123f1250f056853fbaf9c368ce0a6",
+        "bytes": 5444,
+        "sha256": "d3088d7f675c20f34258a503b4ece5eea4c00d4eae3b25985be6340412ebcdfb",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/casebook.ts",
+        "gitBlob": "e3f539c83e013232f39713ad4ed062c5f979bf52",
+        "bytes": 24906,
+        "sha256": "f16bfc61cf10a0c557536892514941bff0e39a2c9a6c41e72fcc60857e13c8ef",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/catalog.ts",
+        "gitBlob": "15882562ebfaf354ff30cffcdb237d353a3d1b2a",
+        "bytes": 5939,
+        "sha256": "037aabd016ea80909587c400e2ef88095c5696028b6530ec080afe9458cb6427",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/continuations.ts",
+        "gitBlob": "d5bc0b7eaeffd1f49e21b6d571d73c7c7fcfefee",
+        "bytes": 4645,
+        "sha256": "59f1a2d709a543de23366b92e9c21b1d4a69e8c186c191b46782b784b243cd29",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/entries.ts",
+        "gitBlob": "fd38ba5622dc95bd256465edbe3acef7f7b5dfe6",
+        "bytes": 1975,
+        "sha256": "f7c9585a587036fae0f0cd4ff25cb336a2202ccca6ac25a8d68cb4523f47d054",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/golden.ts",
+        "gitBlob": "82a3252acf4c91d8c189bfe6f4d49ed4d89430e1",
+        "bytes": 4506,
+        "sha256": "a1603263dea6d9b1ab773c32ecfc210a1e1576cb7ae8725d7385b45a6b2b780d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/local-baseline-1.0.0.golden.json",
+        "gitBlob": "89af73ab858657816d5bd1d735268f9c4231a5e7",
+        "bytes": 11299,
+        "sha256": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/bidding.ts",
+        "gitBlob": "7c770009303681fda3160d75ad036f8c3261de43",
+        "bytes": 5453,
+        "sha256": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/catalog.ts",
+        "gitBlob": "908fe480e45a3d71bcc49a5afb0aa2ba24383de5",
+        "bytes": 5945,
+        "sha256": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/entries.ts",
+        "gitBlob": "3e8e002c0dcd1a2778a306210f65835e74b5f4b7",
+        "bytes": 2005,
+        "sha256": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/golden.json",
+        "gitBlob": "4db366b8f2bc3918b1dab8aea87a2125f39dbc47",
+        "bytes": 11299,
+        "sha256": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/index.ts",
+        "gitBlob": "3cadebe70a2a2e99cbb4ca5d28c444e5a73dc12d",
+        "bytes": 1001,
+        "sha256": "487cceb779f2d7ed30a87e5f0f281634cb3064ed9d36c4abbb26f7f572eb82da",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/knowledge.ts",
+        "gitBlob": "656e25ec5ed8c80e5b52e0e5f9fb510550a9107b",
+        "bytes": 7655,
+        "sha256": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/manifest.json",
+        "gitBlob": "aeac3d31f3802c176d4adf834d037a6ac5d80087",
+        "bytes": 3199,
+        "sha256": "d860fe20c969b41daccc6fae04f76f17d156a5002d8cae39ab02075ebb77ee9f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/nil.ts",
+        "gitBlob": "ff8895d3c160682c6c3162aec89400906a4d718e",
+        "bytes": 1172,
+        "sha256": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/policy.ts",
+        "gitBlob": "0b43d189982473f1522959b67b36fbad2287ffe5",
+        "bytes": 26079,
+        "sha256": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/retained-bidder.ts",
+        "gitBlob": "7a14f72c92712f8c4cecc91fc4781657b5022723",
+        "bytes": 4183,
+        "sha256": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/signals.ts",
+        "gitBlob": "52aea24d37e8f1b3f32a77078a7d0a5e4be97425",
+        "bytes": 2058,
+        "sha256": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/knowledge.ts",
+        "gitBlob": "5d5f6c2b4fabfd52a663be4a0ad3f4c60e4d964b",
+        "bytes": 7625,
+        "sha256": "b81c6883769db1b9a77be78ffc5e4400315a3ee024fa600f6fcb3c30acbd1c5d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/manifest.ts",
+        "gitBlob": "8328c02cea6fce030ba9e9c131fce74eb94d6bbf",
+        "bytes": 450,
+        "sha256": "60ac4f3ada3752b9d7cf6902ace80a9a3d1b6a8afcc32cbcdcaab7d3d300de3d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/nil.ts",
+        "gitBlob": "b2aeadb0866ef7d42a5837f655ee833ae2d85515",
+        "bytes": 1154,
+        "sha256": "4401dc6b12e0c191bb6f0f960e41d0337f76ae70b70b8bc21272b4dc9b550018",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/objectives.ts",
+        "gitBlob": "e35f00e3ae12752afbf2e0841a3ba25fb5c1cfd3",
+        "bytes": 4679,
+        "sha256": "b4b7105d41ada31406248b106b80e17032de4bb2f668ed0fed962388370f2f02",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/policy.ts",
+        "gitBlob": "169391a66a9af6d556102dbf64f0dcf57cbb5d8e",
+        "bytes": 26049,
+        "sha256": "a359f215a8ee0fe58829f94434c3e0d7e9de67b7bb95942b623427a4d5755b7d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/reasoning/signals.ts",
+        "gitBlob": "73adcdc45d6e31ee2545df0d18cd2df8aa21db31",
+        "bytes": 2040,
+        "sha256": "8e8fa86fe6d0e71d80a373ce4d454349172b1514cd58a423a9a264675c490941",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/rules.ts",
+        "gitBlob": "e5930c7628006a58bce1f16bdaa89f2c4b25f779",
+        "bytes": 2154,
+        "sha256": "53c1cd5e54d35f0cce9661dd79ea2dd8b5586fb48e80bbe87571c4c5a7708449",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/schema.json",
+        "gitBlob": "6a89e90cb15ddc569511f419e795d306f5e15495",
+        "bytes": 7201,
+        "sha256": "61a9494aa976cded9ae41394ddd1df0e97717afa6e63a2486ff3ec1f83449011",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/games/spades/state.ts",
+        "gitBlob": "22b71c4be0faf75195fe8981ebb804fe175ec07b",
+        "bytes": 11564,
+        "sha256": "1db115603937d22fd0adade8d9b9f7a9d33dbb13c1e285501f19d4d1cabdbe48",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/http/app.ts",
+        "gitBlob": "2cbf3805e0c5db00374df1f4e1a606b90db6e0f6",
+        "bytes": 14198,
+        "sha256": "4368e66c20405e1ad3cff8fa96b54bff8ad2307e89cff57068a1e406794857f6",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/http/errors.ts",
+        "gitBlob": "c55692870da631887de2b3c10199f1ea0512511e",
+        "bytes": 417,
+        "sha256": "f7d0fa1fdc52395ed4234589915ec2ced34b1207a1a4718fe0217381d66003a3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/http/game-service.ts",
+        "gitBlob": "23f2b4625e130e470db4b191d2d16e9ce8d942e9",
+        "bytes": 46043,
+        "sha256": "92f8d430022f5f37185051328de2130a1b789d723f9149fd1c30fd37313020fa",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/http/trial-service.ts",
+        "gitBlob": "2c6d52012643dc9bf18f20de5df1150aa99fe7bc",
+        "bytes": 10467,
+        "sha256": "7211838ef9928861efd94460b330af5646b65a3e2a661843640d814114fd35c5",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/http/views.ts",
+        "gitBlob": "044ba4e01d7c087a8f7891c721d2af9ab8038d1f",
+        "bytes": 4575,
+        "sha256": "33f367ed95c17cb58adb7f2316035e2a4e39cecc5e3adb322e4715f786eb54ee",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/index.ts",
+        "gitBlob": "7ac51721bfac7903ecb11e1e4adf5c22d7c2d8e3",
+        "bytes": 808,
+        "sha256": "942080c1464af47faed70fec53c945eef58341898069eac8280818cbeb00ad78",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/observations/index.ts",
+        "gitBlob": "5e3fc5385df06338519e66727e04cedb66e7fcea",
+        "bytes": 777,
+        "sha256": "af35bf39336ac06a683ecc69463dcd993acbe8829cc7f9ae71d6e5dbbae28394",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/observations/types.ts",
+        "gitBlob": "b86141ad13ece73668143aa0cf4279c2ef153b55",
+        "bytes": 1042,
+        "sha256": "0a073cec3252ccb80d71f8059e46ca7af97e274039f6b88cbd997a5a11de8975",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/providers/openrouter.ts",
+        "gitBlob": "b1d74d424ff7f0a5ce78b7900b4a162553ce2ebc",
+        "bytes": 16921,
+        "sha256": "d0c3fa34f3e99a780b443f7789f982d17ae804d06ca77d5be72edddf909f852b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/providers/secrets.ts",
+        "gitBlob": "b113597a186fcb8f687ba30461ee7c232306d13a",
+        "bytes": 1426,
+        "sha256": "ef22bd0b055af4b48e700e3cac6fe5b3d05ee4e8f303e1f09c2cc83673c914e0",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/database.ts",
+        "gitBlob": "ebee6b2e038331312fbcd6729f4c6b5124117dc3",
+        "bytes": 682,
+        "sha256": "08e4af4d9e52ccff515b062e2c807095fce3acd9f8281d85824de2c3f66002ca",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/game-document-codec.ts",
+        "gitBlob": "0b5ef696f1fb9597939889320eebd62b1aa1b670",
+        "bytes": 5596,
+        "sha256": "4f0e61e9830679a8957d6d04e21bb660dbfb9d9bd659655c2548876026d1de08",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/game-document.ts",
+        "gitBlob": "f6d809a75a76edab51b840a1a89642141efcbf32",
+        "bytes": 376,
+        "sha256": "d2ce12d9d1a7629e607bb82404bff18e8552437fedd79e58d61eb6e5be08dc04",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrate.ts",
+        "gitBlob": "ca8c1e4f1da00016fb6f886339c37f4457938c6a",
+        "bytes": 337,
+        "sha256": "08dcff514485969a746169537259e1c4e55203f52e1e636d7d95ba36f06036af",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations.ts",
+        "gitBlob": "0f787be013d00b742a35a921cd6d1cb4216f3ad5",
+        "bytes": 1269,
+        "sha256": "e4363ac79a06cf9b095fcd19be8cf0c3d9517749e715b248234eb685f902a895",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations/001-local-platform.sql",
+        "gitBlob": "19a7f18efcb50f002ea4d3c5101f848c0d87f3be",
+        "bytes": 2290,
+        "sha256": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations/002-billing-family.sql",
+        "gitBlob": "16b85e1382961c4bc48c3833a491f1c13b9552f3",
+        "bytes": 3639,
+        "sha256": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations/003-account-data.sql",
+        "gitBlob": "9aa7bf8395024e4c40bcf0991407994a6e6c4e83",
+        "bytes": 383,
+        "sha256": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations/004-analysis-jobs.sql",
+        "gitBlob": "07fa22f821c87e4adf51b73e4413ccb46a737bcb",
+        "bytes": 600,
+        "sha256": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations/005-analysis-attempt-fence.sql",
+        "gitBlob": "42f68d429301a7975bde8909e76d9cc63a86e5f4",
+        "bytes": 79,
+        "sha256": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations/006-preparation-attempts.sql",
+        "gitBlob": "30a9f341e040503e148491d0bf4c06c0da1956d6",
+        "bytes": 749,
+        "sha256": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/migrations/007-versioned-platform-records.sql",
+        "gitBlob": "f2b2efaf3072235921a284c155a60aea008551c3",
+        "bytes": 9064,
+        "sha256": "cae296b33b5c8b09169e7636b6116d6a60fd72ac9cd78661b4900b3b2873208a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/repository.ts",
+        "gitBlob": "d91eafe726c136009dc45a935c1bb0f39e60666d",
+        "bytes": 5407,
+        "sha256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/state-validation.ts",
+        "gitBlob": "c6ac7264db560396bd821aadc5744eef09dea65b",
+        "bytes": 1250,
+        "sha256": "4fffd293a392aeb121e9f3c4c40b5d80fad8c77e29d0867ed7b72e979599c441",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/records/types.ts",
+        "gitBlob": "7e336e987287ffa6db8a949a84886daa85f2a438",
+        "bytes": 3358,
+        "sha256": "da56a6812248b808bee5938de983b3b310a436bdc6a12c7af1459d74849463e7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/baseline.ts",
+        "gitBlob": "0a93caa0bbb153c175e57eca08e50a8372d33a0f",
+        "bytes": 4135,
+        "sha256": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/facts.ts",
+        "gitBlob": "d00b135dae38ac2805b697ccceae18135c372a0a",
+        "bytes": 145,
+        "sha256": "91df66ea59713ca96b541122f3607d2ee9edf0ae9111436bed2db2f649888af1",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/index.ts",
+        "gitBlob": "55e49d6afd37467727706a14fa7732befad46b0d",
+        "bytes": 1494,
+        "sha256": "7b0db3d2ae0597d4e672d85eceb56a97ba15015b761959b22b4bf319d692f0a1",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/plan/contract.ts",
+        "gitBlob": "c84053aa136a7ac5972c9b90455659d5e5037ffb",
+        "bytes": 11045,
+        "sha256": "bce8d766d981eed2b1c77f367b1c86e93a40fa8fbfe34e925d9533ae323bc355",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/plan/evaluate.ts",
+        "gitBlob": "c22bc0c3451e8bcb755e5428ed3936c56c783a8c",
+        "bytes": 6005,
+        "sha256": "967da678727ce322000db15d718290b5002556464753a073131d12216e371f28",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/plan/random.ts",
+        "gitBlob": "dbed8cf48769209f5a3661c3684a716a920c7cb0",
+        "bytes": 2678,
+        "sha256": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/plan/types.ts",
+        "gitBlob": "3356e49a8ad3806977b3e7ddc72032062fe6d405",
+        "bytes": 5612,
+        "sha256": "a899542eef67aa98aaf8379e87320b00eda3e407187dc2f7eefbda96e845fdf7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/registry.ts",
+        "gitBlob": "6ceee19b7eabaf8e8e10f067b843d12e8bf676b9",
+        "bytes": 3098,
+        "sha256": "8a60dec8ebc60a67ac1d3b008e82eee13e1dbb2abd101122c892c808f5d62607",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/sampler.ts",
+        "gitBlob": "f21b6b4650a98526a4b04e8309a84d9b354334cc",
+        "bytes": 19533,
+        "sha256": "2f4ef123c0a9c0328e44d55e1e49e9b4720273de051ba9768ea6696f6b3f30ad",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/spades.ts",
+        "gitBlob": "9a841454363ef0f3ddcb52bfb156ba62045b8d08",
+        "bytes": 145,
+        "sha256": "fc7dd4b74fea705398193b04be3ddb4d4ad6075e5063eb486d88d7a9148ac5f4",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/strategy/types.ts",
+        "gitBlob": "5086eab6aaa7971d4c0519244b6978b077a7539e",
+        "bytes": 5783,
+        "sha256": "a39cd57abe3252780370e8aabc7f2b7bd3959b15d76f5e22aa5634c58644fa0c",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/access-review.test.ts",
+        "gitBlob": "8c82e8bf4018921722556394be94067ec05dd8c6",
+        "bytes": 14420,
+        "sha256": "4a03d18a67a247fb20a6a2af6d2118a1bc85ecf14477dcba6b42c90566e0fd15",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/account-data.test.ts",
+        "gitBlob": "2d79ee1d8435789543c1784e45398617771b792f",
+        "bytes": 5381,
+        "sha256": "4d27438ce87445446cb5a36dad8b9f6f129f95311ce8862fe00e0c4d6b4ab6f0",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/analysis-outside-transaction.test.ts",
+        "gitBlob": "549c181b7b68b42f7ac4afb1af8ee6b55f3686b9",
+        "bytes": 6032,
+        "sha256": "c2690eb72ace519f754ec1f5031e03be50ebbb6377a392d2fda27be1b35d0d68",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/billing-stripe-management.test.ts",
+        "gitBlob": "ca8e31b7a36a57a5f73d5b58448414eed0d27b7d",
+        "bytes": 6388,
+        "sha256": "724f8d14726e775cb6c704c63d5fcfbcc3332bcbf8f7be977106526345e209ad",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/billing.test.ts",
+        "gitBlob": "75c3cf8b7cae880f5d2b27d1f56621cc1f2827ec",
+        "bytes": 8480,
+        "sha256": "76738ca7566b313372a72b58af91554b75bd93daf9f0c8124720ffc75c069dd6",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/coach-legacy-parity.test.ts",
+        "gitBlob": "95d9b1c4d8648e7922f1321f4f1905abdbcbd3e9",
+        "bytes": 5063,
+        "sha256": "389d044a6b85e02f1f066ea8038e7798964cccfc12ba1188b02eba7b5b74ea2c",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/coaching-analysis.test.ts",
+        "gitBlob": "ad07947898e6c2d259e23e3e3366a22afab38fe3",
+        "bytes": 5111,
+        "sha256": "3ac9b1887d28f89a58fd56c68c6da2415208d81b1eeb906da2be979ec82fc15b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/config.test.ts",
+        "gitBlob": "d9746350d4251a4b1f3573525f5c66eca6949cb1",
+        "bytes": 1880,
+        "sha256": "ea746bb19aa60d041a4ffc54a039704f7543bfd4a4acf7c728543eab32cf4eb3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/contracts.test.ts",
+        "gitBlob": "5f33c26b6924e65045e22193055c041dfcdcbe24",
+        "bytes": 7468,
+        "sha256": "eb7e1a3994d432691ce83d4068c95baab9ef9ce36c499b3f371cc30755efb13a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/dev-scenarios-integration.test.ts",
+        "gitBlob": "bdbd929e59a94fafae690f87eaeb0c269369e691",
+        "bytes": 14018,
+        "sha256": "fe010b6da46a1a6dbb43360ee9af1d2764c7b18aa487964cfb5bd750c9e4f9c3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/dev-scenarios.test.ts",
+        "gitBlob": "e4ebd911e5e2afa21f943c581c982a2f42bf21cd",
+        "bytes": 4360,
+        "sha256": "01ecc341f341cff16674f61590b75b6fa6c660c3c5ccde9bb9291d59e6d8b739",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/facts-history.test.ts",
+        "gitBlob": "fe351a7659b16876db222d6c337b2b9c53f340fa",
+        "bytes": 2018,
+        "sha256": "c08e8009c7685fb2b083a9626eb79fbecfa23141ca535cd9ffeffe2e60e68b4b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/family.test.ts",
+        "gitBlob": "354eddd39d7cd6d072ee67835404425a0cb1ae37",
+        "bytes": 6437,
+        "sha256": "bdeb57493efd42497c81723f6243092779417c906dd17fec50edc6b5701dfd7f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/fixtures/legacy-module-document.json",
+        "gitBlob": "1a0e8899d23bddce24180a1d579dc4cec6caf630",
+        "bytes": 166718,
+        "sha256": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/fixtures/spades-observed-sources.json",
+        "gitBlob": "f6705a95a0a1f7b028be2108b32c59147fd9f45c",
+        "bytes": 8848,
+        "sha256": "8120e57357fbffc74b5ffb1a745320ff12f9873892a2e9f6c9c3ddbf1cd430e8",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/frozen-baseline.test.ts",
+        "gitBlob": "adadf1124ca554d4785d20b2b8d5f59e9157cb7b",
+        "bytes": 3303,
+        "sha256": "543aa8cf207d2c73c33230fdfa974913baad98f1733a93cfa31bd19c133f9880",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/game-document.test.ts",
+        "gitBlob": "982d456c162d91cd4136a9155d697e3d1d91c9c1",
+        "bytes": 10607,
+        "sha256": "0c99c952e194cba708a8d2288dd0c3a5afc1d9243578407c7a5be7b3553ce33c",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/gate-inference.test.ts",
+        "gitBlob": "2664d411083fc8187281b6d8d7d8e984de1daae2",
+        "bytes": 12777,
+        "sha256": "72fbae6a3fc8f124f52bc1cda35964ea2fcc4c81ba5490ce99a9819aec9b9538",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/gate-rule.test.ts",
+        "gitBlob": "66bec99335470e902d86f0fd50043b7af20c59c0",
+        "bytes": 12130,
+        "sha256": "68d438210da9d95cf267e7344892ee362fe79b60e7a0c33f46a258403885f5fd",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/hearts-module-validation.test.ts",
+        "gitBlob": "a0275e4322ca1e6a80ceccfe2a847512205051f7",
+        "bytes": 5293,
+        "sha256": "c856e1ea33e452e881d393549ee9157ba65bbc2ebdfa6bf18864c9048d024758",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/hearts-plan.test.ts",
+        "gitBlob": "f7335800a0d0680bf3b9cb82b02883b7427aac52",
+        "bytes": 43913,
+        "sha256": "3404fcbaf300915c20c6c92fb5eff9dcddd8c7d3564cc2644a67c4553acf739a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/integration.test.ts",
+        "gitBlob": "4729e8456580cd3307d957ea0c0bd146076e5b2f",
+        "bytes": 10590,
+        "sha256": "25416050b2a16ab949063b256669a64f0ab0ef126dc67ef8a2545f9a47778846",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/jev-offline.test.ts",
+        "gitBlob": "bee6fb5c7519c315b5d0473e608632fb36f85230",
+        "bytes": 41469,
+        "sha256": "13d74ef66b16050539350f95e5c24cf77ab53c8a26c707346030e16c3de1d23f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/module-contract.test.ts",
+        "gitBlob": "24ecf1f5d1892864a3474d2dba69a42136545ddb",
+        "bytes": 19116,
+        "sha256": "dd9f59239856560f0854ad37cd879c25f232f5f4146cf3fc0190074679d434f7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/module-parity.test.ts",
+        "gitBlob": "b61f38216f11f9a3b63cda9a6c4665e244c66048",
+        "bytes": 16882,
+        "sha256": "69eeaab243ff19577840d24235bf125e23237d90a37fe90a8e5a89b4c374c91e",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/module-seam.test.ts",
+        "gitBlob": "ae81e55024996591d8fa028573d367125f02e163",
+        "bytes": 2727,
+        "sha256": "83502fc80da19d3058e84fe4f7733a5535a0062fb4d0a75a5d6079bc8b1980fc",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/observations.test.ts",
+        "gitBlob": "d337decacb4690f35e303387dd92576462d2bb40",
+        "bytes": 7043,
+        "sha256": "b194f631984ad982576624355c7be7b3d1f03c74c085206a88a751d041c96254",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/openrouter.test.ts",
+        "gitBlob": "2205e1ba2ce4ee381bd8ee954190ab06c969d333",
+        "bytes": 19658,
+        "sha256": "7d36ea93ec733672fee557b271d20717615d58bf97b7376b2204917ebc32b07b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/partner-jev.test.ts",
+        "gitBlob": "1fae4ef9134ca21881a7ea354aed2a851d44de3d",
+        "bytes": 6306,
+        "sha256": "04640e5b88ba2fd36fd1e719b7e28dedc65f58e4f2314cf5be7a47fba3b1f8ed",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/plan-evaluator-budget.test.ts",
+        "gitBlob": "e3f72f20ead02393ca74a8e160f53a7a3964a554",
+        "bytes": 13056,
+        "sha256": "3abd1920d92203bbdd59a2bb3650ebce5c96d2b7228333c92b4eb2898008640d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/policy-pinning.test.ts",
+        "gitBlob": "fc0a6c2739fd240f6b536bc59bc3f60cc4ed087a",
+        "bytes": 23094,
+        "sha256": "817bc222d8ffddf8bad8d81e36df304c9acec2689078d5c9c33fa37b1a6cb7f3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/preparation-recovery.test.ts",
+        "gitBlob": "1778b8825e3d4581e79952ad3b2e4819c591720f",
+        "bytes": 23236,
+        "sha256": "1a56a90133ed96f68f0ee7fd0217adb43b3c26956a44a6c50e343ba7064f946b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/provider-ledger.test.ts",
+        "gitBlob": "1c0cb793d4eb474463ef2b457828935cbc5995e3",
+        "bytes": 7742,
+        "sha256": "96b82223ae53da4c9c1983c204b44cd4c89ab871ddaf2452d8a6a5b583d685d3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/reasoning-casebook.test.ts",
+        "gitBlob": "7edaaa5372d01fb40ce3764605e8dc7d517ec679",
+        "bytes": 3591,
+        "sha256": "6b5aca587916e4c7a95078250de2a44e6a8acf62204abb916017408f958f0ada",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/reasoning-catalog.test.ts",
+        "gitBlob": "a991e43740cd78085d97efa189fcf8c90513f8b2",
+        "bytes": 1382,
+        "sha256": "ebb4a0c59fdcbd5c1630b69077c9fff10379ee4cfe73a06c653b796e0823111a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/reasoning-continuations.test.ts",
+        "gitBlob": "d7c626e3c6cf9ba8f4b9fd1141778e95860a86b5",
+        "bytes": 2421,
+        "sha256": "e6a4c3d17fb6e49ca20076027a1abba917601d72cc63fde68aba31969320a08d",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/reasoning-matrix.test.ts",
+        "gitBlob": "a1a268091a1d484248844a68e5254a2e1397a124",
+        "bytes": 2691,
+        "sha256": "2fe5a68c73e517984b02b635444a50ae6a956aa1e5d87f37048af13e6e94490a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/reasoning-trace.test.ts",
+        "gitBlob": "cb2a9efb9c4d1184bcb4afc4de7c3a485f6db40d",
+        "bytes": 1757,
+        "sha256": "0641a783cc40e46d6847258f1703f88c3c63f34dbcffa43b64b64327390addf9",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/replay.test.ts",
+        "gitBlob": "3066fd40c61cde489a1fa017a81ecba6f4040801",
+        "bytes": 2348,
+        "sha256": "68281ae6dcd2069700d5684fe3ded30464cb0149259312b1ff46aadcfdc18313",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/rules.test.ts",
+        "gitBlob": "4e9d78122108262244a66dd456d131b301d624ed",
+        "bytes": 11029,
+        "sha256": "d363285a0681c290951bf7f5078d7944631675d9459be2d959ac9214d1f4f9dd",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/sampler.test.ts",
+        "gitBlob": "e545b0d57bf438981648c16038bb448922445ad9",
+        "bytes": 7305,
+        "sha256": "c0b1e2de7b3fe06eddbdcaf873763ec37886dc882e97a59f1b9fc63d8724a7c7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/saved-analysis.test.ts",
+        "gitBlob": "35becc5f82913622ddd89ee2b9ca3df83731b0dd",
+        "bytes": 10557,
+        "sha256": "38647afc40488f692b648809a2c3f38a3680037a45ad39b9d3a24ccbae929b65",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-double-nil.test.ts",
+        "gitBlob": "a7ade776cde1e5e2db00bfdaa5857fdc52a07922",
+        "bytes": 1558,
+        "sha256": "8aada72eea008ca0b93a7dd7aab5e5381a8e43abc6fb3222cf9bf3fe44533e72",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-entries.test.ts",
+        "gitBlob": "b1a90f7a2d8bcf772398f8b56316d9bd097c7bd8",
+        "bytes": 1834,
+        "sha256": "c0be072ee8a514991a6d3adac41d336b1f46eef71d80a9ac41efebdd7cff8d8f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-human-labels.test.ts",
+        "gitBlob": "f90c274899c9a98d0c251f66a6c068725de71a6b",
+        "bytes": 2501,
+        "sha256": "2a142d7417a7f1f216c8177cec463ac4cab3c121b360f978844d547860cad117",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-match-pilot.test.ts",
+        "gitBlob": "7cc8860a1eac54bb2a1db81950f866b238d29e31",
+        "bytes": 13135,
+        "sha256": "9c6b964140995b525ae3280e202ab9db4a61fb6b6d71dfd49ff8fe9905f3ff24",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-module-validation.test.ts",
+        "gitBlob": "30ebe439d53cd25ebb332fe9047a41a041c9f7c8",
+        "bytes": 7275,
+        "sha256": "ebf8a7e7e624319aee7a906744550857ca89ffed71b1bbb2057e533b013de17b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-objectives.test.ts",
+        "gitBlob": "806d9ccfbeba3638608a2c399799f379b15760e1",
+        "bytes": 5730,
+        "sha256": "70ff9a86516a8b6d106d0f32cdb1953f8b456bb4d5488251c5915ce38f1decc7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-observed-cases.test.ts",
+        "gitBlob": "34963dfbb818c8e25c173edc1db26f1c889957cb",
+        "bytes": 19246,
+        "sha256": "920d4978c5456fefdd16cb9767988fd472635589dc6b736c9bb45c610d78e131",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-partner-resource.test.ts",
+        "gitBlob": "98b479617a4d23b754a6fd8dd5cb24a5862b7d0a",
+        "bytes": 11605,
+        "sha256": "9b705aa25358ab7913a77c4ce59706951ea2e0dfb5d202278dbad0e99568017c",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-pilot-report.test.ts",
+        "gitBlob": "584ed22dd71c1e5fb074e45f41a0e4cda9bd91c9",
+        "bytes": 2935,
+        "sha256": "07dd37bbca8cd96331cf63cfbc3276dec926cd16e63ae98af85a44bcd6eb3fa7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-playout-budget.test.ts",
+        "gitBlob": "897d0353508274e041d3afffd7dee1bb7a39e75e",
+        "bytes": 10755,
+        "sha256": "4a7696404804dde8ac27eae43d4d8749064a3ba054756a28f14e75ffab9b85a3",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-playout-kernel.test.ts",
+        "gitBlob": "13cffc7bdbccd38eafb6eb472d09f63bae12ef34",
+        "bytes": 6243,
+        "sha256": "32d62ad939167f338c4117591d65794a26c429ecd496f814c4b7904100e39f7a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-playout-model.test.ts",
+        "gitBlob": "cef1bd23b88e3021a4335c33b4930ea0d05a66be",
+        "bytes": 42949,
+        "sha256": "dddddee0874be9d17bc1d5bc24ca46488cc4e6abb4e43fa001e9468fd959fa00",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-policy-integration.test.ts",
+        "gitBlob": "a548ac4ac34e55aa2be7c5edc4c0c7b0bf8d99b0",
+        "bytes": 1167,
+        "sha256": "2799467dbcbec628b919dd211182ee2c3daac2ce137ec925b890a4c9d72b5bad",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-reasoning.test.ts",
+        "gitBlob": "531b4c481fecb18ebd674ed850f45a27119dbed5",
+        "bytes": 16012,
+        "sha256": "3630e7a815ef1371d4f904eae85b0a6414b6a84553aa50dd7750d104c3e00f5a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-review-pack.test.ts",
+        "gitBlob": "a1e5a2db548628d0b475c321fe078c9b01ee3113",
+        "bytes": 15279,
+        "sha256": "5fd87cf5bb300a75c489b68d14ac7a11811b3375fbfa53006c276fe5b3d6f49c",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/spades-signals.test.ts",
+        "gitBlob": "a8f95ff56cd9215144b6bd15dd71703906febd76",
+        "bytes": 1481,
+        "sha256": "6634e14a561923fbcfd2ce890f854682d24caf5f8321356dcd02d8e509b2f276",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/stored-state-boundary.test.ts",
+        "gitBlob": "2e40a30e38a63a2afbc05a3b65bf36c2bd097c1a",
+        "bytes": 4619,
+        "sha256": "bd01ba8c9a6be9ffc0caf2bf3328e5f8aff61f465d3a29bf53bfb7f8031ed48b",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/strategy-reasons.test.ts",
+        "gitBlob": "85f05adc14a6b77ebed63e8700eac1adef80b90a",
+        "bytes": 2198,
+        "sha256": "acf9a0ba7313e176572d71a78d52137c87bc1085f85a5f012a79e365d2bf58bc",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/strategy.test.ts",
+        "gitBlob": "2fd0719b2291abdaa749ca78800ac931603e4369",
+        "bytes": 6262,
+        "sha256": "596e93e967eca5c9593c12fb0483ac801d95ddfe3d90234c838bb3ce1bb1bf64",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/support/module-contract-fixture.ts",
+        "gitBlob": "eb4e7f901888e6adea70c0052e7fe951a1f98a3d",
+        "bytes": 9734,
+        "sha256": "ecfc03515b3f1f6717bc9a8cfd26f9b88af0bf2978bc45c16b183f5069d93a9a",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/support/module-contract-types.ts",
+        "gitBlob": "24350fcc70edc51413c7ba98779127d5cf862f84",
+        "bytes": 1886,
+        "sha256": "e6c62b0c89b52bcfc4f05a4ecf2a84a9632c2f9949d36e6aadf6c94a7c0f4139",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/support/module-parity.ts",
+        "gitBlob": "32789ccf0d440bc88b681f4fe6081e69e7374779",
+        "bytes": 9668,
+        "sha256": "db97cf9cd69bdc65f9b46caecadd2989cba3714e878f45d5ae8ae541203ae5d7",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/support/observed-spades.ts",
+        "gitBlob": "a6e71ffa6ab3d3ba5f773eefc1613217ff714f38",
+        "bytes": 3741,
+        "sha256": "4d06728c7ea5162bf7ac1aec6b0fc856134b7a34e0b93fe2caaeb5ca405a8346",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/support/spades-fixtures.ts",
+        "gitBlob": "69e815c300d46e768a66ecf177476e73e5333b99",
+        "bytes": 6733,
+        "sha256": "459e9b9d7ff84247b373e0e54ea06dd97e17bdd328d3de4826f285f2e445cc12",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/support/token-module.ts",
+        "gitBlob": "91981f187fdeeae9c6bf15077a97d806ba0b8ec4",
+        "bytes": 28228,
+        "sha256": "1175ddff6ae265d90d450100e85f48888c7e3c66b71ffba56317b49edac6aba1",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/trials.test.ts",
+        "gitBlob": "f3bd0bc65cb9d76002bbe1f951a9ce59f79f7989",
+        "bytes": 4200,
+        "sha256": "7015d0eb06c08ae42e15026623df51a434321d8fc65fb397dbe9b7b9cc60f060",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/server/tests/world-sampler-parity.test.ts",
+        "gitBlob": "94d97e5bbe080e254c826fb28a2ab2e400a9eb70",
+        "bytes": 9586,
+        "sha256": "a52be63ad8d6e945686f3e70f36ee1030b32cf2c25e6c6fdd13ea75917c87500",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/contracts.schema.json",
+        "gitBlob": "b3e61d25ab6d7e9e945c41b2af715fcf3b637cd9",
+        "bytes": 83559,
+        "sha256": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/contracts.ts",
+        "gitBlob": "8730c3992fc850ed5b1077600bac44c166704939",
+        "bytes": 25118,
+        "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/games/hearts.schema.json",
+        "gitBlob": "72cb4a1ad4b9c5d7e3be2da639d34c58680ce463",
+        "bytes": 10446,
+        "sha256": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/games/spades.schema.json",
+        "gitBlob": "f6dcca128ba628c904cd1d396c4b21a87fd360a6",
+        "bytes": 9959,
+        "sha256": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/openapi.json",
+        "gitBlob": "b7dd68da6a07db7ab5b1a5fd64ebf76efe63254d",
+        "bytes": 37001,
+        "sha256": "ca47d15c98f8dea6e6f6b96b0dbc227e3a60a436d7053577a1b02cd43b285761",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/validation.ts",
+        "gitBlob": "4ce080be41918b058412068ebb2b748826844ec2",
+        "bytes": 13079,
+        "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/validators.d.mts",
+        "gitBlob": "143479570d76caaeb34c342fc8661252d72bfea0",
+        "bytes": 8793,
+        "sha256": "0dec2e12e585d8e804b18fbf4a85ad9824ca8f04a3df6a221e9869c57616a399",
+        "gitBlobVerified": true
+      },
+      {
+        "path": "web/shared/validators.mjs",
+        "gitBlob": "d42dde524535acb53a5f39517b637f8e7f30de83",
+        "bytes": 1301872,
+        "sha256": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637",
+        "gitBlobVerified": true
+      }
+    ]
+  },
+  "originalCheck": {
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\repos\\test-jev\\.local\\m04c\\original-reference-bbca6fe-1791317436505\\original\\qa\\implementation\\multi-game\\m04b\\generate-reference.ts",
+      "--check"
+    ],
+    "cwd": ".local/m04c/original-reference-bbca6fe-1791317436505/original",
+    "startedAt": "2026-10-06T20:10:38.230Z",
+    "completedAt": "2026-10-06T20:11:25.749Z",
+    "exitCode": 0,
+    "signal": null,
+    "errorCode": null
+  },
+  "originalResult": {
+    "decisions": 6380,
+    "forced": 1282,
+    "noDecisionAdvice": 25392,
+    "sessions": 5,
+    "sessionCheckpoints": 1099,
+    "prepared": 888,
+    "cases": 107,
+    "bytes": 7501608,
+    "sha256": "7cd5ebea78f73837b9a5aa7c771e6f78acf9222155d78ff3ed2292673b7cc7dc",
+    "samples": 28
+  },
+  "additiveRun": {
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "args": [
+      "C:\\repos\\test-jev\\.local\\m04c\\original-reference-bbca6fe-1791317436505\\additive-inventory\\qa\\implementation\\multi-game\\m04b\\generate-reference.ts",
+      "--write"
+    ],
+    "cwd": ".local/m04c/original-reference-bbca6fe-1791317436505/additive-inventory",
+    "startedAt": "2026-10-06T20:11:27.013Z",
+    "completedAt": "2026-10-06T20:12:14.417Z",
+    "exitCode": 0,
+    "signal": null,
+    "errorCode": null
+  },
+  "driftProof": {
+    "addedSources": 4,
+    "originalSources": 251,
+    "discoveredSources": 255,
+    "onlySourcesArrayChanged": true,
+    "allOtherSerializedContentByteIdentical": true,
+    "frozenCorpusSHA256": "7cd5ebea78f73837b9a5aa7c771e6f78acf9222155d78ff3ed2292673b7cc7dc",
+    "additiveCorpusSHA256": "5cbab44ecc871d8275ad49587ffbe966151f2e0d924091011ff24661be9f411f",
+    "comparison": "Replacing only generated.sources with the frozen sources array recreates the exact frozen reference-corpus.json bytes, including final newline."
+  },
+  "originalSnapshotStillUnchanged": true,
+  "status": "passed",
+  "preservedFailedEvidence": [
+    {
+      "path": "oracle-check-native.txt",
+      "sha256": "0d4f1befda9c6f6c3fcb49d377780bc65196b7670bf19812424f43330b4f2ee2",
+      "finalSHA256": "0d4f1befda9c6f6c3fcb49d377780bc65196b7670bf19812424f43330b4f2ee2"
+    },
+    {
+      "path": "oracle-check.json",
+      "sha256": "9b4e85aa06aecf8f240571b69619b3f70cb24180c196b792e13665d030f8cf8c",
+      "finalSHA256": "9b4e85aa06aecf8f240571b69619b3f70cb24180c196b792e13665d030f8cf8c"
+    }
+  ],
+  "failedEvidenceUnchanged": true,
+  "completedAt": "2026-10-06T20:12:14.532Z",
+  "output": {
+    "path": "qa/implementation/multi-game/m04c/original-reference-native.txt",
+    "sha256": "575f3db2e2df3928e55e24d99f1779c47252a8338aac144fa9e70d64adab1dfd"
+  }
+}

@@ -54,6 +54,9 @@ func (s *Store) ReadAccess(ctx context.Context, owner string) (AccessState, erro
 	var result AccessState
 	ctx, cancel := s.bounded(ctx)
 	defer cancel()
+	if err := s.authorize(ctx, s.pool, owner); err != nil {
+		return result, err
+	}
 	err := s.pool.QueryRow(ctx, "SELECT owner_id,COALESCE(active_game_id,''),generation,control_generation,can_read,can_play,can_coach FROM "+s.table("m03_access")+" WHERE owner_id=$1", owner).Scan(&result.OwnerID, &result.ActiveGameID, &result.Generation, &result.ControlGeneration, &result.CanRead, &result.CanPlay, &result.CanCoach)
 	if errors.Is(err, pgx.ErrNoRows) {
 		err = ErrAccess
@@ -73,6 +76,9 @@ func (s *Store) checkCommitAccess(ctx context.Context, tx pgx.Tx, a AccessAdmiss
 		return ErrAccess
 	}
 	if err != nil {
+		return err
+	}
+	if err = s.authorizeControl(ctx, tx, a.OwnerID); err != nil {
 		return err
 	}
 	if generation != a.Generation || control != a.ControlRevision || active != gameID || !play || coach && !canCoach {
@@ -270,6 +276,9 @@ func (s *Store) readGrant(ctx context.Context, q grantReader, id, owner string) 
 func (s *Store) ReadGrant(ctx context.Context, owner, id string) (Grant, error) {
 	ctx, cancel := s.bounded(ctx)
 	defer cancel()
+	if err := s.authorize(ctx, s.pool, owner); err != nil {
+		return Grant{}, err
+	}
 	return s.readGrant(ctx, s.pool, id, owner)
 }
 

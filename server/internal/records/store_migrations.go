@@ -21,12 +21,13 @@ type Migration struct {
 }
 
 var canonicalMigrationPins = map[string]string{
-	"001-local-platform.sql":         "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2",
-	"002-billing-family.sql":         "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f",
-	"003-account-data.sql":           "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae",
-	"004-analysis-jobs.sql":          "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43",
-	"005-analysis-attempt-fence.sql": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c",
-	"006-preparation-attempts.sql":   "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e",
+	"001-local-platform.sql":             "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2",
+	"002-billing-family.sql":             "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f",
+	"003-account-data.sql":               "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae",
+	"004-analysis-jobs.sql":              "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43",
+	"005-analysis-attempt-fence.sql":     "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c",
+	"006-preparation-attempts.sql":       "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e",
+	"007-versioned-platform-records.sql": "cae296b33b5c8b09169e7636b6116d6a60fd72ac9cd78661b4900b3b2873208a",
 }
 
 func ReadCanonicalMigrations(directory string) ([]Migration, error) {
@@ -55,7 +56,7 @@ func ReadCanonicalMigrations(directory string) ([]Migration, error) {
 		}
 		sum := sha256.Sum256(raw)
 		digest := hex.EncodeToString(sum[:])
-		if i < 6 && canonicalMigrationPins[name] != digest {
+		if i < 7 && canonicalMigrationPins[name] != digest {
 			return nil, fmt.Errorf("frozen migration checksum mismatch: %s", name)
 		}
 		out = append(out, Migration{Name: name, SHA256: digest, SQL: raw})
@@ -69,32 +70,32 @@ func ReadCanonicalMigrations(directory string) ([]Migration, error) {
 func (s *Store) ApplyMigrations(ctx context.Context, directory string) error {
 	migrations, err := ReadCanonicalMigrations(directory)
 	if err != nil {
-		return err
+		return stageError("migrations.read-canonical", err)
 	}
-	return s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
+	return s.withTx(databaseStage(ctx, "migrations"), func(ctx context.Context, tx pgx.Tx) error {
 		// This is the same ledger and lock used by web/server/records/migrations.ts.
 		if _, err := tx.Exec(ctx, "SELECT pg_advisory_xact_lock(972701)"); err != nil {
-			return err
+			return stageError("migrations.advisory-lock", err)
 		}
 		if _, err := tx.Exec(ctx, `CREATE TABLE IF NOT EXISTS schema_migrations(name text PRIMARY KEY, checksum text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())`); err != nil {
-			return err
+			return stageError("migrations.ledger-create", err)
 		}
 		rows, err := tx.Query(ctx, `SELECT name,checksum FROM schema_migrations ORDER BY name`)
 		if err != nil {
-			return err
+			return stageError("migrations.ledger-query", err)
 		}
 		applied := map[string]string{}
 		for rows.Next() {
 			var name, hash string
 			if err = rows.Scan(&name, &hash); err != nil {
 				rows.Close()
-				return err
+				return stageError("migrations.ledger-scan", err)
 			}
 			applied[name] = hash
 		}
 		rows.Close()
 		if err = rows.Err(); err != nil {
-			return err
+			return stageError("migrations.ledger-stream", err)
 		}
 		if len(applied) > len(migrations) {
 			return fmt.Errorf("database migrations are newer than this package")
@@ -110,10 +111,10 @@ func (s *Store) ApplyMigrations(ctx context.Context, directory string) error {
 				return fmt.Errorf("migration ledger is not a canonical prefix")
 			}
 			if _, err = tx.Exec(ctx, string(m.SQL)); err != nil {
-				return fmt.Errorf("apply %s: %w", m.Name, err)
+				return stageError(fmt.Sprintf("migrations.apply-%03d", i+1), err)
 			}
 			if _, err = tx.Exec(ctx, `INSERT INTO schema_migrations(name,checksum) VALUES($1,$2)`, m.Name, m.SHA256); err != nil {
-				return err
+				return stageError(fmt.Sprintf("migrations.ledger-insert-%03d", i+1), err)
 			}
 		}
 		return nil

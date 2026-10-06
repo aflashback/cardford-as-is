@@ -1,0 +1,12 @@
+import pg from 'pg';
+const began=performance.now();
+const client=new pg.Client({connectionString:process.env.TEST_DATABASE_URL,connectionTimeoutMillis:3000,statement_timeout:2000,application_name:'m04c-readonly-diagnostic'});
+try {
+ await client.connect();
+ console.log(JSON.stringify({stage:'connected',elapsedMs:Math.round(performance.now()-began),at:new Date().toISOString()}));
+ for(const [stage,sql] of [
+  ['activity',"SELECT pid,datname,application_name,state,wait_event_type,wait_event,pg_blocking_pids(pid) AS blockers FROM pg_stat_activity WHERE backend_type='client backend' ORDER BY pid"],
+  ['checkpoints','SELECT checkpoints_timed,checkpoints_req,checkpoint_write_time,checkpoint_sync_time,buffers_checkpoint FROM pg_stat_bgwriter'],
+  ['limits',"SELECT name,setting FROM pg_settings WHERE name IN ('max_connections','checkpoint_timeout','checkpoint_completion_target','fsync') ORDER BY name"]
+ ]) {const result=await client.query(sql);console.log(JSON.stringify({stage,rows:result.rows,elapsedMs:Math.round(performance.now()-began)}));}
+} catch(error) {console.log(JSON.stringify({stage:'failed',name:error.name,code:error.code??null,syscall:error.syscall??null,elapsedMs:Math.round(performance.now()-began)}));process.exitCode=1;} finally {await client.end().catch(()=>{});}

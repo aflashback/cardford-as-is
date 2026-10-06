@@ -27,13 +27,28 @@ node scripts/windows-env.mjs npm run typecheck
 
 Run these suites sequentially against the local database. The complete normal Go run includes the 100-hand codec and 25-hand SQL growth checks; `-race -short` skips only those long growth fixtures while retaining ordinary concurrency and recovery tests. Record the two skips explicitly. Suite duration is not a Node/Go comparison.
 
-`pg:start` creates a separate, password-authenticated local cluster on **127.0.0.1:54331**, with `cardford_windows` and `cardford_windows_test`. It reuses only that recognized project cluster; it does not delete data. Credentials remain in ignored `.local/windows-postgres/credentials.json`, never in evidence. The wrapper provides `DATABASE_URL` and `TEST_DATABASE_URL` to child processes and selects local identity, fixture billing and Jev off. The Go seam also refuses a database without `_test`. Node tests apply the existing canonical migrations to the isolated test database. `pg:stop` stops only this project cluster. PostgreSQL is not needed during replay timings.
+`pg:start` creates a separate, password-authenticated local cluster on **127.0.0.1:54331**, with `cardford_windows` and `cardford_windows_test`. It reuses only that recognized project cluster; it does not delete data. Credentials remain in ignored `.local/windows-postgres/credentials.json`, never in evidence. The wrapper provides `DATABASE_URL` and `TEST_DATABASE_URL` to child processes and selects local identity, fixture billing and Jev off. Go test stores still require `_test` and isolated `m03_` schemas. M04C adds a separate explicit local-service activation path: loopback PostgreSQL with the fixed `cardford_go_local` schema. Node tests apply the existing canonical migrations to the isolated test database. `pg:stop` stops only this project cluster. PostgreSQL is not needed during replay timings.
 
 This recognized loopback cluster has no TLS listener. The wrapper explicitly sets `sslmode=disable` for its local URLs and `PGSSLMODE`; it never applies this setting to a remote database. A bounded M03 diagnostic confirmed that pgx's default TLS preference opened two TCP connections per session against this server, while explicit local mode opened one. This removes unnecessary fallback, without changing production database policy or relaxing operation timeouts. [Diagnostic evidence](../../../qa/implementation/multi-game/m03/native-db-setup.md).
 
 M03 also encountered intermittent native TCP failures whose precise cause was not established. Preserve failure output and inspect local PostgreSQL/transport state if they recur; do not hide failures with retries or relax product timeouts. The final Node verification uses a fresh disposable test database after the checksum guard correctly rejected an earlier unpublished draft of migration 007. Committed migrations remain immutable; subsequent changes use a new forward migration. Development data was preserved.
 
-The current production application remains TypeScript. To run it against the separate native development database, use `node scripts/windows-env.mjs npm run db:migrate`, then `node scripts/windows-env.mjs npm run dev`. Those commands retain the existing UI and local fixture modes; they do not activate the future Go backend.
+The current React application still uses the original TypeScript service. To run it against the separate native development database, use `node scripts/windows-env.mjs npm run db:migrate`, then `node scripts/windows-env.mjs npm run dev`. Existing startup, Vite and browser-test paths remain on that service until the later client cutover gate.
+
+### M04C local Go API
+
+The authenticated durable API has passed its scoped local-service acceptance; see [M04C evidence](../../../qa/implementation/multi-game/m04c/status.md). From the repository root, start the recognized native database and launch the separate API:
+
+```powershell
+node scripts/windows-env.mjs pg:start
+node scripts/windows-env.mjs go run ./server/cmd/cardford --migrations web/server/records/migrations
+```
+
+The listener defaults to **http://127.0.0.1:4174** and serves the local API, without switching the existing React interface. `--migrations` supplies the sole canonical migration directory; `CARDFORD_MIGRATIONS_DIR` is the environment alternative. Startup applies the checksum-checked sequence, including forward migration 008, only in `cardford_go_local`. The original Node records are not migrated into Go sessions or rewritten.
+
+The wrapper supplies explicit `APP_ENV=local`, `IDENTITY_MODE=local-test`, `BILLING_MODE=fixture` and `JEV_MODE=off`. The listener rejects hosted modes and non-loopback binding. Server-issued cookie identity, tab control and unlimited fixture grants are local development behavior, not hosted identity or commercial offer activation. A `PORT` override must have a matching `APP_ORIGIN` when that origin is set. Full original V1 platform history remains available through the original reader; no implicit V1/V2 conversion occurs.
+
+Stop the API with Ctrl+C so requests, workers and its pool close. After finishing with all applications using this project cluster, stop PostgreSQL with `node scripts/windows-env.mjs pg:stop`; its data is retained. The [M04 sequence](m04-execution.md) keeps authored online demo/exact-target access offers, final platform/client integration and preserved-UI acceptance open.
 
 The Go/Node comparison is complete; these commands are retained for a future scoped investigation and are not part of routine milestone verification. For a new comparison, freeze source, stop compilers/tests/profilers, then run sequentially:
 

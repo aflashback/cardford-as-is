@@ -1,0 +1,141 @@
+// Disposable reproduction of the unchanged M04B oracle; no application edits.
+import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from 'node:fs';
+import { join, relative, resolve, sep } from 'node:path';
+
+const root = resolve(import.meta.dirname, '../..');
+const evidence = resolve(root, 'qa/implementation/multi-game/m04c');
+const base = resolve(root, '.local/m04c');
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const hashFile = path => sha(readFileSync(path));
+const rel = path => relative(root, path).split(sep).join('/');
+const childEnv = { ...process.env, JEV_MODE: 'off', JEV_MAX_REQUESTS: '0', NODE_OPTIONS: '' };
+for (const name of Object.keys(childEnv)) {
+  if (/^(?:DATABASE_URL|TEST_DATABASE_URL|PG.*|STRIPE.*|OPENROUTER.*|JEV_API_KEY)$/.test(name)) delete childEnv[name];
+}
+function command(exe, args, cwd = root) {
+  const startedAt = new Date().toISOString();
+  const result = spawnSync(exe, args, { cwd, env: childEnv, encoding: 'utf8', windowsHide: true, maxBuffer: 64 << 20, timeout: 300000 });
+  return { executable: exe, args, cwd: rel(cwd) || '.', startedAt, completedAt: new Date().toISOString(), exitCode: result.status, signal: result.signal, errorCode: result.error?.code ?? null, stdout: result.stdout ?? '', stderr: result.stderr ?? '' };
+}
+function checked(exe, args, cwd) {
+  const result = command(exe, args, cwd);
+  assert.equal(result.errorCode, null, `${exe} launch failed`);
+  assert.equal(result.exitCode, 0, `${exe} returned nonzero`);
+  return result.stdout.trim();
+}
+function walk(path) {
+  return readdirSync(resolve(root, path), { withFileTypes: true }).flatMap(entry => entry.isDirectory() ? walk(`${path}/${entry.name}`) : [`${path}/${entry.name}`]);
+}
+function withinBase(path) {
+  const absolute = resolve(path);
+  assert.ok(absolute.startsWith(base + sep), 'Disposable target must stay inside .local/m04c');
+  return absolute;
+}
+const manifest = {
+  schemaVersion: '1.0.0',
+  purpose: 'Reproduce unchanged frozen M04B oracle from original tracked inputs, and isolate additive inventory drift without changing original evidence.',
+  startedAt: new Date().toISOString(),
+  command: 'node scripts/windows-env.mjs node .local/m04c/original-reference-check.mjs',
+  runtime: { platform: process.platform, arch: process.arch, node: process.version, executable: process.execPath },
+  provider: { mode: 'off', requests: 0, observedModel: null },
+  database: { used: false, credentialsRemovedFromChildEnvironment: true },
+  helper: { path: 'qa/implementation/multi-game/m04c/original-reference-check.mjs.txt', sha256: hashFile(import.meta.filename) },
+};
+const logs = [];
+const preservedPaths = ['oracle-check-native.txt', 'oracle-check.json'];
+const preserved = preservedPaths.map(path => ({ path, sha256: hashFile(join(evidence, path)) }));
+const frozenPath = 'qa/implementation/multi-game/m04b/reference-corpus.json';
+const generatorPath = 'qa/implementation/multi-game/m04b/generate-reference.ts';
+try {
+  assert.equal(process.platform, 'win32');
+  assert.equal(process.arch, 'x64');
+  assert.equal(process.version, 'v24.19.0');
+  const frozenBytes = readFileSync(resolve(root, frozenPath));
+  const frozen = JSON.parse(frozenBytes);
+  const originalSources = frozen.sources.map(source => ({ ...source, actualSHA256: existsSync(resolve(root, source.path)) ? hashFile(resolve(root, source.path)) : null }));
+  manifest.currentOriginalSources = { count: originalSources.length, mismatches: originalSources.filter(source => source.sha256 !== source.actualSHA256), sources: originalSources };
+  assert.deepEqual(manifest.currentOriginalSources.mismatches, [], 'Original source fingerprints changed');
+  const originalSet = new Set(frozen.sources.map(source => source.path));
+  const discovered = [...walk('web/server'), ...walk('web/shared')].filter(path => /\.(ts|json)$/.test(path));
+  const added = discovered.filter(path => !originalSet.has(path)).sort().map(path => ({ path, sha256: hashFile(resolve(root, path)) }));
+  const missing = frozen.sources.filter(source => /^(web\/server|web\/shared)\//.test(source.path) && !discovered.includes(source.path));
+  manifest.discoveryDifference = { added, missing };
+  assert.deepEqual(missing, []);
+  assert.deepEqual(added.map(source => source.path), ['web/shared/local-service.contracts.ts', 'web/shared/local-service.openapi.json', 'web/shared/local-service.schema.json', 'web/shared/local-service.validation.ts']);
+  const commit = checked('git', ['rev-parse', 'bbca6fe^{commit}']);
+  const tree = checked('git', ['rev-parse', `${commit}^{tree}`]);
+  const archiveInputs = ['web/server', 'web/shared', 'qa/implementation/multi-game/m04/hearts-parity-corpus.json', generatorPath, frozenPath, 'package.json', 'web/package.json'];
+  const treeLines = checked('git', ['ls-tree', '-r', '-l', commit, '--', ...archiveInputs]).split('\n');
+  const entries = treeLines.map(line => {
+    const match = /^(\d+) blob ([a-f0-9]+)\s+(\d+)\t(.+)$/.exec(line.replace(/\r$/, ''));
+    assert.ok(match, 'Only tracked regular blobs are expected');
+    assert.equal(match[1], '100644');
+    assert.ok(!match[4].startsWith('/') && !match[4].split('/').includes('..'));
+    return { path: match[4], gitBlob: match[2], bytes: Number(match[3]) };
+  });
+  assert.ok(entries.reduce((sum, entry) => sum + entry.bytes, 0) < 200 * 1024 * 1024, 'Snapshot size limit');
+  const runDirectory = withinBase(join(base, `original-reference-bbca6fe-${Date.now()}`));
+  const mirror = withinBase(join(runDirectory, 'original'));
+  const additiveMirror = withinBase(join(runDirectory, 'additive-inventory'));
+  const archive = withinBase(join(runDirectory, 'original-inputs.tar'));
+  mkdirSync(mirror, { recursive: true });
+  mkdirSync(additiveMirror, { recursive: true });
+  checked('git', ['archive', '--format=tar', `--output=${archive}`, commit, '--', ...archiveInputs]);
+  checked('tar.exe', ['-xf', archive, '-C', mirror]);
+  const snapshotFiles = entries.map(entry => {
+    const bytes = readFileSync(resolve(mirror, entry.path));
+    const actualGitBlob = createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+    assert.equal(actualGitBlob, entry.gitBlob, `Snapshot differs from commit: ${entry.path}`);
+    assert.equal(bytes.length, entry.bytes);
+    return { ...entry, sha256: sha(bytes), gitBlobVerified: true };
+  });
+  for (const source of frozen.sources) assert.equal(hashFile(resolve(mirror, source.path)), source.sha256, `Snapshot differs from frozen source: ${source.path}`);
+  assert.equal(hashFile(resolve(mirror, frozenPath)), sha(frozenBytes), 'Original corpus differs from commit');
+  manifest.snapshot = { commit, tree, archiveInputs, directory: rel(mirror), archive: rel(archive), archiveSHA256: hashFile(archive), totalFiles: snapshotFiles.length, totalBytes: snapshotFiles.reduce((sum, entry) => sum + entry.bytes, 0), files: snapshotFiles };
+  const originalRun = command(process.execPath, [resolve(mirror, generatorPath), '--check'], mirror);
+  logs.push({ label: 'Unchanged original snapshot --check', ...originalRun });
+  manifest.originalCheck = { ...originalRun, stdout: undefined, stderr: undefined };
+  assert.equal(originalRun.errorCode, null);
+  assert.equal(originalRun.exitCode, 0, 'Original snapshot oracle check failed');
+  manifest.originalResult = JSON.parse(originalRun.stdout.trim());
+
+  // Second disposable mirror keeps the first snapshot unchanged. Add precisely
+  // the new discovery inputs and ask the unchanged generator for fresh output.
+  checked('tar.exe', ['-xf', archive, '-C', additiveMirror]);
+  const additiveTarget = withinBase(resolve(additiveMirror, frozenPath));
+  const retainedFrozen = withinBase(resolve(additiveMirror, 'qa/implementation/multi-game/m04b/reference-corpus.frozen.json'));
+  renameSync(additiveTarget, retainedFrozen);
+  for (const source of added) copyFileSync(resolve(root, source.path), withinBase(resolve(additiveMirror, source.path)));
+  const additiveRun = command(process.execPath, [resolve(additiveMirror, generatorPath), '--write'], additiveMirror);
+  logs.push({ label: 'Original code plus additive inventory --write (disposable mirror only)', ...additiveRun });
+  manifest.additiveRun = { ...additiveRun, stdout: undefined, stderr: undefined };
+  assert.equal(additiveRun.errorCode, null);
+  assert.equal(additiveRun.exitCode, 0, 'Additive inventory reproduction failed');
+  const generatedBytes = readFileSync(additiveTarget);
+  const generated = JSON.parse(generatedBytes);
+  const expectedSources = [...frozen.sources, ...added].sort((a, b) => a.path < b.path ? -1 : a.path > b.path ? 1 : 0);
+  assert.deepEqual(generated.sources, expectedSources, 'Additional source inventory did not match');
+  assert.equal(JSON.stringify({ ...generated, sources: frozen.sources }) + '\n', frozenBytes.toString('utf8'), 'Output changed beyond additive inventory');
+  manifest.driftProof = { addedSources: added.length, originalSources: frozen.sources.length, discoveredSources: generated.sources.length, onlySourcesArrayChanged: true, allOtherSerializedContentByteIdentical: true, frozenCorpusSHA256: sha(frozenBytes), additiveCorpusSHA256: sha(generatedBytes), comparison: 'Replacing only generated.sources with the frozen sources array recreates the exact frozen reference-corpus.json bytes, including final newline.' };
+  manifest.originalSnapshotStillUnchanged = snapshotFiles.every(file => hashFile(resolve(mirror, file.path)) === file.sha256);
+  assert.equal(manifest.originalSnapshotStillUnchanged, true);
+  manifest.status = 'passed';
+} catch (error) {
+  manifest.status = 'failed';
+  manifest.error = { name: error.name, message: error.message };
+  process.exitCode = 1;
+} finally {
+  manifest.preservedFailedEvidence = preserved.map(item => ({ ...item, finalSHA256: hashFile(join(evidence, item.path)) }));
+  manifest.failedEvidenceUnchanged = manifest.preservedFailedEvidence.every(item => item.sha256 === item.finalSHA256);
+  if (!manifest.failedEvidenceUnchanged) { manifest.status = 'failed'; process.exitCode = 1; }
+  manifest.completedAt = new Date().toISOString();
+  const logPath = join(evidence, 'original-reference-native.txt');
+  const output = logs.map(log => `${log.label}\ncommand: ${JSON.stringify([log.executable, ...log.args])}\ncwd: ${log.cwd}\nstartedAt: ${log.startedAt}\ncompletedAt: ${log.completedAt}\nexitCode: ${log.exitCode}\n${log.stdout}${log.stderr}`).join('\n');
+  writeFileSync(logPath, output);
+  manifest.output = { path: rel(logPath), sha256: hashFile(logPath) };
+  writeFileSync(join(evidence, 'original-reference-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+  console.log(JSON.stringify({ status: manifest.status, originalSources: manifest.currentOriginalSources?.count, originalSourceMismatches: manifest.currentOriginalSources?.mismatches.length, added: manifest.discoveryDifference?.added, originalResult: manifest.originalResult, driftProof: manifest.driftProof, failedEvidenceUnchanged: manifest.failedEvidenceUnchanged, error: manifest.error }, null, 2));
+}

@@ -2,6 +2,7 @@ package legacydecision
 
 import (
 	"cardford/server/internal/contracts"
+	"context"
 	"encoding/json"
 	"fmt"
 	"math"
@@ -186,6 +187,15 @@ func shape(v any, t reflect.Type, key string) error {
 
 // ValidateObservation validates constructed trusted DTOs without serializing.
 func ValidateObservation(o Observation) error {
+	return ValidateObservationContext(context.Background(), o)
+}
+
+// ValidateObservationContext checks cancellation while reading the retained
+// original archive. It preserves every V1 field and validation rule.
+func ValidateObservationContext(ctx context.Context, o Observation) error {
+	if err := ctx.Err(); err != nil {
+		return err
+	}
 	bad := func(s string) error { return fmt.Errorf("invalid observation: %s", s) }
 	seat := func(s int) bool { return s >= 0 && s < 4 }
 	integer := func(n, min, max int) bool { return n >= min && n <= max }
@@ -250,7 +260,12 @@ func ValidateObservation(o Observation) error {
 	if o.Events == nil || len(o.Events) > 100000 {
 		return bad("events")
 	}
-	for _, e := range o.Events {
+	for i, e := range o.Events {
+		if i%256 == 0 {
+			if err := ctx.Err(); err != nil {
+				return err
+			}
+		}
 		if !integer(e.ID, 1, safeInteger) || !slices.Contains([]string{"hand-started", "bid-placed", "card-played", "cards-passed", "trick-resolved", "trick-collected", "moon-shot", "hand-scored"}, e.Type) || len(utf16.Encode([]rune(e.Message))) > 2000 || !pseat(e.Seat) || e.Card != "" && !ValidCard(e.Card) || e.Bid != nil && !integer(*e.Bid, 0, 13) {
 			return bad("event")
 		}

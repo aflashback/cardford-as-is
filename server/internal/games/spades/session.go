@@ -51,6 +51,9 @@ func bindSpadesSession(s *sessionState) (gamekernel.BoundSession, error) {
 		View: func(o sessionObservation) (json.RawMessage, error) {
 			return json.Marshal(map[string]any{"publicSchemaVersion": "2.0.0", "gameId": "spades", "variantId": o.VariantID, "seat": o.Seat, "phase": o.Phase, "table": o.Table, "accessUnit": observationUnit(o)})
 		}, EncodeObservation: func(o sessionObservation) (json.RawMessage, error) { return json.Marshal(o) }, Analyze: analyzeSession, Reduce: reduceSession,
+		AnalyzeComplete: analyzeSessionComplete, Persist: persistSession, EventCount: func(s *sessionState) int { return len(s.original.Events) }, StorageIdentity: func(s *sessionState) (string, string) { return s.original.ID, s.original.Mode }, StorageUnit: func(s *sessionState) string {
+			return fmt.Sprintf("spades:%s:hand:%d", sessionVariant(s), s.original.HandNumber)
+		},
 		ProjectEvent: func(raw json.RawMessage, viewer int) (json.RawMessage, error) {
 			return projectSessionEvent(variant, raw, viewer)
 		},

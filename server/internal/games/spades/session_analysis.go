@@ -1,11 +1,59 @@
 package spades
 
 import (
+	"cardford/server/internal/coaching"
+	"cardford/server/internal/gamekernel"
 	"cardford/server/internal/games/spades/reasoning"
 	d "cardford/server/internal/legacydecision"
+	"context"
 	"encoding/json"
 	"fmt"
 )
+
+func analyzeSessionComplete(ctx context.Context, o sessionObservation, policyID, decisionID string) (gamekernel.CompleteAnalysis, error) {
+	var out gamekernel.CompleteAnalysis
+	if policyID != reasoning.PolicyVersion {
+		return out, fmt.Errorf("unsupported original Spades policy")
+	}
+	input, err := legacySessionObservationContext(ctx, o)
+	if err != nil {
+		return out, err
+	}
+	if err = ctx.Err(); err != nil {
+		return out, err
+	}
+	original, err := reasoning.AnalyzeContext(ctx, input)
+	if err != nil {
+		return out, err
+	}
+	if err = ctx.Err(); err != nil {
+		return out, err
+	}
+	advice, err := coaching.ExplainContext(ctx, input, &original)
+	if err != nil {
+		return out, err
+	}
+	id, registered, err := registeredSessionAnalysis(o, original)
+	if err != nil {
+		return out, err
+	}
+	detail, err := json.Marshal(d.PreparedAnalysisEnvelope{Version: "1.0.0", Registered: registered, Original: original})
+	if err != nil {
+		return out, err
+	}
+	adviceEnvelope := d.PreparedAdviceEnvelope{Version: "1.0.0", Original: advice}
+	for level := 1; level <= 3; level++ {
+		adviceEnvelope.Levels[level-1], err = coaching.ProjectAdvice(advice, level, decisionID)
+		if err != nil {
+			return out, err
+		}
+	}
+	adviceBytes, err := json.Marshal(adviceEnvelope)
+	if err != nil {
+		return out, err
+	}
+	return gamekernel.CompleteAnalysis{CandidateID: id, Registered: registered, Detail: gamekernel.PrivateOutput{Schema: d.PreparedAnalysisSchema, Bytes: detail}, Advice: gamekernel.PrivateOutput{Schema: d.PreparedAdviceSchema, Bytes: adviceBytes}}, ctx.Err()
+}
 
 func analyzeSession(o sessionObservation, policyID string) (string, json.RawMessage, error) {
 	if policyID != reasoning.PolicyVersion {

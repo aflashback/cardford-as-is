@@ -1,6 +1,7 @@
 package coaching
 
 import (
+	"context"
 	"fmt"
 
 	heartscoaching "cardford/server/internal/games/hearts/coaching"
@@ -15,7 +16,10 @@ import (
 // Unsupported historical policy records remain readable as stored advice; this
 // entry point never rerenders them with a different policy's cues.
 func Explain(obs d.Observation, supplied *d.Analysis) (d.Advice, error) {
-	if err := d.ValidateObservation(obs); err != nil {
+	return ExplainContext(context.Background(), obs, supplied)
+}
+func ExplainContext(ctx context.Context, obs d.Observation, supplied *d.Analysis) (d.Advice, error) {
+	if err := d.ValidateObservationContext(ctx, obs); err != nil {
 		return d.Advice{}, err
 	}
 	policyVersion := spadesreasoning.PolicyVersion
@@ -44,9 +48,9 @@ func Explain(obs d.Observation, supplied *d.Analysis) (d.Advice, error) {
 	} else {
 		var err error
 		if obs.Mode == "hearts" {
-			analysis, err = heartsreasoning.Analyze(obs)
+			analysis, err = heartsreasoning.AnalyzeContext(ctx, obs)
 		} else {
-			analysis, err = spadesreasoning.Analyze(obs)
+			analysis, err = spadesreasoning.AnalyzeContext(ctx, obs)
 		}
 		if err != nil {
 			return d.Advice{}, err

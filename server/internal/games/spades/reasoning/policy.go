@@ -2,6 +2,7 @@ package reasoning
 
 import (
 	d "cardford/server/internal/legacydecision"
+	"context"
 	"fmt"
 	"slices"
 	"sort"
@@ -11,7 +12,17 @@ import (
 // Analyze uses the exact original pin. It never mutates or retains observation
 // slices; the resulting actions and knowledge belong exclusively to the caller.
 func Analyze(o d.Observation) (d.Analysis, error) {
-	if err := d.ValidateObservation(o); err != nil {
+	return analyzeContext(context.Background(), o)
+}
+func AnalyzeContext(ctx context.Context, o d.Observation) (d.Analysis, error) {
+	result, err := analyzeContext(ctx, o)
+	if err != nil {
+		return result, err
+	}
+	return result, ctx.Err()
+}
+func analyzeContext(ctx context.Context, o d.Observation) (d.Analysis, error) {
+	if err := d.ValidateObservationContext(ctx, o); err != nil {
 		return d.Analysis{}, err
 	}
 	if o.Mode != "spades-solo" && o.Mode != "spades-partners" {
@@ -125,7 +136,7 @@ func analyze(o d.Observation, f d.Facts) (d.Analysis, error) {
 			Candidates: candidates, Limitations: append([]string{}, b.limitations...),
 			Trace: &d.Trace{
 				SchemaVersion: "1.0.0", PolicyVersion: PolicyVersion,
-				CatalogVersion: "spades-catalog-1.0.0", SelectedActionID: d.ActionID(selected),
+				CatalogVersion: CatalogVersion, SelectedActionID: d.ActionID(selected),
 				SelectedBy: "heuristic-rank", ScenarioChecks: scenarioChecks(o.Mode, "bid", scenarios),
 				Candidates: traces, Limitations: append([]string{}, b.limitations...),
 			},
@@ -415,7 +426,7 @@ func analyze(o d.Observation, f d.Facts) (d.Analysis, error) {
 		Candidates: candidates, Limitations: limitations,
 		Trace: &d.Trace{
 			SchemaVersion: "1.0.0", PolicyVersion: PolicyVersion,
-			CatalogVersion: "spades-catalog-1.0.0", SelectedActionID: d.ActionID(ranked[0].action),
+			CatalogVersion: CatalogVersion, SelectedActionID: d.ActionID(ranked[0].action),
 			SelectedBy:     tern(forced, "forced", "heuristic-rank"),
 			ScenarioChecks: scenarioChecks(o.Mode, "play", scenarios), Candidates: traces,
 			Limitations: []string{"Numeric effects are policy ordering weights, not probabilities or match-point estimates."},

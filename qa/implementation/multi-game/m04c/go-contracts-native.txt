@@ -1,0 +1,1 @@
+M02A contracts checked: 119 definitions, 288 actual Ajv fixtures, 9 RNG vectors.

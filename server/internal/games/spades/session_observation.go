@@ -3,6 +3,7 @@ package spades
 import (
 	"cardford/server/internal/gamekernel"
 	d "cardford/server/internal/legacydecision"
+	"context"
 	"fmt"
 )
 
@@ -55,6 +56,12 @@ func observationUnit(o sessionObservation) *gamekernel.AccessUnit {
 	return &gamekernel.AccessUnit{ID: fmt.Sprintf("spades:%s:hand:%d", o.VariantID, o.Table.RoundNumber), Kind: "hand", AtAdmissionBoundary: admission}
 }
 func legacySessionObservation(o sessionObservation) (d.Observation, error) {
+	return legacySessionObservationContext(context.Background(), o)
+}
+func legacySessionObservationContext(ctx context.Context, o sessionObservation) (d.Observation, error) {
+	if err := ctx.Err(); err != nil {
+		return d.Observation{}, err
+	}
 	t := o.Table
 	phase := o.Phase
 	if phase == "deal" {
@@ -86,7 +93,12 @@ func legacySessionObservation(o sessionObservation) (d.Observation, error) {
 	for _, trick := range t.History {
 		result.History = append(result.History, d.Trick{Plays: copyPlays(trick.Plays), Winner: trick.Winner})
 	}
-	for _, event := range o.Events {
+	for i, event := range o.Events {
+		if i%256 == 0 {
+			if err := ctx.Err(); err != nil {
+				return d.Observation{}, err
+			}
+		}
 		copy := d.Event{ID: event.ID, Type: event.Type, Message: event.Message, Seat: cloneSessionPointer(event.Seat), Bid: cloneSessionPointer(event.Bid)}
 		if event.Card != nil {
 			copy.Card = *event.Card

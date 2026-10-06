@@ -14,7 +14,30 @@ import (
 	"github.com/santhosh-tekuri/jsonschema/v6"
 )
 
-const fixtureDir = "../../../qa/implementation/multi-game/m02a/contracts/"
+const fixtureDir = "testdata/"
+
+// The M02A archive is an immutable independent regression input. New public
+// definitions belong only to the active generated testdata directory.
+func TestOriginalM02AFixturesRemainCompatible(t *testing.T) {
+	raw, err := os.ReadFile("../../../qa/implementation/multi-game/m02a/contracts/validation-fixtures.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var rows []struct {
+		ID, Name, Raw string
+		Boundary      bool
+	}
+	if err = json.Unmarshal(raw, &rows); err != nil {
+		t.Fatal(err)
+	}
+	for _, row := range rows {
+		t.Run(row.ID, func(t *testing.T) {
+			if err := Validate(row.Name, []byte(row.Raw)); (err == nil) != row.Boundary {
+				t.Fatalf("frozen M02A result changed: %v", err)
+			}
+		})
+	}
+}
 
 func fixture(t *testing.T, name string, out any) {
 	t.Helper()
