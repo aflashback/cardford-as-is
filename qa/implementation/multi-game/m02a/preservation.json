@@ -1,0 +1,41 @@
+{
+  "baseCommit": "b4769141a38235731416c634f0ccee1a93d181c1",
+  "referenceWebTree": "0fa29788412d39659070a075fae7dd9b06dcbb8c",
+  "protectedPaths": [
+    "web",
+    "package.json",
+    "package-lock.json",
+    "qa/implementation/multi-game/m02",
+    "qa/implementation/multi-game/urgent-repairs",
+    "qa/experiments"
+  ],
+  "protectedTrackedFilesUnchanged": true,
+  "migrations": {
+    "001-local-platform.sql": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2",
+    "002-billing-family.sql": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f",
+    "003-account-data.sql": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae",
+    "004-analysis-jobs.sql": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43",
+    "005-analysis-attempt-fence.sql": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c",
+    "006-preparation-attempts.sql": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+  },
+  "sourceFilesVerified": 30,
+  "sourceManifestSha256": "227f4570d557b801c4143b687bdb110d0ebded6aa33dcd43b9a976d588082e5f",
+  "localDocumentLinksChecked": 239,
+  "missingLinks": [],
+  "documents": {
+    "CHANGELOG.md": "c1c75c99c753ff0e5d34783a91d48d6ca38428440ee6b87d3e89782872f48cb4",
+    "docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md": "24fa00003ca30afc9296a6022c3b20c65f12cd83fd871332581a89d8055d99c5",
+    "planning/README.md": "ae68f8510dea035213ac599413856e95091db10131c9ef0a7c9b87a868d17ec5",
+    "planning/CHANGELOG.md": "1eaf36e157edbfcf996e8e61a7397ff6d7ee327d1edff4dc548595d03718d80a",
+    "planning/implementation/requirements-and-tests.md": "171d24d1e7049dc8ec937726d06d882a7c1f24d1f91629531e073f352a490268",
+    "planning/IMPLEMENTATION-START-HERE.md": "2064cec2406d203ea9b9e4726bef95e3d557a3ed62bad9d6f5801d61ec71910b",
+    "planning/implementation/multi-game/backend-readiness.md": "185c3785e68a5077c58251e68d44828ace54fd45ff65715e145b96bee88c8b7d",
+    "planning/implementation/multi-game/m02a-execution.md": "45403d0c0164a40406c8368324e10c2ecac2ec3de2cacc9d777945a2f2eb7f1e",
+    "planning/implementation/multi-game/portable-semantics.md": "8973746dd64fd2237742744313c41509fa1852eb00704a3b52a30f9827240a63",
+    "qa/implementation/multi-game/status.md": "af32afc298f5bb1e52f5f07fb2e10e421e53235819fea33e080561a7d3c9814a",
+    "qa/implementation/multi-game/m02a/status.md": "32e09a898fd543ea227c55db6f21345313e101fd4550a4a2d90c04c16752ff8e",
+    "qa/implementation/multi-game/m02a/contracts/status.md": "150d8f796ef8b0533c3bac7547b34fd847f3a29f93a311e2a78dab533563f144",
+    "qa/implementation/multi-game/m02a/spades/status.md": "1b649c0e5ff2d8cd124c0ef44b01c18a37472aa30b20eae601fc86b6b7bc9f54"
+  },
+  "scope": "Byte and local file-link checks; no new Node/browser full-suite or hosted evidence."
+}

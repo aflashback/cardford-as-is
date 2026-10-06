@@ -1,0 +1,176 @@
+{
+  "scope": "Private local M02A seam; no strategy search, providers or production activation",
+  "baseCommit": "b476914",
+  "sourceHashes": {
+    "go.mod": "1fddb5942683f4f212509580f07d2181aadf9989caabcd23055ba8c50fa4fe90",
+    "go.sum": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac",
+    "scripts/m02a-benchmark.ts": "c0c0210c8fe544952adb3752dd84ce99b0edc9b33cb43c9331cc64c448f5337f",
+    "scripts/m02a-contracts.mjs": "5494df262b878109432a10a77cd43950de9bad51fb05c81c88623f701e41a44a",
+    "scripts/m02a-corpus.ts": "ddcd469605891d6734a31e401509f9abd646ffe70e1870eb8ff068a252e20620",
+    "scripts/m02a-verify.mjs": "585dd00d4ba43fe0f434aa1cc51dd0dd6be1eb8c545141dd75e046fcbef70532",
+    "server/cmd/m02a/main.go": "dcdc0b68a3fe87c94fc4c5ced88851cdb1f5779b4295129794ef5347cfb06bb4",
+    "server/internal/compatibility/modules.go": "40b1b8e0b4798cf5366b832d728b4d3dea20f60a8fabed59971c01d31244972b",
+    "server/internal/compatibility/parity_test.go": "6e13e1900f03f8be4cc029f8e6855d76cba2a04f32caf4f560052fea325f4be1",
+    "server/internal/contracts/bindings.generated.go": "0bd044dfecb8c6063e233cce6ffb97da8e01cd88c8dfed1a2132a8ca72ccf9d0",
+    "server/internal/contracts/bindings.generated_test.go": "0a8add350b40d9ffd9b0842505955396161f1629aa5baae5103527300e3d265c",
+    "server/internal/contracts/contracts_test.go": "2013c6ffec1cd01a1dccd9774a8301f4d5ac7af3c9d70fd42a8256a6e6a88ffb",
+    "server/internal/contracts/schema.generated.json": "fa4288a3ac7fc5d6d9010a9e4ec125e4950a3f42718b1902157670773378f013",
+    "server/internal/contracts/semantics.go": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119",
+    "server/internal/contracts/validate.go": "b7f7d5e91aaa191b41093895d07127ecaa7cfc5213e4dd319a4e43a2bbfcfb68",
+    "server/internal/gamekernel/module.go": "e441a0f3f188c76161c1703e9eb41ac49749690d12699dcb61221a9dbaa1499d",
+    "server/internal/gamekernel/replay.go": "de5d0dd1caf3cabf2d308603e0741af917d11d003b8ea2cf6d03cd636403f182",
+    "server/internal/gamekernel/replay_test.go": "02d9a648b69767e057ba2d5a21ce074f8427dfa878090e6c0e30e6ade0ce7cae",
+    "server/internal/games/hearts/opening.go": "0a03a269cdf2e8d288a12e2af4186465b9304e9b037211929d6b50c70387f00c",
+    "server/internal/games/hearts/opening_test.go": "37015c2c414893b496ac82ff1e60983a10f2986262a80b6503bb949cf2e8ebd6",
+    "server/internal/games/spades/engine.go": "53fd8e111ac4fe9364ee291ea47f74784c21dd3e2443ce439be29b7c0e4ccb1b",
+    "server/internal/games/spades/json.go": "e1bad71371ae33311a72a9ad886b052db85837a45eae2aaa8046467522596986",
+    "server/internal/games/spades/observation.go": "263a6e8477fb5892ee77fbed6b2fe5efd677b0459aae817a6221452b629a3c77",
+    "server/internal/games/spades/rules.go": "a6cf99e790a43db01e966f5cfb30ea74c260f4b573550c71ae226dafce241263",
+    "server/internal/games/spades/spades_test.go": "013a52883e49dc718c1e2b06d1c4ea0d3a1bb48c417f486cdf3cd1d71ee671f0",
+    "server/internal/games/spades/types.go": "04972681204c239205db4e7928bf9ff36b87e33534f4bbdf1a4b438107f695ce",
+    "server/internal/games/spades/validation.go": "f8ac4b058932d4fc6da5281177524fe8138bb8a508b7a5e9a09d967f75916730",
+    "server/internal/http/slice.go": "de92351db2d1b537c0929679c7f2dc92fcd41bde7316ceeffaeb710ef2982890",
+    "server/internal/http/slice_test.go": "c6301d1df8437af46d8f30894cd0b0027691d43f041323b0f48beb97d7e84b65",
+    "server/internal/records/teststore.go": "654bdd0e54204e2a31725eed19302471cd2f39ecc902a25c40ef58c08c0e1003"
+  },
+  "sourceManifestSha256": "227f4570d557b801c4143b687bdb110d0ebded6aa33dcd43b9a976d588082e5f",
+  "migrations": {
+    "001-local-platform.sql": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2",
+    "002-billing-family.sql": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f",
+    "003-account-data.sql": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae",
+    "004-analysis-jobs.sql": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43",
+    "005-analysis-attempt-fence.sql": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c",
+    "006-preparation-attempts.sql": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+  },
+  "hardware": {
+    "platform": "linux",
+    "release": "6.18.33.2-microsoft-standard-WSL2",
+    "arch": "x64",
+    "cpu": "AMD Ryzen 9 5900HX with Radeon Graphics",
+    "logicalCPUs": 16,
+    "totalMemoryBytes": 16451788800
+  },
+  "checks": {
+    "goTests": {
+      "passed": 388,
+      "packages": 6,
+      "skipped": 0,
+      "failed": 0
+    },
+    "vet": 0,
+    "moduleVerification": "all modules verified",
+    "contracts": "checked",
+    "corpus": {
+      "cases": 3,
+      "checkpoints": 687,
+      "sha256": "d33fecab42e2fda9d53b60dcd1341aa12bf86d6b5f4dfcce835ee21e8f267b94",
+      "scoring": 5
+    }
+  },
+  "budgets": {
+    "wallMs": 10000,
+    "processPeakRSSKiB": 262144
+  },
+  "withinBudgets": true,
+  "go": {
+    "arch": "amd64",
+    "platform": "linux",
+    "runtime": "go1.27.1",
+    "samples": [
+      {
+        "cpuSystemMs": 429.264,
+        "cpuUserMs": 5183.414,
+        "processPeakRSSKiB": 12212,
+        "wallMs": 4721.878
+      },
+      {
+        "cpuSystemMs": 534.168,
+        "cpuUserMs": 5048.977,
+        "processPeakRSSKiB": 12568,
+        "wallMs": 4691.787
+      },
+      {
+        "cpuSystemMs": 546.185,
+        "cpuUserMs": 4925.258,
+        "processPeakRSSKiB": 12568,
+        "wallMs": 4614.279
+      },
+      {
+        "cpuSystemMs": 481.071,
+        "cpuUserMs": 5094.543,
+        "processPeakRSSKiB": 12568,
+        "wallMs": 4695.683
+      },
+      {
+        "cpuSystemMs": 535.541,
+        "cpuUserMs": 5205.153,
+        "processPeakRSSKiB": 12568,
+        "wallMs": 4825.972
+      }
+    ],
+    "warmups": 1,
+    "work": {
+      "checkpoints": 422,
+      "transitions": 419,
+      "stateBytes": 5164794,
+      "viewBytes": 2023622,
+      "frameBytes": 28070878,
+      "finalDigests": [
+        "7c0551cfc7f43ec6dcaaa2ac93c4f942465dc62002d4b3aecc98d840a66e1d2b",
+        "8d3f820ac49fd1d39de31180b553f640c87c9d8d21922353f16ada2be2617718",
+        "8159324b80bf83e4d4bca6c700ded35a3f9cdb57aa03ec342db0064afeaba2d4"
+      ]
+    }
+  },
+  "node": {
+    "runtime": "v24.19.0",
+    "platform": "linux",
+    "arch": "x64",
+    "warmups": 1,
+    "samples": [
+      {
+        "wallMs": 1006.878901,
+        "cpuUserMs": 1046.214,
+        "cpuSystemMs": 15.254,
+        "processPeakRSSKiB": 132584
+      },
+      {
+        "wallMs": 1007.5679999999993,
+        "cpuUserMs": 1060.243,
+        "cpuSystemMs": 15.507,
+        "processPeakRSSKiB": 171112
+      },
+      {
+        "wallMs": 1041.3014780000003,
+        "cpuUserMs": 1067.159,
+        "cpuSystemMs": 3.631,
+        "processPeakRSSKiB": 171496
+      },
+      {
+        "wallMs": 997.5110199999999,
+        "cpuUserMs": 1065.632,
+        "cpuSystemMs": 0.258,
+        "processPeakRSSKiB": 176872
+      },
+      {
+        "wallMs": 987.1969049999998,
+        "cpuUserMs": 1030.472,
+        "cpuSystemMs": 0,
+        "processPeakRSSKiB": 177768
+      }
+    ],
+    "work": {
+      "checkpoints": 422,
+      "transitions": 419,
+      "stateBytes": 5164794,
+      "viewBytes": 2023622,
+      "frameBytes": 28070878,
+      "finalDigests": [
+        "7c0551cfc7f43ec6dcaaa2ac93c4f942465dc62002d4b3aecc98d840a66e1d2b",
+        "8d3f820ac49fd1d39de31180b553f640c87c9d8d21922353f16ada2be2617718",
+        "8159324b80bf83e4d4bca6c700ded35a3f9cdb57aa03ec342db0064afeaba2d4"
+      ]
+    }
+  },
+  "limits": "Measured replay excludes durable store and unported strategy. Process RSS includes warmup and runtime initialization. This is not a throughput/capacity test."
+}

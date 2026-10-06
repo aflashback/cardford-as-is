@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-05 — M02A compatibility gate passed
+
+The owner authorized the next unblocking implementation after urgent repairs. [M02A evidence](../qa/implementation/multi-game/m02a/status.md) records frozen Go/public contracts, independent supported-game replay, a complete Partners hand through HTTP/PostgreSQL, bounded cancellation/admission and matched-work measurements. Go met the local limits but was slower than the optimized Node reference; profiling remains explicit follow-up work. M03 durable records/replay is next. The TypeScript app, React UI, policy pins, six SQL migrations and original evidence remain preserved; production activation, human reviews and hosting stay deferred.
+
 ## 2026-10-05 — Urgent current-system repairs before the Go slice
 
 [CR-FIX-001](decisions/CR-FIX-001-urgent-system-repairs.md) records the owner's instruction to close urgent gaps first. Added UR-01–06: exact charged-rollout caps, strict active V1 load/save validation, durable immutable preparation receipts and authorization fences, owned accepted-command/trial reconciliation, bounded persistent client recovery and provider deadline/accounting fencing. Identity reads no longer depend on a readable active game; detected account switches invalidate prior table/review state. [Execution evidence](../qa/implementation/multi-game/urgent-repairs/status.md) retains initial failures, repairs, independent review and final checks. Forward migration 006 adds preparation attempts; original rules, policy/default pins, first five migrations and evaluation archives remain preserved. The remaining M02A work is Go/PostgreSQL contracts and one compatibility slice. Complete historical records, V2 activation, CPU isolation and larger resource checks remain planned; hosting, live providers and human evaluation stay deferred.

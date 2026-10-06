@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-05
+
+M02A: add an unexposed Go/PostgreSQL compatibility slice with generated strict public contracts, frozen deterministic primitives, independent Spades replay, representative Hearts passing/scoring, bounded execution and disposable database tests. Preserve the current TypeScript app, React UI, policy pins and original evidence. [Acceptance and limits](qa/implementation/multi-game/m02a/status.md); M03 durable records are next. This does not activate a replacement server or establish better performance/strategy.
+
 ## Unreleased — 2026-10-02
 
 [CR-STRAT-010](planning/decisions/CR-STRAT-010-observed-cases-and-browser-baseline.md): add selectable `spades-cases-4.0.0` and authored cues for partner spade conservation, lost lead access, proved remaining sweeps and unbeatable leads. Preserve the existing default and frozen baseline. Pin each game's policy and retain private original bot analyses; saved decisions and later trials retain their source policy. Add source-linked counterexamples and a [real browser baseline protocol](qa/experiments/2026-10-02-browser-baseline/README.md), with separate Luna player/observer evidence. Runtime Jev stays off; strategic-strength and human-learning gates remain open.

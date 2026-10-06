@@ -1,0 +1,14 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "server/internal/contracts/bindings.generated.go": "0bd044dfecb8c6063e233cce6ffb97da8e01cd88c8dfed1a2132a8ca72ccf9d0",
+    "server/internal/contracts/bindings.generated_test.go": "0a8add350b40d9ffd9b0842505955396161f1629aa5baae5103527300e3d265c",
+    "server/internal/contracts/contracts_test.go": "2013c6ffec1cd01a1dccd9774a8301f4d5ac7af3c9d70fd42a8256a6e6a88ffb",
+    "server/internal/contracts/schema.generated.json": "fa4288a3ac7fc5d6d9010a9e4ec125e4950a3f42718b1902157670773378f013",
+    "server/internal/contracts/semantics.go": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119",
+    "server/internal/contracts/validate.go": "b7f7d5e91aaa191b41093895d07127ecaa7cfc5213e4dd319a4e43a2bbfcfb68",
+    "scripts/m02a-contracts.mjs": "5494df262b878109432a10a77cd43950de9bad51fb05c81c88623f701e41a44a",
+    "planning/implementation/multi-game/portable-semantics.md": "8973746dd64fd2237742744313c41509fa1852eb00704a3b52a30f9827240a63",
+    "qa/implementation/multi-game/m02a/contracts/status.md": "150d8f796ef8b0533c3bac7547b34fd847f3a29f93a311e2a78dab533563f144"
+  }
+}

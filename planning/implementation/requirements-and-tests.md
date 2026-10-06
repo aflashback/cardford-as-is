@@ -240,3 +240,5 @@ The authoritative [SYS-01–12 acceptance register](multi-game/backend-readiness
 | UR-06 / SYS-02, SYS-08 | Inner provider deadline fences later accounting and dispatch even before the outer clock/timer expires; `openrouter.test.ts` | Provider remains off; this is fixture-only deadline evidence, not live provider acceptance |
 
 Hosting, operational infrastructure, native packaging and large capacity campaigns remain deferred with owners/triggers in that packet. Basic functional correctness, privacy, bounded failure and recovery remain first-app requirements. Existing M00–M02 acceptance is retained as scoped historical evidence.
+
+**M02A update:** the [bounded Go/PostgreSQL gate passed](../../qa/implementation/multi-game/m02a/status.md), with 388 passing test/subtest events, 422 exact supported checkpoints, one complete persisted Partners hand and declared local resource limits met. This supplies scoped SYS-01/02/12 evidence; it does not complete the full replacement SYS register or replace the UR fixtures above. M03 platform records and replay anchors are next.

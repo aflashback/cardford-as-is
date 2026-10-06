@@ -1,0 +1,1738 @@
+[
+  {
+    "id": "command-valid",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "command-missing-commandId",
+    "name": "CommandEnvelope",
+    "raw": "{\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-null-commandId",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":null,\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-missing-gameId",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-null-gameId",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":null,\"expectedRevision\":0,\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-missing-expectedRevision",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-null-expectedRevision",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":null,\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-missing-controlLeaseToken",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-null-controlLeaseToken",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":null}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-private-field",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\",\"hands\":[[\"SA\"]]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "command-wrong-case",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\",\"GameId\":\"secret\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "revision--1",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":-1,\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "revision-0.5",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0.5,\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "revision-9007199254740991",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":9007199254740991,\"controlLeaseToken\":\"lease\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "revision-9007199254740992",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":9007199254740992,\"controlLeaseToken\":\"lease\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "revision-numeric-string",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":\"1\",\"controlLeaseToken\":\"lease\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "revision-negative-zero",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":-0,\"controlLeaseToken\":\"lease\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "revision-rounded-binary64",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":9007199254740993,\"controlLeaseToken\":\"lease\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "bid-zero",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"bid\",\"bid\":0}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "bid-top",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"bid\",\"bid\":13}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "bid-too-high",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"bid\",\"bid\":14}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "bid-fraction",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"bid\",\"bid\":1.5}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "play",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"play\",\"card\":\"C10\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "hidden",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"play\",\"card\":\"SA\",\"hands\":[]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "pass",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"pass\",\"cards\":[\"C2\",\"D2\",\"H2\"]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "pass-duplicate",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"pass\",\"cards\":[\"C2\",\"C2\",\"H2\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "pass-empty",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"pass\",\"cards\":[]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "pass-null",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"pass\",\"cards\":null}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "pass-short",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"pass\",\"cards\":[\"C2\",\"D2\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "union-tags",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"bid\",\"bid\":1,\"card\":\"C2\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "card-ten",
+    "name": "Card",
+    "raw": "\"S10\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "card-ten-T",
+    "name": "Card",
+    "raw": "\"ST\"",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "card-newline",
+    "name": "Card",
+    "raw": "\"C2\\n\"",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "card-cr",
+    "name": "Card",
+    "raw": "\"C2\\r\"",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "card-line-separator",
+    "name": "Card",
+    "raw": "\"C2 \"",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "card-paragraph-separator",
+    "name": "Card",
+    "raw": "\"C2 \"",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "card-crlf",
+    "name": "Card",
+    "raw": "\"C2\\r\\n\"",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "unicode-scalar",
+    "name": "VersionedComponent",
+    "raw": "{\"id\":\"🂡\",\"version\":\"1\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "lone-high-surrogate",
+    "name": "VersionedComponent",
+    "raw": "{\"id\":\"\\ud800\",\"version\":\"1\"}",
+    "ajv": true,
+    "boundary": false
+  },
+  {
+    "id": "lone-low-surrogate",
+    "name": "VersionedComponent",
+    "raw": "{\"id\":\"\\udfff\",\"version\":\"1\"}",
+    "ajv": true,
+    "boundary": false
+  },
+  {
+    "id": "duplicate-property",
+    "name": "VersionedComponent",
+    "raw": "{\"id\":\"a\",\"id\":\"b\",\"version\":\"1\"}",
+    "ajv": true,
+    "boundary": false
+  },
+  {
+    "id": "duplicate-escaped-property",
+    "name": "VersionedComponent",
+    "raw": "{\"id\":\"a\",\"\\u0069d\":\"b\",\"version\":\"1\"}",
+    "ajv": true,
+    "boundary": false
+  },
+  {
+    "id": "optional-absent",
+    "name": "NewSessionRequest",
+    "raw": "{\"commandId\":\"new-game\",\"mode\":\"hearts\",\"expectedActiveGameId\":null}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "optional-null",
+    "name": "NewSessionRequest",
+    "raw": "{\"commandId\":\"new-game\",\"mode\":\"hearts\",\"expectedActiveGameId\":null,\"scenarioId\":null}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "mutually-exclusive-optionals",
+    "name": "NewSessionRequest",
+    "raw": "{\"commandId\":\"new-game\",\"mode\":\"hearts\",\"expectedActiveGameId\":null,\"scenarioId\":\"hearts-demo\",\"replayScenario\":true}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "nullable-present",
+    "name": "ReasoningEstimate",
+    "raw": "{\"competitorId\":\"x\",\"metric\":\"x\",\"event\":\"x\",\"unit\":\"x\",\"population\":\"x\",\"value\":1e-7,\"estimator\":{\"id\":\"x\",\"version\":\"1\"},\"uncertainty\":null}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "nullable-absent",
+    "name": "ReasoningEstimate",
+    "raw": "{\"competitorId\":\"x\",\"metric\":\"x\",\"event\":\"x\",\"unit\":\"x\",\"population\":\"x\",\"value\":1,\"estimator\":{\"id\":\"x\",\"version\":\"1\"}}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "v2-action",
+    "name": "V2ActionsRequest",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\",\"publicSchemaVersion\":\"2.0.0\",\"candidateId\":\"play:C2\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "v2-private-action",
+    "name": "V2ActionsRequest",
+    "raw": "{\"commandId\":\"11111111-2222-3333-4444-555555555555\",\"gameId\":\"game\",\"expectedRevision\":0,\"controlLeaseToken\":\"lease\",\"publicSchemaVersion\":\"2.0.0\",\"candidateId\":\"play:C2\",\"secret\":\"x\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-Mode",
+    "name": "Mode",
+    "raw": "\"hearts\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-Seat",
+    "name": "Seat",
+    "raw": "0",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-Card",
+    "name": "Card",
+    "raw": "\"C2\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-Suit",
+    "name": "Suit",
+    "raw": "\"C\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-Phase",
+    "name": "Phase",
+    "raw": "\"pass\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-GameAction",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"bid\",\"bid\":0}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-GameAction",
+    "name": "GameAction",
+    "raw": "{\"kind\":\"bid\",\"bid\":0,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-Play",
+    "name": "Play",
+    "raw": "{\"seat\":0,\"card\":\"C2\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-Play",
+    "name": "Play",
+    "raw": "{\"seat\":0,\"card\":\"C2\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-Trick",
+    "name": "Trick",
+    "raw": "{\"plays\":[{\"seat\":0,\"card\":\"C2\"},{\"seat\":1,\"card\":\"D3\"},{\"seat\":2,\"card\":\"H4\"},{\"seat\":3,\"card\":\"S5\"}],\"winner\":0}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-Trick",
+    "name": "Trick",
+    "raw": "{\"plays\":[{\"seat\":0,\"card\":\"C2\"},{\"seat\":1,\"card\":\"D3\"},{\"seat\":2,\"card\":\"H4\"},{\"seat\":3,\"card\":\"S5\"}],\"winner\":0,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HandResult",
+    "name": "HandResult",
+    "raw": "{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HandResult",
+    "name": "HandResult",
+    "raw": "{\"points\":[0,0,0,0],\"bags\":[0,0,0,0],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-GameView",
+    "name": "GameView",
+    "raw": "{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-GameView",
+    "name": "GameView",
+    "raw": "{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-Preferences",
+    "name": "Preferences",
+    "raw": "{\"coachMode\":\"asked\",\"gameSpeed\":1}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-Preferences",
+    "name": "Preferences",
+    "raw": "{\"coachMode\":\"asked\",\"gameSpeed\":1,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-Plan",
+    "name": "Plan",
+    "raw": "\"demo\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-PaidPlan",
+    "name": "PaidPlan",
+    "raw": "\"practice\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-CoachAccess",
+    "name": "CoachAccess",
+    "raw": "{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-CoachAccess",
+    "name": "CoachAccess",
+    "raw": "{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SessionStats",
+    "name": "SessionStats",
+    "raw": "{\"decisions\":0,\"helped\":0,\"suggestions\":0}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SessionStats",
+    "name": "SessionStats",
+    "raw": "{\"decisions\":0,\"helped\":0,\"suggestions\":0,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SessionView",
+    "name": "SessionView",
+    "raw": "{\"game\":{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[]},\"revision\":0,\"decisionId\":\"x0\",\"preferences\":{\"coachMode\":\"asked\",\"gameSpeed\":1},\"access\":{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false},\"source\":\"code\",\"controlLeaseToken\":\"x0\",\"stats\":{\"decisions\":0,\"helped\":0,\"suggestions\":0}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SessionView",
+    "name": "SessionView",
+    "raw": "{\"game\":{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[]},\"revision\":0,\"decisionId\":\"x0\",\"preferences\":{\"coachMode\":\"asked\",\"gameSpeed\":1},\"access\":{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false},\"source\":\"code\",\"controlLeaseToken\":\"x0\",\"stats\":{\"decisions\":0,\"helped\":0,\"suggestions\":0},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AdviceView",
+    "name": "AdviceView",
+    "raw": "{\"focus\":\"x0\",\"notice\":\"x0\",\"reason\":\"x0\",\"suggestion\":\"x0\",\"source\":\"code\",\"decisionId\":\"x0\",\"requestedLevel\":1}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AdviceView",
+    "name": "AdviceView",
+    "raw": "{\"focus\":\"x0\",\"notice\":\"x0\",\"reason\":\"x0\",\"suggestion\":\"x0\",\"source\":\"code\",\"decisionId\":\"x0\",\"requestedLevel\":1,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-CommandEnvelope",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-CommandEnvelope",
+    "name": "CommandEnvelope",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-NewSessionRequest",
+    "name": "NewSessionRequest",
+    "raw": "{\"commandId\":\"x0\",\"mode\":\"hearts\",\"expectedActiveGameId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-NewSessionRequest",
+    "name": "NewSessionRequest",
+    "raw": "{\"commandId\":\"x0\",\"mode\":\"hearts\",\"expectedActiveGameId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ActionsRequest",
+    "name": "ActionsRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"action\":{\"kind\":\"bid\",\"bid\":0}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ActionsRequest",
+    "name": "ActionsRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"action\":{\"kind\":\"bid\",\"bid\":0},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-PrepareRequest",
+    "name": "PrepareRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-PrepareRequest",
+    "name": "PrepareRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-CommandStatusView",
+    "name": "CommandStatusView",
+    "raw": "{\"status\":\"accepted\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-CommandStatusView",
+    "name": "CommandStatusView",
+    "raw": "{\"status\":\"accepted\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-IdentityView",
+    "name": "IdentityView",
+    "raw": "{\"playerId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-IdentityView",
+    "name": "IdentityView",
+    "raw": "{\"playerId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-PrepareView",
+    "name": "PrepareView",
+    "raw": "{\"preparedDecisionId\":\"x0\",\"decisionId\":\"x0\",\"revision\":0,\"source\":\"code\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-PrepareView",
+    "name": "PrepareView",
+    "raw": "{\"preparedDecisionId\":\"x0\",\"decisionId\":\"x0\",\"revision\":0,\"source\":\"code\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AdvanceRequest",
+    "name": "AdvanceRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"kind\":\"bot\",\"preparedDecisionId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AdvanceRequest",
+    "name": "AdvanceRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"kind\":\"bot\",\"preparedDecisionId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-NextHandRequest",
+    "name": "NextHandRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-NextHandRequest",
+    "name": "NextHandRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AdviceRequest",
+    "name": "AdviceRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"decisionId\":\"x0\",\"requestedLevel\":1}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AdviceRequest",
+    "name": "AdviceRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"decisionId\":\"x0\",\"requestedLevel\":1,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-PreferencesRequest",
+    "name": "PreferencesRequest",
+    "raw": "{\"commandId\":\"x0\",\"preferences\":{\"coachMode\":\"asked\",\"gameSpeed\":1}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-PreferencesRequest",
+    "name": "PreferencesRequest",
+    "raw": "{\"commandId\":\"x0\",\"preferences\":{\"coachMode\":\"asked\",\"gameSpeed\":1},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HandUnlockRequest",
+    "name": "HandUnlockRequest",
+    "raw": "{\"requestId\":\"x0\",\"gameId\":\"x0\",\"handId\":\"x0\",\"decisionId\":\"x0\",\"expectedRevision\":0,\"requestedLevel\":1,\"controlLeaseToken\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HandUnlockRequest",
+    "name": "HandUnlockRequest",
+    "raw": "{\"requestId\":\"x0\",\"gameId\":\"x0\",\"handId\":\"x0\",\"decisionId\":\"x0\",\"expectedRevision\":0,\"requestedLevel\":1,\"controlLeaseToken\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HandUnlockView",
+    "name": "HandUnlockView",
+    "raw": "{\"access\":{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false},\"advice\":{\"focus\":\"x0\",\"notice\":\"x0\",\"reason\":\"x0\",\"suggestion\":\"x0\",\"source\":\"code\",\"decisionId\":\"x0\",\"requestedLevel\":1}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HandUnlockView",
+    "name": "HandUnlockView",
+    "raw": "{\"access\":{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false},\"advice\":{\"focus\":\"x0\",\"notice\":\"x0\",\"reason\":\"x0\",\"suggestion\":\"x0\",\"source\":\"code\",\"decisionId\":\"x0\",\"requestedLevel\":1},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ExposureRequest",
+    "name": "ExposureRequest",
+    "raw": "{\"gameId\":\"x0\",\"decisionId\":\"x0\",\"eventId\":\"x0\",\"displayedLevel\":1}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ExposureRequest",
+    "name": "ExposureRequest",
+    "raw": "{\"gameId\":\"x0\",\"decisionId\":\"x0\",\"eventId\":\"x0\",\"displayedLevel\":1,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AcceptedView",
+    "name": "AcceptedView",
+    "raw": "{\"accepted\":true}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AcceptedView",
+    "name": "AcceptedView",
+    "raw": "{\"accepted\":true,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReviewFrame",
+    "name": "ReviewFrame",
+    "raw": "{\"game\":{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[]},\"action\":{\"kind\":\"bid\",\"bid\":0},\"decisionId\":\"x0\",\"notes\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReviewFrame",
+    "name": "ReviewFrame",
+    "raw": "{\"game\":{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[]},\"action\":{\"kind\":\"bid\",\"bid\":0},\"decisionId\":\"x0\",\"notes\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReviewCase",
+    "name": "ReviewCase",
+    "raw": "{\"decisionId\":\"x0\",\"handNumber\":1,\"action\":{\"kind\":\"bid\",\"bid\":0},\"assisted\":false,\"status\":\"not-assessed\",\"summary\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReviewCase",
+    "name": "ReviewCase",
+    "raw": "{\"decisionId\":\"x0\",\"handNumber\":1,\"action\":{\"kind\":\"bid\",\"bid\":0},\"assisted\":false,\"status\":\"not-assessed\",\"summary\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReviewIndex",
+    "name": "ReviewIndex",
+    "raw": "{\"cases\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReviewIndex",
+    "name": "ReviewIndex",
+    "raw": "{\"cases\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReviewView",
+    "name": "ReviewView",
+    "raw": "{\"decisionId\":\"x0\",\"label\":\"Original\",\"liveRevision\":0,\"frames\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReviewView",
+    "name": "ReviewView",
+    "raw": "{\"decisionId\":\"x0\",\"label\":\"Original\",\"liveRevision\":0,\"frames\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TrialRequest",
+    "name": "TrialRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"trialId\":\"x0\",\"alternative\":{\"kind\":\"play\",\"card\":\"C2\"},\"decisionId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TrialRequest",
+    "name": "TrialRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"trialId\":\"x0\",\"alternative\":{\"kind\":\"play\",\"card\":\"C2\"},\"decisionId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReviewTrial",
+    "name": "ReviewTrial",
+    "raw": "{\"trialId\":\"x0\",\"decisionId\":\"x0\",\"label\":\"Possible continuation\",\"liveRevision\":0,\"frames\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReviewTrial",
+    "name": "ReviewTrial",
+    "raw": "{\"trialId\":\"x0\",\"decisionId\":\"x0\",\"label\":\"Possible continuation\",\"liveRevision\":0,\"frames\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-RecapView",
+    "name": "RecapView",
+    "raw": "{\"handNumber\":1,\"result\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"assessmentStatus\":\"pending\",\"message\":\"x0\",\"stats\":{\"decisions\":0,\"helped\":0,\"suggestions\":0}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RecapView",
+    "name": "RecapView",
+    "raw": "{\"handNumber\":1,\"result\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"assessmentStatus\":\"pending\",\"message\":\"x0\",\"stats\":{\"decisions\":0,\"helped\":0,\"suggestions\":0},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SubscriptionView",
+    "name": "SubscriptionView",
+    "raw": "{\"status\":\"none\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"currentPeriodEnd\":\"x0\",\"billingAvailable\":false}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SubscriptionView",
+    "name": "SubscriptionView",
+    "raw": "{\"status\":\"none\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"currentPeriodEnd\":\"x0\",\"billingAvailable\":false,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-OfferView",
+    "name": "OfferView",
+    "raw": "{\"id\":\"practice\",\"name\":\"x0\",\"description\":\"x0\",\"price\":null,\"currency\":null}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-OfferView",
+    "name": "OfferView",
+    "raw": "{\"id\":\"practice\",\"name\":\"x0\",\"description\":\"x0\",\"price\":null,\"currency\":null,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccountView",
+    "name": "AccountView",
+    "raw": "{\"authMode\":\"local-test\",\"player\":{\"displayName\":\"x0\",\"id\":\"11111111-2222-3333-4444-555555555555\"},\"access\":{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false},\"subscription\":{\"status\":\"none\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"currentPeriodEnd\":\"x0\",\"billingAvailable\":false},\"offers\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccountView",
+    "name": "AccountView",
+    "raw": "{\"authMode\":\"local-test\",\"player\":{\"displayName\":\"x0\",\"id\":\"11111111-2222-3333-4444-555555555555\"},\"access\":{\"plan\":\"demo\",\"coverage\":\"none\",\"canPlay\":false,\"canCoach\":false,\"remainingHands\":0,\"resetsAt\":\"x0\",\"handUnlocked\":false,\"canStartWork\":false,\"localMock\":false},\"subscription\":{\"status\":\"none\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"currentPeriodEnd\":\"x0\",\"billingAvailable\":false},\"offers\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccountCommand",
+    "name": "AccountCommand",
+    "raw": "{\"commandId\":\"x0\",\"action\":\"select-plan\",\"plan\":\"practice\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccountCommand",
+    "name": "AccountCommand",
+    "raw": "{\"commandId\":\"x0\",\"action\":\"select-plan\",\"plan\":\"practice\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ApiError",
+    "name": "ApiError",
+    "raw": "{\"code\":\"UNAUTHENTICATED\",\"message\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ApiError",
+    "name": "ApiError",
+    "raw": "{\"code\":\"UNAUTHENTICATED\",\"message\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReviewQuery",
+    "name": "ReviewQuery",
+    "raw": "{}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReviewQuery",
+    "name": "ReviewQuery",
+    "raw": "{\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReviewStepQuery",
+    "name": "ReviewStepQuery",
+    "raw": "{}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReviewStepQuery",
+    "name": "ReviewStepQuery",
+    "raw": "{\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccessQuery",
+    "name": "AccessQuery",
+    "raw": "{}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccessQuery",
+    "name": "AccessQuery",
+    "raw": "{\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SuitMemory",
+    "name": "SuitMemory",
+    "raw": "{\"suit\":\"C\",\"played\":0,\"remaining\":0,\"voidSeats\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SuitMemory",
+    "name": "SuitMemory",
+    "raw": "{\"suit\":\"C\",\"played\":0,\"remaining\":0,\"voidSeats\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-NotesView",
+    "name": "NotesView",
+    "raw": "{\"memory\":[],\"outgoing\":[],\"received\":[],\"history\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-NotesView",
+    "name": "NotesView",
+    "raw": "{\"memory\":[],\"outgoing\":[],\"received\":[],\"history\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-BillingPreviewRequest",
+    "name": "BillingPreviewRequest",
+    "raw": "{\"action\":\"select-plan\",\"plan\":\"practice\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-BillingPreviewRequest",
+    "name": "BillingPreviewRequest",
+    "raw": "{\"action\":\"select-plan\",\"plan\":\"practice\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-BillingPreview",
+    "name": "BillingPreview",
+    "raw": "{\"previewId\":\"x0\",\"action\":\"select-plan\",\"plan\":\"practice\",\"effectiveAt\":\"x0\",\"expiresAt\":\"x0\",\"amountDueNow\":null,\"currency\":null,\"mode\":\"fixture\",\"notice\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-BillingPreview",
+    "name": "BillingPreview",
+    "raw": "{\"previewId\":\"x0\",\"action\":\"select-plan\",\"plan\":\"practice\",\"effectiveAt\":\"x0\",\"expiresAt\":\"x0\",\"amountDueNow\":null,\"currency\":null,\"mode\":\"fixture\",\"notice\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-BillingConfirmRequest",
+    "name": "BillingConfirmRequest",
+    "raw": "{\"commandId\":\"x0\",\"previewId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-BillingConfirmRequest",
+    "name": "BillingConfirmRequest",
+    "raw": "{\"commandId\":\"x0\",\"previewId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-BillingOperation",
+    "name": "BillingOperation",
+    "raw": "{\"operationId\":\"x0\",\"status\":\"confirmed\",\"effectiveAt\":\"x0\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"mode\":\"fixture\",\"message\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-BillingOperation",
+    "name": "BillingOperation",
+    "raw": "{\"operationId\":\"x0\",\"status\":\"confirmed\",\"effectiveAt\":\"x0\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"mode\":\"fixture\",\"message\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-FamilyMember",
+    "name": "FamilyMember",
+    "raw": "{\"assignmentId\":\"x0\",\"playerId\":\"x0\",\"displayName\":\"x0\",\"seatClass\":\"unlimited\",\"status\":\"active\",\"periodEnd\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-FamilyMember",
+    "name": "FamilyMember",
+    "raw": "{\"assignmentId\":\"x0\",\"playerId\":\"x0\",\"displayName\":\"x0\",\"seatClass\":\"unlimited\",\"status\":\"active\",\"periodEnd\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-FamilyInvitation",
+    "name": "FamilyInvitation",
+    "raw": "{\"invitationId\":\"x0\",\"inviteeId\":\"x0\",\"seatClass\":\"unlimited\",\"expiresAt\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-FamilyInvitation",
+    "name": "FamilyInvitation",
+    "raw": "{\"invitationId\":\"x0\",\"inviteeId\":\"x0\",\"seatClass\":\"unlimited\",\"expiresAt\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-FamilyView",
+    "name": "FamilyView",
+    "raw": "{\"familyId\":\"x0\",\"role\":\"none\",\"payer\":{\"playerId\":\"x0\",\"displayName\":\"x0\"},\"members\":[],\"invitations\":[],\"periodEnd\":\"x0\",\"localMock\":true}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-FamilyView",
+    "name": "FamilyView",
+    "raw": "{\"familyId\":\"x0\",\"role\":\"none\",\"payer\":{\"playerId\":\"x0\",\"displayName\":\"x0\"},\"members\":[],\"invitations\":[],\"periodEnd\":\"x0\",\"localMock\":true,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-FamilyCommand",
+    "name": "FamilyCommand",
+    "raw": "{\"commandId\":\"x0\",\"action\":\"create\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-FamilyCommand",
+    "name": "FamilyCommand",
+    "raw": "{\"commandId\":\"x0\",\"action\":\"create\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccountDeleteRequest",
+    "name": "AccountDeleteRequest",
+    "raw": "{\"commandId\":\"x0\",\"confirmation\":\"DELETE LOCAL ACCOUNT\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccountDeleteRequest",
+    "name": "AccountDeleteRequest",
+    "raw": "{\"commandId\":\"x0\",\"confirmation\":\"DELETE LOCAL ACCOUNT\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccountDeleteView",
+    "name": "AccountDeleteView",
+    "raw": "{\"deleted\":true,\"mode\":\"local-test\",\"message\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccountDeleteView",
+    "name": "AccountDeleteView",
+    "raw": "{\"deleted\":true,\"mode\":\"local-test\",\"message\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ExportView",
+    "name": "ExportView",
+    "raw": "{\"formatVersion\":\"local-export-1\",\"exportedAt\":\"x0\",\"mode\":\"local-test\",\"player\":{\"id\":\"x0\",\"displayName\":\"x0\",\"preferences\":{\"coachMode\":\"asked\",\"gameSpeed\":1}},\"subscription\":{\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"currentPeriodEnd\":\"x0\"},\"games\":[],\"coachedHands\":[],\"billing\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ExportView",
+    "name": "ExportView",
+    "raw": "{\"formatVersion\":\"local-export-1\",\"exportedAt\":\"x0\",\"mode\":\"local-test\",\"player\":{\"id\":\"x0\",\"displayName\":\"x0\",\"preferences\":{\"coachMode\":\"asked\",\"gameSpeed\":1}},\"subscription\":{\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"currentPeriodEnd\":\"x0\"},\"games\":[],\"coachedHands\":[],\"billing\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ScenarioId",
+    "name": "ScenarioId",
+    "raw": "\"x0\"",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "witness-DevScenarioView",
+    "name": "DevScenarioView",
+    "raw": "{\"id\":\"x0\",\"version\":\"1.0.0\",\"label\":\"x0\",\"mode\":\"hearts\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-DevScenarioView",
+    "name": "DevScenarioView",
+    "raw": "{\"id\":\"x0\",\"version\":\"1.0.0\",\"label\":\"x0\",\"mode\":\"hearts\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-DevScenariosView",
+    "name": "DevScenariosView",
+    "raw": "{\"scenarios\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-DevScenariosView",
+    "name": "DevScenariosView",
+    "raw": "{\"scenarios\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-VersionedComponent",
+    "name": "VersionedComponent",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-VersionedComponent",
+    "name": "VersionedComponent",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ModulePin",
+    "name": "ModulePin",
+    "raw": "{\"gameId\":\"x0\",\"variantId\":\"x0\",\"moduleVersion\":\"x0\",\"ruleProfileId\":\"x0\",\"stateSchemaVersion\":\"x0\",\"observationSchemaVersion\":\"x0\",\"publicSchemaVersion\":\"x0\",\"eventSchemaVersion\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ModulePin",
+    "name": "ModulePin",
+    "raw": "{\"gameId\":\"x0\",\"variantId\":\"x0\",\"moduleVersion\":\"x0\",\"ruleProfileId\":\"x0\",\"stateSchemaVersion\":\"x0\",\"observationSchemaVersion\":\"x0\",\"publicSchemaVersion\":\"x0\",\"eventSchemaVersion\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-CoachedUnit",
+    "name": "CoachedUnit",
+    "raw": "{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-CoachedUnit",
+    "name": "CoachedUnit",
+    "raw": "{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReasoningObjective",
+    "name": "ReasoningObjective",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReasoningObjective",
+    "name": "ReasoningObjective",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReasoningHorizon",
+    "name": "ReasoningHorizon",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReasoningHorizon",
+    "name": "ReasoningHorizon",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReasoningEstimate",
+    "name": "ReasoningEstimate",
+    "raw": "{\"competitorId\":\"x0\",\"metric\":\"x0\",\"event\":\"x0\",\"unit\":\"x0\",\"population\":\"x0\",\"value\":0,\"estimator\":{\"id\":\"x0\",\"version\":\"x0\"},\"uncertainty\":{\"method\":{\"id\":\"x0\",\"version\":\"x0\"},\"lower\":0,\"upper\":0}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReasoningEstimate",
+    "name": "ReasoningEstimate",
+    "raw": "{\"competitorId\":\"x0\",\"metric\":\"x0\",\"event\":\"x0\",\"unit\":\"x0\",\"population\":\"x0\",\"value\":0,\"estimator\":{\"id\":\"x0\",\"version\":\"x0\"},\"uncertainty\":{\"method\":{\"id\":\"x0\",\"version\":\"x0\"},\"lower\":0,\"upper\":0},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReasoningScenario",
+    "name": "ReasoningScenario",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"applicability\":\"applies\",\"evidence\":[],\"exceptions\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReasoningScenario",
+    "name": "ReasoningScenario",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"applicability\":\"applies\",\"evidence\":[],\"exceptions\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-ReasoningFact",
+    "name": "ReasoningFact",
+    "raw": "{\"id\":\"x0\",\"kind\":\"exact\",\"summary\":\"x0\",\"evidence\":[],\"candidateId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-ReasoningFact",
+    "name": "ReasoningFact",
+    "raw": "{\"id\":\"x0\",\"kind\":\"exact\",\"summary\":\"x0\",\"evidence\":[],\"candidateId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-RegisteredActorPacket",
+    "name": "RegisteredActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RegisteredActorPacket",
+    "name": "RegisteredActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-RegisteredSessionView",
+    "name": "RegisteredSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"table\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RegisteredSessionView",
+    "name": "RegisteredSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"table\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-RegisteredAnalysis",
+    "name": "RegisteredAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"origin\":\"code\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RegisteredAnalysis",
+    "name": "RegisteredAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"origin\":\"code\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-RegisteredActorEvent",
+    "name": "RegisteredActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"hand-started\",\"message\":\"x0\",\"seat\":0,\"card\":\"C2\",\"bid\":null}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RegisteredActorEvent",
+    "name": "RegisteredActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"hand-started\",\"message\":\"x0\",\"seat\":0,\"card\":\"C2\",\"bid\":null,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-RegisteredTarget",
+    "name": "RegisteredTarget",
+    "raw": "{\"gameId\":\"hearts\",\"variantId\":\"solo\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RegisteredTarget",
+    "name": "RegisteredTarget",
+    "raw": "{\"gameId\":\"hearts\",\"variantId\":\"solo\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-RegisteredSelector",
+    "name": "RegisteredSelector",
+    "raw": "{\"target\":{\"gameId\":\"hearts\",\"variantId\":\"solo\"},\"moduleVersion\":\"x0\",\"ruleProfileId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RegisteredSelector",
+    "name": "RegisteredSelector",
+    "raw": "{\"target\":{\"gameId\":\"hearts\",\"variantId\":\"solo\"},\"moduleVersion\":\"x0\",\"ruleProfileId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-V2ActionsRequest",
+    "name": "V2ActionsRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"publicSchemaVersion\":\"2.0.0\",\"candidateId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-V2ActionsRequest",
+    "name": "V2ActionsRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"publicSchemaVersion\":\"2.0.0\",\"candidateId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-VersionedActionsRequest",
+    "name": "VersionedActionsRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"action\":{\"kind\":\"bid\",\"bid\":0}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-VersionedActionsRequest",
+    "name": "VersionedActionsRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"action\":{\"kind\":\"bid\",\"bid\":0},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-V2NewSessionRequest",
+    "name": "V2NewSessionRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"publicSchemaVersion\":\"2.0.0\",\"selector\":{\"target\":{\"gameId\":\"hearts\",\"variantId\":\"solo\"},\"moduleVersion\":\"x0\",\"ruleProfileId\":\"x0\"}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-V2NewSessionRequest",
+    "name": "V2NewSessionRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0\",\"publicSchemaVersion\":\"2.0.0\",\"selector\":{\"target\":{\"gameId\":\"hearts\",\"variantId\":\"solo\"},\"moduleVersion\":\"x0\",\"ruleProfileId\":\"x0\"},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-VersionedNewSessionRequest",
+    "name": "VersionedNewSessionRequest",
+    "raw": "{\"commandId\":\"x0\",\"mode\":\"hearts\",\"expectedActiveGameId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-VersionedNewSessionRequest",
+    "name": "VersionedNewSessionRequest",
+    "raw": "{\"commandId\":\"x0\",\"mode\":\"hearts\",\"expectedActiveGameId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-DemoFrameRequest",
+    "name": "DemoFrameRequest",
+    "raw": "{\"kind\":\"open\",\"contentVersion\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-DemoFrameRequest",
+    "name": "DemoFrameRequest",
+    "raw": "{\"kind\":\"open\",\"contentVersion\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-DemoFrame",
+    "name": "DemoFrame",
+    "raw": "{\"contentVersion\":\"x0\",\"nodeId\":\"x0\",\"label\":\"demo\",\"title\":\"x0\",\"body\":\"x0\",\"cards\":[],\"choices\":[],\"complete\":false}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-DemoFrame",
+    "name": "DemoFrame",
+    "raw": "{\"contentVersion\":\"x0\",\"nodeId\":\"x0\",\"label\":\"demo\",\"title\":\"x0\",\"body\":\"x0\",\"cards\":[],\"choices\":[],\"complete\":false,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccessAllowance",
+    "name": "AccessAllowance",
+    "raw": "{\"kind\":\"unlimited\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccessAllowance",
+    "name": "AccessAllowance",
+    "raw": "{\"kind\":\"unlimited\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccessOffer",
+    "name": "AccessOffer",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"enabled\":false,\"kind\":\"free\",\"targets\":[{\"gameId\":\"hearts\",\"variantId\":\"solo\"}],\"play\":false,\"coach\":{\"tools\":[],\"allowance\":{\"kind\":\"unlimited\"}},\"continuation\":\"pause-at-expiry\",\"activation\":\"automatic\",\"validitySeconds\":1}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccessOffer",
+    "name": "AccessOffer",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"enabled\":false,\"kind\":\"free\",\"targets\":[{\"gameId\":\"hearts\",\"variantId\":\"solo\"}],\"play\":false,\"coach\":{\"tools\":[],\"allowance\":{\"kind\":\"unlimited\"}},\"continuation\":\"pause-at-expiry\",\"activation\":\"automatic\",\"validitySeconds\":1,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccessOfferPolicy",
+    "name": "AccessOfferPolicy",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"accessGeneration\":0,\"precedence\":[],\"offers\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccessOfferPolicy",
+    "name": "AccessOfferPolicy",
+    "raw": "{\"id\":\"x0\",\"version\":\"x0\",\"accessGeneration\":0,\"precedence\":[],\"offers\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-AccessDecision",
+    "name": "AccessDecision",
+    "raw": "{\"accessGeneration\":0,\"applied\":[],\"remaining\":0,\"continuation\":\"pause-at-expiry\",\"allowed\":true,\"reason\":\"grant\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-AccessDecision",
+    "name": "AccessDecision",
+    "raw": "{\"accessGeneration\":0,\"applied\":[],\"remaining\":0,\"continuation\":\"pause-at-expiry\",\"allowed\":true,\"reason\":\"grant\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HeartsCandidate",
+    "name": "HeartsCandidate",
+    "raw": "{\"kind\":\"play\",\"card\":\"C2\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HeartsCandidate",
+    "name": "HeartsCandidate",
+    "raw": "{\"kind\":\"play\",\"card\":\"C2\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HeartsObservation",
+    "name": "HeartsObservation",
+    "raw": "{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HeartsObservation",
+    "name": "HeartsObservation",
+    "raw": "{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HeartsActorPacket",
+    "name": "HeartsActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HeartsActorPacket",
+    "name": "HeartsActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HeartsSessionView",
+    "name": "HeartsSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"table\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HeartsSessionView",
+    "name": "HeartsSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"table\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0}},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HeartsAnalysis",
+    "name": "HeartsAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"origin\":\"code\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HeartsAnalysis",
+    "name": "HeartsAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"origin\":\"code\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-HeartsActorEvent",
+    "name": "HeartsActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"hand-started\",\"message\":\"x0\",\"seat\":0,\"card\":\"C2\",\"bid\":null}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-HeartsActorEvent",
+    "name": "HeartsActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"hand-started\",\"message\":\"x0\",\"seat\":0,\"card\":\"C2\",\"bid\":null,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SpadesCandidate",
+    "name": "SpadesCandidate",
+    "raw": "{\"kind\":\"play\",\"card\":\"C2\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SpadesCandidate",
+    "name": "SpadesCandidate",
+    "raw": "{\"kind\":\"play\",\"card\":\"C2\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SpadesObservation",
+    "name": "SpadesObservation",
+    "raw": "{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"spadesBroken\":false,\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"bags\":[0,0,0,0]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SpadesObservation",
+    "name": "SpadesObservation",
+    "raw": "{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"spadesBroken\":false,\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"bags\":[0,0,0,0],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SpadesActorPacket",
+    "name": "SpadesActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"spadesBroken\":false,\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"bags\":[0,0,0,0]},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SpadesActorPacket",
+    "name": "SpadesActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"spadesBroken\":false,\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"bags\":[0,0,0,0]},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SpadesSessionView",
+    "name": "SpadesSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"table\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"spadesBroken\":false,\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"bags\":[0,0,0,0]},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SpadesSessionView",
+    "name": "SpadesSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"table\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"spadesBroken\":false,\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"bags\":[0,0,0,0]},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SpadesAnalysis",
+    "name": "SpadesAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"origin\":\"code\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SpadesAnalysis",
+    "name": "SpadesAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"origin\":\"code\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-SpadesActorEvent",
+    "name": "SpadesActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"hand-started\",\"message\":\"x0\",\"seat\":0,\"card\":\"C2\",\"bid\":0}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-SpadesActorEvent",
+    "name": "SpadesActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"hand-started\",\"message\":\"x0\",\"seat\":0,\"card\":\"C2\",\"bid\":0,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "nested-hidden-HeartsActorPacket",
+    "name": "HeartsActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0},\"hands\":[[\"SA\"]]},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "nested-hidden-SpadesActorPacket",
+    "name": "SpadesActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"spadesBroken\":false,\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"bags\":[0,0,0,0],\"hands\":[[\"SA\"]]},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "conditional-sealed-turn",
+    "name": "GameView",
+    "raw": "{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":0,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "date-iso-preserved",
+    "name": "BillingOperation",
+    "raw": "{\"operationId\":\"x0\",\"status\":\"confirmed\",\"effectiveAt\":\"2026-10-05T22:12:34.567Z\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"mode\":\"fixture\",\"message\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "date-offset-preserved",
+    "name": "BillingOperation",
+    "raw": "{\"operationId\":\"x0\",\"status\":\"confirmed\",\"effectiveAt\":\"2026-10-05T18:12:34.567-04:00\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"mode\":\"fixture\",\"message\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "date-current-schema-is-text",
+    "name": "BillingOperation",
+    "raw": "{\"operationId\":\"x0\",\"status\":\"confirmed\",\"effectiveAt\":\"not-a-date\",\"plan\":\"practice\",\"cancelAtPeriodEnd\":false,\"mode\":\"fixture\",\"message\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "identifier-max",
+    "name": "IdentityView",
+    "raw": "{\"playerId\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "identifier-too-long",
+    "name": "IdentityView",
+    "raw": "{\"playerId\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "identifier-scalar-length",
+    "name": "IdentityView",
+    "raw": "{\"playerId\":\"🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡🂡\"}",
+    "ajv": true,
+    "boundary": true
+  }
+]
