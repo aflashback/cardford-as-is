@@ -1,0 +1,29 @@
+File: performance-go1.26.8.exe
+Build ID: C:\repos\test-jev\.local\windows-tools\performance-go1.26.8.exe2026-10-05 23:39:44.4985271 -0400 EDT
+Type: cpu
+Time: 2026-10-05 23:40:28 EDT
+Duration: 27.99s, Total samples = 32.61s (116.52%)
+Showing nodes accounting for 1.59s, 4.88% of 32.61s total
+Dropped 443 nodes (cum <= 0.16s)
+Showing top 20 nodes out of 209
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%     26.63s 81.66%  cardford/server/internal/gamekernel.(*Executor).Replay
+         0     0%     0%     26.63s 81.66%  main.job
+         0     0%     0%     26.63s 81.66%  main.main
+         0     0%     0%     26.63s 81.66%  main.main.func1
+         0     0%     0%     26.63s 81.66%  runtime.main
+         0     0%     0%     23.91s 73.32%  cardford/server/internal/games/spades.DecodeState
+         0     0%     0%     23.02s 70.59%  cardford/server/internal/gamekernel.(*Executor).frame
+         0     0%     0%     22.56s 69.18%  cardford/server/internal/games/spades.strictDecode
+     0.24s  0.74%  0.74%     10.81s 33.15%  cardford/server/internal/games/spades.checkShape
+     0.19s  0.58%  1.32%     10.72s 32.87%  encoding/json.(*decodeState).unmarshal
+     0.10s  0.31%  1.63%     10.61s 32.54%  encoding/json.(*Decoder).Decode
+     0.23s  0.71%  2.33%     10.26s 31.46%  encoding/json.(*decodeState).value
+     0.11s  0.34%  2.67%      8.54s 26.19%  cardford/server/internal/games/spades.scanJSON
+     0.25s  0.77%  3.43%      8.39s 25.73%  encoding/json.(*Decoder).Token
+     0.01s 0.031%  3.47%      8.16s 25.02%  encoding/json.Unmarshal
+     0.46s  1.41%  4.88%      7.47s 22.91%  encoding/json.(*decodeState).object
+         0     0%  4.88%      7.19s 22.05%  cardford/server/internal/gamekernel.Funcs.SafeView
+         0     0%  4.88%      7.19s 22.05%  cardford/server/internal/games/spades.SafeView
+         0     0%  4.88%      6.77s 20.76%  cardford/server/internal/gamekernel.Funcs.Observe
+         0     0%  4.88%      6.77s 20.76%  cardford/server/internal/games/spades.Observe

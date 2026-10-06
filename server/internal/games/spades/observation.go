@@ -110,12 +110,15 @@ func SafeView(state json.RawMessage, seat int) (json.RawMessage, error) {
 		return nil, fmt.Errorf("invalid seat")
 	}
 	o := observation(s, seat)
-	v := gameView{ID: s.ID, Mode: o.Mode, Phase: o.Phase, Hand: o.Hand, HandCounts: o.HandSizes, Bids: o.Bids, Tricks: o.Tricks, Scores: o.Scores, Bags: o.Bags, Trick: o.Trick, History: o.History, Turn: o.Turn, Dealer: o.Dealer, HandNumber: o.HandNumber, HeartsBroken: o.HeartsBroken, SpadesBroken: o.SpadesBroken, PassDirection: o.PassDirection, Received: o.Pass.Incoming, Outgoing: o.Pass.Outgoing, HandResult: o.HandResult, LegalActions: []publicAction{}}
-	if len(s.Trick) > 0 {
-		v.CurrentWinner = ptr(trickWinner(s.Trick))
+	return json.Marshal(view(s.ID, o))
+}
+func view(id string, o Observation) gameView {
+	v := gameView{ID: id, Mode: o.Mode, Phase: o.Phase, Hand: o.Hand, HandCounts: o.HandSizes, Bids: o.Bids, Tricks: o.Tricks, Scores: o.Scores, Bags: o.Bags, Trick: o.Trick, History: o.History, Turn: o.Turn, Dealer: o.Dealer, HandNumber: o.HandNumber, HeartsBroken: o.HeartsBroken, SpadesBroken: o.SpadesBroken, PassDirection: o.PassDirection, Received: o.Pass.Incoming, Outgoing: o.Pass.Outgoing, HandResult: o.HandResult, LegalActions: []publicAction{}}
+	if len(o.Trick) > 0 {
+		v.CurrentWinner = ptr(trickWinner(o.Trick))
 	}
 	for _, a := range o.LegalActions {
 		v.LegalActions = append(v.LegalActions, publicAction{Kind: a.Kind, Card: a.Card, Bid: a.Bid})
 	}
-	return json.Marshal(v)
+	return v
 }

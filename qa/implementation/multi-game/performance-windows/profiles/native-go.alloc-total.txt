@@ -1,0 +1,9 @@
+File: performance-go1.26.8.exe
+Build ID: C:\repos\test-jev\.local\windows-tools\performance-go1.26.8.exe2026-10-05 23:39:44.4985271 -0400 EDT
+Type: alloc_space
+Time: 2026-10-05 23:47:23 EDT
+Showing nodes accounting for 59069920B, 17.07% of 345949616B total
+Dropped 314 nodes (cum <= 1729748B)
+Showing top 1 nodes out of 105
+      flat  flat%   sum%        cum   cum%
+ 59069920B 17.07% 17.07%  91215296B 26.37%  encoding/json.Marshal

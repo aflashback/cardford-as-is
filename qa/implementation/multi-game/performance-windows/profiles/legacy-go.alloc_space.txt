@@ -1,0 +1,23 @@
+File: performance-go1.26.8.exe
+Build ID: C:\repos\test-jev\.local\windows-tools\performance-go1.26.8.exe2026-10-05 23:39:44.4985271 -0400 EDT
+Type: alloc_space
+Time: 2026-10-05 23:46:43 EDT
+Showing nodes accounting for 373571.57kB, 11.87% of 3146110.87kB total
+Dropped 342 nodes (cum <= 15730.55kB)
+Showing top 15 nodes out of 97
+      flat  flat%   sum%        cum   cum%
+         0     0%     0% 3146043.95kB   100%  runtime.main
+    0.22kB 7e-06% 7e-06% 3146029.20kB   100%  main.main
+         0     0% 7e-06% 3145486.04kB   100%  main.main.func1
+   35.13kB 0.0011% 0.0011% 3145485.48kB   100%  main.job
+         0     0% 0.0011% 3145448.72kB   100%  cardford/server/internal/gamekernel.(*Executor).Replay
+ 4408.50kB  0.14%  0.14% 2685086.77kB 85.35%  cardford/server/internal/games/spades.DecodeState
+  253.86kB 0.0081%  0.15% 2680052.12kB 85.19%  cardford/server/internal/gamekernel.(*Executor).frame
+         0     0%  0.15% 2472673.53kB 78.59%  cardford/server/internal/games/spades.strictDecode
+         0     0%  0.15% 1233954.02kB 39.22%  encoding/json.(*Decoder).Decode
+         0     0%  0.15% 1079410.82kB 34.31%  encoding/json.(*decodeState).unmarshal
+         0     0%  0.15% 1079359.48kB 34.31%  encoding/json.(*decodeState).value
+11165.36kB  0.35%   0.5% 1069509.91kB 33.99%  cardford/server/internal/games/spades.checkShape
+193414.19kB  6.15%  6.65% 1019888.91kB 32.42%  encoding/json.(*Decoder).Token
+ 7944.48kB  0.25%  6.90% 987134.64kB 31.38%  cardford/server/internal/games/spades.scanJSON
+156349.83kB  4.97% 11.87% 946070.80kB 30.07%  encoding/json.Unmarshal

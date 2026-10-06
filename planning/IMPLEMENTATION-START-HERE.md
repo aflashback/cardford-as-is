@@ -12,6 +12,8 @@ The owner wants one simple monorepo, the latest CardFord specification, the exis
 
 ## First-run reading order
 
+**Before resuming M03:** read [CR-ARCH-004](decisions/CR-ARCH-004-native-windows-performance.md), the [native performance findings](../qa/implementation/multi-game/performance-windows/report.md), and [Windows setup](implementation/multi-game/windows-development.md). Current development uses native Node 24.19.0, Go 1.26.8 and PostgreSQL 16.15 on the same Windows host. The old WSL timing compared matching outputs through unequal internal work; it cannot decide the backend language. M03–M05 use strict import boundaries and immutable typed state internally, retaining original evidence and the existing UI.
+
 1. Read root [AGENTS.md](../AGENTS.md) and its required original-spec sequence for the preserved engineering safeguards. Its old scope conflicts are resolved by the later explicit owner decision below; do not silently restore the Spades-only product.
 2. Read [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md). This records the owner's current authority, B2C focus, UX preservation and Stripe choice.
 3. Read [CR-ARCH-003](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md), the [multi-game plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md), [backend readiness/M02A](implementation/multi-game/backend-readiness.md), and current [multi-game status](../qa/implementation/multi-game/status.md). The earlier [monorepo plan](2026-09-27-monorepo-implementation-plan.md) remains the local-build and release reference; its backend-language assumptions are superseded.

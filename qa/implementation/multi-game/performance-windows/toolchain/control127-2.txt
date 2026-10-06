@@ -1,0 +1,437 @@
+runtime: g 3: unexpected return pc for runtime.gopark called from 0x1
+stack: frame={sp:0x196539dd5f68, fp:0x196539dd5f88} stack=[0x196539dd4000,0x196539dd6000)
+                   7 6 5 4  3 2 1 0   f e d c  b a 9 8  0123456789abcdef
+0000196539dd5e60:                    00001965 39dd0b40          @..9e...
+0000196539dd5e70: 00000000 00000000  00001965 39dd5e90  .........^.9e...
+0000196539dd5e80: 00007ff7 494fbc5e  00007ff7 4950b037  ^.OI....7.PI....
+                  ^ <runtime.chansend.func1+0x1e>
+                                     ^ <runtime.systemstack+0x37>
+0000196539dd5e90: 00001965 39dd5ed8  00007ff7 49494e45  .^.9e...ENII....
+                                     ^ <runtime.send+0x165>
+0000196539dd5ea0: 00001965 39dd5ec0  00000000 00000000  .^.9e...........
+0000196539dd5eb0: 00000000 00000000  00001965 39dd0000  ...........9e...
+0000196539dd5ec0: 00007ff7 494fbc80  00001965 39dd0000  ..OI.......9e...
+                  ^ <_.goready.func1+0x0>
+0000196539dd5ed0: 00000000 00000004  00007ffb 2d85c048  ........H..-....
+0000196539dd5ee0: 00007ff7 49494c31  00000000 00000000  1LII............
+                  ^ <runtime.chansend+0x551>
+0000196539dd5ef0: 00001965 39dea000  00000000 00000000  ...9e...........
+0000196539dd5f00: 00000000 00000000  00000000 68040004  ...........h....
+0000196539dd5f10: 00000000 00000000  00007ffb 2d847efb  .........~.-....
+0000196539dd5f20: 00000000 00000001  00007ffb 2d971040  ........@..-....
+0000196539dd5f30: 00000000 00000000  00007ffb 2d85c048  ........H..-....
+0000196539dd5f40: 00001965 39dd5fe8  00007ffb 2d84b41c  ._.9e......-....
+0000196539dd5f50: 00000000 00000001  00000000 00000011  ................
+0000196539dd5f60: 00001965 39dd6180  00000000 68040004  .a.9e......h....
+                                     ^ SP
+0000196539dd5f70: 00001965 39dd61d8  00007ffb 2d847f7d  .a.9e...}..-....
+0000196539dd5f80: 00000000 00000001  00001965 39dd61a9  .........a.9e...
+                                     ^ FP
+0000196539dd5f90: 00000000 00000000  00001965 39dd6908  .........i.9e...
+0000196539dd5fa0: 00001965 39dd6048  00007ffb 2d84b4a9  H`.9e......-....
+0000196539dd5fb0: 00000000 00000002  00000000 00000001  ................
+0000196539dd5fc0: 00000000 00000000  00000000 00000000  ................
+0000196539dd5fd0: 00001965 39dd6048  00007ffb 2d860cd1  H`.9e......-....
+0000196539dd5fe0: 00001965 39dd6ac0  00000000 00000000  .j.9e...........
+0000196539dd5ff0: 00000000 00000000  00000000 00000000  ................
+fatal error: unknown caller pc
+
+runtime stack:
+runtime.throw({0x7ff74965a1b3?, 0x14e01ffad8?})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/panic.go:1243 +0x4d fp=0x14e01ffa70 sp=0x14e01ffa40 pc=0x7ff7495061cd
+runtime.(*unwinder).next(0x14e01ffb20)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/traceback.go:475 +0x256 fp=0x14e01ffae8 sp=0x14e01ffa70 pc=0x7ff7494f0096
+runtime.scanstack(0x196539dd0b40, 0x196539d99260)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgcmark.go:977 +0x2f1 fp=0x14e01ffc00 sp=0x14e01ffae8 pc=0x7ff7494ae9f1
+runtime.markroot.func1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgcmark.go:306 +0xb1 fp=0x14e01ffc50 sp=0x14e01ffc00 pc=0x7ff7494fcff1
+runtime.markroot(0x196539d99260, 0xb, 0x1)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgcmark.go:280 +0x1a5 fp=0x14e01ffd00 sp=0x14e01ffc50 pc=0x7ff7494ad265
+runtime.gcDrain(0x196539d99260, 0x3)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgcmark.go:1289 +0x4a7 fp=0x14e01ffd70 sp=0x14e01ffd00 pc=0x7ff7494af5a7
+runtime.gcDrainMarkWorkerDedicated(...)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgcmark.go:1192
+runtime.gcBgMarkWorker.func2()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1878 +0x9a fp=0x14e01ffdc0 sp=0x14e01ffd70 pc=0x7ff7494fcd1a
+runtime.systemstack(0x196539dd0f00)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:531 +0x49 fp=0x14e01ffdd0 sp=0x14e01ffdc0 pc=0x7ff74950b049
+
+goroutine 25 gp=0x19653a1a61e0 m=4 mp=0x196539ddb808 [GC worker (active)]:
+runtime.systemstack_switch()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:481 +0x8 fp=0x19653a1aff40 sp=0x19653a1aff30 pc=0x7ff74950afe8
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1863 +0x1e5 fp=0x19653a1affc8 sp=0x19653a1aff40 pc=0x7ff7494ab605
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a1affe0 sp=0x19653a1affc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a1affe8 sp=0x19653a1affe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 1 gp=0x196539dd0000 m=nil [chan receive]:
+runtime.gopark(0x7ff74950c8bf?, 0x1?, 0x7a?, 0x99?, 0x7ff7498183c8?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a1ab918 sp=0x19653a1ab8f8 pc=0x7ff7495062ea
+runtime.chanrecv(0x196539d7a300, 0x196539d879ff, 0x1)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/chan.go:667 +0x4ae fp=0x19653a1ab990 sp=0x19653a1ab918 pc=0x7ff749495a0e
+runtime.chanrecv1(0x18?, 0x7ff749827c80?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/chan.go:509 +0x12 fp=0x19653a1ab9b8 sp=0x19653a1ab990 pc=0x7ff749495552
+testing.(*T).Run(0x196539d56200, {0x7ff7496598e7?, 0x196539d87aa8?}, 0x7ff74983efa8)
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2266 +0x4d2 fp=0x19653a1aba80 sp=0x19653a1ab9b8 pc=0x7ff74958f032
+testing.runTests.func1(0x196539d56200)
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2742 +0x37 fp=0x19653a1abac0 sp=0x19653a1aba80 pc=0x7ff7495945d7
+testing.tRunner(0x196539d56200, 0x196539d87bc8)
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2193 +0xc3 fp=0x19653a1abb10 sp=0x19653a1abac0 pc=0x7ff74958eae3
+testing.runTests({0x7ff749656e12, 0x8}, {0x7ff7496625b3, 0x25}, 0x196539d5e180, {0x7ff749861520, 0x8, 0x8}, {0x0, 0x0, ...})
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2740 +0x505 fp=0x19653a1abbf8 sp=0x19653a1abb10 pc=0x7ff749591005
+testing.(*M).Run(0x196539dee1e0)
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2600 +0x6af fp=0x19653a1abe38 sp=0x19653a1abbf8 pc=0x7ff74958fbcf
+main.main()
+	_testmain.go:60 +0x9b fp=0x19653a1abeb8 sp=0x19653a1abe38 pc=0x7ff74964501b
+runtime.main()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:302 +0x3fb fp=0x19653a1abfe0 sp=0x19653a1abeb8 pc=0x7ff7494cf43b
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a1abfe8 sp=0x19653a1abfe0 pc=0x7ff74950cb61
+
+goroutine 2 gp=0x196539dd0780 m=nil [force gc (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x196539dd3fa8 sp=0x196539dd3f88 pc=0x7ff7495062ea
+runtime.goparkunlock(...)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:480
+runtime.forcegchelper()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:387 +0xb8 fp=0x196539dd3fe0 sp=0x196539dd3fa8 pc=0x7ff7494cf6d8
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x196539dd3fe8 sp=0x196539dd3fe0 pc=0x7ff74950cb61
+created by runtime.init.7 in goroutine 1
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:375 +0x1a
+
+goroutine 3 gp=0x196539dd0b40 m=nil [GC sweep wait (scan)]:
+runtime.gopark(0x196539dd61a9?, 0x0?, 0x8?, 0x69?, 0x196539dd6048?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x196539dd5f88 sp=0x196539dd5f68 pc=0x7ff7495062ea
+runtime: g 3: unexpected return pc for runtime.gopark called from 0x1
+stack: frame={sp:0x196539dd5f68, fp:0x196539dd5f88} stack=[0x196539dd4000,0x196539dd6000)
+                   7 6 5 4  3 2 1 0   f e d c  b a 9 8  0123456789abcdef
+0000196539dd5e60:                    00001965 39dd0b40          @..9e...
+0000196539dd5e70: 00000000 00000000  00001965 39dd5e90  .........^.9e...
+0000196539dd5e80: 00007ff7 494fbc5e  00007ff7 4950b037  ^.OI....7.PI....
+                  ^ <runtime.chansend.func1+0x1e>
+                                     ^ <runtime.systemstack+0x37>
+0000196539dd5e90: 00001965 39dd5ed8  00007ff7 49494e45  .^.9e...ENII....
+                                     ^ <runtime.send+0x165>
+0000196539dd5ea0: 00001965 39dd5ec0  00000000 00000000  .^.9e...........
+0000196539dd5eb0: 00000000 00000000  00001965 39dd0000  ...........9e...
+0000196539dd5ec0: 00007ff7 494fbc80  00001965 39dd0000  ..OI.......9e...
+                  ^ <_.goready.func1+0x0>
+0000196539dd5ed0: 00000000 00000004  00007ffb 2d85c048  ........H..-....
+0000196539dd5ee0: 00007ff7 49494c31  00000000 00000000  1LII............
+                  ^ <runtime.chansend+0x551>
+0000196539dd5ef0: 00001965 39dea000  00000000 00000000  ...9e...........
+0000196539dd5f00: 00000000 00000000  00000000 68040004  ...........h....
+0000196539dd5f10: 00000000 00000000  00007ffb 2d847efb  .........~.-....
+0000196539dd5f20: 00000000 00000001  00007ffb 2d971040  ........@..-....
+0000196539dd5f30: 00000000 00000000  00007ffb 2d85c048  ........H..-....
+0000196539dd5f40: 00001965 39dd5fe8  00007ffb 2d84b41c  ._.9e......-....
+0000196539dd5f50: 00000000 00000001  00000000 00000011  ................
+0000196539dd5f60: 00001965 39dd6180  00000000 68040004  .a.9e......h....
+                                     ^ SP
+0000196539dd5f70: 00001965 39dd61d8  00007ffb 2d847f7d  .a.9e...}..-....
+0000196539dd5f80: 00000000 00000001  00001965 39dd61a9  .........a.9e...
+                                     ^ FP
+0000196539dd5f90: 00000000 00000000  00001965 39dd6908  .........i.9e...
+0000196539dd5fa0: 00001965 39dd6048  00007ffb 2d84b4a9  H`.9e......-....
+0000196539dd5fb0: 00000000 00000002  00000000 00000001  ................
+0000196539dd5fc0: 00000000 00000000  00000000 00000000  ................
+0000196539dd5fd0: 00001965 39dd6048  00007ffb 2d860cd1  H`.9e......-....
+0000196539dd5fe0: 00001965 39dd6ac0  00000000 00000000  .j.9e...........
+0000196539dd5ff0: 00000000 00000000  00000000 00000000  ................
+created by runtime.gcenable in goroutine 1
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:214 +0x66
+
+goroutine 4 gp=0x196539dd0d20 m=nil [GC scavenge wait]:
+runtime.gopark(0x10000?, 0x7ff749669610?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x196539de5f78 sp=0x196539de5f58 pc=0x7ff7495062ea
+runtime.goparkunlock(...)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:480
+runtime.(*scavengerState).park(0x7ff749866f60)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgcscavenge.go:425 +0x49 fp=0x196539de5fa8 sp=0x196539de5f78 pc=0x7ff7494b4ba9
+runtime.bgscavenge(0x196539d7a080)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgcscavenge.go:658 +0x59 fp=0x196539de5fc8 sp=0x196539de5fa8 pc=0x7ff7494b5119
+runtime.gcenable.gowrap2()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:215 +0x17 fp=0x196539de5fe0 sp=0x196539de5fc8 pc=0x7ff7494fc717
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x196539de5fe8 sp=0x196539de5fe0 pc=0x7ff74950cb61
+created by runtime.gcenable in goroutine 1
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:215 +0xa5
+
+goroutine 5 gp=0x196539dd10e0 m=nil [GOMAXPROCS updater (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x196539de7f88 sp=0x196539de7f68 pc=0x7ff7495062ea
+runtime.goparkunlock(...)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:480
+runtime.updateMaxProcsGoroutine()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:7146 +0xe7 fp=0x196539de7fe0 sp=0x196539de7f88 pc=0x7ff7494dc8c7
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x196539de7fe8 sp=0x196539de7fe0 pc=0x7ff74950cb61
+created by runtime.defaultGOMAXPROCSUpdateEnable in goroutine 1
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:7134 +0x37
+
+goroutine 6 gp=0x196539dd12c0 m=nil [finalizer wait]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x196539de1e20 sp=0x196539de1e00 pc=0x7ff7495062ea
+runtime.runFinalizers()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mfinal.go:210 +0x107 fp=0x196539de1fe0 sp=0x196539de1e20 pc=0x7ff7494a8127
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x196539de1fe8 sp=0x196539de1fe0 pc=0x7ff74950cb61
+created by runtime.createfing in goroutine 1
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mfinal.go:172 +0x3d
+
+goroutine 7 gp=0x196539dd1680 m=3 mp=0x196539ddb008 [syscall]:
+runtime.notetsleepg(0x196539e9c080, 0xffffffffffffffff)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/lock_sema.go:175 +0x31 fp=0x196539e27eb0 sp=0x196539e27e78 pc=0x7ff74949af11
+runtime.(*profBuf).read(0x196539e9c000, 0x0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/profbuf.go:523 +0xa5 fp=0x196539e27ef8 sp=0x196539e27eb0 pc=0x7ff7494de7e5
+runtime/pprof.readProfile()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/cpuprof.go:251 +0x4a fp=0x196539e27f58 sp=0x196539e27ef8 pc=0x7ff749503d2a
+runtime/pprof.profileWriter({0x7ff74983dcb8?, 0x196539d5a0a0?})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/pprof/pprof.go:927 +0x45 fp=0x196539e27fc0 sp=0x196539e27f58 pc=0x7ff749620fc5
+runtime/pprof.StartCPUProfile.gowrap2()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/pprof/pprof.go:908 +0x1b fp=0x196539e27fe0 sp=0x196539e27fc0 pc=0x7ff74962ac3b
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x196539e27fe8 sp=0x196539e27fe0 pc=0x7ff74950cb61
+created by runtime/pprof.StartCPUProfile in goroutine 1
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/pprof/pprof.go:908 +0x1b6
+
+goroutine 8 gp=0x196539dd1a40 m=nil [chan receive]:
+runtime.gopark(0x7ff74950c8bf?, 0x1?, 0x7a?, 0x99?, 0x7ff7498183c8?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a305c90 sp=0x19653a305c70 pc=0x7ff7495062ea
+runtime.chanrecv(0x196539d7a400, 0x196539e23d77, 0x1)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/chan.go:667 +0x4ae fp=0x19653a305d08 sp=0x19653a305c90 pc=0x7ff749495a0e
+runtime.chanrecv1(0x18?, 0x7ff749827c80?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/chan.go:509 +0x12 fp=0x19653a305d30 sp=0x19653a305d08 pc=0x7ff749495552
+testing.(*T).Run(0x196539d56400, {0x196539d606e0?, 0x0?}, 0x196539e9c3f0)
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2266 +0x4d2 fp=0x19653a305df8 sp=0x19653a305d30 pc=0x7ff74958f032
+cardford/server/internal/games/spades.TestFrozenCorpus(0x196539d56400)
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/spades_test.go:115 +0x1f1 fp=0x19653a305f70 sp=0x19653a305df8 pc=0x7ff74963f0d1
+testing.tRunner(0x196539d56400, 0x7ff74983efa8)
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2193 +0xc3 fp=0x19653a305fc0 sp=0x19653a305f70 pc=0x7ff74958eae3
+testing.(*T).Run.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2258 +0x1b fp=0x19653a305fe0 sp=0x19653a305fc0 pc=0x7ff74959435b
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a305fe8 sp=0x19653a305fe0 pc=0x7ff74950cb61
+created by testing.(*T).Run in goroutine 1
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2258 +0x4b4
+
+goroutine 9 gp=0x196539ed23c0 m=nil [runnable]:
+encoding/json/jsontext.(*decoderState).PeekKind(0x196539ea0140?)
+	C:/repos/test-jev/.local/windows-tools/go/src/encoding/json/jsontext/decode.go:317 +0x41b fp=0x196539d86ff0 sp=0x196539d86fe8 pc=0x7ff7495a07fb
+encoding/json/jsontext.(*Decoder).PeekKind(...)
+	C:/repos/test-jev/.local/windows-tools/go/src/encoding/json/jsontext/decode.go:315
+encoding/json/v2.makeSliceArshaler.func3(0x196539ea0140, {{0x7ff749802710?, 0x19653a174e10?, 0x19653a14d180?}, 0x45?}, 0x196539ea0200)
+	C:/repos/test-jev/.local/windows-tools/go/src/encoding/json/v2/arshal_default.go:1574 +0x405 fp=0x196539d87130 sp=0x196539d86ff0 pc=0x7ff7495d5465
+encoding/json/v2.unmarshalDecode(0x196539ea0140, {0x7ff7497e9ee8?, 0x19653a174e10?}, 0x196539ea0200, 0x1)
+	C:/repos/test-jev/.local/windows-tools/go/src/encoding/json/v2/arshal.go:471 +0x1f6 fp=0x196539d871f8 sp=0x196539d87130 pc=0x7ff7495b88f6
+encoding/json/v2.Unmarshal({0x19653a14d180?, 0x4?, 0x8?}, {0x7ff7497e9ee8, 0x19653a174e10}, {0x19653a0633e0?, 0x19653a174d50?, 0x7ff749866d20?})
+	C:/repos/test-jev/.local/windows-tools/go/src/encoding/json/v2/arshal.go:390 +0x99 fp=0x196539d87270 sp=0x196539d871f8 pc=0x7ff7495b85d9
+encoding/json.Unmarshal(...)
+	C:/repos/test-jev/.local/windows-tools/go/src/encoding/json/v2_decode.go:111
+cardford/server/internal/games/spades.checkShape({0x19653a14d180, 0x45, 0x50}, {0x7ff74983ee30, 0x7ff749802f60}, 0x0)
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/json.go:114 +0x20a fp=0x196539d87428 sp=0x196539d87270 pc=0x7ff74963806a
+cardford/server/internal/games/spades.checkShape({0x19653a129200, 0x111, 0x120}, {0x7ff74983ee30, 0x7ff749801048}, 0x0)
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/json.go:121 +0x868 fp=0x196539d875e0 sp=0x196539d87428 pc=0x7ff7496386c8
+cardford/server/internal/games/spades.checkShape({0x19653a106a00, 0x4cb, 0x500}, {0x7ff74983ee30, 0x7ff749839820}, 0x0)
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/json.go:104 +0x5a5 fp=0x196539d87798 sp=0x196539d875e0 pc=0x7ff749638405
+cardford/server/internal/games/spades.strictDecode({0x19653a106a00, 0x4cb, 0x500}, {0x7ff7497fb078, 0x19653a15ef08})
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/json.go:25 +0x165 fp=0x196539d877f0 sp=0x196539d87798 pc=0x7ff7496379a5
+cardford/server/internal/games/spades.DecodeState({0x19653a106a00, 0x4cb, 0x500})
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/types.go:131 +0x50 fp=0x196539d87830 sp=0x196539d877f0 pc=0x7ff74963af90
+cardford/server/internal/games/spades.Observe({0x19653a106a00?, 0x7ff749807f80?, 0x500?}, 0x1)
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/observation.go:59 +0x32 fp=0x196539d87cb0 sp=0x196539d87830 pc=0x7ff749639352
+cardford/server/internal/games/spades.TestFrozenCorpus.func1(0x196539d56e00)
+	C:/repos/test-jev/.local/perf-control-baseline/server/internal/games/spades/spades_test.go:150 +0x705 fp=0x196539d87f70 sp=0x196539d87cb0 pc=0x7ff7496433c5
+testing.tRunner(0x196539d56e00, 0x196539e9c3f0)
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2193 +0xc3 fp=0x196539d87fc0 sp=0x196539d87f70 pc=0x7ff74958eae3
+testing.(*T).Run.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2258 +0x1b fp=0x196539d87fe0 sp=0x196539d87fc0 pc=0x7ff74959435b
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x196539d87fe8 sp=0x196539d87fe0 pc=0x7ff74950cb61
+created by testing.(*T).Run in goroutine 8
+	C:/repos/test-jev/.local/windows-tools/go/src/testing/testing.go:2258 +0x4b4
+
+goroutine 10 gp=0x196539ed25a0 m=nil [GC worker (idle)]:
+runtime.gopark(0x196539dd7f58?, 0x196539e9c3f0?, 0x53?, 0xe7?, 0x196539dd7f48?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x196539dd7f40 sp=0x196539dd7f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x196539dd7fc8 sp=0x196539dd7f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x196539dd7fe0 sp=0x196539dd7fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x196539dd7fe8 sp=0x196539dd7fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 11 gp=0x196539ed2780 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a191f40 sp=0x19653a191f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a191fc8 sp=0x19653a191f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a191fe0 sp=0x19653a191fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a191fe8 sp=0x19653a191fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 12 gp=0x196539ed2960 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a193f40 sp=0x19653a193f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a193fc8 sp=0x19653a193f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a193fe0 sp=0x19653a193fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a193fe8 sp=0x19653a193fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 13 gp=0x196539ed2b40 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a18df40 sp=0x19653a18df20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a18dfc8 sp=0x19653a18df40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a18dfe0 sp=0x19653a18dfc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a18dfe8 sp=0x19653a18dfe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 14 gp=0x196539ed2d20 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a18ff40 sp=0x19653a18ff20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a18ffc8 sp=0x19653a18ff40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a18ffe0 sp=0x19653a18ffc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a18ffe8 sp=0x19653a18ffe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 15 gp=0x196539ed2f00 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a199f40 sp=0x19653a199f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a199fc8 sp=0x19653a199f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a199fe0 sp=0x19653a199fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a199fe8 sp=0x19653a199fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 16 gp=0x196539ed30e0 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a19bf40 sp=0x19653a19bf20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a19bfc8 sp=0x19653a19bf40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a19bfe0 sp=0x19653a19bfc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a19bfe8 sp=0x19653a19bfe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 18 gp=0x196539ed32c0 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a195f40 sp=0x19653a195f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a195fc8 sp=0x19653a195f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a195fe0 sp=0x19653a195fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a195fe8 sp=0x19653a195fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 19 gp=0x196539ed34a0 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a197f40 sp=0x19653a197f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a197fc8 sp=0x19653a197f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a197fe0 sp=0x19653a197fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a197fe8 sp=0x19653a197fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 20 gp=0x196539ed3680 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a1a3f40 sp=0x19653a1a3f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a1a3fc8 sp=0x19653a1a3f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a1a3fe0 sp=0x19653a1a3fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a1a3fe8 sp=0x19653a1a3fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 21 gp=0x196539ed3860 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a1a5f40 sp=0x19653a1a5f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a1a5fc8 sp=0x19653a1a5f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a1a5fe0 sp=0x19653a1a5fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a1a5fe8 sp=0x19653a1a5fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 22 gp=0x196539ed3a40 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a19ff40 sp=0x19653a19ff20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a19ffc8 sp=0x19653a19ff40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a19ffe0 sp=0x19653a19ffc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a19ffe8 sp=0x19653a19ffe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 23 gp=0x196539ed3c20 m=nil [GC worker (idle)]:
+runtime.gopark(0x3fe330dc32264?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a1a1f40 sp=0x19653a1a1f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a1a1fc8 sp=0x19653a1a1f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a1a1fe0 sp=0x19653a1a1fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a1a1fe8 sp=0x19653a1a1fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 24 gp=0x19653a1a6000 m=nil [GC worker (idle)]:
+runtime.gopark(0x3fe330dbb2320?, 0x0?, 0x0?, 0x0?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a1adf40 sp=0x19653a1adf20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a1adfc8 sp=0x19653a1adf40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a1adfe0 sp=0x19653a1adfc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a1adfe8 sp=0x19653a1adfe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc
+
+goroutine 26 gp=0x19653a1a63c0 m=nil [GC worker (idle)]:
+runtime.gopark(0x7ff7498af2a0?, 0x1?, 0x44?, 0xff?, 0x0?)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/proc.go:474 +0xca fp=0x19653a1a9f40 sp=0x19653a1a9f20 pc=0x7ff7495062ea
+runtime.gcBgMarkWorker(0x196539d6a4d0)
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1807 +0xeb fp=0x19653a1a9fc8 sp=0x19653a1a9f40 pc=0x7ff7494ab50b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0x17 fp=0x19653a1a9fe0 sp=0x19653a1a9fc8 pc=0x7ff7494fcc57
+runtime.goexit({})
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/asm_amd64.s:1264 +0x1 fp=0x19653a1a9fe8 sp=0x19653a1a9fe0 pc=0x7ff74950cb61
+created by runtime.gcBgMarkStartWorkers in goroutine 9
+	C:/repos/test-jev/.local/windows-tools/go/src/runtime/mgc.go:1711 +0xfc

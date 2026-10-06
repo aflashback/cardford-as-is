@@ -16,6 +16,8 @@
 
 ## Global Constraints
 
+**Performance/toolchain amendment, 6 October UTC:** [CR-ARCH-004](../../../planning/decisions/CR-ARCH-004-native-windows-performance.md) requires native Windows for both current runtime checks, pins Go 1.26.8 after a reproducible 1.27.1 profiling failure, and corrects the old unequal internal-work comparison. Follow [native setup](../../../planning/implementation/multi-game/windows-development.md) and the [recorded experiment](../../../qa/implementation/multi-game/performance-windows/report.md). Use game-owned immutable typed snapshots inside bounded operations, with strict decoding at import and serialization at real output/persistence boundaries. M03 remains next after this investigation; full-history, policy and service resource gates remain open.
+
 - “All supported games have four seats.” Competition is four individuals or two teams of two; controllers and visibility are separate.
 - “Jev is the only runtime strategic model.” Later CR-IMPL-001/CR-STRAT-009 allow explicit deterministic code policies; no other runtime LLM/framework/cascade.
 - “Rules, arithmetic, legal actions, trick winners, score, features, permissions and state transitions are code.”

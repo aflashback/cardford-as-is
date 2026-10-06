@@ -8,6 +8,8 @@ Identity and subscription coverage are explicitly **local test fixtures**. No pa
 
 ## Start and stop
 
+**Current native Windows setup:** [Windows development instructions](planning/implementation/multi-game/windows-development.md) run Node, Go and PostgreSQL directly on Windows with pinned project-local tools. Use `node scripts/windows-env.mjs setup`, then `node scripts/windows-env.mjs pg:start`; prefix Node/npm commands with that wrapper. This creates separate native databases and leaves existing Podman data and `.env.local` untouched. For the current app: `node scripts/windows-env.mjs npm run db:migrate`, `node scripts/windows-env.mjs npm run build`, then `node scripts/windows-env.mjs npm start`. Stop that app with Ctrl+C and the native database with `node scripts/windows-env.mjs pg:stop`. The original container workflow below remains available for existing saved games; do not mix it into native performance comparisons.
+
 Requirements: Node 24, npm, and a running Podman service. Run from this repository root:
 
 ```powershell

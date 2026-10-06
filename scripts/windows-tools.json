@@ -1,0 +1,31 @@
+{
+  "node": "v24.19.0",
+  "go": {
+    "version": "go1.26.8",
+    "url": "https://go.dev/dl/go1.26.8.windows-amd64.zip",
+    "sha256": "b92c3b2adae85a11ba71fe7216daf0d84e82af4c8ab6c5625807f28622043a59",
+    "checksumSource": "https://go.dev/dl/?mode=json",
+    "archive": "go1.26.8.windows-amd64.zip",
+    "destination": "go1.26.8",
+    "executable": "go1.26.8/go/bin/go.exe"
+  },
+  "cc": {
+    "version": "23.1.2",
+    "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20260922/llvm-mingw-20260922-ucrt-x86_64.zip",
+    "sha256": "e3ad77d117a4bea19a7a3b333341824d79a5a371004a10e25b8504e7b3047666",
+    "checksumSource": "https://github.com/mstorsjo/llvm-mingw/releases/expanded_assets/20260922",
+    "archive": "llvm-mingw.zip",
+    "destination": ".",
+    "executable": "llvm-mingw-20260922-ucrt-x86_64/bin/clang.exe"
+  },
+  "postgres": {
+    "version": "16.15",
+    "url": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260623",
+    "sha256": "43bb45f173a6f08cf1d29a97a6d8deb119e8e8093a24c00d2d1001a0ccaa8281",
+    "checksumSource": "locally recorded SHA256 of official EDB HTTPS download; not an independently published vendor checksum",
+    "archive": "postgresql-16.15-windows-x64.zip",
+    "destination": ".",
+    "executable": "pgsql/bin/postgres.exe",
+    "members": ["pgsql/bin", "pgsql/lib", "pgsql/share", "pgsql/server_license.txt", "pgsql/commandlinetools_3rd_party_licenses.txt"]
+  }
+}

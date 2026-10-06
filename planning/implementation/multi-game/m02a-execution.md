@@ -1,5 +1,7 @@
 # M02A execution contract
 
+Historical frozen contract for the original M02A run below. Current development and comparisons use [native Windows setup](windows-development.md), Go 1.26.8 and the [CR-ARCH-004 snapshot/performance amendment](../../decisions/CR-ARCH-004-native-windows-performance.md). Do not reuse the historical WSL commands or interpret matching output bytes as equal internal work.
+
 Authorized by the owner's request to do the next unblocking work item, after urgent repair commit `b476914`. Implements the bounded slice in [backend readiness](backend-readiness.md); the TypeScript app remains authoritative. No production Go listener, provider call, hosting change, UI redesign or strategy/default change is authorized by this slice.
 
 ## Frozen choices before measurements

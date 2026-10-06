@@ -1,0 +1,83 @@
+{
+  "baseCommit": "064001a61e26338cc9209566fd63957c461c26f9",
+  "platform": "native Windows amd64",
+  "node": "24.19.0",
+  "go": {
+    "ordinary": {
+      "command": "node scripts/windows-env.mjs go test ./server/... -count=1 -json",
+      "testAndSubtestPasses": 406,
+      "topLevelTests": 46,
+      "packagePasses": 6,
+      "testSkips": 0,
+      "failures": 0,
+      "packagesWithoutTests": [
+        "cardford/server/cmd/perf",
+        "cardford/server/internal/records"
+      ],
+      "log": "verification/go-native.jsonl",
+      "sha256": "9c9a358373ff0d455ea56c14593c3faa1d8c7361b1e7526718c8976a09658782"
+    },
+    "race": {
+      "command": "node scripts/windows-env.mjs go test -race -p=1 ./server/... -count=1 -json",
+      "testAndSubtestPasses": 406,
+      "topLevelTests": 46,
+      "packagePasses": 6,
+      "testSkips": 0,
+      "failures": 0,
+      "packagesWithoutTests": [
+        "cardford/server/cmd/perf",
+        "cardford/server/internal/records"
+      ],
+      "log": "verification/go-race-native.jsonl",
+      "sha256": "9e3fd2a5c957b7e4403e98a1d5b2fcac8141812a8e26e2eb56013d6db0649e09"
+    }
+  },
+  "postgres": "16.15",
+  "database": "isolated loopback cardford_windows_test",
+  "provider": "off; no live requests/model/spend",
+  "otherChecks": [
+    {
+      "command": "node scripts/windows-env.mjs go vet ./server/...",
+      "result": "passed"
+    },
+    {
+      "command": "node scripts/windows-env.mjs go mod verify",
+      "result": "all modules verified"
+    },
+    {
+      "command": "node scripts/windows-env.mjs npm run contracts:check",
+      "result": "Contract artifacts are current."
+    },
+    {
+      "command": "node scripts/windows-env.mjs node scripts/m02a-contracts.mjs --check",
+      "result": "99 definitions, 248 actual Ajv fixtures, 9 RNG vectors"
+    },
+    {
+      "command": "node scripts/windows-env.mjs npm run typecheck",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --exit-code 064001a -- qa/experiments qa/implementation/multi-game/m02 qa/implementation/multi-game/m02a web/server/tests/fixtures web/server/game web/server/strategy web/server/records/migrations web/shared web/src package-lock.json go.sum",
+      "result": "unchanged; exit 0"
+    }
+  ],
+  "nodeFull": {
+    "command": "node scripts/windows-env.mjs node --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts",
+    "tests": 493,
+    "pass": 493,
+    "fail": 0,
+    "skipped": 0,
+    "log": "verification/node-full-native.txt",
+    "sha256": "8c7641d6165a1f2782095aa5901e2066c37ee856f7c38dc80b93fb1c959fefff"
+  },
+  "scopeNotes": [
+    "Ordinary/race test wall durations are not the performance comparison; test work and instrumentation differ.",
+    "Two Go package skip events mean no package-local test files (perf command and records); database behavior is exercised through HTTP integration tests.",
+    "No browser rerun or Go production activation; UI source is unchanged.",
+    "Native PostgreSQL cluster startup/stop/restart verified separately; no original database or .env.local changed."
+  ]
+}

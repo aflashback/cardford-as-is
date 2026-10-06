@@ -1,0 +1,166 @@
+{
+  "scope": "V8 whole-process CPU sampling includes imports, 3 warmups and 3 jobs; not a matched warm-only Go percentage comparison",
+  "totalSampledMs": 8117.299,
+  "self": [
+    {
+      "function": "json",
+      "url": "file:///C:/repos/test-jev/web/server/game/kernel/codec.ts",
+      "line": 25,
+      "sampledMs": 4118.371,
+      "samplePercent": 50.7357311834885
+    },
+    {
+      "function": "capture",
+      "url": "file:///C:/repos/test-jev/scripts/performance-node.ts",
+      "line": 37,
+      "sampledMs": 537.734,
+      "samplePercent": 6.62454345959167
+    },
+    {
+      "function": "structuredClone",
+      "url": "node:internal/worker/js_transferable",
+      "line": 113,
+      "sampledMs": 337.674,
+      "samplePercent": 4.159930538470986
+    },
+    {
+      "function": "fromV1Spades",
+      "url": "file:///C:/repos/test-jev/web/server/games/spades/compatibility.ts",
+      "line": 99,
+      "sampledMs": 286.284,
+      "samplePercent": 3.5268381760977388
+    },
+    {
+      "function": "parseV1Game",
+      "url": "file:///C:/repos/test-jev/web/server/game/legacy/reader.ts",
+      "line": 83,
+      "sampledMs": 283.693,
+      "samplePercent": 3.4949186915499846
+    },
+    {
+      "function": "cardSuit",
+      "url": "file:///C:/repos/test-jev/web/server/game/cards.ts",
+      "line": 3,
+      "sampledMs": 162.748,
+      "samplePercent": 2.0049526326429516
+    },
+    {
+      "function": "applySpadesAction",
+      "url": "file:///C:/repos/test-jev/web/server/games/spades/engine.ts",
+      "line": 137,
+      "sampledMs": 151.062,
+      "samplePercent": 1.8609884889049917
+    },
+    {
+      "function": "RegExp: ^[CDHS](?:[2-9]|10|J|Q|K|A)$",
+      "url": "",
+      "line": 0,
+      "sampledMs": 131.056,
+      "samplePercent": 1.6145271967929233
+    },
+    {
+      "function": "(anonymous)",
+      "url": "",
+      "line": 0,
+      "sampledMs": 129.468,
+      "samplePercent": 1.594964039146519
+    },
+    {
+      "function": "(garbage collector)",
+      "url": "",
+      "line": 0,
+      "sampledMs": 113.564,
+      "samplePercent": 1.399036797831397
+    },
+    {
+      "function": "object",
+      "url": "file:///C:/repos/test-jev/web/server/game/kernel/codec.ts",
+      "line": 4,
+      "sampledMs": 106.763,
+      "samplePercent": 1.3152527706568404
+    },
+    {
+      "function": "update",
+      "url": "node:internal/crypto/hash",
+      "line": 145,
+      "sampledMs": 95.933,
+      "samplePercent": 1.1818340066073703
+    },
+    {
+      "function": "projectV1SpadesState",
+      "url": "file:///C:/repos/test-jev/web/server/games/spades/compatibility.ts",
+      "line": 37,
+      "sampledMs": 95.768,
+      "samplePercent": 1.179801310756201
+    },
+    {
+      "function": "freeze",
+      "url": "file:///C:/repos/test-jev/web/server/game/kernel/codec.ts",
+      "line": 51,
+      "sampledMs": 92.041,
+      "samplePercent": 1.1338870232573668
+    },
+    {
+      "function": "event",
+      "url": "file:///C:/repos/test-jev/web/server/games/spades/compatibility.ts",
+      "line": 24,
+      "sampledMs": 89.99,
+      "samplePercent": 1.1086199978588938
+    },
+    {
+      "function": "parse",
+      "url": "file:///C:/repos/test-jev/web/server/games/spades/state.ts",
+      "line": 246,
+      "sampledMs": 70.545,
+      "samplePercent": 0.8690698716408007
+    },
+    {
+      "function": "validate36",
+      "url": "",
+      "line": 3,
+      "sampledMs": 70.408,
+      "samplePercent": 0.8673821181158905
+    },
+    {
+      "function": "assertSpadesState",
+      "url": "file:///C:/repos/test-jev/web/server/games/spades/state.ts",
+      "line": 153,
+      "sampledMs": 70.096,
+      "samplePercent": 0.8635384750518614
+    },
+    {
+      "function": "assertSpadesEvent",
+      "url": "file:///C:/repos/test-jev/web/server/games/spades/state.ts",
+      "line": 62,
+      "sampledMs": 64.174,
+      "samplePercent": 0.7905831730480791
+    },
+    {
+      "function": "(anonymous)",
+      "url": "file:///C:/repos/test-jev/web/server/game/cards.ts",
+      "line": 17,
+      "sampledMs": 60.555,
+      "samplePercent": 0.745999377379101
+    }
+  ],
+  "allocations": {
+    "scope": "separate Go cold/cumulative process profiles; rate1 after input setup; not live heap or benchmark timing",
+    "legacyBytes": 3221617528,
+    "nativeBytes": 345949616,
+    "legacyMiB": 3072.373893737793,
+    "nativeMiB": 329.9232635498047,
+    "allocationByteReductionPercent": 89.261617402027,
+    "legacyObjects": 73054461,
+    "nativeObjects": 5221812
+  },
+  "goCPU": {
+    "scope": "3 warm jobs per variant, CPU-only, default memory sampling",
+    "legacyPrivateDecodeCumulativePercent": 73.32,
+    "legacyPrivateDecodeCPUSeconds": 23.91,
+    "legacyTotalSampledCPUSeconds": 32.61,
+    "nativePublicValidationCumulativePercent": 50.47,
+    "nativePublicValidationCPUSeconds": 1.08,
+    "nativeTotalSampledCPUSeconds": 2.14,
+    "note": "Cumulative call-tree percentages overlap and must not be summed."
+  }
+}

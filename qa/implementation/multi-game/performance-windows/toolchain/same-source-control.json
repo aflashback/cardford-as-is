@@ -1,0 +1,97 @@
+{
+  "sourceCommit": "064001a",
+  "sourceHashes": {
+    "go.mod": "a9161b3e7de34d791d2e4c1b503593d718ab5fb1872f2cd054deab817c20f10f",
+    "server/internal/games/spades/engine.go": "53fd8e111ac4fe9364ee291ea47f74784c21dd3e2443ce439be29b7c0e4ccb1b",
+    "server/internal/games/spades/json.go": "e1bad71371ae33311a72a9ad886b052db85837a45eae2aaa8046467522596986",
+    "server/internal/games/spades/observation.go": "263a6e8477fb5892ee77fbed6b2fe5efd677b0459aae817a6221452b629a3c77",
+    "server/internal/games/spades/rules.go": "a6cf99e790a43db01e966f5cfb30ea74c260f4b573550c71ae226dafce241263",
+    "server/internal/games/spades/spades_test.go": "013a52883e49dc718c1e2b06d1c4ea0d3a1bb48c417f486cdf3cd1d71ee671f0",
+    "server/internal/games/spades/types.go": "04972681204c239205db4e7928bf9ff36b87e33534f4bbdf1a4b438107f695ce",
+    "server/internal/games/spades/validation.go": "f8ac4b058932d4fc6da5281177524fe8138bb8a508b7a5e9a09d967f75916730",
+    "web/server/tests/fixtures/legacy-module-document.json": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f"
+  },
+  "moduleOverride": "module cardford\n\ngo 1.26.8\n",
+  "reason": "Same stdlib-only source and fixture for both compiler controls; neutral compatible module minimum. No code/profile workarounds.",
+  "platform": "windows/amd64",
+  "cwd": "C:\\repos\\test-jev\\.local\\perf-control-baseline\\server\\internal\\games\\spades",
+  "buildArgs": [
+    "test",
+    "-c",
+    "-o",
+    "<binary>",
+    "./server/internal/games/spades"
+  ],
+  "testArgs": [
+    "-test.run=^TestFrozenCorpus$",
+    "-test.count=1",
+    "-test.cpuprofile=<unique profile>"
+  ],
+  "env": {
+    "GOTOOLCHAIN": "local",
+    "GOCACHE": "C:\\repos\\test-jev\\.local\\windows-tools\\gocache",
+    "CGO_ENABLED": "toolchain default (no C code used)"
+  },
+  "runs": [
+    {
+      "version": "go1.26.8",
+      "repetition": 1,
+      "exitCode": 0,
+      "status": "passed",
+      "log": "control126-1.txt",
+      "logSHA256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "binarySHA256": "0b9d64235458764f856d80b8e0a59d27c0ec3de7c1c562aa725af7075e694494",
+      "profileBytes": 29487
+    },
+    {
+      "version": "go1.26.8",
+      "repetition": 2,
+      "exitCode": 0,
+      "status": "passed",
+      "log": "control126-2.txt",
+      "logSHA256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "binarySHA256": "0b9d64235458764f856d80b8e0a59d27c0ec3de7c1c562aa725af7075e694494",
+      "profileBytes": 31295
+    },
+    {
+      "version": "go1.26.8",
+      "repetition": 3,
+      "exitCode": 0,
+      "status": "passed",
+      "log": "control126-3.txt",
+      "logSHA256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "binarySHA256": "0b9d64235458764f856d80b8e0a59d27c0ec3de7c1c562aa725af7075e694494",
+      "profileBytes": 33193
+    },
+    {
+      "version": "go1.27.1",
+      "repetition": 1,
+      "exitCode": 2,
+      "status": "runtime crash",
+      "log": "control127-1.txt",
+      "logSHA256": "ee3cccfd7c88ca6002e5111d4f8a842e1a818b62f7b3f1700827f8d8ed3dd13f",
+      "binarySHA256": "03477be5eb19abda28211e2b39571ab6ab419c6f475bb7b42597991feb6813e7",
+      "profileBytes": 0
+    },
+    {
+      "version": "go1.27.1",
+      "repetition": 2,
+      "exitCode": 2,
+      "status": "runtime crash",
+      "log": "control127-2.txt",
+      "logSHA256": "3f7a8be905acd4387ddba4e842179cb9878fa6c83b726eaad7be0215a203178d",
+      "binarySHA256": "03477be5eb19abda28211e2b39571ab6ab419c6f475bb7b42597991feb6813e7",
+      "profileBytes": 0
+    },
+    {
+      "version": "go1.27.1",
+      "repetition": 3,
+      "exitCode": 2,
+      "status": "runtime crash",
+      "log": "control127-3.txt",
+      "logSHA256": "843a70469b4db6d0bb7be42d11e298f5189f43773e2d557e7cd758731d92aeea",
+      "binarySHA256": "03477be5eb19abda28211e2b39571ab6ab419c6f475bb7b42597991feb6813e7",
+      "profileBytes": 0
+    }
+  ]
+}

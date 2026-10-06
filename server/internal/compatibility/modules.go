@@ -16,5 +16,12 @@ func Registry() *gamekernel.Registry {
 			panic(err)
 		}
 	}
+	hs := gamekernel.SnapshotFuncs{StartFunc: hearts.Start, OpenFunc: hearts.Open}
+	ss := gamekernel.SnapshotFuncs{StartFunc: spades.Start, OpenFunc: spades.Open}
+	for mode, m := range map[string]gamekernel.SnapshotModule{"hearts": hs, "spades-solo": ss, "spades-partners": ss} {
+		if err := r.RegisterSnapshot(mode, m); err != nil {
+			panic(err)
+		}
+	}
 	return r
 }

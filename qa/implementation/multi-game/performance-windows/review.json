@@ -1,0 +1,289 @@
+{
+  "version": "1.3.0",
+  "reviewKind": "independent read-only code review",
+  "reviewer": "/root/urgent_budget",
+  "baseCommit": "064001a61e26338cc9209566fd63957c461c26f9",
+  "status": "complete; no open actionable findings in the reviewed scope",
+  "scope": [
+    "Additive typed snapshot replay and extracted Hearts/Spades helpers",
+    "Initial-state and command import, semantic validation, immutable state ownership and actor projections",
+    "Cancellation, admission and resource guards",
+    "Declared external replay work, original hash verification, native Windows timing and diagnostic separation",
+    "Project-local Windows tool pins and loopback PostgreSQL environment",
+    "Snapshot integration in the httptest-only HTTP seam and unchanged SQL publication fence"
+  ],
+  "findings": [
+    {
+      "id": "PERF-REVIEW-001",
+      "priority": "P2",
+      "title": "Separate full allocation tracing from CPU attribution",
+      "status": "fixed and independently read-verified",
+      "originalLocation": {
+        "file": "scripts/performance-windows.mjs",
+        "line": 47
+      },
+      "originalRelatedLocation": {
+        "file": "server/cmd/perf/main.go",
+        "line": 235
+      },
+      "issue": "The original driver requested CPU and allocation profiles together. MemProfileRate=1 adds stack collection and profiler locking for every allocation, changing CPU hotspot attribution; Node used CPU profiling without that allocation tracing.",
+      "impact": "Diagnostic interpretation only; ordinary warm timing workers never enable either profiler.",
+      "resolution": "The driver now launches separate CPU-only and allocation-only Go workers. CPU capture starts after three unprofiled warmups and captures three jobs with default allocation sampling. Allocation diagnostics use a separate cold worker. Protocol labels Node CPU capture as whole-process and Go allocation capture as cumulative.",
+      "verification": "Source inspection only; no profile or benchmark executed by this reviewer."
+    }
+  ],
+  "openActionableFindings": [],
+  "reviewedBoundaries": {
+    "snapshotOwnership": "Constructors strictly import owned typed state; Apply deep-copies mutable arrays, slices and pointers before writes; every resulting state is semantically validated. Export and Project return fresh JSON bytes and candidate slices.",
+    "visibility": "Project uses the existing actor-safe observation/public-view allowlists. Spades concealed-hand permutation and output/input mutation tests are present. No hidden aggregate is returned as a public view.",
+    "guards": "ReplayNative shares legacy executor limits/admission slots, checks cancellation before module operations/projections and around visitors, and preserves command/input/state/frame bounds. Raw legacy Replay remains available.",
+    "output": "Optimized workers declare 422 checkpoints, 419 transitions, four observations/views/candidate sets per checkpoint, one full-frame encoding and one serialized public-view schema-validation boundary per view. Original semantic hashes are checked in separate verification workers; measured workers must match their own verified output stream, final hashes and counters.",
+    "fairness": "Only external replay/output obligations are matched. Node's V1 reader, reducer copies, private projections and Ajv checks differ internally from Go's typed snapshot and schema implementation. The protocol explicitly disclaims equal internal algorithms and intrinsic language-speed conclusions; legacy-go remains an unequal-work implementation baseline.",
+    "environment": "Windows wrapper checks native versions, uses project-local ignored credentials and tools, checks loopback port/database identity, and sets local-test identity, fixture billing and Jev off. The wrapper prints credential location rather than password or URLs. PostgreSQL startup no longer inherits capture pipes.",
+    "http": "Strict GameAction bytes precede trusted Principal seat injection. Owned row and expected revision are loaded before one strict snapshot Open; initial and resulting actor Project views receive GameView schema/byte checks and ID/mode binding. Apply validates the next immutable state, Export is bounded, cancellation checkpoints precede bounded calls/publication, and SQL publication fences id/owner/mode/revision. No hosted route activation or command-receipt implementation is claimed."
+  },
+  "verification": {
+    "testsRun": [],
+    "benchmarksRun": [],
+    "profilesRun": [],
+    "method": "Read source, diffs, test definitions, protocol and exact SHA-256 source hashes only. Final manifest amendment includes windows-env.mjs and windows-tools.json in the before/after source-freeze checks; independently checked and driver hash refreshed.",
+    "executionNotRunReason": "Parent explicitly prohibited additional expensive tests, profiles and measurements during independent review.",
+    "testsInspected": [
+      "Native replay frame parity/counts, pre-operation budgets, canceled work, mutable callback isolation, admission saturation/release and projection/output budgets",
+      "Spades original corpus transitions, immutable branches, imports/outputs, rejected commands and concealed-hand permutation",
+      "Hearts original opening/pass projections, sealed choice count, import ownership, immutable transition and incompatible input rejection",
+      "HTTP strict request/owner/stale revision/admission tests, corrupt stored state no-write matrix, counted snapshot request with exact legacy bytes/view, PostgreSQL revision race/cancellation and original Partners complete-hand checksum"
+    ]
+  },
+  "limitations": [
+    "This review does not establish measured speed, capacity, hosted safety, strategy strength or universal invalid-input parity.",
+    "Positive replay corpus represents six Spades hands and Hearts opening/pass only.",
+    "Human review remains deferred.",
+    "The HTTP seam remains httptest-only; its PostgreSQL test path is not the full application persistence or hosted authentication path."
+  ],
+  "sourceHashes": {
+    "go.mod": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276",
+    "go.sum": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac",
+    "scripts/performance-common.mjs": "cd7811e6f46e83d2967205586041a28f9c7ea8b83236d94bd98eced75fe2d102",
+    "scripts/performance-workload.ts": "a8fc1d1ca14c5314482634be3818842965043386e4165aa8f272c8891f3a1874",
+    "scripts/performance-node.ts": "4d5808cb947093b83d2c0b84e7a6fe083d141e616549cefe2aed8ce8865f82ba",
+    "scripts/performance-windows.mjs": "e6425aa06e21bb0731a38f23d73ef1de42f15a281f1df99ba5988f2183ed53ac",
+    "scripts/windows-env.mjs": "a406c38b659ae667f40546aff9ed66401f6dd3e88f2a72bc465053348ddb2400",
+    "scripts/windows-tools.json": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4",
+    "server/cmd/perf/main.go": "c9d82c37440175a2ed5fb9fccbd6277994c3cd7d73af6019cf0c07552c813e8a",
+    "server/cmd/perf/metrics_windows.go": "397bef0b3616e8be9e15cfc8a53872bc46ff81310fc6ee3d78719b62d2691fa7",
+    "server/internal/gamekernel/module.go": "664c90d6f70b284e070deb7f8b49e146b669e1f118197f1d62f338b1689295fd",
+    "server/internal/gamekernel/replay.go": "de5d0dd1caf3cabf2d308603e0741af917d11d003b8ea2cf6d03cd636403f182",
+    "server/internal/gamekernel/snapshot.go": "9336e615d4cd2decc87fde4eb71f9cc3b0e9a08fa1377ecc862d77092013201a",
+    "server/internal/gamekernel/snapshot_test.go": "fa56e0afa1084de78dc47a0546ce97250040a00f5642b730f7632da7d368354f",
+    "server/internal/games/hearts/opening.go": "b75203fa388a6ea05eaa8fae2bcd9c26f39514e120465a35ab76fcd49b4fe5b3",
+    "server/internal/games/hearts/snapshot.go": "77acbad260e4d2ab9032ce5fdea1aeeb180c5b09dbee109741b65c3687a26c2c",
+    "server/internal/games/hearts/snapshot_test.go": "6b6f930dd88ba3d8ebc47acb3488dfaf07334f0985e65d37c58fa483ebee8771",
+    "server/internal/games/spades/engine.go": "77c1329eb51cd1e30412739d7346fd117a6c5d9d9badb74a3af8d52200dc3670",
+    "server/internal/games/spades/observation.go": "30ff4445576dd81b3c44b59b3a74115702b048a11c90551a95a5e3e440d08209",
+    "server/internal/games/spades/types.go": "04972681204c239205db4e7928bf9ff36b87e33534f4bbdf1a4b438107f695ce",
+    "server/internal/games/spades/json.go": "e1bad71371ae33311a72a9ad886b052db85837a45eae2aaa8046467522596986",
+    "server/internal/games/spades/validation.go": "f8ac4b058932d4fc6da5281177524fe8138bb8a508b7a5e9a09d967f75916730",
+    "server/internal/games/spades/snapshot.go": "d3fc25f2c2d9525f9252833e4a645e4222d37a6fc82bc2b4ac86ce2d316f9334",
+    "server/internal/games/spades/snapshot_test.go": "29efcde246ac14a0cbd4ccdf3ccd24a3cfc542822e97de92cca06baa0db42460",
+    "server/internal/compatibility/modules.go": "16c022c45871b3e1b60ed750c240908bce474227339946cc2480da30066a3bf0",
+    "web/server/records/state-validation.ts": "4fffd293a392aeb121e9f3c4c40b5d80fad8c77e29d0867ed7b72e979599c441",
+    "web/server/tests/fixtures/legacy-module-document.json": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f",
+    "qa/implementation/multi-game/m02a/corpus/original-expectations.json": "d33fecab42e2fda9d53b60dcd1341aa12bf86d6b5f4dfcce835ee21e8f267b94",
+    "qa/implementation/multi-game/performance-windows/protocol.md": "029e69f4c3cef5cf6592cc000cd2fc5ff07a8447a86b003e4ee84050219281c1",
+    "server/internal/http/slice.go": "b28bc04f8454b2221066fa11a8e953fe39f56239816d158cb1049ff9c343ed5f",
+    "server/internal/http/slice_test.go": "1ebd350ecc947da7eb9409a3da3dac15aee50156bebb0c893eaefb1bf07fc405",
+    "server/internal/records/teststore.go": "654bdd0e54204e2a31725eed19302471cd2f39ecc902a25c40ef58c08c0e1003"
+  },
+  "evidenceClaims": {
+    "reviewedAtUTC": "2026-10-06T03:45:21.9224405Z",
+    "status": "Native measurement arithmetic, diagnostic profile attribution and final scope claims verified; no actionable finding",
+    "execution": "Read existing artifacts and logs, recomputed summaries, and compared file hashes. No tests, benchmarks or profiles run.",
+    "arithmetic": {
+      "rows": [
+        {
+          "variant": "legacy-go",
+          "samples": 6,
+          "warmMedianMs": 9304.373749999999,
+          "warmMinMs": 9147.486,
+          "warmMaxMs": 9702.6156,
+          "coldMedianMs": 9064.576000000001,
+          "cpuTotalMedianMs": 11867.1875,
+          "peakWorkingSetMedianMiB": 28.505859375,
+          "inputPreparationMedianMs": 5.20535,
+          "parentProcessWallMedianMs": 37080.982749999996
+        },
+        {
+          "variant": "native-go",
+          "samples": 6,
+          "warmMedianMs": 679.29465,
+          "warmMinMs": 666.4837,
+          "warmMaxMs": 689.2871,
+          "coldMedianMs": 703.08505,
+          "cpuTotalMedianMs": 843.75,
+          "peakWorkingSetMedianMiB": 26.185546875,
+          "inputPreparationMedianMs": 5.2068,
+          "parentProcessWallMedianMs": 2858.5758000000023
+        },
+        {
+          "variant": "node",
+          "samples": 6,
+          "warmMedianMs": 1238.91435,
+          "warmMinMs": 1187.7878,
+          "warmMaxMs": 1267.1869999999994,
+          "coldMedianMs": 1292.5902,
+          "cpuTotalMedianMs": 1350.5,
+          "peakWorkingSetMedianMiB": 160.2890625,
+          "inputPreparationMedianMs": 1.6060000000000016,
+          "parentProcessWallMedianMs": 5301.2094499999985
+        }
+      ],
+      "ratios": {
+        "legacyOverNative": 13.697110304048469,
+        "legacyOverNode": 7.51010249417161,
+        "nodeOverNative": 1.8238246834418612,
+        "nativeWallReductionPercent": 92.69918999115873
+      },
+      "nativePercentOfNode": 54.8298314568719,
+      "summaryMismatches": []
+    },
+    "sourceManifest": {
+      "fileCount": 292,
+      "recordedSHA256": "a4ca9bcd5d4ae602522a7e3bd6ecab7dcf746dbdbd9fe23cf92c4f2fc2b7593e",
+      "recomputedSHA256": "a4ca9bcd5d4ae602522a7e3bd6ecab7dcf746dbdbd9fe23cf92c4f2fc2b7593e",
+      "currentFileHashMismatches": [],
+      "driverIncludesWindowsWrapperAndPins": true
+    },
+    "measurements": {
+      "variants": 3,
+      "samplesPerVariant": 6,
+      "totalMeasuredJobs": 18,
+      "sequentialOrderPermutations": 6,
+      "warmupsPerChild": 3,
+      "measuredSamplesPerChild": 1,
+      "GoRuntimeForBothVariants": "go1.26.8",
+      "NodeRuntime": "v24.19.0",
+      "host": "native Windows x64 for all three variants",
+      "workloadSHA256": "45ee741a651a7553b9e6fa05eefa35277c79885455efd5a8e00fb0f338e6253c",
+      "eachJob": {
+        "transitions": 419,
+        "checkpoints": 422,
+        "actorObservations": 1688,
+        "actorViews": 1688,
+        "publicOutputValidations": 1688,
+        "frameBytes": 28070878
+      },
+      "verifiedWorkMismatches": [],
+      "explanation": "All 18 measured jobs match their variant's separate original-checkpoint verification work counters, full output-stream digest and final state digests. Go variants share the same release executable/toolchain; Node raw frame ordering differs and is verified semantically against original expectations."
+    },
+    "verificationLogCounts": {
+      "GoOrdinary": {
+        "testAndSubtestPasses": 406,
+        "topLevelTests": 46,
+        "packagePasses": 6,
+        "failures": 0,
+        "testSkips": 0
+      },
+      "GoRace": {
+        "testAndSubtestPasses": 406,
+        "topLevelTests": 46,
+        "packagePasses": 6,
+        "failures": 0,
+        "testSkips": 0
+      },
+      "packagesWithoutLocalTests": [
+        "cardford/server/cmd/perf",
+        "cardford/server/internal/records"
+      ],
+      "NodeFull": {
+        "tests": 493,
+        "pass": 493,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    "claimChecks": [
+      "Rounded wall/CPU/lifetime working-set values, six-sample ranges, input preparation and first-job medians agree with raw samples.",
+      "13.70x legacy/native ratio, 92.70% lower wall time, 1.824 Node/native ratio and 54.83% native share of Node time agree with raw medians.",
+      "Report and current plans describe implementation comparisons with matched external obligations, and explicitly disclose unequal internal work and Node facade overhead.",
+      "Old Linux/WSL 4709.920ms/1008.091ms evidence remains historical and is explicitly excluded from direct Windows comparison.",
+      "First-job values are not called cold-disk timings; process lifetime working set is not called per-request heap.",
+      "The timed replay excludes HTTP/SQL, provider/policy, long-history, concurrency and hosted capacity. M03-M06 and human/live-provider evidence remain pending."
+    ],
+    "profiles": {
+      "status": "read-verified; no actionable finding",
+      "reviewedAtUTC": "2026-10-06T03:52:23.1513151Z",
+      "method": "Read captured profile summaries/top/total reports, recomputed unit conversions/ratios, independently aggregated the captured V8 samples/timeDeltas, and checked the final report. No profile generation or pprof command executed.",
+      "GoCPU": {
+        "scope": "Three jobs after three unprofiled warmups, CPU-only with default allocation sampling.",
+        "legacyDecodeState": {
+          "cumulativeCPUSeconds": 23.91,
+          "totalSampledCPUSeconds": 32.61,
+          "cumulativePercent": 73.32
+        },
+        "nativePublicValidation": {
+          "cumulativeCPUSeconds": 1.08,
+          "totalSampledCPUSeconds": 2.14,
+          "cumulativePercent": 50.47
+        },
+        "interpretation": "Cumulative attribution includes callees. Call-tree percentages overlap and are not additive. Sampled process CPU can exceed elapsed time."
+      },
+      "GoAllocation": {
+        "scope": "Separate cold/cumulative process captures, MemProfileRate=1 after input preparation; not live heap, retained memory or timing evidence.",
+        "legacy": {
+          "bytes": 3221617528,
+          "MiB": 3072.373893737793,
+          "objects": 73054461
+        },
+        "native": {
+          "bytes": 345949616,
+          "MiB": 329.9232635498047,
+          "objects": 5221812
+        },
+        "byteReductionPercent": 89.261617402027,
+        "legacyDecodeStateCumulativePercent": 85.35,
+        "interpretation": "Raw total-byte/object reports support the summary. The DecodeState cumulative allocation percentage is read from alloc_space attribution; overlapping call-tree nodes are not summed."
+      },
+      "NodeCPU": {
+        "scope": "Whole-process V8 capture including imports, three warmups and three jobs; a different capture window from Go.",
+        "independentlyRecomputedTotalSampledMs": 8117.299,
+        "recursiveJSONCopySelfAggregateMs": 4118.371,
+        "recursiveJSONCopySelfAggregatePercent": 50.7357311834885,
+        "reportInterpretation": "Report uses qualitative copying/conversion attribution and explicitly avoids directly comparing Node percentages with Go's warm-only CPU percentages."
+      },
+      "timingSeparation": "Benchmark evidence contains no profiled worker. Diagnostic artifact labels and the frozen harness keep CPU-only, allocation-only and ordinary timing workers separate.",
+      "currentRuntimeSourceManifestMismatches": [],
+      "claimScope": "The final report supports redundant-boundary attribution and preserved validation. It does not claim intrinsic language speed, full-service capacity, long-history behavior or strategy strength."
+    },
+    "artifactHashesAtReview": {
+      "qa/implementation/multi-game/performance-windows/benchmark.json": "edb900961e72e5a97bfaad3bdd5b5f188c68ee62552d028e1cc42fe051c9ce58",
+      "qa/implementation/multi-game/performance-windows/summary.json": "1bcfa2cd9f75e14005eeff4229219130895b754ffa5c2479ba15b76b430642d6",
+      "qa/implementation/multi-game/performance-windows/report.md": "a57b0e23300009c95f369a38235a1a1b90de84869cba859938b572215277eb7a",
+      "qa/implementation/multi-game/performance-windows/verification-native.json": "75e04fcdc57459629e8cb17c4dbf44dac35b21810fa8149d74cd153395885b26",
+      "qa/implementation/multi-game/performance-windows/verification.json": "98cb3a449fe94fe3234f58b6fc1c563cd4c63ac10c79e2ab403f22c033e6b81d",
+      "qa/implementation/multi-game/performance-windows/verification/go-native.jsonl": "9c9a358373ff0d455ea56c14593c3faa1d8c7361b1e7526718c8976a09658782",
+      "qa/implementation/multi-game/performance-windows/verification/go-race-native.jsonl": "9e3fd2a5c957b7e4403e98a1d5b2fcac8141812a8e26e2eb56013d6db0649e09",
+      "qa/implementation/multi-game/performance-windows/verification/node-full-native.txt": "8c7641d6165a1f2782095aa5901e2066c37ee856f7c38dc80b93fb1c959fefff",
+      "planning/decisions/CR-ARCH-004-native-windows-performance.md": "78b1f7db987d0117b62dd29545982d6a0be22ac5737df9afe45ec726143a001e",
+      "planning/implementation/multi-game/backend-readiness.md": "97a84fb48c7545ef5d79bc11d69cf5e027524fd7630c80ababba67eecb28575a",
+      "planning/implementation/multi-game/windows-development.md": "3e3e75b8bb81d3664658b2c3c60a2282c81efd8b83842b74be86fcfc67d428f4",
+      "planning/implementation/multi-game/portable-semantics.md": "255cbfd71efa0ff0f0745ef9004765df5dc12207eee7bdb382252f95b3c18863",
+      "qa/implementation/multi-game/performance-windows/profile-summary.json": "215d6cb037da149197b4bd9c84dafe190ed908c84776e963e26855e43f88b530",
+      "qa/implementation/multi-game/performance-windows/profiles.json": "1717ffe0b0165534c459b4d521f840da51e667e21e8606c6b2a6a279fd30139b",
+      "qa/implementation/multi-game/performance-windows/profiles/legacy-go.alloc_objects.txt": "370eb66ae3f2bb597dadb1e62eb06c369bf6fa79818cb01f9d8866a218b084bd",
+      "qa/implementation/multi-game/performance-windows/profiles/legacy-go.alloc_space.txt": "35e0a867df80d034a99be2811ed12838bd7f46b40aa82ebabcb509119175ceb4",
+      "qa/implementation/multi-game/performance-windows/profiles/legacy-go.alloc-total.txt": "bc931f72e65b4103ad5ec8762ee3df9326c59b1bc5a9678edd99e03c458b5b4c",
+      "qa/implementation/multi-game/performance-windows/profiles/legacy-go.alloc.pprof": "707d9febb4c047b4277023e43d3248ec6b2384ce88e9dbd48f01540c194f748f",
+      "qa/implementation/multi-game/performance-windows/profiles/legacy-go.cpu-top.txt": "333dc79ac6615b3eff46bce2759a74f73f7b358bcb9ffe7c3b39c6c30c2c1f1b",
+      "qa/implementation/multi-game/performance-windows/profiles/legacy-go.cpu.pprof": "c7f6f5fd1720d573f815104d572098cb9eefea94b6e437fc9b8fb04b9eb7a522",
+      "qa/implementation/multi-game/performance-windows/profiles/native-go.alloc_objects.txt": "1218b501830409169c618520e7cd3c3b0b9fbe63a8d669c6f9997daf24b515f5",
+      "qa/implementation/multi-game/performance-windows/profiles/native-go.alloc_space.txt": "95107d6333331a0caa2f32246cf9b06566df4f1b609c969dd0c2e57e4c31c753",
+      "qa/implementation/multi-game/performance-windows/profiles/native-go.alloc-total.txt": "dc2b0026c1ad29002d046a101957d3bc10b01cb487b6b5396062622525c63a35",
+      "qa/implementation/multi-game/performance-windows/profiles/native-go.alloc.pprof": "829155d5bfef2524138446137352dbf3c5ba2043af8b77d710b36b0b8421e575",
+      "qa/implementation/multi-game/performance-windows/profiles/native-go.cpu-top.txt": "7c1040802cb241d655190b62e63b4da97e70364138adb55de4ff885824279c65",
+      "qa/implementation/multi-game/performance-windows/profiles/native-go.cpu.pprof": "c105498181b10d3f608758624c72b7899ab5c29acc874db63c655fe6b285d25e",
+      "qa/implementation/multi-game/performance-windows/profiles/node.cpuprofile": "c46c54b520b62ff7035ad1dac16d75bdfb197abe8e869ae19336404c511d2453"
+    }
+  }
+}

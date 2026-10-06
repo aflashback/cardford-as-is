@@ -1,0 +1,23 @@
+File: performance-go1.26.8.exe
+Build ID: C:\repos\test-jev\.local\windows-tools\performance-go1.26.8.exe2026-10-05 23:39:44.4985271 -0400 EDT
+Type: alloc_space
+Time: 2026-10-05 23:47:23 EDT
+Showing nodes accounting for 38025.16kB, 11.26% of 337841.42kB total
+Dropped 314 nodes (cum <= 1689.21kB)
+Showing top 15 nodes out of 105
+      flat  flat%   sum%        cum   cum%
+         0     0%     0% 337781.82kB   100%  runtime.main
+    0.22kB 6.5e-05% 6.5e-05% 337768.57kB   100%  main.main
+         0     0% 6.5e-05% 337230.12kB 99.82%  main.main.func1
+   37.93kB 0.011% 0.011% 337229.55kB 99.82%  main.job
+         0     0% 0.011%   337190kB 99.81%  cardford/server/internal/gamekernel.(*Executor).ReplayNative
+         0     0% 0.011% 211882.85kB 62.72%  cardford/server/internal/contracts.Validate
+         0     0% 0.011% 211882.85kB 62.72%  cardford/server/internal/gamekernel.visitNative
+         0     0% 0.011% 211882.85kB 62.72%  main.job.func1
+         0     0% 0.011% 211882.85kB 62.72%  main.job.func2
+  527.81kB  0.16%  0.17% 141689.48kB 41.94%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).validate
+  300.66kB 0.089%  0.26% 141141.28kB 41.78%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validate
+  312.21kB 0.092%  0.35% 140794.75kB 41.67%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).objValidate
+36846.33kB 10.91% 11.26% 140781.59kB 41.67%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateVal
+         0     0% 11.26% 136803.41kB 40.49%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).Validate (inline)
+         0     0% 11.26% 122228.48kB 36.18%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).arrValidate

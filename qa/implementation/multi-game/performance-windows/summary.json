@@ -1,0 +1,52 @@
+{
+  "hardware": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "arch": "x64",
+    "cpu": "AMD Ryzen 9 5900HX with Radeon Graphics        ",
+    "logicalCPUs": 16,
+    "totalMemoryBytes": 33721040896
+  },
+  "rows": [
+    {
+      "variant": "legacy-go",
+      "warmMedianMs": 9304.373749999999,
+      "warmMinMs": 9147.486,
+      "warmMaxMs": 9702.6156,
+      "coldMedianMs": 9064.576000000001,
+      "cpuTotalMedianMs": 11867.1875,
+      "peakWorkingSetMedianMiB": 28.505859375,
+      "inputPreparationMedianMs": 5.20535,
+      "parentProcessWallMedianMs": 37080.982749999996
+    },
+    {
+      "variant": "native-go",
+      "warmMedianMs": 679.29465,
+      "warmMinMs": 666.4837,
+      "warmMaxMs": 689.2871,
+      "coldMedianMs": 703.08505,
+      "cpuTotalMedianMs": 843.75,
+      "peakWorkingSetMedianMiB": 26.185546875,
+      "inputPreparationMedianMs": 5.2068,
+      "parentProcessWallMedianMs": 2858.5758000000023
+    },
+    {
+      "variant": "node",
+      "warmMedianMs": 1238.91435,
+      "warmMinMs": 1187.7878,
+      "warmMaxMs": 1267.1869999999994,
+      "coldMedianMs": 1292.5902,
+      "cpuTotalMedianMs": 1350.5,
+      "peakWorkingSetMedianMiB": 160.2890625,
+      "inputPreparationMedianMs": 1.6060000000000016,
+      "parentProcessWallMedianMs": 5301.2094499999985
+    }
+  ],
+  "ratios": {
+    "legacyOverNative": 13.697110304048469,
+    "legacyOverNode": 7.51010249417161,
+    "nodeOverNative": 1.8238246834418612,
+    "nativeWallReductionPercent": 92.69918999115873
+  },
+  "sourceManifestSHA256": "a4ca9bcd5d4ae602522a7e3bd6ecab7dcf746dbdbd9fe23cf92c4f2fc2b7593e"
+}

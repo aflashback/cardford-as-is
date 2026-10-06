@@ -76,12 +76,28 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "missing or stale owned game", 409)
 		return
 	}
-	m, e := h.registry.Resolve(row.Mode)
-	if e != nil || len(row.State) > 256<<10 || m.Validate(row.State) != nil {
+	m, e := h.registry.ResolveSnapshot(row.Mode)
+	if e != nil || len(row.State) > 256<<10 {
 		http.Error(w, "unsupported stored game", 422)
 		return
 	}
-	if !boundView(m, row, row.State, h.principal.Seat) {
+	if ctx.Err() != nil {
+		http.Error(w, "canceled", 408)
+		return
+	}
+	// Import untrusted stored bytes exactly once. The game-owned snapshot keeps
+	// its validated private state immutable across projections and transitions.
+	current, e := m.Open(row.State)
+	if e != nil {
+		http.Error(w, "unsupported stored game", 422)
+		return
+	}
+	if ctx.Err() != nil {
+		http.Error(w, "canceled", 408)
+		return
+	}
+	before, e := current.Project(h.principal.Seat)
+	if e != nil || !boundView(before.View, row) {
 		http.Error(w, "stored game identity mismatch", 422)
 		return
 	}
@@ -102,21 +118,26 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "canceled", 408)
 		return
 	}
-	next, e := m.Apply(row.State, command)
+	next, e := current.Apply(command)
 	if e != nil {
 		http.Error(w, "unsupported or illegal action", 422)
 		return
 	}
-	if len(next) > 256<<10 || m.Validate(next) != nil {
+	if ctx.Err() != nil {
+		http.Error(w, "canceled", 408)
+		return
+	}
+	encoded, e := next.Export()
+	if e != nil || len(encoded) > 256<<10 {
 		http.Error(w, "invalid transition", 500)
 		return
 	}
-	if !boundView(m, row, next, h.principal.Seat) {
-		http.Error(w, "transition identity mismatch", 500)
+	if ctx.Err() != nil {
+		http.Error(w, "canceled", 408)
 		return
 	}
-	view, e := m.SafeView(next, h.principal.Seat)
-	if e != nil || len(view) > 512<<10 || contracts.Validate("GameView", view) != nil {
+	projection, e := next.Project(h.principal.Seat)
+	if e != nil || !boundView(projection.View, row) {
 		http.Error(w, "invalid safe result", 500)
 		return
 	}
@@ -124,19 +145,18 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "canceled", 408)
 		return
 	}
-	if e = h.store.Publish(ctx, row, next); e != nil {
+	if e = h.store.Publish(ctx, row, encoded); e != nil {
 		http.Error(w, "publication rejected", 409)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("ETag", strconv.FormatInt(row.Revision+1, 10))
 	w.WriteHeader(200)
-	_, _ = w.Write(view)
+	_, _ = w.Write(projection.View)
 }
 
-func boundView(m gamekernel.Module, row records.Row, state json.RawMessage, seat int) bool {
-	view, err := m.SafeView(state, seat)
-	if err != nil || len(view) > 512<<10 || contracts.Validate("GameView", view) != nil {
+func boundView(view json.RawMessage, row records.Row) bool {
+	if len(view) > 512<<10 || contracts.Validate("GameView", view) != nil {
 		return false
 	}
 	var identity struct {

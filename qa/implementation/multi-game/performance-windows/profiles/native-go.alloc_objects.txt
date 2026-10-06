@@ -1,0 +1,23 @@
+File: performance-go1.26.8.exe
+Build ID: C:\repos\test-jev\.local\windows-tools\performance-go1.26.8.exe2026-10-05 23:39:44.4985271 -0400 EDT
+Type: alloc_objects
+Time: 2026-10-05 23:47:23 EDT
+Showing nodes accounting for 292512, 5.60% of 5221812 total
+Dropped 335 nodes (cum <= 26109)
+Showing top 15 nodes out of 84
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%    5221739   100%  runtime.main
+         1 1.9e-05% 1.9e-05%    5221738   100%  main.main
+         0     0% 1.9e-05%    5221733   100%  main.main.func1
+       431 0.0083% 0.0083%    5221715   100%  main.job
+         0     0% 0.0083%    5221262   100%  cardford/server/internal/gamekernel.(*Executor).ReplayNative
+         0     0% 0.0083%    4857445 93.02%  cardford/server/internal/contracts.Validate
+         0     0% 0.0083%    4857445 93.02%  cardford/server/internal/gamekernel.visitNative
+         0     0% 0.0083%    4857445 93.02%  main.job.func1
+         0     0% 0.0083%    4857445 93.02%  main.job.func2
+      5067 0.097%  0.11%    3017766 57.79%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).validate
+      9399  0.18%  0.29%    3011011 57.66%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validate
+     15619   0.3%  0.58%    3005893 57.56%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).objValidate
+    261995  5.02%  5.60%    3004209 57.53%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateVal
+         0     0%  5.60%    2941191 56.33%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).Validate (inline)
+         0     0%  5.60%    2650498 50.76%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).arrValidate

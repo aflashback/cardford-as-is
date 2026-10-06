@@ -1,0 +1,29 @@
+File: performance-go1.26.8.exe
+Build ID: C:\repos\test-jev\.local\windows-tools\performance-go1.26.8.exe2026-10-05 23:39:44.4985271 -0400 EDT
+Type: cpu
+Time: 2026-10-05 23:46:45 EDT
+Duration: 2.05s, Total samples = 2.14s (104.59%)
+Showing nodes accounting for 0.07s, 3.27% of 2.14s total
+Dropped 90 nodes (cum <= 0.01s)
+Showing top 20 nodes out of 176
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      1.90s 88.79%  cardford/server/internal/gamekernel.(*Executor).ReplayNative
+         0     0%     0%      1.90s 88.79%  main.job
+         0     0%     0%      1.90s 88.79%  main.main
+         0     0%     0%      1.90s 88.79%  main.main.func1
+         0     0%     0%      1.90s 88.79%  runtime.main
+         0     0%     0%      1.13s 52.80%  cardford/server/internal/gamekernel.visitNative
+         0     0%     0%      1.13s 52.80%  main.job.func1
+         0     0%     0%      1.13s 52.80%  main.job.func2
+         0     0%     0%      1.08s 50.47%  cardford/server/internal/contracts.Validate
+         0     0%     0%      0.65s 30.37%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).Validate (inline)
+         0     0%     0%      0.65s 30.37%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).validate
+     0.03s  1.40%  1.40%      0.65s 30.37%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).objValidate
+     0.02s  0.93%  2.34%      0.65s 30.37%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validate
+     0.02s  0.93%  3.27%      0.63s 29.44%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateVal
+         0     0%  3.27%      0.59s 27.57%  cardford/server/internal/gamekernel.(*Executor).nativeFrame
+         0     0%  3.27%      0.57s 26.64%  encoding/json.Marshal
+         0     0%  3.27%      0.56s 26.17%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).arrValidate
+         0     0%  3.27%      0.54s 25.23%  encoding/json.(*encodeState).marshal
+         0     0%  3.27%      0.54s 25.23%  encoding/json.(*encodeState).reflectValue
+         0     0%  3.27%      0.54s 25.23%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateSelf

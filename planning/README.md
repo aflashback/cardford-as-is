@@ -8,6 +8,7 @@ Implementation target, grounded in the playable [web application](../web/README.
 
 | Read | Purpose |
 |---|---|
+| [Native Windows performance decision](decisions/CR-ARCH-004-native-windows-performance.md) / [findings](../qa/implementation/multi-game/performance-windows/report.md) / [setup](implementation/multi-game/windows-development.md) | Corrected workload comparison, stable native toolchain, typed state boundaries and repeatable Node/Go/PostgreSQL checks before M03. |
 | [Multi-game reasoning implementation plan](../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) | Completed M00-M02A foundations; remaining production migration, maintained cases, Tarneeb/Trix and independent evaluation. |
 | [Backend stack decision](decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) | Go/PostgreSQL preferred target, TypeScript reference, preserved frontend and bounded compatibility gate; no replacement service implemented. |
 | [Urgent system repairs](decisions/CR-FIX-001-urgent-system-repairs.md) | Current TypeScript work caps, active-state validation, durable preparations and stable retries; [execution evidence](../qa/implementation/multi-game/urgent-repairs/status.md). |

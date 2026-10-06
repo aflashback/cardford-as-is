@@ -130,6 +130,13 @@ func initial(id string, dealer int) *state {
 	return s
 }
 func Create(raw json.RawMessage, deck []string) (json.RawMessage, error) {
+	s, e := createState(raw, deck)
+	if e != nil {
+		return nil, e
+	}
+	return json.Marshal(s)
+}
+func createState(raw json.RawMessage, deck []string) (*state, error) {
 	var c config
 	if e := decode(raw, &c); e != nil {
 		return nil, e
@@ -153,13 +160,16 @@ func Create(raw json.RawMessage, deck []string) (json.RawMessage, error) {
 	for i := 0; i < 4; i++ {
 		s.Hands[i] = sorted(s.Hands[i])
 	}
-	return json.Marshal(s)
+	return s, nil
 }
 func read(raw json.RawMessage) (*state, error) {
 	var s state
 	if e := decode(raw, &s); e != nil {
 		return nil, e
 	}
+	return checkedState(s)
+}
+func checkedState(s state) (*state, error) {
 	if s.ID == "" || len(utf16.Encode([]rune(s.ID))) > 256 || !seatOK(s.Dealer) {
 		return nil, fmt.Errorf("invalid identity")
 	}
@@ -214,6 +224,17 @@ func Apply(raw, cmd json.RawMessage) (json.RawMessage, error) {
 	if e != nil {
 		return nil, e
 	}
+	s, e = applyTo(s, cmd)
+	if e != nil {
+		return nil, e
+	}
+	out, e := json.Marshal(s)
+	if e == nil {
+		e = Validate(out)
+	}
+	return out, e
+}
+func applyTo(s *state, cmd json.RawMessage) (*state, error) {
 	var c struct {
 		Type   string `json:"type"`
 		Action struct {
@@ -221,7 +242,7 @@ func Apply(raw, cmd json.RawMessage) (json.RawMessage, error) {
 			Passes [4][]string `json:"passes"`
 		} `json:"action"`
 	}
-	if e = decode(cmd, &c); e != nil {
+	if e := decode(cmd, &c); e != nil {
 		return nil, e
 	}
 	if s.Phase != "pass" || c.Type != "action" || c.Action.Kind != "pass-bundle" {
@@ -259,11 +280,7 @@ func Apply(raw, cmd json.RawMessage) (json.RawMessage, error) {
 		}
 	}
 	s.Events = append(s.Events, event{2, "cards-passed", fmt.Sprintf("Three cards passed left. %s lead with the 2 of Clubs.", []string{"You", "West", "North", "East"}[*s.Turn])})
-	out, e := json.Marshal(s)
-	if e == nil {
-		e = Validate(out)
-	}
-	return out, e
+	return s, nil
 }
 func actions(s *state, seat int) []action {
 	a := []action{}
@@ -316,6 +333,9 @@ func Observe(raw json.RawMessage, seat int) (json.RawMessage, error) {
 	if e != nil {
 		return nil, e
 	}
+	return json.Marshal(observation(s, seat))
+}
+func observation(s *state, seat int) map[string]any {
 	memory := []any{}
 	for _, suit := range []string{"C", "D", "H", "S"} {
 		memory = append(memory, map[string]any{"suit": suit, "played": 0, "remaining": 13, "voidSeats": []int{}})
@@ -327,7 +347,7 @@ func Observe(raw json.RawMessage, seat int) (json.RawMessage, error) {
 			known = append(known, Play{*p.To, c})
 		}
 	}
-	return json.Marshal(map[string]any{"mode": s.Mode, "seat": seat, "moduleVersion": s.ModuleVersion, "ruleProfileId": s.RuleProfileID, "observationSchemaVersion": "1.0.0", "featureVersion": "1.0.0", "phase": s.Phase, "hand": s.Hands[seat], "handSizes": [4]int{13, 13, 13, 13}, "bids": s.Bids, "tricks": s.Tricks, "scores": s.Scores, "bags": s.Bags, "trick": s.Trick, "history": s.History, "turn": s.Turn, "dealer": s.Dealer, "handNumber": s.HandNumber, "heartsBroken": false, "spadesBroken": false, "events": s.Events, "passDirection": s.PassDirection, "pass": p, "legalActions": actions(s, seat), "memory": memory, "knownHoldings": known})
+	return map[string]any{"mode": s.Mode, "seat": seat, "moduleVersion": s.ModuleVersion, "ruleProfileId": s.RuleProfileID, "observationSchemaVersion": "1.0.0", "featureVersion": "1.0.0", "phase": s.Phase, "hand": s.Hands[seat], "handSizes": [4]int{13, 13, 13, 13}, "bids": s.Bids, "tricks": s.Tricks, "scores": s.Scores, "bags": s.Bags, "trick": s.Trick, "history": s.History, "turn": s.Turn, "dealer": s.Dealer, "handNumber": s.HandNumber, "heartsBroken": false, "spadesBroken": false, "events": s.Events, "passDirection": s.PassDirection, "pass": p, "legalActions": actions(s, seat), "memory": memory, "knownHoldings": known}
 }
 func SafeView(raw json.RawMessage, seat int) (json.RawMessage, error) {
 	if !seatOK(seat) {
@@ -337,15 +357,18 @@ func SafeView(raw json.RawMessage, seat int) (json.RawMessage, error) {
 	if e != nil {
 		return nil, e
 	}
+	return json.Marshal(view(s, seat, actions(s, seat)))
+}
+func view(s *state, seat int, choices []action) map[string]any {
 	publicActions := []any{}
-	for _, a := range actions(s, seat) {
+	for _, a := range choices {
 		if a.Kind == "pass" {
 			publicActions = append(publicActions, map[string]any{"kind": "pass", "cards": a.Cards})
 		} else {
 			publicActions = append(publicActions, map[string]any{"kind": "play", "card": a.Card})
 		}
 	}
-	return json.Marshal(map[string]any{"id": s.ID, "mode": s.Mode, "phase": s.Phase, "hand": s.Hands[seat], "handCounts": [4]int{13, 13, 13, 13}, "bids": s.Bids, "tricks": s.Tricks, "scores": s.Scores, "bags": s.Bags, "trick": s.Trick, "history": s.History, "turn": s.Turn, "dealer": s.Dealer, "handNumber": s.HandNumber, "heartsBroken": false, "spadesBroken": false, "passDirection": s.PassDirection, "received": s.Passes[seat].Incoming, "outgoing": s.Passes[seat].Outgoing, "handResult": nil, "currentWinner": nil, "legalActions": publicActions})
+	return map[string]any{"id": s.ID, "mode": s.Mode, "phase": s.Phase, "hand": s.Hands[seat], "handCounts": [4]int{13, 13, 13, 13}, "bids": s.Bids, "tricks": s.Tricks, "scores": s.Scores, "bags": s.Bags, "trick": s.Trick, "history": s.History, "turn": s.Turn, "dealer": s.Dealer, "handNumber": s.HandNumber, "heartsBroken": false, "spadesBroken": false, "passDirection": s.PassDirection, "received": s.Passes[seat].Incoming, "outgoing": s.Passes[seat].Outgoing, "handResult": nil, "currentWinner": nil, "legalActions": publicActions}
 }
 
 // Score accepts a complete played hand only, independently checking cards,

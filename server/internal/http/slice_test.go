@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"cardford/server/internal/compatibility"
 	"cardford/server/internal/contracts"
+	"cardford/server/internal/gamekernel"
 	slice "cardford/server/internal/http"
 	"cardford/server/internal/records"
 	"context"
@@ -246,6 +247,114 @@ func TestStoredIdentityBinding(t *testing.T) {
 				t.Fatal("mismatched game mutated")
 			}
 		})
+	}
+}
+
+func TestStoredCorruptionDoesNotPublish(t *testing.T) {
+	for _, kind := range []string{"unknown-pin", "missing-field", "private-extra", "invalid-json", "oversized"} {
+		t.Run(kind, func(t *testing.T) {
+			row, cmd := fixture(t)
+			body, seat := action(t, cmd)
+			var state map[string]any
+			if err := json.Unmarshal(row.State, &state); err != nil {
+				t.Fatal(err)
+			}
+			switch kind {
+			case "unknown-pin":
+				state["moduleVersion"] = "future"
+			case "missing-field":
+				delete(state, "spadesBroken")
+			case "private-extra":
+				state["concealedCanary"] = true
+			}
+			row.State, _ = json.Marshal(state)
+			if kind == "invalid-json" {
+				row.State = json.RawMessage(`{"id":`)
+			}
+			if kind == "oversized" {
+				row.State = bytes.Repeat([]byte(" "), (256<<10)+1)
+			}
+			before := bytes.Clone(row.State)
+			store := &memoryStore{row: row}
+			h, err := slice.New(store, compatibility.Registry(), slice.Principal{Owner: row.Owner, GameID: row.ID, Seat: seat})
+			if err != nil {
+				t.Fatal(err)
+			}
+			if w := request(h, body, 0, context.Background()); w.Code != 422 {
+				t.Fatalf("corrupt stored game accepted: %d", w.Code)
+			}
+			if store.writes != 0 || store.row.Revision != 0 || !bytes.Equal(store.row.State, before) {
+				t.Fatal("corrupt original state was changed")
+			}
+		})
+	}
+}
+
+type snapshotCalls struct{ open, apply, export, project int }
+type countedSnapshot struct {
+	gamekernel.Snapshot
+	calls *snapshotCalls
+}
+
+func (s countedSnapshot) Apply(command json.RawMessage) (gamekernel.Snapshot, error) {
+	s.calls.apply++
+	next, err := s.Snapshot.Apply(command)
+	if err != nil {
+		return nil, err
+	}
+	return countedSnapshot{Snapshot: next, calls: s.calls}, nil
+}
+func (s countedSnapshot) Export() (json.RawMessage, error) {
+	s.calls.export++
+	return s.Snapshot.Export()
+}
+func (s countedSnapshot) Project(seat int) (gamekernel.Projection, error) {
+	s.calls.project++
+	return s.Snapshot.Project(seat)
+}
+
+func TestRequestUsesOneStrictSnapshotImport(t *testing.T) {
+	row, cmd := fixture(t)
+	body, seat := action(t, cmd)
+	source, err := compatibility.Registry().ResolveSnapshot(row.Mode)
+	if err != nil {
+		t.Fatal(err)
+	}
+	calls := &snapshotCalls{}
+	registry := gamekernel.NewRegistry()
+	// Register only the trusted snapshot adapter. A raw-facade fallback would
+	// fail, and repeated byte imports would violate this request boundary.
+	err = registry.RegisterSnapshot(row.Mode, gamekernel.SnapshotFuncs{StartFunc: source.Start, OpenFunc: func(raw json.RawMessage) (gamekernel.Snapshot, error) {
+		calls.open++
+		s, err := source.Open(raw)
+		if err != nil {
+			return nil, err
+		}
+		return countedSnapshot{Snapshot: s, calls: calls}, nil
+	}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	store := &memoryStore{row: row}
+	h, err := slice.New(store, registry, slice.Principal{Owner: row.Owner, GameID: row.ID, Seat: seat})
+	if err != nil {
+		t.Fatal(err)
+	}
+	w := request(h, body, 0, context.Background())
+	if w.Code != 200 {
+		t.Fatalf("snapshot request failed: %d %s", w.Code, w.Body.String())
+	}
+	if calls.open != 1 || calls.apply != 1 || calls.export != 1 || calls.project != 2 {
+		t.Fatalf("unexpected request work: %+v", calls)
+	}
+	legacy, _ := compatibility.Registry().Resolve(row.Mode)
+	expected, err := legacy.Apply(row.State, cmd)
+	if err != nil || !bytes.Equal(store.row.State, expected) {
+		t.Fatal("snapshot request changed persisted semantics")
+	}
+	view, err := legacy.SafeView(expected, seat)
+	if err != nil || !bytes.Equal(w.Body.Bytes(), view) {
+		t.Fatal("snapshot request changed player projection")
 	}
 }
 

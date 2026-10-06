@@ -1,0 +1,607 @@
+{
+  "protocol": "windows-replay-1",
+  "label": "profiled diagnostic runs; excluded from timing comparison",
+  "scope": {
+    "goCPU": "three warm jobs after three unprofiled warmups; default allocation sampling",
+    "goAlloc": "separate cold job, cumulative process allocation profile with MemProfileRate=1 after input preparation",
+    "nodeCPU": "whole process including imports, three warmups and three jobs; distinguish initialization from measured stacks"
+  },
+  "version": "go version go1.26.8 windows/amd64",
+  "results": {
+    "legacy-go": {
+      "cpu": {
+        "arch": "amd64",
+        "coldJob": {
+          "wallMs": 9046.478,
+          "cpuUserMs": 10187.5,
+          "cpuKernelMs": 562.5,
+          "processLifetimePeakWorkingSetKiB": 29384,
+          "work": {
+            "counts": {
+              "jobs": 1,
+              "initialStateDecodes": 0,
+              "commandDecodes": 419,
+              "checkpointValidations": 6326,
+              "transitions": 419,
+              "checkpoints": 422,
+              "observations": 1688,
+              "publicViews": 1688,
+              "candidateSets": 1688,
+              "candidates": 2639,
+              "publicOutputValidations": 1688,
+              "stateSerializations": 422,
+              "observationSerializations": 1688,
+              "viewSerializations": 1688,
+              "frameSerializations": 844,
+              "stateBytes": 5164794,
+              "observationBytes": 20810733,
+              "viewBytes": 2023622,
+              "frameBytes": 28070878
+            },
+            "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+            "finalStateRawHashes": [
+              "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+              "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+              "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+            ]
+          }
+        },
+        "cwd": "C:\\repos\\test-jev",
+        "inputPreparationMs": 5.4684,
+        "operationCounterScope": "Declared semantic boundaries. Legacy-go additionally repeats private decode/projection; its checkpoint validation count is source-derived, not an instrumented low-level cost.",
+        "platform": "windows",
+        "preparationMs": 5.4684,
+        "profilingOnly": true,
+        "protocol": "windows-replay-1",
+        "runtime": "go1.26.8",
+        "samples": [
+          {
+            "wallMs": 9273.3326,
+            "cpuUserMs": 10250,
+            "cpuKernelMs": 796.875,
+            "processLifetimePeakWorkingSetKiB": 29532,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 0,
+                "commandDecodes": 419,
+                "checkpointValidations": 6326,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 844,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          },
+          {
+            "wallMs": 9651.3445,
+            "cpuUserMs": 10890.625,
+            "cpuKernelMs": 781.25,
+            "processLifetimePeakWorkingSetKiB": 31676,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 0,
+                "commandDecodes": 419,
+                "checkpointValidations": 6326,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 844,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          },
+          {
+            "wallMs": 9062.5092,
+            "cpuUserMs": 10203.125,
+            "cpuKernelMs": 812.5,
+            "processLifetimePeakWorkingSetKiB": 31676,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 0,
+                "commandDecodes": 419,
+                "checkpointValidations": 6326,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 844,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          }
+        ],
+        "variant": "legacy-go",
+        "verificationOnly": false,
+        "warmups": 3,
+        "workerWallMs": 55519.205,
+        "workloadSHA256": "45ee741a651a7553b9e6fa05eefa35277c79885455efd5a8e00fb0f338e6253c",
+        "parentProcessWallMs": 55592.1268,
+        "launchExitLoaderAndOutputResidualMs": 72.92179999999644
+      },
+      "alloc": {
+        "arch": "amd64",
+        "coldJob": null,
+        "cwd": "C:\\repos\\test-jev",
+        "inputPreparationMs": 5.3551,
+        "operationCounterScope": "Declared semantic boundaries. Legacy-go additionally repeats private decode/projection; its checkpoint validation count is source-derived, not an instrumented low-level cost.",
+        "platform": "windows",
+        "preparationMs": 5.3551,
+        "profilingOnly": true,
+        "protocol": "windows-replay-1",
+        "runtime": "go1.26.8",
+        "samples": [
+          {
+            "wallMs": 347115.27,
+            "cpuUserMs": 345687.5,
+            "cpuKernelMs": 8406.25,
+            "processLifetimePeakWorkingSetKiB": 33096,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 0,
+                "commandDecodes": 419,
+                "checkpointValidations": 6326,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 844,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          }
+        ],
+        "variant": "legacy-go",
+        "verificationOnly": false,
+        "warmups": 0,
+        "workerWallMs": 347225.4894,
+        "workloadSHA256": "45ee741a651a7553b9e6fa05eefa35277c79885455efd5a8e00fb0f338e6253c",
+        "parentProcessWallMs": 347290.1662,
+        "launchExitLoaderAndOutputResidualMs": 64.67679999995744
+      }
+    },
+    "native-go": {
+      "cpu": {
+        "arch": "amd64",
+        "coldJob": {
+          "wallMs": 704.7822,
+          "cpuUserMs": 656.25,
+          "cpuKernelMs": 218.75,
+          "processLifetimePeakWorkingSetKiB": 24728,
+          "work": {
+            "counts": {
+              "jobs": 1,
+              "initialStateDecodes": 3,
+              "commandDecodes": 419,
+              "checkpointValidations": 422,
+              "transitions": 419,
+              "checkpoints": 422,
+              "observations": 1688,
+              "publicViews": 1688,
+              "candidateSets": 1688,
+              "candidates": 2639,
+              "publicOutputValidations": 1688,
+              "stateSerializations": 422,
+              "observationSerializations": 1688,
+              "viewSerializations": 1688,
+              "frameSerializations": 422,
+              "stateBytes": 5164794,
+              "observationBytes": 20810733,
+              "viewBytes": 2023622,
+              "frameBytes": 28070878
+            },
+            "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+            "finalStateRawHashes": [
+              "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+              "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+              "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+            ]
+          }
+        },
+        "cwd": "C:\\repos\\test-jev",
+        "inputPreparationMs": 5.7146,
+        "operationCounterScope": "Declared semantic boundaries. Legacy-go additionally repeats private decode/projection; its checkpoint validation count is source-derived, not an instrumented low-level cost.",
+        "platform": "windows",
+        "preparationMs": 5.7146,
+        "profilingOnly": true,
+        "protocol": "windows-replay-1",
+        "runtime": "go1.26.8",
+        "samples": [
+          {
+            "wallMs": 685.8163,
+            "cpuUserMs": 828.125,
+            "cpuKernelMs": 31.25,
+            "processLifetimePeakWorkingSetKiB": 28620,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 3,
+                "commandDecodes": 419,
+                "checkpointValidations": 422,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 422,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          },
+          {
+            "wallMs": 689.4813,
+            "cpuUserMs": 828.125,
+            "cpuKernelMs": 46.875,
+            "processLifetimePeakWorkingSetKiB": 28620,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 3,
+                "commandDecodes": 419,
+                "checkpointValidations": 422,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 422,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          },
+          {
+            "wallMs": 670.7576,
+            "cpuUserMs": 937.5,
+            "cpuKernelMs": 15.625,
+            "processLifetimePeakWorkingSetKiB": 28620,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 3,
+                "commandDecodes": 419,
+                "checkpointValidations": 422,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 422,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          }
+        ],
+        "variant": "native-go",
+        "verificationOnly": false,
+        "warmups": 3,
+        "workerWallMs": 4180.3191,
+        "workloadSHA256": "45ee741a651a7553b9e6fa05eefa35277c79885455efd5a8e00fb0f338e6253c",
+        "parentProcessWallMs": 4248.892199999944,
+        "launchExitLoaderAndOutputResidualMs": 68.57309999994413
+      },
+      "alloc": {
+        "arch": "amd64",
+        "coldJob": null,
+        "cwd": "C:\\repos\\test-jev",
+        "inputPreparationMs": 5.3854,
+        "operationCounterScope": "Declared semantic boundaries. Legacy-go additionally repeats private decode/projection; its checkpoint validation count is source-derived, not an instrumented low-level cost.",
+        "platform": "windows",
+        "preparationMs": 5.3854,
+        "profilingOnly": true,
+        "protocol": "windows-replay-1",
+        "runtime": "go1.26.8",
+        "samples": [
+          {
+            "wallMs": 35740.3975,
+            "cpuUserMs": 35218.75,
+            "cpuKernelMs": 796.875,
+            "processLifetimePeakWorkingSetKiB": 30224,
+            "work": {
+              "counts": {
+                "jobs": 1,
+                "initialStateDecodes": 3,
+                "commandDecodes": 419,
+                "checkpointValidations": 422,
+                "transitions": 419,
+                "checkpoints": 422,
+                "observations": 1688,
+                "publicViews": 1688,
+                "candidateSets": 1688,
+                "candidates": 2639,
+                "publicOutputValidations": 1688,
+                "stateSerializations": 422,
+                "observationSerializations": 1688,
+                "viewSerializations": 1688,
+                "frameSerializations": 422,
+                "stateBytes": 5164794,
+                "observationBytes": 20810733,
+                "viewBytes": 2023622,
+                "frameBytes": 28070878
+              },
+              "frameRawSHA256": "88b4fb930c4f4cb55f66ee39836e3cf084a58115d1d85502c37144dab8416a08",
+              "finalStateRawHashes": [
+                "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+                "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+                "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+              ]
+            }
+          }
+        ],
+        "variant": "native-go",
+        "verificationOnly": false,
+        "warmups": 0,
+        "workerWallMs": 35808.7467,
+        "workloadSHA256": "45ee741a651a7553b9e6fa05eefa35277c79885455efd5a8e00fb0f338e6253c",
+        "parentProcessWallMs": 35883.096300000034,
+        "launchExitLoaderAndOutputResidualMs": 74.34960000003048
+      }
+    },
+    "node": {
+      "protocol": "windows-replay-1",
+      "variant": "node",
+      "runtime": "v24.19.0",
+      "platform": "win32",
+      "arch": "x64",
+      "uv": "1.52.1",
+      "cwd": "C:\\repos\\test-jev",
+      "workloadSHA256": "45ee741a651a7553b9e6fa05eefa35277c79885455efd5a8e00fb0f338e6253c",
+      "warmups": 3,
+      "verificationOnly": false,
+      "inputPreparationMs": 1.713799999999992,
+      "importPreparationMs": 173.39249999999998,
+      "preparationMs": 175.11609999999996,
+      "coldJob": {
+        "wallMs": 1409.7541999999999,
+        "cpuUserMs": 1390,
+        "cpuKernelMs": 219,
+        "processLifetimePeakWorkingSetKiB": 130840,
+        "work": {
+          "counts": {
+            "jobs": 1,
+            "initialStateDecodes": 3,
+            "commandDecodes": 419,
+            "checkpointValidations": 422,
+            "transitions": 419,
+            "checkpoints": 422,
+            "observations": 1688,
+            "publicViews": 1688,
+            "candidateSets": 1688,
+            "candidates": 2639,
+            "publicOutputValidations": 1688,
+            "stateSerializations": 422,
+            "observationSerializations": 1688,
+            "viewSerializations": 1688,
+            "frameSerializations": 422,
+            "stateBytes": 5164794,
+            "observationBytes": 20810733,
+            "viewBytes": 2023622,
+            "frameBytes": 28070878
+          },
+          "frameRawSHA256": "975a13562ca4c0143e117fabc8cf59aa33a0029aed56378d18d441192453618a",
+          "finalStateRawHashes": [
+            "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+            "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+            "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+          ]
+        }
+      },
+      "samples": [
+        {
+          "wallMs": 1291.7993999999999,
+          "cpuUserMs": 1187,
+          "cpuKernelMs": 157,
+          "processLifetimePeakWorkingSetKiB": 169320,
+          "work": {
+            "counts": {
+              "jobs": 1,
+              "initialStateDecodes": 3,
+              "commandDecodes": 419,
+              "checkpointValidations": 422,
+              "transitions": 419,
+              "checkpoints": 422,
+              "observations": 1688,
+              "publicViews": 1688,
+              "candidateSets": 1688,
+              "candidates": 2639,
+              "publicOutputValidations": 1688,
+              "stateSerializations": 422,
+              "observationSerializations": 1688,
+              "viewSerializations": 1688,
+              "frameSerializations": 422,
+              "stateBytes": 5164794,
+              "observationBytes": 20810733,
+              "viewBytes": 2023622,
+              "frameBytes": 28070878
+            },
+            "frameRawSHA256": "975a13562ca4c0143e117fabc8cf59aa33a0029aed56378d18d441192453618a",
+            "finalStateRawHashes": [
+              "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+              "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+              "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+            ]
+          }
+        },
+        {
+          "wallMs": 1253.4349000000002,
+          "cpuUserMs": 1125,
+          "cpuKernelMs": 156,
+          "processLifetimePeakWorkingSetKiB": 170284,
+          "work": {
+            "counts": {
+              "jobs": 1,
+              "initialStateDecodes": 3,
+              "commandDecodes": 419,
+              "checkpointValidations": 422,
+              "transitions": 419,
+              "checkpoints": 422,
+              "observations": 1688,
+              "publicViews": 1688,
+              "candidateSets": 1688,
+              "candidates": 2639,
+              "publicOutputValidations": 1688,
+              "stateSerializations": 422,
+              "observationSerializations": 1688,
+              "viewSerializations": 1688,
+              "frameSerializations": 422,
+              "stateBytes": 5164794,
+              "observationBytes": 20810733,
+              "viewBytes": 2023622,
+              "frameBytes": 28070878
+            },
+            "frameRawSHA256": "975a13562ca4c0143e117fabc8cf59aa33a0029aed56378d18d441192453618a",
+            "finalStateRawHashes": [
+              "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+              "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+              "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+            ]
+          }
+        },
+        {
+          "wallMs": 1250.6733999999997,
+          "cpuUserMs": 1188,
+          "cpuKernelMs": 109,
+          "processLifetimePeakWorkingSetKiB": 170284,
+          "work": {
+            "counts": {
+              "jobs": 1,
+              "initialStateDecodes": 3,
+              "commandDecodes": 419,
+              "checkpointValidations": 422,
+              "transitions": 419,
+              "checkpoints": 422,
+              "observations": 1688,
+              "publicViews": 1688,
+              "candidateSets": 1688,
+              "candidates": 2639,
+              "publicOutputValidations": 1688,
+              "stateSerializations": 422,
+              "observationSerializations": 1688,
+              "viewSerializations": 1688,
+              "frameSerializations": 422,
+              "stateBytes": 5164794,
+              "observationBytes": 20810733,
+              "viewBytes": 2023622,
+              "frameBytes": 28070878
+            },
+            "frameRawSHA256": "975a13562ca4c0143e117fabc8cf59aa33a0029aed56378d18d441192453618a",
+            "finalStateRawHashes": [
+              "909e17a670d5d1a9fd974d7d72b500a3a67cd049535e45aa51ba78bf7c8f83d1",
+              "73be59db30c60bec5159fda2bba85f8269055998214debe1c2ba261e94800e08",
+              "28b0eca774794a1dcc45a7dd20d59e4f6837e0aa7233e41235b2fb533c8db455"
+            ]
+          }
+        }
+      ],
+      "workerWallMs": 8047.5937,
+      "operationCounterScope": "Declared semantic boundaries; internal TS reader performs additional projections, clones and repeated checks. No claim of equal low-level instructions."
+    }
+  }
+}

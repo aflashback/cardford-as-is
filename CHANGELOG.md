@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-06 UTC
+
+Correct the M02A performance comparison and provide native Windows Node/Go/PostgreSQL setup. Pin the maintained Go 1.26.8 toolchain after a reproducible 1.27.1 Windows profiling crash. Add immutable typed snapshots, reuse actor projections, and encode evidence frames once; the unexposed HTTP/database seam uses the same state boundary. Original contract/checkpoint evidence and the current TypeScript/UI behavior remain unchanged. [Findings and exact verification](qa/implementation/multi-game/performance-windows/report.md), [architecture amendment](planning/decisions/CR-ARCH-004-native-windows-performance.md).
+
 ## Unreleased — 2026-10-05
 
 M02A: add an unexposed Go/PostgreSQL compatibility slice with generated strict public contracts, frozen deterministic primitives, independent Spades replay, representative Hearts passing/scoring, bounded execution and disposable database tests. Preserve the current TypeScript app, React UI, policy pins and original evidence. [Acceptance and limits](qa/implementation/multi-game/m02a/status.md); M03 durable records are next. This does not activate a replacement server or establish better performance/strategy.

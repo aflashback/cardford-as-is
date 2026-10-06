@@ -1,0 +1,28 @@
+File: spades.test.exe
+Build ID: C:\repos\test-jev\.local\perf-audit\spades.test.exe2026-10-05 23:06:37.0283452 -0400 EDT
+Type: alloc_space
+Time: 2026-10-05 23:08:37 EDT
+Showing nodes accounting for 1325.12MB, 96.63% of 1371.27MB total
+Dropped 80 nodes (cum <= 6.86MB)
+Showing top 20 nodes out of 68
+      flat  flat%   sum%        cum   cum%
+  236.08MB 17.22% 17.22%   236.08MB 17.22%  reflect.mapassign_faststr0
+  201.53MB 14.70% 31.91%   201.53MB 14.70%  reflect.growslice
+  184.51MB 13.46% 45.37%   184.51MB 13.46%  encoding/json/jsontext.(*decoderState).fetch
+  167.66MB 12.23% 57.59%   167.66MB 12.23%  encoding/json/jsontext.(*Value).UnmarshalJSON
+   86.50MB  6.31% 63.90%   159.07MB 11.60%  encoding/json.(*Decoder).Token
+   75.50MB  5.51% 69.41%    75.50MB  5.51%  strings.genSplit
+   58.51MB  4.27% 73.68%    80.52MB  5.87%  cardford/server/internal/games/spades.actionsFor
+      48MB  3.50% 77.18%       48MB  3.50%  encoding/json/jsontext.Token.String (inline)
+      39MB  2.84% 80.02%       39MB  2.84%  reflect.unsafe_New
+   33.50MB  2.44% 82.46%    33.50MB  2.44%  reflect.makemap
+   32.47MB  2.37% 84.83%    32.47MB  2.37%  bytes.Clone
+      32MB  2.33% 87.16%       32MB  2.33%  unicode/utf16.Encode
+   22.02MB  1.61% 88.77%    22.02MB  1.61%  cardford/server/internal/games/spades.validateState.func1
+   20.50MB  1.50% 90.27%    20.50MB  1.50%  encoding/json/v2.makeString
+      18MB  1.31% 91.58%       50MB  3.65%  cardford/server/internal/games/spades.textLength
+      18MB  1.31% 92.89%       22MB  1.60%  cardford/server/internal/games/spades.sorted
+   17.21MB  1.26% 94.15%    17.21MB  1.26%  slices.Grow[go.shape.[]uint8,go.shape.uint8] (inline)
+   13.50MB  0.98% 95.13%   602.88MB 43.97%  cardford/server/internal/games/spades.checkShape
+   11.61MB  0.85% 95.98%    34.37MB  2.51%  encoding/json/v2.makeStructArshaler.func2
+    9.01MB  0.66% 96.63%     9.01MB  0.66%  cardford/server/internal/games/spades.memoryFor

@@ -50,8 +50,9 @@ func (f Funcs) valid() bool {
 }
 
 type Registry struct {
-	mu      sync.RWMutex
-	modules map[string]Module
+	mu        sync.RWMutex
+	modules   map[string]Module
+	snapshots map[string]SnapshotModule
 }
 
 func NewRegistry() *Registry { return &Registry{modules: map[string]Module{}} }

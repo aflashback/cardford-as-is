@@ -1,0 +1,28 @@
+File: spades.test.exe
+Build ID: C:\repos\test-jev\.local\perf-audit\spades.test.exe2026-10-05 23:06:37.0283452 -0400 EDT
+Type: alloc_objects
+Time: 2026-10-05 23:08:37 EDT
+Showing nodes accounting for 23499152, 98.93% of 23753043 total
+Dropped 101 nodes (cum <= 118765)
+Showing top 20 nodes out of 47
+      flat  flat%   sum%        cum   cum%
+   5668941 23.87% 23.87%    8448176 35.57%  encoding/json.(*Decoder).Token
+   3380085 14.23% 38.10%    3380085 14.23%  encoding/json/jsontext.(*Value).UnmarshalJSON
+   3244103 13.66% 51.75%    3244103 13.66%  strings.genSplit
+   2722516 11.46% 63.22%    2722516 11.46%  encoding/json/jsontext.Token.String (inline)
+   2068756  8.71% 71.93%    2068756  8.71%  reflect.unsafe_New
+   1507337  6.35% 78.27%   11345967 47.77%  cardford/server/internal/games/spades.checkShape
+    783858  3.30% 81.57%    1160574  4.89%  cardford/server/internal/games/spades.actionsFor
+    780984  3.29% 84.86%     780984  3.29%  encoding/json/v2.makeString
+    731849  3.08% 87.94%     731849  3.08%  reflect.makemap
+    691621  2.91% 90.85%     691621  2.91%  reflect.mapassign_faststr0
+    597496  2.52% 93.37%     597496  2.52%  unicode/utf16.Encode
+    514851  2.17% 95.53%     514851  2.17%  reflect.growslice
+    245641  1.03% 96.57%     376716  1.59%  cardford/server/internal/games/spades.sorted
+    211045  0.89% 97.46%     211045  0.89%  cardford/server/internal/games/spades.validateState.func1
+    131075  0.55% 98.01%     131075  0.55%  internal/reflectlite.Swapper
+    112363  0.47% 98.48%     709859  2.99%  cardford/server/internal/games/spades.textLength (inline)
+     77889  0.33% 98.81%    2159367  9.09%  cardford/server/internal/games/spades.validateState
+     23092 0.097% 98.91%    8482660 35.71%  cardford/server/internal/games/spades.scanJSON
+      3415 0.014% 98.92%   22886482 96.35%  cardford/server/internal/games/spades.DecodeState
+      2235 0.0094% 98.93%   23717583 99.85%  cardford/server/internal/games/spades.TestFrozenCorpus.func1

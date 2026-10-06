@@ -41,6 +41,13 @@ func deal(s *State, deck []string) error {
 // Create creates the original V1 shape from recorded actual chance material.
 // Secure random dealing is supplied by orchestration, never invented from a seed.
 func Create(config json.RawMessage, deck []string) (json.RawMessage, error) {
+	s, err := createState(config, deck)
+	if err != nil {
+		return nil, err
+	}
+	return EncodeState(s)
+}
+func createState(config json.RawMessage, deck []string) (*State, error) {
 	var c Config
 	if err := strictDecode(config, &c); err != nil {
 		return nil, err
@@ -52,7 +59,7 @@ func Create(config json.RawMessage, deck []string) (json.RawMessage, error) {
 	if err := deal(s, deck); err != nil {
 		return nil, err
 	}
-	return EncodeState(s)
+	return s, nil
 }
 
 // Apply consumes one recorded accepted action, collection, or next-hand command.
@@ -62,27 +69,33 @@ func Apply(state, command json.RawMessage) (json.RawMessage, error) {
 	if err != nil {
 		return nil, err
 	}
-	var c savedCommand
-	if err = strictDecode(command, &c); err != nil {
+	if err = applyCommand(s, command); err != nil {
 		return nil, err
+	}
+	return EncodeState(s)
+}
+func applyCommand(s *State, command json.RawMessage) error {
+	var c savedCommand
+	if err := strictDecode(command, &c); err != nil {
+		return err
 	}
 	switch c.Type {
 	case "action":
 		if c.Deal != nil {
-			return nil, fmt.Errorf("unexpected action deal")
+			return fmt.Errorf("unexpected action deal")
 		}
-		if err = validateAction(c.Action); err != nil {
-			return nil, err
+		if err := validateAction(c.Action); err != nil {
+			return err
 		}
-		if err = applyAction(s, *c.Action); err != nil {
-			return nil, err
+		if err := applyAction(s, *c.Action); err != nil {
+			return err
 		}
 	case "collect-trick":
 		if c.Action != nil || c.Deal != nil {
-			return nil, fmt.Errorf("unexpected collection fields")
+			return fmt.Errorf("unexpected collection fields")
 		}
 		if s.Phase != "trick-end" || len(s.Trick) != 4 {
-			return nil, fmt.Errorf("the trick is not complete")
+			return fmt.Errorf("the trick is not complete")
 		}
 		s.Trick = []Play{}
 		s.Phase = "play"
@@ -95,23 +108,23 @@ func Apply(state, command json.RawMessage) (json.RawMessage, error) {
 		emit(s, "trick-collected", "Completed trick cleared from the table.", nil, nil, nil)
 	case "next-hand":
 		if c.Action != nil || c.Deal == nil {
-			return nil, fmt.Errorf("next hand requires only a deal")
+			return fmt.Errorf("next hand requires only a deal")
 		}
 		if s.Phase != "hand-end" {
-			return nil, fmt.Errorf("finish and review this hand before dealing another")
+			return fmt.Errorf("finish and review this hand before dealing another")
 		}
 		if s.HandNumber == maxSafeInteger {
-			return nil, fmt.Errorf("unsafe next hand number")
+			return fmt.Errorf("unsafe next hand number")
 		}
 		s.Dealer = (s.Dealer + 1) % 4
 		s.HandNumber++
-		if err = deal(s, c.Deal); err != nil {
-			return nil, err
+		if err := deal(s, c.Deal); err != nil {
+			return err
 		}
 	default:
-		return nil, fmt.Errorf("unsupported Spades command")
+		return fmt.Errorf("unsupported Spades command")
 	}
-	return EncodeState(s)
+	return nil
 }
 func applyAction(s *State, a Action) error {
 	found := false

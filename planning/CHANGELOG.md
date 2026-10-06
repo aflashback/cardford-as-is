@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-06 UTC — Native Windows performance correction before M03
+
+[CR-ARCH-004](decisions/CR-ARCH-004-native-windows-performance.md) records the owner's request to settle the Node/Go comparison and native Windows toolchain before advancing. The old M02A workers both ran in Linux/WSL, but their matching outputs concealed repeated Go JSON decoding, validation, projection and frame encoding. Keep that evidence historical. Added native setup, same-source Go version control, immutable typed state boundaries, and an independently reviewed comparison protocol; the [new report](../qa/implementation/multi-game/performance-windows/report.md) supplies measurements and verification. Go 1.26.8 replaces 1.27.1 for current Windows work after the latter repeatedly crashed during CPU profiling. Go/PostgreSQL remains the backend direction; no production activation, UI redesign, strategy promotion or hosting work.
+
 ## 2026-10-05 — M02A compatibility gate passed
 
 The owner authorized the next unblocking implementation after urgent repairs. [M02A evidence](../qa/implementation/multi-game/m02a/status.md) records frozen Go/public contracts, independent supported-game replay, a complete Partners hand through HTTP/PostgreSQL, bounded cancellation/admission and matched-work measurements. Go met the local limits but was slower than the optimized Node reference; profiling remains explicit follow-up work. M03 durable records/replay is next. The TypeScript app, React UI, policy pins, six SQL migrations and original evidence remain preserved; production activation, human reviews and hosting stay deferred.
