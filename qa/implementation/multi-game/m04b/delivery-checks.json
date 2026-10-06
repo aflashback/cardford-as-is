@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-06T18:40:55.692Z",
+  "checks": [
+    "go-full",
+    "go-race",
+    "go-vet",
+    "go-contracts",
+    "public-contracts",
+    "oracle-check",
+    "boundary-check",
+    "edge-check",
+    "node-reference"
+  ],
+  "sourceSHA256": "82f040c66df0f402fb824f7363d5e7f55c1aff31e8dd6834ec580ab4c36dbbe4",
+  "sourceAndOutputHashes": "match final captured bytes",
+  "preservedFrom": "e60324f",
+  "preservedPaths": [
+    "web",
+    "package.json",
+    "package-lock.json",
+    "go.mod",
+    "go.sum",
+    "scripts",
+    "server/internal/records",
+    "server/internal/contracts",
+    "qa/experiments",
+    "qa/implementation/multi-game/m02",
+    "qa/implementation/multi-game/m02a",
+    "qa/implementation/multi-game/m03",
+    "qa/implementation/multi-game/m04",
+    "qa/implementation/multi-game/performance-windows"
+  ],
+  "localMarkdownLinks": 303,
+  "privateDatabaseCredential": "absent from M04B evidence"
+}

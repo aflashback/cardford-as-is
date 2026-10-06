@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-06 M04B
+
+Port the exact original Hearts/Spades bot policies and coach output to Go, and add registered V2 sessions with atomic passing, immutable preparation, automatic steps and separate round/chance boundaries. Unsupported policy pins fail explicitly. Independent references cover 6,380 complete decisions, all help levels and 1,099 session checkpoints; review fixes remove internal observation JSON round trips and redundant clones while preserving numeric/Unicode import semantics. [Acceptance and remaining service gates](qa/implementation/multi-game/m04b/status.md). The existing UI and TypeScript service remain active.
+
 ## Unreleased — 2026-10-06 M04A
 
 Complete the original Go Hearts rules, player-safe observations and compact save/replay path beyond opening passing. Preserve V1 state/events/candidates, all passing directions, scoring/moon/tied-match behavior and original saved decisions. Independent fixtures verify 668 Hearts checkpoints; native Go/race and durable next-hand recovery pass. Strict compact imports now reject `events:null`. [Evidence, initial database failure and remaining M04 gates](qa/implementation/multi-game/m04/status.md). The existing UI and TypeScript service remain active while exact policy and service ports continue.

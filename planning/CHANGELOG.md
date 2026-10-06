@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-06 — M04B original policies and registered sessions
+
+The owner authorized M04B. [Acceptance evidence](../qa/implementation/multi-game/m04b/status.md) records exact original bot/coach output, registered V2 lifecycle/preparation, independent import-boundary checks and native verification. Review removed redundant internal observation serialization/state copies, preserved original numeric/Unicode semantics and kept optional saved policies explicitly unavailable for new execution. M04C now owns authenticated durable service composition, full original prepared analysis/advice publication and receipt-first recovery; the platform/client, demo/access and real journey gates remain open. The current UI and TypeScript service remain active; no hosting, strategy promotion or provider activation.
+
 ## 2026-10-06 — M04A Hearts prerequisite and integration sequence
 
 The owner authorized the next M04 step. Review found the Go Hearts adapter could offer its first play but could not execute it. [M04A evidence](../qa/implementation/multi-game/m04/status.md) now accepts the complete original rules/observation/storage port. The [execution sequence](implementation/multi-game/m04-execution.md) makes original policy execution, V2 session/platform envelopes, access/demo and actual Go service/client recovery explicit prerequisites to activation. Go + PostgreSQL remains the single replacement backend; Node remains frontend tooling and the temporary original service/reference. Keep the reproduced native database timeout follow-up visible; the unchanged rerun passed without relaxing limits. No UI redesign or completed-M04 claim.

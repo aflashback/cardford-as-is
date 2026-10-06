@@ -1,0 +1,1 @@
+{"decisions":6380,"forced":1282,"noDecisionAdvice":25392,"sessions":5,"sessionCheckpoints":1099,"prepared":888,"cases":107,"bytes":7501608,"sha256":"7cd5ebea78f73837b9a5aa7c771e6f78acf9222155d78ff3ed2292673b7cc7dc","samples":28}

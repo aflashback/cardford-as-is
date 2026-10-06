@@ -160,9 +160,10 @@ Execute the [M02A checklist](../../../planning/implementation/multi-game/backend
 
 **Owner:** backend + frontend after M02A freeze; integrator owns shared edits. **Requirements:** MG-04–06, MG-09, MG-15–18, SYS-04–05/SYS-07–12. **Dependencies:** M02A/M03.
 
-**Started 6 October 2026:** follow the [M04 execution sequence](../../../planning/implementation/multi-game/m04-execution.md). The first step completes the original Go Hearts rules/observation/storage port; M02A's opening-only adapter cannot run a hand. Original policy execution and V2 session/platform envelopes must then pass their own gates before service activation. This prerequisite step does not complete the end-to-end checklist below. [Current evidence](../../../qa/implementation/multi-game/m04/status.md).
+**Started 6 October 2026:** follow the [M04 execution sequence](../../../planning/implementation/multi-game/m04-execution.md). [M04A](../../../qa/implementation/multi-game/m04/status.md) completes the original Go Hearts rules/observation/storage port. [M04B](../../../qa/implementation/multi-game/m04b/status.md) adds original bot/coach policies and V2 session adapters. These prerequisites do not complete the service/client checklist below; M04C must compose them with durable authenticated prepared-work publication and recovery.
 
-- [x] M04A prerequisite: complete original Go Hearts rules, actor-safe projection and compact persistence; independent original/new corpus and native Go/race/SQL checks passed. Continue with exact original policies and V2 session/platform contracts; full M04 remains open.
+- [x] M04A prerequisite: complete original Go Hearts rules, actor-safe projection and compact persistence; independent original/new corpus and native Go/race/SQL checks passed.
+- [x] M04B prerequisite: port exact default policies and full original coach output; implement registered Go V2 lifecycle, actor-safe preparation and original digest/import semantics. Independent complete-output oracles, conformance and native regressions are recorded in its acceptance report. Optional policy execution fails explicitly; M03 storage eligibility and M04 service activation remain separate.
 
 **Modify:** `web/server/http/game-service.ts`, `views.ts`, `app.ts`, `trial-service.ts`, `web/src/App.tsx`, `api/useSession.ts`, `api/display.ts`, `features/ReviewPanel.tsx`; affected schema generation. **Create:** `web/src/games/registry.tsx`, `hearts.tsx`, `spades.tsx`, `web/server/tests/module-service.test.ts`, `web/e2e/module-migration.spec.ts`.
 

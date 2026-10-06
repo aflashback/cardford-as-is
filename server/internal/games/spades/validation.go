@@ -30,7 +30,10 @@ func validateAction(a *Action) error {
 	return nil
 }
 func validateEvent(e Event, index int) error {
-	if e.ID != index+1 || textLength(e.Message) > 2000 {
+	return validateEventWithTextLength(e, index, textLength)
+}
+func validateEventWithTextLength(e Event, index int, measureText func(string) int) error {
+	if e.ID != index+1 || measureText(e.Message) > 2000 {
 		return fmt.Errorf("invalid event identity or message")
 	}
 	seatRequired, cardRequired, bidRequired := false, false, false
@@ -56,7 +59,10 @@ func validateEvent(e Event, index int) error {
 	return nil
 }
 func validateState(s *State) error {
-	if s == nil || textLength(s.ID) < 1 || textLength(s.ID) > 256 || ruleProfile(s.Mode) == "" || s.ModuleVersion != "1.0.0" || s.EventSchemaVersion != "1.0.0" || s.RuleProfileID != ruleProfile(s.Mode) {
+	return validateStateWithTextLength(s, textLength)
+}
+func validateStateWithTextLength(s *State, measureText func(string) int) error {
+	if s == nil || measureText(s.ID) < 1 || measureText(s.ID) > 256 || ruleProfile(s.Mode) == "" || s.ModuleVersion != "1.0.0" || s.EventSchemaVersion != "1.0.0" || s.RuleProfileID != ruleProfile(s.Mode) {
 		return fmt.Errorf("unsupported Spades identity")
 	}
 	if !seatOK(s.Dealer) || s.Turn == nil || !seatOK(*s.Turn) || s.HandNumber < 1 || !safeInt(s.HandNumber) {
@@ -236,7 +242,7 @@ func validateState(s *State) error {
 		return err
 	}
 	for i, e := range s.Events {
-		if err := validateEvent(e, i); err != nil {
+		if err := validateEventWithTextLength(e, i, measureText); err != nil {
 			return err
 		}
 	}
