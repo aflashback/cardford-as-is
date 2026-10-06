@@ -12,6 +12,8 @@ The owner wants one simple monorepo, the latest CardFord specification, the exis
 
 ## First-run reading order
 
+**M03 is now authorized and in progress.** Follow its [execution packet](implementation/multi-game/m03-execution.md) and [actual evidence](../qa/implementation/multi-game/m03/status.md). The completed comparison has been closed out; native Windows is the default for all next local steps. Its archived measurements are retained, not rerun as a milestone prerequisite.
+
 **Before resuming M03:** read [CR-ARCH-004](decisions/CR-ARCH-004-native-windows-performance.md), the [native performance findings](../qa/implementation/multi-game/performance-windows/report.md), and [Windows setup](implementation/multi-game/windows-development.md). Current development uses native Node 24.19.0, Go 1.26.8 and PostgreSQL 16.15 on the same Windows host. The old WSL timing compared matching outputs through unequal internal work; it cannot decide the backend language. M03–M05 use strict import boundaries and immutable typed state internally, retaining original evidence and the existing UI.
 
 1. Read root [AGENTS.md](../AGENTS.md) and its required original-spec sequence for the preserved engineering safeguards. Its old scope conflicts are resolved by the later explicit owner decision below; do not silently restore the Spades-only product.

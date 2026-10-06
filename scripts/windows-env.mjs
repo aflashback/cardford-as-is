@@ -20,6 +20,10 @@ function versions() { const g = run(go, ['version']).trim(), c = run(cc, ['--ver
     throw Error('Installed native tools do not match pins'); return { node: process.version, nodePath: process.execPath, go: g, compiler: c, postgres: p }; }
 async function setup() { mkdirSync(join(base, 'downloads'), { recursive: true }); for (const key of ['go', 'cc', 'postgres']) {
     const pin = pins[key], archive = join(base, 'downloads', pin.archive);
+    // An installed, version-checked tool does not need its disposable archive.
+    // Keep setup usable offline after comparison/download cleanup.
+    if (existsSync(resolve(base, pin.executable)))
+        continue;
     if (!existsSync(archive)) {
         const curl = 'C:/Program Files/Git/mingw64/bin/curl.exe';
         if (existsSync(curl)) {

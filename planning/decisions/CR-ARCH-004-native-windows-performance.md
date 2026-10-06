@@ -8,6 +8,8 @@ Retain **Go + PostgreSQL** as the replacement backend direction, with the existi
 
 Use **native Windows x64 Node 24.19.0, Go 1.26.8 and PostgreSQL 16.15** for current development, diagnosis and comparisons. The root module and local wrapper pin Go; `GOTOOLCHAIN=local` forbids silent toolchain switching. No WSL/Podman step belongs in these commands. A later target-OS comparison must run both runtimes on that same target with the same protocol.
 
+**Owner follow-up, 6 October (Toronto):** the investigation is closed and M03 is authorized. Native Windows is selected for all subsequent local runs and checks. The [cleanup record](../../qa/implementation/multi-game/m03/comparison-closeout.json) lists disposable comparison files removed; original results, reproduction tools, native development tools and existing saved data remain. Routine development does not rerun the language comparison.
+
 Go 1.27.1 was correctly identified as the latest stable release, but latest alone was an insufficient local acceptance criterion. Exact original source, flags, fixture and host passed three CPU-profiled runs on 1.26.8 and crashed in all three on 1.27.1. Ordinary 1.27.1 tests and allocation-only capture had passed. Pin the maintained 1.26.8 line until a later stable release passes profiling, race, contract and database checks on this host. The [release policy](https://go.dev/doc/devel/release) supports the previous major line. [Go issue 81731](https://github.com/golang/go/issues/81731) describes similar Windows stack corruption; matching symptoms do not prove an identical root cause. No runtime workaround or disabled preemption is used.
 
 ## Implementation boundary

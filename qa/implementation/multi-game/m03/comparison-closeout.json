@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-06",
+  "base": "6310d6e",
+  "comparisonProcessesFound": 0,
+  "postgresInitiallyStopped": true,
+  "removed": [
+    {
+      "path": ".local/perf-audit",
+      "files": 32,
+      "bytes": 18376209.0
+    },
+    {
+      "path": ".local/perf-control-baseline",
+      "files": 10,
+      "bytes": 5380600.0
+    },
+    {
+      "path": ".local/performance-windows",
+      "files": 5,
+      "bytes": 1678242.0
+    },
+    {
+      "path": ".local/windows-tools/go",
+      "files": 15639,
+      "bytes": 246912295.0
+    },
+    {
+      "path": ".local/windows-tools/downloads",
+      "files": 7,
+      "bytes": 717944600.0
+    },
+    {
+      "path": ".local/m02a-toolchain",
+      "files": 15641,
+      "bytes": 320738587.0
+    },
+    {
+      "path": ".local/windows-tools/performance-dev.exe",
+      "files": 1,
+      "bytes": 7127040.0
+    },
+    {
+      "path": ".local/windows-tools/performance-go1.26.8.exe",
+      "files": 1,
+      "bytes": 6201344.0
+    },
+    {
+      "path": ".local/windows-tools/performance-go1.27.1.exe",
+      "files": 1,
+      "bytes": 7100416.0
+    },
+    {
+      "path": ".local/analyze-native-benchmark.mjs",
+      "files": 1,
+      "bytes": 1398.0
+    },
+    {
+      "path": ".local/capture-controls.mjs",
+      "files": 1,
+      "bytes": 2068.0
+    },
+    {
+      "path": ".local/capture-native-verification.mjs",
+      "files": 1,
+      "bytes": 3508.0
+    },
+    {
+      "path": ".local/create-perf-control.mjs",
+      "files": 1,
+      "bytes": 710.0
+    },
+    {
+      "path": ".local/download-native.mjs",
+      "files": 1,
+      "bytes": 1551.0
+    },
+    {
+      "path": ".local/summarize-node-profile.mjs",
+      "files": 1,
+      "bytes": 1937.0
+    },
+    {
+      "path": ".local/windows-downloads.mjs",
+      "files": 1,
+      "bytes": 836.0
+    },
+    {
+      "path": ".local/windows-tools-fetch.mjs",
+      "files": 1,
+      "bytes": 1372.0
+    }
+  ],
+  "totalBytes": 1331472713.0,
+  "retained": [
+    "committed comparison evidence and reproduction source",
+    "native Go1.26.8,Node24.19.0,LLVM-MinGW23.1.2,PostgreSQL16.15",
+    "native tool build/module caches and project database",
+    "all existing saved-game databases/backups/.env.local and unrelated worktrees"
+  ],
+  "priorTestContainer": {
+    "name": "cardford-m00-test-postgres",
+    "action": "graceful stop",
+    "data": "retained",
+    "otherContainersStopped": 0
+  }
+}

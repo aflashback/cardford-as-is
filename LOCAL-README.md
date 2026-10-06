@@ -10,19 +10,22 @@ Identity and subscription coverage are explicitly **local test fixtures**. No pa
 
 **Current native Windows setup:** [Windows development instructions](planning/implementation/multi-game/windows-development.md) run Node, Go and PostgreSQL directly on Windows with pinned project-local tools. Use `node scripts/windows-env.mjs setup`, then `node scripts/windows-env.mjs pg:start`; prefix Node/npm commands with that wrapper. This creates separate native databases and leaves existing Podman data and `.env.local` untouched. For the current app: `node scripts/windows-env.mjs npm run db:migrate`, `node scripts/windows-env.mjs npm run build`, then `node scripts/windows-env.mjs npm start`. Stop that app with Ctrl+C and the native database with `node scripts/windows-env.mjs pg:stop`. The original container workflow below remains available for existing saved games; do not mix it into native performance comparisons.
 
-Requirements: Node 24, npm, and a running Podman service. Run from this repository root:
+**Default native Windows commands**, from this repository root:
 
 ```powershell
 npm ci
-npm run db:up
-npm run db:migrate
-npm run build
-npm start
+node scripts/windows-env.mjs setup
+node scripts/windows-env.mjs pg:start
+node scripts/windows-env.mjs npm run db:migrate
+node scripts/windows-env.mjs npm run build
+node scripts/windows-env.mjs npm start
 ```
 
-`npm start` stays in the terminal; Ctrl+C stops the application. On Windows, `./scripts/start-local.ps1` starts it in the background and `./scripts/stop-local.ps1` stops that recorded process. Application logs and the PID are in ignored `.local/`. PostgreSQL remains in the named `tricks-coach-data` volume; restarting the app/container preserves games.
+The application stays in the terminal; Ctrl+C stops it. Stop the native database with `node scripts/windows-env.mjs pg:stop`. Restarting preserves the native databases under ignored `.local/windows-postgres/`.
 
-For editing, `npm run dev` runs the API on 4173 and Vite on 5173, proxying `/api`. Stop the existing background application first to avoid a port conflict. All local services bind to loopback. `db:up` creates ignored credentials and separate `tricks_coach` / `tricks_coach_test` databases; it never resets game data.
+For editing, `node scripts/windows-env.mjs npm run dev` runs the API on 4173 and Vite on 5173, proxying `/api`. Stop an existing app first to avoid a port conflict. All local services bind to loopback. Prefix local Node/npm commands below with the native wrapper to select the native database and fixture settings.
+
+The historical Podman path (`npm run db:up`, unwrapped npm commands and `scripts/start-local.ps1`/`stop-local.ps1`) remains available only when deliberately accessing older saved games in the `tricks-coach-data` volume. Those records and `.env.local` are unchanged; they are separate from the native databases. Do not start both application paths on the same port.
 
 ## Try the product
 
