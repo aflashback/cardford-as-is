@@ -1,0 +1,42 @@
+{
+  "source": "go-full.json",
+  "fixture": "25 legal Partners hands; all-bid-13 first-legal storage fixture; 24 actual later draws",
+  "measurements": [
+    {
+      "hands": 1,
+      "revision": 69,
+      "hotBytes": 3066,
+      "events": 84,
+      "EventBytes": 14014,
+      "CommandBytes": 22766,
+      "StoredTotal": 41357,
+      "ReadBytes": 17080,
+      "LastWriteBytes": 3522,
+      "ElapsedMS": 655
+    },
+    {
+      "hands": 10,
+      "revision": 699,
+      "hotBytes": 3075,
+      "events": 840,
+      "EventBytes": 142607,
+      "CommandBytes": 234854,
+      "StoredTotal": 382047,
+      "ReadBytes": 145682,
+      "LastWriteBytes": 3536,
+      "ElapsedMS": 19933
+    },
+    {
+      "hands": 25,
+      "revision": 1749,
+      "hotBytes": 3077,
+      "events": 2100,
+      "EventBytes": 360164,
+      "CommandBytes": 589934,
+      "StoredTotal": 954686,
+      "ReadBytes": 363241,
+      "LastWriteBytes": 3543,
+      "ElapsedMS": 103795
+    }
+  ]
+}

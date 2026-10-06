@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — 2026-10-06 M03
+
+Add private Go/PostgreSQL versioned records, exact replay anchors, compact current snapshots, append-only history, immutable original advice and atomic command/allowance receipts. Durable work now has duplicate suppression, finite attempt leases, stale-result fences and explicit retry; grant/trial/unit records preserve purchased terms and original charges. Migration 007 shares the existing Node migration ledger. [M03 scope, verification and limits](qa/implementation/multi-game/m03/status.md). The current TypeScript app and UI remain active; M04 owns replacement-service integration.
+
+Close the completed Go/Node comparison and remove 1.33 GB of disposable artifacts while preserving evidence and database data. Native Windows is the selected local workflow for Node, Go and PostgreSQL.
+
 ## Unreleased — 2026-10-06 UTC
 
 Correct the M02A performance comparison and provide native Windows Node/Go/PostgreSQL setup. Pin the maintained Go 1.26.8 toolchain after a reproducible 1.27.1 Windows profiling crash. Add immutable typed snapshots, reuse actor projections, and encode evidence frames once; the unexposed HTTP/database seam uses the same state boundary. Original contract/checkpoint evidence and the current TypeScript/UI behavior remain unchanged. [Findings and exact verification](qa/implementation/multi-game/performance-windows/report.md), [architecture amendment](planning/decisions/CR-ARCH-004-native-windows-performance.md).

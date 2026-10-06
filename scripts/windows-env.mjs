@@ -47,7 +47,14 @@ async function setup() { mkdirSync(join(base, 'downloads'), { recursive: true })
 function credentials() { const file = join(pgroot, 'credentials.json'); if (!existsSync(file))
     throw Error('Run pg:start first'); const c = JSON.parse(readFileSync(file, 'utf8')); if (c.root !== pgroot || c.host !== '127.0.0.1' || c.port !== 54331 || c.user !== 'cardford_local' || c.database !== 'cardford_windows' || c.testDatabase !== 'cardford_windows_test')
     throw Error('Unexpected local cluster identity'); return c; }
-function databaseEnvironment(c) { env.PGHOST = c.host; env.PGPORT = String(c.port); env.PGUSER = c.user; env.PGPASSWORD = c.password; env.PGDATABASE = 'postgres'; const prefix = `postgres://${c.user}:${c.password}@${c.host}:${c.port}/`; env.DATABASE_URL = prefix + c.database; env.TEST_DATABASE_URL = prefix + c.testDatabase; env.APP_ENV = 'local'; env.IDENTITY_MODE = 'local-test'; env.BILLING_MODE = 'fixture'; env.JEV_MODE = 'off'; env.JEV_MAX_REQUESTS = '0'; }
+function databaseEnvironment(c) { env.PGHOST = c.host; env.PGPORT = String(c.port); env.PGUSER = c.user; env.PGPASSWORD = c.password; env.PGDATABASE = 'postgres';
+    // credentials() restricts this cluster to 127.0.0.1. It has no TLS listener;
+    // avoid pgx's default TLS probe and second connection on every pool opening.
+    env.PGSSLMODE = 'disable';
+    const prefix = `postgres://${c.user}:${c.password}@${c.host}:${c.port}/`;
+    env.DATABASE_URL = prefix + c.database + '?sslmode=disable';
+    env.TEST_DATABASE_URL = prefix + c.testDatabase + '?sslmode=disable';
+    env.APP_ENV = 'local'; env.IDENTITY_MODE = 'local-test'; env.BILLING_MODE = 'fixture'; env.JEV_MODE = 'off'; env.JEV_MAX_REQUESTS = '0'; }
 function pgStart() { versions(); mkdirSync(pgroot, { recursive: true }); const file = join(pgroot, 'credentials.json'), data = join(pgroot, 'data'); if (!existsSync(file)) {
     if (existsSync(data))
         throw Error('Refusing an unrecognized PostgreSQL data directory');

@@ -1,0 +1,30 @@
+package records
+
+import (
+ "context"
+ "encoding/json"
+ "net"
+ "net/url"
+ "os"
+ "strings"
+ "testing"
+ "time"
+
+ "github.com/jackc/pgx/v5"
+)
+
+// Temporary read-only native diagnostic; never logs connection strings.
+func TestM03NativeConnectionDiagnostic(t *testing.T){
+ base,err:=url.Parse(os.Getenv("TEST_DATABASE_URL"));if err!=nil||base.Hostname()!="127.0.0.1"||!strings.HasSuffix(base.Path,"_test"){t.Fatal("requires recognized local test database")}
+ type result struct{Mode string;Attempt int;ElapsedMS int64;Dials int;OK,Timeout,TLSRefused,DialError bool;TLSConfigured bool;Fallbacks int;ServerSSL string}
+ for attempt:=0;attempt<20;attempt++{
+  modes:=[]string{"prefer","disable"};if attempt%2==1{modes[0],modes[1]=modes[1],modes[0]}
+  for _,mode:=range modes{
+   uri:=*base;query:=uri.Query();query.Set("sslmode",mode);uri.RawQuery=query.Encode()
+   cfg,err:=pgx.ParseConfig(uri.String());if err!=nil{t.Fatal("configuration failed")};cfg.ConnectTimeout=5*time.Second;cfg.RuntimeParams["application_name"]="m03_connection_diagnostic";cfg.RuntimeParams["statement_timeout"]="1000"
+   r:=result{Mode:mode,Attempt:attempt,TLSConfigured:cfg.TLSConfig!=nil,Fallbacks:len(cfg.Fallbacks)};original:=cfg.DialFunc;cfg.DialFunc=func(ctx context.Context,network,address string)(net.Conn,error){r.Dials++;return original(ctx,network,address)}
+   ctx,cancel:=context.WithTimeout(context.Background(),5*time.Second);began:=time.Now();conn,err:=pgx.ConnectConfig(ctx,cfg);if err==nil{err=conn.QueryRow(ctx,"SHOW ssl").Scan(&r.ServerSSL);_ = conn.Close(ctx)};r.ElapsedMS=time.Since(began).Milliseconds();r.OK=err==nil
+   if err!=nil{r.Timeout=strings.Contains(err.Error(),"timeout")||strings.Contains(err.Error(),"deadline");r.TLSRefused=strings.Contains(err.Error(),"refused TLS");r.DialError=strings.Contains(err.Error(),"dial")};cancel();raw,_:=json.Marshal(r);t.Logf("M03_CONNECT %s",raw)
+  }
+ }
+}

@@ -1,0 +1,127 @@
+=== RUN   TestRecordLongHistoryGrowth
+    codec_growth_test.go:196: {
+          "version": "m03-storage-growth-1",
+          "mode": "spades-partners",
+          "fixturePolicy": "all-bid-13-first-legal; storage fixture only",
+          "elapsedMs": 11493.0219,
+          "measurements": [
+            {
+              "hands": 1,
+              "revision": 69,
+              "hotBytes": 2176,
+              "fullStateBytes": 9405,
+              "eventCount": 84,
+              "archivePayloadBytes": 7146,
+              "checkpointWritesBytes": 112974,
+              "eventWritesBytes": 7146,
+              "commandWritesBytes": 16832,
+              "compactRestoreMs": 3.8464,
+              "projectionEqual": true
+            },
+            {
+              "hands": 10,
+              "revision": 699,
+              "hotBytes": 2182,
+              "fullStateBytes": 75306,
+              "eventCount": 840,
+              "archivePayloadBytes": 72285,
+              "checkpointWritesBytes": 1150001,
+              "eventWritesBytes": 72285,
+              "commandWritesBytes": 174740,
+              "compactRestoreMs": 36.8983,
+              "projectionEqual": true
+            },
+            {
+              "hands": 100,
+              "revision": 6999,
+              "hotBytes": 2186,
+              "fullStateBytes": 741962,
+              "eventCount": 8400,
+              "archivePayloadBytes": 731377,
+              "checkpointWritesBytes": 11563819,
+              "eventWritesBytes": 731377,
+              "commandWritesBytes": 1766420,
+              "compactRestoreMs": 321.8112,
+              "projectionEqual": true
+            }
+          ]
+        }
+--- PASS: TestRecordLongHistoryGrowth (11.76s)
+=== RUN   TestRecordClosedUntrustedEnvelope
+=== RUN   TestRecordClosedUntrustedEnvelope/unknown
+=== RUN   TestRecordClosedUntrustedEnvelope/null
+=== RUN   TestRecordClosedUntrustedEnvelope/fraction
+=== RUN   TestRecordClosedUntrustedEnvelope/casing
+=== RUN   TestRecordClosedUntrustedEnvelope/nested
+=== RUN   TestRecordClosedUntrustedEnvelope/unknown-version
+=== RUN   TestRecordClosedUntrustedEnvelope/bad-unicode
+=== RUN   TestRecordClosedUntrustedEnvelope/missing
+=== RUN   TestRecordClosedUntrustedEnvelope/unsafe
+=== RUN   TestRecordClosedUntrustedEnvelope/duplicate
+--- PASS: TestRecordClosedUntrustedEnvelope (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/unknown (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/null (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/fraction (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/casing (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/nested (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/unknown-version (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/bad-unicode (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/missing (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/unsafe (0.00s)
+    --- PASS: TestRecordClosedUntrustedEnvelope/duplicate (0.00s)
+=== RUN   TestRecordArchiveAndInvalidStateFailClosed
+=== RUN   TestRecordArchiveAndInvalidStateFailClosed/false-score
+=== RUN   TestRecordArchiveAndInvalidStateFailClosed/duplicate-card
+=== RUN   TestRecordArchiveAndInvalidStateFailClosed/turn
+=== RUN   TestRecordArchiveAndInvalidStateFailClosed/hot-history
+--- PASS: TestRecordArchiveAndInvalidStateFailClosed (0.00s)
+    --- PASS: TestRecordArchiveAndInvalidStateFailClosed/false-score (0.00s)
+    --- PASS: TestRecordArchiveAndInvalidStateFailClosed/duplicate-card (0.00s)
+    --- PASS: TestRecordArchiveAndInvalidStateFailClosed/turn (0.00s)
+    --- PASS: TestRecordArchiveAndInvalidStateFailClosed/hot-history (0.00s)
+=== RUN   TestRecordExactPolicyModuleAndReadOnlyReaders
+--- PASS: TestRecordExactPolicyModuleAndReadOnlyReaders (0.00s)
+=== RUN   TestRecordOpeningAnchorBindsConfigChanceAndCheckpoint
+--- PASS: TestRecordOpeningAnchorBindsConfigChanceAndCheckpoint (0.00s)
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/actor
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/input
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/packet-version
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/policy-budget
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/owner
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/advice-selection
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/unknown-schema
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/revision
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/window
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/purpose
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/selection
+=== RUN   TestRecordDecisionBindingsAndOriginalBytes/access
+--- PASS: TestRecordDecisionBindingsAndOriginalBytes (0.02s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/actor (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/input (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/packet-version (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/policy-budget (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/owner (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/advice-selection (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/unknown-schema (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/revision (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/window (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/purpose (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/selection (0.00s)
+    --- PASS: TestRecordDecisionBindingsAndOriginalBytes/access (0.00s)
+=== RUN   TestRecordSupportedOriginalLegacyStateBytes
+--- PASS: TestRecordSupportedOriginalLegacyStateBytes (0.00s)
+=== RUN   TestRecordCommandDigestBindsEntireIntent
+--- PASS: TestRecordCommandDigestBindsEntireIntent (0.00s)
+=== RUN   TestRecordDecisionCommandAndWindowBinding
+--- PASS: TestRecordDecisionCommandAndWindowBinding (0.00s)
+=== RUN   TestRecordHeartsSealedOpeningRestoresKnownHoldings
+--- PASS: TestRecordHeartsSealedOpeningRestoresKnownHoldings (0.00s)
+=== RUN   TestRecordReplayFrozenOriginalCorpus
+=== RUN   TestRecordReplayFrozenOriginalCorpus/spades-solo
+=== RUN   TestRecordReplayFrozenOriginalCorpus/spades-partners
+--- PASS: TestRecordReplayFrozenOriginalCorpus (0.39s)
+    --- PASS: TestRecordReplayFrozenOriginalCorpus/spades-solo (0.18s)
+    --- PASS: TestRecordReplayFrozenOriginalCorpus/spades-partners (0.20s)
+PASS
+ok  	cardford/server/internal/records	12.709s

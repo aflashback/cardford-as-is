@@ -1,0 +1,7 @@
+{
+  "historicalPodmanContainer": "cardford-m00-test-postgres stopped during closeout; data retained",
+  "nativePortListeners": 0,
+  "taskTestProcesses": [],
+  "nativePostgres": "gracefully stopped",
+  "at": "2026-10-06T13:09:47.3745730Z"
+}

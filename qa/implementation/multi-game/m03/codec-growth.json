@@ -1,0 +1,47 @@
+{
+  "version": "m03-storage-growth-1",
+  "mode": "spades-partners",
+  "fixturePolicy": "all-bid-13-first-legal; storage fixture only",
+  "elapsedMs": 10014.1308,
+  "measurements": [
+    {
+      "hands": 1,
+      "revision": 69,
+      "hotBytes": 2176,
+      "fullStateBytes": 9405,
+      "eventCount": 84,
+      "archivePayloadBytes": 7146,
+      "checkpointWritesBytes": 112974,
+      "eventWritesBytes": 7146,
+      "commandWritesBytes": 16832,
+      "compactRestoreMs": 2.0009,
+      "projectionEqual": true
+    },
+    {
+      "hands": 10,
+      "revision": 699,
+      "hotBytes": 2182,
+      "fullStateBytes": 75306,
+      "eventCount": 840,
+      "archivePayloadBytes": 72285,
+      "checkpointWritesBytes": 1150001,
+      "eventWritesBytes": 72285,
+      "commandWritesBytes": 174740,
+      "compactRestoreMs": 29.0002,
+      "projectionEqual": true
+    },
+    {
+      "hands": 100,
+      "revision": 6999,
+      "hotBytes": 2186,
+      "fullStateBytes": 741962,
+      "eventCount": 8400,
+      "archivePayloadBytes": 731377,
+      "checkpointWritesBytes": 11563819,
+      "eventWritesBytes": 731377,
+      "commandWritesBytes": 1766420,
+      "compactRestoreMs": 279.4447,
+      "projectionEqual": true
+    }
+  ]
+}

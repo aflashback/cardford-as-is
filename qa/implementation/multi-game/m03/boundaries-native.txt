@@ -1,0 +1,5 @@
+
+> tricks-coach@0.1.0 lint:boundaries
+> node web/scripts/check-artifacts.mjs --source
+
+Browser boundary passed (14 reachable source modules); artifacts contain no forbidden server identifiers or source maps.

@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-06T13:10:38.134Z",
+  "checks": [
+    "go-full",
+    "go-race",
+    "node-full",
+    "go-vet",
+    "go-mod",
+    "public-contracts",
+    "go-contracts",
+    "typecheck",
+    "boundaries"
+  ],
+  "sourceAndOutputHashes": "match exact captured bytes; full Go diagnostic source archived separately",
+  "localMarkdownLinks": 206,
+  "privateDatabaseCredential": "absent from M03 evidence",
+  "files": 13
+}

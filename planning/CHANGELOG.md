@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-06 — Comparison closeout and M03 durable records
+
+The owner authorized comparison cleanup, local environment selection and M03. Native Windows is now the default for subsequent local work; the historical Podman test container was stopped and its data retained. [Cleanup inventory and M03 evidence](../qa/implementation/multi-game/m03/status.md) distinguish completed checks from later activation. The [private record contract](implementation/multi-game/private-records.md) freezes versioned metadata, replay, decisions, work attempts, recovery and access-unit/allowance behavior. Go implements this responsibility under CR-ARCH-003; the old TypeScript file list remains a regression reference. M04 owns HTTP/client activation and the offer resolver; full game/policy parity, hosting, providers and human evaluation keep their separate gates.
+
 ## 2026-10-06 UTC — Native Windows performance correction before M03
 
 [CR-ARCH-004](decisions/CR-ARCH-004-native-windows-performance.md) records the owner's request to settle the Node/Go comparison and native Windows toolchain before advancing. The old M02A workers both ran in Linux/WSL, but their matching outputs concealed repeated Go JSON decoding, validation, projection and frame encoding. Keep that evidence historical. Added native setup, same-source Go version control, immutable typed state boundaries, and an independently reviewed comparison protocol; the [new report](../qa/implementation/multi-game/performance-windows/report.md) supplies measurements and verification. Go 1.26.8 replaces 1.27.1 for current Windows work after the latter repeatedly crashed during CPU profiling. Go/PostgreSQL remains the backend direction; no production activation, UI redesign, strategy promotion or hosting work.

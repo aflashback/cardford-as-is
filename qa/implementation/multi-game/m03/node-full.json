@@ -1,0 +1,335 @@
+{
+  "name": "node-full",
+  "command": "node scripts/windows-env.mjs node --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts",
+  "startedAt": "2026-10-06T13:03:04.898Z",
+  "completedAt": "2026-10-06T13:07:37.753Z",
+  "elapsedMs": 272866.1705,
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "source": [
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3"
+    },
+    {
+      "path": "scripts/m03-migrations.mjs",
+      "sha256": "18a7c1a206a964c510e42af8f02619f41635aba49fd7a61c074057025c0c10d6"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "scripts/windows-tools.json",
+      "sha256": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4"
+    },
+    {
+      "path": "server/cmd/m02a/main.go",
+      "sha256": "dcdc0b68a3fe87c94fc4c5ced88851cdb1f5779b4295129794ef5347cfb06bb4"
+    },
+    {
+      "path": "server/cmd/perf/main.go",
+      "sha256": "c9d82c37440175a2ed5fb9fccbd6277994c3cd7d73af6019cf0c07552c813e8a"
+    },
+    {
+      "path": "server/cmd/perf/metrics_windows.go",
+      "sha256": "397bef0b3616e8be9e15cfc8a53872bc46ff81310fc6ee3d78719b62d2691fa7"
+    },
+    {
+      "path": "server/internal/compatibility/modules.go",
+      "sha256": "16c022c45871b3e1b60ed750c240908bce474227339946cc2480da30066a3bf0"
+    },
+    {
+      "path": "server/internal/compatibility/parity_test.go",
+      "sha256": "6e13e1900f03f8be4cc029f8e6855d76cba2a04f32caf4f560052fea325f4be1"
+    },
+    {
+      "path": "server/internal/contracts/bindings.generated_test.go",
+      "sha256": "0a8add350b40d9ffd9b0842505955396161f1629aa5baae5103527300e3d265c"
+    },
+    {
+      "path": "server/internal/contracts/bindings.generated.go",
+      "sha256": "0bd044dfecb8c6063e233cce6ffb97da8e01cd88c8dfed1a2132a8ca72ccf9d0"
+    },
+    {
+      "path": "server/internal/contracts/contracts_test.go",
+      "sha256": "2013c6ffec1cd01a1dccd9774a8301f4d5ac7af3c9d70fd42a8256a6e6a88ffb"
+    },
+    {
+      "path": "server/internal/contracts/schema.generated.json",
+      "sha256": "fa4288a3ac7fc5d6d9010a9e4ec125e4950a3f42718b1902157670773378f013"
+    },
+    {
+      "path": "server/internal/contracts/semantics.go",
+      "sha256": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119"
+    },
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "b7f7d5e91aaa191b41093895d07127ecaa7cfc5213e4dd319a4e43a2bbfcfb68"
+    },
+    {
+      "path": "server/internal/gamekernel/module.go",
+      "sha256": "664c90d6f70b284e070deb7f8b49e146b669e1f118197f1d62f338b1689295fd"
+    },
+    {
+      "path": "server/internal/gamekernel/replay_test.go",
+      "sha256": "02d9a648b69767e057ba2d5a21ce074f8427dfa878090e6c0e30e6ade0ce7cae"
+    },
+    {
+      "path": "server/internal/gamekernel/replay.go",
+      "sha256": "de5d0dd1caf3cabf2d308603e0741af917d11d003b8ea2cf6d03cd636403f182"
+    },
+    {
+      "path": "server/internal/gamekernel/snapshot_test.go",
+      "sha256": "fa56e0afa1084de78dc47a0546ce97250040a00f5642b730f7632da7d368354f"
+    },
+    {
+      "path": "server/internal/gamekernel/snapshot.go",
+      "sha256": "9336e615d4cd2decc87fde4eb71f9cc3b0e9a08fa1377ecc862d77092013201a"
+    },
+    {
+      "path": "server/internal/games/hearts/opening_test.go",
+      "sha256": "37015c2c414893b496ac82ff1e60983a10f2986262a80b6503bb949cf2e8ebd6"
+    },
+    {
+      "path": "server/internal/games/hearts/opening.go",
+      "sha256": "b75203fa388a6ea05eaa8fae2bcd9c26f39514e120465a35ab76fcd49b4fe5b3"
+    },
+    {
+      "path": "server/internal/games/hearts/snapshot_test.go",
+      "sha256": "6b6f930dd88ba3d8ebc47acb3488dfaf07334f0985e65d37c58fa483ebee8771"
+    },
+    {
+      "path": "server/internal/games/hearts/snapshot.go",
+      "sha256": "77acbad260e4d2ab9032ce5fdea1aeeb180c5b09dbee109741b65c3687a26c2c"
+    },
+    {
+      "path": "server/internal/games/hearts/storage.go",
+      "sha256": "c774aba62b1162c102c9413b748af33c02d2fd4eef46374d1576e51beb9c6636"
+    },
+    {
+      "path": "server/internal/games/spades/engine.go",
+      "sha256": "77c1329eb51cd1e30412739d7346fd117a6c5d9d9badb74a3af8d52200dc3670"
+    },
+    {
+      "path": "server/internal/games/spades/json.go",
+      "sha256": "e1bad71371ae33311a72a9ad886b052db85837a45eae2aaa8046467522596986"
+    },
+    {
+      "path": "server/internal/games/spades/observation.go",
+      "sha256": "30ff4445576dd81b3c44b59b3a74115702b048a11c90551a95a5e3e440d08209"
+    },
+    {
+      "path": "server/internal/games/spades/rules.go",
+      "sha256": "a6cf99e790a43db01e966f5cfb30ea74c260f4b573550c71ae226dafce241263"
+    },
+    {
+      "path": "server/internal/games/spades/snapshot_test.go",
+      "sha256": "29efcde246ac14a0cbd4ccdf3ccd24a3cfc542822e97de92cca06baa0db42460"
+    },
+    {
+      "path": "server/internal/games/spades/snapshot.go",
+      "sha256": "d3fc25f2c2d9525f9252833e4a645e4222d37a6fc82bc2b4ac86ce2d316f9334"
+    },
+    {
+      "path": "server/internal/games/spades/spades_test.go",
+      "sha256": "013a52883e49dc718c1e2b06d1c4ea0d3a1bb48c417f486cdf3cd1d71ee671f0"
+    },
+    {
+      "path": "server/internal/games/spades/storage_test.go",
+      "sha256": "0e0699f7999e79955ca0eda31f0156390d24e5c49ce9f0cf292c76eac7777071"
+    },
+    {
+      "path": "server/internal/games/spades/storage.go",
+      "sha256": "fb6aec48306dbb16df2a2c27862bbb5dfa22edf6cde37bf842de3a6e9c1a9bfc"
+    },
+    {
+      "path": "server/internal/games/spades/types.go",
+      "sha256": "04972681204c239205db4e7928bf9ff36b87e33534f4bbdf1a4b438107f695ce"
+    },
+    {
+      "path": "server/internal/games/spades/validation.go",
+      "sha256": "f8ac4b058932d4fc6da5281177524fe8138bb8a508b7a5e9a09d967f75916730"
+    },
+    {
+      "path": "server/internal/http/slice_test.go",
+      "sha256": "1ebd350ecc947da7eb9409a3da3dac15aee50156bebb0c893eaefb1bf07fc405"
+    },
+    {
+      "path": "server/internal/http/slice.go",
+      "sha256": "b28bc04f8454b2221066fa11a8e953fe39f56239816d158cb1049ff9c343ed5f"
+    },
+    {
+      "path": "server/internal/records/access_test.go",
+      "sha256": "83083814ffe90afbda33e03488fd3e5f865a2c237d22ea42551aa83b5737c4a8"
+    },
+    {
+      "path": "server/internal/records/access_trials.go",
+      "sha256": "3c5b26c006e82b462d45be7d0ee1d48f78168106d1df78906632016a63c3227f"
+    },
+    {
+      "path": "server/internal/records/access.go",
+      "sha256": "7b3c747614ec3c0d7938c65637d068112971f86030b0d2d4090a34bc8b6bfe38"
+    },
+    {
+      "path": "server/internal/records/codec_growth_test.go",
+      "sha256": "35f6726e5c69da40acfa75aff4351ffcf57e2b136c4754bbca7a764b9db6cfc1"
+    },
+    {
+      "path": "server/internal/records/codec.go",
+      "sha256": "322f2119b63e43b38bfa4055e3451ea597a06310871bb4fa9ef6ae8f006a583b"
+    },
+    {
+      "path": "server/internal/records/document_decision.go",
+      "sha256": "badb38b9e4800ccfef43355403011c212d3668f7f5009b32a601c73c099c581b"
+    },
+    {
+      "path": "server/internal/records/document_test.go",
+      "sha256": "04a5342b6d7474776590f5edd005d02e462ec8ad3434f3fadb1fb7c4fac7bd16"
+    },
+    {
+      "path": "server/internal/records/document.go",
+      "sha256": "3a73b6fd17009c71c856f35f1fdb7503a460f54d16437fc27950fba89ef81e75"
+    },
+    {
+      "path": "server/internal/records/store_documents.go",
+      "sha256": "5ef1380647d7cb8d962524f2220c9417de151603fd82e8a45b6036f61b7ea86e"
+    },
+    {
+      "path": "server/internal/records/store_fences_test.go",
+      "sha256": "578c9971bd6428be7b42c3d57d93ca69ad655dda676224b1394a7780c5572d27"
+    },
+    {
+      "path": "server/internal/records/store_growth_test.go",
+      "sha256": "acb4bcea9b5bc71f466ed3ea1dfcddf6aa3963ae3a6c84f3a2c3921b6f4c43a8"
+    },
+    {
+      "path": "server/internal/records/store_historical_test.go",
+      "sha256": "86eb337b702b457a2e8183174199586af55d53986f66f9faa5f3e8b5e2fae669"
+    },
+    {
+      "path": "server/internal/records/store_history.go",
+      "sha256": "795e60c1d9950e9049d45dd887dc21809677ea0998807d1ab5b330f192bf571a"
+    },
+    {
+      "path": "server/internal/records/store_integration_test.go",
+      "sha256": "8e7eeff57552cd4f8018ff049c965333945fd293813b341faf9cfee3656b75aa"
+    },
+    {
+      "path": "server/internal/records/store_migrations_test.go",
+      "sha256": "41ea36b9367aeabb1430527c0c173f9f6ac3c775675d59c38e9b8a5e9c17775d"
+    },
+    {
+      "path": "server/internal/records/store_migrations.go",
+      "sha256": "d99f193e2a3ab23369266959328ec5719ba660864534b75db5862cbd7f446616"
+    },
+    {
+      "path": "server/internal/records/store.go",
+      "sha256": "b29c317676e3a19b2b48af4ce72874f8b01909dcb482746b23ea674ff8eba970"
+    },
+    {
+      "path": "server/internal/records/teststore.go",
+      "sha256": "654bdd0e54204e2a31725eed19302471cd2f39ecc902a25c40ef58c08c0e1003"
+    },
+    {
+      "path": "server/internal/records/trials_test.go",
+      "sha256": "9faf3207060b27b625aa4880937e17bb4c8dd95fc06b1950aedbdb660d31c181"
+    },
+    {
+      "path": "server/internal/records/trials.go",
+      "sha256": "dc05435fbd268d098f7c30f135e9757bdd8da96723ebdaf1617b2324f42e76bf"
+    },
+    {
+      "path": "server/internal/records/types.go",
+      "sha256": "32db9ea63a826c21a33eca0257dea2bc2f3553a635c11c2c9c79ef8439f336e7"
+    },
+    {
+      "path": "server/internal/records/work_test.go",
+      "sha256": "fab5768940b0af180e6dee4e5c852930df71a206278fd1e58b7edc4bd55617b7"
+    },
+    {
+      "path": "server/internal/records/work.go",
+      "sha256": "5795b10a70c95c7b59e96655f7b8a9111ccf802387736c56cc87b96bd176d2bd"
+    },
+    {
+      "path": "web/server/records/migrations/001-local-platform.sql",
+      "sha256": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2"
+    },
+    {
+      "path": "web/server/records/migrations/002-billing-family.sql",
+      "sha256": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f"
+    },
+    {
+      "path": "web/server/records/migrations/003-account-data.sql",
+      "sha256": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae"
+    },
+    {
+      "path": "web/server/records/migrations/004-analysis-jobs.sql",
+      "sha256": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43"
+    },
+    {
+      "path": "web/server/records/migrations/005-analysis-attempt-fence.sql",
+      "sha256": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c"
+    },
+    {
+      "path": "web/server/records/migrations/006-preparation-attempts.sql",
+      "sha256": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+    },
+    {
+      "path": "web/server/records/migrations/007-versioned-platform-records.sql",
+      "sha256": "cae296b33b5c8b09169e7636b6116d6a60fd72ac9cd78661b4900b3b2873208a"
+    }
+  ],
+  "artifact": {
+    "path": "C:\\repos\\test-jev\\qa\\implementation\\multi-game\\m03\\node-full-native.txt",
+    "sha256": "0003a4e11c02e0cb7392e4244bdb222f095edee4f128c73e47519e70beb038ff"
+  },
+  "summary": [
+    "ℹ exploratory, not a strength result: hearts-plan-1.0.0 in one seat against hearts-baseline-1.0.0 in three, 40 hands, mean margin difference 3.40 points per hand",
+    "ℹ spades-solo/8800001, 0 bids placed: 1 model, 128 sample calls, 128 worlds, 14 lines, 100352 of 400000 steps",
+    "ℹ spades-solo/8800002, 1 bids placed: 1 model, 128 sample calls, 128 worlds, 14 lines, 98560 of 400000 steps",
+    "ℹ spades-solo/8800003, 3 bids placed: 1 model, 128 sample calls, 128 worlds, 14 lines, 94976 of 400000 steps",
+    "ℹ spades-partners/8800001, 0 bids placed: 1 model, 128 sample calls, 128 worlds, 14 lines, 100352 of 400000 steps",
+    "ℹ spades-partners/8800002, 1 bids placed: 1 model, 128 sample calls, 128 worlds, 14 lines, 98560 of 400000 steps",
+    "ℹ spades-partners/8800003, 3 bids placed: 1 model, 128 sample calls, 128 worlds, 14 lines, 94976 of 400000 steps",
+    "ℹ spades-solo/8810001, first lead with 11 legal cards: 1 model, 128 sample calls, 128 worlds, 9 lines, 59904 of 400000 steps",
+    "ℹ spades-solo/8810002, first lead with 7 legal cards: 1 model, 128 sample calls, 128 worlds, 6 lines, 39936 of 400000 steps",
+    "ℹ spades-solo/8810003, first lead with 9 legal cards: 1 model, 128 sample calls, 128 worlds, 7 lines, 46592 of 400000 steps",
+    "ℹ spades-partners/8810001, first lead with 11 legal cards: 1 model, 128 sample calls, 128 worlds, 9 lines, 59904 of 400000 steps",
+    "ℹ spades-partners/8810002, first lead with 7 legal cards: 1 model, 128 sample calls, 128 worlds, 6 lines, 39936 of 400000 steps",
+    "ℹ spades-partners/8810003, first lead with 9 legal cards: 1 model, 128 sample calls, 128 worlds, 7 lines, 46592 of 400000 steps",
+    "ℹ spades-solo, sixth trick lead, two public voids: 1 model, 128 sample calls, 128 worlds, 6 lines, 24576 of 400000 steps, 93 exact-sampler fallbacks",
+    "ℹ spades-partners, sixth trick lead, two public voids: 1 model, 128 sample calls, 128 worlds, 3 lines, 12288 of 400000 steps, 93 exact-sampler fallbacks",
+    "ℹ spades-solo/policy/8300001 ending, 3 cards, 1 played: 200 worlds, 8000 draws per path, seeds 0..7999, ceiling 278.8: rejection 223.6, exact 207.9, between paths 198.3",
+    "ℹ spades-solo/policy/8300003 ending, 3 cards, 3 played: 18 worlds, 4000 draws per path, seeds 0..3999, ceiling 40.3: rejection 19.5, exact 7.9, between paths 11.6",
+    "ℹ spades-solo/policy/8300005 ending, 3 cards, 1 played: 200 worlds, 8000 draws per path, seeds 0..7999, ceiling 278.8: rejection 213.8, exact 213.9, between paths 199.8",
+    "ℹ spades-solo/random/8300101 ending, 3 cards, 1 played: 10 worlds, 4000 draws per path, seeds 0..3999, ceiling 26.0: rejection 11.1, exact 7.9, between paths 8.8",
+    "ℹ spades-solo/random/8300104 ending, 2 cards, 0 played: 27 worlds, 4000 draws per path, seeds 0..3999, ceiling 54.8: rejection 21.5, exact 18.2, between paths 27.3",
+    "ℹ spades-solo/random/8300105 ending, 3 cards, 1 played: 30 worlds, 4000 draws per path, seeds 0..3999, ceiling 59.5: rejection 25.6, exact 26.7, between paths 25.8",
+    "ℹ spades-partners/policy/8300203 ending, 3 cards, 3 played: 42 worlds, 4000 draws per path, seeds 0..3999, ceiling 77.2: rejection 38.3, exact 42.1, between paths 44.3",
+    "ℹ spades-partners/policy/8300204 ending, 2 cards, 0 played: 90 worlds, 4000 draws per path, seeds 0..3999, ceiling 142.4: rejection 88.7, exact 84.8, between paths 89.1",
+    "ℹ spades-partners/policy/8300205 ending, 3 cards, 1 played: 100 worlds, 4000 draws per path, seeds 0..3999, ceiling 155.3: rejection 108.2, exact 90.6, between paths 106.2",
+    "ℹ spades-partners/random/8300301 ending, 3 cards, 1 played: 92 worlds, 4000 draws per path, seeds 0..3999, ceiling 145.0: rejection 100.4, exact 92.3, between paths 83.2",
+    "ℹ spades-partners/random/8300304 ending, 2 cards, 0 played: 60 worlds, 4000 draws per path, seeds 0..3999, ceiling 102.5: rejection 62.0, exact 62.4, between paths 71.2",
+    "ℹ spades-partners/random/8300305 ending, 3 cards, 1 played: 124 worlds, 4960 draws per path, seeds 0..4959, ceiling 185.7: rejection 138.3, exact 127.7, between paths 138.9",
+    "ℹ 16 endings x 3 allocation arms, 256 worlds each: 1386 comparisons, 93 frequencies and 30 paired differences with spread, largest miss 2.16 standard errors; 4 weighted differences lie more than 4 standard errors from the unweighted reference",
+    "ℹ 756 played-out hands from 126 positions; every declared event took both values",
+    "ℹ tests 493",
+    "ℹ suites 1",
+    "ℹ pass 493",
+    "ℹ fail 0",
+    "ℹ cancelled 0",
+    "ℹ skipped 0",
+    "ℹ todo 0",
+    "ℹ duration_ms 272324.5721"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-06T13:02:49.767Z",
+  "reason": "unpublished draft migration 007 was installed by earlier development Node run; checksum guard correctly rejected its revised source",
+  "host": "127.0.0.1",
+  "port": 54331,
+  "target": "cardford_windows_test",
+  "activeTargetConnections": 0,
+  "developmentDatabaseUnchanged": true,
+  "forcedDisconnects": 0,
+  "completed": true
+}

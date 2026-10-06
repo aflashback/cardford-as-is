@@ -19,6 +19,8 @@ M03 implements the private Go persistence boundary and database behavior. M04 ow
 
 Freeze session metadata, replay anchor, decision and work-attempt formats before depending on them. Keep these private, separately versioned records out of the closed public game envelope. Opening chance and every accepted later chance draw are private append-only replay material. Decision records refer to their immutable revision/input digest and carry original analysis/advice once; exposure appends separately.
 
+The [private record contract](private-records.md) documents the executable schemas, publication/recovery rules, finite limits and M04 integration boundary.
+
 ## Execution rulings
 
 - The owner authorized M03, so implement its Go responsibility under CR-ARCH-003 instead of duplicating it in the current Node application. Preserve the existing canonical migration sequence and add only forward SQL. M04 activation remains a separate milestone.

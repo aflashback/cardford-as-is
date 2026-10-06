@@ -15,7 +15,7 @@ node scripts/windows-env.mjs setup
 node scripts/windows-env.mjs status
 node scripts/windows-env.mjs pg:start
 node scripts/windows-env.mjs go test ./server/... -count=1
-node scripts/windows-env.mjs go test -race ./server/... -count=1
+node scripts/windows-env.mjs go test -race -short ./server/... -count=1
 node scripts/windows-env.mjs go vet ./server/...
 node scripts/windows-env.mjs node --test --test-isolation=none web/tests/*.test.ts web/server/tests/*.test.ts
 node scripts/windows-env.mjs npm run contracts:check
@@ -25,7 +25,13 @@ node scripts/windows-env.mjs npm run typecheck
 
 `setup` checks installed executable versions and downloads only tools whose executables are missing. It verifies downloaded archive hashes before extraction. Download archives are disposable; deleting them does not trigger another download when the tool is already installed. Git for Windows curl is used when installed; otherwise Node HTTPS is used. The native C compiler is needed only for `-race`; ordinary tests/builds use `CGO_ENABLED=0`. A sandbox may require permission to launch native child executables; an `EPERM` launch error is not a failing application test.
 
+Run these suites sequentially against the local database. The complete normal Go run includes the 100-hand codec and 25-hand SQL growth checks; `-race -short` skips only those long growth fixtures while retaining ordinary concurrency and recovery tests. Record the two skips explicitly. Suite duration is not a Node/Go comparison.
+
 `pg:start` creates a separate, password-authenticated local cluster on **127.0.0.1:54331**, with `cardford_windows` and `cardford_windows_test`. It reuses only that recognized project cluster; it does not delete data. Credentials remain in ignored `.local/windows-postgres/credentials.json`, never in evidence. The wrapper provides `DATABASE_URL` and `TEST_DATABASE_URL` to child processes and selects local identity, fixture billing and Jev off. The Go seam also refuses a database without `_test`. Node tests apply the existing canonical migrations to the isolated test database. `pg:stop` stops only this project cluster. PostgreSQL is not needed during replay timings.
+
+This recognized loopback cluster has no TLS listener. The wrapper explicitly sets `sslmode=disable` for its local URLs and `PGSSLMODE`; it never applies this setting to a remote database. A bounded M03 diagnostic confirmed that pgx's default TLS preference opened two TCP connections per session against this server, while explicit local mode opened one. This removes unnecessary fallback, without changing production database policy or relaxing operation timeouts. [Diagnostic evidence](../../../qa/implementation/multi-game/m03/native-db-setup.md).
+
+M03 also encountered intermittent native TCP failures whose precise cause was not established. Preserve failure output and inspect local PostgreSQL/transport state if they recur; do not hide failures with retries or relax product timeouts. The final Node verification uses a fresh disposable test database after the checksum guard correctly rejected an earlier unpublished draft of migration 007. Committed migrations remain immutable; subsequent changes use a new forward migration. Development data was preserved.
 
 The current production application remains TypeScript. To run it against the separate native development database, use `node scripts/windows-env.mjs npm run db:migrate`, then `node scripts/windows-env.mjs npm run dev`. Those commands retain the existing UI and local fixture modes; they do not activate the future Go backend.
 

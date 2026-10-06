@@ -59,6 +59,8 @@ CR-FIX-001 supplies current TypeScript regression coverage for parts of SYS-02/0
 
 ## Platform records and replay before V2 activation
 
+M03's executable private formats and recovery rules are described in [private records](private-records.md); [M03 evidence](../../../qa/implementation/multi-game/m03/status.md) is the authority for actual acceptance. These records remain separate from public DTOs and original V1 documents.
+
 The implemented `2.0.0` game envelope is a module foundation, not a complete platform record. Keep separately versioned repository records keyed to the game/document revision; define their schemas before M03. Do not add undeclared fields to the closed envelope or assume its audit strings prove valid policy/input bindings.
 
 - Session metadata: immutable module/rule/schema and reasoning-policy pins; exact game/variant/competition/controller identity. Mutable ownership/control/access references use explicit revisions/generations and authoritative grant/usage records.
