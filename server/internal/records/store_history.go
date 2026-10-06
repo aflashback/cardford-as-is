@@ -195,6 +195,9 @@ func (s *Store) ReadDecision(ctx context.Context, ownerID, id string) (DecisionR
 	if err = s.currentRead(ctx, ownerID); err != nil {
 		return DecisionRecord{}, err
 	}
+	if err = s.checkSavedGrant(ctx, ownerID, decision.Access.GrantID); err != nil {
+		return DecisionRecord{}, err
+	}
 	return decision, nil
 }
 
@@ -273,6 +276,13 @@ func (s *Store) appendValidatedExposure(ctx context.Context, exposure ExposureRe
 			return ErrStorage
 		}
 		if decision.Purpose == "coach-advice" {
+			grant, err := s.readGrant(ctx, tx, decision.Access.GrantID, decision.OwnerID)
+			if err != nil {
+				return err
+			}
+			if grant.Revoked {
+				return ErrAccess
+			}
 			var delivered bool
 			if err := tx.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM m03_exposures WHERE owner_id=$1 AND decision_id=$2)", decision.OwnerID, decision.ID).Scan(&delivered); err != nil {
 				return err
@@ -291,6 +301,9 @@ func (s *Store) appendValidatedExposure(ctx context.Context, exposure ExposureRe
 				}
 				if !adviceTool {
 					return ErrAccess
+				}
+				if err = s.checkConfiguredUnlock(ctx, tx, decision.Access, decision.GameID, "advice"); err != nil {
+					return err
 				}
 			}
 		}

@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-06T22:15:18.4903792Z",
+  "removed": [
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-browser.txt",
+      "bytes": 2680,
+      "sha256": "9a952eb684f9c52776d929edda5fd7a8b8380e92581402be23d4b6ac63565528"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-cardford.exe",
+      "bytes": 18440192,
+      "sha256": "ee8671897f6d7b69dc6b44412de07e49669af1220ce6261e0810179f22502eaa"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-continuation.txt",
+      "bytes": 204,
+      "sha256": "ade47f1f2fbf62cda7cc63ec45951b99c2498f33e25e9280f29f9260757ea6b8"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-contracts.mjs",
+      "bytes": 2117,
+      "sha256": "d4701232f55427bc1c1bd9f7b55d4d15d1184f747dd03604cb5ec92396c5dc24"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-final-targeted.txt",
+      "bytes": 3176,
+      "sha256": "64732a646cb6eedeb253aa9bf5220a8e0706ca6d71e161dd1e8d06798e6ef191"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-records-migration.txt",
+      "bytes": 202,
+      "sha256": "b36341da2bb82114becebcae4f845b6739fb49b21a36847a54cb45a8a920d33a"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-records-regression.txt",
+      "bytes": 1853,
+      "sha256": "09ca1e801f4c9e665fbcdfa8a7e45e1883423b7063f9351303e20afa4b7e18e5"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-records-test.txt",
+      "bytes": 1212,
+      "sha256": "4b9a2d8e85df05ba53c603df56742a29f5264372be0f9557e999fb5119a5b3cd"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-service-targeted.txt",
+      "bytes": 310,
+      "sha256": "f7c490a97ef4e40fec08e121925135b308f0cfea46ca7f98a295cf65612dba6d"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04d-db-snapshot.mjs",
+      "bytes": 1994,
+      "sha256": "911af6edc77d80ec343797c31b7037421d52026df1451193d4f3ec0777edf31b"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\test-results\\m04d-demo",
+      "bytes": 32453.0
+    }
+  ],
+  "preserved": "Native tools, PostgreSQL data, frontend build, prior evidence, unrelated files; final screenshot and database inspection helper archived under qa/implementation/multi-game/m04d"
+}

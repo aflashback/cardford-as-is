@@ -405,7 +405,11 @@ func TestM03CanonicalMigrationCrossRuntimeLedger(t *testing.T) {
 		t.Fatal(err)
 	}
 	var count int
-	if err := s.pool.QueryRow(context.Background(), `SELECT count(*) FROM schema_migrations`).Scan(&count); err != nil || count != 8 {
+	canonical, err := ReadCanonicalMigrations(storeMigrationDirectory())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := s.pool.QueryRow(context.Background(), `SELECT count(*) FROM schema_migrations`).Scan(&count); err != nil || count != len(canonical) {
 		t.Fatalf("canonical ledger %d %v", count, err)
 	}
 	// Node -> Go in a separate fresh schema verifies actual Node creation.

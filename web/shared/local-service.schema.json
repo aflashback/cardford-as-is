@@ -874,6 +874,50 @@
             "request"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "activate-trial"
+            },
+            "request": {
+              "$ref": "#/$defs/LocalServiceTrialRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "unlock-coaching"
+            },
+            "request": {
+              "$ref": "#/$defs/LocalServiceUnlockRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
         }
       ],
       "title": "LocalServiceReconcileRequest"
@@ -885,9 +929,276 @@
         },
         {
           "$ref": "#/$defs/LocalControlView"
+        },
+        {
+          "$ref": "#/$defs/LocalServiceTrialReceipt"
+        },
+        {
+          "$ref": "#/$defs/LocalServiceUnlockReceipt"
         }
       ],
       "title": "LocalServiceRecoveredReceipt"
+    },
+    "LocalServiceAccessRequest": {
+      "title": "LocalServiceAccessRequest",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play-start"
+            },
+            "target": {
+              "$ref": "#/$defs/RegisteredTarget"
+            }
+          },
+          "required": [
+            "kind",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play-continue"
+            },
+            "gameId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "gameId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "coach"
+            },
+            "gameId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "toolId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "gameId",
+            "toolId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "read-saved"
+            },
+            "decisionId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "decisionId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "LocalServiceTrialRequest": {
+      "title": "LocalServiceTrialRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "offerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "offerVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedAccessGeneration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "commandId",
+        "offerId",
+        "offerVersion",
+        "expectedAccessGeneration"
+      ],
+      "additionalProperties": false
+    },
+    "LocalServiceTrialReceipt": {
+      "title": "LocalServiceTrialReceipt",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "offer": {
+          "$ref": "#/$defs/VersionedComponent"
+        },
+        "accessGeneration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "activatedAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expiresAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "offer",
+        "accessGeneration",
+        "activatedAt",
+        "expiresAt"
+      ],
+      "additionalProperties": false
+    },
+    "LocalServiceUnlockRequest": {
+      "title": "LocalServiceUnlockRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 32,
+          "maxLength": 256
+        },
+        "toolId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "toolId"
+      ],
+      "additionalProperties": false
+    },
+    "LocalServiceUnlockReceipt": {
+      "title": "LocalServiceUnlockReceipt",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "grantId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "bucketId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "periodKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "offer": {
+          "$ref": "#/$defs/VersionedComponent"
+        },
+        "remaining": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "toolIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "revision",
+        "grantId",
+        "bucketId",
+        "periodKey",
+        "offer",
+        "remaining",
+        "toolIds"
+      ],
+      "additionalProperties": false
     }
   }
 }

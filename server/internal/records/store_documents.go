@@ -492,7 +492,7 @@ func (s *Store) Commit(ctx context.Context, request AcceptedTransition) (Accepte
 	}
 	decisions := make([][]byte, len(request.Decisions))
 	for i, decision := range request.Decisions {
-		if decision.Access != request.Admission {
+		if decision.Access != request.Admission && !(decision.Purpose == "coach-advice" && sameAdmissionBoundary(decision.Access, request.Admission)) {
 			return AcceptedOutcome{}, ErrAccess
 		}
 		if err = s.codec.ValidateDecision(before, request.Before.Snapshot, decision); err != nil {
@@ -581,6 +581,21 @@ func (s *Store) Commit(ctx context.Context, request AcceptedTransition) (Accepte
 			}
 		}
 		for i, decision := range request.Decisions {
+			if decision.Purpose == "coach-advice" {
+				if err = s.checkCommitAccess(ctx, tx, decision.Access, before.Metadata.GameID, true); err != nil {
+					return err
+				}
+				g, _, err := s.checkGrant(ctx, tx, decision.Access, before.Metadata.GameID, before.Metadata.Pin.GameID, before.Metadata.Pin.VariantID, true)
+				if err != nil {
+					return err
+				}
+				if !grantHasTool(g, "advice") {
+					return ErrAccess
+				}
+				if err = s.checkConfiguredUnlock(ctx, tx, decision.Access, before.Metadata.GameID, "advice"); err != nil {
+					return err
+				}
+			}
 			if err = s.checkPreparedDecisionCommit(ctx, tx, decision); err != nil {
 				return err
 			}

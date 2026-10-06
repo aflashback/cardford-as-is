@@ -81,7 +81,7 @@ func (s *Store) checkCommitAccess(ctx context.Context, tx pgx.Tx, a AccessAdmiss
 	if err = s.authorizeControl(ctx, tx, a.OwnerID); err != nil {
 		return err
 	}
-	if generation != a.Generation || control != a.ControlRevision || active != gameID || !play || coach && !canCoach {
+	if generation != a.Generation || control != a.ControlRevision || active != gameID || !coach && !play || coach && !canCoach {
 		return ErrAccess
 	}
 	return nil
@@ -119,7 +119,7 @@ type AllowanceCharge struct {
 func recordID(s string) bool { return validText(s) }
 func validateGrant(g Grant) error {
 	t := g.Terms
-	if !recordID(g.ID) || !recordID(g.OwnerID) || !recordID(g.OfferID) || !recordID(g.OfferVersion) || !recordID(g.SourceID) || t.Version != RecordVersion || !recordID(t.BucketID) || t.Timezone != "UTC" || (t.Period != "day" && t.Period != "lifetime") || t.Limit < 0 || t.Limit > maxRecordInteger || t.Unlimited && t.Limit != 0 || (!t.Unlimited && t.CanCoach && t.Limit == 0) || t.Tools == nil || len(t.Tools) > 16 || g.ValidFrom.IsZero() || g.ValidUntil != nil && !g.ValidUntil.After(g.ValidFrom) {
+	if !recordID(g.ID) || !recordID(g.OwnerID) || !recordID(g.OfferID) || !recordID(g.OfferVersion) || !recordID(g.SourceID) || t.Version != RecordVersion || !recordID(t.BucketID) || t.Timezone != "UTC" || (t.Period != "day" && t.Period != "lifetime") || t.Limit < 0 || t.Limit > maxRecordInteger || t.Unlimited && t.Limit != 0 || t.Tools == nil || len(t.Tools) > 16 || g.ValidFrom.IsZero() || g.ValidUntil != nil && !g.ValidUntil.After(g.ValidFrom) {
 		return ErrAccess
 	}
 	if t.ExpiryRule != "pause-at-expiry" && t.ExpiryRule != "finish-admitted-unit" {
@@ -204,8 +204,22 @@ func normalizeGrant(g Grant) Grant {
 	return g
 }
 func (s *Store) checkBucketTerms(ctx context.Context, tx pgx.Tx, g Grant) error {
+	var priorBucket string
+	var priorTerms []byte
+	err := tx.QueryRow(ctx, "SELECT bucket_id,terms FROM "+s.table("m03_grants")+" WHERE owner_id=$1 AND offer_id=$2 LIMIT 1", g.OwnerID, g.OfferID).Scan(&priorBucket, &priorTerms)
+	if err == nil {
+		terms, e := decodeTerms(priorTerms)
+		if e != nil {
+			return e
+		}
+		if priorBucket != g.Terms.BucketID || terms.Period != g.Terms.Period || terms.Timezone != g.Terms.Timezone {
+			return ErrAllowance
+		}
+	} else if !errors.Is(err, pgx.ErrNoRows) {
+		return err
+	}
 	var raw []byte
-	err := tx.QueryRow(ctx, "SELECT terms FROM "+s.table("m03_grants")+" WHERE owner_id=$1 AND bucket_id=$2 LIMIT 1", g.OwnerID, g.Terms.BucketID).Scan(&raw)
+	err = tx.QueryRow(ctx, "SELECT terms FROM "+s.table("m03_grants")+" WHERE owner_id=$1 AND bucket_id=$2 LIMIT 1", g.OwnerID, g.Terms.BucketID).Scan(&raw)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return nil
 	}
@@ -254,10 +268,16 @@ type grantReader interface {
 }
 
 func (s *Store) readGrant(ctx context.Context, q grantReader, id, owner string) (Grant, error) {
+	return scanGrant(q.QueryRow(ctx, "SELECT grant_id,owner_id,offer_id,offer_version,source_kind,source_id,terms,valid_from,valid_until,revoked,game,variant,bucket_id FROM "+s.table("m03_grants")+" WHERE grant_id=$1 AND owner_id=$2", id, owner))
+}
+
+type recordScanner interface{ Scan(...any) error }
+
+func scanGrant(row recordScanner) (Grant, error) {
 	var g Grant
 	var raw []byte
 	var game, variant, bucket string
-	err := q.QueryRow(ctx, "SELECT grant_id,owner_id,offer_id,offer_version,source_kind,source_id,terms,valid_from,valid_until,revoked,game,variant,bucket_id FROM "+s.table("m03_grants")+" WHERE grant_id=$1 AND owner_id=$2", id, owner).Scan(&g.ID, &g.OwnerID, &g.OfferID, &g.OfferVersion, &g.SourceKind, &g.SourceID, &raw, &g.ValidFrom, &g.ValidUntil, &g.Revoked, &game, &variant, &bucket)
+	err := row.Scan(&g.ID, &g.OwnerID, &g.OfferID, &g.OfferVersion, &g.SourceKind, &g.SourceID, &raw, &g.ValidFrom, &g.ValidUntil, &g.Revoked, &game, &variant, &bucket)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return g, ErrAccess
 	}
@@ -330,7 +350,7 @@ func (s *Store) chargeAllowance(ctx context.Context, tx pgx.Tx, owner, commandID
 		return ErrAllowance
 	}
 	var charged bool
-	err = tx.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM "+s.table("m03_allowance_charges")+" WHERE owner_id=$1 AND bucket_id=$2 AND game_id=$3 AND unit_id=$4)", owner, c.BucketID, gameID, c.Admission.UnitID).Scan(&charged)
+	err = tx.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM "+s.table("m03_allowance_charges")+" WHERE owner_id=$1 AND game_id=$2 AND unit_id=$3)", owner, gameID, c.Admission.UnitID).Scan(&charged)
 	if err != nil {
 		return err
 	}
@@ -349,6 +369,10 @@ func (s *Store) chargeAllowance(ctx context.Context, tx pgx.Tx, owner, commandID
 		return ErrAllowance
 	}
 	_, err = tx.Exec(ctx, "INSERT INTO "+s.table("m03_allowance_charges")+" (owner_id,command_id,bucket_id,period_key,grant_id,offer_id,offer_version,units,game_id,unit_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)", owner, commandID, c.BucketID, c.PeriodKey, g.ID, g.OfferID, g.OfferVersion, c.Units, gameID, c.Admission.UnitID)
+	if err != nil {
+		return err
+	}
+	_, err = tx.Exec(ctx, "INSERT INTO "+s.table("m04_coaching_unlocks")+"(owner_id,game_id,unit_id,grant_id,bucket_id,period_key,offer_id,offer_version,command_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)", owner, gameID, c.Admission.UnitID, g.ID, c.BucketID, c.PeriodKey, g.OfferID, g.OfferVersion, commandID)
 	return err
 }
 

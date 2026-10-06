@@ -188,6 +188,9 @@ func (s *Store) checkWorkOrigin(ctx context.Context, tx pgx.Tx, r WorkRequest, p
 		if !found {
 			return ErrAccess
 		}
+		if err = s.checkConfiguredUnlock(ctx, tx, r.Admission, r.GameID, tool); err != nil {
+			return err
+		}
 	}
 	return nil
 }

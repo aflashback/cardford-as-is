@@ -99,6 +99,11 @@ for (const [method,path,input,output] of routes) {
 // M04C is a separate local listener; these routes do not change the V1 client
 // contract or claim that its eventual platform UI envelope is implemented.
 const localServiceRoutes = [
+  ['post','/api/demo/frame','DemoFrameRequest','DemoFrame'],
+  ['get','/api/access/offers',null,'AccessOfferPolicy'],
+  ['post','/api/access/resolve','LocalServiceAccessRequest','AccessDecision'],
+  ['post','/api/access/trials','LocalServiceTrialRequest','LocalServiceTrialReceipt'],
+  ['post','/api/access/unlocks','LocalServiceUnlockRequest','LocalServiceUnlockReceipt'],
   ['get','/api/health',null,'LocalServiceHealthView'],
   ['post','/api/local/session','LocalServiceEmptyRequest','IdentityView'],
   ['get','/api/identity',null,'IdentityView'],
@@ -123,10 +128,10 @@ for (const [method,path,input,output] of localServiceRoutes) {
   const operation = { responses: { '200': { description: 'Validated local service result', content }, default: { description: 'Safe typed error; reconcile an ambiguous command before retrying', content: { 'application/json': { schema: { $ref: '#/components/schemas/ApiError' } } } } }, parameters: [] };
   if (output === 'LocalServicePrepareView') operation.responses['202'] = { description: 'Durable preparation pending; poll the listed work identities', content };
   if (input) operation.requestBody = { required: true, content: { 'application/json': { schema: { $ref: `#/components/schemas/${input}` } } } };
-  if (path !== '/api/health') operation.parameters.push({ name: 'x-tricks-tab', in: 'header', required: true, schema: { type: 'string', minLength: 8, maxLength: 80 } });
+  if (path !== '/api/health' && path !== '/api/demo/frame') operation.parameters.push({ name: 'x-tricks-tab', in: 'header', required: true, schema: { type: 'string', minLength: 8, maxLength: 80 } });
   if (method === 'post') operation.parameters.push({ name: 'x-tricks-client', in: 'header', required: true, schema: { const: '1' } });
   if (path.includes('{id}')) operation.parameters.push({ name: 'id', in: 'path', required: true, schema: { type: 'string', minLength: 1, maxLength: 256 } });
-  if (path !== '/api/health' && path !== '/api/local/session') operation.security = [{ localSession: [] }];
+  if (path !== '/api/health' && path !== '/api/local/session' && path !== '/api/demo/frame') operation.security = [{ localSession: [] }];
   localOpenapi.paths[path] ??= {};
   localOpenapi.paths[path][method] = operation;
 }

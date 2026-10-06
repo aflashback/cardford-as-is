@@ -110,7 +110,12 @@ export type PublicContracts =
   | LocalServiceDecisionView
   | LocalServiceHealthView
   | LocalServiceReconcileRequest
-  | LocalServiceRecoveredReceipt;
+  | LocalServiceRecoveredReceipt
+  | LocalServiceAccessRequest
+  | LocalServiceTrialRequest
+  | LocalServiceTrialReceipt
+  | LocalServiceUnlockRequest
+  | LocalServiceUnlockReceipt;
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
 export type Seat = 0 | 1 | 2 | 3;
 export type Card = string;
@@ -352,8 +357,37 @@ export type LocalServiceReconcileRequest =
       commandId: string;
       operation: 'next-hand';
       request: LocalServiceNextHandRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'activate-trial';
+      request: LocalServiceTrialRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'unlock-coaching';
+      request: LocalServiceUnlockRequest;
     };
-export type LocalServiceRecoveredReceipt = LocalServiceCommandReceipt | LocalControlView;
+export type LocalServiceRecoveredReceipt =
+  LocalServiceCommandReceipt | LocalControlView | LocalServiceTrialReceipt | LocalServiceUnlockReceipt;
+export type LocalServiceAccessRequest =
+  | {
+      kind: 'play-start';
+      target: RegisteredTarget;
+    }
+  | {
+      kind: 'play-continue';
+      gameId: string;
+    }
+  | {
+      kind: 'coach';
+      gameId: string;
+      toolId: string;
+    }
+  | {
+      kind: 'read-saved';
+      decisionId: string;
+    };
 
 export interface Play {
   seat: Seat;
@@ -1264,6 +1298,37 @@ export interface LocalServiceHealthView {
   provider: 'off';
   payments: 'fixture';
 }
+export interface LocalServiceTrialRequest {
+  commandId: string;
+  offerId: string;
+  offerVersion: string;
+  expectedAccessGeneration: number;
+}
+export interface LocalServiceUnlockRequest {
+  commandId: string;
+  gameId: string;
+  expectedRevision: number;
+  controlLeaseToken: string;
+  toolId: string;
+}
+export interface LocalServiceTrialReceipt {
+  commandId: string;
+  offer: VersionedComponent;
+  accessGeneration: number;
+  activatedAt: string;
+  expiresAt: string;
+}
+export interface LocalServiceUnlockReceipt {
+  commandId: string;
+  gameId: string;
+  revision: number;
+  grantId: string;
+  bucketId: string;
+  periodKey: string;
+  offer: VersionedComponent;
+  remaining: number | null;
+  toolIds: string[];
+}
 
 export interface ContractTypes {
   Mode: Mode;
@@ -1385,5 +1450,10 @@ export interface ContractTypes {
   LocalServiceHealthView: LocalServiceHealthView;
   LocalServiceReconcileRequest: LocalServiceReconcileRequest;
   LocalServiceRecoveredReceipt: LocalServiceRecoveredReceipt;
+  LocalServiceAccessRequest: LocalServiceAccessRequest;
+  LocalServiceTrialRequest: LocalServiceTrialRequest;
+  LocalServiceTrialReceipt: LocalServiceTrialReceipt;
+  LocalServiceUnlockRequest: LocalServiceUnlockRequest;
+  LocalServiceUnlockReceipt: LocalServiceUnlockReceipt;
 }
 export type ContractName = keyof ContractTypes;

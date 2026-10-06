@@ -129,6 +129,26 @@ func (s *Service) mutate(ctx context.Context, owner string, r transport.Request)
 	if err != nil {
 		return transport.Response{}, fail(422, "illegal-command")
 	}
+	if s.policy != nil {
+		nextDoc, nextSnapshot := stage.NextDocument(), stage.NextSnapshot()
+		nextUnit, e := s.codec.CurrentUnitID(nextDoc, nextSnapshot)
+		if e != nil {
+			return transport.Response{}, e
+		}
+		if nextUnit != admission.UnitID {
+			nextBound, e := s.codec.Session(nextDoc, nextSnapshot)
+			if e != nil {
+				return transport.Response{}, e
+			}
+			nextAdmission, _, e := s.chooseAccess(ctx, owner, nextBound, q.GameID, nextUnit, "play", "start", "")
+			if e != nil {
+				return transport.Response{}, e
+			}
+			// Commit checks both original and next unit using the chosen play grant.
+			nextAdmission.UnitID = admission.UnitID
+			admission = nextAdmission
+		}
+	}
 	if err = ctx.Err(); err != nil {
 		return transport.Response{}, err
 	}
@@ -148,7 +168,11 @@ func (s *Service) prepared(ctx context.Context, owner, id string, l *records.Loa
 	if err != nil {
 		return d, err
 	}
-	if d.GameID != l.Document.Metadata.GameID || d.Revision != l.Document.Revision || d.Access != a || !reflect.DeepEqual(d.Policy, l.Document.Metadata.Policy) {
+	bound := d.Access == a
+	if d.Purpose == "coach-advice" && d.Actor == 0 {
+		bound = d.Access.OwnerID == a.OwnerID && d.Access.Generation == a.Generation && d.Access.ControlRevision == a.ControlRevision && d.Access.UnitID == a.UnitID
+	}
+	if d.GameID != l.Document.Metadata.GameID || d.Revision != l.Document.Revision || !bound || !reflect.DeepEqual(d.Policy, l.Document.Metadata.Policy) {
 		return d, records.ErrWorkStale
 	}
 	if err = s.codec.ValidateDecision(l.Document, l.Snapshot, d); err != nil {

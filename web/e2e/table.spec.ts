@@ -271,23 +271,6 @@ test('suggestion never commits or hides legal cards', async ({ page }) => {
   await expect(page.locator('.hand-card')).toHaveCount(4);
 });
 
-test('finite demo makes zero API requests and reaches a terminal replay', async ({ page }) => {
-  const calls: string[] = [];
-  await page.route(
-    (url) => url.pathname.startsWith('/api/'),
-    (route) => {
-      calls.push(route.request().url());
-      return route.abort();
-    },
-  );
-  await page.goto('/#demo');
-  await page.getByRole('button', { name: 'Play the 4 of clubs' }).click();
-  await page.getByRole('button', { name: 'Show the original' }).click();
-  await page.getByRole('button', { name: 'Finish example' }).click();
-  await expect(page.getByRole('heading', { name: 'Example complete' })).toBeVisible();
-  expect(calls).toEqual([]);
-});
-
 test('phone portrait account bypasses table rotation gate', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const session = fixture();

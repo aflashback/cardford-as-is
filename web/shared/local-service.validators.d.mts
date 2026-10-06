@@ -120,3 +120,8 @@ export const validateLocalServiceDecisionView: ValidateFunction<ContractTypes['L
 export const validateLocalServiceHealthView: ValidateFunction<ContractTypes['LocalServiceHealthView']>;
 export const validateLocalServiceReconcileRequest: ValidateFunction<ContractTypes['LocalServiceReconcileRequest']>;
 export const validateLocalServiceRecoveredReceipt: ValidateFunction<ContractTypes['LocalServiceRecoveredReceipt']>;
+export const validateLocalServiceAccessRequest: ValidateFunction<ContractTypes['LocalServiceAccessRequest']>;
+export const validateLocalServiceTrialRequest: ValidateFunction<ContractTypes['LocalServiceTrialRequest']>;
+export const validateLocalServiceTrialReceipt: ValidateFunction<ContractTypes['LocalServiceTrialReceipt']>;
+export const validateLocalServiceUnlockRequest: ValidateFunction<ContractTypes['LocalServiceUnlockRequest']>;
+export const validateLocalServiceUnlockReceipt: ValidateFunction<ContractTypes['LocalServiceUnlockReceipt']>;

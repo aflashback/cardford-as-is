@@ -7,6 +7,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"io"
 	"net"
 	"net/http"
 	"os"
@@ -14,6 +15,7 @@ import (
 	"regexp"
 	"time"
 
+	"cardford/server/internal/access"
 	transport "cardford/server/internal/http"
 	"cardford/server/internal/records"
 	"cardford/server/internal/service"
@@ -22,15 +24,25 @@ import (
 
 func main() {
 	migrations := flag.String("migrations", os.Getenv("CARDFORD_MIGRATIONS_DIR"), "canonical web/server/records/migrations directory (required)")
+	web := flag.String("web", "", "optional public web/dist directory for same-origin demo acceptance")
+	policy := flag.String("access-policy", "", "explicit validated offer policy JSON; omit for the M04C fixture harness")
 	flag.Parse()
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
-	if err := run(ctx, *migrations); err != nil {
+	if err := run(ctx, *migrations, *web, *policy); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
-func run(ctx context.Context, migrations string) error {
+func run(ctx context.Context, migrations, web, policyPath string) error {
+	var policy *access.Policy
+	if policyPath != "" {
+		value, err := readPolicy(policyPath)
+		if err != nil {
+			return err
+		}
+		policy = &value
+	}
 	cfg, err := transport.ReadLocalConfig(func(name string) string {
 		if name == "CARDFORD_MIGRATIONS_DIR" {
 			return migrations
@@ -52,7 +64,12 @@ func run(ctx context.Context, migrations string) error {
 	if err = store.ApplyMigrations(ctx, cfg.MigrationsDirectory); err != nil {
 		return databaseFailure("canonical database migration validation failed", err)
 	}
-	backend, err := service.New(store, codec)
+	var backend *service.Service
+	if policy == nil {
+		backend, err = service.New(store, codec)
+	} else {
+		backend, err = service.NewConfigured(store, codec, *policy)
+	}
 	if err != nil {
 		return fmt.Errorf("local service initialization failed")
 	}
@@ -65,13 +82,23 @@ func run(ctx context.Context, migrations string) error {
 	if err != nil {
 		return err
 	}
+	if web != "" {
+		server.Handler, err = transport.NewDemoWeb(handler, web, cfg.Origin)
+		if err != nil {
+			return fmt.Errorf("public demo build could not be loaded")
+		}
+	}
 	listener, err := net.Listen("tcp", cfg.Address)
 	if err != nil {
 		return fmt.Errorf("local listener could not bind its configured address")
 	}
 	finished := make(chan error, 1)
 	go func() { finished <- server.Serve(listener) }()
-	fmt.Printf("CardFord Go local fixture API: %s (identity=local-test, payments=fixture, provider=off)\n", cfg.Origin)
+	accessMode := "fixture"
+	if policy != nil {
+		accessMode = "configured"
+	}
+	fmt.Printf("CardFord Go local API: %s (identity=local-test, payments=fixture, provider=off, access=%s)\n", cfg.Origin, accessMode)
 	select {
 	case err = <-finished:
 		if errors.Is(err, http.ErrServerClosed) {
@@ -88,6 +115,23 @@ func run(ctx context.Context, migrations string) error {
 		<-finished
 		return nil
 	}
+}
+
+func readPolicy(path string) (access.Policy, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return access.Policy{}, fmt.Errorf("access policy could not be opened")
+	}
+	defer f.Close()
+	raw, err := io.ReadAll(io.LimitReader(f, (1<<20)+1))
+	if err != nil || len(raw) > 1<<20 {
+		return access.Policy{}, fmt.Errorf("access policy exceeds its file limit")
+	}
+	p, err := access.DecodePolicy(raw)
+	if err != nil {
+		return access.Policy{}, fmt.Errorf("access policy is invalid or uses unsupported terms")
+	}
+	return p, nil
 }
 
 // Driver errors may embed credentials, SQL values or private data. Report only

@@ -248,6 +248,16 @@ func generatedWire(name string) wireValue {
 		return new(LocalServiceReconcileRequest)
 	case "LocalServiceRecoveredReceipt":
 		return new(LocalServiceRecoveredReceipt)
+	case "LocalServiceAccessRequest":
+		return new(LocalServiceAccessRequest)
+	case "LocalServiceTrialRequest":
+		return new(LocalServiceTrialRequest)
+	case "LocalServiceTrialReceipt":
+		return new(LocalServiceTrialReceipt)
+	case "LocalServiceUnlockRequest":
+		return new(LocalServiceUnlockRequest)
+	case "LocalServiceUnlockReceipt":
+		return new(LocalServiceUnlockReceipt)
 	}
 	return nil
 }

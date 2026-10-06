@@ -41,7 +41,7 @@ func (s *Store) EraseOwner(ctx context.Context) error {
 				return err
 			}
 		}
-		for _, table := range []string{"m03_unit_admissions", "m03_allowance_charges", "m03_access_trials", "m03_grants", "m03_allowance", "m03_games", "m04_controls", "m04_sessions", "m04_service_commands", "m03_access"} {
+		for _, table := range []string{"m04_coaching_unlocks", "m03_unit_admissions", "m03_allowance_charges", "m03_access_trials", "m03_grants", "m03_allowance", "m03_games", "m04_controls", "m04_sessions", "m04_service_commands", "m03_access"} {
 			if _, err := tx.Exec(ctx, "DELETE FROM "+s.table(table)+" WHERE owner_id=$1", owner); err != nil {
 				return err
 			}

@@ -1,0 +1,48 @@
+=== RUN   TestM04DServiceConfiguredTrialUnlockSeparateGrantAndRestart
+--- PASS: TestM04DServiceConfiguredTrialUnlockSeparateGrantAndRestart (2.38s)
+=== RUN   TestM04DServiceLaunchEmptyAndModeFence
+--- PASS: TestM04DServiceLaunchEmptyAndModeFence (0.72s)
+=== RUN   TestM04DServiceCoachRemainsIndependentAfterPlayExpires
+--- PASS: TestM04DServiceCoachRemainsIndependentAfterPlayExpires (6.01s)
+=== RUN   TestM04DDemoPublicAndIndependentOfAccounts
+--- PASS: TestM04DDemoPublicAndIndependentOfAccounts (0.00s)
+=== RUN   TestM04DDemoHTTPNeedsNoIdentityAndNeverSetsCookie
+--- PASS: TestM04DDemoHTTPNeedsNoIdentityAndNeverSetsCookie (0.00s)
+PASS
+ok  	cardford/server/internal/service	9.514s
+=== RUN   TestM04DConfiguredIdentityNoFixtureAndAtomicInvalidTerms
+--- PASS: TestM04DConfiguredIdentityNoFixtureAndAtomicInvalidTerms (0.74s)
+=== RUN   TestM04DConfiguredUnlockConcurrentRecoveryAndOriginalTerms
+--- PASS: TestM04DConfiguredUnlockConcurrentRecoveryAndOriginalTerms (0.80s)
+=== RUN   TestM04DConfiguredZeroQuotaAndToolRejectWithoutMutation
+--- PASS: TestM04DConfiguredZeroQuotaAndToolRejectWithoutMutation (0.75s)
+=== RUN   TestM04DConfiguredCommercialTrialOnceAcrossOffersAndTargets
+--- PASS: TestM04DConfiguredCommercialTrialOnceAcrossOffersAndTargets (0.78s)
+=== RUN   TestM04DConfiguredInvalidTrialRollsBackEveryTarget
+--- PASS: TestM04DConfiguredInvalidTrialRollsBackEveryTarget (0.75s)
+=== RUN   TestM04DConfiguredWorkerRequiresUnlockAndSecurityRevocation
+--- PASS: TestM04DConfiguredWorkerRequiresUnlockAndSecurityRevocation (0.94s)
+=== RUN   TestM04DConfiguredFreePolicyUpdatesPreserveTermsAndRevocation
+--- PASS: TestM04DConfiguredFreePolicyUpdatesPreserveTermsAndRevocation (0.75s)
+=== RUN   TestM04DConfiguredLastUnitCannotResetThroughNewSession
+--- PASS: TestM04DConfiguredLastUnitCannotResetThroughNewSession (0.83s)
+=== RUN   TestM04DConfiguredMigrationRetainsLegacyOriginalReservation
+--- PASS: TestM04DConfiguredMigrationRetainsLegacyOriginalReservation (0.78s)
+=== RUN   TestM04DConfiguredCoachingIndependentOfCoarsePlayPermission
+    access_configured_test.go:426: store.create-schema: failed to connect to `user=cardford_local database=cardford_windows_test`: 127.0.0.1:54331 (127.0.0.1): dial error: dial tcp 127.0.0.1:54331: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+--- FAIL: TestM04DConfiguredCoachingIndependentOfCoarsePlayPermission (1.02s)
+FAIL
+FAIL	cardford/server/internal/records	8.473s
+FAIL
+file:///C:/repos/test-jev/scripts/windows-env.mjs:17
+    throw Error(`${exe.split(/[\\/]/).at(-1)} exited ${r.status}: ${r.stderr ?? ''}`); return r.stdout ?? ''; }
+          ^
+
+Error: go.exe exited 1: 
+    at run (file:///C:/repos/test-jev/scripts/windows-env.mjs:17:11)
+    at file:///C:/repos/test-jev/scripts/windows-env.mjs:93:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

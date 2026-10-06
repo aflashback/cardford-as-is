@@ -122,6 +122,11 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   LocalServiceHealthView: compiled.validateLocalServiceHealthView,
   LocalServiceReconcileRequest: compiled.validateLocalServiceReconcileRequest,
   LocalServiceRecoveredReceipt: compiled.validateLocalServiceRecoveredReceipt,
+  LocalServiceAccessRequest: compiled.validateLocalServiceAccessRequest,
+  LocalServiceTrialRequest: compiled.validateLocalServiceTrialRequest,
+  LocalServiceTrialReceipt: compiled.validateLocalServiceTrialReceipt,
+  LocalServiceUnlockRequest: compiled.validateLocalServiceUnlockRequest,
+  LocalServiceUnlockReceipt: compiled.validateLocalServiceUnlockReceipt,
 };
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
   return validators[name];
@@ -251,3 +256,8 @@ export const validateLocalServiceDecisionView = contractValidator('LocalServiceD
 export const validateLocalServiceHealthView = contractValidator('LocalServiceHealthView');
 export const validateLocalServiceReconcileRequest = contractValidator('LocalServiceReconcileRequest');
 export const validateLocalServiceRecoveredReceipt = contractValidator('LocalServiceRecoveredReceipt');
+export const validateLocalServiceAccessRequest = contractValidator('LocalServiceAccessRequest');
+export const validateLocalServiceTrialRequest = contractValidator('LocalServiceTrialRequest');
+export const validateLocalServiceTrialReceipt = contractValidator('LocalServiceTrialReceipt');
+export const validateLocalServiceUnlockRequest = contractValidator('LocalServiceUnlockRequest');
+export const validateLocalServiceUnlockReceipt = contractValidator('LocalServiceUnlockReceipt');

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-06 M04D scoped acceptance
+
+Implement the finite Go-authored online demo and exact-target configurable offer backend. React demo open/choice/replay now requires validated server frames; the offline graph is removed, and the original Node service accurately reports unavailable. Add independent play/coaching grants, authoritative saved-delivery/admission/usage reads, atomic original unlock/trial receipts and source security revocation fences through forward migration 009, including legacy reservation backfill. Optional `--access-policy` selects the empty launch policy or an explicit local demonstration; omitting it preserves M04C fixtures, with cookies mode-fenced. Optional `--web web/dist` connects the public `#demo` journey only. [M04D acceptance](qa/implementation/multi-game/m04d/status.md) passes MG-15 and the MG-16 backend: 1,336 normal Go checks, 1,334 race checks, 9/9 real Go/React browser tests and 32/32 Node regressions, with expected skips recorded. M04E's complete platform/client/account integration and preserved three-mode journeys remain open. No hosting, live Jev/payments, strategy or human-learning claim.
+
 ## Unreleased — 2026-10-06 M04C
 
 Connect the original game policies and V2 sessions to an explicit local Go/PostgreSQL API with server-issued identity, tab leases, bounded preparation, saved original advice, atomic receipts and restart recovery. Add owner-scoped account erasure through forward migration 008 and strict generated local-service contracts while preserving the existing client artifacts. [Acceptance, native database observations and remaining M04 gates](qa/implementation/multi-game/m04c/status.md). The existing React interface and TypeScript service remain active until the later client cutover.

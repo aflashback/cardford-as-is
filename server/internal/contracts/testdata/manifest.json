@@ -13,12 +13,12 @@
   "sources": {
     "scripts/m02a-contracts.mjs": "354534220c50a03577fc72122b2a54aeb9216ff1bdc144318dddb981b4e1d5d1",
     "web/shared/validators.mjs": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637",
-    "web/shared/local-service.validators.mjs": "7aa0cb3a39bd9422deedc3d95f6ec13d1c4cefd87281c87a4cfa4d956ed171a5",
-    "web/scripts/generate-contracts.mjs": "c4d83968a58efed33bb3ae8bc3084bca974b40b692f8fab8dfad6d2e28ddea8c",
+    "web/shared/local-service.validators.mjs": "51415c1c8971a5df6980c9bd38e6528aaa8d988607380ab210af9bf463ea654d",
+    "web/scripts/generate-contracts.mjs": "16ae902a48dece0837e94104e1095c5a54ac846cd91842667df1fa9a7a9706bc",
     "web/shared/contracts.schema.json": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2",
     "web/shared/games/hearts.schema.json": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91",
     "web/shared/games/spades.schema.json": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb",
-    "web/shared/local-service.schema.json": "eb6ee23584af4bc43d2f4577c67b9671e5c70cfd565da30aab94505b05af829a",
+    "web/shared/local-service.schema.json": "26a771061db066461ee694939110af1e9308b373e364535b22631a9e397154b4",
     "web/server/game/kernel/codec.ts": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b",
     "web/server/records/repository.ts": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f",
     "web/server/evaluation/gate/runner.ts": "69c6baa1640d23dcb0f54dd05e80b51a727109abf820a0c8b571df456d98176c",
@@ -27,7 +27,7 @@
     "web/server/games/spades/plan/pack.ts": "989387dcfff14db1cd31a260b89495e2c44b67b872858c39276b16e18e5feecc",
     "web/server/game/cards.ts": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b"
   },
-  "definitionCount": 119,
+  "definitionCount": 124,
   "bindingKinds": {
     "Mode": "typed",
     "Seat": "typed",
@@ -147,9 +147,14 @@
     "LocalServiceDecisionView": "typed",
     "LocalServiceHealthView": "typed",
     "LocalServiceReconcileRequest": "validated-opaque",
-    "LocalServiceRecoveredReceipt": "validated-opaque"
+    "LocalServiceRecoveredReceipt": "validated-opaque",
+    "LocalServiceAccessRequest": "validated-opaque",
+    "LocalServiceTrialRequest": "typed",
+    "LocalServiceTrialReceipt": "typed",
+    "LocalServiceUnlockRequest": "typed",
+    "LocalServiceUnlockReceipt": "validated-opaque"
   },
-  "fixtureCount": 288,
+  "fixtureCount": 298,
   "deliberateBoundaryDifferences": [
     "lone-high-surrogate",
     "lone-low-surrogate",

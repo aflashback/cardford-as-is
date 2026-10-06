@@ -361,8 +361,8 @@ func TestM04AdviceDeliveryExposureAndFinalAuthentication(t *testing.T) {
 	if _, err = s.ChangeAccess(ctx, a.OwnerID, access.Generation, AccessChange{ActiveGameID: d.GameID, CanRead: true, CanPlay: false, CanCoach: false}); err != nil {
 		t.Fatal(err)
 	}
-	if reread, err := s.ReadDecisionForDelivery(ctx, a.OwnerID, d.ID); err != nil || !SamePreparedBytes(reread, d) {
-		t.Fatalf("delivered historical advice lost read permission: %v", err)
+	if _, err := s.ReadDecisionForDelivery(ctx, a.OwnerID, d.ID); !errors.Is(err, ErrAccess) {
+		t.Fatalf("security grant revocation failed to fence saved delivery: %v", err)
 	}
 	if err = s.RevokeSession(ctx); err != nil {
 		t.Fatal(err)

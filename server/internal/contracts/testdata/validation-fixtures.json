@@ -1953,6 +1953,76 @@
     "boundary": false
   },
   {
+    "id": "witness-LocalServiceAccessRequest",
+    "name": "LocalServiceAccessRequest",
+    "raw": "{\"kind\":\"play-start\",\"target\":{\"gameId\":\"hearts\",\"variantId\":\"solo\"}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-LocalServiceAccessRequest",
+    "name": "LocalServiceAccessRequest",
+    "raw": "{\"kind\":\"play-start\",\"target\":{\"gameId\":\"hearts\",\"variantId\":\"solo\"},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-LocalServiceTrialRequest",
+    "name": "LocalServiceTrialRequest",
+    "raw": "{\"commandId\":\"x0\",\"offerId\":\"x0\",\"offerVersion\":\"x0\",\"expectedAccessGeneration\":0}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-LocalServiceTrialRequest",
+    "name": "LocalServiceTrialRequest",
+    "raw": "{\"commandId\":\"x0\",\"offerId\":\"x0\",\"offerVersion\":\"x0\",\"expectedAccessGeneration\":0,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-LocalServiceTrialReceipt",
+    "name": "LocalServiceTrialReceipt",
+    "raw": "{\"commandId\":\"x0\",\"offer\":{\"id\":\"x0\",\"version\":\"x0\"},\"accessGeneration\":0,\"activatedAt\":\"x0\",\"expiresAt\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-LocalServiceTrialReceipt",
+    "name": "LocalServiceTrialReceipt",
+    "raw": "{\"commandId\":\"x0\",\"offer\":{\"id\":\"x0\",\"version\":\"x0\"},\"accessGeneration\":0,\"activatedAt\":\"x0\",\"expiresAt\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-LocalServiceUnlockRequest",
+    "name": "LocalServiceUnlockRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"toolId\":\"x0\"}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-LocalServiceUnlockRequest",
+    "name": "LocalServiceUnlockRequest",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"expectedRevision\":0,\"controlLeaseToken\":\"x0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"toolId\":\"x0\",\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-LocalServiceUnlockReceipt",
+    "name": "LocalServiceUnlockReceipt",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"revision\":0,\"grantId\":\"x0\",\"bucketId\":\"x0\",\"periodKey\":\"x0\",\"offer\":{\"id\":\"x0\",\"version\":\"x0\"},\"remaining\":0,\"toolIds\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-LocalServiceUnlockReceipt",
+    "name": "LocalServiceUnlockReceipt",
+    "raw": "{\"commandId\":\"x0\",\"gameId\":\"x0\",\"revision\":0,\"grantId\":\"x0\",\"bucketId\":\"x0\",\"periodKey\":\"x0\",\"offer\":{\"id\":\"x0\",\"version\":\"x0\"},\"remaining\":0,\"toolIds\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
     "id": "nested-hidden-HeartsActorPacket",
     "name": "HeartsActorPacket",
     "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"hearts\",\"variantId\":\"solo\",\"seat\":0,\"phase\":\"x0\",\"observation\":{\"hand\":[],\"handCounts\":[0,0,0,0],\"scores\":[0,0,0,0],\"turn\":0,\"dealer\":0,\"roundNumber\":1,\"trick\":[],\"history\":[],\"heartsBroken\":false,\"passDirection\":\"left\",\"pass\":{\"outgoing\":[],\"incoming\":[],\"to\":0,\"from\":0},\"hands\":[[\"SA\"]]},\"candidates\":[{\"id\":\"x0\",\"public\":{\"kind\":\"play\",\"card\":\"C2\"}}]}",

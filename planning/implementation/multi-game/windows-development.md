@@ -33,7 +33,7 @@ This recognized loopback cluster has no TLS listener. The wrapper explicitly set
 
 M03 also encountered intermittent native TCP failures whose precise cause was not established. Preserve failure output and inspect local PostgreSQL/transport state if they recur; do not hide failures with retries or relax product timeouts. The final Node verification uses a fresh disposable test database after the checksum guard correctly rejected an earlier unpublished draft of migration 007. Committed migrations remain immutable; subsequent changes use a new forward migration. Development data was preserved.
 
-The current React application still uses the original TypeScript service. To run it against the separate native development database, use `node scripts/windows-env.mjs npm run db:migrate`, then `node scripts/windows-env.mjs npm run dev`. Existing startup, Vite and browser-test paths remain on that service until the later client cutover gate.
+Normal React gameplay and account controls still use the original TypeScript service. To run that app against the separate native development database, use `node scripts/windows-env.mjs npm run db:migrate`, then `node scripts/windows-env.mjs npm run dev`. Its online example accurately reports unavailable because the authored endpoint is implemented only in Go. Existing startup/Vite/game browser-test paths remain on Node until M04E's client cutover gate; the explicit Go demo path below is separate.
 
 ### M04C local Go API
 
@@ -44,11 +44,26 @@ node scripts/windows-env.mjs pg:start
 node scripts/windows-env.mjs go run ./server/cmd/cardford --migrations web/server/records/migrations
 ```
 
-The listener defaults to **http://127.0.0.1:4174** and serves the local API, without switching the existing React interface. `--migrations` supplies the sole canonical migration directory; `CARDFORD_MIGRATIONS_DIR` is the environment alternative. Startup applies the checksum-checked sequence, including forward migration 008, only in `cardford_go_local`. The original Node records are not migrated into Go sessions or rewritten.
+The listener defaults to **http://127.0.0.1:4174** and serves the local API, without switching normal React gameplay. `--migrations` supplies the sole canonical migration directory; `CARDFORD_MIGRATIONS_DIR` is the environment alternative. Startup applies the checksum-checked sequence, including forward migrations 008 and 009, only in `cardford_go_local`. The original Node records are not migrated into Go sessions or rewritten.
 
 The wrapper supplies explicit `APP_ENV=local`, `IDENTITY_MODE=local-test`, `BILLING_MODE=fixture` and `JEV_MODE=off`. The listener rejects hosted modes and non-loopback binding. Server-issued cookie identity, tab control and unlimited fixture grants are local development behavior, not hosted identity or commercial offer activation. A `PORT` override must have a matching `APP_ORIGIN` when that origin is set. Full original V1 platform history remains available through the original reader; no implicit V1/V2 conversion occurs.
 
-Stop the API with Ctrl+C so requests, workers and its pool close. After finishing with all applications using this project cluster, stop PostgreSQL with `node scripts/windows-env.mjs pg:stop`; its data is retained. The [M04 sequence](m04-execution.md) keeps authored online demo/exact-target access offers, final platform/client integration and preserved-UI acceptance open.
+Stop the API with Ctrl+C so requests, workers and its pool close. After finishing with all applications using this project cluster, stop PostgreSQL with `node scripts/windows-env.mjs pg:stop`; its data is retained. The [M04 sequence](m04-execution.md) records [M04D's scoped MG-15/MG-16 backend acceptance](../../../qa/implementation/multi-game/m04d/status.md), followed by M04E's complete platform/client integration and preserved three-mode journeys. The prior native PostgreSQL cause remains unresolved; a passing run does not close that follow-up.
+
+### M04D online demo and configured offers
+
+[M04D scoped acceptance](../../../qa/implementation/multi-game/m04d/status.md) passed for MG-15 and the MG-16 backend, including 9/9 real Go/React browser tests. The finite authored example uses `POST /api/demo/frame` and advances only after a validated server response. Build the existing React app, then explicitly serve it alongside Go for the public demo:
+
+```powershell
+node scripts/windows-env.mjs npm run build
+node scripts/windows-env.mjs go run ./server/cmd/cardford --migrations web/server/records/migrations --access-policy server/internal/access/launch.json --web web/dist
+```
+
+Open [the local online example](http://127.0.0.1:4174/#demo). `--web web/dist` loads a bounded trusted build at startup; rebuild/restart after changing it. This path currently connects only the demo. Normal game/account views still require M04E adapters and the complete platform envelope.
+
+The checked-in [launch policy](../../../server/internal/access/launch.json) deliberately has no offers, so it issues no play/coaching grant. To exercise selected server configuration locally, explicitly choose [local-fixture.json](../../../server/internal/access/local-fixture.json) instead. That file is a demonstration policy, with unlimited local advice coverage across the three current modes; it does not select launch values. Omitting `--access-policy` retains the M04C fixture constructor. Existing identity cookies are mode-bound; switching between fixture and configured modes rejects a mismatch instead of silently broadening access. Use a separate browser session for a deliberately different mode.
+
+Configured grants are stored in the same separate Go schema with immutable original terms. UTC-day/lifetime calendars are supported; unsupported calendars fail startup validation. Access trials use their own once-per-identity ledger, independently of replay alternatives and Stripe trials. Live identity/payments/providers, full account UI, native packaging and hosting remain outside this local slice.
 
 The Go/Node comparison is complete; these commands are retained for a future scoped investigation and are not part of routine milestone verification. For a new comparison, freeze source, stop compilers/tests/profilers, then run sequentially:
 

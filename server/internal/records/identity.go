@@ -19,6 +19,7 @@ var ErrControl = errors.New("control lease is unavailable")
 // NewLocalIdentity. OwnerID alone is never an authentication credential.
 type Principal struct {
 	OwnerID     string
+	Configured  bool
 	sessionHash string
 }
 type Identity struct {
@@ -125,7 +126,7 @@ func (s *Store) Authenticate(ctx context.Context, token string) (Principal, erro
 	ctx, cancel := s.bounded(ctx)
 	defer cancel()
 	p := Principal{sessionHash: tokenHash(token)}
-	err := s.pool.QueryRow(ctx, "SELECT owner_id FROM "+s.table("m04_sessions")+" WHERE token_hash=$1 AND revoked_at IS NULL AND expires_at>clock_timestamp()", p.sessionHash).Scan(&p.OwnerID)
+	err := s.pool.QueryRow(ctx, "SELECT s.owner_id,a.configured_offers FROM "+s.table("m04_sessions")+" s JOIN "+s.table("m03_access")+" a ON a.owner_id=s.owner_id WHERE s.token_hash=$1 AND s.revoked_at IS NULL AND s.expires_at>clock_timestamp()", p.sessionHash).Scan(&p.OwnerID, &p.Configured)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return Principal{}, ErrUnauthenticated
 	}
@@ -149,7 +150,7 @@ func (s *Store) NewLocalIdentity(ctx context.Context) (Identity, error) {
 		return out, err
 	}
 	out.Token = token
-	out.Principal = Principal{owner, tokenHash(token)}
+	out.Principal = Principal{OwnerID: owner, sessionHash: tokenHash(token)}
 	err = s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
 		if _, err := tx.Exec(ctx, "INSERT INTO "+s.table("m03_access")+"(owner_id,generation,control_generation,can_read,can_play,can_coach) VALUES($1,1,1,true,true,true)", owner); err != nil {
 			return err
@@ -168,6 +169,63 @@ func (s *Store) NewLocalIdentity(ctx context.Context) (Identity, error) {
 			}
 			raw, _ := json.Marshal(g.Terms)
 			if err := s.insertGrant(ctx, tx, g, raw); err != nil {
+				return err
+			}
+			out.Grants = append(out.Grants, g)
+		}
+		out.Access = AccessState{OwnerID: owner, Generation: 1, ControlGeneration: 1, CanRead: true, CanPlay: true, CanCoach: true}
+		return nil
+	})
+	return out, err
+}
+
+// NewConfiguredIdentity atomically installs only server-selected free terms.
+// An empty configuration issues no grants and never implies fixture coverage.
+func (s *Store) NewConfiguredIdentity(ctx context.Context, templates []Grant) (Identity, error) {
+	var out Identity
+	owner, err := freshID()
+	if err != nil {
+		return out, err
+	}
+	token, err := freshID()
+	if err != nil {
+		return out, err
+	}
+	out.Token = token
+	out.Principal = Principal{OwnerID: owner, Configured: true, sessionHash: tokenHash(token)}
+	err = s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
+		if _, err := tx.Exec(ctx, "INSERT INTO "+s.table("m03_access")+"(owner_id,generation,control_generation,can_read,can_play,can_coach,configured_offers) VALUES($1,1,1,true,true,true,true)", owner); err != nil {
+			return err
+		}
+		var now time.Time
+		if err := tx.QueryRow(ctx, "SELECT clock_timestamp()").Scan(&now); err != nil {
+			return err
+		}
+		if _, err := tx.Exec(ctx, "INSERT INTO "+s.table("m04_sessions")+"(token_hash,owner_id,expires_at) VALUES($1,$2,$3)", out.Principal.sessionHash, owner, now.Add(30*24*time.Hour)); err != nil {
+			return err
+		}
+		for _, template := range templates {
+			g := template
+			if g.SourceKind != "free" || g.Revoked {
+				return ErrAccess
+			}
+			g.OwnerID, g.SourceID = owner, owner
+			g.ID = configuredFreeID(owner, g)
+			if g.ValidFrom.IsZero() {
+				g.ValidFrom = now
+			}
+			g = normalizeGrant(g)
+			if err = validateGrant(g); err != nil {
+				return err
+			}
+			if err = s.checkBucketTerms(ctx, tx, g); err != nil {
+				return err
+			}
+			raw, err := json.Marshal(g.Terms)
+			if err != nil {
+				return err
+			}
+			if err = s.insertGrant(ctx, tx, g, raw); err != nil {
 				return err
 			}
 			out.Grants = append(out.Grants, g)

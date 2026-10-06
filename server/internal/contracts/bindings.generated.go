@@ -3390,5 +3390,145 @@ func (v LocalServiceRecoveredReceipt) MarshalJSON() ([]byte, error) {
 }
 func (v LocalServiceRecoveredReceipt) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
-var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt"}
+// LocalServiceAccessRequest preserves the complete validated JSON value, including null and union tags.
+type LocalServiceAccessRequest struct{ raw json.RawMessage }
+
+func (v *LocalServiceAccessRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceAccessRequest", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceAccessRequest) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceAccessRequest", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceAccessRequest) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type LocalServiceTrialRequest struct {
+	CommandID                string  `json:"commandId"`
+	OfferID                  string  `json:"offerId"`
+	OfferVersion             string  `json:"offerVersion"`
+	ExpectedAccessGeneration float64 `json:"expectedAccessGeneration"`
+}
+
+func (v *LocalServiceTrialRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceTrialRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceTrialRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceTrialRequest(next)
+	return nil
+}
+func (v LocalServiceTrialRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceTrialRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceTrialRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServiceTrialReceipt struct {
+	CommandID        string             `json:"commandId"`
+	Offer            VersionedComponent `json:"offer"`
+	AccessGeneration float64            `json:"accessGeneration"`
+	ActivatedAt      string             `json:"activatedAt"`
+	ExpiresAt        string             `json:"expiresAt"`
+}
+
+func (v *LocalServiceTrialReceipt) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceTrialReceipt", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceTrialReceipt
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceTrialReceipt(next)
+	return nil
+}
+func (v LocalServiceTrialReceipt) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceTrialReceipt
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceTrialReceipt", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type LocalServiceUnlockRequest struct {
+	CommandID         string  `json:"commandId"`
+	GameID            string  `json:"gameId"`
+	ExpectedRevision  float64 `json:"expectedRevision"`
+	ControlLeaseToken string  `json:"controlLeaseToken"`
+	ToolID            string  `json:"toolId"`
+}
+
+func (v *LocalServiceUnlockRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceUnlockRequest", raw); err != nil {
+		return err
+	}
+	type wire LocalServiceUnlockRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = LocalServiceUnlockRequest(next)
+	return nil
+}
+func (v LocalServiceUnlockRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire LocalServiceUnlockRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("LocalServiceUnlockRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// LocalServiceUnlockReceipt preserves the complete validated JSON value, including null and union tags.
+type LocalServiceUnlockReceipt struct{ raw json.RawMessage }
+
+func (v *LocalServiceUnlockReceipt) UnmarshalJSON(raw []byte) error {
+	if err := Validate("LocalServiceUnlockReceipt", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v LocalServiceUnlockReceipt) MarshalJSON() ([]byte, error) {
+	if err := Validate("LocalServiceUnlockReceipt", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v LocalServiceUnlockReceipt) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt", "LocalServiceAccessRequest", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt"}
 var supportedPatterns = map[string]bool{"^[CDHS](?:[2-9]|10|J|Q|K|A)$": true, "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": true, "^[1-9][0-9]{0,5}$": true, "^(0|[1-9][0-9]{0,5})$": true, "^[a-z0-9][a-z0-9-]{0,63}$": true, "^[0-9]+\\.[0-9]+\\.[0-9]+$": true, "^[^\\u0000-\\u001f\\u007f]+$": true}

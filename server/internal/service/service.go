@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"time"
 
+	"cardford/server/internal/access"
 	"cardford/server/internal/contracts"
+	"cardford/server/internal/demo"
 	"cardford/server/internal/gamekernel"
 	transport "cardford/server/internal/http"
 	"cardford/server/internal/records"
@@ -15,9 +17,11 @@ import (
 )
 
 type Service struct {
-	store *records.Store
-	codec *records.DocumentCodec
-	jobs  *scheduler
+	store    *records.Store
+	codec    *records.DocumentCodec
+	jobs     *scheduler
+	policy   *access.Policy
+	resolver *access.Resolver
 }
 
 func New(store *records.Store, codec *records.DocumentCodec) (*Service, error) {
@@ -31,6 +35,8 @@ func (s *Service) Close() { s.jobs.close() }
 // Only these routes accept user input. The public schema is validated again
 // here so trusted transport composition cannot accidentally bypass the boundary.
 var requests = map[string]string{
+	"demo-frame":     "DemoFrameRequest",
+	"access-resolve": "LocalServiceAccessRequest", "activate-trial": "LocalServiceTrialRequest", "unlock-coaching": "LocalServiceUnlockRequest",
 	"local-session": "LocalServiceEmptyRequest", "logout": "LocalServiceEmptyRequest", "delete-account": "LocalServiceEmptyRequest",
 	"new-session": "LocalServiceNewSessionRequest", "control": "LocalServiceControlRequest", "action": "LocalServiceActionRequest",
 	"prepare": "LocalServicePrepareRequest", "advance": "LocalServiceAdvanceRequest", "next-hand": "LocalServiceNextHandRequest",
@@ -93,6 +99,8 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 			err = fail(429, "work-capacity-busy")
 		case errors.Is(err, records.ErrReadDenied), errors.Is(err, records.ErrAccess):
 			err = fail(403, "access-denied")
+		case errors.Is(err, records.ErrAllowance):
+			err = &transport.LocalError{Status: 403, Code: "QUOTA_EXHAUSTED"}
 		case errors.Is(err, records.ErrCommandDigest):
 			err = fail(409, "command-input-mismatch")
 		case errors.Is(err, records.ErrConflict), errors.Is(err, records.ErrWorkStale):
@@ -111,16 +119,36 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 	if r.Operation == "health" {
 		return result("LocalServiceHealthView", map[string]any{"status": "ready", "mode": "local", "identity": "local-test", "provider": "off", "payments": "fixture"})
 	}
+	if r.Operation == "demo-frame" {
+		frame, e := demo.GetFrameJSON(r.Body)
+		if e != nil {
+			return out, fail(400, "invalid-demo-request")
+		}
+		return result("DemoFrame", frame)
+	}
 	if r.Operation == "local-session" {
 		// Repeated initialization with a valid cookie preserves the same owner.
 		if r.Token != "" {
 			p, e := s.store.Authenticate(ctx, r.Token)
 			if e == nil {
+				if e = s.identityMode(ctx, p); e != nil {
+					return out, e
+				}
 				return result("IdentityView", map[string]any{"playerId": p.OwnerID})
 			}
 			return out, fail(401, "invalid-session")
 		}
-		identity, e := s.store.NewLocalIdentity(ctx)
+		var identity records.Identity
+		var e error
+		if s.policy == nil {
+			identity, e = s.store.NewLocalIdentity(ctx)
+		} else {
+			var templates []records.Grant
+			templates, e = offerTemplates(s.policy.Offers, "free", time.Now())
+			if e == nil {
+				identity, e = s.store.NewConfiguredIdentity(ctx, templates)
+			}
+		}
 		if e != nil {
 			return out, e
 		}
@@ -133,7 +161,27 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		return out, fail(401, "invalid-session")
 	}
 	ctx = records.WithPrincipal(ctx, p)
+	if r.Operation != "logout" && r.Operation != "delete-account" {
+		if e = s.identityMode(ctx, p); e != nil {
+			return out, e
+		}
+	}
+	if s.policy != nil && (r.Operation == "access-offers" || r.Operation == "access-resolve") {
+		templates, e := offerTemplates(s.policy.Offers, "free", time.Now())
+		if e != nil {
+			return out, e
+		}
+		if e = s.store.EnsureConfiguredFreeGrants(ctx, templates); e != nil {
+			return out, e
+		}
+	}
 	switch r.Operation {
+	case "access-offers", "access-resolve":
+		return s.accessRequest(ctx, p.OwnerID, r)
+	case "activate-trial":
+		return s.activateTrial(ctx, p.OwnerID, r)
+	case "unlock-coaching":
+		return s.unlock(ctx, p.OwnerID, r)
 	case "identity":
 		return result("IdentityView", map[string]any{"playerId": p.OwnerID})
 	case "session", "saved-session":
@@ -293,11 +341,14 @@ type commandRequest struct {
 }
 
 func (s *Service) loadCommand(ctx context.Context, owner string, q commandRequest) (*records.Loaded, gamekernel.BoundSession, records.AccessAdmission, error) {
+	return s.loadOwnedCommand(ctx, owner, q, true)
+}
+func (s *Service) loadOwnedCommand(ctx context.Context, owner string, q commandRequest, requirePlay bool) (*records.Loaded, gamekernel.BoundSession, records.AccessAdmission, error) {
 	a, err := s.store.ReadAccess(ctx, owner)
 	if err != nil {
 		return nil, nil, records.AccessAdmission{}, err
 	}
-	if a.ActiveGameID != q.GameID || !a.CanPlay {
+	if a.ActiveGameID != q.GameID || requirePlay && !a.CanPlay {
 		return nil, nil, records.AccessAdmission{}, records.ErrAccess
 	}
 	l, err := s.store.Load(ctx, owner, q.GameID)
@@ -319,6 +370,12 @@ func (s *Service) loadCommand(ctx context.Context, owner string, q commandReques
 		return nil, nil, records.AccessAdmission{}, err
 	}
 	admission := records.AccessAdmission{OwnerID: owner, Generation: a.Generation, ControlRevision: a.ControlGeneration, GrantID: records.LocalGrantID(owner, l.Document.Metadata.Pin.GameID, l.Document.Metadata.Pin.VariantID), UnitID: unit}
+	if s.policy != nil && requirePlay {
+		admission, _, err = s.chooseAccess(ctx, owner, b, q.GameID, unit, "play", "continue", "")
+		if err != nil {
+			return nil, nil, records.AccessAdmission{}, err
+		}
+	}
 	return l, b, admission, nil
 }
 
@@ -337,6 +394,15 @@ func (s *Service) create(ctx context.Context, owner string, r transport.Request)
 	}
 	if previous != nil {
 		return accepted(*previous)
+	}
+	if s.policy != nil {
+		templates, e := offerTemplates(s.policy.Offers, "free", time.Now())
+		if e != nil {
+			return transport.Response{}, e
+		}
+		if e = s.store.EnsureConfiguredFreeGrants(ctx, templates); e != nil {
+			return transport.Response{}, e
+		}
 	}
 	a, err := s.store.ReadAccess(ctx, owner)
 	if err != nil {
@@ -387,6 +453,23 @@ func (s *Service) create(ctx context.Context, owner string, r transport.Request)
 		return transport.Response{}, err
 	}
 	admission := records.AccessAdmission{OwnerID: owner, Generation: a.Generation, ControlRevision: a.ControlGeneration, GrantID: records.LocalGrantID(owner, meta.Pin.GameID, meta.Pin.VariantID), UnitID: unit}
+	if s.policy != nil {
+		c, e := s.store.ReadAccessContext(ctx, owner, "", "")
+		if e != nil {
+			return transport.Response{}, e
+		}
+		target := access.Target{GameID: meta.Pin.GameID, VariantID: meta.Pin.VariantID}
+		op := access.Operation{Kind: "play", Intent: "start", SessionID: id, UnitID: unit, UnitKind: access.SupportedUnit(target), AtAdmissionBoundary: true}
+		d, e := s.resolver.Resolve(policyInput(c, target, op))
+		if e != nil {
+			return transport.Response{}, e
+		}
+		admission, e = chosenAdmission(c, d, unit)
+		if e != nil {
+			return transport.Response{}, e
+		}
+		a = c.Access
+	}
 	receipt, _ := json.Marshal(map[string]any{"commandId": q.CommandID, "gameId": id, "revision": 0, "controlLeaseToken": token, "controlGeneration": a.ControlGeneration + 1})
 	out, err := s.store.CreateAccepted(ctx, records.CreateTransition{Document: doc, Anchor: anchor, Events: events, Admission: admission, ExpectedActiveGameID: expected, ExpectedRevision: q.ExpectedRevision, ReceiptSchema: "LocalServiceCommandReceipt", Receipt: receipt, NewControlToken: token, TabID: r.Tab})
 	if err != nil {

@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"time"
 
@@ -14,7 +15,8 @@ func (s *Service) prepare(ctx context.Context, owner string, r transport.Request
 	var q commandRequest
 	_ = json.Unmarshal(r.Body, &q)
 	ctx = records.WithControl(ctx, r.Tab, q.ControlLeaseToken)
-	l, b, a, err := s.loadCommand(ctx, owner, q)
+	independentCoach := s.policy != nil && q.Purpose == "coach-advice"
+	l, b, a, err := s.loadOwnedCommand(ctx, owner, q, !independentCoach)
 	if err != nil {
 		return transport.Response{}, err
 	}
@@ -38,6 +40,24 @@ func (s *Service) prepare(ctx context.Context, owner string, r transport.Request
 		return transport.Response{}, fail(400, "human-purpose-required")
 	}
 	works := make([]records.PreparedWork, 0, len(actors))
+	coachAdmission := a
+	if s.policy != nil && q.Purpose == "coach-advice" {
+		coachAdmission, _, err = s.chooseAccess(ctx, owner, b, q.GameID, a.UnitID, "coach", "", "advice")
+		if err != nil {
+			return transport.Response{}, err
+		}
+		play, _, e := s.chooseAccess(ctx, owner, b, q.GameID, a.UnitID, "play", "continue", "")
+		if e == nil {
+			a = play
+		} else if errors.Is(e, records.ErrAccess) {
+			// Advice is independent of permission to advance this owned unit.
+			// Sealed bot work waits for play access; the human analysis is complete.
+			actors = []int{0}
+			a = coachAdmission
+		} else {
+			return transport.Response{}, e
+		}
+	}
 	for _, actor := range actors {
 		purpose := q.Purpose
 		if actor != 0 {
@@ -47,7 +67,11 @@ func (s *Service) prepare(ctx context.Context, owner string, r transport.Request
 		if e != nil {
 			return transport.Response{}, e
 		}
-		request := records.WorkRequest{GameID: q.GameID, Revision: q.ExpectedRevision, Actor: actor, WindowID: input.WindowID, Purpose: purpose, InputDigest: input.InputDigest, Policy: l.Document.Metadata.Policy, Admission: a, Lifetime: 5 * time.Minute}
+		admission := a
+		if actor == 0 && purpose == "coach-advice" {
+			admission = coachAdmission
+		}
+		request := records.WorkRequest{GameID: q.GameID, Revision: q.ExpectedRevision, Actor: actor, WindowID: input.WindowID, Purpose: purpose, InputDigest: input.InputDigest, Policy: l.Document.Metadata.Policy, Admission: admission, Lifetime: 5 * time.Minute}
 		key := fmt.Sprintf("%s:%s:%d:%d:%s:%d:%d", owner, q.GameID, q.ExpectedRevision, actor, purpose, a.Generation, a.ControlRevision)
 		reservation, e := s.jobs.reserve(key)
 		if e != nil {

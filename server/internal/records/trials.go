@@ -184,6 +184,9 @@ func (s *Store) SaveReviewAlternative(ctx context.Context, r ReviewAlternativeRe
 		if !tool {
 			return ErrAccess
 		}
+		if err = s.checkConfiguredUnlock(ctx, tx, r.Admission, r.ParentGameID, "review-alternative"); err != nil {
+			return err
+		}
 		var existing []byte
 		err = tx.QueryRow(ctx, "SELECT request FROM "+s.table("m03_review_trials")+" WHERE trial_id=$1", r.TrialID).Scan(&existing)
 		if err == nil {

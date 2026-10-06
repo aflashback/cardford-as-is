@@ -99,8 +99,13 @@ type localRoute struct {
 
 var localRoutes = []localRoute{
 	{"GET", "/api/health", "health", "", "LocalServiceHealthView", true},
+	{"POST", "/api/demo/frame", "demo-frame", "DemoFrameRequest", "DemoFrame", true},
 	{"POST", "/api/local/session", "local-session", "LocalServiceEmptyRequest", "IdentityView", true},
 	{"GET", "/api/identity", "identity", "", "IdentityView", false},
+	{"GET", "/api/access/offers", "access-offers", "", "AccessOfferPolicy", false},
+	{"POST", "/api/access/resolve", "access-resolve", "LocalServiceAccessRequest", "AccessDecision", false},
+	{"POST", "/api/access/trials", "activate-trial", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", false},
+	{"POST", "/api/access/unlocks", "unlock-coaching", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt", false},
 	{"GET", "/api/session", "session", "", "LocalServiceSessionView", false},
 	{"POST", "/api/sessions", "new-session", "LocalServiceNewSessionRequest", "LocalServiceCommandReceipt", false},
 	{"POST", "/api/session/control", "control", "LocalServiceControlRequest", "LocalControlView", false},
@@ -182,7 +187,7 @@ func (h *LocalHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	request := Request{Operation: route.operation, CommandID: id}
-	if route.operation != "health" {
+	if route.operation != "health" && route.operation != "demo-frame" {
 		if len(r.Header.Values("X-Tricks-Tab")) != 1 || !localTab.MatchString(r.Header.Get("X-Tricks-Tab")) {
 			localFailure(w, 400, "INVALID_COMMAND")
 			return
@@ -191,6 +196,10 @@ func (h *LocalHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	count := 0
 	for _, cookie := range r.Cookies() {
+		// Authored public content is independent of expired or malformed sessions.
+		if route.operation == "demo-frame" {
+			break
+		}
 		if cookie.Name == LocalCookieName {
 			request.Token = cookie.Value
 			count++

@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-06 — M04D demo/backend offer acceptance
+
+[M04D acceptance](../qa/implementation/multi-game/m04d/status.md) passes the MG-15 Go-authored online demo and MG-16 exact-target configurable access backend, including real Go/React browser checks, normal/race Go suites and preserved Node/contracts/source regressions. Document independent coaching after play expiry for an owned unit, atomic once-per-identity commercial trials, original allowance/unlock receipts, immutable purchased terms, saved-delivery source revocation and forward migration 009's legacy reservation backfill. The launch policy remains empty; local demonstration offers and the M04C fixture constructor are explicit separate modes. React demo has no offline graph and can use optional Go `--web web/dist` at `#demo`; normal game/account paths remain on Node, whose demo reports unavailable. Update the next slice to M04E: complete platform/client envelope and preserved three-mode journeys. Overall M04, hosted identity/payments, live Jev, human evidence and native packaging remain open; the prior native PostgreSQL cause is unresolved.
+
 ## 2026-10-06 — M04C local service and remaining integration
 
 The owner authorized the next step after M04B. [M04C](../qa/implementation/multi-game/m04c/status.md) connects the original Go policies and V2 sessions to local authentication/control, durable preparation, saved advice, atomic recovery and owner erasure. Its independent review and native acceptance retain the unresolved PostgreSQL timeout observations without changing limits. Add explicit native run instructions and the registered local-service contract; original app behavior and historical readers remain separate. Next is M04D authored online demo/exact-target offers in Go, then complete platform/client integration and preserved-UI acceptance. Full M04, hosted activation, human evaluation and strategic promotion remain open.
