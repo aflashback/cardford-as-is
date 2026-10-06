@@ -324,6 +324,34 @@ test('JEV: timeout is bounded and not retried; late expired admission sends no r
   );
   assert.equal(keyLoads, 0);
 });
+test('JEV: an inner deadline timer fences accounting even before the lifetime clock expires', async () => {
+  const p = port();
+  let clock = 0;
+  let calls = 0;
+  const result = await selectWithJev(
+    { ...options(), deadlineAt: 1000 },
+    {
+      now: () => clock,
+      loadKey: async () => {
+        // Schedule the lifetime timer first; later bounded work gets the shorter
+        // remaining interval. Its timer may settle before the clock advances.
+        clock = 995;
+        return fakeKey;
+      },
+      attempts: p,
+      fetch: async () => {
+        calls++;
+        return new Promise<Response>(() => {});
+      },
+    },
+  );
+  assert.equal(result.status, 'unavailable');
+  if (result.status === 'unavailable') assert.equal(result.reason, 'deadline');
+  assert.equal(calls, 1);
+  assert.equal(p.reservations, 1);
+  assert.equal(p.records.length, 0, 'timed-out work retains its unknown-cost reservation');
+});
+
 test('JEV: unknown cost remains unknown and prevents later experiment admission', async () => {
   const p = port();
   let calls = 0;

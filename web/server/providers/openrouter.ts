@@ -251,29 +251,35 @@ function retryDelay(header: string | null, now: number): number | null {
   const date = Date.parse(header);
   return Number.isFinite(date) ? Math.max(0, date - now) : null;
 }
+class DeadlineFailure extends Error {
+  constructor() {
+    super('deadline');
+    this.name = 'DeadlineFailure';
+  }
+}
 /** Late rejection is consumed; callers must fence side effects after a late resolution. */
 export async function beforeDeadline<T>(
   work: () => Promise<T>,
   deadline: AttemptDeadline,
   now: () => number = Date.now,
 ): Promise<T> {
-  if (deadline.signal?.aborted || now() >= deadline.deadlineAt) throw new Error('deadline');
+  if (deadline.signal?.aborted || now() >= deadline.deadlineAt) throw new DeadlineFailure();
   let timer: ReturnType<typeof setTimeout> | undefined;
   let abort: (() => void) | undefined;
   const expired = new Promise<never>((_, reject) => {
-    abort = () => reject(new Error('deadline'));
+    abort = () => reject(new DeadlineFailure());
     deadline.signal?.addEventListener('abort', abort, { once: true });
     timer = setTimeout(abort, Math.max(1, deadline.deadlineAt - now()));
   });
   try {
     const result = await Promise.race([
       Promise.resolve().then(() => {
-        if (deadline.signal?.aborted || now() >= deadline.deadlineAt) throw new Error('deadline');
+        if (deadline.signal?.aborted || now() >= deadline.deadlineAt) throw new DeadlineFailure();
         return work();
       }),
       expired,
     ]);
-    if (deadline.signal?.aborted || now() >= deadline.deadlineAt) throw new Error('deadline');
+    if (deadline.signal?.aborted || now() >= deadline.deadlineAt) throw new DeadlineFailure();
     return result;
   } finally {
     clearTimeout(timer);
@@ -319,7 +325,16 @@ export async function selectWithJev(
   options.signal?.addEventListener('abort', abortLifetime, { once: true });
   const budget = { deadlineAt: deadline, signal: lifetime.signal };
   const expired = () => lifetime.signal.aborted || now() >= deadline;
-  const bounded = <T>(work: () => Promise<T>) => beforeDeadline(work, budget, now);
+  const bounded = async <T>(work: () => Promise<T>): Promise<T> => {
+    try {
+      return await beforeDeadline(work, budget, now);
+    } catch (error) {
+      // A bounded timer is itself an expiry signal, even if the wall clock or
+      // outer timer has not advanced yet. Fence all subsequent side effects.
+      if (error instanceof DeadlineFailure) abortLifetime();
+      throw error;
+    }
+  };
   const lifetimeTimer = setTimeout(abortLifetime, Math.max(1, deadline - now()));
   try {
     let key: string | null;

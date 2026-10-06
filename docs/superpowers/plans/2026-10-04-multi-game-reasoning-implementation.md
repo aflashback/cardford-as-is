@@ -129,7 +129,9 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 
 **Owner:** integrator/backend. **Requirements:** IMPL-02–04, MG-01–04, MG-09, SYS-01–02. **Dependencies:** completed M02 and CR-ARCH-003.
 
-Execute the [M02A checklist](../../../planning/implementation/multi-game/backend-readiness.md#m02a--backend-contract-and-compatibility-slice): correct the reproduced budget defect with version-aware regressions; freeze portable wire/digest/RNG/numeric semantics; build a bounded Go/SQL compatibility slice using independent original fixtures; record the local resource and parity evidence. Full game/service porting remains M03–M06. No hosting, UI redesign or real provider work.
+Execute the [M02A checklist](../../../planning/implementation/multi-game/backend-readiness.md#m02a--backend-contract-and-compatibility-slice): freeze portable wire/digest/RNG/numeric semantics; build a bounded Go/SQL compatibility slice using independent original fixtures; record the local resource and parity evidence. [CR-FIX-001](../../../planning/decisions/CR-FIX-001-urgent-system-repairs.md) corrects the reproduced budget defect and urgent current-service recovery gaps before that port; its [evidence](../../../qa/implementation/multi-game/urgent-repairs/status.md) must carry forward. Full game/service porting remains M03–M06. No hosting, UI redesign or real provider work.
+
+- [x] Correct the charged-rollout cap with version-aware regressions and preserve original policy/evidence attribution (UR-01).
 
 - [ ] Publish the portable contracts, exact dependencies and differential corpus; preserve the current implementation and immutable archives as oracles.
 - [ ] Complete the slice and record its go/no-go decision under `qa/implementation/multi-game/m02a/`. Freeze file ownership before parallel porting. A failed slice requires investigation, not silent reversion to the old Node-only plan.

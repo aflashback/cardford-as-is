@@ -1,0 +1,43 @@
+{
+  "command": "node .local/urgent-evidence-bindings.mjs",
+  "passed": true,
+  "reports": [
+    {
+      "file": "budget.json",
+      "field": "changedFiles",
+      "sourceCount": 4,
+      "passed": true
+    },
+    {
+      "file": "service.json",
+      "field": "sourceFiles",
+      "sourceCount": 14,
+      "passed": true
+    },
+    {
+      "file": "client.json",
+      "field": "sourceFiles",
+      "sourceCount": 12,
+      "passed": true
+    },
+    {
+      "file": "state-review.json",
+      "field": "sourceHashes",
+      "sourceCount": 12,
+      "passed": true
+    },
+    {
+      "file": "client-review.json",
+      "field": "sourceFiles",
+      "sourceCount": 15,
+      "passed": true
+    },
+    {
+      "file": "provider-review.json",
+      "field": "sourceFiles",
+      "sourceCount": 2,
+      "passed": true
+    }
+  ],
+  "historicalNote": "service-review.json predates the additive identity route; its original scope/hashes remain unchanged. client-review.json independently covers the final identity composition."
+}

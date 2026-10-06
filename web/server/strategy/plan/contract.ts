@@ -180,7 +180,7 @@ export function decide<Obs, Move, World>(
   );
   if (search.status !== 'completed' || !search.leaderId)
     return fallback(
-      search.status === 'truncated'
+      search.status === 'truncated' || search.reason === 'budget-exhausted-before-first-world'
         ? 'The playout budget ended early; the tactical order decides.'
         : 'No consistent world could be sampled; the tactical order decides.',
       search,

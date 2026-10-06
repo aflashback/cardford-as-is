@@ -224,6 +224,19 @@ The owner's next-item instruction authorizes M02. Hearts Solo, Spades Solo and S
 
 The [system review](../../qa/implementation/multi-game/system-review-2026-10-05.md) inspects the existing implementation. [CR-ARCH-003](../decisions/CR-ARCH-003-backend-stack-and-system-readiness.md) adds M02A before further backend implementation, targets Go/PostgreSQL while preserving React/Vite, and overrides the older TypeScript-only backend prescription. Rust remains the evidence-backed alternative; no language performance winner has been measured.
 
-The authoritative [SYS-01–12 acceptance register](multi-game/backend-readiness.md#acceptance-register) extends MG requirements: portable parity, exact work caps, strict platform records, immutable prepared results, accepted-command reconciliation, replay/compact history, short transactions, bounded execution, recoverable transport/trials, safe historical reading and preserved full journeys. Every item is pending. The known terminal-root cap violation is reproduced by a pure probe; reporting it is not a fix. M02A first owns its version-aware correction; M03–M06 own the durable and end-to-end gates.
+The authoritative [SYS-01–12 acceptance register](multi-game/backend-readiness.md#acceptance-register) extends MG requirements: portable parity, exact work caps, strict platform records, immutable prepared results, accepted-command reconciliation, replay/compact history, short transactions, bounded execution, recoverable transport/trials, safe historical reading and preserved full journeys. Complete replacement-system acceptance remains pending. CR-FIX-001 below corrects urgent defects in the current TypeScript reference; M02A still owns Go compatibility and M03–M06 own the remaining durable and end-to-end gates.
+
+## CR-FIX-001 urgent current-system repairs
+
+[Decision and compatibility scope](../decisions/CR-FIX-001-urgent-system-repairs.md); [execution evidence](../../qa/implementation/multi-game/urgent-repairs/status.md). These regression fixtures must survive the Go port. They do not accept an unimplemented replacement path.
+
+| ID / related requirement | Required repair and primary tests | Remaining boundary |
+|---|---|---|
+| UR-01 / SYS-02 | Count before root/continuation operations, truthful exhaustion, exclude incomplete paired worlds; `plan-evaluator-budget.test.ts` | Whole-pipeline sampler/memory/cancellation and admission limits |
+| UR-02 / SYS-03 | Strict active V1 state and row binding before use/save; atomically reject corruption without rewriting history; `stored-state-boundary.test.ts` | Complete platform/history schema and V2 persistence |
+| UR-03 / SYS-04 | Durable pre-compute claim, immutable issued results, reuse, original generation/control/expiry fences; `preparation-recovery.test.ts` | General analysis execution isolation and replacement service |
+| UR-04 / SYS-05 | Live-owner accepted-command status and original completed-trial recovery after state/access changes; `preparation-recovery.test.ts` | Complete safe historical read-only journey |
+| UR-05 / SYS-09 | Bounded fetch/body wait, original pending identity through explicit retry/reload, owner and lease checks; `client-recovery.test.ts`, `table.spec.ts` | Full replacement-service/browser acceptance; storage-disabled reload cannot retain pending requests |
+| UR-06 / SYS-02, SYS-08 | Inner provider deadline fences later accounting and dispatch even before the outer clock/timer expires; `openrouter.test.ts` | Provider remains off; this is fixture-only deadline evidence, not live provider acceptance |
 
 Hosting, operational infrastructure, native packaging and large capacity campaigns remain deferred with owners/triggers in that packet. Basic functional correctness, privacy, bounded failure and recovery remain first-app requirements. Existing M00–M02 acceptance is retained as scoped historical evidence.

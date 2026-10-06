@@ -1,0 +1,316 @@
+{
+  "evidenceVersion": "urgent-budget-repair-1.0.0",
+  "requirement": "SYS-02",
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "changedFiles": [
+    {
+      "path": "web/server/strategy/plan/evaluate.ts",
+      "sha256": "967da678727ce322000db15d718290b5002556464753a073131d12216e371f28"
+    },
+    {
+      "path": "web/server/strategy/plan/types.ts",
+      "sha256": "a899542eef67aa98aaf8379e87320b00eda3e407187dc2f7eefbda96e845fdf7"
+    },
+    {
+      "path": "web/server/strategy/plan/contract.ts",
+      "sha256": "bce8d766d981eed2b1c77f367b1c86e93a40fa8fbfe34e925d9533ae323bc355"
+    },
+    {
+      "path": "web/server/tests/plan-evaluator-budget.test.ts",
+      "sha256": "3abd1920d92203bbdd59a2bb3650ebce5c96d2b7228333c92b4eb2898008640d"
+    }
+  ],
+  "behavior": {
+    "evaluatorVersion": "plan-evaluator-1.1.0",
+    "guards": [
+      "before sampling another world",
+      "before cloning/applying another candidate root",
+      "before selecting/applying continuation"
+    ],
+    "accounting": "Reserve each charged step before apply. Publish values, weights and events only after every candidate finishes on the same world.",
+    "zeroCaps": "Remain invalid and reject before model work.",
+    "completion": "Reaching the cap on the final requested paired world completes; pending worlds or candidates exhaust truthfully.",
+    "fallback": "First-world step exhaustion is reported as budget exhaustion rather than sampling inconsistency."
+  },
+  "compatibility": {
+    "policyPinsAndDefaultsChanged": false,
+    "frozenSourcesOrEvidenceRewritten": false,
+    "originalAdviceOrSavedSummariesRewritten": false,
+    "attribution": "SearchSummary.evaluatorVersion is optional for historical summaries and emitted explicitly on new results. Existing readers neither infer nor backfill it.",
+    "existingProfileBounds": [
+      {
+        "policy": "hearts-plan-1.0.0",
+        "maximumOperations": 43264,
+        "expression": "13 candidates * 2 stances * 32 worlds * 52 plays",
+        "maxSteps": 100000
+      },
+      {
+        "policies": [
+          "spades-plan-3.0.0",
+          "spades-plan-3.1.0",
+          "spades-plan-3.2.0",
+          "spades-plan-3.3.0",
+          "spades-plan-3.4.0"
+        ],
+        "maximumOperations": 200704,
+        "expression": "14 candidates * 2 stances * 128 worlds * (4 bids + 52 plays)",
+        "maxSteps": 400000
+      }
+    ],
+    "ordinaryBehavior": "The fixed registered budgets cannot reach changed exhaustion branches. Arithmetic/seed/order/selection remain unchanged; new fresh summaries add provenance only. Frozen 2.1 source-hash and golden-decision tests pass."
+  },
+  "red": {
+    "command": "node --test --test-isolation=none web/server/tests/plan-evaluator-budget.test.ts",
+    "exitCode": 1,
+    "tests": 11,
+    "passed": 7,
+    "failed": 4,
+    "skipped": 0,
+    "output": "✔ SYS-02: zero step and world caps reject before any model work (2.511ms)\n✖ SYS-02: one terminal root cannot start the next candidate after cap one (1.6796ms)\n✔ SYS-02: a sole terminal root exactly at cap one completes (0.1975ms)\n✖ SYS-02: an exhausted completed world prevents sampling or cloning the next world (0.2691ms)\n✔ SYS-02: exactly completing every terminal paired world reports completed (0.2242ms)\n✔ SYS-02: an exhausted nonterminal root prevents default selection and continuation (0.221ms)\n✖ SYS-02: a terminal continuation cannot start another candidate after the cap (0.2316ms)\n✔ SYS-02: exactly completing paired continuations at the cap reports completed (0.1897ms)\n✔ SYS-02: interrupted continuation worlds contribute neither values nor events (0.3003ms)\n✖ SYS-02: a terminal candidate in an incomplete world is excluded from paired arithmetic (0.3369ms)\n✔ SYS-02: unavailable samples retain their sampling reason without consuming steps (0.1429ms)\nℹ tests 11\nℹ suites 0\nℹ pass 7\nℹ fail 4\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 62.4273\n\n✖ failing tests:\n\ntest at web\\server\\tests\\plan-evaluator-budget.test.ts:58:1\n✖ SYS-02: one terminal root cannot start the next candidate after cap one (1.6796ms)\n  AssertionError [ERR_ASSERTION]: 4 applied operations exceed cap 1\n      at assertBounded (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:47:10)\n      at TestContext.<anonymous> (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:61:3)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1382:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)\n      at Test.postRun (node:internal/test_runner/test:1522:19)\n      at Test.run (node:internal/test_runner/test:1447:12)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: '==',\n    diff: 'simple'\n  }\n\ntest at web\\server\\tests\\plan-evaluator-budget.test.ts:84:1\n✖ SYS-02: an exhausted completed world prevents sampling or cloning the next world (0.2691ms)\n  AssertionError [ERR_ASSERTION]: 4 applied operations exceed cap 2\n      at assertBounded (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:47:10)\n      at TestContext.<anonymous> (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:87:3)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1382:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)\n      at Test.postRun (node:internal/test_runner/test:1522:19)\n      at Test.run (node:internal/test_runner/test:1447:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: '==',\n    diff: 'simple'\n  }\n\ntest at web\\server\\tests\\plan-evaluator-budget.test.ts:117:1\n✖ SYS-02: a terminal continuation cannot start another candidate after the cap (0.2316ms)\n  AssertionError [ERR_ASSERTION]: 3 applied operations exceed cap 2\n      at assertBounded (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:47:10)\n      at TestContext.<anonymous> (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:120:3)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1382:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)\n      at Test.postRun (node:internal/test_runner/test:1522:19)\n      at Test.run (node:internal/test_runner/test:1447:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: '==',\n    diff: 'simple'\n  }\n\ntest at web\\server\\tests\\plan-evaluator-budget.test.ts:160:1\n✖ SYS-02: a terminal candidate in an incomplete world is excluded from paired arithmetic (0.3369ms)\n  AssertionError [ERR_ASSERTION]: 6 applied operations exceed cap 5\n      at assertBounded (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:47:10)\n      at TestContext.<anonymous> (file:///C:/repos/test-jev/web/server/tests/plan-evaluator-budget.test.ts:167:3)\n      at Test.runInAsyncScope (node:async_hooks:227:14)\n      at Test.run (node:internal/test_runner/test:1382:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)\n      at Test.postRun (node:internal/test_runner/test:1522:19)\n      at Test.run (node:internal/test_runner/test:1447:12)\n      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {\n    generatedMessage: false,\n    code: 'ERR_ASSERTION',\n    actual: false,\n    expected: true,\n    operator: '==',\n    diff: 'simple'\n  }\n"
+  },
+  "greenSameRegressions": {
+    "command": "node --test --test-isolation=none web/server/tests/plan-evaluator-budget.test.ts",
+    "exitCode": 0,
+    "tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "output": "✔ SYS-02: zero step and world caps reject before any model work (2.5153ms)\n✔ SYS-02: one terminal root cannot start the next candidate after cap one (1.3141ms)\n✔ SYS-02: a sole terminal root exactly at cap one completes (0.3988ms)\n✔ SYS-02: an exhausted completed world prevents sampling or cloning the next world (0.1937ms)\n✔ SYS-02: exactly completing every terminal paired world reports completed (0.2476ms)\n✔ SYS-02: an exhausted nonterminal root prevents default selection and continuation (0.2027ms)\n✔ SYS-02: a terminal continuation cannot start another candidate after the cap (0.197ms)\n✔ SYS-02: exactly completing paired continuations at the cap reports completed (0.1899ms)\n✔ SYS-02: interrupted continuation worlds contribute neither values nor events (0.3118ms)\n✔ SYS-02: a terminal candidate in an incomplete world is excluded from paired arithmetic (0.4043ms)\n✔ SYS-02: unavailable samples retain their sampling reason without consuming steps (0.1576ms)\nℹ tests 11\nℹ suites 0\nℹ pass 11\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 69.9672\n"
+  },
+  "originalProbe": {
+    "command": "node qa/implementation/multi-game/system-review/budget-probe.ts",
+    "note": "The original probe's reviewedHead label remains its historical review source. This repair's tested working tree starts at baseHead above.",
+    "red": {
+      "exitCode": 1,
+      "evidence": {
+        "evidenceVersion": "1.0.0",
+        "kind": "pure-deterministic-defect-probe",
+        "command": "node qa/implementation/multi-game/system-review/budget-probe.ts",
+        "reviewedHead": "aa36c85505bcd8f4c42e9967fe1df195e4f55fb9",
+        "runtime": {
+          "node": "v24.19.0",
+          "platform": "win32",
+          "architecture": "x64"
+        },
+        "sourceHashes": {
+          "web/server/strategy/plan/evaluate.ts": "948a6d89e32155a82e6472ae3278b383b4ca62d8515247de5d33a07df4b64a1a",
+          "web/server/strategy/plan/types.ts": "d4e2b6a93d629d7522419a85b3a6bb12c6f9cbd24da93f8088ff486809981257",
+          "web/server/strategy/plan/random.ts": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883",
+          "qa/implementation/multi-game/system-review/budget-probe.ts": "201c949da6fe0a300da5761bc1726fec0e2cdede2cf1c2aadd6c5d78fe109487"
+        },
+        "inputs": {
+          "candidates": [
+            1,
+            2
+          ],
+          "budget": {
+            "worlds": 2,
+            "maxSteps": 1
+          },
+          "seed": 123,
+          "model": "system-review-terminal-root",
+          "modelVersion": "1.0.0"
+        },
+        "expectedInvariant": "applied operations and reported steps do not exceed maxSteps",
+        "observed": {
+          "appliedOperations": 4,
+          "reportedSteps": 4,
+          "status": "completed",
+          "reason": null,
+          "worldsUsed": 2,
+          "invariantHolds": false,
+          "expectedProcessExitCode": 1
+        },
+        "result": {
+          "schemaVersion": "1.0.0",
+          "modelId": "system-review-terminal-root",
+          "modelVersion": "1.0.0",
+          "allocationModel": "synthetic-fixed-world",
+          "continuationPolicy": "synthetic-terminal-root",
+          "seed": 123,
+          "budget": {
+            "worlds": 2,
+            "maxSteps": 1
+          },
+          "noiseBand": {
+            "z": 1.5,
+            "floor": 1
+          },
+          "status": "completed",
+          "worldsUsed": 2,
+          "effectiveWorlds": 2,
+          "steps": 4,
+          "leaderId": "1",
+          "comparableIds": [
+            "1",
+            "2"
+          ],
+          "candidates": [
+            {
+              "moveId": "1",
+              "mean": 1,
+              "standardError": 0,
+              "behindLeader": 0,
+              "behindLeaderStandardError": 0,
+              "comparable": true,
+              "events": {}
+            },
+            {
+              "moveId": "2",
+              "mean": 1,
+              "standardError": 0,
+              "behindLeader": 0,
+              "behindLeaderStandardError": 0,
+              "comparable": true,
+              "events": {}
+            }
+          ],
+          "limitations": [
+            "Sampled worlds follow a named allocation model; they are not the concealed deal.",
+            "Continuations follow a named playout policy for every seat, so values are model-dependent.",
+            "Utilities order candidates. They are not probabilities of winning and are never shown as percentages."
+          ]
+        }
+      }
+    },
+    "green": {
+      "exitCode": 0,
+      "evidence": {
+        "evidenceVersion": "1.0.0",
+        "kind": "pure-deterministic-defect-probe",
+        "command": "node qa/implementation/multi-game/system-review/budget-probe.ts",
+        "reviewedHead": "aa36c85505bcd8f4c42e9967fe1df195e4f55fb9",
+        "runtime": {
+          "node": "v24.19.0",
+          "platform": "win32",
+          "architecture": "x64"
+        },
+        "sourceHashes": {
+          "web/server/strategy/plan/evaluate.ts": "967da678727ce322000db15d718290b5002556464753a073131d12216e371f28",
+          "web/server/strategy/plan/types.ts": "a899542eef67aa98aaf8379e87320b00eda3e407187dc2f7eefbda96e845fdf7",
+          "web/server/strategy/plan/random.ts": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883",
+          "qa/implementation/multi-game/system-review/budget-probe.ts": "201c949da6fe0a300da5761bc1726fec0e2cdede2cf1c2aadd6c5d78fe109487"
+        },
+        "inputs": {
+          "candidates": [
+            1,
+            2
+          ],
+          "budget": {
+            "worlds": 2,
+            "maxSteps": 1
+          },
+          "seed": 123,
+          "model": "system-review-terminal-root",
+          "modelVersion": "1.0.0"
+        },
+        "expectedInvariant": "applied operations and reported steps do not exceed maxSteps",
+        "observed": {
+          "appliedOperations": 1,
+          "reportedSteps": 1,
+          "status": "unavailable",
+          "reason": "budget-exhausted-before-first-world",
+          "worldsUsed": 0,
+          "invariantHolds": true,
+          "expectedProcessExitCode": 0
+        },
+        "result": {
+          "schemaVersion": "1.0.0",
+          "evaluatorVersion": "plan-evaluator-1.1.0",
+          "modelId": "system-review-terminal-root",
+          "modelVersion": "1.0.0",
+          "allocationModel": "synthetic-fixed-world",
+          "continuationPolicy": "synthetic-terminal-root",
+          "seed": 123,
+          "budget": {
+            "worlds": 2,
+            "maxSteps": 1
+          },
+          "noiseBand": {
+            "z": 1.5,
+            "floor": 1
+          },
+          "status": "unavailable",
+          "reason": "budget-exhausted-before-first-world",
+          "worldsUsed": 0,
+          "effectiveWorlds": 0,
+          "steps": 1,
+          "leaderId": null,
+          "comparableIds": [],
+          "candidates": [],
+          "limitations": [
+            "Sampled worlds follow a named allocation model; they are not the concealed deal.",
+            "Continuations follow a named playout policy for every seat, so values are model-dependent.",
+            "Utilities order candidates. They are not probabilities of winning and are never shown as percentages."
+          ]
+        }
+      }
+    }
+  },
+  "focusedGate": {
+    "command": "node --test --test-isolation=none web/server/tests/plan-evaluator-budget.test.ts web/server/tests/hearts-plan.test.ts web/server/tests/spades-playout-model.test.ts web/server/tests/spades-playout-budget.test.ts web/server/tests/frozen-baseline.test.ts",
+    "exitCode": 0,
+    "tests": 47,
+    "passed": 47,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 15830.339,
+    "countsByFile": {
+      "plan-evaluator-budget.test.ts": 15,
+      "hearts-plan.test.ts": 15,
+      "spades-playout-model.test.ts": 9,
+      "spades-playout-budget.test.ts": 4,
+      "frozen-baseline.test.ts": 4
+    },
+    "checks": [
+      "zero/one/exact caps",
+      "terminal root and continuation boundaries",
+      "no sample/clone/default operation after step exhaustion",
+      "weighted means/events/effective worlds/paired standard errors exclude incomplete worlds",
+      "truthful caller fallback",
+      "fixed policy/default pins and bounds",
+      "unchanged saved historical summary shape",
+      "nearest Hearts/Spades production playout and frozen baseline gates"
+    ],
+    "toolOutputChunk": "52c5fd"
+  },
+  "focusedTypecheck": {
+    "workingDirectory": "C:\\repos\\test-jev\\web",
+    "command": "node node_modules/typescript/bin/tsc --strict --noEmit --allowImportingTsExtensions --target ES2023 --lib ES2023,DOM --module ESNext --moduleResolution Bundler --resolveJsonModule --esModuleInterop --skipLibCheck --types node --erasableSyntaxOnly server/tests/plan-evaluator-budget.test.ts",
+    "exitCode": 0,
+    "output": ""
+  },
+  "interimIntegrationTypecheck": {
+    "command": "node web/node_modules/typescript/bin/tsc -p web/tsconfig.server.json",
+    "exitCode": 1,
+    "errors": 21,
+    "note": "Run while HTTP/repository/stored-state work was in progress. Diagnostics were in http/app.ts, http/game-service.ts, http/trial-service.ts and tests/stored-state-boundary.test.ts; none in budget files. Root must rerun after integration.",
+    "toolOutputChunk": "17a4b3",
+    "initialCompilerPathAttempt": {
+      "command": "node node_modules/typescript/bin/tsc -p web/tsconfig.server.json",
+      "exitCode": 1,
+      "error": "MODULE_NOT_FOUND: dependencies reside under web/node_modules"
+    }
+  },
+  "whitespace": {
+    "command": "git diff --check -- web/server/strategy/plan/evaluate.ts web/server/strategy/plan/types.ts web/server/strategy/plan/contract.ts web/server/tests/plan-evaluator-budget.test.ts",
+    "exitCode": 0
+  },
+  "notRun": [
+    "live provider",
+    "database tests for budget repair",
+    "full test suite",
+    "Go implementation",
+    "capacity campaign"
+  ],
+  "limits": [
+    "This bounds charged playout applies; finite sampler/fact construction/memory/cancellation/admission remain later declared work.",
+    "Focused pure gates establish correctness and preserved frozen behavior, not strategy quality or hosted capacity.",
+    "No commit was created."
+  ]
+}

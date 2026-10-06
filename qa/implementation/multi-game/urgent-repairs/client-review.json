@@ -1,0 +1,142 @@
+{
+  "evidenceVersion": "urgent-client-independent-review-1.1.0",
+  "recordedAtUtc": "2026-10-06T02:06:51.178Z",
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "scope": "Independent read-only review of the urgent React/V1 transport, pending-command, owner-switch, bootstrap/reconnect and review-trial patch, plus the new ownership identity endpoint and contract. No runtime edits, test execution, provider calls or full-suite claim by reviewer.",
+  "status": "no-remaining-actionable-findings",
+  "remainingFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "CLIENT-REVIEW-01",
+      "priority": "P2",
+      "title": "Mounted owner switch retained old table/review data and allowed stale preference submission",
+      "originalLocations": [
+        "web/src/api/useSession.ts:53-62 (pre-fix)",
+        "web/src/features/ReviewPanel.tsx:68-77 (pre-fix)"
+      ],
+      "status": "fixed-and-read-verified",
+      "fix": "useSession invalidates current/rendered session, pending state and owner/request generations. Submit requires a fresh session and fences late results/error.current. Review clears index, original/trial frames, advice, access and selections; all awaited results are generation-fenced. App propagates review ownership change to the parent controller, unmounting the old table/review.",
+      "evidence": "Implementation-agent recorded owner-switch red 0/2 (old table retained four cards; old review retained one evidence section), then focused green 13/13. Reviewer inspected both test bodies and passed/failed .last-run.json files; no tests rerun."
+    },
+    {
+      "id": "CLIENT-REVIEW-02",
+      "priority": "P1",
+      "title": "Identity prerequisite prevented the existing anonymous local-session bootstrap",
+      "originalLocations": [
+        "web/src/api/useSession.ts:78,253 (owner-switch fix before bootstrap correction)",
+        "web/server/http/app.ts:169-173"
+      ],
+      "status": "fixed-and-read-verified",
+      "fix": "initialize opens the existing create-capable GET /api/session, then verifies GET /api/identity before accepting the view or restoring pending commands. Unknown-owner Reconnect uses the same initializer. The identity endpoint remains authenticated and never creates an account.",
+      "currentLocation": "web/src/api/useSession.ts:76-111",
+      "evidence": "Implementation-agent recorded anonymous first-visit/lost-opening-response red 0/2, green 2/2 (5.4s). Tests model identity 401 until SessionView sets a real browser cookie, include a prior owner's stored command, and assert zero POSTs plus discarded foreign pending data. Reviewer inspected test bodies and red/green .last-run.json files; no tests rerun."
+    },
+    {
+      "id": "CLIENT-REVIEW-03",
+      "priority": "P2",
+      "title": "Unknown-owner Reconnect hid a restored pending command without reconciling it",
+      "originalLocation": "web/src/api/useSession.ts:276-280 (initial bootstrap correction)",
+      "status": "fixed-and-read-verified",
+      "fix": "After initialize, retry sends pending.current through submit's owned status reconciliation, or continues the ordinary durable receipt path. It no longer clears the unresolved warning and exits while pending refs block fresh commands.",
+      "currentLocation": "web/src/api/useSession.ts:272-315",
+      "evidence": "The enhanced existing identity-opening-failure regression was red with expected two mutation bodies but only one observed. Implementation-agent recorded final targeted green 4/4 in client-bootstrap-pending-green (7.0s). The regression now proves a fresh D3 action gets a new command ID after accepted recovery; reviewer inspected source and passed .last-run.json. No tests rerun."
+    }
+  ],
+  "identityComposition": {
+    "status": "prior-ownership-probe-dependency-resolved",
+    "route": "GET /api/identity",
+    "locations": [
+      "web/server/http/app.ts:171-173",
+      "web/server/tests/preparation-recovery.test.ts:318-351"
+    ],
+    "review": "The closed IdentityView returns only the authenticated player's playerId. The route uses loadGame:false, rejects caller-selected identity/query parameters, does not create anonymous accounts and retains session revocation/expiry and same-origin boundaries. Client recovery now uses this identity read rather than AccountView's active-state loader.",
+    "evidence": "Service-agent recorded 25/25 focused tests and contract/type checks. Reviewer inspected the new test covering null/unsupported active state, unchanged stored document, no-store/no Set-Cookie, foreign owner/query/origin, anonymous/no account creation, revoked and expired sessions. Existing AccountView remains subject to active-state validation.",
+    "limits": "A normal table still requires a valid current SessionView; this review does not claim that the entire UI can operate on quarantined active state. Owned identity/status/ready-trial reads remain independent of that state and cannot execute a mutation."
+  },
+  "reviewedBehavior": [
+    "One 15-second deadline spans fetch/body consumption and retains ambiguous-outcome wording.",
+    "Closed stored envelopes omit control capabilities, bind owner/game/lease fingerprint and discard malformed, expired or foreign-owner data; no frames/history/advice/analysis is stored.",
+    "Reload performs no automatic pending mutation; explicit retry reuses command/trial identity and checks an owned accepted receipt first.",
+    "Live recovery refreshes current SessionView rather than applying historical accepted snapshots.",
+    "Review alternatives remain blocked while a trial is unresolved; late old-owner review/session responses cannot repopulate cleared rendered state.",
+    "No other actionable regression found within this bounded urgent patch after the three fixes."
+  ],
+  "executionEvidence": {
+    "implementationReport": "qa/implementation/multi-game/urgent-repairs/client.json",
+    "serviceReport": "qa/implementation/multi-game/urgent-repairs/service.json",
+    "ownerRed": "qa/implementation/multi-game/urgent-repairs/client-owner-switch-red/.last-run.json",
+    "ownerGreen": "qa/implementation/multi-game/urgent-repairs/client-owner-switch-green/.last-run.json",
+    "bootstrapRed": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-red/.last-run.json",
+    "bootstrapGreen": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-green/.last-run.json",
+    "pendingRed": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-pending-red",
+    "finalTargetedGreen": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-pending-green/.last-run.json",
+    "originalUnitTests": "Implementation-agent recorded 8/8 client recovery tests; reviewer did not rerun.",
+    "broaderBrowserRun": "Client agent owns the final 35-test table run in browser-final-verified, recorded in client.json; its completion is not independently claimed by this read-only review. Root owns final integration/full-suite evidence."
+  },
+  "sourceFiles": [
+    {
+      "path": "web/src/api/client.ts",
+      "sha256": "30a5daf00b67ad4d8131fb421f0b6ebee29be3b151ca8233980356835b24248d"
+    },
+    {
+      "path": "web/src/api/pendingCommands.ts",
+      "sha256": "4e69330f22996cbd86c99da85e5b8aafd3aa5c0d5970b14ef475948bf28f7e03"
+    },
+    {
+      "path": "web/src/api/useSession.ts",
+      "sha256": "852b42aeaa36223909b8107158ca79091ecfdce4f576d3071d72ee84e346be6a"
+    },
+    {
+      "path": "web/src/features/ReviewPanel.tsx",
+      "sha256": "8b488c29448bae117b897e757d1b82e093a25e8f5b4ddfa69ab2df65f886abfb"
+    },
+    {
+      "path": "web/src/App.tsx",
+      "sha256": "38312b5e1e3fbf4474b5a00b46b8a51956a19a30cef750487675956f67db0105"
+    },
+    {
+      "path": "web/tests/client-recovery.test.ts",
+      "sha256": "e98093d39a124ee6f612ce04a2eca95da387cfc28b9c9a78f18367a068036e8b"
+    },
+    {
+      "path": "web/e2e/table.spec.ts",
+      "sha256": "45377e42843afee0db0f7bc238ec1e1ad6332bac2bcbb6b606fbef8b7f19756c"
+    },
+    {
+      "path": "web/server/http/app.ts",
+      "sha256": "4368e66c20405e1ad3cff8fa96b54bff8ad2307e89cff57068a1e406794857f6"
+    },
+    {
+      "path": "web/shared/contracts.ts",
+      "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f"
+    },
+    {
+      "path": "web/shared/contracts.schema.json",
+      "sha256": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2"
+    },
+    {
+      "path": "web/shared/validation.ts",
+      "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2"
+    },
+    {
+      "path": "web/shared/validators.mjs",
+      "sha256": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637"
+    },
+    {
+      "path": "web/shared/validators.d.mts",
+      "sha256": "0dec2e12e585d8e804b18fbf4a85ad9824ca8f04a3df6a221e9869c57616a399"
+    },
+    {
+      "path": "web/shared/openapi.json",
+      "sha256": "ca47d15c98f8dea6e6f6b96b0dbc227e3a60a436d7053577a1b02cd43b285761"
+    },
+    {
+      "path": "web/server/tests/preparation-recovery.test.ts",
+      "sha256": "1a56a90133ed96f68f0ee7fd0217adb43b3c26956a44a6c50e343ba7064f946b"
+    }
+  ],
+  "limits": [
+    "Source/diff and existing evidence review only. No tests were run and no runtime files were edited by reviewer.",
+    "No hosted identity, deployed privacy, native process-death, capacity, strategy-quality or M04/M06 completion claim."
+  ]
+}

@@ -167,6 +167,26 @@ export async function createApp(config: Config, pool: Database) {
     return { status: 'ready', mode: 'local', provider: 'off', payments: 'fixture' };
   });
   get('/api/session', 'SessionView', (ctx) => service.session(ctx), true);
+  // Receipt recovery can identify its owner even when the active game is quarantined.
+  get('/api/identity', 'IdentityView', (ctx) =>
+    ownedTransaction(pool, ctx.token, async (_client, player) => ({ playerId: player.id }), { loadGame: false }),
+  );
+  // SYS-05: status reconciliation has ownership/privacy checks but cannot execute work.
+  get('/api/commands/:commandId', 'CommandStatusView', (ctx, request) =>
+    ownedTransaction(pool, ctx.token, async (client, player) => {
+      const commandId = (request.params as { commandId: string }).commandId;
+      if (!commandId || commandId.length > 256) throw new ApiFailure(400, 'INVALID_COMMAND', 'Invalid request identity.');
+      const accepted = await client.query(`SELECT 1 FROM commands WHERE player_id=$1 AND command_id=$2
+        UNION ALL SELECT 1 FROM analysis_jobs WHERE player_id=$1 AND command_id=$2 AND status='ready' LIMIT 1`,
+      [player.id, commandId]);
+      return { status: accepted.rowCount ? 'accepted' as const : 'unknown' as const };
+    }, { loadGame: false }),
+  );
+  get('/api/review-trials/:commandId', 'ReviewTrial', (ctx, request) => {
+    const commandId = (request.params as { commandId: string }).commandId;
+    if (!commandId || commandId.length > 256) throw new ApiFailure(400, 'INVALID_COMMAND', 'Invalid request identity.');
+    return trials.result(ctx, commandId);
+  });
   get('/api/dev/scenarios', 'DevScenariosView', async () => ({
     scenarios: scenarios.map(({ metadata }) => ({ ...metadata })),
   }));

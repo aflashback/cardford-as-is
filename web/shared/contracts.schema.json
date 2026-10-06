@@ -842,6 +842,22 @@
       ],
       "additionalProperties": false
     },
+    "CommandStatusView": {
+      "title": "CommandStatusView",
+      "type": "object",
+      "properties": { "status": { "enum": ["accepted", "unknown"] } },
+      "required": ["status"],
+      "additionalProperties": false
+    },
+    "IdentityView": {
+      "title": "IdentityView",
+      "type": "object",
+      "properties": {
+        "playerId": { "type": "string", "minLength": 1, "maxLength": 256 }
+      },
+      "required": ["playerId"],
+      "additionalProperties": false
+    },
     "PrepareView": {
       "title": "PrepareView",
       "type": "object",
@@ -3610,6 +3626,12 @@
     },
     {
       "$ref": "#/$defs/PrepareRequest"
+    },
+    {
+      "$ref": "#/$defs/CommandStatusView"
+    },
+    {
+      "$ref": "#/$defs/IdentityView"
     },
     {
       "$ref": "#/$defs/PrepareView"

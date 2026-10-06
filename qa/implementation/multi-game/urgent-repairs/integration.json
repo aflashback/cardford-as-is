@@ -1,0 +1,105 @@
+{
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "scope": "CR-FIX-001 / UR-01 through UR-06; current TypeScript system only",
+  "status": "passed",
+  "evidenceFormatting": "Trailing whitespace and line endings in newly generated failure-context Markdown and client-review JSON were normalized for Git hygiene; diagnostic text is unchanged.",
+  "sourceManifestSha256": "70964dab2d2c6fb6c53acb748a4aa08f5919a70689764887d993573247b6174f",
+  "fullRegression": {
+    "report": "full-tests.json",
+    "platform": "Linux/WSL, private byte-verified native snapshot",
+    "node": "v24.19.0",
+    "tests": 493,
+    "passed": 493,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "elapsedMs": 239273.807622,
+    "sourceUnchangedBeforeAndAfter": true,
+    "toolOutputChunk": "d94761"
+  },
+  "checks": [
+    {
+      "name": "typecheck",
+      "cmd": "npm run typecheck",
+      "chunk_id": "9f1056",
+      "wall_time_seconds": 7.6886935,
+      "exit_code": 0,
+      "original_token_count": 41,
+      "output": "\n> tricks-coach@0.1.0 typecheck\n> npm run typecheck --workspace web\n\n\n> @tricks-coach/web@0.1.0 typecheck\n> tsc -p tsconfig.json && tsc -p tsconfig.server.json\n\n"
+    },
+    {
+      "name": "contracts",
+      "cmd": "node web/scripts/generate-contracts.mjs --check",
+      "chunk_id": "688826",
+      "wall_time_seconds": 0.9526144,
+      "exit_code": 0,
+      "original_token_count": 8,
+      "output": "Contract artifacts are current.\n"
+    }
+  ],
+  "artifactCheck": {
+    "chunk_id": "9d5540",
+    "wall_time_seconds": 0.4147129,
+    "exit_code": 0,
+    "original_token_count": 31,
+    "output": "Browser boundary passed (14 reachable source modules); artifacts contain no forbidden server identifiers or source maps.\n"
+  },
+  "whitespaceCheck": {
+    "chunk_id": "062d2d",
+    "wall_time_seconds": 0.3630247,
+    "exit_code": 0,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "build": {
+    "command": "npm run build",
+    "platform": "Windows",
+    "exitCode": 0,
+    "vite": "6.4.3",
+    "modules": 1599,
+    "viteDurationSeconds": 7.26,
+    "outputChunks": [
+      "b17caa",
+      "817e6d"
+    ],
+    "warning": "Existing minified JavaScript chunk exceeds 500 kB; no bundle-size or capacity claim."
+  },
+  "browser": {
+    "report": "client.json",
+    "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --trace retain-on-failure --output qa/implementation/multi-game/urgent-repairs/browser-final-verified",
+    "tests": 35,
+    "passed": 35,
+    "failed": 0,
+    "durationSeconds": 51.1,
+    "scope": "Mocked API routes, local Vite/Chrome, one worker; separate real PostgreSQL server tests."
+  },
+  "preservation": {
+    "report": "preservation.json",
+    "originalFiles": 923,
+    "originalPublicDefinitions": 85,
+    "addedPublicDefinitions": [
+      "CommandStatusView",
+      "IdentityView"
+    ]
+  },
+  "evidenceBindings": "evidence-bindings.json",
+  "reviews": [
+    "state-review.json",
+    "service-review.json",
+    "client-review.json",
+    "provider-review.json"
+  ],
+  "historicalFailures": [
+    "full-tests-initial.json",
+    "budget.json",
+    "service.json",
+    "client.json",
+    "provider-deadline.json"
+  ],
+  "limits": [
+    "Windows DB connectivity/timeouts are not resolved by Linux acceptance.",
+    "Saved-app database is unchanged; forward migration 006 was exercised in isolated test schemas.",
+    "No live providers, human evaluation, hosting or Go port.",
+    "Active V1 state validation is not complete platform/history validation; global worker isolation and full-pipeline budgets remain planned."
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "evidenceVersion": "urgent-client-repair-1.2.0",
+  "requirements": [
+    "UR-05",
+    "SYS-09",
+    "SYS-05"
+  ],
+  "scope": "Current React/V1 bounded transport, explicit owned pending-command recovery, and complete mocked table browser regression. Not full M04/M06, hosted, provider or capacity acceptance.",
+  "recordedAtUtc": "2026-10-06T02:08:41.708Z",
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "sourceState": "Uncommitted urgent-repair working tree; preserve unrelated owner and agent changes.",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "sourceFiles": [
+    {
+      "path": "web/src/api/client.ts",
+      "sha256": "30a5daf00b67ad4d8131fb421f0b6ebee29be3b151ca8233980356835b24248d"
+    },
+    {
+      "path": "web/src/api/useSession.ts",
+      "sha256": "852b42aeaa36223909b8107158ca79091ecfdce4f576d3071d72ee84e346be6a"
+    },
+    {
+      "path": "web/src/api/pendingCommands.ts",
+      "sha256": "4e69330f22996cbd86c99da85e5b8aafd3aa5c0d5970b14ef475948bf28f7e03"
+    },
+    {
+      "path": "web/src/features/ReviewPanel.tsx",
+      "sha256": "8b488c29448bae117b897e757d1b82e093a25e8f5b4ddfa69ab2df65f886abfb"
+    },
+    {
+      "path": "web/tests/client-recovery.test.ts",
+      "sha256": "e98093d39a124ee6f612ce04a2eca95da387cfc28b9c9a78f18367a068036e8b"
+    },
+    {
+      "path": "web/e2e/table.spec.ts",
+      "sha256": "45377e42843afee0db0f7bc238ec1e1ad6332bac2bcbb6b606fbef8b7f19756c"
+    },
+    {
+      "path": "web/e2e/playwright.config.ts",
+      "sha256": "82e713355ed6eae44ba759bfc646fffae3e85d45c2555319784398add81eaa00"
+    },
+    {
+      "path": "web/e2e/vite.config.ts",
+      "sha256": "279a6157b9511c118315789adde4d6ff0cafd778b5e15f579b06f851c3b55af2"
+    },
+    {
+      "path": "web/src/App.tsx",
+      "sha256": "38312b5e1e3fbf4474b5a00b46b8a51956a19a30cef750487675956f67db0105"
+    },
+    {
+      "path": "web/shared/contracts.ts",
+      "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f"
+    },
+    {
+      "path": "web/shared/validation.ts",
+      "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2"
+    },
+    {
+      "path": "web/shared/validators.mjs",
+      "sha256": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637"
+    }
+  ],
+  "behavior": {
+    "transport": "One default 15000 ms deadline spans fetch and response.json consumption. Deadline aborts the request and settles even if body consumption ignores abort. Caller AbortSignal and reason are retained.",
+    "ambiguity": "Timeout or lost response does not establish server rejection or rollback. Retain the original command ID and validated request fields until an owned receipt or definite rejection resolves it.",
+    "storage": "Separate session/review pending entries are tab, owner and game scoped. Only validated request metadata/action fields are stored. Control lease capability is omitted; a SHA-256 lease fingerprint permits exact reconstruction from a freshly fetched matching token. No private history, review frames, advice or analysis is persisted.",
+    "expiry": "Stored entries expire 24 hours after creation and are discarded on read after expiry, malformed content or owner mismatch. Logout attempts and HTTP 401 erase pending entries. In-memory fallback remains available if browser storage rejects writes.",
+    "recovery": "No automatic replay on reload. Ownership checks use GET /api/identity and generated IdentityView {playerId}, which does not load/project the active game. Positive owner change clears rendered and referenced current session, pending identity and generation-fences old responses, including ApiFailure.current. Mutations are blocked until a fresh owned session is loaded. Accepted live commands use owned status-only reconciliation followed by the current SessionView. Initial anonymous opening calls the existing create-capable GET /api/session before the no-create identity read. Pending restore waits for verified ownership. If the active view fails but identity succeeds, an owned durable receipt remains available for explicit reconciliation. Unknown-owner reconnect continues through same-command receipt recovery rather than hiding an unresolved pending request.",
+    "review": "A queued or interrupted trial retains commandId, trialId, decisionId, alternative and expectedRevision. Explicit retry first retrieves an already-ready owned result; otherwise it retries the identical original request. Different alternative creation is blocked while unresolved.",
+    "visualScope": "No stylesheet or table geometry changes. App.tsx only wires ReviewPanel onOwnerChanged to controller.invalidateOwner; review uses existing retry-button styling."
+  },
+  "unitCheck": {
+    "command": "node --test --test-isolation=none web/tests/client-recovery.test.ts",
+    "cwd": "C:/repos/test-jev",
+    "exitCode": 0,
+    "status": "passed",
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "durationMs": 178.2217,
+    "coverage": [
+      "Stalled fetch deadline; ambiguous mutation outcome; internal abort",
+      "Stalled response-body deadline including abort-ignoring consumption",
+      "External abort propagation and caller reason",
+      "Valid response and no false rollback wording on invalid mutation response",
+      "Exact action-envelope reconstruction after reload without stored lease token",
+      "Exact review command/trial identity after reload without frames or analysis",
+      "Expired, changed-owner, malformed and unexpected private pending payload rejection",
+      "Logout/unauthenticated pending cleanup with unrelated storage retained"
+    ],
+    "sourceBinding": {
+      "note": "The eight transport/persistence unit checks passed before the final bootstrap hook correction. Their directly tested transport/helper/test sources are byte-unchanged; hook behavior is covered by the final browser checks.",
+      "sourceFiles": [
+        {
+          "path": "web/src/api/client.ts",
+          "sha256": "30a5daf00b67ad4d8131fb421f0b6ebee29be3b151ca8233980356835b24248d"
+        },
+        {
+          "path": "web/src/api/pendingCommands.ts",
+          "sha256": "4e69330f22996cbd86c99da85e5b8aafd3aa5c0d5970b14ef475948bf28f7e03"
+        },
+        {
+          "path": "web/tests/client-recovery.test.ts",
+          "sha256": "e98093d39a124ee6f612ce04a2eca95da387cfc28b9c9a78f18367a068036e8b"
+        }
+      ]
+    }
+  },
+  "focusedBrowserCheck": {
+    "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"anonymous .*establishes a session|pending command still reconciles|finite demo\" --output qa/implementation/multi-game/urgent-repairs/client-bootstrap-pending-green",
+    "cwd": "C:/repos/test-jev",
+    "exitCode": 0,
+    "status": "passed",
+    "tests": 4,
+    "passed": 4,
+    "failed": 0,
+    "durationSeconds": 7,
+    "environment": "Local Vite and Chrome channel, mocked API routes, one worker, no database or provider calls.",
+    "outputPath": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-pending-green",
+    "lastRunResult": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-pending-green/.last-run.json",
+    "coverage": [
+      "Anonymous first visit opens the cookie-establishing session path before the ownership-only identity read",
+      "Lost anonymous opening response recovers through Reconnect without a mutation or foreign-owner pending replay",
+      "Opening identity failure followed by Reconnect resolves an accepted saved receipt and permits a fresh mutation with a different command ID",
+      "Unchanged finite demo makes zero API requests and reaches its terminal replay"
+    ]
+  },
+  "browserStart": {
+    "config": "web/e2e/playwright.config.ts",
+    "serverCwd": "C:/repos/test-jev/web",
+    "serverCommand": "node node_modules/vite/bin/vite.js --config e2e/vite.config.ts --host 127.0.0.1 --port 5175",
+    "baseUrl": "http://127.0.0.1:5175",
+    "automaticStart": true,
+    "reuseExistingServer": false,
+    "browser": "chromium",
+    "channel": "chrome",
+    "outputSafety": "All table.spec.ts screenshots use testInfo.outputPath, so the CLI --output directory also receives screenshots. No hard-coded prior QA screenshot paths found.",
+    "broaderTableCommand": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --trace retain-on-failure --output qa/implementation/multi-game/urgent-repairs/browser-final-verified",
+    "broaderTableStatus": "Final client-agent run passed 35/35 on the source hashes above; original QA directories were preserved."
+  },
+  "otherChecks": [
+    {
+      "command": "node web/node_modules/typescript/bin/tsc -p web/tsconfig.json --pretty false",
+      "exitCode": 0,
+      "status": "passed on final source"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "passed on final source"
+    }
+  ],
+  "environmentFailures": [
+    {
+      "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"lost response keeps|lost accepted move|lost unaccepted new-game|transport deadline|different signed-in owner|queued review retry|late refresh|new game wizard\"",
+      "exitCode": 1,
+      "status": "environment-failed-before-tests",
+      "error": "Error: spawn EPERM",
+      "resolution": "The same focused localhost browser check was rerun with approved subprocess sandbox escalation and passed 10/10. The later current-source focused run above passed 11/11. No dependency installation or remote service was used."
+    },
+    {
+      "command": "npx tsc -p web/tsconfig.json --pretty false",
+      "status": "environment-failed-before-typecheck",
+      "error": "ENOTCACHED: npm attempted to resolve tsc because it was not in root node_modules.",
+      "resolution": "Used the already-installed web/node_modules/typescript/bin/tsc directly; passed."
+    }
+  ],
+  "independentServiceReadReview": {
+    "status": "No blocking issue found in the bounded source review; this adds no executable server-test claim.",
+    "findings": [
+      "Preparation publication requires the exact computing attempt ID and expires_at > clock_timestamp(); a rejected or expired earlier claimant cannot publish over a newer attempt. The wall clock check runs at publication after lock acquisition.",
+      "Starting access generation, current owner/session, active game, coverage, control lease, revision, observation and policy are rechecked before publication/commit.",
+      "Issued preparation receipts are retained independently while jobs remains the current game/revision pointer.",
+      "Owned command status and ready review result reads use loadGame:false; these routes do not calculate or grant new gameplay.",
+      "Ownership verification now uses GET /api/identity with loadGame:false; receipt recovery is independent of a quarantined active-state account projection. See service.json for executed server identity evidence."
+    ],
+    "sourceFiles": [
+      {
+        "path": "web/server/http/game-service.ts",
+        "sha256": "92f8d430022f5f37185051328de2130a1b789d723f9149fd1c30fd37313020fa"
+      },
+      {
+        "path": "web/server/http/trial-service.ts",
+        "sha256": "7211838ef9928861efd94460b330af5646b65a3e2a661843640d814114fd35c5"
+      },
+      {
+        "path": "web/server/http/app.ts",
+        "sha256": "4368e66c20405e1ad3cff8fa96b54bff8ad2307e89cff57068a1e406794857f6"
+      },
+      {
+        "path": "web/server/records/repository.ts",
+        "sha256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f"
+      },
+      {
+        "path": "web/server/records/migrations/006-preparation-attempts.sql",
+        "sha256": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+      }
+    ]
+  },
+  "limits": [
+    "Browser checks intercept API routes and prove client behavior, not deployment or end-to-end PostgreSQL composition.",
+    "Browser persistence can be unavailable; while that tab lives, the fallback retains the in-memory request. Reload durability requires successful browser storage.",
+    "No full repository suite, Go port, provider, hosted capacity, strategy-quality, native or human-learning acceptance was run by this agent."
+  ],
+  "verificationHistory": [
+    {
+      "label": "Before the mounted-owner-switch correction and owner-only identity endpoint",
+      "recordedAtUtc": "2026-10-06T01:42:11.054Z",
+      "sourceFiles": [
+        {
+          "path": "web/src/api/client.ts",
+          "sha256": "30a5daf00b67ad4d8131fb421f0b6ebee29be3b151ca8233980356835b24248d"
+        },
+        {
+          "path": "web/src/api/useSession.ts",
+          "sha256": "cf9d9383f66b9fc14b0b57b726cba6d4e05a075a498d67307a3b3e0b5899d57c"
+        },
+        {
+          "path": "web/src/api/pendingCommands.ts",
+          "sha256": "4e69330f22996cbd86c99da85e5b8aafd3aa5c0d5970b14ef475948bf28f7e03"
+        },
+        {
+          "path": "web/src/features/ReviewPanel.tsx",
+          "sha256": "a6b6b36596488826fc0185aff04e02b0a803fd661c09ac589bdf75f13e9b615a"
+        },
+        {
+          "path": "web/tests/client-recovery.test.ts",
+          "sha256": "e98093d39a124ee6f612ce04a2eca95da387cfc28b9c9a78f18367a068036e8b"
+        },
+        {
+          "path": "web/e2e/table.spec.ts",
+          "sha256": "24d61693886e9d66b87fdea02ce39dfd22b8a4f833bb4eb5e5a8a60a289b28f1"
+        },
+        {
+          "path": "web/e2e/playwright.config.ts",
+          "sha256": "82e713355ed6eae44ba759bfc646fffae3e85d45c2555319784398add81eaa00"
+        },
+        {
+          "path": "web/e2e/vite.config.ts",
+          "sha256": "279a6157b9511c118315789adde4d6ff0cafd778b5e15f579b06f851c3b55af2"
+        }
+      ],
+      "unitCheck": {
+        "command": "node --test --test-isolation=none web/tests/client-recovery.test.ts",
+        "cwd": "C:/repos/test-jev",
+        "exitCode": 0,
+        "status": "passed",
+        "tests": 8,
+        "passed": 8,
+        "failed": 0,
+        "durationMs": 169.4793,
+        "coverage": [
+          "Stalled fetch deadline; ambiguous mutation outcome; internal abort",
+          "Stalled response-body deadline including abort-ignoring consumption",
+          "External abort propagation and caller reason",
+          "Valid response and no false rollback wording on invalid mutation response",
+          "Exact action-envelope reconstruction after reload without stored lease token",
+          "Exact review command/trial identity after reload without frames or analysis",
+          "Expired, changed-owner, malformed and unexpected private pending payload rejection",
+          "Logout/unauthenticated pending cleanup with unrelated storage retained"
+        ]
+      },
+      "focusedBrowserCheck": {
+        "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"lost response keeps|lost accepted move|lost unaccepted new-game|transport deadline|different signed-in owner|queued review retry|late refresh|new game wizard|pending command still reconciles\" --output qa/implementation/multi-game/urgent-repairs/client-focused-browser",
+        "cwd": "C:/repos/test-jev",
+        "exitCode": 0,
+        "status": "passed",
+        "tests": 11,
+        "passed": 11,
+        "failed": 0,
+        "durationSeconds": 26.7,
+        "environment": "Local Vite and Chrome channel, mocked API routes, one worker, no database or provider calls.",
+        "outputPath": "qa/implementation/multi-game/urgent-repairs/client-focused-browser",
+        "lastRunResult": "qa/implementation/multi-game/urgent-repairs/client-focused-browser/.last-run.json",
+        "coverage": [
+          "Late refresh cannot overwrite a newly accepted game",
+          "Existing new-game wizard saves pace and starts the chosen game",
+          "Lost-response live retry uses exactly the original body",
+          "Hearts accepted move survives paused reload and reconciles without another mutation",
+          "Spades Solo accepted move survives paused reload and reconciles without another mutation",
+          "Spades Partners accepted move survives paused reload and reconciles without another mutation",
+          "Unaccepted new-game request survives reload and retries the original body",
+          "Pending command survives account-verification failure during opening",
+          "Transport deadline releases busy state into a recoverable retry",
+          "Changed signed-in owner discards the pending request",
+          "Queued review retry and lost-response reload recover the same trial/command"
+        ]
+      },
+      "otherChecks": [
+        {
+          "command": "node web/node_modules/typescript/bin/tsc -p web/tsconfig.json --pretty false",
+          "exitCode": 0,
+          "status": "passed"
+        },
+        {
+          "command": "git diff --check",
+          "exitCode": 0,
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "label": "After mounted owner-switch correction, before anonymous bootstrap and pending-reconnect correction",
+      "recordedAtUtc": "2026-10-06T01:58:14.981Z",
+      "sourceFiles": [
+        {
+          "path": "web/src/api/client.ts",
+          "sha256": "30a5daf00b67ad4d8131fb421f0b6ebee29be3b151ca8233980356835b24248d"
+        },
+        {
+          "path": "web/src/api/useSession.ts",
+          "sha256": "7460e9e2e279639a9934f684953d666df153a8b9c8c55bd2af93ceb1394fbfa4"
+        },
+        {
+          "path": "web/src/api/pendingCommands.ts",
+          "sha256": "4e69330f22996cbd86c99da85e5b8aafd3aa5c0d5970b14ef475948bf28f7e03"
+        },
+        {
+          "path": "web/src/features/ReviewPanel.tsx",
+          "sha256": "8b488c29448bae117b897e757d1b82e093a25e8f5b4ddfa69ab2df65f886abfb"
+        },
+        {
+          "path": "web/tests/client-recovery.test.ts",
+          "sha256": "e98093d39a124ee6f612ce04a2eca95da387cfc28b9c9a78f18367a068036e8b"
+        },
+        {
+          "path": "web/e2e/table.spec.ts",
+          "sha256": "52893619bb015a1a42017950f053be359d0196414cd36f326eb17219c3ea713f"
+        },
+        {
+          "path": "web/e2e/playwright.config.ts",
+          "sha256": "82e713355ed6eae44ba759bfc646fffae3e85d45c2555319784398add81eaa00"
+        },
+        {
+          "path": "web/e2e/vite.config.ts",
+          "sha256": "279a6157b9511c118315789adde4d6ff0cafd778b5e15f579b06f851c3b55af2"
+        },
+        {
+          "path": "web/src/App.tsx",
+          "sha256": "38312b5e1e3fbf4474b5a00b46b8a51956a19a30cef750487675956f67db0105"
+        },
+        {
+          "path": "web/shared/contracts.ts",
+          "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f"
+        },
+        {
+          "path": "web/shared/validation.ts",
+          "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2"
+        },
+        {
+          "path": "web/shared/validators.mjs",
+          "sha256": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637"
+        }
+      ],
+      "unitCheck": {
+        "command": "node --test --test-isolation=none web/tests/client-recovery.test.ts",
+        "cwd": "C:/repos/test-jev",
+        "exitCode": 0,
+        "status": "passed",
+        "tests": 8,
+        "passed": 8,
+        "failed": 0,
+        "durationMs": 178.2217,
+        "coverage": [
+          "Stalled fetch deadline; ambiguous mutation outcome; internal abort",
+          "Stalled response-body deadline including abort-ignoring consumption",
+          "External abort propagation and caller reason",
+          "Valid response and no false rollback wording on invalid mutation response",
+          "Exact action-envelope reconstruction after reload without stored lease token",
+          "Exact review command/trial identity after reload without frames or analysis",
+          "Expired, changed-owner, malformed and unexpected private pending payload rejection",
+          "Logout/unauthenticated pending cleanup with unrelated storage retained"
+        ],
+        "sourceBinding": {
+          "note": "The eight transport/persistence unit checks passed before the final bootstrap hook correction. Their directly tested transport/helper/test sources are byte-unchanged; hook behavior is covered by the final browser checks.",
+          "sourceFiles": [
+            {
+              "path": "web/src/api/client.ts",
+              "sha256": "30a5daf00b67ad4d8131fb421f0b6ebee29be3b151ca8233980356835b24248d"
+            },
+            {
+              "path": "web/src/api/pendingCommands.ts",
+              "sha256": "4e69330f22996cbd86c99da85e5b8aafd3aa5c0d5970b14ef475948bf28f7e03"
+            },
+            {
+              "path": "web/tests/client-recovery.test.ts",
+              "sha256": "e98093d39a124ee6f612ce04a2eca95da387cfc28b9c9a78f18367a068036e8b"
+            }
+          ]
+        }
+      },
+      "focusedBrowserCheck": {
+        "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"in-place.*owner switch|lost response keeps|lost accepted move|lost unaccepted new-game|transport deadline|different signed-in owner|queued review retry|late refresh|new game wizard|pending command still reconciles\" --output qa/implementation/multi-game/urgent-repairs/client-owner-switch-green",
+        "cwd": "C:/repos/test-jev",
+        "exitCode": 0,
+        "status": "passed",
+        "tests": 13,
+        "passed": 13,
+        "failed": 0,
+        "durationSeconds": 29.8,
+        "environment": "Local Vite and Chrome channel, mocked API routes, one worker, no database or provider calls.",
+        "outputPath": "qa/implementation/multi-game/urgent-repairs/client-owner-switch-green",
+        "lastRunResult": "qa/implementation/multi-game/urgent-repairs/client-owner-switch-green/.last-run.json",
+        "coverage": [
+          "Late refresh cannot overwrite a newly accepted game",
+          "Existing new-game wizard saves pace and starts the chosen game",
+          "Lost-response live retry uses exactly the original body",
+          "Hearts accepted move survives paused reload and reconciles without another mutation",
+          "Spades Solo accepted move survives paused reload and reconciles without another mutation",
+          "Spades Partners accepted move survives paused reload and reconciles without another mutation",
+          "Unaccepted new-game request survives reload and retries the original body",
+          "Pending command survives identity-verification failure during opening",
+          "Transport deadline releases busy state into a recoverable retry",
+          "Changed signed-in owner discards the pending request",
+          "Queued review retry and lost-response reload recover the same trial/command",
+          "Mounted owner change clears prior table and fences an old delayed refresh; preferences resume only from the freshly loaded owner table",
+          "Mounted review owner change clears old choices, frames and original advice before any trial POST"
+        ]
+      },
+      "otherChecks": [
+        {
+          "command": "node web/node_modules/typescript/bin/tsc -p web/tsconfig.json --pretty false",
+          "exitCode": 0,
+          "status": "passed"
+        },
+        {
+          "command": "git diff --check",
+          "exitCode": 0,
+          "status": "passed"
+        }
+      ],
+      "ownerSwitchCorrection": {
+        "classification": "Independent review found a mounted owner-change defect missed by the reload-only test; correction stays within UR-05/SYS-09.",
+        "red": {
+          "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"in-place.*owner switch\" --output qa/implementation/multi-game/urgent-repairs/client-owner-switch-red",
+          "exitCode": 1,
+          "status": "expected application regression failures",
+          "tests": 2,
+          "passed": 0,
+          "failed": 2,
+          "observed": [
+            "Old table retained 4 hand-card elements after positive owner change; expected 0",
+            "Review retained 1 evidence section after positive owner change; expected 0"
+          ],
+          "outputPath": "qa/implementation/multi-game/urgent-repairs/client-owner-switch-red"
+        },
+        "green": "Historical focused13/13 pass is retained in verificationHistory; both mounted regressions also pass in final fullTableBrowserCheck35/35.",
+        "implementation": [
+          "Clear owner-bound session ref/render and pending entries on positive change; increment request and owner generation",
+          "Reject mutation submits without fresh current session and fence late error.current, result and pending-persistence continuations",
+          "Clear index, frames, trial, advice, access, selections and pending review state; all awaited review results are generation-fenced",
+          "Review owner change invalidates parent controller through one App.tsx callback; reopening requires fresh ownership/session data",
+          "Replace account projection as ownership probe with generated read-only IdentityView endpoint"
+        ]
+      }
+    }
+  ],
+  "ownerSwitchCorrection": {
+    "classification": "Independent review found a mounted owner-change defect missed by the reload-only test; correction stays within UR-05/SYS-09.",
+    "red": {
+      "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"in-place.*owner switch\" --output qa/implementation/multi-game/urgent-repairs/client-owner-switch-red",
+      "exitCode": 1,
+      "status": "expected application regression failures",
+      "tests": 2,
+      "passed": 0,
+      "failed": 2,
+      "observed": [
+        "Old table retained 4 hand-card elements after positive owner change; expected 0",
+        "Review retained 1 evidence section after positive owner change; expected 0"
+      ],
+      "outputPath": "qa/implementation/multi-game/urgent-repairs/client-owner-switch-red"
+    },
+    "green": "Historical focused13/13 pass is retained in verificationHistory; both mounted regressions also pass in final fullTableBrowserCheck35/35.",
+    "implementation": [
+      "Clear owner-bound session ref/render and pending entries on positive change; increment request and owner generation",
+      "Reject mutation submits without fresh current session and fence late error.current, result and pending-persistence continuations",
+      "Clear index, frames, trial, advice, access, selections and pending review state; all awaited review results are generation-fenced",
+      "Review owner change invalidates parent controller through one App.tsx callback; reopening requires fresh ownership/session data",
+      "Replace account projection as ownership probe with generated read-only IdentityView endpoint"
+    ]
+  },
+  "fullTableBrowserCheck": {
+    "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --trace retain-on-failure --output qa/implementation/multi-game/urgent-repairs/browser-final-verified",
+    "cwd": "C:/repos/test-jev",
+    "exitCode": 0,
+    "status": "passed",
+    "tests": 35,
+    "passed": 35,
+    "failed": 0,
+    "durationSeconds": 51.1,
+    "environment": "Local Vite and Chrome channel, mocked API routes, one worker, no database or provider calls.",
+    "outputPath": "qa/implementation/multi-game/urgent-repairs/browser-final-verified",
+    "lastRunResult": "qa/implementation/multi-game/urgent-repairs/browser-final-verified/.last-run.json",
+    "coverage": "Complete table.spec.ts: original table/phone geometry, finite demo, account/billing previews, selected deals, card activation/legality, next hand, coach/review, plus transport recovery, trial identity, ownership switch and anonymous bootstrap regressions."
+  },
+  "bootstrapCorrection": {
+    "classification": "Independent read review found first-visit no-create identity ordering and an unresolved pending reconnect warning being cleared; corrected narrowly within client recovery.",
+    "firstVisitRed": {
+      "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"anonymous .*establishes a session\" --output qa/implementation/multi-game/urgent-repairs/client-bootstrap-red",
+      "exitCode": 1,
+      "status": "expected application regression failures",
+      "tests": 2,
+      "passed": 0,
+      "failed": 2,
+      "runtimeHookSha256": "7460e9e2e279639a9934f684953d666df153a8b9c8c55bd2af93ceb1394fbfa4",
+      "observed": "Both realistic no-cookie cases remained on the connection screen because identity returned401 before the create-capable session request.",
+      "outputPath": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-red"
+    },
+    "initialFirstVisitGreen": {
+      "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"anonymous .*establishes a session\" --output qa/implementation/multi-game/urgent-repairs/client-bootstrap-green",
+      "exitCode": 0,
+      "status": "passed",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "durationSeconds": 5.4,
+      "outputPath": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-green",
+      "note": "Historical intermediate hook revision before the pending reconnect follow-up; final four-test run also covers these cases."
+    },
+    "pendingReconnectRed": {
+      "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --grep \"pending command still reconciles|finite demo\" --output qa/implementation/multi-game/urgent-repairs/client-bootstrap-pending-red",
+      "exitCode": 1,
+      "status": "expected pending-reconnect application regression failure; unrelated demo check passed",
+      "tests": 2,
+      "passed": 1,
+      "failed": 1,
+      "durationSeconds": 10.4,
+      "runtimeHookSha256": "623daf5e6b555d9abbf59005c8f080d84ddc02680a354f026319342b209c934b",
+      "observed": "After a transient opening identity503 and Reconnect, the old accepted pending request still blocked a fresh action: expected2 mutation bodies, observed1.",
+      "outputPath": "qa/implementation/multi-game/urgent-repairs/client-bootstrap-pending-red"
+    },
+    "green": "Both first-visit cases and strengthened pending reconnect pass in focusedBrowserCheck and fullTableBrowserCheck on final source."
+  },
+  "interruptedBrowserAttempts": [
+    {
+      "source": "Root report",
+      "outputPath": "qa/implementation/multi-game/urgent-repairs/browser-final",
+      "status": "interrupted before acceptance",
+      "observedPassedBeforeStop": 17,
+      "reason": "Anonymous bootstrap regression found before source freeze; historical artifacts preserved."
+    },
+    {
+      "command": "node node_modules/@playwright/test/cli.js test -c web/e2e/playwright.config.ts web/e2e/table.spec.ts --output qa/implementation/multi-game/urgent-repairs/browser-final-complete",
+      "outputPath": "qa/implementation/multi-game/urgent-repairs/browser-final-complete",
+      "exitCode": 1,
+      "status": "interrupted before acceptance",
+      "observedPassedBeforeStop": 10,
+      "observedFailedBeforeStop": 1,
+      "reason": "Stopped before editing the newly reproduced pending reconnect defect.",
+      "finiteDemoObserved": "The existing demo check timed out after30000ms waiting for its first Play the4 ofclubs button; saved context contains no page snapshot or application error establishing a cause. Assertions, deadlines and demo runtime were unchanged. The isolated check subsequently passed in both red/green targeted runs and in the final35/35 run. Final run retained traces on failure; no failure trace was generated.",
+      "savedFailure": "qa/implementation/multi-game/urgent-repairs/browser-final-complete/table-finite-demo-makes-ze-001aa-d-reaches-a-terminal-replay/error-context.md"
+    }
+  ],
+  "finalIndependentReadReview": {
+    "reviewer": "urgent_budget",
+    "status": "No remaining actionable finding in urgent client/identity scope",
+    "report": "qa/implementation/multi-game/urgent-repairs/client-review.json",
+    "note": "Read-only final source review; reviewer did not run additional tests."
+  }
+}

@@ -51,6 +51,21 @@ function fixture(): SessionView {
     stats: { decisions: 0, helped: 0, suggestions: 0 },
   };
 }
+function accountFixture(value = fixture(), ownerId = '11111111-1111-4111-8111-111111111111') {
+  return {
+    authMode: 'local-test',
+    player: { id: ownerId, displayName: 'Local player' },
+    access: value.access,
+    subscription: {
+      status: 'local-mock',
+      plan: 'unlimited',
+      cancelAtPeriodEnd: false,
+      currentPeriodEnd: null,
+      billingAvailable: false,
+    },
+    offers: [],
+  };
+}
 async function mount(page: Page, value: SessionView = fixture(), scenarios: DevScenarioView[] = []) {
   let state = structuredClone(value);
   const commands: Record<string, unknown>[] = [];
@@ -59,6 +74,12 @@ async function mount(page: Page, value: SessionView = fixture(), scenarios: DevS
     async (route) => {
       const url = new URL(route.request().url());
       expect(route.request().headers()['x-tricks-tab']).toBeTruthy();
+      if (url.pathname === '/api/account') return route.fulfill({ json: accountFixture(state) });
+      if (url.pathname === '/api/identity')
+        return route.fulfill({ json: { playerId: '11111111-1111-4111-8111-111111111111' } });
+      if (url.pathname.startsWith('/api/commands/')) return route.fulfill({ json: { status: 'unknown' } });
+      if (url.pathname.startsWith('/api/review-trials/'))
+        return route.fulfill({ status: 404, json: { code: 'NOT_FOUND', message: 'Not ready.' } });
       if (url.pathname === '/api/dev/scenarios') return route.fulfill({ json: { scenarios } });
       if (route.request().method() !== 'GET') expect(route.request().headers()['x-tricks-client']).toBe('1');
       if (url.pathname === '/api/session/actions') {
@@ -123,6 +144,79 @@ test('connection screen shows CardFord logo when the table cannot load', async (
   await expect(page.getByRole('img', { name: 'CardFord' })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath('cardford-loading.png') });
 });
+
+for (const loseOpeningResponse of [false, true]) {
+  test(`anonymous ${loseOpeningResponse ? 'reconnect after lost opening response' : 'first visit'} establishes a session before identity verification`, async ({
+    page,
+  }) => {
+    const requests: string[] = [];
+    const mutations: unknown[] = [];
+    let sessionReads = 0;
+    await page.addInitScript(() => {
+      const now = Date.now();
+      sessionStorage.setItem('tricks-tab', 'tab-identity-bootstrap');
+      localStorage.setItem(
+        'cardford-pending-v1:tab-identity-bootstrap:session',
+        JSON.stringify({
+          version: 1,
+          ownerId: '11111111-1111-4111-8111-111111111111',
+          gameId: 'ui-fixture',
+          createdAt: now,
+          expiresAt: now + 24 * 60 * 60 * 1000,
+          operation: {
+            path: '/api/sessions',
+            body: {
+              commandId: '00000000-0000-4000-8000-000000000001',
+              mode: 'hearts',
+              expectedActiveGameId: 'ui-fixture',
+            },
+          },
+        }),
+      );
+    });
+    await page.route(
+      (url) => url.pathname.startsWith('/api/'),
+      (route) => {
+        const path = new URL(route.request().url()).pathname;
+        requests.push(path);
+        if (route.request().method() !== 'GET') {
+          mutations.push(route.request().postDataJSON());
+          return route.abort();
+        }
+        if (path === '/api/identity') {
+          if (!route.request().headers().cookie?.includes('tc_session=bootstrap-fixture'))
+            return route.fulfill({
+              status: 401,
+              json: { code: 'UNAUTHENTICATED', message: 'Start a local session to continue.' },
+            });
+          return route.fulfill({ json: { playerId: '22222222-2222-4222-8222-222222222222' } });
+        }
+        if (path === '/api/session') {
+          sessionReads++;
+          if (loseOpeningResponse && sessionReads === 1) return route.abort('failed');
+          return route.fulfill({
+            headers: { 'set-cookie': 'tc_session=bootstrap-fixture; HttpOnly; Path=/; SameSite=Strict' },
+            json: fixture(),
+          });
+        }
+        if (path === '/api/dev/scenarios') return route.fulfill({ json: { scenarios: [] } });
+        return route.fulfill({ json: fixture() });
+      },
+    );
+    await page.goto('/');
+    if (loseOpeningResponse) {
+      await expect(page.getByRole('status')).not.toHaveText('Opening your table…');
+      await page.getByRole('button', { name: 'Reconnect', exact: true }).click();
+    }
+    await expect(page.getByRole('button', { name: 'Resume', exact: true })).toBeVisible();
+    expect(requests[0]).toBe('/api/session');
+    expect(requests.indexOf('/api/identity')).toBeGreaterThan(requests.indexOf('/api/session'));
+    expect(mutations).toHaveLength(0);
+    expect(
+      await page.evaluate(() => localStorage.getItem('cardford-pending-v1:tab-identity-bootstrap:session')),
+    ).toBeNull();
+  });
+}
 
 test('single card activation selects; fresh double activation commits one server command', async ({
   page,
@@ -232,10 +326,18 @@ test('late refresh cannot overwrite a newly accepted game', async ({ page }) => 
   next.game.id = 'new-game';
   next.game.mode = 'hearts';
   next.decisionId = 'new-game-decision';
+  let active = initial;
   await page.route(
     (url) => url.pathname.startsWith('/api/'),
     async (route) => {
-      if (new URL(route.request().url()).pathname === '/api/sessions') return route.fulfill({ json: next });
+      if (new URL(route.request().url()).pathname === '/api/account')
+        return route.fulfill({ json: accountFixture(active) });
+      if (new URL(route.request().url()).pathname === '/api/identity')
+        return route.fulfill({ json: { playerId: '11111111-1111-4111-8111-111111111111' } });
+      if (new URL(route.request().url()).pathname === '/api/sessions') {
+        active = next;
+        return route.fulfill({ json: next });
+      }
       if (new URL(route.request().url()).pathname === '/api/dev/scenarios')
         return route.fulfill({ json: { scenarios: [] } });
       reads++;
@@ -245,7 +347,7 @@ test('late refresh cannot overwrite a newly accepted game', async ({ page }) => 
         });
         return route.fulfill({ json: initial });
       }
-      return route.fulfill({ json: initial });
+      return route.fulfill({ json: active });
     },
   );
   await page.goto('/');
@@ -280,6 +382,7 @@ test('new game wizard saves pace and starts from the chosen card', async ({ page
     next.game.mode = 'hearts';
     next.game.id = 'wizard-game';
     next.preferences.gameSpeed = 1.2;
+    harness.setState(next);
     return route.fulfill({ json: next });
   });
   await page.getByRole('button', { name: 'Choose game', exact: true }).click();
@@ -309,7 +412,7 @@ test('new game wizard saves pace and starts from the chosen card', async ({ page
 });
 
 test('retry after lost response keeps exactly the original mutation envelope', async ({ page }) => {
-  await mount(page);
+  const harness = await mount(page);
   const bodies: unknown[] = [];
   const next = fixture();
   next.revision = 2;
@@ -318,6 +421,7 @@ test('retry after lost response keeps exactly the original mutation envelope', a
   await page.route('**/api/session/actions', async (route) => {
     bodies.push(route.request().postDataJSON());
     if (bodies.length === 1) return route.abort('failed');
+    harness.setState(next);
     return route.fulfill({ json: next });
   });
   await page.getByRole('button', { name: '2 of clubs', exact: true }).dblclick();
@@ -326,6 +430,364 @@ test('retry after lost response keeps exactly the original mutation envelope', a
   await expect(page.locator('.hand-card')).toHaveCount(3);
   expect(bodies).toHaveLength(2);
   expect(bodies[1]).toEqual(bodies[0]);
+});
+
+for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
+  test(`${mode}: lost accepted move survives paused reload and reconciles without another mutation`, async ({
+    page,
+  }) => {
+    const initial = fixture();
+    initial.game.mode = mode;
+    const harness = await mount(page, initial);
+    const bodies: unknown[] = [];
+    const next = structuredClone(initial);
+    next.revision++;
+    next.decisionId = 'after-accepted';
+    next.game.hand = ['D3', 'H4', 'S5'];
+    await page.route('**/api/session/actions', (route) => {
+      bodies.push(route.request().postDataJSON());
+      harness.setState(next);
+      return route.abort('failed');
+    });
+    await page.route('**/api/commands/*', (route) => route.fulfill({ json: { status: 'accepted' } }));
+    await page.getByRole('button', { name: '2 of clubs', exact: true }).dblclick();
+    await expect(page.getByRole('alert')).toBeVisible();
+    await page.reload();
+    await expect(
+      page.getByText('A previous request has an unconfirmed outcome.', { exact: false }),
+    ).toBeVisible();
+    await page.waitForTimeout(100);
+    expect(bodies).toHaveLength(1);
+    await page.getByRole('button', { name: 'Resume', exact: true }).click();
+    await page.getByRole('button', { name: 'Retry', exact: true }).click();
+    await expect(page.getByRole('alert')).toHaveCount(0);
+    await expect(page.locator('.hand-card')).toHaveCount(3);
+    expect(bodies).toHaveLength(1);
+  });
+}
+
+test('lost unaccepted new-game request survives reload and retries its original body', async ({ page }) => {
+  const harness = await mount(page);
+  const bodies: unknown[] = [];
+  await page.route('**/api/sessions', (route) => {
+    bodies.push(route.request().postDataJSON());
+    if (bodies.length === 1) return route.abort('failed');
+    const next = fixture();
+    next.game.id = 'retried-new-game';
+    next.game.mode = 'hearts';
+    harness.setState(next);
+    return route.fulfill({ json: next });
+  });
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page
+    .locator('.game-option')
+    .filter({ has: page.locator('.game-art-hearts') })
+    .click();
+  await expect(page.getByRole('alert')).toBeVisible();
+  await page.reload();
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Retry', exact: true }).click();
+  await expect(page.locator('.game-switch')).toContainText('Hearts');
+  expect(bodies).toHaveLength(2);
+  expect(bodies[1]).toEqual(bodies[0]);
+});
+
+test('pending command still reconciles when identity verification fails during opening', async ({ page }) => {
+  const harness = await mount(page);
+  const bodies: unknown[] = [];
+  const next = fixture();
+  next.revision++;
+  next.game.hand = ['D3', 'H4', 'S5'];
+  next.game.legalActions = [{ kind: 'play', card: 'D3' }];
+  await page.route('**/api/session/actions', (route) => {
+    bodies.push(route.request().postDataJSON());
+    if (bodies.length > 1) {
+      const fresh = structuredClone(next);
+      fresh.revision++;
+      fresh.game.hand = ['H4', 'S5'];
+      fresh.game.legalActions = [];
+      harness.setState(fresh);
+      return route.fulfill({ json: fresh });
+    }
+    harness.setState(next);
+    return route.abort('failed');
+  });
+  await page.getByRole('button', { name: '2 of clubs', exact: true }).dblclick();
+  await expect(page.getByRole('alert')).toBeVisible();
+  await page.route('**/api/identity', (route) =>
+    route.fulfill({
+      status: 503,
+      json: {
+        code: 'SERVICE_UNAVAILABLE',
+        message: 'Opening unavailable.',
+      },
+    }),
+  );
+  await page.reload();
+  await expect(page.getByRole('status')).toHaveText('Opening unavailable.');
+  await page.route('**/api/identity', (route) =>
+    route.fulfill({ json: { playerId: '11111111-1111-4111-8111-111111111111' } }),
+  );
+  await page.route('**/api/commands/*', (route) => route.fulfill({ json: { status: 'accepted' } }));
+  await page.getByRole('button', { name: 'Reconnect', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await expect(page.locator('.hand-card')).toHaveCount(3);
+  await expect(page.getByRole('alert')).toHaveCount(0);
+  expect(bodies).toHaveLength(1);
+  await page.getByRole('button', { name: '3 of diamonds', exact: true }).dblclick();
+  await expect.poll(() => bodies.length).toBe(2);
+  expect((bodies[1] as { commandId: string }).commandId).not.toBe(
+    (bodies[0] as { commandId: string }).commandId,
+  );
+  await expect(page.locator('.hand-card')).toHaveCount(2);
+});
+
+test('transport deadline frees the table and keeps a recoverable same-command retry', async ({ page }) => {
+  await page.clock.install();
+  await mount(page);
+  const bodies: unknown[] = [];
+  await page.route('**/api/session/actions', (route) => {
+    bodies.push(route.request().postDataJSON());
+  });
+  await page.getByRole('button', { name: '2 of clubs', exact: true }).dblclick();
+  await expect.poll(() => bodies.length).toBe(1);
+  await page.clock.fastForward(15_001);
+  await expect(page.getByRole('alert')).toContainText('outcome is unconfirmed');
+  await expect(page.getByRole('button', { name: 'Retry', exact: true })).toBeEnabled();
+  expect(bodies).toHaveLength(1);
+});
+
+test('a different signed-in owner discards a pending command instead of replaying it', async ({ page }) => {
+  await mount(page);
+  const bodies: Record<string, unknown>[] = [];
+  await page.route('**/api/session/actions', (route) => {
+    bodies.push(route.request().postDataJSON());
+    return route.abort('failed');
+  });
+  await page.getByRole('button', { name: '2 of clubs', exact: true }).dblclick();
+  await expect(page.getByRole('alert')).toBeVisible();
+  await page.route('**/api/account', (route) =>
+    route.fulfill({ json: accountFixture(fixture(), '22222222-2222-4222-8222-222222222222') }),
+  );
+  await page.route('**/api/identity', (route) =>
+    route.fulfill({ json: { playerId: '22222222-2222-4222-8222-222222222222' } }),
+  );
+  await page.reload();
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await expect(page.getByRole('alert')).toHaveCount(0);
+  expect(bodies).toHaveLength(1);
+  await page.getByRole('button', { name: '2 of clubs', exact: true }).dblclick();
+  await expect.poll(() => bodies.length).toBe(2);
+  expect(bodies[1].commandId).not.toEqual(bodies[0].commandId);
+});
+
+test('in-place owner switch removes the prior table and fences a late refresh before preferences can resume', async ({
+  page,
+}) => {
+  const harness = await mount(page);
+  const old = fixture();
+  const next = fixture();
+  next.game.id = 'owner-b-game';
+  next.game.hand = ['CA', 'DA', 'HA', 'SA'];
+  next.game.legalActions = next.game.hand.map((card) => ({ kind: 'play', card }));
+  next.preferences = { coachMode: 'after', gameSpeed: 1.4 };
+  const preferences: unknown[] = [];
+  let release: (() => void) | undefined;
+  let delayed = false;
+  await page.route('**/api/preferences', (route) => {
+    preferences.push(route.request().postDataJSON());
+    return route.fulfill({ json: next });
+  });
+  await page.route('**/api/session', async (route) => {
+    if (!delayed) {
+      delayed = true;
+      await new Promise<void>((resolve) => {
+        release = resolve;
+      });
+      return route.fulfill({ json: old });
+    }
+    return route.fulfill({ json: next });
+  });
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
+  await page.getByRole('button', { name: 'Done', exact: true }).click();
+  await expect.poll(() => delayed).toBe(true);
+  await page.route('**/api/account', (route) =>
+    route.fulfill({ json: accountFixture(next, '22222222-2222-4222-8222-222222222222') }),
+  );
+  await page.route('**/api/identity', (route) =>
+    route.fulfill({ json: { playerId: '22222222-2222-4222-8222-222222222222' } }),
+  );
+  harness.setState(next);
+  await page.getByRole('button', { name: 'Occasional cues', exact: true }).click();
+  await expect(page.locator('.hand-card')).toHaveCount(0);
+  release?.();
+  await expect(page.getByRole('status')).toContainText('signed-in player changed');
+  await expect(page.locator('.hand-card')).toHaveCount(0);
+  expect(preferences).toHaveLength(0);
+  await page.getByRole('button', { name: 'Reconnect', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Ace of clubs', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '2 of clubs', exact: true })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Settings', exact: true }).click();
+  await page.getByRole('button', { name: 'Occasional cues', exact: true }).click();
+  await expect.poll(() => preferences.length).toBe(1);
+  expect(preferences[0]).toMatchObject({ preferences: { coachMode: 'nudges', gameSpeed: 1.4 } });
+});
+
+test('in-place review owner switch removes old choices, frames and advice before another trial', async ({
+  page,
+}) => {
+  const value = fixture();
+  await mount(page, value);
+  await page.route('**/api/session/reviews?scope=match', (route) =>
+    route.fulfill({
+      json: {
+        cases: [
+          {
+            decisionId: 'owner-a-record',
+            handNumber: 1,
+            action: { kind: 'play', card: 'C2' },
+            assisted: false,
+            status: 'not-assessed',
+            summary: 'Owner A decision',
+          },
+        ],
+      },
+    }),
+  );
+  await page.route('**/api/session/reviews/owner-a-record?step=0', (route) =>
+    route.fulfill({
+      json: {
+        decisionId: 'owner-a-record',
+        label: 'Original',
+        liveRevision: value.revision,
+        frames: [{ game: value.game, action: null, decisionId: 'owner-a-record', notes: [] }],
+      },
+    }),
+  );
+  await page.route('**/api/coaching/access?*', (route) => route.fulfill({ json: value.access }));
+  await page.route('**/api/coaching/hand-unlocks', (route) =>
+    route.fulfill({
+      json: {
+        access: value.access,
+        advice: {
+          focus: 'Owner A advice',
+          notice: 'Old private advice.',
+          reason: 'Original recorded reason.',
+          suggestion: 'Original recorded suggestion.',
+          source: 'code',
+          decisionId: 'owner-a-record',
+          requestedLevel: 3,
+        },
+      },
+    }),
+  );
+  const trials: unknown[] = [];
+  await page.route('**/api/session/reviews/owner-a-record/trials', (route) => {
+    trials.push(route.request().postDataJSON());
+    return route.abort();
+  });
+  await page.getByRole('button', { name: 'Review current game', exact: true }).click();
+  await page.getByRole('button', { name: 'Hand 1: Owner A decision', exact: true }).click();
+  await page.getByRole('button', { name: 'Show original coach advice', exact: true }).click();
+  await expect(page.getByText('Old private advice.', { exact: false })).toBeVisible();
+  await page.route('**/api/account', (route) =>
+    route.fulfill({ json: accountFixture(value, '22222222-2222-4222-8222-222222222222') }),
+  );
+  await page.route('**/api/identity', (route) =>
+    route.fulfill({ json: { playerId: '22222222-2222-4222-8222-222222222222' } }),
+  );
+  await page.getByText('Explore another card', { exact: true }).click();
+  await page
+    .locator('.review-alternatives')
+    .getByRole('button', { name: '3 of diamonds', exact: true })
+    .click();
+  await expect(page.locator('.review-evidence')).toHaveCount(0);
+  await expect(page.getByText('Old private advice.', { exact: false })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Hand 1: Owner A decision', exact: true })).toHaveCount(0);
+  expect(trials).toHaveLength(0);
+});
+
+test('queued review retry and lost-response reload recover the same trial and command', async ({ page }) => {
+  const value = fixture();
+  await mount(page, value);
+  await page.route('**/api/session/reviews?scope=match', (route) =>
+    route.fulfill({
+      json: {
+        cases: [
+          {
+            decisionId: 'record-retry',
+            handNumber: 1,
+            action: { kind: 'play', card: 'C2' },
+            assisted: false,
+            status: 'not-assessed',
+            summary: 'Retry decision',
+          },
+        ],
+      },
+    }),
+  );
+  await page.route('**/api/session/reviews/record-retry?step=0', (route) =>
+    route.fulfill({
+      json: {
+        decisionId: 'record-retry',
+        label: 'Original',
+        liveRevision: value.revision,
+        frames: [
+          { game: value.game, action: { kind: 'play', card: 'C2' }, decisionId: 'record-retry', notes: [] },
+        ],
+      },
+    }),
+  );
+  await page.route('**/api/coaching/access?*', (route) => route.fulfill({ json: value.access }));
+  const bodies: Record<string, unknown>[] = [];
+  let ready = false;
+  await page.route('**/api/session/reviews/record-retry/trials', (route) => {
+    bodies.push(route.request().postDataJSON());
+    if (bodies.length === 1)
+      return route.fulfill({
+        status: 503,
+        json: {
+          code: 'SERVICE_UNAVAILABLE',
+          message: 'This continuation is still being prepared. Retry the same request.',
+        },
+      });
+    ready = true;
+    return route.abort('failed');
+  });
+  await page.route('**/api/review-trials/*', (route) =>
+    ready
+      ? route.fulfill({
+          json: {
+            trialId: bodies[0].trialId,
+            decisionId: 'record-retry',
+            label: 'Possible continuation',
+            liveRevision: value.revision,
+            frames: [
+              { game: value.game, action: null, decisionId: 'record-retry', notes: ['Same sampled branch.'] },
+            ],
+          },
+        })
+      : route.fulfill({ status: 404, json: { code: 'NOT_FOUND', message: 'Not ready.' } }),
+  );
+  await page.getByRole('button', { name: 'Review current game', exact: true }).click();
+  await page.getByRole('button', { name: 'Hand 1: Retry decision', exact: true }).click();
+  await page.getByText('Explore another card', { exact: true }).click();
+  await page
+    .locator('.review-alternatives')
+    .getByRole('button', { name: '3 of diamonds', exact: true })
+    .click();
+  await expect(page.getByRole('button', { name: 'Retry same continuation', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Retry same continuation', exact: true }).click();
+  await expect.poll(() => bodies.length).toBe(2);
+  expect(bodies[1]).toEqual(bodies[0]);
+  await page.reload();
+  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Review current game', exact: true }).click();
+  await page.getByRole('button', { name: 'Retry same continuation', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Possible continuation', exact: true })).toBeVisible();
+  expect(bodies).toHaveLength(2);
 });
 
 test('selected deals stage locally, restrict the game and label the resulting table', async ({

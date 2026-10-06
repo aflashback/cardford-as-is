@@ -1,0 +1,30 @@
+{
+  "evidenceVersion": "urgent-provider-independent-review-1.0.0",
+  "recordedAtUtc": "2026-10-06T01:53:54.131Z",
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "scope": "Independent read-only review of the narrow provider deadline classification/lifetime fencing repair and its added fixture regression. No test execution, credentials, network/provider calls, configuration changes or full-suite claim by reviewer.",
+  "status": "no-actionable-findings",
+  "findings": [],
+  "checks": [
+    "beforeDeadline throws the private DeadlineFailure class for pre-operation, timer, abort and post-resolution expiry. Promise.race consumes late rejections; finally removes the abort listener and bounded timer.",
+    "selectWithJev's bounded wrapper aborts the shared lifetime before propagating DeadlineFailure. This makes expired() true when the shorter inner timer fires while the wall clock or lifetime timer still trails it.",
+    "The existing finish path remains bounded by the same now-aborted budget, so no completion call or second dispatch begins after that timeout. The durable unknown-cost reservation remains pending rather than receiving a false transport outcome.",
+    "The added test at web/server/tests/openrouter.test.ts:327-353 separates the lifetime and inner timer using controlled clock progression and asserts deadline, exactly one dispatch/reservation and zero completion records. Existing timeout, stall and late-resolution tests retain their assertions.",
+    "No observation/request projection, endpoint, model identifiers, request/cost caps, credentials, policy defaults or live-provider activation was changed by this repair."
+  ],
+  "sourceFiles": [
+    { "path": "web/server/providers/openrouter.ts", "sha256": "d0c3fa34f3e99a780b443f7789f982d17ae804d06ca77d5be72edddf909f852b" },
+    { "path": "web/server/tests/openrouter.test.ts", "sha256": "7d36ea93ec733672fee557b271d20717615d58bf97b7376b2204917ebc32b07b" }
+  ],
+  "existingEvidence": {
+    "path": "qa/implementation/multi-game/urgent-repairs/provider-deadline.json",
+    "sha256": "171524e313b0f92eb4468b137a44827606275409ec48418b58170283ee3cad5d",
+    "nativeInitialRun": "Root recorded 490/491 passing, with the existing 15ms timeout classified transport-failure instead of deadline.",
+    "regressionRed": "Root recorded deterministic regression 0/1, same classification failure, output chunk 27ad15.",
+    "focusedGreen": "Root recorded provider fixture suite 16/16, no skips, output chunk 18c30e. Not rerun by reviewer."
+  },
+  "limits": [
+    "The added regression controls the clock but uses a short real timer; it is not a fully virtual scheduler.",
+    "No claim of real-provider availability, production accounting/capacity or strategy quality. Root owns the final integration/full-suite evidence."
+  ]
+}

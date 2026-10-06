@@ -8,6 +8,8 @@ The owner wants one simple monorepo, the latest CardFord specification, the exis
 
 **Launch/client amendment:** [CR-IMPL-004](decisions/CR-IMPL-004-online-demo-and-launch-readiness.md) adds online demo, configurable free/access-trial/paid grant preparation, frontend reuse readiness and basic first-app quality to the current plan. Final offers and native packaging remain later selections. [CR-FUTURE-001](11-future-play-and-membership.md) still leaves human matching/ratings outside this work.
 
+**Urgent repair amendment:** the owner subsequently authorized [CR-FIX-001](decisions/CR-FIX-001-urgent-system-repairs.md). Its [execution report](../qa/implementation/multi-game/urgent-repairs/status.md) is the latest current-app evidence and supersedes the review's defect status within that repair scope. Carry its regression fixtures into M02A and the later Go port.
+
 ## First-run reading order
 
 1. Read root [AGENTS.md](../AGENTS.md) and its required original-spec sequence for the preserved engineering safeguards. Its old scope conflicts are resolved by the later explicit owner decision below; do not silently restore the Spades-only product.
@@ -18,7 +20,7 @@ The owner wants one simple monorepo, the latest CardFord specification, the exis
 
 ## How to start and resume
 
-Use the current M00–M02 evidence; do not restart W00/W01 or regenerate frozen expectations. When the owner initiates the next implementation work, start **M02A**: correct the demonstrated work-cap defect with version-aware evidence, freeze portable contracts and tooling, and prove one bounded Go/PostgreSQL compatibility slice. M03/M04/M05 follow that gate. No backend port is started by this review.
+Use the current M00–M02 evidence; do not restart W00/W01 or regenerate frozen expectations. The subsequent [CR-FIX-001 urgent repair slice](decisions/CR-FIX-001-urgent-system-repairs.md) corrects the charged-rollout cap, validates active V1 state, fences preparation and preserves accepted-command/review retries in the current app. Read its [execution report](../qa/implementation/multi-game/urgent-repairs/status.md) before starting work. The next **M02A** work is to freeze portable contracts and tooling and prove one bounded Go/PostgreSQL compatibility slice. M03/M04/M05 follow that gate. No backend port is included in the repair slice.
 
 Track current milestones in `qa/implementation/multi-game/status.md`, with M02A evidence under `qa/implementation/multi-game/m02a/`. Keep the existing `qa/implementation/status.md` as local-build/release evidence. Use `not-started`, `in-progress`, `passed`, `blocked` or `partial`; record source revision/hashes and evidence links. A checkbox alone is not evidence. A packet whose live test lacks credentials may be partial with fixtures passed; do not mark live integration complete. Existing Node commands remain TypeScript regression/oracle checks; the replacement path requires its own pinned Go/schema/differential checks before acceptance.
 
@@ -61,11 +63,11 @@ Separate functional delivery from operations growth: implement bounded service w
 - The current TypeScript service owns rules, private state and PostgreSQL records; React receives the human hand and public information. Ordinary code coaching, replay and isolated review continuations exist. Identity and billing remain local fixtures; Jev is off.
 - M02 reports 449/449 Linux/WSL acceptance and separate passing Windows contracts/typecheck/build. Earlier Windows connectivity and mounted-source timing failures remain recorded; the Linux result does not establish Windows latency.
 - V2 persistence and HTTP/client activation, online demo, configurable offers and full recovery acceptance remain unfinished. M02A precedes their replacement-backend implementation.
-- The [system review](../qa/implementation/multi-game/system-review-2026-10-05.md) separates inspected defects from planned activation gaps. No Go/Rust service or language benchmark has been delivered.
+- The [system review](../qa/implementation/multi-game/system-review-2026-10-05.md) separates inspected defects from planned activation gaps; the later [urgent repair report](../qa/implementation/multi-game/urgent-repairs/status.md) records their focused current-system corrections and remaining limits. Forward migration 006 adds preparation attempts; the first five migrations and original archives remain preserved. No Go/Rust service or language benchmark has been delivered.
 - The 38-test browser-local prototype baseline and original pack are historical evidence, not current service architecture. Hosted identity/Stripe, production capacity, physical devices and independent strategy/learning claims retain separate gates.
 
 ## Copyable implementation kickoff
 
 > When implementation is authorized, execute M02A from `planning/implementation/multi-game/backend-readiness.md` under CR-ARCH-003 and the current multi-game plan. Preserve the React/Vite table/coaching UX and completed M00–M02 evidence. Use Go/PostgreSQL as the preferred replacement target and TypeScript as the independent reference; freeze portable schemas/semantics and prove the bounded compatibility slice before M03/M04/M05. Use MG/SYS and existing requirement IDs, record exact checks and mismatches, and update milestone evidence. Do not activate hosting/live charges, silently change frozen policy/rule semantics, invent tests or benchmarks, or expose credentials.
 
-The kickoff is for a later implementation turn; this review changes plans and handoff only. Current local implementation remains usable. Real identity, Stripe service acceptance, validated strategic grading, devices/pilot and paid launch are distinct from a working local fixture build.
+The Go kickoff is for the next implementation slice. The current TypeScript app includes the separately authorized urgent repairs under CR-FIX-001. Real identity, Stripe service acceptance, validated strategic grading, devices/pilot and paid launch are distinct from a working local fixture build.

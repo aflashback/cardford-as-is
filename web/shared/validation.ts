@@ -24,6 +24,8 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   NewSessionRequest: compiled.validateNewSessionRequest,
   ActionsRequest: compiled.validateActionsRequest,
   PrepareRequest: compiled.validatePrepareRequest,
+  CommandStatusView: compiled.validateCommandStatusView,
+  IdentityView: compiled.validateIdentityView,
   PrepareView: compiled.validatePrepareView,
   AdvanceRequest: compiled.validateAdvanceRequest,
   NextHandRequest: compiled.validateNextHandRequest,
@@ -131,6 +133,8 @@ export const validateCommandEnvelope = contractValidator('CommandEnvelope');
 export const validateNewSessionRequest = contractValidator('NewSessionRequest');
 export const validateActionsRequest = contractValidator('ActionsRequest');
 export const validatePrepareRequest = contractValidator('PrepareRequest');
+export const validateCommandStatusView = contractValidator('CommandStatusView');
+export const validateIdentityView = contractValidator('IdentityView');
 export const validatePrepareView = contractValidator('PrepareView');
 export const validateAdvanceRequest = contractValidator('AdvanceRequest');
 export const validateNextHandRequest = contractValidator('NextHandRequest');

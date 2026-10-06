@@ -34,6 +34,9 @@ export async function testDatabase(t: TestContext): Promise<pg.Pool | null> {
   await pool.query(
     await readFile(new URL('../records/migrations/003-account-data.sql', import.meta.url), 'utf8'),
   );
+  await pool.query(
+    await readFile(new URL('../records/migrations/006-preparation-attempts.sql', import.meta.url), 'utf8'),
+  );
   return pool;
 }
 export async function player(pool: pg.Pool, patch: Partial<BillingProfile> = {}): Promise<string> {

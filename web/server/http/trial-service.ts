@@ -26,7 +26,25 @@ export class TrialService {
   constructor(database: Database, _policies: Partial<Record<string, string>> = {}) {
     this.database = database;
   }
+  /** Read a previously issued continuation; coverage and live-table changes cannot start new work here. */
+  async result(context: RequestContext, commandId: string): Promise<ReviewTrial> {
+    return ownedTransaction(this.database, context.token, async (client, player) => {
+      const job = (await client.query<Job>(
+        "SELECT result FROM analysis_jobs WHERE player_id=$1 AND command_id=$2 AND status='ready'",
+        [player.id, commandId])).rows[0];
+      if (!job?.result) throw new ApiFailure(404, 'NOT_FOUND', 'No accepted continuation is available for this request.');
+      return job.result;
+    }, { loadGame: false });
+  }
   async run(context: RequestContext, body: TrialRequest): Promise<ReviewTrial> {
+    const accepted = await ownedTransaction(this.database, context.token, async (client, player) => {
+      const job = (await client.query<Job>('SELECT digest,status,result FROM analysis_jobs WHERE player_id=$1 AND command_id=$2',
+        [player.id, body.commandId])).rows[0];
+      if (job && job.digest !== fingerprint(body))
+        throw new ApiFailure(409, 'IDEMPOTENCY_CONFLICT', 'This trial request was already used.');
+      return job?.status === 'ready' ? job.result : null;
+    }, { loadGame: false });
+    if (accepted) return accepted;
     const prepared = await ownedTransaction(this.database, context.token, async (client, player, game) => {
       if (!game || game.id !== body.gameId)
         throw new ApiFailure(404, 'NOT_FOUND', 'Review only your current game.');

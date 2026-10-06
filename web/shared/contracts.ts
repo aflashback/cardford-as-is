@@ -25,6 +25,8 @@ export type PublicContracts =
   | NewSessionRequest
   | ActionsRequest
   | PrepareRequest
+  | CommandStatusView
+  | IdentityView
   | PrepareView
   | AdvanceRequest
   | NextHandRequest
@@ -457,6 +459,12 @@ export interface PrepareRequest {
   gameId: string;
   expectedRevision: number;
   controlLeaseToken: string;
+}
+export interface CommandStatusView {
+  status: 'accepted' | 'unknown';
+}
+export interface IdentityView {
+  playerId: string;
 }
 export interface PrepareView {
   preparedDecisionId: string;
@@ -1092,6 +1100,8 @@ export interface ContractTypes {
   NewSessionRequest: NewSessionRequest;
   ActionsRequest: ActionsRequest;
   PrepareRequest: PrepareRequest;
+  CommandStatusView: CommandStatusView;
+  IdentityView: IdentityView;
   PrepareView: PrepareView;
   AdvanceRequest: AdvanceRequest;
   NextHandRequest: NextHandRequest;

@@ -3,6 +3,7 @@ import type { Transaction, Database } from './database.ts';
 import { transaction } from './database.ts';
 import type { PlayerProfile, PlayerRow, GameRow } from './types.ts';
 import { ApiFailure } from '../http/errors.ts';
+import { validateStoredGameState } from './state-validation.ts';
 
 export const hashToken = (token: string) => createHash('sha256').update(token).digest('hex');
 export async function newIdentity(pool: Database): Promise<string> {
@@ -37,6 +38,7 @@ export async function ownedTransaction<T>(
   pool: Database,
   token: string,
   action: (client: Transaction, player: PlayerRow, game: GameRow | null) => Promise<T>,
+  options: { loadGame?: boolean } = {},
 ): Promise<T> {
   return transaction(pool, async (client) => {
     const session = await client.query<{ player_id: string }>(
@@ -56,7 +58,7 @@ export async function ownedTransaction<T>(
       [hashToken(token)],
     );
     if (!currentSession.rowCount) throw new ApiFailure(401, 'UNAUTHENTICATED', 'Session revoked.');
-    const game = player.active_game_id
+    const game = options.loadGame !== false && player.active_game_id
       ? ((
           await client.query<GameRow>('SELECT * FROM games WHERE id=$1 AND player_id=$2', [
             player.active_game_id,
@@ -64,10 +66,12 @@ export async function ownedTransaction<T>(
           ])
         ).rows[0] ?? null)
       : null;
+    if (game) validateStoredGameState(game);
     return action(client, player, game);
   });
 }
 export async function saveGame(client: Transaction, game: GameRow) {
+  validateStoredGameState(game);
   await client.query('UPDATE games SET document=$1,revision=$2,updated_at=now() WHERE id=$3', [
     game.document,
     game.revision,
@@ -92,13 +96,13 @@ function canonical(value: unknown): unknown {
     );
   return value;
 }
-export async function idempotent<T>(
+/** Authenticated owner lookup; receipt replay does not authorize a new mutation. */
+export async function readCommand<T>(
   client: Transaction,
   playerId: string,
   commandId: string,
   body: unknown,
-  operation: () => Promise<T>,
-): Promise<T> {
+): Promise<{ response: T } | null> {
   const digest = createHash('sha256')
     .update(JSON.stringify(canonical(body)))
     .digest('hex');
@@ -115,8 +119,20 @@ export async function idempotent<T>(
         'IDEMPOTENCY_CONFLICT',
         'This request ID was already used for another command.',
       );
-    return existing.response;
+    return { response: existing.response };
   }
+  return null;
+}
+export async function idempotent<T>(
+  client: Transaction,
+  playerId: string,
+  commandId: string,
+  body: unknown,
+  operation: () => Promise<T>,
+): Promise<T> {
+  const existing = await readCommand<T>(client, playerId, commandId, body);
+  if (existing) return existing.response;
+  const digest = createHash('sha256').update(JSON.stringify(canonical(body))).digest('hex');
   const response = await operation();
   await client.query('INSERT INTO commands(player_id,command_id,digest,response) VALUES($1,$2,$3,$4)', [
     playerId,

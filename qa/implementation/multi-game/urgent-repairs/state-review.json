@@ -1,0 +1,133 @@
+{
+  "evidenceVersion": "urgent-state-independent-review-1.0.0",
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "scope": "Independent review of active V1 rules/state codec and repository row binding; pure direct-validator corpus check.",
+  "sourceHashes": [
+    {
+      "path": "web/server/records/state-validation.ts",
+      "sha256": "4fffd293a392aeb121e9f3c4c40b5d80fad8c77e29d0867ed7b72e979599c441"
+    },
+    {
+      "path": "web/server/records/repository.ts",
+      "sha256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f"
+    },
+    {
+      "path": "web/server/game/legacy/reader.ts",
+      "sha256": "7eb002bde46e840ff9f3b960049ca5821a36a9d98191d2c8337338a728ad5800"
+    },
+    {
+      "path": "web/server/tests/support/module-parity.ts",
+      "sha256": "db97cf9cd69bdc65f9b46caecadd2989cba3714e878f45d5ae8ae541203ae5d7"
+    },
+    {
+      "path": "web/server/tests/fixtures/legacy-module-document.json",
+      "sha256": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f"
+    },
+    {
+      "path": "web/server/games/hearts/codec.ts",
+      "sha256": "7df116e83e47c0f90d73aaf2b8cba442391fd13ec9c104cac5512aa6d0a81428"
+    },
+    {
+      "path": "web/server/games/spades/state.ts",
+      "sha256": "1db115603937d22fd0adade8d9b9f7a9d33dbb13c1e285501f19d4d1cabdbe48"
+    },
+    {
+      "path": "web/server/tests/stored-state-boundary.test.ts",
+      "sha256": "bd01ba8c9a6be9ffc0caf2bf3328e5f8aff61f465d3a29bf53bfb7f8031ed48b"
+    },
+    {
+      "path": "web/server/games/hearts/compatibility.ts",
+      "sha256": "9c4ee02f3ee3b02bdba30898cf4966056a5effc031107296b7eadf1e05fe95bb"
+    },
+    {
+      "path": "web/server/games/spades/compatibility.ts",
+      "sha256": "c176d5d879541f0c1403f3555d96be10e922d5b9ed2a3f186015c4eeaf4001df"
+    },
+    {
+      "path": "web/server/game/kernel/codec.ts",
+      "sha256": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b"
+    },
+    {
+      "path": "web/server/game/legacy/v1.ts",
+      "sha256": "0139636c9a176706f30ce8340c4d0c8d47d4e66efc4bf2ad89c4ffe9763b347b"
+    }
+  ],
+  "executed": {
+    "workingDirectory": "C:\\repos\\test-jev",
+    "shell": "PowerShell",
+    "command": "node --input-type=module -e 'import assert from \"node:assert/strict\"; import { validateStoredGameState } from \"./web/server/records/state-validation.ts\"; import { replayV1, savedCorpus } from \"./web/server/tests/support/module-parity.ts\"; const modes={}; let total=0; for (const saved of savedCorpus.cases) { const replay=replayV1(saved); for (const snapshot of [replay.initial,...replay.steps]) { const document={state:snapshot.state,historicalSentinel:{policyVersion:\"original-pin\",advice:\"original-bytes\"}}; const before=JSON.stringify(document); validateStoredGameState({id:snapshot.state.id,revision:snapshot.revision,document}); assert.equal(JSON.stringify(document),before); const mode=modes[snapshot.state.mode]??={checkpoints:0,phases:{}}; mode.checkpoints++; mode.phases[snapshot.state.phase]=(mode.phases[snapshot.state.phase]??0)+1; total++; } } console.log(JSON.stringify({kind:\"pure-active-v1-corpus-validation\",total,modes,originalBytesPreserved:true,providerCalls:0,databaseCalls:0},null,2));'",
+    "exitCode": 0,
+    "observed": {
+      "kind": "pure-active-v1-corpus-validation",
+      "total": 687,
+      "modes": {
+        "hearts": {
+          "checkpoints": 267,
+          "phases": {
+            "pass": 3,
+            "play": 208,
+            "trick-end": 52,
+            "hand-end": 4
+          }
+        },
+        "spades-solo": {
+          "checkpoints": 210,
+          "phases": {
+            "bid": 12,
+            "play": 156,
+            "trick-end": 39,
+            "hand-end": 3
+          }
+        },
+        "spades-partners": {
+          "checkpoints": 210,
+          "phases": {
+            "bid": 12,
+            "play": 156,
+            "trick-end": 39,
+            "hand-end": 3
+          }
+        }
+      },
+      "originalBytesPreserved": true,
+      "providerCalls": 0,
+      "databaseCalls": 0
+    },
+    "toolOutputChunk": "a2f0a5"
+  },
+  "readOnlyReview": {
+    "files": [
+      "web/server/records/state-validation.ts",
+      "web/server/records/repository.ts",
+      "web/server/tests/stored-state-boundary.test.ts"
+    ],
+    "actionableFindings": [],
+    "confirmed": [
+      "Closed active private state is decoded using the installed legacy/game codec before the gameplay callback and save.",
+      "Parsed/frozen copies are discarded; validation does not replace the original document or supply policy defaults.",
+      "State identity is bound to row identity; row revision is checked as a nonnegative safe integer.",
+      "loadGame:false still authenticates the session and acquires the owner-row lock, allowing receipt-only access when the active game is unavailable."
+    ],
+    "testAssessment": "The four repository DB tests assert no gameplay callback on corruption, unchanged corrupt records, rollback on invalid save, preserved missing historical policy, and authenticated receipt-only access. Their reported DB run belongs to the root agent; this independent check did not rerun them."
+  },
+  "scopeLimits": [
+    "Complete platform/history/advice envelope decoding and V2 activation remain M03; this does not certify them.",
+    "Revision is validated structurally, not recomputed from the journal; full replay-journal equivalence remains separate.",
+    "Corpus covers pass/bid/play/trick-end/hand-end; it contains no match-end checkpoint.",
+    "Corpus validation preserves the original active state and an extra historical sentinel; actual saved advice preservation is asserted by the separate root-owned DB tests.",
+    "The validator copies and semantically scans retained state/history while the repository owner lock is held. History-dependent cost is unmeasured and belongs to later M03/M06 resource checks.",
+    "No runtime source, corpus or original evidence was edited by this independent review."
+  ],
+  "notRun": [
+    "database",
+    "live provider",
+    "full suite",
+    "capacity benchmark",
+    "Go implementation"
+  ]
+}

@@ -1,6 +1,6 @@
 # Backend readiness and system acceptance
 
-5 October 2026. Execution amendment to the [multi-game plan](../../../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md), adopted by [CR-ARCH-003](../../decisions/CR-ARCH-003-backend-stack-and-system-readiness.md). **All tasks here are pending.** The [review](../../../qa/implementation/multi-game/system-review-2026-10-05.md) describes the inspected TypeScript implementation, not a completed Go service.
+5 October 2026. Execution amendment to the [multi-game plan](../../../docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md), adopted by [CR-ARCH-003](../../decisions/CR-ARCH-003-backend-stack-and-system-readiness.md). The [urgent repair slice](../../../qa/implementation/multi-game/urgent-repairs/status.md), authorized by [CR-FIX-001](../../decisions/CR-FIX-001-urgent-system-repairs.md), corrects the current TypeScript evaluator, active-state boundary, preparation and retry paths. **Go compatibility and full replacement-system acceptance remain pending.** The original [review](../../../qa/implementation/multi-game/system-review-2026-10-05.md) remains the historical defect record.
 
 ## Delivery order and file ownership
 
@@ -14,7 +14,7 @@ Use one root Go module for the planned `server/` tree: `cmd/cardford`, `internal
 | `web/server/records`, `http`, `access`, `billing` | Go persistence, command/service, access and billing adapters; preserve exact public behavior and existing PostgreSQL semantics. |
 | `web/server/strategy`, `coaching`, provider adapters | Go bounded analysis/job execution with game-owned policies; pinned original versions remain readable. |
 | `web/shared/contracts.schema.json` and registered public fragments | Continue as the sole active public schema source; generate checked Go and TS bindings. Private schemas never enter browser output. |
-| Existing SQL migrations | Keep one canonical migration sequence and the five installed migrations byte-preserved. Freeze packaging/checksum rules in M02A; use forward migrations only. |
+| Existing SQL migrations | Keep one canonical migration sequence and the first five migrations byte-preserved. CR-FIX-001 adds forward migration `006-preparation-attempts.sql`; preserve it in replacement-service packaging. Freeze packaging/checksum rules in M02A; use forward migrations only. |
 | `web/src`, Playwright journeys, public assets | Retain React/Vite and visual layout. Change only transport/recovery/adapters required by the functional contracts. |
 | Existing Node test commands in M03–M12 | TS regression/oracle commands; add the equivalent Go tests, schema checks and cross-runtime differential runner for each ported responsibility. Passing the old suite alone cannot accept a Go path. |
 
@@ -24,7 +24,7 @@ Do not create a second editable contract tree, regenerate frozen expected result
 
 Owner: integrator/backend. Requirements: IMPL-02–04, MG-01–04/MG-09, SYS-01/SYS-02. No hosting or real provider work.
 
-- [ ] Fix the demonstrated terminal-root work-cap defect first with terminal-root, next-world, next-candidate and partially completed paired-world regressions. Count before every charged operation; exclude incomplete worlds from paired estimates. Record effects on each caller/policy and use a new behavior version where needed; preserve frozen code/evidence and original saved advice.
+- [x] Fix the demonstrated terminal-root work-cap defect first with terminal-root, next-world, next-candidate and partially completed paired-world regressions. Count before every charged operation; exclude incomplete worlds from paired estimates. [UR-01 evidence](../../../qa/implementation/multi-game/urgent-repairs/budget.json) records `plan-evaluator-1.1.0`, unchanged policy/default pins and 47 focused passing checks. This closes the demonstrated charged-rollout defect; complete sampler/memory/admission/cancellation limits remain below.
 - [ ] Freeze one Go toolchain/module and minimal HTTP/PostgreSQL/schema tooling. Verify closed objects, integer ranges, optional versus null, empty collections, unknown fields and date/ID serialization against the active public schemas. Decode untrusted JSON with checked validators; ordinary permissive struct decoding is insufficient.
 - [ ] Specify canonical input bytes/digests, deterministic candidate/tie order, integer widths, unsigned overflow/bit operations, floating arithmetic/rounding and seeded RNG semantics. Preserve current identifiers/digests where replay depends on them; version incompatible algorithms. Game dealing keeps secure unbiased randomness and records actual chance material. Test replay from saved deals/actions, not just a seed.
 - [ ] Export the frozen original corpus and result fixtures through a private test-only harness: three modes, complete hands, Hearts sealed passing including all 286 candidates, Spades Nil/bags/teams, collection revisions, scoring, visibility and saved policy choices. Reuse M02's independent original reducer/observation oracles; add missing boundary cases without rewriting old goldens.
@@ -37,6 +37,8 @@ Completion: explicit portable contract and one proven Go seam, no new player-fac
 ## Acceptance register
 
 These IDs extend the existing MG requirements; they do not mark acceptance from a document review. Every item needs resulting-state assertions and actual evidence from its owning milestone.
+
+CR-FIX-001 supplies current TypeScript regression coverage for parts of SYS-02/03/04/05/08/09. Port those fixtures and verify the replacement path independently. Active V1 validation is not complete platform/history validation, a durable preparation claim or provider deadline fence is not general CPU isolation, and a client timeout does not cancel or roll back accepted server work. The [repair report](../../../qa/implementation/multi-game/urgent-repairs/status.md) states the exact scope and remaining gaps.
 
 | ID / owner | Required behavior and acceptance |
 |---|---|

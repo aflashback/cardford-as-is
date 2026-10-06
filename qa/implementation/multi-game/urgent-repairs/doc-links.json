@@ -1,0 +1,17 @@
+{
+  "command": "node .local/urgent-doc-links.mjs",
+  "files": [
+    "docs/superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md",
+    "planning/IMPLEMENTATION-START-HERE.md",
+    "planning/README.md",
+    "planning/CHANGELOG.md",
+    "planning/implementation/multi-game/backend-readiness.md",
+    "planning/implementation/requirements-and-tests.md",
+    "planning/decisions/CR-FIX-001-urgent-system-repairs.md",
+    "qa/implementation/multi-game/status.md",
+    "qa/implementation/multi-game/urgent-repairs/status.md"
+  ],
+  "checked": 225,
+  "missing": [],
+  "scope": "Local file targets only; fragment anchors and remote URLs are not checked."
+}

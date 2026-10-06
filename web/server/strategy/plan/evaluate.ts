@@ -14,6 +14,9 @@ const LIMITATIONS = [
   'Utilities order candidates. They are not probabilities of winning and are never shown as percentages.',
 ];
 
+/** SYS-02: attribution for guarded root/candidate/world budget boundaries. */
+export const PLAN_EVALUATOR_VERSION = 'plan-evaluator-1.1.0';
+
 /**
  * GP-04: bounded information-set playouts on common sampled worlds.
  * Deterministic for a given model, candidate list, budget and seed. No clock.
@@ -36,6 +39,7 @@ export function evaluateCandidates<World, Move>(
   if (!(noiseBand.z >= 0) || !(noiseBand.floor >= 0)) throw new Error('Invalid noise band.');
   const base = {
     schemaVersion: '1.0.0' as const,
+    evaluatorVersion: PLAN_EVALUATOR_VERSION,
     modelId: model.id,
     modelVersion: model.version,
     allocationModel: model.allocationModel,
@@ -52,6 +56,11 @@ export function evaluateCandidates<World, Move>(
     truncated = false,
     unavailable = 0;
   worlds: for (let index = 0; index < budget.worlds; index++) {
+    // Do not sample another world when no root operation can be reserved.
+    if (steps >= budget.maxSteps) {
+      truncated = true;
+      break;
+    }
     const sampled = model.sample(seeds.next());
     if (!sampled || !(sampled.weight > 0)) {
       unavailable++;
@@ -60,16 +69,21 @@ export function evaluateCandidates<World, Move>(
     const row: number[] = [];
     const rowEvents: Record<string, number>[] = [];
     for (const candidate of candidates) {
+      // A preceding terminal line can exhaust the cap without entering its continuation loop.
+      if (steps >= budget.maxSteps) {
+        truncated = true;
+        break worlds;
+      }
       const world = model.clone(sampled.world);
-      model.apply(world, candidate);
       steps++;
+      model.apply(world, candidate);
       while (model.actor(world) !== null) {
         if (steps >= budget.maxSteps) {
           truncated = true;
           break worlds;
         }
-        model.apply(world, model.defaultMove(world));
         steps++;
+        model.apply(world, model.defaultMove(world));
       }
       row.push(model.utility(world));
       rowEvents.push(model.events(world));

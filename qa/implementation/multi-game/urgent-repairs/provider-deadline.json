@@ -1,0 +1,40 @@
+{
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "requirement": "UR-06",
+  "scope": "Provider deadline/accounting race found during urgent-repair integration; fixture-only, no provider activation.",
+  "firstFailure": {
+    "report": "full-tests-initial.json",
+    "tests": 491,
+    "passed": 490,
+    "failed": 1,
+    "existingTest": "JEV: timeout is bounded and not retried; late expired admission sends no request",
+    "actual": "transport-failure",
+    "expected": "deadline"
+  },
+  "deterministicRed": {
+    "command": "node --test --test-isolation=none --test-name-pattern='inner deadline timer' web/server/tests/openrouter.test.ts",
+    "exitCode": 1,
+    "tests": 1,
+    "passed": 0,
+    "failed": 1,
+    "toolOutputChunk": "27ad15",
+    "actual": "transport-failure",
+    "expected": "deadline"
+  },
+  "fix": "beforeDeadline emits a typed DeadlineFailure. The attempt wrapper treats this as terminal expiry, aborts the shared lifetime, and refuses later accounting/dispatch even when the outer clock/timer has not yet observed expiry.",
+  "green": {
+    "command": "node --test --test-isolation=none web/server/tests/openrouter.test.ts",
+    "exitCode": 0,
+    "tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 534.2701,
+    "toolOutputChunk": "18c30e"
+  },
+  "sourceEvidence": "Final full-tests.json/native-source-manifest.json bind the exact provider and test bytes.",
+  "limitations": [
+    "No network/provider call, credential access, cost or policy promotion.",
+    "The added regression controls clock progression while retaining a short real timer; existing test deadlines/assertions are unchanged."
+  ]
+}

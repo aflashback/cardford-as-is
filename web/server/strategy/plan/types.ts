@@ -142,6 +142,8 @@ export type CandidateResult = {
 
 export type SearchSummary = {
   schemaVersion: '1.0.0';
+  /** Absent on original summaries issued before explicit evaluator attribution. Never backfilled. */
+  evaluatorVersion?: string;
   status: 'completed' | 'truncated' | 'unavailable';
   reason?: string;
   modelId: string;

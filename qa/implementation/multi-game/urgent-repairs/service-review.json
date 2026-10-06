@@ -1,0 +1,114 @@
+{
+  "evidenceVersion": "urgent-service-independent-review-1.0.0",
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "kind": "independent-read-only-source-review",
+  "scope": "Current V1 preparation claims, immutable issued results, owner-only accepted outcome retrieval, access/control fencing and historical compatibility.",
+  "sourceHashes": [
+    {
+      "path": "web/server/http/game-service.ts",
+      "sha256": "92f8d430022f5f37185051328de2130a1b789d723f9149fd1c30fd37313020fa"
+    },
+    {
+      "path": "web/server/http/trial-service.ts",
+      "sha256": "7211838ef9928861efd94460b330af5646b65a3e2a661843640d814114fd35c5"
+    },
+    {
+      "path": "web/server/http/app.ts",
+      "sha256": "c4f87127292a67fb6ba03dfd7a7a17183d22bc51774b4aebe6b8cf29122d3df5"
+    },
+    {
+      "path": "web/server/records/repository.ts",
+      "sha256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f"
+    },
+    {
+      "path": "web/server/records/migrations/006-preparation-attempts.sql",
+      "sha256": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+    },
+    {
+      "path": "web/server/tests/preparation-recovery.test.ts",
+      "sha256": "a0ff23882a101850e4cc526ba11f2e67fcf13e47424c8047b88d5d4e1ff6c345"
+    },
+    {
+      "path": "web/server/tests/access-review.test.ts",
+      "sha256": "4a03d18a67a247fb20a6a2af6d2118a1bc85ecf14477dcba6b42c90566e0fd15"
+    }
+  ],
+  "actionableFindingsRemaining": [],
+  "findings": [
+    {
+      "id": "SERVICE-REVIEW-01",
+      "priority": "P2",
+      "status": "fixed",
+      "file": "web/server/http/game-service.ts",
+      "area": "prepare claim publication and expiry",
+      "original": "Publication used PostgreSQL now(), which is fixed at transaction start. A transaction starting before expiry and then waiting for the owner lock could publish an expired claim.",
+      "verifiedFix": "TTL creation, ready reuse, claim reclamation, publication and current-job commit checks now use clock_timestamp(). Publication still requires the exact computing attempt and a live lease before updating result/expiry.",
+      "regression": "SYS-04: a claim expiring while publication waits for the player lock cannot publish",
+      "testAssessment": "The regression starts a publication transaction, confirms it is actually blocked on the PostgreSQL player row using pg_stat_activity, crosses a 200ms claim expiry, then releases the lock and asserts rejection plus unchanged game, absent current job and absent accepted command receipt.",
+      "evidenceRef": "qa/implementation/multi-game/urgent-repairs/service.json#/reviewCorrections/lockWaitRegression",
+      "recordedExecution": {
+        "runner": "urgent_prepare agent",
+        "red": {
+          "tests": 1,
+          "passed": 0,
+          "failed": 1,
+          "exitCode": 1
+        },
+        "green": {
+          "tests": 1,
+          "passed": 1,
+          "failed": 0,
+          "exitCode": 0
+        }
+      },
+      "independentVerification": "Read the final SQL and regression source; no independent rerun requested or performed."
+    },
+    {
+      "id": "SERVICE-REVIEW-02",
+      "priority": "P2",
+      "status": "fixed",
+      "file": "web/server/http/game-service.ts",
+      "area": "prepare cached legacy action-only job source attribution",
+      "original": "Supported legacy action-only jobs have no prepared analysis. Ready reuse labeled them code even when there was exactly one legal move.",
+      "verifiedFix": "The cached response retains forced provenance when a legacy job's validated current seat observation has one legal move; structured jobs retain their recorded analysis provenance. Reuse does not recompute or update original result/expiry.",
+      "regression": "SYS-04: ready legacy action-only singleton retains forced provenance without recomputation",
+      "testAssessment": "The regression reaches a real singleton bot choice through legal reducers, seeds an action-only ready job, installs an analyzer that throws if called, and checks forced attribution, the original receipt ID and exact unchanged stored job.",
+      "evidenceRef": "qa/implementation/multi-game/urgent-repairs/service.json#/reviewCorrections/finalFocused",
+      "independentVerification": "Read the final predicate and regression source; included in the reported final 15/15 preparation suite."
+    }
+  ],
+  "reviewedBoundaries": [
+    "Authenticated owner-row transactions still scope command receipts and ready trials by player_id; foreign receipts are not projected and revoked sessions fail identity checks.",
+    "Accepted outcomes are returned before new game/revision/control/coverage checks or analysis; recovery itself cannot advance gameplay or start a worker.",
+    "The unique computing claim and player lock prevent concurrent ordinary /prepare computations for the same game revision; attempt identity rejects superseded publications.",
+    "Ready work is reused without extending expiry or replacing result. Replacement preparation uses a fresh issued ID, preserving the old result/expiry in preparation_attempts while retaining the unique current jobs pointer.",
+    "Starting access generation, control lease, current revision, actor observation, decision identity and policy are checked at publication; access/control are checked again at acceptance.",
+    "The Hearts pass remains one atomic bundle and now rejects access-generation changes during preparation.",
+    "Public status returns accepted/unknown only; ready trial retrieval returns the previously stored safe public DTO. Client mutation success/reconciliation refreshes the current safe session separately."
+  ],
+  "referencedTests": {
+    "evidenceFile": "qa/implementation/multi-game/urgent-repairs/service.json",
+    "evidenceSha256": "9540c2e7ed364b2900edfee4fc3984b7e5e4db454454393e258c63f3dbd642df",
+    "sourceHashMatch": "All overlapping independently hashed source files match the service execution artifact.",
+    "finalFocused": {
+      "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/preparation-recovery.test.ts",
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck --workspace web",
+      "exitCode": 0
+    },
+    "attribution": "Execution is reported by urgent_prepare and its saved artifact. This reviewer performed final source/test inspection only."
+  },
+  "scopeLimits": [
+    "This closes the two actionable peer-review findings in the current repair; it is not complete SYS-04/05/07 or M03/V2 platform acceptance.",
+    "Synchronous Node computation, hard interruption, general execution admission and retained-history performance remain outside this source review.",
+    "Tests use multiple service instances with PostgreSQL, not separate OS server processes.",
+    "No new tests, database/provider calls, full-suite run, runtime edits or commit were performed by this final review.",
+    "The root agent owns final integrated/native/full-suite acceptance."
+  ]
+}

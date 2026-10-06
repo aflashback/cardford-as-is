@@ -53,6 +53,9 @@ const declarations = banner + "\nimport type { ValidateFunction } from 'ajv';\ni
 const validation = `${banner}\nimport * as compiled from './validators.mjs';\nimport type { ValidateFunction } from 'ajv';\nimport type { ContractName, ContractTypes } from './contracts.ts';\nconst validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = {\n${names.map(n => `  ${n}: compiled.validate${n},`).join('\n')}\n};\nexport function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {\n  return validators[name];\n}\nexport function validateContract<N extends ContractName>(name: N, value: unknown): value is ContractTypes[N] {\n  return contractValidator(name)(value);\n}\nexport function assertContract<N extends ContractName>(name: N, value: unknown): asserts value is ContractTypes[N] {\n  if (!validateContract(name, value)) throw new TypeError('Invalid ' + name);\n}\n${names.map(n => `export const validate${n} = contractValidator('${n}');`).join('\n')}\n`;
 // Paths are an inventory; DTO bodies always reference the same canonical schema.
 const routes = [
+  ['get','/api/identity',null,'IdentityView'],
+  ['get','/api/commands/{commandId}',null,'CommandStatusView'],
+  ['get','/api/review-trials/{commandId}',null,'ReviewTrial'],
   ['get','/api/dev/scenarios',null,'DevScenariosView'],
   ['get','/api/session',null,'SessionView'], ['post','/api/session/control','CommandEnvelope','SessionView'], ['post','/api/session/notes','CommandEnvelope','NotesView'], ['post','/api/sessions','NewSessionRequest','SessionView'],
   ['post','/api/session/actions','ActionsRequest','SessionView'], ['post','/api/session/prepare','PrepareRequest','PrepareView'],
@@ -69,6 +72,7 @@ for (const [method,path,input,output] of routes) {
   const operation = { responses: { '200': { description: 'Validated public view', content: { 'application/json': { schema: { $ref: `#/components/schemas/${output}` } } } }, default: { description: 'Safe typed error', content: { 'application/json': { schema: { $ref: '#/components/schemas/ApiError' } } } } } };
   if (input) operation.requestBody = { required: true, content: { 'application/json': { schema: { $ref: `#/components/schemas/${input}` } } } };
   if (path.includes('{decisionId}')) operation.parameters = [{ name: 'decisionId', in: 'path', required: true, schema: { type: 'string', minLength: 1, maxLength: 256 } }];
+  if (path.includes('{commandId}')) operation.parameters = [{ name: 'commandId', in: 'path', required: true, schema: { type: 'string', minLength: 1, maxLength: 256 } }];
   if (method === 'post' && path.startsWith('/api/session')) {
     operation.parameters ??= [];
     operation.parameters.push({ name: 'x-tricks-tab', in: 'header', required: true, schema: { type: 'string', minLength: 1, maxLength: 256 } });

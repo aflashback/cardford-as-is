@@ -22,6 +22,8 @@ export const validateCommandEnvelope: ValidateFunction<ContractTypes['CommandEnv
 export const validateNewSessionRequest: ValidateFunction<ContractTypes['NewSessionRequest']>;
 export const validateActionsRequest: ValidateFunction<ContractTypes['ActionsRequest']>;
 export const validatePrepareRequest: ValidateFunction<ContractTypes['PrepareRequest']>;
+export const validateCommandStatusView: ValidateFunction<ContractTypes['CommandStatusView']>;
+export const validateIdentityView: ValidateFunction<ContractTypes['IdentityView']>;
 export const validatePrepareView: ValidateFunction<ContractTypes['PrepareView']>;
 export const validateAdvanceRequest: ValidateFunction<ContractTypes['AdvanceRequest']>;
 export const validateNextHandRequest: ValidateFunction<ContractTypes['NextHandRequest']>;

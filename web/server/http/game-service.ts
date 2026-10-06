@@ -23,8 +23,9 @@ import { explain } from '../coaching/templates.ts';
 import { projectAdvice } from '../coaching/project.ts';
 import { shuffledDeck, randomDealer } from '../game-deal.ts';
 import type { DevScenarioDeal } from '../dev-scenarios.ts';
-import { ownedTransaction, idempotent, saveGame, savePlayer } from '../records/repository.ts';
+import { ownedTransaction, idempotent, readCommand, saveGame, savePlayer } from '../records/repository.ts';
 import type { Database, Transaction } from '../records/database.ts';
+import { validateStoredGameState } from '../records/state-validation.ts';
 import type { GameRow, PlayerRow, SavedDecisionAnalysis, ReasoningPolicyPin, PreparedBotDecision, BotDecisionAudit } from '../records/types.ts';
 import type {
   ActionsRequest,
@@ -34,6 +35,7 @@ import type {
   CommandEnvelope,
   ExposureRequest,
   HandUnlockRequest,
+  HandUnlockView,
   NewSessionRequest,
   PreferencesRequest,
   PrepareRequest,
@@ -45,6 +47,7 @@ import type {
   NotesView,
   AccountView,
   AccountCommand,
+  SessionView,
 } from '../../shared/contracts.ts';
 import { ApiFailure, invalid } from './errors.ts';
 import { coachAccess, decisionId, observationView, publicAction, sessionView } from './views.ts';
@@ -58,6 +61,8 @@ export interface StrategyOptions {
   policies?: Partial<Record<string, string>>;
   /** Test seam: observes every analysis call. Production uses the registered packs. */
   analyze?: (observation: SeatObservation, policyVersion: string | undefined) => DecisionAnalysis;
+  /** Test seam for cross-instance interruption between admission and computation. */
+  beforePrepare?: () => Promise<void>;
 }
 /** Resolve only future execution. Existing saved analyses and advice remain untouched. */
 export function resolveGamePolicy(game: GameRow): string {
@@ -209,7 +214,7 @@ function readBotJob(value: unknown, game: GameRow, strategy: Strategy): { action
   if (!legal || legal.kind === 'pass') invalid('Invalid computer decision.');
   return { action: legal, prepared };
 }
-async function persistAdvance(client: Transaction, game: GameRow, event: unknown, strategy: Strategy) {
+async function persistAdvance(client: Transaction, game: GameRow, event: unknown, strategy: Strategy, save = true) {
   game.revision++;
   ensureHumanAnalysis(game, strategy);
   game.document.frames.push(frame(game));
@@ -222,7 +227,7 @@ async function persistAdvance(client: Transaction, game: GameRow, event: unknown
     "UPDATE jobs SET status='expired' WHERE game_id=$1 AND status='ready' AND revision<>$2",
     [game.id, game.revision],
   );
-  await saveGame(client, game);
+  if (save) await saveGame(client, game);
 }
 async function insertGame(
   client: Transaction,
@@ -259,6 +264,7 @@ async function insertGame(
   };
   ensureHumanAnalysis(game, strategy);
   game.document.frames.push(frame(game));
+  validateStoredGameState(game);
   await client.query('INSERT INTO games(id,player_id,document) VALUES($1,$2,$3)', [
     id,
     player.id,
@@ -272,10 +278,12 @@ export class GameService {
   readonly pool: Database;
   readonly strategy: Strategy;
   readonly scenarios: readonly DevScenarioDeal[];
+  readonly beforePrepare: StrategyOptions['beforePrepare'];
   constructor(pool: Database, options: StrategyOptions = {}, scenarios: readonly DevScenarioDeal[] = []) {
     this.pool = pool;
     this.strategy = new Strategy(options);
     this.scenarios = structuredClone(scenarios);
+    this.beforePrepare = options.beforePrepare;
   }
   /**
    * STRAT-12: read the pending human decision, analyse it with no transaction open, then
@@ -326,6 +334,8 @@ export class GameService {
     );
   }
   async newSession(context: RequestContext, body: NewSessionRequest) {
+    const accepted = await this.accepted<SessionView>(context, body.commandId, { route: 'sessions', body });
+    if (accepted) return accepted.response;
     return this.frozen(context.token, () => this.replaceSession(context, body));
   }
   private async replaceSession(context: RequestContext, body: NewSessionRequest) {
@@ -366,6 +376,8 @@ export class GameService {
     );
   }
   async control(context: RequestContext, body: CommandEnvelope) {
+    const accepted = await this.accepted<SessionView>(context, body.commandId, { route: 'control', body, tab: context.tab });
+    if (accepted) return accepted.response;
     return ownedTransaction(this.pool, context.token, async (client, player, game) => {
       ownedGame(game, body.gameId);
       return idempotent(
@@ -384,13 +396,15 @@ export class GameService {
     });
   }
   async action(context: RequestContext, body: ActionsRequest) {
+    const accepted = await this.accepted<SessionView>(context, body.commandId, { route: 'action', body });
+    if (accepted) return accepted.response;
     return this.frozen(context.token, async () => {
       const passes = body.action.kind === 'pass' ? await this.preparePasses(context, body) : null;
       return this.applyAction(context, body, passes);
     }, true);
   }
   /** Sealed bot choices use their own original observations and run before the commit transaction. */
-  private async preparePasses(context: RequestContext, body: ActionsRequest): Promise<PreparedBotDecision[] | null> {
+  private async preparePasses(context: RequestContext, body: ActionsRequest): Promise<{ choices: PreparedBotDecision[]; accessGeneration: number } | null> {
     const snapshots = await ownedTransaction(this.pool, context.token, async (client, player, game) => {
       ownedGame(game, body.gameId);
       // An already accepted pass is replayed by the normal idempotency reader below.
@@ -407,19 +421,21 @@ export class GameService {
       const unpinned = game.document.reasoningPolicy === undefined;
       const policyVersion = this.strategy.policyForGame(game);
       if (unpinned) await saveGame(client, game);
-      return ([1, 2, 3] as const).map(seat => ({
+      return { accessGeneration: player.access_generation, choices: ([1, 2, 3] as const).map(seat => ({
         kind: 'bot-decision' as const, schemaVersion: '1.0.0' as const,
         decisionId: `${decisionId(game)}:pass:${seat}`, revision: game.revision, seat, policyVersion,
         observation: observe(game.document.state, seat),
-      }));
+      })) };
     });
-    return snapshots?.map(snapshot => {
+    if (!snapshots) return null;
+    await this.beforePrepare?.();
+    return { accessGeneration: snapshots.accessGeneration, choices: snapshots.choices.map(snapshot => {
       const analysis = this.strategy.analyze(snapshot.observation, snapshot.policyVersion);
       validateOriginalAnalysis(snapshot.observation, analysis, snapshot.policyVersion);
       return { ...snapshot, analysis, action: structuredClone(analysis.action) };
-    }) ?? null;
+    }) };
   }
-  private async applyAction(context: RequestContext, body: ActionsRequest, preparedPasses: PreparedBotDecision[] | null) {
+  private async applyAction(context: RequestContext, body: ActionsRequest, preparedPasses: { choices: PreparedBotDecision[]; accessGeneration: number } | null) {
     return this.change(context, body, 'action', async (client, player, game) => {
       const before = frame(game, body.action),
         obs = observe(game.document.state, 0),
@@ -428,9 +444,11 @@ export class GameService {
       let accepted: Parameters<typeof apply>[1];
       const passAudits: BotDecisionAudit[] = [];
       if (body.action.kind === 'pass') {
+        if (preparedPasses?.accessGeneration !== player.access_generation)
+          throw new ApiFailure(409, 'STALE_REVISION', 'Access changed while preparing passes. Retry this decision.');
         const passes: Four<Card[]> = [body.action.cards, [], [], []];
         for (const seat of [1, 2, 3] as const) {
-          const prepared = preparedPasses?.find(choice => choice.seat === seat);
+          const prepared = preparedPasses.choices.find(choice => choice.seat === seat);
           if (!prepared || prepared.decisionId !== `${id}:pass:${seat}` || prepared.revision !== game.revision ||
             prepared.policyVersion !== this.strategy.policyForGame(game) ||
             !isDeepStrictEqual(prepared.observation, observe(game.document.state, seat)) ||
@@ -457,7 +475,7 @@ export class GameService {
         if (level > 0) game.document.stats.helped++;
         if (level >= 3) game.document.stats.suggestions++;
       }
-      await persistAdvance(client, game, { kind: 'action', action: accepted }, this.strategy);
+      await persistAdvance(client, game, { kind: 'action', action: accepted }, this.strategy, false);
       game.document.decisions.push({
         id,
         handNumber: obs.handNumber,
@@ -477,17 +495,27 @@ export class GameService {
     route: string,
     operation: (client: Transaction, player: PlayerRow, game: GameRow) => Promise<T>,
   ): Promise<T> {
+    const accepted = await this.accepted<T>(context, body.commandId, { route, body });
+    if (accepted) return accepted.response;
     return ownedTransaction(this.pool, context.token, async (client, player, game) => {
-      ownedGame(game, body.gameId);
-      await requireCoverage(client, player, game);
       return idempotent(client, player.id, body.commandId, { route, body }, async () => {
+        ownedGame(game, body.gameId);
+        await requireCoverage(client, player, game);
         revision(game, body, context.tab);
         return operation(client, player, game);
       });
     });
   }
+  private accepted<T>(context: RequestContext, commandId: string, body: unknown) {
+    return ownedTransaction(this.pool, context.token, (client, player) =>
+      readCommand<T>(client, player.id, commandId, body), { loadGame: false });
+  }
   async prepare(context: RequestContext, body: PrepareRequest): Promise<PrepareView> {
-    const snapshot = await ownedTransaction(this.pool, context.token, async (client, player, game) => {
+    const accepted = await this.accepted<PrepareView>(context, body.commandId, { route: 'prepare', body });
+    if (accepted) return accepted.response;
+    const admitted = await ownedTransaction(this.pool, context.token, async (client, player, game) => {
+      const accepted = await readCommand<PrepareView>(client, player.id, body.commandId, { route: 'prepare', body });
+      if (accepted) return { cached: accepted.response };
       ownedGame(game, body.gameId);
       await requireCoverage(client, player, game);
       revision(game, body, context.tab);
@@ -497,35 +525,77 @@ export class GameService {
       const unpinned = game.document.reasoningPolicy === undefined;
       const policyVersion = this.strategy.policyForGame(game);
       if (unpinned) await saveGame(client, game);
-      return { observation: observe(state, state.turn), policyVersion, decisionId: decisionId(game), revision: game.revision, seat: state.turn };
+      const existing = (await client.query<{
+        id: string; result: unknown; access_generation: number; usable: boolean; control_token: string | null;
+      }>(`SELECT j.id,j.result,j.access_generation,
+          j.status='ready' AND j.expires_at>clock_timestamp() AS usable,a.control_token
+        FROM jobs j LEFT JOIN preparation_attempts a ON a.id=j.id
+        WHERE j.game_id=$1 AND j.revision=$2 AND j.player_id=$3`,
+      [game.id, game.revision, player.id])).rows[0];
+      if (existing?.usable && existing.access_generation === player.access_generation &&
+          (existing.control_token === null || existing.control_token === game.document.control.token)) {
+        const { prepared } = readBotJob(existing.result, game, this.strategy);
+        const response: PrepareView = { preparedDecisionId: existing.id, decisionId: decisionId(game),
+          revision: game.revision, source: prepared?.analysis.provenance === 'forced' ||
+            (!prepared && observe(state, state.turn).legalActions.length === 1) ? 'forced' : 'code' };
+        return { cached: await idempotent(client, player.id, body.commandId, { route: 'prepare', body }, async () => response) };
+      }
+      await client.query(`UPDATE preparation_attempts SET status='rejected'
+        WHERE game_id=$1 AND revision=$2 AND status='computing'
+          AND (expires_at<=clock_timestamp() OR access_generation<>$3 OR control_token<>$4)`,
+      [game.id, game.revision, player.access_generation, game.document.control.token]);
+      if ((await client.query(`SELECT 1 FROM preparation_attempts
+        WHERE game_id=$1 AND revision=$2 AND status='computing'`, [game.id, game.revision])).rowCount)
+        throw new ApiFailure(503, 'SERVICE_UNAVAILABLE', 'This decision is being prepared. Retry the same request.');
+      const attemptId = randomUUID();
+      await client.query(`INSERT INTO preparation_attempts
+        (id,player_id,game_id,revision,access_generation,control_token,status,expires_at)
+        VALUES($1,$2,$3,$4,$5,$6,'computing',clock_timestamp()+interval '30 seconds')`,
+      [attemptId, player.id, game.id, game.revision, player.access_generation, game.document.control.token]);
+      return { snapshot: { observation: observe(state, state.turn), policyVersion, decisionId: decisionId(game),
+        revision: game.revision, seat: state.turn }, attemptId, accessGeneration: player.access_generation };
     });
+    if (admitted.cached !== undefined) return admitted.cached;
+    const { snapshot, attemptId, accessGeneration } = admitted;
     // Computer decisions are always computed with no transaction open.
-    const analysis = this.strategy.analyze(snapshot.observation, snapshot.policyVersion);
-    validateOriginalAnalysis(snapshot.observation, analysis, snapshot.policyVersion);
-    const result: PreparedBotDecision = { kind: 'bot-decision', schemaVersion: '1.0.0', ...snapshot,
-      action: structuredClone(analysis.action), analysis };
-    return this.change(context, body, 'prepare', async (client, player, game) => {
-      if (this.strategy.policyForGame(game) !== snapshot.policyVersion) invalid('The recorded policy changed during preparation.');
-      const existing = (
-        await client.query<{ id: string }>('SELECT id FROM jobs WHERE game_id=$1 AND revision=$2', [
-          game.id,
-          game.revision,
-        ])
-      ).rows[0];
-      const id = existing?.id ?? randomUUID();
-      await client.query(
-        "INSERT INTO jobs(id,player_id,game_id,revision,access_generation,status,result,expires_at) VALUES($1,$2,$3,$4,$5,'ready',$6,now()+interval '10 minutes') ON CONFLICT(game_id,revision) DO UPDATE SET result=EXCLUDED.result,status='ready',expires_at=EXCLUDED.expires_at,access_generation=EXCLUDED.access_generation",
-        [id, player.id, game.id, game.revision, player.access_generation, result],
-      );
-      return {
-        preparedDecisionId: id,
-        decisionId: decisionId(game),
-        revision: game.revision,
-        source: snapshot.observation.legalActions.length === 1 ? 'forced' : 'code',
-      };
-    });
+    try {
+      await this.beforePrepare?.();
+      const analysis = this.strategy.analyze(snapshot.observation, snapshot.policyVersion);
+      validateOriginalAnalysis(snapshot.observation, analysis, snapshot.policyVersion);
+      const result: PreparedBotDecision = { kind: 'bot-decision', schemaVersion: '1.0.0', ...snapshot,
+        action: structuredClone(analysis.action), analysis };
+      return await this.change(context, body, 'prepare', async (client, player, game) => {
+        if (player.access_generation !== accessGeneration)
+          throw new ApiFailure(409, 'STALE_REVISION', 'Access changed during preparation. Prepare this decision again.');
+        if (this.strategy.policyForGame(game) !== snapshot.policyVersion || decisionId(game) !== snapshot.decisionId ||
+            !isDeepStrictEqual(observe(game.document.state, snapshot.seat), snapshot.observation))
+          invalid('The decision or recorded policy changed during preparation.');
+        const published = await client.query(`UPDATE preparation_attempts
+          SET status='ready',result=$2,expires_at=clock_timestamp()+interval '10 minutes'
+          WHERE id=$1 AND status='computing' AND expires_at>clock_timestamp() RETURNING expires_at`, [attemptId, result]);
+        if (!published.rowCount)
+          throw new ApiFailure(409, 'STALE_REVISION', 'This preparation expired. Prepare this decision again.');
+        // Preserve legacy issued jobs before moving the unique current-decision pointer.
+        await client.query(`INSERT INTO preparation_attempts
+          (id,player_id,game_id,revision,access_generation,status,result,expires_at)
+          SELECT id,player_id,game_id,revision,access_generation,'ready',result,expires_at FROM jobs
+          WHERE game_id=$1 AND revision=$2 ON CONFLICT(id) DO NOTHING`, [game.id, game.revision]);
+        await client.query(`INSERT INTO jobs(id,player_id,game_id,revision,access_generation,status,result,expires_at)
+          VALUES($1,$2,$3,$4,$5,'ready',$6,$7) ON CONFLICT(game_id,revision) DO UPDATE
+          SET id=EXCLUDED.id,result=EXCLUDED.result,status='ready',expires_at=EXCLUDED.expires_at,
+            access_generation=EXCLUDED.access_generation`,
+        [attemptId, player.id, game.id, game.revision, accessGeneration, result, published.rows[0].expires_at]);
+        return { preparedDecisionId: attemptId, decisionId: snapshot.decisionId, revision: snapshot.revision,
+          source: snapshot.observation.legalActions.length === 1 ? 'forced' as const : 'code' as const };
+      });
+    } catch (error) {
+      await this.pool.query("UPDATE preparation_attempts SET status='rejected' WHERE id=$1 AND status='computing'", [attemptId]);
+      throw error;
+    }
   }
   async advance(context: RequestContext, body: AdvanceRequest) {
+    const accepted = await this.accepted<SessionView>(context, body.commandId, { route: 'advance', body });
+    if (accepted) return accepted.response;
     return this.frozen(context.token, () => this.applyAdvance(context, body));
   }
   private async applyAdvance(context: RequestContext, body: AdvanceRequest) {
@@ -539,12 +609,15 @@ export class GameService {
         game.document.actions.push({ kind: 'collect' });
       } else {
         const job = (
-          await client.query<{ result: unknown; access_generation: number }>(
-            "SELECT result,access_generation FROM jobs WHERE id=$1 AND player_id=$2 AND game_id=$3 AND revision=$4 AND status='ready' AND expires_at>now()",
+          await client.query<{ result: unknown; access_generation: number; control_token: string | null }>(
+            `SELECT j.result,j.access_generation,a.control_token FROM jobs j
+              LEFT JOIN preparation_attempts a ON a.id=j.id
+              WHERE j.id=$1 AND j.player_id=$2 AND j.game_id=$3 AND j.revision=$4 AND j.status='ready' AND j.expires_at>clock_timestamp()`,
             [body.preparedDecisionId, player.id, game.id, game.revision],
           )
         ).rows[0];
-        if (!job || job.access_generation !== player.access_generation)
+        if (!job || job.access_generation !== player.access_generation ||
+            (job.control_token !== null && job.control_token !== game.document.control.token))
           throw new ApiFailure(409, 'STALE_REVISION', 'Prepare this decision again.');
         const { action, prepared } = readBotJob(job.result, game, this.strategy);
         const audit = botAudit(game, prepared, action);
@@ -559,6 +632,8 @@ export class GameService {
     });
   }
   async nextHand(context: RequestContext, body: CommandEnvelope) {
+    const accepted = await this.accepted<SessionView>(context, body.commandId, { route: 'next-hand', body });
+    if (accepted) return accepted.response;
     return this.frozen(context.token, () => this.applyNextHand(context, body));
   }
   private async applyNextHand(context: RequestContext, body: CommandEnvelope) {
@@ -636,6 +711,8 @@ export class GameService {
     return view;
   }
   async advice(context: RequestContext, body: AdviceRequest) {
+    const accepted = await this.accepted<AdviceView>(context, body.commandId, { route: 'advice', body });
+    if (accepted) return accepted.response;
     await this.freezeAnalysis(context.token);
     const saved = await ownedTransaction(this.pool, context.token, async (client, player, game) => {
       ownedGame(game, body.gameId);
@@ -653,8 +730,10 @@ export class GameService {
     });
   }
   async unlock(context: RequestContext, body: HandUnlockRequest) {
-    await this.freezeAnalysis(context.token);
     const envelope = { ...body, commandId: body.requestId };
+    const accepted = await this.accepted<HandUnlockView>(context, body.requestId, { route: 'unlock', body: envelope });
+    if (accepted) return accepted.response;
+    await this.freezeAnalysis(context.token);
     return ownedTransaction(this.pool, context.token, async (client, player, game) => {
       ownedGame(game, body.gameId);
       return idempotent(client, player.id, body.requestId, { route: 'unlock', body: envelope }, async () => {

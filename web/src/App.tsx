@@ -1212,7 +1212,11 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       )}
       {modal === 'review' && (
         <Dialog title="Review current game" onClose={closeModal} wide>
-          <ReviewPanel session={session} envelope={controller.envelope} />
+          <ReviewPanel
+            session={session}
+            envelope={controller.envelope}
+            onOwnerChanged={controller.invalidateOwner}
+          />
         </Dialog>
       )}
       {controller.error && (

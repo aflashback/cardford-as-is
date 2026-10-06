@@ -1,0 +1,225 @@
+{
+  "evidenceVersion": "urgent-service-repair-1.0.0",
+  "requirements": [
+    "SYS-04",
+    "SYS-05",
+    "SYS-07"
+  ],
+  "scope": "Current V1 preparation and owned accepted-outcome recovery; partial system requirements, not M03 acceptance.",
+  "baseHead": "5ddebc5d9b113cb381c16d7f7c406ab732db8d08",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "sourceFiles": [
+    {
+      "path": "web/server/http/game-service.ts",
+      "sha256": "92f8d430022f5f37185051328de2130a1b789d723f9149fd1c30fd37313020fa"
+    },
+    {
+      "path": "web/server/http/trial-service.ts",
+      "sha256": "7211838ef9928861efd94460b330af5646b65a3e2a661843640d814114fd35c5"
+    },
+    {
+      "path": "web/server/http/app.ts",
+      "sha256": "4368e66c20405e1ad3cff8fa96b54bff8ad2307e89cff57068a1e406794857f6"
+    },
+    {
+      "path": "web/server/records/repository.ts",
+      "sha256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f"
+    },
+    {
+      "path": "web/server/records/migrations/006-preparation-attempts.sql",
+      "sha256": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+    },
+    {
+      "path": "web/server/billing/database-test.ts",
+      "sha256": "ea613b27d53123a43cb87ac87427906b24eec0c9fcdb433bc8fa520c15012ad5"
+    },
+    {
+      "path": "web/server/tests/preparation-recovery.test.ts",
+      "sha256": "1a56a90133ed96f68f0ee7fd0217adb43b3c26956a44a6c50e343ba7064f946b"
+    },
+    {
+      "path": "web/shared/contracts.schema.json",
+      "sha256": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2"
+    },
+    {
+      "path": "web/shared/contracts.ts",
+      "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f"
+    },
+    {
+      "path": "web/shared/validation.ts",
+      "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2"
+    },
+    {
+      "path": "web/shared/validators.mjs",
+      "sha256": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637"
+    },
+    {
+      "path": "web/shared/validators.d.mts",
+      "sha256": "0dec2e12e585d8e804b18fbf4a85ad9824ca8f04a3df6a221e9869c57616a399"
+    },
+    {
+      "path": "web/shared/openapi.json",
+      "sha256": "ca47d15c98f8dea6e6f6b96b0dbc227e3a60a436d7053577a1b02cd43b285761"
+    },
+    {
+      "path": "web/scripts/generate-contracts.mjs",
+      "sha256": "228fe399b1158dc4ff93b23a50d1b7d1efdb9e9480dfdb6dd3b9ee378593cf0f"
+    }
+  ],
+  "behavior": {
+    "claim": "A player-locked transaction reserves a unique computing attempt for (game, revision) before computation. Another live claimant receives SERVICE_UNAVAILABLE and retries the same command. Claims expire after 30 seconds; publication fences by unique attempt ID.",
+    "results": "Ready jobs are reused before calculation without changing result or expiry. New authorization/expiry attempts use fresh receipt IDs; original issued results and expiry remain in preparation_attempts. jobs retains UNIQUE(game_id,revision).",
+    "publication": "Revalidate owner/session, active game, current coverage, captured access generation, control lease, revision, observation, decision identity, policy and claim expiry before publication. Commit checks access generation/control again.",
+    "hearts": "One atomic human-plus-three-bot pass bundle; starting access generation is rechecked. Human transitions now save the complete final game document once in the transaction.",
+    "reconciliation": "Exact owned accepted command replay precedes new-work guards and computation. GET /api/commands/:commandId returns accepted/unknown; GET /api/review-trials/:commandId returns an owned already-ready public trial only. Receipt reads do not load or project unsupported active state. Current safe session is fetched separately by the client."
+  },
+  "primaryCheck": {
+    "sourceStage": "Initial repair before the independently reviewed expiry-clock and legacy-forced corrections below.",
+    "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/preparation-recovery.test.ts web/server/tests/policy-pinning.test.ts web/server/tests/analysis-outside-transaction.test.ts",
+    "exitCode": 0,
+    "tests": 31,
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 76382.1805,
+    "coverage": [
+      "Two service instances reserve one compute and reuse ready result/expiry; eight concurrent same-command advances accept once.",
+      "Revoke/regrant, lease transfer, game replacement, revision advance and expiry during compute publish no result, events or audit.",
+      "A reclaimed expired claim publishes a different fixture result; late first worker cannot replace it.",
+      "Expired/access-changed/control-changed receipt gets a fresh ID and retains original result and expiry; old ID cannot advance.",
+      "Hearts revoke/regrant during sealed passing preserves all four original hands and records.",
+      "Accepted action/advice/unlock reconcile after replacement and expired coverage; fresh work remains denied and foreign/revoked sessions cannot recover.",
+      "Owned status and public ready trial are readable with unsupported active state; foreign status is unknown and foreign trial is 404.",
+      "Original policy/advice/audit tests and full Solo/Partners hands remain passing; searched analysis is outside transactions."
+    ]
+  },
+  "preliminaryCheck": {
+    "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/preparation-recovery.test.ts",
+    "exitCode": 1,
+    "tests": 13,
+    "passed": 12,
+    "failed": 1,
+    "skipped": 0,
+    "classification": "Test fixture error: fabricated stored ReviewTrial used worker-result fields instead of the public DTO, so response validation correctly returned 503. Fixture corrected before the primary passing run. This is not pre-repair defect reproduction."
+  },
+  "additionalCheck": {
+    "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/access-review.test.ts web/server/tests/integration.test.ts",
+    "exitCode": 1,
+    "tests": 11,
+    "passed": 9,
+    "failed": 2,
+    "skipped": 0,
+    "durationMs": 33551.3505,
+    "failure": "Both failures were connect ETIMEDOUT 127.0.0.1:54330: first access-review test failed creating its isolated schema; integration file failed during top-level migrate. Integration cases did not execute.",
+    "passedCoverage": "Remaining nine access-review cases, including saved/expired advice, historical unlock, unavailable/expired/reclaimed trial attempts and saved trial after coverage expiry.",
+    "diagnosticRerun": {
+      "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none --test-name-pattern='limited family coverage never' web/server/tests/access-review.test.ts",
+      "exitCode": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 1275.5919
+    }
+  },
+  "reviewCorrections": {
+    "changes": [
+      "All V1 preparation TTL creation and comparisons now use clock_timestamp(), so a transaction that waits for the player lock cannot use its earlier start time to publish or commit expired work.",
+      "Reused legacy action-only singleton decisions retain forced provenance without recomputation or changing stored job bytes/expiry."
+    ],
+    "lockWaitRegression": {
+      "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none --test-name-pattern='claim expiring while publication' web/server/tests/preparation-recovery.test.ts",
+      "method": "Pause immediately before the publication player lock, shorten the claim to 200 milliseconds, hold the player row in a separate PostgreSQL transaction, assert pg_stat_activity reports a Lock wait, cross the expiry, then release. Assert no receipt/job/event/audit/game mutation is published.",
+      "red": {
+        "exitCode": 1,
+        "tests": 1,
+        "passed": 0,
+        "failed": 1,
+        "durationMs": 1116.5635,
+        "failure": "Missing expected rejection: the expired result was published while now() still represented the transaction start."
+      },
+      "green": {
+        "exitCode": 0,
+        "tests": 1,
+        "passed": 1,
+        "failed": 0,
+        "durationMs": 1231.4155
+      },
+      "harnessCorrection": "The first diagnostic run was interrupted because the dedicated blocker connection was released by a later teardown hook, after pool.end. Cleanup moved into finally before the meaningful red/green runs."
+    },
+    "finalFocused": {
+      "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/preparation-recovery.test.ts",
+      "exitCode": 0,
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 7442.9847
+    },
+    "typecheck": {
+      "command": "npm run typecheck --workspace web",
+      "exitCode": 0
+    }
+  },
+  "identityCompositionCorrection": {
+    "behavior": "GET /api/identity returns the generated closed IdentityView {playerId:string}. It uses the existing authenticated request context and ownedTransaction(loadGame:false), so ownership verification does not decode quarantined active state. It returns no account profile, access, game data or lease token and never creates an identity. AccountView validation remains unchanged.",
+    "boundaryCoverage": "Null/corrupt and unknown-game state; exact owned ID only and no game mutation; another session returns only its own ID; caller playerId query rejects; foreign Origin rejects; missing/revoked/expired sessions reject; no cookie or new player on unauthenticated calls.",
+    "red": {
+      "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none --test-name-pattern='owner-only identity' web/server/tests/preparation-recovery.test.ts",
+      "exitCode": 1,
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "durationMs": 824.5894,
+      "failure": "Missing endpoint returned 404 instead of the required owned identity."
+    },
+    "finalFocused": {
+      "command": "node --env-file=.env.local --env-file=.local/m00-test.env --test --test-isolation=none web/server/tests/preparation-recovery.test.ts web/server/tests/contracts.test.ts",
+      "exitCode": 0,
+      "tests": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 7618.398
+    },
+    "checks": [
+      {
+        "command": "npm run typecheck --workspace web",
+        "exitCode": 0
+      },
+      {
+        "command": "node web/scripts/generate-contracts.mjs --check",
+        "exitCode": 0
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0
+      }
+    ]
+  },
+  "staticChecks": [
+    {
+      "command": "npm run typecheck --workspace web",
+      "exitCode": 0
+    },
+    {
+      "command": "node web/scripts/generate-contracts.mjs --check",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "No live provider calls, model promotion, policy/rule/default changes, hosting, Go code, capacity test or completed V2 platform migration.",
+    "Computation remains synchronous on the Node event loop; the short claim TTL fences publication but does not interrupt CPU. General worker isolation and capacity admission remain pending.",
+    "Issued old receipts remain historical outcomes; status unknown is not proof that an in-flight mutation has failed.",
+    "The tests use two GameService instances sharing PostgreSQL and explicit barriers, not two independent OS server processes.",
+    "The initial 13-case focused suite has no controlled pre-fix red run; the later expiry-clock regression has a recorded red/green pair. Full integration and browser acceptance are owned by the parent task and not claimed by this artifact."
+  ]
+}
