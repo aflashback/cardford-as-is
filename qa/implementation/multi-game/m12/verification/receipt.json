@@ -1,0 +1,147 @@
+{
+  "captures": {
+    "node": {
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "shutdownError": null,
+      "timedOut": false,
+      "interrupted": false,
+      "outputLimitExceeded": false,
+      "elapsedMs": 291913.8402,
+      "status": "failed",
+      "output": "node.txt",
+      "sha256": "9a2724d38a113a89d963d95bcc00d7627bbb885d9e8e875db953bc051a50ccbb"
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "shutdownError": null,
+      "timedOut": false,
+      "interrupted": false,
+      "outputLimitExceeded": false,
+      "elapsedMs": 8383.6134,
+      "status": "passed",
+      "output": "typecheck.txt",
+      "sha256": "881846e8f93f1d1cd4757111e4776ac9772aa52be5a80f8dded04fd15ce12756"
+    },
+    "contracts": {
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "shutdownError": null,
+      "timedOut": false,
+      "interrupted": false,
+      "outputLimitExceeded": false,
+      "elapsedMs": 2246.2185999999997,
+      "status": "passed",
+      "output": "contracts.txt",
+      "sha256": "988ae89e6f264cf9befdb92b58f9ee01bb584990de20221e1f6294da154e0795"
+    },
+    "build": {
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "shutdownError": null,
+      "timedOut": false,
+      "interrupted": false,
+      "outputLimitExceeded": false,
+      "elapsedMs": 10318.7278,
+      "status": "passed",
+      "output": "build.txt",
+      "sha256": "a29312b100e2d70345b876ca8451b7e607c8ae388eabe368205a014d24d7f0e8"
+    },
+    "artifacts": {
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "shutdownError": null,
+      "timedOut": false,
+      "interrupted": false,
+      "outputLimitExceeded": false,
+      "elapsedMs": 1127.5624,
+      "status": "passed",
+      "output": "artifacts.txt",
+      "sha256": "bb967604db54e54cd7cc1acdd9520513395d95be535c05ceb10c3eaa7f1e4304"
+    },
+    "vet": {
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "shutdownError": null,
+      "timedOut": false,
+      "interrupted": false,
+      "outputLimitExceeded": false,
+      "elapsedMs": 3854.7287,
+      "status": "passed",
+      "output": "vet.txt",
+      "sha256": "cbe4fbcabb2d472be7bce5f034e81d935f56e932eeb3ea30d607925383c39626"
+    },
+    "cli-build": {
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "shutdownError": null,
+      "timedOut": false,
+      "interrupted": false,
+      "outputLimitExceeded": false,
+      "elapsedMs": 4437.0447,
+      "status": "passed",
+      "output": "cli-build.txt",
+      "sha256": "c9b800e09c4224f0bf7ae62904c18292f19236e14a8e092ade2a60fb7c994d3e"
+    }
+  },
+  "node": {
+    "passed": 536,
+    "failed": 1,
+    "skipped": 0,
+    "resolution": "Raw token fragment identity/registration corrected; focused pass recorded in ../../m06/raw-schema-regression.json. Original whole-suite failure retained, not relabeled."
+  },
+  "go": {
+    "receipt": "../go-final/receipt.json",
+    "topLevelPassed": 273,
+    "passedIncludingSubtests": 1664,
+    "failed": [
+      {
+        "Package": "cardford/server/internal/records",
+        "Test": "TestM04EStatsIgnoreUnrelatedBotRecordBytes"
+      }
+    ],
+    "skipped": [
+      {
+        "Package": "cardford/server/internal/evaluation/partnerdevelopment",
+        "Test": "TestFreshPairedPartnerDevelopment"
+      },
+      {
+        "Package": "cardford/server/internal/http",
+        "Test": "TestDemoWebRejectsSymlinkedBuildAsset"
+      },
+      {
+        "Package": "cardford/server/internal/records",
+        "Test": "TestM04ETerminalFixtureInstall"
+      },
+      {
+        "Package": "cardford/server/internal/records",
+        "Test": "TestStartupDiagnosticsWindowsProbe"
+      },
+      {
+        "Package": "cardford/server/internal/service",
+        "Test": "TestM04FPreparedRequestProfile"
+      },
+      {
+        "Package": "cardford/server/internal/service",
+        "Test": "TestM06TokenBrowserFixtureHost"
+      }
+    ],
+    "postCaptureChanges": [
+      "server/internal/records/platform_stats_test.go"
+    ],
+    "resolution": "The only failed new stats test used an internal uncredentialed fixture context. Corrected to authenticate a real local identity; exact ErrReadDenied assertion passed in stats-revocation-final.txt. Production code unchanged after sweep."
+  },
+  "provider": {
+    "mode": "off",
+    "attempts": 0,
+    "observedModel": null
+  }
+}

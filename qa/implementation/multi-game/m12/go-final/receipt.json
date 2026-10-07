@@ -1,0 +1,1138 @@
+{
+  "receipt": {
+    "exitCode": 1,
+    "signal": null,
+    "error": null,
+    "shutdownError": null,
+    "timedOut": false,
+    "interrupted": false,
+    "outputLimitExceeded": false,
+    "elapsedMs": 403459.9679,
+    "status": "failed"
+  },
+  "args": [
+    "scripts/windows-env.mjs",
+    "go",
+    "test",
+    "-p=1",
+    "./server/...",
+    "-count=1",
+    "-timeout=10m",
+    "-json"
+  ],
+  "unchanged": true,
+  "sources": [
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    },
+    {
+      "path": "scripts/bounded-native-run.mjs",
+      "sha256": "c896ca9e067413ac880ff2e4cc7aeacc78c07a8eef8ed9206095a2cdeab6ddd2"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "scripts/windows-tools.json",
+      "sha256": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4"
+    },
+    {
+      "path": "server/cmd/cardford/main.go",
+      "sha256": "212c6be7022666f276b545b70498760d1c683941fa35cfdb955f40102034a187"
+    },
+    {
+      "path": "server/cmd/cardford/main_test.go",
+      "sha256": "6119c854a72dd34a42b383f085da8f19d3a7faa6e4526f449aab25223883b935"
+    },
+    {
+      "path": "server/cmd/m02a/main.go",
+      "sha256": "dcdc0b68a3fe87c94fc4c5ced88851cdb1f5779b4295129794ef5347cfb06bb4"
+    },
+    {
+      "path": "server/cmd/perf/main.go",
+      "sha256": "c9d82c37440175a2ed5fb9fccbd6277994c3cd7d73af6019cf0c07552c813e8a"
+    },
+    {
+      "path": "server/cmd/perf/metrics_windows.go",
+      "sha256": "397bef0b3616e8be9e15cfc8a53872bc46ff81310fc6ee3d78719b62d2691fa7"
+    },
+    {
+      "path": "server/internal/access/config.go",
+      "sha256": "9934101d72377f918f6c835c645161177fa77ff249f0158ef217463cc89418eb"
+    },
+    {
+      "path": "server/internal/access/launch.json",
+      "sha256": "546352d87c2f9fa6bc35406a407450f6f8d90633671742046cd05cfa1be76128"
+    },
+    {
+      "path": "server/internal/access/local-fixture.json",
+      "sha256": "2e62504311dc15ea210522262ddd90c19228e217f434f667ed65a3ebe22f65c3"
+    },
+    {
+      "path": "server/internal/access/policy.go",
+      "sha256": "5ac0e03f97f1fe6c1a648fe0b1ca4487ffa7fae210b4a12d8ee24f0aa705868b"
+    },
+    {
+      "path": "server/internal/access/policy_test.go",
+      "sha256": "e98af857949b5e87175842ee0645a62b1f3af0cdef2af0348288750cd8fa610b"
+    },
+    {
+      "path": "server/internal/access/types.go",
+      "sha256": "d130a8fcffe137e68028e1af67733e3d0f49690cce98622a7ac11a117e2a7d19"
+    },
+    {
+      "path": "server/internal/coaching/explain.go",
+      "sha256": "16dbf34d9e1fab214e58fd0aaaa1d6d1d7bcb58a40dce1a1a33b6ad9e8068f7f"
+    },
+    {
+      "path": "server/internal/coaching/explain_test.go",
+      "sha256": "602c5c42e04016af6557b3e5f2e10b0b6c49a70e8637bb6ac25efb984fb2b202"
+    },
+    {
+      "path": "server/internal/coaching/original_samples_test.go",
+      "sha256": "9c9579d269ce64c21c3b342cfd59ae7365fe9ba7ab29669c1fda7f42a08396d0"
+    },
+    {
+      "path": "server/internal/coaching/project.go",
+      "sha256": "e06ecd8c1257c789524db3732eff5511944516a834ef256b521ecae7e7065aef"
+    },
+    {
+      "path": "server/internal/coaching/project_test.go",
+      "sha256": "1cc49498a7db11e4106146cd178ef3d7f002ecd045a116ffa801ee7506989b4c"
+    },
+    {
+      "path": "server/internal/compatibility/modules.go",
+      "sha256": "16c022c45871b3e1b60ed750c240908bce474227339946cc2480da30066a3bf0"
+    },
+    {
+      "path": "server/internal/compatibility/parity_test.go",
+      "sha256": "077c1947abe076264e2a2e0b8a4c1bf0a390a141cdd82994e334ff3a64b11038"
+    },
+    {
+      "path": "server/internal/compatibility/policy_parity_test.go",
+      "sha256": "ea33b8553aa828315f8c1bae0055795f8fa81457cb2333aa2e37ff3b2cc60c5b"
+    },
+    {
+      "path": "server/internal/compatibility/service_prepare_test.go",
+      "sha256": "aebb94e84b448f55acc1083795ea0b9268efcb86dce6208301901d937e2acb11"
+    },
+    {
+      "path": "server/internal/compatibility/session_parity_test.go",
+      "sha256": "8c1caba140ae27b746b52565db0e6fe4f6cdbaf1cce5f68d6710faa586306fee"
+    },
+    {
+      "path": "server/internal/conformance/token.go",
+      "sha256": "f8cab9252d90c0dfa7d3620173e5c19f8cf4e887ad4edc7a941e80e78cf6d8f9"
+    },
+    {
+      "path": "server/internal/conformance/token_session.go",
+      "sha256": "8e2f3a98edaf6e0824dbdb7fa596f7de0c5185974014bddbc095c7a2fa6e6585"
+    },
+    {
+      "path": "server/internal/conformance/token_session_test.go",
+      "sha256": "89b12fdaba3c74b6b1afe1f65b578e7cca6e27a7515b23b1a858bdbf5f344103"
+    },
+    {
+      "path": "server/internal/conformance/token_test.go",
+      "sha256": "b379af07b71939958c142d36b22da5bd61725b746ca6b64e88ff446165c5cb60"
+    },
+    {
+      "path": "server/internal/contracts/bindings.generated.go",
+      "sha256": "c75d5b6b68e15330c5616122f53bb8bad8d3effd5eb6de062d48bc25356a63c1"
+    },
+    {
+      "path": "server/internal/contracts/bindings.generated_test.go",
+      "sha256": "ed0521c98723e1ae5efe9da26c7833a41253a60aeaf4e21cd27f1e6b487108dc"
+    },
+    {
+      "path": "server/internal/contracts/contracts_test.go",
+      "sha256": "9385ee479d903c4ddf07997e7ee26cd0e897420ed241bfda7904ed39be420b4d"
+    },
+    {
+      "path": "server/internal/contracts/local_service_test.go",
+      "sha256": "9efccd8916f4a3424f8d9a278e6f4a43bb45f5e78b58ce4443cb6d36b6b5a15e"
+    },
+    {
+      "path": "server/internal/contracts/parser_test.go",
+      "sha256": "9273558151644f8b2e7c80671018d518184ec9634ed4bd78d48c051a31ec9d75"
+    },
+    {
+      "path": "server/internal/contracts/schema.generated.json",
+      "sha256": "e5c285206da84c55b48eadc0629f717644fda41c26826ea36155da73da3e27a3"
+    },
+    {
+      "path": "server/internal/contracts/semantics.go",
+      "sha256": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119"
+    },
+    {
+      "path": "server/internal/contracts/testdata/manifest.json",
+      "sha256": "092dca1e35ddfffdc8d50389dfc9fca29e5081e6480345b1557eecde7cbd255c"
+    },
+    {
+      "path": "server/internal/contracts/testdata/semantics-fixtures.json",
+      "sha256": "1c59c5afa022fb2469fb6987ea945f7efb01afcc11f128812225357dd79e84ee"
+    },
+    {
+      "path": "server/internal/contracts/testdata/validation-fixtures.json",
+      "sha256": "1fe9f8149c056447b12f9d5093eda7a9c09923278f11d2bf2eaf7d65754cdcc8"
+    },
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "e531d8df1cf7a6ef7451363846f4c076f377a5010e84ee94a3f64cc0749de071"
+    },
+    {
+      "path": "server/internal/demo/demo.go",
+      "sha256": "d7a72e51c4f5046bb7561f9bd6de0e106eb031a2eaa12848b0f51034193c07eb"
+    },
+    {
+      "path": "server/internal/demo/demo_test.go",
+      "sha256": "b5abf6aa1ee838a757064d7025c13c03597ca7601a09177ed16c8e0b057b6a33"
+    },
+    {
+      "path": "server/internal/evaluation/partnerdevelopment/development_test.go",
+      "sha256": "829c1f876118bfd093662cf3512c7ab3536d91cd0bd37f8ffb44b2726c6cdfd2"
+    },
+    {
+      "path": "server/internal/gamekernel/module.go",
+      "sha256": "664c90d6f70b284e070deb7f8b49e146b669e1f118197f1d62f338b1689295fd"
+    },
+    {
+      "path": "server/internal/gamekernel/replay.go",
+      "sha256": "de5d0dd1caf3cabf2d308603e0741af917d11d003b8ea2cf6d03cd636403f182"
+    },
+    {
+      "path": "server/internal/gamekernel/replay_test.go",
+      "sha256": "02d9a648b69767e057ba2d5a21ce074f8427dfa878090e6c0e30e6ade0ce7cae"
+    },
+    {
+      "path": "server/internal/gamekernel/session.go",
+      "sha256": "2b8fc994d612ec6c29826d5cdff7186f1dad108b6472be0c541a3b947db0cad3"
+    },
+    {
+      "path": "server/internal/gamekernel/session_codec.go",
+      "sha256": "8cf229a3ee2716c6194a676f0d2e3d75430b6c95fc1e1750d6b19bc99710a1b3"
+    },
+    {
+      "path": "server/internal/gamekernel/session_event_test.go",
+      "sha256": "2cca396203449ba3d232586ba9f05926945ca21b1b73e2705c63bbfcbd50422e"
+    },
+    {
+      "path": "server/internal/gamekernel/session_execution.go",
+      "sha256": "9393e9cbb5c9fb15da4b77fbb6b2386184284d77528540f13c242f5a0add87fc"
+    },
+    {
+      "path": "server/internal/gamekernel/session_presentation.go",
+      "sha256": "124c6e219c6d9ed7e6d23076b202dc94fb39c78a654e6735b9d0ad3f445773f6"
+    },
+    {
+      "path": "server/internal/gamekernel/session_test.go",
+      "sha256": "24e55f648dff1bec4e72047046c29ff7354414250772b4c1d5d58ece327ae1bb"
+    },
+    {
+      "path": "server/internal/gamekernel/snapshot.go",
+      "sha256": "9336e615d4cd2decc87fde4eb71f9cc3b0e9a08fa1377ecc862d77092013201a"
+    },
+    {
+      "path": "server/internal/gamekernel/snapshot_test.go",
+      "sha256": "fa56e0afa1084de78dc47a0546ce97250040a00f5642b730f7632da7d368354f"
+    },
+    {
+      "path": "server/internal/games/cardcontinuation/adapter.go",
+      "sha256": "94d954bfa4ec76913f69731eaca7f96124a3a6966442b916d7cd8fecdb9d8e0d"
+    },
+    {
+      "path": "server/internal/games/cardcontinuation/adapter_test.go",
+      "sha256": "fba4b4e5922412f570e3ca8f2b0d0bc9d07af5a3657f7d1cad3c9f40928e657a"
+    },
+    {
+      "path": "server/internal/games/cardcontinuation/chance.go",
+      "sha256": "06285a8420b275e0b66a824d4be4f21a9c24a946c45d026ab6c06a86ab9d142e"
+    },
+    {
+      "path": "server/internal/games/cardcontinuation/continuation_test.go",
+      "sha256": "d1da52ad6cd87ae418f8cf0d77bfe1c0516086293b818a2c861ff1384c50d027"
+    },
+    {
+      "path": "server/internal/games/cardcontinuation/sampler.go",
+      "sha256": "39c6bb928484dbe6f9c4c2b6b2c53f22b9bc8b31df7543b6f21c27eb682beca5"
+    },
+    {
+      "path": "server/internal/games/hearts/coaching/legacy.go",
+      "sha256": "10859b3bf116aeb4c06a9930db415a394797240376010f00b3b6ca907073adcc"
+    },
+    {
+      "path": "server/internal/games/hearts/coaching/legacy_test.go",
+      "sha256": "1a2013b0663c25ad25b896093a458848784c6117b892c0e1b6e26ec4a3a246c1"
+    },
+    {
+      "path": "server/internal/games/hearts/continuation_test.go",
+      "sha256": "9d371d856a74de8e1b2cff6b5fcf2d262418f93ffb2173f4e5f5e2f0919a5bba"
+    },
+    {
+      "path": "server/internal/games/hearts/engine.go",
+      "sha256": "84fff9477895527fd7ab3c558ecca863bacd34308fe6e75e1a228f78db396c5d"
+    },
+    {
+      "path": "server/internal/games/hearts/illustration.go",
+      "sha256": "b901246a6a8c7e715ba426ee3046f57cb638c979a8977d73735ee96451d82552"
+    },
+    {
+      "path": "server/internal/games/hearts/illustration_test.go",
+      "sha256": "51a48a115ef62c87404db5c5a83f9cc5f7bbede33acc1704e054d5917cfc5859"
+    },
+    {
+      "path": "server/internal/games/hearts/observation.go",
+      "sha256": "c5965f5a58d4deef46504e68f883bad76ed2e39d435355618271c99d64110604"
+    },
+    {
+      "path": "server/internal/games/hearts/opening.go",
+      "sha256": "d7aec79c19251f422b515750043fd51a668e00f5fee6acdc3ae3f93884eb82a1"
+    },
+    {
+      "path": "server/internal/games/hearts/opening_test.go",
+      "sha256": "7ed90d1b8c94d10e0c7742eb128f2e9ca319cabd85e3dec560e6b07a15108fcd"
+    },
+    {
+      "path": "server/internal/games/hearts/reasoning/baseline.go",
+      "sha256": "2d2e2897ec389d026fd76349a7c15658b4fd83e31b7d915e7071d7710b5f6a36"
+    },
+    {
+      "path": "server/internal/games/hearts/reasoning/baseline_test.go",
+      "sha256": "87c9d8540898720146bef211b912fdf751f7a1cf9c2d810cb076dbbc2306188a"
+    },
+    {
+      "path": "server/internal/games/hearts/rules.go",
+      "sha256": "45bd95d136608bc254e73604cd71a47838083632d580972c98e902bea37cbf6c"
+    },
+    {
+      "path": "server/internal/games/hearts/session.go",
+      "sha256": "64a992de5d9d633414e7835f08d4d95611eb5acc9fe2c709933c8b7eb48069f8"
+    },
+    {
+      "path": "server/internal/games/hearts/session_analysis.go",
+      "sha256": "cfbad59fc3a727f41e784fcc6e0b12690fa8adedd4aa17db6ee64f68c2508be6"
+    },
+    {
+      "path": "server/internal/games/hearts/session_observation.go",
+      "sha256": "d19c1dd128a25641195741e1afdac986a8d58aef3df48c0427301397ec56553a"
+    },
+    {
+      "path": "server/internal/games/hearts/session_state.go",
+      "sha256": "7fcdbf3e80f23523b20cabf3756666f0f7457252c479acbc354a0409bdcae10f"
+    },
+    {
+      "path": "server/internal/games/hearts/session_storage.go",
+      "sha256": "48d546b3ea1d0f9e520a20089a8d1be02ad9b380545ec7ec71a79d87fa9f3212"
+    },
+    {
+      "path": "server/internal/games/hearts/session_test.go",
+      "sha256": "16c7d4b251da8f30a5defce2be932a9f4d45dfbe089e29d8433eca26518983ea"
+    },
+    {
+      "path": "server/internal/games/hearts/snapshot.go",
+      "sha256": "79278fa6e57751076ce3c878c4afba2669a78399e29f71c6888b7a5daec1e2fe"
+    },
+    {
+      "path": "server/internal/games/hearts/snapshot_test.go",
+      "sha256": "b3024cc8b8139525609213f28748408ee6ecccf6ae589a5009afd9599c98da85"
+    },
+    {
+      "path": "server/internal/games/hearts/storage.go",
+      "sha256": "cfe10281b5f3800a8860e47b76149b1e6d18cc07e2aed7a4bee075ef6d513db7"
+    },
+    {
+      "path": "server/internal/games/hearts/storage_test.go",
+      "sha256": "ef0be8155fb3b597c877d413cf4182a55f2ec246bce13fc7f6c154a8f7971dfc"
+    },
+    {
+      "path": "server/internal/games/hearts/validation.go",
+      "sha256": "bb8dc1d7c9dcbfcdb6480169a42e2b6bfd0e7b636594deb3ffd69cbdcb3a5fc5"
+    },
+    {
+      "path": "server/internal/games/hearts/validation_test.go",
+      "sha256": "653a2e6a0d930da08ee518801ac38fc986c5d7fd5beece5da77d584b99d3c02c"
+    },
+    {
+      "path": "server/internal/games/spades/coaching/legacy.go",
+      "sha256": "8e1209600256ee85a3060b334c10428e65894f8b0da1e6a83c0a6aa6262ed14f"
+    },
+    {
+      "path": "server/internal/games/spades/coaching/legacy_test.go",
+      "sha256": "45b80fbe5b642cd85c863eac8f54e36f0c06072830c4c58e2579044b662fbeec"
+    },
+    {
+      "path": "server/internal/games/spades/coaching/partner_resources.go",
+      "sha256": "1fc930167f092fca2f677ce4ef26951a9f29b91583e79e51dbccecc8d8a82e40"
+    },
+    {
+      "path": "server/internal/games/spades/coaching/partner_resources_test.go",
+      "sha256": "e2e60b9098503aa42db1fb771a2545c710691463837971a4e7e592564fc5e852"
+    },
+    {
+      "path": "server/internal/games/spades/engine.go",
+      "sha256": "77c1329eb51cd1e30412739d7346fd117a6c5d9d9badb74a3af8d52200dc3670"
+    },
+    {
+      "path": "server/internal/games/spades/illustration.go",
+      "sha256": "c68a90e47faad790f8f5402291cade92ed46b0a41024f237c9ea7dd97b0f87bf"
+    },
+    {
+      "path": "server/internal/games/spades/illustration_policy_test.go",
+      "sha256": "0b1f3c709402bdb001b31fd3ff8d56ab3b19a0ce32f09dc8e7cb39720d15f85a"
+    },
+    {
+      "path": "server/internal/games/spades/illustration_test.go",
+      "sha256": "41f794423c6749c9fbd4455a51ebbd4e0079e990209aea447a1f3311247edc99"
+    },
+    {
+      "path": "server/internal/games/spades/json.go",
+      "sha256": "e1bad71371ae33311a72a9ad886b052db85837a45eae2aaa8046467522596986"
+    },
+    {
+      "path": "server/internal/games/spades/observation.go",
+      "sha256": "30ff4445576dd81b3c44b59b3a74115702b048a11c90551a95a5e3e440d08209"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/bidding.go",
+      "sha256": "95d39b3d6d63eb86d06f111f86e89d8c18630192ac440f984f24e1d442173989"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/catalog.go",
+      "sha256": "831eb5e2fbfa56222c80d4a29e82b653de29cd80e445db0532e5b1b3e1bbe6ec"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/double_nil.go",
+      "sha256": "6d25f518ea2f272ccf880ac98e1edf0d5368c3519827d02321e5d8438b1dc6f8"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/entries.go",
+      "sha256": "a6625e9653fe5e1a7d3ec824f84db4e6dea374a7af587217bf90fd6446aaae03"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/partner_resources.go",
+      "sha256": "90b7fd8506f8bca020ba9935e5d00b5dfd9d54806d1155a778abcf8fff4af233"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/partner_resources_test.go",
+      "sha256": "fa1d4d7cd39ac4ead4a411dadb13e6af6b2d071a7aa2a8baaecf5470ca508e59"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/policy.go",
+      "sha256": "5376e900a961e7022ac04445ac897610db545cb364a7e22ff0ba8a1ddc39f354"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/policy_test.go",
+      "sha256": "bfc745084c87b330982bc454fb2b9b604af17184467bf0ddd533657b28b964f8"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/signals.go",
+      "sha256": "77f3b0a9385baa1e7cffd870756fe09cd5f652da620047572cc79a835326ea37"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/testdata/partner-resources.json",
+      "sha256": "9c4aa147476223287f577da9c501337b5fd6b137af74d2a0014505c436da83ec"
+    },
+    {
+      "path": "server/internal/games/spades/rules.go",
+      "sha256": "a6cf99e790a43db01e966f5cfb30ea74c260f4b573550c71ae226dafce241263"
+    },
+    {
+      "path": "server/internal/games/spades/session.go",
+      "sha256": "227ebc500ad36fe47262df7b2fbca00670a508aa716e4a053b551c0d44ca6ded"
+    },
+    {
+      "path": "server/internal/games/spades/session_analysis.go",
+      "sha256": "fb5ab6cc510a60be1007c0f7fd47fd05c9851cdb67f2725386f082b35480811c"
+    },
+    {
+      "path": "server/internal/games/spades/session_history_test.go",
+      "sha256": "cd1852ca2118065d80fa8741cf41d097e24015e90ff05380dd7215d06d129b87"
+    },
+    {
+      "path": "server/internal/games/spades/session_observation.go",
+      "sha256": "9e83fac2f0fc4a0606bf65131b1bbba5e9fb5d3fdfd788d4f158002672f227c3"
+    },
+    {
+      "path": "server/internal/games/spades/session_state.go",
+      "sha256": "a05a9439b6c41bf56494b22b160d34ea679cf07bab98d11ca3f757e7d70a0e51"
+    },
+    {
+      "path": "server/internal/games/spades/session_storage.go",
+      "sha256": "f9277ef466482e0fd737d59123d381a6bb2c5c07791cb3f92b6f5785497bf45f"
+    },
+    {
+      "path": "server/internal/games/spades/session_test.go",
+      "sha256": "399b6edee8ee4ec6f287e44f25218ace67c0d9ef8aecadd8e1dbe3607f6b0f92"
+    },
+    {
+      "path": "server/internal/games/spades/session_transition_test.go",
+      "sha256": "3190f06d853031762d509130d9acd4a4c1b06c4bfa9f45ff840953e888617832"
+    },
+    {
+      "path": "server/internal/games/spades/snapshot.go",
+      "sha256": "d25ab5cf44600da07b8aa9ea6fae767d74c28183bf0faec5f263f786e3004356"
+    },
+    {
+      "path": "server/internal/games/spades/snapshot_test.go",
+      "sha256": "29efcde246ac14a0cbd4ccdf3ccd24a3cfc542822e97de92cca06baa0db42460"
+    },
+    {
+      "path": "server/internal/games/spades/spades_test.go",
+      "sha256": "013a52883e49dc718c1e2b06d1c4ea0d3a1bb48c417f486cdf3cd1d71ee671f0"
+    },
+    {
+      "path": "server/internal/games/spades/storage.go",
+      "sha256": "fb6aec48306dbb16df2a2c27862bbb5dfa22edf6cde37bf842de3a6e9c1a9bfc"
+    },
+    {
+      "path": "server/internal/games/spades/storage_test.go",
+      "sha256": "0e0699f7999e79955ca0eda31f0156390d24e5c49ce9f0cf292c76eac7777071"
+    },
+    {
+      "path": "server/internal/games/spades/types.go",
+      "sha256": "04972681204c239205db4e7928bf9ff36b87e33534f4bbdf1a4b438107f695ce"
+    },
+    {
+      "path": "server/internal/games/spades/validation.go",
+      "sha256": "81f7ffdc92c3fab8d0949f307204c25831c387248242ce9a877b6c8d44e68c61"
+    },
+    {
+      "path": "server/internal/http/demo_web.go",
+      "sha256": "1d88ca10e5735d44fefdd43fc2a8f1ca8dff94254c4759df93e64c3eb22c2630"
+    },
+    {
+      "path": "server/internal/http/demo_web_test.go",
+      "sha256": "929334f6edb6750c7fe0bfe95cc1b4d1ca371941e9bfdcf7a08ee911fb0f8c46"
+    },
+    {
+      "path": "server/internal/http/local.go",
+      "sha256": "9446b7fe13fc3ac2a6d14546ed5905103089408f39a18a0439b68b6e87c54556"
+    },
+    {
+      "path": "server/internal/http/local_config.go",
+      "sha256": "60bb8ae8265f528f133361a05f0207e16008e2b6be9b9535e119a8e833b52bb6"
+    },
+    {
+      "path": "server/internal/http/local_config_test.go",
+      "sha256": "afc6fb234cb4058d2133ba817cbb96dd0171383f9d68cf60d370e76f603fb8e7"
+    },
+    {
+      "path": "server/internal/http/local_test.go",
+      "sha256": "4ccdc082a08e1bff9b51920309104df1d2653cec1ffb0b1a3a9ad09f706768e8"
+    },
+    {
+      "path": "server/internal/http/slice.go",
+      "sha256": "b28bc04f8454b2221066fa11a8e953fe39f56239816d158cb1049ff9c343ed5f"
+    },
+    {
+      "path": "server/internal/http/slice_test.go",
+      "sha256": "1ebd350ecc947da7eb9409a3da3dac15aee50156bebb0c893eaefb1bf07fc405"
+    },
+    {
+      "path": "server/internal/legacydecision/actor_rollout.go",
+      "sha256": "f99f436d10bf96ef097f5d2572c668960f21c84f1af44193fad82aa67ada3d3a"
+    },
+    {
+      "path": "server/internal/legacydecision/cancellation_test.go",
+      "sha256": "bf6ee038d6e6b484be6a3e817eb12a9df1b5d232db2cedea3673985d83503795"
+    },
+    {
+      "path": "server/internal/legacydecision/cards.go",
+      "sha256": "8673c0f5ec5cf4456fcf5b0ab2dc5daca8a6b11b377ab97bd0a2aa5c109e70a3"
+    },
+    {
+      "path": "server/internal/legacydecision/knowledge.go",
+      "sha256": "f9c35fc121cd95412e56196894d0272fdf79a11e67cac751445b33d6347977c3"
+    },
+    {
+      "path": "server/internal/legacydecision/prepared.go",
+      "sha256": "17964c91f73f701f5833c5a267b4a7b52102fb9f2e9b6b9b6c6f0f198741fd09"
+    },
+    {
+      "path": "server/internal/legacydecision/presentation.go",
+      "sha256": "b8766bcb91a428bb5d07845cb06df860305597adcf71e24828dd914fe0f0979d"
+    },
+    {
+      "path": "server/internal/legacydecision/sampler.go",
+      "sha256": "75ea8a8720f1e24cb90a399cbf12053bc7a57d268ae1e2fbc0cef6d3878188fa"
+    },
+    {
+      "path": "server/internal/legacydecision/sampler_test.go",
+      "sha256": "2a4d53967feae38a71563f25271115d7ff8b949a1f7235a1037adc0b44b01563"
+    },
+    {
+      "path": "server/internal/legacydecision/synthetic.go",
+      "sha256": "16947141f8ceeeb1dbdcc2324633984dff7e2833cd6e14dd1a5d50f22458ee37"
+    },
+    {
+      "path": "server/internal/legacydecision/testdata/platform-sampler.json",
+      "sha256": "fbb487ec98b260864544d5ff47c51122413cc6f974d87ac073dead9793ec214e"
+    },
+    {
+      "path": "server/internal/legacydecision/types.go",
+      "sha256": "00b1fd3cacc7e1880f0ad3b7ad42c1495626c487f4fc1d2202348f388db9286f"
+    },
+    {
+      "path": "server/internal/legacydecision/validation.go",
+      "sha256": "23704503fbd0c2459790a5ae4df0d207eb2af3256b661e7043ac65d3af711648"
+    },
+    {
+      "path": "server/internal/legacydecision/validation_test.go",
+      "sha256": "1cadd42ac765225703a6fafd53fc70c9ff167facc6f2c505f5718fc2a8e760b9"
+    },
+    {
+      "path": "server/internal/localpolicies/partner.go",
+      "sha256": "d37d7dc04583d47dfb053f5f906c3e65999a3907d8c0d581a67610ca1a1977c9"
+    },
+    {
+      "path": "server/internal/localpolicies/partner_test.go",
+      "sha256": "e9c9c4b745e65ee284f9b505c6ca1b0543d773f1832b9552b1912b696f4e904e"
+    },
+    {
+      "path": "server/internal/records/access.go",
+      "sha256": "978c581a12625e6bc795519c8fbc1fa081955839fe349fd03a76740ad9b929c6"
+    },
+    {
+      "path": "server/internal/records/access_configured_free.go",
+      "sha256": "5d909a0092ac9b3ab20d0eba11658f2e24e73d9a8414bbe850a6a36401b9bed8"
+    },
+    {
+      "path": "server/internal/records/access_configured_test.go",
+      "sha256": "82595f544ed55e6bd9e15b141c03d571e0837d49690d31804716695cb5a19d74"
+    },
+    {
+      "path": "server/internal/records/access_configured_trials.go",
+      "sha256": "11cc0ea199bd995e229c513e914c179c1e220f15da3fa22b8c8e7d113067d6b7"
+    },
+    {
+      "path": "server/internal/records/access_context.go",
+      "sha256": "b2dc80d336b5f05d3214acfef2e5c698079f0f27aa92c54422c8ad6ecaf2ad96"
+    },
+    {
+      "path": "server/internal/records/access_test.go",
+      "sha256": "83083814ffe90afbda33e03488fd3e5f865a2c237d22ea42551aa83b5737c4a8"
+    },
+    {
+      "path": "server/internal/records/access_trials.go",
+      "sha256": "3c5b26c006e82b462d45be7d0ee1d48f78168106d1df78906632016a63c3227f"
+    },
+    {
+      "path": "server/internal/records/access_unlock.go",
+      "sha256": "395ad673a1e4192047834d225c777925d37afb0e40e7b46634ea38c5ba636dc9"
+    },
+    {
+      "path": "server/internal/records/codec.go",
+      "sha256": "ef94033a9b247208f2683c1d3ac60ef11042b3789236ef6da4d7859ed259a743"
+    },
+    {
+      "path": "server/internal/records/codec_growth_test.go",
+      "sha256": "35f6726e5c69da40acfa75aff4351ffcf57e2b136c4754bbca7a764b9db6cfc1"
+    },
+    {
+      "path": "server/internal/records/document.go",
+      "sha256": "ed8c41572195dffa8110e49ef29846e5e782652027e7f63ca3bceffa6ba357f2"
+    },
+    {
+      "path": "server/internal/records/document_decision.go",
+      "sha256": "c2b21882e71bfb65c21c382a5b85cc48e61b8b394343e1d3c1789e932fd5c851"
+    },
+    {
+      "path": "server/internal/records/document_test.go",
+      "sha256": "cf00f56b0206b09a28036afc44aa17a0439904755c2cae4da0fcc1548d638bb0"
+    },
+    {
+      "path": "server/internal/records/erasure.go",
+      "sha256": "df3320746ca8b46c47691bd1189bab7a49d463a950bc58b314f9b0633d7a05cb"
+    },
+    {
+      "path": "server/internal/records/execution_limits.go",
+      "sha256": "ecf8afee86ffa0050504aeb51250566b9148bf19f14bc5443102f9053f848376"
+    },
+    {
+      "path": "server/internal/records/execution_limits_test.go",
+      "sha256": "fd78356e62376ec2deb029ff5cbff21307ee5b484fae917c2fd65d8146445982"
+    },
+    {
+      "path": "server/internal/records/hearts_progression_test.go",
+      "sha256": "f9b0feaa58081945892250907c97dbbe185229a621d131c05146dde46c02ba6a"
+    },
+    {
+      "path": "server/internal/records/identity.go",
+      "sha256": "5380ff6a507bd68722125e7c225be6ca6ae3f1577a1163cb98aaaca2ce873d48"
+    },
+    {
+      "path": "server/internal/records/local_service_test.go",
+      "sha256": "33c7707b50425c91b32bc430ba3845a213549bcdf7703eec38e0ac14967c0df1"
+    },
+    {
+      "path": "server/internal/records/m04f_replay_benchmark_test.go",
+      "sha256": "86027176b709bff82d648cbc311a9acc6360e982b4df108fa1c17b4077408ba5"
+    },
+    {
+      "path": "server/internal/records/platform_account_billing.go",
+      "sha256": "5b7958d4a3b0f47d21ec92d88f045e4141cc3d647891d15832655cdbf2e53570"
+    },
+    {
+      "path": "server/internal/records/platform_account_export.go",
+      "sha256": "f481505210344189d576f12e7000f94236c93d1585e8663133f30cdc7da02ada"
+    },
+    {
+      "path": "server/internal/records/platform_account_family.go",
+      "sha256": "044ecfb25e0fa29af28598ed532c282eea838ff4d02d2605f4a9a2396b677809"
+    },
+    {
+      "path": "server/internal/records/platform_account_test.go",
+      "sha256": "6d3e04c85576815bb54bf802de5bf70587e756da922d059d77bda54c3fb802c8"
+    },
+    {
+      "path": "server/internal/records/platform_help.go",
+      "sha256": "d1ace960aa94389207edd4b2f7a53dd0aac80efb4fe7454ee5bbead226f4321a"
+    },
+    {
+      "path": "server/internal/records/platform_help_test.go",
+      "sha256": "1524f50c5ab96f716adcfe0f14fb2e53b25d909050793ba3cd9436aebcf564d4"
+    },
+    {
+      "path": "server/internal/records/platform_history.go",
+      "sha256": "2eb9e7b8b4772c182a5fcdbadd6b211b4c93a1c6ecdc12c79fabb13f6dd17151"
+    },
+    {
+      "path": "server/internal/records/platform_profile.go",
+      "sha256": "538a70ffad208dc517cb24699ca4680f18bd70bdfcb0bf78b8605b1c775ab104"
+    },
+    {
+      "path": "server/internal/records/platform_stats_test.go",
+      "sha256": "628823e63590c827d30d22a4a31e555508ed78e2d17bd7e2d53ab10078b501a2"
+    },
+    {
+      "path": "server/internal/records/platform_terminal_fixture_test.go",
+      "sha256": "ef9e8e34d4ac22a284b62ae68d0f2ec86c0667c0de3880f7f70c9067e36cc24e"
+    },
+    {
+      "path": "server/internal/records/platform_trial_binding_test.go",
+      "sha256": "56da49127bbd34742ded3139d62e02379e81be26f4910e735c6acdc970a17bbe"
+    },
+    {
+      "path": "server/internal/records/platform_trials.go",
+      "sha256": "194251ec798123824b7c7a033c80e26817edffc891c581d029067f98212bcd28"
+    },
+    {
+      "path": "server/internal/records/platform_trials_test.go",
+      "sha256": "e6384fa40c625157337ce3a7bd3cd61d5e40617b44f9daed5da235d9fb766b3a"
+    },
+    {
+      "path": "server/internal/records/policy_installed.go",
+      "sha256": "4afbdc116447a0605e1ca134bfcad609f94b6573058dea9094d41f4e7179dd7f"
+    },
+    {
+      "path": "server/internal/records/rollout_decision.go",
+      "sha256": "27a39d09a38ae068dd13eade83ccc0edd8037ff688c158cb1c998cb305f476fa"
+    },
+    {
+      "path": "server/internal/records/service_codec.go",
+      "sha256": "cd5c34e5b1152605a3dbacc0628374eaf95861bca16b7b00f9553447430cde89"
+    },
+    {
+      "path": "server/internal/records/service_codec_test.go",
+      "sha256": "70ff1bcb494d1ce1a0bb7a2c1b7f3538094f82ecf285827e6542014df56d17ab"
+    },
+    {
+      "path": "server/internal/records/service_commands.go",
+      "sha256": "34f9265ccfb8851ce2926e459664e1be5f1433cfac993a9f85af36d1d9665779"
+    },
+    {
+      "path": "server/internal/records/service_decision.go",
+      "sha256": "9cae2d084c2ad6c971a5be1434cf8fcba8a9bfecbb7ef3fa54a592274c4b535d"
+    },
+    {
+      "path": "server/internal/records/service_illustration.go",
+      "sha256": "a12640dff7a1e897bc1df361e65ce706d6c55251b8d6a88a1abefe5b8b1c98ac"
+    },
+    {
+      "path": "server/internal/records/service_illustration_test.go",
+      "sha256": "0e5bdc314992eed8993a86ca639f55cbaf12ea0be87002207b55769c2b631c4b"
+    },
+    {
+      "path": "server/internal/records/service_installation.go",
+      "sha256": "dae91a7dea434e7dcfe2144df2beabd8150e24c96eaac8c2e2fba32602ac97dc"
+    },
+    {
+      "path": "server/internal/records/service_installation_test.go",
+      "sha256": "36a335c87b1806ae0439cac90f3e6b520b79df983a09d88ffc51e8925591d035"
+    },
+    {
+      "path": "server/internal/records/staged_transition.go",
+      "sha256": "cb56091287c066fe89cfdaf612a347686830cadca175a48bad5cadd742137ee2"
+    },
+    {
+      "path": "server/internal/records/startup_diagnostics.go",
+      "sha256": "8a42b67f21cc80258301ec490fd541a91232516d32c6c10114e7b7a3ba66edfb"
+    },
+    {
+      "path": "server/internal/records/startup_diagnostics_test.go",
+      "sha256": "265150c0f47dbb1f1c4cfb08d0aaae7e144abe7a47d78006fb6709f1aa204640"
+    },
+    {
+      "path": "server/internal/records/startup_retry.go",
+      "sha256": "5a08e41623f695f7c86a7e07cb3495e5cdcfc599a57c872f600d5c8ab2e7afb9"
+    },
+    {
+      "path": "server/internal/records/startup_retry_windows_test.go",
+      "sha256": "bdc469adb7542077617ddef1b91cb77ae1cceebe39cf2484c5d730f7ed3aa3f3"
+    },
+    {
+      "path": "server/internal/records/stats_cache.go",
+      "sha256": "8937429d594ee9eda44ea498d4407d0dca70e41faca46c7d8f92937f2b5ef840"
+    },
+    {
+      "path": "server/internal/records/stats_cache_test.go",
+      "sha256": "413160753e485e397f40087ee4928f373cfa3c48ae6d16a7573154111084a2ed"
+    },
+    {
+      "path": "server/internal/records/store.go",
+      "sha256": "f5ce14b45c420f06bdf27379ba9a0663fd7dedce0b5c19ad548626fddb0c2630"
+    },
+    {
+      "path": "server/internal/records/store_documents.go",
+      "sha256": "d73ea58143895076137e91dea5a7929a6ee70e209d441538524b0fb84e27b38c"
+    },
+    {
+      "path": "server/internal/records/store_fences_test.go",
+      "sha256": "578c9971bd6428be7b42c3d57d93ca69ad655dda676224b1394a7780c5572d27"
+    },
+    {
+      "path": "server/internal/records/store_growth_test.go",
+      "sha256": "acb4bcea9b5bc71f466ed3ea1dfcddf6aa3963ae3a6c84f3a2c3921b6f4c43a8"
+    },
+    {
+      "path": "server/internal/records/store_hearts_test.go",
+      "sha256": "697c457f1c480a72293de447c87bfdf8841fcd99a6562585d235922eb5316fa5"
+    },
+    {
+      "path": "server/internal/records/store_historical_test.go",
+      "sha256": "86eb337b702b457a2e8183174199586af55d53986f66f9faa5f3e8b5e2fae669"
+    },
+    {
+      "path": "server/internal/records/store_history.go",
+      "sha256": "9743ddb38069a4df2d3760693fe2d80530f65a132c22c26be52962744597dfc3"
+    },
+    {
+      "path": "server/internal/records/store_integration_test.go",
+      "sha256": "d1deac7807e05bd8e17f049cf0a2af9dd88b4d46b99922bafdb3c9c875228af5"
+    },
+    {
+      "path": "server/internal/records/store_migrations.go",
+      "sha256": "ece5f9200495fbc954888060448659753e02d5585e9865f86090ae622f656905"
+    },
+    {
+      "path": "server/internal/records/store_migrations_test.go",
+      "sha256": "9bb7a8b78491b3372f0bce72859ef4d921344150a110ec5036d43dbee1804c94"
+    },
+    {
+      "path": "server/internal/records/teststore.go",
+      "sha256": "654bdd0e54204e2a31725eed19302471cd2f39ecc902a25c40ef58c08c0e1003"
+    },
+    {
+      "path": "server/internal/records/trials.go",
+      "sha256": "0e5ef35f533b1793a5533364a47122a4930886efcafd6a50158753fb73f10617"
+    },
+    {
+      "path": "server/internal/records/trials_test.go",
+      "sha256": "9faf3207060b27b625aa4880937e17bb4c8dd95fc06b1950aedbdb660d31c181"
+    },
+    {
+      "path": "server/internal/records/types.go",
+      "sha256": "fdc7d388f3d52004223f6eed64aacbe79ebdb6652a0ee297347c7e0a7a4f71a1"
+    },
+    {
+      "path": "server/internal/records/work.go",
+      "sha256": "e08c5d1ea403029b5dabae12fabedac78ac9ef8474b35a60e77262a10835a21f"
+    },
+    {
+      "path": "server/internal/records/work_test.go",
+      "sha256": "f1845e27554bc991148d209fce3cf8ee90e082a4828d3d849ff900b6ee47008c"
+    },
+    {
+      "path": "server/internal/service/access.go",
+      "sha256": "f891fc78bc0165019fc481ee19bbe574bf9aad5dcb314d98a22b83fa75ec8f72"
+    },
+    {
+      "path": "server/internal/service/access_continuation_test.go",
+      "sha256": "8acd65362b87f78f68abcc808fed7e8bf64ab31cf4ee5e0387eff4e3b046c1dd"
+    },
+    {
+      "path": "server/internal/service/access_test.go",
+      "sha256": "f465046379b004377374f67aa271aca7ac2276202b135c84afc422b1b6bd588a"
+    },
+    {
+      "path": "server/internal/service/actor_rollout_test.go",
+      "sha256": "565b749808517b6d99fa03ff3f78bd0271be0ed6c077548e6468a63dd0c940f4"
+    },
+    {
+      "path": "server/internal/service/integration_test.go",
+      "sha256": "f5fb5588e13f9848cf2b457abdfcf442fb0e416bc405fc686e6f5fc5b26b320c"
+    },
+    {
+      "path": "server/internal/service/mutations.go",
+      "sha256": "7a06b0334dc3ab7588430219e67b0cccd15bfd086e1d5b2003f6150d852f24d9"
+    },
+    {
+      "path": "server/internal/service/platform_account.go",
+      "sha256": "d5451ef9d3ad0c700e8ef5f5d58f7c6a332a8cb786a343e905036bf213f19dba"
+    },
+    {
+      "path": "server/internal/service/platform_account_test.go",
+      "sha256": "89d13d5235dacde73fad206426c1e58a1167df38867153e59bde7141be3f4aa1"
+    },
+    {
+      "path": "server/internal/service/platform_family_transport_test.go",
+      "sha256": "df98ec4098c1ef2b5e84eb6c51228040987b69ba41dd2e922b1cba02a475bc81"
+    },
+    {
+      "path": "server/internal/service/platform_recovery.go",
+      "sha256": "02013e3b6aded3569eda6db94174879bde2dd6d69bd374a9d3b75a3fcde59944"
+    },
+    {
+      "path": "server/internal/service/platform_review.go",
+      "sha256": "c73f81c8db038b337c448f5acdf8981ce64314e3d7d5567e2b7930baf1f42c58"
+    },
+    {
+      "path": "server/internal/service/platform_review_test.go",
+      "sha256": "058f2ca811e6e718e3aad456c9d65c2dbc0b12cf0763cd0e4bcc38d3c7ee800a"
+    },
+    {
+      "path": "server/internal/service/platform_review_trials.go",
+      "sha256": "d3edece9945428b35a87b21efac65b2bc1d57a25b09a31c22f826a44ec52201b"
+    },
+    {
+      "path": "server/internal/service/platform_session.go",
+      "sha256": "76d21bc8d9ba05d26a8f4929a723c4583bfdf2fb8e11cc37b4202b8a6694a330"
+    },
+    {
+      "path": "server/internal/service/platform_session_test.go",
+      "sha256": "fab97f918a4874e5a031a6508cf85bf9b391ab9a87d69b2560d45a721b8002ca"
+    },
+    {
+      "path": "server/internal/service/preparation.go",
+      "sha256": "26bacedc3fd82c46b52942882f4a320e0a4246780fe5d2ddb2a157d9c9c74abb"
+    },
+    {
+      "path": "server/internal/service/random.go",
+      "sha256": "2a1d696f0e344788c7152cc46c4f4ff215775cdc91417fd10e69a3c656d1f85c"
+    },
+    {
+      "path": "server/internal/service/resource_profile_test.go",
+      "sha256": "c8ec0a4bfcbd3ba52966633969a9ca0549728fc0bd990104ae2d823131c32a53"
+    },
+    {
+      "path": "server/internal/service/scheduler.go",
+      "sha256": "fcd32c699a9fa8d12e28f9ec67750b2136c7214ac424d1a1ef1e9f617bde8a04"
+    },
+    {
+      "path": "server/internal/service/scheduler_test.go",
+      "sha256": "bd28e683fb4d4646611d7123f3ace5d6a0e231cb25120f5068fa7f980ce5a687"
+    },
+    {
+      "path": "server/internal/service/service.go",
+      "sha256": "85ded7b11ff897e0c5568f0d8545ad84da3e0071de1544174375eacba0f32229"
+    },
+    {
+      "path": "server/internal/service/token_browser_fixture_test.go",
+      "sha256": "5a5ee4ff659221565c893cd80542c590017a18db58b109348f81d01c84da8218"
+    },
+    {
+      "path": "server/internal/service/token_conformance_test.go",
+      "sha256": "ef5cf5b1cb58e731e05ae0f2faa182c2c45880106c2f25c4020317cd16030f33"
+    },
+    {
+      "path": "server/internal/sessions/document.go",
+      "sha256": "6ae496fc308cce12f9d5deff909dad3aeb1b2faf33582e9511ea4c3b642ec487"
+    },
+    {
+      "path": "server/internal/sessions/durable.go",
+      "sha256": "9b32f60860efcde20f368b405f8fccc8265e49c09ce41128a9ea307560ffff22"
+    },
+    {
+      "path": "server/internal/sessions/illustration.go",
+      "sha256": "ec20aec4ab3c3bb8c5afc644603792592e2a30ef0aa5da91ce967546429f8e53"
+    },
+    {
+      "path": "server/internal/sessions/installation.go",
+      "sha256": "5f035a2b88f963c8bbf9f112ec35e2f4da037c4ed19909c1733166f4919e5341"
+    },
+    {
+      "path": "server/internal/sessions/installation_cards.go",
+      "sha256": "47c7ebcaed963984427e256639cc3be9a003fff18a523a742120625b5129fcd6"
+    },
+    {
+      "path": "server/internal/sessions/lifecycle_test.go",
+      "sha256": "75bab4562dd65fb458022c3b0063de13201913347a79584cba533dbb4f33d175"
+    },
+    {
+      "path": "server/internal/sessions/operations.go",
+      "sha256": "e3aff3897de9e83262c90e29d1901a7606e79947d27d668a7ebf96fae836d50b"
+    },
+    {
+      "path": "server/internal/sessions/operations_test.go",
+      "sha256": "636646beeb47dbaec1f4003dcc2ec97b7f3813f2a2e176c69a534c1634f0dc8b"
+    },
+    {
+      "path": "server/internal/sessions/registry.go",
+      "sha256": "d6555d1f66ce906d2d709a24260fe7f59afb484cd6f65e4a1d3aa743f1da3ef1"
+    },
+    {
+      "path": "server/internal/sessions/registry_test.go",
+      "sha256": "e3b46265724e812d5dba70187911042f4d9ed9452732517f260b7fa604cb95d8"
+    },
+    {
+      "path": "server/internal/strategy/installation/actor_rollout.go",
+      "sha256": "2947d0385df3b729b53446817821366636844ae60b4429caff0c95ff7f8b2c98"
+    },
+    {
+      "path": "server/internal/strategy/installation/actor_rollout_test.go",
+      "sha256": "965398fcceee45911e903ce7c5e3f92251e849591a49eb9a8aad5e5b38e74e87"
+    },
+    {
+      "path": "server/internal/strategy/knowledge/knowledge.go",
+      "sha256": "15d3438cfc7373f2954be3c153e8703106b6c18d38cf2700ffa34cebb455b8c1"
+    },
+    {
+      "path": "server/internal/strategy/knowledge/knowledge_test.go",
+      "sha256": "1b7f5a25df63256e6c20086ae67461ec79f9ec32ef0b27c140efbf4343c84801"
+    },
+    {
+      "path": "server/internal/strategy/rollout/run.go",
+      "sha256": "144ad0ec5cdf16913008fd6ce6d57dc78c440d545c509d1ce68906933043a266"
+    },
+    {
+      "path": "server/internal/strategy/rollout/run_test.go",
+      "sha256": "6b46b448b909ceb9e579728dffb7b92e4dae3f51504959c4c1a898bfb8888e98"
+    },
+    {
+      "path": "server/internal/strategy/rollout/types.go",
+      "sha256": "bf60d2132c2012b017e509f515edd839df11369766536a8fdcc1180fe7989496"
+    },
+    {
+      "path": "server/internal/strategy/rollout/work.go",
+      "sha256": "77a452c9be2a2327fcbd62f9b0d4107b8709031d4763533eba710848b7e1e7e5"
+    },
+    {
+      "path": "web/shared/contracts.schema.json",
+      "sha256": "057ea7df7dcff99bd6519d1b99b9a574641d11fbacd6e0d5948de6aa93fddee5"
+    },
+    {
+      "path": "web/shared/contracts.ts",
+      "sha256": "139e4358a4e18bd61e2b1c3f8d449e5a5f3c05489f64677d3e105033eada060a"
+    },
+    {
+      "path": "web/shared/games/hearts.schema.json",
+      "sha256": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91"
+    },
+    {
+      "path": "web/shared/games/spades.schema.json",
+      "sha256": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb"
+    },
+    {
+      "path": "web/shared/games/token.schema.json",
+      "sha256": "824df81bcb6aac8f3d39c78e37ff1ed4f73809cfefaa28b55b1cd261ca7a209e"
+    },
+    {
+      "path": "web/shared/local-service.contracts.ts",
+      "sha256": "6f1fe30b4911e583e5762bfdb03f2b6e66a2efc232bac5706a2bc6452dce66a0"
+    },
+    {
+      "path": "web/shared/local-service.openapi.json",
+      "sha256": "879052a7cfb0abf8439ad26b13e6e9cb29771b4b0ea16f4430e9ff67866b1a60"
+    },
+    {
+      "path": "web/shared/local-service.schema.json",
+      "sha256": "83e5d8f72632b36b3c7f855c82d76faf00aee46a7e15e8dd7e1b0c9d64df0c06"
+    },
+    {
+      "path": "web/shared/local-service.validation.ts",
+      "sha256": "bb0be6fabb3df51d8206110bb4aef355ed5d699be59c6ae729671ec882106db7"
+    },
+    {
+      "path": "web/shared/local-service.validators.d.mts",
+      "sha256": "80b045a08eae63e91051b39380f9cdb45d64f80c566dfb87aa6f75794451e005"
+    },
+    {
+      "path": "web/shared/local-service.validators.mjs",
+      "sha256": "fca94c23b698985f69804117546b1afeafbe044cbac0e6db8be64b674b808cb8"
+    },
+    {
+      "path": "web/shared/openapi.json",
+      "sha256": "933291635a3847f4d456b0eb3bd128d59a8398803337e007dd5e7e23f7d7bf6b"
+    },
+    {
+      "path": "web/shared/platform-account.schema.json",
+      "sha256": "767092699f1b26d5aa279204ca445de0a11ceed720d89fe2a613272cc93dd799"
+    },
+    {
+      "path": "web/shared/platform-review.schema.json",
+      "sha256": "fe603d217f5d0f73d680c7485b3c51e2695c1a97f4e396e6f2f11ee15e6391fc"
+    },
+    {
+      "path": "web/shared/platform-service.schema.json",
+      "sha256": "5b5245baec821cbf1926a6eaceb3af3a54d45e39e6e55d937960cd9c60e78413"
+    },
+    {
+      "path": "web/shared/validation.ts",
+      "sha256": "b847cd036a0f8fad12e5e381a439728f3adec6381f23abe29030d77a3f903368"
+    },
+    {
+      "path": "web/shared/validators.d.mts",
+      "sha256": "390bcda2a39eaaba0172dc5090d566990ebf857a8fe67ca04958d3ccead4f59a"
+    },
+    {
+      "path": "web/shared/validators.mjs",
+      "sha256": "20bd6dce5df644ca3fe755d62c62a110d439c9a8e13e41a9dccbd26ae114e75c"
+    }
+  ],
+  "outputSHA256": "67882a89f177cd2f4801577f717ac26a61cfbd57b89dede92f50b310e9fea4b1",
+  "passed": 1664,
+  "topLevelPassed": 273,
+  "failed": [
+    {
+      "Package": "cardford/server/internal/records",
+      "Test": "TestM04EStatsIgnoreUnrelatedBotRecordBytes"
+    }
+  ],
+  "skipped": [
+    {
+      "Package": "cardford/server/internal/evaluation/partnerdevelopment",
+      "Test": "TestFreshPairedPartnerDevelopment"
+    },
+    {
+      "Package": "cardford/server/internal/http",
+      "Test": "TestDemoWebRejectsSymlinkedBuildAsset"
+    },
+    {
+      "Package": "cardford/server/internal/records",
+      "Test": "TestM04ETerminalFixtureInstall"
+    },
+    {
+      "Package": "cardford/server/internal/records",
+      "Test": "TestStartupDiagnosticsWindowsProbe"
+    },
+    {
+      "Package": "cardford/server/internal/service",
+      "Test": "TestM04FPreparedRequestProfile"
+    },
+    {
+      "Package": "cardford/server/internal/service",
+      "Test": "TestM06TokenBrowserFixtureHost"
+    }
+  ],
+  "provider": {
+    "mode": "off",
+    "attempts": 0,
+    "observedModel": null
+  }
+}

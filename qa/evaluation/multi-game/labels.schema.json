@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","$id":"derived-label-index-1.0.0",
+  "description":"Derived immutable source snapshots; edit/preserve original reviewer submissions, never this index. Pending is distinct from reviewed unknown. No qualification, horizon or independent acceptance is invented.",
+  "type":"object","additionalProperties":false,
+  "required":["id","version","hash","sourcePath","sourceHash","sourcePointer","packetHash","status","legalIds","acceptableIds","ruleProfile","horizon","objective","reviewProtocolVersion","reviewerId","reviewerQualification","independence","reasoning","confirmationEligible"],
+  "$defs":{"hash":{"type":"string","pattern":"^[a-f0-9]{64}$"},"strings":{"type":"array","uniqueItems":true,"items":{"type":"string"}}},
+  "properties":{
+    "id":{"type":"string"},"version":{"const":"derived-label-index-1.0.0"},"hash":{"$ref":"#/$defs/hash"},
+    "sourcePath":{"type":"string"},"sourceHash":{"$ref":"#/$defs/hash"},"sourcePointer":{"type":"string"},"packetHash":{"$ref":"#/$defs/hash"},
+    "status":{"enum":["pending","acceptable-set","contested","unknown"]},"legalIds":{"$ref":"#/$defs/strings"},"acceptableIds":{"$ref":"#/$defs/strings"},
+    "ruleProfile":{"type":"string"},"horizon":{"type":["string","null"]},"objective":{"type":["string","null"]},"reviewProtocolVersion":{"type":"string"},
+    "reviewerId":{"type":["string","null"]},"reviewerQualification":{"type":"null"},"independence":{"const":"not-established"},"reasoning":{"type":["string","null"]},"confirmationEligible":{"const":false}
+  },
+  "allOf":[{"if":{"properties":{"status":{"const":"pending"}}},"then":{"properties":{"acceptableIds":{"type":"array","maxItems":0},"reviewerId":{"type":"null"},"reasoning":{"type":"null"}}}}]
+}

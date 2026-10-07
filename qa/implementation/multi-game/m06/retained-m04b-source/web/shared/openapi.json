@@ -1,0 +1,1396 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CardFord local V1",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/identity": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/commands/{commandId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandStatusView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "commandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/review-trials/{commandId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewTrial"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "commandId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/dev/scenarios": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevScenariosView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/control": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandEnvelope"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/notes": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotesView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandEnvelope"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/sessions": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSessionRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/actions": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionsRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/prepare": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrepareView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrepareRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/advance": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdvanceRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/next-hand": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NextHandRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/advice": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdviceView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdviceRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/exposures": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AcceptedView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExposureRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/preferences": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreferencesRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/coaching/access": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachAccess"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/coaching/hand-unlocks": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HandUnlockView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandUnlockRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/recap": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecapView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/reviews": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewIndex"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/reviews/{decisionId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "decisionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/session/reviews/{decisionId}/trials": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewTrial"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrialRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "decisionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ]
+      }
+    },
+    "/api/subscription/preview": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingPreview"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillingPreviewRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subscription/change": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingOperation"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillingConfirmRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/family": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamilyView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamilyView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyCommand"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/account/export": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/account/delete": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDeleteView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountDeleteRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/account": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated public view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountCommand"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Mode": {
+        "$ref": "./contracts.schema.json#/$defs/Mode"
+      },
+      "Seat": {
+        "$ref": "./contracts.schema.json#/$defs/Seat"
+      },
+      "Card": {
+        "$ref": "./contracts.schema.json#/$defs/Card"
+      },
+      "Suit": {
+        "$ref": "./contracts.schema.json#/$defs/Suit"
+      },
+      "Phase": {
+        "$ref": "./contracts.schema.json#/$defs/Phase"
+      },
+      "GameAction": {
+        "$ref": "./contracts.schema.json#/$defs/GameAction"
+      },
+      "Play": {
+        "$ref": "./contracts.schema.json#/$defs/Play"
+      },
+      "Trick": {
+        "$ref": "./contracts.schema.json#/$defs/Trick"
+      },
+      "HandResult": {
+        "$ref": "./contracts.schema.json#/$defs/HandResult"
+      },
+      "GameView": {
+        "$ref": "./contracts.schema.json#/$defs/GameView"
+      },
+      "Preferences": {
+        "$ref": "./contracts.schema.json#/$defs/Preferences"
+      },
+      "Plan": {
+        "$ref": "./contracts.schema.json#/$defs/Plan"
+      },
+      "PaidPlan": {
+        "$ref": "./contracts.schema.json#/$defs/PaidPlan"
+      },
+      "CoachAccess": {
+        "$ref": "./contracts.schema.json#/$defs/CoachAccess"
+      },
+      "SessionStats": {
+        "$ref": "./contracts.schema.json#/$defs/SessionStats"
+      },
+      "SessionView": {
+        "$ref": "./contracts.schema.json#/$defs/SessionView"
+      },
+      "AdviceView": {
+        "$ref": "./contracts.schema.json#/$defs/AdviceView"
+      },
+      "CommandEnvelope": {
+        "$ref": "./contracts.schema.json#/$defs/CommandEnvelope"
+      },
+      "NewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/NewSessionRequest"
+      },
+      "ActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/ActionsRequest"
+      },
+      "PrepareRequest": {
+        "$ref": "./contracts.schema.json#/$defs/PrepareRequest"
+      },
+      "CommandStatusView": {
+        "$ref": "./contracts.schema.json#/$defs/CommandStatusView"
+      },
+      "IdentityView": {
+        "$ref": "./contracts.schema.json#/$defs/IdentityView"
+      },
+      "PrepareView": {
+        "$ref": "./contracts.schema.json#/$defs/PrepareView"
+      },
+      "AdvanceRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AdvanceRequest"
+      },
+      "NextHandRequest": {
+        "$ref": "./contracts.schema.json#/$defs/NextHandRequest"
+      },
+      "AdviceRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AdviceRequest"
+      },
+      "PreferencesRequest": {
+        "$ref": "./contracts.schema.json#/$defs/PreferencesRequest"
+      },
+      "HandUnlockRequest": {
+        "$ref": "./contracts.schema.json#/$defs/HandUnlockRequest"
+      },
+      "HandUnlockView": {
+        "$ref": "./contracts.schema.json#/$defs/HandUnlockView"
+      },
+      "ExposureRequest": {
+        "$ref": "./contracts.schema.json#/$defs/ExposureRequest"
+      },
+      "AcceptedView": {
+        "$ref": "./contracts.schema.json#/$defs/AcceptedView"
+      },
+      "ReviewFrame": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewFrame"
+      },
+      "ReviewCase": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewCase"
+      },
+      "ReviewIndex": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewIndex"
+      },
+      "ReviewView": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewView"
+      },
+      "TrialRequest": {
+        "$ref": "./contracts.schema.json#/$defs/TrialRequest"
+      },
+      "ReviewTrial": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewTrial"
+      },
+      "RecapView": {
+        "$ref": "./contracts.schema.json#/$defs/RecapView"
+      },
+      "SubscriptionView": {
+        "$ref": "./contracts.schema.json#/$defs/SubscriptionView"
+      },
+      "OfferView": {
+        "$ref": "./contracts.schema.json#/$defs/OfferView"
+      },
+      "AccountView": {
+        "$ref": "./contracts.schema.json#/$defs/AccountView"
+      },
+      "AccountCommand": {
+        "$ref": "./contracts.schema.json#/$defs/AccountCommand"
+      },
+      "ApiError": {
+        "$ref": "./contracts.schema.json#/$defs/ApiError"
+      },
+      "ReviewQuery": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewQuery"
+      },
+      "ReviewStepQuery": {
+        "$ref": "./contracts.schema.json#/$defs/ReviewStepQuery"
+      },
+      "AccessQuery": {
+        "$ref": "./contracts.schema.json#/$defs/AccessQuery"
+      },
+      "SuitMemory": {
+        "$ref": "./contracts.schema.json#/$defs/SuitMemory"
+      },
+      "NotesView": {
+        "$ref": "./contracts.schema.json#/$defs/NotesView"
+      },
+      "BillingPreviewRequest": {
+        "$ref": "./contracts.schema.json#/$defs/BillingPreviewRequest"
+      },
+      "BillingPreview": {
+        "$ref": "./contracts.schema.json#/$defs/BillingPreview"
+      },
+      "BillingConfirmRequest": {
+        "$ref": "./contracts.schema.json#/$defs/BillingConfirmRequest"
+      },
+      "BillingOperation": {
+        "$ref": "./contracts.schema.json#/$defs/BillingOperation"
+      },
+      "FamilyMember": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyMember"
+      },
+      "FamilyInvitation": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyInvitation"
+      },
+      "FamilyView": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyView"
+      },
+      "FamilyCommand": {
+        "$ref": "./contracts.schema.json#/$defs/FamilyCommand"
+      },
+      "AccountDeleteRequest": {
+        "$ref": "./contracts.schema.json#/$defs/AccountDeleteRequest"
+      },
+      "AccountDeleteView": {
+        "$ref": "./contracts.schema.json#/$defs/AccountDeleteView"
+      },
+      "ExportView": {
+        "$ref": "./contracts.schema.json#/$defs/ExportView"
+      },
+      "ScenarioId": {
+        "$ref": "./contracts.schema.json#/$defs/ScenarioId"
+      },
+      "DevScenarioView": {
+        "$ref": "./contracts.schema.json#/$defs/DevScenarioView"
+      },
+      "DevScenariosView": {
+        "$ref": "./contracts.schema.json#/$defs/DevScenariosView"
+      },
+      "VersionedComponent": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedComponent"
+      },
+      "ModulePin": {
+        "$ref": "./contracts.schema.json#/$defs/ModulePin"
+      },
+      "CoachedUnit": {
+        "$ref": "./contracts.schema.json#/$defs/CoachedUnit"
+      },
+      "ReasoningObjective": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningObjective"
+      },
+      "ReasoningHorizon": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningHorizon"
+      },
+      "ReasoningEstimate": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningEstimate"
+      },
+      "ReasoningScenario": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningScenario"
+      },
+      "ReasoningFact": {
+        "$ref": "./contracts.schema.json#/$defs/ReasoningFact"
+      },
+      "RegisteredActorPacket": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredActorPacket"
+      },
+      "RegisteredSessionView": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredSessionView"
+      },
+      "RegisteredAnalysis": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredAnalysis"
+      },
+      "RegisteredActorEvent": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredActorEvent"
+      },
+      "RegisteredTarget": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredTarget"
+      },
+      "RegisteredSelector": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredSelector"
+      },
+      "V2ActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/V2ActionsRequest"
+      },
+      "VersionedActionsRequest": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedActionsRequest"
+      },
+      "V2NewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/V2NewSessionRequest"
+      },
+      "VersionedNewSessionRequest": {
+        "$ref": "./contracts.schema.json#/$defs/VersionedNewSessionRequest"
+      },
+      "DemoFrameRequest": {
+        "$ref": "./contracts.schema.json#/$defs/DemoFrameRequest"
+      },
+      "DemoFrame": {
+        "$ref": "./contracts.schema.json#/$defs/DemoFrame"
+      },
+      "AccessAllowance": {
+        "$ref": "./contracts.schema.json#/$defs/AccessAllowance"
+      },
+      "AccessOffer": {
+        "$ref": "./contracts.schema.json#/$defs/AccessOffer"
+      },
+      "AccessOfferPolicy": {
+        "$ref": "./contracts.schema.json#/$defs/AccessOfferPolicy"
+      },
+      "AccessDecision": {
+        "$ref": "./contracts.schema.json#/$defs/AccessDecision"
+      },
+      "HeartsCandidate": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsCandidate"
+      },
+      "HeartsObservation": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsObservation"
+      },
+      "HeartsActorPacket": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsActorPacket"
+      },
+      "HeartsSessionView": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsSessionView"
+      },
+      "HeartsAnalysis": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsAnalysis"
+      },
+      "HeartsActorEvent": {
+        "$ref": "./games/hearts.schema.json#/$defs/HeartsActorEvent"
+      },
+      "SpadesCandidate": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesCandidate"
+      },
+      "SpadesObservation": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesObservation"
+      },
+      "SpadesActorPacket": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesActorPacket"
+      },
+      "SpadesSessionView": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesSessionView"
+      },
+      "SpadesAnalysis": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesAnalysis"
+      },
+      "SpadesActorEvent": {
+        "$ref": "./games/spades.schema.json#/$defs/SpadesActorEvent"
+      }
+    }
+  }
+}

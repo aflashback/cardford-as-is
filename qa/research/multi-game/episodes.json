@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "research-episodes-1.0.0",
+  "episodes": [
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-control-01",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-agent-scenario-lab/records/solo-control-01.json",
+      "sourceHash": "d2d7977527a573b9ad08405c08514246856495972640710e8748d042d6d7bf29",
+      "originFamilyId": "spades-authored-control",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-nil-race-01",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-agent-scenario-lab/records/partners-nil-race-01.json",
+      "sourceHash": "e24a3cf6bc896d95de2adb87c1c22659bfa2baa276f2ca6852e98a93613ca16e",
+      "originFamilyId": "spades-authored-nil-race",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-spread",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-spread.json",
+      "sourceHash": "c680319a1a0a18d521945ec70112a408985e62f155ead075c618477a2fc2fb22",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-void",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-void.json",
+      "sourceHash": "9166d88fa0a1fe1c63c022540a0fa156dca33a12f9a22d23736f45e3bb30d42e",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-concentrated",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-two-suit-batch/records/solo-concentrated.json",
+      "sourceHash": "ef7dea3da79f6fc943ba300752dcca0b043be0100964373a712e3b6ec4453a0f",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-spread",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-two-suit-batch/records/partners-spread.json",
+      "sourceHash": "855b0ed1704941b4d0db0b7744d5c0eb109623a6b9d41846eae79320356b1151",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-void",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-two-suit-batch/records/partners-void.json",
+      "sourceHash": "f02283be19a3cdd379ef8ccbbda50d62163ca3b60e976c6c3a3ac02062dc1005",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-concentrated",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-two-suit-batch/records/partners-concentrated.json",
+      "sourceHash": "f056675bf06ff4b634d57fede49cca028e96d3688f9c5f04a0be483826caa415",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-void-partner-leads",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/records/solo-void-partner-leads.json",
+      "sourceHash": "4f96f17f46ddce60559eb20c342d2a3ac19c0c59808a87c326455957b75115cf",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-void-partner-leads",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-partner-leads.json",
+      "sourceHash": "5e2cbb3b890607b4fc3fd970d9a90def863ad94f66555e2187cf1074b7d74f79",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-void-trumps-at-jason",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/records/solo-void-trumps-at-jason.json",
+      "sourceHash": "7ff60dc82025eb50d2d1c45cf0460b666db500c6249a6cb94417cd672138a99e",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-void-trumps-at-jason",
+      "status": "partial",
+      "decisions": 44,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/records/partners-void-trumps-at-jason.json",
+      "sourceHash": "9a344280fcb5c6658d2b5a073b9dde258a9725b189f7561e26b417346c5acec1",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": false
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-spread-late-score-bags",
+      "status": "partial",
+      "decisions": 27,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/records/solo-spread-late-score-bags.json",
+      "sourceHash": "679547700dea359bb3f1344248c47181c24b63ff500141f62b823a183f418b18",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": false
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-spread-late-score-bags",
+      "status": "partial",
+      "decisions": 19,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/records/partners-spread-late-score-bags.json",
+      "sourceHash": "0c1baa5610c4ee535c5884ea19bb61f8213621db943a1b0474ce0f028059b921",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": false
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "solo-spread-honor-gap",
+      "status": "unstarted",
+      "decisions": 0,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/deals.json",
+      "sourceHash": "2fd1e5d56a1d49df81ff95ae50e876c59a29312f3e4ecb66c0af8170a1400ffc",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": false
+    },
+    {
+      "sourceKind": "text-discovery",
+      "episodeId": "partners-spread-honor-gap",
+      "status": "unstarted",
+      "decisions": 0,
+      "sourcePath": "qa/experiments/2026-09-30-expanded-batch/deals.json",
+      "sourceHash": "2fd1e5d56a1d49df81ff95ae50e876c59a29312f3e4ecb66c0af8170a1400ffc",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": false
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "control-solo-baseline",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/control-solo-baseline.json",
+      "sourceHash": "854336e9180e8b2bfb0b145e24e3162c45c3262663432be526777fe2698238e8",
+      "originFamilyId": "spades-authored-control",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "control-solo-candidate",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/control-solo-candidate.json",
+      "sourceHash": "baef60182bc4856859cebb85a7902b1eaddc7888e4cd2f75a3dd220bf73317a0",
+      "originFamilyId": "spades-authored-control",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "control-partners-baseline",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/control-partners-baseline.json",
+      "sourceHash": "36229110dbf82edc5bb72c4b4968b806b004e126d80b27f5c2c722c011eca9e0",
+      "originFamilyId": "spades-authored-control",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "control-partners-candidate",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/control-partners-candidate.json",
+      "sourceHash": "bd1212c97542ddd46130fbff646195d67e9e310c2491d5e6a1af890dd8f393d1",
+      "originFamilyId": "spades-authored-control",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "sweep-solo-candidate",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-solo-candidate.json",
+      "sourceHash": "b8e564c5bee9aea2b74d1697862e5d602253b20988c0f27bb221c1df1d7f628b",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "sweep-solo-baseline",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-solo-baseline.json",
+      "sourceHash": "4da845c268641f00df793742f23c4771dee8aeb7861a4c9f3eb55824b19b3b03",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "sweep-partners-candidate",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-partners-candidate.json",
+      "sourceHash": "77756dd3f9f090ebbf43db2c60f6108555fac77736e665561f0c6be99154caeb",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "sweep-partners-baseline",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/sweep-partners-baseline.json",
+      "sourceHash": "e22ef13ecf5a67c8a20d62a20e37b3c753567ad14c752dc7094074a934e8e035",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "resources-solo-baseline",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/resources-solo-baseline.json",
+      "sourceHash": "aca25baecb3c4c26872e061cbdf4ad6252af26e734c440525a2dfa5d484b206f",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "resources-solo-candidate",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/resources-solo-candidate.json",
+      "sourceHash": "439f87e477ea3402b39006dc1fd3690f7ec80ce7b7785ceaac5934ebd3230b16",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "resources-partners-baseline",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/resources-partners-baseline.json",
+      "sourceHash": "1564549738c1539c5afa7c1adf2be2bbc6962ec76adacf3b7e7bdc3aa0d47c66",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "resources-partners-candidate",
+      "status": "complete",
+      "decisions": 56,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/runs/resources-partners-candidate.json",
+      "sourceHash": "87f3656d88571dd83c0b0a32dc76c05c9d459adaf8ad66585a48c04e4a595eb5",
+      "originFamilyId": "spades-authored-two-suit-stress",
+      "outcomeEligible": true
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "946d3b84-c1dc-4fe9-b801-6d51d80dfe40",
+      "status": "unused",
+      "decisions": 0,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/sessions.json",
+      "sourceHash": "6fb668a28e2a88ff5f94af007d14157ffa35a712fca2b2dfc9caa074923e3d77",
+      "originFamilyId": null,
+      "outcomeEligible": false
+    },
+    {
+      "sourceKind": "browser",
+      "episodeId": "41db58dc-4097-491a-8f04-5c4075a5468e",
+      "status": "unused",
+      "decisions": 0,
+      "sourcePath": "qa/experiments/2026-10-02-browser-baseline/sessions.json",
+      "sourceHash": "6fb668a28e2a88ff5f94af007d14157ffa35a712fca2b2dfc9caa074923e3d77",
+      "originFamilyId": null,
+      "outcomeEligible": false
+    }
+  ]
+}

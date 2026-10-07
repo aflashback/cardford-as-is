@@ -1,0 +1,15 @@
+=== RUN   TestM04FPreparedRequestProfile
+    resource_profile_test.go:91: completed hand=1 revision=69 elapsed=8.219s terminal=false
+    resource_profile_test.go:91: completed hand=2 revision=140 elapsed=21.185s terminal=false
+    resource_profile_test.go:91: completed hand=3 revision=211 elapsed=37.95s terminal=false
+    resource_profile_test.go:91: completed hand=4 revision=282 elapsed=59.496s terminal=false
+    resource_profile_test.go:91: completed hand=5 revision=353 elapsed=1m25.428s terminal=false
+    resource_profile_test.go:91: completed hand=6 revision=424 elapsed=1m54.304s terminal=false
+    resource_profile_test.go:91: completed hand=7 revision=495 elapsed=2m27.48s terminal=false
+    resource_profile_test.go:91: completed hand=8 revision=566 elapsed=3m8.21s terminal=false
+    resource_profile_test.go:91: completed hand=9 revision=637 elapsed=3m53.17s terminal=false
+    resource_profile_test.go:91: completed hand=10 revision=708 elapsed=4m40.452s terminal=false
+    resource_profile_test.go:69: M04F_REQUEST_PROFILE {"commands":699,"deliveredHelp":10,"elapsedMS":280452,"failed":false,"hands":10,"metrics":{"commit-actor":{"Count":560,"MedianMS":285.116,"P95MS":525.279,"TotalMS":165185.55300000004},"commit-automatic":{"Count":130,"MedianMS":24.442,"P95MS":39.906,"TotalMS":3380.3880000000013},"commit-chance":{"Count":9,"MedianMS":25.5,"P95MS":43.016,"TotalMS":240.393},"delivered-help":{"Count":10,"MedianMS":260.891,"P95MS":574.72,"TotalMS":2567.6140000000005},"load":{"Count":709,"MedianMS":14.819,"P95MS":27.32,"TotalMS":11044.433999999997},"next-hand":{"Count":9,"MedianMS":26.215,"P95MS":45.12,"TotalMS":246.304},"prepare-bot-action":{"Count":420,"MedianMS":109.867,"P95MS":176.876,"TotalMS":47527.121},"prepare-human-analysis":{"Count":140,"MedianMS":106.903,"P95MS":178.68,"TotalMS":15703.829000000003},"table-response":{"Count":699,"MedianMS":46.445,"P95MS":81.151,"TotalMS":33937.679000000004}},"terminal":false,"variant":"partners"}
+--- PASS: TestM04FPreparedRequestProfile (282.56s)
+PASS
+ok  	cardford/server/internal/service	282.907s

@@ -195,6 +195,30 @@ func DecodeCheckpoint(raw []byte) (Checkpoint, error) {
 	return c, err
 }
 func DecodeAnchor(raw []byte) (ReplayAnchor, error) {
+	value, parseErr := contracts.ParseJSON(raw)
+	if parseErr != nil {
+		return ReplayAnchor{}, parseErr
+	}
+	object, ok := value.(map[string]any)
+	if !ok {
+		return ReplayAnchor{}, fmt.Errorf("anchor must be an object")
+	}
+	if _, opaque := object["openingMaterial"]; !opaque {
+		// Keep the original closed shape; adding an optional field must not make
+		// legacy required fields optional or permit arbitrary extra properties.
+		var old struct {
+			RecordVersion  string          `json:"recordVersion"`
+			GameID         string          `json:"gameId"`
+			MetadataDigest string          `json:"metadataDigest"`
+			Config         json.RawMessage `json:"config"`
+			OpeningChance  []string        `json:"openingChance"`
+			Initial        Checkpoint      `json:"initial"`
+		}
+		if err := strictRecord(raw, &old); err != nil {
+			return ReplayAnchor{}, err
+		}
+		return ReplayAnchor{RecordVersion: old.RecordVersion, GameID: old.GameID, MetadataDigest: old.MetadataDigest, Config: old.Config, OpeningChance: old.OpeningChance, Initial: old.Initial}, nil
+	}
 	var a ReplayAnchor
 	err := strictRecord(raw, &a)
 	return a, err

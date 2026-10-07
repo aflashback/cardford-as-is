@@ -11,9 +11,10 @@ const PreparedAnalysisSchema = "OriginalPreparedAnalysis-1.0.0"
 const PreparedAdviceSchema = "OriginalPreparedAdvice-1.0.0"
 
 type PreparedAnalysisEnvelope struct {
-	Version    string          `json:"version"`
-	Registered json.RawMessage `json:"registered"`
-	Original   Analysis        `json:"original"`
+	Version    string              `json:"version"`
+	Registered json.RawMessage     `json:"registered"`
+	Original   Analysis            `json:"original"`
+	Rollout    *ActorRolloutRecord `json:"rollout,omitempty"`
 }
 type PreparedAdviceEnvelope struct {
 	Version  string                  `json:"version"`

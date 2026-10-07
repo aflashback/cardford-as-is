@@ -1,0 +1,6 @@
+
+> tricks-coach@0.1.0 check:artifacts
+> node web/scripts/check-artifacts.mjs
+
+Browser boundary passed (27 reachable source modules); artifacts contain no forbidden server identifiers or source maps.
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":1127.5624,"status":"passed"}}

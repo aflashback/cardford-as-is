@@ -14,7 +14,7 @@ for (const includePlatform of [false, true]) {
 const schema = JSON.parse(await readFile(resolve(base, 'contracts.schema.json'), 'utf8'));
 // Only these public fragments may enter the active bundle. Private schemas and
 // arbitrary filesystem/network references are never resolved by the compiler.
-const publicFragments = ['hearts', 'spades'];
+const publicFragments = ['hearts', 'spades', 'token'];
 const publicPlatformFragments = ['local-service', 'platform-service', 'platform-account', 'platform-review'];
 const references = new Map();
 const schemaLocations = new Map();

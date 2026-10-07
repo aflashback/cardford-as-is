@@ -1,0 +1,11 @@
+=== RUN   TestStatsCacheConcurrentReaders
+--- PASS: TestStatsCacheConcurrentReaders (0.30s)
+PASS
+ok  	cardford/server/internal/records	1.712s
+=== RUN   TestSchedulerBoundsDedupAndCancellation
+--- PASS: TestSchedulerBoundsDedupAndCancellation (0.00s)
+=== RUN   TestSchedulerRegisteredDeadlineRemainsBoundedAndCancelable
+--- PASS: TestSchedulerRegisteredDeadlineRemainsBoundedAndCancelable (0.00s)
+PASS
+ok  	cardford/server/internal/service	1.428s
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":16600.5784,"status":"passed"}}

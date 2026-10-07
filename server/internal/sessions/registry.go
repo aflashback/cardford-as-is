@@ -57,10 +57,11 @@ type Descriptor struct {
 	SupportedHorizonIDs        []string  `json:"supportedHorizonIds"`
 }
 type registration struct {
-	pin        gamekernel.Pin
-	descriptor Descriptor
-	start      func(json.RawMessage, json.RawMessage) (gamekernel.BoundSession, error)
-	open       func(json.RawMessage) (gamekernel.BoundSession, error)
+	pin          gamekernel.Pin
+	descriptor   Descriptor
+	start        func(json.RawMessage, json.RawMessage) (gamekernel.BoundSession, error)
+	open         func(json.RawMessage) (gamekernel.BoundSession, error)
+	installation *Registration
 }
 type Registry struct {
 	branches  []registration
@@ -180,6 +181,9 @@ func (r *Registry) Catalog(engineHandlers, uiHandlers []string) []Descriptor {
 	}
 	for _, b := range r.branches {
 		d := b.descriptor
+		if b.installation != nil && b.installation.TestOnly {
+			continue
+		}
 		if containsAll(r.installed.Engine, d.RequiredEngineCapabilities) && containsAll(engineHandlers, d.RequiredEngineCapabilities) && containsAll(r.installed.UI, d.RequiredUICapabilities) && containsAll(uiHandlers, d.RequiredUICapabilities) {
 			raw, _ := json.Marshal(d)
 			var copy Descriptor

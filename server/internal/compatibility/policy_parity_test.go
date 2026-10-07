@@ -79,8 +79,24 @@ func requireHash(t *testing.T, label string, raw json.RawMessage, want string) {
 }
 
 func TestM04BOriginalSourceFingerprints(t *testing.T) {
+	// M06 extends the public union with a test-only numeric branch. Retain the
+	// exact original generation inputs for the historical oracle rather than
+	// rewriting its manifest hashes. Every original policy/coach/runtime source
+	// still points to the live file; current generated artifacts have their own
+	// generation check and both original and additive wire fixture tests.
+	retained := map[string]bool{
+		"web/server/tests/module-contract.test.ts": true,
+		"web/shared/contracts.schema.json":         true,
+		"web/shared/contracts.ts":                  true,
+		"web/shared/openapi.json":                  true,
+		"web/shared/validation.ts":                 true,
+	}
 	for _, source := range reference(t).Sources {
-		raw, err := os.ReadFile(filepath.Join("../../..", source.Path))
+		path := source.Path
+		if retained[path] {
+			path = filepath.Join("qa/implementation/multi-game/m06/retained-m04b-source", path)
+		}
+		raw, err := os.ReadFile(filepath.Join("../../..", path))
 		if err != nil {
 			t.Fatal(err)
 		}

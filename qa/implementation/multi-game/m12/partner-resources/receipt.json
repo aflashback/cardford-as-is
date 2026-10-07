@@ -1,0 +1,24 @@
+{
+  "receipt": {
+    "exitCode": 1,
+    "signal": null,
+    "error": null,
+    "shutdownError": null,
+    "timedOut": false,
+    "interrupted": false,
+    "outputLimitExceeded": false,
+    "elapsedMs": 3572.7652000000003,
+    "status": "failed"
+  },
+  "artifacts": {
+    "binary": "ae88705715ce61978bc54fd58f805e2491733610b02780b6e3a99628c57c5d49",
+    "client": "ae34e457b2a44cdee2c61443955b52a9d072bb6cc3583f9d60ba2d73355d0288",
+    "test": "db10dbf5be5d73378ab34ae78bb44562408aa6d8b7fa048ccb04bad7f1041cfa"
+  },
+  "unchanged": true,
+  "provider": {
+    "mode": "off",
+    "attempts": 0
+  },
+  "scope": "automated actual local functional journeys; no human or strength result"
+}

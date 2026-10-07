@@ -88,6 +88,7 @@ export const validateAccessAllowance: ValidateFunction<ContractTypes['AccessAllo
 export const validateAccessOffer: ValidateFunction<ContractTypes['AccessOffer']>;
 export const validateAccessOfferPolicy: ValidateFunction<ContractTypes['AccessOfferPolicy']>;
 export const validateAccessDecision: ValidateFunction<ContractTypes['AccessDecision']>;
+export const validateRegisteredPresentation: ValidateFunction<ContractTypes['RegisteredPresentation']>;
 export const validateHeartsCandidate: ValidateFunction<ContractTypes['HeartsCandidate']>;
 export const validateHeartsObservation: ValidateFunction<ContractTypes['HeartsObservation']>;
 export const validateHeartsActorPacket: ValidateFunction<ContractTypes['HeartsActorPacket']>;
@@ -100,3 +101,13 @@ export const validateSpadesActorPacket: ValidateFunction<ContractTypes['SpadesAc
 export const validateSpadesSessionView: ValidateFunction<ContractTypes['SpadesSessionView']>;
 export const validateSpadesAnalysis: ValidateFunction<ContractTypes['SpadesAnalysis']>;
 export const validateSpadesActorEvent: ValidateFunction<ContractTypes['SpadesActorEvent']>;
+export const validateTokenReveal: ValidateFunction<ContractTypes['TokenReveal']>;
+export const validateTokenCycle: ValidateFunction<ContractTypes['TokenCycle']>;
+export const validateTokenCompetitor: ValidateFunction<ContractTypes['TokenCompetitor']>;
+export const validateTokenObservation: ValidateFunction<ContractTypes['TokenObservation']>;
+export const validateTokenCandidate: ValidateFunction<ContractTypes['TokenCandidate']>;
+export const validateTokenActorPacket: ValidateFunction<ContractTypes['TokenActorPacket']>;
+export const validateTokenSessionView: ValidateFunction<ContractTypes['TokenSessionView']>;
+export const validateTokenAnalysis: ValidateFunction<ContractTypes['TokenAnalysis']>;
+export const validateTokenActorEvent: ValidateFunction<ContractTypes['TokenActorEvent']>;
+export const validateTokenPresentation: ValidateFunction<ContractTypes['TokenPresentation']>;

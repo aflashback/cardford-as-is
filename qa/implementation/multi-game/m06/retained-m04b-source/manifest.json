@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "sourceCommit": "b822d0d",
+  "purpose": "Original M04B schema/test inputs, superseded only by additive M06 generation; original corpus untouched",
+  "entries": [
+    {
+      "path": "web/server/tests/module-contract.test.ts",
+      "retained": "qa/implementation/multi-game/m06/retained-m04b-source/web/server/tests/module-contract.test.ts",
+      "sha256": "dd9f59239856560f0854ad37cd879c25f232f5f4146cf3fc0190074679d434f7",
+      "bytes": 19116
+    },
+    {
+      "path": "web/shared/contracts.schema.json",
+      "retained": "qa/implementation/multi-game/m06/retained-m04b-source/web/shared/contracts.schema.json",
+      "sha256": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2",
+      "bytes": 83559
+    },
+    {
+      "path": "web/shared/contracts.ts",
+      "retained": "qa/implementation/multi-game/m06/retained-m04b-source/web/shared/contracts.ts",
+      "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f",
+      "bytes": 25118
+    },
+    {
+      "path": "web/shared/openapi.json",
+      "retained": "qa/implementation/multi-game/m06/retained-m04b-source/web/shared/openapi.json",
+      "sha256": "ca47d15c98f8dea6e6f6b96b0dbc227e3a60a436d7053577a1b02cd43b285761",
+      "bytes": 37001
+    },
+    {
+      "path": "web/shared/validation.ts",
+      "retained": "qa/implementation/multi-game/m06/retained-m04b-source/web/shared/validation.ts",
+      "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2",
+      "bytes": 13079
+    }
+  ]
+}

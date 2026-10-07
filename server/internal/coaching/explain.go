@@ -45,6 +45,9 @@ func ExplainContext(ctx context.Context, obs d.Observation, supplied *d.Analysis
 	var analysis d.Analysis
 	if supplied != nil {
 		analysis = *supplied
+		if obs.Mode != "hearts" && analysis.PolicyVersion == spadesreasoning.PartnerResourcePolicy {
+			policyVersion = spadesreasoning.PartnerResourcePolicy
+		}
 	} else {
 		var err error
 		if obs.Mode == "hearts" {
@@ -98,6 +101,9 @@ func ExplainContext(ctx context.Context, obs d.Observation, supplied *d.Analysis
 	}
 	if obs.Mode == "hearts" {
 		return heartscoaching.Render(obs, analysis)
+	}
+	if analysis.PolicyVersion == spadesreasoning.PartnerResourcePolicy {
+		return spadescoaching.RenderPartnerResources(obs, analysis)
 	}
 	return spadescoaching.Render(obs, analysis)
 }

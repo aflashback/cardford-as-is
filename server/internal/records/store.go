@@ -21,24 +21,26 @@ var (
 
 type StoreOptions struct {
 	// LocalService activates only the separate loopback development schema.
-	LocalService bool
-	Schema       string
-	CreateSchema bool
-	QueryTimeout time.Duration
-	LockTimeout  time.Duration
-	MaxConns     int32
-	Codec        *DocumentCodec
+	LocalService       bool
+	Schema             string
+	CreateSchema       bool
+	QueryTimeout       time.Duration
+	LockTimeout        time.Duration
+	MaxConns           int32
+	Codec              *DocumentCodec
+	StartupDiagnostics *StartupDiagnostics
 }
 
 // Store defaults to an isolated M03 test schema. Explicit local-service mode
 // permits only the separate loopback schema with an installed service codec.
 type Store struct {
-	pool         *pgxpool.Pool
-	schema       string
-	codec        *DocumentCodec
-	queryTimeout time.Duration
-	lockTimeout  time.Duration
-	localService bool
+	pool           *pgxpool.Pool
+	schema         string
+	codec          *DocumentCodec
+	queryTimeout   time.Duration
+	lockTimeout    time.Duration
+	localService   bool
+	statsDecisions statsDecisionCache
 }
 
 var schemaName = regexp.MustCompile(`^m03_[a-z0-9_]{1,48}$`)
@@ -85,8 +87,12 @@ func OpenStore(ctx context.Context, url string, options StoreOptions) (*Store, e
 	cfg.ConnConfig.RuntimeParams["statement_timeout"] = fmt.Sprint(options.QueryTimeout.Milliseconds())
 	cfg.ConnConfig.RuntimeParams["lock_timeout"] = fmt.Sprint(options.LockTimeout.Milliseconds())
 	cfg.ConnConfig.RuntimeParams["idle_in_transaction_session_timeout"] = fmt.Sprint(options.QueryTimeout.Milliseconds())
+	options.StartupDiagnostics.configure(cfg)
+	defer options.StartupDiagnostics.stop()
 	bounded, cancel := context.WithTimeout(ctx, options.QueryTimeout)
 	defer cancel()
+	stopStartupRetry := configureLocalStartupRetry(cfg, bounded, options.LocalService)
+	defer stopStartupRetry()
 	pool, err := pgxpool.NewWithConfig(bounded, cfg)
 	if err != nil {
 		return nil, fmt.Errorf("open M03 database: %w", err)

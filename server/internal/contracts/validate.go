@@ -4,14 +4,13 @@
 package contracts
 
 import (
-	"bytes"
 	_ "embed"
 	"encoding/json"
 	"fmt"
-	"io"
 	"reflect"
 	"regexp"
 	"strconv"
+	"strings"
 	"sync"
 	"unicode/utf8"
 
@@ -115,71 +114,130 @@ func ParseJSON(raw []byte) (any, error) {
 	if err := pairedSurrogates(raw); err != nil {
 		return nil, err
 	}
-	decoder := json.NewDecoder(bytes.NewReader(raw))
-	value, err := readValue(decoder, 0)
+	end, err := checkJSONValue(raw, 0, 0)
 	if err != nil {
 		return nil, err
 	}
-	if _, err = decoder.Token(); err != io.EOF {
+	if skipJSONSpace(raw, end) != len(raw) {
 		return nil, fmt.Errorf("trailing or malformed JSON")
+	}
+	// The structural pass preserves duplicate/depth rejection before allocating
+	// the parsed document. Unmarshal supplies all literal/string syntax checks
+	// and the same binary64 numeric values as the original token decoder.
+	var value any
+	if err = json.Unmarshal(raw, &value); err != nil {
+		return nil, err
 	}
 	return value, nil
 }
 
-func readValue(decoder *json.Decoder, depth int) (any, error) {
+func skipJSONSpace(raw []byte, i int) int {
+	for i < len(raw) && (raw[i] == ' ' || raw[i] == '\t' || raw[i] == '\r' || raw[i] == '\n') {
+		i++
+	}
+	return i
+}
+
+// checkJSONString finds the closing quote without interpreting value strings.
+// Escaped object keys are decoded separately to detect equivalent spellings.
+func checkJSONString(raw []byte, start int) (end int, escaped bool, err error) {
+	for i := start + 1; i < len(raw); i++ {
+		switch raw[i] {
+		case '"':
+			return i + 1, escaped, nil
+		case '\\':
+			escaped = true
+			i++
+		}
+	}
+	return 0, false, fmt.Errorf("unterminated JSON string")
+}
+
+// checkJSONValue checks nesting and duplicate normalized object keys without
+// Decoder.Token's per-token allocations. It never accepts JSON on its own;
+// ParseJSON always follows it with the standard library's complete decoder.
+func checkJSONValue(raw []byte, start, depth int) (int, error) {
 	if depth > MaxJSONDepth {
-		return nil, fmt.Errorf("JSON nesting exceeds %d", MaxJSONDepth)
+		return 0, fmt.Errorf("JSON nesting exceeds %d", MaxJSONDepth)
 	}
-	token, err := decoder.Token()
-	if err != nil {
-		return nil, err
+	i := skipJSONSpace(raw, start)
+	if i == len(raw) {
+		return 0, fmt.Errorf("missing JSON value")
 	}
-	delim, compound := token.(json.Delim)
-	if !compound {
-		return token, nil
-	}
-	switch delim {
+	switch raw[i] {
 	case '{':
-		result := make(map[string]any)
-		for decoder.More() {
-			token, err := decoder.Token()
-			if err != nil {
-				return nil, err
-			}
-			key, ok := token.(string)
-			if !ok {
-				return nil, fmt.Errorf("nonstring object key")
-			}
-			if _, exists := result[key]; exists {
-				return nil, fmt.Errorf("duplicate object property %q", key)
-			}
-			value, err := readValue(decoder, depth+1)
-			if err != nil {
-				return nil, err
-			}
-			result[key] = value
+		i = skipJSONSpace(raw, i+1)
+		if i < len(raw) && raw[i] == '}' {
+			return i + 1, nil
 		}
-		end, err := decoder.Token()
-		if err != nil || end != json.Delim('}') {
-			return nil, fmt.Errorf("unterminated object")
+		keys := make(map[string]struct{})
+		for {
+			if i >= len(raw) || raw[i] != '"' {
+				return 0, fmt.Errorf("expected JSON object key")
+			}
+			end, escaped, err := checkJSONString(raw, i)
+			if err != nil {
+				return 0, err
+			}
+			key := string(raw[i+1 : end-1])
+			if escaped {
+				if err = json.Unmarshal(raw[i:end], &key); err != nil {
+					return 0, err
+				}
+			}
+			if _, exists := keys[key]; exists {
+				return 0, fmt.Errorf("duplicate object property %q", key)
+			}
+			keys[key] = struct{}{}
+			i = skipJSONSpace(raw, end)
+			if i >= len(raw) || raw[i] != ':' {
+				return 0, fmt.Errorf("missing JSON object separator")
+			}
+			i, err = checkJSONValue(raw, i+1, depth+1)
+			if err != nil {
+				return 0, err
+			}
+			i = skipJSONSpace(raw, i)
+			if i < len(raw) && raw[i] == '}' {
+				return i + 1, nil
+			}
+			if i >= len(raw) || raw[i] != ',' {
+				return 0, fmt.Errorf("unterminated JSON object")
+			}
+			i = skipJSONSpace(raw, i+1)
 		}
-		return result, nil
 	case '[':
-		result := make([]any, 0)
-		for decoder.More() {
-			value, err := readValue(decoder, depth+1)
+		i = skipJSONSpace(raw, i+1)
+		if i < len(raw) && raw[i] == ']' {
+			return i + 1, nil
+		}
+		for {
+			var err error
+			i, err = checkJSONValue(raw, i, depth+1)
 			if err != nil {
-				return nil, err
+				return 0, err
 			}
-			result = append(result, value)
+			i = skipJSONSpace(raw, i)
+			if i < len(raw) && raw[i] == ']' {
+				return i + 1, nil
+			}
+			if i >= len(raw) || raw[i] != ',' {
+				return 0, fmt.Errorf("unterminated JSON array")
+			}
+			i = skipJSONSpace(raw, i+1)
 		}
-		end, err := decoder.Token()
-		if err != nil || end != json.Delim(']') {
-			return nil, fmt.Errorf("unterminated array")
-		}
-		return result, nil
+	case '"':
+		end, _, err := checkJSONString(raw, i)
+		return end, err
 	default:
-		return nil, fmt.Errorf("unexpected JSON delimiter")
+		start = i
+		for i < len(raw) && !strings.ContainsRune(",]} \t\r\n", rune(raw[i])) {
+			i++
+		}
+		if i == start {
+			return 0, fmt.Errorf("missing JSON literal")
+		}
+		return i, nil
 	}
 }
 

@@ -1,0 +1,3829 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/local-v1.json",
+  "title": "PublicContracts",
+  "description": "Canonical public transport contract. Generated artifacts must not be edited. Private domain types remain independent.",
+  "$defs": {
+    "Mode": {
+      "title": "Mode",
+      "enum": [
+        "hearts",
+        "spades-solo",
+        "spades-partners"
+      ]
+    },
+    "Seat": {
+      "title": "Seat",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "Card": {
+      "title": "Card",
+      "type": "string",
+      "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+    },
+    "Suit": {
+      "title": "Suit",
+      "enum": [
+        "C",
+        "D",
+        "H",
+        "S"
+      ]
+    },
+    "Phase": {
+      "title": "Phase",
+      "enum": [
+        "pass",
+        "bid",
+        "play",
+        "trick-end",
+        "hand-end",
+        "match-end"
+      ]
+    },
+    "GameAction": {
+      "title": "GameAction",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "bid"
+            },
+            "bid": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 13
+            }
+          },
+          "required": [
+            "kind",
+            "bid"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play"
+            },
+            "card": {
+              "$ref": "#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "pass"
+            },
+            "cards": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Card"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "cards"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Play": {
+      "title": "Play",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        }
+      },
+      "required": [
+        "seat",
+        "card"
+      ],
+      "additionalProperties": false
+    },
+    "Trick": {
+      "title": "Trick",
+      "type": "object",
+      "properties": {
+        "plays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Play"
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "winner": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": [
+        "plays",
+        "winner"
+      ],
+      "additionalProperties": false
+    },
+    "HandResult": {
+      "title": "HandResult",
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "bags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "winner": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": [
+        "points",
+        "bags"
+      ],
+      "additionalProperties": false
+    },
+    "GameView": {
+      "title": "GameView",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        },
+        "phase": {
+          "$ref": "#/$defs/Phase"
+        },
+        "hand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "handCounts": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "bids": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "tricks": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "bags": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "trick": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Play"
+          },
+          "maxItems": 4
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Trick"
+          },
+          "maxItems": 13
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dealer": {
+          "$ref": "#/$defs/Seat"
+        },
+        "handNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "heartsBroken": {
+          "type": "boolean"
+        },
+        "spadesBroken": {
+          "type": "boolean"
+        },
+        "passDirection": {
+          "enum": [
+            "left",
+            "right",
+            "across",
+            "hold"
+          ]
+        },
+        "received": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "outgoing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "handResult": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HandResult"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "currentWinner": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "legalActions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GameAction"
+          },
+          "maxItems": 286
+        }
+      },
+      "required": [
+        "id",
+        "mode",
+        "phase",
+        "hand",
+        "handCounts",
+        "bids",
+        "tricks",
+        "scores",
+        "bags",
+        "trick",
+        "history",
+        "turn",
+        "dealer",
+        "handNumber",
+        "heartsBroken",
+        "spadesBroken",
+        "passDirection",
+        "received",
+        "outgoing",
+        "handResult",
+        "currentWinner",
+        "legalActions"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "pass"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "turn": {
+            "type": "null"
+          },
+          "currentWinner": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    "Preferences": {
+      "title": "Preferences",
+      "type": "object",
+      "properties": {
+        "coachMode": {
+          "enum": [
+            "asked",
+            "nudges",
+            "after"
+          ]
+        },
+        "gameSpeed": {
+          "enum": [
+            1,
+            1.2,
+            1.4
+          ]
+        }
+      },
+      "required": [
+        "coachMode",
+        "gameSpeed"
+      ],
+      "additionalProperties": false
+    },
+    "Plan": {
+      "title": "Plan",
+      "enum": [
+        "demo",
+        "practice",
+        "unlimited",
+        "family"
+      ]
+    },
+    "PaidPlan": {
+      "title": "PaidPlan",
+      "enum": [
+        "practice",
+        "unlimited",
+        "family"
+      ]
+    },
+    "CoachAccess": {
+      "title": "CoachAccess",
+      "type": "object",
+      "properties": {
+        "plan": {
+          "$ref": "#/$defs/Plan"
+        },
+        "coverage": {
+          "enum": [
+            "none",
+            "active",
+            "expired"
+          ]
+        },
+        "canPlay": {
+          "type": "boolean"
+        },
+        "canCoach": {
+          "type": "boolean"
+        },
+        "remainingHands": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resetsAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "handUnlocked": {
+          "type": "boolean"
+        },
+        "canStartWork": {
+          "type": "boolean"
+        },
+        "localMock": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "plan",
+        "coverage",
+        "canPlay",
+        "canCoach",
+        "remainingHands",
+        "resetsAt",
+        "handUnlocked",
+        "canStartWork",
+        "localMock"
+      ],
+      "additionalProperties": false
+    },
+    "SessionStats": {
+      "title": "SessionStats",
+      "type": "object",
+      "properties": {
+        "decisions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "helped": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "suggestions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "decisions",
+        "helped",
+        "suggestions"
+      ],
+      "additionalProperties": false
+    },
+    "SessionView": {
+      "title": "SessionView",
+      "type": "object",
+      "properties": {
+        "game": {
+          "$ref": "#/$defs/GameView"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "preferences": {
+          "$ref": "#/$defs/Preferences"
+        },
+        "access": {
+          "$ref": "#/$defs/CoachAccess"
+        },
+        "source": {
+          "enum": [
+            "code",
+            "demo"
+          ]
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "stats": {
+          "$ref": "#/$defs/SessionStats"
+        },
+        "scenario": {
+          "$ref": "#/$defs/DevScenarioView"
+        }
+      },
+      "required": [
+        "game",
+        "revision",
+        "decisionId",
+        "preferences",
+        "access",
+        "source",
+        "controlLeaseToken",
+        "stats"
+      ],
+      "additionalProperties": false
+    },
+    "AdviceView": {
+      "title": "AdviceView",
+      "type": "object",
+      "properties": {
+        "focus": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "notice": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "suggestion": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        },
+        "pass": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "uniqueItems": true
+        },
+        "bid": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "highlightSuit": {
+          "$ref": "#/$defs/Suit"
+        },
+        "source": {
+          "enum": [
+            "code",
+            "jev",
+            "forced",
+            "fallback"
+          ]
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "requestedLevel": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "outcome": {
+          "enum": [
+            "suggestion",
+            "several-reasonable"
+          ]
+        },
+        "explanation": {
+          "enum": [
+            "supported",
+            "facts-only"
+          ]
+        },
+        "consideredCards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "consideredBids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "evidence": {
+          "enum": [
+            "exact",
+            "heuristic",
+            "sampled-estimate"
+          ]
+        },
+        "policyVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "cueVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "focus",
+        "notice",
+        "reason",
+        "suggestion",
+        "source",
+        "decisionId",
+        "requestedLevel"
+      ],
+      "additionalProperties": false
+    },
+    "CommandEnvelope": {
+      "title": "CommandEnvelope",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false
+    },
+    "NewSessionRequest": {
+      "title": "NewSessionRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        },
+        "expectedActiveGameId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scenarioId": {
+          "$ref": "#/$defs/ScenarioId"
+        },
+        "replayScenario": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "commandId",
+        "mode",
+        "expectedActiveGameId"
+      ],
+      "additionalProperties": false,
+      "not": {
+        "required": [
+          "scenarioId",
+          "replayScenario"
+        ],
+        "properties": {
+          "scenarioId": {},
+          "replayScenario": {}
+        }
+      }
+    },
+    "ActionsRequest": {
+      "title": "ActionsRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "action": {
+          "$ref": "#/$defs/GameAction"
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "PrepareRequest": {
+      "title": "PrepareRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false
+    },
+    "CommandStatusView": {
+      "title": "CommandStatusView",
+      "type": "object",
+      "properties": { "status": { "enum": ["accepted", "unknown"] } },
+      "required": ["status"],
+      "additionalProperties": false
+    },
+    "IdentityView": {
+      "title": "IdentityView",
+      "type": "object",
+      "properties": {
+        "playerId": { "type": "string", "minLength": 1, "maxLength": 256 }
+      },
+      "required": ["playerId"],
+      "additionalProperties": false
+    },
+    "PrepareView": {
+      "title": "PrepareView",
+      "type": "object",
+      "properties": {
+        "preparedDecisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source": {
+          "enum": [
+            "code",
+            "forced"
+          ]
+        }
+      },
+      "required": [
+        "preparedDecisionId",
+        "decisionId",
+        "revision",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "AdvanceRequest": {
+      "title": "AdvanceRequest",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "gameId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "expectedRevision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "controlLeaseToken": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "kind": {
+              "const": "bot"
+            },
+            "preparedDecisionId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "commandId",
+            "gameId",
+            "expectedRevision",
+            "controlLeaseToken",
+            "kind",
+            "preparedDecisionId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "gameId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "expectedRevision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "controlLeaseToken": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "kind": {
+              "const": "collect-trick"
+            }
+          },
+          "required": [
+            "commandId",
+            "gameId",
+            "expectedRevision",
+            "controlLeaseToken",
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "NextHandRequest": {
+      "title": "NextHandRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false
+    },
+    "AdviceRequest": {
+      "title": "AdviceRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "requestedLevel": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "decisionId",
+        "requestedLevel"
+      ],
+      "additionalProperties": false
+    },
+    "PreferencesRequest": {
+      "title": "PreferencesRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "preferences": {
+          "$ref": "#/$defs/Preferences"
+        }
+      },
+      "required": [
+        "commandId",
+        "preferences"
+      ],
+      "additionalProperties": false
+    },
+    "HandUnlockRequest": {
+      "title": "HandUnlockRequest",
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "handId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "requestedLevel": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "requestId",
+        "gameId",
+        "handId",
+        "decisionId",
+        "expectedRevision",
+        "requestedLevel",
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false
+    },
+    "HandUnlockView": {
+      "title": "HandUnlockView",
+      "type": "object",
+      "properties": {
+        "access": {
+          "$ref": "#/$defs/CoachAccess"
+        },
+        "advice": {
+          "$ref": "#/$defs/AdviceView"
+        }
+      },
+      "required": [
+        "access",
+        "advice"
+      ],
+      "additionalProperties": false
+    },
+    "ExposureRequest": {
+      "title": "ExposureRequest",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "displayedLevel": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "required": [
+        "gameId",
+        "decisionId",
+        "eventId",
+        "displayedLevel"
+      ],
+      "additionalProperties": false
+    },
+    "AcceptedView": {
+      "title": "AcceptedView",
+      "type": "object",
+      "properties": {
+        "accepted": {
+          "const": true
+        }
+      },
+      "required": [
+        "accepted"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewFrame": {
+      "title": "ReviewFrame",
+      "type": "object",
+      "properties": {
+        "game": {
+          "$ref": "#/$defs/GameView"
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GameAction"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "game",
+        "action",
+        "decisionId",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewCase": {
+      "title": "ReviewCase",
+      "type": "object",
+      "properties": {
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "handNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "action": {
+          "$ref": "#/$defs/GameAction"
+        },
+        "assisted": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "not-assessed",
+            "supported",
+            "reasonable",
+            "review"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "decisionId",
+        "handNumber",
+        "action",
+        "assisted",
+        "status",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewIndex": {
+      "title": "ReviewIndex",
+      "type": "object",
+      "properties": {
+        "cases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReviewCase"
+          },
+          "maxItems": 1000
+        }
+      },
+      "required": [
+        "cases"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewView": {
+      "title": "ReviewView",
+      "type": "object",
+      "properties": {
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "label": {
+          "const": "Original"
+        },
+        "liveRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReviewFrame"
+          },
+          "maxItems": 1000
+        }
+      },
+      "required": [
+        "decisionId",
+        "label",
+        "liveRevision",
+        "frames"
+      ],
+      "additionalProperties": false
+    },
+    "TrialRequest": {
+      "title": "TrialRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "trialId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "alternative": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play"
+            },
+            "card": {
+              "$ref": "#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "trialId",
+        "alternative",
+        "decisionId"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewTrial": {
+      "title": "ReviewTrial",
+      "type": "object",
+      "properties": {
+        "trialId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "label": {
+          "const": "Possible continuation"
+        },
+        "liveRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReviewFrame"
+          },
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "trialId",
+        "decisionId",
+        "label",
+        "liveRevision",
+        "frames"
+      ],
+      "additionalProperties": false
+    },
+    "RecapView": {
+      "title": "RecapView",
+      "type": "object",
+      "properties": {
+        "handNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HandResult"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "assessmentStatus": {
+          "enum": [
+            "pending",
+            "ready",
+            "partial"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "stats": {
+          "$ref": "#/$defs/SessionStats"
+        }
+      },
+      "required": [
+        "handNumber",
+        "result",
+        "assessmentStatus",
+        "message",
+        "stats"
+      ],
+      "additionalProperties": false
+    },
+    "SubscriptionView": {
+      "title": "SubscriptionView",
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "none",
+            "active",
+            "past_due",
+            "canceled",
+            "local-mock"
+          ]
+        },
+        "plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PaidPlan"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cancelAtPeriodEnd": {
+          "type": "boolean"
+        },
+        "currentPeriodEnd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "billingAvailable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "plan",
+        "cancelAtPeriodEnd",
+        "currentPeriodEnd",
+        "billingAvailable"
+      ],
+      "additionalProperties": false
+    },
+    "OfferView": {
+      "title": "OfferView",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/PaidPlan"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "price": {
+          "type": "null"
+        },
+        "currency": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "price",
+        "currency"
+      ],
+      "additionalProperties": false
+    },
+    "AccountView": {
+      "title": "AccountView",
+      "type": "object",
+      "properties": {
+        "authMode": {
+          "enum": [
+            "local-test",
+            "managed"
+          ]
+        },
+        "player": {
+          "type": "object",
+          "properties": {
+            "displayName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            }
+          },
+          "required": [
+            "displayName",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        "access": {
+          "$ref": "#/$defs/CoachAccess"
+        },
+        "subscription": {
+          "$ref": "#/$defs/SubscriptionView"
+        },
+        "offers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OfferView"
+          },
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "authMode",
+        "player",
+        "access",
+        "subscription",
+        "offers"
+      ],
+      "additionalProperties": false
+    },
+    "AccountCommand": {
+      "title": "AccountCommand",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "select-plan"
+            },
+            "plan": {
+              "$ref": "#/$defs/PaidPlan"
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "plan"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "enum": [
+                "cancel",
+                "resume"
+              ]
+            }
+          },
+          "required": [
+            "commandId",
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ApiError": {
+      "title": "ApiError",
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "UNAUTHENTICATED",
+            "FORBIDDEN",
+            "STALE_REVISION",
+            "LEASE_LOST",
+            "QUOTA_EXHAUSTED",
+            "INVALID_COMMAND",
+            "IDEMPOTENCY_CONFLICT",
+            "NOT_FOUND",
+            "PAYMENT_PENDING",
+            "SERVICE_UNAVAILABLE"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "current": {
+          "$ref": "#/$defs/SessionView"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewQuery": {
+      "title": "ReviewQuery",
+      "type": "object",
+      "properties": {
+        "scope": {
+          "enum": [
+            "hand",
+            "match"
+          ]
+        },
+        "handNumber": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]{0,5}$"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "ReviewStepQuery": {
+      "title": "ReviewStepQuery",
+      "type": "object",
+      "properties": {
+        "step": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]{0,5})$"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "AccessQuery": {
+      "title": "AccessQuery",
+      "type": "object",
+      "properties": {
+        "handId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "SuitMemory": {
+      "title": "SuitMemory",
+      "type": "object",
+      "properties": {
+        "suit": {
+          "$ref": "#/$defs/Suit"
+        },
+        "played": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "remaining": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "voidSeats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Seat"
+          },
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "playedCards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 13,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "suit",
+        "played",
+        "remaining",
+        "voidSeats"
+      ],
+      "additionalProperties": false
+    },
+    "NotesView": {
+      "title": "NotesView",
+      "type": "object",
+      "properties": {
+        "memory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SuitMemory"
+          },
+          "maxItems": 4
+        },
+        "outgoing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 3
+        },
+        "received": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "maxItems": 3
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Trick"
+          },
+          "maxItems": 13
+        }
+      },
+      "required": [
+        "memory",
+        "outgoing",
+        "received",
+        "history"
+      ],
+      "additionalProperties": false
+    },
+    "BillingPreviewRequest": {
+      "title": "BillingPreviewRequest",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "const": "select-plan"
+            },
+            "plan": {
+              "$ref": "#/$defs/PaidPlan"
+            }
+          },
+          "required": [
+            "action",
+            "plan"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "enum": [
+                "cancel",
+                "resume"
+              ]
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "BillingPreview": {
+      "title": "BillingPreview",
+      "type": "object",
+      "properties": {
+        "previewId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "action": {
+          "enum": [
+            "select-plan",
+            "cancel",
+            "resume"
+          ]
+        },
+        "plan": {
+          "$ref": "#/$defs/PaidPlan"
+        },
+        "effectiveAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expiresAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "amountDueNow": {
+          "type": "null"
+        },
+        "currency": {
+          "type": "null"
+        },
+        "mode": {
+          "const": "fixture"
+        },
+        "notice": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "previewId",
+        "action",
+        "plan",
+        "effectiveAt",
+        "expiresAt",
+        "amountDueNow",
+        "currency",
+        "mode",
+        "notice"
+      ],
+      "additionalProperties": false
+    },
+    "BillingConfirmRequest": {
+      "title": "BillingConfirmRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "previewId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "previewId"
+      ],
+      "additionalProperties": false
+    },
+    "BillingOperation": {
+      "title": "BillingOperation",
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "status": {
+          "enum": [
+            "confirmed",
+            "scheduled"
+          ]
+        },
+        "effectiveAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "plan": {
+          "$ref": "#/$defs/PaidPlan"
+        },
+        "cancelAtPeriodEnd": {
+          "type": "boolean"
+        },
+        "mode": {
+          "const": "fixture"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "operationId",
+        "status",
+        "effectiveAt",
+        "plan",
+        "cancelAtPeriodEnd",
+        "mode",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyMember": {
+      "title": "FamilyMember",
+      "type": "object",
+      "properties": {
+        "assignmentId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "playerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "seatClass": {
+          "enum": [
+            "unlimited",
+            "limited"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "held"
+          ]
+        },
+        "periodEnd": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "assignmentId",
+        "playerId",
+        "displayName",
+        "seatClass",
+        "status",
+        "periodEnd"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyInvitation": {
+      "title": "FamilyInvitation",
+      "type": "object",
+      "properties": {
+        "invitationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "inviteeId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "seatClass": {
+          "enum": [
+            "unlimited",
+            "limited"
+          ]
+        },
+        "expiresAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "invitationId",
+        "inviteeId",
+        "seatClass",
+        "expiresAt"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyView": {
+      "title": "FamilyView",
+      "type": "object",
+      "properties": {
+        "familyId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "role": {
+          "enum": [
+            "none",
+            "payer",
+            "member"
+          ]
+        },
+        "payer": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "playerId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                },
+                "displayName": {
+                  "type": "string",
+                  "maxLength": 2000
+                }
+              },
+              "required": [
+                "playerId",
+                "displayName"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FamilyMember"
+          },
+          "maxItems": 5
+        },
+        "invitations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FamilyInvitation"
+          },
+          "maxItems": 4
+        },
+        "periodEnd": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "localMock": {
+          "const": true
+        }
+      },
+      "required": [
+        "familyId",
+        "role",
+        "payer",
+        "members",
+        "invitations",
+        "periodEnd",
+        "localMock"
+      ],
+      "additionalProperties": false
+    },
+    "FamilyCommand": {
+      "title": "FamilyCommand",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "create"
+            }
+          },
+          "required": [
+            "commandId",
+            "action"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "invite"
+            },
+            "inviteeId": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            },
+            "seatClass": {
+              "enum": [
+                "unlimited",
+                "limited"
+              ]
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "inviteeId",
+            "seatClass"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "accept"
+            },
+            "token": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "acknowledgeIndividualCoverage": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "token",
+            "acknowledgeIndividualCoverage"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "revoke-invite"
+            },
+            "invitationId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "invitationId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "remove"
+            },
+            "assignmentId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "commandId",
+            "action",
+            "assignmentId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "action": {
+              "const": "leave"
+            }
+          },
+          "required": [
+            "commandId",
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "AccountDeleteRequest": {
+      "title": "AccountDeleteRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "confirmation": {
+          "const": "DELETE LOCAL ACCOUNT"
+        }
+      },
+      "required": [
+        "commandId",
+        "confirmation"
+      ],
+      "additionalProperties": false
+    },
+    "AccountDeleteView": {
+      "title": "AccountDeleteView",
+      "type": "object",
+      "properties": {
+        "deleted": {
+          "const": true
+        },
+        "mode": {
+          "const": "local-test"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "deleted",
+        "mode",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "ExportView": {
+      "title": "ExportView",
+      "type": "object",
+      "properties": {
+        "formatVersion": {
+          "const": "local-export-1"
+        },
+        "exportedAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "mode": {
+          "const": "local-test"
+        },
+        "player": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "displayName": {
+              "type": "string",
+              "maxLength": 2000
+            },
+            "preferences": {
+              "$ref": "#/$defs/Preferences"
+            }
+          },
+          "required": [
+            "id",
+            "displayName",
+            "preferences"
+          ],
+          "additionalProperties": false
+        },
+        "subscription": {
+          "type": "object",
+          "properties": {
+            "plan": {
+              "$ref": "#/$defs/PaidPlan"
+            },
+            "cancelAtPeriodEnd": {
+              "type": "boolean"
+            },
+            "currentPeriodEnd": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "plan",
+            "cancelAtPeriodEnd",
+            "currentPeriodEnd"
+          ],
+          "additionalProperties": false
+        },
+        "games": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "frames": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/ReviewFrame"
+                },
+                "maxItems": 100000
+              },
+              "advice": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/AdviceView"
+                },
+                "maxItems": 100000
+              },
+              "stats": {
+                "$ref": "#/$defs/SessionStats"
+              }
+            },
+            "required": [
+              "id",
+              "revision",
+              "frames",
+              "advice",
+              "stats"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100000
+        },
+        "coachedHands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "gameId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "handNumber": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "period": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              }
+            },
+            "required": [
+              "gameId",
+              "handNumber",
+              "period"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100000
+        },
+        "billing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BillingOperation"
+          },
+          "maxItems": 100000
+        }
+      },
+      "required": [
+        "formatVersion",
+        "exportedAt",
+        "mode",
+        "player",
+        "subscription",
+        "games",
+        "coachedHands",
+        "billing"
+      ],
+      "additionalProperties": false
+    },
+    "ScenarioId": {
+      "title": "ScenarioId",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+      "maxLength": 64
+    },
+    "DevScenarioView": {
+      "title": "DevScenarioView",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/ScenarioId"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "maxLength": 32
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "label",
+        "mode"
+      ]
+    },
+    "DevScenariosView": {
+      "title": "DevScenariosView",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DevScenarioView"
+          },
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "scenarios"
+      ]
+    },
+    "VersionedComponent": {
+      "title": "VersionedComponent",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "ModulePin": {
+      "title": "ModulePin",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "variantId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "moduleVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "ruleProfileId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "stateSchemaVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "observationSchemaVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "publicSchemaVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "eventSchemaVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "gameId",
+        "variantId",
+        "moduleVersion",
+        "ruleProfileId",
+        "stateSchemaVersion",
+        "observationSchemaVersion",
+        "publicSchemaVersion",
+        "eventSchemaVersion"
+      ],
+      "additionalProperties": false
+    },
+    "CoachedUnit": {
+      "title": "CoachedUnit",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "atAdmissionBoundary": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "atAdmissionBoundary"
+      ],
+      "additionalProperties": false
+    },
+    "ReasoningObjective": {
+      "title": "ReasoningObjective",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "metric": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "direction": {
+          "enum": [
+            "higher",
+            "lower"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "metric",
+        "direction"
+      ],
+      "additionalProperties": false
+    },
+    "ReasoningHorizon": {
+      "title": "ReasoningHorizon",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "ReasoningEstimate": {
+      "title": "ReasoningEstimate",
+      "type": "object",
+      "properties": {
+        "competitorId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "metric": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "event": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "population": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "value": {
+          "type": "number"
+        },
+        "estimator": {
+          "$ref": "#/$defs/VersionedComponent"
+        },
+        "uncertainty": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "$ref": "#/$defs/VersionedComponent"
+                },
+                "lower": {
+                  "type": "number"
+                },
+                "upper": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "method",
+                "lower",
+                "upper"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "competitorId",
+        "metric",
+        "event",
+        "unit",
+        "population",
+        "value",
+        "estimator",
+        "uncertainty"
+      ],
+      "additionalProperties": false
+    },
+    "ReasoningScenario": {
+      "title": "ReasoningScenario",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "applicability": {
+          "enum": [
+            "applies",
+            "possible",
+            "excluded"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "applicability",
+        "evidence",
+        "exceptions"
+      ],
+      "additionalProperties": false
+    },
+    "ReasoningFact": {
+      "title": "ReasoningFact",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "exact",
+            "inferred"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "candidateId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "summary",
+        "evidence",
+        "candidateId"
+      ],
+      "additionalProperties": false
+    },
+    "RegisteredActorPacket": {
+      "title": "RegisteredActorPacket",
+      "oneOf": [
+        {
+          "$ref": "./games/hearts.schema.json#/$defs/HeartsActorPacket"
+        },
+        {
+          "$ref": "./games/spades.schema.json#/$defs/SpadesActorPacket"
+        }
+      ]
+    },
+    "RegisteredSessionView": {
+      "title": "RegisteredSessionView",
+      "oneOf": [
+        {
+          "$ref": "./games/hearts.schema.json#/$defs/HeartsSessionView"
+        },
+        {
+          "$ref": "./games/spades.schema.json#/$defs/SpadesSessionView"
+        }
+      ]
+    },
+    "RegisteredAnalysis": {
+      "title": "RegisteredAnalysis",
+      "oneOf": [
+        {
+          "$ref": "./games/hearts.schema.json#/$defs/HeartsAnalysis"
+        },
+        {
+          "$ref": "./games/spades.schema.json#/$defs/SpadesAnalysis"
+        }
+      ]
+    },
+    "RegisteredActorEvent": {
+      "title": "RegisteredActorEvent",
+      "oneOf": [
+        {
+          "$ref": "./games/hearts.schema.json#/$defs/HeartsActorEvent"
+        },
+        {
+          "$ref": "./games/spades.schema.json#/$defs/SpadesActorEvent"
+        }
+      ]
+    },
+    "RegisteredTarget": {
+      "title": "RegisteredTarget",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "hearts"
+            },
+            "variantId": {
+              "const": "solo"
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "spades"
+            },
+            "variantId": {
+              "enum": [
+                "solo",
+                "partners"
+              ]
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "RegisteredSelector": {
+      "title": "RegisteredSelector",
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/RegisteredTarget"
+        },
+        "moduleVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "ruleProfileId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "target",
+        "moduleVersion",
+        "ruleProfileId"
+      ],
+      "additionalProperties": false
+    },
+    "V2ActionsRequest": {
+      "title": "V2ActionsRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "candidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "publicSchemaVersion",
+        "candidateId"
+      ],
+      "additionalProperties": false
+    },
+    "VersionedActionsRequest": {
+      "title": "VersionedActionsRequest",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ActionsRequest"
+        },
+        {
+          "$ref": "#/$defs/V2ActionsRequest"
+        }
+      ]
+    },
+    "V2NewSessionRequest": {
+      "title": "V2NewSessionRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "selector": {
+          "$ref": "#/$defs/RegisteredSelector"
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "publicSchemaVersion",
+        "selector"
+      ],
+      "additionalProperties": false
+    },
+    "VersionedNewSessionRequest": {
+      "title": "VersionedNewSessionRequest",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/NewSessionRequest"
+        },
+        {
+          "$ref": "#/$defs/V2NewSessionRequest"
+        }
+      ]
+    },
+    "DemoFrameRequest": {
+      "title": "DemoFrameRequest",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "open"
+            },
+            "contentVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "contentVersion"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "choose"
+            },
+            "contentVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "nodeId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "choiceId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "contentVersion",
+            "nodeId",
+            "choiceId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "replay"
+            },
+            "contentVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "contentVersion"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DemoFrame": {
+      "title": "DemoFrame",
+      "type": "object",
+      "properties": {
+        "contentVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "nodeId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "label": {
+          "const": "demo"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "body": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          }
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 4000
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "contentVersion",
+        "nodeId",
+        "label",
+        "title",
+        "body",
+        "cards",
+        "choices",
+        "complete"
+      ],
+      "additionalProperties": false
+    },
+    "AccessAllowance": {
+      "title": "AccessAllowance",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "unlimited"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "limited"
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "period": {
+              "enum": [
+                "day",
+                "week",
+                "month",
+                "grant"
+              ]
+            },
+            "timezone": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "bucketId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "limit",
+            "unit",
+            "period",
+            "timezone",
+            "bucketId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "AccessOffer": {
+      "title": "AccessOffer",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "kind": {
+          "enum": [
+            "free",
+            "access-trial",
+            "paid"
+          ]
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RegisteredTarget"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "play": {
+          "type": "boolean"
+        },
+        "coach": {
+          "type": "object",
+          "properties": {
+            "tools": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "uniqueItems": true
+            },
+            "allowance": {
+              "$ref": "#/$defs/AccessAllowance"
+            }
+          },
+          "required": [
+            "tools",
+            "allowance"
+          ],
+          "additionalProperties": false
+        },
+        "continuation": {
+          "enum": [
+            "pause-at-expiry",
+            "finish-admitted-unit"
+          ]
+        },
+        "activation": {
+          "enum": [
+            "automatic",
+            "verified-purchase",
+            "once-per-identity"
+          ]
+        },
+        "validitySeconds": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "enabled",
+        "kind",
+        "targets",
+        "play",
+        "coach",
+        "continuation",
+        "activation",
+        "validitySeconds"
+      ],
+      "additionalProperties": false
+    },
+    "AccessOfferPolicy": {
+      "title": "AccessOfferPolicy",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "accessGeneration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "precedence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "uniqueItems": true
+        },
+        "offers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AccessOffer"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "accessGeneration",
+        "precedence",
+        "offers"
+      ],
+      "additionalProperties": false
+    },
+    "AccessDecision": {
+      "title": "AccessDecision",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "accessGeneration": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "applied": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "offer": {
+                    "$ref": "#/$defs/VersionedComponent"
+                  },
+                  "grantId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  }
+                },
+                "required": [
+                  "offer",
+                  "grantId"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "remaining": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "continuation": {
+              "enum": [
+                "pause-at-expiry",
+                "finish-admitted-unit",
+                "owned-result"
+              ]
+            },
+            "allowed": {
+              "const": true
+            },
+            "reason": {
+              "enum": [
+                "grant",
+                "admitted-unit",
+                "existing-unlock",
+                "owned-result"
+              ]
+            }
+          },
+          "required": [
+            "accessGeneration",
+            "applied",
+            "remaining",
+            "continuation",
+            "allowed",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "accessGeneration": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "applied": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "offer": {
+                    "$ref": "#/$defs/VersionedComponent"
+                  },
+                  "grantId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  }
+                },
+                "required": [
+                  "offer",
+                  "grantId"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "remaining": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "continuation": {
+              "enum": [
+                "pause-at-expiry",
+                "finish-admitted-unit",
+                "owned-result"
+              ]
+            },
+            "allowed": {
+              "const": false
+            },
+            "reason": {
+              "enum": [
+                "disabled",
+                "no-grant",
+                "wrong-target",
+                "wrong-tool",
+                "expired",
+                "revoked",
+                "exhausted",
+                "not-owned",
+                "not-admitted"
+              ]
+            }
+          },
+          "required": [
+            "accessGeneration",
+            "applied",
+            "remaining",
+            "continuation",
+            "allowed",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/Mode"
+    },
+    {
+      "$ref": "#/$defs/Seat"
+    },
+    {
+      "$ref": "#/$defs/Card"
+    },
+    {
+      "$ref": "#/$defs/Suit"
+    },
+    {
+      "$ref": "#/$defs/Phase"
+    },
+    {
+      "$ref": "#/$defs/GameAction"
+    },
+    {
+      "$ref": "#/$defs/Play"
+    },
+    {
+      "$ref": "#/$defs/Trick"
+    },
+    {
+      "$ref": "#/$defs/HandResult"
+    },
+    {
+      "$ref": "#/$defs/GameView"
+    },
+    {
+      "$ref": "#/$defs/Preferences"
+    },
+    {
+      "$ref": "#/$defs/Plan"
+    },
+    {
+      "$ref": "#/$defs/PaidPlan"
+    },
+    {
+      "$ref": "#/$defs/CoachAccess"
+    },
+    {
+      "$ref": "#/$defs/SessionStats"
+    },
+    {
+      "$ref": "#/$defs/SessionView"
+    },
+    {
+      "$ref": "#/$defs/AdviceView"
+    },
+    {
+      "$ref": "#/$defs/CommandEnvelope"
+    },
+    {
+      "$ref": "#/$defs/NewSessionRequest"
+    },
+    {
+      "$ref": "#/$defs/ActionsRequest"
+    },
+    {
+      "$ref": "#/$defs/PrepareRequest"
+    },
+    {
+      "$ref": "#/$defs/CommandStatusView"
+    },
+    {
+      "$ref": "#/$defs/IdentityView"
+    },
+    {
+      "$ref": "#/$defs/PrepareView"
+    },
+    {
+      "$ref": "#/$defs/AdvanceRequest"
+    },
+    {
+      "$ref": "#/$defs/NextHandRequest"
+    },
+    {
+      "$ref": "#/$defs/AdviceRequest"
+    },
+    {
+      "$ref": "#/$defs/PreferencesRequest"
+    },
+    {
+      "$ref": "#/$defs/HandUnlockRequest"
+    },
+    {
+      "$ref": "#/$defs/HandUnlockView"
+    },
+    {
+      "$ref": "#/$defs/ExposureRequest"
+    },
+    {
+      "$ref": "#/$defs/AcceptedView"
+    },
+    {
+      "$ref": "#/$defs/ReviewFrame"
+    },
+    {
+      "$ref": "#/$defs/ReviewCase"
+    },
+    {
+      "$ref": "#/$defs/ReviewIndex"
+    },
+    {
+      "$ref": "#/$defs/ReviewView"
+    },
+    {
+      "$ref": "#/$defs/TrialRequest"
+    },
+    {
+      "$ref": "#/$defs/ReviewTrial"
+    },
+    {
+      "$ref": "#/$defs/RecapView"
+    },
+    {
+      "$ref": "#/$defs/SubscriptionView"
+    },
+    {
+      "$ref": "#/$defs/OfferView"
+    },
+    {
+      "$ref": "#/$defs/AccountView"
+    },
+    {
+      "$ref": "#/$defs/AccountCommand"
+    },
+    {
+      "$ref": "#/$defs/ApiError"
+    },
+    {
+      "$ref": "#/$defs/ReviewQuery"
+    },
+    {
+      "$ref": "#/$defs/ReviewStepQuery"
+    },
+    {
+      "$ref": "#/$defs/AccessQuery"
+    },
+    {
+      "$ref": "#/$defs/SuitMemory"
+    },
+    {
+      "$ref": "#/$defs/NotesView"
+    },
+    {
+      "$ref": "#/$defs/BillingPreviewRequest"
+    },
+    {
+      "$ref": "#/$defs/BillingPreview"
+    },
+    {
+      "$ref": "#/$defs/BillingConfirmRequest"
+    },
+    {
+      "$ref": "#/$defs/BillingOperation"
+    },
+    {
+      "$ref": "#/$defs/FamilyMember"
+    },
+    {
+      "$ref": "#/$defs/FamilyInvitation"
+    },
+    {
+      "$ref": "#/$defs/FamilyView"
+    },
+    {
+      "$ref": "#/$defs/FamilyCommand"
+    },
+    {
+      "$ref": "#/$defs/AccountDeleteRequest"
+    },
+    {
+      "$ref": "#/$defs/AccountDeleteView"
+    },
+    {
+      "$ref": "#/$defs/ExportView"
+    },
+    {
+      "$ref": "#/$defs/ScenarioId"
+    },
+    {
+      "$ref": "#/$defs/DevScenarioView"
+    },
+    {
+      "$ref": "#/$defs/DevScenariosView"
+    },
+    {
+      "$ref": "#/$defs/VersionedComponent"
+    },
+    {
+      "$ref": "#/$defs/ModulePin"
+    },
+    {
+      "$ref": "#/$defs/CoachedUnit"
+    },
+    {
+      "$ref": "#/$defs/ReasoningObjective"
+    },
+    {
+      "$ref": "#/$defs/ReasoningHorizon"
+    },
+    {
+      "$ref": "#/$defs/ReasoningEstimate"
+    },
+    {
+      "$ref": "#/$defs/ReasoningScenario"
+    },
+    {
+      "$ref": "#/$defs/ReasoningFact"
+    },
+    {
+      "$ref": "#/$defs/RegisteredActorPacket"
+    },
+    {
+      "$ref": "#/$defs/RegisteredSessionView"
+    },
+    {
+      "$ref": "#/$defs/RegisteredAnalysis"
+    },
+    {
+      "$ref": "#/$defs/RegisteredActorEvent"
+    },
+    {
+      "$ref": "#/$defs/RegisteredTarget"
+    },
+    {
+      "$ref": "#/$defs/RegisteredSelector"
+    },
+    {
+      "$ref": "#/$defs/V2ActionsRequest"
+    },
+    {
+      "$ref": "#/$defs/VersionedActionsRequest"
+    },
+    {
+      "$ref": "#/$defs/V2NewSessionRequest"
+    },
+    {
+      "$ref": "#/$defs/VersionedNewSessionRequest"
+    },
+    {
+      "$ref": "#/$defs/DemoFrameRequest"
+    },
+    {
+      "$ref": "#/$defs/DemoFrame"
+    },
+    {
+      "$ref": "#/$defs/AccessAllowance"
+    },
+    {
+      "$ref": "#/$defs/AccessOffer"
+    },
+    {
+      "$ref": "#/$defs/AccessOfferPolicy"
+    },
+    {
+      "$ref": "#/$defs/AccessDecision"
+    }
+  ]
+}

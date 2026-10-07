@@ -51,3 +51,31 @@ func TestSchedulerBoundsDedupAndCancellation(t *testing.T) {
 		t.Fatal("closed scheduler admitted work")
 	}
 }
+
+func TestSchedulerRegisteredDeadlineRemainsBoundedAndCancelable(t *testing.T) {
+	s := newScheduler(1, 1, 20*time.Millisecond)
+	seen := make(chan time.Duration, 1)
+	r, err := s.reserve("explicit-budget")
+	if err != nil {
+		t.Fatal(err)
+	}
+	r.dispatchWithDeadline(time.Second, func(ctx context.Context) {
+		deadline, ok := ctx.Deadline()
+		if !ok {
+			seen <- 0
+			return
+		}
+		seen <- time.Until(deadline)
+		<-ctx.Done()
+	})
+	if got := <-seen; got <= 20*time.Millisecond || got > time.Second {
+		t.Fatal("registered deadline lost", got)
+	}
+	stopped := make(chan struct{})
+	go func() { s.close(); close(stopped) }()
+	select {
+	case <-stopped:
+	case <-time.After(100 * time.Millisecond):
+		t.Fatal("explicit-budget work escaped shutdown")
+	}
+}

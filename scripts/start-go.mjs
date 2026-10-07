@@ -9,8 +9,8 @@ process.chdir(root);
 if (process.platform !== 'win32' || !process.env.DATABASE_URL)
   throw new Error('Start PostgreSQL, then run through scripts/windows-env.mjs.');
 const args = process.argv.slice(2);
-if (args.length > 1 || (args.length === 1 && args[0] !== '--configured'))
-  throw new Error('Use no flag for local fixtures, or --configured for the empty launch policy.');
+if (new Set(args).size !== args.length || args.some(arg => !['--configured','--partner-resources','--actor-rollout'].includes(arg)) || (args.includes('--partner-resources') && args.includes('--actor-rollout')))
+  throw new Error('Use --configured for the empty launch policy; choose at most one experimental option: --partner-resources or --actor-rollout.');
 for (const command of [
   ['go', 'build', '-o', '.local/cardford.exe', './server/cmd/cardford'],
   ['npm', 'run', 'build'],
@@ -23,7 +23,9 @@ for (const command of [
 }
 const child = spawn(resolve('.local/cardford.exe'), [
   '--migrations','web/server/records/migrations','--web','web/dist',
-  ...(args[0] ? ['--access-policy','server/internal/access/launch.json'] : []),
+  ...(args.includes('--configured') ? ['--access-policy','server/internal/access/launch.json'] : []),
+  ...(args.includes('--partner-resources') ? ['--reasoning','partner-resources'] : []),
+  ...(args.includes('--actor-rollout') ? ['--reasoning','actor-rollout'] : []),
 ], {cwd:root,env:process.env,stdio:'inherit',windowsHide:true});
 process.on('SIGINT',()=>child.kill('SIGINT'));
 process.on('SIGTERM',()=>child.kill('SIGTERM'));

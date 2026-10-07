@@ -1,0 +1,7 @@
+
+> tricks-coach@0.1.0 contracts:check
+> node web/scripts/generate-contracts.mjs --check
+
+Contract artifacts are current.
+Contract artifacts are current.
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":2246.2185999999997,"status":"passed"}}

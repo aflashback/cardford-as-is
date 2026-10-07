@@ -1,0 +1,60 @@
+{
+  "receipt": {
+    "exitCode": 1,
+    "signal": null,
+    "error": null,
+    "shutdownError": null,
+    "timedOut": false,
+    "interrupted": false,
+    "outputLimitExceeded": false,
+    "elapsedMs": 13733.156799999999,
+    "status": "failed"
+  },
+  "sourceBefore": [
+    {
+      "path": "server/internal/service/resource_profile_test.go",
+      "sha256": "bb56a4e525cc6a654e027fda2cf6a18f03ab9a34892ffdb11a4e2047d6ea807f"
+    },
+    {
+      "path": "server/internal/records/stats_cache.go",
+      "sha256": "8937429d594ee9eda44ea498d4407d0dca70e41faca46c7d8f92937f2b5ef840"
+    },
+    {
+      "path": "server/internal/records/platform_history.go",
+      "sha256": "2eb9e7b8b4772c182a5fcdbadd6b211b4c93a1c6ecdc12c79fabb13f6dd17151"
+    },
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "e531d8df1cf7a6ef7451363846f4c076f377a5010e84ee94a3f64cc0749de071"
+    },
+    {
+      "path": "server/internal/sessions/operations.go",
+      "sha256": "e3aff3897de9e83262c90e29d1901a7606e79947d27d668a7ebf96fae836d50b"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "server/internal/service/resource_profile_test.go",
+      "sha256": "bb56a4e525cc6a654e027fda2cf6a18f03ab9a34892ffdb11a4e2047d6ea807f"
+    },
+    {
+      "path": "server/internal/records/stats_cache.go",
+      "sha256": "8937429d594ee9eda44ea498d4407d0dca70e41faca46c7d8f92937f2b5ef840"
+    },
+    {
+      "path": "server/internal/records/platform_history.go",
+      "sha256": "2eb9e7b8b4772c182a5fcdbadd6b211b4c93a1c6ecdc12c79fabb13f6dd17151"
+    },
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "e531d8df1cf7a6ef7451363846f4c076f377a5010e84ee94a3f64cc0749de071"
+    },
+    {
+      "path": "server/internal/sessions/operations.go",
+      "sha256": "e3aff3897de9e83262c90e29d1901a7606e79947d27d668a7ebf96fae836d50b"
+    }
+  ],
+  "unchanged": true,
+  "privateArchive": ".local/m04f-request/prepared-partners-10.json",
+  "outputSha256": "98b170c3c8697b3d1cda2f889361717c1fd012a304b3cbcb0043a9b6291b356d"
+}

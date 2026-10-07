@@ -1,0 +1,24 @@
+=== RUN   TestOperationDecodeValuesAndIsolation
+=== RUN   TestOperationDecodeValuesAndIsolation/actor
+=== RUN   TestOperationDecodeValuesAndIsolation/sealed
+=== RUN   TestOperationDecodeValuesAndIsolation/automatic
+=== RUN   TestOperationDecodeValuesAndIsolation/chance
+=== RUN   TestOperationDecodeValuesAndIsolation/continue-round
+=== RUN   TestOperationDecodeValuesAndIsolation/equivalent-number
+=== RUN   TestOperationDecodeValuesAndIsolation/opaque-null-material
+=== RUN   TestOperationDecodeValuesAndIsolation/opaque-number-material
+--- PASS: TestOperationDecodeValuesAndIsolation (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/actor (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/sealed (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/automatic (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/chance (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/continue-round (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/equivalent-number (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/opaque-null-material (0.00s)
+    --- PASS: TestOperationDecodeValuesAndIsolation/opaque-number-material (0.00s)
+=== RUN   TestOperationDecodeRejectsInvalidShapeAndSemantics
+--- PASS: TestOperationDecodeRejectsInvalidShapeAndSemantics (0.00s)
+=== RUN   TestOperationDecodePreservesServiceAndJournalByteBounds
+--- PASS: TestOperationDecodePreservesServiceAndJournalByteBounds (0.01s)
+PASS
+ok  	cardford/server/internal/sessions	0.269s

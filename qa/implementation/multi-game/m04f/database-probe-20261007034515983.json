@@ -1,0 +1,1107 @@
+{
+  "name": "synthetic-raw-pgx-database-probe",
+  "startedAt": "2026-10-07T03:45:15.983Z",
+  "completedAt": "2026-10-07T03:45:19.088Z",
+  "elapsedMs": 3103.6983999999998,
+  "platform": "win32",
+  "node": "v24.19.0",
+  "source": "qa/implementation/multi-game/m04f/database_probe.go",
+  "sources": [
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04f/database-probe.mjs",
+      "sha256": "2a5f968d97a287981d4516983041ac2434ca55023f18210fdd876da239945ba4"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04f/database_probe.go",
+      "sha256": "6adbe0fa9daa5d32f9cabec55ba52b97afb9cd5ab278e224a688aa59424885db"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "scripts/windows-tools.json",
+      "sha256": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4"
+    },
+    {
+      "path": "web/server/records/migrations/001-local-platform.sql",
+      "sha256": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2"
+    },
+    {
+      "path": "web/server/records/migrations/002-billing-family.sql",
+      "sha256": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f"
+    },
+    {
+      "path": "web/server/records/migrations/003-account-data.sql",
+      "sha256": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae"
+    },
+    {
+      "path": "web/server/records/migrations/004-analysis-jobs.sql",
+      "sha256": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43"
+    },
+    {
+      "path": "web/server/records/migrations/005-analysis-attempt-fence.sql",
+      "sha256": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c"
+    },
+    {
+      "path": "web/server/records/migrations/006-preparation-attempts.sql",
+      "sha256": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+    },
+    {
+      "path": "web/server/records/migrations/007-versioned-platform-records.sql",
+      "sha256": "cae296b33b5c8b09169e7636b6116d6a60fd72ac9cd78661b4900b3b2873208a"
+    },
+    {
+      "path": "web/server/records/migrations/008-local-go-service.sql",
+      "sha256": "2f5b0e962a59491a2cc6ee35de1f72778c98b45e7e6b67789b09705ed05299d5"
+    },
+    {
+      "path": "web/server/records/migrations/009-configured-access.sql",
+      "sha256": "ec6ea4b6338cb5de7e026f5134000dfa47a0e6ccfa407095ee48fa21061a48a1"
+    },
+    {
+      "path": "web/server/records/migrations/010-platform-client.sql",
+      "sha256": "2b0eca4c94a1220246e88292cbc87f685d76d36bfa031e8437fd78fdd0c12a46"
+    }
+  ],
+  "sourceUnchanged": true,
+  "sourceSHA256": "d9c4ac37a7097b117634444e968f6b673eafa06b54395e4a88739d756fea0369",
+  "exitCode": 0,
+  "processError": null,
+  "provider": {
+    "mode": "off",
+    "requests": 0
+  },
+  "result": {
+    "scope": "synthetic raw-pgx staged native probe; production pool/history/runtime comparison excluded; a pass does not resolve archived failures",
+    "startedAt": "2026-10-07T03:45:16.1883674Z",
+    "iterations": [
+      {
+        "number": 1,
+        "schema": "m03_probe_56065617c0d07ce27fe40e47f4a6c971",
+        "spans": [
+          {
+            "stage": "cold.connect.dial",
+            "at": "2026-10-07T03:45:16.194849Z",
+            "elapsedMs": 3.1275,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "cold.connect",
+            "at": "2026-10-07T03:45:16.1930591Z",
+            "elapsedMs": 70.5322,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.begin",
+            "at": "2026-10-07T03:45:16.263588Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.create",
+            "at": "2026-10-07T03:45:16.263588Z",
+            "elapsedMs": 0.4607,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.marker-create",
+            "at": "2026-10-07T03:45:16.2640487Z",
+            "elapsedMs": 9.9234,
+            "remainingMs": 4999
+          },
+          {
+            "stage": "schema.marker-insert",
+            "at": "2026-10-07T03:45:16.2743355Z",
+            "elapsedMs": 0.5041,
+            "remainingMs": 4989
+          },
+          {
+            "stage": "schema.commit",
+            "at": "2026-10-07T03:45:16.2748396Z",
+            "elapsedMs": 0.7789,
+            "remainingMs": 4988
+          },
+          {
+            "stage": "schema.rollback",
+            "at": "2026-10-07T03:45:16.2756185Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema",
+            "at": "2026-10-07T03:45:16.263588Z",
+            "elapsedMs": 12.031,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations.begin",
+            "at": "2026-10-07T03:45:16.2756185Z",
+            "elapsedMs": 2.0313,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations.advisory-lock",
+            "at": "2026-10-07T03:45:16.2776497Z",
+            "elapsedMs": 0.8445,
+            "remainingMs": 4997
+          },
+          {
+            "stage": "migrations.ledger-create",
+            "at": "2026-10-07T03:45:16.2784941Z",
+            "elapsedMs": 6.8113,
+            "remainingMs": 4997
+          },
+          {
+            "stage": "migrations.apply-001",
+            "at": "2026-10-07T03:45:16.2868524Z",
+            "elapsedMs": 58.0024,
+            "remainingMs": 4988
+          },
+          {
+            "stage": "migrations.ledger-insert-001",
+            "at": "2026-10-07T03:45:16.3448521Z",
+            "elapsedMs": 11.7457,
+            "remainingMs": 4930
+          },
+          {
+            "stage": "migrations.apply-002",
+            "at": "2026-10-07T03:45:16.3571854Z",
+            "elapsedMs": 103.6414,
+            "remainingMs": 4918
+          },
+          {
+            "stage": "migrations.ledger-insert-002",
+            "at": "2026-10-07T03:45:16.4616051Z",
+            "elapsedMs": 0,
+            "remainingMs": 4814
+          },
+          {
+            "stage": "migrations.apply-003",
+            "at": "2026-10-07T03:45:16.4616051Z",
+            "elapsedMs": 1.5128,
+            "remainingMs": 4814
+          },
+          {
+            "stage": "migrations.ledger-insert-003",
+            "at": "2026-10-07T03:45:16.4631178Z",
+            "elapsedMs": 0.8747,
+            "remainingMs": 4812
+          },
+          {
+            "stage": "migrations.apply-004",
+            "at": "2026-10-07T03:45:16.4639924Z",
+            "elapsedMs": 12.5117,
+            "remainingMs": 4811
+          },
+          {
+            "stage": "migrations.ledger-insert-004",
+            "at": "2026-10-07T03:45:16.4770654Z",
+            "elapsedMs": 0,
+            "remainingMs": 4798
+          },
+          {
+            "stage": "migrations.apply-005",
+            "at": "2026-10-07T03:45:16.4770654Z",
+            "elapsedMs": 0.5059,
+            "remainingMs": 4798
+          },
+          {
+            "stage": "migrations.ledger-insert-005",
+            "at": "2026-10-07T03:45:16.4775713Z",
+            "elapsedMs": 0,
+            "remainingMs": 4798
+          },
+          {
+            "stage": "migrations.apply-006",
+            "at": "2026-10-07T03:45:16.4775713Z",
+            "elapsedMs": 5.9346,
+            "remainingMs": 4798
+          },
+          {
+            "stage": "migrations.ledger-insert-006",
+            "at": "2026-10-07T03:45:16.4888313Z",
+            "elapsedMs": 0,
+            "remainingMs": 4786
+          },
+          {
+            "stage": "migrations.apply-007",
+            "at": "2026-10-07T03:45:16.4888313Z",
+            "elapsedMs": 151.2194,
+            "remainingMs": 4786
+          },
+          {
+            "stage": "migrations.ledger-insert-007",
+            "at": "2026-10-07T03:45:16.6400438Z",
+            "elapsedMs": 1.8818,
+            "remainingMs": 4635
+          },
+          {
+            "stage": "migrations.apply-008",
+            "at": "2026-10-07T03:45:16.6419255Z",
+            "elapsedMs": 30.2634,
+            "remainingMs": 4633
+          },
+          {
+            "stage": "migrations.ledger-insert-008",
+            "at": "2026-10-07T03:45:16.6727532Z",
+            "elapsedMs": 0,
+            "remainingMs": 4602
+          },
+          {
+            "stage": "migrations.apply-009",
+            "at": "2026-10-07T03:45:16.6727532Z",
+            "elapsedMs": 8.5071,
+            "remainingMs": 4602
+          },
+          {
+            "stage": "migrations.ledger-insert-009",
+            "at": "2026-10-07T03:45:16.6821514Z",
+            "elapsedMs": 0,
+            "remainingMs": 4593
+          },
+          {
+            "stage": "migrations.apply-010",
+            "at": "2026-10-07T03:45:16.6821514Z",
+            "elapsedMs": 71.1356,
+            "remainingMs": 4593
+          },
+          {
+            "stage": "migrations.ledger-insert-010",
+            "at": "2026-10-07T03:45:16.7532837Z",
+            "elapsedMs": 0,
+            "remainingMs": 4522
+          },
+          {
+            "stage": "migrations.commit",
+            "at": "2026-10-07T03:45:16.7532837Z",
+            "elapsedMs": 2.4028,
+            "remainingMs": 4522
+          },
+          {
+            "stage": "migrations.rollback",
+            "at": "2026-10-07T03:45:16.7556864Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations",
+            "at": "2026-10-07T03:45:16.2756185Z",
+            "elapsedMs": 480.0899,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny.begin",
+            "at": "2026-10-07T03:45:16.7556864Z",
+            "elapsedMs": 20.439,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny.table",
+            "at": "2026-10-07T03:45:16.7761244Z",
+            "elapsedMs": 4.055,
+            "remainingMs": 4979
+          },
+          {
+            "stage": "tiny.insert",
+            "at": "2026-10-07T03:45:16.7819227Z",
+            "elapsedMs": 0.5049,
+            "remainingMs": 4973
+          },
+          {
+            "stage": "tiny.commit",
+            "at": "2026-10-07T03:45:16.7824276Z",
+            "elapsedMs": 0.5075,
+            "remainingMs": 4973
+          },
+          {
+            "stage": "tiny.rollback",
+            "at": "2026-10-07T03:45:16.782935Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny",
+            "at": "2026-10-07T03:45:16.7556864Z",
+            "elapsedMs": 27.2499,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cold.close",
+            "at": "2026-10-07T03:45:16.782935Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.connect.dial",
+            "at": "2026-10-07T03:45:16.782935Z",
+            "elapsedMs": 1.094,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.connect",
+            "at": "2026-10-07T03:45:16.782935Z",
+            "elapsedMs": 60.5183,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.read",
+            "at": "2026-10-07T03:45:16.8434506Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.close",
+            "at": "2026-10-07T03:45:16.8434506Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.connect.dial",
+            "at": "2026-10-07T03:45:16.8434506Z",
+            "elapsedMs": 8.9717,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.connect",
+            "at": "2026-10-07T03:45:16.8434506Z",
+            "elapsedMs": 78.1795,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.schema-check",
+            "at": "2026-10-07T03:45:16.9216265Z",
+            "elapsedMs": 1.0341,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.owner-check",
+            "at": "2026-10-07T03:45:16.9226605Z",
+            "elapsedMs": 0.8354,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "cleanup.marker-check",
+            "at": "2026-10-07T03:45:16.9234959Z",
+            "elapsedMs": 0.6694,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "cleanup.drop",
+            "at": "2026-10-07T03:45:16.9241653Z",
+            "elapsedMs": 125.9645,
+            "remainingMs": 4997
+          },
+          {
+            "stage": "cleanup",
+            "at": "2026-10-07T03:45:16.9216265Z",
+            "elapsedMs": 128.5034,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.close",
+            "at": "2026-10-07T03:45:17.050124Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          }
+        ],
+        "passed": true,
+        "cleanupOK": true
+      },
+      {
+        "number": 2,
+        "schema": "m03_probe_437e146372aa4d36782e26a7525d23bb",
+        "spans": [
+          {
+            "stage": "cold.connect.dial",
+            "at": "2026-10-07T03:45:17.050124Z",
+            "elapsedMs": 1.229,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cold.connect",
+            "at": "2026-10-07T03:45:17.050124Z",
+            "elapsedMs": 65.1214,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.begin",
+            "at": "2026-10-07T03:45:17.1152424Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.create",
+            "at": "2026-10-07T03:45:17.1152424Z",
+            "elapsedMs": 0.7257,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.marker-create",
+            "at": "2026-10-07T03:45:17.1159681Z",
+            "elapsedMs": 7.5563,
+            "remainingMs": 4999
+          },
+          {
+            "stage": "schema.marker-insert",
+            "at": "2026-10-07T03:45:17.1254091Z",
+            "elapsedMs": 0.5038,
+            "remainingMs": 4989
+          },
+          {
+            "stage": "schema.commit",
+            "at": "2026-10-07T03:45:17.1259128Z",
+            "elapsedMs": 0.6096,
+            "remainingMs": 4989
+          },
+          {
+            "stage": "schema.rollback",
+            "at": "2026-10-07T03:45:17.1265224Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema",
+            "at": "2026-10-07T03:45:17.1152424Z",
+            "elapsedMs": 11.2805,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations.begin",
+            "at": "2026-10-07T03:45:17.1265224Z",
+            "elapsedMs": 0.534,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations.advisory-lock",
+            "at": "2026-10-07T03:45:17.1270564Z",
+            "elapsedMs": 2.0708,
+            "remainingMs": 4999
+          },
+          {
+            "stage": "migrations.ledger-create",
+            "at": "2026-10-07T03:45:17.1291271Z",
+            "elapsedMs": 0.5031,
+            "remainingMs": 4997
+          },
+          {
+            "stage": "migrations.apply-001",
+            "at": "2026-10-07T03:45:17.1296302Z",
+            "elapsedMs": 75.4688,
+            "remainingMs": 4996
+          },
+          {
+            "stage": "migrations.ledger-insert-001",
+            "at": "2026-10-07T03:45:17.2050955Z",
+            "elapsedMs": 1.1019,
+            "remainingMs": 4921
+          },
+          {
+            "stage": "migrations.apply-002",
+            "at": "2026-10-07T03:45:17.2061974Z",
+            "elapsedMs": 83.6823,
+            "remainingMs": 4920
+          },
+          {
+            "stage": "migrations.ledger-insert-002",
+            "at": "2026-10-07T03:45:17.2908199Z",
+            "elapsedMs": 0,
+            "remainingMs": 4835
+          },
+          {
+            "stage": "migrations.apply-003",
+            "at": "2026-10-07T03:45:17.2908199Z",
+            "elapsedMs": 0.5033,
+            "remainingMs": 4835
+          },
+          {
+            "stage": "migrations.ledger-insert-003",
+            "at": "2026-10-07T03:45:17.2913232Z",
+            "elapsedMs": 1.744,
+            "remainingMs": 4835
+          },
+          {
+            "stage": "migrations.apply-004",
+            "at": "2026-10-07T03:45:17.2930671Z",
+            "elapsedMs": 11.8946,
+            "remainingMs": 4833
+          },
+          {
+            "stage": "migrations.ledger-insert-004",
+            "at": "2026-10-07T03:45:17.3049611Z",
+            "elapsedMs": 0,
+            "remainingMs": 4821
+          },
+          {
+            "stage": "migrations.apply-005",
+            "at": "2026-10-07T03:45:17.3049611Z",
+            "elapsedMs": 0,
+            "remainingMs": 4821
+          },
+          {
+            "stage": "migrations.ledger-insert-005",
+            "at": "2026-10-07T03:45:17.3049611Z",
+            "elapsedMs": 0.6754,
+            "remainingMs": 4821
+          },
+          {
+            "stage": "migrations.apply-006",
+            "at": "2026-10-07T03:45:17.3056365Z",
+            "elapsedMs": 12.5255,
+            "remainingMs": 4820
+          },
+          {
+            "stage": "migrations.ledger-insert-006",
+            "at": "2026-10-07T03:45:17.3181614Z",
+            "elapsedMs": 0,
+            "remainingMs": 4808
+          },
+          {
+            "stage": "migrations.apply-007",
+            "at": "2026-10-07T03:45:17.3181614Z",
+            "elapsedMs": 141.1981,
+            "remainingMs": 4808
+          },
+          {
+            "stage": "migrations.ledger-insert-007",
+            "at": "2026-10-07T03:45:17.4593531Z",
+            "elapsedMs": 0,
+            "remainingMs": 4667
+          },
+          {
+            "stage": "migrations.apply-008",
+            "at": "2026-10-07T03:45:17.4593531Z",
+            "elapsedMs": 24.1552,
+            "remainingMs": 4667
+          },
+          {
+            "stage": "migrations.ledger-insert-008",
+            "at": "2026-10-07T03:45:17.4835072Z",
+            "elapsedMs": 0,
+            "remainingMs": 4642
+          },
+          {
+            "stage": "migrations.apply-009",
+            "at": "2026-10-07T03:45:17.4835072Z",
+            "elapsedMs": 10.3202,
+            "remainingMs": 4642
+          },
+          {
+            "stage": "migrations.ledger-insert-009",
+            "at": "2026-10-07T03:45:17.4938269Z",
+            "elapsedMs": 0,
+            "remainingMs": 4632
+          },
+          {
+            "stage": "migrations.apply-010",
+            "at": "2026-10-07T03:45:17.4938269Z",
+            "elapsedMs": 66.9608,
+            "remainingMs": 4632
+          },
+          {
+            "stage": "migrations.ledger-insert-010",
+            "at": "2026-10-07T03:45:17.5615936Z",
+            "elapsedMs": 0,
+            "remainingMs": 4564
+          },
+          {
+            "stage": "migrations.commit",
+            "at": "2026-10-07T03:45:17.5615936Z",
+            "elapsedMs": 2.5469,
+            "remainingMs": 4564
+          },
+          {
+            "stage": "migrations.rollback",
+            "at": "2026-10-07T03:45:17.5641404Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations",
+            "at": "2026-10-07T03:45:17.1265224Z",
+            "elapsedMs": 437.638,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny.begin",
+            "at": "2026-10-07T03:45:17.5641404Z",
+            "elapsedMs": 18.1315,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny.table",
+            "at": "2026-10-07T03:45:17.582271Z",
+            "elapsedMs": 5.2448,
+            "remainingMs": 4981
+          },
+          {
+            "stage": "tiny.insert",
+            "at": "2026-10-07T03:45:17.5878756Z",
+            "elapsedMs": 0.8196,
+            "remainingMs": 4976
+          },
+          {
+            "stage": "tiny.commit",
+            "at": "2026-10-07T03:45:17.5886951Z",
+            "elapsedMs": 0,
+            "remainingMs": 4975
+          },
+          {
+            "stage": "tiny.rollback",
+            "at": "2026-10-07T03:45:17.5886951Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny",
+            "at": "2026-10-07T03:45:17.5641404Z",
+            "elapsedMs": 24.5559,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cold.close",
+            "at": "2026-10-07T03:45:17.5886951Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.connect.dial",
+            "at": "2026-10-07T03:45:17.5886951Z",
+            "elapsedMs": 1.5465,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.connect",
+            "at": "2026-10-07T03:45:17.5886951Z",
+            "elapsedMs": 65.9073,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.read",
+            "at": "2026-10-07T03:45:17.6545994Z",
+            "elapsedMs": 1.6538,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.close",
+            "at": "2026-10-07T03:45:17.6562531Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.connect.dial",
+            "at": "2026-10-07T03:45:17.6562531Z",
+            "elapsedMs": 1.0117,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.connect",
+            "at": "2026-10-07T03:45:17.6562531Z",
+            "elapsedMs": 64.1698,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.schema-check",
+            "at": "2026-10-07T03:45:17.72042Z",
+            "elapsedMs": 0.5049,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.owner-check",
+            "at": "2026-10-07T03:45:17.7209249Z",
+            "elapsedMs": 0.5134,
+            "remainingMs": 4999
+          },
+          {
+            "stage": "cleanup.marker-check",
+            "at": "2026-10-07T03:45:17.7214383Z",
+            "elapsedMs": 0.5221,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "cleanup.drop",
+            "at": "2026-10-07T03:45:17.7219603Z",
+            "elapsedMs": 121.4215,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "cleanup",
+            "at": "2026-10-07T03:45:17.72042Z",
+            "elapsedMs": 122.9619,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.close",
+            "at": "2026-10-07T03:45:17.8433763Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          }
+        ],
+        "passed": true,
+        "cleanupOK": true
+      },
+      {
+        "number": 3,
+        "schema": "m03_probe_79df37c6a3662304adca6daf9394fbcc",
+        "spans": [
+          {
+            "stage": "cold.connect.dial",
+            "at": "2026-10-07T03:45:17.8433763Z",
+            "elapsedMs": 2.1755,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cold.connect",
+            "at": "2026-10-07T03:45:17.8433763Z",
+            "elapsedMs": 66.7881,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.begin",
+            "at": "2026-10-07T03:45:17.9101613Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.create",
+            "at": "2026-10-07T03:45:17.9101613Z",
+            "elapsedMs": 0.6661,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema.marker-create",
+            "at": "2026-10-07T03:45:17.9108274Z",
+            "elapsedMs": 9.1384,
+            "remainingMs": 4999
+          },
+          {
+            "stage": "schema.marker-insert",
+            "at": "2026-10-07T03:45:17.9199654Z",
+            "elapsedMs": 0.5046,
+            "remainingMs": 4990
+          },
+          {
+            "stage": "schema.commit",
+            "at": "2026-10-07T03:45:17.9204699Z",
+            "elapsedMs": 0.4364,
+            "remainingMs": 4989
+          },
+          {
+            "stage": "schema.rollback",
+            "at": "2026-10-07T03:45:17.9209063Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "schema",
+            "at": "2026-10-07T03:45:17.9101613Z",
+            "elapsedMs": 10.7455,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations.begin",
+            "at": "2026-10-07T03:45:17.9209063Z",
+            "elapsedMs": 1.9607,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "migrations.advisory-lock",
+            "at": "2026-10-07T03:45:17.9228669Z",
+            "elapsedMs": 0.3474,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "migrations.ledger-create",
+            "at": "2026-10-07T03:45:17.9232143Z",
+            "elapsedMs": 8.9977,
+            "remainingMs": 4997
+          },
+          {
+            "stage": "migrations.apply-001",
+            "at": "2026-10-07T03:45:17.9322116Z",
+            "elapsedMs": 51.3075,
+            "remainingMs": 4988
+          },
+          {
+            "stage": "migrations.ledger-insert-001",
+            "at": "2026-10-07T03:45:17.9835168Z",
+            "elapsedMs": 14.4582,
+            "remainingMs": 4937
+          },
+          {
+            "stage": "migrations.apply-002",
+            "at": "2026-10-07T03:45:17.9979743Z",
+            "elapsedMs": 86.6305,
+            "remainingMs": 4922
+          },
+          {
+            "stage": "migrations.ledger-insert-002",
+            "at": "2026-10-07T03:45:18.0846008Z",
+            "elapsedMs": 0,
+            "remainingMs": 4836
+          },
+          {
+            "stage": "migrations.apply-003",
+            "at": "2026-10-07T03:45:18.0846008Z",
+            "elapsedMs": 1.6022,
+            "remainingMs": 4836
+          },
+          {
+            "stage": "migrations.ledger-insert-003",
+            "at": "2026-10-07T03:45:18.0862029Z",
+            "elapsedMs": 0.768,
+            "remainingMs": 4834
+          },
+          {
+            "stage": "migrations.apply-004",
+            "at": "2026-10-07T03:45:18.0869709Z",
+            "elapsedMs": 14.0835,
+            "remainingMs": 4833
+          },
+          {
+            "stage": "migrations.ledger-insert-004",
+            "at": "2026-10-07T03:45:18.1010538Z",
+            "elapsedMs": 0,
+            "remainingMs": 4819
+          },
+          {
+            "stage": "migrations.apply-005",
+            "at": "2026-10-07T03:45:18.1010538Z",
+            "elapsedMs": 0.505,
+            "remainingMs": 4819
+          },
+          {
+            "stage": "migrations.ledger-insert-005",
+            "at": "2026-10-07T03:45:18.1015587Z",
+            "elapsedMs": 0,
+            "remainingMs": 4819
+          },
+          {
+            "stage": "migrations.apply-006",
+            "at": "2026-10-07T03:45:18.1015587Z",
+            "elapsedMs": 10.4675,
+            "remainingMs": 4819
+          },
+          {
+            "stage": "migrations.ledger-insert-006",
+            "at": "2026-10-07T03:45:18.1124984Z",
+            "elapsedMs": 0,
+            "remainingMs": 4808
+          },
+          {
+            "stage": "migrations.apply-007",
+            "at": "2026-10-07T03:45:18.1124984Z",
+            "elapsedMs": 154.4665,
+            "remainingMs": 4808
+          },
+          {
+            "stage": "migrations.ledger-insert-007",
+            "at": "2026-10-07T03:45:18.2669579Z",
+            "elapsedMs": 0,
+            "remainingMs": 4653
+          },
+          {
+            "stage": "migrations.apply-008",
+            "at": "2026-10-07T03:45:18.2669579Z",
+            "elapsedMs": 26.6213,
+            "remainingMs": 4653
+          },
+          {
+            "stage": "migrations.ledger-insert-008",
+            "at": "2026-10-07T03:45:18.2935779Z",
+            "elapsedMs": 0,
+            "remainingMs": 4627
+          },
+          {
+            "stage": "migrations.apply-009",
+            "at": "2026-10-07T03:45:18.2935779Z",
+            "elapsedMs": 10.1825,
+            "remainingMs": 4627
+          },
+          {
+            "stage": "migrations.ledger-insert-009",
+            "at": "2026-10-07T03:45:18.30376Z",
+            "elapsedMs": 0,
+            "remainingMs": 4617
+          },
+          {
+            "stage": "migrations.apply-010",
+            "at": "2026-10-07T03:45:18.30376Z",
+            "elapsedMs": 73.1409,
+            "remainingMs": 4617
+          },
+          {
+            "stage": "migrations.ledger-insert-010",
+            "at": "2026-10-07T03:45:18.3768975Z",
+            "elapsedMs": 0,
+            "remainingMs": 4543
+          },
+          {
+            "stage": "migrations.commit",
+            "at": "2026-10-07T03:45:18.3768975Z",
+            "elapsedMs": 2.5106,
+            "remainingMs": 4543
+          },
+          {
+            "stage": "migrations.rollback",
+            "at": "2026-10-07T03:45:18.3804067Z",
+            "elapsedMs": 0,
+            "remainingMs": 4999
+          },
+          {
+            "stage": "migrations",
+            "at": "2026-10-07T03:45:17.9209063Z",
+            "elapsedMs": 459.5214,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny.begin",
+            "at": "2026-10-07T03:45:18.3804067Z",
+            "elapsedMs": 15.6413,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny.table",
+            "at": "2026-10-07T03:45:18.3960473Z",
+            "elapsedMs": 2.5169,
+            "remainingMs": 4984
+          },
+          {
+            "stage": "tiny.insert",
+            "at": "2026-10-07T03:45:18.4028148Z",
+            "elapsedMs": 0.3184,
+            "remainingMs": 4977
+          },
+          {
+            "stage": "tiny.commit",
+            "at": "2026-10-07T03:45:18.4031332Z",
+            "elapsedMs": 0.5906,
+            "remainingMs": 4977
+          },
+          {
+            "stage": "tiny.rollback",
+            "at": "2026-10-07T03:45:18.4037238Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "tiny",
+            "at": "2026-10-07T03:45:18.3804067Z",
+            "elapsedMs": 23.3182,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cold.close",
+            "at": "2026-10-07T03:45:18.4037238Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.connect.dial",
+            "at": "2026-10-07T03:45:18.4037238Z",
+            "elapsedMs": 1.5473,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.connect",
+            "at": "2026-10-07T03:45:18.4037238Z",
+            "elapsedMs": 267.6331,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.read",
+            "at": "2026-10-07T03:45:18.6713446Z",
+            "elapsedMs": 1.5678,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "reopen.close",
+            "at": "2026-10-07T03:45:18.6729124Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.connect.dial",
+            "at": "2026-10-07T03:45:18.6729124Z",
+            "elapsedMs": 1.0431,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.connect",
+            "at": "2026-10-07T03:45:18.6729124Z",
+            "elapsedMs": 64.6034,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.schema-check",
+            "at": "2026-10-07T03:45:18.7375128Z",
+            "elapsedMs": 1.0431,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.owner-check",
+            "at": "2026-10-07T03:45:18.7385559Z",
+            "elapsedMs": 0.5146,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "cleanup.marker-check",
+            "at": "2026-10-07T03:45:18.7390704Z",
+            "elapsedMs": 0.5178,
+            "remainingMs": 4998
+          },
+          {
+            "stage": "cleanup.drop",
+            "at": "2026-10-07T03:45:18.7395882Z",
+            "elapsedMs": 124.5926,
+            "remainingMs": 4997
+          },
+          {
+            "stage": "cleanup",
+            "at": "2026-10-07T03:45:18.7375128Z",
+            "elapsedMs": 126.6681,
+            "remainingMs": 5000
+          },
+          {
+            "stage": "cleanup.close",
+            "at": "2026-10-07T03:45:18.8648164Z",
+            "elapsedMs": 0,
+            "remainingMs": 5000
+          }
+        ],
+        "passed": true,
+        "cleanupOK": true
+      }
+    ],
+    "migrationHashes": {
+      "001-local-platform.sql": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2",
+      "002-billing-family.sql": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f",
+      "003-account-data.sql": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae",
+      "004-analysis-jobs.sql": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43",
+      "005-analysis-attempt-fence.sql": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c",
+      "006-preparation-attempts.sql": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e",
+      "007-versioned-platform-records.sql": "cae296b33b5c8b09169e7636b6116d6a60fd72ac9cd78661b4900b3b2873208a",
+      "008-local-go-service.sql": "2f5b0e962a59491a2cc6ee35de1f72778c98b45e7e6b67789b09705ed05299d5",
+      "009-configured-access.sql": "ec6ea4b6338cb5de7e026f5134000dfa47a0e6ccfa407095ee48fa21061a48a1",
+      "010-platform-client.sql": "2b0eca4c94a1220246e88292cbc87f685d76d36bfa031e8437fd78fdd0c12a46"
+    },
+    "passed": true,
+    "limits": {
+      "failureObserverMS": 3000,
+      "idleTransactionMS": 5000,
+      "iterations": 3,
+      "lockMS": 1000,
+      "operationMS": 5000,
+      "statementMS": 5000,
+      "wholeMigrationTransactionMS": 5000
+    }
+  }
+}

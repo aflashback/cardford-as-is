@@ -1,0 +1,76 @@
+{
+  "stage": "before",
+  "observedAt": "2026-10-07T03:19:03.4153010Z",
+  "head": "b822d0db8948ff99b8092762f7f0e056b32f2b1e",
+  "command": "node scripts/windows-env.mjs go test ./server/internal/sessions -run '^$' -bench '^BenchmarkDecodeOperation$' -benchmem -benchtime=100ms -count=3 -timeout=30m",
+  "scope": "Native pinned-toolchain decoding of five fixed legal operation byte strings; no PostgreSQL, policy, service, full replay or full suite",
+  "outputSHA256": "66fd5924e76f2c47fa0b66732cce1ba8b056cc2d7ce5e47395212fe89530a356",
+  "sources": [
+    {
+      "path": "server/internal/sessions\\document.go",
+      "sha256": "15063ff340e243c8e5c6b3943ceee9d395f7a054dee794618ee7ff251da7f4c6"
+    },
+    {
+      "path": "server/internal/sessions\\durable.go",
+      "sha256": "9b32f60860efcde20f368b405f8fccc8265e49c09ce41128a9ea307560ffff22"
+    },
+    {
+      "path": "server/internal/sessions\\illustration.go",
+      "sha256": "ec20aec4ab3c3bb8c5afc644603792592e2a30ef0aa5da91ce967546429f8e53"
+    },
+    {
+      "path": "server/internal/sessions\\lifecycle_test.go",
+      "sha256": "75bab4562dd65fb458022c3b0063de13201913347a79584cba533dbb4f33d175"
+    },
+    {
+      "path": "server/internal/sessions\\operations_test.go",
+      "sha256": "636646beeb47dbaec1f4003dcc2ec97b7f3813f2a2e176c69a534c1634f0dc8b"
+    },
+    {
+      "path": "server/internal/sessions\\operations.go",
+      "sha256": "29ae50750573b5f304fc8c6d357b63f91ce0bb70662d7322b971ac7e2d949c3e"
+    },
+    {
+      "path": "server/internal/sessions\\registry_test.go",
+      "sha256": "e3b46265724e812d5dba70187911042f4d9ed9452732517f260b7fa604cb95d8"
+    },
+    {
+      "path": "server/internal/sessions\\registry.go",
+      "sha256": "9b5593fb5631ec8853d8e0a8e991a079d350239640f2fa828c683756945c85d4"
+    },
+    {
+      "path": "server/internal/gamekernel/session_codec.go",
+      "sha256": "8cf229a3ee2716c6194a676f0d2e3d75430b6c95fc1e1750d6b19bc99710a1b3"
+    },
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "b7f7d5e91aaa191b41093895d07127ecaa7cfc5213e4dd319a4e43a2bbfcfb68"
+    },
+    {
+      "path": "server/internal/contracts/semantics.go",
+      "sha256": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "scripts/windows-tools.json",
+      "sha256": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    }
+  ],
+  "baselineBehaviorCheck": {
+    "command": "node scripts/windows-env.mjs go test ./server/internal/sessions -run '^TestOperationDecode' -count=1 -timeout=30m -v",
+    "result": "passed",
+    "output": "decoding-before-regressions.txt",
+    "sha256": "66092ed8c75b2fef826a5355f4be4413692c10451c0fbffbe59f863c9c7bb3fa"
+  }
+}

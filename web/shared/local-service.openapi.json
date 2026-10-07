@@ -2605,6 +2605,9 @@
       "AccessDecision": {
         "$ref": "./contracts.schema.json#/$defs/AccessDecision"
       },
+      "RegisteredPresentation": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredPresentation"
+      },
       "HeartsCandidate": {
         "$ref": "./games/hearts.schema.json#/$defs/HeartsCandidate"
       },
@@ -2640,6 +2643,36 @@
       },
       "SpadesActorEvent": {
         "$ref": "./games/spades.schema.json#/$defs/SpadesActorEvent"
+      },
+      "TokenReveal": {
+        "$ref": "./games/token.schema.json#/$defs/TokenReveal"
+      },
+      "TokenCycle": {
+        "$ref": "./games/token.schema.json#/$defs/TokenCycle"
+      },
+      "TokenCompetitor": {
+        "$ref": "./games/token.schema.json#/$defs/TokenCompetitor"
+      },
+      "TokenObservation": {
+        "$ref": "./games/token.schema.json#/$defs/TokenObservation"
+      },
+      "TokenCandidate": {
+        "$ref": "./games/token.schema.json#/$defs/TokenCandidate"
+      },
+      "TokenActorPacket": {
+        "$ref": "./games/token.schema.json#/$defs/TokenActorPacket"
+      },
+      "TokenSessionView": {
+        "$ref": "./games/token.schema.json#/$defs/TokenSessionView"
+      },
+      "TokenAnalysis": {
+        "$ref": "./games/token.schema.json#/$defs/TokenAnalysis"
+      },
+      "TokenActorEvent": {
+        "$ref": "./games/token.schema.json#/$defs/TokenActorEvent"
+      },
+      "TokenPresentation": {
+        "$ref": "./games/token.schema.json#/$defs/TokenPresentation"
       },
       "LocalServiceWorkRetryRequest": {
         "$ref": "./local-service.schema.json#/$defs/LocalServiceWorkRetryRequest"

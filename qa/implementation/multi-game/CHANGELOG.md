@@ -1,5 +1,9 @@
 # Foundation and partnership change log
 
+## 6–7 October continuous current-game build
+
+M04F follow-up optimizes strict JSON/operation decoding and bounded statistics extraction, enforces a 30-minute whole-test ceiling, and retains a ten-hand actual HTTP/SQL profile plus failed attempts. M05 supplies actor-scoped planning and exact durable optional execution. M06 adds numeric service/storage/coaching conformance; M07 reconciles original research provenance. M10's explicit Partners 5.0 family shares selection and faithful cues. M11's eight-family development comparison observed zero changed actions and keeps confirmation blocked. [Active ledger](../../../planning/implementation/multi-game/continuous-local-build.md) and milestone reports separate implementation, scoped verification and pending human/rule/performance gates.
+
 ## M04A original Go Hearts prerequisite
 
 [Evidence](m04/status.md) records full rules/projection/storage parity, 668 exact Hearts checkpoints, strict corruption/rejection tests, compact replay and actual next-hand receipt/advice recovery. Native full Go, race and targeted original TS/contract checks pass; the initial unchanged-Spades database timeout is preserved with its passing rerun and unresolved cause. Original policy execution and full service/client activation remain the next M04 work.

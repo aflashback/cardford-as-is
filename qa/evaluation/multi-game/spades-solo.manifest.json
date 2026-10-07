@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "multi-game-evaluation-1.0.0",
+  "id": "spades-solo-development-readiness-001",
+  "purpose": "development",
+  "variant": "spades-solo",
+  "ruleProfile": {
+    "id": "spades-solo-training-1.0.0",
+    "hash": "77c1329eb51cd1e30412739d7346fd117a6c5d9d9badb74a3af8d52200dc3670"
+  },
+  "candidate": {
+    "id": "spades-tactics-2.1.0",
+    "hash": "5376e900a961e7022ac04445ac897610db545cb364a7e22ff0ba8a1ddc39f354"
+  },
+  "reference": {
+    "id": "spades-tactics-2.1.0",
+    "hash": "5376e900a961e7022ac04445ac897610db545cb364a7e22ff0ba8a1ddc39f354"
+  },
+  "sourceHashes": {
+    "server/internal/games/spades/coaching/legacy.go": "8e1209600256ee85a3060b334c10428e65894f8b0da1e6a83c0a6aa6262ed14f",
+    "server/internal/games/spades/coaching/legacy_test.go": "45b80fbe5b642cd85c863eac8f54e36f0c06072830c4c58e2579044b662fbeec",
+    "server/internal/games/spades/coaching/partner_resources.go": "1fc930167f092fca2f677ce4ef26951a9f29b91583e79e51dbccecc8d8a82e40",
+    "server/internal/games/spades/coaching/partner_resources_test.go": "e2e60b9098503aa42db1fb771a2545c710691463837971a4e7e592564fc5e852",
+    "server/internal/games/spades/engine.go": "77c1329eb51cd1e30412739d7346fd117a6c5d9d9badb74a3af8d52200dc3670",
+    "server/internal/games/spades/illustration.go": "c68a90e47faad790f8f5402291cade92ed46b0a41024f237c9ea7dd97b0f87bf",
+    "server/internal/games/spades/illustration_policy_test.go": "0b1f3c709402bdb001b31fd3ff8d56ab3b19a0ce32f09dc8e7cb39720d15f85a",
+    "server/internal/games/spades/illustration_test.go": "41f794423c6749c9fbd4455a51ebbd4e0079e990209aea447a1f3311247edc99",
+    "server/internal/games/spades/json.go": "e1bad71371ae33311a72a9ad886b052db85837a45eae2aaa8046467522596986",
+    "server/internal/games/spades/observation.go": "30ff4445576dd81b3c44b59b3a74115702b048a11c90551a95a5e3e440d08209",
+    "server/internal/games/spades/reasoning/bidding.go": "95d39b3d6d63eb86d06f111f86e89d8c18630192ac440f984f24e1d442173989",
+    "server/internal/games/spades/reasoning/catalog.go": "831eb5e2fbfa56222c80d4a29e82b653de29cd80e445db0532e5b1b3e1bbe6ec",
+    "server/internal/games/spades/reasoning/double_nil.go": "6d25f518ea2f272ccf880ac98e1edf0d5368c3519827d02321e5d8438b1dc6f8",
+    "server/internal/games/spades/reasoning/entries.go": "a6625e9653fe5e1a7d3ec824f84db4e6dea374a7af587217bf90fd6446aaae03",
+    "server/internal/games/spades/reasoning/partner_resources.go": "90b7fd8506f8bca020ba9935e5d00b5dfd9d54806d1155a778abcf8fff4af233",
+    "server/internal/games/spades/reasoning/partner_resources_test.go": "fa1d4d7cd39ac4ead4a411dadb13e6af6b2d071a7aa2a8baaecf5470ca508e59",
+    "server/internal/games/spades/reasoning/policy.go": "5376e900a961e7022ac04445ac897610db545cb364a7e22ff0ba8a1ddc39f354",
+    "server/internal/games/spades/reasoning/policy_test.go": "bfc745084c87b330982bc454fb2b9b604af17184467bf0ddd533657b28b964f8",
+    "server/internal/games/spades/reasoning/signals.go": "77f3b0a9385baa1e7cffd870756fe09cd5f652da620047572cc79a835326ea37",
+    "server/internal/games/spades/rules.go": "a6cf99e790a43db01e966f5cfb30ea74c260f4b573550c71ae226dafce241263",
+    "server/internal/games/spades/session.go": "227ebc500ad36fe47262df7b2fbca00670a508aa716e4a053b551c0d44ca6ded",
+    "server/internal/games/spades/session_analysis.go": "fb5ab6cc510a60be1007c0f7fd47fd05c9851cdb67f2725386f082b35480811c",
+    "server/internal/games/spades/session_history_test.go": "cd1852ca2118065d80fa8741cf41d097e24015e90ff05380dd7215d06d129b87",
+    "server/internal/games/spades/session_observation.go": "9e83fac2f0fc4a0606bf65131b1bbba5e9fb5d3fdfd788d4f158002672f227c3",
+    "server/internal/games/spades/session_state.go": "a05a9439b6c41bf56494b22b160d34ea679cf07bab98d11ca3f757e7d70a0e51",
+    "server/internal/games/spades/session_storage.go": "f9277ef466482e0fd737d59123d381a6bb2c5c07791cb3f92b6f5785497bf45f",
+    "server/internal/games/spades/session_test.go": "399b6edee8ee4ec6f287e44f25218ace67c0d9ef8aecadd8e1dbe3607f6b0f92",
+    "server/internal/games/spades/session_transition_test.go": "3190f06d853031762d509130d9acd4a4c1b06c4bfa9f45ff840953e888617832",
+    "server/internal/games/spades/snapshot.go": "d25ab5cf44600da07b8aa9ea6fae767d74c28183bf0faec5f263f786e3004356",
+    "server/internal/games/spades/snapshot_test.go": "29efcde246ac14a0cbd4ccdf3ccd24a3cfc542822e97de92cca06baa0db42460",
+    "server/internal/games/spades/spades_test.go": "013a52883e49dc718c1e2b06d1c4ea0d3a1bb48c417f486cdf3cd1d71ee671f0",
+    "server/internal/games/spades/storage.go": "fb6aec48306dbb16df2a2c27862bbb5dfa22edf6cde37bf842de3a6e9c1a9bfc",
+    "server/internal/games/spades/storage_test.go": "0e0699f7999e79955ca0eda31f0156390d24e5c49ce9f0cf292c76eac7777071",
+    "server/internal/games/spades/types.go": "04972681204c239205db4e7928bf9ff36b87e33534f4bbdf1a4b438107f695ce",
+    "server/internal/games/spades/validation.go": "81f7ffdc92c3fab8d0949f307204c25831c387248242ce9a877b6c8d44e68c61",
+    "server/internal/legacydecision/actor_rollout.go": "f99f436d10bf96ef097f5d2572c668960f21c84f1af44193fad82aa67ada3d3a",
+    "server/internal/legacydecision/cancellation_test.go": "bf6ee038d6e6b484be6a3e817eb12a9df1b5d232db2cedea3673985d83503795",
+    "server/internal/legacydecision/cards.go": "8673c0f5ec5cf4456fcf5b0ab2dc5daca8a6b11b377ab97bd0a2aa5c109e70a3",
+    "server/internal/legacydecision/knowledge.go": "f9c35fc121cd95412e56196894d0272fdf79a11e67cac751445b33d6347977c3",
+    "server/internal/legacydecision/prepared.go": "17964c91f73f701f5833c5a267b4a7b52102fb9f2e9b6b9b6c6f0f198741fd09",
+    "server/internal/legacydecision/presentation.go": "b8766bcb91a428bb5d07845cb06df860305597adcf71e24828dd914fe0f0979d",
+    "server/internal/legacydecision/sampler.go": "75ea8a8720f1e24cb90a399cbf12053bc7a57d268ae1e2fbc0cef6d3878188fa",
+    "server/internal/legacydecision/sampler_test.go": "2a4d53967feae38a71563f25271115d7ff8b949a1f7235a1037adc0b44b01563",
+    "server/internal/legacydecision/synthetic.go": "16947141f8ceeeb1dbdcc2324633984dff7e2833cd6e14dd1a5d50f22458ee37",
+    "server/internal/legacydecision/types.go": "00b1fd3cacc7e1880f0ad3b7ad42c1495626c487f4fc1d2202348f388db9286f",
+    "server/internal/legacydecision/validation.go": "23704503fbd0c2459790a5ae4df0d207eb2af3256b661e7043ac65d3af711648",
+    "server/internal/legacydecision/validation_test.go": "1cadd42ac765225703a6fafd53fc70c9ff167facc6f2c505f5718fc2a8e760b9"
+  },
+  "objective": "Prepared baseline readiness only; no changed-policy comparison has been executed.",
+  "horizon": "complete-hand",
+  "corpus": null,
+  "families": [
+    {
+      "id": "spades-solo-readiness-only",
+      "split": "discovery",
+      "seed": "not-consumed-readiness-only",
+      "sealed": false
+    }
+  ],
+  "rotations": [
+    0
+  ],
+  "seatAssignments": {
+    "candidate": [
+      0
+    ],
+    "reference": [
+      0
+    ]
+  },
+  "environments": [
+    "other three seats fixed frozen tactics2.1"
+  ],
+  "primaryEstimand": "No comparison estimand; preparation only.",
+  "usefulGain": null,
+  "maximumHarm": null,
+  "powerRationale": null,
+  "multiplicityAdjustment": null,
+  "sampleSize": null,
+  "stoppingRule": "No run authorized by generating this readiness file.",
+  "missingRunHandling": "Retain censored decisions and unused starts; incomplete hands excluded from completed outcomes.",
+  "maxWallMs": 60000,
+  "maxDecisionMs": 60000,
+  "maxDecisions": 56,
+  "promotionAuthority": null
+}

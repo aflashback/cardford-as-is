@@ -1,0 +1,15 @@
+goos: windows
+goarch: amd64
+pkg: cardford/server/internal/contracts
+cpu: AMD Ryzen 9 5900HX with Radeon Graphics        
+BenchmarkParseSavedJSON/command-valid-16         	   62232	      1779 ns/op	  65.78 MB/s	     800 B/op	      23 allocs/op
+BenchmarkParseSavedJSON/command-valid-16         	   75120	      1587 ns/op	  73.73 MB/s	     800 B/op	      23 allocs/op
+BenchmarkParseSavedJSON/command-valid-16         	   77457	      1577 ns/op	  74.21 MB/s	     800 B/op	      23 allocs/op
+BenchmarkParseSavedJSON/witness-PlatformSessionView-16         	    2578	     57138 ns/op	  44.19 MB/s	   28408 B/op	     775 allocs/op
+BenchmarkParseSavedJSON/witness-PlatformSessionView-16         	    2265	     74926 ns/op	  33.70 MB/s	   28408 B/op	     775 allocs/op
+BenchmarkParseSavedJSON/witness-PlatformSessionView-16         	    2221	     63008 ns/op	  40.07 MB/s	   28408 B/op	     775 allocs/op
+BenchmarkParseSavedJSON/witness-PlatformAccountView-16         	    4395	     36968 ns/op	  45.50 MB/s	   13880 B/op	     416 allocs/op
+BenchmarkParseSavedJSON/witness-PlatformAccountView-16         	    4465	     30002 ns/op	  56.06 MB/s	   13880 B/op	     416 allocs/op
+BenchmarkParseSavedJSON/witness-PlatformAccountView-16         	    4987	     31140 ns/op	  54.01 MB/s	   13880 B/op	     416 allocs/op
+PASS
+ok  	cardford/server/internal/contracts	1.507s

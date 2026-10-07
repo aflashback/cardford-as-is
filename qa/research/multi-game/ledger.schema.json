@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "research-ledger-1.0.0",
+  "type": "object", "additionalProperties": false,
+  "required": ["id","sourceKind","sourcePath","sourceHash","packetHash","packetProvenance","game","variant","phase","actor","revision","chosenId","legalIds","forced","completeness","policyVersion","originFamilyId","episodeId","duplicatePacketGroup","hypotheses","explanationPath","labels","labelRefs","typedClaimStatus","outcomeEligible","confirmationEligible","originalPacketPath","originalPacketSourceHash","originalPacketLineHash","originalSourceLineHash","committedAuditPath","committedAuditHash"],
+  "$defs": { "hash": {"type":"string","pattern":"^[a-f0-9]{64}$"}, "nullableHash": {"anyOf":[{"$ref":"#/$defs/hash"},{"type":"null"}]}, "strings": {"type":"array","items":{"type":"string"},"uniqueItems":true} },
+  "properties": {
+    "id":{"type":"string","minLength":1}, "sourceKind":{"enum":["text-discovery","browser"]},
+    "sourcePath":{"type":"string"}, "sourceHash":{"$ref":"#/$defs/hash"}, "packetHash":{"$ref":"#/$defs/nullableHash"},
+    "packetProvenance":{"enum":["original","reconstructed-for-audit","unavailable"]},
+    "game":{"type":"string"},"variant":{"type":"string"},"phase":{"type":"string"},
+    "actor":{"type":"integer","minimum":0,"maximum":3},"revision":{"type":"integer","minimum":0},
+    "chosenId":{"type":"string"},"legalIds":{"$ref":"#/$defs/strings"},"forced":{"type":"boolean"},
+    "completeness":{"enum":["complete","partial"]},"policyVersion":{"type":["string","null"]},
+    "originFamilyId":{"type":"string"},"episodeId":{"type":"string"},"duplicatePacketGroup":{"type":"string"},
+    "hypotheses":{"$ref":"#/$defs/strings"},"explanationPath":{"type":["string","null"]},
+    "labels":{"enum":["unreviewed","acceptable-set","contested","unknown"]},
+    "labelRefs":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","version","hash"],"properties":{"id":{"type":"string"},"version":{"type":"string"},"hash":{"$ref":"#/$defs/hash"}}}},
+    "typedClaimStatus":{"enum":["present","absent","not-recorded"]},"outcomeEligible":{"type":"boolean"},"confirmationEligible":{"const":false},
+    "originalPacketPath":{"type":"string"},"originalPacketSourceHash":{"$ref":"#/$defs/hash"},
+    "originalPacketLineHash":{"$ref":"#/$defs/nullableHash"},"originalSourceLineHash":{"$ref":"#/$defs/nullableHash"},
+    "committedAuditPath":{"type":["string","null"]},"committedAuditHash":{"$ref":"#/$defs/nullableHash"}
+  },
+  "allOf":[{"if":{"properties":{"completeness":{"const":"partial"}}},"then":{"properties":{"outcomeEligible":{"const":false}}}}]
+}

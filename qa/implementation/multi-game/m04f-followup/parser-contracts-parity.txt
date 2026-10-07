@@ -1,0 +1,3 @@
+ok  	cardford/server/internal/contracts	0.301s
+ok  	cardford/server/internal/compatibility	35.876s
+ok  	cardford/server/internal/sessions	0.793s

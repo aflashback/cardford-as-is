@@ -5,7 +5,8 @@
   "locale": "en-US",
   "fragments": [
     "hearts",
-    "spades"
+    "spades",
+    "token"
   ],
   "platformFragments": [
     "local-service",
@@ -15,14 +16,15 @@
   ],
   "sources": {
     "scripts/m02a-contracts.mjs": "a8305b0c0f48babb810721f9a1b769b87a3c34f45cb9e4a7ef20b3ed5002e123",
-    "web/shared/validators.mjs": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637",
-    "web/shared/local-service.validators.mjs": "0f0f53e13fdeca005829b682a12aaa04cb0042467e2c6d07bc1ad0c0da2f568f",
-    "web/scripts/generate-contracts.mjs": "aeabee1620822018a6314ecffa3bfd229967eddb594ecb82d0468db8927260aa",
-    "web/shared/contracts.schema.json": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2",
+    "web/shared/validators.mjs": "20bd6dce5df644ca3fe755d62c62a110d439c9a8e13e41a9dccbd26ae114e75c",
+    "web/shared/local-service.validators.mjs": "fca94c23b698985f69804117546b1afeafbe044cbac0e6db8be64b674b808cb8",
+    "web/scripts/generate-contracts.mjs": "97912833afa538bdf7d4dce8fa6c20e1102ccda6949780b3df5e786b0731593b",
+    "web/shared/contracts.schema.json": "057ea7df7dcff99bd6519d1b99b9a574641d11fbacd6e0d5948de6aa93fddee5",
     "web/shared/games/hearts.schema.json": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91",
     "web/shared/games/spades.schema.json": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb",
-    "web/shared/local-service.schema.json": "26a771061db066461ee694939110af1e9308b373e364535b22631a9e397154b4",
-    "web/shared/platform-service.schema.json": "be413a00a701c8ed29d48e8d2b22e4b3ba85e40cb287a5f874b961989a5238c4",
+    "web/shared/games/token.schema.json": "824df81bcb6aac8f3d39c78e37ff1ed4f73809cfefaa28b55b1cd261ca7a209e",
+    "web/shared/local-service.schema.json": "83e5d8f72632b36b3c7f855c82d76faf00aee46a7e15e8dd7e1b0c9d64df0c06",
+    "web/shared/platform-service.schema.json": "5b5245baec821cbf1926a6eaceb3af3a54d45e39e6e55d937960cd9c60e78413",
     "web/shared/platform-account.schema.json": "767092699f1b26d5aa279204ca445de0a11ceed720d89fe2a613272cc93dd799",
     "web/shared/platform-review.schema.json": "fe603d217f5d0f73d680c7485b3c51e2695c1a97f4e396e6f2f11ee15e6391fc",
     "web/server/game/kernel/codec.ts": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b",
@@ -33,7 +35,7 @@
     "web/server/games/spades/plan/pack.ts": "989387dcfff14db1cd31a260b89495e2c44b67b872858c39276b16e18e5feecc",
     "web/server/game/cards.ts": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b"
   },
-  "definitionCount": 149,
+  "definitionCount": 160,
   "bindingKinds": {
     "Mode": "typed",
     "Seat": "typed",
@@ -122,6 +124,7 @@
     "AccessOffer": "validated-opaque",
     "AccessOfferPolicy": "typed",
     "AccessDecision": "validated-opaque",
+    "RegisteredPresentation": "validated-opaque",
     "HeartsCandidate": "validated-opaque",
     "HeartsObservation": "validated-opaque",
     "HeartsActorPacket": "typed",
@@ -134,6 +137,16 @@
     "SpadesSessionView": "validated-opaque",
     "SpadesAnalysis": "typed",
     "SpadesActorEvent": "validated-opaque",
+    "TokenReveal": "typed",
+    "TokenCycle": "typed",
+    "TokenCompetitor": "typed",
+    "TokenObservation": "validated-opaque",
+    "TokenCandidate": "typed",
+    "TokenActorPacket": "typed",
+    "TokenSessionView": "validated-opaque",
+    "TokenAnalysis": "typed",
+    "TokenActorEvent": "validated-opaque",
+    "TokenPresentation": "typed",
     "LocalServiceWorkRetryRequest": "typed",
     "LocalServiceEmptyRequest": "typed",
     "LocalServiceSelector": "validated-opaque",
@@ -185,7 +198,7 @@
     "PlatformReviewStatus": "validated-opaque",
     "PlatformAdviceView": "typed"
   },
-  "fixtureCount": 357,
+  "fixtureCount": 379,
   "deliberateBoundaryDifferences": [
     "lone-high-surrogate",
     "lone-low-surrogate",

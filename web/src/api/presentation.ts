@@ -1,11 +1,13 @@
 import type { GameAction, GameView, Mode, RegisteredActorPacket, RegisteredSessionView } from '../../shared/contracts.ts';
 
-const modes: Record<RegisteredSessionView['gameId'], readonly Mode[]> = {
+const modes: Record<'hearts'|'spades', readonly Mode[]> = {
   hearts: ['hearts'], spades: ['spades-solo', 'spades-partners'],
 };
 /** Registered current-game display adapters consume server-owned projections. */
-export function presentation(view: RegisteredSessionView, game: GameView,
+export function presentation(view: RegisteredSessionView, game: GameView | import('../../shared/contracts.ts').TokenPresentation,
   actor: RegisteredActorPacket | null, instanceId: string): GameView {
+  if (view.gameId === 'test-token' || 'gameId' in game)
+    throw new Error('This test module requires its installed non-card presentation adapter.');
   const expected: Mode = view.gameId === 'hearts' ? 'hearts' :
     view.variantId === 'solo' ? 'spades-solo' : 'spades-partners';
   if (!modes[view.gameId].includes(expected) || game.mode !== expected || game.id !== instanceId ||
@@ -24,6 +26,7 @@ function sameAction(left: GameAction, right: GameAction): boolean {
     left.cards.length === 3 && left.cards.every(card => right.cards.includes(card));
 }
 export function resolveCandidate(actor: RegisteredActorPacket | null, action: GameAction): string {
+  if (actor?.gameId === 'test-token') throw new Error('Numeric token choices require the test module adapter.');
   const candidates = actor?.candidates.filter(candidate => sameAction(action, candidate.public)) ?? [];
   if (candidates.length !== 1) throw new Error('That action is unavailable at this confirmed decision.');
   return candidates[0].id;

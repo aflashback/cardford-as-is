@@ -1,0 +1,24 @@
+File: service.test.exe
+Build ID: C:\Users\AliA\AppData\Local\Temp\go-build3708271657\b001\service.test.exe2026-10-06 23:47:13.278221 -0400 EDT
+Type: cpu
+Time: 2026-10-06 23:47:13 EDT
+Duration: 282.56s, Total samples = 330.25s (116.88%)
+Showing nodes accounting for 107.39s, 32.52% of 330.25s total
+Dropped 1421 nodes (cum <= 1.65s)
+Showing top 15 nodes out of 332
+      flat  flat%   sum%        cum   cum%
+    13.65s  4.13%  4.13%     13.74s  4.16%  runtime.cgocall
+    10.51s  3.18%  7.32%     19.09s  5.78%  encoding/json.checkValid
+     9.63s  2.92% 10.23%      9.63s  2.92%  runtime.nextFreeFast (inline)
+     8.60s  2.60% 12.84%      8.92s  2.70%  runtime.(*bucket).mp
+     8.41s  2.55% 15.38%     12.74s  3.86%  runtime.preemptM
+     8.30s  2.51% 17.90%      8.31s  2.52%  runtime.semasleep
+     6.19s  1.87% 19.77%     20.64s  6.25%  runtime.scanObject
+     6.04s  1.83% 21.60%     56.24s 17.03%  runtime.mallocgc
+     5.67s  1.72% 23.32%      9.93s  3.01%  runtime.tryDeferToSpanScan
+     5.52s  1.67% 24.99%      5.52s  1.67%  runtime.memclrNoHeapPointers
+     5.48s  1.66% 26.65%     29.84s  9.04%  runtime.mallocgcSmallScanNoHeader
+     5.29s  1.60% 28.25%      5.41s  1.64%  encoding/json.stateInString
+     5.13s  1.55% 29.80%     10.97s  3.32%  runtime.mallocgcTiny
+     4.54s  1.37% 31.18%      5.86s  1.77%  encoding/json.(*decodeState).rescanLiteral
+     4.43s  1.34% 32.52%      4.44s  1.34%  cardford/server/internal/contracts.pairedSurrogates

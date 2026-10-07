@@ -256,18 +256,14 @@ func (s *Store) platformUnforcedSources(ctx context.Context, owner, game string,
 		if err = ctx.Err(); err != nil {
 			return nil, err
 		}
-		record, e := DecodeDecision(raw)
+		record, e := s.statsDecisions.decode(raw)
 		if e != nil {
 			return nil, e
 		}
-		if record.Actor != 0 {
+		if record.actor != 0 {
 			continue
 		}
-		var original OriginalAnalysisEnvelope
-		if e = gamekernel.DecodeSessionJSON(record.Analysis, &original); e != nil {
-			return nil, e
-		}
-		out[record.Revision] = len(original.Original.Candidates) > 1
+		out[record.revision] = record.unforced
 	}
 	return out, s.currentRead(ctx, owner)
 }

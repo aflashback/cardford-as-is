@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "multi-game-evaluation-1.0.0",
+  "id": "hearts-solo-development-readiness-001",
+  "purpose": "development",
+  "variant": "hearts-solo",
+  "ruleProfile": {
+    "id": "hearts-training-1.0.0",
+    "hash": "1a293d24e35e7e1199e7f685f33453489aad7d6e3ec5873a7d1ff4702a8eae17"
+  },
+  "candidate": {
+    "id": "hearts-baseline-1.0.0",
+    "hash": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a"
+  },
+  "reference": {
+    "id": "hearts-baseline-1.0.0",
+    "hash": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a"
+  },
+  "sourceHashes": {
+    "web/server/games/hearts/coaching/cues-legacy.ts": "17bae315afdce429e09025769e53e044b32c975e60c6b6fffa4f1c9f7bbba07d",
+    "web/server/games/hearts/codec.ts": "7df116e83e47c0f90d73aaf2b8cba442391fd13ec9c104cac5512aa6d0a81428",
+    "web/server/games/hearts/compatibility.ts": "9c4ee02f3ee3b02bdba30898cf4966056a5effc031107296b7eadf1e05fe95bb",
+    "web/server/games/hearts/engine.ts": "1a293d24e35e7e1199e7f685f33453489aad7d6e3ec5873a7d1ff4702a8eae17",
+    "web/server/games/hearts/module.ts": "b69ab450e50b57f18c0a59b9268521deecdf9c4de4cdf3664348804358f5591a",
+    "web/server/games/hearts/observation.ts": "83f527bfb345e1b529d35e15e06768c8ed1459d8100729ace4d5f599303c5254",
+    "web/server/games/hearts/plan/kernel.ts": "87daf62cbfe828997e75bb671a9b2965842124bb866cb07537a623021d66defc",
+    "web/server/games/hearts/plan/model.ts": "492c8e10f9d55ad743788436f385ff9929f4dfc4a5fb80c4454ee94b42ed61d3",
+    "web/server/games/hearts/plan/pack.ts": "cdabcb038cac4156528ceb833a1ff7eac443e9aa646ffff334d0760a8930c600",
+    "web/server/games/hearts/plan/planner.ts": "33eb46af8a1b26d97c0b70b53498fd219fc123d91bfc86a2e689c4c85f397491",
+    "web/server/games/hearts/plan/policy.ts": "8be7b1c427e41be5b21c099bd9be7ac36a7e346ebac02da156fe348aa049c2ed",
+    "web/server/games/hearts/plan/profiles.ts": "bebc3d9d431aaded1a2b9a925c66fb8e679c84fcd266e4c0a977e5c39406361f",
+    "web/server/games/hearts/plan/stance.ts": "519ae3745217b3b611ce57ea369bca77113645f45f5533bf580fe81e3d8c27e9",
+    "web/server/games/hearts/projection.ts": "dda46e939d2103df200c75077dc6e18f8e60edf565fa5622fe05d8567fcec36e",
+    "web/server/games/hearts/reasoning/manifest.ts": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a",
+    "web/server/games/hearts/state.ts": "e708b372bcaa28bc80d57ceba4a0fc1d5e726e98791382cedeed96fdb87e0b22",
+    "web/server/strategy/baseline.ts": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929",
+    "web/server/strategy/cases/resolve.ts": "181fdbda01e162bbd9dfc4143a56207f29709bf5f05172fa335f922b57e4dfe0",
+    "web/server/strategy/cases/types.ts": "70b56a93bbf9dc5cc810c465712fbeffe53bc01a8e73ef43438ed7768f8230be",
+    "web/server/strategy/facts.ts": "91df66ea59713ca96b541122f3607d2ee9edf0ae9111436bed2db2f649888af1",
+    "web/server/strategy/index.ts": "7b0db3d2ae0597d4e672d85eceb56a97ba15015b761959b22b4bf319d692f0a1",
+    "web/server/strategy/plan/contract.ts": "bce8d766d981eed2b1c77f367b1c86e93a40fa8fbfe34e925d9533ae323bc355",
+    "web/server/strategy/plan/evaluate.ts": "967da678727ce322000db15d718290b5002556464753a073131d12216e371f28",
+    "web/server/strategy/plan/random.ts": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883",
+    "web/server/strategy/plan/types.ts": "a899542eef67aa98aaf8379e87320b00eda3e407187dc2f7eefbda96e845fdf7",
+    "web/server/strategy/registry.ts": "8a60dec8ebc60a67ac1d3b008e82eee13e1dbb2abd101122c892c808f5d62607",
+    "web/server/strategy/sampler.ts": "2f4ef123c0a9c0328e44d55e1e49e9b4720273de051ba9768ea6696f6b3f30ad",
+    "web/server/strategy/spades.ts": "fc7dd4b74fea705398193b04be3ddb4d4ad6075e5063eb486d88d7a9148ac5f4",
+    "web/server/strategy/types.ts": "a39cd57abe3252780370e8aabc7f2b7bd3959b15d76f5e22aa5634c58644fa0c"
+  },
+  "objective": "Prepared baseline readiness only; no changed-policy comparison has been executed.",
+  "horizon": "complete-hand",
+  "corpus": null,
+  "families": [
+    {
+      "id": "hearts-solo-readiness-only",
+      "split": "discovery",
+      "seed": "not-consumed-readiness-only",
+      "sealed": false
+    }
+  ],
+  "rotations": [
+    0
+  ],
+  "seatAssignments": {
+    "candidate": [
+      0
+    ],
+    "reference": [
+      0
+    ]
+  },
+  "environments": [
+    "all seats retain Hearts baseline"
+  ],
+  "primaryEstimand": "No comparison estimand; preparation only.",
+  "usefulGain": null,
+  "maximumHarm": null,
+  "powerRationale": null,
+  "multiplicityAdjustment": null,
+  "sampleSize": null,
+  "stoppingRule": "No run authorized by generating this readiness file.",
+  "missingRunHandling": "Retain censored decisions and unused starts; incomplete hands excluded from completed outcomes.",
+  "maxWallMs": 60000,
+  "maxDecisionMs": 60000,
+  "maxDecisions": 56,
+  "promotionAuthority": null
+}

@@ -108,11 +108,15 @@ func (s *Service) mutate(ctx context.Context, owner string, r transport.Request)
 		case "round-complete":
 			operation = sessions.ContinueOperation{Kind: "continue-round"}
 		case "chance":
-			deck, e := freshDeck()
+			pin := b.Pin()
+			installation, e := s.registry.Installation(sessions.Selector{GameID: pin.GameID, VariantID: pin.VariantID, ModuleVersion: pin.ModuleVersion, RuleProfileID: pin.RuleProfileID})
 			if e != nil {
 				return transport.Response{}, e
 			}
-			material, _ := json.Marshal(map[string]any{"kind": "deal", "deck": deck})
+			material, e := installation.NextChance(n)
+			if e != nil {
+				return transport.Response{}, e
+			}
 			operation = sessions.ChanceOperation{Kind: "chance", RequestID: n.RequestID, Material: material}
 		default:
 			return transport.Response{}, fail(409, "not-round-boundary")

@@ -1,0 +1,208 @@
+{
+  "milestone": "M06",
+  "scope": "real loopback HTTP token service and numeric React browser",
+  "status": "passed",
+  "elapsedMs": 21390.5824,
+  "steps": [
+    {
+      "name": "ui-build",
+      "args": [
+        "web/node_modules/vite/bin/vite.js",
+        "build",
+        "--config",
+        "web/conformance-token/vite.config.ts"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "elapsedMs": 4154.989500000001,
+      "sha256": "6bd2c6bc9a4e9e3bfa0d521db66b424c225325b913a9f3493a3e10315e383e24"
+    },
+    {
+      "name": "host-build",
+      "args": [
+        "scripts/windows-env.mjs",
+        "go",
+        "test",
+        "-c",
+        "-o",
+        "C:\\repos\\test-jev\\.local\\m06-token-browser-host.exe",
+        "./server/internal/service"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "elapsedMs": 1864.3592000000008,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "browser",
+      "args": [
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "-c",
+        "web/playwright.m06.config.ts",
+        "--max-failures=1"
+      ],
+      "exitCode": 0,
+      "status": "passed",
+      "elapsedMs": 13814.457300000002,
+      "sha256": "87a4e668bb86140ff9fe74612d4c5259b5a88de5a198eb655e2f379d27a34636"
+    }
+  ],
+  "sourceBefore": [
+    {
+      "path": "server/internal/service/token_browser_fixture_test.go",
+      "sha256": "11eadead93ae8c1da39cf89ba89ae6146aa1170599d75c6080cd8a68ae9c7de4"
+    },
+    {
+      "path": "server/internal/service/preparation.go",
+      "sha256": "26bacedc3fd82c46b52942882f4a320e0a4246780fe5d2ddb2a157d9c9c74abb"
+    },
+    {
+      "path": "server/internal/service/token_conformance_test.go",
+      "sha256": "ef5cf5b1cb58e731e05ae0f2faa182c2c45880106c2f25c4020317cd16030f33"
+    },
+    {
+      "path": "server/internal/conformance/token.go",
+      "sha256": "f8cab9252d90c0dfa7d3620173e5c19f8cf4e887ad4edc7a941e80e78cf6d8f9"
+    },
+    {
+      "path": "server/internal/conformance/token_session.go",
+      "sha256": "8e2f3a98edaf6e0824dbdb7fa596f7de0c5185974014bddbc095c7a2fa6e6585"
+    },
+    {
+      "path": "server/internal/sessions/installation.go",
+      "sha256": "5f035a2b88f963c8bbf9f112ec35e2f4da037c4ed19909c1733166f4919e5341"
+    },
+    {
+      "path": "server/internal/sessions/installation_cards.go",
+      "sha256": "47c7ebcaed963984427e256639cc3be9a003fff18a523a742120625b5129fcd6"
+    },
+    {
+      "path": "server/internal/records/service_codec.go",
+      "sha256": "cd5c34e5b1152605a3dbacc0628374eaf95861bca16b7b00f9553447430cde89"
+    },
+    {
+      "path": "server/internal/records/service_installation.go",
+      "sha256": "dae91a7dea434e7dcfe2144df2beabd8150e24c96eaac8c2e2fba32602ac97dc"
+    },
+    {
+      "path": "web/conformance-token/index.html",
+      "sha256": "85db33274e3f68060a8d7789a261e2afae33a27e58c612ea9b8a8b3ce0f5812a"
+    },
+    {
+      "path": "web/conformance-token/main.tsx",
+      "sha256": "0554a3712339fc8c73f8a247864fd1d0151bf23a30ab3130cef2a399b201e61c"
+    },
+    {
+      "path": "web/conformance-token/vite.config.ts",
+      "sha256": "d1eb4537859eac556f6fa53d28bbeeefe3ca3f7aadea58ae2c06d2d3d7c5f901"
+    },
+    {
+      "path": "web/src/api/tokenConformance.ts",
+      "sha256": "fbcd59f72a554e61554c39cff9b73885aad89db459f4ecc166a2d71e127d422d"
+    },
+    {
+      "path": "web/e2e/token-conformance.spec.ts",
+      "sha256": "83969c71e916e8d26bf7ec7b8114f384a75d173428fecd9450f68976b807bb7d"
+    },
+    {
+      "path": "web/playwright.m06.config.ts",
+      "sha256": "9cf0eec79b79b712df3a709ea78ac4315404c1a7d5cfcf330ce5bb5f69cfa4bb"
+    },
+    {
+      "path": "qa/implementation/multi-game/m06/browser-smoke.mjs",
+      "sha256": "3db497d64e7e502c1634dc33b7af0588e2fb3ef7cdb644be3f2e302bf16bab32"
+    }
+  ],
+  "sourceAfter": [
+    {
+      "path": "server/internal/service/token_browser_fixture_test.go",
+      "sha256": "11eadead93ae8c1da39cf89ba89ae6146aa1170599d75c6080cd8a68ae9c7de4"
+    },
+    {
+      "path": "server/internal/service/preparation.go",
+      "sha256": "26bacedc3fd82c46b52942882f4a320e0a4246780fe5d2ddb2a157d9c9c74abb"
+    },
+    {
+      "path": "server/internal/service/token_conformance_test.go",
+      "sha256": "ef5cf5b1cb58e731e05ae0f2faa182c2c45880106c2f25c4020317cd16030f33"
+    },
+    {
+      "path": "server/internal/conformance/token.go",
+      "sha256": "f8cab9252d90c0dfa7d3620173e5c19f8cf4e887ad4edc7a941e80e78cf6d8f9"
+    },
+    {
+      "path": "server/internal/conformance/token_session.go",
+      "sha256": "8e2f3a98edaf6e0824dbdb7fa596f7de0c5185974014bddbc095c7a2fa6e6585"
+    },
+    {
+      "path": "server/internal/sessions/installation.go",
+      "sha256": "5f035a2b88f963c8bbf9f112ec35e2f4da037c4ed19909c1733166f4919e5341"
+    },
+    {
+      "path": "server/internal/sessions/installation_cards.go",
+      "sha256": "47c7ebcaed963984427e256639cc3be9a003fff18a523a742120625b5129fcd6"
+    },
+    {
+      "path": "server/internal/records/service_codec.go",
+      "sha256": "cd5c34e5b1152605a3dbacc0628374eaf95861bca16b7b00f9553447430cde89"
+    },
+    {
+      "path": "server/internal/records/service_installation.go",
+      "sha256": "dae91a7dea434e7dcfe2144df2beabd8150e24c96eaac8c2e2fba32602ac97dc"
+    },
+    {
+      "path": "web/conformance-token/index.html",
+      "sha256": "85db33274e3f68060a8d7789a261e2afae33a27e58c612ea9b8a8b3ce0f5812a"
+    },
+    {
+      "path": "web/conformance-token/main.tsx",
+      "sha256": "0554a3712339fc8c73f8a247864fd1d0151bf23a30ab3130cef2a399b201e61c"
+    },
+    {
+      "path": "web/conformance-token/vite.config.ts",
+      "sha256": "d1eb4537859eac556f6fa53d28bbeeefe3ca3f7aadea58ae2c06d2d3d7c5f901"
+    },
+    {
+      "path": "web/src/api/tokenConformance.ts",
+      "sha256": "fbcd59f72a554e61554c39cff9b73885aad89db459f4ecc166a2d71e127d422d"
+    },
+    {
+      "path": "web/e2e/token-conformance.spec.ts",
+      "sha256": "83969c71e916e8d26bf7ec7b8114f384a75d173428fecd9450f68976b807bb7d"
+    },
+    {
+      "path": "web/playwright.m06.config.ts",
+      "sha256": "9cf0eec79b79b712df3a709ea78ac4315404c1a7d5cfcf330ce5bb5f69cfa4bb"
+    },
+    {
+      "path": "qa/implementation/multi-game/m06/browser-smoke.mjs",
+      "sha256": "3db497d64e7e502c1634dc33b7af0588e2fb3ef7cdb644be3f2e302bf16bab32"
+    }
+  ],
+  "sourceChanged": false,
+  "artifacts": [
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m06-token-browser-host.exe",
+      "sha256": "a4739dda9e8c74ac0fbcd9d7a80ddbb7a595d6ba66849b05bfe08b9541818637"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m06-token-ui\\index.html",
+      "sha256": "ac9dea69f5c6a7d6aa88292e0a80f1b586c94d0b8db19c0a6d3b8f484049a61c"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m06-token-ui\\assets\\index-BM7rBxNK.js",
+      "sha256": "a47e93e6d1f26e0b94edba1cbc7d6ffd1084753a1125c41f5e9cce6f510452d3"
+    }
+  ],
+  "cleanupError": null,
+  "provider": "off",
+  "engineStateInjected": false,
+  "apiResponsesMocked": false,
+  "publicCatalogActivated": false,
+  "browserVariants": [
+    "individual",
+    "neighbour-teams"
+  ],
+  "observedModel": null
+}

@@ -1,0 +1,25 @@
+{
+  "receipt": {
+    "exitCode": 0,
+    "signal": null,
+    "error": null,
+    "shutdownError": null,
+    "timedOut": false,
+    "interrupted": false,
+    "outputLimitExceeded": false,
+    "elapsedMs": 143064.7247,
+    "status": "passed"
+  },
+  "selection": "actual Go spades-partners: full hand",
+  "artifacts": {
+    "binary": "3fa584a79d51786f83693f52502b7b935f9256ac3f26d6d1361e36059904fec2",
+    "client": "ae34e457b2a44cdee2c61443955b52a9d072bb6cc3583f9d60ba2d73355d0288",
+    "test": "db10dbf5be5d73378ab34ae78bb44562408aa6d8b7fa048ccb04bad7f1041cfa"
+  },
+  "unchanged": true,
+  "provider": {
+    "mode": "off",
+    "attempts": 0
+  },
+  "scope": "automated actual local functional journeys; no human or strength result"
+}

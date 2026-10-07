@@ -12,7 +12,7 @@ import (
 
 func analyzeSessionComplete(ctx context.Context, o sessionObservation, policyID, decisionID string) (gamekernel.CompleteAnalysis, error) {
 	var out gamekernel.CompleteAnalysis
-	if policyID != reasoning.PolicyVersion {
+	if policyID != reasoning.PolicyVersion && policyID != reasoning.PartnerResourcePolicy {
 		return out, fmt.Errorf("unsupported original Spades policy")
 	}
 	input, err := legacySessionObservationContext(ctx, o)
@@ -22,7 +22,12 @@ func analyzeSessionComplete(ctx context.Context, o sessionObservation, policyID,
 	if err = ctx.Err(); err != nil {
 		return out, err
 	}
-	original, err := reasoning.AnalyzeContext(ctx, input)
+	var original d.Analysis
+	if policyID == reasoning.PartnerResourcePolicy {
+		original, err = reasoning.AnalyzePartnerResourcesContext(ctx, input)
+	} else {
+		original, err = reasoning.AnalyzeContext(ctx, input)
+	}
 	if err != nil {
 		return out, err
 	}
@@ -56,14 +61,19 @@ func analyzeSessionComplete(ctx context.Context, o sessionObservation, policyID,
 }
 
 func analyzeSession(o sessionObservation, policyID string) (string, json.RawMessage, error) {
-	if policyID != reasoning.PolicyVersion {
+	if policyID != reasoning.PolicyVersion && policyID != reasoning.PartnerResourcePolicy {
 		return "", nil, fmt.Errorf("unsupported Spades policy %q; saved optional policies are read-only", policyID)
 	}
 	input, err := legacySessionObservation(o)
 	if err != nil {
 		return "", nil, err
 	}
-	original, err := reasoning.Analyze(input)
+	var original d.Analysis
+	if policyID == reasoning.PartnerResourcePolicy {
+		original, err = reasoning.AnalyzePartnerResourcesContext(context.Background(), input)
+	} else {
+		original, err = reasoning.Analyze(input)
+	}
 	if err != nil {
 		return "", nil, err
 	}

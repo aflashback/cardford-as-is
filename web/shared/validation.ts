@@ -90,6 +90,7 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   AccessOffer: compiled.validateAccessOffer,
   AccessOfferPolicy: compiled.validateAccessOfferPolicy,
   AccessDecision: compiled.validateAccessDecision,
+  RegisteredPresentation: compiled.validateRegisteredPresentation,
   HeartsCandidate: compiled.validateHeartsCandidate,
   HeartsObservation: compiled.validateHeartsObservation,
   HeartsActorPacket: compiled.validateHeartsActorPacket,
@@ -102,6 +103,16 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   SpadesSessionView: compiled.validateSpadesSessionView,
   SpadesAnalysis: compiled.validateSpadesAnalysis,
   SpadesActorEvent: compiled.validateSpadesActorEvent,
+  TokenReveal: compiled.validateTokenReveal,
+  TokenCycle: compiled.validateTokenCycle,
+  TokenCompetitor: compiled.validateTokenCompetitor,
+  TokenObservation: compiled.validateTokenObservation,
+  TokenCandidate: compiled.validateTokenCandidate,
+  TokenActorPacket: compiled.validateTokenActorPacket,
+  TokenSessionView: compiled.validateTokenSessionView,
+  TokenAnalysis: compiled.validateTokenAnalysis,
+  TokenActorEvent: compiled.validateTokenActorEvent,
+  TokenPresentation: compiled.validateTokenPresentation,
 };
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
   return validators[name];
@@ -199,6 +210,7 @@ export const validateAccessAllowance = contractValidator('AccessAllowance');
 export const validateAccessOffer = contractValidator('AccessOffer');
 export const validateAccessOfferPolicy = contractValidator('AccessOfferPolicy');
 export const validateAccessDecision = contractValidator('AccessDecision');
+export const validateRegisteredPresentation = contractValidator('RegisteredPresentation');
 export const validateHeartsCandidate = contractValidator('HeartsCandidate');
 export const validateHeartsObservation = contractValidator('HeartsObservation');
 export const validateHeartsActorPacket = contractValidator('HeartsActorPacket');
@@ -211,3 +223,13 @@ export const validateSpadesActorPacket = contractValidator('SpadesActorPacket');
 export const validateSpadesSessionView = contractValidator('SpadesSessionView');
 export const validateSpadesAnalysis = contractValidator('SpadesAnalysis');
 export const validateSpadesActorEvent = contractValidator('SpadesActorEvent');
+export const validateTokenReveal = contractValidator('TokenReveal');
+export const validateTokenCycle = contractValidator('TokenCycle');
+export const validateTokenCompetitor = contractValidator('TokenCompetitor');
+export const validateTokenObservation = contractValidator('TokenObservation');
+export const validateTokenCandidate = contractValidator('TokenCandidate');
+export const validateTokenActorPacket = contractValidator('TokenActorPacket');
+export const validateTokenSessionView = contractValidator('TokenSessionView');
+export const validateTokenAnalysis = contractValidator('TokenAnalysis');
+export const validateTokenActorEvent = contractValidator('TokenActorEvent');
+export const validateTokenPresentation = contractValidator('TokenPresentation');

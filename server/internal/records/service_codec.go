@@ -95,7 +95,18 @@ func ServiceMetadata(selector sessions.Selector, id, owner string) (SessionMetad
 // NewServiceCodec adds exact V2 readers and executors. All original V1 readers
 // retain their own command/digest history and remain read-only in this service.
 func NewServiceCodec() (*DocumentCodec, error) {
+	registry, err := sessions.NewRegistry()
+	if err != nil {
+		return nil, err
+	}
+	return NewServiceCodecWithRegistry(registry)
+}
+func NewServiceCodecWithRegistry(registry *sessions.Registry) (*DocumentCodec, error) {
+	if registry == nil {
+		return nil, fmt.Errorf("missing compiled service registry")
+	}
 	c := NewDocumentCodec()
+	c.serviceRegistry = registry
 	for _, mode := range []string{"hearts", "spades-solo", "spades-partners"} {
 		old := OriginalPin(mode)
 		selector := sessions.Selector{GameID: old.GameID, VariantID: old.VariantID, ModuleVersion: "2.0.0", RuleProfileID: old.RuleProfileID}
@@ -165,6 +176,41 @@ func NewServiceCodec() (*DocumentCodec, error) {
 			return nil, err
 		}
 	}
+	for _, installed := range registry.Installations() {
+		pin := ModulePin(installed.Pin)
+		if _, exists := c.readers[pin]; exists {
+			continue
+		}
+		r := storageRegistration{HistoricalReader: HistoricalReader{Pin: pin, Mode: installed.Mode, ValidateHot: installed.ValidateHot, Window: installed.Window, Unit: installed.Unit}}
+		competition := Competition{Mode: installed.Descriptor.Variants[0].Competition.Mode, Competitors: []Competitor{}}
+		for _, group := range installed.Descriptor.Variants[0].Competition.Competitors {
+			competition.Competitors = append(competition.Competitors, Competitor{ID: group.ID, Seats: append([]int{}, group.Seats...)})
+		}
+		r.expectedCompetition = &competition
+		r.startMaterial = func(config, material json.RawMessage) (gamekernel.Snapshot, error) {
+			bound, e := installed.Start(config, material)
+			if e != nil {
+				return nil, e
+			}
+			return sessions.Durable(bound)
+		}
+		r.Open = func(hot json.RawMessage, events []json.RawMessage) (gamekernel.Snapshot, error) {
+			bound, e := installed.OpenStored(hot, events)
+			if e != nil {
+				return nil, e
+			}
+			return sessions.Durable(bound)
+		}
+		c.readers[pin] = r
+		selector := sessions.Selector{GameID: pin.GameID, VariantID: pin.VariantID, ModuleVersion: pin.ModuleVersion, RuleProfileID: pin.RuleProfileID}
+		policy, err := c.PolicyForNew(selector)
+		if err != nil {
+			return nil, err
+		}
+		if err = c.RegisterPolicy(PolicyRegistration{Module: pin, Policy: policy, PacketVersion: pin.ObservationSchemaVersion, AnalysisSchema: installed.Policy.AnalysisSchema, AdviceSchema: installed.Policy.AdviceSchema}); err != nil {
+			return nil, err
+		}
+	}
 	return c, nil
 }
 func (c *DocumentCodec) Session(doc Document, s gamekernel.Snapshot) (gamekernel.BoundSession, error) {
@@ -194,11 +240,16 @@ func (c *DocumentCodec) PrepareDecision(ctx context.Context, doc Document, s gam
 	if err := ctx.Err(); err != nil {
 		return out, err
 	}
-	policy, err := ServicePolicy(sessions.Selector{GameID: doc.Metadata.Pin.GameID, VariantID: doc.Metadata.Pin.VariantID, ModuleVersion: doc.Metadata.Pin.ModuleVersion, RuleProfileID: doc.Metadata.Pin.RuleProfileID})
-	if err != nil {
-		return out, err
+	policy := doc.Metadata.Policy
+	var execution PolicyRegistration
+	installed := false
+	for _, candidate := range c.policies {
+		if candidate.Module == doc.Metadata.Pin && reflect.DeepEqual(candidate.Policy, policy) {
+			execution, installed = candidate, true
+			break
+		}
 	}
-	if !reflect.DeepEqual(policy, doc.Metadata.Policy) {
+	if !installed {
 		return out, fmt.Errorf("uninstalled exact policy/component/budget tuple")
 	}
 	registration, err := c.registration(doc.Metadata)
@@ -215,11 +266,43 @@ func (c *DocumentCodec) PrepareDecision(ctx context.Context, doc Document, s gam
 	if err = ctx.Err(); err != nil {
 		return out, err
 	}
-	full, err := bound.PrepareComplete(ctx, actor, policy.ID, decisionID)
+	var full gamekernel.CompletePreparation
+	var executor PrepareExecutor
+	for _, candidate := range c.prepareExecutors {
+		if candidate.module == doc.Metadata.Pin && reflect.DeepEqual(candidate.policy, policy) {
+			executor = candidate.execute
+			break
+		}
+	}
+	if executor == nil {
+		full, err = bound.PrepareComplete(ctx, actor, policy.ID, decisionID)
+	} else {
+		full, err = executor(ctx, bound, actor, policy.ID, decisionID)
+		if err == nil {
+			binding, bindingErr := bound.PreparationBinding(actor, policy.ID)
+			if bindingErr != nil {
+				return out, bindingErr
+			}
+			prepared := full.Prepared
+			if prepared.Actor != actor || prepared.PolicyID != policy.ID || prepared.InputDigest != binding.InputDigest || prepared.ObservationSchemaVersion != doc.Metadata.Pin.ObservationSchemaVersion {
+				return out, fmt.Errorf("installed executor changed preparation binding")
+			}
+			eligible := false
+			for _, id := range binding.CandidateIDs {
+				eligible = eligible || id == prepared.CandidateID
+			}
+			if !eligible {
+				return out, fmt.Errorf("installed executor selected ineligible candidate")
+			}
+			if _, err = gamekernel.ParseRegisteredAnalysis(prepared.Analysis, bound.Pin(), prepared.CandidateID); err != nil {
+				return out, err
+			}
+		}
+	}
 	if err != nil {
 		return out, err
 	}
-	if full.Detail.Schema != OriginalAnalysisSchema || full.Advice.Schema != OriginalAdviceSchema {
+	if full.Detail.Schema != execution.AnalysisSchema || full.Advice.Schema != execution.AdviceSchema {
 		return out, fmt.Errorf("unsupported full original output schema")
 	}
 	return ExecutionResult{Prepared: full.Prepared, AnalysisSchema: full.Detail.Schema, AdviceSchema: full.Advice.Schema, Analysis: full.Detail.Bytes, Advice: full.Advice.Bytes}, ctx.Err()

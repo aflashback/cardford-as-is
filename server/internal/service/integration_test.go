@@ -30,6 +30,13 @@ type testPlayer struct {
 }
 
 func serviceStores(t *testing.T) (*records.Store, *records.Store, *records.DocumentCodec) {
+	c, err := records.NewServiceCodec()
+	if err != nil {
+		t.Fatal(err)
+	}
+	return serviceStoresWithCodec(t, c)
+}
+func serviceStoresWithCodec(t *testing.T, c *records.DocumentCodec) (*records.Store, *records.Store, *records.DocumentCodec) {
 	t.Helper()
 	url := os.Getenv("TEST_DATABASE_URL")
 	if url == "" {
@@ -43,10 +50,6 @@ func serviceStores(t *testing.T) (*records.Store, *records.Store, *records.Docum
 		t.Fatal(err)
 	}
 	schema := "m03_service_" + id[:16]
-	c, err := records.NewServiceCodec()
-	if err != nil {
-		t.Fatal(err)
-	}
 	var a, b *records.Store
 	// Register before setup so a failed migration or second connection also
 	// removes this fixture's private schema after closing every opened pool.

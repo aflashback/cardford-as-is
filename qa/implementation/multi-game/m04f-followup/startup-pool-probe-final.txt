@@ -1,0 +1,10 @@
+=== RUN   TestStartupDiagnosticsWindowsProbe
+    startup_diagnostics_test.go:89: {"sample":1,"spans":[{"stage":"startup.dial","startedAt":"2026-10-07T04:10:53.425844Z","elapsedMs":3.7227,"startRemainingMs":4998,"endRemainingMs":4995,"contextClass":"ok","class":"ok"},{"stage":"startup.connect","startedAt":"2026-10-07T04:10:53.4246352Z","elapsedMs":75.5494,"startRemainingMs":-1,"endRemainingMs":-1,"contextClass":"ok","class":"ok"},{"stage":"startup.acquire","startedAt":"2026-10-07T04:10:53.4246352Z","elapsedMs":75.5494,"startRemainingMs":5000,"endRemainingMs":4924,"contextClass":"ok","class":"ok"}]}
+    startup_diagnostics_test.go:89: {"sample":2,"spans":[{"stage":"startup.dial","startedAt":"2026-10-07T04:10:53.5012115Z","elapsedMs":1.5847,"startRemainingMs":4999,"endRemainingMs":4997,"contextClass":"ok","class":"ok"},{"stage":"startup.connect","startedAt":"2026-10-07T04:10:53.5012115Z","elapsedMs":76.2806,"startRemainingMs":-1,"endRemainingMs":-1,"contextClass":"ok","class":"ok"},{"stage":"startup.acquire","startedAt":"2026-10-07T04:10:53.5012115Z","elapsedMs":76.2806,"startRemainingMs":4999,"endRemainingMs":4923,"contextClass":"ok","class":"ok"}]}
+    startup_diagnostics_test.go:89: {"sample":3,"spans":[{"stage":"startup.dial","startedAt":"2026-10-07T04:10:53.5785238Z","elapsedMs":1.5657,"startRemainingMs":5000,"endRemainingMs":4998,"contextClass":"ok","class":"ok"},{"stage":"startup.connect","startedAt":"2026-10-07T04:10:53.5785238Z","elapsedMs":96.7286,"startRemainingMs":-1,"endRemainingMs":-1,"contextClass":"ok","class":"ok"},{"stage":"startup.acquire","startedAt":"2026-10-07T04:10:53.5785238Z","elapsedMs":96.7286,"startRemainingMs":5000,"endRemainingMs":4903,"contextClass":"ok","class":"ok"}]}
+--- PASS: TestStartupDiagnosticsWindowsProbe (0.25s)
+=== RUN   TestLocalStartupDialNeverReplacesReturnedConnection
+--- PASS: TestLocalStartupDialNeverReplacesReturnedConnection (0.00s)
+PASS
+ok  	cardford/server/internal/records	0.668s
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":5419.5205000000005,"status":"passed"}}

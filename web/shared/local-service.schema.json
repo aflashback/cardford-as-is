@@ -85,6 +85,37 @@
             "ruleProfileId"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "test-token"
+            },
+            "variantId": {
+              "enum": [
+                "individual",
+                "neighbour-teams"
+              ]
+            },
+            "moduleVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "ruleProfileId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId"
+          ],
+          "additionalProperties": false
         }
       ],
       "title": "LocalServiceSelector"

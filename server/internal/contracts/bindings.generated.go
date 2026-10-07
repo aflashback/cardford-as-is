@@ -2527,6 +2527,24 @@ func (v AccessDecision) MarshalJSON() ([]byte, error) {
 }
 func (v AccessDecision) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
+// RegisteredPresentation preserves the complete validated JSON value, including null and union tags.
+type RegisteredPresentation struct{ raw json.RawMessage }
+
+func (v *RegisteredPresentation) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RegisteredPresentation", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v RegisteredPresentation) MarshalJSON() ([]byte, error) {
+	if err := Validate("RegisteredPresentation", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v RegisteredPresentation) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
 // HeartsCandidate preserves the complete validated JSON value, including null and union tags.
 type HeartsCandidate struct{ raw json.RawMessage }
 
@@ -2832,6 +2850,304 @@ func (v SpadesActorEvent) MarshalJSON() ([]byte, error) {
 	return append([]byte(nil), v.raw...), nil
 }
 func (v SpadesActorEvent) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TokenReveal struct {
+	Seat  Seat    `json:"seat"`
+	Token float64 `json:"token"`
+}
+
+func (v *TokenReveal) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenReveal", raw); err != nil {
+		return err
+	}
+	type wire TokenReveal
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TokenReveal(next)
+	return nil
+}
+func (v TokenReveal) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TokenReveal
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TokenReveal", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TokenCycle struct {
+	Reveals   []TokenReveal `json:"reveals"`
+	Collector Seat          `json:"collector"`
+}
+
+func (v *TokenCycle) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenCycle", raw); err != nil {
+		return err
+	}
+	type wire TokenCycle
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TokenCycle(next)
+	return nil
+}
+func (v TokenCycle) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TokenCycle
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TokenCycle", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TokenCompetitor struct {
+	ID    string `json:"id"`
+	Seats []Seat `json:"seats"`
+}
+
+func (v *TokenCompetitor) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenCompetitor", raw); err != nil {
+		return err
+	}
+	type wire TokenCompetitor
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TokenCompetitor(next)
+	return nil
+}
+func (v TokenCompetitor) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TokenCompetitor
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TokenCompetitor", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// TokenObservation preserves the complete validated JSON value, including null and union tags.
+type TokenObservation struct{ raw json.RawMessage }
+
+func (v *TokenObservation) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenObservation", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TokenObservation) MarshalJSON() ([]byte, error) {
+	if err := Validate("TokenObservation", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TokenObservation) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TokenCandidate struct {
+	ID     string `json:"id"`
+	Public struct {
+		Kind  string  `json:"kind"`
+		Token float64 `json:"token"`
+	} `json:"public"`
+}
+
+func (v *TokenCandidate) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenCandidate", raw); err != nil {
+		return err
+	}
+	type wire TokenCandidate
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TokenCandidate(next)
+	return nil
+}
+func (v TokenCandidate) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TokenCandidate
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TokenCandidate", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TokenActorPacket struct {
+	PublicSchemaVersion string           `json:"publicSchemaVersion"`
+	GameID              string           `json:"gameId"`
+	VariantID           string           `json:"variantId"`
+	Seat                Seat             `json:"seat"`
+	Phase               string           `json:"phase"`
+	Observation         TokenObservation `json:"observation"`
+	Candidates          []TokenCandidate `json:"candidates"`
+}
+
+func (v *TokenActorPacket) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenActorPacket", raw); err != nil {
+		return err
+	}
+	type wire TokenActorPacket
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TokenActorPacket(next)
+	return nil
+}
+func (v TokenActorPacket) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TokenActorPacket
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TokenActorPacket", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// TokenSessionView preserves the complete validated JSON value, including null and union tags.
+type TokenSessionView struct{ raw json.RawMessage }
+
+func (v *TokenSessionView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenSessionView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TokenSessionView) MarshalJSON() ([]byte, error) {
+	if err := Validate("TokenSessionView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TokenSessionView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TokenAnalysis struct {
+	PublicSchemaVersion string              `json:"publicSchemaVersion"`
+	GameID              string              `json:"gameId"`
+	VariantID           string              `json:"variantId"`
+	Origin              string              `json:"origin"`
+	SelectedCandidateID string              `json:"selectedCandidateId"`
+	Objective           ReasoningObjective  `json:"objective"`
+	Horizon             ReasoningHorizon    `json:"horizon"`
+	Facts               []ReasoningFact     `json:"facts"`
+	Estimates           []ReasoningEstimate `json:"estimates"`
+	Scenarios           []ReasoningScenario `json:"scenarios"`
+	Assumptions         []string            `json:"assumptions"`
+}
+
+func (v *TokenAnalysis) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenAnalysis", raw); err != nil {
+		return err
+	}
+	type wire TokenAnalysis
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TokenAnalysis(next)
+	return nil
+}
+func (v TokenAnalysis) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TokenAnalysis
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TokenAnalysis", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// TokenActorEvent preserves the complete validated JSON value, including null and union tags.
+type TokenActorEvent struct{ raw json.RawMessage }
+
+func (v *TokenActorEvent) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenActorEvent", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TokenActorEvent) MarshalJSON() ([]byte, error) {
+	if err := Validate("TokenActorEvent", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TokenActorEvent) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TokenPresentation struct {
+	ID          string           `json:"id"`
+	GameID      string           `json:"gameId"`
+	VariantID   string           `json:"variantId"`
+	Seat        Seat             `json:"seat"`
+	Observation TokenObservation `json:"observation"`
+}
+
+func (v *TokenPresentation) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TokenPresentation", raw); err != nil {
+		return err
+	}
+	type wire TokenPresentation
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TokenPresentation(next)
+	return nil
+}
+func (v TokenPresentation) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TokenPresentation
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TokenPresentation", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
 
 type LocalServiceWorkRetryRequest struct {
 	ControlLeaseToken string `json:"controlLeaseToken"`
@@ -4260,5 +4576,5 @@ func (v PlatformAdviceView) MarshalJSON() ([]byte, error) {
 	return raw, nil
 }
 
-var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt", "LocalServiceAccessRequest", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt", "PlatformAllowanceView", "PlatformAccessView", "PlatformReviewAccessView", "PlatformCompetition", "PlatformController", "PlatformCatalogEntry", "PlatformSession", "PlatformSessionView", "PlatformReconcileRequest", "PlatformRecoveredReceipt", "PlatformReconcileView", "PlatformPreferencesView", "PlatformPreferencesRequest", "PlatformAccountAvailability", "PlatformAccountView", "PlatformExportDecision", "PlatformExportView", "PlatformFixtureAccountView", "PlatformFamilyCommand", "PlatformAdviceRequest", "PlatformNotesRequest", "PlatformReviewTrialRequest", "PlatformReviewExposureRequest", "PlatformReviewStatus", "PlatformAdviceView"}
+var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "RegisteredPresentation", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "TokenReveal", "TokenCycle", "TokenCompetitor", "TokenObservation", "TokenCandidate", "TokenActorPacket", "TokenSessionView", "TokenAnalysis", "TokenActorEvent", "TokenPresentation", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt", "LocalServiceAccessRequest", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt", "PlatformAllowanceView", "PlatformAccessView", "PlatformReviewAccessView", "PlatformCompetition", "PlatformController", "PlatformCatalogEntry", "PlatformSession", "PlatformSessionView", "PlatformReconcileRequest", "PlatformRecoveredReceipt", "PlatformReconcileView", "PlatformPreferencesView", "PlatformPreferencesRequest", "PlatformAccountAvailability", "PlatformAccountView", "PlatformExportDecision", "PlatformExportView", "PlatformFixtureAccountView", "PlatformFamilyCommand", "PlatformAdviceRequest", "PlatformNotesRequest", "PlatformReviewTrialRequest", "PlatformReviewExposureRequest", "PlatformReviewStatus", "PlatformAdviceView"}
 var supportedPatterns = map[string]bool{"^[CDHS](?:[2-9]|10|J|Q|K|A)$": true, "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": true, "^[1-9][0-9]{0,5}$": true, "^(0|[1-9][0-9]{0,5})$": true, "^[a-z0-9][a-z0-9-]{0,63}$": true, "^[0-9]+\\.[0-9]+\\.[0-9]+$": true, "^[^\\u0000-\\u001f\\u007f]+$": true, "^[a-f0-9]{48}$": true}

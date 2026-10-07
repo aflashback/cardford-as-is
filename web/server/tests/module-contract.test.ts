@@ -280,7 +280,10 @@ test('M01 changed pins, illegal private transitions and leaked event projections
   const mutableState = { ...state, secrets: Array.from<number>(state.secrets) };
   const bound = bindSession(f.module, mutableState, f.adapters);
   mutableState.secrets[0] = 99;
-  assert.equal(bound.packet(0).observation.scores[0], 0);
+  const protectedPacket = bound.packet(0);
+  assert.notEqual(protectedPacket.gameId, 'test-token');
+  if (protectedPacket.gameId === 'test-token') throw new Error('Unexpected non-card fixture branch');
+  assert.equal(protectedPacket.observation.scores[0], 0);
   assert.throws(() => json({ n: Number.NaN }));
   assert.throws(() =>
     json({
@@ -503,7 +506,7 @@ test('M01 creation event projections are validated before binding the new sessio
 
 test('M01 raw root/fragments resolve independently without private schemas or generator-only reference repair', () => {
   const ajv = new Ajv2020({ strict: true });
-  for (const path of ['games/hearts.schema.json', 'games/spades.schema.json', 'contracts.schema.json']) {
+  for (const path of ['games/hearts.schema.json', 'games/spades.schema.json', 'games/token.schema.json', 'contracts.schema.json']) {
     const schema: object = JSON.parse(readFileSync(new URL('../../shared/' + path, import.meta.url), 'utf8'));
     ajv.addSchema(schema);
   }
@@ -518,4 +521,22 @@ test('M01 raw root/fragments resolve independently without private schemas or ge
     ),
     true,
   );
+  const tokenPacket = {
+    publicSchemaVersion: '2.0.0', gameId: 'test-token', variantId: 'neighbour-teams',
+    seat: 0, phase: 'reveal',
+    observation: {
+      gameId: 'test-token', variant: 'neighbour-teams', seat: 0, phase: 'reveal',
+      own: [1, 5, 9, 13, 17], held: [5, 5, 5, 5], current: [], cycles: [],
+      collections: [0, 0, 0, 0], competition: [{ id: 'A', seats: [0, 1] }, { id: 'B', seats: [2, 3] }],
+      turn: 0, winners: [],
+    },
+    candidates: [{ id: 'reveal:1', public: { kind: 'reveal', token: 1 } }],
+  };
+  const tokenValidator = ajv.getSchema(
+    'https://trickscoach.com/schemas/games/token.schema.json#/$defs/TokenActorPacket',
+  );
+  assert.ok(tokenValidator);
+  assert.equal(tokenValidator(tokenPacket), true);
+  assert.equal(validator(tokenPacket), true);
+  assert.equal(validator({ ...tokenPacket, observation: { ...tokenPacket.observation, hidden: [2] } }), false);
 });

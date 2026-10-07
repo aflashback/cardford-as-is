@@ -95,6 +95,9 @@ func OriginalDecision(decision DecisionRecord) (OriginalAnalysisEnvelope, Origin
 	if selected != 1 || !candidates[decision.SelectedCandidateID] || a.Original.Facts.LegalCount != len(candidates) {
 		return fail("original candidate completeness mismatch")
 	}
+	if err := validateActorRolloutMetadata(decision, a); err != nil {
+		return a, advice, err
+	}
 	if err := validateOriginalAdviceAction(advice.Original, decision.SelectedCandidateID); err != nil {
 		return a, advice, err
 	}

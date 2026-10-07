@@ -4,12 +4,12 @@ import (
 	transport "cardford/server/internal/http"
 	d "cardford/server/internal/legacydecision"
 	"cardford/server/internal/records"
-	"cardford/server/internal/sessions"
 	"context"
 	"crypto/rand"
 	"encoding/binary"
 	"encoding/json"
 	"errors"
+	"reflect"
 	"time"
 )
 
@@ -79,7 +79,7 @@ func (s *Service) platformTrial(ctx context.Context, owner string, r transport.R
 	if err != nil {
 		return transport.Response{}, err
 	}
-	if original == nil || original.Policy.ID != source.Document.Metadata.Policy.ID {
+	if original == nil || !reflect.DeepEqual(original.Policy, source.Document.Metadata.Policy) {
 		return transport.Response{}, fail(409, "original-policy-unavailable")
 	}
 	legal := false
@@ -134,7 +134,7 @@ func (s *Service) platformTrial(ctx context.Context, owner string, r transport.R
 		if work.Err() != nil {
 			return
 		}
-		frames, err := sessions.Illustrate(run, b.Pin(), obs, q.AlternativeCandidateID, job.Seed, original.Policy.ID)
+		illustration, err := s.codec.Illustrate(run, source.Document.Metadata, original.Policy, obs, q.AlternativeCandidateID, job.Seed)
 		failJob := func() {
 			cleanup, done := context.WithTimeout(values, time.Second)
 			defer done()
@@ -145,7 +145,7 @@ func (s *Service) platformTrial(ctx context.Context, owner string, r transport.R
 			return
 		}
 		public := []any{}
-		for index, o := range frames {
+		for index, o := range illustration.Frames {
 			presentation, e := d.Presentation(q.GameID, o)
 			if e != nil {
 				failJob()
@@ -154,6 +154,9 @@ func (s *Service) platformTrial(ctx context.Context, owner string, r transport.R
 			notes := []string{}
 			if index == 0 {
 				notes = []string{"One uniformly sampled feasible deal; this is not the original hidden deal or a quality grade.", "The named local policy is uncalibrated. This illustration stops after one trick.", "Other seats’ private pass memories are unavailable and are not reconstructed; the current baseline does not use those memories."}
+				if illustration.PolicyNote != "" {
+					notes = append(notes, illustration.PolicyNote)
+				}
 			}
 			var action any
 			if index == 1 {

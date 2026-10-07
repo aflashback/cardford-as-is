@@ -153,6 +153,9 @@ func (c *DocumentCodec) ValidateHistoricalDecisionAt(d Document, s gamekernel.Sn
 		if _, e = gamekernel.ParseRegisteredAnalysis(original.Registered, gamekernel.Pin(d.Metadata.Pin), decision.SelectedCandidateID); e != nil {
 			return e
 		}
+		if e = c.validateActorRolloutInput(d, s, decision, original); e != nil {
+			return e
+		}
 		if len(original.Original.Candidates) != len(p.CandidateIDs) {
 			return fmt.Errorf("original full analysis candidate count mismatch")
 		}

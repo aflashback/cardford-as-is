@@ -1,0 +1,13 @@
+goos: windows
+goarch: amd64
+pkg: cardford/server/internal/records
+cpu: AMD Ryzen 9 5900HX with Radeon Graphics        
+BenchmarkStatsDecisionExtraction/decode-each-read-16         	     488	   1240867 ns/op	  495780 B/op	   10465 allocs/op
+BenchmarkStatsDecisionExtraction/decode-each-read-16         	     489	   1295134 ns/op	  495875 B/op	   10466 allocs/op
+BenchmarkStatsDecisionExtraction/decode-each-read-16         	     472	   1232925 ns/op	  496034 B/op	   10464 allocs/op
+BenchmarkStatsDecisionExtraction/bounded-exact-byte-cache-16 	   76129	      8003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStatsDecisionExtraction/bounded-exact-byte-cache-16 	   76051	      7921 ns/op	       0 B/op	       0 allocs/op
+BenchmarkStatsDecisionExtraction/bounded-exact-byte-cache-16 	   75645	      8007 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	cardford/server/internal/records	4.669s
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":7136.6548,"status":"passed"}}

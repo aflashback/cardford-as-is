@@ -246,7 +246,7 @@ func (s *Store) ReadWork(ctx context.Context, owner, id string) (PreparedWork, e
 // and all original admission fences still hold. The old token never revives.
 func (s *Store) ClaimWork(ctx context.Context, owner, id string, duration time.Duration) (WorkLease, error) {
 	var lease WorkLease
-	if duration < time.Millisecond || duration > MaxWorkLease {
+	if duration < time.Millisecond || duration > MaxRegisteredWorkLease {
 		return lease, ErrWorkStale
 	}
 	w, err := s.ReadWork(ctx, owner, id)
@@ -258,6 +258,9 @@ func (s *Store) ClaimWork(ctx context.Context, owner, id string, duration time.D
 		return lease, err
 	}
 	if err = s.validateWorkInput(loaded, w.Request); err != nil {
+		return lease, err
+	}
+	if err = s.codec.validateWorkLease(loaded.Document.Metadata.Pin, w.Request.Policy, duration); err != nil {
 		return lease, err
 	}
 	token, err := freshID()

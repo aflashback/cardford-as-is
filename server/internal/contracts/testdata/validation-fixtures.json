@@ -1505,6 +1505,20 @@
     "boundary": false
   },
   {
+    "id": "witness-RegisteredPresentation",
+    "name": "RegisteredPresentation",
+    "raw": "{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-RegisteredPresentation",
+    "name": "RegisteredPresentation",
+    "raw": "{\"id\":\"x0\",\"mode\":\"hearts\",\"phase\":\"pass\",\"hand\":[],\"handCounts\":[0,0,0,0],\"bids\":[0,0,0,0],\"tricks\":[0,0,0,0],\"scores\":[0,0,0,0],\"bags\":[0,0,0,0],\"trick\":[],\"history\":[],\"turn\":null,\"dealer\":0,\"handNumber\":1,\"heartsBroken\":false,\"spadesBroken\":false,\"passDirection\":\"left\",\"received\":[],\"outgoing\":[],\"handResult\":{\"points\":[0,0,0,0],\"bags\":[0,0,0,0]},\"currentWinner\":null,\"legalActions\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
     "id": "witness-HeartsCandidate",
     "name": "HeartsCandidate",
     "raw": "{\"kind\":\"play\",\"card\":\"C2\"}",
@@ -1669,6 +1683,146 @@
     "id": "unknown-SpadesActorEvent",
     "name": "SpadesActorEvent",
     "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"spades\",\"variantId\":\"solo\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"hand-started\",\"message\":\"x0\",\"seat\":0,\"card\":\"C2\",\"bid\":0,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenReveal",
+    "name": "TokenReveal",
+    "raw": "{\"seat\":0,\"token\":1}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenReveal",
+    "name": "TokenReveal",
+    "raw": "{\"seat\":0,\"token\":1,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenCycle",
+    "name": "TokenCycle",
+    "raw": "{\"reveals\":[{\"seat\":0,\"token\":1},{\"seat\":1,\"token\":1},{\"seat\":2,\"token\":1},{\"seat\":3,\"token\":1}],\"collector\":0}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenCycle",
+    "name": "TokenCycle",
+    "raw": "{\"reveals\":[{\"seat\":0,\"token\":1},{\"seat\":1,\"token\":1},{\"seat\":2,\"token\":1},{\"seat\":3,\"token\":1}],\"collector\":0,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenCompetitor",
+    "name": "TokenCompetitor",
+    "raw": "{\"id\":\"x0\",\"seats\":[0]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenCompetitor",
+    "name": "TokenCompetitor",
+    "raw": "{\"id\":\"x0\",\"seats\":[0],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenObservation",
+    "name": "TokenObservation",
+    "raw": "{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenObservation",
+    "name": "TokenObservation",
+    "raw": "{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenCandidate",
+    "name": "TokenCandidate",
+    "raw": "{\"id\":\"x0\",\"public\":{\"kind\":\"reveal\",\"token\":1}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenCandidate",
+    "name": "TokenCandidate",
+    "raw": "{\"id\":\"x0\",\"public\":{\"kind\":\"reveal\",\"token\":1},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenActorPacket",
+    "name": "TokenActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"seat\":0,\"phase\":\"token-layout\",\"observation\":{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[]},\"candidates\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenActorPacket",
+    "name": "TokenActorPacket",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"seat\":0,\"phase\":\"token-layout\",\"observation\":{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[]},\"candidates\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenSessionView",
+    "name": "TokenSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"seat\":0,\"phase\":\"token-layout\",\"table\":{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[]},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenSessionView",
+    "name": "TokenSessionView",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"seat\":0,\"phase\":\"token-layout\",\"table\":{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[]},\"accessUnit\":{\"id\":\"x0\",\"kind\":\"x0\",\"atAdmissionBoundary\":false},\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenAnalysis",
+    "name": "TokenAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"origin\":\"demo\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[]}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenAnalysis",
+    "name": "TokenAnalysis",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"origin\":\"demo\",\"selectedCandidateId\":\"x0\",\"objective\":{\"id\":\"x0\",\"version\":\"x0\",\"metric\":\"x0\",\"direction\":\"higher\"},\"horizon\":{\"id\":\"x0\",\"version\":\"x0\",\"scope\":\"x0\"},\"facts\":[],\"estimates\":[],\"scenarios\":[],\"assumptions\":[],\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenActorEvent",
+    "name": "TokenActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"layout-requested\",\"seat\":0,\"token\":1}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenActorEvent",
+    "name": "TokenActorEvent",
+    "raw": "{\"publicSchemaVersion\":\"2.0.0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"eventSchemaVersion\":\"2.0.0\",\"id\":\"x0\",\"type\":\"layout-requested\",\"seat\":0,\"token\":1,\"undeclaredPrivateHand\":[\"SA\"]}",
+    "ajv": false,
+    "boundary": false
+  },
+  {
+    "id": "witness-TokenPresentation",
+    "name": "TokenPresentation",
+    "raw": "{\"id\":\"x0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"seat\":0,\"observation\":{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[]}}",
+    "ajv": true,
+    "boundary": true
+  },
+  {
+    "id": "unknown-TokenPresentation",
+    "name": "TokenPresentation",
+    "raw": "{\"id\":\"x0\",\"gameId\":\"test-token\",\"variantId\":\"individual\",\"seat\":0,\"observation\":{\"gameId\":\"test-token\",\"variant\":\"individual\",\"seat\":0,\"phase\":\"chance\",\"own\":[],\"held\":[0,0,0,0],\"current\":[],\"cycles\":[],\"collections\":[0,0,0,0],\"competition\":[{\"id\":\"x0\",\"seats\":[0]},{\"id\":\"x1\",\"seats\":[0]}],\"turn\":0,\"winners\":[]},\"undeclaredPrivateHand\":[\"SA\"]}",
     "ajv": false,
     "boundary": false
   },

@@ -1,0 +1,9 @@
+
+> tricks-coach@0.1.0 typecheck
+> npm run typecheck --workspace web
+
+
+> @tricks-coach/web@0.1.0 typecheck
+> tsc -p tsconfig.json && tsc -p tsconfig.server.json
+
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":8383.6134,"status":"passed"}}

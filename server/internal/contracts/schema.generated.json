@@ -617,7 +617,8 @@
             "code",
             "jev",
             "forced",
-            "fallback"
+            "fallback",
+            "demo"
           ]
         },
         "decisionId": {
@@ -2880,6 +2881,9 @@
         },
         {
           "$ref": "#/$defs/SpadesActorPacket"
+        },
+        {
+          "$ref": "#/$defs/TokenActorPacket"
         }
       ]
     },
@@ -2891,6 +2895,9 @@
         },
         {
           "$ref": "#/$defs/SpadesSessionView"
+        },
+        {
+          "$ref": "#/$defs/TokenSessionView"
         }
       ]
     },
@@ -2902,6 +2909,9 @@
         },
         {
           "$ref": "#/$defs/SpadesAnalysis"
+        },
+        {
+          "$ref": "#/$defs/TokenAnalysis"
         }
       ]
     },
@@ -2913,6 +2923,9 @@
         },
         {
           "$ref": "#/$defs/SpadesActorEvent"
+        },
+        {
+          "$ref": "#/$defs/TokenActorEvent"
         }
       ]
     },
@@ -2945,6 +2958,26 @@
               "enum": [
                 "solo",
                 "partners"
+              ]
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TokenTarget",
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "test-token"
+            },
+            "variantId": {
+              "enum": [
+                "individual",
+                "neighbour-teams"
               ]
             }
           },
@@ -3574,6 +3607,17 @@
             "reason"
           ],
           "additionalProperties": false
+        }
+      ]
+    },
+    "RegisteredPresentation": {
+      "title": "RegisteredPresentation",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/GameView"
+        },
+        {
+          "$ref": "#/$defs/TokenPresentation"
         }
       ]
     },
@@ -4434,6 +4478,495 @@
       ],
       "additionalProperties": false
     },
+    "TokenReveal": {
+      "title": "TokenReveal",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "token": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        }
+      },
+      "required": [
+        "seat",
+        "token"
+      ],
+      "additionalProperties": false
+    },
+    "TokenCycle": {
+      "title": "TokenCycle",
+      "type": "object",
+      "properties": {
+        "reveals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TokenReveal"
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "collector": {
+          "$ref": "#/$defs/Seat"
+        }
+      },
+      "required": [
+        "reveals",
+        "collector"
+      ],
+      "additionalProperties": false
+    },
+    "TokenCompetitor": {
+      "title": "TokenCompetitor",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "seats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Seat"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "seats"
+      ],
+      "additionalProperties": false
+    },
+    "TokenObservation": {
+      "title": "TokenObservation",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "test-token"
+        },
+        "variant": {
+          "enum": [
+            "individual",
+            "neighbour-teams"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "chance",
+            "reveal",
+            "collect",
+            "complete"
+          ]
+        },
+        "own": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "held": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "current": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TokenReveal"
+          },
+          "maxItems": 4
+        },
+        "cycles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TokenCycle"
+          },
+          "maxItems": 5
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "maxItems": 4,
+          "minItems": 4
+        },
+        "competition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TokenCompetitor"
+          },
+          "maxItems": 4,
+          "minItems": 2
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "winners": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "gameId",
+        "variant",
+        "seat",
+        "phase",
+        "own",
+        "held",
+        "current",
+        "cycles",
+        "collections",
+        "competition",
+        "turn",
+        "winners"
+      ],
+      "additionalProperties": false
+    },
+    "TokenCandidate": {
+      "title": "TokenCandidate",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "public": {
+          "title": "TokenRevealAction",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "reveal"
+            },
+            "token": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          "required": [
+            "kind",
+            "token"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "public"
+      ],
+      "additionalProperties": false
+    },
+    "TokenActorPacket": {
+      "title": "TokenActorPacket",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "test-token"
+        },
+        "variantId": {
+          "enum": [
+            "individual",
+            "neighbour-teams"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "token-layout",
+            "reveal",
+            "collect",
+            "complete"
+          ]
+        },
+        "observation": {
+          "$ref": "#/$defs/TokenObservation"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TokenCandidate"
+          },
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "observation",
+        "candidates"
+      ],
+      "additionalProperties": false
+    },
+    "TokenSessionView": {
+      "title": "TokenSessionView",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "test-token"
+        },
+        "variantId": {
+          "enum": [
+            "individual",
+            "neighbour-teams"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "token-layout",
+            "reveal",
+            "collect",
+            "complete"
+          ]
+        },
+        "table": {
+          "$ref": "#/$defs/TokenObservation"
+        },
+        "accessUnit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CoachedUnit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "table",
+        "accessUnit"
+      ],
+      "additionalProperties": false
+    },
+    "TokenAnalysis": {
+      "title": "TokenAnalysis",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "test-token"
+        },
+        "variantId": {
+          "enum": [
+            "individual",
+            "neighbour-teams"
+          ]
+        },
+        "origin": {
+          "enum": [
+            "demo",
+            "forced"
+          ]
+        },
+        "selectedCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "objective": {
+          "$ref": "#/$defs/ReasoningObjective"
+        },
+        "horizon": {
+          "$ref": "#/$defs/ReasoningHorizon"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReasoningFact"
+          }
+        },
+        "estimates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReasoningEstimate"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReasoningScenario"
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "origin",
+        "selectedCandidateId",
+        "objective",
+        "horizon",
+        "facts",
+        "estimates",
+        "scenarios",
+        "assumptions"
+      ],
+      "additionalProperties": false
+    },
+    "TokenActorEvent": {
+      "title": "TokenActorEvent",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "gameId": {
+          "const": "test-token"
+        },
+        "variantId": {
+          "enum": [
+            "individual",
+            "neighbour-teams"
+          ]
+        },
+        "eventSchemaVersion": {
+          "const": "2.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "type": {
+          "enum": [
+            "layout-requested",
+            "tokens-assigned",
+            "token-revealed",
+            "cycle-collected"
+          ]
+        },
+        "seat": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "token": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "eventSchemaVersion",
+        "id",
+        "type",
+        "seat",
+        "token"
+      ],
+      "additionalProperties": false
+    },
+    "TokenPresentation": {
+      "title": "TokenPresentation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "const": "test-token"
+        },
+        "variantId": {
+          "enum": [
+            "individual",
+            "neighbour-teams"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "observation": {
+          "$ref": "#/$defs/TokenObservation"
+        }
+      },
+      "required": [
+        "id",
+        "gameId",
+        "variantId",
+        "seat",
+        "observation"
+      ],
+      "additionalProperties": false
+    },
     "LocalServiceWorkRetryRequest": {
       "title": "LocalServiceWorkRetryRequest",
       "type": "object",
@@ -4496,6 +5029,37 @@
               "enum": [
                 "solo",
                 "partners"
+              ]
+            },
+            "moduleVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "ruleProfileId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "test-token"
+            },
+            "variantId": {
+              "enum": [
+                "individual",
+                "neighbour-teams"
               ]
             },
             "moduleVersion": {
@@ -5908,7 +6472,7 @@
           "$ref": "#/$defs/RegisteredSessionView"
         },
         "presentation": {
-          "$ref": "#/$defs/GameView"
+          "$ref": "#/$defs/RegisteredPresentation"
         },
         "actor": {
           "anyOf": [
@@ -7313,6 +7877,9 @@
     },
     {
       "$ref": "#/$defs/AccessDecision"
+    },
+    {
+      "$ref": "#/$defs/RegisteredPresentation"
     },
     {
       "$ref": "#/$defs/LocalServiceWorkRetryRequest"

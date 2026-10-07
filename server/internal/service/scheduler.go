@@ -26,8 +26,9 @@ type scheduler struct {
 	deadline time.Duration
 }
 type scheduled struct {
-	key string
-	run func(context.Context)
+	key      string
+	run      func(context.Context)
+	deadline time.Duration
 }
 type reservation struct {
 	scheduler *scheduler
@@ -66,11 +67,20 @@ func (r *reservation) release() {
 	r.once.Do(func() { r.scheduler.remove(r.key) })
 }
 func (r *reservation) dispatch(run func(context.Context)) {
+	r.dispatchWithDeadline(0, run)
+}
+
+// Only trusted service composition supplies a longer registered work envelope.
+// Reservations still share the same finite queue and worker count.
+func (r *reservation) dispatchWithDeadline(deadline time.Duration, run func(context.Context)) {
 	if r == nil {
 		return
 	}
 	r.once.Do(func() {
 		s := r.scheduler
+		if deadline <= 0 || deadline > 90*time.Second {
+			deadline = s.deadline
+		}
 		s.mu.Lock()
 		defer s.mu.Unlock()
 		if s.closed {
@@ -78,7 +88,7 @@ func (r *reservation) dispatch(run func(context.Context)) {
 			return
 		}
 		// Every sender owns one of at most cap(queue) reservations.
-		s.queue <- scheduled{r.key, run}
+		s.queue <- scheduled{key: r.key, run: run, deadline: deadline}
 	})
 }
 func (s *scheduler) remove(key string) { s.mu.Lock(); delete(s.keys, key); s.mu.Unlock() }
@@ -89,7 +99,7 @@ func (s *scheduler) worker() {
 		case <-s.ctx.Done():
 			return
 		case job := <-s.queue:
-			ctx, cancel := context.WithTimeout(s.ctx, s.deadline)
+			ctx, cancel := context.WithTimeout(s.ctx, job.deadline)
 			if ctx.Err() == nil {
 				job.run(ctx)
 			}

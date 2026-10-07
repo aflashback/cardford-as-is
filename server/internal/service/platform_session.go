@@ -22,10 +22,7 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 	if err != nil {
 		return transport.Response{}, err
 	}
-	registry, err := sessions.NewRegistry()
-	if err != nil {
-		return transport.Response{}, err
-	}
+	registry := s.registry
 	handlers := sessions.DefaultHandlers()
 	catalog := []map[string]any{}
 	var fixture records.FixturePlatformAccess

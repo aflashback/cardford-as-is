@@ -1,0 +1,5 @@
+Browser demo failed: Error: Go startup failed (1): local database initialization failed (stage=store.create-schema, class=failure)
+
+    at start (file:///C:/repos/test-jev/qa/implementation/multi-game/m04e/browser-smoke.mjs:84:55)
+    at async file:///C:/repos/test-jev/qa/implementation/multi-game/m04e/browser-smoke.mjs:111:3
+Owned test schema dropped after exact child shutdown.

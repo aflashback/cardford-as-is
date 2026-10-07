@@ -1,0 +1,23 @@
+File: service.test.exe
+Build ID: C:\Users\AliA\AppData\Local\Temp\go-build3708271657\b001\service.test.exe2026-10-06 23:47:13.278221 -0400 EDT
+Type: alloc_space
+Time: 2026-10-06 23:51:56 EDT
+Showing nodes accounting for 71.15GB, 67.25% of 105.81GB total
+Dropped 558 nodes (cum <= 0.53GB)
+Showing top 15 nodes out of 180
+      flat  flat%   sum%        cum   cum%
+   16.53GB 15.62% 15.62%    23.34GB 22.06%  encoding/json.(*decodeState).objectInterface
+    8.04GB  7.60% 23.22%    27.26GB 25.76%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateVal
+    5.91GB  5.59% 28.81%    27.62GB 26.11%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateSelf
+    4.60GB  4.35% 33.15%     4.60GB  4.35%  github.com/santhosh-tekuri/jsonschema/v6.(*scope).child (inline)
+    4.32GB  4.08% 37.24%     4.32GB  4.08%  cardford/server/internal/contracts.checkJSONValue
+    4.21GB  3.98% 41.22%     4.21GB  3.98%  cardford/server/internal/games/spades.cloneStateForTransition
+    4.18GB  3.95% 45.16%     4.18GB  3.95%  math/big.nat.make (inline)
+    3.75GB  3.54% 48.70%     3.75GB  3.54%  unicode/utf16.Encode
+    3.55GB  3.36% 52.06%     3.55GB  3.36%  unicode/utf8.AppendRune
+    3.29GB  3.11% 55.17%     3.29GB  3.11%  encoding/json.(*Decoder).refill
+    2.97GB  2.80% 57.97%     4.89GB  4.62%  encoding/json.Marshal
+    2.96GB  2.80% 60.77%    30.24GB 28.58%  encoding/json.Unmarshal
+    2.63GB  2.49% 63.26%     2.63GB  2.49%  encoding/json.unquote (inline)
+    2.14GB  2.02% 65.28%     2.14GB  2.02%  strings.(*Builder).WriteByte
+    2.09GB  1.97% 67.25%     2.09GB  1.97%  encoding/json.NewDecoder

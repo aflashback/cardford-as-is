@@ -1,6 +1,7 @@
 package sessions
 
 import (
+	"cardford/server/internal/contracts"
 	"cardford/server/internal/gamekernel"
 	"encoding/json"
 	"fmt"
@@ -51,9 +52,13 @@ func DecodeOperation(raw json.RawMessage) (Operation, error) {
 	if len(raw) == 0 || len(raw) > 256<<10 {
 		return nil, fmt.Errorf("operation byte budget")
 	}
-	if err := validateOperation(raw); err != nil {
-		return nil, err
-	}
+	return decodeOperation(raw)
+}
+
+// decodeOperation returns the same closed typed value that passed validation.
+// The historical journal uses its existing document/parser byte bounds; only
+// DecodeOperation applies the narrower service-operation limit above.
+func decodeOperation(raw json.RawMessage) (Operation, error) {
 	var tag struct {
 		Kind string `json:"kind"`
 	}
@@ -63,26 +68,58 @@ func DecodeOperation(raw json.RawMessage) (Operation, error) {
 	switch tag.Kind {
 	case "actor":
 		var v ActorOperation
-		err := strictDecode(raw, &v)
-		return v, err
+		if err := strictDecode(raw, &v); err != nil {
+			return nil, err
+		}
+		if !gamekernel.ValidSeat(v.Seat) || !gamekernel.ValidIdentifier(v.CandidateID) {
+			return nil, fmt.Errorf("invalid actor operation")
+		}
+		return v, nil
 	case "sealed":
 		var v SealedOperation
-		err := strictDecode(raw, &v)
-		return v, err
+		if err := strictDecode(raw, &v); err != nil {
+			return nil, err
+		}
+		if !gamekernel.ValidIdentifier(v.WindowID) || len(v.Choices) == 0 {
+			return nil, fmt.Errorf("invalid sealed operation")
+		}
+		seen := map[int]bool{}
+		for _, choice := range v.Choices {
+			if !gamekernel.ValidSeat(choice.Seat) || !gamekernel.ValidIdentifier(choice.CandidateID) || seen[choice.Seat] {
+				return nil, fmt.Errorf("invalid sealed choices")
+			}
+			seen[choice.Seat] = true
+		}
+		return v, nil
 	case "automatic":
 		var v AutomaticOperation
-		err := strictDecode(raw, &v)
-		return v, err
+		if err := strictDecode(raw, &v); err != nil {
+			return nil, err
+		}
+		if !gamekernel.ValidIdentifier(v.TransitionID) {
+			return nil, fmt.Errorf("invalid transition identifier")
+		}
+		return v, nil
 	case "chance":
 		var v ChanceOperation
-		err := strictDecode(raw, &v)
-		return v, err
+		if err := strictDecode(raw, &v); err != nil {
+			return nil, err
+		}
+		if !gamekernel.ValidIdentifier(v.RequestID) {
+			return nil, fmt.Errorf("invalid request identifier")
+		}
+		if _, err := contracts.ParseJSON(v.Material); err != nil {
+			return nil, err
+		}
+		return v, nil
 	case "continue-round":
 		var v ContinueOperation
-		err := strictDecode(raw, &v)
-		return v, err
+		if err := strictDecode(raw, &v); err != nil {
+			return nil, err
+		}
+		return v, nil
 	}
-	return nil, fmt.Errorf("unsupported operation")
+	return nil, fmt.Errorf("unsupported recorded operation")
 }
 func ApplyOperation(s gamekernel.BoundSession, op Operation) (gamekernel.BoundTransition, error) {
 	// The lifecycle validates typed IDs, participants and candidate membership.

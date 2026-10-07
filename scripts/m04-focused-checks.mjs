@@ -1,9 +1,11 @@
 // Native Windows developer selections; full acceptance stays a separate gate.
-import { spawn, spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { MAX_TEST_RUN_MS, runBoundedNative } from './bounded-native-run.mjs';
+
+const laneStarted = performance.now();
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const exactSelections = new Map();
@@ -66,8 +68,14 @@ if (name === '--list' && options.length === 0) {
   for (const [lane, spec] of Object.entries(lanes)) console.log(`${lane}: ${spec.description}`);
   process.exit(0);
 }
-if (!Object.hasOwn(lanes, name) || options.some(o => !['--dry-run', '--fresh'].includes(o)) || new Set(options).size !== options.length)
-  throw Error('Use node scripts/m04-focused-checks.mjs --list | <lane> [--dry-run] [--fresh]');
+if (!Object.hasOwn(lanes, name) || options.some(o => !['--dry-run', '--fresh'].includes(o) && !/^--deadline-seconds=\d+(\.\d+)?$/.test(o)) ||
+    new Set(options).size !== options.length || options.filter(o => o.startsWith('--deadline-seconds=')).length > 1)
+  throw Error('Use node scripts/m04-focused-checks.mjs --list | <lane> [--dry-run] [--fresh] [--deadline-seconds=1800]');
+const deadlineOption = options.find(o => o.startsWith('--deadline-seconds='));
+const deadlineMs = deadlineOption ? Number(deadlineOption.slice('--deadline-seconds='.length)) * 1000 : MAX_TEST_RUN_MS;
+if (!Number.isFinite(deadlineMs) || deadlineMs <= 0 || deadlineMs > MAX_TEST_RUN_MS)
+  throw Error('Total test deadline must be positive and no longer than 1800 seconds.');
+const deadline = laneStarted + deadlineMs;
 const lane = lanes[name], fresh = options.includes('--fresh');
 if (fresh && !lane.cached) throw Error('--fresh is only needed for cached fast/history/parity selections.');
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -88,7 +96,7 @@ const plan = lane.checks.map(c => {
   return { args, selected };
 });
 if (lane.vet) plan.push({ args: ['go', 'vet', './server/...'], selected: [] });
-console.log(JSON.stringify({ lane: name, databaseRequired: lane.database, cacheEnabled: lane.cached && !fresh,
+console.log(JSON.stringify({ lane: name, databaseRequired: lane.database, cacheEnabled: lane.cached && !fresh, totalDeadlineMs: deadlineMs,
   commands: plan.map(p => ({ executable: process.execPath, args: ['scripts/windows-env.mjs', ...p.args],
     selectedTestCount: p.selected.length, ...(options.includes('--dry-run') ? { selectedTests: p.selected } : {}) })) }, null, 2));
 if (options.includes('--dry-run')) process.exit(0);
@@ -97,7 +105,7 @@ const credentialsFile = resolve(root, '.local/windows-postgres/credentials.json'
 if (lane.database && !existsSync(credentialsFile)) throw Error('Native test database not initialized; use node scripts/windows-env.mjs pg:start explicitly.');
 // The native wrapper sets isolated test database identity; this runner never starts PostgreSQL.
 const sourceFiles = [...new Set(['go.mod', 'go.sum', 'package.json', 'package-lock.json',
-  'scripts/m04-focused-checks.mjs', 'scripts/windows-env.mjs', 'scripts/windows-tools.json',
+  'scripts/m04-focused-checks.mjs', 'scripts/bounded-native-run.mjs', 'scripts/windows-env.mjs', 'scripts/windows-tools.json',
   ...walk('server').filter(p => /\.(go|json)$/.test(p)),
   ...walk('web/server').filter(p => /\.(ts|json|sql)$/.test(p)),
   ...walk('web/shared').filter(p => /\.(ts|json|mjs|mts)$/.test(p)),
@@ -110,48 +118,42 @@ const evidence = resolve(root, '.local/m04-focused-checks', `${startedAt.replace
 mkdirSync(evidence, { recursive: true });
 const password = existsSync(credentialsFile) ? JSON.parse(readFileSync(credentialsFile, 'utf8')).password : '';
 const reports = [];
+let timedOut = false;
 for (const [index, step] of plan.entries()) {
-  const started = performance.now();
-  const child = spawn(process.execPath, ['scripts/windows-env.mjs', ...step.args], { cwd: root,
-    env: { ...process.env, JEV_MODE: 'off', JEV_MAX_REQUESTS: '0' }, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
-  let output = '', bytes = 0, exceeded = false, error;
-  function stopOwnedTree() {
-    if (Number.isInteger(child.pid) && child.pid > 0)
-      spawnSync('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });
-  }
-  const interrupt = () => stopOwnedTree();
-  process.once('SIGINT', interrupt);
-  const collect = chunk => {
-    bytes += chunk.length;
-    if (bytes > (8 << 20)) { if (!exceeded) stopOwnedTree(); exceeded = true; return; }
-    output += chunk.toString('utf8');
-  };
-  child.stdout.on('data', collect); child.stderr.on('data', collect);
-  child.on('error', e => { error = e.code ?? String(e); });
-  const result = await new Promise(done => child.on('close', (exitCode, signal) => done({ exitCode, signal })));
-  process.removeListener('SIGINT', interrupt);
+  const remaining = deadline - performance.now();
+  if (remaining <= 0) { timedOut = true; process.exitCode = 124; break; }
+  const run = await runBoundedNative(process.execPath, ['scripts/windows-env.mjs', ...step.args], { cwd: root,
+    milliseconds: remaining, env: { ...process.env, JEV_MODE: 'off', JEV_MAX_REQUESTS: '0' }, maxBytes: 8 << 20 });
+  let output = run.output;
+  const { output: capturedOutput, ...result } = run;
   if (password) output = output.replaceAll(password, '[redacted]');
   const events = output.split(/\r?\n/).flatMap(line => { try { return [JSON.parse(line)]; } catch { return []; } });
   const outcomes = events.filter(e => e.Test && ['pass', 'fail', 'skip'].includes(e.Action));
   const missingTests = step.selected.filter(t => !outcomes.some(e => e.Package === `cardford/${t.package.slice(2)}` && e.Test === t.test));
   const allowedReleaseSkips = ['TestDemoWebRejectsSymlinkedBuildAsset', 'TestM04ETerminalFixtureInstall',
+    'TestM04FPreparedRequestProfile', 'TestFreshPairedPartnerDevelopment',
+    'TestM06TokenBrowserFixtureHost',
+    'TestStartupDiagnosticsWindowsProbe',
     ...(step.args.includes('-short') ? ['TestRecordLongHistoryGrowth', 'TestM03StoreReplayChanceCheckpointsAndHandGrowth'] : [])];
   const unexpectedSkips = outcomes.filter(e => e.Action === 'skip' && !(name === 'release' && allowedReleaseSkips.includes(e.Test))
     && !(name === 'persistence' && e.Test === 'TestM03StoreReplayChanceCheckpointsAndHandGrowth'));
   const filename = `${index + 1}.${step.args.includes('-json') ? 'jsonl' : 'txt'}`;
   writeFileSync(resolve(evidence, filename), output);
-  const report = { args: ['scripts/windows-env.mjs', ...step.args], ...result, error: error ?? null,
-    elapsedMs: performance.now() - started, output: filename, outputSHA256: sha(output), outputLimitExceeded: exceeded,
+  const report = { args: ['scripts/windows-env.mjs', ...step.args], ...result,
+    output: filename, outputSHA256: sha(output),
     missingTests, unexpectedSkips: unexpectedSkips.map(e => ({ package: e.Package, test: e.Test })) };
   reports.push(report);
   console.log(JSON.stringify({ lane: name, step: index + 1, ...result, elapsedMs: report.elapsedMs,
     missingTests: missingTests.length, unexpectedSkips: unexpectedSkips.length }));
-  if (result.exitCode !== 0 || error || exceeded || missingTests.length || unexpectedSkips.length) { process.exitCode = 1; break; }
+  if (result.timedOut) { timedOut = true; process.exitCode = 124; break; }
+  if (result.status !== 'passed' || missingTests.length || unexpectedSkips.length) { process.exitCode = 1; break; }
 }
 const sourceUnchanged = JSON.stringify(before) === JSON.stringify(sources());
-if (!sourceUnchanged) process.exitCode = 1;
+if (!sourceUnchanged && !timedOut) process.exitCode = 1;
 writeFileSync(resolve(evidence, 'report.json'), JSON.stringify({ lane: name, startedAt, completedAt: new Date().toISOString(),
-  source: before, sourceSHA256: sha(JSON.stringify(before)), sourceUnchanged,
+  source: before, sourceSHA256: sha(JSON.stringify(before)), sourceUnchanged, totalDeadlineMs: deadlineMs, timedOut,
+  status: timedOut ? 'pending-unverified' : process.exitCode ? 'failed' : 'passed',
+  notRunCommands: plan.slice(reports.length).map(step => step.args),
   harnessSHA256: sha(readFileSync(fileURLToPath(import.meta.url))), provider: { mode: 'off', requests: 0, observedModel: null }, reports,
 }, null, 2) + '\n');
-console.log(JSON.stringify({ evidence, sourceUnchanged, exitCode: process.exitCode ?? 0 }));
+console.log(JSON.stringify({ evidence, sourceUnchanged, timedOut, status: timedOut ? 'pending-unverified' : process.exitCode ? 'failed' : 'passed', exitCode: process.exitCode ?? 0 }));

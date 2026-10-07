@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import type { Mode } from '../shared/contracts';
@@ -8,7 +9,7 @@ import type { PlatformSessionView, PlatformExportView } from '../shared/local-se
 import { validateContract } from '../shared/local-service.validation';
 
 const origin = process.env.CARDFORD_M04E_ORIGIN;
-const evidence = fileURLToPath(new URL('../../qa/implementation/multi-game/m04e/', import.meta.url));
+const evidence = process.env.CARDFORD_EVIDENCE_DIR ? resolve(process.env.CARDFORD_EVIDENCE_DIR) : fileURLToPath(new URL('../../qa/implementation/multi-game/m04e/', import.meta.url));
 test.skip(!origin, 'Requires the isolated native Go M04E browser harness.');
 test.setTimeout(240_000);
 
@@ -184,6 +185,16 @@ for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
     expect(exported.games.some((game: any) => game.id === completed.gameId)).toBe(true);
     expect(exported.decisions.length).toBeGreaterThan(0);
     for (const decision of exported.decisions) expect(decision.packetVersion).toBe('2.0.0');
+    if (mode === 'spades-partners' && process.env.CARDFORD_REASONING_PROFILE === 'partner-resources') {
+      const currentDecisions = exported.decisions.filter((decision: any) => decision.gameId === completed.gameId);
+      expect(currentDecisions.length).toBeGreaterThan(0);
+      for (const decision of currentDecisions) expect(decision.policy.version).toBe('spades-partner-resource-5.0.0');
+    }
+    if (process.env.CARDFORD_REASONING_PROFILE === 'actor-rollout') {
+      const currentDecisions = exported.decisions.filter((decision: any) => decision.gameId === completed.gameId);
+      expect(currentDecisions.length).toBeGreaterThan(0);
+      for (const decision of currentDecisions) expect(decision.policy.version).toBe('actor-rollout-2.0.0');
+    }
     expect(errors).toEqual([]);
     await mkdir(evidence, { recursive: true });
     await page.screenshot({ path: `${evidence}/${mode}-next-hand.png` });

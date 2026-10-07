@@ -1,0 +1,21 @@
+// Opt-in native complete-request diagnostic; private raw games stay in .local.
+import {runBoundedNative} from '../../../../scripts/bounded-native-run.mjs';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {resolve} from 'node:path';
+const variant=process.argv[2]??'partners', hands=Number(process.argv[3]??1);
+if(!['solo','partners'].includes(variant)||!Number.isInteger(hands)||hands<1||hands>20) throw Error('Use solo|partners and 1..20 hands');
+const suffix=process.argv[4]??'';
+if(suffix&&!/^[a-z0-9-]+$/.test(suffix)) throw Error('Invalid capture suffix');
+const label=`prepared-${variant}-${hands}${suffix?'-'+suffix:''}`;
+const privateRoot=resolve('.local/m04f-request'); mkdirSync(privateRoot,{recursive:true});
+const out=resolve('qa/implementation/multi-game/m04f-followup');
+const sources=['server/internal/service/resource_profile_test.go','server/internal/records/stats_cache.go','server/internal/records/platform_history.go','server/internal/contracts/validate.go','server/internal/sessions/operations.go'];
+const hashes=()=>sources.map(path=>({path,sha256:createHash('sha256').update(readFileSync(path)).digest('hex')}));
+const before=hashes();
+const result=await runBoundedNative(process.execPath,['scripts/windows-env.mjs','go','test','./server/internal/service','-run','^TestM04FPreparedRequestProfile$','-count=1','-timeout=27m','-v',`-cpuprofile=${privateRoot}/${label}.cpu`,`-memprofile=${privateRoot}/${label}.mem`,'-o',`${privateRoot}/service.test.exe`],{milliseconds:1800000,env:{...process.env,M04F_REQUEST_PROFILE:'1',M04F_PROFILE_VARIANT:variant,M04F_PROFILE_HANDS:String(hands),M04F_PROFILE_ARCHIVE:`${privateRoot}/${label}.json`},onData:s=>process.stdout.write(s)});
+const after=hashes(), unchanged=JSON.stringify(before)===JSON.stringify(after);
+writeFileSync(`${out}/${label}.txt`,result.output);
+const {output,...receipt}=result;
+writeFileSync(`${out}/${label}.receipt.json`,JSON.stringify({receipt,sourceBefore:before,sourceAfter:after,unchanged,privateArchive:`.local/m04f-request/${label}.json`,outputSha256:createHash('sha256').update(output).digest('hex')},null,2)+'\n');
+process.exitCode=result.status==='passed'&&unchanged?0:result.timedOut?124:1;

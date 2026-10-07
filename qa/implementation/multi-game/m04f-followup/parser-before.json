@@ -1,0 +1,46 @@
+{
+  "stage": "before",
+  "observedAt": "2026-10-07T03:25:57.3424963Z",
+  "head": "b822d0db8948ff99b8092762f7f0e056b32f2b1e",
+  "command": "node scripts/windows-env.mjs go test ./server/internal/contracts -run '^$' -bench '^BenchmarkParseSavedJSON$' -benchmem -benchtime=100ms -count=3 -timeout=30m",
+  "scope": "Strict JSON parsing of immutable saved public fixtures; no schema validation, service, SQL, policy or full replay in timed loops",
+  "outputSHA256": "f94c5021395a01207b7f7dff6e560f1a4bc655ce4448232cba713e4fd060231e",
+  "sources": [
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "b7f7d5e91aaa191b41093895d07127ecaa7cfc5213e4dd319a4e43a2bbfcfb68"
+    },
+    {
+      "path": "server/internal/contracts/parser_test.go",
+      "sha256": "9273558151644f8b2e7c80671018d518184ec9634ed4bd78d48c051a31ec9d75"
+    },
+    {
+      "path": "server/internal/contracts/semantics.go",
+      "sha256": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119"
+    },
+    {
+      "path": "server/internal/contracts/testdata/validation-fixtures.json",
+      "sha256": "984a3940ac80635d28a0bfc28fbef488ca0cf441054f89609650b80cea67d9ec"
+    },
+    {
+      "path": "server/internal/contracts/schema.generated.json",
+      "sha256": "1d1eaa18158429539273c5e1ae7b9586fab14d84f71b2c2a19a7f9fcbf87d444"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "scripts/windows-tools.json",
+      "sha256": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    }
+  ]
+}

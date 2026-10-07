@@ -1,0 +1,61 @@
+{"databaseStartup":[{"stage":"startup.dial","startedAt":"2026-10-07T04:11:53.5869563Z","elapsedMs":3.1156,"startRemainingMs":4998,"endRemainingMs":4995,"contextClass":"ok","class":"ok"},{"stage":"startup.connect","startedAt":"2026-10-07T04:11:53.5859106Z","elapsedMs":67.0709,"startRemainingMs":-1,"endRemainingMs":-1,"contextClass":"ok","class":"ok"},{"stage":"startup.acquire","startedAt":"2026-10-07T04:11:53.5859106Z","elapsedMs":67.0709,"startRemainingMs":5000,"endRemainingMs":4932,"contextClass":"ok","class":"ok"},{"stage":"startup.query","startedAt":"2026-10-07T04:11:53.6529784Z","elapsedMs":0,"startRemainingMs":4932,"endRemainingMs":4932,"contextClass":"ok","class":"ok"}]}
+CardFord Go local API: http://127.0.0.1:7115 (identity=local-test, payments=fixture, provider=off, access=fixture, reasoning=partner-resources)
+Native Go browser origin: http://127.0.0.1:7115
+
+Running 5 tests using 1 worker
+
+(node:35984) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 web\e2e\platform-go.spec.ts:71:3 › actual Go hearts: full hand, saved advice, review alternative and next hand (2.3m)
+  ok 2 web\e2e\platform-go.spec.ts:71:3 › actual Go spades-solo: full hand, saved advice, review alternative and next hand (1.9m)
+  x  3 web\e2e\platform-go.spec.ts:71:3 › actual Go spades-partners: full hand, saved advice, review alternative and next hand (2.2m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) web\e2e\platform-go.spec.ts:71:3 › actual Go spades-partners: full hand, saved advice, review alternative and next hand 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Possible continuation', exact: true })
+    Expected: visible
+    Timeout: 60000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Possible continuation', exact: true }) with timeout 60000ms
+      - waiting for getByRole('heading', { name: 'Possible continuation', exact: true })
+
+
+      160 |     await page.locator('.review-alternatives button').last().click();
+      161 |     if (await unlock.isVisible()) await unlock.click();
+    > 162 |     await expect(page.getByRole('heading', { name: 'Possible continuation', exact: true })).toBeVisible({
+          |                                                                                             ^
+      163 |       timeout: 60_000,
+      164 |     });
+      165 |     expect((await current(page)).session!.revision).toBe(completed.revision);
+        at C:\repos\test-jev\web\e2e\platform-go.spec.ts:162:93
+
+    Error Context: test-results\m04e-platform\platform-go-actual-Go-spad-b53d6-w-alternative-and-next-hand\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\m04e-platform\platform-go-actual-Go-spad-b53d6-w-alternative-and-next-hand\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\m04e-platform\platform-go-actual-Go-spad-b53d6-w-alternative-and-next-hand\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: web\e2e\platform-go.spec.ts (6.5m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    web\e2e\platform-go.spec.ts:71:3 › actual Go spades-partners: full hand, saved advice, review alternative and next hand 
+  2 did not run
+  2 passed (6.5m)
+  1 error was not a part of any test, see above for details
+Browser demo failed: AssertionError [ERR_ASSERTION]: Browser acceptance exited 1
+
+1 !== 0
+
+    at file:///C:/repos/test-jev/qa/implementation/multi-game/m04e/browser-smoke.mjs:130:10
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Owned test schema dropped after exact child shutdown.

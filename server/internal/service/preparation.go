@@ -98,15 +98,24 @@ func (s *Service) dispatch(admitted context.Context, owner string, w records.Pre
 	// Preserve trusted principal/control values but detach the HTTP deadline.
 	// The finite scheduler deadline and durable attempt lease govern the job.
 	values := context.WithoutCancel(admitted)
-	r.dispatch(func(job context.Context) {
-		ctx, cancel := context.WithCancel(values)
+	limits, err := s.codec.WorkLimitsForPolicy(w.Request.Policy)
+	if err != nil {
+		r.release()
+		return
+	}
+	r.dispatchWithDeadline(limits.Deadline, func(job context.Context) {
+		deadline, ok := job.Deadline()
+		if !ok {
+			return
+		}
+		ctx, cancel := context.WithDeadline(values, deadline)
 		defer cancel()
 		stop := context.AfterFunc(job, cancel)
 		defer stop()
 		if job.Err() != nil {
 			return
 		}
-		lease, err := s.store.ClaimWork(ctx, owner, w.ID, 25*time.Second)
+		lease, err := s.store.ClaimWork(ctx, owner, w.ID, limits.Lease)
 		if err != nil {
 			return
 		}
@@ -223,9 +232,20 @@ func (s *Service) decision(ctx context.Context, owner, id string) (transport.Res
 	if d.Actor != 0 || d.Purpose != "coach-advice" {
 		return transport.Response{}, records.ErrReadDenied
 	}
-	_, advice, err := records.OriginalDecision(d)
-	if err != nil {
-		return transport.Response{}, err
+	// ReadDecisionForDelivery already rebound the saved schema/policy/output to
+	// its original revision and repeated authorization. Never execute a policy
+	// while delivering advice, or coerce a non-card output into the card reader.
+	var saved any
+	switch {
+	case d.AnalysisSchema == records.OriginalAnalysisSchema && d.AdviceSchema == records.OriginalAdviceSchema:
+		_, advice, e := records.OriginalDecision(d)
+		if e != nil { return transport.Response{}, e }
+		saved = advice.Levels[2]
+	case d.AnalysisSchema == "RegisteredAnalysis" && d.AdviceSchema == "AdviceView":
+		if e := s.codec.ValidateHistoricalDecision(d); e != nil { return transport.Response{}, e }
+		saved = json.RawMessage(d.Advice)
+	default:
+		return transport.Response{}, fmt.Errorf("unsupported saved decision schema pair")
 	}
-	return result("LocalServiceDecisionView", map[string]any{"decisionId": d.ID, "gameId": d.GameID, "revision": d.Revision, "advice": advice.Levels[2]})
+	return result("LocalServiceDecisionView", map[string]any{"decisionId": d.ID, "gameId": d.GameID, "revision": d.Revision, "advice": saved})
 }

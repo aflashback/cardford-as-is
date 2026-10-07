@@ -1,6 +1,7 @@
 package gamekernel
 
 import (
+	"cardford/server/internal/contracts"
 	d "cardford/server/internal/legacydecision"
 	"encoding/json"
 	"fmt"
@@ -27,6 +28,33 @@ func (b *boundSession[S, O, A]) LegacyObservation(seat int) (json.RawMessage, er
 	return append(json.RawMessage(nil), raw...), nil
 }
 func (b *boundSession[S, O, A]) Presentation(seat int) (json.RawMessage, error) {
+	if b.model.Presentation != nil {
+		if !ValidSeat(seat) {
+			return nil, fmt.Errorf("invalid presentation viewer")
+		}
+		raw, err := b.model.Presentation(b.model.Observe(b.state, seat))
+		if err != nil {
+			return nil, err
+		}
+		if err = contracts.Validate("RegisteredPresentation", raw); err != nil {
+			return nil, err
+		}
+		var header struct {
+			ID        string `json:"id"`
+			GameID    string `json:"gameId"`
+			VariantID string `json:"variantId"`
+			Seat      int    `json:"seat"`
+		}
+		if err = json.Unmarshal(raw, &header); err != nil {
+			return nil, err
+		}
+		id, _ := b.StorageIdentity()
+		pin := b.Pin()
+		if header.ID != id || header.GameID != pin.GameID || header.VariantID != pin.VariantID || header.Seat != seat {
+			return nil, fmt.Errorf("module presentation identity mismatch")
+		}
+		return append(json.RawMessage(nil), raw...), nil
+	}
 	raw, err := b.LegacyObservation(seat)
 	if err != nil {
 		return nil, err

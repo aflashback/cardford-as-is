@@ -23,13 +23,22 @@ type Service struct {
 	reviewJobs *scheduler
 	policy     *access.Policy
 	resolver   *access.Resolver
+	registry   *sessions.Registry
 }
 
 func New(store *records.Store, codec *records.DocumentCodec) (*Service, error) {
 	if store == nil || codec == nil {
 		return nil, fmt.Errorf("missing local service dependencies")
 	}
-	return &Service{store: store, codec: codec, jobs: newScheduler(2, 16, 20*time.Second), reviewJobs: newScheduler(1, 4, 20*time.Second)}, nil
+	registry := codec.ServiceRegistry()
+	if registry == nil {
+		var err error
+		registry, err = sessions.NewRegistry()
+		if err != nil {
+			return nil, err
+		}
+	}
+	return &Service{store: store, codec: codec, registry: registry, jobs: newScheduler(2, 16, 20*time.Second), reviewJobs: newScheduler(1, 4, 20*time.Second)}, nil
 }
 func (s *Service) Close() { s.jobs.close(); s.reviewJobs.close() }
 
@@ -489,16 +498,19 @@ func (s *Service) create(ctx context.Context, owner string, r transport.Request)
 	if err != nil {
 		return transport.Response{}, err
 	}
-	meta, err := records.ServiceMetadata(q.Selector, id, owner)
+	meta, err := s.codec.MetadataForNew(q.Selector, id, owner)
 	if err != nil {
 		return transport.Response{}, fail(422, "unsupported-selector")
 	}
-	deck, err := freshDeck()
+	installation, err := s.registry.Installation(q.Selector)
+	if err != nil {
+		return transport.Response{}, fail(422, "unsupported-selector")
+	}
+	config, material, err := installation.Bootstrap(id)
 	if err != nil {
 		return transport.Response{}, err
 	}
-	config, _ := json.Marshal(map[string]any{"id": id, "dealer": 0})
-	doc, anchor, events, err := s.codec.Start(meta, config, deck)
+	doc, anchor, events, err := s.codec.StartMaterial(meta, config, material)
 	if err != nil {
 		return transport.Response{}, err
 	}

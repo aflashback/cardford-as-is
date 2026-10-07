@@ -148,7 +148,10 @@ export function useGoSession() {
     const cached = prepared.current.get(cacheKey);
     if (cached) return cached;
     let work = await api('/api/session/prepare', 'LocalServicePrepareView', {gameId, expectedRevision, controlLeaseToken, purpose}, 'POST', signal);
-    const deadline = Date.now() + 35_000;
+    // The opt-in planner has a registered 90-second execution envelope. Four
+    // sealed actors share two bounded workers. Keep polling the same durable
+    // IDs; cancellation and confirmed revision checks still apply below.
+    const deadline = Date.now() + 95_000 * Math.ceil(work.workIds.length / 2);
     for (;;) {
       if (signal?.aborted) throw signal.reason;
       const all = await Promise.all(work.workIds.map(id => api(`/api/work/${encodeURIComponent(id)}`, 'LocalServicePrepareView', undefined, 'GET', signal)));

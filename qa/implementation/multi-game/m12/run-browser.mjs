@@ -1,0 +1,22 @@
+// Actual Go/React journeys on a harness-owned schema in the native test DB.
+import {runBoundedNative} from '../../../../scripts/bounded-native-run.mjs';
+import {mkdirSync,writeFileSync,readFileSync,existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {resolve} from 'node:path';
+const profile=process.argv[2]??'partner-resources';
+if(!['partner-resources','actor-rollout'].includes(profile)) throw Error('Select a named local experiment');
+const attempt=process.argv[3]??'acceptance';
+if(!/^[a-z0-9-]+$/.test(attempt)) throw Error('Invalid browser attempt identity');
+const out=resolve('qa/implementation/multi-game/m12',profile,attempt);
+if(existsSync(`${out}/receipt.json`)) throw Error('Preserve prior attempts; choose a new identity');
+mkdirSync(out,{recursive:true});
+const binary='.local/m12-cardford.exe';
+const digest=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
+const before={binary:digest(binary),client:digest('web/dist/index.html'),test:digest('web/e2e/platform-go.spec.ts')};
+const selection=process.env.CARDFORD_BROWSER_GREP??(profile==='partner-resources'?'full hand|actual Go account|actual Go family':'actual Go spades-partners: full hand');
+const result=await runBoundedNative(process.execPath,['scripts/windows-env.mjs','node','qa/implementation/multi-game/m04e/browser-smoke.mjs'],{milliseconds:1800000,maxBytes:8<<20,env:{...process.env,CARDFORD_GO_BINARY:binary,CARDFORD_REASONING_PROFILE:profile,CARDFORD_EVIDENCE_DIR:out,CARDFORD_BROWSER_LOG:`${out}/browser.txt`,M04E_GREP:selection},onData:s=>process.stdout.write(s)});
+const {output,...receipt}=result;
+writeFileSync(`${out}/bounded-output.txt`,output);
+const unchanged=before.binary===digest(binary)&&before.client===digest('web/dist/index.html')&&before.test===digest('web/e2e/platform-go.spec.ts');
+writeFileSync(`${out}/receipt.json`,JSON.stringify({receipt,selection,artifacts:before,unchanged,provider:{mode:'off',attempts:0},scope:'automated actual local functional journeys; no human or strength result'},null,2)+'\n');
+process.exitCode=result.status==='passed'&&unchanged?0:result.timedOut?124:1;

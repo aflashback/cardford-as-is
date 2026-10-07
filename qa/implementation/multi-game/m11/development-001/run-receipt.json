@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "development-native-run-receipt-1.0.0",
+  "command": "node scripts/bounded-native-run.mjs --seconds=75 -- node scripts/windows-env.mjs go test ./server/internal/evaluation/partnerdevelopment -count=1 -timeout=65s -v",
+  "cooperativeDeadlineMs": 60000,
+  "goTestTimeoutMs": 65000,
+  "nativeWatchdog": {"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":4938.2442,"status":"passed"},
+  "goTestSeconds": 3.082,
+  "freshTrajectorySeconds": 2.93,
+  "testsPassed": 2,
+  "sourceFilesVerifiedImmediatelyAfterRun": 50,
+  "changedSourceFilesImmediatelyAfterRun": 0,
+  "initialSandboxLaunch": "spawn EPERM; authorized native escalation passed",
+  "actualLiveProviderCalls": 0,
+  "humanLabels": "absent",
+  "strategyGate": "blocked: zero changed decisions, sparse activation and no independent confirmation study"
+}

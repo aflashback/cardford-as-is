@@ -1,0 +1,208 @@
+{
+  "milestone": "M06",
+  "status": "passed-scoped",
+  "requirements": [
+    "MG-04",
+    "MG-06",
+    "MG-07",
+    "MG-08",
+    "MG-18",
+    "SYS-01"
+  ],
+  "capturedAt": "2026-10-07T04:08:30.668Z",
+  "platform": "win32",
+  "node": "v24.19.0",
+  "commands": [
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=180 -- node scripts/windows-env.mjs go test ./server/internal/service -run '^TestM06TokenActualServiceOwnershipRecoveryAndNonCardLifecycle$' -count=1 -timeout=150s -v",
+      "exitCode": 0,
+      "elapsedMs": 9891.7849,
+      "passedTopLevel": 1,
+      "passedSubtests": 2,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "actual isolated PostgreSQL and two HTTP service instances, including coach-advice unlock/prepare/poll/GET and original saved delivery after replay",
+      "packageElapsedSeconds": 5.256
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node scripts/windows-env.mjs go test ./server/internal/conformance ./server/internal/records -run '^(TestTokenInstalledPersistencePreparationAndReplay|TestNewSessionSelectionPreservesOriginalResumeAndAnchor|TestDefaultNewMetadataIsFrozen)$' -count=1 -timeout=30s",
+      "exitCode": 0,
+      "elapsedMs": 4692.8959,
+      "passedTopLevel": 3,
+      "passedSubtests": 2,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "pure numeric replay, exact binding and retired-reader restrictions"
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node --test web/tests/token-conformance.test.ts web/tests/presentation.test.ts",
+      "exitCode": 0,
+      "elapsedMs": 834.8459,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "React static render and strict adapters; no browser"
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node web/node_modules/typescript/bin/tsc -p web/tsconfig.json --noEmit",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node web/node_modules/typescript/bin/tsc -p web/tsconfig.server.json --noEmit",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node web/scripts/generate-contracts.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node scripts/windows-env.mjs node scripts/m02a-contracts.mjs",
+      "exitCode": 0,
+      "definitions": 160,
+      "fixtureOutcomes": 379
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=180 -- node scripts/windows-env.mjs node qa/implementation/multi-game/m06/browser-smoke.mjs",
+      "exitCode": 0,
+      "elapsedMs": 22019.2391,
+      "harnessElapsedMs": 21390.5824,
+      "browserReportedSeconds": 13.2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "sourceCapture": "browser-acceptance.json before/after listed source unchanged; binary and UI artifact hashes recorded",
+      "cleanupError": null,
+      "engineStateInjected": false,
+      "apiResponsesMocked": false
+    }
+  ],
+  "source": [
+    {
+      "path": "server/internal/conformance/token.go",
+      "sha256": "f8cab9252d90c0dfa7d3620173e5c19f8cf4e887ad4edc7a941e80e78cf6d8f9"
+    },
+    {
+      "path": "server/internal/conformance/token_test.go",
+      "sha256": "b379af07b71939958c142d36b22da5bd61725b746ca6b64e88ff446165c5cb60"
+    },
+    {
+      "path": "server/internal/conformance/token_session.go",
+      "sha256": "8e2f3a98edaf6e0824dbdb7fa596f7de0c5185974014bddbc095c7a2fa6e6585"
+    },
+    {
+      "path": "server/internal/conformance/token_session_test.go",
+      "sha256": "89b12fdaba3c74b6b1afe1f65b578e7cca6e27a7515b23b1a858bdbf5f344103"
+    },
+    {
+      "path": "server/internal/sessions/installation.go",
+      "sha256": "5f035a2b88f963c8bbf9f112ec35e2f4da037c4ed19909c1733166f4919e5341"
+    },
+    {
+      "path": "server/internal/sessions/installation_cards.go",
+      "sha256": "47c7ebcaed963984427e256639cc3be9a003fff18a523a742120625b5129fcd6"
+    },
+    {
+      "path": "server/internal/records/service_installation.go",
+      "sha256": "dae91a7dea434e7dcfe2144df2beabd8150e24c96eaac8c2e2fba32602ac97dc"
+    },
+    {
+      "path": "server/internal/records/service_installation_test.go",
+      "sha256": "36a335c87b1806ae0439cac90f3e6b520b79df983a09d88ffc51e8925591d035"
+    },
+    {
+      "path": "server/internal/records/service_codec.go",
+      "sha256": "cd5c34e5b1152605a3dbacc0628374eaf95861bca16b7b00f9553447430cde89"
+    },
+    {
+      "path": "server/internal/records/codec.go",
+      "sha256": "a4cae16e01f92daba0b077dd018ab4b98360b0692fa3409b0c256100afcfced8"
+    },
+    {
+      "path": "server/internal/records/document.go",
+      "sha256": "ed8c41572195dffa8110e49ef29846e5e782652027e7f63ca3bceffa6ba357f2"
+    },
+    {
+      "path": "server/internal/records/types.go",
+      "sha256": "fdc7d388f3d52004223f6eed64aacbe79ebdb6652a0ee297347c7e0a7a4f71a1"
+    },
+    {
+      "path": "server/internal/service/service.go",
+      "sha256": "85ded7b11ff897e0c5568f0d8545ad84da3e0071de1544174375eacba0f32229"
+    },
+    {
+      "path": "server/internal/service/mutations.go",
+      "sha256": "7a06b0334dc3ab7588430219e67b0cccd15bfd086e1d5b2003f6150d852f24d9"
+    },
+    {
+      "path": "server/internal/service/token_conformance_test.go",
+      "sha256": "8e71bd8f810cfd3c59e502761df5a8676cfc3bf04e541382427c13b07ab8b007"
+    },
+    {
+      "path": "server/internal/gamekernel/session_presentation.go",
+      "sha256": "124c6e219c6d9ed7e6d23076b202dc94fb39c78a654e6735b9d0ad3f445773f6"
+    },
+    {
+      "path": "web/shared/games/token.schema.json",
+      "sha256": "8d61421848ff30bf6aa6866e38a4f2dc4390750d1c68074d7722df7a5bfe9a04"
+    },
+    {
+      "path": "web/shared/contracts.schema.json",
+      "sha256": "057ea7df7dcff99bd6519d1b99b9a574641d11fbacd6e0d5948de6aa93fddee5"
+    },
+    {
+      "path": "web/shared/local-service.schema.json",
+      "sha256": "83e5d8f72632b36b3c7f855c82d76faf00aee46a7e15e8dd7e1b0c9d64df0c06"
+    },
+    {
+      "path": "web/shared/platform-service.schema.json",
+      "sha256": "5b5245baec821cbf1926a6eaceb3af3a54d45e39e6e55d937960cd9c60e78413"
+    },
+    {
+      "path": "web/src/api/tokenConformance.ts",
+      "sha256": "105e9121e6987103c4daff457e945fba3049e5ceb056eca74ff1ba8c9b83d2ad"
+    },
+    {
+      "path": "web/tests/token-conformance.test.ts",
+      "sha256": "011749c10057c9d0a7a3d8cde1ea9d20c73d407f3490040abdaa41fcbd929701"
+    }
+  ],
+  "sourceCapture": "Hashes collected after focused runs in the shared checkout; no frozen source guarantee. Actual service run preceded additional defensive validation, which passed final pure tests. Exact output remains in the Codex tool transcript.",
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "policy": "token-demo-first-legal-1.0.0",
+  "publicCatalogActivation": false,
+  "fullSuite": false,
+  "race": false,
+  "browser": true,
+  "remaining": [
+    "optional token planner/provider conformance (unsupported, not advertised)",
+    "commercial configured token offers (unsupported, not advertised)",
+    "card-compatible historical review UI adaptation for numeric tokens (not advertised)",
+    "whole-product release gates outside this fixture scope"
+  ],
+  "limitations": [
+    "correctness timings are not production performance or strategy evidence",
+    "no commit or frozen release capture"
+  ],
+  "failureSeeds": [],
+  "scope": "M06 actual test-only non-card module, service, persistence/replay, saved advice and React browser path; not whole-product release",
+  "postCaptureChanges": [
+    {
+      "path": "server/internal/service/token_browser_fixture_test.go",
+      "change": "normal guard now t.Skip rather than silent return; opt-in browser branch unchanged",
+      "sha256": "5a5ee4ff659221565c893cd80542c590017a18db58b109348f81d01c84da8218"
+    },
+    {
+      "path": "web/shared/games/token.schema.json",
+      "change": "Register the token fragment in the raw Ajv test and use its canonical URI. Verify both raw fragment and root accept numeric packets and reject hidden fields without generator reference repair.",
+      "sha256": "824df81bcb6aac8f3d39c78e37ff1ed4f73809cfefaa28b55b1cd261ca7a209e",
+      "verification": "raw-schema-regression.json"
+    }
+  ],
+  "browserEvidence": "browser-acceptance.json",
+  "independentReview": "Parent reported independent Astra follow-up review found no remaining issues in saved-schema authorization/delivery and real browser path.",
+  "rawSchemaRegression": "raw-schema-regression.json"
+}

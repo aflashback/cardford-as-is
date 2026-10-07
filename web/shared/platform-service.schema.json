@@ -280,7 +280,7 @@
           "$ref": "#/$defs/RegisteredSessionView"
         },
         "presentation": {
-          "$ref": "#/$defs/GameView"
+          "$ref": "#/$defs/RegisteredPresentation"
         },
         "actor": {
           "anyOf": [

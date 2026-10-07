@@ -1,0 +1,33 @@
+=== RUN   TestStartupDiagnosticsSanitizedDialFailure
+--- PASS: TestStartupDiagnosticsSanitizedDialFailure (0.00s)
+=== RUN   TestLocalStartupDialRetryBoundedAndTraced
+--- PASS: TestLocalStartupDialRetryBoundedAndTraced (0.05s)
+=== RUN   TestLocalStartupDialRetryGuards
+=== RUN   TestLocalStartupDialRetryGuards/permission
+=== RUN   TestLocalStartupDialRetryGuards/refused
+=== RUN   TestLocalStartupDialRetryGuards/other-host
+=== RUN   TestLocalStartupDialRetryGuards/hostname
+=== RUN   TestLocalStartupDialRetryGuards/udp
+=== RUN   TestLocalStartupDialRetryGuards/read
+=== RUN   TestLocalStartupDialRetryGuards/other-syscall
+=== RUN   TestLocalStartupDialRetryGuards/untyped
+=== RUN   TestLocalStartupDialRetryGuards/deadline
+=== RUN   TestLocalStartupDialRetryGuards/canceled
+--- PASS: TestLocalStartupDialRetryGuards (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/permission (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/refused (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/other-host (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/hostname (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/udp (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/read (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/other-syscall (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/untyped (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/deadline (0.00s)
+    --- PASS: TestLocalStartupDialRetryGuards/canceled (0.00s)
+=== RUN   TestLocalStartupDialRetryStopsAtTwoAndCancellation
+--- PASS: TestLocalStartupDialRetryStopsAtTwoAndCancellation (0.06s)
+=== RUN   TestLocalStartupRetryDisabledForNonLocalStore
+--- PASS: TestLocalStartupRetryDisabledForNonLocalStore (0.00s)
+PASS
+ok  	cardford/server/internal/records	0.514s
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":4826.5278,"status":"passed"}}

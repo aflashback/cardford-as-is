@@ -10,7 +10,13 @@ import (
 
 // Illustrate never accepts the live aggregate or another actor's real hand.
 func Illustrate(ctx context.Context, o d.Observation, alternative string, seed uint32, policy string) ([]d.Observation, error) {
-	if (o.Mode != "spades-solo" && o.Mode != "spades-partners") || policy != reasoning.PolicyVersion || o.Phase != "play" || o.Turn == nil || *o.Turn != o.Seat {
+	analyze := reasoning.AnalyzeContext
+	if policy == reasoning.PartnerResourcePolicy && o.Mode == "spades-partners" {
+		analyze = reasoning.AnalyzePartnerResourcesContext
+	} else if policy != reasoning.PolicyVersion {
+		return nil, fmt.Errorf("unsupported source continuation")
+	}
+	if (o.Mode != "spades-solo" && o.Mode != "spades-partners") || o.Phase != "play" || o.Turn == nil || *o.Turn != o.Seat {
 		return nil, fmt.Errorf("unsupported source continuation")
 	}
 	var first *d.Action
@@ -53,7 +59,7 @@ func Illustrate(ctx context.Context, o d.Observation, alternative string, seed u
 			if err != nil {
 				return nil, err
 			}
-			analysis, err := reasoning.AnalyzeContext(ctx, actor)
+			analysis, err := analyze(ctx, actor)
 			if err != nil {
 				return nil, err
 			}

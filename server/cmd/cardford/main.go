@@ -4,6 +4,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
@@ -17,8 +18,10 @@ import (
 
 	"cardford/server/internal/access"
 	transport "cardford/server/internal/http"
+	"cardford/server/internal/localpolicies"
 	"cardford/server/internal/records"
 	"cardford/server/internal/service"
+	"cardford/server/internal/strategy/installation"
 	"github.com/jackc/pgx/v5/pgconn"
 )
 
@@ -26,15 +29,19 @@ func main() {
 	migrations := flag.String("migrations", os.Getenv("CARDFORD_MIGRATIONS_DIR"), "canonical web/server/records/migrations directory (required)")
 	web := flag.String("web", "", "optional public web/dist directory for the same-origin React client")
 	policy := flag.String("access-policy", "", "explicit validated offer policy JSON; omit for local fixture accounts")
+	reasoning := flag.String("reasoning", "original", "new-session reasoning: original, partner-resources, or actor-rollout (experimental)")
 	flag.Parse()
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
-	if err := run(ctx, *migrations, *web, *policy); err != nil {
+	if err := run(ctx, *migrations, *web, *policy, *reasoning); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
-func run(ctx context.Context, migrations, web, policyPath string) error {
+func run(ctx context.Context, migrations, web, policyPath, reasoningProfile string) error {
+	if reasoningProfile != "original" && reasoningProfile != localpolicies.PartnerResources && reasoningProfile != "actor-rollout" {
+		return fmt.Errorf("unsupported local reasoning profile")
+	}
 	var policy *access.Policy
 	if policyPath != "" {
 		value, err := readPolicy(policyPath)
@@ -56,7 +63,29 @@ func run(ctx context.Context, migrations, web, policyPath string) error {
 	if err != nil {
 		return fmt.Errorf("local policy initialization failed")
 	}
-	store, err := records.OpenStore(ctx, cfg.DatabaseURL, records.StoreOptions{LocalService: true, Schema: "cardford_go_local", CreateSchema: true, Codec: codec})
+	if err = localpolicies.InstallPartner(codec, reasoningProfile == localpolicies.PartnerResources); err != nil {
+		return fmt.Errorf("local experimental policy initialization failed")
+	}
+	if err = installation.InstallActorRollout(codec, reasoningProfile == "actor-rollout"); err != nil {
+		return fmt.Errorf("local rollout policy initialization failed")
+	}
+	// Restoring original new-session selection during reader installation must
+	// not override an explicitly selected partner experiment.
+	if reasoningProfile == localpolicies.PartnerResources {
+		if err = localpolicies.InstallPartner(codec, true); err != nil {
+			return fmt.Errorf("local partner policy selection failed")
+		}
+	}
+	var startupDiagnostics *records.StartupDiagnostics
+	if os.Getenv("CARDFORD_DB_STARTUP_DIAGNOSTICS") == "1" {
+		startupDiagnostics = &records.StartupDiagnostics{}
+	}
+	store, err := records.OpenStore(ctx, cfg.DatabaseURL, records.StoreOptions{LocalService: true, Schema: "cardford_go_local", CreateSchema: true, Codec: codec, StartupDiagnostics: startupDiagnostics})
+	if startupDiagnostics != nil {
+		_ = json.NewEncoder(os.Stderr).Encode(struct {
+			DatabaseStartup []records.StartupSpan `json:"databaseStartup"`
+		}{startupDiagnostics.Snapshot()})
+	}
 	if err != nil {
 		return databaseFailure("local database initialization failed", err)
 	}
@@ -98,7 +127,7 @@ func run(ctx context.Context, migrations, web, policyPath string) error {
 	if policy != nil {
 		accessMode = "configured"
 	}
-	fmt.Printf("CardFord Go local API: %s (identity=local-test, payments=fixture, provider=off, access=%s)\n", cfg.Origin, accessMode)
+	fmt.Printf("CardFord Go local API: %s (identity=local-test, payments=fixture, provider=off, access=%s, reasoning=%s)\n", cfg.Origin, accessMode, reasoningProfile)
 	select {
 	case err = <-finished:
 		if errors.Is(err, http.ErrServerClosed) {

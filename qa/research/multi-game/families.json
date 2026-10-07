@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "research-families-1.0.0",
+  "assignmentPolicy": "Explicit conservative ancestry. All entries are discovery/regression only, never held-out confirmation. Browser origins are resolved through the frozen manifest fixtures.source and runs.scenarioId; rotations and matched arms inherit the original family. Bootstrap starts have no measured origin or decisions.",
+  "families": [
+    {
+      "id": "spades-authored-control",
+      "split": "discovery",
+      "reason": "Original control deal; browser Solo/Partners mode twins, both policy arms and reused actor packets stay together.",
+      "ancestors": [
+        { "source": "qa/experiments/2026-09-30-agent-scenario-lab/deals.json#solo-control-01", "relationship": "original control; browser baseline-control-solo and baseline-control-partners rotation 0" }
+      ]
+    },
+    {
+      "id": "spades-authored-nil-race",
+      "split": "discovery",
+      "reason": "Separate original authored Nil-race layout; synthetic carried scores/bags do not establish prior-match reachability.",
+      "ancestors": [
+        { "source": "qa/experiments/2026-09-30-agent-scenario-lab/deals.json#partners-nil-race-01", "relationship": "original authored Nil-race layout" }
+      ]
+    },
+    {
+      "id": "spades-authored-two-suit-stress",
+      "split": "discovery",
+      "reason": "Conservative common family for related authored two-suit layouts. Same actor hand and redistributed hidden holdings, changed opening leader, carried score/bag context, honor counterworlds and matched modes are related development observations, not independent samples. Browser sweep/resources fixtures rotate these original deals by 2 across both arms/modes.",
+      "ancestors": [
+        { "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#solo-spread", "relationship": "original spread; Solo/Partners twin; browser sweep rotation 2" },
+        { "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#partners-spread", "relationship": "spread mode twin; browser sweep rotation 2" },
+        { "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#solo-void", "relationship": "redistributed holdings, same two-suit actor hand" },
+        { "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#partners-void", "relationship": "void mode twin" },
+        { "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#solo-concentrated", "relationship": "concentrated holdings counterworld" },
+        { "source": "qa/experiments/2026-09-30-two-suit-batch/deals.json#partners-concentrated", "relationship": "concentrated mode twin" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#solo-void-partner-leads", "relationship": "void descendant with changed dealer/leader" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#partners-void-partner-leads", "relationship": "changed leader mode twin" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#solo-void-trumps-at-jason", "relationship": "redistributed trump counterworld; browser resources rotation 2" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#partners-void-trumps-at-jason", "relationship": "redistributed trump mode twin; browser resources rotation 2" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#solo-spread-late-score-bags", "relationship": "spread descendant with carried score/bag objective context" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#partners-spread-late-score-bags", "relationship": "carried score/bag mode twin" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#solo-spread-honor-gap", "relationship": "unstarted honor counterworld" },
+        { "source": "qa/experiments/2026-09-30-expanded-batch/deals.json#partners-spread-honor-gap", "relationship": "unstarted honor counterworld mode twin" }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@ package records
 
 import (
 	"bytes"
+	"cardford/server/internal/contracts"
 	"context"
 	"encoding/json"
 	"errors"
@@ -125,7 +126,8 @@ func validateGrant(g Grant) error {
 	if t.ExpiryRule != "pause-at-expiry" && t.ExpiryRule != "finish-admitted-unit" {
 		return ErrAccess
 	}
-	if !(t.Game == "hearts" && t.Variant == "solo" || t.Game == "spades" && (t.Variant == "solo" || t.Variant == "partners")) {
+	target, err := json.Marshal(map[string]string{"gameId": t.Game, "variantId": t.Variant})
+	if err != nil || contracts.Validate("RegisteredTarget", target) != nil {
 		return ErrAccess
 	}
 	if g.SourceKind != "free" && g.SourceKind != "access-trial" && g.SourceKind != "purchase" && g.SourceKind != "family" {

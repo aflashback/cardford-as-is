@@ -184,6 +184,8 @@ func generatedWire(name string) wireValue {
 		return new(AccessOfferPolicy)
 	case "AccessDecision":
 		return new(AccessDecision)
+	case "RegisteredPresentation":
+		return new(RegisteredPresentation)
 	case "HeartsCandidate":
 		return new(HeartsCandidate)
 	case "HeartsObservation":
@@ -208,6 +210,26 @@ func generatedWire(name string) wireValue {
 		return new(SpadesAnalysis)
 	case "SpadesActorEvent":
 		return new(SpadesActorEvent)
+	case "TokenReveal":
+		return new(TokenReveal)
+	case "TokenCycle":
+		return new(TokenCycle)
+	case "TokenCompetitor":
+		return new(TokenCompetitor)
+	case "TokenObservation":
+		return new(TokenObservation)
+	case "TokenCandidate":
+		return new(TokenCandidate)
+	case "TokenActorPacket":
+		return new(TokenActorPacket)
+	case "TokenSessionView":
+		return new(TokenSessionView)
+	case "TokenAnalysis":
+		return new(TokenAnalysis)
+	case "TokenActorEvent":
+		return new(TokenActorEvent)
+	case "TokenPresentation":
+		return new(TokenPresentation)
 	case "LocalServiceWorkRetryRequest":
 		return new(LocalServiceWorkRetryRequest)
 	case "LocalServiceEmptyRequest":

@@ -1,0 +1,9 @@
+fuzz: elapsed: 0s, gathering baseline coverage: 0/57 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 57/57 completed, now fuzzing with 2 workers
+fuzz: elapsed: 3s, execs: 66394 (22127/sec), new interesting: 40 (total: 97)
+fuzz: elapsed: 6s, execs: 66394 (0/sec), new interesting: 40 (total: 97)
+fuzz: elapsed: 9s, execs: 66394 (0/sec), new interesting: 40 (total: 97)
+fuzz: elapsed: 11s, execs: 66394 (0/sec), new interesting: 40 (total: 97)
+PASS
+ok  	cardford/server/internal/contracts	11.509s
+{"nativeWatchdog":{"exitCode":0,"signal":null,"error":null,"shutdownError":null,"timedOut":false,"interrupted":false,"outputLimitExceeded":false,"elapsedMs":26292.211099999997,"status":"passed"}}

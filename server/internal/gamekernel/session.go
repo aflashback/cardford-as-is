@@ -124,6 +124,8 @@ type SessionModel[S, O, A any] struct {
 	Candidates func(O) []Candidate[A]
 	Packet     func(O, []PublicCandidate) (json.RawMessage, error)
 	View       func(O) (json.RawMessage, error)
+	// Presentation is an optional module-owned public adapter for non-card UI.
+	Presentation func(O) (json.RawMessage, error)
 	// LegacyObservation is the explicit actor-only compatibility adapter for the preserved UI/review.
 	LegacyObservation func(O) (json.RawMessage, error)
 	EncodeObservation func(O) (json.RawMessage, error)

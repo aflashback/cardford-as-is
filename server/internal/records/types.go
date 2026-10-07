@@ -73,6 +73,8 @@ type ReplayAnchor struct {
 	Config         json.RawMessage `json:"config"`
 	OpeningChance  []string        `json:"openingChance"`
 	Initial        Checkpoint      `json:"initial"`
+	// Omitted on original anchors; no old field or saved byte is repinned.
+	OpeningMaterial json.RawMessage `json:"openingMaterial,omitempty"`
 }
 type EventRecord struct {
 	RecordVersion string          `json:"recordVersion"`

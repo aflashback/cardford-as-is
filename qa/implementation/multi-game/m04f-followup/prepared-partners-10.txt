@@ -1,0 +1,20 @@
+=== RUN   TestM04FPreparedRequestProfile
+    resource_profile_test.go:91: completed hand=1 revision=69 elapsed=7.71s terminal=false
+    resource_profile_test.go:136: unexpected profile node chance
+    resource_profile_test.go:69: M04F_REQUEST_PROFILE {"commands":69,"deliveredHelp":1,"elapsedMS":7730,"failed":true,"hands":1,"metrics":{"commit-actor":{"Count":56,"MedianMS":62.842,"P95MS":86.418,"TotalMS":3447.9600000000005},"commit-automatic":{"Count":13,"MedianMS":13.2,"P95MS":15.261,"TotalMS":166.62699999999998},"delivered-help":{"Count":1,"MedianMS":33.34,"P95MS":33.34,"TotalMS":33.34},"load":{"Count":71,"MedianMS":3.635,"P95MS":6.017,"TotalMS":259.56699999999995},"next-hand":{"Count":1,"MedianMS":14.512,"P95MS":14.512,"TotalMS":14.512},"prepare-bot-action":{"Count":42,"MedianMS":47.346,"P95MS":58.55,"TotalMS":1958.9399999999998},"prepare-human-analysis":{"Count":14,"MedianMS":47.822,"P95MS":55.689,"TotalMS":630.4540000000001},"table-response":{"Count":69,"MedianMS":17.136,"P95MS":21.205,"TotalMS":1170.6890000000003}},"terminal":false,"variant":"partners"}
+--- FAIL: TestM04FPreparedRequestProfile (8.77s)
+FAIL
+FAIL	cardford/server/internal/service	9.260s
+FAIL
+file:///C:/repos/test-jev/scripts/windows-env.mjs:17
+    throw Error(`${exe.split(/[\\/]/).at(-1)} exited ${r.status}: ${r.stderr ?? ''}`); return r.stdout ?? ''; }
+          ^
+
+Error: go.exe exited 1: 
+    at run (file:///C:/repos/test-jev/scripts/windows-env.mjs:17:11)
+    at file:///C:/repos/test-jev/scripts/windows-env.mjs:93:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

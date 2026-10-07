@@ -3,6 +3,7 @@ package records
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"testing"
 	"time"
@@ -19,22 +20,24 @@ func TestM04EStatsIgnoreUnrelatedBotRecordBytes(t *testing.T) {
 	}
 	s, _ := storeTestOpen(t, codec)
 	ctx := context.Background()
-	if err = s.CreateAccess(ctx, "owner"); err != nil {
-		t.Fatal(err)
-	}
-	if _, err = s.ChangeAccess(ctx, "owner", 1, AccessChange{CanRead: true, CanPlay: true}); err != nil {
-		t.Fatal(err)
-	}
-	grant := Grant{ID: "grant", OwnerID: "owner", OfferID: "fixture", OfferVersion: "1", SourceKind: "free", SourceID: "fixture", ValidFrom: time.Now().Add(-time.Hour), Terms: GrantTerms{Version: RecordVersion, Game: "spades", Variant: "solo", CanPlay: true, Tools: []string{}, BucketID: "fixture", Period: "lifetime", Timezone: "UTC", Limit: 0, ExpiryRule: "pause-at-expiry"}}
-	if err = s.PutGrant(ctx, grant); err != nil {
-		t.Fatal(err)
-	}
-	access, err := s.ReadAccess(ctx, "owner")
+	identity, err := s.NewLocalIdentity(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
-	admission := AccessAdmission{OwnerID: "owner", Generation: access.Generation, ControlRevision: access.ControlGeneration, GrantID: "grant", UnitID: "hand-1"}
-	meta, err := ServiceMetadata(serviceSelector("spades-solo"), "stats-game", "owner")
+	owner := identity.Principal.OwnerID
+	if _, err = s.ChangeAccess(ctx, owner, 1, AccessChange{CanRead: true, CanPlay: true}); err != nil {
+		t.Fatal(err)
+	}
+	grant := Grant{ID: "grant", OwnerID: owner, OfferID: "fixture", OfferVersion: "1", SourceKind: "free", SourceID: "fixture", ValidFrom: time.Now().Add(-time.Hour), Terms: GrantTerms{Version: RecordVersion, Game: "spades", Variant: "solo", CanPlay: true, Tools: []string{}, BucketID: "fixture", Period: "lifetime", Timezone: "UTC", Limit: 0, ExpiryRule: "pause-at-expiry"}}
+	if err = s.PutGrant(ctx, grant); err != nil {
+		t.Fatal(err)
+	}
+	access, err := s.ReadAccess(ctx, owner)
+	if err != nil {
+		t.Fatal(err)
+	}
+	admission := AccessAdmission{OwnerID: owner, Generation: access.Generation, ControlRevision: access.ControlGeneration, GrantID: "grant", UnitID: "hand-1"}
+	meta, err := ServiceMetadata(serviceSelector("spades-solo"), "stats-game", owner)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -79,13 +82,13 @@ func TestM04EStatsIgnoreUnrelatedBotRecordBytes(t *testing.T) {
 		rawCommand, _ := json.Marshal(command)
 		checkpoint, _ := json.Marshal(next.Checkpoint)
 		if e = s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
-			if _, e := tx.Exec(ctx, "INSERT INTO m03_commands(owner_id,command_id,digest,game_id,revision,command,receipt_schema,receipt,checkpoint_digest) VALUES($1,$2,$3,$4,$5,$6,'AcceptedView',$7,$8)", "owner", commandID, digest, "stats-game", next.Revision, rawCommand, []byte(`{"accepted":true}`), contracts.SHA256(checkpoint)); e != nil {
+			if _, e := tx.Exec(ctx, "INSERT INTO m03_commands(owner_id,command_id,digest,game_id,revision,command,receipt_schema,receipt,checkpoint_digest) VALUES($1,$2,$3,$4,$5,$6,'AcceptedView',$7,$8)", owner, commandID, digest, "stats-game", next.Revision, rawCommand, []byte(`{"accepted":true}`), contracts.SHA256(checkpoint)); e != nil {
 				return e
 			}
-			if _, e := tx.Exec(ctx, "INSERT INTO m03_decisions(id,owner_id,game_id,revision,record) VALUES($1,$2,$3,$4,$5)", decision.ID, "owner", "stats-game", decision.Revision, rawDecision); e != nil {
+			if _, e := tx.Exec(ctx, "INSERT INTO m03_decisions(id,owner_id,game_id,revision,record) VALUES($1,$2,$3,$4,$5)", decision.ID, owner, "stats-game", decision.Revision, rawDecision); e != nil {
 				return e
 			}
-			_, e := tx.Exec(ctx, "INSERT INTO m03_command_decisions(owner_id,command_id,decision_id) VALUES($1,$2,$3)", "owner", commandID, decision.ID)
+			_, e := tx.Exec(ctx, "INSERT INTO m03_command_decisions(owner_id,command_id,decision_id) VALUES($1,$2,$3)", owner, commandID, decision.ID)
 			return e
 		}); e != nil {
 			t.Fatal(e)
@@ -97,9 +100,28 @@ func TestM04EStatsIgnoreUnrelatedBotRecordBytes(t *testing.T) {
 			t.Fatal(err)
 		}
 	}
-	baseline, err := s.PlatformStats(ctx, "owner", "stats-game")
+	// Seed through the internal fixture path, then exercise reads through the
+	// real authenticated boundary. An uncredentialed internal fixture context
+	// intentionally does not enforce local-service access checks.
+	ctx = WithPrincipal(ctx, identity.Principal)
+	baseline, err := s.PlatformStats(ctx, owner, "stats-game")
 	if err != nil || baseline.Decisions != 1 {
 		t.Fatalf("accepted human without work not counted: %+v %v", baseline, err)
+	}
+	// A warmed scalar cache must never preserve access after revocation.
+	currentAccess, err := s.ReadAccess(ctx, owner)
+	if err != nil {
+		t.Fatal(err)
+	}
+	revoked, err := s.ChangeAccess(ctx, owner, currentAccess.Generation, AccessChange{CanRead: false, CanPlay: false})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err = s.PlatformStats(ctx, owner, "stats-game"); !errors.Is(err, ErrReadDenied) {
+		t.Fatalf("warm statistics cache did not return read denial after revocation: %v", err)
+	}
+	if _, err = s.ChangeAccess(ctx, owner, revoked.Generation, AccessChange{CanRead: true, CanPlay: true}); err != nil {
+		t.Fatal(err)
 	}
 	poison := func(id string, large bool) {
 		t.Helper()
@@ -123,12 +145,12 @@ func TestM04EStatsIgnoreUnrelatedBotRecordBytes(t *testing.T) {
 		}
 	}
 	poison(ids[1], true)
-	after, err := s.PlatformStats(ctx, "owner", "stats-game")
+	after, err := s.PlatformStats(ctx, owner, "stats-game")
 	if err != nil || after != baseline {
 		t.Fatalf("unrelated oversized bot record poisoned human stats: %+v %v", after, err)
 	}
 	poison(ids[0], false)
-	if _, err = s.PlatformStats(ctx, "owner", "stats-game"); err == nil {
+	if _, err = s.PlatformStats(ctx, owner, "stats-game"); err == nil {
 		t.Fatal("malformed relevant human record was not validated")
 	}
 }

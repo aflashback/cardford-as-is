@@ -122,78 +122,8 @@ func parseDocument(raw json.RawMessage) (document, error) {
 	return d, nil
 }
 func validateOperation(raw json.RawMessage) error {
-	var tag struct {
-		Kind string `json:"kind"`
-	}
-	if err := json.Unmarshal(raw, &tag); err != nil {
-		return err
-	}
-	switch tag.Kind {
-	case "actor":
-		var v struct {
-			Kind        string `json:"kind"`
-			Seat        int    `json:"seat"`
-			CandidateID string `json:"candidateId"`
-		}
-		if err := strictDecode(raw, &v); err != nil {
-			return err
-		}
-		if !gamekernel.ValidSeat(v.Seat) || !gamekernel.ValidIdentifier(v.CandidateID) {
-			return fmt.Errorf("invalid actor operation")
-		}
-	case "sealed":
-		var v struct {
-			Kind     string                  `json:"kind"`
-			WindowID string                  `json:"windowId"`
-			Choices  []gamekernel.SeatChoice `json:"choices"`
-		}
-		if err := strictDecode(raw, &v); err != nil {
-			return err
-		}
-		if !gamekernel.ValidIdentifier(v.WindowID) || len(v.Choices) == 0 {
-			return fmt.Errorf("invalid sealed operation")
-		}
-		seen := map[int]bool{}
-		for _, c := range v.Choices {
-			if !gamekernel.ValidSeat(c.Seat) || !gamekernel.ValidIdentifier(c.CandidateID) || seen[c.Seat] {
-				return fmt.Errorf("invalid sealed choices")
-			}
-			seen[c.Seat] = true
-		}
-	case "automatic":
-		var v struct {
-			Kind         string `json:"kind"`
-			TransitionID string `json:"transitionId"`
-		}
-		if err := strictDecode(raw, &v); err != nil {
-			return err
-		}
-		if !gamekernel.ValidIdentifier(v.TransitionID) {
-			return fmt.Errorf("invalid transition identifier")
-		}
-	case "chance":
-		var v struct {
-			Kind      string          `json:"kind"`
-			RequestID string          `json:"requestId"`
-			Material  json.RawMessage `json:"material"`
-		}
-		if err := strictDecode(raw, &v); err != nil {
-			return err
-		}
-		if !gamekernel.ValidIdentifier(v.RequestID) {
-			return fmt.Errorf("invalid request identifier")
-		}
-		_, err := contracts.ParseJSON(v.Material)
-		return err
-	case "continue-round":
-		var v struct {
-			Kind string `json:"kind"`
-		}
-		return strictDecode(raw, &v)
-	default:
-		return fmt.Errorf("unsupported recorded operation")
-	}
-	return nil
+	_, err := decodeOperation(raw)
+	return err
 }
 
 // The M02 facade preserves original journal/audit metadata. Durable append and

@@ -1,0 +1,110 @@
+[
+  {
+    "path": "server/internal/games/cardcontinuation/adapter_test.go",
+    "sha256": "fba4b4e5922412f570e3ca8f2b0d0bc9d07af5a3657f7d1cad3c9f40928e657a"
+  },
+  {
+    "path": "server/internal/games/cardcontinuation/adapter.go",
+    "sha256": "94d954bfa4ec76913f69731eaca7f96124a3a6966442b916d7cd8fecdb9d8e0d"
+  },
+  {
+    "path": "server/internal/games/cardcontinuation/chance.go",
+    "sha256": "06285a8420b275e0b66a824d4be4f21a9c24a946c45d026ab6c06a86ab9d142e"
+  },
+  {
+    "path": "server/internal/games/cardcontinuation/continuation_test.go",
+    "sha256": "d1da52ad6cd87ae418f8cf0d77bfe1c0516086293b818a2c861ff1384c50d027"
+  },
+  {
+    "path": "server/internal/games/cardcontinuation/sampler.go",
+    "sha256": "39c6bb928484dbe6f9c4c2b6b2c53f22b9bc8b31df7543b6f21c27eb682beca5"
+  },
+  {
+    "path": "server/internal/legacydecision/actor_rollout.go",
+    "sha256": "f99f436d10bf96ef097f5d2572c668960f21c84f1af44193fad82aa67ada3d3a"
+  },
+  {
+    "path": "server/internal/legacydecision/prepared.go",
+    "sha256": "17964c91f73f701f5833c5a267b4a7b52102fb9f2e9b6b9b6c6f0f198741fd09"
+  },
+  {
+    "path": "server/internal/records/codec.go",
+    "sha256": "ef94033a9b247208f2683c1d3ac60ef11042b3789236ef6da4d7859ed259a743"
+  },
+  {
+    "path": "server/internal/records/document_decision.go",
+    "sha256": "c2b21882e71bfb65c21c382a5b85cc48e61b8b394343e1d3c1789e932fd5c851"
+  },
+  {
+    "path": "server/internal/records/execution_limits_test.go",
+    "sha256": "fd78356e62376ec2deb029ff5cbff21307ee5b484fae917c2fd65d8146445982"
+  },
+  {
+    "path": "server/internal/records/execution_limits.go",
+    "sha256": "ecf8afee86ffa0050504aeb51250566b9148bf19f14bc5443102f9053f848376"
+  },
+  {
+    "path": "server/internal/records/policy_installed.go",
+    "sha256": "4afbdc116447a0605e1ca134bfcad609f94b6573058dea9094d41f4e7179dd7f"
+  },
+  {
+    "path": "server/internal/records/rollout_decision.go",
+    "sha256": "27a39d09a38ae068dd13eade83ccc0edd8037ff688c158cb1c998cb305f476fa"
+  },
+  {
+    "path": "server/internal/records/service_decision.go",
+    "sha256": "9cae2d084c2ad6c971a5be1434cf8fcba8a9bfecbb7ef3fa54a592274c4b535d"
+  },
+  {
+    "path": "server/internal/records/work.go",
+    "sha256": "e08c5d1ea403029b5dabae12fabedac78ac9ef8474b35a60e77262a10835a21f"
+  },
+  {
+    "path": "server/internal/service/actor_rollout_test.go",
+    "sha256": "565b749808517b6d99fa03ff3f78bd0271be0ed6c077548e6468a63dd0c940f4"
+  },
+  {
+    "path": "server/internal/service/preparation.go",
+    "sha256": "26bacedc3fd82c46b52942882f4a320e0a4246780fe5d2ddb2a157d9c9c74abb"
+  },
+  {
+    "path": "server/internal/service/scheduler_test.go",
+    "sha256": "bd28e683fb4d4646611d7123f3ace5d6a0e231cb25120f5068fa7f980ce5a687"
+  },
+  {
+    "path": "server/internal/service/scheduler.go",
+    "sha256": "fcd32c699a9fa8d12e28f9ec67750b2136c7214ac424d1a1ef1e9f617bde8a04"
+  },
+  {
+    "path": "server/internal/strategy/installation/actor_rollout_test.go",
+    "sha256": "965398fcceee45911e903ce7c5e3f92251e849591a49eb9a8aad5e5b38e74e87"
+  },
+  {
+    "path": "server/internal/strategy/installation/actor_rollout.go",
+    "sha256": "2947d0385df3b729b53446817821366636844ae60b4429caff0c95ff7f8b2c98"
+  },
+  {
+    "path": "server/internal/strategy/knowledge/knowledge_test.go",
+    "sha256": "1b7f5a25df63256e6c20086ae67461ec79f9ec32ef0b27c140efbf4343c84801"
+  },
+  {
+    "path": "server/internal/strategy/knowledge/knowledge.go",
+    "sha256": "15d3438cfc7373f2954be3c153e8703106b6c18d38cf2700ffa34cebb455b8c1"
+  },
+  {
+    "path": "server/internal/strategy/rollout/run_test.go",
+    "sha256": "6b46b448b909ceb9e579728dffb7b92e4dae3f51504959c4c1a898bfb8888e98"
+  },
+  {
+    "path": "server/internal/strategy/rollout/run.go",
+    "sha256": "144ad0ec5cdf16913008fd6ce6d57dc78c440d545c509d1ce68906933043a266"
+  },
+  {
+    "path": "server/internal/strategy/rollout/types.go",
+    "sha256": "bf60d2132c2012b017e509f515edd839df11369766536a8fdcc1180fe7989496"
+  },
+  {
+    "path": "server/internal/strategy/rollout/work.go",
+    "sha256": "77a452c9be2a2327fcbd62f9b0d4107b8709031d4763533eba710848b7e1e7e5"
+  }
+]

@@ -1,0 +1,1 @@
+ok  	cardford/server/internal/contracts	0.486s

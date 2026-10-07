@@ -1,0 +1,58 @@
+{
+  "scope": "Test-only numeric-token module plus native kernel replay. M06 actual service/storage/restart/public-contract/planner/UI conformance remains pending.",
+  "capturedAt": "2026-10-07T03:25:32.500Z",
+  "command": [
+    "node",
+    "scripts/bounded-native-run.mjs",
+    "--seconds=20",
+    "--",
+    "node",
+    "scripts/windows-env.mjs",
+    "go",
+    "test",
+    "./server/internal/conformance",
+    "-count=1",
+    "-timeout=10s",
+    "-json"
+  ],
+  "exitCode": 0,
+  "watchdogElapsedMs": 2596.1442,
+  "packageElapsedSeconds": 0.267,
+  "passedTopLevel": 4,
+  "passedSubtests": 2,
+  "failed": 0,
+  "skipped": 0,
+  "tests": [
+    "TestTokenOpaqueChanceHiddenInformationAndDetachedOutputs",
+    "TestTokenRevealChronologyAndLowestScore",
+    "TestTokenNativeKernelReplayUsesActualOpaqueChance",
+    "TestTokenStrictImportCommandsAndCorruption"
+  ],
+  "source": [
+    {
+      "path": "server/internal/conformance/token.go",
+      "sha256": "13a11ae00deaa0105effcbce98f5253a5fcfabb67907dc6eeae82b0f14653bf7"
+    },
+    {
+      "path": "server/internal/conformance/token_test.go",
+      "sha256": "b379af07b71939958c142d36b22da5bd61725b746ca6b64e88ff446165c5cb60"
+    }
+  ],
+  "sourceCapture": "Module/test hashes captured after the command. No before/after source preservation claim; command output is retained in the Codex tool transcript.",
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  },
+  "databaseWork": false,
+  "fullSuite": false,
+  "remaining": [
+    "production registered-schema branch",
+    "compiled registration injection",
+    "opaque persisted opening chance adapter",
+    "actual service authorization/receipt flow",
+    "store restart/replay",
+    "same React adapter flow",
+    "actor-policy planner conformance"
+  ]
+}

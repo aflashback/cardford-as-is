@@ -91,6 +91,7 @@ export type PublicContracts =
   | AccessOffer
   | AccessOfferPolicy
   | AccessDecision
+  | RegisteredPresentation
   | LocalServiceWorkRetryRequest
   | LocalServiceEmptyRequest
   | LocalServiceSelector
@@ -231,7 +232,7 @@ export type FamilyCommand =
       commandId: string;
       action: 'leave';
     };
-export type RegisteredActorPacket = HeartsActorPacket | SpadesActorPacket;
+export type RegisteredActorPacket = HeartsActorPacket | SpadesActorPacket | TokenActorPacket;
 export type HeartsCandidate =
   | {
       kind: 'play';
@@ -254,9 +255,9 @@ export type SpadesCandidate =
       kind: 'bid';
       bid: number;
     };
-export type RegisteredSessionView = HeartsSessionView | SpadesSessionView;
-export type RegisteredAnalysis = HeartsAnalysis | SpadesAnalysis;
-export type RegisteredActorEvent = HeartsActorEvent | SpadesActorEvent;
+export type RegisteredSessionView = HeartsSessionView | SpadesSessionView | TokenSessionView;
+export type RegisteredAnalysis = HeartsAnalysis | SpadesAnalysis | TokenAnalysis;
+export type RegisteredActorEvent = HeartsActorEvent | SpadesActorEvent | TokenActorEvent;
 export type RegisteredTarget =
   | {
       gameId: 'hearts';
@@ -265,7 +266,8 @@ export type RegisteredTarget =
   | {
       gameId: 'spades';
       variantId: 'solo' | 'partners';
-    };
+    }
+  | TokenTarget;
 export type VersionedActionsRequest = ActionsRequest | V2ActionsRequest;
 export type VersionedNewSessionRequest = NewSessionRequest | V2NewSessionRequest;
 export type DemoFrameRequest =
@@ -327,6 +329,7 @@ export type AccessDecision =
         | 'not-owned'
         | 'not-admitted';
     };
+export type RegisteredPresentation = GameView | TokenPresentation;
 export type LocalServiceSelector =
   | {
       gameId: 'hearts';
@@ -337,6 +340,12 @@ export type LocalServiceSelector =
   | {
       gameId: 'spades';
       variantId: 'solo' | 'partners';
+      moduleVersion: string;
+      ruleProfileId: string;
+    }
+  | {
+      gameId: 'test-token';
+      variantId: 'individual' | 'neighbour-teams';
       moduleVersion: string;
       ruleProfileId: string;
     };
@@ -675,7 +684,7 @@ export interface AdviceView {
   pass?: Card[];
   bid?: number;
   highlightSuit?: Suit;
-  source: 'code' | 'jev' | 'forced' | 'fallback';
+  source: 'code' | 'jev' | 'forced' | 'fallback' | 'demo';
   decisionId: string;
   requestedLevel: 1 | 2 | 3;
   outcome?: 'suggestion' | 'several-reasonable';
@@ -1203,6 +1212,84 @@ export interface SpadesObservation {
    */
   bags: number[];
 }
+export interface TokenActorPacket {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'test-token';
+  variantId: 'individual' | 'neighbour-teams';
+  seat: Seat;
+  phase: 'token-layout' | 'reveal' | 'collect' | 'complete';
+  observation: TokenObservation;
+  /**
+   * @maxItems 5
+   */
+  candidates: TokenCandidate[];
+}
+export interface TokenObservation {
+  gameId: 'test-token';
+  variant: 'individual' | 'neighbour-teams';
+  seat: Seat;
+  phase: 'chance' | 'reveal' | 'collect' | 'complete';
+  /**
+   * @maxItems 5
+   */
+  own: number[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  held: number[];
+  /**
+   * @maxItems 4
+   */
+  current: TokenReveal[];
+  /**
+   * @maxItems 5
+   */
+  cycles: TokenCycle[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  collections: number[];
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  competition: TokenCompetitor[];
+  turn: Seat | null;
+  /**
+   * @maxItems 4
+   */
+  winners: string[];
+}
+export interface TokenReveal {
+  seat: Seat;
+  token: number;
+}
+export interface TokenCycle {
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  reveals: TokenReveal[];
+  collector: Seat;
+}
+export interface TokenCompetitor {
+  id: string;
+  /**
+   * @minItems 1
+   * @maxItems 2
+   */
+  seats: Seat[];
+}
+export interface TokenCandidate {
+  id: string;
+  public: TokenRevealAction;
+}
+export interface TokenRevealAction {
+  kind: 'reveal';
+  token: number;
+}
 export interface HeartsSessionView {
   publicSchemaVersion: '2.0.0';
   gameId: 'hearts';
@@ -1219,6 +1306,15 @@ export interface SpadesSessionView {
   seat: Seat;
   phase: string;
   table: SpadesObservation;
+  accessUnit: CoachedUnit | null;
+}
+export interface TokenSessionView {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'test-token';
+  variantId: 'individual' | 'neighbour-teams';
+  seat: Seat;
+  phase: 'token-layout' | 'reveal' | 'collect' | 'complete';
+  table: TokenObservation;
   accessUnit: CoachedUnit | null;
 }
 export interface HeartsAnalysis {
@@ -1239,6 +1335,19 @@ export interface SpadesAnalysis {
   gameId: 'spades';
   variantId: 'solo' | 'partners';
   origin: 'code' | 'demo' | 'forced' | 'jev';
+  selectedCandidateId: string;
+  objective: ReasoningObjective;
+  horizon: ReasoningHorizon;
+  facts: ReasoningFact[];
+  estimates: ReasoningEstimate[];
+  scenarios: ReasoningScenario[];
+  assumptions: string[];
+}
+export interface TokenAnalysis {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'test-token';
+  variantId: 'individual' | 'neighbour-teams';
+  origin: 'demo' | 'forced';
   selectedCandidateId: string;
   objective: ReasoningObjective;
   horizon: ReasoningHorizon;
@@ -1277,6 +1386,20 @@ export interface SpadesActorEvent {
   seat: Seat | null;
   card: Card | null;
   bid: number | null;
+}
+export interface TokenActorEvent {
+  publicSchemaVersion: '2.0.0';
+  gameId: 'test-token';
+  variantId: 'individual' | 'neighbour-teams';
+  eventSchemaVersion: '2.0.0';
+  id: string;
+  type: 'layout-requested' | 'tokens-assigned' | 'token-revealed' | 'cycle-collected';
+  seat: Seat | null;
+  token: number | null;
+}
+export interface TokenTarget {
+  gameId: 'test-token';
+  variantId: 'individual' | 'neighbour-teams';
 }
 export interface RegisteredSelector {
   target: RegisteredTarget;
@@ -1336,6 +1459,13 @@ export interface AccessOfferPolicy {
   accessGeneration: number;
   precedence: string[];
   offers: AccessOffer[];
+}
+export interface TokenPresentation {
+  id: string;
+  gameId: 'test-token';
+  variantId: 'individual' | 'neighbour-teams';
+  seat: Seat;
+  observation: TokenObservation;
 }
 export interface LocalServiceWorkRetryRequest {
   controlLeaseToken: string;
@@ -1541,7 +1671,7 @@ export interface PlatformSession {
    */
   controllers: PlatformController[];
   view: RegisteredSessionView;
-  presentation: GameView;
+  presentation: RegisteredPresentation;
   actor: RegisteredActorPacket | null;
   node: LocalServiceNode;
   control: LocalServiceControl;
@@ -1766,6 +1896,7 @@ export interface ContractTypes {
   AccessOffer: AccessOffer;
   AccessOfferPolicy: AccessOfferPolicy;
   AccessDecision: AccessDecision;
+  RegisteredPresentation: RegisteredPresentation;
   HeartsCandidate: HeartsCandidate;
   HeartsObservation: HeartsObservation;
   HeartsActorPacket: HeartsActorPacket;
@@ -1778,6 +1909,16 @@ export interface ContractTypes {
   SpadesSessionView: SpadesSessionView;
   SpadesAnalysis: SpadesAnalysis;
   SpadesActorEvent: SpadesActorEvent;
+  TokenReveal: TokenReveal;
+  TokenCycle: TokenCycle;
+  TokenCompetitor: TokenCompetitor;
+  TokenObservation: TokenObservation;
+  TokenCandidate: TokenCandidate;
+  TokenActorPacket: TokenActorPacket;
+  TokenSessionView: TokenSessionView;
+  TokenAnalysis: TokenAnalysis;
+  TokenActorEvent: TokenActorEvent;
+  TokenPresentation: TokenPresentation;
   LocalServiceWorkRetryRequest: LocalServiceWorkRetryRequest;
   LocalServiceEmptyRequest: LocalServiceEmptyRequest;
   LocalServiceSelector: LocalServiceSelector;

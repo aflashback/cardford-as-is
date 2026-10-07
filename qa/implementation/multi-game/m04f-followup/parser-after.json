@@ -1,0 +1,66 @@
+{
+  "stage": "after",
+  "observedAt": "2026-10-07T03:30:20.1516453Z",
+  "head": "b822d0db8948ff99b8092762f7f0e056b32f2b1e",
+  "command": "node scripts/windows-env.mjs go test ./server/internal/contracts -run '^$' -bench '^BenchmarkParseSavedJSON$' -benchmem -benchtime=100ms -count=3 -timeout=30m",
+  "scope": "Strict JSON parsing of immutable saved public fixtures; no schema validation, service, SQL, policy or full replay in timed loops",
+  "outputSHA256": "9c863b1ff55e6886eb762cdb658b70e1d35971fe07f4c9bec25571545cd4e98d",
+  "sources": [
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "e531d8df1cf7a6ef7451363846f4c076f377a5010e84ee94a3f64cc0749de071"
+    },
+    {
+      "path": "server/internal/contracts/parser_test.go",
+      "sha256": "9273558151644f8b2e7c80671018d518184ec9634ed4bd78d48c051a31ec9d75"
+    },
+    {
+      "path": "server/internal/contracts/semantics.go",
+      "sha256": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119"
+    },
+    {
+      "path": "server/internal/contracts/testdata/validation-fixtures.json",
+      "sha256": "984a3940ac80635d28a0bfc28fbef488ca0cf441054f89609650b80cea67d9ec"
+    },
+    {
+      "path": "server/internal/contracts/schema.generated.json",
+      "sha256": "1d1eaa18158429539273c5e1ae7b9586fab14d84f71b2c2a19a7f9fcbf87d444"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "scripts/windows-tools.json",
+      "sha256": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node scripts/windows-env.mjs go test ./server/internal/contracts -run '^TestStrictParserDifferentialCorpus$' -count=1 -timeout=30m",
+      "output": "parser-differential.txt",
+      "result": "passed, 0.486s package time",
+      "sha256": "d6218f71cb59969c569b2182e08132e99a9424a9c01b6f7485567b157dabefe8"
+    },
+    {
+      "command": "node scripts/windows-env.mjs go test ./server/internal/contracts ./server/internal/compatibility ./server/internal/sessions -p=1 -count=1 -timeout=30m",
+      "output": "parser-contracts-parity.txt",
+      "result": "passed; package times 0.301s,35.876s,0.793s",
+      "sha256": "6bfcef8834a01529977a0d3c4b93fd98a200207276e89d04772369644af3fad3"
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node scripts/windows-env.mjs go test ./server/internal/contracts -run '^$' -fuzz '^FuzzStrictParserParity$' -fuzztime=10s -parallel=2 -timeout=30m",
+      "output": "parser-fuzz.txt",
+      "result": "passed, 66394 fuzz executions; 11.509s package time and 26292.2111ms complete process tree time",
+      "sha256": "6cd5f12240b6deb20a0f0b67ac127b49e82f9493e30a589a226de7315cf71139"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-10-07T04:25:50.682Z",
+  "cause": "Raw schema test omitted the newly referenced token fragment; its declared $id also differed from the canonical games/token.schema.json URI used by the root.",
+  "correction": "Register the token fragment in the raw Ajv test and use its canonical URI. Verify both raw fragment and root accept numeric packets and reject hidden fields without generator reference repair.",
+  "commands": [
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=30 -- node --test --test-name-pattern='M01 raw root/fragments' web/server/tests/module-contract.test.ts",
+      "exitCode": 0,
+      "elapsedMs": 695.8089,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node web/scripts/generate-contracts.mjs",
+      "exitCode": 0,
+      "elapsedMs": 1695.4895
+    },
+    {
+      "command": "node scripts/bounded-native-run.mjs --seconds=60 -- node scripts/windows-env.mjs node scripts/m02a-contracts.mjs",
+      "exitCode": 0,
+      "elapsedMs": 1197.7119,
+      "definitions": 160,
+      "fixtureOutcomes": 379,
+      "rngVectors": 9
+    }
+  ],
+  "database": false,
+  "fullSuite": false,
+  "source": [
+    {
+      "path": "web/shared/games/token.schema.json",
+      "sha256": "824df81bcb6aac8f3d39c78e37ff1ed4f73809cfefaa28b55b1cd261ca7a209e"
+    },
+    {
+      "path": "web/server/tests/module-contract.test.ts",
+      "sha256": "57970a7229516eb53cb43cb4718bb14def782dd21711dee52035e03f62434906"
+    }
+  ],
+  "evidencePreservation": "Retained browser capture and original service evidence were not rewritten. This schema identity/test-registration correction followed that browser capture; payload validation and generated bindings remain unchanged."
+}

@@ -6,6 +6,7 @@ import (
 	"cardford/server/internal/gamekernel"
 	"cardford/server/internal/games/hearts"
 	"cardford/server/internal/games/spades"
+	"cardford/server/internal/sessions"
 	"encoding/json"
 	"fmt"
 	"reflect"
@@ -30,23 +31,32 @@ type HistoricalReader struct {
 	// ReplayStart reconstructs the original opening with this exact historical
 	// implementation. It enables anchor/advice verification, never new play.
 	ReplayStart func(json.RawMessage, []string) (gamekernel.Snapshot, error)
-	Mode        string
-	Window      func(json.RawMessage, int64) (string, error)
-	Unit        func(json.RawMessage) (string, error)
+	// ReplayStartMaterial is the exact retired reader for opaque game-owned chance.
+	// Card readers retain ReplayStart and their existing saved anchor format.
+	ReplayStartMaterial func(json.RawMessage, json.RawMessage) (gamekernel.Snapshot, error)
+	Mode                string
+	Window              func(json.RawMessage, int64) (string, error)
+	Unit                func(json.RawMessage) (string, error)
 }
 type storageRegistration struct {
 	HistoricalReader
-	start    func(json.RawMessage, []string) (gamekernel.Snapshot, error)
-	readOnly bool
+	start               func(json.RawMessage, []string) (gamekernel.Snapshot, error)
+	startMaterial       func(json.RawMessage, json.RawMessage) (gamekernel.Snapshot, error)
+	readOnly            bool
+	expectedCompetition *Competition
 }
 type PolicyRegistration struct {
 	Module                                      ModulePin
 	Policy                                      PolicyPin
 	PacketVersion, AnalysisSchema, AdviceSchema string
+	ExecutionLimits                             ExecutionLimits
 }
 type DocumentCodec struct {
-	readers  map[ModulePin]storageRegistration
-	policies []PolicyRegistration
+	readers            map[ModulePin]storageRegistration
+	policies           []PolicyRegistration
+	serviceRegistry    *sessions.Registry
+	newSessionPolicies map[sessions.Selector]PolicyPin
+	prepareExecutors   []installedPreparation
 }
 
 // NewDocumentCodec installs private compatible game readers. A policy becomes
@@ -75,6 +85,11 @@ func NewDocumentCodec() *DocumentCodec {
 	return c
 }
 func (c *DocumentCodec) RegisterPolicy(p PolicyRegistration) error {
+	if p.ExecutionLimits != (ExecutionLimits{}) {
+		if err := validateExecutionLimits(p.ExecutionLimits); err != nil {
+			return err
+		}
+	}
 	if err := ValidatePolicy(p.Policy); err != nil {
 		return err
 	}
@@ -84,7 +99,8 @@ func (c *DocumentCodec) RegisterPolicy(p PolicyRegistration) error {
 	}
 	original := p.Module.ModuleVersion == "1.0.0" && p.AnalysisSchema == "RegisteredAnalysis" && p.AdviceSchema == "AdviceView"
 	complete := p.Module.ModuleVersion == "2.0.0" && p.AnalysisSchema == OriginalAnalysisSchema && p.AdviceSchema == OriginalAdviceSchema
-	if p.PacketVersion != p.Module.ObservationSchemaVersion || (!original && !complete) {
+	registered := p.Module.ModuleVersion == "2.0.0" && p.AnalysisSchema == "RegisteredAnalysis" && p.AdviceSchema == "AdviceView"
+	if p.PacketVersion != p.Module.ObservationSchemaVersion || (!original && !complete && !registered) {
 		return fmt.Errorf("unsupported policy input/output schema binding")
 	}
 	for _, old := range c.policies {
@@ -130,7 +146,7 @@ func PracticeMetadata(mode, id, owner string, policy PolicyPin) SessionMetadata 
 	return m
 }
 func (c *DocumentCodec) RegisterHistoricalReader(r HistoricalReader) error {
-	if c == nil || r.Open == nil || r.ValidateHot == nil || r.ReplayStart == nil || !validText(r.Mode) {
+	if c == nil || r.Open == nil || r.ValidateHot == nil || (r.ReplayStart == nil && r.ReplayStartMaterial == nil) || (r.ReplayStart != nil && r.ReplayStartMaterial != nil) || !validText(r.Mode) {
 		return fmt.Errorf("incomplete trusted historical reader")
 	}
 	for _, v := range []string{r.Pin.GameID, r.Pin.VariantID, r.Pin.ModuleVersion, r.Pin.RuleProfileID, r.Pin.StateSchemaVersion, r.Pin.ObservationSchemaVersion, r.Pin.PublicSchemaVersion, r.Pin.EventSchemaVersion} {
@@ -141,7 +157,7 @@ func (c *DocumentCodec) RegisterHistoricalReader(r HistoricalReader) error {
 	if _, exists := c.readers[r.Pin]; exists {
 		return fmt.Errorf("reader already registered")
 	}
-	c.readers[r.Pin] = storageRegistration{HistoricalReader: r, start: r.ReplayStart, readOnly: true}
+	c.readers[r.Pin] = storageRegistration{HistoricalReader: r, start: r.ReplayStart, startMaterial: r.ReplayStartMaterial, readOnly: true}
 	return nil
 }
 func (c *DocumentCodec) registration(m SessionMetadata) (storageRegistration, error) {
@@ -154,6 +170,9 @@ func (c *DocumentCodec) registration(m SessionMetadata) (storageRegistration, er
 	r, ok := c.readers[m.Pin]
 	if !ok {
 		return r, fmt.Errorf("unsupported module pin without a trusted reader")
+	}
+	if r.expectedCompetition != nil && !reflect.DeepEqual(m.Competition, *r.expectedCompetition) {
+		return r, fmt.Errorf("competition differs from exact installed variant")
 	}
 	if r.Pin.GameID == "spades" || r.Pin.GameID == "hearts" {
 		expected := "individual"
@@ -465,10 +484,10 @@ func (c *DocumentCodec) ValidateAnchor(m SessionMetadata, a ReplayAnchor) error 
 	if err != nil {
 		return err
 	}
-	if r.start == nil {
+	if r.start == nil && r.startMaterial == nil {
 		return fmt.Errorf("historical reader cannot verify opening anchor")
 	}
-	s, err := r.start(a.Config, a.OpeningChance)
+	s, err := startAnchor(r, a)
 	if err != nil {
 		return err
 	}
@@ -545,7 +564,7 @@ func (c *DocumentCodec) ReplayVisit(m SessionMetadata, a ReplayAnchor, commands 
 		return Document{}, nil, nil, err
 	}
 	r, _ := c.registration(m)
-	s, err := r.start(a.Config, a.OpeningChance)
+	s, err := startAnchor(r, a)
 	if err != nil {
 		return Document{}, nil, nil, err
 	}

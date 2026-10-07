@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — 2026-10-07 continuous local implementation
+
+Add optional actor-only continuation planning with bounded work and exact persisted bot/coach results, an experimental Partners resource policy, and compiled non-card module installation through real persistence and authorization. Preserve current React gameplay, old policy pins and original advice. Add maintained case provenance, conservative fresh-deal evaluation and provider fixture diagnostics; no strategy or human-learning promotion. Native test invocations now stop within 30 minutes. Strict decoder/statistics improvements and a complete ten-hand request profile retain the remaining history-growth and intermittent Windows connection limitations. [Execution ledger](planning/implementation/multi-game/continuous-local-build.md) records current acceptance and deferred rule branches.
+
+SYS-01/SYS-08: explicit native local startup gains one narrowly classified loopback connection retry within the existing deadline and optional sanitized connection spans. SQL operations and ordinary test-store connections are not retried. [Investigation and actual checks](qa/implementation/multi-game/m04f-followup/startup-connection-investigation.md) retain the unproven underlying OS cause.
+
+MG-07/MG-08: repair saved-policy review illustrations for the experimental Partners and actor-rollout profiles. Bind dispatch to complete installed source pins, use the declared reply policy, disclose retained replies for actor-rollout, and preserve original frames and saved advice. [Focused regression evidence](qa/implementation/multi-game/m05/review-continuation-fix.md).
+
 ## Unreleased — 2026-10-06 M04F first measured slice
 
 Reduce Spades history-copy allocations while retaining deep import isolation. Reuse validation of identical public projections within each event while preserving all viewer callbacks and distinct-output checks. Add focused native test selections, reproducible replay profiles and bounded database-stage diagnostics. [Results and remaining gates](qa/implementation/multi-game/m04f/status.md). No rule, policy, schema, UI, operation deadline or default-backend change.

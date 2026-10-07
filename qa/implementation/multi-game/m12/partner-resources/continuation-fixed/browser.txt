@@ -1,0 +1,15 @@
+{"databaseStartup":[{"stage":"startup.dial","startedAt":"2026-10-07T04:41:00.2780435Z","elapsedMs":3.1493,"startRemainingMs":4999,"endRemainingMs":4996,"contextClass":"ok","class":"ok"},{"stage":"startup.connect","startedAt":"2026-10-07T04:41:00.2775329Z","elapsedMs":67.0764,"startRemainingMs":-1,"endRemainingMs":-1,"contextClass":"ok","class":"ok"},{"stage":"startup.acquire","startedAt":"2026-10-07T04:41:00.2775329Z","elapsedMs":67.0764,"startRemainingMs":5000,"endRemainingMs":4932,"contextClass":"ok","class":"ok"},{"stage":"startup.query","startedAt":"2026-10-07T04:41:00.3446053Z","elapsedMs":0,"startRemainingMs":4932,"endRemainingMs":4932,"contextClass":"ok","class":"ok"}]}
+CardFord Go local API: http://127.0.0.1:32363 (identity=local-test, payments=fixture, provider=off, access=fixture, reasoning=partner-resources)
+Native Go browser origin: http://127.0.0.1:32363
+
+Running 3 tests using 1 worker
+
+(node:34824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 web\e2e\platform-go.spec.ts:71:3 › actual Go spades-partners: full hand, saved advice, review alternative and next hand (1.9m)
+  ok 2 web\e2e\platform-go.spec.ts:204:1 › actual Go account: lost accepted billing reply, same receipt recovery, export and portrait deletion (1.6s)
+  ok 3 web\e2e\platform-go.spec.ts:274:1 › actual Go family: verified local players, private member view and held removal (2.5s)
+
+  3 passed (2.0m)
+{"platformBrowser":"passed","provider":"off","backend":"go","policy":"fixture"}
+Owned test schema dropped after exact child shutdown.

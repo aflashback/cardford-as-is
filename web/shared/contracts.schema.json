@@ -617,7 +617,8 @@
             "code",
             "jev",
             "forced",
-            "fallback"
+            "fallback",
+            "demo"
           ]
         },
         "decisionId": {
@@ -845,17 +846,32 @@
     "CommandStatusView": {
       "title": "CommandStatusView",
       "type": "object",
-      "properties": { "status": { "enum": ["accepted", "unknown"] } },
-      "required": ["status"],
+      "properties": {
+        "status": {
+          "enum": [
+            "accepted",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "status"
+      ],
       "additionalProperties": false
     },
     "IdentityView": {
       "title": "IdentityView",
       "type": "object",
       "properties": {
-        "playerId": { "type": "string", "minLength": 1, "maxLength": 256 }
+        "playerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
       },
-      "required": ["playerId"],
+      "required": [
+        "playerId"
+      ],
       "additionalProperties": false
     },
     "PrepareView": {
@@ -2865,6 +2881,9 @@
         },
         {
           "$ref": "./games/spades.schema.json#/$defs/SpadesActorPacket"
+        },
+        {
+          "$ref": "./games/token.schema.json#/$defs/TokenActorPacket"
         }
       ]
     },
@@ -2876,6 +2895,9 @@
         },
         {
           "$ref": "./games/spades.schema.json#/$defs/SpadesSessionView"
+        },
+        {
+          "$ref": "./games/token.schema.json#/$defs/TokenSessionView"
         }
       ]
     },
@@ -2887,6 +2909,9 @@
         },
         {
           "$ref": "./games/spades.schema.json#/$defs/SpadesAnalysis"
+        },
+        {
+          "$ref": "./games/token.schema.json#/$defs/TokenAnalysis"
         }
       ]
     },
@@ -2898,6 +2923,9 @@
         },
         {
           "$ref": "./games/spades.schema.json#/$defs/SpadesActorEvent"
+        },
+        {
+          "$ref": "./games/token.schema.json#/$defs/TokenActorEvent"
         }
       ]
     },
@@ -2930,6 +2958,26 @@
               "enum": [
                 "solo",
                 "partners"
+              ]
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TokenTarget",
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "test-token"
+            },
+            "variantId": {
+              "enum": [
+                "individual",
+                "neighbour-teams"
               ]
             }
           },
@@ -3561,6 +3609,17 @@
           "additionalProperties": false
         }
       ]
+    },
+    "RegisteredPresentation": {
+      "title": "RegisteredPresentation",
+      "oneOf": [
+        {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/GameView"
+        },
+        {
+          "$ref": "./games/token.schema.json#/$defs/TokenPresentation"
+        }
+      ]
     }
   },
   "anyOf": [
@@ -3824,6 +3883,9 @@
     },
     {
       "$ref": "#/$defs/AccessDecision"
+    },
+    {
+      "$ref": "#/$defs/RegisteredPresentation"
     }
   ]
 }
