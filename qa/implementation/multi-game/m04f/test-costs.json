@@ -1,0 +1,2974 @@
+{
+  "kind": "historical-test-cost-audit",
+  "baselineCommit": "e0956a5ca635a48c3e6be165f69185a74cf09718",
+  "scope": "Read-only analysis of retained M04E native Windows evidence. No performance experiment, database rerun or new full acceptance.",
+  "interpretation": {
+    "freshFullAndRaceElapsedSeconds": 1532.5925300000004,
+    "all16CapturesElapsedSeconds": 2168.8053157000004,
+    "censoredBrowserManifestElapsedSeconds": 3437.4014828,
+    "packageTimingCaveat": "Package event elapsed times exclude some wrapper/build overhead; top-level test times must not be added to nested subtests. All timings are one recorded local run, not production latency or quality evidence.",
+    "decision": "Keep full gates for frozen milestones. Use cached pure checks, fresh targeted persistence and focused race checks while editing. Stop repeating expensive normal-random browser match completion until history costs and diagnostics change."
+  },
+  "acceptance": [
+    {
+      "name": "go-full",
+      "elapsedMs": 364284.0131,
+      "exitCode": 0
+    },
+    {
+      "name": "go-race",
+      "elapsedMs": 1168308.5169000002,
+      "exitCode": 0
+    },
+    {
+      "name": "go-vet",
+      "elapsedMs": 2312.2740000000003,
+      "exitCode": 0
+    },
+    {
+      "name": "go-contracts",
+      "elapsedMs": 1414.4572,
+      "exitCode": 0
+    },
+    {
+      "name": "public-contracts",
+      "elapsedMs": 3068.7218,
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "elapsedMs": 8359.9559,
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "elapsedMs": 10489.8757,
+      "exitCode": 0
+    },
+    {
+      "name": "go-build",
+      "elapsedMs": 2451.522,
+      "exitCode": 0
+    },
+    {
+      "name": "fixture-build",
+      "elapsedMs": 1873.0025999999998,
+      "exitCode": 0
+    },
+    {
+      "name": "browser-smoke",
+      "elapsedMs": 416643.85020000004,
+      "exitCode": 0
+    },
+    {
+      "name": "browser-terminal",
+      "elapsedMs": 56994.4589,
+      "exitCode": 0
+    },
+    {
+      "name": "browser-configured",
+      "elapsedMs": 4768.0559,
+      "exitCode": 0
+    },
+    {
+      "name": "frontend-tests",
+      "elapsedMs": 1094.2254,
+      "exitCode": 0
+    },
+    {
+      "name": "boundary-check",
+      "elapsedMs": 1231.1811,
+      "exitCode": 0
+    },
+    {
+      "name": "edge-check",
+      "elapsedMs": 1181.8851,
+      "exitCode": 0
+    },
+    {
+      "name": "node-reference",
+      "elapsedMs": 124329.31989999999,
+      "exitCode": 0
+    }
+  ],
+  "captures": {
+    "go-full": {
+      "manifest": "qa/implementation/multi-game/m04e/go-full.json",
+      "output": "qa/implementation/multi-game/m04e/go-full-native.jsonl",
+      "outputSHA256": "64bafbf04b777521bc23ed2b545b27b5b4b945d9981d851fb5ea23d873984a47",
+      "sourceSHA256": "c3523da0c0b222ea011073024aab5b811bb9031e17034068f66b061d08dc31ea",
+      "command": "node scripts/windows-env.mjs go test -p=1 ./server/... -count=1 -json",
+      "startedAt": "2026-10-07T01:34:07.018Z",
+      "elapsedMs": 364284.0131,
+      "packageElapsedSumSeconds": 349.23400000000004,
+      "packages": [
+        {
+          "package": "cardford/server/internal/records",
+          "elapsedSeconds": 213.098,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "elapsedSeconds": 64.423,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "elapsedSeconds": 51.609,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "elapsedSeconds": 14.436,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "elapsedSeconds": 1.1,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "elapsedSeconds": 0.973,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "elapsedSeconds": 0.572,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "elapsedSeconds": 0.355,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "elapsedSeconds": 0.343,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "elapsedSeconds": 0.289,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "elapsedSeconds": 0.279,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "elapsedSeconds": 0.272,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/cmd/cardford",
+          "elapsedSeconds": 0.267,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "elapsedSeconds": 0.254,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "elapsedSeconds": 0.243,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/coaching",
+          "elapsedSeconds": 0.242,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/reasoning",
+          "elapsedSeconds": 0.241,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/coaching",
+          "elapsedSeconds": 0.238,
+          "status": "pass"
+        }
+      ],
+      "topLevelTests": [
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreReplayChanceCheckpointsAndHandGrowth",
+          "elapsedSeconds": 108.9,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestLocalServiceThreeModesAndReceiptRecovery",
+          "elapsedSeconds": 27.12,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04ETerminalFixtureBuilder",
+          "elapsedSeconds": 26.91,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BOriginalPoliciesAndAdvice",
+          "elapsedSeconds": 22.56,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BRegisteredSessionParity",
+          "elapsedSeconds": 11.53,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPreviousHandUnlockIsIndependentOfCurrentHand",
+          "elapsedSeconds": 11.15,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceDisabledOfferCannotAdmitNextUnitAfterRestart",
+          "elapsedSeconds": 10.81,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestOriginalCorpus",
+          "elapsedSeconds": 9.14,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordLongHistoryGrowth",
+          "elapsedSeconds": 9.06,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CCompleteOriginalPreparationAndV2Lifecycle",
+          "elapsedSeconds": 8.17,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSnapshotFrozenCorpusAndImmutableBranches",
+          "elapsedSeconds": 7.85,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04HeartsCorpus",
+          "elapsedSeconds": 7.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestFrozenCorpus",
+          "elapsedSeconds": 6.16,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceCoachRemainsIndependentAfterPlayExpires",
+          "elapsedSeconds": 6.14,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsProgressionCompactReopenAndReplay",
+          "elapsedSeconds": 5.66,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkAdmissionFences",
+          "elapsedSeconds": 3.68,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03ExpiredIssuedWorkCannotAcceptNewCommand",
+          "elapsedSeconds": 2.98,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreCommandCapReservesIndependentAnchorBudget",
+          "elapsedSeconds": 2.48,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkPlayOnlyBaselineAndToolFence",
+          "elapsedSeconds": 2.39,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceConfiguredTrialUnlockSeparateGrantAndRestart",
+          "elapsedSeconds": 2.19,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04StoreHeartsReceiptsAdviceAndNextHandReopen",
+          "elapsedSeconds": 2.1,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03CanonicalMigrationCrossRuntimeLedger",
+          "elapsedSeconds": 2.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EReviewOriginalAdviceLevelsTrialIsolationAndRestart",
+          "elapsedSeconds": 2.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreLockAndPoolWaitsAreBounded",
+          "elapsedSeconds": 1.91,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestLocalServiceAdviceControlDeletionAndRestart",
+          "elapsedSeconds": 1.86,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreExpiredAdmittedUnitFinishesButCannotDrawNextHand",
+          "elapsedSeconds": 1.66,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CancellationStageAndPoolRecovery",
+          "elapsedSeconds": 1.47,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03HistoricalReaderPreservesOriginalPreparedAdvice",
+          "elapsedSeconds": 1.42,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreReadableCapsRejectBeforePublication",
+          "elapsedSeconds": 1.27,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordReplayFrozenOriginalCorpus",
+          "elapsedSeconds": 1.26,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreRestartConcurrentAcceptanceAndReconciliation",
+          "elapsedSeconds": 1.25,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPlatformCatalogPresentationAndRecovery",
+          "elapsedSeconds": 1.2,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreRollsBackEveryAcceptedWriteOnReceiptFailure",
+          "elapsedSeconds": 1.19,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredWorkerRequiresUnlockAndSecurityRevocation",
+          "elapsedSeconds": 1.1,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreConcurrentGameReplacementRetainsHistory",
+          "elapsedSeconds": 1.07,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkFiniteExpiryRequeueAndCancel",
+          "elapsedSeconds": 1.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformFamilyCoverageHeldSeatsAndPayerErasure",
+          "elapsedSeconds": 1.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformFixtureQuotaUsesOriginalLifetimeGrant",
+          "elapsedSeconds": 0.99,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredLastUnitCannotResetThroughNewSession",
+          "elapsedSeconds": 0.97,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EStatsIgnoreUnrelatedBotRecordBytes",
+          "elapsedSeconds": 0.96,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreMalformedAndSubstitutedOriginsFailClosed",
+          "elapsedSeconds": 0.96,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04LocalIdentityBootstrapControlReceiptAndErasure",
+          "elapsedSeconds": 0.95,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04CCompletePreparationOriginalOracle",
+          "elapsedSeconds": 0.93,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04AdviceDeliveryExposureAndFinalAuthentication",
+          "elapsedSeconds": 0.93,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredIdentityNoFixtureAndAtomicInvalidTerms",
+          "elapsedSeconds": 0.91,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredMigrationRetainsLegacyOriginalReservation",
+          "elapsedSeconds": 0.91,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformPreferencesReceiptsAndConfiguredIsolation",
+          "elapsedSeconds": 0.91,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkTwoInstancesReclaimAndImmutableReceipt",
+          "elapsedSeconds": 0.9,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreMalformedArchiveAndCheckpointFailClosed",
+          "elapsedSeconds": 0.89,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredUnlockConcurrentRecoveryAndOriginalTerms",
+          "elapsedSeconds": 0.88,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPlatformFamilyNativeIdentityJourney",
+          "elapsedSeconds": 0.88,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredCoachingIndependentOfCoarsePlayPermission",
+          "elapsedSeconds": 0.87,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04RevocationAndLeaseExpiryFencePublication",
+          "elapsedSeconds": 0.87,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceLaunchEmptyAndModeFence",
+          "elapsedSeconds": 0.87,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03ReviewAlternativeIndependentOriginalAndFutureExposure",
+          "elapsedSeconds": 0.86,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03NaturalExpiryOnlyFinishesRecordedUnit",
+          "elapsedSeconds": 0.83,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EHelpPriorReceiptCannotRaceSourceRevocation",
+          "elapsedSeconds": 0.83,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03AdmittedUnitChargeRemainsInOriginalPeriod",
+          "elapsedSeconds": 0.82,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03AllowanceAtomicCommandStableAcrossGrantPolicy",
+          "elapsedSeconds": 0.8,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformTrialDurableRetryAndExpiryRead",
+          "elapsedSeconds": 0.8,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredFreePolicyUpdatesPreserveTermsAndRevocation",
+          "elapsedSeconds": 0.79,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredZeroQuotaAndToolRejectWithoutMutation",
+          "elapsedSeconds": 0.78,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredCommercialTrialOnceAcrossOffersAndTargets",
+          "elapsedSeconds": 0.78,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredInvalidTrialRollsBackEveryTarget",
+          "elapsedSeconds": 0.78,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03AccessTrialActivationAndPurchasedTerms",
+          "elapsedSeconds": 0.78,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreCPUWorkOwnsNoDatabaseConnection",
+          "elapsedSeconds": 0.77,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegisteredLifecycleRoundChanceAndRejections",
+          "elapsedSeconds": 0.64,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestPostgresCompletePartnersHand",
+          "elapsedSeconds": 0.27,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestPostgresSaveReloadAndRevisionFence",
+          "elapsedSeconds": 0.16,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestOriginalDiagnosticSamples",
+          "elapsedSeconds": 0.14,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BOriginalDiagnosticSamples",
+          "elapsedSeconds": 0.11,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSavedResultCannotChangeScoreOrInventWinner",
+          "elapsedSeconds": 0.11,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BOriginalSourceFingerprints",
+          "elapsedSeconds": 0.1,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly",
+          "elapsedSeconds": 0.1,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegisteredHiddenHandsAndPreparedReviewIsolation",
+          "elapsedSeconds": 0.07,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestActualAjvSchemaFixtures",
+          "elapsedSeconds": 0.06,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportAdmissionAndCancellation",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CFrozenOriginalReaderRejectsChangedViewsAndActions",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03CanonicalMigrationPins",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BRegisteredImportBoundaryParity",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestOriginalM02AFixturesRemainCompatible",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebServesOnlyInstalledAssetsAndDelegatesAPI",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalListenerBoundsSlowHeadersAndServesHealth",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsDecisionAndRejectedCommandBindings",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CStrictBindingsAndHistoricalOriginalBytes",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestCanonicalAndDigestAgainstOriginalTS",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestAuthoredGraphEveryBranch",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionNeutralSealedConformance",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestPlatformHeartsIllustrationPreservesPassKnowledge",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestPlatformIllustrationIsolatedBoundedAndPinned",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRejectsEscapeBrowseCrossOriginAndUnsupportedPaths",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRequiresTrustedBuildAndFreezesItAtStartup",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRejectsSymlinkedBuildAsset",
+          "elapsedSeconds": 0.03,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportAuthOriginAndStrictInput",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportStalledBodySettles",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestExactTargetAndIndependentPermissions",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BRegisteredNumericUnicodeParity",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestStrictParsing",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestSnapshotOpeningParityAndIsolation",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestCompactPlayedAndNextHandStorage",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestImportRejectsImpossiblePlayedState",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestRejectedTransitionsPreserveSnapshotAndEventCapacity",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestHiddenPermutationDoesNotChangeActorInputs",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestStrictCommandsAndCollectionBoundary",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestStoredCorruptionDoesNotPublish",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordDecisionBindingsAndOriginalBytes",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CStrictCompactArchiveAndOperationBoundary",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegistryDocumentMetadataAndStrictImport",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/cmd/cardford",
+          "test": "TestStartupDatabaseDiagnosticsNeverEchoDriverData",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestExpiryRequiresActualRecordedUnitAndRevocationWins",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestSingleWinningAllowanceDoesNotStackAndCountsReservations",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestPurchasedTermsAndBucketsSurviveOfferEdits",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestDisabledFreeOfferAndPinnedUnlock",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestReadDeliveredOwnedResultIsIndependentOfGrant",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestSavedResultPreservesExpiryButFencesOriginalGrantRevocation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestInstalledResolverOwnsItsPolicySnapshot",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestOfferEditsCannotResetBucketsOrCalendars",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestFreeTrialScopeEditsApplyToFutureAdmissions",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestConfigurationMatchesDurableIssuanceBounds",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestRejectCorruptAuthoritativeContext",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestStrictConfigurationAndSeparateDefaults",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestForcedEnvelopeAndNoDecisionIgnoreSuppliedAnalysis",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestSuppliedAnalysisRejectsWrongActionAndUnsupportedPolicies",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestProjectLegacyLevelsAndNilBid",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestProjectVersionedAbstentionAndCopies",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestGeneratedEnvelopeAndOpaqueUnion",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestNoExternalResourceLoading",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestRandomAndNumericAgainstOriginalTS",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestNullEmptyAndRequiredArrays",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestLocalServiceClosedContracts",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestRejectUntrustedDemoRequests",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestChoicesAreScopedToTheCurrentNode",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestReturnedFramesCannotMutateInstalledContent",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestAnonymousRequestsAreRepeatableAndIndependent",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestReplayStreamsFramesAndRetainsOnlyFinal",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestCommandBudgetIsReservedBeforeCreate",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestInputByteBudgetRejectsBeforeModuleWork",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestStateBudgetAtInitialAndEveryCheckpoint",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestFrameBudgetRejectsBeforeVisitor",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestCancellationBeforeAdmissionAndAfterTransition",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestCancellationBetweenSeatProjections",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestAdmissionHasTwoSlotsAndNoQueue",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestVisitorFailureReleasesAdmission",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestRegistryAndLimitsFailClosed",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionStrictJSONNumberAndShapeSemantics",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionProviderCandidateBudget",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionAnalysisSemanticGuards",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeReplaySingleFrameEncodingAndCounts",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeReplayBoundsAndCancellation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeReplayCallbackCannotMutateSnapshot",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeCheckpointStateAndProjectionBudgets",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeCancellationBetweenProjectionsAndAdmissionRelease",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestFirstPlayMovesCardAndPreservesSnapshot",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestOpeningBoundaries",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestUTF16IdentityBoundary",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestNativeSessionImportRetainsTSV2SemanticsAndV1Reader",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestHeartsSessionTypedObservationDetachesPolicyData",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestSelectedPlayBindsActorAndCandidate",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestOriginalHeartsLegalExceptions",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestConcealedSwapLeavesPlayerProjectionUnchanged",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/coaching",
+          "test": "TestOriginalHeartsPassAndFollowCue",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/reasoning",
+          "test": "TestOriginalHeartsSelectionAndStableTies",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/reasoning",
+          "test": "TestForcedAndNoDecision",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSpadesNativeUnicodeImportAndFrozenV1Length",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSpadesSessionTypedObservationDetachesPolicyData",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSnapshotImportsAndOutputsCannotMutatePrivateState",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSnapshotHiddenPermutationKeepsProjectionEqual",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestNilBagsAndContractCredit",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestStrictPrivateStateRejections",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestFollowSuitAndUnbrokenSpades",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSavedHistoryCannotRenounceDespiteCardConservation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestStorageSnapshotSeparatesEvents",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/coaching",
+          "test": "TestOriginalCuePrecedenceAndReasonPriority",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/coaching",
+          "test": "TestReasonTextUsesUTF16BudgetAndDistinctAvailableReasons",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestDoubleNilExactTrickConsequenceAndOrderedTrace",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestForcedMoveStillHasFullOriginalTacticalReasons",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestContextualBidRejectsImpossibleNilAndPreservesLimitations",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestNoDecisionAndWrongGameFailClosed",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalConfigurationRejectsHostedOrImplicitModes",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportMutationValidationAndCookie",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportOutputAndErrorAllowlist",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportExpiredOrDeletedCookieCanRestart",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestStrictRequestAndCancellation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestAdmissionNoQueue",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestRejectLiveDatabase",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestStoredIdentityBinding",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestRequestUsesOneStrictSnapshotImport",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestCanceledStalledBodyReleasesAdmission",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestM04COriginalArchiveValidationCancellation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestPlatformSamplerMatchesPreservedTypeScriptVectors",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestPlatformSamplerRespectsOriginalActorAndConservesCards",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestObservationBoundaryRejectsMalformedShapesAndKnowledge",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestObservationNumericSpellingsAndDetachedImport",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestKnowledgeNeverInventsOwnershipFromIncompleteHistory",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordClosedUntrustedEnvelope",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordArchiveAndInvalidStateFailClosed",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordExactPolicyModuleAndReadOnlyReaders",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordOpeningAnchorBindsConfigChanceAndCheckpoint",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordSupportedOriginalLegacyStateBytes",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordCommandDigestBindsEntireIntent",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordDecisionCommandAndWindowBinding",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsSealedOpeningRestoresKnownHoldings",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordCompactEventPlaceholderRequiresArray",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04LocalActivationRejectsSharedOrRemoteConfiguration",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformBillingScheduleAndRenewal",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04ETerminalFixtureInstall",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestPlatformTrialBindingRequiresOriginalIDsAndCompletedResult",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestPlatformAssistanceConsumesHelpAtNextChoiceIncludingForced",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CV1NeverImplicitlyRepinned",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHistoricalReaderReplaysWithoutEnablingPlay",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DDemoPublicAndIndependentOfAccounts",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DDemoHTTPNeedsNoIdentityAndNeverSetsCookie",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPlatformFixtureDecisionAuthority",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestSchedulerBoundsDedupAndCancellation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegistryExactCapabilitiesAndPolicySupport",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        }
+      ],
+      "skips": [
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRejectsSymlinkedBuildAsset",
+          "elapsedSeconds": 0.03,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04ETerminalFixtureInstall",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        }
+      ]
+    },
+    "go-race": {
+      "manifest": "qa/implementation/multi-game/m04e/go-race.json",
+      "output": "qa/implementation/multi-game/m04e/go-race-native.jsonl",
+      "outputSHA256": "6ce842512684963592869c2f13ea8ae76df0ff8bbdbc28315a6934ec30deaadc",
+      "sourceSHA256": "c3523da0c0b222ea011073024aab5b811bb9031e17034068f66b061d08dc31ea",
+      "command": "node scripts/windows-env.mjs go test -p=1 ./server/... -race -short -count=1 -json",
+      "startedAt": "2026-10-07T01:40:11.563Z",
+      "elapsedMs": 1168308.5169000002,
+      "packageElapsedSumSeconds": 1085.375,
+      "packages": [
+        {
+          "package": "cardford/server/internal/records",
+          "elapsedSeconds": 344.194,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "elapsedSeconds": 332.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "elapsedSeconds": 278.267,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "elapsedSeconds": 105.195,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "elapsedSeconds": 5.504,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "elapsedSeconds": 3.153,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "elapsedSeconds": 2.384,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "elapsedSeconds": 1.758,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "elapsedSeconds": 1.7189999999999999,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "elapsedSeconds": 1.384,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "elapsedSeconds": 1.329,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "elapsedSeconds": 1.317,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "elapsedSeconds": 1.213,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "elapsedSeconds": 1.212,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/cmd/cardford",
+          "elapsedSeconds": 1.199,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/reasoning",
+          "elapsedSeconds": 1.181,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/coaching",
+          "elapsedSeconds": 1.178,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/coaching",
+          "elapsedSeconds": 1.168,
+          "status": "pass"
+        }
+      ],
+      "topLevelTests": [
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04ETerminalFixtureBuilder",
+          "elapsedSeconds": 169.63,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestLocalServiceThreeModesAndReceiptRecovery",
+          "elapsedSeconds": 139.53,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BOriginalPoliciesAndAdvice",
+          "elapsedSeconds": 137.44,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BRegisteredSessionParity",
+          "elapsedSeconds": 78.41,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestOriginalCorpus",
+          "elapsedSeconds": 61,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSnapshotFrozenCorpusAndImmutableBranches",
+          "elapsedSeconds": 57.39,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPreviousHandUnlockIsIndependentOfCurrentHand",
+          "elapsedSeconds": 53.94,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceDisabledOfferCannotAdmitNextUnitAfterRestart",
+          "elapsedSeconds": 52.48,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CCompleteOriginalPreparationAndV2Lifecycle",
+          "elapsedSeconds": 49.27,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestFrozenCorpus",
+          "elapsedSeconds": 45.62,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04HeartsCorpus",
+          "elapsedSeconds": 45.2,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsProgressionCompactReopenAndReplay",
+          "elapsedSeconds": 35.67,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreCommandCapReservesIndependentAnchorBudget",
+          "elapsedSeconds": 18.81,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceConfiguredTrialUnlockSeparateGrantAndRestart",
+          "elapsedSeconds": 7.9,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceCoachRemainsIndependentAfterPlayExpires",
+          "elapsedSeconds": 7.19,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordReplayFrozenOriginalCorpus",
+          "elapsedSeconds": 7.14,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04CCompletePreparationOriginalOracle",
+          "elapsedSeconds": 6.82,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestLocalServiceAdviceControlDeletionAndRestart",
+          "elapsedSeconds": 6.45,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04StoreHeartsReceiptsAdviceAndNextHandReopen",
+          "elapsedSeconds": 6.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EReviewOriginalAdviceLevelsTrialIsolationAndRestart",
+          "elapsedSeconds": 6.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreExpiredAdmittedUnitFinishesButCannotDrawNextHand",
+          "elapsedSeconds": 4.15,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegisteredLifecycleRoundChanceAndRejections",
+          "elapsedSeconds": 3.84,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkAdmissionFences",
+          "elapsedSeconds": 3.64,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03ExpiredIssuedWorkCannotAcceptNewCommand",
+          "elapsedSeconds": 3.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkPlayOnlyBaselineAndToolFence",
+          "elapsedSeconds": 2.76,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03CanonicalMigrationCrossRuntimeLedger",
+          "elapsedSeconds": 2.33,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreLockAndPoolWaitsAreBounded",
+          "elapsedSeconds": 2.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPlatformCatalogPresentationAndRecovery",
+          "elapsedSeconds": 1.71,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreRestartConcurrentAcceptanceAndReconciliation",
+          "elapsedSeconds": 1.52,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreMalformedArchiveAndCheckpointFailClosed",
+          "elapsedSeconds": 1.49,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CancellationStageAndPoolRecovery",
+          "elapsedSeconds": 1.46,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03ReviewAlternativeIndependentOriginalAndFutureExposure",
+          "elapsedSeconds": 1.41,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkFiniteExpiryRequeueAndCancel",
+          "elapsedSeconds": 1.26,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreRollsBackEveryAcceptedWriteOnReceiptFailure",
+          "elapsedSeconds": 1.25,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EStatsIgnoreUnrelatedBotRecordBytes",
+          "elapsedSeconds": 1.24,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03HistoricalReaderPreservesOriginalPreparedAdvice",
+          "elapsedSeconds": 1.23,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreConcurrentGameReplacementRetainsHistory",
+          "elapsedSeconds": 1.23,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredUnlockConcurrentRecoveryAndOriginalTerms",
+          "elapsedSeconds": 1.21,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04LocalIdentityBootstrapControlReceiptAndErasure",
+          "elapsedSeconds": 1.18,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04RevocationAndLeaseExpiryFencePublication",
+          "elapsedSeconds": 1.16,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestPostgresCompletePartnersHand",
+          "elapsedSeconds": 1.15,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformFixtureQuotaUsesOriginalLifetimeGrant",
+          "elapsedSeconds": 1.06,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformTrialDurableRetryAndExpiryRead",
+          "elapsedSeconds": 1.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03WorkTwoInstancesReclaimAndImmutableReceipt",
+          "elapsedSeconds": 1.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredWorkerRequiresUnlockAndSecurityRevocation",
+          "elapsedSeconds": 1.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreCPUWorkOwnsNoDatabaseConnection",
+          "elapsedSeconds": 1.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredZeroQuotaAndToolRejectWithoutMutation",
+          "elapsedSeconds": 0.98,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03AccessTrialActivationAndPurchasedTerms",
+          "elapsedSeconds": 0.98,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPlatformFamilyNativeIdentityJourney",
+          "elapsedSeconds": 0.97,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04AdviceDeliveryExposureAndFinalAuthentication",
+          "elapsedSeconds": 0.96,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestOriginalDiagnosticSamples",
+          "elapsedSeconds": 0.95,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreReadableCapsRejectBeforePublication",
+          "elapsedSeconds": 0.93,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredLastUnitCannotResetThroughNewSession",
+          "elapsedSeconds": 0.92,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformFamilyCoverageHeldSeatsAndPayerErasure",
+          "elapsedSeconds": 0.91,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03AllowanceAtomicCommandStableAcrossGrantPolicy",
+          "elapsedSeconds": 0.9,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreMalformedAndSubstitutedOriginsFailClosed",
+          "elapsedSeconds": 0.9,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BOriginalDiagnosticSamples",
+          "elapsedSeconds": 0.89,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EHelpPriorReceiptCannotRaceSourceRevocation",
+          "elapsedSeconds": 0.88,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredCommercialTrialOnceAcrossOffersAndTargets",
+          "elapsedSeconds": 0.87,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredMigrationRetainsLegacyOriginalReservation",
+          "elapsedSeconds": 0.87,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredCoachingIndependentOfCoarsePlayPermission",
+          "elapsedSeconds": 0.86,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredFreePolicyUpdatesPreserveTermsAndRevocation",
+          "elapsedSeconds": 0.85,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformPreferencesReceiptsAndConfiguredIsolation",
+          "elapsedSeconds": 0.85,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03AdmittedUnitChargeRemainsInOriginalPeriod",
+          "elapsedSeconds": 0.84,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03NaturalExpiryOnlyFinishesRecordedUnit",
+          "elapsedSeconds": 0.83,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredIdentityNoFixtureAndAtomicInvalidTerms",
+          "elapsedSeconds": 0.79,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04DConfiguredInvalidTrialRollsBackEveryTarget",
+          "elapsedSeconds": 0.78,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DServiceLaunchEmptyAndModeFence",
+          "elapsedSeconds": 0.78,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSavedResultCannotChangeScoreOrInventWinner",
+          "elapsedSeconds": 0.71,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BOriginalSourceFingerprints",
+          "elapsedSeconds": 0.66,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsTerminalHistoryRemainsOriginalAndReadOnly",
+          "elapsedSeconds": 0.61,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegisteredHiddenHandsAndPreparedReviewIsolation",
+          "elapsedSeconds": 0.4,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CFrozenOriginalReaderRejectsChangedViewsAndActions",
+          "elapsedSeconds": 0.31,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BRegisteredImportBoundaryParity",
+          "elapsedSeconds": 0.27,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsDecisionAndRejectedCommandBindings",
+          "elapsedSeconds": 0.27,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CStrictBindingsAndHistoricalOriginalBytes",
+          "elapsedSeconds": 0.27,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestActualAjvSchemaFixtures",
+          "elapsedSeconds": 0.23,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestOriginalM02AFixturesRemainCompatible",
+          "elapsedSeconds": 0.19,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestRejectedTransitionsPreserveSnapshotAndEventCapacity",
+          "elapsedSeconds": 0.18,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestPostgresSaveReloadAndRevisionFence",
+          "elapsedSeconds": 0.18,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestAuthoredGraphEveryBranch",
+          "elapsedSeconds": 0.14,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestPlatformIllustrationIsolatedBoundedAndPinned",
+          "elapsedSeconds": 0.14,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestExactTargetAndIndependentPermissions",
+          "elapsedSeconds": 0.13,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/compatibility",
+          "test": "TestM04BRegisteredNumericUnicodeParity",
+          "elapsedSeconds": 0.13,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestCanonicalAndDigestAgainstOriginalTS",
+          "elapsedSeconds": 0.13,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionNeutralSealedConformance",
+          "elapsedSeconds": 0.13,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestPlatformHeartsIllustrationPreservesPassKnowledge",
+          "elapsedSeconds": 0.13,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportAuthOriginAndStrictInput",
+          "elapsedSeconds": 0.12,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestCompactPlayedAndNextHandStorage",
+          "elapsedSeconds": 0.08,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestSnapshotOpeningParityAndIsolation",
+          "elapsedSeconds": 0.07,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestStoredCorruptionDoesNotPublish",
+          "elapsedSeconds": 0.07,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestHiddenPermutationDoesNotChangeActorInputs",
+          "elapsedSeconds": 0.06,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestImportRejectsImpossiblePlayedState",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportAdmissionAndCancellation",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CStrictCompactArchiveAndOperationBoundary",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03CanonicalMigrationPins",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegistryDocumentMetadataAndStrictImport",
+          "elapsedSeconds": 0.05,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestStrictParsing",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestStrictCommandsAndCollectionBoundary",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebServesOnlyInstalledAssetsAndDelegatesAPI",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRejectsEscapeBrowseCrossOriginAndUnsupportedPaths",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRequiresTrustedBuildAndFreezesItAtStartup",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRejectsSymlinkedBuildAsset",
+          "elapsedSeconds": 0.04,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalListenerBoundsSlowHeadersAndServesHealth",
+          "elapsedSeconds": 0.04,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportStalledBodySettles",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestStoredIdentityBinding",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordDecisionBindingsAndOriginalBytes",
+          "elapsedSeconds": 0.03,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestConfigurationMatchesDurableIssuanceBounds",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestOpeningBoundaries",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestStrictPrivateStateRejections",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSavedHistoryCannotRenounceDespiteCardConservation",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestStrictRequestAndCancellation",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestAdmissionNoQueue",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestRequestUsesOneStrictSnapshotImport",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestCanceledStalledBodyReleasesAdmission",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestPlatformSamplerMatchesPreservedTypeScriptVectors",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestObservationBoundaryRejectsMalformedShapesAndKnowledge",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordClosedUntrustedEnvelope",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordExactPolicyModuleAndReadOnlyReaders",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHeartsSealedOpeningRestoresKnownHoldings",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordCompactEventPlaceholderRequiresArray",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordHistoricalReaderReplaysWithoutEnablingPlay",
+          "elapsedSeconds": 0.02,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestExpiryRequiresActualRecordedUnitAndRevocationWins",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestOfferEditsCannotResetBucketsOrCalendars",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestFreeTrialScopeEditsApplyToFutureAdmissions",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestStrictConfigurationAndSeparateDefaults",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestRandomAndNumericAgainstOriginalTS",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestRejectUntrustedDemoRequests",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestNativeSessionImportRetainsTSV2SemanticsAndV1Reader",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSpadesNativeUnicodeImportAndFrozenV1Length",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordArchiveAndInvalidStateFailClosed",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordOpeningAnchorBindsConfigChanceAndCheckpoint",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordSupportedOriginalLegacyStateBytes",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordDecisionCommandAndWindowBinding",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04CV1NeverImplicitlyRepinned",
+          "elapsedSeconds": 0.01,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/cmd/cardford",
+          "test": "TestStartupDatabaseDiagnosticsNeverEchoDriverData",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestSingleWinningAllowanceDoesNotStackAndCountsReservations",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestPurchasedTermsAndBucketsSurviveOfferEdits",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestDisabledFreeOfferAndPinnedUnlock",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestReadDeliveredOwnedResultIsIndependentOfGrant",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestSavedResultPreservesExpiryButFencesOriginalGrantRevocation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestInstalledResolverOwnsItsPolicySnapshot",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/access",
+          "test": "TestRejectCorruptAuthoritativeContext",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestForcedEnvelopeAndNoDecisionIgnoreSuppliedAnalysis",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestSuppliedAnalysisRejectsWrongActionAndUnsupportedPolicies",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestProjectLegacyLevelsAndNilBid",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/coaching",
+          "test": "TestProjectVersionedAbstentionAndCopies",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestGeneratedEnvelopeAndOpaqueUnion",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestNoExternalResourceLoading",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestNullEmptyAndRequiredArrays",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/contracts",
+          "test": "TestLocalServiceClosedContracts",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestChoicesAreScopedToTheCurrentNode",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestReturnedFramesCannotMutateInstalledContent",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/demo",
+          "test": "TestAnonymousRequestsAreRepeatableAndIndependent",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestReplayStreamsFramesAndRetainsOnlyFinal",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestCommandBudgetIsReservedBeforeCreate",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestInputByteBudgetRejectsBeforeModuleWork",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestStateBudgetAtInitialAndEveryCheckpoint",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestFrameBudgetRejectsBeforeVisitor",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestCancellationBeforeAdmissionAndAfterTransition",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestCancellationBetweenSeatProjections",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestAdmissionHasTwoSlotsAndNoQueue",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestVisitorFailureReleasesAdmission",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestRegistryAndLimitsFailClosed",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionStrictJSONNumberAndShapeSemantics",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionProviderCandidateBudget",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestSessionAnalysisSemanticGuards",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeReplaySingleFrameEncodingAndCounts",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeReplayBoundsAndCancellation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeReplayCallbackCannotMutateSnapshot",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeCheckpointStateAndProjectionBudgets",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/gamekernel",
+          "test": "TestNativeCancellationBetweenProjectionsAndAdmissionRelease",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestFirstPlayMovesCardAndPreservesSnapshot",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestUTF16IdentityBoundary",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestHeartsSessionTypedObservationDetachesPolicyData",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestSelectedPlayBindsActorAndCandidate",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestOriginalHeartsLegalExceptions",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts",
+          "test": "TestConcealedSwapLeavesPlayerProjectionUnchanged",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/coaching",
+          "test": "TestOriginalHeartsPassAndFollowCue",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/reasoning",
+          "test": "TestOriginalHeartsSelectionAndStableTies",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/hearts/reasoning",
+          "test": "TestForcedAndNoDecision",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSpadesSessionTypedObservationDetachesPolicyData",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSnapshotImportsAndOutputsCannotMutatePrivateState",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestSnapshotHiddenPermutationKeepsProjectionEqual",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestNilBagsAndContractCredit",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestFollowSuitAndUnbrokenSpades",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades",
+          "test": "TestStorageSnapshotSeparatesEvents",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/coaching",
+          "test": "TestOriginalCuePrecedenceAndReasonPriority",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/coaching",
+          "test": "TestReasonTextUsesUTF16BudgetAndDistinctAvailableReasons",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestDoubleNilExactTrickConsequenceAndOrderedTrace",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestForcedMoveStillHasFullOriginalTacticalReasons",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestContextualBidRejectsImpossibleNilAndPreservesLimitations",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/games/spades/reasoning",
+          "test": "TestNoDecisionAndWrongGameFailClosed",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalConfigurationRejectsHostedOrImplicitModes",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportMutationValidationAndCookie",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportOutputAndErrorAllowlist",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestLocalTransportExpiredOrDeletedCookieCanRestart",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestRejectLiveDatabase",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestM04COriginalArchiveValidationCancellation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestPlatformSamplerRespectsOriginalActorAndConservesCards",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestObservationNumericSpellingsAndDetachedImport",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/legacydecision",
+          "test": "TestKnowledgeNeverInventsOwnershipFromIncompleteHistory",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordLongHistoryGrowth",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordCommandDigestBindsEntireIntent",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04LocalActivationRejectsSharedOrRemoteConfiguration",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04EPlatformBillingScheduleAndRenewal",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04ETerminalFixtureInstall",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestPlatformTrialBindingRequiresOriginalIDsAndCompletedResult",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestPlatformAssistanceConsumesHelpAtNextChoiceIncludingForced",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreReplayChanceCheckpointsAndHandGrowth",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DDemoPublicAndIndependentOfAccounts",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04DDemoHTTPNeedsNoIdentityAndNeverSetsCookie",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestM04EPlatformFixtureDecisionAuthority",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/service",
+          "test": "TestSchedulerBoundsDedupAndCancellation",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        },
+        {
+          "package": "cardford/server/internal/sessions",
+          "test": "TestRegistryExactCapabilitiesAndPolicySupport",
+          "elapsedSeconds": 0,
+          "status": "pass"
+        }
+      ],
+      "skips": [
+        {
+          "package": "cardford/server/internal/http",
+          "test": "TestDemoWebRejectsSymlinkedBuildAsset",
+          "elapsedSeconds": 0.04,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestRecordLongHistoryGrowth",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM04ETerminalFixtureInstall",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        },
+        {
+          "package": "cardford/server/internal/records",
+          "test": "TestM03StoreReplayChanceCheckpointsAndHandGrowth",
+          "elapsedSeconds": 0,
+          "status": "skip"
+        }
+      ]
+    }
+  },
+  "browser": {
+    "browser-smoke": {
+      "manifest": "qa/implementation/multi-game/m04e/browser-smoke.json",
+      "output": "qa/implementation/multi-game/m04e/browser-smoke-native.txt",
+      "outputSHA256": "e5562a24748a1a5cd01e57f5c61ae4af181f98025d9c3008124562ac3b56726d",
+      "elapsedMs": 416643.85020000004,
+      "exitCode": 0,
+      "sourceSHA256": "c3523da0c0b222ea011073024aab5b811bb9031e17034068f66b061d08dc31ea"
+    },
+    "browser-terminal": {
+      "manifest": "qa/implementation/multi-game/m04e/browser-terminal.json",
+      "output": "qa/implementation/multi-game/m04e/browser-terminal-native.txt",
+      "outputSHA256": "28d76cbec3265d60022d04cfad1fe2c367920953013f13fd736db72ce5dde035",
+      "elapsedMs": 56994.4589,
+      "exitCode": 0,
+      "sourceSHA256": "c3523da0c0b222ea011073024aab5b811bb9031e17034068f66b061d08dc31ea"
+    },
+    "browser-configured": {
+      "manifest": "qa/implementation/multi-game/m04e/browser-configured.json",
+      "output": "qa/implementation/multi-game/m04e/browser-configured-native.txt",
+      "outputSHA256": "04bfe41f8913337afc0fef83ee5e4080bb32b129cd3afc9abdf5aecea494790b",
+      "elapsedMs": 4768.0559,
+      "exitCode": 0,
+      "sourceSHA256": "c3523da0c0b222ea011073024aab5b811bb9031e17034068f66b061d08dc31ea"
+    },
+    "browser-terminal-first-candidate-bound": {
+      "manifest": "qa/implementation/multi-game/m04e/browser-terminal-first-candidate-bound.json",
+      "output": "qa/implementation/multi-game/m04e/browser-terminal-first-candidate-bound.txt",
+      "outputSHA256": "f97b8f212f4b10244cf5258cb12067470105f28371b4f8f728b7e26e1910cda3",
+      "elapsedMs": 1600201.9565,
+      "exitCode": 1,
+      "sourceSHA256": "5a92256666e39ba657365a2247060906eabcc72d31dace3db36976d34c9d8d1e"
+    },
+    "browser-terminal-coached-bound": {
+      "manifest": "qa/implementation/multi-game/m04e/browser-terminal-coached-bound.json",
+      "output": "qa/implementation/multi-game/m04e/browser-terminal-coached-bound.txt",
+      "outputSHA256": "262a14b2b6f1c22400da5df9889adb48c7384dd99f7caeead5840ca6adf6680b",
+      "elapsedMs": 1837199.5262999998,
+      "exitCode": 1,
+      "sourceSHA256": "2f74c052dae4ccecf85cad1bc11baf2574769ab52aa423a456f2347ac1397906"
+    }
+  },
+  "runnerValidation": {
+    "status": "Syntax and every named lane dry-run checked against current declared test names; no database or complete suite executed by this audit.",
+    "commands": [
+      "node --check scripts/m04-focused-checks.mjs",
+      "node scripts/m04-focused-checks.mjs --list",
+      "node scripts/m04-focused-checks.mjs <each lane> --dry-run"
+    ]
+  }
+}

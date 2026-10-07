@@ -1,0 +1,49 @@
+{
+  "observedAt": "2026-10-07T02:57:49.9734961Z",
+  "head": "e0956a5ca635a48c3e6be165f69185a74cf09718",
+  "scope": "BoundSession per-event exact public-byte validation reuse; all viewer callbacks and distinct schema/pin validation retained; no global cache",
+  "sources": [
+    {
+      "path": "server/internal/gamekernel/session.go",
+      "sha256": "eb259046ebe4345e633d458a9d856387ca467f363ec4f07762915a60b55a121e"
+    },
+    {
+      "path": "server/internal/gamekernel/session_event_test.go",
+      "sha256": "2cca396203449ba3d232586ba9f05926945ca21b1b73e2705c63bbfcbd50422e"
+    },
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "b7f7d5e91aaa191b41093895d07127ecaa7cfc5213e4dd319a4e43a2bbfcfb68"
+    },
+    {
+      "path": "server/internal/contracts/schema.generated.json",
+      "sha256": "1d1eaa18158429539273c5e1ae7b9586fab14d84f71b2c2a19a7f9fcbf87d444"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node scripts/windows-env.mjs go test ./server/internal/gamekernel -run '^TestSession' -count=1 -v",
+      "output": "event-projection-regressions.txt",
+      "sha256": "ab68de975b42a51942ce03d73eb0a886bed29eb3bf13ff158fa2e703eacc8ace",
+      "result": "passed, seven named tests plus seven subtests"
+    },
+    {
+      "command": "node scripts/windows-env.mjs go test -race ./server/internal/gamekernel -run '^TestSessionEventProjection' -count=1 -v",
+      "output": "event-projection-race.txt",
+      "sha256": "21aa4079182fd4290bdd63a324ede8db5750396179a32d246ee5e747f83259cd",
+      "result": "passed, three named tests plus seven subtests"
+    }
+  ]
+}

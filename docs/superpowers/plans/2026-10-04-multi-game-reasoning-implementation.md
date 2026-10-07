@@ -1,5 +1,7 @@
 # Multi-game Bots and Coaching Implementation Plan
 
+**M04F update, 6 October 2026:** [history/resource work](../../../planning/implementation/multi-game/m04f-execution.md) has started. The [first measured slice](../../../qa/implementation/multi-game/m04f/status.md) supplies focused tests, two integrity-preserving allocation/validation improvements and a bounded native database probe. Full prepared-service profiling, normal Spades matches and the earlier database cause remain open before M04/default activation; full acceptance was not rerun for this narrow iteration.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Make the real application support game-owned rules and information-faithful reasoning, preserve current play, and provide maintainable cases/evaluation for Spades, standard Tarneeb Partners and Jawaker Trix Solo/Complex Partners.

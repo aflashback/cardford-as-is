@@ -1,0 +1,26 @@
+File: m04f-records-before.test.exe
+Build ID: C:\Users\AliA\AppData\Local\Temp\go-build330129100\b001\records.test.exe2026-10-06 22:51:30.3477264 -0400 EDT
+Type: alloc_objects
+Time: 2026-10-06 22:51:38 EDT
+Showing nodes accounting for 71249691, 91.79% of 77625854 total
+Dropped 185 nodes (cum <= 388129)
+Showing top 18 nodes out of 115
+      flat  flat%   sum%        cum   cum%
+  14385465 18.53% 18.53%   20676962 26.64%  encoding/json.(*scanner).error (inline)
+  10215516 13.16% 31.69%   35106360 45.23%  encoding/json.(*Decoder).Token
+   6531869  8.41% 40.11%    6531869  8.41%  math/big.nat.make (inline)
+   5210175  6.71% 46.82%    5210175  6.71%  github.com/santhosh-tekuri/jsonschema/v6.unevalFrom
+   4784323  6.16% 52.98%    4784323  6.16%  github.com/santhosh-tekuri/jsonschema/v6.(*scope).child (inline)
+   3876305  4.99% 57.98%   36800467 47.41%  cardford/server/internal/contracts.readValue
+   3607234  4.65% 62.62%    4371825  5.63%  encoding/json.(*decodeState).literalStore
+   3368890  4.34% 66.96%    3368890  4.34%  unicode/utf16.Encode
+   3351427  4.32% 71.28%    3351427  4.32%  unicode/utf8.AppendRune (inline)
+   3145746  4.05% 75.33%    6291497  8.10%  encoding/json.quoteChar
+   2650914  3.41% 78.75%   25515452 32.87%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateVal
+   2588742  3.33% 82.08%    2588742  3.33%  strings.NewReader (inline)
+   2024583  2.61% 84.69%   26149723 33.69%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateSelf
+   1823252  2.35% 87.04%    1823252  2.35%  cardford/server/internal/games/spades.cloneState
+   1245196  1.60% 88.64%    1245196  1.60%  reflect.unsafe_New
+    987321  1.27% 89.91%    5389885  6.94%  cardford/server/internal/contracts.appendCanonical
+    813746  1.05% 90.96%     814658  1.05%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).strValidate
+    638987  0.82% 91.79%     638987  0.82%  internal/reflectlite.Swapper

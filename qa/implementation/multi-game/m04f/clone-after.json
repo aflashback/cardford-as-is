@@ -1,0 +1,64 @@
+{
+  "stage": "after",
+  "observedAt": "2026-10-07T02:53:20.3780925Z",
+  "head": "e0956a5ca635a48c3e6be165f69185a74cf09718",
+  "command": "node scripts/windows-env.mjs go test ./server/internal/games/spades -run '^$' -bench '^BenchmarkSpadesSessionReduceHistory$' -benchmem -benchtime=100ms -count=3",
+  "scope": "Legal synthetic Spades Partners history at 1, 10 and 20 completed hands; one direct reducer bid; no policy, prepared decision, service, PostgreSQL or full-match timing",
+  "outputSHA256": "5a0e2227688852eea977e28ac5f0c040440b0a68fb368885f09f2190d1137fea",
+  "sources": [
+    {
+      "path": "server/internal/games/spades/snapshot.go",
+      "sha256": "d25ab5cf44600da07b8aa9ea6fae767d74c28183bf0faec5f263f786e3004356"
+    },
+    {
+      "path": "server/internal/games/spades/session.go",
+      "sha256": "227ebc500ad36fe47262df7b2fbca00670a508aa716e4a053b551c0d44ca6ded"
+    },
+    {
+      "path": "server/internal/games/spades/session_state.go",
+      "sha256": "a05a9439b6c41bf56494b22b160d34ea679cf07bab98d11ca3f757e7d70a0e51"
+    },
+    {
+      "path": "server/internal/games/spades/session_history_test.go",
+      "sha256": "cd1852ca2118065d80fa8741cf41d097e24015e90ff05380dd7215d06d129b87"
+    },
+    {
+      "path": "server/internal/games/spades/engine.go",
+      "sha256": "77c1329eb51cd1e30412739d7346fd117a6c5d9d9badb74a3af8d52200dc3670"
+    },
+    {
+      "path": "server/internal/games/spades/session_observation.go",
+      "sha256": "9e83fac2f0fc4a0606bf65131b1bbba5e9fb5d3fdfd788d4f158002672f227c3"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    },
+    {
+      "path": "server/internal/games/spades/session_transition_test.go",
+      "sha256": "3190f06d853031762d509130d9acd4a4c1b06c4bfa9f45ff840953e888617832"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node scripts/windows-env.mjs go test ./server/internal/games/spades -run '^(TestSpadesSessionTransitionImmutableBranches|TestSpadesSessionTransitionOutputsDetached|TestSpadesSessionRejectedTransitionPreservesHistory|TestSpadesSessionTypedObservationDetachesPolicyData|TestSnapshotFrozenCorpusAndImmutableBranches|TestSnapshotImportsAndOutputsCannotMutatePrivateState)$' -count=1 -v",
+      "output": "clone-regressions.txt",
+      "sha256": "735bc5d97b5ec5cfedd5a6d346e2a8a4329bbd7092e651083ffdf22c9b2e14c2",
+      "result": "passed, six named tests plus two corpus subtests"
+    },
+    {
+      "command": "node scripts/windows-env.mjs go test -race ./server/internal/games/spades -run '^(TestSpadesSessionTransitionImmutableBranches|TestSpadesSessionTransitionOutputsDetached|TestSpadesSessionRejectedTransitionPreservesHistory)$' -count=1 -v",
+      "output": "clone-race.txt",
+      "sha256": "42edd7c695ebf183b49e5e4ac23613e590450033256dc1953301a84fd39b8e49",
+      "result": "passed, three named tests"
+    }
+  ]
+}

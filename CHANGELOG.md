@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-06 M04F first measured slice
+
+Reduce Spades history-copy allocations while retaining deep import isolation. Reuse validation of identical public projections within each event while preserving all viewer callbacks and distinct-output checks. Add focused native test selections, reproducible replay profiles and bounded database-stage diagnostics. [Results and remaining gates](qa/implementation/multi-game/m04f/status.md). No rule, policy, schema, UI, operation deadline or default-backend change.
+
 ## Unreleased — 2026-10-06 M04E
 
 Connect the preserved React table, coaching, review and local accounts to one Go/PostgreSQL backend through additive generated platform contracts. Add original progressive advice and accepted-decision replay, source-bound saved advice and actor-safe possible continuations, preferences, fixture billing/family/export/deletion, and exact recovery across uncertain replies. Forward migration 010 preserves existing records and pins. Fix concurrent hint escalation and saved-delivery revocation/expiry recovery. `npm run start:go` explicitly builds and runs the native Windows app. Default Node/V1 startup remains available while complete normal Spades match evidence, cumulative-history resource work and the earlier PostgreSQL timeout investigation gate full activation. [M04E verification and remaining limits](qa/implementation/multi-game/m04e/status.md) record scoped functional acceptance. No UI redesign, live Jev/payments, hosting or strategy-strength claim.

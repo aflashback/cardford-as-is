@@ -1,5 +1,7 @@
 # Start implementing CardFord
 
+**Continue M04F:** use the [history/resource packet](implementation/multi-game/m04f-execution.md), [current evidence](../qa/implementation/multi-game/m04f/status.md) and [focused test selections](../qa/implementation/multi-game/m04f/test-strategy.md). Two small optimizations and a finite database probe are verified. Full prepared-service profiling, normal Spades matches and the native timeout cause remain open. Earlier M04E acceptance is not fresh full acceptance of these later changes; default activation stays gated.
+
 **Audience:** a coding agent returning without the original conversation. **Product:** B2C Hearts/Spades practice and coaching. **Status:** owner-authorized local implementation now exists. Start with [local run instructions](../LOCAL-README.md) and the actual [packet status/evidence](../qa/implementation/status.md), rather than restarting W00. [CR-IMPL-003](decisions/CR-IMPL-003-local-build.md) records the local build scope and no-pipeline/no-push direction.
 
 The owner wants one simple monorepo, the latest CardFord specification, the existing user experience, in-app subscription management and Stripe payments. Do not restart product ideation or request a visual redesign. The current table and interactions are good enough to build on.

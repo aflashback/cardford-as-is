@@ -1,0 +1,15 @@
+goos: windows
+goarch: amd64
+pkg: cardford/server/internal/records
+cpu: AMD Ryzen 9 5900HX with Radeon Graphics        
+BenchmarkM04FReplay/hands-01-16         	       3	  56822900 ns/op	        69.00 commands/op	27231821 B/op	  735019 allocs/op
+BenchmarkM04FReplay/hands-01-16         	       3	  54498367 ns/op	        69.00 commands/op	27223368 B/op	  735021 allocs/op
+BenchmarkM04FReplay/hands-01-16         	       3	  55042967 ns/op	        69.00 commands/op	27234277 B/op	  735200 allocs/op
+BenchmarkM04FReplay/hands-03-16         	       3	 171689633 ns/op	       211.0 commands/op	85439450 B/op	 2239205 allocs/op
+BenchmarkM04FReplay/hands-03-16         	       3	 172128600 ns/op	       211.0 commands/op	85450829 B/op	 2239306 allocs/op
+BenchmarkM04FReplay/hands-03-16         	       3	 194483567 ns/op	       211.0 commands/op	85420269 B/op	 2239170 allocs/op
+BenchmarkM04FReplay/hands-05-16         	       3	 341611800 ns/op	       353.0 commands/op	145320765 B/op	 3745128 allocs/op
+BenchmarkM04FReplay/hands-05-16         	       3	 307694033 ns/op	       353.0 commands/op	145293554 B/op	 3745039 allocs/op
+BenchmarkM04FReplay/hands-05-16         	       3	 306674567 ns/op	       353.0 commands/op	145316442 B/op	 3745054 allocs/op
+PASS
+ok  	cardford/server/internal/records	7.515s

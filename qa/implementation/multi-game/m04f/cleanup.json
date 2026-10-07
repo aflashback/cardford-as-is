@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-07T03:03:52.1533891Z",
+  "postgres": "stopped",
+  "databaseSnapshot": "database-cleanup.json",
+  "ownedExecutables": [],
+  "listeners": [],
+  "removed": [
+    "C:\\repos\\test-jev\\.local\\m04f-database-probe.exe",
+    "C:\\repos\\test-jev\\.local\\m04f-final-snapshot-output.txt",
+    "C:\\repos\\test-jev\\.local\\m04f-records-after.test.exe",
+    "C:\\repos\\test-jev\\.local\\m04f-records-before.test.exe",
+    "C:\\repos\\test-jev\\.local\\m04f-records-final.test.exe",
+    "C:\\repos\\test-jev\\.local\\m04e-database-diagnostic.json",
+    "C:\\repos\\test-jev\\.local\\m04-focused-checks\\2026-10-07T02-59-15-418Z-history",
+    "C:\\repos\\test-jev\\.local\\m04-focused-checks\\2026-10-07T02-59-26-239Z-parity"
+  ],
+  "retainedProfiles": [
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04f-replay-after.cpu",
+      "bytes": 48064,
+      "sha256": "fff6a6c4a41ab6d3e269b005fd44508ab5706bbe2284a5e4c03cb35990a18896"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04f-replay-after.mem",
+      "bytes": 50349,
+      "sha256": "82d2ebd0bd47a55b922e5f2b619a03e8a131cf69d1a6acca2dab6b0fc467ceb0"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04f-replay-before.cpu",
+      "bytes": 48717,
+      "sha256": "2fcfe03a16b41f46ea20234b60852681ed7e072ee959d4583db6f36f53526376"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04f-replay-before.mem",
+      "bytes": 50281,
+      "sha256": "95874aac18d345255bb66e1b1b3715f334505b1be63e6c39e1c31d15e311d6ec"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04f-replay-final.cpu",
+      "bytes": 45633,
+      "sha256": "057c41cd2f0c5eb9f6cebd4160a4cab3054d66ddb7aa3c903a15b90a23c93b15"
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04f-replay-final.mem",
+      "bytes": 48505,
+      "sha256": "44184b6bc811dde6f353a22ff78224192436ffd3666890fe7129608d6a16fdd1"
+    }
+  ],
+  "priorPrivateM04EArchives": "preserved",
+  "priorToolsCredentialsAndDatabaseData": "preserved",
+  "preexistingClaude": "untouched"
+}

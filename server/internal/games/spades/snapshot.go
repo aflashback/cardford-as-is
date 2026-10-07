@@ -58,6 +58,26 @@ func (s *snapshot) Project(seat int) (gamekernel.Projection, error) {
 	return gamekernel.Projection{Observation: ob, View: v, CandidateIDs: ids}, nil
 }
 func cloneState(s *State) *State {
+	n := cloneStateForTransition(s)
+	for i, e := range n.Events {
+		if e.Seat != nil {
+			n.Events[i].Seat = ptr(*e.Seat)
+		}
+		if e.Card != nil {
+			n.Events[i].Card = ptr(*e.Card)
+		}
+		if e.Bid != nil {
+			n.Events[i].Bid = ptr(*e.Bid)
+		}
+	}
+	return n
+}
+
+// cloneStateForTransition owns every mutable field and a separate event slice.
+// Trusted reducers only append events; existing event values and their pointer
+// fields are immutable. Import/binding uses cloneState to detach those pointers
+// too, while every externally exposed observation or document is encoded/copied.
+func cloneStateForTransition(s *State) *State {
 	n := *s
 	for seat := 0; seat < 4; seat++ {
 		n.Hands[seat] = append([]string{}, s.Hands[seat]...)
@@ -81,19 +101,11 @@ func cloneState(s *State) *State {
 	for i, t := range s.History {
 		n.History[i] = Trick{Plays: append([]Play{}, t.Plays...), Winner: t.Winner}
 	}
-	n.Events = make([]Event, len(s.Events))
-	for i, e := range s.Events {
-		n.Events[i] = e
-		if e.Seat != nil {
-			n.Events[i].Seat = ptr(*e.Seat)
-		}
-		if e.Card != nil {
-			n.Events[i].Card = ptr(*e.Card)
-		}
-		if e.Bid != nil {
-			n.Events[i].Bid = ptr(*e.Bid)
-		}
-	}
+	// One play can emit card-played, trick-resolved and hand-scored. Reserving
+	// their slots avoids copying the entire archive again on the first append;
+	// this is only a capacity hint, and append still grows for any extra events.
+	n.Events = make([]Event, len(s.Events), len(s.Events)+3)
+	copy(n.Events, s.Events)
 	if s.HandResult != nil {
 		r := *s.HandResult
 		if r.Winner != nil {

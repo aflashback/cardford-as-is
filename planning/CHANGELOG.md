@@ -1,5 +1,9 @@
 # Planning changes
 
+## 2026-10-06 — M04F history performance and test cost
+
+The owner requested an explanation of long tests and the next work. [M04F](implementation/multi-game/m04f-execution.md) starts with a retained-evidence audit, focused checks, two measured integrity-preserving optimizations and finite native database diagnostics. [Evidence](../qa/implementation/multi-game/m04f/status.md) separates reducer/replay improvements from complete prepared-service readiness. Preserve old failed/censored captures. Full resource workload, normal Spades matches and the earlier PostgreSQL cause remain activation gates.
+
 ## 2026-10-06 — M04E complete local platform/client integration
 
 The owner authorized M04E. The [execution packet](implementation/multi-game/m04e-execution.md) and [verification report](../qa/implementation/multi-game/m04e/status.md) distinguish the implemented Go/React experience, scoped functional acceptance and full default activation. Document closed platform/account/review contracts, game-owned presentation, original progressive coaching/review, durable actor-safe continuations, account permissions, exact pending recovery and forward migration 010. Add explicit native `start:go` instructions and retain the V1 reference for historical records. Replay-validated reachable terminal fixtures cover the final lifecycle; censored normal Spades matches and source-reviewed cumulative-history costs remain resource gates. The earlier native PostgreSQL timeout cause also remains unresolved; later passing suites cannot close it. M05 reasoning, human evidence, hosting, live identity/payments/providers and native packages keep their separate gates.

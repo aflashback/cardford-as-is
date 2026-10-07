@@ -1,0 +1,67 @@
+{"Time":"2026-10-06T23:00:27.564495-04:00","Action":"start","Package":"cardford/server/internal/records"}
+{"Time":"2026-10-06T23:00:27.7231713-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth"}
+{"Time":"2026-10-06T23:00:27.7231713-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"=== RUN   TestRecordLongHistoryGrowth\n"}
+{"Time":"2026-10-06T23:00:36.8663878-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"    codec_growth_test.go:196: {\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"          \"version\": \"m03-storage-growth-1\",\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"          \"mode\": \"spades-partners\",\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"          \"fixturePolicy\": \"all-bid-13-first-legal; storage fixture only\",\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"          \"elapsedMs\": 8959.1919,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"          \"measurements\": [\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"            {\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"hands\": 1,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"revision\": 69,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"hotBytes\": 2176,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"fullStateBytes\": 9405,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"eventCount\": 84,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"archivePayloadBytes\": 7146,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"checkpointWritesBytes\": 112974,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"eventWritesBytes\": 7146,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"commandWritesBytes\": 16832,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"compactRestoreMs\": 4.0011,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"projectionEqual\": true\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"            },\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"            {\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"hands\": 10,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"revision\": 699,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"hotBytes\": 2182,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"fullStateBytes\": 75306,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"eventCount\": 840,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"archivePayloadBytes\": 72285,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"checkpointWritesBytes\": 1150001,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"eventWritesBytes\": 72285,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"commandWritesBytes\": 174740,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"compactRestoreMs\": 40.4707,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"projectionEqual\": true\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"            },\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"            {\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"hands\": 100,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"revision\": 6999,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"hotBytes\": 2186,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"fullStateBytes\": 741962,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"eventCount\": 8400,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"archivePayloadBytes\": 731377,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"checkpointWritesBytes\": 11563819,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"eventWritesBytes\": 731377,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"commandWritesBytes\": 1766420,\n"}
+{"Time":"2026-10-06T23:00:36.8673901-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"compactRestoreMs\": 348.9488,\n"}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"              \"projectionEqual\": true\n"}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"            }\n"}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"          ]\n"}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"        }\n"}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Output":"--- PASS: TestRecordLongHistoryGrowth (9.14s)\n"}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestRecordLongHistoryGrowth","Elapsed":9.14}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedArchiveAndCheckpointFailClosed"}
+{"Time":"2026-10-06T23:00:36.8679136-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedArchiveAndCheckpointFailClosed","Output":"=== RUN   TestM03StoreMalformedArchiveAndCheckpointFailClosed\n"}
+{"Time":"2026-10-06T23:00:37.7890254-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedArchiveAndCheckpointFailClosed","Output":"--- PASS: TestM03StoreMalformedArchiveAndCheckpointFailClosed (0.92s)\n"}
+{"Time":"2026-10-06T23:00:37.7890254-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedArchiveAndCheckpointFailClosed","Elapsed":0.92}
+{"Time":"2026-10-06T23:00:37.7890254-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestM03HistoricalReaderPreservesOriginalPreparedAdvice"}
+{"Time":"2026-10-06T23:00:37.7890254-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestM03HistoricalReaderPreservesOriginalPreparedAdvice","Output":"=== RUN   TestM03HistoricalReaderPreservesOriginalPreparedAdvice\n"}
+{"Time":"2026-10-06T23:00:38.7408961-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestM03HistoricalReaderPreservesOriginalPreparedAdvice","Output":"--- PASS: TestM03HistoricalReaderPreservesOriginalPreparedAdvice (0.95s)\n"}
+{"Time":"2026-10-06T23:00:38.7408961-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestM03HistoricalReaderPreservesOriginalPreparedAdvice","Elapsed":0.95}
+{"Time":"2026-10-06T23:00:38.7408961-04:00","Action":"run","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedAndSubstitutedOriginsFailClosed"}
+{"Time":"2026-10-06T23:00:38.7408961-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedAndSubstitutedOriginsFailClosed","Output":"=== RUN   TestM03StoreMalformedAndSubstitutedOriginsFailClosed\n"}
+{"Time":"2026-10-06T23:00:39.6427462-04:00","Action":"output","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedAndSubstitutedOriginsFailClosed","Output":"--- PASS: TestM03StoreMalformedAndSubstitutedOriginsFailClosed (0.90s)\n"}
+{"Time":"2026-10-06T23:00:39.6427462-04:00","Action":"pass","Package":"cardford/server/internal/records","Test":"TestM03StoreMalformedAndSubstitutedOriginsFailClosed","Elapsed":0.9}
+{"Time":"2026-10-06T23:00:39.6427462-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"PASS\n"}
+{"Time":"2026-10-06T23:00:39.8615003-04:00","Action":"output","Package":"cardford/server/internal/records","Output":"ok  \tcardford/server/internal/records\t12.297s\n"}
+{"Time":"2026-10-06T23:00:39.8615003-04:00","Action":"pass","Package":"cardford/server/internal/records","Elapsed":12.298}

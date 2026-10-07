@@ -67,7 +67,7 @@ func bindSpadesSession(s *sessionState) (gamekernel.BoundSession, error) {
 	}, s)
 }
 func reduceSession(source *sessionState, op gamekernel.Operation[Action]) (*sessionState, []json.RawMessage, error) {
-	next := cloneSession(source)
+	next := &sessionState{original: cloneStateForTransition(source.original), awaitingDeal: source.awaitingDeal}
 	s := next.original
 	n := spadesSessionNode(source)
 	var err error

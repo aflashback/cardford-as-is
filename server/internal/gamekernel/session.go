@@ -1,6 +1,7 @@
 package gamekernel
 
 import (
+	"bytes"
 	"cardford/server/internal/contracts"
 	"context"
 	"encoding/json"
@@ -426,12 +427,27 @@ func (b *boundSession[S, O, A]) apply(op Operation[A]) (BoundTransition, error) 
 		if _, err = contracts.ParseJSON(e); err != nil {
 			return BoundTransition{}, err
 		}
+		// Games can project the same event to several seats. Reuse validation
+		// only for identical bytes within this event, while still invoking every
+		// viewer callback. Keep copies because callbacks may reuse their buffer.
+		var validated [4]json.RawMessage
+		validatedCount := 0
 		for viewer := 0; viewer < 4; viewer++ {
 			public, err := b.model.ProjectEvent(e, viewer)
 			if err != nil {
 				return BoundTransition{}, err
 			}
 			if public == nil {
+				continue
+			}
+			alreadyValidated := false
+			for _, previous := range validated[:validatedCount] {
+				if bytes.Equal(previous, public) {
+					alreadyValidated = true
+					break
+				}
+			}
+			if alreadyValidated {
 				continue
 			}
 			if err = contracts.Validate("RegisteredActorEvent", public); err != nil {
@@ -450,6 +466,8 @@ func (b *boundSession[S, O, A]) apply(op Operation[A]) (BoundTransition, error) 
 			if p.GameID != pin.GameID || p.VariantID != pin.VariantID || p.PublicSchemaVersion != pin.PublicSchemaVersion || p.EventSchemaVersion != pin.EventSchemaVersion {
 				return BoundTransition{}, fmt.Errorf("projected event pin mismatch")
 			}
+			validated[validatedCount] = append(json.RawMessage(nil), public...)
+			validatedCount++
 		}
 		checked[i] = append(json.RawMessage(nil), e...)
 	}

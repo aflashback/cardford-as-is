@@ -1,5 +1,7 @@
 # M04 — Current-game service integration
 
+**Current continuation: [M04F history/resource work](m04f-execution.md).** Its [first measured slice](../../../qa/implementation/multi-game/m04f/status.md) adds focused verification, two allocation/validation improvements and finite native database diagnostics. Full prepared-service profiling, normal Spades matches and the earlier database cause still gate default activation.
+
 6 October 2026 (Toronto). The owner authorized the next M04 step after M03 and clarified that the target is one **Go + PostgreSQL backend**, with the existing React/TypeScript frontend. Starting commit: `dc0e44a` on `codex/current-game-modules-m02`. Node remains frontend tooling and the temporary original service/reference while the replacement is verified. Use [native Windows](windows-development.md); the Go/Node comparison is closed.
 
 ## First step: complete the original Hearts port

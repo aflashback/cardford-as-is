@@ -1,0 +1,18 @@
+=== RUN   TestSpadesSessionTypedObservationDetachesPolicyData
+--- PASS: TestSpadesSessionTypedObservationDetachesPolicyData (0.00s)
+=== RUN   TestSpadesSessionTransitionImmutableBranches
+--- PASS: TestSpadesSessionTransitionImmutableBranches (0.07s)
+=== RUN   TestSpadesSessionTransitionOutputsDetached
+--- PASS: TestSpadesSessionTransitionOutputsDetached (0.01s)
+=== RUN   TestSpadesSessionRejectedTransitionPreservesHistory
+--- PASS: TestSpadesSessionRejectedTransitionPreservesHistory (0.03s)
+=== RUN   TestSnapshotFrozenCorpusAndImmutableBranches
+=== RUN   TestSnapshotFrozenCorpusAndImmutableBranches/spades-solo
+=== RUN   TestSnapshotFrozenCorpusAndImmutableBranches/spades-partners
+--- PASS: TestSnapshotFrozenCorpusAndImmutableBranches (8.64s)
+    --- PASS: TestSnapshotFrozenCorpusAndImmutableBranches/spades-solo (4.03s)
+    --- PASS: TestSnapshotFrozenCorpusAndImmutableBranches/spades-partners (4.60s)
+=== RUN   TestSnapshotImportsAndOutputsCannotMutatePrivateState
+--- PASS: TestSnapshotImportsAndOutputsCannotMutatePrivateState (0.00s)
+PASS
+ok  	cardford/server/internal/games/spades	8.901s

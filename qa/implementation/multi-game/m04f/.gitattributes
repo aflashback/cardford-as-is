@@ -1,0 +1,3 @@
+# Preserve the exact native console evidence and its recorded hashes.
+*.txt -text -whitespace
+*.jsonl -text -whitespace

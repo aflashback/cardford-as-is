@@ -1,5 +1,7 @@
 # CardFord V1 specifications
 
+**Current work: M04F.** The [history/resource packet](implementation/multi-game/m04f-execution.md) and [first measured slice](../qa/implementation/multi-game/m04f/status.md) record focused tests, two verified allocation/validation improvements and bounded native database diagnostics. Full prepared-service profiling, normal Spades match evidence and the earlier database cause remain open before default activation. M04E below retains its prior frozen-source acceptance.
+
 **CardFord** is the current owner-approved product name. The earlier `trickscoach.com` domain plan is unverified; a CardFord domain has not been chosen. [Naming decision and setup status](brand-and-domain.md).
 
 Implementation target, grounded in the playable [web application](../web/README.md). On 27 September 2026 the owner confirmed the planning baseline with earlier safeguards retained, a simple monorepo, the existing UX, a B2C learning product, in-app subscription management and Stripe payments. [CR-IMPL-001](decisions/CR-IMPL-001-monorepo-and-stripe.md) records that authority and its compatibility effects. Earlier analysis remains supporting research; the original pack is preserved.

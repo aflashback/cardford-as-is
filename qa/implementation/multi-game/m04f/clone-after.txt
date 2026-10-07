@@ -1,0 +1,15 @@
+goos: windows
+goarch: amd64
+pkg: cardford/server/internal/games/spades
+cpu: AMD Ryzen 9 5900HX with Radeon Graphics        
+BenchmarkSpadesSessionReduceHistory/hands-1-16         	   22245	      5136 ns/op	        85.00 events	    9722 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-1-16         	   24340	      5470 ns/op	        85.00 events	    9722 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-1-16         	   15295	      7087 ns/op	        85.00 events	    9721 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-10-16        	    6612	     17478 ns/op	       841.0 events	   61023 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-10-16        	    8154	     17472 ns/op	       841.0 events	   61024 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-10-16        	    6846	     18819 ns/op	       841.0 events	   61024 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-20-16        	    3548	     38410 ns/op	      1681 events	  118514 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-20-16        	    3531	     40365 ns/op	      1681 events	  118512 B/op	      67 allocs/op
+BenchmarkSpadesSessionReduceHistory/hands-20-16        	    3322	     52812 ns/op	      1681 events	  118451 B/op	      67 allocs/op
+PASS
+ok  	cardford/server/internal/games/spades	1.609s

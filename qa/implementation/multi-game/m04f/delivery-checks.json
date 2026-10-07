@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-07T03:09:26.309Z",
+  "scope": "Focused first-slice verification; not complete M04F acceptance",
+  "finalReplaySourceSHA256": "bddadf4392eabbf4bfa822b226fe290c181ca485cb306ce1d510acb71992ddf9",
+  "originalReferenceSources": 251,
+  "sourceOutputAndPrivateCredentialChecks": "passed",
+  "preservedFrom": "e0956a5",
+  "preservedPaths": [
+    "web",
+    "go.mod",
+    "go.sum",
+    "scripts/windows-env.mjs",
+    "scripts/windows-tools.json",
+    "server/internal/contracts",
+    "server/internal/records/codec.go",
+    "server/internal/records/store_history.go",
+    "server/internal/service",
+    "qa/implementation/multi-game/m02",
+    "qa/implementation/multi-game/m02a",
+    "qa/implementation/multi-game/m03",
+    "qa/implementation/multi-game/m04",
+    "qa/implementation/multi-game/m04b",
+    "qa/implementation/multi-game/m04c",
+    "qa/implementation/multi-game/m04d",
+    "qa/implementation/multi-game/m04e",
+    "qa/implementation/multi-game/performance-windows"
+  ],
+  "localMarkdownLinks": 381,
+  "noFullAcceptanceOrNormalMatchSoakRun": true
+}

@@ -1,0 +1,371 @@
+{
+  "scope": "Three repeated native microbenchmark samples per case. Observed medians, no statistical significance or whole-service/capacity claim.",
+  "archiveSHA256": "a217d6a4b7c76e26177ff51b6231a5352ca86671a5fa737c7d220b912828ffd4",
+  "timedReplayBenchmarkSHA256": "86027176b709bff82d648cbc311a9acc6360e982b4df108fa1c17b4077408ba5",
+  "reducer": {
+    "before": [
+      {
+        "hands": 1,
+        "samples": [
+          {
+            "ns": 11165,
+            "bytes": 23445,
+            "allocations": 193
+          },
+          {
+            "ns": 10820,
+            "bytes": 23443,
+            "allocations": 193
+          },
+          {
+            "ns": 11063,
+            "bytes": 23443,
+            "allocations": 193
+          }
+        ],
+        "medianNS": 11063,
+        "medianBytes": 23443,
+        "medianAllocations": 193
+      },
+      {
+        "hands": 10,
+        "samples": [
+          {
+            "ns": 93500,
+            "bytes": 157301,
+            "allocations": 1318
+          },
+          {
+            "ns": 114313,
+            "bytes": 157295,
+            "allocations": 1318
+          },
+          {
+            "ns": 137781,
+            "bytes": 157309,
+            "allocations": 1318
+          }
+        ],
+        "medianNS": 114313,
+        "medianBytes": 157301,
+        "medianAllocations": 1318
+      },
+      {
+        "hands": 20,
+        "samples": [
+          {
+            "ns": 200725,
+            "bytes": 294653,
+            "allocations": 2569
+          },
+          {
+            "ns": 307655,
+            "bytes": 294673,
+            "allocations": 2569
+          },
+          {
+            "ns": 233169,
+            "bytes": 294679,
+            "allocations": 2569
+          }
+        ],
+        "medianNS": 233169,
+        "medianBytes": 294673,
+        "medianAllocations": 2569
+      }
+    ],
+    "after": [
+      {
+        "hands": 1,
+        "samples": [
+          {
+            "ns": 5136,
+            "bytes": 9722,
+            "allocations": 67
+          },
+          {
+            "ns": 5470,
+            "bytes": 9722,
+            "allocations": 67
+          },
+          {
+            "ns": 7087,
+            "bytes": 9721,
+            "allocations": 67
+          }
+        ],
+        "medianNS": 5470,
+        "medianBytes": 9722,
+        "medianAllocations": 67
+      },
+      {
+        "hands": 10,
+        "samples": [
+          {
+            "ns": 17478,
+            "bytes": 61023,
+            "allocations": 67
+          },
+          {
+            "ns": 17472,
+            "bytes": 61024,
+            "allocations": 67
+          },
+          {
+            "ns": 18819,
+            "bytes": 61024,
+            "allocations": 67
+          }
+        ],
+        "medianNS": 17478,
+        "medianBytes": 61024,
+        "medianAllocations": 67
+      },
+      {
+        "hands": 20,
+        "samples": [
+          {
+            "ns": 38410,
+            "bytes": 118514,
+            "allocations": 67
+          },
+          {
+            "ns": 40365,
+            "bytes": 118512,
+            "allocations": 67
+          },
+          {
+            "ns": 52812,
+            "bytes": 118451,
+            "allocations": 67
+          }
+        ],
+        "medianNS": 40365,
+        "medianBytes": 118512,
+        "medianAllocations": 67
+      }
+    ]
+  },
+  "replay": {
+    "before": [
+      {
+        "hands": 1,
+        "samples": [
+          {
+            "ns": 64571767,
+            "bytes": 31158504,
+            "allocations": 826798
+          },
+          {
+            "ns": 66773567,
+            "bytes": 31169560,
+            "allocations": 827073
+          },
+          {
+            "ns": 61618567,
+            "bytes": 31156424,
+            "allocations": 826978
+          }
+        ],
+        "medianNS": 64571767,
+        "medianBytes": 31158504,
+        "medianAllocations": 826978
+      },
+      {
+        "hands": 3,
+        "samples": [
+          {
+            "ns": 190771400,
+            "bytes": 99920250,
+            "allocations": 2538476
+          },
+          {
+            "ns": 205351133,
+            "bytes": 99952437,
+            "allocations": 2538499
+          },
+          {
+            "ns": 212616067,
+            "bytes": 99939840,
+            "allocations": 2538568
+          }
+        ],
+        "medianNS": 205351133,
+        "medianBytes": 99939840,
+        "medianAllocations": 2538499
+      },
+      {
+        "hands": 5,
+        "samples": [
+          {
+            "ns": 389223467,
+            "bytes": 173727104,
+            "allocations": 4287321
+          },
+          {
+            "ns": 366677200,
+            "bytes": 173750282,
+            "allocations": 4287688
+          },
+          {
+            "ns": 348835633,
+            "bytes": 173775514,
+            "allocations": 4287331
+          }
+        ],
+        "medianNS": 366677200,
+        "medianBytes": 173750282,
+        "medianAllocations": 4287331
+      }
+    ],
+    "cloneOnly": [
+      {
+        "hands": 1,
+        "samples": [
+          {
+            "ns": 61371433,
+            "bytes": 30738088,
+            "allocations": 822575
+          },
+          {
+            "ns": 60727633,
+            "bytes": 30728080,
+            "allocations": 822319
+          },
+          {
+            "ns": 60770867,
+            "bytes": 30739482,
+            "allocations": 822558
+          }
+        ],
+        "medianNS": 60770867,
+        "medianBytes": 30738088,
+        "medianAllocations": 822558
+      },
+      {
+        "hands": 3,
+        "samples": [
+          {
+            "ns": 198230067,
+            "bytes": 95976792,
+            "allocations": 2498670
+          },
+          {
+            "ns": 196464833,
+            "bytes": 95992573,
+            "allocations": 2499070
+          },
+          {
+            "ns": 203523700,
+            "bytes": 95950864,
+            "allocations": 2498807
+          }
+        ],
+        "medianNS": 198230067,
+        "medianBytes": 95976792,
+        "medianAllocations": 2498807
+      },
+      {
+        "hands": 5,
+        "samples": [
+          {
+            "ns": 322534500,
+            "bytes": 162879069,
+            "allocations": 4176555
+          },
+          {
+            "ns": 325309100,
+            "bytes": 162889840,
+            "allocations": 4176571
+          },
+          {
+            "ns": 328466300,
+            "bytes": 162898245,
+            "allocations": 4176636
+          }
+        ],
+        "medianNS": 325309100,
+        "medianBytes": 162889840,
+        "medianAllocations": 4176571
+      }
+    ],
+    "final": [
+      {
+        "hands": 1,
+        "samples": [
+          {
+            "ns": 56822900,
+            "bytes": 27231821,
+            "allocations": 735019
+          },
+          {
+            "ns": 54498367,
+            "bytes": 27223368,
+            "allocations": 735021
+          },
+          {
+            "ns": 55042967,
+            "bytes": 27234277,
+            "allocations": 735200
+          }
+        ],
+        "medianNS": 55042967,
+        "medianBytes": 27231821,
+        "medianAllocations": 735021
+      },
+      {
+        "hands": 3,
+        "samples": [
+          {
+            "ns": 171689633,
+            "bytes": 85439450,
+            "allocations": 2239205
+          },
+          {
+            "ns": 172128600,
+            "bytes": 85450829,
+            "allocations": 2239306
+          },
+          {
+            "ns": 194483567,
+            "bytes": 85420269,
+            "allocations": 2239170
+          }
+        ],
+        "medianNS": 172128600,
+        "medianBytes": 85439450,
+        "medianAllocations": 2239205
+      },
+      {
+        "hands": 5,
+        "samples": [
+          {
+            "ns": 341611800,
+            "bytes": 145320765,
+            "allocations": 3745128
+          },
+          {
+            "ns": 307694033,
+            "bytes": 145293554,
+            "allocations": 3745039
+          },
+          {
+            "ns": 306674567,
+            "bytes": 145316442,
+            "allocations": 3745054
+          }
+        ],
+        "medianNS": 307694033,
+        "medianBytes": 145316442,
+        "medianAllocations": 3745054
+      }
+    ]
+  },
+  "caveats": [
+    "Reducer uses legal synthetic Partners history at 1/10/20 hands, not policy play.",
+    "Replay uses identical saved Solo archive prefixes at 1/3/5 hands with every checkpoint checked; no SQL, preparation or delivered-help work.",
+    "CPU profiling includes setup outside benchmark timers.",
+    "The runner gained a final output label after clone-only capture; the timed Go benchmark, archive, iteration counts and profile settings are identical.",
+    "No full acceptance or normal-match soak repeated for these measurements."
+  ]
+}

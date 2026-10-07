@@ -1,0 +1,39 @@
+File: m04f-records-before.test.exe
+Build ID: C:\Users\AliA\AppData\Local\Temp\go-build330129100\b001\records.test.exe2026-10-06 22:51:30.3477264 -0400 EDT
+Type: cpu
+Time: 2026-10-06 22:51:30 EDT
+Duration: 8.37s, Total samples = 10.78s (128.73%)
+Active filters:
+   focus=cardford/server/internal
+Showing nodes accounting for 0.73s, 6.77% of 10.78s total
+Dropped 232 nodes (cum <= 0.05s)
+Showing top 28 nodes out of 248
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      7.73s 71.71%  testing.(*B).runN
+         0     0%     0%      7.70s 71.43%  cardford/server/internal/records.(*DocumentCodec).ReplayVisit
+         0     0%     0%      7.20s 66.79%  cardford/server/internal/records.BenchmarkM04FReplay.func2
+         0     0%     0%      5.32s 49.35%  testing.(*B).launch
+         0     0%     0%      5.07s 47.03%  cardford/server/internal/sessions.(*DurableSnapshot).Apply
+         0     0%     0%      4.78s 44.34%  cardford/server/internal/sessions.ApplyOperation
+         0     0%     0%      4.42s 41.00%  cardford/server/internal/gamekernel.(*boundSession[go.shape.*uint8,go.shape.struct { ObservationSchemaVersion string "json:\"observationSchemaVersion\""; VariantID string "json:\"variantId\""; Seat int "json:\"seat\""; Phase string "json:\"phase\""; Table cardford/server/internal/games/spades.sessionTable "json:\"table\""; Events []cardford/server/internal/games/spades.Event "json:\"events\""; HandResult *cardford/server/internal/games/spades.HandResult "json:\"handResult,omitempty\"" },go.shape.struct { Kind string "json:\"kind\""; Seat int "json:\"seat\""; Card *string "json:\"card,omitempty\""; Bid *int "json:\"bid,omitempty\"" }]).Commit
+         0     0%     0%      3.33s 30.89%  cardford/server/internal/contracts.Validate
+         0     0%     0%      3.25s 30.15%  cardford/server/internal/contracts.ParseJSON
+     0.06s  0.56%  0.56%      3.14s 29.13%  cardford/server/internal/contracts.readValue
+     0.01s 0.093%  0.65%      2.96s 27.46%  cardford/server/internal/gamekernel.(*boundSession[go.shape.*uint8,go.shape.struct { ObservationSchemaVersion string "json:\"observationSchemaVersion\""; VariantID string "json:\"variantId\""; Seat int "json:\"seat\""; Phase string "json:\"phase\""; Table cardford/server/internal/games/spades.sessionTable "json:\"table\""; Events []cardford/server/internal/games/spades.Event "json:\"events\""; HandResult *cardford/server/internal/games/spades.HandResult "json:\"handResult,omitempty\"" },go.shape.struct { Kind string "json:\"kind\""; Seat int "json:\"seat\""; Card *string "json:\"card,omitempty\""; Bid *int "json:\"bid,omitempty\"" }]).inputFor
+     0.13s  1.21%  1.86%      2.94s 27.27%  encoding/json.(*Decoder).Token
+     0.03s  0.28%  2.13%      2.63s 24.40%  encoding/json.(*Decoder).Decode
+         0     0%  2.13%      2.45s 22.73%  cardford/server/internal/gamekernel.validateSessionPublic
+         0     0%  2.13%      2.41s 22.36%  testing.(*B).run1.func1
+         0     0%  2.13%      2.24s 20.78%  cardford/server/internal/contracts.UTF16Canonical (inline)
+         0     0%  2.13%      2.24s 20.78%  cardford/server/internal/contracts.canonicalBytes
+     0.01s 0.093%  2.23%      2.15s 19.94%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).Validate (inline)
+         0     0%  2.23%      2.14s 19.85%  github.com/santhosh-tekuri/jsonschema/v6.(*Schema).validate
+     0.11s  1.02%  3.25%      2.12s 19.67%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validate
+     0.03s  0.28%  3.53%      2.09s 19.39%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).condValidate
+         0     0%  3.53%      2.09s 19.39%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateSelf
+     0.09s  0.83%  4.36%      2.07s 19.20%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).objValidate
+     0.01s 0.093%  4.45%      2.06s 19.11%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateRef
+     0.23s  2.13%  6.59%      2.02s 18.74%  runtime.mallocgc
+     0.02s  0.19%  6.77%      1.95s 18.09%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validateVal
+         0     0%  6.77%      1.82s 16.88%  cardford/server/internal/gamekernel.(*boundSession[go.shape.*uint8,go.shape.struct { ObservationSchemaVersion string "json:\"observationSchemaVersion\""; VariantID string "json:\"variantId\""; Seat int "json:\"seat\""; Phase string "json:\"phase\""; Table cardford/server/internal/games/spades.sessionTable "json:\"table\""; Events []cardford/server/internal/games/spades.Event "json:\"events\""; HandResult *cardford/server/internal/games/spades.HandResult "json:\"handResult,omitempty\"" },go.shape.struct { Kind string "json:\"kind\""; Seat int "json:\"seat\""; Card *string "json:\"card,omitempty\""; Bid *int "json:\"bid,omitempty\"" }]).apply
+         0     0%  6.77%      1.80s 16.70%  cardford/server/internal/records.JSONDigest

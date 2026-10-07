@@ -1,0 +1,27 @@
+File: m04f-records-before.test.exe
+Build ID: C:\Users\AliA\AppData\Local\Temp\go-build330129100\b001\records.test.exe2026-10-06 22:51:30.3477264 -0400 EDT
+Type: cpu
+Time: 2026-10-06 22:51:30 EDT
+Duration: 8.37s, Total samples = 10780ms (128.73%)
+Showing nodes accounting for 4270ms, 39.61% of 10780ms total
+Dropped 360 nodes (cum <= 53.90ms)
+Showing top 18 nodes out of 243
+      flat  flat%   sum%        cum   cum%
+     670ms  6.22%  6.22%      670ms  6.22%  runtime.semasleep
+     660ms  6.12% 12.34%     1140ms 10.58%  runtime.preemptM
+     270ms  2.50% 14.84%      270ms  2.50%  runtime.nextFreeFast (inline)
+     260ms  2.41% 17.25%      400ms  3.71%  runtime.tryDeferToSpanScan
+     250ms  2.32% 19.57%      250ms  2.32%  runtime.memclrNoHeapPointers
+     230ms  2.13% 21.71%     2020ms 18.74%  runtime.mallocgc
+     230ms  2.13% 23.84%      230ms  2.13%  runtime.memmove
+     220ms  2.04% 25.88%      600ms  5.57%  runtime.concatstrings
+     200ms  1.86% 27.74%     1060ms  9.83%  runtime.mallocgcSmallScanNoHeader
+     190ms  1.76% 29.50%      590ms  5.47%  runtime.scanObject
+     170ms  1.58% 31.08%      220ms  2.04%  runtime.(*mspan).writeHeapBitsSmall
+     150ms  1.39% 32.47%      150ms  1.39%  encoding/json.stateInString
+     150ms  1.39% 33.86%      380ms  3.53%  runtime.mallocgcTiny
+     130ms  1.21% 35.06%     2940ms 27.27%  encoding/json.(*Decoder).Token
+     130ms  1.21% 36.27%      130ms  1.21%  runtime.getMCache (inline)
+     130ms  1.21% 37.48%      130ms  1.21%  runtime.semawakeup
+     120ms  1.11% 38.59%      140ms  1.30%  internal/runtime/maps.(*Iter).Next
+     110ms  1.02% 39.61%     2120ms 19.67%  github.com/santhosh-tekuri/jsonschema/v6.(*validator).validate

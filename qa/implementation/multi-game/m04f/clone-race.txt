@@ -1,0 +1,8 @@
+=== RUN   TestSpadesSessionTransitionImmutableBranches
+--- PASS: TestSpadesSessionTransitionImmutableBranches (0.29s)
+=== RUN   TestSpadesSessionTransitionOutputsDetached
+--- PASS: TestSpadesSessionTransitionOutputsDetached (0.03s)
+=== RUN   TestSpadesSessionRejectedTransitionPreservesHistory
+--- PASS: TestSpadesSessionRejectedTransitionPreservesHistory (0.22s)
+PASS
+ok  	cardford/server/internal/games/spades	1.739s
