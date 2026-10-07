@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 2026-10-07 shared card table UI
+
+UX-18–UX-23: use smaller overlapping trick cards with the confirmed winner above the pile, simplified rank/suit faces, responsive overlapping hands, faded illegal cards without locks, and remaining-card counts for every seat. Keep selection's pointer target fixed while raising and tilting the face so double-click/tap plays immediately on turn or prepares while waiting. Move last-trick history above the shortened coach. Applies to Hearts Solo and both Spades variants through the shared table. [Decision](planning/decisions/CR-UX-006-card-table-experience.md), [actual verification](qa/implementation/ui-card-experience-acceptance.md).
+
 ## Unreleased — 2026-10-07 continuous local implementation
 
 Add optional actor-only continuation planning with bounded work and exact persisted bot/coach results, an experimental Partners resource policy, and compiled non-card module installation through real persistence and authorization. Preserve current React gameplay, old policy pins and original advice. Add maintained case provenance, conservative fresh-deal evaluation and provider fixture diagnostics; no strategy or human-learning promotion. Native test invocations now stop within 30 minutes. Strict decoder/statistics improvements and a complete ten-hand request profile retain the remaining history-growth and intermittent Windows connection limitations. [Execution ledger](planning/implementation/multi-game/continuous-local-build.md) records current acceptance and deferred rule branches.

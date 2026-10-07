@@ -34,6 +34,7 @@ import { ReviewPanel } from './features/ReviewPanel';
 import { DemoPage } from './features/DemoPage';
 import { webPlatform } from './platform/web';
 import { ProgressiveAdviceRequests } from './api/progressiveAdvice';
+import { trickLayers } from './api/tablePresentation';
 
 const names = ['You', 'Leo', 'Maya', 'Theo'];
 const suitSymbols: Record<string, string> = { C: '♣', D: '♦', H: '♥', S: '♠' };
@@ -163,10 +164,6 @@ function CardFace({
         <span>{suitSymbols[suit]}</span>
       </span>
       <span className="card-pip">{suitSymbols[suit]}</span>
-      <span className="card-corner card-corner-bottom">
-        <b>{face}</b>
-        <span>{suitSymbols[suit]}</span>
-      </span>
       {children}
     </span>
   );
@@ -206,6 +203,9 @@ function PlayerCount({ seat, game }: { seat: Seat; game: GameView }) {
       </span>
       <span className="sr-only">
         {`${game.tricks[seat]} tricks${game.mode === 'hearts' ? '' : bid === null ? ', not bid yet' : `, bid ${bidLabel}`}`}
+      </span>
+      <span className="remaining-cards" aria-label={`${game.handCounts[seat]} cards left`}>
+        <span aria-hidden="true">{game.handCounts[seat]} {game.handCounts[seat] === 1 ? 'card' : 'cards'}</span>
       </span>
     </span>
   );
@@ -326,6 +326,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   const isTeam = game.mode === 'spades-partners';
   const activeHint = canDecide && advice?.decisionId === turnKey ? hint : 0;
   const currentWinner = game.currentWinner;
+  const layers = trickLayers(game);
   const matchWinner = game.handResult?.winner;
   const winnerLabel =
     matchWinner === undefined
@@ -669,9 +670,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
           <main className="game-shell">
             <div className="play-space">
               <div className="table-stage">
-                <div className="last-trick-rail">
-                  <LastTrick game={game} />
-                </div>
                 <section className="table-zone" aria-label="Card table">
                   <div className="table-felt">
                     <div className="table-line" />
@@ -745,31 +743,20 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                       </div>
                     ) : (
                       <>
-                        {([2, 1, 3, 0] as Seat[]).map((seat) => {
-                          const played = game.trick.find((item) => item.seat === seat);
+                        {game.trick.map((played) => {
+                          const seat = played.seat;
                           const relevant =
                             activeHint > 0 &&
                             (isTeam && currentWinner === 2 ? seat === 2 : seat === game.trick[0]?.seat);
                           return (
                             <div
                               key={seat}
-                              className={`trick-slot trick-slot-${seat} ${played && currentWinner === seat ? 'winning-card' : ''} ${relevant ? 'cue-card' : ''}`}
+                              className={`trick-slot trick-slot-${seat} ${currentWinner === seat ? 'winning-card' : ''} ${relevant ? 'cue-card' : ''}`}
+                              style={{ zIndex: layers.get(seat) }}
+                              role="img"
+                              aria-label={`${names[seat]}: ${cardLabel(played.card)}${currentWinner === seat ? ', currently winning' : ''}`}
                             >
-                              {played ? (
-                                <>
-                                  <CardFace card={played.card} />
-                                  <span className="played-by">
-                                    {names[seat]}
-                                    {currentWinner === seat && (
-                                      <span className="winner-mark" title="Currently winning">
-                                        ●
-                                      </span>
-                                    )}
-                                  </span>
-                                </>
-                              ) : (
-                                <span className="empty-card" />
-                              )}
+                              <CardFace card={played.card} />
                             </div>
                           );
                         })}
@@ -779,103 +766,106 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                 </section>
               </div>
 
-              <aside className={`coach-panel ${activeHint > 0 ? 'coach-open' : ''}`} aria-label="Your coach">
-                <div className="coach-heading">
-                  <div className="coach-mark">
-                    <Sparkles size={20} />
-                  </div>
-                  <div>
-                    <h2>Coach</h2>
-                  </div>
-                  <button
-                    className="icon-button coach-settings"
-                    aria-label="Adjust coach"
-                    onClick={() => setModal('settings')}
-                  >
-                    <Settings2 size={16} />
-                  </button>
-                </div>
-                <div className="coach-content" aria-live="polite">
-                  {advicePending && <p>Considering the position…</p>}
-                  {unlockLevel && (
-                    <div>
-                      <p>Unlock all help for this hand.</p>
-                      <button className="hint-button" disabled={advicePending || controller.busy} onClick={() => void showHint(unlockLevel, true)}>
-                        Use coached hand
-                      </button>
-                      <button className="subtle-button" onClick={() => setUnlockLevel(null)}>
-                        Not now
-                      </button>
+              <div className="coach-rail">
+                <LastTrick game={game} />
+                <aside className={`coach-panel ${activeHint > 0 ? 'coach-open' : ''}`} aria-label="Your coach">
+                  <div className="coach-heading">
+                    <div className="coach-mark">
+                      <Sparkles size={20} />
                     </div>
-                  )}
-                  {activeHint > 0 && advice ? (
-                    <>
-                      <div className="hint-stage">
-                        {activeHint === 1 ? (
-                          <Focus size={14} />
-                        ) : activeHint === 2 ? (
-                          <Eye size={14} />
-                        ) : (
-                          <Lightbulb size={14} />
-                        )}
-                        {activeHint === 1 ? 'Notice' : activeHint === 2 ? 'Consider' : 'A suggestion'}
-                        <button className="hint-dismiss" onClick={() => setHint(0)} aria-label="Dismiss hint">
-                          <X size={15} />
+                    <div>
+                      <h2>Coach</h2>
+                    </div>
+                    <button
+                      className="icon-button coach-settings"
+                      aria-label="Adjust coach"
+                      onClick={() => setModal('settings')}
+                    >
+                      <Settings2 size={16} />
+                    </button>
+                  </div>
+                  <div className="coach-content" aria-live="polite">
+                    {advicePending && <p>Considering the position…</p>}
+                    {unlockLevel && (
+                      <div>
+                        <p>Unlock all help for this hand.</p>
+                        <button className="hint-button" disabled={advicePending || controller.busy} onClick={() => void showHint(unlockLevel, true)}>
+                          Use coached hand
+                        </button>
+                        <button className="subtle-button" onClick={() => setUnlockLevel(null)}>
+                          Not now
                         </button>
                       </div>
-                      <small>
-                        {advice.source === 'jev'
-                          ? 'Jev suggestion'
-                          : advice.source === 'forced'
-                            ? 'Forced move'
-                            : 'Local suggestion'}
-                      </small>
-                      <h3>{advice.focus}</h3>
-                      <p>
-                        {activeHint === 1
-                          ? advice.notice
-                          : activeHint === 2
-                            ? advice.reason
-                            : advice.suggestion}
-                      </p>
-                      {activeHint === 3 && advice.card && (
-                        <span className="suggested-chip">{cardLabel(advice.card)}</span>
-                      )}
-                    </>
-                  ) : null}
-                </div>
-                <div className="coach-buttons">
-                  {canDecide && coachMode !== 'after' ? (
-                    activeHint === 0 ? (
-                      <button className="hint-button" disabled={advicePending || controller.busy} onClick={() => showHint(1)}>
-                        <Focus size={17} />
-                        Give me a cue
-                        <ArrowUpRight size={16} />
-                      </button>
-                    ) : (
+                    )}
+                    {activeHint > 0 && advice ? (
                       <>
-                        <button
-                          className="hint-button"
-                          onClick={() => showHint(activeHint === 1 ? 2 : 3)}
-                          disabled={activeHint === 3 || advicePending || controller.busy}
-                        >
-                          {activeHint === 1
-                            ? 'More context'
-                            : activeHint === 2
-                              ? 'Suggest a move'
-                              : 'Suggestion shown'}
-                          {activeHint < 3 && <ChevronRight size={15} />}
-                        </button>
-                        {activeHint === 1 && (
-                          <button className="subtle-button" disabled={advicePending || controller.busy} onClick={() => showHint(3)}>
-                            Suggest a move
+                        <div className="hint-stage">
+                          {activeHint === 1 ? (
+                            <Focus size={14} />
+                          ) : activeHint === 2 ? (
+                            <Eye size={14} />
+                          ) : (
+                            <Lightbulb size={14} />
+                          )}
+                          {activeHint === 1 ? 'Notice' : activeHint === 2 ? 'Consider' : 'A suggestion'}
+                          <button className="hint-dismiss" onClick={() => setHint(0)} aria-label="Dismiss hint">
+                            <X size={15} />
                           </button>
+                        </div>
+                        <small>
+                          {advice.source === 'jev'
+                            ? 'Jev suggestion'
+                            : advice.source === 'forced'
+                              ? 'Forced move'
+                              : 'Local suggestion'}
+                        </small>
+                        <h3>{advice.focus}</h3>
+                        <p>
+                          {activeHint === 1
+                            ? advice.notice
+                            : activeHint === 2
+                              ? advice.reason
+                              : advice.suggestion}
+                        </p>
+                        {activeHint === 3 && advice.card && (
+                          <span className="suggested-chip">{cardLabel(advice.card)}</span>
                         )}
                       </>
-                    )
-                  ) : null}
-                </div>
-              </aside>
+                    ) : null}
+                  </div>
+                  <div className="coach-buttons">
+                    {canDecide && coachMode !== 'after' ? (
+                      activeHint === 0 ? (
+                        <button className="hint-button" disabled={advicePending || controller.busy} onClick={() => showHint(1)}>
+                          <Focus size={17} />
+                          Give me a cue
+                          <ArrowUpRight size={16} />
+                        </button>
+                      ) : (
+                        <>
+                          <button
+                            className="hint-button"
+                            onClick={() => showHint(activeHint === 1 ? 2 : 3)}
+                            disabled={activeHint === 3 || advicePending || controller.busy}
+                          >
+                            {activeHint === 1
+                              ? 'More context'
+                              : activeHint === 2
+                                ? 'Suggest a move'
+                                : 'Suggestion shown'}
+                            {activeHint < 3 && <ChevronRight size={15} />}
+                          </button>
+                          {activeHint === 1 && (
+                            <button className="subtle-button" disabled={advicePending || controller.busy} onClick={() => showHint(3)}>
+                              Suggest a move
+                            </button>
+                          )}
+                        </>
+                      )
+                    ) : null}
+                  </div>
+                </aside>
+              </div>
             </div>
 
             <section className="hand-section" aria-label="Your hand">
@@ -934,6 +924,12 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                           card.scrollIntoView({ block: 'nearest', inline: 'nearest' });
                       }}
                       onClick={(event) => activateCard(card, event.detail, event.timeStamp)}
+                      onDoubleClick={() => {
+                        // Native double-click also handles slower system double-click settings.
+                        // playChosenCard fences repeated events at this confirmed decision.
+                        if (myTurn && game.phase === 'play') void playChosenCard(card);
+                        else chooseCard(card, true);
+                      }}
                       onKeyDown={(event) => {
                         if (event.key === ' ') {
                           event.preventDefault();
@@ -949,12 +945,6 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                       }}
                     >
                       <CardFace card={card} />
-                      {!playable && <LockKeyhole className="unavailable-mark" size={12} aria-hidden="true" />}
-                      {selected.includes(card) && (
-                        <span className="selection-mark">
-                          <Check size={12} />
-                        </span>
-                      )}
                       {recommended && (
                         <span className="recommendation-mark">
                           <Sparkles size={11} />

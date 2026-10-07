@@ -261,6 +261,97 @@ test('off-turn prepared card never autoplays on the human turn', async ({ page }
   expect(harness.commands).toHaveLength(0);
 });
 
+for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
+  test(`${mode}: lifting a selected card preserves a delayed double-click target`, async ({ page }) => {
+    const session = fixture();
+    session.game.mode = mode;
+    const harness = await mount(page, session);
+    const card = page.getByRole('button', { name: '2 of clubs', exact: true });
+    const before = (await card.boundingBox())!;
+    // Near the bottom edge: moving the button itself used to lose the second click.
+    const point = { x: before.x + before.width / 2, y: before.y + before.height - 3 };
+    await page.mouse.click(point.x, point.y);
+    await expect(card).toHaveAttribute('aria-pressed', 'true');
+    await page.waitForTimeout(200);
+    expect(await card.boundingBox()).toEqual(before);
+    await expect(card.locator('.card-face')).not.toHaveCSS('transform', 'none');
+    await expect(card.locator('.card-face')).toHaveCSS('outline-style', 'none');
+    await page.mouse.click(point.x, point.y);
+    await expect.poll(() => harness.commands.length).toBe(1);
+    expect(harness.commands[0]).toMatchObject({ action: { kind: 'play', card: 'C2' } });
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  });
+
+  test(`${mode}: public counts and trick depth follow the confirmed winner`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    const session = fixture();
+    session.game.mode = mode;
+    session.game.handCounts = [4, 3, 2, 1];
+    const harness = await mount(page, session);
+    await expect(page.locator('.empty-card')).toHaveCount(0);
+    for (const [seat, count] of [[0, 4], [1, 3], [2, 2], [3, 1]]) {
+      const player = seat === 0 ? page.locator('.you-label') : page.locator(`.player-${seat}`);
+      await expect(player.getByLabel(`${count} cards left`, { exact: true })).toBeVisible();
+    }
+    const plays = [
+      { seat: 2, card: 'HA' }, { seat: 3, card: 'H8' },
+      { seat: 0, card: 'S2' }, { seat: 1, card: 'S3' },
+    ] as const;
+    for (let length = 1; length <= 4; length++) {
+      await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+      const next = structuredClone(session);
+      next.revision = length + 1;
+      next.decisionId = `pile-${length}`;
+      next.game.trick = plays.slice(0, length);
+      next.game.currentWinner = mode === 'hearts' || length < 3 ? 2 : length === 3 ? 0 : 1;
+      harness.setState(next);
+      await page.getByRole('button', { name: 'Resume', exact: true }).click();
+      await expect(page.locator('.trick-slot')).toHaveCount(length);
+      const winner = page.locator(`.trick-slot-${next.game.currentWinner}`);
+      await expect(winner).toHaveCSS('z-index', '5');
+      await expect(page.locator('.winning-card')).toHaveCount(1);
+      for (const card of await page.locator('.trick-slot:not(.winning-card)').all())
+        expect(Number(await card.evaluate(node => getComputedStyle(node).zIndex))).toBeLessThan(5);
+    }
+    const cards = await page.locator('.trick-slot').evaluateAll(nodes => nodes.map(node => {
+      const b = node.getBoundingClientRect(); return { x:b.x, y:b.y, width:b.width, height:b.height };
+    }));
+    expect(cards[0].width).toBeCloseTo(57.6, 0);
+    expect(cards[1].x - cards[3].x).toBeCloseTo(cards[0].width * .85, 0);
+    expect(cards[1].y - cards[0].y).toBeCloseTo(cards[0].height * .85, 0);
+    const layer = async (seat: number) => Number(await page.locator(`.trick-slot-${seat}`).evaluate(node => getComputedStyle(node).zIndex));
+    expect(await layer(2)).toBeGreaterThan(await layer(3)); // Ace above the eight of the led suit.
+    if (mode !== 'hearts') expect(await layer(0)).toBeGreaterThan(await layer(2)); // Trump above a non-trump.
+    await page.waitForTimeout(250); // Let the existing card placement transition finish for the review image.
+    await page.screenshot({ path: testInfo.outputPath(`${mode}-pile-desktop.png`) });
+    await page.setViewportSize({ width: 667, height: 375 });
+    await expect(page.locator('.trick-slot')).toHaveCount(4);
+    await page.screenshot({ path: testInfo.outputPath(`${mode}-pile-phone.png`) });
+    expect(harness.commands).toHaveLength(0);
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  });
+}
+
+test.describe('touch card preparation', () => {
+  test.use({ hasTouch: true, viewport: { width: 667, height: 375 } });
+  test('double-tap plays once on turn and holds a card while waiting', async ({ page }) => {
+    const harness = await mount(page);
+    const card = page.getByRole('button', { name: '2 of clubs', exact: true });
+    const before = (await card.boundingBox())!;
+    const x = before.x + before.width / 2, y = before.y + before.height - 3;
+    await page.touchscreen.tap(x, y);
+    await page.waitForTimeout(180);
+    await page.touchscreen.tap(x, y);
+    await expect.poll(() => harness.commands.length).toBe(1);
+    const waitingCard = page.getByRole('button', { name: '3 of diamonds', exact: true });
+    await waitingCard.tap();
+    await waitingCard.tap();
+    await expect(waitingCard).toHaveAttribute('aria-pressed', 'true');
+    expect(harness.commands).toHaveLength(1);
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  });
+});
+
 test('suggestion never commits or hides legal cards', async ({ page }) => {
   const { commands } = await mount(page);
   await page.getByRole('button', { name: 'Give me a cue' }).click();
@@ -1024,22 +1115,27 @@ test('desktop and landscape phone preserve table geometry and card targets', asy
     }),
   );
   for (let index = 0; index < cards.length - 1; index++)
-    expect(cards[index + 1].x - cards[index].x).toBeGreaterThanOrEqual(43.9);
+    expect(cards[index + 1].x - cards[index].x).toBeCloseTo(cards[index].width * .6, 0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({ path: testInfo.outputPath('phone.png') });
-  await page.setViewportSize({ width: 568, height: 320 });
-  await expect(page.locator('.hand-cards')).toHaveCSS('overflow-x', 'auto');
+  await page.setViewportSize({ width: 480, height: 320 });
+  const narrowCards = await page.locator('.hand-card').evaluateAll(nodes => nodes.map(node => {
+    const box = node.getBoundingClientRect();
+    return { x: box.x, right: box.right, width: box.width };
+  }));
+  expect(narrowCards[0].x).toBeGreaterThanOrEqual(0);
+  expect(narrowCards.at(-1)!.right).toBeLessThanOrEqual(480);
+  expect(narrowCards[1].x - narrowCards[0].x).toBeLessThan(cards[1].x - cards[0].x);
   const lastCard = page.locator('.hand-card').last();
   await page.locator('.hand-card').first().focus();
   for (let index = 1; index < 13; index++) await page.keyboard.press('Tab');
   await expect(lastCard).toBeFocused();
   await expect(lastCard).toBeInViewport({ ratio: 1 });
-  expect(await page.locator('.hand-cards').evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
   await page.locator('.hand-card').first().focus();
   expect((await page.locator('.hand-card').first().boundingBox())!.x).toBeGreaterThanOrEqual(0);
 });
 
-for (const mode of ['spades-partners', 'hearts'] as const) {
+for (const mode of ['spades-partners', 'spades-solo', 'hearts'] as const) {
   test(`${mode}: unavailable-card cues follow server legality and clear on a new turn`, async ({ page }) => {
     const restricted = mode === 'hearts' ? 'H4' : 'S5';
     const label = mode === 'hearts' ? '4 of hearts' : '5 of spades';
@@ -1051,7 +1147,8 @@ for (const mode of ['spades-partners', 'hearts'] as const) {
     const blocked = page.getByRole('button', { name: `${label}, unavailable this turn`, exact: true });
     await expect(blocked).toBeDisabled();
     await expect(blocked).toHaveAttribute('aria-disabled', 'true');
-    await expect(blocked.locator('.unavailable-mark')).toBeVisible();
+    await expect(blocked.locator('.unavailable-mark')).toHaveCount(0);
+    await expect(blocked.locator('.card-face')).toHaveCSS('color', 'rgb(135, 148, 157)');
     await expect(page.getByRole('button', { name: '2 of clubs', exact: true })).toBeEnabled();
     expect(harness.commands).toHaveLength(0);
     await expect(page.locator('.you-active .your-turn-mark')).toBeVisible();
@@ -1103,7 +1200,7 @@ test('a prepared card becomes unavailable without autoplay when the server exclu
   expect(harness.commands).toHaveLength(0);
 });
 
-test('last trick stays beside the table with seat positions, no names and no notes request', async ({
+test('last trick stays above the coach with seat positions, no names and no notes request', async ({
   page,
 }, testInfo) => {
   const session = fixture();
@@ -1135,6 +1232,10 @@ test('last trick stays beside the table with seat positions, no names and no not
   });
   const harness = await mount(page, session);
   const last = page.getByRole('complementary', { name: 'Last trick', exact: true });
+  const selectedCard = page.getByRole('button', { name: '8 of diamonds', exact: true });
+  await selectedCard.click();
+  await expect(selectedCard).toHaveAttribute('aria-pressed', 'true');
+  await page.waitForTimeout(200); // Capture the final raised/tilted face in the review images.
   await expect(last.getByRole('img')).toHaveCount(4);
   await expect(last.getByRole('img', { name: 'Theo: Queen of clubs, won the trick' })).toBeVisible();
   expect(await last.innerText()).not.toMatch(/You|Leo|Maya|Theo/);
@@ -1153,6 +1254,8 @@ test('last trick stays beside the table with seat positions, no names and no not
     [568, 320, 'small-phone'],
   ] as const) {
     await page.setViewportSize({ width, height });
+    await expect.poll(() => page.evaluate(() => parseFloat(document.documentElement.style.getPropertyValue('--app-height')))).toBe(height);
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
     await expect(last).toBeVisible();
     const memory = await last.boundingBox();
     const current = await page.locator('.trick-area').boundingBox();
@@ -1162,18 +1265,22 @@ test('last trick stays beside the table with seat positions, no names and no not
     expect(current).not.toBeNull();
     expect(west).not.toBeNull();
     expect(table).not.toBeNull();
-    expect(memory!.x + memory!.width).toBeLessThan(table!.x);
+    const coach = await page.locator('.coach-panel').boundingBox();
+    expect(memory!.y + memory!.height).toBeLessThanOrEqual(coach!.y);
+    if (height < width) {
+      expect(memory!.x).toBeGreaterThan(table!.x + table!.width);
+    }
     expect(memory!.x).toBeGreaterThanOrEqual(0);
     expect(memory!.y).toBeGreaterThanOrEqual(0);
-    expect(memory!.x + memory!.width).toBeLessThanOrEqual(current!.x);
     expect(memory!.y + memory!.height).toBeLessThan(height);
     for (const selector of ['.trick-area', '.player-1', '.player-2', '.player-3', '.coach-panel']) {
       const box = await page.locator(selector).boundingBox();
       expect(
         box!.x >= memory!.x + memory!.width ||
+          box!.x + box!.width <= memory!.x ||
           box!.y >= memory!.y + memory!.height ||
           box!.y + box!.height <= memory!.y,
-        `${name}: ${selector} must not overlap last trick`,
+        `${name}: ${selector} ${JSON.stringify(box)} must not overlap last trick ${JSON.stringify(memory)}`,
       ).toBe(true);
       expect(box!.x + box!.width).toBeLessThanOrEqual(width);
       expect(box!.y).toBeGreaterThanOrEqual(0);
