@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { api, ApiFailure } from '../src/api/client.ts';
+import { api, ApiFailure, definiteFailure } from '../src/api/client.ts';
 import {
   clearPendingCommands,
   PENDING_COMMAND_TTL_MS,
@@ -53,6 +53,14 @@ const command = {
   action: { kind: 'play', card: 'C2' },
 };
 const view = { game: { id: 'game-a' }, controlLeaseToken: 'lease-secret-a' } as SessionView;
+
+test('timeout and queue-capacity HTTP responses remain ambiguous for receipt recovery', () => {
+  for (const status of [408, 429, 500, 502, 503])
+    assert.equal(definiteFailure(new ApiFailure('Recover the original command.', status, 'SERVICE_UNAVAILABLE')), false);
+  for (const status of [400, 401, 403, 409])
+    assert.equal(definiteFailure(new ApiFailure('Confirmed rejection.', status, 'INVALID_COMMAND')), true);
+  assert.equal(definiteFailure(new TypeError('Network failed')), false);
+});
 
 test('one bounded deadline aborts a stalled fetch and keeps mutation outcome ambiguous', async (context) => {
   storage(context);

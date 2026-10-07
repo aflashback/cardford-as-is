@@ -1,4 +1,10 @@
-# CardFord — local V1
+# CardFord — local application and V1 reference
+
+**Go platform path (M04E):** run `node scripts/windows-env.mjs pg:start`, then `npm run start:go`, and open **http://127.0.0.1:4174**. This builds the preserved React interface and serves the local table, coach, review and fixture account experience from Go/PostgreSQL. Node supplies build tooling. [M04E verification and limits](qa/implementation/multi-game/m04e/status.md) track scoped functional acceptance and the remaining normal Spades match, cumulative-history resource and native-database gates before switching default startup. `npm run start:go -- --configured` uses the deliberately empty configured offer policy. Use a separate browser session for each identity mode.
+
+The instructions below describe the original V1 Node reference, including its historical records and selected-deal developer tooling. `start`/`dev` retain that path until full M04 activation; `start:reference` names it explicitly. Stop either app with Ctrl+C. Never run competing backend authorities for the same browser origin.
+
+When switching from Go back to the production Node reference, rebuild the shared `web/dist` with `$env:VITE_BACKEND = 'node'` and `node scripts/windows-env.mjs npm run build` before starting Node. `start:go` always rebuilds its own Go-targeted client. Backend selection is fixed at build time.
 
 Open **http://127.0.0.1:4173**. The application runs on Node and PostgreSQL. The existing table now uses server-owned state; the browser receives only your hand and public information.
 

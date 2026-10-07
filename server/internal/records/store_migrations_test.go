@@ -11,8 +11,8 @@ func TestM03CanonicalMigrationPins(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(migrations) != 9 {
-		t.Fatalf("want nine canonical migrations, got %d", len(migrations))
+	if len(migrations) != 10 {
+		t.Fatalf("want ten canonical migrations, got %d", len(migrations))
 	}
 	mutated := t.TempDir()
 	for _, m := range migrations {

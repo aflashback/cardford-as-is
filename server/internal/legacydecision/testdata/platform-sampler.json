@@ -1,0 +1,7794 @@
+{
+  "source": "web/server/strategy/sampler.ts",
+  "version": "uniform-constraint-counting-1.0.0",
+  "vectors": [
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          12,
+          12,
+          12
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "seat": 3,
+            "card": "CQ"
+          }
+        ],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 3,
+            "remaining": 10,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C6",
+          "C10",
+          "DJ",
+          "H3",
+          "H9",
+          "S2",
+          "S4",
+          "S6",
+          "S8",
+          "S10",
+          "SA"
+        ],
+        [
+          "C7",
+          "D8",
+          "DQ",
+          "DA",
+          "H5",
+          "H7",
+          "HJ",
+          "HK",
+          "HA",
+          "S5",
+          "SQ",
+          "SK"
+        ],
+        [
+          "C4",
+          "C8",
+          "D2",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D10",
+          "H2",
+          "H6",
+          "H10",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          12,
+          12,
+          12
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "seat": 3,
+            "card": "CQ"
+          }
+        ],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 3,
+            "remaining": 10,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C6",
+          "C10",
+          "D2",
+          "D7",
+          "DJ",
+          "DA",
+          "H2",
+          "H6",
+          "HK",
+          "HA",
+          "SK",
+          "SA"
+        ],
+        [
+          "C8",
+          "D4",
+          "D8",
+          "DQ",
+          "H3",
+          "H10",
+          "HJ",
+          "S4",
+          "S5",
+          "S6",
+          "S10",
+          "SQ"
+        ],
+        [
+          "C3",
+          "C4",
+          "C7",
+          "D3",
+          "D6",
+          "D10",
+          "H5",
+          "H7",
+          "H9",
+          "S2",
+          "S8",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          12,
+          12,
+          12
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "seat": 3,
+            "card": "CQ"
+          }
+        ],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 3,
+            "remaining": 10,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C6",
+          "C10",
+          "D3",
+          "D6",
+          "D10",
+          "DJ",
+          "DQ",
+          "HK",
+          "S4",
+          "S8",
+          "S9"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "D7",
+          "D8",
+          "H6",
+          "H9",
+          "S5",
+          "S6",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        [
+          "D2",
+          "D4",
+          "DA",
+          "H2",
+          "H3",
+          "H5",
+          "H7",
+          "H10",
+          "HJ",
+          "HA",
+          "S2",
+          "S10"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "C2"
+              },
+              {
+                "seat": 2,
+                "card": "CJ"
+              },
+              {
+                "seat": 3,
+                "card": "CQ"
+              },
+              {
+                "seat": 0,
+                "card": "CA"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Ace of Clubs.",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "id": 7,
+            "type": "trick-resolved",
+            "message": "You won trick 1.",
+            "seat": 0
+          },
+          {
+            "id": 8,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S7"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "SJ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 4,
+            "remaining": 9,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C6",
+          "C10",
+          "DJ",
+          "H3",
+          "H9",
+          "S2",
+          "S4",
+          "S6",
+          "S8",
+          "S10",
+          "SA"
+        ],
+        [
+          "C7",
+          "D8",
+          "DQ",
+          "DA",
+          "H5",
+          "H7",
+          "HJ",
+          "HK",
+          "HA",
+          "S5",
+          "SQ",
+          "SK"
+        ],
+        [
+          "C4",
+          "C8",
+          "D2",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D10",
+          "H2",
+          "H6",
+          "H10",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "C2"
+              },
+              {
+                "seat": 2,
+                "card": "CJ"
+              },
+              {
+                "seat": 3,
+                "card": "CQ"
+              },
+              {
+                "seat": 0,
+                "card": "CA"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Ace of Clubs.",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "id": 7,
+            "type": "trick-resolved",
+            "message": "You won trick 1.",
+            "seat": 0
+          },
+          {
+            "id": 8,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S7"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "SJ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 4,
+            "remaining": 9,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C6",
+          "C10",
+          "D2",
+          "D7",
+          "DJ",
+          "DA",
+          "H2",
+          "H6",
+          "HK",
+          "HA",
+          "SK",
+          "SA"
+        ],
+        [
+          "C8",
+          "D4",
+          "D8",
+          "DQ",
+          "H3",
+          "H10",
+          "HJ",
+          "S4",
+          "S5",
+          "S6",
+          "S10",
+          "SQ"
+        ],
+        [
+          "C3",
+          "C4",
+          "C7",
+          "D3",
+          "D6",
+          "D10",
+          "H5",
+          "H7",
+          "H9",
+          "S2",
+          "S8",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "C2"
+              },
+              {
+                "seat": 2,
+                "card": "CJ"
+              },
+              {
+                "seat": 3,
+                "card": "CQ"
+              },
+              {
+                "seat": 0,
+                "card": "CA"
+              }
+            ],
+            "winner": 0
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Ace of Clubs.",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "id": 7,
+            "type": "trick-resolved",
+            "message": "You won trick 1.",
+            "seat": 0
+          },
+          {
+            "id": 8,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S7"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "SJ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 4,
+            "remaining": 9,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C6",
+          "C10",
+          "D3",
+          "D6",
+          "D10",
+          "DJ",
+          "DQ",
+          "HK",
+          "S4",
+          "S8",
+          "S9"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "D7",
+          "D8",
+          "H6",
+          "H9",
+          "S5",
+          "S6",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        [
+          "D2",
+          "D4",
+          "DA",
+          "H2",
+          "H3",
+          "H5",
+          "H7",
+          "H10",
+          "HJ",
+          "HA",
+          "S2",
+          "S10"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7"
+        ],
+        "handSizes": [
+          11,
+          11,
+          11,
+          10
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 3,
+            "card": "S10"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "C2"
+              },
+              {
+                "seat": 2,
+                "card": "CJ"
+              },
+              {
+                "seat": 3,
+                "card": "CQ"
+              },
+              {
+                "seat": 0,
+                "card": "CA"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "SQ"
+              },
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "SA"
+              }
+            ],
+            "winner": 3
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": true,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Ace of Clubs.",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "id": 7,
+            "type": "trick-resolved",
+            "message": "You won trick 1.",
+            "seat": 0
+          },
+          {
+            "id": 8,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "You played Jack of Spades.",
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "id": 10,
+            "type": "card-played",
+            "message": "West played Queen of Spades.",
+            "seat": 1,
+            "card": "SQ"
+          },
+          {
+            "id": 11,
+            "type": "card-played",
+            "message": "North played King of Spades.",
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "East played Ace of Spades.",
+            "seat": 3,
+            "card": "SA"
+          },
+          {
+            "id": 13,
+            "type": "trick-resolved",
+            "message": "East won trick 2.",
+            "seat": 3
+          },
+          {
+            "id": 14,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "East played 10 of Spades.",
+            "seat": 3,
+            "card": "S10"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S7"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 4,
+            "remaining": 9,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 5,
+            "remaining": 8,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7"
+        ],
+        [
+          "C3",
+          "C6",
+          "C10",
+          "DJ",
+          "H3",
+          "H7",
+          "HJ",
+          "HA",
+          "S2",
+          "S6",
+          "S9"
+        ],
+        [
+          "C7",
+          "D6",
+          "D8",
+          "DQ",
+          "DA",
+          "H2",
+          "H5",
+          "H9",
+          "HK",
+          "S5",
+          "S8"
+        ],
+        [
+          "C4",
+          "C8",
+          "D2",
+          "D3",
+          "D4",
+          "D7",
+          "D10",
+          "H6",
+          "H10",
+          "S4"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7"
+        ],
+        "handSizes": [
+          11,
+          11,
+          11,
+          10
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 3,
+            "card": "S10"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "C2"
+              },
+              {
+                "seat": 2,
+                "card": "CJ"
+              },
+              {
+                "seat": 3,
+                "card": "CQ"
+              },
+              {
+                "seat": 0,
+                "card": "CA"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "SQ"
+              },
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "SA"
+              }
+            ],
+            "winner": 3
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": true,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Ace of Clubs.",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "id": 7,
+            "type": "trick-resolved",
+            "message": "You won trick 1.",
+            "seat": 0
+          },
+          {
+            "id": 8,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "You played Jack of Spades.",
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "id": 10,
+            "type": "card-played",
+            "message": "West played Queen of Spades.",
+            "seat": 1,
+            "card": "SQ"
+          },
+          {
+            "id": 11,
+            "type": "card-played",
+            "message": "North played King of Spades.",
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "East played Ace of Spades.",
+            "seat": 3,
+            "card": "SA"
+          },
+          {
+            "id": 13,
+            "type": "trick-resolved",
+            "message": "East won trick 2.",
+            "seat": 3
+          },
+          {
+            "id": 14,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "East played 10 of Spades.",
+            "seat": 3,
+            "card": "S10"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S7"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 4,
+            "remaining": 9,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 5,
+            "remaining": 8,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7"
+        ],
+        [
+          "C6",
+          "C10",
+          "D2",
+          "D7",
+          "DJ",
+          "H2",
+          "H3",
+          "H10",
+          "HK",
+          "S5",
+          "S8"
+        ],
+        [
+          "C8",
+          "D4",
+          "D6",
+          "D8",
+          "DQ",
+          "DA",
+          "H5",
+          "H6",
+          "HJ",
+          "S4",
+          "S6"
+        ],
+        [
+          "C3",
+          "C4",
+          "C7",
+          "D3",
+          "D10",
+          "H7",
+          "H9",
+          "HA",
+          "S2",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "hearts",
+      "observation": {
+        "mode": "hearts",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "hearts-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7"
+        ],
+        "handSizes": [
+          11,
+          11,
+          11,
+          10
+        ],
+        "bids": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "tricks": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 3,
+            "card": "S10"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 1,
+                "card": "C2"
+              },
+              {
+                "seat": 2,
+                "card": "CJ"
+              },
+              {
+                "seat": 3,
+                "card": "CQ"
+              },
+              {
+                "seat": 0,
+                "card": "CA"
+              }
+            ],
+            "winner": 0
+          },
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "SJ"
+              },
+              {
+                "seat": 1,
+                "card": "SQ"
+              },
+              {
+                "seat": 2,
+                "card": "SK"
+              },
+              {
+                "seat": 3,
+                "card": "SA"
+              }
+            ],
+            "winner": 3
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": true,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. Pass three cards left."
+          },
+          {
+            "id": 2,
+            "type": "cards-passed",
+            "message": "Three cards passed left. West lead with the 2 of Clubs."
+          },
+          {
+            "id": 3,
+            "type": "card-played",
+            "message": "West played 2 of Clubs.",
+            "seat": 1,
+            "card": "C2"
+          },
+          {
+            "id": 4,
+            "type": "card-played",
+            "message": "North played Jack of Clubs.",
+            "seat": 2,
+            "card": "CJ"
+          },
+          {
+            "id": 5,
+            "type": "card-played",
+            "message": "East played Queen of Clubs.",
+            "seat": 3,
+            "card": "CQ"
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Ace of Clubs.",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "id": 7,
+            "type": "trick-resolved",
+            "message": "You won trick 1.",
+            "seat": 0
+          },
+          {
+            "id": 8,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "You played Jack of Spades.",
+            "seat": 0,
+            "card": "SJ"
+          },
+          {
+            "id": 10,
+            "type": "card-played",
+            "message": "West played Queen of Spades.",
+            "seat": 1,
+            "card": "SQ"
+          },
+          {
+            "id": 11,
+            "type": "card-played",
+            "message": "North played King of Spades.",
+            "seat": 2,
+            "card": "SK"
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "East played Ace of Spades.",
+            "seat": 3,
+            "card": "SA"
+          },
+          {
+            "id": 13,
+            "type": "trick-resolved",
+            "message": "East won trick 2.",
+            "seat": 3
+          },
+          {
+            "id": 14,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "East played 10 of Spades.",
+            "seat": 3,
+            "card": "S10"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [
+            "C2",
+            "C6",
+            "C10"
+          ],
+          "incoming": [
+            "C5",
+            "C9",
+            "CK"
+          ],
+          "to": 1,
+          "from": 3
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S3"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "S7"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 4,
+            "remaining": 9,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 5,
+            "remaining": 8,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": [
+          {
+            "seat": 1,
+            "card": "C6"
+          },
+          {
+            "seat": 1,
+            "card": "C10"
+          }
+        ]
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C5",
+          "C9",
+          "CK",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7"
+        ],
+        [
+          "C3",
+          "C4",
+          "C6",
+          "C8",
+          "C10",
+          "D3",
+          "D6",
+          "DJ",
+          "S2",
+          "S6",
+          "S9"
+        ],
+        [
+          "C7",
+          "D4",
+          "D7",
+          "D10",
+          "DQ",
+          "DA",
+          "H6",
+          "H9",
+          "HK",
+          "S5",
+          "S8"
+        ],
+        [
+          "D2",
+          "D8",
+          "H2",
+          "H3",
+          "H5",
+          "H7",
+          "H10",
+          "HJ",
+          "HA",
+          "S4"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C10"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "HQ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "DJ",
+          "DQ",
+          "H2",
+          "H5",
+          "H6",
+          "H7",
+          "H9",
+          "S4",
+          "S6",
+          "S10",
+          "SQ",
+          "SA"
+        ],
+        [
+          "C5",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D10",
+          "DA",
+          "H10",
+          "HJ",
+          "HK",
+          "S2",
+          "S9",
+          "SK"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "C9",
+          "CJ",
+          "CQ",
+          "CK",
+          "D2",
+          "D8",
+          "H3",
+          "HA",
+          "S5",
+          "S8"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C10"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "HQ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C8",
+          "C9",
+          "CK",
+          "D4",
+          "D7",
+          "D8",
+          "H3",
+          "H9",
+          "H10",
+          "HK",
+          "S2",
+          "S4"
+        ],
+        [
+          "C4",
+          "C7",
+          "CJ",
+          "D6",
+          "D10",
+          "DQ",
+          "H5",
+          "H6",
+          "H7",
+          "HJ",
+          "S9",
+          "S10",
+          "SA"
+        ],
+        [
+          "C5",
+          "CQ",
+          "D2",
+          "D3",
+          "DJ",
+          "DA",
+          "H2",
+          "HA",
+          "S5",
+          "S6",
+          "S8",
+          "SQ",
+          "SK"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C10"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "HQ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C4",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "H6",
+          "H7",
+          "H9",
+          "S6",
+          "S9",
+          "SQ",
+          "SA"
+        ],
+        [
+          "C7",
+          "C9",
+          "CQ",
+          "CK",
+          "D8",
+          "DQ",
+          "DA",
+          "H2",
+          "S2",
+          "S4",
+          "S5",
+          "S8",
+          "SK"
+        ],
+        [
+          "C5",
+          "C8",
+          "CJ",
+          "D2",
+          "D10",
+          "DJ",
+          "H3",
+          "H5",
+          "H10",
+          "HJ",
+          "HK",
+          "HA",
+          "S10"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 6,
+            "remaining": 7,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "D4",
+          "D10",
+          "DJ",
+          "H2",
+          "H9",
+          "S2",
+          "S4",
+          "S6",
+          "S8",
+          "S10",
+          "SA"
+        ],
+        [
+          "C5",
+          "D2",
+          "D6",
+          "D7",
+          "D8",
+          "DA",
+          "H5",
+          "H6",
+          "S5",
+          "SQ",
+          "SK"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "C9",
+          "CJ",
+          "CQ",
+          "CK",
+          "D3",
+          "DQ",
+          "H3",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 6,
+            "remaining": 7,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C8",
+          "CK",
+          "D4",
+          "D7",
+          "D8",
+          "DQ",
+          "H3",
+          "H6",
+          "H9",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        [
+          "C7",
+          "CJ",
+          "D2",
+          "D6",
+          "D10",
+          "DJ",
+          "H5",
+          "S4",
+          "S5",
+          "S6",
+          "S10"
+        ],
+        [
+          "C3",
+          "C4",
+          "C5",
+          "C9",
+          "CQ",
+          "D3",
+          "DA",
+          "H2",
+          "S2",
+          "S8",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 6,
+            "remaining": 7,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C7",
+          "C9",
+          "CQ",
+          "D3",
+          "D4",
+          "D6",
+          "H6",
+          "S4",
+          "S8",
+          "S9",
+          "SK"
+        ],
+        [
+          "C4",
+          "C5",
+          "CK",
+          "D2",
+          "D7",
+          "DQ",
+          "H2",
+          "S5",
+          "S6",
+          "SQ",
+          "SA"
+        ],
+        [
+          "C8",
+          "CJ",
+          "D8",
+          "D10",
+          "DJ",
+          "DA",
+          "H3",
+          "H5",
+          "H9",
+          "S2",
+          "S10"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          11,
+          11,
+          10,
+          10
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H10"
+              },
+              {
+                "seat": 3,
+                "card": "H7"
+              },
+              {
+                "seat": 0,
+                "card": "H8"
+              },
+              {
+                "seat": 1,
+                "card": "H9"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          },
+          {
+            "id": 14,
+            "type": "card-played",
+            "message": "You played 8 of Hearts.",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "West played 9 of Hearts.",
+            "seat": 1,
+            "card": "H9"
+          },
+          {
+            "id": 16,
+            "type": "trick-resolved",
+            "message": "North won trick 2.",
+            "seat": 2
+          },
+          {
+            "id": 17,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 18,
+            "type": "card-played",
+            "message": "North played 6 of Hearts.",
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "id": 19,
+            "type": "card-played",
+            "message": "East played 3 of Hearts.",
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 10,
+            "remaining": 3,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C5",
+          "D4",
+          "D10",
+          "DJ",
+          "S2",
+          "S4",
+          "S6",
+          "S8",
+          "SQ",
+          "SA"
+        ],
+        [
+          "CQ",
+          "D2",
+          "D6",
+          "D7",
+          "D8",
+          "DA",
+          "H2",
+          "S5",
+          "S10",
+          "SK"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "C9",
+          "CJ",
+          "CK",
+          "D3",
+          "DQ",
+          "H5",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          11,
+          11,
+          10,
+          10
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H10"
+              },
+              {
+                "seat": 3,
+                "card": "H7"
+              },
+              {
+                "seat": 0,
+                "card": "H8"
+              },
+              {
+                "seat": 1,
+                "card": "H9"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          },
+          {
+            "id": 14,
+            "type": "card-played",
+            "message": "You played 8 of Hearts.",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "West played 9 of Hearts.",
+            "seat": 1,
+            "card": "H9"
+          },
+          {
+            "id": 16,
+            "type": "trick-resolved",
+            "message": "North won trick 2.",
+            "seat": 2
+          },
+          {
+            "id": 17,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 18,
+            "type": "card-played",
+            "message": "North played 6 of Hearts.",
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "id": 19,
+            "type": "card-played",
+            "message": "East played 3 of Hearts.",
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 10,
+            "remaining": 3,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C7",
+          "C8",
+          "CK",
+          "D4",
+          "D7",
+          "D8",
+          "D10",
+          "H5",
+          "S4",
+          "S9",
+          "SQ"
+        ],
+        [
+          "C4",
+          "CJ",
+          "CQ",
+          "D2",
+          "D6",
+          "DJ",
+          "DQ",
+          "S2",
+          "S8",
+          "S10"
+        ],
+        [
+          "C3",
+          "C5",
+          "C9",
+          "D3",
+          "DA",
+          "H2",
+          "S5",
+          "S6",
+          "SK",
+          "SA"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-solo",
+      "observation": {
+        "mode": "spades-solo",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-solo-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          11,
+          11,
+          10,
+          10
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H10"
+              },
+              {
+                "seat": 3,
+                "card": "H7"
+              },
+              {
+                "seat": 0,
+                "card": "H8"
+              },
+              {
+                "seat": 1,
+                "card": "H9"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          },
+          {
+            "id": 14,
+            "type": "card-played",
+            "message": "You played 8 of Hearts.",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "West played 9 of Hearts.",
+            "seat": 1,
+            "card": "H9"
+          },
+          {
+            "id": 16,
+            "type": "trick-resolved",
+            "message": "North won trick 2.",
+            "seat": 2
+          },
+          {
+            "id": 17,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 18,
+            "type": "card-played",
+            "message": "North played 6 of Hearts.",
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "id": 19,
+            "type": "card-played",
+            "message": "East played 3 of Hearts.",
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 10,
+            "remaining": 3,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C4",
+          "C7",
+          "C9",
+          "CQ",
+          "CK",
+          "D3",
+          "D4",
+          "H2",
+          "S10",
+          "SQ"
+        ],
+        [
+          "C5",
+          "CJ",
+          "D6",
+          "D7",
+          "DQ",
+          "S4",
+          "S6",
+          "S8",
+          "SK",
+          "SA"
+        ],
+        [
+          "C8",
+          "D2",
+          "D8",
+          "D10",
+          "DJ",
+          "DA",
+          "H5",
+          "S2",
+          "S5",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C10"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "HQ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "DJ",
+          "DQ",
+          "H2",
+          "H5",
+          "H6",
+          "H7",
+          "H9",
+          "S4",
+          "S6",
+          "S10",
+          "SQ",
+          "SA"
+        ],
+        [
+          "C5",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "D10",
+          "DA",
+          "H10",
+          "HJ",
+          "HK",
+          "S2",
+          "S9",
+          "SK"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "C9",
+          "CJ",
+          "CQ",
+          "CK",
+          "D2",
+          "D8",
+          "H3",
+          "HA",
+          "S5",
+          "S8"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C10"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "HQ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C8",
+          "C9",
+          "CK",
+          "D4",
+          "D7",
+          "D8",
+          "H3",
+          "H9",
+          "H10",
+          "HK",
+          "S2",
+          "S4"
+        ],
+        [
+          "C4",
+          "C7",
+          "CJ",
+          "D6",
+          "D10",
+          "DQ",
+          "H5",
+          "H6",
+          "H7",
+          "HJ",
+          "S9",
+          "S10",
+          "SA"
+        ],
+        [
+          "C5",
+          "CQ",
+          "D2",
+          "D3",
+          "DJ",
+          "DA",
+          "H2",
+          "HA",
+          "S5",
+          "S6",
+          "S8",
+          "SQ",
+          "SK"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          13,
+          13,
+          13,
+          13
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [],
+        "history": [],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": false,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C2"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C6"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "C10"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "CA"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "D9"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "HQ"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "HQ",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C4",
+          "D3",
+          "D4",
+          "D6",
+          "D7",
+          "H6",
+          "H7",
+          "H9",
+          "S6",
+          "S9",
+          "SQ",
+          "SA"
+        ],
+        [
+          "C7",
+          "C9",
+          "CQ",
+          "CK",
+          "D8",
+          "DQ",
+          "DA",
+          "H2",
+          "S2",
+          "S4",
+          "S5",
+          "S8",
+          "SK"
+        ],
+        [
+          "C5",
+          "C8",
+          "CJ",
+          "D2",
+          "D10",
+          "DJ",
+          "H3",
+          "H5",
+          "H10",
+          "HJ",
+          "HK",
+          "HA",
+          "S10"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 6,
+            "remaining": 7,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "D4",
+          "D10",
+          "DJ",
+          "H2",
+          "H9",
+          "S2",
+          "S4",
+          "S6",
+          "S8",
+          "S10",
+          "SA"
+        ],
+        [
+          "C5",
+          "D2",
+          "D6",
+          "D7",
+          "D8",
+          "DA",
+          "H5",
+          "H6",
+          "S5",
+          "SQ",
+          "SK"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "C9",
+          "CJ",
+          "CQ",
+          "CK",
+          "D3",
+          "DQ",
+          "H3",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 6,
+            "remaining": 7,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C8",
+          "CK",
+          "D4",
+          "D7",
+          "D8",
+          "DQ",
+          "H3",
+          "H6",
+          "H9",
+          "SQ",
+          "SK",
+          "SA"
+        ],
+        [
+          "C7",
+          "CJ",
+          "D2",
+          "D6",
+          "D10",
+          "DJ",
+          "H5",
+          "S4",
+          "S5",
+          "S6",
+          "S10"
+        ],
+        [
+          "C3",
+          "C4",
+          "C5",
+          "C9",
+          "CQ",
+          "D3",
+          "DA",
+          "H2",
+          "S2",
+          "S8",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          12,
+          12,
+          11,
+          11
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          },
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H8"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 6,
+            "remaining": 7,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "H8",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C7",
+          "C9",
+          "CQ",
+          "D3",
+          "D4",
+          "D6",
+          "H6",
+          "S4",
+          "S8",
+          "S9",
+          "SK"
+        ],
+        [
+          "C4",
+          "C5",
+          "CK",
+          "D2",
+          "D7",
+          "DQ",
+          "H2",
+          "S5",
+          "S6",
+          "SQ",
+          "SA"
+        ],
+        [
+          "C8",
+          "CJ",
+          "D8",
+          "D10",
+          "DJ",
+          "DA",
+          "H3",
+          "H5",
+          "H9",
+          "S2",
+          "S10"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          11,
+          11,
+          10,
+          10
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H10"
+              },
+              {
+                "seat": 3,
+                "card": "H7"
+              },
+              {
+                "seat": 0,
+                "card": "H8"
+              },
+              {
+                "seat": 1,
+                "card": "H9"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          },
+          {
+            "id": 14,
+            "type": "card-played",
+            "message": "You played 8 of Hearts.",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "West played 9 of Hearts.",
+            "seat": 1,
+            "card": "H9"
+          },
+          {
+            "id": 16,
+            "type": "trick-resolved",
+            "message": "North won trick 2.",
+            "seat": 2
+          },
+          {
+            "id": 17,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 18,
+            "type": "card-played",
+            "message": "North played 6 of Hearts.",
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "id": 19,
+            "type": "card-played",
+            "message": "East played 3 of Hearts.",
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 10,
+            "remaining": 3,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 0,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C5",
+          "D4",
+          "D10",
+          "DJ",
+          "S2",
+          "S4",
+          "S6",
+          "S8",
+          "SQ",
+          "SA"
+        ],
+        [
+          "CQ",
+          "D2",
+          "D6",
+          "D7",
+          "D8",
+          "DA",
+          "H2",
+          "S5",
+          "S10",
+          "SK"
+        ],
+        [
+          "C4",
+          "C7",
+          "C8",
+          "C9",
+          "CJ",
+          "CK",
+          "D3",
+          "DQ",
+          "H5",
+          "S9"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          11,
+          11,
+          10,
+          10
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H10"
+              },
+              {
+                "seat": 3,
+                "card": "H7"
+              },
+              {
+                "seat": 0,
+                "card": "H8"
+              },
+              {
+                "seat": 1,
+                "card": "H9"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          },
+          {
+            "id": 14,
+            "type": "card-played",
+            "message": "You played 8 of Hearts.",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "West played 9 of Hearts.",
+            "seat": 1,
+            "card": "H9"
+          },
+          {
+            "id": 16,
+            "type": "trick-resolved",
+            "message": "North won trick 2.",
+            "seat": 2
+          },
+          {
+            "id": 17,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 18,
+            "type": "card-played",
+            "message": "North played 6 of Hearts.",
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "id": 19,
+            "type": "card-played",
+            "message": "East played 3 of Hearts.",
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 10,
+            "remaining": 3,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 23,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C7",
+          "C8",
+          "CK",
+          "D4",
+          "D7",
+          "D8",
+          "D10",
+          "H5",
+          "S4",
+          "S9",
+          "SQ"
+        ],
+        [
+          "C4",
+          "CJ",
+          "CQ",
+          "D2",
+          "D6",
+          "DJ",
+          "DQ",
+          "S2",
+          "S8",
+          "S10"
+        ],
+        [
+          "C3",
+          "C5",
+          "C9",
+          "D3",
+          "DA",
+          "H2",
+          "S5",
+          "S6",
+          "SK",
+          "SA"
+        ]
+      ]
+    },
+    {
+      "mode": "spades-partners",
+      "observation": {
+        "mode": "spades-partners",
+        "seat": 0,
+        "moduleVersion": "1.0.0",
+        "ruleProfileId": "spades-training-1.0.0",
+        "observationSchemaVersion": "1.0.0",
+        "featureVersion": "1.0.0",
+        "phase": "play",
+        "hand": [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        "handSizes": [
+          11,
+          11,
+          10,
+          10
+        ],
+        "bids": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "tricks": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bags": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trick": [
+          {
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "history": [
+          {
+            "plays": [
+              {
+                "seat": 0,
+                "card": "HQ"
+              },
+              {
+                "seat": 1,
+                "card": "HK"
+              },
+              {
+                "seat": 2,
+                "card": "HA"
+              },
+              {
+                "seat": 3,
+                "card": "HJ"
+              }
+            ],
+            "winner": 2
+          },
+          {
+            "plays": [
+              {
+                "seat": 2,
+                "card": "H10"
+              },
+              {
+                "seat": 3,
+                "card": "H7"
+              },
+              {
+                "seat": 0,
+                "card": "H8"
+              },
+              {
+                "seat": 1,
+                "card": "H9"
+              }
+            ],
+            "winner": 2
+          }
+        ],
+        "turn": 0,
+        "dealer": 3,
+        "handNumber": 1,
+        "heartsBroken": true,
+        "spadesBroken": false,
+        "events": [
+          {
+            "id": 1,
+            "type": "hand-started",
+            "message": "Hand 1 dealt. You bid first."
+          },
+          {
+            "id": 2,
+            "type": "bid-placed",
+            "message": "You bid 1.",
+            "seat": 0,
+            "bid": 1
+          },
+          {
+            "id": 3,
+            "type": "bid-placed",
+            "message": "West bid 1.",
+            "seat": 1,
+            "bid": 1
+          },
+          {
+            "id": 4,
+            "type": "bid-placed",
+            "message": "North bid 1.",
+            "seat": 2,
+            "bid": 1
+          },
+          {
+            "id": 5,
+            "type": "bid-placed",
+            "message": "East bid 1.",
+            "seat": 3,
+            "bid": 1
+          },
+          {
+            "id": 6,
+            "type": "card-played",
+            "message": "You played Queen of Hearts.",
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "id": 7,
+            "type": "card-played",
+            "message": "West played King of Hearts.",
+            "seat": 1,
+            "card": "HK"
+          },
+          {
+            "id": 8,
+            "type": "card-played",
+            "message": "North played Ace of Hearts.",
+            "seat": 2,
+            "card": "HA"
+          },
+          {
+            "id": 9,
+            "type": "card-played",
+            "message": "East played Jack of Hearts.",
+            "seat": 3,
+            "card": "HJ"
+          },
+          {
+            "id": 10,
+            "type": "trick-resolved",
+            "message": "North won trick 1.",
+            "seat": 2
+          },
+          {
+            "id": 11,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 12,
+            "type": "card-played",
+            "message": "North played 10 of Hearts.",
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "id": 13,
+            "type": "card-played",
+            "message": "East played 7 of Hearts.",
+            "seat": 3,
+            "card": "H7"
+          },
+          {
+            "id": 14,
+            "type": "card-played",
+            "message": "You played 8 of Hearts.",
+            "seat": 0,
+            "card": "H8"
+          },
+          {
+            "id": 15,
+            "type": "card-played",
+            "message": "West played 9 of Hearts.",
+            "seat": 1,
+            "card": "H9"
+          },
+          {
+            "id": 16,
+            "type": "trick-resolved",
+            "message": "North won trick 2.",
+            "seat": 2
+          },
+          {
+            "id": 17,
+            "type": "trick-collected",
+            "message": "Completed trick cleared from the table."
+          },
+          {
+            "id": 18,
+            "type": "card-played",
+            "message": "North played 6 of Hearts.",
+            "seat": 2,
+            "card": "H6"
+          },
+          {
+            "id": 19,
+            "type": "card-played",
+            "message": "East played 3 of Hearts.",
+            "seat": 3,
+            "card": "H3"
+          }
+        ],
+        "passDirection": "left",
+        "pass": {
+          "outgoing": [],
+          "incoming": [],
+          "to": null,
+          "from": null
+        },
+        "legalActions": [
+          {
+            "kind": "play",
+            "seat": 0,
+            "card": "H4"
+          }
+        ],
+        "memory": [
+          {
+            "suit": "C",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "D",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          },
+          {
+            "suit": "H",
+            "played": 10,
+            "remaining": 3,
+            "voidSeats": []
+          },
+          {
+            "suit": "S",
+            "played": 0,
+            "remaining": 13,
+            "voidSeats": []
+          }
+        ],
+        "knownHoldings": []
+      },
+      "seed": 1729,
+      "hands": [
+        [
+          "C2",
+          "C6",
+          "C10",
+          "CA",
+          "D5",
+          "D9",
+          "DK",
+          "H4",
+          "S3",
+          "S7",
+          "SJ"
+        ],
+        [
+          "C3",
+          "C4",
+          "C7",
+          "C9",
+          "CQ",
+          "CK",
+          "D3",
+          "D4",
+          "H2",
+          "S10",
+          "SQ"
+        ],
+        [
+          "C5",
+          "CJ",
+          "D6",
+          "D7",
+          "DQ",
+          "S4",
+          "S6",
+          "S8",
+          "SK",
+          "SA"
+        ],
+        [
+          "C8",
+          "D2",
+          "D8",
+          "D10",
+          "DJ",
+          "DA",
+          "H5",
+          "S2",
+          "S5",
+          "S9"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/platform-review-v1.json",
+  "title": "Platform review contracts",
+  "$defs": {
+    "PlatformAdviceRequest": {
+      "title": "PlatformAdviceRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "requestedLevel": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "unlock": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "decisionId",
+        "requestedLevel",
+        "unlock"
+      ],
+      "additionalProperties": false
+    },
+    "PlatformNotesRequest": {
+      "title": "PlatformNotesRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken"
+      ],
+      "additionalProperties": false
+    },
+    "PlatformReviewTrialRequest": {
+      "title": "PlatformReviewTrialRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "trialId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "alternativeCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "decisionId",
+        "trialId",
+        "alternativeCandidateId"
+      ],
+      "additionalProperties": false
+    },
+    "PlatformReviewExposureRequest": {
+      "title": "PlatformReviewExposureRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "displayedLevel": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "decisionId",
+        "displayedLevel"
+      ],
+      "additionalProperties": false
+    },
+    "PlatformReviewStatus": {
+      "title": "PlatformReviewStatus",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "running",
+            "completed",
+            "expired",
+            "unavailable"
+          ]
+        },
+        "result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ReviewTrial"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "status",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "PlatformAdviceView": {
+      "title": "PlatformAdviceView",
+      "type": "object",
+      "properties": {
+        "advice": {
+          "$ref": "#/$defs/AdviceView"
+        },
+        "sourceUnitId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "unlocked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "advice",
+        "sourceUnitId",
+        "unlocked"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

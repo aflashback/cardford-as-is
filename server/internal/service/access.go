@@ -109,6 +109,9 @@ func sessionOperation(b gamekernel.BoundSession, id, unit, kind, intent, tool st
 }
 
 func (s *Service) chooseAccess(ctx context.Context, owner string, b gamekernel.BoundSession, id, unit, kind, intent, tool string) (records.AccessAdmission, access.Decision, error) {
+	if s.policy == nil {
+		return s.fixturePlatformAdmission(ctx, owner, b, id, unit, kind, intent, tool)
+	}
 	c, err := s.store.ReadAccessContext(ctx, owner, id, unit)
 	if err != nil {
 		return records.AccessAdmission{}, access.Decision{}, err
@@ -218,9 +221,6 @@ func (s *Service) activateTrial(ctx context.Context, owner string, r transport.R
 }
 
 func (s *Service) unlock(ctx context.Context, owner string, r transport.Request) (transport.Response, error) {
-	if s.policy == nil {
-		return transport.Response{}, records.ErrAccess
-	}
 	var q struct {
 		CommandID, GameID, ControlLeaseToken, ToolID string
 		ExpectedRevision                             int64

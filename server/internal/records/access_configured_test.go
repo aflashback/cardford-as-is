@@ -404,7 +404,10 @@ func TestM04DConfiguredMigrationRetainsLegacyOriginalReservation(t *testing.T) {
 		t.Fatal(err)
 	}
 	if err = s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
-		_, err := tx.Exec(ctx, string(migrations[len(migrations)-1].SQL))
+		if migrations[8].Name != "009-configured-access.sql" {
+			return errors.New("missing frozen configured-access migration")
+		}
+		_, err := tx.Exec(ctx, string(migrations[8].SQL))
 		return err
 	}); err != nil {
 		t.Fatal(err)

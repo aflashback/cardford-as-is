@@ -32,6 +32,8 @@ import { api } from './api/client';
 import { AccountPage } from './features/AccountPage';
 import { ReviewPanel } from './features/ReviewPanel';
 import { DemoPage } from './features/DemoPage';
+import { webPlatform } from './platform/web';
+import { ProgressiveAdviceRequests } from './api/progressiveAdvice';
 
 const names = ['You', 'Leo', 'Maya', 'Theo'];
 const suitSymbols: Record<string, string> = { C: '♣', D: '♦', H: '♥', S: '♠' };
@@ -276,6 +278,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   const [hint, setHint] = useState<HintLevel>(0);
   const [advice, setAdvice] = useState<AdviceView | null>(null);
   const [advicePending, setAdvicePending] = useState(false);
+  const adviceRequests = useRef(new ProgressiveAdviceRequests());
   const [unlockLevel, setUnlockLevel] = useState<1 | 2 | 3 | null>(null);
   const lastNudge = useRef({ hand: '', trick: 0 });
   const [modal, setModal] = useState<Modal>('pause');
@@ -372,14 +375,13 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   useEffect(() => {
     const onVisibility = () => {
       if (document.hidden) setPageVisible(false);
-      else
-        void controller
-          .refresh()
-          .then(() => setPageVisible(true))
-          .catch(() => setToast('Reconnect to resume.'));
     };
+    const disconnect = webPlatform.onForeground(() => {
+      void controller.refresh().then(() => setPageVisible(true))
+        .catch(() => { setPageVisible(false); setToast('Reconnect to resume.'); });
+    });
     document.addEventListener('visibilitychange', onVisibility);
-    return () => document.removeEventListener('visibilitychange', onVisibility);
+    return () => { disconnect(); document.removeEventListener('visibilitychange', onVisibility); };
   }, [controller.refresh]);
   useEffect(() => {
     if (!toast) return;
@@ -401,6 +403,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
   useEffect(() => {
     if (paused || handEnd || game.phase === 'pass' || myTurn || controller.busy || controller.error) return;
     let cancelled = false;
+    const preparation = new AbortController();
     let timer: number | undefined;
     void controller
       .refresh()
@@ -409,11 +412,10 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
         timer = window.setTimeout(
           () => {
             if (game.phase === 'trick-end') {
-              void controller.mutate('/api/session/advance', { kind: 'collect-trick' });
+              void controller.advanceAutomatic();
               return;
             }
-            const envelope = controller.envelope();
-            void api('/api/session/prepare', 'PrepareView', envelope)
+            void controller.prepareBot(preparation.signal)
               .then((prepared) => {
                 if (!cancelled && decisionRef.current === turnKey)
                   return controller.mutate('/api/session/advance', {
@@ -436,6 +438,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       });
     return () => {
       cancelled = true;
+      preparation.abort();
       if (timer !== undefined) window.clearTimeout(timer);
     };
   }, [turnKey, paused, gameSpeed, controller.busy, controller.error]);
@@ -466,24 +469,23 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
       setHint(0);
       return;
     }
+    if (adviceRequests.current.pending || controller.busy) return;
     if (!session.access.handUnlocked && session.access.remainingHands !== null && !unlock) {
       setUnlockLevel(level);
       return;
     }
     const decision = turnKey;
     setAdvicePending(true);
-    setHint(level);
     try {
-      const result = await (unlock ? controller.unlock(level) : controller.advice(level));
-      if (decisionRef.current !== decision) return;
-      setAdvice(result);
-      setUnlockLevel(null);
-      void api('/api/session/exposures', 'AcceptedView', {
-        gameId: game.id,
-        decisionId: decision,
-        eventId: crypto.randomUUID(),
-        displayedLevel: level,
-      }).catch(() => undefined);
+      await adviceRequests.current.request(decision,level,
+        () => unlock ? controller.unlock(level) : controller.advice(level),
+        async (result) => {
+          if (decisionRef.current !== decision) return;
+          setAdvice(result);
+          setHint(result.requestedLevel);
+          setUnlockLevel(null);
+          await controller.exposure(level, decision).catch(() => undefined);
+        });
     } catch (e) {
       if (decisionRef.current === decision) {
         setHint(0);
@@ -798,7 +800,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                   {unlockLevel && (
                     <div>
                       <p>Unlock all help for this hand.</p>
-                      <button className="hint-button" onClick={() => void showHint(unlockLevel, true)}>
+                      <button className="hint-button" disabled={advicePending || controller.busy} onClick={() => void showHint(unlockLevel, true)}>
                         Use coached hand
                       </button>
                       <button className="subtle-button" onClick={() => setUnlockLevel(null)}>
@@ -845,7 +847,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                 <div className="coach-buttons">
                   {canDecide && coachMode !== 'after' ? (
                     activeHint === 0 ? (
-                      <button className="hint-button" onClick={() => showHint(1)}>
+                      <button className="hint-button" disabled={advicePending || controller.busy} onClick={() => showHint(1)}>
                         <Focus size={17} />
                         Give me a cue
                         <ArrowUpRight size={16} />
@@ -855,7 +857,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                         <button
                           className="hint-button"
                           onClick={() => showHint(activeHint === 1 ? 2 : 3)}
-                          disabled={activeHint === 3}
+                          disabled={activeHint === 3 || advicePending || controller.busy}
                         >
                           {activeHint === 1
                             ? 'More context'
@@ -865,7 +867,7 @@ function Table({ controller }: { controller: ReturnType<typeof useSession> }) {
                           {activeHint < 3 && <ChevronRight size={15} />}
                         </button>
                         {activeHint === 1 && (
-                          <button className="subtle-button" onClick={() => showHint(3)}>
+                          <button className="subtle-button" disabled={advicePending || controller.busy} onClick={() => showHint(3)}>
                             Suggest a move
                           </button>
                         )}

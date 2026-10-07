@@ -15,6 +15,9 @@ func (s *Store) EraseOwner(ctx context.Context) error {
 		return err
 	}
 	return s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
+		if err := s.LockPlatformFamilyErasureTx(ctx, tx, p.OwnerID); err != nil {
+			return err
+		}
 		var owner string
 		if err := tx.QueryRow(ctx, "SELECT owner_id FROM "+s.table("m03_access")+" WHERE owner_id=$1 FOR UPDATE", p.OwnerID).Scan(&owner); err != nil {
 			if errors.Is(err, pgx.ErrNoRows) {
@@ -25,13 +28,16 @@ func (s *Store) EraseOwner(ctx context.Context) error {
 		if err := s.authorize(ctx, tx, owner); err != nil {
 			return err
 		}
+		if err := s.ErasePlatformFamilyTx(ctx, tx, owner); err != nil {
+			return err
+		}
 		if _, err := tx.Exec(ctx, "SELECT set_config('cardford.erasing_owner',$1,true)", owner); err != nil {
 			return err
 		}
 		if _, err := tx.Exec(ctx, "DELETE FROM "+s.table("m03_work_attempts")+" WHERE work_id IN (SELECT work_id FROM "+s.table("m03_work")+" WHERE owner_id=$1)", owner); err != nil {
 			return err
 		}
-		for _, table := range []string{"m03_work", "m03_review_trials", "m03_exposures", "m03_command_decisions", "m03_decisions", "m03_commands"} {
+		for _, table := range []string{"m04_help_deliveries", "m04_review_jobs", "m03_work", "m03_review_trials", "m03_exposures", "m03_command_decisions", "m03_decisions", "m03_commands"} {
 			if _, err := tx.Exec(ctx, "DELETE FROM "+s.table(table)+" WHERE owner_id=$1", owner); err != nil {
 				return err
 			}

@@ -17,24 +17,28 @@ import (
 )
 
 type Service struct {
-	store    *records.Store
-	codec    *records.DocumentCodec
-	jobs     *scheduler
-	policy   *access.Policy
-	resolver *access.Resolver
+	store      *records.Store
+	codec      *records.DocumentCodec
+	jobs       *scheduler
+	reviewJobs *scheduler
+	policy     *access.Policy
+	resolver   *access.Resolver
 }
 
 func New(store *records.Store, codec *records.DocumentCodec) (*Service, error) {
 	if store == nil || codec == nil {
 		return nil, fmt.Errorf("missing local service dependencies")
 	}
-	return &Service{store: store, codec: codec, jobs: newScheduler(2, 16, 20*time.Second)}, nil
+	return &Service{store: store, codec: codec, jobs: newScheduler(2, 16, 20*time.Second), reviewJobs: newScheduler(1, 4, 20*time.Second)}, nil
 }
-func (s *Service) Close() { s.jobs.close() }
+func (s *Service) Close() { s.jobs.close(); s.reviewJobs.close() }
 
 // Only these routes accept user input. The public schema is validated again
 // here so trusted transport composition cannot accidentally bypass the boundary.
 var requests = map[string]string{
+	"platform-reconcile": "PlatformReconcileRequest", "platform-delete-account": "AccountDeleteRequest",
+	"platform-preferences": "PlatformPreferencesRequest", "platform-billing-preview": "BillingPreviewRequest", "platform-billing-change": "BillingConfirmRequest", "platform-family-command": "PlatformFamilyCommand",
+	"platform-advice": "PlatformAdviceRequest", "platform-notes": "PlatformNotesRequest", "platform-exposures": "PlatformReviewExposureRequest", "platform-review-trial": "PlatformReviewTrialRequest",
 	"demo-frame":     "DemoFrameRequest",
 	"access-resolve": "LocalServiceAccessRequest", "activate-trial": "LocalServiceTrialRequest", "unlock-coaching": "LocalServiceUnlockRequest",
 	"local-session": "LocalServiceEmptyRequest", "logout": "LocalServiceEmptyRequest", "delete-account": "LocalServiceEmptyRequest",
@@ -85,6 +89,7 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 			return
 		}
 		var httpErr *transport.LocalError
+		err = platformAccountError(err)
 		if errors.As(err, &httpErr) {
 			return
 		}
@@ -161,12 +166,12 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		return out, fail(401, "invalid-session")
 	}
 	ctx = records.WithPrincipal(ctx, p)
-	if r.Operation != "logout" && r.Operation != "delete-account" {
+	if r.Operation != "logout" && r.Operation != "delete-account" && r.Operation != "platform-delete-account" {
 		if e = s.identityMode(ctx, p); e != nil {
 			return out, e
 		}
 	}
-	if s.policy != nil && (r.Operation == "access-offers" || r.Operation == "access-resolve") {
+	if s.policy != nil && (r.Operation == "access-offers" || r.Operation == "access-resolve" || r.Operation == "platform-session") {
 		templates, e := offerTemplates(s.policy.Offers, "free", time.Now())
 		if e != nil {
 			return out, e
@@ -176,6 +181,26 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		}
 	}
 	switch r.Operation {
+	case "platform-session":
+		return s.platformSession(ctx, p.OwnerID, r.Tab)
+	case "platform-account":
+		return s.platformAccount(ctx, p.OwnerID)
+	case "platform-preferences", "platform-get-preferences":
+		return s.platformPreferences(ctx, p.OwnerID, r)
+	case "platform-billing-preview":
+		return s.platformBillingPreview(ctx, p.OwnerID, r)
+	case "platform-billing-change":
+		return s.platformBillingChange(ctx, p.OwnerID, r)
+	case "platform-family":
+		return s.platformFamily(ctx, p.OwnerID)
+	case "platform-family-command":
+		return s.platformFamilyCommand(ctx, p.OwnerID, r)
+	case "platform-export":
+		return s.platformExport(ctx, p.OwnerID)
+	case "platform-saved-advice":
+		return s.platformSavedAdvice(ctx, p.OwnerID, r.CommandID)
+	case "platform-advice", "platform-notes", "platform-exposures", "platform-reviews", "platform-review", "platform-review-access", "platform-review-trial", "platform-review-status":
+		return s.platformReview(ctx, p.OwnerID, r)
 	case "access-offers", "access-resolve":
 		return s.accessRequest(ctx, p.OwnerID, r)
 	case "activate-trial":
@@ -198,7 +223,7 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		return s.work(ctx, p.OwnerID, r)
 	case "decision":
 		return s.decision(ctx, p.OwnerID, r.CommandID)
-	case "reconcile":
+	case "reconcile", "platform-reconcile":
 		var q struct {
 			CommandID string          `json:"commandId"`
 			Operation string          `json:"operation"`
@@ -217,6 +242,35 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 			return out, e
 		}
 		v, e := s.store.ReconcileService(ctx, q.CommandID, digest)
+		if r.Operation == "platform-reconcile" {
+			if q.Operation == "platform-review-trial" {
+				job, readErr := s.store.ReadPlatformTrial(ctx, p.OwnerID, q.CommandID)
+				if errors.Is(readErr, records.ErrConflict) {
+					return result("PlatformReconcileView", map[string]any{"status": "unknown"})
+				}
+				if readErr != nil {
+					return out, readErr
+				}
+				if job.Digest != digest {
+					return out, records.ErrCommandDigest
+				}
+				response, readErr := platformTrialView(job)
+				if readErr != nil {
+					return out, readErr
+				}
+				return result("PlatformReconcileView", map[string]any{"status": "accepted", "receipt": response.Body})
+			}
+			if errors.Is(e, records.ErrConflict) {
+				return result("PlatformReconcileView", map[string]any{"status": "unknown"})
+			}
+			if e != nil {
+				return out, e
+			}
+			if e = s.platformReceiptReadable(ctx, p.OwnerID, q.Operation, q.Request); e != nil {
+				return out, e
+			}
+			return result("PlatformReconcileView", map[string]any{"status": "accepted", "receipt": json.RawMessage(v.Receipt)})
+		}
 		if e != nil {
 			return out, e
 		}
@@ -228,7 +282,7 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		out, e = result("AcceptedView", map[string]any{"accepted": true})
 		out.ClearToken = true
 		return out, e
-	case "delete-account":
+	case "delete-account", "platform-delete-account":
 		if e = s.store.EraseOwner(ctx); e != nil {
 			return out, e
 		}

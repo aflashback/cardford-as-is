@@ -33,7 +33,9 @@ This recognized loopback cluster has no TLS listener. The wrapper explicitly set
 
 M03 also encountered intermittent native TCP failures whose precise cause was not established. Preserve failure output and inspect local PostgreSQL/transport state if they recur; do not hide failures with retries or relax product timeouts. The final Node verification uses a fresh disposable test database after the checksum guard correctly rejected an earlier unpublished draft of migration 007. Committed migrations remain immutable; subsequent changes use a new forward migration. Development data was preserved.
 
-Normal React gameplay and account controls still use the original TypeScript service. To run that app against the separate native development database, use `node scripts/windows-env.mjs npm run db:migrate`, then `node scripts/windows-env.mjs npm run dev`. Its online example accurately reports unavailable because the authored endpoint is implemented only in Go. Existing startup/Vite/game browser-test paths remain on Node until M04E's client cutover gate; the explicit Go demo path below is separate.
+M04E adds an explicit complete Go/React local path; see its [acceptance status](../../../qa/implementation/multi-game/m04e/status.md). Start the recognized native PostgreSQL instance, then run `npm run start:go`. It builds the frontend with `VITE_BACKEND=go` and serves it from the single Go listener at `http://127.0.0.1:4174`. Node is build tooling for this path. Add `-- --configured` to select the empty launch policy. No alternate backend is selected on failure.
+
+The original TypeScript service remains an explicit V1 reader/reference, including selected-deal developer tooling. Run `node scripts/windows-env.mjs npm run db:migrate`, then `node scripts/windows-env.mjs npm run dev`, or use `npm run start:reference` for that original server. Its online example accurately reports unavailable. The default start/dev aliases remain on the reference path until full M04 activation; M04E's functional path is independently runnable.
 
 ### M04C local Go API
 
@@ -59,7 +61,7 @@ node scripts/windows-env.mjs npm run build
 node scripts/windows-env.mjs go run ./server/cmd/cardford --migrations web/server/records/migrations --access-policy server/internal/access/launch.json --web web/dist
 ```
 
-Open [the local online example](http://127.0.0.1:4174/#demo). `--web web/dist` loads a bounded trusted build at startup; rebuild/restart after changing it. This path currently connects only the demo. Normal game/account views still require M04E adapters and the complete platform envelope.
+Open [the local online example](http://127.0.0.1:4174/#demo). `--web web/dist` loads a bounded trusted build at startup; rebuild/restart after changing it. These M04D commands demonstrate the demo-only build. Use M04E's `npm run start:go` above for the explicit complete Go game/account client.
 
 The checked-in [launch policy](../../../server/internal/access/launch.json) deliberately has no offers, so it issues no play/coaching grant. To exercise selected server configuration locally, explicitly choose [local-fixture.json](../../../server/internal/access/local-fixture.json) instead. That file is a demonstration policy, with unlimited local advice coverage across the three current modes; it does not select launch values. Omitting `--access-policy` retains the M04C fixture constructor. Existing identity cookies are mode-bound; switching between fixture and configured modes rejects a mismatch instead of silently broadening access. Use a separate browser session for a deliberately different mode.
 

@@ -15,7 +15,7 @@ const schema = JSON.parse(await readFile(resolve(base, 'contracts.schema.json'),
 // Only these public fragments may enter the active bundle. Private schemas and
 // arbitrary filesystem/network references are never resolved by the compiler.
 const publicFragments = ['hearts', 'spades'];
-const publicPlatformFragments = ['local-service'];
+const publicPlatformFragments = ['local-service', 'platform-service', 'platform-account', 'platform-review'];
 const references = new Map();
 const schemaLocations = new Map();
 for (const name of Object.keys(schema.$defs)) references.set(`${schema.$id}#/$defs/${name}`, `#/$defs/${name}`);
@@ -99,6 +99,26 @@ for (const [method,path,input,output] of routes) {
 // M04C is a separate local listener; these routes do not change the V1 client
 // contract or claim that its eventual platform UI envelope is implemented.
 const localServiceRoutes = [
+  ['get','/api/platform/session',null,'PlatformSessionView'],
+  ['post','/api/platform/commands/reconcile','PlatformReconcileRequest','PlatformReconcileView'],
+  ['get','/api/preferences',null,'PlatformPreferencesView'],
+  ['post','/api/preferences','PlatformPreferencesRequest','PlatformPreferencesView'],
+  ['get','/api/account',null,'PlatformAccountView'],
+  ['get','/api/account/export',null,'PlatformExportView'],
+  ['post','/api/platform/account/delete','AccountDeleteRequest','AccountDeleteView'],
+  ['post','/api/subscription/preview','BillingPreviewRequest','BillingPreview'],
+  ['post','/api/subscription/change','BillingConfirmRequest','BillingOperation'],
+  ['get','/api/family',null,'FamilyView'],
+  ['post','/api/family','PlatformFamilyCommand','FamilyView'],
+  ['post','/api/platform/advice','PlatformAdviceRequest','PlatformAdviceView'],
+  ['post','/api/platform/notes','PlatformNotesRequest','NotesView'],
+  ['post','/api/platform/exposures','PlatformReviewExposureRequest','AcceptedView'],
+  ['get','/api/platform/reviews',null,'ReviewIndex'],
+  ['get','/api/platform/reviews/{decisionId}',null,'ReviewView'],
+  ['get','/api/platform/reviews/{decisionId}/access',null,'PlatformReviewAccessView'],
+  ['get','/api/platform/reviews/{decisionId}/advice',null,'PlatformAdviceView'],
+  ['post','/api/platform/reviews/{decisionId}/trials','PlatformReviewTrialRequest','PlatformReviewStatus'],
+  ['get','/api/platform/review-trials/{id}',null,'PlatformReviewStatus'],
   ['post','/api/demo/frame','DemoFrameRequest','DemoFrame'],
   ['get','/api/access/offers',null,'AccessOfferPolicy'],
   ['post','/api/access/resolve','LocalServiceAccessRequest','AccessDecision'],
@@ -131,6 +151,7 @@ for (const [method,path,input,output] of localServiceRoutes) {
   if (path !== '/api/health' && path !== '/api/demo/frame') operation.parameters.push({ name: 'x-tricks-tab', in: 'header', required: true, schema: { type: 'string', minLength: 8, maxLength: 80 } });
   if (method === 'post') operation.parameters.push({ name: 'x-tricks-client', in: 'header', required: true, schema: { const: '1' } });
   if (path.includes('{id}')) operation.parameters.push({ name: 'id', in: 'path', required: true, schema: { type: 'string', minLength: 1, maxLength: 256 } });
+  if (path.includes('{decisionId}')) operation.parameters.push({ name: 'decisionId', in: 'path', required: true, schema: { type: 'string', minLength: 1, maxLength: 256 } });
   if (path !== '/api/health' && path !== '/api/local/session' && path !== '/api/demo/frame') operation.security = [{ localSession: [] }];
   localOpenapi.paths[path] ??= {};
   localOpenapi.paths[path][method] = operation;

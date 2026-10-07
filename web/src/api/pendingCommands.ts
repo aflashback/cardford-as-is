@@ -154,7 +154,7 @@ export function clearPendingCommands() {
   try {
     for (let index = localStorage.length - 1; index >= 0; index--) {
       const name = localStorage.key(index);
-      if (name?.startsWith(PREFIX)) localStorage.removeItem(name);
+      if (name?.startsWith(PREFIX) || name?.startsWith('cardford-go-pending-v1:')) localStorage.removeItem(name);
     }
   } catch {
     /* Storage is optional. */

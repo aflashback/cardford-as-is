@@ -1,0 +1,4 @@
+# Native process output is evidence: retain captured bytes and output hashes.
+# Console whitespace is not editable source formatting.
+*.txt -text -whitespace
+*-native.jsonl -text -whitespace

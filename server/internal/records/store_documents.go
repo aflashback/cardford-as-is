@@ -177,6 +177,9 @@ func (s *Store) Create(ctx context.Context, doc Document, anchor ReplayAnchor, e
 		if !play || generation != admission.Generation || control != admission.ControlRevision {
 			return ErrAccess
 		}
+		if err := s.checkPlatformFixtureAccessTx(ctx, tx, admission, doc.Metadata.GameID, false); err != nil {
+			return err
+		}
 		if acceptedCreate {
 			if control >= maxRecordInteger {
 				return ErrControl

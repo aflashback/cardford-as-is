@@ -1,0 +1,58 @@
+CardFord Go local API: http://127.0.0.1:39185 (identity=local-test, payments=fixture, provider=off, access=fixture)
+Native Go browser origin: http://127.0.0.1:39185
+
+Running 5 tests using 1 worker
+
+(node:36372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 web\e2e\platform-go.spec.ts:189:1 › actual Go account: lost accepted billing reply, same receipt recovery, export and portrait deletion (903ms)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) web\e2e\platform-go.spec.ts:189:1 › actual Go account: lost accepted billing reply, same receipt recovery, export and portrait deletion 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByRole('button', { name: 'Retry same change', exact: true })
+    Expected: enabled
+    Error: strict mode violation: getByRole('button', { name: 'Retry same change', exact: true }) resolved to 2 elements:
+        1) <button class="text-button">Retry same change</button> aka getByRole('button', { name: 'Retry same change' }).first()
+        2) <button class="primary-button">Retry same change</button> aka getByRole('region', { name: 'Confirm subscription change' }).getByRole('button', { name: 'Retry same change' })
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: 'Retry same change', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Retry same change', exact: true })
+        2 × locator resolved to <button disabled class="primary-button">Retry same change</button>
+          - unexpected value "disabled"
+
+
+      211 |   // The retry label appears when intent is saved, before the original HTTP
+      212 |   // response arrives. Wait for the lost-reply attempt to settle first.
+    > 213 |   await expect(page.getByRole('button', { name: 'Retry same change', exact: true })).toBeEnabled();
+          |                                                                                      ^
+      214 |   expect(validateContract('BillingOperation', accepted)).toBe(true);
+      215 |   await page.reload();
+      216 |   await expect(page.getByRole('button', { name: 'Retry same change', exact: true })).toBeVisible();
+        at C:\repos\test-jev\web\e2e\platform-go.spec.ts:213:86
+
+    Error Context: test-results\m04e-platform\platform-go-actual-Go-acco-57515-xport-and-portrait-deletion\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\m04e-platform\platform-go-actual-Go-acco-57515-xport-and-portrait-deletion\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\m04e-platform\platform-go-actual-Go-acco-57515-xport-and-portrait-deletion\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    web\e2e\platform-go.spec.ts:189:1 › actual Go account: lost accepted billing reply, same receipt recovery, export and portrait deletion 
+  4 did not run
+  1 error was not a part of any test, see above for details
+Browser demo failed: AssertionError [ERR_ASSERTION]: Browser acceptance exited 1
+
+1 !== 0
+
+    at file:///C:/repos/test-jev/qa/implementation/multi-game/m04e/browser-smoke.mjs:119:10
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Owned test schema dropped after exact child shutdown.

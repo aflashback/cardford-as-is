@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-07T02:02:35.1852904Z",
+  "databaseDiagnostic": "database-cleanup.json",
+  "postgres": "stopped after only diagnostic client and zero owned test schemas",
+  "checkedListenerPorts": [
+    2216,
+    4174,
+    46158,
+    49020,
+    54331
+  ],
+  "listeners": [],
+  "ownedExecutables": [],
+  "removed": [
+    "C:\\repos\\test-jev\\.local\\m04e-account-integration-debug.log",
+    "C:\\repos\\test-jev\\.local\\m04e-account-records-tests.log",
+    "C:\\repos\\test-jev\\.local\\m04e-account-service-pure-tests.log",
+    "C:\\repos\\test-jev\\.local\\m04e-browser.txt",
+    "C:\\repos\\test-jev\\.local\\m04e-cardford.exe",
+    "C:\\repos\\test-jev\\.local\\m04e-client-contract.md",
+    "C:\\repos\\test-jev\\.local\\m04e-database-diagnostic.json",
+    "C:\\repos\\test-jev\\.local\\m04e-family-check.txt",
+    "C:\\repos\\test-jev\\.local\\m04e-final-diagnostic-output.txt",
+    "C:\\repos\\test-jev\\.local\\m04e-http-profile.json",
+    "C:\\repos\\test-jev\\.local\\m04e-http-profile.mjs",
+    "C:\\repos\\test-jev\\.local\\m04e-platform-account-migration.sql",
+    "C:\\repos\\test-jev\\.local\\m04e-progress.ps1",
+    "C:\\repos\\test-jev\\.local\\m04e-record-sizes.mjs",
+    "C:\\repos\\test-jev\\.local\\m04e-schema.mjs",
+    "C:\\repos\\test-jev\\.local\\m04e-terminal-fixture.exe",
+    "C:\\repos\\test-jev\\test-results\\m04e-platform"
+  ],
+  "retainedPrivateFixtures": [
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04e-terminal-fixture-hearts.json",
+      "sha256": "4146176e3364c17518ad9eb309763f5981c64fe315df9bdf6d87a0e840739f3c",
+      "bytes": 843764
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04e-terminal-fixture-spades-solo.json",
+      "sha256": "a217d6a4b7c76e26177ff51b6231a5352ca86671a5fa737c7d220b912828ffd4",
+      "bytes": 378967
+    },
+    {
+      "path": "C:\\repos\\test-jev\\.local\\m04e-terminal-fixture-spades-partners.json",
+      "sha256": "6267406f15c691d84565ba297b05d602b6fe4a8f2c73c123489d8d34e77f4e54",
+      "bytes": 318363
+    }
+  ],
+  "referenceBuild": {
+    "backend": "node",
+    "exitCode": 0,
+    "output": "reference-build-native.txt",
+    "outputSHA256": "5b3e7822c5b24c777a7785536682fcafb5ca0c035c05cb3aebb2172071c72e41"
+  },
+  "originalToolchainCredentialsAndDatabaseData": "preserved",
+  "preexistingClaudeDirectory": "untouched"
+}

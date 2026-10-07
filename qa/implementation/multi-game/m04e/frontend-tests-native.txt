@@ -1,0 +1,38 @@
+✔ production table does not import browser-owned game, strategy or aggregate persistence (2.2522ms)
+✔ card preparation does not install an automatic human-play timer (0.4787ms)
+✔ timeout and queue-capacity HTTP responses remain ambiguous for receipt recovery (0.2323ms)
+✔ one bounded deadline aborts a stalled fetch and keeps mutation outcome ambiguous (24.2123ms)
+✔ the same deadline includes a stalled response body even if body consumption ignores abort (23.1171ms)
+✔ external abort cancels fetch and response consumption with the caller reason (0.7259ms)
+✔ a valid response finishes normally and invalid response never claims a mutation was rolled back (19.6668ms)
+✔ reload restores the identical action envelope using the freshly verified lease without storing it (2.8754ms)
+✔ review reload preserves command, trial, alternative and revision without storing frames or analysis (1.1666ms)
+✔ expired, different-owner, malformed and unexpected private pending payloads are discarded (2.0943ms)
+✔ logout attempts and unauthenticated responses erase all durable pending envelopes (1.3166ms)
+✔ tab leases retain original reconciliation secrets across takeover and remain owner bound (0.925ms)
+✔ Go pending envelopes reject mixed versions/private fields and retain no lease in durable storage (1.3493ms)
+✔ an ambiguous accepted Go command reconciles its original lease after a later retained lease (4.5715ms)
+✔ HTTP timeout/capacity outcomes keep pending Go commands and unknown receipts resend exact input (1.6129ms)
+✔ Go commands are never sent when recovery storage cannot retain the intent (0.6348ms)
+✔ family invitation recovery keeps its token in owner-bound tab storage (1.3947ms)
+✔ native48-character family invitation preserves the exact accepted receipt after a lost reply (2.8991ms)
+✔ native family acceptance recovers the original48-character token without storing it durably (0.9901ms)
+✔ a queued continuation remains recoverable and saved completion needs no original lease (157.5585ms)
+✔ definite continuation retry failures release the old intent while unknown outcomes retain it (8.7751ms)
+✔ saved full advice remains readable after expiry but partial delivery and revocation cannot reveal a new level (0.3793ms)
+✔ saved full advice uses the read-only route without constructing a lease or new-work command (2.2867ms)
+✔ backend selection is explicit and never falls back to another authority (0.2047ms)
+✔ foreground notifications require a visible document and detach on cleanup (0.6743ms)
+✔ external links require an exact configured HTTPS origin without credentials (0.3525ms)
+✔ candidate resolution uses only the complete server set and supports selection order (0.3372ms)
+✔ review adapters preserve frozen registered play IDs and reject cards absent from the source legal set (0.2836ms)
+✔ delayed progressive advice and its exposure block repeated clicks without promoting the displayed level early (0.5584ms)
+✔ a mismatched decision or level never changes confirmed advice and releases the request for retry (0.3544ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 382.1648

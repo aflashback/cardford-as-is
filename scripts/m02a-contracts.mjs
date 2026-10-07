@@ -51,6 +51,7 @@ const patterns = new Set();
 const reviewedPatterns = new Set([
   '^[CDHS](?:[2-9]|10|J|Q|K|A)$',
   '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
+  '^[a-f0-9]{48}$', // ASCII-only native owner IDs; reject nonhex/case/length drift.
   '^[1-9][0-9]{0,5}$', '^(0|[1-9][0-9]{0,5})$',
   '^[a-z0-9][a-z0-9-]{0,63}$', '^[0-9]+\\.[0-9]+\\.[0-9]+$', '^[^\\u0000-\\u001f\\u007f]+$',
 ]);
@@ -156,6 +157,7 @@ function witness(def, index = 0) {
   if (def.type === 'string') {
     if (def.pattern?.startsWith('^[CDHS]')) return ['C2','D3','H4','S5'][index % 4];
     if (def.pattern?.includes('{8}-')) return '11111111-2222-3333-4444-555555555555';
+    if (def.pattern === '^[a-f0-9]{48}$') return 'a'.repeat(48);
     if (def.pattern?.includes('\\.')) return '1.0.0';
     if (def.pattern?.includes('[0-9]')) return '1';
     return ('x'+index).padEnd(def.minLength ?? 0,'x');
@@ -163,9 +165,15 @@ function witness(def, index = 0) {
   if (def.type === 'array') return Array.from({length:def.minItems ?? 0}, (_,i)=>witness(def.items,i));
   if (def.type === 'object') {
     const value=Object.fromEntries((def.required ?? []).map(key=>[key,witness(def.properties[key],index)]));
-    if (def.if && Object.entries(def.if.properties).every(([key,condition])=>value[key]===condition.const)) {
-      for (const [key,condition] of Object.entries(def.then.properties)) value[key]=witness(condition,index);
-    }
+    const applyConditional = rule => {
+      for (const child of rule.allOf ?? []) applyConditional(child);
+      if (!rule.if) return;
+      const matches = (rule.if.required ?? []).every(key=>Object.hasOwn(value,key)) &&
+        Object.entries(rule.if.properties ?? {}).every(([key,condition])=>value[key]===condition.const);
+      const branch = matches ? rule.then : rule.else;
+      for (const [key,condition] of Object.entries(branch?.properties ?? {})) value[key]=witness(condition,index);
+    };
+    applyConditional(def);
     return value;
   }
   throw new Error('Unsupported witness shape '+JSON.stringify(def));
@@ -181,6 +189,17 @@ for (const name of ['HeartsActorPacket','SpadesActorPacket']) {
   packet.observation.hands=[['SA']];add('nested-hidden-'+name,name,packet,false);
 }
 add('conditional-sealed-turn','GameView',{...witness(schema.$defs.GameView),phase:'pass',turn:0},false);
+const configuredAccount={...witness(schema.$defs.PlatformAccountView),mode:'configured',fixtureAccount:null,offers:witness(schema.$defs.AccessOfferPolicy),billingAvailable:false,familyAvailable:false};
+add('platform-configured-account','PlatformAccountView',configuredAccount,true);
+add('platform-configured-no-fixture','PlatformAccountView',{...configuredAccount,fixtureAccount:witness(schema.$defs.AccountView)},false);
+add('platform-configured-no-billing','PlatformAccountView',{...configuredAccount,billingAvailable:true},false);
+const nativeFamilyInvite={commandId:'family-invite',action:'invite',inviteeId:'ab'.repeat(24),seatClass:'limited'};
+add('platform-family-native-invite','PlatformFamilyCommand',nativeFamilyInvite,true);
+add('platform-family-reject-uuid','PlatformFamilyCommand',{...nativeFamilyInvite,inviteeId:'11111111-2222-3333-4444-555555555555'},false);
+add('platform-family-reject-uppercase','PlatformFamilyCommand',{...nativeFamilyInvite,inviteeId:'A'.repeat(48)},false);
+add('platform-family-reject-short','PlatformFamilyCommand',{...nativeFamilyInvite,inviteeId:'a'.repeat(47)},false);
+add('platform-family-reject-newline','PlatformFamilyCommand',{...nativeFamilyInvite,inviteeId:'a'.repeat(48)+'\n'},false);
+add('platform-family-recovery-native-invite','PlatformReconcileRequest',{commandId:nativeFamilyInvite.commandId,operation:'platform-family-command',request:nativeFamilyInvite},true);
 const billing=witness(schema.$defs.BillingOperation);
 add('date-iso-preserved','BillingOperation',{...billing,effectiveAt:'2026-10-05T22:12:34.567Z'},true);
 add('date-offset-preserved','BillingOperation',{...billing,effectiveAt:'2026-10-05T18:12:34.567-04:00'},true);

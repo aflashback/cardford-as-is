@@ -258,6 +258,56 @@ func generatedWire(name string) wireValue {
 		return new(LocalServiceUnlockRequest)
 	case "LocalServiceUnlockReceipt":
 		return new(LocalServiceUnlockReceipt)
+	case "PlatformAllowanceView":
+		return new(PlatformAllowanceView)
+	case "PlatformAccessView":
+		return new(PlatformAccessView)
+	case "PlatformReviewAccessView":
+		return new(PlatformReviewAccessView)
+	case "PlatformCompetition":
+		return new(PlatformCompetition)
+	case "PlatformController":
+		return new(PlatformController)
+	case "PlatformCatalogEntry":
+		return new(PlatformCatalogEntry)
+	case "PlatformSession":
+		return new(PlatformSession)
+	case "PlatformSessionView":
+		return new(PlatformSessionView)
+	case "PlatformReconcileRequest":
+		return new(PlatformReconcileRequest)
+	case "PlatformRecoveredReceipt":
+		return new(PlatformRecoveredReceipt)
+	case "PlatformReconcileView":
+		return new(PlatformReconcileView)
+	case "PlatformPreferencesView":
+		return new(PlatformPreferencesView)
+	case "PlatformPreferencesRequest":
+		return new(PlatformPreferencesRequest)
+	case "PlatformAccountAvailability":
+		return new(PlatformAccountAvailability)
+	case "PlatformAccountView":
+		return new(PlatformAccountView)
+	case "PlatformExportDecision":
+		return new(PlatformExportDecision)
+	case "PlatformExportView":
+		return new(PlatformExportView)
+	case "PlatformFixtureAccountView":
+		return new(PlatformFixtureAccountView)
+	case "PlatformFamilyCommand":
+		return new(PlatformFamilyCommand)
+	case "PlatformAdviceRequest":
+		return new(PlatformAdviceRequest)
+	case "PlatformNotesRequest":
+		return new(PlatformNotesRequest)
+	case "PlatformReviewTrialRequest":
+		return new(PlatformReviewTrialRequest)
+	case "PlatformReviewExposureRequest":
+		return new(PlatformReviewExposureRequest)
+	case "PlatformReviewStatus":
+		return new(PlatformReviewStatus)
+	case "PlatformAdviceView":
+		return new(PlatformAdviceView)
 	}
 	return nil
 }

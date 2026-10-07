@@ -1,5 +1,8 @@
 import { useRef, useState } from 'react';
 import { api } from '../api/client';
+import { backend } from '../platform/web';
+import { clearPendingCommands } from '../api/pendingCommands';
+import { clearLeases } from '../api/controlLease';
 
 export function DataControls({ onDeleted }: { onDeleted: () => void }) {
   const [confirmation, setConfirmation] = useState('');
@@ -13,7 +16,7 @@ export function DataControls({ onDeleted }: { onDeleted: () => void }) {
     setBusy(true);
     setError('');
     try {
-      const result = await api('/api/account/export', 'ExportView');
+      const result = backend === 'go' ? await api('/api/account/export', 'PlatformExportView') : await api('/api/account/export', 'ExportView');
       const url = URL.createObjectURL(
         new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' }),
       );
@@ -36,10 +39,11 @@ export function DataControls({ onDeleted }: { onDeleted: () => void }) {
     setError('');
     commandId.current ??= crypto.randomUUID();
     try {
-      await api('/api/account/delete', 'AccountDeleteView', {
+      await api(backend === 'go' ? '/api/platform/account/delete' : '/api/account/delete', 'AccountDeleteView', {
         commandId: commandId.current,
         confirmation: 'DELETE LOCAL ACCOUNT',
       });
+      clearPendingCommands(); clearLeases();
       onDeleted();
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Deletion could not be confirmed. Retry the same request.');

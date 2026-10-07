@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FamilyCommand, FamilyView } from '../../shared/contracts';
-import { api, ApiFailure } from '../api/client';
+import type { PlatformFamilyCommand } from '../../shared/local-service.contracts';
+import { api, definiteFailure } from '../api/client';
+import { backend } from '../platform/web';
+import { executeGo } from '../api/goPendingCommands';
 
-type FamilyIntent = FamilyCommand extends infer C
-  ? C extends FamilyCommand
+type FamilyTransportCommand = FamilyCommand | PlatformFamilyCommand;
+type FamilyIntent = FamilyTransportCommand extends infer C
+  ? C extends FamilyTransportCommand
     ? Omit<C, 'commandId'>
     : never
   : never;
@@ -16,7 +20,7 @@ export function FamilyPanel({ onChange }: { onChange: () => Promise<unknown> }) 
   const [token, setToken] = useState('');
   const [acknowledge, setAcknowledge] = useState(false);
   const [confirm, setConfirm] = useState<FamilyIntent | null>(null);
-  const pending = useRef<FamilyCommand | null>(null);
+  const pending = useRef<FamilyTransportCommand | null>(null);
   const inFlight = useRef(false);
   useEffect(() => {
     void api('/api/family', 'FamilyView')
@@ -31,14 +35,18 @@ export function FamilyPanel({ onChange }: { onChange: () => Promise<unknown> }) 
     setBusy(true);
     setError('');
     try {
-      setFamily(await api('/api/family', 'FamilyView', command));
+      if (backend === 'go') {
+        const identity = await api('/api/identity', 'IdentityView');
+        const goCommand:PlatformFamilyCommand=command;
+        setFamily(await executeGo('account', '/api/family', 'FamilyView', goCommand, identity.playerId, 'account'));
+      } else setFamily(await api('/api/family', 'FamilyView', command));
       pending.current = null;
       setConfirm(null);
       setInvitee('');
       setToken('');
       await onChange();
     } catch (e) {
-      if (e instanceof ApiFailure && e.status < 500) pending.current = null;
+      if (definiteFailure(e)) pending.current = null;
       setError(e instanceof Error ? e.message : 'Family change failed.');
     } finally {
       inFlight.current = false;

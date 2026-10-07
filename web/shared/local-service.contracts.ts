@@ -115,7 +115,32 @@ export type PublicContracts =
   | LocalServiceTrialRequest
   | LocalServiceTrialReceipt
   | LocalServiceUnlockRequest
-  | LocalServiceUnlockReceipt;
+  | LocalServiceUnlockReceipt
+  | PlatformAllowanceView
+  | PlatformAccessView
+  | PlatformReviewAccessView
+  | PlatformCompetition
+  | PlatformController
+  | PlatformCatalogEntry
+  | PlatformSession
+  | PlatformSessionView
+  | PlatformReconcileRequest
+  | PlatformRecoveredReceipt
+  | PlatformReconcileView
+  | PlatformPreferencesView
+  | PlatformPreferencesRequest
+  | PlatformAccountAvailability
+  | PlatformAccountView
+  | PlatformExportDecision
+  | PlatformExportView
+  | PlatformFixtureAccountView
+  | PlatformFamilyCommand
+  | PlatformAdviceRequest
+  | PlatformNotesRequest
+  | PlatformReviewTrialRequest
+  | PlatformReviewExposureRequest
+  | PlatformReviewStatus
+  | PlatformAdviceView;
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
 export type Seat = 0 | 1 | 2 | 3;
 export type Card = string;
@@ -387,6 +412,130 @@ export type LocalServiceAccessRequest =
   | {
       kind: 'read-saved';
       decisionId: string;
+    };
+export type PlatformReconcileRequest =
+  | LocalServiceReconcileRequest
+  | {
+      commandId: string;
+      operation: 'platform-preferences';
+      request: PlatformPreferencesRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'platform-advice';
+      request: PlatformAdviceRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'platform-notes';
+      request: PlatformNotesRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'platform-exposures';
+      request: PlatformReviewExposureRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'platform-review-trial';
+      request: PlatformReviewTrialRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'platform-billing-change';
+      request: BillingConfirmRequest;
+    }
+  | {
+      commandId: string;
+      operation: 'platform-family-command';
+      request: PlatformFamilyCommand;
+    };
+export type PlatformFamilyCommand =
+  | {
+      commandId: string;
+      action: 'create';
+    }
+  | {
+      commandId: string;
+      action: 'invite';
+      inviteeId: string;
+      seatClass: 'unlimited' | 'limited';
+    }
+  | {
+      commandId: string;
+      action: 'accept';
+      token: string;
+      acknowledgeIndividualCoverage: boolean;
+    }
+  | {
+      commandId: string;
+      action: 'revoke-invite';
+      invitationId: string;
+    }
+  | {
+      commandId: string;
+      action: 'remove';
+      assignmentId: string;
+    }
+  | {
+      commandId: string;
+      action: 'leave';
+    };
+export type PlatformRecoveredReceipt =
+  | LocalServiceRecoveredReceipt
+  | PlatformPreferencesView
+  | PlatformAdviceView
+  | NotesView
+  | AcceptedView
+  | PlatformReviewStatus
+  | BillingOperation
+  | FamilyView;
+export type PlatformReconcileView =
+  | {
+      status: 'unknown';
+    }
+  | {
+      status: 'accepted';
+      receipt: PlatformRecoveredReceipt;
+    };
+export type PlatformAccountView =
+  | {
+      schemaVersion: '1.0.0';
+      mode: 'fixture';
+      accessGeneration: number;
+      player: {
+        id: string;
+        displayName: string;
+      };
+      preferences: PlatformPreferencesView;
+      fixtureAccount: PlatformFixtureAccountView;
+      offers: null;
+      /**
+       * @minItems 3
+       * @maxItems 3
+       */
+      availability: PlatformAccountAvailability[];
+      billingAvailable: true;
+      familyAvailable: true;
+    }
+  | {
+      schemaVersion: '1.0.0';
+      mode: 'configured';
+      accessGeneration: number;
+      player: {
+        id: string;
+        displayName: string;
+      };
+      preferences: PlatformPreferencesView;
+      fixtureAccount: null;
+      offers: AccessOfferPolicy;
+      /**
+       * @minItems 3
+       * @maxItems 3
+       */
+      availability: PlatformAccountAvailability[];
+      billingAvailable: false;
+      familyAvailable: false;
     };
 
 export interface Play {
@@ -1329,6 +1478,205 @@ export interface LocalServiceUnlockReceipt {
   remaining: number | null;
   toolIds: string[];
 }
+export interface PlatformAllowanceView {
+  kind: 'none' | 'limited' | 'unlimited';
+  unit: string | null;
+  remaining: number | null;
+  resetsAt: string | null;
+  expiresAt: string | null;
+}
+export interface PlatformAccessView {
+  play: AccessDecision;
+  coach: AccessDecision;
+  handUnlocked: boolean;
+  canStartWork: boolean;
+  localMock: boolean;
+  allowance: PlatformAllowanceView;
+}
+export interface PlatformReviewAccessView {
+  sourceUnitId: string;
+  unlocked: boolean;
+  advice: AccessDecision;
+  reviewAlternative: AccessDecision;
+  /**
+   * @maxItems 3
+   */
+  savedAdviceLevels: (1 | 2 | 3)[];
+}
+export interface PlatformCompetition {
+  mode: 'individual' | 'partnership';
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  competitors: {
+    id: string;
+    /**
+     * @minItems 1
+     * @maxItems 4
+     */
+    seats: Seat[];
+  }[];
+}
+export interface PlatformController {
+  seat: Seat;
+  kind: 'human' | 'computer';
+}
+export interface PlatformCatalogEntry {
+  mode: Mode;
+  selector: LocalServiceSelector;
+  start: AccessDecision;
+}
+export interface PlatformSession {
+  gameId: string;
+  revision: number;
+  playable: boolean;
+  blockedReason: string | null;
+  selector: LocalServiceSelector;
+  pin: ModulePin;
+  competition: PlatformCompetition;
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  controllers: PlatformController[];
+  view: RegisteredSessionView;
+  presentation: GameView;
+  actor: RegisteredActorPacket | null;
+  node: LocalServiceNode;
+  control: LocalServiceControl;
+  decisionId: string;
+  access: PlatformAccessView;
+  stats: SessionStats;
+}
+export interface PlatformSessionView {
+  platformSchemaVersion: '1.0.0';
+  playerId: string;
+  activeGameId: string | null;
+  session: PlatformSession | null;
+  preferences: PlatformPreferencesView;
+  /**
+   * @minItems 0
+   * @maxItems 64
+   */
+  catalog: PlatformCatalogEntry[];
+}
+export interface PlatformPreferencesView {
+  schemaVersion: '1.0.0';
+  revision: number;
+  preferences: Preferences;
+}
+export interface PlatformPreferencesRequest {
+  commandId: string;
+  expectedPreferencesRevision: number;
+  preferences: Preferences;
+}
+export interface PlatformAdviceRequest {
+  commandId: string;
+  gameId: string;
+  expectedRevision: number;
+  controlLeaseToken: string;
+  decisionId: string;
+  requestedLevel: 1 | 2 | 3;
+  unlock: boolean;
+}
+export interface PlatformNotesRequest {
+  commandId: string;
+  gameId: string;
+  expectedRevision: number;
+  controlLeaseToken: string;
+}
+export interface PlatformReviewExposureRequest {
+  commandId: string;
+  gameId: string;
+  decisionId: string;
+  displayedLevel: 1 | 2 | 3;
+}
+export interface PlatformReviewTrialRequest {
+  commandId: string;
+  gameId: string;
+  expectedRevision: number;
+  controlLeaseToken: string;
+  decisionId: string;
+  trialId: string;
+  alternativeCandidateId: string;
+}
+export interface PlatformAdviceView {
+  advice: AdviceView;
+  sourceUnitId: string;
+  unlocked: boolean;
+}
+export interface PlatformReviewStatus {
+  commandId: string;
+  status: 'queued' | 'running' | 'completed' | 'expired' | 'unavailable';
+  result: ReviewTrial | null;
+}
+export interface PlatformAccountAvailability {
+  target: RegisteredTarget;
+  play: AccessDecision;
+  coach: AccessDecision;
+  /**
+   * @maxItems 64
+   */
+  trialEligibleOfferIds: string[];
+}
+export interface PlatformFixtureAccountView {
+  authMode: 'local-test';
+  player: {
+    id: string;
+    displayName: string;
+  };
+  access: CoachAccess;
+  subscription: SubscriptionView;
+  /**
+   * @maxItems 3
+   */
+  offers: OfferView[];
+}
+export interface PlatformExportDecision {
+  decisionId: string;
+  gameId: string;
+  revision: number;
+  policy: VersionedComponent;
+  packetVersion: '2.0.0';
+  analysis: RegisteredAnalysis;
+  /**
+   * @minItems 3
+   * @maxItems 3
+   */
+  advice: AdviceView[];
+}
+export interface PlatformExportView {
+  formatVersion: 'platform-export-1';
+  exportedAt: string;
+  mode: 'local-test';
+  account: PlatformAccountView;
+  /**
+   * @maxItems 1000
+   */
+  games: {
+    id: string;
+    revision: number;
+    view: RegisteredSessionView;
+  }[];
+  /**
+   * @maxItems 10000
+   */
+  decisions: PlatformExportDecision[];
+  /**
+   * @maxItems 10000
+   */
+  coachedUnits: {
+    gameId: string;
+    unitId: string;
+    unlockedAt: string;
+    offer: VersionedComponent;
+  }[];
+  /**
+   * @maxItems 10000
+   */
+  billing: BillingOperation[];
+}
 
 export interface ContractTypes {
   Mode: Mode;
@@ -1455,5 +1803,30 @@ export interface ContractTypes {
   LocalServiceTrialReceipt: LocalServiceTrialReceipt;
   LocalServiceUnlockRequest: LocalServiceUnlockRequest;
   LocalServiceUnlockReceipt: LocalServiceUnlockReceipt;
+  PlatformAllowanceView: PlatformAllowanceView;
+  PlatformAccessView: PlatformAccessView;
+  PlatformReviewAccessView: PlatformReviewAccessView;
+  PlatformCompetition: PlatformCompetition;
+  PlatformController: PlatformController;
+  PlatformCatalogEntry: PlatformCatalogEntry;
+  PlatformSession: PlatformSession;
+  PlatformSessionView: PlatformSessionView;
+  PlatformReconcileRequest: PlatformReconcileRequest;
+  PlatformRecoveredReceipt: PlatformRecoveredReceipt;
+  PlatformReconcileView: PlatformReconcileView;
+  PlatformPreferencesView: PlatformPreferencesView;
+  PlatformPreferencesRequest: PlatformPreferencesRequest;
+  PlatformAccountAvailability: PlatformAccountAvailability;
+  PlatformAccountView: PlatformAccountView;
+  PlatformExportDecision: PlatformExportDecision;
+  PlatformExportView: PlatformExportView;
+  PlatformFixtureAccountView: PlatformFixtureAccountView;
+  PlatformFamilyCommand: PlatformFamilyCommand;
+  PlatformAdviceRequest: PlatformAdviceRequest;
+  PlatformNotesRequest: PlatformNotesRequest;
+  PlatformReviewTrialRequest: PlatformReviewTrialRequest;
+  PlatformReviewExposureRequest: PlatformReviewExposureRequest;
+  PlatformReviewStatus: PlatformReviewStatus;
+  PlatformAdviceView: PlatformAdviceView;
 }
 export type ContractName = keyof ContractTypes;

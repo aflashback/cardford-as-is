@@ -127,6 +127,31 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   LocalServiceTrialReceipt: compiled.validateLocalServiceTrialReceipt,
   LocalServiceUnlockRequest: compiled.validateLocalServiceUnlockRequest,
   LocalServiceUnlockReceipt: compiled.validateLocalServiceUnlockReceipt,
+  PlatformAllowanceView: compiled.validatePlatformAllowanceView,
+  PlatformAccessView: compiled.validatePlatformAccessView,
+  PlatformReviewAccessView: compiled.validatePlatformReviewAccessView,
+  PlatformCompetition: compiled.validatePlatformCompetition,
+  PlatformController: compiled.validatePlatformController,
+  PlatformCatalogEntry: compiled.validatePlatformCatalogEntry,
+  PlatformSession: compiled.validatePlatformSession,
+  PlatformSessionView: compiled.validatePlatformSessionView,
+  PlatformReconcileRequest: compiled.validatePlatformReconcileRequest,
+  PlatformRecoveredReceipt: compiled.validatePlatformRecoveredReceipt,
+  PlatformReconcileView: compiled.validatePlatformReconcileView,
+  PlatformPreferencesView: compiled.validatePlatformPreferencesView,
+  PlatformPreferencesRequest: compiled.validatePlatformPreferencesRequest,
+  PlatformAccountAvailability: compiled.validatePlatformAccountAvailability,
+  PlatformAccountView: compiled.validatePlatformAccountView,
+  PlatformExportDecision: compiled.validatePlatformExportDecision,
+  PlatformExportView: compiled.validatePlatformExportView,
+  PlatformFixtureAccountView: compiled.validatePlatformFixtureAccountView,
+  PlatformFamilyCommand: compiled.validatePlatformFamilyCommand,
+  PlatformAdviceRequest: compiled.validatePlatformAdviceRequest,
+  PlatformNotesRequest: compiled.validatePlatformNotesRequest,
+  PlatformReviewTrialRequest: compiled.validatePlatformReviewTrialRequest,
+  PlatformReviewExposureRequest: compiled.validatePlatformReviewExposureRequest,
+  PlatformReviewStatus: compiled.validatePlatformReviewStatus,
+  PlatformAdviceView: compiled.validatePlatformAdviceView,
 };
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
   return validators[name];
@@ -261,3 +286,28 @@ export const validateLocalServiceTrialRequest = contractValidator('LocalServiceT
 export const validateLocalServiceTrialReceipt = contractValidator('LocalServiceTrialReceipt');
 export const validateLocalServiceUnlockRequest = contractValidator('LocalServiceUnlockRequest');
 export const validateLocalServiceUnlockReceipt = contractValidator('LocalServiceUnlockReceipt');
+export const validatePlatformAllowanceView = contractValidator('PlatformAllowanceView');
+export const validatePlatformAccessView = contractValidator('PlatformAccessView');
+export const validatePlatformReviewAccessView = contractValidator('PlatformReviewAccessView');
+export const validatePlatformCompetition = contractValidator('PlatformCompetition');
+export const validatePlatformController = contractValidator('PlatformController');
+export const validatePlatformCatalogEntry = contractValidator('PlatformCatalogEntry');
+export const validatePlatformSession = contractValidator('PlatformSession');
+export const validatePlatformSessionView = contractValidator('PlatformSessionView');
+export const validatePlatformReconcileRequest = contractValidator('PlatformReconcileRequest');
+export const validatePlatformRecoveredReceipt = contractValidator('PlatformRecoveredReceipt');
+export const validatePlatformReconcileView = contractValidator('PlatformReconcileView');
+export const validatePlatformPreferencesView = contractValidator('PlatformPreferencesView');
+export const validatePlatformPreferencesRequest = contractValidator('PlatformPreferencesRequest');
+export const validatePlatformAccountAvailability = contractValidator('PlatformAccountAvailability');
+export const validatePlatformAccountView = contractValidator('PlatformAccountView');
+export const validatePlatformExportDecision = contractValidator('PlatformExportDecision');
+export const validatePlatformExportView = contractValidator('PlatformExportView');
+export const validatePlatformFixtureAccountView = contractValidator('PlatformFixtureAccountView');
+export const validatePlatformFamilyCommand = contractValidator('PlatformFamilyCommand');
+export const validatePlatformAdviceRequest = contractValidator('PlatformAdviceRequest');
+export const validatePlatformNotesRequest = contractValidator('PlatformNotesRequest');
+export const validatePlatformReviewTrialRequest = contractValidator('PlatformReviewTrialRequest');
+export const validatePlatformReviewExposureRequest = contractValidator('PlatformReviewExposureRequest');
+export const validatePlatformReviewStatus = contractValidator('PlatformReviewStatus');
+export const validatePlatformAdviceView = contractValidator('PlatformAdviceView');

@@ -3530,5 +3530,735 @@ func (v LocalServiceUnlockReceipt) MarshalJSON() ([]byte, error) {
 }
 func (v LocalServiceUnlockReceipt) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
-var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt", "LocalServiceAccessRequest", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt"}
-var supportedPatterns = map[string]bool{"^[CDHS](?:[2-9]|10|J|Q|K|A)$": true, "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": true, "^[1-9][0-9]{0,5}$": true, "^(0|[1-9][0-9]{0,5})$": true, "^[a-z0-9][a-z0-9-]{0,63}$": true, "^[0-9]+\\.[0-9]+\\.[0-9]+$": true, "^[^\\u0000-\\u001f\\u007f]+$": true}
+// PlatformAllowanceView preserves the complete validated JSON value, including null and union tags.
+type PlatformAllowanceView struct{ raw json.RawMessage }
+
+func (v *PlatformAllowanceView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformAllowanceView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformAllowanceView) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformAllowanceView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformAllowanceView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type PlatformAccessView struct {
+	Play         AccessDecision        `json:"play"`
+	Coach        AccessDecision        `json:"coach"`
+	HandUnlocked bool                  `json:"handUnlocked"`
+	CanStartWork bool                  `json:"canStartWork"`
+	LocalMock    bool                  `json:"localMock"`
+	Allowance    PlatformAllowanceView `json:"allowance"`
+}
+
+func (v *PlatformAccessView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformAccessView", raw); err != nil {
+		return err
+	}
+	type wire PlatformAccessView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformAccessView(next)
+	return nil
+}
+func (v PlatformAccessView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformAccessView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformAccessView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformReviewAccessView struct {
+	SourceUnitID      string         `json:"sourceUnitId"`
+	Unlocked          bool           `json:"unlocked"`
+	Advice            AccessDecision `json:"advice"`
+	ReviewAlternative AccessDecision `json:"reviewAlternative"`
+	SavedAdviceLevels []float64      `json:"savedAdviceLevels"`
+}
+
+func (v *PlatformReviewAccessView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformReviewAccessView", raw); err != nil {
+		return err
+	}
+	type wire PlatformReviewAccessView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformReviewAccessView(next)
+	return nil
+}
+func (v PlatformReviewAccessView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformReviewAccessView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformReviewAccessView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformCompetition struct {
+	Mode        string `json:"mode"`
+	Competitors []struct {
+		ID    string `json:"id"`
+		Seats []Seat `json:"seats"`
+	} `json:"competitors"`
+}
+
+func (v *PlatformCompetition) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformCompetition", raw); err != nil {
+		return err
+	}
+	type wire PlatformCompetition
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformCompetition(next)
+	return nil
+}
+func (v PlatformCompetition) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformCompetition
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformCompetition", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformController struct {
+	Seat Seat   `json:"seat"`
+	Kind string `json:"kind"`
+}
+
+func (v *PlatformController) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformController", raw); err != nil {
+		return err
+	}
+	type wire PlatformController
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformController(next)
+	return nil
+}
+func (v PlatformController) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformController
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformController", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformCatalogEntry struct {
+	Mode     Mode                 `json:"mode"`
+	Selector LocalServiceSelector `json:"selector"`
+	Start    AccessDecision       `json:"start"`
+}
+
+func (v *PlatformCatalogEntry) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformCatalogEntry", raw); err != nil {
+		return err
+	}
+	type wire PlatformCatalogEntry
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformCatalogEntry(next)
+	return nil
+}
+func (v PlatformCatalogEntry) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformCatalogEntry
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformCatalogEntry", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// PlatformSession preserves the complete validated JSON value, including null and union tags.
+type PlatformSession struct{ raw json.RawMessage }
+
+func (v *PlatformSession) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformSession", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformSession) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformSession", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformSession) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// PlatformSessionView preserves the complete validated JSON value, including null and union tags.
+type PlatformSessionView struct{ raw json.RawMessage }
+
+func (v *PlatformSessionView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformSessionView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformSessionView) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformSessionView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformSessionView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// PlatformReconcileRequest preserves the complete validated JSON value, including null and union tags.
+type PlatformReconcileRequest struct{ raw json.RawMessage }
+
+func (v *PlatformReconcileRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformReconcileRequest", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformReconcileRequest) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformReconcileRequest", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformReconcileRequest) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// PlatformRecoveredReceipt preserves the complete validated JSON value, including null and union tags.
+type PlatformRecoveredReceipt struct{ raw json.RawMessage }
+
+func (v *PlatformRecoveredReceipt) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformRecoveredReceipt", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformRecoveredReceipt) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformRecoveredReceipt", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformRecoveredReceipt) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// PlatformReconcileView preserves the complete validated JSON value, including null and union tags.
+type PlatformReconcileView struct{ raw json.RawMessage }
+
+func (v *PlatformReconcileView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformReconcileView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformReconcileView) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformReconcileView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformReconcileView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type PlatformPreferencesView struct {
+	SchemaVersion string      `json:"schemaVersion"`
+	Revision      float64     `json:"revision"`
+	Preferences   Preferences `json:"preferences"`
+}
+
+func (v *PlatformPreferencesView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformPreferencesView", raw); err != nil {
+		return err
+	}
+	type wire PlatformPreferencesView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformPreferencesView(next)
+	return nil
+}
+func (v PlatformPreferencesView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformPreferencesView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformPreferencesView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformPreferencesRequest struct {
+	CommandID                   string      `json:"commandId"`
+	ExpectedPreferencesRevision float64     `json:"expectedPreferencesRevision"`
+	Preferences                 Preferences `json:"preferences"`
+}
+
+func (v *PlatformPreferencesRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformPreferencesRequest", raw); err != nil {
+		return err
+	}
+	type wire PlatformPreferencesRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformPreferencesRequest(next)
+	return nil
+}
+func (v PlatformPreferencesRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformPreferencesRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformPreferencesRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformAccountAvailability struct {
+	Target                RegisteredTarget `json:"target"`
+	Play                  AccessDecision   `json:"play"`
+	Coach                 AccessDecision   `json:"coach"`
+	TrialEligibleOfferIds []string         `json:"trialEligibleOfferIds"`
+}
+
+func (v *PlatformAccountAvailability) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformAccountAvailability", raw); err != nil {
+		return err
+	}
+	type wire PlatformAccountAvailability
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformAccountAvailability(next)
+	return nil
+}
+func (v PlatformAccountAvailability) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformAccountAvailability
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformAccountAvailability", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// PlatformAccountView preserves the complete validated JSON value, including null and union tags.
+type PlatformAccountView struct{ raw json.RawMessage }
+
+func (v *PlatformAccountView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformAccountView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformAccountView) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformAccountView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformAccountView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type PlatformExportDecision struct {
+	DecisionID    string             `json:"decisionId"`
+	GameID        string             `json:"gameId"`
+	Revision      float64            `json:"revision"`
+	Policy        VersionedComponent `json:"policy"`
+	PacketVersion string             `json:"packetVersion"`
+	Analysis      RegisteredAnalysis `json:"analysis"`
+	Advice        []AdviceView       `json:"advice"`
+}
+
+func (v *PlatformExportDecision) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformExportDecision", raw); err != nil {
+		return err
+	}
+	type wire PlatformExportDecision
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformExportDecision(next)
+	return nil
+}
+func (v PlatformExportDecision) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformExportDecision
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformExportDecision", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformExportView struct {
+	FormatVersion string              `json:"formatVersion"`
+	ExportedAt    string              `json:"exportedAt"`
+	Mode          string              `json:"mode"`
+	Account       PlatformAccountView `json:"account"`
+	Games         []struct {
+		ID       string                `json:"id"`
+		Revision float64               `json:"revision"`
+		View     RegisteredSessionView `json:"view"`
+	} `json:"games"`
+	Decisions    []PlatformExportDecision `json:"decisions"`
+	CoachedUnits []struct {
+		GameID     string             `json:"gameId"`
+		UnitID     string             `json:"unitId"`
+		UnlockedAt string             `json:"unlockedAt"`
+		Offer      VersionedComponent `json:"offer"`
+	} `json:"coachedUnits"`
+	Billing []BillingOperation `json:"billing"`
+}
+
+func (v *PlatformExportView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformExportView", raw); err != nil {
+		return err
+	}
+	type wire PlatformExportView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformExportView(next)
+	return nil
+}
+func (v PlatformExportView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformExportView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformExportView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformFixtureAccountView struct {
+	AuthMode string `json:"authMode"`
+	Player   struct {
+		ID          string `json:"id"`
+		DisplayName string `json:"displayName"`
+	} `json:"player"`
+	Access       CoachAccess      `json:"access"`
+	Subscription SubscriptionView `json:"subscription"`
+	Offers       []OfferView      `json:"offers"`
+}
+
+func (v *PlatformFixtureAccountView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformFixtureAccountView", raw); err != nil {
+		return err
+	}
+	type wire PlatformFixtureAccountView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformFixtureAccountView(next)
+	return nil
+}
+func (v PlatformFixtureAccountView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformFixtureAccountView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformFixtureAccountView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// PlatformFamilyCommand preserves the complete validated JSON value, including null and union tags.
+type PlatformFamilyCommand struct{ raw json.RawMessage }
+
+func (v *PlatformFamilyCommand) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformFamilyCommand", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformFamilyCommand) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformFamilyCommand", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformFamilyCommand) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type PlatformAdviceRequest struct {
+	CommandID         string  `json:"commandId"`
+	GameID            string  `json:"gameId"`
+	ExpectedRevision  float64 `json:"expectedRevision"`
+	ControlLeaseToken string  `json:"controlLeaseToken"`
+	DecisionID        string  `json:"decisionId"`
+	RequestedLevel    float64 `json:"requestedLevel"`
+	Unlock            bool    `json:"unlock"`
+}
+
+func (v *PlatformAdviceRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformAdviceRequest", raw); err != nil {
+		return err
+	}
+	type wire PlatformAdviceRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformAdviceRequest(next)
+	return nil
+}
+func (v PlatformAdviceRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformAdviceRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformAdviceRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformNotesRequest struct {
+	CommandID         string  `json:"commandId"`
+	GameID            string  `json:"gameId"`
+	ExpectedRevision  float64 `json:"expectedRevision"`
+	ControlLeaseToken string  `json:"controlLeaseToken"`
+}
+
+func (v *PlatformNotesRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformNotesRequest", raw); err != nil {
+		return err
+	}
+	type wire PlatformNotesRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformNotesRequest(next)
+	return nil
+}
+func (v PlatformNotesRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformNotesRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformNotesRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformReviewTrialRequest struct {
+	CommandID              string  `json:"commandId"`
+	GameID                 string  `json:"gameId"`
+	ExpectedRevision       float64 `json:"expectedRevision"`
+	ControlLeaseToken      string  `json:"controlLeaseToken"`
+	DecisionID             string  `json:"decisionId"`
+	TrialID                string  `json:"trialId"`
+	AlternativeCandidateID string  `json:"alternativeCandidateId"`
+}
+
+func (v *PlatformReviewTrialRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformReviewTrialRequest", raw); err != nil {
+		return err
+	}
+	type wire PlatformReviewTrialRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformReviewTrialRequest(next)
+	return nil
+}
+func (v PlatformReviewTrialRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformReviewTrialRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformReviewTrialRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type PlatformReviewExposureRequest struct {
+	CommandID      string  `json:"commandId"`
+	GameID         string  `json:"gameId"`
+	DecisionID     string  `json:"decisionId"`
+	DisplayedLevel float64 `json:"displayedLevel"`
+}
+
+func (v *PlatformReviewExposureRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformReviewExposureRequest", raw); err != nil {
+		return err
+	}
+	type wire PlatformReviewExposureRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformReviewExposureRequest(next)
+	return nil
+}
+func (v PlatformReviewExposureRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformReviewExposureRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformReviewExposureRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// PlatformReviewStatus preserves the complete validated JSON value, including null and union tags.
+type PlatformReviewStatus struct{ raw json.RawMessage }
+
+func (v *PlatformReviewStatus) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformReviewStatus", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v PlatformReviewStatus) MarshalJSON() ([]byte, error) {
+	if err := Validate("PlatformReviewStatus", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v PlatformReviewStatus) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type PlatformAdviceView struct {
+	Advice       AdviceView `json:"advice"`
+	SourceUnitID string     `json:"sourceUnitId"`
+	Unlocked     bool       `json:"unlocked"`
+}
+
+func (v *PlatformAdviceView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("PlatformAdviceView", raw); err != nil {
+		return err
+	}
+	type wire PlatformAdviceView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = PlatformAdviceView(next)
+	return nil
+}
+func (v PlatformAdviceView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire PlatformAdviceView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("PlatformAdviceView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt", "LocalServiceAccessRequest", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt", "PlatformAllowanceView", "PlatformAccessView", "PlatformReviewAccessView", "PlatformCompetition", "PlatformController", "PlatformCatalogEntry", "PlatformSession", "PlatformSessionView", "PlatformReconcileRequest", "PlatformRecoveredReceipt", "PlatformReconcileView", "PlatformPreferencesView", "PlatformPreferencesRequest", "PlatformAccountAvailability", "PlatformAccountView", "PlatformExportDecision", "PlatformExportView", "PlatformFixtureAccountView", "PlatformFamilyCommand", "PlatformAdviceRequest", "PlatformNotesRequest", "PlatformReviewTrialRequest", "PlatformReviewExposureRequest", "PlatformReviewStatus", "PlatformAdviceView"}
+var supportedPatterns = map[string]bool{"^[CDHS](?:[2-9]|10|J|Q|K|A)$": true, "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": true, "^[1-9][0-9]{0,5}$": true, "^(0|[1-9][0-9]{0,5})$": true, "^[a-z0-9][a-z0-9-]{0,63}$": true, "^[0-9]+\\.[0-9]+\\.[0-9]+$": true, "^[^\\u0000-\\u001f\\u007f]+$": true, "^[a-f0-9]{48}$": true}

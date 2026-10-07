@@ -1,0 +1,57 @@
+CardFord Go local API: http://127.0.0.1:15658 (identity=local-test, payments=fixture, provider=off, access=fixture)
+Native Go browser origin: http://127.0.0.1:15658
+
+Running 5 tests using 1 worker
+
+(node:9652) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 web\e2e\platform-go.spec.ts:189:1 › actual Go account: lost accepted billing reply, same receipt recovery, export and portrait deletion (1.8s)
+  x  2 web\e2e\platform-go.spec.ts:259:1 › actual Go family: verified local players, private member view and held removal (6.6s)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) web\e2e\platform-go.spec.ts:259:1 › actual Go family: verified local players, private member view and held removal 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Invitation token', { exact: true })
+    Expected pattern: /^[a-f0-9]{48}$/
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Invitation token', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Invitation token', { exact: true })
+
+
+      279 |     await payer.getByLabel('Existing test account ID', { exact: true }).fill(memberId);
+      280 |     await payer.getByRole('button', { name: 'Create invitation', exact: true }).click();
+    > 281 |     await expect(payer.getByLabel('Invitation token', { exact: true })).toHaveValue(/^[a-f0-9]{48}$/);
+          |                                                                         ^
+      282 |     const token = await payer.getByLabel('Invitation token', { exact: true }).inputValue();
+      283 |     await member.getByRole('button', { name: 'Manage family', exact: true }).click();
+      284 |     await member.getByLabel('Invitation token', { exact: true }).fill(token);
+        at C:\repos\test-jev\web\e2e\platform-go.spec.ts:281:73
+
+    Error Context: test-results\m04e-platform\platform-go-actual-Go-fami-99bea-ember-view-and-held-removal\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\m04e-platform\platform-go-actual-Go-fami-99bea-ember-view-and-held-removal\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\m04e-platform\platform-go-actual-Go-fami-99bea-ember-view-and-held-removal\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    web\e2e\platform-go.spec.ts:259:1 › actual Go family: verified local players, private member view and held removal 
+  3 did not run
+  1 passed (10.0s)
+  1 error was not a part of any test, see above for details
+Browser demo failed: AssertionError [ERR_ASSERTION]: Browser acceptance exited 1
+
+1 !== 0
+
+    at file:///C:/repos/test-jev/qa/implementation/multi-game/m04e/browser-smoke.mjs:119:10
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Owned test schema dropped after exact child shutdown.

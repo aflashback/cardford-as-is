@@ -98,6 +98,21 @@ type localRoute struct {
 }
 
 var localRoutes = []localRoute{
+	{"GET", "/api/platform/session", "platform-session", "", "PlatformSessionView", false},
+	{"POST", "/api/platform/commands/reconcile", "platform-reconcile", "PlatformReconcileRequest", "PlatformReconcileView", false},
+	{"GET", "/api/preferences", "platform-get-preferences", "", "PlatformPreferencesView", false},
+	{"POST", "/api/preferences", "platform-preferences", "PlatformPreferencesRequest", "PlatformPreferencesView", false},
+	{"GET", "/api/account", "platform-account", "", "PlatformAccountView", false},
+	{"GET", "/api/account/export", "platform-export", "", "PlatformExportView", false},
+	{"POST", "/api/platform/account/delete", "platform-delete-account", "AccountDeleteRequest", "AccountDeleteView", false},
+	{"POST", "/api/subscription/preview", "platform-billing-preview", "BillingPreviewRequest", "BillingPreview", false},
+	{"POST", "/api/subscription/change", "platform-billing-change", "BillingConfirmRequest", "BillingOperation", false},
+	{"GET", "/api/family", "platform-family", "", "FamilyView", false},
+	{"POST", "/api/family", "platform-family-command", "PlatformFamilyCommand", "FamilyView", false},
+	{"POST", "/api/platform/advice", "platform-advice", "PlatformAdviceRequest", "PlatformAdviceView", false},
+	{"POST", "/api/platform/notes", "platform-notes", "PlatformNotesRequest", "NotesView", false},
+	{"POST", "/api/platform/exposures", "platform-exposures", "PlatformReviewExposureRequest", "AcceptedView", false},
+	{"GET", "/api/platform/reviews", "platform-reviews", "", "ReviewIndex", false},
 	{"GET", "/api/health", "health", "", "LocalServiceHealthView", true},
 	{"POST", "/api/demo/frame", "demo-frame", "DemoFrameRequest", "DemoFrame", true},
 	{"POST", "/api/local/session", "local-session", "LocalServiceEmptyRequest", "IdentityView", true},
@@ -125,6 +140,27 @@ func matchLocalRoute(r *http.Request) (localRoute, string, bool) {
 		}
 	}
 	parts := strings.Split(strings.TrimPrefix(r.URL.Path, "/"), "/")
+	if len(parts) >= 4 && parts[0] == "api" && parts[1] == "platform" && len(parts[3]) > 0 && len(parts[3]) <= 256 && localResourceID(parts[3]) {
+		if r.Method == "GET" && len(parts) == 4 {
+			if parts[2] == "reviews" {
+				return localRoute{operation: "platform-review", output: "ReviewView"}, parts[3], true
+			}
+			if parts[2] == "review-trials" {
+				return localRoute{operation: "platform-review-status", output: "PlatformReviewStatus"}, parts[3], true
+			}
+		}
+		if len(parts) == 5 && parts[2] == "reviews" {
+			if r.Method == "GET" && parts[4] == "advice" {
+				return localRoute{operation: "platform-saved-advice", output: "PlatformAdviceView"}, parts[3], true
+			}
+			if r.Method == "GET" && parts[4] == "access" {
+				return localRoute{operation: "platform-review-access", output: "PlatformReviewAccessView"}, parts[3], true
+			}
+			if r.Method == "POST" && parts[4] == "trials" {
+				return localRoute{operation: "platform-review-trial", input: "PlatformReviewTrialRequest", output: "PlatformReviewStatus"}, parts[3], true
+			}
+		}
+	}
 	if len(parts) < 3 || parts[0] != "api" || parts[2] == "" || len(parts[2]) > 256 || !localResourceID(parts[2]) {
 		return localRoute{}, "", false
 	}

@@ -154,7 +154,7 @@ func (s *Store) checkConfiguredUnlock(ctx context.Context, tx pgx.Tx, a AccessAd
 		return err
 	}
 	if !configured {
-		return nil
+		return s.checkPlatformFixtureUnlockTx(ctx, tx, a, gameID, tool)
 	}
 	u, err := s.readUnlock(ctx, tx, a.OwnerID, gameID, a.UnitID)
 	if err != nil {

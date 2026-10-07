@@ -1,5 +1,5 @@
-// cardford is the explicit local fixture Go service. It serves only the M04C
-// API; the preserved React application's current startup remains separate.
+// cardford is the explicit local Go service. It serves the authoritative
+// platform API and optionally the built React client on the same origin.
 package main
 
 import (
@@ -24,8 +24,8 @@ import (
 
 func main() {
 	migrations := flag.String("migrations", os.Getenv("CARDFORD_MIGRATIONS_DIR"), "canonical web/server/records/migrations directory (required)")
-	web := flag.String("web", "", "optional public web/dist directory for same-origin demo acceptance")
-	policy := flag.String("access-policy", "", "explicit validated offer policy JSON; omit for the M04C fixture harness")
+	web := flag.String("web", "", "optional public web/dist directory for the same-origin React client")
+	policy := flag.String("access-policy", "", "explicit validated offer policy JSON; omit for local fixture accounts")
 	flag.Parse()
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()

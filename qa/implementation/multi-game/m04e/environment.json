@@ -1,0 +1,7 @@
+{
+  "node": "v24.19.0",
+  "nodePath": "C:\\Program Files\\nodejs\\node.exe",
+  "go": "go version go1.26.8 windows/amd64",
+  "compiler": "clang version 23.1.2 (https://github.com/llvm/llvm-project.git 85ac560262434c9ccfc0c183ec22d4138ed647fb)",
+  "postgres": "postgres (PostgreSQL) 16.15"
+}

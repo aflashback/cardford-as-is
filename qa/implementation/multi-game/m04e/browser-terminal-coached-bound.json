@@ -1,0 +1,2107 @@
+{
+  "name": "browser-terminal",
+  "command": "node scripts/windows-env.mjs node qa/implementation/multi-game/m04e/browser-smoke.mjs",
+  "startedAt": "2026-10-07T00:49:02.788Z",
+  "completedAt": "2026-10-07T01:19:39.899Z",
+  "elapsedMs": 1837199.5262999998,
+  "platform": "win32",
+  "node": "v24.19.0",
+  "exitCode": 1,
+  "signal": null,
+  "error": null,
+  "sourceUnchanged": true,
+  "source": [
+    {
+      "path": "go.mod",
+      "sha256": "5233575d0562b4ef361abc42a0ce912f427e25ebdc438a175a21927de1a0c276"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "13bd79a0e12d74e5fd0c5e8f306cfb1aa7119e352d0250bdb0a6240de94eefac"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "ce4bf9639a0cf5e9db516eb28488bf0da66b0297dea32e8e89c5777b0f70edf3"
+    },
+    {
+      "path": "package.json",
+      "sha256": "e80c8f3b509c04a0f04e264404c858bda9871ad1381fa0defa47dc62258cd7da"
+    },
+    {
+      "path": "qa/implementation/multi-game/m02a/corpus/original-expectations.json",
+      "sha256": "d33fecab42e2fda9d53b60dcd1341aa12bf86d6b5f4dfcce835ee21e8f267b94"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04b/boundary-corpus.json",
+      "sha256": "b8877e2c2f2e9b953566d96f6508f06f536b00e2b6ac81f0956555ee751b2f3c"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04b/edge-corpus.json",
+      "sha256": "50ced1b2076ac0302648963fbe8975a3d3372a43bcd9f5988712b397c845d6fd"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04b/generate-boundaries.ts",
+      "sha256": "8a3e7384e136f7964e03b2da1b96c9ff743734fc8ae14d1f2727875406d2a044"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04b/generate-edges.ts",
+      "sha256": "efac774322a3e519fb8dadf7a60a04dd8b69b6a039202ccc1707895e0d185a92"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04b/generate-reference.ts",
+      "sha256": "1b3e9c52d355e799de60e3a3bebe5dc2b6d9c248b33ab93b18152c17e9333a1d"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04b/reference-corpus.json",
+      "sha256": "7cd5ebea78f73837b9a5aa7c771e6f78acf9222155d78ff3ed2292673b7cc7dc"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04e/browser-smoke.mjs",
+      "sha256": "531542b9d7dbb379b15958b56e9b927a1173bc0a0c24f7735389113b5cd4cce0"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04e/database-diagnostic.mjs",
+      "sha256": "905f767a2b603147a875510be5f19696718468bb1bca159351db4fe6c425324a"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04e/verify-delivery.mjs",
+      "sha256": "7d24454b0d3841bf71881bd0426f836ff9cd89234c57c8554b2dc9ccaa323e2c"
+    },
+    {
+      "path": "qa/implementation/multi-game/m04e/verify.mjs",
+      "sha256": "b100a80bedb459554a81873683aa5c534c3a239b67f5cdbb19ef5a2f4d853311"
+    },
+    {
+      "path": "scripts/m02a-contracts.mjs",
+      "sha256": "a8305b0c0f48babb810721f9a1b769b87a3c34f45cb9e4a7ef20b3ed5002e123"
+    },
+    {
+      "path": "scripts/m03-migrations.mjs",
+      "sha256": "18a7c1a206a964c510e42af8f02619f41635aba49fd7a61c074057025c0c10d6"
+    },
+    {
+      "path": "scripts/start-go.mjs",
+      "sha256": "a2db66e3851b9c6400c27140a56cf2ee72a3b2396ed872333f3096a92ec093ee"
+    },
+    {
+      "path": "scripts/windows-env.mjs",
+      "sha256": "c5b6df2ab25bee8865ca3e6325520899480db6a76f6e3e31fb85ebe8ae268e55"
+    },
+    {
+      "path": "scripts/windows-tools.json",
+      "sha256": "fe575195ac433d00da57fc9679404e03b25d1335e43db1391918cf04b435b8a4"
+    },
+    {
+      "path": "server/cmd/cardford/main.go",
+      "sha256": "6ed8b149d50d86ac3f041f2d746a2b0e2611537bea277cae9bc5ba720d3ac5b3"
+    },
+    {
+      "path": "server/cmd/cardford/main_test.go",
+      "sha256": "6119c854a72dd34a42b383f085da8f19d3a7faa6e4526f449aab25223883b935"
+    },
+    {
+      "path": "server/cmd/m02a/main.go",
+      "sha256": "dcdc0b68a3fe87c94fc4c5ced88851cdb1f5779b4295129794ef5347cfb06bb4"
+    },
+    {
+      "path": "server/cmd/perf/main.go",
+      "sha256": "c9d82c37440175a2ed5fb9fccbd6277994c3cd7d73af6019cf0c07552c813e8a"
+    },
+    {
+      "path": "server/cmd/perf/metrics_windows.go",
+      "sha256": "397bef0b3616e8be9e15cfc8a53872bc46ff81310fc6ee3d78719b62d2691fa7"
+    },
+    {
+      "path": "server/internal/access/config.go",
+      "sha256": "9934101d72377f918f6c835c645161177fa77ff249f0158ef217463cc89418eb"
+    },
+    {
+      "path": "server/internal/access/launch.json",
+      "sha256": "546352d87c2f9fa6bc35406a407450f6f8d90633671742046cd05cfa1be76128"
+    },
+    {
+      "path": "server/internal/access/local-fixture.json",
+      "sha256": "2e62504311dc15ea210522262ddd90c19228e217f434f667ed65a3ebe22f65c3"
+    },
+    {
+      "path": "server/internal/access/policy.go",
+      "sha256": "5ac0e03f97f1fe6c1a648fe0b1ca4487ffa7fae210b4a12d8ee24f0aa705868b"
+    },
+    {
+      "path": "server/internal/access/policy_test.go",
+      "sha256": "e98af857949b5e87175842ee0645a62b1f3af0cdef2af0348288750cd8fa610b"
+    },
+    {
+      "path": "server/internal/access/types.go",
+      "sha256": "d130a8fcffe137e68028e1af67733e3d0f49690cce98622a7ac11a117e2a7d19"
+    },
+    {
+      "path": "server/internal/coaching/explain.go",
+      "sha256": "eeae264e6ab4d4ebc60e818f975bc5fcec078f564f797df043547289f8c1498f"
+    },
+    {
+      "path": "server/internal/coaching/explain_test.go",
+      "sha256": "602c5c42e04016af6557b3e5f2e10b0b6c49a70e8637bb6ac25efb984fb2b202"
+    },
+    {
+      "path": "server/internal/coaching/original_samples_test.go",
+      "sha256": "9c9579d269ce64c21c3b342cfd59ae7365fe9ba7ab29669c1fda7f42a08396d0"
+    },
+    {
+      "path": "server/internal/coaching/project.go",
+      "sha256": "e06ecd8c1257c789524db3732eff5511944516a834ef256b521ecae7e7065aef"
+    },
+    {
+      "path": "server/internal/coaching/project_test.go",
+      "sha256": "1cc49498a7db11e4106146cd178ef3d7f002ecd045a116ffa801ee7506989b4c"
+    },
+    {
+      "path": "server/internal/compatibility/modules.go",
+      "sha256": "16c022c45871b3e1b60ed750c240908bce474227339946cc2480da30066a3bf0"
+    },
+    {
+      "path": "server/internal/compatibility/parity_test.go",
+      "sha256": "077c1947abe076264e2a2e0b8a4c1bf0a390a141cdd82994e334ff3a64b11038"
+    },
+    {
+      "path": "server/internal/compatibility/policy_parity_test.go",
+      "sha256": "63c256f0e2572f6b39c60496f93d3dfadd345d817b6f67da76fcff00aeafff0b"
+    },
+    {
+      "path": "server/internal/compatibility/service_prepare_test.go",
+      "sha256": "aebb94e84b448f55acc1083795ea0b9268efcb86dce6208301901d937e2acb11"
+    },
+    {
+      "path": "server/internal/compatibility/session_parity_test.go",
+      "sha256": "8c1caba140ae27b746b52565db0e6fe4f6cdbaf1cce5f68d6710faa586306fee"
+    },
+    {
+      "path": "server/internal/contracts/bindings.generated.go",
+      "sha256": "602c9d17538ac77150b48cbd9ffce96114336a7adbe93d59d958a49cba85fbc1"
+    },
+    {
+      "path": "server/internal/contracts/bindings.generated_test.go",
+      "sha256": "f86bef3f5b84c11ffca49468ba3dfa823c0dbfd7ae66b3c1c4a64fe803ab7525"
+    },
+    {
+      "path": "server/internal/contracts/contracts_test.go",
+      "sha256": "9385ee479d903c4ddf07997e7ee26cd0e897420ed241bfda7904ed39be420b4d"
+    },
+    {
+      "path": "server/internal/contracts/local_service_test.go",
+      "sha256": "9efccd8916f4a3424f8d9a278e6f4a43bb45f5e78b58ce4443cb6d36b6b5a15e"
+    },
+    {
+      "path": "server/internal/contracts/schema.generated.json",
+      "sha256": "1d1eaa18158429539273c5e1ae7b9586fab14d84f71b2c2a19a7f9fcbf87d444"
+    },
+    {
+      "path": "server/internal/contracts/semantics.go",
+      "sha256": "554bdbb9c72dc188fb25327b0d75ee0d79852a82c7639ad2c4bc670fb3613119"
+    },
+    {
+      "path": "server/internal/contracts/testdata/manifest.json",
+      "sha256": "6604e15848586620495cbab2bcf5504bee4f2cc9267345d991e6b968852a6619"
+    },
+    {
+      "path": "server/internal/contracts/testdata/semantics-fixtures.json",
+      "sha256": "1c59c5afa022fb2469fb6987ea945f7efb01afcc11f128812225357dd79e84ee"
+    },
+    {
+      "path": "server/internal/contracts/testdata/validation-fixtures.json",
+      "sha256": "984a3940ac80635d28a0bfc28fbef488ca0cf441054f89609650b80cea67d9ec"
+    },
+    {
+      "path": "server/internal/contracts/validate.go",
+      "sha256": "b7f7d5e91aaa191b41093895d07127ecaa7cfc5213e4dd319a4e43a2bbfcfb68"
+    },
+    {
+      "path": "server/internal/demo/demo.go",
+      "sha256": "d7a72e51c4f5046bb7561f9bd6de0e106eb031a2eaa12848b0f51034193c07eb"
+    },
+    {
+      "path": "server/internal/demo/demo_test.go",
+      "sha256": "b5abf6aa1ee838a757064d7025c13c03597ca7601a09177ed16c8e0b057b6a33"
+    },
+    {
+      "path": "server/internal/gamekernel/module.go",
+      "sha256": "664c90d6f70b284e070deb7f8b49e146b669e1f118197f1d62f338b1689295fd"
+    },
+    {
+      "path": "server/internal/gamekernel/replay.go",
+      "sha256": "de5d0dd1caf3cabf2d308603e0741af917d11d003b8ea2cf6d03cd636403f182"
+    },
+    {
+      "path": "server/internal/gamekernel/replay_test.go",
+      "sha256": "02d9a648b69767e057ba2d5a21ce074f8427dfa878090e6c0e30e6ade0ce7cae"
+    },
+    {
+      "path": "server/internal/gamekernel/session.go",
+      "sha256": "c7d96ed284388c4c0e08d9de52ec86c690ee9cdbc19d9a4d535729951459a34d"
+    },
+    {
+      "path": "server/internal/gamekernel/session_codec.go",
+      "sha256": "8cf229a3ee2716c6194a676f0d2e3d75430b6c95fc1e1750d6b19bc99710a1b3"
+    },
+    {
+      "path": "server/internal/gamekernel/session_execution.go",
+      "sha256": "9393e9cbb5c9fb15da4b77fbb6b2386184284d77528540f13c242f5a0add87fc"
+    },
+    {
+      "path": "server/internal/gamekernel/session_presentation.go",
+      "sha256": "c9baace2f43a1a214bd5909fa7abe9d2bdff84d80964059329512914c37560e6"
+    },
+    {
+      "path": "server/internal/gamekernel/session_test.go",
+      "sha256": "24e55f648dff1bec4e72047046c29ff7354414250772b4c1d5d58ece327ae1bb"
+    },
+    {
+      "path": "server/internal/gamekernel/snapshot.go",
+      "sha256": "9336e615d4cd2decc87fde4eb71f9cc3b0e9a08fa1377ecc862d77092013201a"
+    },
+    {
+      "path": "server/internal/gamekernel/snapshot_test.go",
+      "sha256": "fa56e0afa1084de78dc47a0546ce97250040a00f5642b730f7632da7d368354f"
+    },
+    {
+      "path": "server/internal/games/hearts/coaching/legacy.go",
+      "sha256": "10859b3bf116aeb4c06a9930db415a394797240376010f00b3b6ca907073adcc"
+    },
+    {
+      "path": "server/internal/games/hearts/coaching/legacy_test.go",
+      "sha256": "1a2013b0663c25ad25b896093a458848784c6117b892c0e1b6e26ec4a3a246c1"
+    },
+    {
+      "path": "server/internal/games/hearts/continuation_test.go",
+      "sha256": "9d371d856a74de8e1b2cff6b5fcf2d262418f93ffb2173f4e5f5e2f0919a5bba"
+    },
+    {
+      "path": "server/internal/games/hearts/engine.go",
+      "sha256": "84fff9477895527fd7ab3c558ecca863bacd34308fe6e75e1a228f78db396c5d"
+    },
+    {
+      "path": "server/internal/games/hearts/illustration.go",
+      "sha256": "b901246a6a8c7e715ba426ee3046f57cb638c979a8977d73735ee96451d82552"
+    },
+    {
+      "path": "server/internal/games/hearts/illustration_test.go",
+      "sha256": "51a48a115ef62c87404db5c5a83f9cc5f7bbede33acc1704e054d5917cfc5859"
+    },
+    {
+      "path": "server/internal/games/hearts/observation.go",
+      "sha256": "c5965f5a58d4deef46504e68f883bad76ed2e39d435355618271c99d64110604"
+    },
+    {
+      "path": "server/internal/games/hearts/opening.go",
+      "sha256": "d7aec79c19251f422b515750043fd51a668e00f5fee6acdc3ae3f93884eb82a1"
+    },
+    {
+      "path": "server/internal/games/hearts/opening_test.go",
+      "sha256": "7ed90d1b8c94d10e0c7742eb128f2e9ca319cabd85e3dec560e6b07a15108fcd"
+    },
+    {
+      "path": "server/internal/games/hearts/reasoning/baseline.go",
+      "sha256": "2d2e2897ec389d026fd76349a7c15658b4fd83e31b7d915e7071d7710b5f6a36"
+    },
+    {
+      "path": "server/internal/games/hearts/reasoning/baseline_test.go",
+      "sha256": "87c9d8540898720146bef211b912fdf751f7a1cf9c2d810cb076dbbc2306188a"
+    },
+    {
+      "path": "server/internal/games/hearts/rules.go",
+      "sha256": "45bd95d136608bc254e73604cd71a47838083632d580972c98e902bea37cbf6c"
+    },
+    {
+      "path": "server/internal/games/hearts/session.go",
+      "sha256": "64a992de5d9d633414e7835f08d4d95611eb5acc9fe2c709933c8b7eb48069f8"
+    },
+    {
+      "path": "server/internal/games/hearts/session_analysis.go",
+      "sha256": "cfbad59fc3a727f41e784fcc6e0b12690fa8adedd4aa17db6ee64f68c2508be6"
+    },
+    {
+      "path": "server/internal/games/hearts/session_observation.go",
+      "sha256": "d19c1dd128a25641195741e1afdac986a8d58aef3df48c0427301397ec56553a"
+    },
+    {
+      "path": "server/internal/games/hearts/session_state.go",
+      "sha256": "7fcdbf3e80f23523b20cabf3756666f0f7457252c479acbc354a0409bdcae10f"
+    },
+    {
+      "path": "server/internal/games/hearts/session_storage.go",
+      "sha256": "48d546b3ea1d0f9e520a20089a8d1be02ad9b380545ec7ec71a79d87fa9f3212"
+    },
+    {
+      "path": "server/internal/games/hearts/session_test.go",
+      "sha256": "16c7d4b251da8f30a5defce2be932a9f4d45dfbe089e29d8433eca26518983ea"
+    },
+    {
+      "path": "server/internal/games/hearts/snapshot.go",
+      "sha256": "79278fa6e57751076ce3c878c4afba2669a78399e29f71c6888b7a5daec1e2fe"
+    },
+    {
+      "path": "server/internal/games/hearts/snapshot_test.go",
+      "sha256": "b3024cc8b8139525609213f28748408ee6ecccf6ae589a5009afd9599c98da85"
+    },
+    {
+      "path": "server/internal/games/hearts/storage.go",
+      "sha256": "cfe10281b5f3800a8860e47b76149b1e6d18cc07e2aed7a4bee075ef6d513db7"
+    },
+    {
+      "path": "server/internal/games/hearts/storage_test.go",
+      "sha256": "ef0be8155fb3b597c877d413cf4182a55f2ec246bce13fc7f6c154a8f7971dfc"
+    },
+    {
+      "path": "server/internal/games/hearts/validation.go",
+      "sha256": "bb8dc1d7c9dcbfcdb6480169a42e2b6bfd0e7b636594deb3ffd69cbdcb3a5fc5"
+    },
+    {
+      "path": "server/internal/games/hearts/validation_test.go",
+      "sha256": "653a2e6a0d930da08ee518801ac38fc986c5d7fd5beece5da77d584b99d3c02c"
+    },
+    {
+      "path": "server/internal/games/spades/coaching/legacy.go",
+      "sha256": "8e1209600256ee85a3060b334c10428e65894f8b0da1e6a83c0a6aa6262ed14f"
+    },
+    {
+      "path": "server/internal/games/spades/coaching/legacy_test.go",
+      "sha256": "45b80fbe5b642cd85c863eac8f54e36f0c06072830c4c58e2579044b662fbeec"
+    },
+    {
+      "path": "server/internal/games/spades/engine.go",
+      "sha256": "77c1329eb51cd1e30412739d7346fd117a6c5d9d9badb74a3af8d52200dc3670"
+    },
+    {
+      "path": "server/internal/games/spades/illustration.go",
+      "sha256": "276d3e710e2c1abbb3a48df23a77192e3f94bca63f25a48a01781a574e1c798e"
+    },
+    {
+      "path": "server/internal/games/spades/illustration_test.go",
+      "sha256": "41f794423c6749c9fbd4455a51ebbd4e0079e990209aea447a1f3311247edc99"
+    },
+    {
+      "path": "server/internal/games/spades/json.go",
+      "sha256": "e1bad71371ae33311a72a9ad886b052db85837a45eae2aaa8046467522596986"
+    },
+    {
+      "path": "server/internal/games/spades/observation.go",
+      "sha256": "30ff4445576dd81b3c44b59b3a74115702b048a11c90551a95a5e3e440d08209"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/bidding.go",
+      "sha256": "95d39b3d6d63eb86d06f111f86e89d8c18630192ac440f984f24e1d442173989"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/catalog.go",
+      "sha256": "831eb5e2fbfa56222c80d4a29e82b653de29cd80e445db0532e5b1b3e1bbe6ec"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/double_nil.go",
+      "sha256": "6d25f518ea2f272ccf880ac98e1edf0d5368c3519827d02321e5d8438b1dc6f8"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/entries.go",
+      "sha256": "a6625e9653fe5e1a7d3ec824f84db4e6dea374a7af587217bf90fd6446aaae03"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/policy.go",
+      "sha256": "5376e900a961e7022ac04445ac897610db545cb364a7e22ff0ba8a1ddc39f354"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/policy_test.go",
+      "sha256": "bfc745084c87b330982bc454fb2b9b604af17184467bf0ddd533657b28b964f8"
+    },
+    {
+      "path": "server/internal/games/spades/reasoning/signals.go",
+      "sha256": "77f3b0a9385baa1e7cffd870756fe09cd5f652da620047572cc79a835326ea37"
+    },
+    {
+      "path": "server/internal/games/spades/rules.go",
+      "sha256": "a6cf99e790a43db01e966f5cfb30ea74c260f4b573550c71ae226dafce241263"
+    },
+    {
+      "path": "server/internal/games/spades/session.go",
+      "sha256": "c910710a0afe881d8c13eb00ee7289b39b8818049d2a56761821e6fc89ad6191"
+    },
+    {
+      "path": "server/internal/games/spades/session_analysis.go",
+      "sha256": "f220691ec3eff59c145b6363efd4e07cf4b6e6cdfeff29e1751dcfacf05c31a2"
+    },
+    {
+      "path": "server/internal/games/spades/session_observation.go",
+      "sha256": "9e83fac2f0fc4a0606bf65131b1bbba5e9fb5d3fdfd788d4f158002672f227c3"
+    },
+    {
+      "path": "server/internal/games/spades/session_state.go",
+      "sha256": "a05a9439b6c41bf56494b22b160d34ea679cf07bab98d11ca3f757e7d70a0e51"
+    },
+    {
+      "path": "server/internal/games/spades/session_storage.go",
+      "sha256": "f9277ef466482e0fd737d59123d381a6bb2c5c07791cb3f92b6f5785497bf45f"
+    },
+    {
+      "path": "server/internal/games/spades/session_test.go",
+      "sha256": "399b6edee8ee4ec6f287e44f25218ace67c0d9ef8aecadd8e1dbe3607f6b0f92"
+    },
+    {
+      "path": "server/internal/games/spades/snapshot.go",
+      "sha256": "d3fc25f2c2d9525f9252833e4a645e4222d37a6fc82bc2b4ac86ce2d316f9334"
+    },
+    {
+      "path": "server/internal/games/spades/snapshot_test.go",
+      "sha256": "29efcde246ac14a0cbd4ccdf3ccd24a3cfc542822e97de92cca06baa0db42460"
+    },
+    {
+      "path": "server/internal/games/spades/spades_test.go",
+      "sha256": "013a52883e49dc718c1e2b06d1c4ea0d3a1bb48c417f486cdf3cd1d71ee671f0"
+    },
+    {
+      "path": "server/internal/games/spades/storage.go",
+      "sha256": "fb6aec48306dbb16df2a2c27862bbb5dfa22edf6cde37bf842de3a6e9c1a9bfc"
+    },
+    {
+      "path": "server/internal/games/spades/storage_test.go",
+      "sha256": "0e0699f7999e79955ca0eda31f0156390d24e5c49ce9f0cf292c76eac7777071"
+    },
+    {
+      "path": "server/internal/games/spades/types.go",
+      "sha256": "04972681204c239205db4e7928bf9ff36b87e33534f4bbdf1a4b438107f695ce"
+    },
+    {
+      "path": "server/internal/games/spades/validation.go",
+      "sha256": "81f7ffdc92c3fab8d0949f307204c25831c387248242ce9a877b6c8d44e68c61"
+    },
+    {
+      "path": "server/internal/http/demo_web.go",
+      "sha256": "1d88ca10e5735d44fefdd43fc2a8f1ca8dff94254c4759df93e64c3eb22c2630"
+    },
+    {
+      "path": "server/internal/http/demo_web_test.go",
+      "sha256": "929334f6edb6750c7fe0bfe95cc1b4d1ca371941e9bfdcf7a08ee911fb0f8c46"
+    },
+    {
+      "path": "server/internal/http/local.go",
+      "sha256": "9446b7fe13fc3ac2a6d14546ed5905103089408f39a18a0439b68b6e87c54556"
+    },
+    {
+      "path": "server/internal/http/local_config.go",
+      "sha256": "60bb8ae8265f528f133361a05f0207e16008e2b6be9b9535e119a8e833b52bb6"
+    },
+    {
+      "path": "server/internal/http/local_config_test.go",
+      "sha256": "afc6fb234cb4058d2133ba817cbb96dd0171383f9d68cf60d370e76f603fb8e7"
+    },
+    {
+      "path": "server/internal/http/local_test.go",
+      "sha256": "4ccdc082a08e1bff9b51920309104df1d2653cec1ffb0b1a3a9ad09f706768e8"
+    },
+    {
+      "path": "server/internal/http/slice.go",
+      "sha256": "b28bc04f8454b2221066fa11a8e953fe39f56239816d158cb1049ff9c343ed5f"
+    },
+    {
+      "path": "server/internal/http/slice_test.go",
+      "sha256": "1ebd350ecc947da7eb9409a3da3dac15aee50156bebb0c893eaefb1bf07fc405"
+    },
+    {
+      "path": "server/internal/legacydecision/cancellation_test.go",
+      "sha256": "bf6ee038d6e6b484be6a3e817eb12a9df1b5d232db2cedea3673985d83503795"
+    },
+    {
+      "path": "server/internal/legacydecision/cards.go",
+      "sha256": "8673c0f5ec5cf4456fcf5b0ab2dc5daca8a6b11b377ab97bd0a2aa5c109e70a3"
+    },
+    {
+      "path": "server/internal/legacydecision/knowledge.go",
+      "sha256": "f9c35fc121cd95412e56196894d0272fdf79a11e67cac751445b33d6347977c3"
+    },
+    {
+      "path": "server/internal/legacydecision/prepared.go",
+      "sha256": "61563bc202eb447a3a08b743768ebc8d986ca3bc27f3591184e1cbd819b35380"
+    },
+    {
+      "path": "server/internal/legacydecision/presentation.go",
+      "sha256": "b8766bcb91a428bb5d07845cb06df860305597adcf71e24828dd914fe0f0979d"
+    },
+    {
+      "path": "server/internal/legacydecision/sampler.go",
+      "sha256": "75ea8a8720f1e24cb90a399cbf12053bc7a57d268ae1e2fbc0cef6d3878188fa"
+    },
+    {
+      "path": "server/internal/legacydecision/sampler_test.go",
+      "sha256": "2a4d53967feae38a71563f25271115d7ff8b949a1f7235a1037adc0b44b01563"
+    },
+    {
+      "path": "server/internal/legacydecision/synthetic.go",
+      "sha256": "16947141f8ceeeb1dbdcc2324633984dff7e2833cd6e14dd1a5d50f22458ee37"
+    },
+    {
+      "path": "server/internal/legacydecision/testdata/platform-sampler.json",
+      "sha256": "fbb487ec98b260864544d5ff47c51122413cc6f974d87ac073dead9793ec214e"
+    },
+    {
+      "path": "server/internal/legacydecision/types.go",
+      "sha256": "00b1fd3cacc7e1880f0ad3b7ad42c1495626c487f4fc1d2202348f388db9286f"
+    },
+    {
+      "path": "server/internal/legacydecision/validation.go",
+      "sha256": "23704503fbd0c2459790a5ae4df0d207eb2af3256b661e7043ac65d3af711648"
+    },
+    {
+      "path": "server/internal/legacydecision/validation_test.go",
+      "sha256": "1cadd42ac765225703a6fafd53fc70c9ff167facc6f2c505f5718fc2a8e760b9"
+    },
+    {
+      "path": "server/internal/records/access.go",
+      "sha256": "db598f198c7de86d3f55b92cc956d57a8790d9597e57f38472feb8735509e910"
+    },
+    {
+      "path": "server/internal/records/access_configured_free.go",
+      "sha256": "5d909a0092ac9b3ab20d0eba11658f2e24e73d9a8414bbe850a6a36401b9bed8"
+    },
+    {
+      "path": "server/internal/records/access_configured_test.go",
+      "sha256": "82595f544ed55e6bd9e15b141c03d571e0837d49690d31804716695cb5a19d74"
+    },
+    {
+      "path": "server/internal/records/access_configured_trials.go",
+      "sha256": "11cc0ea199bd995e229c513e914c179c1e220f15da3fa22b8c8e7d113067d6b7"
+    },
+    {
+      "path": "server/internal/records/access_context.go",
+      "sha256": "b2dc80d336b5f05d3214acfef2e5c698079f0f27aa92c54422c8ad6ecaf2ad96"
+    },
+    {
+      "path": "server/internal/records/access_test.go",
+      "sha256": "83083814ffe90afbda33e03488fd3e5f865a2c237d22ea42551aa83b5737c4a8"
+    },
+    {
+      "path": "server/internal/records/access_trials.go",
+      "sha256": "3c5b26c006e82b462d45be7d0ee1d48f78168106d1df78906632016a63c3227f"
+    },
+    {
+      "path": "server/internal/records/access_unlock.go",
+      "sha256": "395ad673a1e4192047834d225c777925d37afb0e40e7b46634ea38c5ba636dc9"
+    },
+    {
+      "path": "server/internal/records/codec.go",
+      "sha256": "96775f848fa6ac39f56a942395a08e8d9b99ae033a8f05923ae94f4cea775945"
+    },
+    {
+      "path": "server/internal/records/codec_growth_test.go",
+      "sha256": "35f6726e5c69da40acfa75aff4351ffcf57e2b136c4754bbca7a764b9db6cfc1"
+    },
+    {
+      "path": "server/internal/records/document.go",
+      "sha256": "3a73b6fd17009c71c856f35f1fdb7503a460f54d16437fc27950fba89ef81e75"
+    },
+    {
+      "path": "server/internal/records/document_decision.go",
+      "sha256": "e6135bceb8ca0677bb17d4245a8298309e933f50eaed9731b84e40d342af25f5"
+    },
+    {
+      "path": "server/internal/records/document_test.go",
+      "sha256": "cf00f56b0206b09a28036afc44aa17a0439904755c2cae4da0fcc1548d638bb0"
+    },
+    {
+      "path": "server/internal/records/erasure.go",
+      "sha256": "df3320746ca8b46c47691bd1189bab7a49d463a950bc58b314f9b0633d7a05cb"
+    },
+    {
+      "path": "server/internal/records/hearts_progression_test.go",
+      "sha256": "f9b0feaa58081945892250907c97dbbe185229a621d131c05146dde46c02ba6a"
+    },
+    {
+      "path": "server/internal/records/identity.go",
+      "sha256": "5380ff6a507bd68722125e7c225be6ca6ae3f1577a1163cb98aaaca2ce873d48"
+    },
+    {
+      "path": "server/internal/records/local_service_test.go",
+      "sha256": "33c7707b50425c91b32bc430ba3845a213549bcdf7703eec38e0ac14967c0df1"
+    },
+    {
+      "path": "server/internal/records/platform_account_billing.go",
+      "sha256": "5b7958d4a3b0f47d21ec92d88f045e4141cc3d647891d15832655cdbf2e53570"
+    },
+    {
+      "path": "server/internal/records/platform_account_export.go",
+      "sha256": "f481505210344189d576f12e7000f94236c93d1585e8663133f30cdc7da02ada"
+    },
+    {
+      "path": "server/internal/records/platform_account_family.go",
+      "sha256": "044ecfb25e0fa29af28598ed532c282eea838ff4d02d2605f4a9a2396b677809"
+    },
+    {
+      "path": "server/internal/records/platform_account_test.go",
+      "sha256": "6d3e04c85576815bb54bf802de5bf70587e756da922d059d77bda54c3fb802c8"
+    },
+    {
+      "path": "server/internal/records/platform_help.go",
+      "sha256": "d1ace960aa94389207edd4b2f7a53dd0aac80efb4fe7454ee5bbead226f4321a"
+    },
+    {
+      "path": "server/internal/records/platform_help_test.go",
+      "sha256": "1524f50c5ab96f716adcfe0f14fb2e53b25d909050793ba3cd9436aebcf564d4"
+    },
+    {
+      "path": "server/internal/records/platform_history.go",
+      "sha256": "530b8aa7c0749f4d33a28e6450987ec4ad8da243c9692d7dc9e318248922843b"
+    },
+    {
+      "path": "server/internal/records/platform_profile.go",
+      "sha256": "538a70ffad208dc517cb24699ca4680f18bd70bdfcb0bf78b8605b1c775ab104"
+    },
+    {
+      "path": "server/internal/records/platform_stats_test.go",
+      "sha256": "a77edf2712e37b68018858396e827c14d49dc38f22b7a2e92bc82af4b1fb9044"
+    },
+    {
+      "path": "server/internal/records/platform_trial_binding_test.go",
+      "sha256": "56da49127bbd34742ded3139d62e02379e81be26f4910e735c6acdc970a17bbe"
+    },
+    {
+      "path": "server/internal/records/platform_trials.go",
+      "sha256": "194251ec798123824b7c7a033c80e26817edffc891c581d029067f98212bcd28"
+    },
+    {
+      "path": "server/internal/records/platform_trials_test.go",
+      "sha256": "e6384fa40c625157337ce3a7bd3cd61d5e40617b44f9daed5da235d9fb766b3a"
+    },
+    {
+      "path": "server/internal/records/service_codec.go",
+      "sha256": "0a2c75f4e3dadd7f57ea0ffa9bb517f5ff6bb6c7824903d07585541712482a76"
+    },
+    {
+      "path": "server/internal/records/service_codec_test.go",
+      "sha256": "70ff1bcb494d1ce1a0bb7a2c1b7f3538094f82ecf285827e6542014df56d17ab"
+    },
+    {
+      "path": "server/internal/records/service_commands.go",
+      "sha256": "34f9265ccfb8851ce2926e459664e1be5f1433cfac993a9f85af36d1d9665779"
+    },
+    {
+      "path": "server/internal/records/service_decision.go",
+      "sha256": "7497bd7c15d93af6252876b1c30299fe806a9b12f0744b820be11d4e6dd160e5"
+    },
+    {
+      "path": "server/internal/records/staged_transition.go",
+      "sha256": "cb56091287c066fe89cfdaf612a347686830cadca175a48bad5cadd742137ee2"
+    },
+    {
+      "path": "server/internal/records/store.go",
+      "sha256": "dc1b9371df0e00abc2d9a15adc616824cf159dc55a321f86c0dc52d7407ac978"
+    },
+    {
+      "path": "server/internal/records/store_documents.go",
+      "sha256": "d73ea58143895076137e91dea5a7929a6ee70e209d441538524b0fb84e27b38c"
+    },
+    {
+      "path": "server/internal/records/store_fences_test.go",
+      "sha256": "578c9971bd6428be7b42c3d57d93ca69ad655dda676224b1394a7780c5572d27"
+    },
+    {
+      "path": "server/internal/records/store_growth_test.go",
+      "sha256": "acb4bcea9b5bc71f466ed3ea1dfcddf6aa3963ae3a6c84f3a2c3921b6f4c43a8"
+    },
+    {
+      "path": "server/internal/records/store_hearts_test.go",
+      "sha256": "697c457f1c480a72293de447c87bfdf8841fcd99a6562585d235922eb5316fa5"
+    },
+    {
+      "path": "server/internal/records/store_historical_test.go",
+      "sha256": "86eb337b702b457a2e8183174199586af55d53986f66f9faa5f3e8b5e2fae669"
+    },
+    {
+      "path": "server/internal/records/store_history.go",
+      "sha256": "9743ddb38069a4df2d3760693fe2d80530f65a132c22c26be52962744597dfc3"
+    },
+    {
+      "path": "server/internal/records/store_integration_test.go",
+      "sha256": "d1deac7807e05bd8e17f049cf0a2af9dd88b4d46b99922bafdb3c9c875228af5"
+    },
+    {
+      "path": "server/internal/records/store_migrations.go",
+      "sha256": "ece5f9200495fbc954888060448659753e02d5585e9865f86090ae622f656905"
+    },
+    {
+      "path": "server/internal/records/store_migrations_test.go",
+      "sha256": "9bb7a8b78491b3372f0bce72859ef4d921344150a110ec5036d43dbee1804c94"
+    },
+    {
+      "path": "server/internal/records/teststore.go",
+      "sha256": "654bdd0e54204e2a31725eed19302471cd2f39ecc902a25c40ef58c08c0e1003"
+    },
+    {
+      "path": "server/internal/records/trials.go",
+      "sha256": "0e5ef35f533b1793a5533364a47122a4930886efcafd6a50158753fb73f10617"
+    },
+    {
+      "path": "server/internal/records/trials_test.go",
+      "sha256": "9faf3207060b27b625aa4880937e17bb4c8dd95fc06b1950aedbdb660d31c181"
+    },
+    {
+      "path": "server/internal/records/types.go",
+      "sha256": "32db9ea63a826c21a33eca0257dea2bc2f3553a635c11c2c9c79ef8439f336e7"
+    },
+    {
+      "path": "server/internal/records/work.go",
+      "sha256": "913c937b87561f3ce29541fbb83ce25341624065271a10a7d6dc95d824f2eeac"
+    },
+    {
+      "path": "server/internal/records/work_test.go",
+      "sha256": "f1845e27554bc991148d209fce3cf8ee90e082a4828d3d849ff900b6ee47008c"
+    },
+    {
+      "path": "server/internal/service/access.go",
+      "sha256": "f891fc78bc0165019fc481ee19bbe574bf9aad5dcb314d98a22b83fa75ec8f72"
+    },
+    {
+      "path": "server/internal/service/access_continuation_test.go",
+      "sha256": "8acd65362b87f78f68abcc808fed7e8bf64ab31cf4ee5e0387eff4e3b046c1dd"
+    },
+    {
+      "path": "server/internal/service/access_test.go",
+      "sha256": "f465046379b004377374f67aa271aca7ac2276202b135c84afc422b1b6bd588a"
+    },
+    {
+      "path": "server/internal/service/integration_test.go",
+      "sha256": "4b370034664bdb773a15395916eb02018cf40576a168c5044920d5a09aabca5c"
+    },
+    {
+      "path": "server/internal/service/mutations.go",
+      "sha256": "eccb4fc41d156c631c99d01d42e6fd7f3d72e0c1788281d148aeb569cf78920d"
+    },
+    {
+      "path": "server/internal/service/platform_account.go",
+      "sha256": "d5451ef9d3ad0c700e8ef5f5d58f7c6a332a8cb786a343e905036bf213f19dba"
+    },
+    {
+      "path": "server/internal/service/platform_account_test.go",
+      "sha256": "89d13d5235dacde73fad206426c1e58a1167df38867153e59bde7141be3f4aa1"
+    },
+    {
+      "path": "server/internal/service/platform_family_transport_test.go",
+      "sha256": "df98ec4098c1ef2b5e84eb6c51228040987b69ba41dd2e922b1cba02a475bc81"
+    },
+    {
+      "path": "server/internal/service/platform_recovery.go",
+      "sha256": "02013e3b6aded3569eda6db94174879bde2dd6d69bd374a9d3b75a3fcde59944"
+    },
+    {
+      "path": "server/internal/service/platform_review.go",
+      "sha256": "c73f81c8db038b337c448f5acdf8981ce64314e3d7d5567e2b7930baf1f42c58"
+    },
+    {
+      "path": "server/internal/service/platform_review_test.go",
+      "sha256": "058f2ca811e6e718e3aad456c9d65c2dbc0b12cf0763cd0e4bcc38d3c7ee800a"
+    },
+    {
+      "path": "server/internal/service/platform_review_trials.go",
+      "sha256": "2a0f08b71414ed6a97a40227926eb435c0435005108e2610855636bf6efc2db9"
+    },
+    {
+      "path": "server/internal/service/platform_session.go",
+      "sha256": "1f32eb9378e820892f5884125fe689b629f26760528cf7e3c78ee793b6f3e0fd"
+    },
+    {
+      "path": "server/internal/service/platform_session_test.go",
+      "sha256": "fab97f918a4874e5a031a6508cf85bf9b391ab9a87d69b2560d45a721b8002ca"
+    },
+    {
+      "path": "server/internal/service/preparation.go",
+      "sha256": "6e60b8aea7d861e4d0cc3201de0a701ed5e92d89b7165bab124ae7f508944ff8"
+    },
+    {
+      "path": "server/internal/service/random.go",
+      "sha256": "2a1d696f0e344788c7152cc46c4f4ff215775cdc91417fd10e69a3c656d1f85c"
+    },
+    {
+      "path": "server/internal/service/scheduler.go",
+      "sha256": "80932d68692160f81651b58f8e2438e8ed617c49d75915a04e6c35649a359b73"
+    },
+    {
+      "path": "server/internal/service/scheduler_test.go",
+      "sha256": "b1243321b99bfb89af3ad5a311f5c633d72fc55d7eb734d72c8cb22212493eed"
+    },
+    {
+      "path": "server/internal/service/service.go",
+      "sha256": "c6e6944938c67c360741bc224d696ae9a250f247c06564ce89a385c485626b7d"
+    },
+    {
+      "path": "server/internal/sessions/document.go",
+      "sha256": "15063ff340e243c8e5c6b3943ceee9d395f7a054dee794618ee7ff251da7f4c6"
+    },
+    {
+      "path": "server/internal/sessions/durable.go",
+      "sha256": "9b32f60860efcde20f368b405f8fccc8265e49c09ce41128a9ea307560ffff22"
+    },
+    {
+      "path": "server/internal/sessions/illustration.go",
+      "sha256": "ec20aec4ab3c3bb8c5afc644603792592e2a30ef0aa5da91ce967546429f8e53"
+    },
+    {
+      "path": "server/internal/sessions/lifecycle_test.go",
+      "sha256": "75bab4562dd65fb458022c3b0063de13201913347a79584cba533dbb4f33d175"
+    },
+    {
+      "path": "server/internal/sessions/operations.go",
+      "sha256": "29ae50750573b5f304fc8c6d357b63f91ce0bb70662d7322b971ac7e2d949c3e"
+    },
+    {
+      "path": "server/internal/sessions/registry.go",
+      "sha256": "9b5593fb5631ec8853d8e0a8e991a079d350239640f2fa828c683756945c85d4"
+    },
+    {
+      "path": "server/internal/sessions/registry_test.go",
+      "sha256": "e3b46265724e812d5dba70187911042f4d9ed9452732517f260b7fa604cb95d8"
+    },
+    {
+      "path": "web/e2e/platform-go-configured.spec.ts",
+      "sha256": "53d20896f0b0069b8f720d845564a897d59ef0ad2f6f7190c70a4a236d2b4ea6"
+    },
+    {
+      "path": "web/e2e/platform-go.spec.ts",
+      "sha256": "a4204295c2d9461562f66563d5a3b8eb80d7d890759a8199228eaa332db455b5"
+    },
+    {
+      "path": "web/playwright.m04e.config.ts",
+      "sha256": "30c979228649a5f4738894401d67d4b8d0881d9f033f24464b23fb52b28170aa"
+    },
+    {
+      "path": "web/scripts/check-artifacts.mjs",
+      "sha256": "6403b0b6c1b8348423c899c30fb3ccea81bd77928e679f1740394d34b4b28c47"
+    },
+    {
+      "path": "web/scripts/generate-contracts.mjs",
+      "sha256": "aeabee1620822018a6314ecffa3bfd229967eddb594ecb82d0468db8927260aa"
+    },
+    {
+      "path": "web/server/access/account-data.ts",
+      "sha256": "d60e4bacd04c5c9239fbd1ec24340aeeab1133113553f8da86460543ab4e8421"
+    },
+    {
+      "path": "web/server/access/contracts.ts",
+      "sha256": "f0b6b463fc72558a10372cd8eadd976d8c41d98da4ab403feab9066927c05d79"
+    },
+    {
+      "path": "web/server/access/family.ts",
+      "sha256": "e3efb7319c01bf688320f422bf1133353fc518ded086ab68edb87d57e0a3df14"
+    },
+    {
+      "path": "web/server/billing/database-test.ts",
+      "sha256": "ea613b27d53123a43cb87ac87427906b24eec0c9fcdb433bc8fa520c15012ad5"
+    },
+    {
+      "path": "web/server/billing/purchases.ts",
+      "sha256": "076fc2bf9bae1ff9670f7ce102fcb2c4a561c5a98f5821263c1c79a447b34fd3"
+    },
+    {
+      "path": "web/server/billing/service.ts",
+      "sha256": "dc27195ef8498aabaeb2f905e7a5a513f38a628364798d2dfc3ce51e7862db41"
+    },
+    {
+      "path": "web/server/billing/store.ts",
+      "sha256": "fd6364faa271d51be072a2f2163296ddfe22d46907eea7cf6fd4c50ec8e21b07"
+    },
+    {
+      "path": "web/server/billing/stripe.ts",
+      "sha256": "93f94b8400cc3f825a134adf947547c640b911bfc4b1953adb6c170dd6495c66"
+    },
+    {
+      "path": "web/server/coaching/cue-registry.ts",
+      "sha256": "dc0a5877c406d9acfbbffac5609e55cfd81d1d30bdc1561ac33e26af4c12235d"
+    },
+    {
+      "path": "web/server/coaching/project.ts",
+      "sha256": "ef9c2bbb60f96e1b28076c1d5e6f0d389973363d0638ec31c0c776e5b57f50c9"
+    },
+    {
+      "path": "web/server/coaching/templates.ts",
+      "sha256": "7bf54d47e62612ebf60c7779125dc180af1d800ed3242811b8880ddf5af1c2f5"
+    },
+    {
+      "path": "web/server/coaching/trial-pool.ts",
+      "sha256": "e349af29612b17251a14c5b4d99cd596ecbe7c232f4a85ed8fe231667b8f0a7f"
+    },
+    {
+      "path": "web/server/coaching/trial-worker.ts",
+      "sha256": "223d4fe17deaa66f273b569c1006a01ac86eaebd7ccb46710eedd896d9836a57"
+    },
+    {
+      "path": "web/server/coaching/trials.ts",
+      "sha256": "6e9299120f20d7f80d9036221916366049fa7f3f10f869d2115f6060fee39b96"
+    },
+    {
+      "path": "web/server/coaching/types.ts",
+      "sha256": "d80468eb4efd2d168978882784da9d738b25e4cf5b1dff50490ef73c0ce63b8f"
+    },
+    {
+      "path": "web/server/config.ts",
+      "sha256": "e8b1706838331c7ffef217cc76e247cf402a21b444601900b073f3ca1475e066"
+    },
+    {
+      "path": "web/server/dev-scenarios.ts",
+      "sha256": "439d7eba3502fb600fe3a4df8890909cebd56ba8b6a2b8b1fba18a2ad9909b5d"
+    },
+    {
+      "path": "web/server/evaluation/evidence/jev-smoke.json",
+      "sha256": "1058bca9c1829d840424cdaef7b391cc680ac3c4efabb1f473933d80f5f8792d"
+    },
+    {
+      "path": "web/server/evaluation/evidence/local-policy-smoke.json",
+      "sha256": "ed9d7b0f04fac6f6232c6b69457c547f4be9d27e3a1e75b7e7287c2f97e64163"
+    },
+    {
+      "path": "web/server/evaluation/gate/contracts.ts",
+      "sha256": "18a27462d64aec02ac6a73f6a76b9c2e0e5fec485a995279f8ebd587aae3a59f"
+    },
+    {
+      "path": "web/server/evaluation/gate/deals.ts",
+      "sha256": "6378b209750de89d49865060405fa93db9d9a19c2728790fd38967f7a0350135"
+    },
+    {
+      "path": "web/server/evaluation/gate/index.ts",
+      "sha256": "7abe1c6d6698be6bd2449e5057ec452161c22e24aac2b1db04013b9b76267ee4"
+    },
+    {
+      "path": "web/server/evaluation/gate/inference.ts",
+      "sha256": "0446ac0bb7e80735ed4e56e56e3ad44d99663d15c254694d719e8068589c3b33"
+    },
+    {
+      "path": "web/server/evaluation/gate/report.ts",
+      "sha256": "643720480b43e2d844abba2b0f6e74ed19ec72f24264309fe2908b4d5496b138"
+    },
+    {
+      "path": "web/server/evaluation/gate/rule.ts",
+      "sha256": "b662675b255f6eff1bf4f8ae7e1860be9edf599b2c0ca7b388cc008c1d627575"
+    },
+    {
+      "path": "web/server/evaluation/gate/runner.ts",
+      "sha256": "69c6baa1640d23dcb0f54dd05e80b51a727109abf820a0c8b571df456d98176c"
+    },
+    {
+      "path": "web/server/evaluation/gate/seeds.ts",
+      "sha256": "42d4f122b0f4add3e0f331404ce5bc30ab1ad8e1223db4ce538d2bcc4e741264"
+    },
+    {
+      "path": "web/server/evaluation/gate/worker.ts",
+      "sha256": "adff724c382eaca6338e3571a0ddd672e7a206c1893467785631e5695fffbea7"
+    },
+    {
+      "path": "web/server/evaluation/jev-offline/fixtures.ts",
+      "sha256": "e2f769e11ab29d4526334c2780757d8e1f19aa7bfdc72a23c3c646de74c56e50"
+    },
+    {
+      "path": "web/server/evaluation/jev-offline/payloads.ts",
+      "sha256": "1a7cfa7254704cd40099c48b36e7c046135209c70d2de843b0bd12967b70645f"
+    },
+    {
+      "path": "web/server/evaluation/jev-offline/report.ts",
+      "sha256": "a282da89bb4f90c7ae1d0c152b152d865d60ac8ec19d48c77d64d5e029e2b490"
+    },
+    {
+      "path": "web/server/evaluation/jev-offline/selectors.ts",
+      "sha256": "6f13c67a3620cf4a0cc8a6143284c1d94765c5a1f3a641816ca241ad5945fdf3"
+    },
+    {
+      "path": "web/server/evaluation/jev-smoke-manifest.json",
+      "sha256": "60ae7b84c24b48583d181fa968ce7b2953c237ab4c6a62dbd77a933046685f2f"
+    },
+    {
+      "path": "web/server/evaluation/jev-smoke.ts",
+      "sha256": "53f4ca240d89a98eb179cda7391d07353e27be7f312498a6a1cb5b59e1e7e0f6"
+    },
+    {
+      "path": "web/server/evaluation/local-policy-manifest.json",
+      "sha256": "16f2501baa711d8cbe7149c973fc17a6c699726dbe80cb420eb9b6bf2db68b3a"
+    },
+    {
+      "path": "web/server/evaluation/local-policy.ts",
+      "sha256": "f4547f50b603b3934cb56c3357b321db6c8e24582ffd3777cb89ebbaf16b0310"
+    },
+    {
+      "path": "web/server/evaluation/partner-cases/cli.ts",
+      "sha256": "e60b35ab45c7593f3bd04bfc5529ba9953a6d37fd12a65a2fbb96da716c231b9"
+    },
+    {
+      "path": "web/server/evaluation/partner-cases/fixtures.ts",
+      "sha256": "506f2b6283e995b24d70693e3400fcfd2239467cbbe1a20cfffdd1e872af45fb"
+    },
+    {
+      "path": "web/server/evaluation/partner-cases/measurement.ts",
+      "sha256": "7b7e24278ee26df84d6e2b82668b023a0583cee6664650ad04f27a22b7d1dfe4"
+    },
+    {
+      "path": "web/server/evaluation/partner-jev.ts",
+      "sha256": "7302a78cf7547645549415aadebd4fa14b39d53c0287581c1cf23f5058a95518"
+    },
+    {
+      "path": "web/server/evaluation/reasoning-matrix.ts",
+      "sha256": "51bd77388e53df7b883b950fb18f41bf03e70061c8ecea5920f62ec334cf2db2"
+    },
+    {
+      "path": "web/server/evaluation/spades-pack/cli.ts",
+      "sha256": "bcc759d1715e34514bb2ba916dc31cf9b94419cc80045455992395e0a79cc054"
+    },
+    {
+      "path": "web/server/evaluation/spades-pack/labels.ts",
+      "sha256": "5c67e0be7e1d454e4f52f4cabce4825edf7d0740bd9d30c34058b000765698c0"
+    },
+    {
+      "path": "web/server/evaluation/spades-pack/pilot.ts",
+      "sha256": "b5eedb71f4c304f401436c58c05debf52bcab2238938d730f90baa7279b86f23"
+    },
+    {
+      "path": "web/server/evaluation/spades-pack/report.ts",
+      "sha256": "1be6b8ec973efe5d2a900d161ef18747549f822bfba40b371c9aefea85d48e4e"
+    },
+    {
+      "path": "web/server/evaluation/spades-pack/review.ts",
+      "sha256": "a218b20474f25178c4696a6480328bc408e202e182146be5d7a54113b07e777f"
+    },
+    {
+      "path": "web/server/evaluation/spades-reasoning.ts",
+      "sha256": "a4c316c16108f70bc87dae495dde97f625086166aae94976971c1504d5a9a143"
+    },
+    {
+      "path": "web/server/game-deal.ts",
+      "sha256": "f7536ea4ac64c7024ef83c27d40ce63ad24dbf6a12161b03444e8d0bd3be65a3"
+    },
+    {
+      "path": "web/server/game/cards.ts",
+      "sha256": "e7c5873dcc2dae54980f82a7c3c880a9e85a5b65c1a57aec4614154bd657981b"
+    },
+    {
+      "path": "web/server/game/compatibility.ts",
+      "sha256": "f197ae4a91d2d6847ffd160a145f600f58bf420b06f0b6817a416147a94fdd99"
+    },
+    {
+      "path": "web/server/game/hearts/score.ts",
+      "sha256": "afd66c4dcf5bad2cbbb96beca3238de1e536411610839ea3601531d69a3d6192"
+    },
+    {
+      "path": "web/server/game/index.ts",
+      "sha256": "83bac53a27cdd2b27a4e65574bfd493b4bc6b88e927bd155f9d5e16433df52e7"
+    },
+    {
+      "path": "web/server/game/kernel/codec.ts",
+      "sha256": "1a0490f15fc1073dfd9a5189b07ced270155c59580e5080d94ca207efb7d6c1b"
+    },
+    {
+      "path": "web/server/game/kernel/competition.ts",
+      "sha256": "0ef3d125a820c937b0d312ca371e3f2ca779b4ae5a7c6f3eea2d8189438b8791"
+    },
+    {
+      "path": "web/server/game/kernel/module.ts",
+      "sha256": "a5d5c959dccdcaffc985987d26989f3adda15db348a877117776ca0ffceb5cbc"
+    },
+    {
+      "path": "web/server/game/kernel/registry.ts",
+      "sha256": "89cfcd4f26339b62c951c61e626ae4e66837f06ab6f1389bc21ea03d84eb69db"
+    },
+    {
+      "path": "web/server/game/kernel/seats.ts",
+      "sha256": "8fc1c935c2fd9a3957b9d378ab463578218900aa35ed9e354b9e3ac891d4f362"
+    },
+    {
+      "path": "web/server/game/kernel/session.ts",
+      "sha256": "b80c1a6c64ce4869499235ec090c4f2ca0c68a3c3489892181d29cb0d3d2fff6"
+    },
+    {
+      "path": "web/server/game/kernel/types.ts",
+      "sha256": "1a4be0a87ab0e8e27fb79f292a56d336c69c73df09f1cfac708ce786366d1966"
+    },
+    {
+      "path": "web/server/game/legacy/observation.ts",
+      "sha256": "2378edfb7c09a0b413b54db440a294427f072bf43875395bd71ee7514362c987"
+    },
+    {
+      "path": "web/server/game/legacy/reader.ts",
+      "sha256": "7eb002bde46e840ff9f3b960049ca5821a36a9d98191d2c8337338a728ad5800"
+    },
+    {
+      "path": "web/server/game/legacy/rules.ts",
+      "sha256": "ca1eb881dc9d1f094d88f450cbeae4035e1d813cb0b3d92dc9b11e43d6982f58"
+    },
+    {
+      "path": "web/server/game/legacy/types.ts",
+      "sha256": "4e4a1c991cffb43f97d8cde2a366097fcf0417cbe7467aab603bf324c65b19a8"
+    },
+    {
+      "path": "web/server/game/legacy/v1.ts",
+      "sha256": "0139636c9a176706f30ce8340c4d0c8d47d4e66efc4bf2ad89c4ffe9763b347b"
+    },
+    {
+      "path": "web/server/game/replay.ts",
+      "sha256": "e4c0034d36b2be03a52cf694abff0761fc01572f51552e288515bc24ee6db80a"
+    },
+    {
+      "path": "web/server/game/rules.ts",
+      "sha256": "6e5042531cacb80cf3ff11d2dab89cb0ea75a391576360c70d2a2b2dce2b7047"
+    },
+    {
+      "path": "web/server/game/spades/score.ts",
+      "sha256": "9e2a97cf28d1c99750315c28a6955790ff3470d6c051e975f16d6a1095d279dd"
+    },
+    {
+      "path": "web/server/games/hearts/coaching/cues-legacy.ts",
+      "sha256": "17bae315afdce429e09025769e53e044b32c975e60c6b6fffa4f1c9f7bbba07d"
+    },
+    {
+      "path": "web/server/games/hearts/codec.ts",
+      "sha256": "7df116e83e47c0f90d73aaf2b8cba442391fd13ec9c104cac5512aa6d0a81428"
+    },
+    {
+      "path": "web/server/games/hearts/compatibility.ts",
+      "sha256": "9c4ee02f3ee3b02bdba30898cf4966056a5effc031107296b7eadf1e05fe95bb"
+    },
+    {
+      "path": "web/server/games/hearts/engine.ts",
+      "sha256": "1a293d24e35e7e1199e7f685f33453489aad7d6e3ec5873a7d1ff4702a8eae17"
+    },
+    {
+      "path": "web/server/games/hearts/module.ts",
+      "sha256": "b69ab450e50b57f18c0a59b9268521deecdf9c4de4cdf3664348804358f5591a"
+    },
+    {
+      "path": "web/server/games/hearts/observation.ts",
+      "sha256": "83f527bfb345e1b529d35e15e06768c8ed1459d8100729ace4d5f599303c5254"
+    },
+    {
+      "path": "web/server/games/hearts/plan/kernel.ts",
+      "sha256": "87daf62cbfe828997e75bb671a9b2965842124bb866cb07537a623021d66defc"
+    },
+    {
+      "path": "web/server/games/hearts/plan/model.ts",
+      "sha256": "492c8e10f9d55ad743788436f385ff9929f4dfc4a5fb80c4454ee94b42ed61d3"
+    },
+    {
+      "path": "web/server/games/hearts/plan/pack.ts",
+      "sha256": "cdabcb038cac4156528ceb833a1ff7eac443e9aa646ffff334d0760a8930c600"
+    },
+    {
+      "path": "web/server/games/hearts/plan/planner.ts",
+      "sha256": "33eb46af8a1b26d97c0b70b53498fd219fc123d91bfc86a2e689c4c85f397491"
+    },
+    {
+      "path": "web/server/games/hearts/plan/policy.ts",
+      "sha256": "8be7b1c427e41be5b21c099bd9be7ac36a7e346ebac02da156fe348aa049c2ed"
+    },
+    {
+      "path": "web/server/games/hearts/plan/profiles.ts",
+      "sha256": "bebc3d9d431aaded1a2b9a925c66fb8e679c84fcd266e4c0a977e5c39406361f"
+    },
+    {
+      "path": "web/server/games/hearts/plan/stance.ts",
+      "sha256": "519ae3745217b3b611ce57ea369bca77113645f45f5533bf580fe81e3d8c27e9"
+    },
+    {
+      "path": "web/server/games/hearts/projection.ts",
+      "sha256": "dda46e939d2103df200c75077dc6e18f8e60edf565fa5622fe05d8567fcec36e"
+    },
+    {
+      "path": "web/server/games/hearts/reasoning/manifest.ts",
+      "sha256": "6121def8e355414effde3d6255744bdfa491e7a6b3ac15b119481fd7f591363a"
+    },
+    {
+      "path": "web/server/games/hearts/schema.json",
+      "sha256": "fa57d6b5c0d4b2283eef134f3fb06e8a3e413bbb2269986fc054d1633802f19a"
+    },
+    {
+      "path": "web/server/games/hearts/state.ts",
+      "sha256": "e708b372bcaa28bc80d57ceba4a0fc1d5e726e98791382cedeed96fdb87e0b22"
+    },
+    {
+      "path": "web/server/games/registrations.ts",
+      "sha256": "67ccde3caecf04a0b6c07ddf26ff25f94384593f39c93654517c630c3f6ab7aa"
+    },
+    {
+      "path": "web/server/games/spades/cases/cues.ts",
+      "sha256": "7f604aa63fe8592b903bdef043b131bcfe4affb10f49f809838cc9684c61368e"
+    },
+    {
+      "path": "web/server/games/spades/cases/profile.ts",
+      "sha256": "50a3372243120d0251ac2b12b06565ca7dee8b29f3b740ae4e13e1901f23f894"
+    },
+    {
+      "path": "web/server/games/spades/cases/proofs.ts",
+      "sha256": "e5a3906f8cff62a4f5a10308bf665299a0d15ddfadfc950b64f9b31e4a03e90b"
+    },
+    {
+      "path": "web/server/games/spades/coaching/cues-legacy.ts",
+      "sha256": "83b92cab4a00d6f1d0193455f98bce05b48c11e3869d1b79aed0a0e5cf59de8b"
+    },
+    {
+      "path": "web/server/games/spades/coaching/cues-v2.ts",
+      "sha256": "eb299757640fd08c0b128d12654e671b9a4814f1f3897dcb59a44e856a601ba6"
+    },
+    {
+      "path": "web/server/games/spades/coaching/legacy-golden.json",
+      "sha256": "052f5422bb4ab4ebe5aaa6f4ec3e025bf7ed8912880d1dfbae76abdddd018cb3"
+    },
+    {
+      "path": "web/server/games/spades/coaching/legacy-golden.ts",
+      "sha256": "8e59b109b6d1a2b03a288bfede09f047bb3b3be9a91e837485f7ef3e941eb529"
+    },
+    {
+      "path": "web/server/games/spades/compatibility.ts",
+      "sha256": "c176d5d879541f0c1403f3555d96be10e922d5b9ed2a3f186015c4eeaf4001df"
+    },
+    {
+      "path": "web/server/games/spades/engine.ts",
+      "sha256": "d20ef7ff61f739004f531eb6bac41cbd935103927309d8bb8e6569ed4055b6ee"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/adapter.ts",
+      "sha256": "6cdc683727ffd640f2e2f0cd30839d0c1a90ddd908b538027a43ae8555acd565"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/claims/check.ts",
+      "sha256": "8bfba0b026a3891a8994ee97854a7e724f75909308b875dbb4909aefedd872bf"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/claims/legacy.ts",
+      "sha256": "249dc3352408f869c222b3275cf06c5939802b8977d5eb9dd85b2274640dfd51"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/claims/observed.ts",
+      "sha256": "e8af13b46dbb1152af1212204191a2ee31dc7956e1efc53a239349ff16e344f6"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/claims/partner-resource.ts",
+      "sha256": "917f2c2df22303bad76f85d41c1eca3d6d7d3f1c3af9a252af4911ce44f5eccd"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/claims/rules.ts",
+      "sha256": "570ce211914ca01e31a9afcb9df98f13c22fd14dd18e3240d02d397b406050bd"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/claims/worlds.ts",
+      "sha256": "33213bc48c6896b41349a5a75f9b6f3aee67540b6f80f661b432d37acc2a80b0"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/metrics.ts",
+      "sha256": "3bb35c37574f10c91350ed7b1040b29f6447f70c361ef10e8d8d00f9f0149d2b"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/placements.ts",
+      "sha256": "4a290b34ecf23b8ce3ed48b752c3e386996decb1c1d4300e3fd6098dc2c1837a"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/shadow.ts",
+      "sha256": "0c999b102cd72af2107a1adb453ee34093aa6ea80fdb65af4b59e94283165413"
+    },
+    {
+      "path": "web/server/games/spades/evaluation/styles.ts",
+      "sha256": "13b00cb88e130b6038ac58ce32603466266dc8a0bce68cd9a555373c152c8ed5"
+    },
+    {
+      "path": "web/server/games/spades/module.ts",
+      "sha256": "8c8f7864ea007f9367689df288818ac4fc66e4dec44adde38d8b101d9d9180bd"
+    },
+    {
+      "path": "web/server/games/spades/observation.ts",
+      "sha256": "680888b061a4e0b0ec1eed2ec97ec65d891a62b7295ef4472622c68e247bd574"
+    },
+    {
+      "path": "web/server/games/spades/partner-resource/cues.ts",
+      "sha256": "2a008518a6497bad6743d0a40069c7493e99f58a6d0569aab9f0b5e51fe26254"
+    },
+    {
+      "path": "web/server/games/spades/partner-resource/profile.ts",
+      "sha256": "ce407088c1c080868c6a767eaa7ffb4be3ba9a69527e0617043eadda8ec17a86"
+    },
+    {
+      "path": "web/server/games/spades/partner-resource/proofs.ts",
+      "sha256": "c8da5a309aacb99f52cca84a0e0f47516458c06871fb5d8405940a3a7362e311"
+    },
+    {
+      "path": "web/server/games/spades/plan/claims.ts",
+      "sha256": "6d882ddc8ffd79d979bba402b24365a218059b833969ee22799112b1a70ebaf3"
+    },
+    {
+      "path": "web/server/games/spades/plan/pack.ts",
+      "sha256": "989387dcfff14db1cd31a260b89495e2c44b67b872858c39276b16e18e5feecc"
+    },
+    {
+      "path": "web/server/games/spades/plan/planner.ts",
+      "sha256": "e9faccace64e7d6ab473da913a1880ef7a08a86ca62d9d8d3b82b2a7fef5f8e2"
+    },
+    {
+      "path": "web/server/games/spades/plan/profiles.ts",
+      "sha256": "6fd6d636e22b49526d58e7de9c0ed0d9ea2b56e51df8818818b0fd09d764a786"
+    },
+    {
+      "path": "web/server/games/spades/plan/stance.ts",
+      "sha256": "28187b50c19a453d89faecd454f19fe9c1d05671ebfa96c3c1e3b95c39dfb2fa"
+    },
+    {
+      "path": "web/server/games/spades/playout/kernel.ts",
+      "sha256": "3560d67affc712537028ad20c162d42ce9f382ca8e57ec9daede042a57a7323a"
+    },
+    {
+      "path": "web/server/games/spades/playout/model.ts",
+      "sha256": "40452cb6d3e6090ea2b529dfdcd7dc163c27da6d8f25cba9b7746fe43b9ef215"
+    },
+    {
+      "path": "web/server/games/spades/playout/policy.ts",
+      "sha256": "2bc631790dcf4813fe754f76b390d47a3c66ead4144a7e3b8c85a452ee071cf6"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/bidding.ts",
+      "sha256": "d3088d7f675c20f34258a503b4ece5eea4c00d4eae3b25985be6340412ebcdfb"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/casebook.ts",
+      "sha256": "f16bfc61cf10a0c557536892514941bff0e39a2c9a6c41e72fcc60857e13c8ef"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/catalog.ts",
+      "sha256": "037aabd016ea80909587c400e2ef88095c5696028b6530ec080afe9458cb6427"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/continuations.ts",
+      "sha256": "59f1a2d709a543de23366b92e9c21b1d4a69e8c186c191b46782b784b243cd29"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/entries.ts",
+      "sha256": "f7c9585a587036fae0f0cd4ff25cb336a2202ccca6ac25a8d68cb4523f47d054"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/golden.ts",
+      "sha256": "a1603263dea6d9b1ab773c32ecfc210a1e1576cb7ae8725d7385b45a6b2b780d"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/local-baseline-1.0.0.golden.json",
+      "sha256": "9383bd4592e1e4353ed215c92d24a1b618477100a872f1a2bd6bca81339666f9"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/bidding.ts",
+      "sha256": "2d8d3bc73920ce93cfb291b22a8f07ad605235376e4ee0691f38e43546a49d8a"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/catalog.ts",
+      "sha256": "d9426da878a49b49300a3ee65aa95af24cb353afd61be42dde2e4bc099b0e025"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/entries.ts",
+      "sha256": "eca03fbf9554f20e3d1d3702ce6271b3f46d2f7aabd6c9b713abc4a04a04c832"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/golden.json",
+      "sha256": "0531c4fc283e0ad0f2167e947c8a3cc2aab4352208a6b4a2c30f64133e7610f8"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/index.ts",
+      "sha256": "487cceb779f2d7ed30a87e5f0f281634cb3064ed9d36c4abbb26f7f572eb82da"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/knowledge.ts",
+      "sha256": "9644e1b4ceabf3b1f4f7c116fc3baedef4eee449c6d824f0ad47ab0d2dbfda5a"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/manifest.json",
+      "sha256": "d860fe20c969b41daccc6fae04f76f17d156a5002d8cae39ab02075ebb77ee9f"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/nil.ts",
+      "sha256": "63f8151ad48fa56274bed57f3be396b21bdd796d4276264b4a524faf4ffe7b35"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/policy.ts",
+      "sha256": "859806f6065b913ef837f8ecb9afacdeb273a3fa9a766865b82e4f3c003fefb9"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/retained-bidder.ts",
+      "sha256": "59b5a725e47fba1a5a71b595c37d699949e0e2b78c1edeb25e479b9d6c305d88"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/frozen/spades-tactics-2.1.0/signals.ts",
+      "sha256": "07e08f115a45357aeec716aed4cbfc9feabad5c568ff114f0108d0a55c1df078"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/knowledge.ts",
+      "sha256": "b81c6883769db1b9a77be78ffc5e4400315a3ee024fa600f6fcb3c30acbd1c5d"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/manifest.ts",
+      "sha256": "60ac4f3ada3752b9d7cf6902ace80a9a3d1b6a8afcc32cbcdcaab7d3d300de3d"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/nil.ts",
+      "sha256": "4401dc6b12e0c191bb6f0f960e41d0337f76ae70b70b8bc21272b4dc9b550018"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/objectives.ts",
+      "sha256": "b4b7105d41ada31406248b106b80e17032de4bb2f668ed0fed962388370f2f02"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/policy.ts",
+      "sha256": "a359f215a8ee0fe58829f94434c3e0d7e9de67b7bb95942b623427a4d5755b7d"
+    },
+    {
+      "path": "web/server/games/spades/reasoning/signals.ts",
+      "sha256": "8e8fa86fe6d0e71d80a373ce4d454349172b1514cd58a423a9a264675c490941"
+    },
+    {
+      "path": "web/server/games/spades/rules.ts",
+      "sha256": "53c1cd5e54d35f0cce9661dd79ea2dd8b5586fb48e80bbe87571c4c5a7708449"
+    },
+    {
+      "path": "web/server/games/spades/schema.json",
+      "sha256": "61a9494aa976cded9ae41394ddd1df0e97717afa6e63a2486ff3ec1f83449011"
+    },
+    {
+      "path": "web/server/games/spades/state.ts",
+      "sha256": "1db115603937d22fd0adade8d9b9f7a9d33dbb13c1e285501f19d4d1cabdbe48"
+    },
+    {
+      "path": "web/server/http/app.ts",
+      "sha256": "4368e66c20405e1ad3cff8fa96b54bff8ad2307e89cff57068a1e406794857f6"
+    },
+    {
+      "path": "web/server/http/errors.ts",
+      "sha256": "f7d0fa1fdc52395ed4234589915ec2ced34b1207a1a4718fe0217381d66003a3"
+    },
+    {
+      "path": "web/server/http/game-service.ts",
+      "sha256": "92f8d430022f5f37185051328de2130a1b789d723f9149fd1c30fd37313020fa"
+    },
+    {
+      "path": "web/server/http/trial-service.ts",
+      "sha256": "7211838ef9928861efd94460b330af5646b65a3e2a661843640d814114fd35c5"
+    },
+    {
+      "path": "web/server/http/views.ts",
+      "sha256": "33f367ed95c17cb58adb7f2316035e2a4e39cecc5e3adb322e4715f786eb54ee"
+    },
+    {
+      "path": "web/server/index.ts",
+      "sha256": "942080c1464af47faed70fec53c945eef58341898069eac8280818cbeb00ad78"
+    },
+    {
+      "path": "web/server/observations/index.ts",
+      "sha256": "af35bf39336ac06a683ecc69463dcd993acbe8829cc7f9ae71d6e5dbbae28394"
+    },
+    {
+      "path": "web/server/observations/types.ts",
+      "sha256": "0a073cec3252ccb80d71f8059e46ca7af97e274039f6b88cbd997a5a11de8975"
+    },
+    {
+      "path": "web/server/providers/openrouter.ts",
+      "sha256": "d0c3fa34f3e99a780b443f7789f982d17ae804d06ca77d5be72edddf909f852b"
+    },
+    {
+      "path": "web/server/providers/secrets.ts",
+      "sha256": "ef22bd0b055af4b48e700e3cac6fe5b3d05ee4e8f303e1f09c2cc83673c914e0"
+    },
+    {
+      "path": "web/server/records/database.ts",
+      "sha256": "08e4af4d9e52ccff515b062e2c807095fce3acd9f8281d85824de2c3f66002ca"
+    },
+    {
+      "path": "web/server/records/game-document-codec.ts",
+      "sha256": "4f0e61e9830679a8957d6d04e21bb660dbfb9d9bd659655c2548876026d1de08"
+    },
+    {
+      "path": "web/server/records/game-document.ts",
+      "sha256": "d2ce12d9d1a7629e607bb82404bff18e8552437fedd79e58d61eb6e5be08dc04"
+    },
+    {
+      "path": "web/server/records/migrate.ts",
+      "sha256": "08dcff514485969a746169537259e1c4e55203f52e1e636d7d95ba36f06036af"
+    },
+    {
+      "path": "web/server/records/migrations.ts",
+      "sha256": "e4363ac79a06cf9b095fcd19be8cf0c3d9517749e715b248234eb685f902a895"
+    },
+    {
+      "path": "web/server/records/migrations/001-local-platform.sql",
+      "sha256": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2"
+    },
+    {
+      "path": "web/server/records/migrations/002-billing-family.sql",
+      "sha256": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f"
+    },
+    {
+      "path": "web/server/records/migrations/003-account-data.sql",
+      "sha256": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae"
+    },
+    {
+      "path": "web/server/records/migrations/004-analysis-jobs.sql",
+      "sha256": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43"
+    },
+    {
+      "path": "web/server/records/migrations/005-analysis-attempt-fence.sql",
+      "sha256": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c"
+    },
+    {
+      "path": "web/server/records/migrations/006-preparation-attempts.sql",
+      "sha256": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e"
+    },
+    {
+      "path": "web/server/records/migrations/007-versioned-platform-records.sql",
+      "sha256": "cae296b33b5c8b09169e7636b6116d6a60fd72ac9cd78661b4900b3b2873208a"
+    },
+    {
+      "path": "web/server/records/migrations/008-local-go-service.sql",
+      "sha256": "2f5b0e962a59491a2cc6ee35de1f72778c98b45e7e6b67789b09705ed05299d5"
+    },
+    {
+      "path": "web/server/records/migrations/009-configured-access.sql",
+      "sha256": "ec6ea4b6338cb5de7e026f5134000dfa47a0e6ccfa407095ee48fa21061a48a1"
+    },
+    {
+      "path": "web/server/records/migrations/010-platform-client.sql",
+      "sha256": "2b0eca4c94a1220246e88292cbc87f685d76d36bfa031e8437fd78fdd0c12a46"
+    },
+    {
+      "path": "web/server/records/repository.ts",
+      "sha256": "38d1f9334d48336ac383dda69c0bfb673724b5879c8ca4dd509a73b92909371f"
+    },
+    {
+      "path": "web/server/records/state-validation.ts",
+      "sha256": "4fffd293a392aeb121e9f3c4c40b5d80fad8c77e29d0867ed7b72e979599c441"
+    },
+    {
+      "path": "web/server/records/types.ts",
+      "sha256": "da56a6812248b808bee5938de983b3b310a436bdc6a12c7af1459d74849463e7"
+    },
+    {
+      "path": "web/server/strategy/baseline.ts",
+      "sha256": "eadd3e54645eab11477bfec9d8b0739071611d596ad81f05a16d75f0500b3929"
+    },
+    {
+      "path": "web/server/strategy/facts.ts",
+      "sha256": "91df66ea59713ca96b541122f3607d2ee9edf0ae9111436bed2db2f649888af1"
+    },
+    {
+      "path": "web/server/strategy/index.ts",
+      "sha256": "7b0db3d2ae0597d4e672d85eceb56a97ba15015b761959b22b4bf319d692f0a1"
+    },
+    {
+      "path": "web/server/strategy/plan/contract.ts",
+      "sha256": "bce8d766d981eed2b1c77f367b1c86e93a40fa8fbfe34e925d9533ae323bc355"
+    },
+    {
+      "path": "web/server/strategy/plan/evaluate.ts",
+      "sha256": "967da678727ce322000db15d718290b5002556464753a073131d12216e371f28"
+    },
+    {
+      "path": "web/server/strategy/plan/random.ts",
+      "sha256": "f3ad54a722b4ea3e2ae202b79b0f01458b1e7c287ddc804310a00a4f47c5c883"
+    },
+    {
+      "path": "web/server/strategy/plan/types.ts",
+      "sha256": "a899542eef67aa98aaf8379e87320b00eda3e407187dc2f7eefbda96e845fdf7"
+    },
+    {
+      "path": "web/server/strategy/registry.ts",
+      "sha256": "8a60dec8ebc60a67ac1d3b008e82eee13e1dbb2abd101122c892c808f5d62607"
+    },
+    {
+      "path": "web/server/strategy/sampler.ts",
+      "sha256": "2f4ef123c0a9c0328e44d55e1e49e9b4720273de051ba9768ea6696f6b3f30ad"
+    },
+    {
+      "path": "web/server/strategy/spades.ts",
+      "sha256": "fc7dd4b74fea705398193b04be3ddb4d4ad6075e5063eb486d88d7a9148ac5f4"
+    },
+    {
+      "path": "web/server/strategy/types.ts",
+      "sha256": "a39cd57abe3252780370e8aabc7f2b7bd3959b15d76f5e22aa5634c58644fa0c"
+    },
+    {
+      "path": "web/server/tests/access-review.test.ts",
+      "sha256": "4a03d18a67a247fb20a6a2af6d2118a1bc85ecf14477dcba6b42c90566e0fd15"
+    },
+    {
+      "path": "web/server/tests/account-data.test.ts",
+      "sha256": "4d27438ce87445446cb5a36dad8b9f6f129f95311ce8862fe00e0c4d6b4ab6f0"
+    },
+    {
+      "path": "web/server/tests/analysis-outside-transaction.test.ts",
+      "sha256": "c2690eb72ace519f754ec1f5031e03be50ebbb6377a392d2fda27be1b35d0d68"
+    },
+    {
+      "path": "web/server/tests/billing-stripe-management.test.ts",
+      "sha256": "724f8d14726e775cb6c704c63d5fcfbcc3332bcbf8f7be977106526345e209ad"
+    },
+    {
+      "path": "web/server/tests/billing.test.ts",
+      "sha256": "76738ca7566b313372a72b58af91554b75bd93daf9f0c8124720ffc75c069dd6"
+    },
+    {
+      "path": "web/server/tests/coach-legacy-parity.test.ts",
+      "sha256": "389d044a6b85e02f1f066ea8038e7798964cccfc12ba1188b02eba7b5b74ea2c"
+    },
+    {
+      "path": "web/server/tests/coaching-analysis.test.ts",
+      "sha256": "3ac9b1887d28f89a58fd56c68c6da2415208d81b1eeb906da2be979ec82fc15b"
+    },
+    {
+      "path": "web/server/tests/config.test.ts",
+      "sha256": "ea746bb19aa60d041a4ffc54a039704f7543bfd4a4acf7c728543eab32cf4eb3"
+    },
+    {
+      "path": "web/server/tests/contracts.test.ts",
+      "sha256": "eb7e1a3994d432691ce83d4068c95baab9ef9ce36c499b3f371cc30755efb13a"
+    },
+    {
+      "path": "web/server/tests/dev-scenarios-integration.test.ts",
+      "sha256": "fe010b6da46a1a6dbb43360ee9af1d2764c7b18aa487964cfb5bd750c9e4f9c3"
+    },
+    {
+      "path": "web/server/tests/dev-scenarios.test.ts",
+      "sha256": "01ecc341f341cff16674f61590b75b6fa6c660c3c5ccde9bb9291d59e6d8b739"
+    },
+    {
+      "path": "web/server/tests/facts-history.test.ts",
+      "sha256": "c08e8009c7685fb2b083a9626eb79fbecfa23141ca535cd9ffeffe2e60e68b4b"
+    },
+    {
+      "path": "web/server/tests/family.test.ts",
+      "sha256": "bdeb57493efd42497c81723f6243092779417c906dd17fec50edc6b5701dfd7f"
+    },
+    {
+      "path": "web/server/tests/fixtures/legacy-module-document.json",
+      "sha256": "eb75ab3d7973ff01ccf472e502e0ea39f7af7b9bd4d7bbe7a7f82fffbe9b685f"
+    },
+    {
+      "path": "web/server/tests/fixtures/spades-observed-sources.json",
+      "sha256": "8120e57357fbffc74b5ffb1a745320ff12f9873892a2e9f6c9c3ddbf1cd430e8"
+    },
+    {
+      "path": "web/server/tests/frozen-baseline.test.ts",
+      "sha256": "543aa8cf207d2c73c33230fdfa974913baad98f1733a93cfa31bd19c133f9880"
+    },
+    {
+      "path": "web/server/tests/game-document.test.ts",
+      "sha256": "0c99c952e194cba708a8d2288dd0c3a5afc1d9243578407c7a5be7b3553ce33c"
+    },
+    {
+      "path": "web/server/tests/gate-inference.test.ts",
+      "sha256": "72fbae6a3fc8f124f52bc1cda35964ea2fcc4c81ba5490ce99a9819aec9b9538"
+    },
+    {
+      "path": "web/server/tests/gate-rule.test.ts",
+      "sha256": "68d438210da9d95cf267e7344892ee362fe79b60e7a0c33f46a258403885f5fd"
+    },
+    {
+      "path": "web/server/tests/hearts-module-validation.test.ts",
+      "sha256": "c856e1ea33e452e881d393549ee9157ba65bbc2ebdfa6bf18864c9048d024758"
+    },
+    {
+      "path": "web/server/tests/hearts-plan.test.ts",
+      "sha256": "3404fcbaf300915c20c6c92fb5eff9dcddd8c7d3564cc2644a67c4553acf739a"
+    },
+    {
+      "path": "web/server/tests/integration.test.ts",
+      "sha256": "25416050b2a16ab949063b256669a64f0ab0ef126dc67ef8a2545f9a47778846"
+    },
+    {
+      "path": "web/server/tests/jev-offline.test.ts",
+      "sha256": "13d74ef66b16050539350f95e5c24cf77ab53c8a26c707346030e16c3de1d23f"
+    },
+    {
+      "path": "web/server/tests/module-contract.test.ts",
+      "sha256": "dd9f59239856560f0854ad37cd879c25f232f5f4146cf3fc0190074679d434f7"
+    },
+    {
+      "path": "web/server/tests/module-parity.test.ts",
+      "sha256": "69eeaab243ff19577840d24235bf125e23237d90a37fe90a8e5a89b4c374c91e"
+    },
+    {
+      "path": "web/server/tests/module-seam.test.ts",
+      "sha256": "83502fc80da19d3058e84fe4f7733a5535a0062fb4d0a75a5d6079bc8b1980fc"
+    },
+    {
+      "path": "web/server/tests/observations.test.ts",
+      "sha256": "b194f631984ad982576624355c7be7b3d1f03c74c085206a88a751d041c96254"
+    },
+    {
+      "path": "web/server/tests/openrouter.test.ts",
+      "sha256": "7d36ea93ec733672fee557b271d20717615d58bf97b7376b2204917ebc32b07b"
+    },
+    {
+      "path": "web/server/tests/partner-jev.test.ts",
+      "sha256": "04640e5b88ba2fd36fd1e719b7e28dedc65f58e4f2314cf5be7a47fba3b1f8ed"
+    },
+    {
+      "path": "web/server/tests/plan-evaluator-budget.test.ts",
+      "sha256": "3abd1920d92203bbdd59a2bb3650ebce5c96d2b7228333c92b4eb2898008640d"
+    },
+    {
+      "path": "web/server/tests/policy-pinning.test.ts",
+      "sha256": "817bc222d8ffddf8bad8d81e36df304c9acec2689078d5c9c33fa37b1a6cb7f3"
+    },
+    {
+      "path": "web/server/tests/preparation-recovery.test.ts",
+      "sha256": "1a56a90133ed96f68f0ee7fd0217adb43b3c26956a44a6c50e343ba7064f946b"
+    },
+    {
+      "path": "web/server/tests/provider-ledger.test.ts",
+      "sha256": "96b82223ae53da4c9c1983c204b44cd4c89ab871ddaf2452d8a6a5b583d685d3"
+    },
+    {
+      "path": "web/server/tests/reasoning-casebook.test.ts",
+      "sha256": "6b5aca587916e4c7a95078250de2a44e6a8acf62204abb916017408f958f0ada"
+    },
+    {
+      "path": "web/server/tests/reasoning-catalog.test.ts",
+      "sha256": "ebb4a0c59fdcbd5c1630b69077c9fff10379ee4cfe73a06c653b796e0823111a"
+    },
+    {
+      "path": "web/server/tests/reasoning-continuations.test.ts",
+      "sha256": "e6a4c3d17fb6e49ca20076027a1abba917601d72cc63fde68aba31969320a08d"
+    },
+    {
+      "path": "web/server/tests/reasoning-matrix.test.ts",
+      "sha256": "2fe5a68c73e517984b02b635444a50ae6a956aa1e5d87f37048af13e6e94490a"
+    },
+    {
+      "path": "web/server/tests/reasoning-trace.test.ts",
+      "sha256": "0641a783cc40e46d6847258f1703f88c3c63f34dbcffa43b64b64327390addf9"
+    },
+    {
+      "path": "web/server/tests/replay.test.ts",
+      "sha256": "68281ae6dcd2069700d5684fe3ded30464cb0149259312b1ff46aadcfdc18313"
+    },
+    {
+      "path": "web/server/tests/rules.test.ts",
+      "sha256": "d363285a0681c290951bf7f5078d7944631675d9459be2d959ac9214d1f4f9dd"
+    },
+    {
+      "path": "web/server/tests/sampler.test.ts",
+      "sha256": "c0b1e2de7b3fe06eddbdcaf873763ec37886dc882e97a59f1b9fc63d8724a7c7"
+    },
+    {
+      "path": "web/server/tests/saved-analysis.test.ts",
+      "sha256": "38647afc40488f692b648809a2c3f38a3680037a45ad39b9d3a24ccbae929b65"
+    },
+    {
+      "path": "web/server/tests/spades-double-nil.test.ts",
+      "sha256": "8aada72eea008ca0b93a7dd7aab5e5381a8e43abc6fb3222cf9bf3fe44533e72"
+    },
+    {
+      "path": "web/server/tests/spades-entries.test.ts",
+      "sha256": "c0be072ee8a514991a6d3adac41d336b1f46eef71d80a9ac41efebdd7cff8d8f"
+    },
+    {
+      "path": "web/server/tests/spades-human-labels.test.ts",
+      "sha256": "2a142d7417a7f1f216c8177cec463ac4cab3c121b360f978844d547860cad117"
+    },
+    {
+      "path": "web/server/tests/spades-match-pilot.test.ts",
+      "sha256": "9c6b964140995b525ae3280e202ab9db4a61fb6b6d71dfd49ff8fe9905f3ff24"
+    },
+    {
+      "path": "web/server/tests/spades-module-validation.test.ts",
+      "sha256": "ebf8a7e7e624319aee7a906744550857ca89ffed71b1bbb2057e533b013de17b"
+    },
+    {
+      "path": "web/server/tests/spades-objectives.test.ts",
+      "sha256": "70ff9a86516a8b6d106d0f32cdb1953f8b456bb4d5488251c5915ce38f1decc7"
+    },
+    {
+      "path": "web/server/tests/spades-observed-cases.test.ts",
+      "sha256": "920d4978c5456fefdd16cb9767988fd472635589dc6b736c9bb45c610d78e131"
+    },
+    {
+      "path": "web/server/tests/spades-partner-resource.test.ts",
+      "sha256": "9b705aa25358ab7913a77c4ce59706951ea2e0dfb5d202278dbad0e99568017c"
+    },
+    {
+      "path": "web/server/tests/spades-pilot-report.test.ts",
+      "sha256": "07dd37bbca8cd96331cf63cfbc3276dec926cd16e63ae98af85a44bcd6eb3fa7"
+    },
+    {
+      "path": "web/server/tests/spades-playout-budget.test.ts",
+      "sha256": "4a7696404804dde8ac27eae43d4d8749064a3ba054756a28f14e75ffab9b85a3"
+    },
+    {
+      "path": "web/server/tests/spades-playout-kernel.test.ts",
+      "sha256": "32d62ad939167f338c4117591d65794a26c429ecd496f814c4b7904100e39f7a"
+    },
+    {
+      "path": "web/server/tests/spades-playout-model.test.ts",
+      "sha256": "dddddee0874be9d17bc1d5bc24ca46488cc4e6abb4e43fa001e9468fd959fa00"
+    },
+    {
+      "path": "web/server/tests/spades-policy-integration.test.ts",
+      "sha256": "2799467dbcbec628b919dd211182ee2c3daac2ce137ec925b890a4c9d72b5bad"
+    },
+    {
+      "path": "web/server/tests/spades-reasoning.test.ts",
+      "sha256": "3630e7a815ef1371d4f904eae85b0a6414b6a84553aa50dd7750d104c3e00f5a"
+    },
+    {
+      "path": "web/server/tests/spades-review-pack.test.ts",
+      "sha256": "5fd87cf5bb300a75c489b68d14ac7a11811b3375fbfa53006c276fe5b3d6f49c"
+    },
+    {
+      "path": "web/server/tests/spades-signals.test.ts",
+      "sha256": "6634e14a561923fbcfd2ce890f854682d24caf5f8321356dcd02d8e509b2f276"
+    },
+    {
+      "path": "web/server/tests/stored-state-boundary.test.ts",
+      "sha256": "bd01ba8c9a6be9ffc0caf2bf3328e5f8aff61f465d3a29bf53bfb7f8031ed48b"
+    },
+    {
+      "path": "web/server/tests/strategy-reasons.test.ts",
+      "sha256": "acf9a0ba7313e176572d71a78d52137c87bc1085f85a5f012a79e365d2bf58bc"
+    },
+    {
+      "path": "web/server/tests/strategy.test.ts",
+      "sha256": "596e93e967eca5c9593c12fb0483ac801d95ddfe3d90234c838bb3ce1bb1bf64"
+    },
+    {
+      "path": "web/server/tests/support/module-contract-fixture.ts",
+      "sha256": "ecfc03515b3f1f6717bc9a8cfd26f9b88af0bf2978bc45c16b183f5069d93a9a"
+    },
+    {
+      "path": "web/server/tests/support/module-contract-types.ts",
+      "sha256": "e6c62b0c89b52bcfc4f05a4ecf2a84a9632c2f9949d36e6aadf6c94a7c0f4139"
+    },
+    {
+      "path": "web/server/tests/support/module-parity.ts",
+      "sha256": "db97cf9cd69bdc65f9b46caecadd2989cba3714e878f45d5ae8ae541203ae5d7"
+    },
+    {
+      "path": "web/server/tests/support/observed-spades.ts",
+      "sha256": "4d06728c7ea5162bf7ac1aec6b0fc856134b7a34e0b93fe2caaeb5ca405a8346"
+    },
+    {
+      "path": "web/server/tests/support/spades-fixtures.ts",
+      "sha256": "459e9b9d7ff84247b373e0e54ea06dd97e17bdd328d3de4826f285f2e445cc12"
+    },
+    {
+      "path": "web/server/tests/support/token-module.ts",
+      "sha256": "1175ddff6ae265d90d450100e85f48888c7e3c66b71ffba56317b49edac6aba1"
+    },
+    {
+      "path": "web/server/tests/trials.test.ts",
+      "sha256": "7015d0eb06c08ae42e15026623df51a434321d8fc65fb397dbe9b7b9cc60f060"
+    },
+    {
+      "path": "web/server/tests/world-sampler-parity.test.ts",
+      "sha256": "a52be63ad8d6e945686f3e70f36ee1030b32cf2c25e6c6fdd13ea75917c87500"
+    },
+    {
+      "path": "web/shared/contracts.schema.json",
+      "sha256": "6eedcf8a2c2fcae647a3f4e23c77011b056ea04ff59001ae287590fa683be9a2"
+    },
+    {
+      "path": "web/shared/contracts.ts",
+      "sha256": "6d18161be02a2a95ec3f923eb81fd813636cc6bb57a3f0db36c65fbd47fc7b0f"
+    },
+    {
+      "path": "web/shared/games/hearts.schema.json",
+      "sha256": "94c9dc9b664ae63b2b808c1048d773725dc61d180dc9b1a3a8180585f78b0a91"
+    },
+    {
+      "path": "web/shared/games/spades.schema.json",
+      "sha256": "0e861940ab69bfdaac4195bb00ab2ade65fb2ec8abdc8f659317bf6c63fc66fb"
+    },
+    {
+      "path": "web/shared/local-service.contracts.ts",
+      "sha256": "a458511461e417836315ee217ff5846cda7b235b3d46ed33dce921c7bb610b1f"
+    },
+    {
+      "path": "web/shared/local-service.openapi.json",
+      "sha256": "1b937938a672a16c26f739923e0762080274e784728c00e0c161b0a577ebe9fc"
+    },
+    {
+      "path": "web/shared/local-service.schema.json",
+      "sha256": "26a771061db066461ee694939110af1e9308b373e364535b22631a9e397154b4"
+    },
+    {
+      "path": "web/shared/local-service.validation.ts",
+      "sha256": "84d1cf0e981d4f6dca2d43e96a33c20be3d5833bce5d83be2a5aeb29702d3718"
+    },
+    {
+      "path": "web/shared/local-service.validators.d.mts",
+      "sha256": "20f0026420a7fd90f2212b01e7001b65e1ec7f2e6028c1b8a3d42b6d310267d4"
+    },
+    {
+      "path": "web/shared/local-service.validators.mjs",
+      "sha256": "0f0f53e13fdeca005829b682a12aaa04cb0042467e2c6d07bc1ad0c0da2f568f"
+    },
+    {
+      "path": "web/shared/openapi.json",
+      "sha256": "ca47d15c98f8dea6e6f6b96b0dbc227e3a60a436d7053577a1b02cd43b285761"
+    },
+    {
+      "path": "web/shared/platform-account.schema.json",
+      "sha256": "767092699f1b26d5aa279204ca445de0a11ceed720d89fe2a613272cc93dd799"
+    },
+    {
+      "path": "web/shared/platform-review.schema.json",
+      "sha256": "fe603d217f5d0f73d680c7485b3c51e2695c1a97f4e396e6f2f11ee15e6391fc"
+    },
+    {
+      "path": "web/shared/platform-service.schema.json",
+      "sha256": "be413a00a701c8ed29d48e8d2b22e4b3ba85e40cb287a5f874b961989a5238c4"
+    },
+    {
+      "path": "web/shared/validation.ts",
+      "sha256": "2a0f1ed3aa3e57809c33a8bb92643e661d5b76a799bd0fdd6c8f9bfcd1e50fc2"
+    },
+    {
+      "path": "web/shared/validators.d.mts",
+      "sha256": "0dec2e12e585d8e804b18fbf4a85ad9824ca8f04a3df6a221e9869c57616a399"
+    },
+    {
+      "path": "web/shared/validators.mjs",
+      "sha256": "b35de8f1bc47be95d6bacae5b046a659074c664cb5a13f5541923b3de6463637"
+    },
+    {
+      "path": "web/src/App.tsx",
+      "sha256": "521d1ebe61bbddb8e0216b76fe0998778e36acf1bdf5cf83d10641ce91f15040"
+    },
+    {
+      "path": "web/src/api/client.ts",
+      "sha256": "3823e41709f30af88956da8b4c29691b9c57724df3a2b5cee6d8bc2863e29a84"
+    },
+    {
+      "path": "web/src/api/controlLease.ts",
+      "sha256": "9c47420c1a563f974ec55941296c06e865d6caa61b714949d574c6887320facf"
+    },
+    {
+      "path": "web/src/api/display.ts",
+      "sha256": "ce4d4d83b8350fad8350f18730e08eb2040c4d0e91d1315fb438d549e150963b"
+    },
+    {
+      "path": "web/src/api/goPendingCommands.ts",
+      "sha256": "24ace1c431ecef26f7791a8549160ca84b5db8264b89f7a8be2f53ab2a036379"
+    },
+    {
+      "path": "web/src/api/goReview.ts",
+      "sha256": "8fd63febf65f51653186931fcdc5e81b7690ec246ad98fbf8575e89a1b9b9efb"
+    },
+    {
+      "path": "web/src/api/pendingCommands.ts",
+      "sha256": "aff9034b0a827bfd2e535d23fa5527a746df2c10d976b9d9c92bf80f8aabcdcf"
+    },
+    {
+      "path": "web/src/api/presentation.ts",
+      "sha256": "42ad0334cf07ca6a4b3a3e16f6387bcee109bd3aec0bea93e8da1dc06fbae893"
+    },
+    {
+      "path": "web/src/api/progressiveAdvice.ts",
+      "sha256": "5a9dcc88c46e0b823998407127b92607317fd66b67abbb779f149144d78fb2c2"
+    },
+    {
+      "path": "web/src/api/sessionModel.ts",
+      "sha256": "fbdb62689dc0310564937e7faa8fb099ba3dab37449303267f91075c68139000"
+    },
+    {
+      "path": "web/src/api/useGoSession.ts",
+      "sha256": "a274e923bc04d1260cbfff975efe4dd8182660677c2f611ebe174cb064204303"
+    },
+    {
+      "path": "web/src/api/useNodeSession.ts",
+      "sha256": "7d08f9d23ed490c689698fd61323dee8890c9f0f69fb26f433d4b81f8222f520"
+    },
+    {
+      "path": "web/src/api/useSession.ts",
+      "sha256": "94931ed18822ebad60f01e928905dce4ec647de8329619975628cf807fa6db65"
+    },
+    {
+      "path": "web/src/coach.ts",
+      "sha256": "f49b418b2ecb7fb8c1df380d30cfe06511b9f456fbba6ac289c00b5ff90ee9ec"
+    },
+    {
+      "path": "web/src/features/AccountPage.tsx",
+      "sha256": "a13fc94049dad8b71a65f5041bba216cfe3ee9541327f97beb840427386a387a"
+    },
+    {
+      "path": "web/src/features/DataControls.tsx",
+      "sha256": "34a29e5a243d7c3cccf03beb27b9ef26a35f63094afdac7966edfd1b178b0b77"
+    },
+    {
+      "path": "web/src/features/DemoPage.tsx",
+      "sha256": "4c21a89b3342b3e7a7f2597ca3a1e4d0be71ba125e1f333428635aa75b126922"
+    },
+    {
+      "path": "web/src/features/FamilyPanel.tsx",
+      "sha256": "7291dca2ee3dce2e28031a55f101dd8923fcd99b100dab30a3732dde19b87404"
+    },
+    {
+      "path": "web/src/features/ReviewPanel.tsx",
+      "sha256": "6301ebb36076e3245daad4ffd3455baeececce3745f836012cce40b039a2f1e3"
+    },
+    {
+      "path": "web/src/game.ts",
+      "sha256": "581a1a34197951a0461226c2cf6ca6942fbb9df47eeaf2dab8281d8e54d7d132"
+    },
+    {
+      "path": "web/src/main.tsx",
+      "sha256": "7e622ca47229f946bcd758aee9ef78bdb8d5950b1a62631dbdf6e8b4ed078087"
+    },
+    {
+      "path": "web/src/platform/runtime.ts",
+      "sha256": "fcfafb00f000e5f53734d3fb3912be5d99b741037e4887cc72ccab80943d8ed6"
+    },
+    {
+      "path": "web/src/platform/web.ts",
+      "sha256": "52eef9015a8b346ec9d413d2ac5a4a798ea3f3a0a1c968c699975b729a0f4dde"
+    },
+    {
+      "path": "web/src/storage.ts",
+      "sha256": "ede5a43e61fdcf9e628c37524bddbb9aaebf06fcc54ba6db627eb7160f27b30a"
+    },
+    {
+      "path": "web/src/styles.css",
+      "sha256": "ac07db26ba2f729bc84920ccf836f5215602f0988f1f7fc2701925f2fe645150"
+    },
+    {
+      "path": "web/tests/client-recovery.test.ts",
+      "sha256": "72e879fdba5da5e371ddec165f083b9a873b25f626be8e2ac5def6c1314b046f"
+    },
+    {
+      "path": "web/tests/coach.test.ts",
+      "sha256": "11a03ea46e409deb2de08c05aa7b3642e24000f81c86558f0e8fdfb09a920cb5"
+    },
+    {
+      "path": "web/tests/control-lease.test.ts",
+      "sha256": "b9aa369933e18f9f864da05b932915e916d1535909bd99e995b4f4d78e1ca58b"
+    },
+    {
+      "path": "web/tests/game.test.ts",
+      "sha256": "47397716287cb86d047b39cad6996bb5aa6eb204fca679096d095b5a44a505ce"
+    },
+    {
+      "path": "web/tests/go-pending.test.ts",
+      "sha256": "0cb184c6c9d9b826078439994aec5bc3098e43ab005502ac6bdfe8058498db26"
+    },
+    {
+      "path": "web/tests/go-review.test.ts",
+      "sha256": "b544420d4bab8295609c0f37f602696a2672882005245b5d9696b7ca62afcd11"
+    },
+    {
+      "path": "web/tests/platform.test.ts",
+      "sha256": "701a76761e38b074b01b40c2b6e36d9d5683cf89a3acdef9ed6f672341ebe21f"
+    },
+    {
+      "path": "web/tests/presentation.test.ts",
+      "sha256": "6259d60a020972fec57ad2c0ba24ffe54617327fee3692e309e62f499bdbf093"
+    },
+    {
+      "path": "web/tests/progressive-advice.test.ts",
+      "sha256": "0cd81a0c70c7c5e69fce9ca2e4cb78cff887ab3488c9551e61bcba71bcb8ccd5"
+    },
+    {
+      "path": "web/tests/storage.test.ts",
+      "sha256": "3d2d0a8a0922a392f81540947b0d732989950b3e436a819130cfdb8ed127bed5"
+    }
+  ],
+  "sourceSHA256": "2f74c052dae4ccecf85cad1bc11baf2574769ab52aa423a456f2347ac1397906",
+  "output": "browser-terminal-native.txt",
+  "outputSHA256": "262a14b2b6f1c22400da5df9889adb48c7384dd99f7caeead5840ca6adf6680b",
+  "provider": {
+    "mode": "off",
+    "requests": 0,
+    "observedModel": null
+  }
+}

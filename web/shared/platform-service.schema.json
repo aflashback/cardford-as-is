@@ -1,0 +1,615 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/platform-service-v1.json",
+  "title": "Preserved client platform",
+  "$defs": {
+    "PlatformAllowanceView": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "none",
+            "limited",
+            "unlimited"
+          ]
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "remaining": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resetsAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expiresAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "unit",
+        "remaining",
+        "resetsAt",
+        "expiresAt"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformAllowanceView"
+    },
+    "PlatformAccessView": {
+      "type": "object",
+      "properties": {
+        "play": {
+          "$ref": "#/$defs/AccessDecision"
+        },
+        "coach": {
+          "$ref": "#/$defs/AccessDecision"
+        },
+        "handUnlocked": {
+          "type": "boolean"
+        },
+        "canStartWork": {
+          "type": "boolean"
+        },
+        "localMock": {
+          "type": "boolean"
+        },
+        "allowance": {
+          "$ref": "#/$defs/PlatformAllowanceView"
+        }
+      },
+      "required": [
+        "play",
+        "coach",
+        "handUnlocked",
+        "canStartWork",
+        "localMock",
+        "allowance"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformAccessView"
+    },
+    "PlatformReviewAccessView": {
+      "type": "object",
+      "properties": {
+        "sourceUnitId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "unlocked": {
+          "type": "boolean"
+        },
+        "advice": {
+          "$ref": "#/$defs/AccessDecision"
+        },
+        "reviewAlternative": {
+          "$ref": "#/$defs/AccessDecision"
+        },
+        "savedAdviceLevels": {
+          "type": "array",
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "uniqueItems": true,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "sourceUnitId",
+        "unlocked",
+        "advice",
+        "reviewAlternative",
+        "savedAdviceLevels"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformReviewAccessView"
+    },
+    "PlatformCompetition": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "enum": [
+            "individual",
+            "partnership"
+          ]
+        },
+        "competitors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "seats": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/Seat"
+                },
+                "minItems": 1,
+                "maxItems": 4
+              }
+            },
+            "required": [
+              "id",
+              "seats"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "mode",
+        "competitors"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformCompetition"
+    },
+    "PlatformController": {
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "kind": {
+          "enum": [
+            "human",
+            "computer"
+          ]
+        }
+      },
+      "required": [
+        "seat",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformController"
+    },
+    "PlatformCatalogEntry": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/$defs/Mode"
+        },
+        "selector": {
+          "$ref": "#/$defs/LocalServiceSelector"
+        },
+        "start": {
+          "$ref": "#/$defs/AccessDecision"
+        }
+      },
+      "required": [
+        "mode",
+        "selector",
+        "start"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformCatalogEntry"
+    },
+    "PlatformSession": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "playable": {
+          "type": "boolean"
+        },
+        "blockedReason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "selector": {
+          "$ref": "#/$defs/LocalServiceSelector"
+        },
+        "pin": {
+          "$ref": "#/$defs/ModulePin"
+        },
+        "competition": {
+          "$ref": "#/$defs/PlatformCompetition"
+        },
+        "controllers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PlatformController"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "view": {
+          "$ref": "#/$defs/RegisteredSessionView"
+        },
+        "presentation": {
+          "$ref": "#/$defs/GameView"
+        },
+        "actor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RegisteredActorPacket"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "node": {
+          "$ref": "#/$defs/LocalServiceNode"
+        },
+        "control": {
+          "$ref": "#/$defs/LocalServiceControl"
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "access": {
+          "$ref": "#/$defs/PlatformAccessView"
+        },
+        "stats": {
+          "$ref": "#/$defs/SessionStats"
+        }
+      },
+      "required": [
+        "gameId",
+        "revision",
+        "playable",
+        "blockedReason",
+        "selector",
+        "pin",
+        "competition",
+        "controllers",
+        "view",
+        "presentation",
+        "actor",
+        "node",
+        "control",
+        "decisionId",
+        "access",
+        "stats"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformSession"
+    },
+    "PlatformSessionView": {
+      "type": "object",
+      "properties": {
+        "platformSchemaVersion": {
+          "const": "1.0.0"
+        },
+        "playerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "activeGameId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "session": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlatformSession"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "preferences": {
+          "$ref": "#/$defs/PlatformPreferencesView"
+        },
+        "catalog": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PlatformCatalogEntry"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      },
+      "required": [
+        "platformSchemaVersion",
+        "playerId",
+        "activeGameId",
+        "session",
+        "preferences",
+        "catalog"
+      ],
+      "additionalProperties": false,
+      "title": "PlatformSessionView"
+    },
+    "PlatformReconcileRequest": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/LocalServiceReconcileRequest"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "platform-preferences"
+            },
+            "request": {
+              "$ref": "#/$defs/PlatformPreferencesRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "platform-advice"
+            },
+            "request": {
+              "$ref": "#/$defs/PlatformAdviceRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "platform-notes"
+            },
+            "request": {
+              "$ref": "#/$defs/PlatformNotesRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "platform-exposures"
+            },
+            "request": {
+              "$ref": "#/$defs/PlatformReviewExposureRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "platform-review-trial"
+            },
+            "request": {
+              "$ref": "#/$defs/PlatformReviewTrialRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "platform-billing-change"
+            },
+            "request": {
+              "$ref": "#/$defs/BillingConfirmRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
+              "const": "platform-family-command"
+            },
+            "request": {
+              "$ref": "#/$defs/PlatformFamilyCommand"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "title": "PlatformReconcileRequest"
+    },
+    "PlatformRecoveredReceipt": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LocalServiceRecoveredReceipt"
+        },
+        {
+          "$ref": "#/$defs/PlatformPreferencesView"
+        },
+        {
+          "$ref": "#/$defs/PlatformAdviceView"
+        },
+        {
+          "$ref": "#/$defs/NotesView"
+        },
+        {
+          "$ref": "#/$defs/AcceptedView"
+        },
+        {
+          "$ref": "#/$defs/PlatformReviewStatus"
+        },
+        {
+          "$ref": "#/$defs/BillingOperation"
+        },
+        {
+          "$ref": "#/$defs/FamilyView"
+        }
+      ],
+      "title": "PlatformRecoveredReceipt"
+    },
+    "PlatformReconcileView": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "unknown"
+            }
+          },
+          "required": [
+            "status"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "accepted"
+            },
+            "receipt": {
+              "$ref": "#/$defs/PlatformRecoveredReceipt"
+            }
+          },
+          "required": [
+            "status",
+            "receipt"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "title": "PlatformReconcileView"
+    }
+  }
+}

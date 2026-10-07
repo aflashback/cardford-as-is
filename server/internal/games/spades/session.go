@@ -48,6 +48,13 @@ func bindSpadesSession(s *sessionState) (gamekernel.BoundSession, error) {
 		Packet: func(o sessionObservation, c []gamekernel.PublicCandidate) (json.RawMessage, error) {
 			return json.Marshal(map[string]any{"publicSchemaVersion": "2.0.0", "gameId": "spades", "variantId": o.VariantID, "seat": o.Seat, "phase": o.Phase, "observation": o.Table, "candidates": c})
 		},
+		LegacyObservation: func(o sessionObservation) (json.RawMessage, error) {
+			v, e := legacySessionObservation(o)
+			if e != nil {
+				return nil, e
+			}
+			return json.Marshal(v)
+		},
 		View: func(o sessionObservation) (json.RawMessage, error) {
 			return json.Marshal(map[string]any{"publicSchemaVersion": "2.0.0", "gameId": "spades", "variantId": o.VariantID, "seat": o.Seat, "phase": o.Phase, "table": o.Table, "accessUnit": observationUnit(o)})
 		}, EncodeObservation: func(o sessionObservation) (json.RawMessage, error) { return json.Marshal(o) }, Analyze: analyzeSession, Reduce: reduceSession,

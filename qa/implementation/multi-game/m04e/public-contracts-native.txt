@@ -1,0 +1,6 @@
+
+> tricks-coach@0.1.0 contracts:check
+> node web/scripts/generate-contracts.mjs --check
+
+Contract artifacts are current.
+Contract artifacts are current.

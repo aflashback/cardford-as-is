@@ -1,6 +1,7 @@
-import type { ContractName, ContractTypes } from '../../shared/contracts';
-import { validateContract } from '../../shared/validation.ts';
+import type { ContractName, ContractTypes } from '../../shared/local-service.contracts';
+import { validateContract } from '../../shared/local-service.validation.ts';
 import { clearPendingCommands } from './pendingCommands.ts';
+import { clearLeases } from './controlLease.ts';
 
 export const API_REQUEST_TIMEOUT_MS = 15_000;
 
@@ -32,6 +33,11 @@ export class ApiFailure extends Error {
     this.current = current;
   }
 }
+/** These transport outcomes require receipt recovery, even when HTTP is <500. */
+export function definiteFailure(error: unknown): error is ApiFailure {
+  return error instanceof ApiFailure && error.status < 500 &&
+    error.status !== 408 && error.status !== 429;
+}
 export async function api<N extends ContractName>(
   path: string,
   type: N,
@@ -40,7 +46,7 @@ export async function api<N extends ContractName>(
   signal?: AbortSignal,
   timeoutMs = API_REQUEST_TIMEOUT_MS,
 ): Promise<ContractTypes[N]> {
-  if (path === '/api/logout') clearPendingCommands();
+  if (path === '/api/logout') { clearPendingCommands(); clearLeases(); }
   const controller = new AbortController();
   let timeoutError: ApiFailure | undefined;
   let interrupt: (reason: unknown) => void = () => undefined;
@@ -78,7 +84,7 @@ export async function api<N extends ContractName>(
       }),
       interrupted,
     ]);
-    if (response.status === 401) clearPendingCommands();
+    if (response.status === 401) { clearPendingCommands(); clearLeases(); }
     const value: unknown = await Promise.race([response.json(), interrupted]);
     if (!response.ok) {
       if (validateContract('ApiError', value)) {

@@ -68,6 +68,8 @@ type BoundSession interface {
 	SerializePrivate() (json.RawMessage, error)
 	Packet(int) (json.RawMessage, error)
 	View(int) (json.RawMessage, error)
+	Presentation(int) (json.RawMessage, error)
+	LegacyObservation(int) (json.RawMessage, error)
 	Prepare(int, string) (PreparedDecision, error)
 	PreparationBinding(int, string) (PreparationBinding, error)
 	PrepareComplete(context.Context, int, string, string) (CompletePreparation, error)
@@ -112,15 +114,17 @@ type Operation[A any] struct {
 // callbacks; Analyze must not retain or mutate them. Reduce must return a new
 // owned state and must never mutate its input, including on rejection.
 type SessionModel[S, O, A any] struct {
-	Pin               Pin
-	Clone             func(S) S
-	Node              func(S) Node
-	AccessUnit        func(S) *AccessUnit
-	Document          func(S) (json.RawMessage, error)
-	Observe           func(S, int) O
-	Candidates        func(O) []Candidate[A]
-	Packet            func(O, []PublicCandidate) (json.RawMessage, error)
-	View              func(O) (json.RawMessage, error)
+	Pin        Pin
+	Clone      func(S) S
+	Node       func(S) Node
+	AccessUnit func(S) *AccessUnit
+	Document   func(S) (json.RawMessage, error)
+	Observe    func(S, int) O
+	Candidates func(O) []Candidate[A]
+	Packet     func(O, []PublicCandidate) (json.RawMessage, error)
+	View       func(O) (json.RawMessage, error)
+	// LegacyObservation is the explicit actor-only compatibility adapter for the preserved UI/review.
+	LegacyObservation func(O) (json.RawMessage, error)
 	EncodeObservation func(O) (json.RawMessage, error)
 	Analyze           func(O, string) (string, json.RawMessage, error)
 	AnalyzeComplete   func(context.Context, O, string, string) (CompleteAnalysis, error)

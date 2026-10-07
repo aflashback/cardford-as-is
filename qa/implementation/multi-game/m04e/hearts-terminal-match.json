@@ -1,0 +1,16 @@
+{
+  "capturedAt": "2026-10-07T01:00:20.498Z",
+  "policy": "public-coach-suggestion-first-supplied-tie",
+  "purpose": "lifecycle-only",
+  "mode": "hearts",
+  "gameId": "e51635d6ddb12068e44dc3b829c4cbac83b5e2cd359bbec8",
+  "hands": 11,
+  "revision": 744,
+  "scores": [
+    107,
+    76,
+    84,
+    71
+  ],
+  "accepted": 744
+}

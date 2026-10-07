@@ -84,7 +84,7 @@ func (s *Store) checkCommitAccess(ctx context.Context, tx pgx.Tx, a AccessAdmiss
 	if generation != a.Generation || control != a.ControlRevision || active != gameID || !coach && !play || coach && !canCoach {
 		return ErrAccess
 	}
-	return nil
+	return s.checkPlatformFixtureAccessTx(ctx, tx, a, gameID, coach)
 }
 
 // GrantTerms are immutable purchased/configured terms. This seam deliberately

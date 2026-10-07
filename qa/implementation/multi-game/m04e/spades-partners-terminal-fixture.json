@@ -1,0 +1,20 @@
+{
+  "capturedAt": "2026-10-07T01:26:29.629Z",
+  "purpose": "terminal-http-and-ui-only",
+  "analysisRecordsImported": false,
+  "archiveSHA256": "6267406f15c691d84565ba297b05d602b6fe4a8f2c73c123489d8d34e77f4e54",
+  "gameId": "684b53ba2ce70f0b4acb11a26bdaeee4d3186e893a1cdb7b",
+  "handNumber": 5,
+  "kind": "reachable-terminal-fixture",
+  "mode": "spades-partners",
+  "privateArchivePath": "C:\\repos\\test-jev\\.local\\m04e-terminal-fixture-spades-partners.json",
+  "revision": 352,
+  "terminalRevision": 353,
+  "terminalScores": [
+    720,
+    600,
+    720,
+    600
+  ],
+  "transitionId": "collect:5:13"
+}

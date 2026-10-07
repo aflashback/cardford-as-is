@@ -182,8 +182,10 @@ func offerBucket(o Offer) (string, error) {
 
 // The service currently exposes original advice. Other tool names require an
 // installed delivery path before configuration may authorize them.
-func SupportedTool(tool string) bool { return tool == "advice" }
-func textID(s string) bool           { return len(s) > 0 && len(s) <= 256 && strings.TrimSpace(s) == s }
+func SupportedTool(tool string) bool {
+	return tool == "advice" || tool == "notes" || tool == "review-alternative"
+}
+func textID(s string) bool { return len(s) > 0 && len(s) <= 256 && strings.TrimSpace(s) == s }
 func contains(items []string, value string) bool {
 	for _, item := range items {
 		if item == value {

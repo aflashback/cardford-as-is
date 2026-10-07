@@ -1,0 +1,105 @@
+{
+  "at": "2026-10-07T00:37:24.599Z",
+  "scope": "Observed instrumented browser requests; not a controlled latency benchmark.",
+  "routes": [
+    {
+      "route": "POST /api/session/advance",
+      "count": 677,
+      "totalMs": 245640.17300000007,
+      "p50Ms": 329.01099999999997,
+      "p95Ms": 829.856,
+      "responseBytes": 85895,
+      "errors": 0
+    },
+    {
+      "route": "GET /api/platform/session",
+      "count": 885,
+      "totalMs": 150436.8990000001,
+      "p50Ms": 167.84,
+      "p95Ms": 309.706,
+      "responseBytes": 5114518,
+      "errors": 0
+    },
+    {
+      "route": "POST /api/session/actions",
+      "count": 173,
+      "totalMs": 79992.801,
+      "p50Ms": 461.197,
+      "p95Ms": 836.463,
+      "responseBytes": 21949,
+      "errors": 0
+    },
+    {
+      "route": "POST /api/session/prepare",
+      "count": 692,
+      "totalMs": 43140.86599999996,
+      "p50Ms": 62.32,
+      "p95Ms": 104.187,
+      "responseBytes": 216507,
+      "errors": 0
+    },
+    {
+      "route": "GET /api/work/:id",
+      "count": 1668,
+      "totalMs": 4539.821999999999,
+      "p50Ms": 1.9929999999999999,
+      "p95Ms": 8.353,
+      "responseBytes": 535334,
+      "errors": 0
+    },
+    {
+      "route": "POST /api/session/next-hand",
+      "count": 24,
+      "totalMs": 951.142,
+      "p50Ms": 40.235,
+      "p95Ms": 57.4,
+      "responseBytes": 3046,
+      "errors": 0
+    },
+    {
+      "route": "POST /api/sessions",
+      "count": 2,
+      "totalMs": 24.689999999999998,
+      "p50Ms": 12.988999999999999,
+      "p95Ms": 12.988999999999999,
+      "responseBytes": 436,
+      "errors": 0
+    },
+    {
+      "route": "POST /api/local/session",
+      "count": 1,
+      "totalMs": 6.914,
+      "p50Ms": 6.914,
+      "p95Ms": 6.914,
+      "responseBytes": 63,
+      "errors": 0
+    },
+    {
+      "route": "POST /api/preferences",
+      "count": 1,
+      "totalMs": 6.523,
+      "p50Ms": 6.523,
+      "p95Ms": 6.523,
+      "responseBytes": 90,
+      "errors": 0
+    },
+    {
+      "route": "GET /api/identity",
+      "count": 2,
+      "totalMs": 2.5759999999999996,
+      "p50Ms": 1.394,
+      "p95Ms": 1.394,
+      "responseBytes": 126,
+      "errors": 0
+    },
+    {
+      "route": "GET /api/dev/scenarios",
+      "count": 1,
+      "totalMs": 0.9810000000000001,
+      "p50Ms": 0.9810000000000001,
+      "p95Ms": 0.9810000000000001,
+      "responseBytes": 71,
+      "errors": 1
+    }
+  ]
+}

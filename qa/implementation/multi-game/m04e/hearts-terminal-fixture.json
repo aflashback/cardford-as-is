@@ -1,0 +1,20 @@
+{
+  "capturedAt": "2026-10-07T01:26:08.317Z",
+  "purpose": "terminal-http-and-ui-only",
+  "analysisRecordsImported": false,
+  "archiveSHA256": "4146176e3364c17518ad9eb309763f5981c64fe315df9bdf6d87a0e840739f3c",
+  "gameId": "b57a62e7042daea68bca3d205bf3179a05cd8dfe23f329e7",
+  "handNumber": 14,
+  "kind": "reachable-terminal-fixture",
+  "mode": "hearts",
+  "privateArchivePath": "C:\\repos\\test-jev\\.local\\m04e-terminal-fixture-hearts.json",
+  "revision": 946,
+  "terminalRevision": 947,
+  "terminalScores": [
+    112,
+    89,
+    79,
+    84
+  ],
+  "transitionId": "b57a62e7042daea68bca3d205bf3179a05cd8dfe23f329e7:hand:14:collect:13"
+}

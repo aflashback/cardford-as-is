@@ -54,6 +54,13 @@ func bindHeartsSession(s *sessionState) (gamekernel.BoundSession, error) {
 		AccessUnit: func(s *sessionState) *gamekernel.AccessUnit { return observationUnit(observeSession(s, 0)) },
 		Document:   func(s *sessionState) (json.RawMessage, error) { return json.Marshal(sessionPayload(s)) },
 		Observe:    observeSession, Candidates: sessionCandidates,
+		LegacyObservation: func(o sessionObservation) (json.RawMessage, error) {
+			v, e := legacySessionObservation(o)
+			if e != nil {
+				return nil, e
+			}
+			return json.Marshal(v)
+		},
 		Packet: func(o sessionObservation, c []gamekernel.PublicCandidate) (json.RawMessage, error) {
 			return json.Marshal(map[string]any{"publicSchemaVersion": "2.0.0", "gameId": "hearts", "variantId": "solo", "seat": o.Seat, "phase": o.Phase, "observation": publicSessionObservation(o), "candidates": c})
 		},

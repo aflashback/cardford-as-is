@@ -1,0 +1,48 @@
+CardFord Go local API: http://127.0.0.1:27939 (identity=local-test, payments=fixture, provider=off, access=fixture)
+Native Go browser origin: http://127.0.0.1:27939
+
+Running 8 tests using 1 worker
+
+(node:29148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 web\e2e\platform-go.spec.ts:68:3 › actual Go hearts: full hand, saved advice, review alternative and next hand (2.3m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) web\e2e\platform-go.spec.ts:68:3 › actual Go hearts: full hand, saved advice, review alternative and next hand 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      114 |     expect(completed.presentation.history).toHaveLength(13);
+      115 |     expect(new Set(completed.presentation.history.flatMap((t) => t.plays.map((p) => p.card))).size).toBe(52);
+    > 116 |     expect(completed.stats.helped).toBeGreaterThan(0);
+          |                                    ^
+      117 |     await expect(page.getByRole('dialog', { name: 'Hand 1 results', exact: true })).toBeVisible();
+      118 |     await page.getByRole('button', { name: 'Back to table', exact: true }).click();
+      119 |     await page.getByRole('button', { name: 'Review current game', exact: true }).click();
+        at C:\repos\test-jev\web\e2e\platform-go.spec.ts:116:36
+
+    Error Context: test-results\m04e-platform\platform-go-actual-Go-hear-e7f94-w-alternative-and-next-hand\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\m04e-platform\platform-go-actual-Go-hear-e7f94-w-alternative-and-next-hand\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\m04e-platform\platform-go-actual-Go-hear-e7f94-w-alternative-and-next-hand\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    web\e2e\platform-go.spec.ts:68:3 › actual Go hearts: full hand, saved advice, review alternative and next hand 
+  7 did not run
+  1 error was not a part of any test, see above for details
+Browser demo failed: AssertionError [ERR_ASSERTION]: Browser acceptance exited 1
+
+1 !== 0
+
+    at file:///C:/repos/test-jev/qa/implementation/multi-game/m04e/browser-smoke.mjs:119:10
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Owned test schema dropped after exact child shutdown.
