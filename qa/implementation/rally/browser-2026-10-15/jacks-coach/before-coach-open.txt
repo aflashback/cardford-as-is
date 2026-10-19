@@ -1,0 +1,123 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Complex · Solo"':
+    - text: Trix
+    - generic: Complex · Solo
+  - 'button "Scores: You 0, Leo 0, Maya 0, Joe 0"':
+    - generic: "0"
+    - generic: You
+    - generic: "0"
+    - generic: Leo
+    - generic: "0"
+    - generic: Maya
+    - generic: "0"
+    - generic: Joe
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Trix four player table":
+    - generic: "Y"
+    - generic: You
+    - generic: L
+    - generic: Leo
+    - img "12 cards left"
+    - generic: M
+    - generic: Maya
+    - img "12 cards left"
+    - generic: J
+    - 'img "Joe: kingdom owner"':
+    - generic: Joe
+    - img "12 cards left"
+    - region "Jack layout board":
+      - group "Clubs lane":
+        - img "Jack of clubs":
+          - generic: J
+          - generic: ♣
+          - generic: ♣
+      - group "Diamonds lane"
+      - group "Hearts lane":
+        - img "Jack of hearts":
+          - generic: J
+          - generic: ♥
+          - generic: ♥
+      - group "Spades lane":
+        - img "Jack of spades":
+          - generic: J
+          - generic: ♠
+          - generic: ♠
+  - region "Your hand":
+    - status: Your turn
+    - button "2 of clubs" [disabled]:
+      - generic: "2"
+      - generic: ♣
+      - generic: ♣
+    - button "4 of diamonds" [disabled]:
+      - generic: "4"
+      - generic: ♦
+      - generic: ♦
+    - button "5 of diamonds" [disabled]:
+      - generic: "5"
+      - generic: ♦
+      - generic: ♦
+    - button "6 of diamonds" [disabled]:
+      - generic: "6"
+      - generic: ♦
+      - generic: ♦
+    - button "8 of diamonds" [disabled]:
+      - generic: "8"
+      - generic: ♦
+      - generic: ♦
+    - button "Jack of diamonds":
+      - generic: J
+      - generic: ♦
+      - generic: ♦
+    - button "6 of hearts" [disabled]:
+      - generic: "6"
+      - generic: ♥
+      - generic: ♥
+    - button "Queen of hearts":
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - button "4 of spades" [disabled]:
+      - generic: "4"
+      - generic: ♠
+      - generic: ♠
+    - button "5 of spades" [disabled]:
+      - generic: "5"
+      - generic: ♠
+      - generic: ♠
+    - button "6 of spades" [disabled]:
+      - generic: "6"
+      - generic: ♠
+      - generic: ♠
+    - button "7 of spades" [disabled]:
+      - generic: "7"
+      - generic: ♠
+      - generic: ♠
+    - button "8 of spades" [disabled]:
+      - generic: "8"
+      - generic: ♠
+      - generic: ♠
+    - generic: Hold to lift and drag on your turn. Release toward the table to play, or near your hand to return. Double-click or double-tap to play or queue for your turn, if legal. Repeat to cancel a queue. Enter or Space plays or queues; Escape cancels. Hold or double-tap to select doubling cards, then confirm separately.
+- button "Close Coach" [expanded]:
+  - img "Coach waiting"
+- status
+- complementary "Coach":
+  - strong: Coach
+  - generic "Coaching allowance resets 2026-10-16T00:00:00Z": Unlimited coaching · local preview
+  - button "More table width is needed to pin Coach" [disabled]:
+  - button "Close Coach":
+  - region "Coaching sessions":
+    - navigation "Coach tools":
+      - button "Cue":
+        - generic: Cue
+      - button "Review":
+        - generic: Review
+      - button "Rating":
+        - generic: Rating
+      - button "Saved coaching sessions":
+    - paragraph: Pick a coaching tool.
+    - generic: 2 free sessions a day. Explanations are previews while Coach is in training.
+- generic: Local test access · deterministic code players

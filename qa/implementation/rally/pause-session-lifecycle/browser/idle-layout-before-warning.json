@@ -1,0 +1,21 @@
+{
+  "name": "idle-layout-before-warning",
+  "at": "2026-10-16T02:21:06.502Z",
+  "build": "index-B-IIS17u.js",
+  "check": "Baseline table before floating idle warning",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

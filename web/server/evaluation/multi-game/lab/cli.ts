@@ -1,0 +1,38 @@
+import assert from 'node:assert/strict';
+import { join,resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { existsSync,statSync } from 'node:fs';
+import { freezeLabRun } from './freeze.ts';
+import { validateDecision,validateRecord,type JsonObject,type ReviewRecord } from './contracts.ts';
+import { readJson,readJsonLines,readJsonDirectory,immutableJson } from './storage.ts';
+import { exportHumanPack,importIndependentReview,calibrateJudge,type AcceptedHuman } from './calibration.ts';
+import { buildGapQueue,registerCandidate,validateDecisionHumans,type Gap } from './gaps.ts';
+import { runFixtureReviews,importModelReview,exportModelPacket } from './judge.ts';
+import { exportBlindPacket,type ReviewPacket } from './packets.ts';
+import { buildLabReport,writeLabReport,buildAuditMetrics } from '../report.ts';
+import { ReviewLedger } from './jobs.ts';
+import { bindArchive } from './archive.ts';
+import { digest } from './contracts.ts';
+import { exportGapReviews,importGapReview,adjudicateGaps,type GapReview } from './adjudication.ts';
+import { loadEvaluationEvidence } from './evidence.ts';
+export type Phase='estimate'|'audit'|'review'|'export-human'|'import-human'|'export-model'|'import-model'|'export-gap-review'|'import-gap-review'|'calibrate'|'report'|'gaps'|'candidate';
+export async function executePhase(options:{phase:Phase;manifestPath:string;out:string;input?:string;packet?:string;evaluationConfigHash?:string}){
+ const frozen=freezeLabRun(readJson(options.manifestPath));const out=resolve(options.out);assert.equal(frozen.envelope.lab.judge.mode,'fixture','Only fixtures permitted');
+ if(options.phase==='estimate')return {mode:'fixture',authorizedUsd:0,liveDispatch:false,families:frozen.envelope.base.families.length,episodes:frozen.envelope.base.families.length*frozen.envelope.base.rotations.length*frozen.envelope.base.environments.length*2,maximumActionsPerEpisode:frozen.envelope.lab.caps.maxActions,reviewEstimate:'Run collection first to measure exact packet/context counts.'};
+ const archive=bindArchive(options.manifestPath,out);const decisions=archive.decisions;const reviews=readJsonDirectory<ReviewRecord>(join(out,'reviews')).map(r=>validateRecord<ReviewRecord>('review',r));const humans=validateDecisionHumans(decisions,readJsonDirectory<AcceptedHuman>(join(out,'human-labels')));const evidence=loadEvaluationEvidence(out,String(archive.receipt.manifestHash),decisions,options.evaluationConfigHash);const evaluations=evidence.evaluations;
+ if(options.phase==='audit'){const result={schemaVersion:'coach-lab-audit-1.0.0',runId:frozen.envelope.runId,decisions:decisions.length,integrity:'passed',nativeFactAudit:buildAuditMetrics(decisions),strategicTruth:false};immutableJson(join(out,'audits','audit-'+digest(result)+'.json'),result);return result;}
+ if(options.phase==='review')return {reviews:(await runFixtureReviews(decisions,out,evaluations,evidence.inferences)).length,mode:'fixture',strategicTruth:false,evaluationCoverage:evidence.coverage,ledger:new ReviewLedger(join(out,'review-ledger'),{mode:'fixture',authorizedUsd:0}).summary()};
+ if(options.phase==='export-human'){const exportOut=join(out,'human-export');const result=exportHumanPack(decisions,exportOut);return {cases:result.cases,out:exportOut,instructions:'One case per source family per reviewer; assignments remain private.',status:'pending'};}
+ if(options.phase==='import-human'){assert.ok(options.input&&options.packet,'--input submission and --packet actor-only packet required');return importIndependentReview(readJson(options.input),readJson(options.packet),out);}
+ if(options.phase==='export-model'){assert.ok(options.input,'--input {decisionId,stage,modelPin} request required');return exportModelPacket(readJson(options.input),decisions,reviews,out,evaluations,evidence.inferences,archive.receipt);}
+ if(options.phase==='import-model'){assert.ok(options.input&&options.packet,'--input response and --packet review input required');const submission=readJson<{modelPin:string;response:unknown}>(options.input);assert.deepEqual(Object.keys(submission).sort(),['modelPin','response']);return importModelReview(readJson<ReviewPacket>(options.packet),submission.response,submission.modelPin,out,'llm-proposal',options.packet);}
+ if(options.phase==='calibrate'){const report=calibrateJudge(reviews,humans);immutableJson(join(out,'calibration','summary-'+digest({report,reviews,humans})+'.json'),report);return report;}
+ const originalGaps=buildGapQueue(decisions,reviews,humans,evaluations);for(const evaluation of evaluations)immutableJson(join(out,'gap-evidence','evaluation-'+digest(evaluation)+'.json'),evaluation);for(const gap of originalGaps)immutableJson(join(out,'gaps',gap.id+'.json'),gap);const gaps=adjudicateGaps(originalGaps,readJsonDirectory<GapReview>(join(out,'gap-reviews')),humans,decisions);
+ if(options.phase==='export-gap-review')return exportGapReviews(decisions,originalGaps,out);
+ if(options.phase==='import-gap-review'){assert.ok(options.input,'--input completed human gap assessment required');return importGapReview(readJson(options.input),originalGaps,humans,out);}
+ if(options.phase==='gaps')return {gaps:gaps.length,out:join(out,'gaps'),status:'hypotheses-unless-independently-adjudicated'};
+ if(options.phase==='candidate'){assert.ok(options.input,'--input candidate required');return registerCandidate(readJson<JsonObject>(options.input),gaps,out);}
+ assert.equal(options.phase,'report','Unsupported phase');const invocations=readJsonDirectory<JsonObject>(join(out,'invocations')).filter(i=>i.manifestHash===archive.receipt.manifestHash);const baseReport=buildLabReport(decisions,[archive.receipt],reviews,humans,gaps,evaluations,new ReviewLedger(join(out,'review-ledger'),{mode:'fixture',authorizedUsd:0}).summary(),{invocations,wallElapsedMs:invocations.length?invocations.reduce((n,i)=>n+Number((i.watchdog as JsonObject).elapsedMs),0):null,cpuMs:null,actionLatencyMs:null,archiveBytes:statSync(join(archive.directory,'decisions.jsonl')).size,fixtureModelTokens:0,externalImportedModelUsage:null},readJsonDirectory<JsonObject>(join(out,'model-exports')));const report={...baseReport,evaluatorBatchCoverage:evidence.coverage,inferenceCoverage:evidence.inferences.map(i=>({decisionId:i.decisionId,status:i.status,assumptionVersion:i.assumptionVersion,work:i.work,limitations:i.limitations}))};writeLabReport(out,report);return report;
+}
+export function parsePhaseArgs(args:string[]){const phase=args.shift();assert.ok(['estimate','audit','review','export-human','import-human','export-model','import-model','export-gap-review','import-gap-review','calibrate','report','gaps','candidate'].includes(phase??''),'Unknown lab phase');const values:Record<string,string>={};for(let i=0;i<args.length;i+=2){const key=args[i];assert.ok(['--manifest','--out','--input','--packet','--evaluation-config-hash'].includes(key),'Unknown argument');assert.ok(!(key in values),'Duplicate argument');const value=args[i+1];assert.ok(value&&!value.startsWith('--'),'Missing value');values[key]=value;}assert.ok(values['--manifest']&&values['--out'],'--manifest and --out required');return {phase:phase as Phase,manifestPath:values['--manifest'],out:values['--out'],input:values['--input'],packet:values['--packet'],evaluationConfigHash:values['--evaluation-config-hash']};}
+if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){try{const result=await executePhase(parsePhaseArgs(process.argv.slice(2)));process.stdout.write(JSON.stringify(result,null,2)+'\n');}catch(error){process.stderr.write((error instanceof Error?error.message:String(error))+'\n');process.exitCode=1;}}

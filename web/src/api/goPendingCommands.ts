@@ -4,12 +4,13 @@ import { api, ApiFailure, definiteFailure, tabId } from './client.ts';
 import { readInvitation, readLease, retainInvitation, tokenHash } from './controlLease.ts';
 import { PENDING_COMMAND_TTL_MS } from './pendingCommands.ts';
 
-export type GoScope = 'session' | 'review' | 'account';
+export type GoScope = 'session' | 'review' | 'account' | 'playback';
 type Operation = PlatformReconcileRequest['operation'];
 const PREFIX = 'cardford-go-pending-v1:';
 const routes: Record<string, { operation: Operation; input: ContractName; output: ContractName }> = {
   '/api/sessions': {operation:'new-session', input:'LocalServiceNewSessionRequest', output:'LocalServiceCommandReceipt'},
   '/api/session/control': {operation:'control', input:'LocalServiceControlRequest', output:'LocalControlView'},
+  '/api/session/playback': {operation:'playback', input:'RealtimePlaybackRequest', output:'RealtimePlaybackView'},
   '/api/session/actions': {operation:'action', input:'LocalServiceActionRequest', output:'LocalServiceCommandReceipt'},
   '/api/session/advance': {operation:'advance', input:'LocalServiceAdvanceRequest', output:'LocalServiceCommandReceipt'},
   '/api/session/next-hand': {operation:'next-hand', input:'LocalServiceNextHandRequest', output:'LocalServiceCommandReceipt'},

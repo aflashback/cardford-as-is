@@ -1,0 +1,65 @@
+{
+  "name": "offline-message-fixed-old-se",
+  "at": "2026-10-16T02:07:32.990Z",
+  "check": "Final build says connection lost while actually offline",
+  "build": "index-B5TU32s0.js",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 297.8700656890869,
+        "clientHeight": 274,
+        "controls": [
+          {
+            "bottom": 165.24812698364258,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 480.9980239868164,
+            "width": 406.45111083984375,
+            "x": 74.54691314697266,
+            "y": 121.25253295898438
+          },
+          {
+            "bottom": 285.19858169555664,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 273.77623748779297,
+            "width": 199.2293243408203,
+            "x": 74.54691314697266,
+            "y": 241.20298767089844
+          },
+          {
+            "bottom": 285.19858169555664,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 480.99803161621094,
+            "width": 199.2293243408203,
+            "x": 281.7687072753906,
+            "y": 241.20298767089844
+          }
+        ],
+        "height": 275.2794494628906,
+        "name": "Game paused",
+        "right": 513.8677024841309,
+        "scrollHeight": 274,
+        "width": 459.9953308105469,
+        "x": 53.872371673583984,
+        "y": 22.59061622619629
+      }
+    ],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

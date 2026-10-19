@@ -19,6 +19,9 @@ type TrialActivation struct {
 // policy version, or grant ID participates in that uniqueness constraint.
 func (s *Store) ActivateAccessTrial(ctx context.Context, key string, g Grant, duration time.Duration) (TrialActivation, error) {
 	var result TrialActivation
+	if s.requirePrincipal {
+		return result, ErrAccess
+	}
 	if !recordID(key) || duration < time.Second || duration > 366*24*time.Hour || g.SourceKind != "access-trial" || g.Revoked {
 		return result, ErrAccess
 	}

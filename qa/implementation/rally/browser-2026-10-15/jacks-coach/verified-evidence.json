@@ -1,0 +1,21 @@
+{
+  "captures": 21,
+  "matchedLiveWhySizes": 5,
+  "cardWidthBefore": 22.294206619262695,
+  "cardWidthAfter": 36.09840774536133,
+  "assets": [
+    {
+      "asset": "/assets/index-DZflcTDe.js",
+      "status": 200,
+      "bytes": 4534893,
+      "sha256": "ce02e183ae9e296ad307ef4125af0024a4bed601d68c41a695d4c3ebe39a794a"
+    },
+    {
+      "asset": "/assets/index-DjhphdUc.css",
+      "status": 200,
+      "bytes": 119768,
+      "sha256": "a5b65b534b61a23c9942f92e9f191fded82775f74557c9020a1a628fb96e455d"
+    }
+  ],
+  "nativePid": 41500
+}

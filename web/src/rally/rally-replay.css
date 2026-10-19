@@ -1,0 +1,5 @@
+/* The parent keeps the live table mounted beneath this read-only observation. */
+.rally-app .rally-game-shell.rally-replay-table { position: absolute; inset: 0; z-index: 3; background: var(--bg); }
+.rally-replay-table .hand-card { display: block; cursor: default; pointer-events: none; }
+.rally-app .rally-replay-table .hand-card .card-face,.rally-app .rally-replay-table .trick-slot { animation: none; transition: none; }
+.rally-replay-phase { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; font: 750 18px 'DM Sans Variable',sans-serif; color: var(--ink); }

@@ -1,0 +1,71 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Basic · Solo"':
+    - text: Trix
+    - generic: Basic · Solo
+  - 'button "Scores: You -150, Leo 25, Maya 50, Theo 0"':
+    - generic: "-150"
+    - generic: You
+    - generic: "25"
+    - generic: Leo
+    - generic: "50"
+    - generic: Maya
+    - generic: "0"
+    - generic: Theo
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Trix four player table":
+    - generic: "Y"
+    - 'img "You: kingdom owner"':
+    - generic: You
+    - button "You current score -150; show scores": "-150"
+    - img "1 card left"
+    - generic "Your doubled cards":
+      - img "Doubled Queen of spades":
+        - generic: Q
+        - generic: ♠
+        - generic: ♠
+    - img "Current player"
+    - generic: L
+    - generic: Leo
+    - button "Leo current score 25; show scores": "25"
+    - img "1 card left"
+    - generic: M
+    - generic: Maya
+    - button "Maya current score 50; show scores": "50"
+    - img "1 card left"
+    - generic: T
+    - generic: Theo
+    - button "Theo current score 0; show scores": "0"
+    - img "1 card left"
+    - generic "Current trick"
+  - complementary "Last trick":
+    - 'img "You: Jack of spades, won the trick"':
+      - generic: J
+      - generic: ♠
+      - generic: ♠
+    - 'img "Theo: 3 of spades"':
+      - generic: "3"
+      - generic: ♠
+      - generic: ♠
+    - 'img "Maya: 4 of hearts"':
+      - generic: "4"
+      - generic: ♥
+      - generic: ♥
+    - 'img "Leo: 6 of diamonds"':
+      - generic: "6"
+      - generic: ♦
+      - generic: ♦
+  - region "Your hand":
+    - status: Your turn
+    - button "Queen of spades":
+      - generic: Q
+      - generic: ♠
+      - generic: ♠
+    - generic: Hold to lift and drag on your turn. Release toward the table to play, or near your hand to return. Double-click or double-tap to play or queue for your turn, if legal. Repeat to cancel a queue. Enter or Space plays or queues; Escape cancels. Hold or double-tap to select doubling cards, then confirm separately.
+- button "Open Coach":
+  - img "Coach waiting"
+- status
+- generic: Local test access · deterministic code players

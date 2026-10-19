@@ -49,6 +49,7 @@ for (const platform of platformFragments) {
 }
 const patterns = new Set();
 const reviewedPatterns = new Set([
+  "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$", // ASCII RFC3339 shape; common JS/RE2 subset.
   '^[CDHS](?:[2-9]|10|J|Q|K|A)$',
   '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
   '^[a-f0-9]{48}$', // ASCII-only native owner IDs; reject nonhex/case/length drift.
@@ -171,7 +172,19 @@ function witness(def, index = 0) {
       const matches = (rule.if.required ?? []).every(key=>Object.hasOwn(value,key)) &&
         Object.entries(rule.if.properties ?? {}).every(([key,condition])=>value[key]===condition.const);
       const branch = matches ? rule.then : rule.else;
-      for (const [key,condition] of Object.entries(branch?.properties ?? {})) value[key]=witness(condition,index);
+      // Conditional object schemas constrain an existing witness; replacing it
+      // with a partial object would drop required fields from its base schema.
+      const overlay = (target, properties) => {
+        for (const [key,condition] of Object.entries(properties ?? {})) {
+          if (condition === false) { delete target[key]; continue; }
+          if (condition === true) continue;
+          if (condition.type === 'object' || condition.properties) {
+            target[key] ??= {};
+            overlay(target[key],condition.properties);
+          } else target[key]=witness(condition,index);
+        }
+      };
+      overlay(value,branch?.properties);
     };
     applyConditional(def);
     return value;
@@ -188,11 +201,23 @@ for (const name of ['HeartsActorPacket','SpadesActorPacket']) {
   const packet=witness(schema.$defs[name]);
   packet.observation.hands=[['SA']];add('nested-hidden-'+name,name,packet,false);
 }
+const trixHistoryPacket=witness(schema.$defs.TrixActorPacket);
+trixHistoryPacket.publicSchemaVersion='1.2.0';
+trixHistoryPacket.observation.layoutHistory={version:'1.0.0',status:'available',turns:[]};
+add('trix-public-layout-history','TrixActorPacket',trixHistoryPacket,true);
+add('trix-legacy-cannot-acquire-history','TrixActorPacket',{...trixHistoryPacket,publicSchemaVersion:'1.0.0'},false);
+const trixMissingHistory=structuredClone(trixHistoryPacket);delete trixMissingHistory.observation.layoutHistory;
+add('trix-current-requires-history','TrixActorPacket',trixMissingHistory,false);
 add('conditional-sealed-turn','GameView',{...witness(schema.$defs.GameView),phase:'pass',turn:0},false);
 const configuredAccount={...witness(schema.$defs.PlatformAccountView),mode:'configured',fixtureAccount:null,offers:witness(schema.$defs.AccessOfferPolicy),billingAvailable:false,familyAvailable:false};
 add('platform-configured-account','PlatformAccountView',configuredAccount,true);
 add('platform-configured-no-fixture','PlatformAccountView',{...configuredAccount,fixtureAccount:witness(schema.$defs.AccountView)},false);
 add('platform-configured-no-billing','PlatformAccountView',{...configuredAccount,billingAvailable:true},false);
+const installedAccountAvailability=[['hearts','solo'],['spades','solo'],['spades','partners'],['trix','basic-solo'],['trix','basic-partners'],['trix','complex-solo'],['trix','complex-partners']].map(([gameId,variantId])=>({...witness(schema.$defs.PlatformAccountAvailability),target:{gameId,variantId}}));
+for(const [mode,account] of [['fixture',witness(schema.$defs.PlatformAccountView)],['configured',configuredAccount]]) {
+  add(`platform-${mode}-seven-targets`,'PlatformAccountView',{...account,availability:installedAccountAvailability},true);
+  add(`platform-${mode}-availability-too-long`,'PlatformAccountView',{...account,availability:[...installedAccountAvailability,installedAccountAvailability[0]]},false);
+}
 const nativeFamilyInvite={commandId:'family-invite',action:'invite',inviteeId:'ab'.repeat(24),seatClass:'limited'};
 add('platform-family-native-invite','PlatformFamilyCommand',nativeFamilyInvite,true);
 add('platform-family-reject-uuid','PlatformFamilyCommand',{...nativeFamilyInvite,inviteeId:'11111111-2222-3333-4444-555555555555'},false);

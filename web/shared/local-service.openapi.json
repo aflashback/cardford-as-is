@@ -5,6 +5,564 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/platform/coach": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachUIStatusView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/platform/coach/sessions": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachUISessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoachUIStartRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/platform/coach/sessions/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachUISessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/platform/coach/items": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachUISessionView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoachUIItemRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/platform/coach/items/{id}/replay": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachUIReplayView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/platform/coach/feedback": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachUIFeedbackView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoachUIFeedbackRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/realtime/negotiate": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RealtimeNegotiateView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalServiceEmptyRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/realtime/snapshot": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RealtimeSnapshot"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session/playback": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RealtimePlaybackView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RealtimePlaybackRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/session/presence": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RealtimePlaybackView"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "x-tricks-client",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "1"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RealtimePresenceRequest"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
     "/api/platform/session": {
       "get": {
         "responses": {
@@ -798,6 +1356,102 @@
               "type": "string",
               "minLength": 8,
               "maxLength": 80
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/platform/rounds": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrixRoundIndex"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          }
+        ],
+        "security": [
+          {
+            "localSession": []
+          }
+        ]
+      }
+    },
+    "/api/platform/rounds/{id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Validated local service result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrixRoundHistory"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Safe typed error; reconcile an ambiguous command before retrying",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "x-tricks-tab",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
             }
           }
         ],
@@ -2608,6 +3262,21 @@
       "RegisteredPresentation": {
         "$ref": "./contracts.schema.json#/$defs/RegisteredPresentation"
       },
+      "RegisteredAdvice": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredAdvice"
+      },
+      "CoachSupport": {
+        "$ref": "./contracts.schema.json#/$defs/CoachSupport"
+      },
+      "CoachReason": {
+        "$ref": "./contracts.schema.json#/$defs/CoachReason"
+      },
+      "CoachMessage": {
+        "$ref": "./contracts.schema.json#/$defs/CoachMessage"
+      },
+      "CoachMessageView": {
+        "$ref": "./contracts.schema.json#/$defs/CoachMessageView"
+      },
       "HeartsCandidate": {
         "$ref": "./games/hearts.schema.json#/$defs/HeartsCandidate"
       },
@@ -2673,6 +3342,72 @@
       },
       "TokenPresentation": {
         "$ref": "./games/token.schema.json#/$defs/TokenPresentation"
+      },
+      "TrixAction": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixAction"
+      },
+      "TrixPlay": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixPlay"
+      },
+      "TrixTrick": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixTrick"
+      },
+      "TrixDeclaration": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixDeclaration"
+      },
+      "TrixRow": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixRow"
+      },
+      "TrixLayoutPass": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLayoutPass"
+      },
+      "TrixLeadSource": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLeadSource"
+      },
+      "TrixRecipient": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixRecipient"
+      },
+      "TrixLedgerEntry": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLedgerEntry"
+      },
+      "TrixWithheldBonus": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixWithheldBonus"
+      },
+      "TrixScore": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixScore"
+      },
+      "TrixTwoAnnouncements": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixTwoAnnouncements"
+      },
+      "TrixObservation": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixObservation"
+      },
+      "TrixActorPacket": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixActorPacket"
+      },
+      "TrixSessionView": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixSessionView"
+      },
+      "TrixPresentation": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixPresentation"
+      },
+      "TrixAnalysis": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixAnalysis"
+      },
+      "TrixActorEvent": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixActorEvent"
+      },
+      "TrixAdvice": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixAdvice"
+      },
+      "TrixReviewFrame": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixReviewFrame"
+      },
+      "TrixLayoutTurn": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLayoutTurn"
+      },
+      "TrixLayoutHistory": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLayoutHistory"
       },
       "LocalServiceWorkRetryRequest": {
         "$ref": "./local-service.schema.json#/$defs/LocalServiceWorkRetryRequest"
@@ -2782,6 +3517,18 @@
       "PlatformReconcileView": {
         "$ref": "./platform-service.schema.json#/$defs/PlatformReconcileView"
       },
+      "CatalogMode": {
+        "$ref": "./platform-service.schema.json#/$defs/CatalogMode"
+      },
+      "TrixCompletedRound": {
+        "$ref": "./platform-service.schema.json#/$defs/TrixCompletedRound"
+      },
+      "TrixRoundIndex": {
+        "$ref": "./platform-service.schema.json#/$defs/TrixRoundIndex"
+      },
+      "TrixRoundHistory": {
+        "$ref": "./platform-service.schema.json#/$defs/TrixRoundHistory"
+      },
       "PlatformPreferencesView": {
         "$ref": "./platform-account.schema.json#/$defs/PlatformPreferencesView"
       },
@@ -2823,6 +3570,69 @@
       },
       "PlatformAdviceView": {
         "$ref": "./platform-review.schema.json#/$defs/PlatformAdviceView"
+      },
+      "CoachUIProvider": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIProvider"
+      },
+      "CoachUIAccess": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIAccess"
+      },
+      "CoachUIFeedback": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIFeedback"
+      },
+      "CoachUIRatingPreview": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIRatingPreview"
+      },
+      "CoachUIItem": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIItem"
+      },
+      "CoachUISessionSummary": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUISessionSummary"
+      },
+      "CoachUISession": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUISession"
+      },
+      "CoachUIStatusView": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIStatusView"
+      },
+      "CoachUISessionView": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUISessionView"
+      },
+      "CoachUIStartRequest": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIStartRequest"
+      },
+      "CoachUIItemRequest": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIItemRequest"
+      },
+      "CoachUIFeedbackRequest": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIFeedbackRequest"
+      },
+      "CoachUIFeedbackView": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIFeedbackView"
+      },
+      "CoachUIReplayView": {
+        "$ref": "./platform-coach.schema.json#/$defs/CoachUIReplayView"
+      },
+      "RealtimePlaybackRequest": {
+        "$ref": "./realtime.schema.json#/$defs/RealtimePlaybackRequest"
+      },
+      "RealtimePlaybackView": {
+        "$ref": "./realtime.schema.json#/$defs/RealtimePlaybackView"
+      },
+      "RealtimeNegotiateView": {
+        "$ref": "./realtime.schema.json#/$defs/RealtimeNegotiateView"
+      },
+      "RealtimeSnapshotRequest": {
+        "$ref": "./realtime.schema.json#/$defs/RealtimeSnapshotRequest"
+      },
+      "RealtimeSnapshot": {
+        "$ref": "./realtime.schema.json#/$defs/RealtimeSnapshot"
+      },
+      "RealtimeMessage": {
+        "$ref": "./realtime.schema.json#/$defs/RealtimeMessage"
+      },
+      "RealtimePresenceRequest": {
+        "$ref": "./realtime.schema.json#/$defs/RealtimePresenceRequest"
       }
     },
     "securitySchemes": {

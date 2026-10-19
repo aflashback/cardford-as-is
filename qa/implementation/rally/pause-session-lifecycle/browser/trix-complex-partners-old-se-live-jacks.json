@@ -1,0 +1,20 @@
+{
+  "name": "trix-complex-partners-old-se-live-jacks",
+  "at": "2026-10-16T02:11:08.244Z",
+  "check": "Resumed table accepts legal Jacks play",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

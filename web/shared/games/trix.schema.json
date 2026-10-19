@@ -1,0 +1,1543 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/games/trix.schema.json",
+  "$defs": {
+    "TrixAction": {
+      "title": "TrixAction",
+      "oneOf": [
+        {
+          "title": "TrixChooseRequest",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "choose-request"
+            },
+            "request": {
+              "enum": [
+                "diamonds",
+                "lutoosh",
+                "queens",
+                "king",
+                "complex",
+                "trix"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixDeclareDoubles",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "declare-doubles"
+            },
+            "cards": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "CQ",
+                  "DQ",
+                  "HQ",
+                  "SQ",
+                  "HK"
+                ]
+              },
+              "minItems": 0,
+              "maxItems": 5,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixPlayCard",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play-card"
+            },
+            "card": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixLayoutCard",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "layout-card"
+            },
+            "card": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixLayoutPassAction",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "layout-pass"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixPlay": {
+      "title": "TrixPlay",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "card": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+        }
+      },
+      "required": [
+        "seat",
+        "card"
+      ],
+      "additionalProperties": false
+    },
+    "TrixTrick": {
+      "title": "TrixTrick",
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        },
+        "leader": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "winner": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "plays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixPlay"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "number",
+        "leader",
+        "winner",
+        "plays"
+      ],
+      "additionalProperties": false
+    },
+    "TrixDeclaration": {
+      "title": "TrixDeclaration",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "seat",
+        "cards",
+        "ref"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRow": {
+      "title": "TrixRow",
+      "type": "object",
+      "properties": {
+        "suit": {
+          "enum": [
+            "C",
+            "D",
+            "H",
+            "S"
+          ]
+        },
+        "low": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "high": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        }
+      },
+      "required": [
+        "suit",
+        "low",
+        "high"
+      ],
+      "additionalProperties": false
+    },
+    "TrixLayoutPass": {
+      "title": "TrixLayoutPass",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "board": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixRow"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "seat",
+        "board",
+        "ref"
+      ],
+      "additionalProperties": false
+    },
+    "TrixLeadSource": {
+      "title": "TrixLeadSource",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        }
+      },
+      "required": [
+        "seat",
+        "trick"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRecipient": {
+      "title": "TrixRecipient",
+      "oneOf": [
+        {
+          "title": "TrixSeatRecipient",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "seat"
+            },
+            "seat": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            }
+          },
+          "required": [
+            "kind",
+            "seat"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixTeamRecipient",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "competitor"
+            },
+            "competitor": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "competitor"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixLedgerEntry": {
+      "title": "TrixLedgerEntry",
+      "type": "object",
+      "properties": {
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "request": {
+          "enum": [
+            "diamonds",
+            "lutoosh",
+            "queens",
+            "king",
+            "complex",
+            "trix"
+          ]
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "finish": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "recipient": {
+          "$ref": "#/$defs/TrixRecipient"
+        },
+        "component": {
+          "enum": [
+            "diamond",
+            "trick",
+            "queen",
+            "king",
+            "double-bonus",
+            "layout-finish"
+          ]
+        },
+        "card": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+        },
+        "delta": {
+          "type": "integer",
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "declarationRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "leadSourceRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "dealNumber",
+        "kingdom",
+        "request",
+        "trick",
+        "finish",
+        "recipient",
+        "component",
+        "delta"
+      ],
+      "additionalProperties": false
+    },
+    "TrixWithheldBonus": {
+      "title": "TrixWithheldBonus",
+      "type": "object",
+      "properties": {
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        },
+        "card": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+        },
+        "bonusValue": {
+          "enum": [
+            25,
+            75
+          ]
+        },
+        "reason": {
+          "const": "no_previous_external_leader"
+        },
+        "declarationRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "dealNumber",
+        "trick",
+        "card",
+        "bonusValue",
+        "reason",
+        "declarationRef"
+      ],
+      "additionalProperties": false
+    },
+    "TrixScore": {
+      "title": "TrixScore",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "seats": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "total": {
+          "type": "integer",
+          "minimum": -100000,
+          "maximum": 100000
+        }
+      },
+      "required": [
+        "id",
+        "seats",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "TrixTwoAnnouncements": {
+      "title": "TrixTwoAnnouncements",
+      "oneOf": [
+        {
+          "title": "TrixTwoAnnouncementsHidden",
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "hidden"
+            },
+            "counts": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "required": [
+            "status",
+            "counts"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixTwoAnnouncementsRevealed",
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "revealed"
+            },
+            "cards": {
+              "type": "array",
+              "items": {
+                "title": "TrixTwoAnnouncementCard",
+                "type": "object",
+                "properties": {
+                  "seat": {
+                    "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+                  },
+                  "card": {
+                    "enum": [
+                      "C2",
+                      "D2",
+                      "H2",
+                      "S2"
+                    ]
+                  }
+                },
+                "required": [
+                  "seat",
+                  "card"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 4,
+              "maxItems": 4,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "status",
+            "cards"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixObservation": {
+      "title": "TrixObservation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "choose-request",
+            "declare-doubles",
+            "playing",
+            "layout",
+            "round-complete",
+            "chance",
+            "session-complete"
+          ]
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "owner": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "request": {
+          "anyOf": [
+            {
+              "enum": [
+                "diamonds",
+                "lutoosh",
+                "queens",
+                "king",
+                "complex",
+                "trix"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "remainingRequests": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "diamonds",
+              "lutoosh",
+              "queens",
+              "king",
+              "complex",
+              "trix"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "hand": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "twoAnnouncements": {
+          "$ref": "#/$defs/TrixTwoAnnouncements"
+        },
+        "handCounts": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "trick": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixPlay"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "tricks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixTrick"
+          },
+          "minItems": 0,
+          "maxItems": 13
+        },
+        "declarations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixDeclaration"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "board": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixRow"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "finishOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "passes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLayoutPass"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "ledger": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLedgerEntry"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "withheldBonuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixWithheldBonus"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "lastExternalLeader": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/TrixLeadSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "totals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "requestTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "requestSeatTotals": {
+          "description": "Live presentation only: current-deal points assigned to each seat by the server ledger, in seat order. Excludes competitor-only team bonuses. Optional for immutable historical observations.",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "kingdomTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "winners": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "layoutHistory": {
+          "$ref": "#/$defs/TrixLayoutHistory"
+        }
+      },
+      "required": [
+        "id",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "turn",
+        "kingdom",
+        "dealNumber",
+        "owner",
+        "request",
+        "remainingRequests",
+        "hand",
+        "handCounts",
+        "trick",
+        "tricks",
+        "declarations",
+        "board",
+        "finishOrder",
+        "passes",
+        "ledger",
+        "withheldBonuses",
+        "lastExternalLeader",
+        "totals",
+        "requestTotals",
+        "kingdomTotals",
+        "winners"
+      ],
+      "additionalProperties": false
+    },
+    "TrixActorPacket": {
+      "title": "TrixActorPacket",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "choose-request",
+            "declare-doubles",
+            "playing",
+            "layout",
+            "round-complete",
+            "chance",
+            "session-complete"
+          ]
+        },
+        "observation": {
+          "$ref": "#/$defs/TrixObservation"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "title": "TrixPublicCandidate",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "public": {
+                "$ref": "#/$defs/TrixAction"
+              }
+            },
+            "required": [
+              "id",
+              "public"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "observation",
+        "candidates"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.2.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "observation": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": {
+                    "$ref": "#/$defs/TrixLayoutHistory"
+                  }
+                },
+                "required": [
+                  "layoutHistory"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "observation": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixSessionView": {
+      "title": "TrixSessionView",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "choose-request",
+            "declare-doubles",
+            "playing",
+            "layout",
+            "round-complete",
+            "chance",
+            "session-complete"
+          ]
+        },
+        "table": {
+          "$ref": "#/$defs/TrixObservation"
+        },
+        "accessUnit": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/CoachedUnit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "table",
+        "accessUnit"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.2.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "table": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": {
+                    "$ref": "#/$defs/TrixLayoutHistory"
+                  }
+                },
+                "required": [
+                  "layoutHistory"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "table": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixPresentation": {
+      "title": "TrixPresentation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+        },
+        "observation": {
+          "$ref": "#/$defs/TrixObservation"
+        }
+      },
+      "required": [
+        "id",
+        "gameId",
+        "variantId",
+        "seat",
+        "observation"
+      ],
+      "additionalProperties": false
+    },
+    "TrixAnalysis": {
+      "title": "TrixAnalysis",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "origin": {
+          "enum": [
+            "code",
+            "forced"
+          ]
+        },
+        "selectedCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "objective": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningObjective"
+        },
+        "horizon": {
+          "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningHorizon"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningFact"
+          }
+        },
+        "estimates": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningEstimate"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReasoningScenario"
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "origin",
+        "selectedCandidateId",
+        "objective",
+        "horizon",
+        "facts",
+        "estimates",
+        "scenarios",
+        "assumptions"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixActorEvent": {
+      "title": "TrixActorEvent",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "eventSchemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "seat": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "card": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "eventSchemaVersion",
+        "id",
+        "type",
+        "message"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixAdvice": {
+      "title": "TrixAdvice",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "level": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "origin": {
+          "enum": [
+            "code",
+            "forced"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "policyVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "recommendedCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 0,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 0,
+          "maxItems": 100,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "gameId",
+        "variantId",
+        "decisionId",
+        "level",
+        "origin",
+        "title",
+        "text",
+        "policyVersion",
+        "evidenceRefs"
+      ],
+      "additionalProperties": false
+    },
+    "TrixReviewFrame": {
+      "title": "TrixReviewFrame",
+      "type": "object",
+      "properties": {
+        "game": {
+          "$ref": "#/$defs/TrixPresentation"
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TrixAction"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "minItems": 0,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "game",
+        "action",
+        "decisionId",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "TrixLayoutTurn": {
+      "title": "TrixLayoutTurn",
+      "oneOf": [
+        {
+          "title": "TrixLayoutPlacement",
+          "type": "object",
+          "properties": {
+            "ordinal": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 208
+            },
+            "seat": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            "kind": {
+              "const": "layout-card"
+            },
+            "card": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+            },
+            "boardBefore": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TrixRow"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "handCountsBefore": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "twoAnnouncementsBefore": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TrixTwoAnnouncements"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "ordinal",
+            "seat",
+            "kind",
+            "card",
+            "boardBefore",
+            "handCountsBefore",
+            "twoAnnouncementsBefore"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixLayoutForcedPass",
+          "type": "object",
+          "properties": {
+            "ordinal": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 208
+            },
+            "seat": {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Seat"
+            },
+            "kind": {
+              "const": "layout-pass"
+            },
+            "boardBefore": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TrixRow"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "handCountsBefore": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "twoAnnouncementsBefore": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TrixTwoAnnouncements"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "ordinal",
+            "seat",
+            "kind",
+            "boardBefore",
+            "handCountsBefore",
+            "twoAnnouncementsBefore"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixLayoutHistory": {
+      "title": "TrixLayoutHistory",
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "status": {
+          "const": "available"
+        },
+        "turns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLayoutTurn"
+          },
+          "minItems": 0,
+          "maxItems": 208
+        }
+      },
+      "required": [
+        "version",
+        "status",
+        "turns"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

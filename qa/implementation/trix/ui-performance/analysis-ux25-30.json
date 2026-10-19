@@ -1,0 +1,405 @@
+{
+  "scope": "Headless local Chrome, native Go/test database, provider off, 1280x800, normal random first requests. Different deals are not a paired speed comparison.",
+  "measurementNotes": [
+    "requestAnimationFrame gaps are local observer intervals, not physical-device presentation FPS.",
+    "The Long Tasks observer is buffered and includes initial navigation. Complete RunTask durations are absent; individual main-thread events come from the gameplay trace.",
+    "Accepted command and API totals include setup. Resume times include automated click and DOM observation, not just app rendering.",
+    "Timeline totals are nested categories and must not be added together.",
+    "Navigation Lighthouse reloads the saved table paused. The snapshot audits the active table separately."
+  ],
+  "results": {
+    "before": {
+      "chrome": "154.0.8037.98",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "sampleSeconds": 31.43,
+      "humanActions": 10,
+      "acceptedCommandsIncludingSetup": 41,
+      "pauseCycles": 2,
+      "validGameplaySample": true,
+      "finalPhase": "playing",
+      "frames": {
+        "count": 1566,
+        "p95Ms": 20.100000000000364,
+        "over50ms": 0
+      },
+      "bufferedLongTasksIncludingNavigation": [
+        {
+          "start": 122.90000009536743,
+          "ms": 52
+        }
+      ],
+      "recordedMainThreadEvents": {
+        "count": 16663,
+        "maxMs": 2.81,
+        "over50ms": []
+      },
+      "fullTaskDurations": "Not captured by these trace categories; use frame gaps and individual recorded events.",
+      "timeline": {
+        "FunctionCall": {
+          "count": 3112,
+          "totalMs": 138.39,
+          "maxMs": 1.22
+        },
+        "UpdateLayoutTree": {
+          "count": 224,
+          "totalMs": 36,
+          "maxMs": 0.74
+        },
+        "Layout": {
+          "count": 95,
+          "totalMs": 27.39,
+          "maxMs": 0.97
+        },
+        "Paint": {
+          "count": 190,
+          "totalMs": 40.05,
+          "maxMs": 0.58
+        }
+      },
+      "cpuSampledMilliseconds": 30534.27,
+      "topCpuSelfSamples": [
+        {
+          "frame": "(idle)||-1",
+          "milliseconds": 28579.57
+        },
+        {
+          "frame": "(program)||-1",
+          "milliseconds": 1727.74
+        },
+        {
+          "frame": "query||5718",
+          "milliseconds": 35.2
+        },
+        {
+          "frame": "fetch||-1",
+          "milliseconds": 27.94
+        },
+        {
+          "frame": "(garbage collector)||-1",
+          "milliseconds": 23.6
+        },
+        {
+          "frame": "(anonymous)||-1",
+          "milliseconds": 23.39
+        },
+        {
+          "frame": "(anonymous)||0",
+          "milliseconds": 13.92
+        },
+        {
+          "frame": "Ne|http://127.0.0.1:22810/assets/index-BtJ8-1oY.js|143",
+          "milliseconds": 11.46
+        },
+        {
+          "frame": "querySelectorAll||-1",
+          "milliseconds": 7.54
+        },
+        {
+          "frame": "parseEvaluationResultValue||105",
+          "milliseconds": 6.98
+        },
+        {
+          "frame": "(anonymous)||5716",
+          "milliseconds": 6.21
+        },
+        {
+          "frame": "_cached||5499",
+          "milliseconds": 3.13
+        }
+      ],
+      "api": {
+        "count": 298,
+        "p95Ms": 51.74,
+        "maxMs": 207.18,
+        "nonSuccess": [
+          {
+            "path": "/api/dev/scenarios",
+            "ms": 11.501800000000003,
+            "status": 404
+          }
+        ]
+      },
+      "resumeObservedMs": [
+        42.15,
+        42.37
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "audits": {
+        "lighthouse": {
+          "version": "13.5.0",
+          "fetchedAt": "2026-10-08T15:06:59.384Z",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "best-practices": 100
+          },
+          "runtimeError": null,
+          "failedAudits": [
+            {
+              "id": "valid-source-maps",
+              "title": "Missing source maps for large first-party JavaScript",
+              "score": 0
+            },
+            {
+              "id": "color-contrast",
+              "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+              "score": 0
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "title": "Elements with visible text labels do not have matching accessible names.",
+              "score": 0
+            },
+            {
+              "id": "total-byte-weight",
+              "title": "Avoid enormous network payloads",
+              "score": 0.5,
+              "displayValue": "Total size was 3,970 KiB"
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "score": 0.5,
+              "displayValue": "Est savings of 66 KiB"
+            },
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "score": 0.5,
+              "displayValue": "Est savings of 3,278 KiB"
+            },
+            {
+              "id": "bf-cache",
+              "title": "Page prevented back/forward cache restoration",
+              "score": 0,
+              "displayValue": "4 failure reasons"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "title": "Network dependency tree",
+              "score": 0
+            },
+            {
+              "id": "render-blocking-insight",
+              "title": "Render-blocking requests",
+              "score": 0.5
+            }
+          ]
+        },
+        "lighthouse-active": {
+          "version": "13.5.0",
+          "fetchedAt": "2026-10-08T15:06:56.440Z",
+          "scores": {
+            "accessibility": 96,
+            "best-practices": 100
+          },
+          "runtimeError": null,
+          "failedAudits": [
+            {
+              "id": "color-contrast",
+              "title": "Background and foreground colors do not have a sufficient contrast ratio.",
+              "score": 0
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "title": "Elements with visible text labels do not have matching accessible names.",
+              "score": 0
+            }
+          ]
+        }
+      }
+    },
+    "after": {
+      "chrome": "154.0.8037.98",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "sampleSeconds": 31.22,
+      "humanActions": 7,
+      "acceptedCommandsIncludingSetup": 26,
+      "pauseCycles": 2,
+      "validGameplaySample": true,
+      "finalPhase": "playing",
+      "frames": {
+        "count": 1555,
+        "p95Ms": 20.100000000000364,
+        "over50ms": 0
+      },
+      "bufferedLongTasksIncludingNavigation": [
+        {
+          "start": 102.40000009536743,
+          "ms": 64
+        },
+        {
+          "start": 306,
+          "ms": 71
+        }
+      ],
+      "recordedMainThreadEvents": {
+        "count": 15956,
+        "maxMs": 3.67,
+        "over50ms": []
+      },
+      "fullTaskDurations": "Not captured by these trace categories; use frame gaps and individual recorded events.",
+      "timeline": {
+        "FunctionCall": {
+          "count": 3504,
+          "totalMs": 159.7,
+          "maxMs": 2.72
+        },
+        "UpdateLayoutTree": {
+          "count": 484,
+          "totalMs": 76.63,
+          "maxMs": 1.74
+        },
+        "Layout": {
+          "count": 98,
+          "totalMs": 61.44,
+          "maxMs": 3.67
+        },
+        "Paint": {
+          "count": 1178,
+          "totalMs": 90.03,
+          "maxMs": 0.72
+        }
+      },
+      "cpuSampledMilliseconds": 30134.43,
+      "topCpuSelfSamples": [
+        {
+          "frame": "(idle)||-1",
+          "milliseconds": 28187.63
+        },
+        {
+          "frame": "(program)||-1",
+          "milliseconds": 1715
+        },
+        {
+          "frame": "query||5718",
+          "milliseconds": 42.74
+        },
+        {
+          "frame": "fetch||-1",
+          "milliseconds": 24.83
+        },
+        {
+          "frame": "(anonymous)||-1",
+          "milliseconds": 23.1
+        },
+        {
+          "frame": "(garbage collector)||-1",
+          "milliseconds": 18.82
+        },
+        {
+          "frame": "querySelectorAll||-1",
+          "milliseconds": 12.51
+        },
+        {
+          "frame": "(anonymous)||0",
+          "milliseconds": 12.36
+        },
+        {
+          "frame": "Te|http://127.0.0.1:53574/assets/index-DypEAlXt.js|148",
+          "milliseconds": 7.4
+        },
+        {
+          "frame": "(anonymous)|http://127.0.0.1:53574/assets/index-DypEAlXt.js|148",
+          "milliseconds": 6.83
+        },
+        {
+          "frame": "focus||-1",
+          "milliseconds": 6.03
+        },
+        {
+          "frame": "querySelectorAll||7009",
+          "milliseconds": 4.64
+        }
+      ],
+      "api": {
+        "count": 195,
+        "p95Ms": 41.22,
+        "maxMs": 61.08,
+        "nonSuccess": []
+      },
+      "resumeObservedMs": [
+        41.72,
+        42.93
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "audits": {
+        "lighthouse": {
+          "version": "13.5.0",
+          "fetchedAt": "2026-10-08T15:18:00.311Z",
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100
+          },
+          "runtimeError": null,
+          "failedAudits": [
+            {
+              "id": "valid-source-maps",
+              "title": "Missing source maps for large first-party JavaScript",
+              "score": 0
+            },
+            {
+              "id": "total-byte-weight",
+              "title": "Avoid enormous network payloads",
+              "score": 0.5,
+              "displayValue": "Total size was 3,964 KiB"
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "score": 0.5,
+              "displayValue": "Est savings of 54 KiB"
+            },
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "score": 0.5,
+              "displayValue": "Est savings of 3,277 KiB"
+            },
+            {
+              "id": "bf-cache",
+              "title": "Page prevented back/forward cache restoration",
+              "score": 0,
+              "displayValue": "4 failure reasons"
+            },
+            {
+              "id": "network-dependency-tree-insight",
+              "title": "Network dependency tree",
+              "score": 0
+            },
+            {
+              "id": "render-blocking-insight",
+              "title": "Render-blocking requests",
+              "score": 0.5
+            }
+          ]
+        },
+        "lighthouse-active": {
+          "version": "13.5.0",
+          "fetchedAt": "2026-10-08T15:17:57.312Z",
+          "scores": {
+            "accessibility": 100,
+            "best-practices": 100
+          },
+          "runtimeError": null,
+          "failedAudits": [
+            {
+              "id": "label-content-name-mismatch",
+              "title": "Elements with visible text labels do not have matching accessible names.",
+              "score": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

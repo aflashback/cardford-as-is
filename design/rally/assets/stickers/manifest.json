@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "collection": "The Regular — approved Rally sticker set",
+  "date": "2026-10-13",
+  "canonical_format": "PNG",
+  "derivative_status": "Owner-reviewed and approved vector traces; not pixel-identical. PNG remains the mock runtime format.",
+  "provenance": "Frozen originals and generation notes: approved/coach-stickers/. original_repo_source fields record historical paths removed after approval.",
+  "source_path_base": "Rally package root",
+  "artwork_rules": [
+    "The Regular: experienced adult human, dark hair with silver forelock, subtle stubble.",
+    "Vermilion shirt, chalk tee, sage accents; restrained editorial illustration.",
+    "Preserve approved pose, face, hands, props and transparent background.",
+    "Whistle v3 corrected grip. Reading v8 one full-width curled leaf, CardFord watermark, separate blank base page."
+  ],
+  "tool": {
+    "name": "vtracer",
+    "python_distribution_version": "0.6.15",
+    "embedded_engine_version": "0.6.12",
+    "license": "MIT",
+    "license_file": "licenses/vtracer-MIT.txt",
+    "color_parameters": {
+      "colormode": "color",
+      "hierarchical": "stacked",
+      "mode": "spline",
+      "filter_speckle": 2,
+      "color_precision": 6,
+      "layer_difference": 8,
+      "corner_threshold": 60,
+      "length_threshold": 3.5,
+      "max_iterations": 10,
+      "splice_threshold": 45,
+      "path_precision": 3
+    },
+    "alpha_parameters": {
+      "colormode": "color",
+      "hierarchical": "stacked",
+      "mode": "spline",
+      "filter_speckle": 0,
+      "color_precision": 8,
+      "layer_difference": 1,
+      "corner_threshold": 60,
+      "length_threshold": 3.5,
+      "max_iterations": 10,
+      "splice_threshold": 45,
+      "path_precision": 3
+    }
+  },
+  "transparency": {
+    "strategy": "Separate path-only grayscale luminance mask; no embedded raster.",
+    "alpha_quantization_step": 8,
+    "maximum_pixel_quantization_error": 4,
+    "caveat": "Curve fitting and speckle filtering also change edges; fine texture and gradients are approximated."
+  },
+  "reproduction": "design/rally/tools/vectorize-stickers.py",
+  "assets": [
+    {
+      "id": "regular-whistle-v3",
+      "label": "Whistle",
+      "source": "approved/coach-stickers/assets/regular-whistle-v3.png",
+      "original_repo_source": "design/studio/coach-stickers/assets/regular-whistle-v3.png",
+      "png": "png/regular-whistle-v3.png",
+      "svg": "svg/regular-whistle-v3.svg",
+      "width": 1145,
+      "height": 1374,
+      "png_bytes": 1171825,
+      "svg_bytes": 1126321,
+      "source_sha256": "0660a5f1fbb0d73c4a872f860cf4bd95863eea306bad54391fb3d0303de46aa6",
+      "png_sha256": "0660a5f1fbb0d73c4a872f860cf4bd95863eea306bad54391fb3d0303de46aa6",
+      "svg_sha256": "949bff8cc3477c26baf085e243013de5f0f315f6bed122470bbe5c87bcf644bc",
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_nonzero_alpha_pixels": 858273,
+      "source_partial_alpha_pixels": 856334,
+      "color_path_count": 1748,
+      "alpha_path_count": 3101,
+      "total_path_count": 4849,
+      "distinct_colors": 1567,
+      "finite_control_point_pairs": 81826,
+      "control_point_bounds": [
+        0.0,
+        0.0,
+        1145.0,
+        1374.0
+      ],
+      "transparent_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "embedded_raster": false,
+      "external_resources": false,
+      "xml_and_path_validation": "passed"
+    },
+    {
+      "id": "regular-thinking-v2",
+      "label": "Thinking",
+      "source": "approved/coach-stickers/assets/regular-thinking-v2.png",
+      "original_repo_source": "design/studio/coach-stickers/assets/regular-thinking-v2.png",
+      "png": "png/regular-thinking-v2.png",
+      "svg": "svg/regular-thinking-v2.svg",
+      "width": 1254,
+      "height": 1254,
+      "png_bytes": 962208,
+      "svg_bytes": 935016,
+      "source_sha256": "40336f19a235326f2c8ec2aef4ff677334f2622b5aeafe17b4d174fef4085131",
+      "png_sha256": "40336f19a235326f2c8ec2aef4ff677334f2622b5aeafe17b4d174fef4085131",
+      "svg_sha256": "aa29622078ff4d00e62670d7c6862e428aa6940b615c9ffb616a52a41639f1bc",
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_nonzero_alpha_pixels": 677651,
+      "source_partial_alpha_pixels": 676469,
+      "color_path_count": 1551,
+      "alpha_path_count": 2559,
+      "total_path_count": 4110,
+      "distinct_colors": 1338,
+      "finite_control_point_pairs": 68687,
+      "control_point_bounds": [
+        0.0,
+        0.0,
+        1254.0,
+        1254.0
+      ],
+      "transparent_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "embedded_raster": false,
+      "external_resources": false,
+      "xml_and_path_validation": "passed"
+    },
+    {
+      "id": "regular-explaining-v2",
+      "label": "Explaining",
+      "source": "approved/coach-stickers/assets/regular-explaining-v2.png",
+      "original_repo_source": "design/studio/coach-stickers/assets/regular-explaining-v2.png",
+      "png": "png/regular-explaining-v2.png",
+      "svg": "svg/regular-explaining-v2.svg",
+      "width": 1254,
+      "height": 1254,
+      "png_bytes": 1056732,
+      "svg_bytes": 1211835,
+      "source_sha256": "1b1f8b2dfb82330d838ae8be20a3995cc0b9b6db7584c99ed693cd094604c6c0",
+      "png_sha256": "1b1f8b2dfb82330d838ae8be20a3995cc0b9b6db7584c99ed693cd094604c6c0",
+      "svg_sha256": "ccb58286c71d619a7e25df623f2acab7786c364abe384c209dc14f8acf4c7d41",
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_nonzero_alpha_pixels": 734473,
+      "source_partial_alpha_pixels": 732687,
+      "color_path_count": 1823,
+      "alpha_path_count": 3601,
+      "total_path_count": 5424,
+      "distinct_colors": 1650,
+      "finite_control_point_pairs": 87618,
+      "control_point_bounds": [
+        0.0,
+        0.0,
+        1254.0,
+        1254.0
+      ],
+      "transparent_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "embedded_raster": false,
+      "external_resources": false,
+      "xml_and_path_validation": "passed"
+    },
+    {
+      "id": "regular-waiting-v2",
+      "label": "Waiting",
+      "source": "approved/coach-stickers/assets/regular-waiting-v2.png",
+      "original_repo_source": "design/studio/coach-stickers/assets/regular-waiting-v2.png",
+      "png": "png/regular-waiting-v2.png",
+      "svg": "svg/regular-waiting-v2.svg",
+      "width": 1254,
+      "height": 1254,
+      "png_bytes": 938902,
+      "svg_bytes": 837577,
+      "source_sha256": "08f029335576d94ac3c0eb5722d5658503e8ba3fb6756256fb7c4818ff9b999b",
+      "png_sha256": "08f029335576d94ac3c0eb5722d5658503e8ba3fb6756256fb7c4818ff9b999b",
+      "svg_sha256": "db865af9695113af7de4ba416812faf1e934b46459982c66229ab7c85ff5c55e",
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_nonzero_alpha_pixels": 677919,
+      "source_partial_alpha_pixels": 676733,
+      "color_path_count": 1241,
+      "alpha_path_count": 2426,
+      "total_path_count": 3667,
+      "distinct_colors": 1121,
+      "finite_control_point_pairs": 60036,
+      "control_point_bounds": [
+        0.0,
+        0.0,
+        1254.0,
+        1254.0
+      ],
+      "transparent_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "embedded_raster": false,
+      "external_resources": false,
+      "xml_and_path_validation": "passed"
+    },
+    {
+      "id": "regular-reading-v8",
+      "label": "Reading",
+      "source": "approved/coach-stickers/assets/regular-reading-v8.png",
+      "original_repo_source": "design/studio/coach-stickers/assets/regular-reading-v8.png",
+      "png": "png/regular-reading-v8.png",
+      "svg": "svg/regular-reading-v8.svg",
+      "width": 1254,
+      "height": 1254,
+      "png_bytes": 1154177,
+      "svg_bytes": 1364999,
+      "source_sha256": "53e3901ac6519a651ed170150e8f363116b0e6452b0bfb480da4a170fdfe3487",
+      "png_sha256": "53e3901ac6519a651ed170150e8f363116b0e6452b0bfb480da4a170fdfe3487",
+      "svg_sha256": "6ebd0c9970d8ef559d2b4f301225e301d0a811243646c19bf3a873d63fff355e",
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "source_nonzero_alpha_pixels": 765714,
+      "source_partial_alpha_pixels": 764558,
+      "color_path_count": 2312,
+      "alpha_path_count": 2946,
+      "total_path_count": 5258,
+      "distinct_colors": 2013,
+      "finite_control_point_pairs": 99692,
+      "control_point_bounds": [
+        0.0,
+        0.0,
+        1254.0,
+        1254.0
+      ],
+      "transparent_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "embedded_raster": false,
+      "external_resources": false,
+      "xml_and_path_validation": "passed"
+    }
+  ]
+}

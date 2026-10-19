@@ -1,0 +1,10 @@
+- alert:
+  - img "CardFord":
+    - generic: CardFord
+  - heading "Turn your phone sideways to play." [level=1]:
+    - text: Turn your phone
+    - text: sideways to play.
+  - link "Account and subscription":
+    - /url: "#account"
+  - link "Example game":
+    - /url: "#demo"

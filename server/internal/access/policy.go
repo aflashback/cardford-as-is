@@ -309,7 +309,7 @@ func validateInput(in Input) error {
 	seen := map[string]bool{}
 	for _, g := range in.Grants {
 		t := g.Terms
-		if seen[g.ID] || !textID(g.ID) || g.OwnerID != in.OwnerID || !textID(g.OfferID) || !textID(g.OfferVersion) || !textID(g.SourceID) || !contains([]string{"free", "access-trial", "purchase", "family"}, g.SourceKind) || t.Version != "1.0.0" || !SupportedTarget(Target{t.Game, t.Variant}) || !textID(t.BucketID) || t.Timezone != "UTC" || !contains([]string{"day", "lifetime"}, t.Period) || t.Limit < 0 || t.Limit > MaxInteger || t.Unlimited && t.Limit != 0 || !contains([]string{"pause-at-expiry", "finish-admitted-unit"}, t.ExpiryRule) || g.ValidFrom.IsZero() || g.ValidUntil != nil && !g.ValidUntil.After(g.ValidFrom) || t.Tools == nil || !t.CanCoach && len(t.Tools) > 0 {
+		if seen[g.ID] || !textID(g.ID) || g.OwnerID != in.OwnerID || !textID(g.OfferID) || !textID(g.OfferVersion) || !textID(g.SourceID) || !contains([]string{"free", "access-trial", "purchase", "family", "operator-test"}, g.SourceKind) || t.Version != "1.0.0" || !SupportedTarget(Target{t.Game, t.Variant}) || !textID(t.BucketID) || t.Timezone != "UTC" || !contains([]string{"day", "lifetime"}, t.Period) || t.Limit < 0 || t.Limit > MaxInteger || t.Unlimited && t.Limit != 0 || !contains([]string{"pause-at-expiry", "finish-admitted-unit"}, t.ExpiryRule) || g.ValidFrom.IsZero() || g.ValidUntil != nil && !g.ValidUntil.After(g.ValidFrom) || t.Tools == nil || !t.CanCoach && len(t.Tools) > 0 {
 			return ErrInvalid
 		}
 		seen[g.ID] = true

@@ -1,0 +1,164 @@
+{
+  "evidenceVersion": 6,
+  "context": {
+    "state": "hearts-hand-complete",
+    "device": "pixel7",
+    "nativeFixtureOrigin": "localhost:4191"
+  },
+  "stability": {
+    "coachSettled": true,
+    "samples": 3,
+    "elapsedMs": 195
+  },
+  "measure": {
+    "coach": null,
+    "coachScroll": null,
+    "declaredDoubles": [],
+    "dialogs": [],
+    "document": {
+      "height": 412,
+      "width": 915
+    },
+    "felt": {
+      "bottom": 269.8697910308838,
+      "height": 249.8828125,
+      "right": 771.7577667236328,
+      "width": 576.5494384765625,
+      "x": 195.2083282470703,
+      "y": 19.98697853088379
+    },
+    "game": "hearts",
+    "hand": {
+      "bottom": 407.9947814941406,
+      "height": 126.1328125,
+      "right": 903.0078125,
+      "width": 839.0234375,
+      "x": 63.984375,
+      "y": 281.8619689941406
+    },
+    "handCards": [],
+    "images": [
+      {
+        "complete": true,
+        "src": "/brand/cardford-symbol.svg",
+        "width": 160
+      },
+      {
+        "complete": true,
+        "src": "/rally/regular-waiting-v2.png",
+        "width": 1254
+      }
+    ],
+    "jacksBoard": null,
+    "jacksCards": [],
+    "jacksRows": [],
+    "lastTrick": null,
+    "main": {
+      "bottom": 411.9921875,
+      "height": 411.9921875,
+      "right": 915,
+      "width": 863.0078125,
+      "x": 51.9921875,
+      "y": 0
+    },
+    "phase": "results",
+    "pinned": false,
+    "players": [
+      {
+        "bottom": 180.83983612060547,
+        "height": 83.34635162353516,
+        "right": 225.2083282470703,
+        "width": 60,
+        "x": 165.2083282470703,
+        "y": 97.49348449707033
+      },
+      {
+        "bottom": 58.35937237739563,
+        "height": 54.36197662353515,
+        "right": 332.6692657470703,
+        "width": 80.3125,
+        "x": 252.3567657470703,
+        "y": 3.9973957538604736
+      },
+      {
+        "bottom": 180.83983612060547,
+        "height": 83.34635162353516,
+        "right": 801.7578125,
+        "width": 60,
+        "x": 741.7578125,
+        "y": 97.49348449707033
+      },
+      {
+        "bottom": 279.86978912353516,
+        "height": 54.36197662353515,
+        "right": 709.6028594970703,
+        "width": 70.32551574707031,
+        "x": 639.27734375,
+        "y": 225.5078125
+      }
+    ],
+    "previewCards": [],
+    "prompt": {
+      "bottom": 185.51432037353516,
+      "height": 87.17447662353516,
+      "right": 633.4765625,
+      "width": 300,
+      "x": 333.4765625,
+      "y": 98.33984375
+    },
+    "promptControls": [
+      {
+        "label": "View hand recap",
+        "rect": {
+          "bottom": 177.5195198059082,
+          "height": 43.99739456176758,
+          "right": 495.0651016235352,
+          "width": 124.98697662353516,
+          "x": 370.078125,
+          "y": 133.52212524414062
+        }
+      },
+      {
+        "label": "Play again",
+        "rect": {
+          "bottom": 177.5195198059082,
+          "height": 43.99739456176758,
+          "right": 596.8619537353516,
+          "width": 93.80207824707033,
+          "x": 503.0598754882813,
+          "y": 133.52212524414062
+        }
+      }
+    ],
+    "replay": false,
+    "tableCards": [],
+    "theme": "light",
+    "twoAnnouncements": [],
+    "viewport": {
+      "dpr": 1.000000015894571,
+      "height": 412,
+      "width": 915
+    }
+  },
+  "checks": {
+    "pageFits": true,
+    "visibleImagesLoaded": true,
+    "handCardsInViewport": null,
+    "playersInViewport": true,
+    "promptClearPlayers": true,
+    "promptControlsContained": true,
+    "tableCardsInViewport": null,
+    "tableCardsClearPlayers": null,
+    "previewCardsInViewport": null,
+    "jacksBoardInViewport": null,
+    "jacksRowsInViewport": null,
+    "jacksCardsInViewport": null,
+    "declaredDoublesInViewport": null,
+    "twoAnnouncementsInViewport": null,
+    "dialogsInViewport": null,
+    "dialogsNoHorizontalScroll": null,
+    "coachInViewport": true,
+    "overlayClearsHand": true,
+    "coachNoHorizontalScroll": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Close dialog"
+    },
+    {
+      "disabled": false,
+      "label": "Light"
+    },
+    {
+      "disabled": false,
+      "label": "Dark"
+    },
+    {
+      "disabled": false,
+      "label": "Warm"
+    },
+    {
+      "disabled": false,
+      "label": "When I ask"
+    },
+    {
+      "disabled": false,
+      "label": "Occasional cues"
+    },
+    {
+      "disabled": false,
+      "label": "After the hand"
+    },
+    {
+      "disabled": false,
+      "label": "Done"
+    }
+  ],
+  "dialog": "Settings",
+  "focused": "",
+  "hidden": false,
+  "title": "Spades — CardFord",
+  "viewport": [
+    1024,
+    768
+  ]
+}

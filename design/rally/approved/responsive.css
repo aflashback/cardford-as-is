@@ -1,0 +1,49 @@
+/* DESIGN-R09: size the shell from available space, not a device brand. */
+.compact-hud-icon { display: none; }
+:root { --coach-height-limit: 380px; }
+.table-screen { --coach-bottom: max(calc(var(--coach-sticker-space) + var(--coach-edge)), var(--coach-hand-clearance)); }
+.coach-panel { block-size: min(var(--coach-height-limit), calc(100% - var(--coach-bottom) - var(--coach-edge) - env(safe-area-inset-bottom, 0px))); }
+.coach-pinned .coach-panel { block-size: min(var(--coach-height-limit), calc(100% - var(--coach-sticker-space) - var(--coach-edge) * 2)); }
+.coach-pin:disabled { opacity: .4; cursor: default; }
+
+/* Taller tablets and desktops get a readable window proportional to the table. */
+@media (min-width: 901px) and (min-height: 481px) {
+  :root { --coach-card-width: clamp(240px, 22vw, 320px); --coach-height-limit: min(560px, 70dvh); }
+  .coach-panel-heading { font-size: 16px; }
+  .coach-copy, .coach-replay-panel .playback-caption p { font-size: 14px; }
+}
+
+/* A short landscape phone trades the top row for five 44px side controls.
+   The iframe stays mounted and gains the full height. Safe areas are counted
+   once by the outer frame; the board receives its actual remaining viewport. */
+@media (max-width: 1000px) and (max-height: 430px) and (orientation: landscape) {
+  body[data-view=play] { --side-controls: 52px; --hud: 0px; }
+  body[data-view=play] #main { padding-inline-start: calc(var(--side-controls) + env(safe-area-inset-left, 0px)); }
+  body[data-view=play] .table-screen { height: 100dvh; padding-left: 0; padding-top: env(safe-area-inset-top, 0px); }
+  body[data-view=play] .hud {
+    position: absolute; inset: 0 auto 0 0;
+    width: calc(var(--side-controls) + env(safe-area-inset-left, 0px)); height: 100dvh;
+    padding: env(safe-area-inset-top, 0px) 4px env(safe-area-inset-bottom, 0px) calc(4px + env(safe-area-inset-left, 0px));
+    display: grid; grid-template-columns: 44px; grid-template-rows: repeat(5, 44px);
+    align-content: center; gap: 4px; border-bottom: 0; border-right: 1px solid var(--line);
+  }
+  body[data-view=play] .hud-left, body[data-view=play] .hud-right { display: contents; }
+  body[data-view=play] .hud .logo-button { grid-row: 1; grid-column: 1; }
+  body[data-view=play] .hud .game-switch { grid-row: 2; grid-column: 1; }
+  body[data-view=play] .hud .hud-score { grid-row: 3; grid-column: 1; }
+  body[data-view=play] .hud [data-action=pause] { grid-row: 4; grid-column: 1; }
+  body[data-view=play] .hud [data-action=menu] { grid-row: 5; grid-column: 1; }
+  body[data-view=play] .hud :is([data-action=coach], .demo-button) { display: none; }
+  body[data-view=play] .game-switch > span:not(.compact-hud-icon),
+  body[data-view=play] .game-switch > svg,
+  body[data-view=play] .hud-score > :not(.compact-hud-icon) { display: none; }
+  body[data-view=play] :is(.hud-score, .game-switch) {
+    width: 44px; min-width: 44px; height: 44px; min-height: 44px;
+    padding: 0; gap: 0; justify-content: center;
+  }
+  body[data-view=play] .compact-hud-icon { display: inline-flex; align-items: center; justify-content: center; }
+  body[data-view=play] .compact-hud-icon svg { width: 22px; height: 22px; }
+  body[data-view=play]:not(.coach-pinned) .coach-panel, body[data-view=play] .coach-launcher { inset-inline-start: var(--coach-edge); }
+  body[data-view=play].coach-pinned .table-screen { padding-inline-start: var(--coach-edge); }
+  body[data-view=play] .coach-panel { border-radius: 12px; }
+}

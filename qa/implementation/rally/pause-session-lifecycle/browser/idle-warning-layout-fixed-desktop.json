@@ -1,0 +1,65 @@
+{
+  "name": "idle-warning-layout-fixed-desktop",
+  "at": "2026-10-16T02:23:36.486Z",
+  "build": "index-B-IIS17u.js",
+  "check": "Floating idle warning landscape review",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 587.3559875488281,
+        "clientHeight": 273,
+        "controls": [
+          {
+            "bottom": 480.7016181945801,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 436.7060241699219
+          },
+          {
+            "bottom": 562.6799201965332,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 710.0905914306641,
+            "width": 195.2277984619141,
+            "x": 514.86279296875,
+            "y": 518.684326171875
+          },
+          {
+            "bottom": 562.6799201965332,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 913.3108673095704,
+            "width": 195.2277984619141,
+            "x": 718.0830688476562,
+            "y": 518.684326171875
+          }
+        ],
+        "height": 274.3055419921875,
+        "name": "Game paused",
+        "right": 950.1820373535156,
+        "scrollHeight": 273,
+        "width": 459.9953308105469,
+        "x": 490.1867065429687,
+        "y": 313.0504455566406
+      }
+    ],
+    "height": 900,
+    "scrollHeight": 900,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

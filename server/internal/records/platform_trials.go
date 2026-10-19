@@ -217,8 +217,14 @@ func (s *Store) FailPlatformTrial(ctx context.Context, j PlatformTrialJob) error
 	if err := s.currentRead(ctx, j.OwnerID); err != nil {
 		return err
 	}
-	bounded, cancel := s.bounded(ctx)
-	defer cancel()
-	_, err := s.pool.Exec(bounded, "UPDATE "+s.table("m04_review_jobs")+" SET status='unavailable' WHERE owner_id=$1 AND command_id=$2 AND attempt=$3 AND status='running'", j.OwnerID, j.CommandID, j.Attempt)
-	return err
+	return s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
+		if _, err := tx.Exec(ctx, "SELECT 1 FROM "+s.table("m03_access")+" WHERE owner_id=$1 FOR UPDATE", j.OwnerID); err != nil {
+			return err
+		}
+		if err := s.authorize(ctx, tx, j.OwnerID); err != nil {
+			return err
+		}
+		_, err := tx.Exec(ctx, "UPDATE "+s.table("m04_review_jobs")+" SET status='unavailable' WHERE owner_id=$1 AND command_id=$2 AND attempt=$3 AND status='running'", j.OwnerID, j.CommandID, j.Attempt)
+		return err
+	})
 }

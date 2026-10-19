@@ -1,0 +1,242 @@
+{
+  "label": "trix-complex-partners-round-trick-6",
+  "frames": 160,
+  "elapsedMs": 3181.0999999940395,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0.3,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 35.6,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 653.7,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DJ",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 750.9,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DJ",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1191,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DJ",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "DK",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1290.9,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DJ",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "DK",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1871.2,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DJ",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "DK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D8",
+          "seat": "2",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1971.1,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DJ",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "DK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D8",
+          "seat": "2",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 7 of clubs",
+        "Joe: 6 of clubs",
+        "Maya: 10 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 3151.2,
+      "cards": [
+        {
+          "card": "C8",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Leo: 2 of diamonds",
+        "You: Jack of diamonds",
+        "Joe: King of diamonds, won the trick",
+        "Maya: 8 of diamonds"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

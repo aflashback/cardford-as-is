@@ -116,6 +116,40 @@
             "ruleProfileId"
           ],
           "additionalProperties": false
+        },
+        {
+          "title": "LocalTrixSelector",
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "trix"
+            },
+            "variantId": {
+              "enum": [
+                "basic-solo",
+                "basic-partners",
+                "complex-solo",
+                "complex-partners"
+              ]
+            },
+            "moduleVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "ruleProfileId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId"
+          ],
+          "additionalProperties": false
         }
       ],
       "title": "LocalServiceSelector"
@@ -750,7 +784,7 @@
           "maximum": 9007199254740991
         },
         "advice": {
-          "$ref": "#/$defs/AdviceView"
+          "$ref": "#/$defs/RegisteredAdvice"
         }
       },
       "required": [

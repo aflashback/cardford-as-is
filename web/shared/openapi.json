@@ -1358,6 +1358,21 @@
       "RegisteredPresentation": {
         "$ref": "./contracts.schema.json#/$defs/RegisteredPresentation"
       },
+      "RegisteredAdvice": {
+        "$ref": "./contracts.schema.json#/$defs/RegisteredAdvice"
+      },
+      "CoachSupport": {
+        "$ref": "./contracts.schema.json#/$defs/CoachSupport"
+      },
+      "CoachReason": {
+        "$ref": "./contracts.schema.json#/$defs/CoachReason"
+      },
+      "CoachMessage": {
+        "$ref": "./contracts.schema.json#/$defs/CoachMessage"
+      },
+      "CoachMessageView": {
+        "$ref": "./contracts.schema.json#/$defs/CoachMessageView"
+      },
       "HeartsCandidate": {
         "$ref": "./games/hearts.schema.json#/$defs/HeartsCandidate"
       },
@@ -1423,6 +1438,72 @@
       },
       "TokenPresentation": {
         "$ref": "./games/token.schema.json#/$defs/TokenPresentation"
+      },
+      "TrixAction": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixAction"
+      },
+      "TrixPlay": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixPlay"
+      },
+      "TrixTrick": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixTrick"
+      },
+      "TrixDeclaration": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixDeclaration"
+      },
+      "TrixRow": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixRow"
+      },
+      "TrixLayoutPass": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLayoutPass"
+      },
+      "TrixLeadSource": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLeadSource"
+      },
+      "TrixRecipient": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixRecipient"
+      },
+      "TrixLedgerEntry": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLedgerEntry"
+      },
+      "TrixWithheldBonus": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixWithheldBonus"
+      },
+      "TrixScore": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixScore"
+      },
+      "TrixTwoAnnouncements": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixTwoAnnouncements"
+      },
+      "TrixObservation": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixObservation"
+      },
+      "TrixActorPacket": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixActorPacket"
+      },
+      "TrixSessionView": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixSessionView"
+      },
+      "TrixPresentation": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixPresentation"
+      },
+      "TrixAnalysis": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixAnalysis"
+      },
+      "TrixActorEvent": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixActorEvent"
+      },
+      "TrixAdvice": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixAdvice"
+      },
+      "TrixReviewFrame": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixReviewFrame"
+      },
+      "TrixLayoutTurn": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLayoutTurn"
+      },
+      "TrixLayoutHistory": {
+        "$ref": "./games/trix.schema.json#/$defs/TrixLayoutHistory"
       }
     }
   }

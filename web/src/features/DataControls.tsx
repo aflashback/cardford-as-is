@@ -53,14 +53,13 @@ export function DataControls({ onDeleted }: { onDeleted: () => void }) {
     }
   }
   return (
-    <section className="account-section">
+    <section className="account-section rally-data-controls">
       <h2>Your local data</h2>
       <p>
-        Download your account and permitted game records. The export does not contain other players’ private
-        hands.
+        Export your account and permitted game records. Other players’ private hands are excluded.
       </p>
       <button className="text-button" disabled={busy} onClick={() => void download()}>
-        Download my local data
+        Export local data
       </button>
       <details>
         <summary>Delete local test account</summary>

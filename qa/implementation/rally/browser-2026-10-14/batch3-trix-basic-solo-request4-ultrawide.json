@@ -1,0 +1,286 @@
+{
+  "evidenceVersion": 4,
+  "context": {
+    "state": "batch3-trix-basic-solo-request4",
+    "device": "ultrawide",
+    "nativeFixtureOrigin": "localhost:4191"
+  },
+  "measure": {
+    "coach": null,
+    "coachScroll": null,
+    "declaredDoubles": [],
+    "dialogs": [],
+    "document": {
+      "height": 1080,
+      "width": 2560
+    },
+    "felt": {
+      "bottom": 773.7109375,
+      "height": 677.734375,
+      "right": 1947.3176879882812,
+      "width": 1334.6484375,
+      "x": 612.6692504882812,
+      "y": 95.9765625
+    },
+    "game": "trix",
+    "hand": {
+      "bottom": 1070,
+      "height": 272.3046875,
+      "right": 2536.0025215148926,
+      "width": 2512.005126953125,
+      "x": 23.997394561767575,
+      "y": 797.6953125
+    },
+    "handCards": [
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 836.5364532470703,
+        "width": 153.9973907470703,
+        "x": 682.5390625,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 928.9452667236328,
+        "width": 153.9973907470703,
+        "x": 774.9478759765625,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1021.3541412353516,
+        "width": 153.9973907470703,
+        "x": 867.3567504882812,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1113.7630157470703,
+        "width": 153.9973907470703,
+        "x": 959.765625,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1206.1718292236328,
+        "width": 153.9973907470703,
+        "x": 1052.1744384765625,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1298.5806427001953,
+        "width": 153.9973907470703,
+        "x": 1144.583251953125,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1390.9895782470703,
+        "width": 153.9973907470703,
+        "x": 1236.9921875,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1483.3983917236328,
+        "width": 153.9973907470703,
+        "x": 1329.4010009765625,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1575.8072052001953,
+        "width": 153.9973907470703,
+        "x": 1421.809814453125,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1668.2161407470703,
+        "width": 153.9973907470703,
+        "x": 1514.21875,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1760.6249542236328,
+        "width": 153.9973907470703,
+        "x": 1606.6275634765625,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1853.0337677001953,
+        "width": 153.9973907470703,
+        "x": 1699.036376953125,
+        "y": 849.7005004882812
+      },
+      {
+        "bottom": 1069.999969482422,
+        "height": 220.29946899414065,
+        "right": 1945.4427032470703,
+        "width": 153.9973907470703,
+        "x": 1791.4453125,
+        "y": 849.7005004882812
+      }
+    ],
+    "images": [
+      {
+        "complete": true,
+        "src": "/brand/cardford-symbol.svg",
+        "width": 160
+      },
+      {
+        "complete": true,
+        "src": "/rally/regular-waiting-v2.png",
+        "width": 1254
+      }
+    ],
+    "jacksBoard": null,
+    "jacksCards": [],
+    "jacksRows": [],
+    "lastTrick": null,
+    "main": {
+      "bottom": 1079.99995803833,
+      "height": 1024.0103759765625,
+      "right": 2560,
+      "width": 2560,
+      "x": 0,
+      "y": 55.98958206176758
+    },
+    "phase": "request",
+    "pinned": false,
+    "players": [
+      {
+        "bottom": 791.7056884765625,
+        "height": 76.4453125,
+        "right": 1339.9739532470703,
+        "width": 119.97395324707033,
+        "x": 1220,
+        "y": 715.2603759765625
+      },
+      {
+        "bottom": 441.40625,
+        "height": 124.453125,
+        "right": 626.6666641235352,
+        "width": 67.99478912353516,
+        "x": 558.671875,
+        "y": 316.953125
+      },
+      {
+        "bottom": 144.4270782470703,
+        "height": 76.4453125,
+        "right": 1339.9739532470703,
+        "width": 119.97395324707033,
+        "x": 1220,
+        "y": 67.98176574707031
+      },
+      {
+        "bottom": 441.40625,
+        "height": 124.453125,
+        "right": 2001.3151016235352,
+        "width": 67.99478912353516,
+        "x": 1933.3203125,
+        "y": 316.953125
+      }
+    ],
+    "previewCards": [],
+    "prompt": {
+      "bottom": 538.4895629882812,
+      "height": 167.3046875,
+      "right": 1604.9869384765625,
+      "width": 650,
+      "x": 954.9869384765624,
+      "y": 371.1848754882813
+    },
+    "promptControls": [
+      {
+        "label": "Diamonds",
+        "rect": {
+          "bottom": 468.5025825500488,
+          "height": 43.99739456176758,
+          "right": 1275.9895629882812,
+          "width": 303.0078125,
+          "x": 972.9817504882812,
+          "y": 424.5051879882813
+        }
+      },
+      {
+        "label": "Lutoosh",
+        "rect": {
+          "bottom": 468.5025825500488,
+          "height": 43.99739456176758,
+          "right": 1586.9921875,
+          "width": 303.0078125,
+          "x": 1283.984375,
+          "y": 424.5051879882813
+        }
+      },
+      {
+        "label": "The King",
+        "rect": {
+          "bottom": 520.4947700500488,
+          "height": 43.99739456176758,
+          "right": 1275.9895629882812,
+          "width": 303.0078125,
+          "x": 972.9817504882812,
+          "y": 476.4973754882813
+        }
+      },
+      {
+        "label": "Trix Jacks",
+        "rect": {
+          "bottom": 520.4947700500488,
+          "height": 43.99739456176758,
+          "right": 1586.9921875,
+          "width": 303.0078125,
+          "x": 1283.984375,
+          "y": 476.4973754882813
+        }
+      }
+    ],
+    "replay": false,
+    "tableCards": [],
+    "theme": "light",
+    "twoAnnouncements": [],
+    "viewport": {
+      "dpr": 1.000000015894571,
+      "height": 1080,
+      "width": 2560
+    }
+  },
+  "checks": {
+    "pageFits": true,
+    "visibleImagesLoaded": true,
+    "handCardsInViewport": true,
+    "playersInViewport": true,
+    "promptClearPlayers": true,
+    "promptControlsContained": true,
+    "tableCardsInViewport": null,
+    "tableCardsClearPlayers": null,
+    "previewCardsInViewport": null,
+    "jacksBoardInViewport": null,
+    "jacksRowsInViewport": null,
+    "jacksCardsInViewport": null,
+    "declaredDoublesInViewport": null,
+    "twoAnnouncementsInViewport": null,
+    "dialogsInViewport": null,
+    "dialogsNoHorizontalScroll": null,
+    "coachInViewport": true,
+    "overlayClearsHand": true,
+    "coachNoHorizontalScroll": true
+  }
+}

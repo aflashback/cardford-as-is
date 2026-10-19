@@ -18,6 +18,21 @@ type Work struct {
 	result WorkResult
 }
 
+// NewWork gives offline adapters the same charged counters used by RunPaired.
+// It does not create a deadline or make wall time part of a decision rule.
+func NewWork(ctx context.Context, budget RunBudget) (*Work, error) {
+	if ctx == nil {
+		return nil, fmt.Errorf("execution context required")
+	}
+	if budget.MaxWorlds < 0 || budget.MaxSteps < 0 || budget.MaxCandidates < 0 || budget.MaxMemoryBytes < 0 || budget.MaxSamplerOperations < 0 || budget.MaxSetupOperations < 0 {
+		return nil, fmt.Errorf("negative work cap")
+	}
+	return &Work{ctx: ctx, budget: budget}, nil
+}
+
+// Result is a detached counter snapshot; callers cannot change charged work.
+func (w *Work) Result() WorkResult { return w.result }
+
 func (w *Work) Check() error {
 	if err := w.ctx.Err(); err != nil {
 		status := "cancelled"

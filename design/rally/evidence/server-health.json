@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-14T01:00:44.7532977Z",
+  "baseUrl": "http://127.0.0.1:4188",
+  "scope": "HTTP HEAD server availability only; redirects not followed; no HTML/browser rendering",
+  "receipts": [
+    {
+      "route": "/rally/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "route": "/rally/approved/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "route": "/rally/design-system/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "route": "/rally/assets/stickers/",
+      "status": 200,
+      "location": null
+    },
+    {
+      "route": "/rally/responsive.html",
+      "status": 200,
+      "location": null
+    },
+    {
+      "route": "/studio/",
+      "status": 302,
+      "location": "/rally/approved/"
+    },
+    {
+      "route": "/clubhouse",
+      "status": 404,
+      "location": null
+    },
+    {
+      "route": "/lantern",
+      "status": 404,
+      "location": null
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+- main:
+  - heading "This game expired" [level=1]
+  - paragraph: The saved pause window ended. Choose a new game when ready.
+  - generic "Choose game"
+  - link "Account & settings":
+    - /url: "#account"

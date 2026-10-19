@@ -1,0 +1,107 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Spades Solo"':
+    - text: Spades
+    - generic: Solo
+  - 'button "Scores: You 0, Leo 0, Maya 0, Theo 0"':
+    - generic: "0"
+    - generic: You
+    - generic: "0"
+    - generic: Leo
+    - generic: "0"
+    - generic: Maya
+    - generic: "0"
+    - generic: Theo
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Card table":
+    - generic: L
+    - generic: Leo
+    - generic: 0 / 3
+    - generic: 0 tricks, bid 3
+    - img "13 cards left"
+    - generic: M
+    - generic: Maya
+    - generic: 0 / 4
+    - generic: 0 tricks, bid 4
+    - img "13 cards left"
+    - generic: T
+    - generic: Theo
+    - generic: 0 / 1
+    - generic: 0 tricks, bid 1
+    - img "13 cards left"
+    - generic: "Y"
+    - generic: You
+    - generic: 0 / —
+    - generic: 0 tricks, not bid yet
+    - img "13 cards left"
+    - img "Current player"
+    - heading "Your bid" [level=2]
+    - generic "Choose your bid":
+      - button "Decrease bid": −
+      - status: "3"
+      - button "Increase bid": +
+    - button "Nil"
+    - button "Bid 3":
+      - text: Bid 3
+  - region "Your hand":
+    - status: What’s your bid?
+    - button "4 of clubs" [disabled]:
+      - generic: "4"
+      - generic: ♣
+      - generic: ♣
+    - button "King of clubs" [disabled]:
+      - generic: K
+      - generic: ♣
+      - generic: ♣
+    - button "4 of diamonds" [disabled]:
+      - generic: "4"
+      - generic: ♦
+      - generic: ♦
+    - button "9 of diamonds" [disabled]:
+      - generic: "9"
+      - generic: ♦
+      - generic: ♦
+    - button "3 of hearts" [disabled]:
+      - generic: "3"
+      - generic: ♥
+      - generic: ♥
+    - button "5 of hearts" [disabled]:
+      - generic: "5"
+      - generic: ♥
+      - generic: ♥
+    - button "8 of hearts" [disabled]:
+      - generic: "8"
+      - generic: ♥
+      - generic: ♥
+    - button "9 of hearts" [disabled]:
+      - generic: "9"
+      - generic: ♥
+      - generic: ♥
+    - button "Jack of hearts" [disabled]:
+      - generic: J
+      - generic: ♥
+      - generic: ♥
+    - button "Ace of hearts" [disabled]:
+      - generic: A
+      - generic: ♥
+      - generic: ♥
+    - button "6 of spades" [disabled]:
+      - generic: "6"
+      - generic: ♠
+      - generic: ♠
+    - button "King of spades" [disabled]:
+      - generic: K
+      - generic: ♠
+      - generic: ♠
+    - button "Ace of spades" [disabled]:
+      - generic: A
+      - generic: ♠
+      - generic: ♠
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- button "Open Coach for this decision":
+  - img "Coach signals a decision"
+- status: Coaching is available for this decision.
+- generic: Local test access · no payment

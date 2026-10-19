@@ -1,0 +1,37 @@
+{
+  "verifiedAt": "2026-10-15T14:05:02.734Z",
+  "health": {
+    "identity": "local-test",
+    "mode": "local",
+    "payments": "fixture",
+    "provider": "off",
+    "status": "ready"
+  },
+  "transport": "HTTP playback command; receive-only WebSocket retained during confirmed pause",
+  "reproducedGap": {
+    "frontend": "Paused; change unconfirmed",
+    "serverRunning": true,
+    "unchangedPlaybackGeneration": 17,
+    "secondsBetweenRunningSnapshots": 70.12553499999922,
+    "cause": "The identity preflight failed before a pause POST. Reconnection refreshed the server view but did not enforce the paused intent."
+  },
+  "sourceTests": {
+    "passed": 50,
+    "command": "node --test --test-isolation=none web/tests/pause-lifecycle.test.ts web/tests/realtime-stream.test.ts web/tests/trick-playback.test.ts"
+  },
+  "scope": "Current live Trix Complex Partners request, no cards or request choice submitted; focus and network emulation are desktop checks, not physical phone suspension.",
+  "finalState": {
+    "networkOnline": true,
+    "focusEmulation": true,
+    "temporaryViewportReset": true,
+    "serverRunning": false,
+    "generation": 20,
+    "revision": 120
+  },
+  "limitations": [
+    "Not a real iOS/Android suspension or force-kill test.",
+    "No bot move was advanced during the network gap: the current game awaited the human request choice.",
+    "No load benchmark or production capacity result.",
+    "No app code changed."
+  ]
+}

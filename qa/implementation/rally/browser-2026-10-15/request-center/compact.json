@@ -1,0 +1,569 @@
+{
+  "evidenceVersion": 10,
+  "context": {
+    "coach": "closed",
+    "mode": "complex-partners"
+  },
+  "stability": {
+    "coachSettled": true,
+    "samples": 3,
+    "elapsedMs": 174
+  },
+  "measure": {
+    "coach": null,
+    "coachScroll": null,
+    "declaredDoubles": [],
+    "dialogs": [],
+    "document": {
+      "height": 352,
+      "width": 756
+    },
+    "felt": {
+      "bottom": 227.48347282409668,
+      "height": 207.4970245361328,
+      "right": 649.0938110351562,
+      "width": 490.2184753417969,
+      "x": 158.87533569335938,
+      "y": 19.986448287963867
+    },
+    "game": "trix",
+    "hand": {
+      "bottom": 348.0055694580078,
+      "height": 108.5386962890625,
+      "right": 744.1035308837891,
+      "width": 680.1109008789062,
+      "x": 63.99263000488281,
+      "y": 239.4668731689453
+    },
+    "handCards": [
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 250.6880874633789,
+        "width": 59.78997039794922,
+        "x": 190.8981170654297,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 286.5641860961914,
+        "width": 59.78997039794922,
+        "x": 226.7742156982422,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 322.44026947021484,
+        "width": 59.78997039794922,
+        "x": 262.6502990722656,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 358.31636810302734,
+        "width": 59.78997039794922,
+        "x": 298.5263977050781,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 394.19246673583984,
+        "width": 59.78997039794922,
+        "x": 334.4024963378906,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 430.06856536865234,
+        "width": 59.78997039794922,
+        "x": 370.2785949707031,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 465.9446640014648,
+        "width": 59.78997039794922,
+        "x": 406.1546936035156,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 501.82076263427734,
+        "width": 59.78997039794922,
+        "x": 442.0307922363281,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 537.696891784668,
+        "width": 59.78997039794922,
+        "x": 477.9069213867187,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 573.5729904174805,
+        "width": 59.78997039794922,
+        "x": 513.7830200195312,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 609.449089050293,
+        "width": 59.78997039794922,
+        "x": 549.6591186523438,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 645.3251876831055,
+        "width": 59.78997039794922,
+        "x": 585.5352172851562,
+        "y": 262.4597473144531
+      },
+      {
+        "bottom": 348.0055618286133,
+        "height": 85.54581451416016,
+        "right": 681.201286315918,
+        "width": 59.78997039794922,
+        "x": 621.4113159179688,
+        "y": 262.4597473144531
+      }
+    ],
+    "images": [
+      {
+        "complete": true,
+        "src": "/brand/cardford-symbol.svg",
+        "width": 160
+      },
+      {
+        "complete": true,
+        "src": "/rally/regular-waiting-v2.png",
+        "width": 1254
+      }
+    ],
+    "jacksBoard": null,
+    "jacksCards": [],
+    "jacksGeometry": null,
+    "jacksLanes": [],
+    "jacksRows": [],
+    "lastTrick": null,
+    "main": {
+      "bottom": 351.99652099609375,
+      "height": 351.99652099609375,
+      "right": 756.0975189208984,
+      "width": 704.098876953125,
+      "x": 51.99864196777344,
+      "y": 0
+    },
+    "phase": "request",
+    "pinned": false,
+    "playerDetails": [
+      {
+        "infoRect": {
+          "bottom": 233.48576164245603,
+          "height": 28.391767501831055,
+          "right": 676.0987873077393,
+          "width": 21.341463088989254,
+          "x": 654.75732421875,
+          "y": 205.093994140625
+        },
+        "lineEvidence": {
+          "infoDirection": "row",
+          "infoDisplay": "block",
+          "infoItems": [
+            {
+              "lineHeight": "14.4px",
+              "rect": {
+                "bottom": 219.4910125732422,
+                "height": 14.397018432617188,
+                "right": 676.0987873077393,
+                "width": 21.341463088989254,
+                "x": 654.75732421875,
+                "y": 205.093994140625
+              },
+              "text": "You",
+              "whiteSpace": "nowrap"
+            },
+            {
+              "lineHeight": "11px",
+              "rect": {
+                "bottom": 233.48576068878177,
+                "height": 10.99889850616455,
+                "right": 676.0987873077393,
+                "width": 21.341463088989254,
+                "x": 654.75732421875,
+                "y": 222.4868621826172
+              },
+              "text": "0",
+              "whiteSpace": "normal"
+            }
+          ],
+          "nameLineHeight": "14.4px",
+          "nameWhiteSpace": "nowrap",
+          "tagDirection": "row",
+          "tagDisplay": "flex"
+        },
+        "name": "You",
+        "nameRect": {
+          "bottom": 219.4910125732422,
+          "height": 14.397018432617188,
+          "right": 676.0987873077393,
+          "width": 21.341463088989254,
+          "x": 654.75732421875,
+          "y": 205.093994140625
+        },
+        "rect": {
+          "bottom": 237.47669982910156,
+          "height": 36.37364196777344,
+          "right": 684.0912475585938,
+          "width": 70.3125,
+          "x": 613.7787475585938,
+          "y": 201.10305786132812
+        },
+        "seat": "0"
+      },
+      {
+        "infoRect": {
+          "bottom": 178.7453384399414,
+          "height": 52.36915588378906,
+          "right": 173.86516189575195,
+          "width": 39.99406814575195,
+          "x": 133.87109375,
+          "y": 126.37618255615234
+        },
+        "lineEvidence": {
+          "infoDirection": "row",
+          "infoDisplay": "block",
+          "infoItems": [
+            {
+              "lineHeight": "14.4px",
+              "rect": {
+                "bottom": 143.76904296875,
+                "height": 14.397018432617188,
+                "right": 166.86779022216797,
+                "width": 25.99932098388672,
+                "x": 140.86846923828125,
+                "y": 129.3720245361328
+              },
+              "text": "Leo",
+              "whiteSpace": "nowrap"
+            },
+            {
+              "lineHeight": "11px",
+              "rect": {
+                "bottom": 175.7494773864746,
+                "height": 28.98458480834961,
+                "right": 166.86779022216797,
+                "width": 25.99932098388672,
+                "x": 140.86846923828125,
+                "y": 146.764892578125
+              },
+              "text": "0",
+              "whiteSpace": "normal"
+            }
+          ],
+          "nameLineHeight": "14.4px",
+          "nameWhiteSpace": "nowrap",
+          "tagDirection": "column",
+          "tagDisplay": "flex"
+        },
+        "name": "Leo",
+        "nameRect": {
+          "bottom": 143.76904296875,
+          "height": 14.397018432617188,
+          "right": 166.86779022216797,
+          "width": 25.99932098388672,
+          "x": 140.86846923828125,
+          "y": 129.3720245361328
+        },
+        "rect": {
+          "bottom": 178.74533081054688,
+          "height": 83.35449981689453,
+          "right": 183.86898040771484,
+          "width": 59.99110412597656,
+          "x": 123.87787628173828,
+          "y": 95.39083099365234
+        },
+        "seat": "1"
+      },
+      {
+        "infoRect": {
+          "bottom": 54.35932922363281,
+          "height": 46.3774528503418,
+          "right": 196.18054580688477,
+          "width": 31.32410049438477,
+          "x": 164.8564453125,
+          "y": 7.981876373291016
+        },
+        "lineEvidence": {
+          "infoDirection": "row",
+          "infoDisplay": "block",
+          "infoItems": [
+            {
+              "lineHeight": "14.4px",
+              "rect": {
+                "bottom": 22.378894805908203,
+                "height": 14.397018432617188,
+                "right": 196.18054580688477,
+                "width": 31.32410049438477,
+                "x": 164.8564453125,
+                "y": 7.981876373291016
+              },
+              "text": "Maya",
+              "whiteSpace": "nowrap"
+            },
+            {
+              "lineHeight": "11px",
+              "rect": {
+                "bottom": 54.35932922363281,
+                "height": 28.98458480834961,
+                "right": 196.18054580688477,
+                "width": 31.32410049438477,
+                "x": 164.8564453125,
+                "y": 25.374744415283203
+              },
+              "text": "0",
+              "whiteSpace": "normal"
+            }
+          ],
+          "nameLineHeight": "14.4px",
+          "nameWhiteSpace": "nowrap",
+          "tagDirection": "row",
+          "tagDisplay": "flex"
+        },
+        "name": "Maya",
+        "nameRect": {
+          "bottom": 22.378894805908203,
+          "height": 14.397018432617188,
+          "right": 196.18054580688477,
+          "width": 31.32410049438477,
+          "x": 164.8564453125,
+          "y": 7.981876373291016
+        },
+        "rect": {
+          "bottom": 58.35026741027832,
+          "height": 54.35932922363281,
+          "right": 204.17301177978516,
+          "width": 80.29513549804688,
+          "x": 123.87787628173828,
+          "y": 3.990938186645508
+        },
+        "seat": "2"
+      },
+      {
+        "infoRect": {
+          "bottom": 146.06622314453125,
+          "height": 52.36915588378906,
+          "right": 674.0874519348145,
+          "width": 39.99406814575195,
+          "x": 634.0933837890625,
+          "y": 93.6970672607422
+        },
+        "lineEvidence": {
+          "infoDirection": "row",
+          "infoDisplay": "block",
+          "infoItems": [
+            {
+              "lineHeight": "14.4px",
+              "rect": {
+                "bottom": 111.08993530273438,
+                "height": 14.397018432617188,
+                "right": 667.0900802612305,
+                "width": 25.99932098388672,
+                "x": 641.0907592773438,
+                "y": 96.6929168701172
+              },
+              "text": "Joe",
+              "whiteSpace": "nowrap"
+            },
+            {
+              "lineHeight": "11px",
+              "rect": {
+                "bottom": 143.07036972045898,
+                "height": 28.98458480834961,
+                "right": 667.0900802612305,
+                "width": 25.99932098388672,
+                "x": 641.0907592773438,
+                "y": 114.08578491210938
+              },
+              "text": "0",
+              "whiteSpace": "normal"
+            }
+          ],
+          "nameLineHeight": "14.4px",
+          "nameWhiteSpace": "nowrap",
+          "tagDirection": "column",
+          "tagDisplay": "flex"
+        },
+        "name": "Joe",
+        "nameRect": {
+          "bottom": 111.08993530273438,
+          "height": 14.397018432617188,
+          "right": 667.0900802612305,
+          "width": 25.99932098388672,
+          "x": 641.0907592773438,
+          "y": 96.6929168701172
+        },
+        "rect": {
+          "bottom": 146.06621932983398,
+          "height": 83.35449981689453,
+          "right": 684.0912628173828,
+          "width": 59.99110412597656,
+          "x": 624.1001586914062,
+          "y": 62.71171951293945
+        },
+        "seat": "3"
+      }
+    ],
+    "players": [
+      {
+        "bottom": 237.47669982910156,
+        "height": 36.37364196777344,
+        "right": 684.0912475585938,
+        "width": 70.3125,
+        "x": 613.7787475585938,
+        "y": 201.10305786132812
+      },
+      {
+        "bottom": 178.74533081054688,
+        "height": 83.35449981689453,
+        "right": 183.86898040771484,
+        "width": 59.99110412597656,
+        "x": 123.87787628173828,
+        "y": 95.39083099365234
+      },
+      {
+        "bottom": 58.35026741027832,
+        "height": 54.35932922363281,
+        "right": 204.17301177978516,
+        "width": 80.29513549804688,
+        "x": 123.87787628173828,
+        "y": 3.990938186645508
+      },
+      {
+        "bottom": 146.06621932983398,
+        "height": 83.35449981689453,
+        "right": 684.0912628173828,
+        "width": 59.99110412597656,
+        "x": 624.1001586914062,
+        "y": 62.71171951293945
+      }
+    ],
+    "previewCards": [],
+    "prompt": {
+      "bottom": 163.71315002441406,
+      "height": 79.96696472167969,
+      "right": 596.0894927978516,
+      "width": 384.2098388671875,
+      "x": 211.8796539306641,
+      "y": 83.74618530273438
+    },
+    "promptControls": [
+      {
+        "label": "All combined",
+        "rect": {
+          "bottom": 157.72145462036133,
+          "height": 43.9955940246582,
+          "right": 401.9838104248047,
+          "width": 184.11245727539065,
+          "x": 217.8713531494141,
+          "y": 113.72586059570312
+        }
+      },
+      {
+        "label": "Trix Jacks",
+        "rect": {
+          "bottom": 157.72145462036133,
+          "height": 43.9955940246582,
+          "right": 590.0977783203125,
+          "width": 184.123046875,
+          "x": 405.9747314453125,
+          "y": 113.72586059570312
+        }
+      }
+    ],
+    "replay": false,
+    "tableCards": [],
+    "theme": "light",
+    "twoAnnouncements": [],
+    "viewport": {
+      "dpr": 1.2300000294844295,
+      "height": 352,
+      "width": 756
+    },
+    "jacksFeltCenter": null,
+    "request": {
+      "buttons": [
+        {
+          "bottom": 157.72145462036133,
+          "height": 43.9955940246582,
+          "text": "All combined",
+          "top": 113.72586059570312,
+          "width": 184.11245727539065
+        },
+        {
+          "bottom": 157.72145462036133,
+          "height": 43.9955940246582,
+          "text": "Trix Jacks",
+          "top": 113.72586059570312,
+          "width": 184.123046875
+        }
+      ],
+      "compact": "true",
+      "height": 80,
+      "inline": null,
+      "scrollHeight": 80,
+      "scrollWidth": 384,
+      "width": 384,
+      "dx": 0,
+      "dy": -0.0052928924560546875
+    }
+  },
+  "checks": {
+    "pageFits": true,
+    "visibleImagesLoaded": true,
+    "handCardsInViewport": true,
+    "playersInViewport": true,
+    "promptClearPlayers": true,
+    "promptControlsContained": true,
+    "tableCardsInViewport": null,
+    "tableCardsClearPlayers": null,
+    "previewCardsInViewport": null,
+    "jacksBoardInViewport": null,
+    "jacksRowsInViewport": null,
+    "jacksCardsInViewport": null,
+    "jacksCenteredOnFeltX": null,
+    "jacksCenteredOnFeltY": null,
+    "jacksReservesAceThroughTwo": null,
+    "jacksLanesSameX": null,
+    "jacksJackYAligned": null,
+    "declaredDoublesInViewport": null,
+    "twoAnnouncementsInViewport": null,
+    "twoAnnouncementsClearPlayerInfo": null,
+    "twoAnnouncementsClearHand": null,
+    "dialogsInViewport": null,
+    "dialogsNoHorizontalScroll": null,
+    "coachInViewport": true,
+    "overlayClearsHand": true,
+    "coachNoHorizontalScroll": true,
+    "requestPresent": true,
+    "requestCenteredX": true,
+    "requestCenteredY": true,
+    "requestNoScroll": true,
+    "requestTargets": true,
+    "requestAllChoicesInside": true
+  },
+  "captureMethod": "built-in-browser getScreenshot; full viewport, no CDP clipping"
+}

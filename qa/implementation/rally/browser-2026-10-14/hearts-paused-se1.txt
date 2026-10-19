@@ -1,0 +1,91 @@
+- banner:
+  - button
+  - button:
+  - button:
+  - navigation:
+    - button:
+    - button:
+- main:
+  - region:
+    - generic: L
+    - generic: Leo
+    - text: "0"
+    - generic: 0 tricks
+    - generic: M
+    - generic: Maya
+    - text: "0"
+    - generic: 0 tricks
+    - generic: T
+    - generic: Theo
+    - text: "0"
+    - generic: 0 tricks
+    - generic: "Y"
+    - generic: You
+    - text: "0"
+    - generic: 0 tricks
+    - heading [level=2]: Pass three cards left
+    - button [disabled]:
+      - text: Pass 0 of 3
+  - region:
+    - status: Pass three left
+    - button [disabled]:
+      - generic: "10"
+      - generic: ♣
+      - generic: ♣
+    - button [disabled]:
+      - generic: J
+      - generic: ♣
+      - generic: ♣
+    - button [disabled]:
+      - generic: "2"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "7"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "10"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "7"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "8"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "10"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: A
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "3"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: "4"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: "5"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: Q
+      - generic: ♠
+      - generic: ♠
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- dialog "Paused":
+  - banner:
+    - heading "Paused" [level=2]
+    - button "Close dialog" [active]:
+  - button "Resume":
+    - text: Resume
+  - button "Choose another game":
+    - text: Choose another game

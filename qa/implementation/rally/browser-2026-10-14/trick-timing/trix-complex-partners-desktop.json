@@ -1,0 +1,306 @@
+{
+  "label": "trix-complex-partners-desktop-1.4",
+  "frames": 2823,
+  "elapsedMs": 56446.90000000596,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0.2,
+      "cards": [],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 28293.4,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 28390.6,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 31068.7,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "C4",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 31168.5,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "C4",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 33808.6,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "C4",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "C7",
+          "seat": "2",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 33908.4,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "C4",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "C7",
+          "seat": "2",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 36496.5,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "C4",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "C7",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "CK",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 36588.5,
+      "cards": [
+        {
+          "card": "C5",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "C4",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "C7",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "CK",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 9 of spades, won the trick",
+        "Joe: 2 of spades",
+        "Maya: 7 of spades",
+        "Leo: 8 of spades"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 37770.9,
+      "cards": [],
+      "pocket": [
+        "You: 5 of clubs",
+        "Joe: 4 of clubs",
+        "Maya: 7 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 38828.7,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 5 of clubs",
+        "Joe: 4 of clubs",
+        "Maya: 7 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 38928.4,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 5 of clubs",
+        "Joe: 4 of clubs",
+        "Maya: 7 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 56209.2,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 5 of clubs",
+        "Joe: 4 of clubs",
+        "Maya: 7 of clubs",
+        "Leo: King of clubs, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": true
+    }
+  ]
+}

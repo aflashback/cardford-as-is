@@ -1,0 +1,95 @@
+/* Rally R09 shell palette. Card artwork keeps its own fixed face and ink tokens. */
+html, html[data-theme=light] {
+  --bg:#eee9dc; --surface:#f8f4e9; --ink:#242820; --muted:#5d6257;
+  --line:#cacaba; --accent:#bd442d; --accent-ink:#fff6e6; --tint:#e7dbcb;
+  --felt:#d8ddcc; --shadow:0 16px 80px #24282030; color-scheme:light;
+}
+html[data-theme=dark] {
+  --bg:#191e1a; --surface:#273027; --ink:#f1eadb; --muted:#b0b7a8;
+  --line:#495247; --accent:#ee7659; --accent-ink:#241c16; --tint:#39372a;
+  --felt:#293b30; --shadow:0 16px 80px #0008; color-scheme:dark;
+}
+html[data-theme=warm] {
+  --bg:#241c16; --surface:#352a1f; --ink:#f2dbb5; --muted:#c6ab85;
+  --line:#68533b; --accent:#da9160; --accent-ink:#241c16; --tint:#4b3725;
+  --felt:#423526; --shadow:0 16px 80px #0008; color-scheme:dark;
+}
+body { background:var(--bg); color:var(--ink); font-family:'DM Sans Variable','Segoe UI',sans-serif; }
+.rally-page { width:min(100%,960px); min-height:100dvh; margin:0 auto; padding:28px max(24px,env(safe-area-inset-right)) 48px max(24px,env(safe-area-inset-left)); gap:24px; }
+.rally-page :is(h1,h2,h3),.rally-review :is(h2,h3) { font-family:'Manrope Variable','DM Sans Variable',sans-serif; letter-spacing:-.035em; color:var(--ink); }
+.rally-page h1 { font-size:clamp(32px,4vw,48px); line-height:1.08; font-weight:780; }
+.rally-page h2 { font-size:21px; font-weight:750; line-height:1.25; }
+.rally-page h3 { font-size:16px; font-weight:750; }
+.rally-page p,.rally-review p { font-size:14px; line-height:1.55; color:var(--muted); }
+.rally-page-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:20px; border-bottom:1px solid var(--line); }
+.rally-page-brand { display:inline-flex; align-items:center; gap:10px; min-height:44px; color:var(--ink); font-size:17px; font-weight:800; letter-spacing:-.03em; }
+.rally-page-brand img { width:31px; height:31px; }
+.rally-page-title { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:12px 0 4px; }
+.rally-page-tag { border:1px solid var(--line); color:var(--muted); border-radius:6px; padding:6px 9px; font-size:11px; font-weight:650; }
+.rally-profile-heading { display:flex; align-items:center; gap:14px; }
+.rally-profile-avatar { width:52px; height:52px; flex:none; display:grid; place-items:center; border-radius:14px; background:var(--accent); color:var(--accent-ink); font-size:23px; font-weight:750; }
+.rally-page .account-section { padding:24px 0; border:0; border-top:1px solid var(--line); border-radius:0; background:transparent; gap:16px; }
+.rally-page .rally-account-summary { border-top:0; padding-top:4px; }
+.rally-page .local-account-id { display:flex; flex-direction:column; gap:7px; color:var(--muted); font-size:12px; max-width:480px; }
+.rally-page :is(input:not([type=checkbox]),select,textarea),.rally-review select {
+  background:var(--surface); color:var(--ink); font:inherit; border:1px solid var(--line); border-radius:7px;
+  min-height:46px; padding:10px 12px; width:100%; max-width:100%; min-width:0;
+}
+.rally-page input[readonly] { font-size:12px; }
+.rally-page :is(button,a,input,select,textarea,summary):focus-visible,.rally-review :is(button,a,input,select,summary):focus-visible,.rally-theme-picker button:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.rally-page :is(.primary-button,.text-button),.rally-review :is(.primary-button,.text-button) { min-height:44px; border-radius:8px; font-size:14px; font-weight:700; padding:11px 16px; max-width:100%; }
+.rally-page .primary-button,.rally-review .primary-button { color:var(--accent-ink); background:var(--accent); border:1px solid var(--accent); }
+.rally-page .text-button,.rally-review .text-button { color:var(--ink); background:transparent; }
+.rally-page .text-button:hover,.rally-review .text-button:hover { background:var(--tint); }
+.rally-page button:disabled,.rally-review button:disabled { opacity:.38; }
+.rally-page .fixture-notice,.rally-review .fixture-notice { background:var(--tint); color:var(--ink); border-radius:7px; font-size:12px; padding:12px 14px; }
+.rally-page [role=alert],.rally-review [role=alert] { padding:12px 14px; border-inline-start:3px solid var(--accent); background:var(--tint); color:var(--ink); overflow-wrap:anywhere; }
+.rally-page .plan-options { display:flex; flex-direction:column; gap:0; }
+.rally-page .plan-options article { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:9px 24px; padding:20px 0; border-bottom:1px solid var(--line); }
+.rally-page .plan-options article>:not(button) { grid-column:1; }
+.rally-page .plan-options article>button { grid-column:2; grid-row:1 / span 3; margin:0; align-self:center; }
+.rally-access-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; }
+.rally-access-list article { display:flex; flex-direction:column; gap:6px; border-bottom:1px solid var(--line); padding:16px 0; }
+.rally-page details>summary,.rally-review details>summary { min-height:44px; align-content:center; cursor:pointer; font-size:14px; font-weight:700; color:var(--ink); }
+.rally-page details[open]>summary { margin-bottom:12px; }
+.rally-page .rally-preferences { padding:0 0 20px; border-top:0; }
+.rally-page .family-panel { gap:16px; }
+.rally-page .family-panel form { padding:16px 0; border-top:1px solid var(--line); gap:12px; }
+.rally-page .family-panel label { font-size:13px; font-weight:650; }
+.rally-page .family-panel .check-label { font-size:12px; font-weight:400; line-height:1.5; }
+.rally-page .family-panel input[type=checkbox] { width:22px; height:22px; flex:none; accent-color:var(--accent); }
+.rally-page .family-member { border-bottom:1px solid var(--line); padding:14px 0; font-size:14px; }
+.rally-page .family-member small { display:block; color:var(--muted); margin-top:4px; font-size:12px; }
+.rally-page .family-invitation,.rally-page .family-confirm { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px; margin:0; }
+.rally-page .rally-data-controls details { margin-top:6px; }
+.rally-page .rally-data-controls details[open] { display:flex; flex-direction:column; gap:12px; }
+.rally-page .rally-data-controls details button { align-self:flex-start; color:var(--accent); }
+.rally-theme-picker { display:flex; flex-wrap:wrap; gap:7px; }
+.rally-theme-picker button { display:flex; align-items:center; justify-content:center; gap:8px; flex:1; min-width:80px; min-height:48px; padding:10px 13px; border:1px solid var(--line); border-radius:7px; background:var(--surface); color:var(--ink); font-size:13px; font-weight:700; }
+.rally-theme-picker button[aria-pressed=true] { background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+.rally-review { gap:18px; color:var(--ink); }
+.rally-review .rally-review-filter { display:flex; align-items:center; gap:12px; font-size:13px; font-weight:700; }
+.rally-review .rally-review-filter select { width:auto; min-width:150px; margin:0; }
+.rally-review .review-choices { align-items:stretch; max-height:260px; border-top:1px solid var(--line); }
+.rally-review .review-choices .text-button { display:flex; justify-content:space-between; align-items:center; width:100%; text-align:left; border-bottom:1px solid var(--line); border-radius:0; padding:14px 4px; gap:16px; }
+.rally-review .review-choices strong { display:block; font-size:14px; }
+.rally-review .review-choices small { display:block; margin-top:4px; color:var(--muted); font-size:12px; font-weight:400; line-height:1.4; }
+.rally-review .review-choices .rally-review-help { font-size:11px; color:var(--muted); white-space:nowrap; }
+.rally-review .review-evidence { padding-top:18px; border-top:1px solid var(--line); gap:12px; }
+.rally-review .review-navigation { justify-content:space-between; border-top:1px solid var(--line); padding-top:14px; font-size:12px; color:var(--muted); }
+.rally-review .review-alternatives { gap:6px; }
+.rally-page.demo-page .demo-cards { background:var(--felt); padding:22px; overflow-x:auto; }
+.rally-page.demo-page .demo-cards span { color:#1a1a1a; flex:none; }
+.rally-page.demo-page .demo-cards span[data-suit=H],.rally-page.demo-page .demo-cards span[data-suit=D] { color:#b21f2d; }
+.rally-page.demo-page .account-section { border:0; background:var(--surface); border-radius:12px; padding:28px; }
+.rally-page.demo-page .account-section h1 { font-size:32px; }
+@media(max-width:650px) {
+  .rally-page { padding:18px max(18px,env(safe-area-inset-right)) 32px max(18px,env(safe-area-inset-left)); gap:18px; }
+  .rally-page-header { gap:10px; padding-bottom:12px; }
+  .rally-access-list { grid-template-columns:1fr; }
+  .rally-page .plan-options article { display:flex; gap:10px; }
+  .rally-page .plan-options article>button { align-self:flex-start; }
+  .rally-page .family-member { align-items:flex-start; flex-direction:column; gap:7px; }
+  .rally-page.demo-page .account-section { padding:20px; }
+  .rally-review .review-choices .text-button { align-items:flex-start; }
+}

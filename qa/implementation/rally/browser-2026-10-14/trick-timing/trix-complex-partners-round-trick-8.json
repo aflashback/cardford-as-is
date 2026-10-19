@@ -1,0 +1,242 @@
+{
+  "label": "trix-complex-partners-round-trick-8",
+  "frames": 161,
+  "elapsedMs": 3195.5,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0.2,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 60.2,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 520.7,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "H9",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 620.4,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "H9",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1281.7,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "H9",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H4",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1380.4,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "H9",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H4",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1900.7,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "H9",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H4",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "HA",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 2000.5,
+      "cards": [
+        {
+          "card": "H5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "H9",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H4",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "HA",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 8 of clubs",
+        "Maya: Queen of clubs, won the trick",
+        "Leo: Queen of spades",
+        "You: Jack of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 3169.8,
+      "cards": [
+        {
+          "card": "S9",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Maya: 5 of hearts",
+        "Leo: 9 of hearts",
+        "You: 4 of hearts",
+        "Joe: Ace of hearts, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

@@ -99,7 +99,9 @@ func (c *DocumentCodec) RegisterPolicy(p PolicyRegistration) error {
 	}
 	original := p.Module.ModuleVersion == "1.0.0" && p.AnalysisSchema == "RegisteredAnalysis" && p.AdviceSchema == "AdviceView"
 	complete := p.Module.ModuleVersion == "2.0.0" && p.AnalysisSchema == OriginalAnalysisSchema && p.AdviceSchema == OriginalAdviceSchema
-	registered := p.Module.ModuleVersion == "2.0.0" && p.AnalysisSchema == "RegisteredAnalysis" && p.AdviceSchema == "AdviceView"
+	// Registered readers are installed for exact pins above; the module owns
+	// its version independently of these public analysis/advice schema names.
+	registered := p.AnalysisSchema == "RegisteredAnalysis" && (p.AdviceSchema == "AdviceView" || p.Module.GameID == "trix" && p.AdviceSchema == "TrixAdvice")
 	if p.PacketVersion != p.Module.ObservationSchemaVersion || (!original && !complete && !registered) {
 		return fmt.Errorf("unsupported policy input/output schema binding")
 	}

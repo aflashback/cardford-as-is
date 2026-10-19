@@ -14,8 +14,8 @@ for (const includePlatform of [false, true]) {
 const schema = JSON.parse(await readFile(resolve(base, 'contracts.schema.json'), 'utf8'));
 // Only these public fragments may enter the active bundle. Private schemas and
 // arbitrary filesystem/network references are never resolved by the compiler.
-const publicFragments = ['hearts', 'spades', 'token'];
-const publicPlatformFragments = ['local-service', 'platform-service', 'platform-account', 'platform-review'];
+const publicFragments = ['hearts', 'spades', 'token', 'trix'];
+const publicPlatformFragments = ['local-service', 'platform-service', 'platform-account', 'platform-review', 'platform-coach', 'realtime'];
 const references = new Map();
 const schemaLocations = new Map();
 for (const name of Object.keys(schema.$defs)) references.set(`${schema.$id}#/$defs/${name}`, `#/$defs/${name}`);
@@ -53,7 +53,22 @@ function resolvePublicReferences(value) {
 resolvePublicReferences(schema);
 const names = Object.keys(schema.$defs);
 const banner = '/* Generated from contracts.schema.json. Do not edit; run npm run contracts:generate. */';
-const types = await compile(schema, 'PublicContracts', { bannerComment: banner, additionalProperties: false, enableConstEnums: false, format: true, style: { singleQuote: true, semi: true, printWidth: 120 }, unknownAny: true, ignoreMinAndMaxItems: true });
+// The TS compiler does not model JSON Schema conditional validation. An allOf
+// containing only if/then branches otherwise replaces a typed object with an
+// unknown index signature. Keep its declared DTO fields in the static view;
+// AJV below still compiles every conditional from the untouched canonical schema.
+const typeSchema = structuredClone(schema);
+function retainStructuralTypes(value) {
+  if (Array.isArray(value)) { value.forEach(retainStructuralTypes); return; }
+  if (value === null || typeof value !== 'object') return;
+  if (Array.isArray(value.allOf)) {
+    value.allOf = value.allOf.filter(branch => !(branch && typeof branch === 'object' && 'if' in branch && Object.keys(branch).every(key => ['if', 'then', 'else', 'description'].includes(key))));
+    if (value.allOf.length === 0) delete value.allOf;
+  }
+  Object.values(value).forEach(retainStructuralTypes);
+}
+retainStructuralTypes(typeSchema);
+const types = await compile(typeSchema, 'PublicContracts', { bannerComment: banner, additionalProperties: false, enableConstEnums: false, format: true, style: { singleQuote: true, semi: true, printWidth: 120 }, unknownAny: true, ignoreMinAndMaxItems: true });
 const mapping = `\nexport interface ContractTypes {\n${names.map(n => `  ${n}: ${n};`).join('\n')}\n}\nexport type ContractName = keyof ContractTypes;\n`;
 const ajv = new Ajv2020({ strict: true, allErrors: true, coerceTypes: false, removeAdditional: false, useDefaults: false, code: { source: true, esm: true, lines: true } });
 ajv.addSchema(schema);
@@ -99,6 +114,16 @@ for (const [method,path,input,output] of routes) {
 // M04C is a separate local listener; these routes do not change the V1 client
 // contract or claim that its eventual platform UI envelope is implemented.
 const localServiceRoutes = [
+  ['get','/api/platform/coach',null,'CoachUIStatusView'],
+  ['post','/api/platform/coach/sessions','CoachUIStartRequest','CoachUISessionView'],
+  ['get','/api/platform/coach/sessions/{id}',null,'CoachUISessionView'],
+  ['post','/api/platform/coach/items','CoachUIItemRequest','CoachUISessionView'],
+  ['get','/api/platform/coach/items/{id}/replay',null,'CoachUIReplayView'],
+  ['post','/api/platform/coach/feedback','CoachUIFeedbackRequest','CoachUIFeedbackView'],
+  ['post','/api/realtime/negotiate','LocalServiceEmptyRequest','RealtimeNegotiateView'],
+  ['get','/api/realtime/snapshot',null,'RealtimeSnapshot'],
+  ['post','/api/session/playback','RealtimePlaybackRequest','RealtimePlaybackView'],
+  ['post','/api/session/presence','RealtimePresenceRequest','RealtimePlaybackView'],
   ['get','/api/platform/session',null,'PlatformSessionView'],
   ['post','/api/platform/commands/reconcile','PlatformReconcileRequest','PlatformReconcileView'],
   ['get','/api/preferences',null,'PlatformPreferencesView'],
@@ -114,6 +139,8 @@ const localServiceRoutes = [
   ['post','/api/platform/notes','PlatformNotesRequest','NotesView'],
   ['post','/api/platform/exposures','PlatformReviewExposureRequest','AcceptedView'],
   ['get','/api/platform/reviews',null,'ReviewIndex'],
+  ['get','/api/platform/rounds',null,'TrixRoundIndex'],
+  ['get','/api/platform/rounds/{id}',null,'TrixRoundHistory'],
   ['get','/api/platform/reviews/{decisionId}',null,'ReviewView'],
   ['get','/api/platform/reviews/{decisionId}/access',null,'PlatformReviewAccessView'],
   ['get','/api/platform/reviews/{decisionId}/advice',null,'PlatformAdviceView'],

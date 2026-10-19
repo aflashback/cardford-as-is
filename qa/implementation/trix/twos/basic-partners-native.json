@@ -1,0 +1,105 @@
+{
+  "variant": "basic-partners",
+  "gameId": "fcea07304129169a08890ac056ed08b24c076345c2d8ec64",
+  "pin": {
+    "gameId": "trix",
+    "variantId": "basic-partners",
+    "moduleVersion": "2.1.0",
+    "ruleProfileId": "trix-basic-partners-1.1.0",
+    "stateSchemaVersion": "1.1.0",
+    "observationSchemaVersion": "1.1.0",
+    "publicSchemaVersion": "1.1.0",
+    "eventSchemaVersion": "1.0.0"
+  },
+  "hidden": {
+    "status": "hidden",
+    "counts": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "revealed": {
+    "status": "revealed",
+    "cards": [
+      {
+        "seat": 0,
+        "card": "C2"
+      },
+      {
+        "seat": 3,
+        "card": "D2"
+      },
+      {
+        "seat": 2,
+        "card": "H2"
+      },
+      {
+        "seat": 1,
+        "card": "S2"
+      }
+    ]
+  },
+  "opening": {
+    "owner": 0,
+    "passes": [
+      {
+        "seat": 3,
+        "board": [
+          {
+            "suit": "C",
+            "low": 11,
+            "high": 11
+          },
+          {
+            "suit": "D",
+            "low": 0,
+            "high": 0
+          },
+          {
+            "suit": "H",
+            "low": 0,
+            "high": 0
+          },
+          {
+            "suit": "S",
+            "low": 0,
+            "high": 0
+          }
+        ],
+        "ref": "deal:1:pass:1"
+      }
+    ],
+    "board": [
+      {
+        "suit": "C",
+        "low": 10,
+        "high": 12
+      },
+      {
+        "suit": "D",
+        "low": 0,
+        "high": 0
+      },
+      {
+        "suit": "H",
+        "low": 0,
+        "high": 0
+      },
+      {
+        "suit": "S",
+        "low": 0,
+        "high": 0
+      }
+    ],
+    "handCounts": [
+      12,
+      12,
+      12,
+      13
+    ]
+  },
+  "reload": "passed",
+  "pageErrors": []
+}

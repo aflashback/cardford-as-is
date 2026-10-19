@@ -1,0 +1,8 @@
+// LAB-01: JSON schemas alone define transport DTOs. No network dereferencing.
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);const {compile}=require('json-schema-to-typescript');
+const root=new URL('../../../../../contracts/evaluation-lab/',import.meta.url);
+function publicTypes(value){if(!value||typeof value!=='object')return value;if(value.$ref){const match=/^https:\/\/trickscoach.com\/schemas\/local-v1.json#\/\$defs\/(RegisteredActorPacket|CoachMessage)$/.exec(value.$ref);if(!match)throw Error('Unapproved schema reference');return {tsType:match[1]};}if(Array.isArray(value))return value.map(publicTypes);return Object.fromEntries(Object.entries(value).map(([key,v])=>[key,publicTypes(v)]));}
+const outputs=[];for(const file of readdirSync(root).filter(f=>f.endsWith('.schema.json')).sort()){const name='Lab'+file.split('.')[0][0].toUpperCase()+file.split('.')[0].slice(1);const schema=publicTypes(JSON.parse(readFileSync(new URL(file,root),'utf8')));schema.title=name;outputs.push(await compile(schema,name,{bannerComment:'',unknownAny:true,ignoreMinAndMaxItems:true}));}
+const target=new URL('types.generated.ts',import.meta.url);const bytes='// GENERATED from contracts/evaluation-lab/*.schema.json. Do not edit.\nimport type {RegisteredActorPacket,CoachMessage} from "../../../../shared/contracts.ts";\n'+outputs.join('\n');if(process.argv.includes('--check')){if(readFileSync(target,'utf8')!==bytes)throw Error('Lab generated types differ; run lab/generate.mjs');}else writeFileSync(target,bytes);

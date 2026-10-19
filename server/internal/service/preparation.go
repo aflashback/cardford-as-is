@@ -95,6 +95,16 @@ func (s *Service) dispatch(admitted context.Context, owner string, w records.Pre
 	if r == nil {
 		return
 	}
+	generation, bound := records.PlaybackGeneration(admitted)
+	if !bound {
+		state, err := s.store.ReadPlayback(admitted, owner, w.Request.GameID, s.playback.instanceID)
+		if err != nil {
+			r.release()
+			return
+		}
+		generation = state.Generation
+	}
+	r.group(owner, w.Request.GameID, holdCancelsPreparation(w.Request.Purpose), generation, admitted)
 	// Preserve trusted principal/control values but detach the HTTP deadline.
 	// The finite scheduler deadline and durable attempt lease govern the job.
 	values := context.WithoutCancel(admitted)
@@ -112,6 +122,13 @@ func (s *Service) dispatch(admitted context.Context, owner string, w records.Pre
 		defer cancel()
 		stop := context.AfterFunc(job, cancel)
 		defer stop()
+		// A playback-owned calculation dies with its runner, not merely its HTTP
+		// request. Independently requested Coach work keeps its own lifetime.
+		if w.Request.Purpose == "bot-action" {
+			if stopRunner := s.playback.cancelWithRunner(owner, w.Request.GameID, cancel); stopRunner != nil {
+				defer stopRunner()
+			}
+		}
 		if job.Err() != nil {
 			return
 		}
@@ -119,6 +136,9 @@ func (s *Service) dispatch(admitted context.Context, owner string, w records.Pre
 		if err != nil {
 			return
 		}
+		// A live attempt owns completion notification. Failed claims (including
+		// another process's unexpired lease) must not create a busy wake loop.
+		defer s.playback.wake(owner, w.Request.GameID)
 		finish := func(status string) {
 			cleanup, done := context.WithTimeout(values, time.Second)
 			defer done()
@@ -239,10 +259,19 @@ func (s *Service) decision(ctx context.Context, owner, id string) (transport.Res
 	switch {
 	case d.AnalysisSchema == records.OriginalAnalysisSchema && d.AdviceSchema == records.OriginalAdviceSchema:
 		_, advice, e := records.OriginalDecision(d)
-		if e != nil { return transport.Response{}, e }
+		if e != nil {
+			return transport.Response{}, e
+		}
 		saved = advice.Levels[2]
 	case d.AnalysisSchema == "RegisteredAnalysis" && d.AdviceSchema == "AdviceView":
-		if e := s.codec.ValidateHistoricalDecision(d); e != nil { return transport.Response{}, e }
+		if e := s.codec.ValidateHistoricalDecision(d); e != nil {
+			return transport.Response{}, e
+		}
+		saved = json.RawMessage(d.Advice)
+	case d.AnalysisSchema == "RegisteredAnalysis" && d.AdviceSchema == "TrixAdvice":
+		if e := s.codec.ValidateHistoricalDecision(d); e != nil {
+			return transport.Response{}, e
+		}
 		saved = json.RawMessage(d.Advice)
 	default:
 		return transport.Response{}, fmt.Errorf("unsupported saved decision schema pair")

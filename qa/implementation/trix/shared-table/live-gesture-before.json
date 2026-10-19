@@ -1,0 +1,128 @@
+[
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"down\",\"ms\":376699,\"card\":\"S4\",\"type\":\"mouse\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false}",
+    "timestamp": "2026-10-10T00:57:33.916Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"up\",\"ms\":376804,\"card\":\"S4\",\"held\":false,\"progress\":0}",
+    "timestamp": "2026-10-10T00:57:34.021Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"click\",\"ms\":376805,\"card\":\"S4\",\"detail\":1,\"suppress\":false,\"gap\":null}",
+    "timestamp": "2026-10-10T00:57:34.021Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"down\",\"ms\":376904,\"card\":\"S4\",\"type\":\"mouse\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false}",
+    "timestamp": "2026-10-10T00:57:34.120Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"up\",\"ms\":376991,\"card\":\"S4\",\"held\":false,\"progress\":0}",
+    "timestamp": "2026-10-10T00:57:34.207Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"click\",\"ms\":376991,\"card\":\"S4\",\"detail\":2,\"suppress\":false,\"previous\":\"S4\",\"gap\":186.20000004768372}",
+    "timestamp": "2026-10-10T00:57:34.207Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"activate\",\"ms\":376992,\"card\":\"S4\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false,\"blocked\":false}",
+    "timestamp": "2026-10-10T00:57:34.208Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"down\",\"ms\":389441,\"card\":\"H3\",\"type\":\"mouse\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false}",
+    "timestamp": "2026-10-10T00:57:46.657Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"hold-timer\",\"ms\":389654,\"card\":\"H3\",\"elapsed\":213.09999990463257,\"current\":true,\"allowed\":true,\"sameDecision\":true}",
+    "timestamp": "2026-10-10T00:57:46.870Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"up\",\"ms\":389664,\"card\":\"H3\",\"held\":true,\"progress\":0}",
+    "timestamp": "2026-10-10T00:57:46.881Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"click\",\"ms\":389665,\"card\":\"H3\",\"detail\":1,\"suppress\":true,\"gap\":null}",
+    "timestamp": "2026-10-10T00:57:46.881Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"down\",\"ms\":389771,\"card\":\"H3\",\"type\":\"mouse\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false}",
+    "timestamp": "2026-10-10T00:57:46.987Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"up\",\"ms\":389876,\"card\":\"H3\",\"held\":false,\"progress\":0}",
+    "timestamp": "2026-10-10T00:57:47.092Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"click\",\"ms\":389876,\"card\":\"H3\",\"detail\":2,\"suppress\":false,\"gap\":null}",
+    "timestamp": "2026-10-10T00:57:47.092Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"down\",\"ms\":390655,\"card\":\"H3\",\"type\":\"mouse\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false}",
+    "timestamp": "2026-10-10T00:57:47.871Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"up\",\"ms\":390706,\"card\":\"H3\",\"held\":false,\"progress\":0}",
+    "timestamp": "2026-10-10T00:57:47.923Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"click\",\"ms\":390707,\"card\":\"H3\",\"detail\":1,\"suppress\":false,\"previous\":\"H3\",\"gap\":830}",
+    "timestamp": "2026-10-10T00:57:47.923Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"down\",\"ms\":390815,\"card\":\"H3\",\"type\":\"mouse\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false}",
+    "timestamp": "2026-10-10T00:57:48.031Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"up\",\"ms\":390886,\"card\":\"H3\",\"held\":false,\"progress\":0}",
+    "timestamp": "2026-10-10T00:57:48.103Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"click\",\"ms\":390887,\"card\":\"H3\",\"detail\":2,\"suppress\":false,\"previous\":\"H3\",\"gap\":180}",
+    "timestamp": "2026-10-10T00:57:48.105Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  },
+  {
+    "level": "info",
+    "message": "[hand-trace] {\"event\":\"activate\",\"ms\":390887,\"card\":\"H3\",\"allowed\":true,\"pending\":false,\"myTurn\":true,\"canPlay\":true,\"disabled\":false,\"blocked\":false}",
+    "timestamp": "2026-10-10T00:57:48.105Z",
+    "url": "http://127.0.0.1:4174/src/table/useHandGestures.ts?t=1791593756118"
+  }
+]

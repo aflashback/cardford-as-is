@@ -98,6 +98,14 @@ type localRoute struct {
 }
 
 var localRoutes = []localRoute{
+	{"GET", "/api/platform/coach", "coach-ui-status", "", "CoachUIStatusView", false},
+	{"POST", "/api/platform/coach/sessions", "coach-ui-start", "CoachUIStartRequest", "CoachUISessionView", false},
+	{"POST", "/api/platform/coach/items", "coach-ui-item", "CoachUIItemRequest", "CoachUISessionView", false},
+	{"POST", "/api/platform/coach/feedback", "coach-ui-feedback", "CoachUIFeedbackRequest", "CoachUIFeedbackView", false},
+	{"POST", "/api/realtime/negotiate", "realtime-negotiate", "LocalServiceEmptyRequest", "RealtimeNegotiateView", false},
+	{"GET", "/api/realtime/snapshot", "realtime-snapshot", "", "RealtimeSnapshot", false},
+	{"POST", "/api/session/playback", "playback", "RealtimePlaybackRequest", "RealtimePlaybackView", false},
+	{"POST", "/api/session/presence", "presence", "RealtimePresenceRequest", "RealtimePlaybackView", false},
 	{"GET", "/api/platform/session", "platform-session", "", "PlatformSessionView", false},
 	{"POST", "/api/platform/commands/reconcile", "platform-reconcile", "PlatformReconcileRequest", "PlatformReconcileView", false},
 	{"GET", "/api/preferences", "platform-get-preferences", "", "PlatformPreferencesView", false},
@@ -113,6 +121,7 @@ var localRoutes = []localRoute{
 	{"POST", "/api/platform/notes", "platform-notes", "PlatformNotesRequest", "NotesView", false},
 	{"POST", "/api/platform/exposures", "platform-exposures", "PlatformReviewExposureRequest", "AcceptedView", false},
 	{"GET", "/api/platform/reviews", "platform-reviews", "", "ReviewIndex", false},
+	{"GET", "/api/platform/rounds", "platform-rounds", "", "TrixRoundIndex", false},
 	{"GET", "/api/health", "health", "", "LocalServiceHealthView", true},
 	{"POST", "/api/demo/frame", "demo-frame", "DemoFrameRequest", "DemoFrame", true},
 	{"POST", "/api/local/session", "local-session", "LocalServiceEmptyRequest", "IdentityView", true},
@@ -140,8 +149,19 @@ func matchLocalRoute(r *http.Request) (localRoute, string, bool) {
 		}
 	}
 	parts := strings.Split(strings.TrimPrefix(r.URL.Path, "/"), "/")
+	if r.Method == "GET" && len(parts) >= 5 && parts[0] == "api" && parts[1] == "platform" && parts[2] == "coach" && len(parts[4]) > 0 && len(parts[4]) <= 256 && localResourceID(parts[4]) {
+		if len(parts) == 5 && parts[3] == "sessions" {
+			return localRoute{operation: "coach-ui-session", output: "CoachUISessionView"}, parts[4], true
+		}
+		if len(parts) == 6 && parts[3] == "items" && parts[5] == "replay" {
+			return localRoute{operation: "coach-ui-replay", output: "CoachUIReplayView"}, parts[4], true
+		}
+	}
 	if len(parts) >= 4 && parts[0] == "api" && parts[1] == "platform" && len(parts[3]) > 0 && len(parts[3]) <= 256 && localResourceID(parts[3]) {
 		if r.Method == "GET" && len(parts) == 4 {
+			if parts[2] == "rounds" {
+				return localRoute{operation: "platform-round", output: "TrixRoundHistory"}, parts[3], true
+			}
 			if parts[2] == "reviews" {
 				return localRoute{operation: "platform-review", output: "ReviewView"}, parts[3], true
 			}
@@ -199,7 +219,11 @@ func (h *LocalHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		localFailure(w, 403, "FORBIDDEN")
 		return
 	}
-	if r.URL.RawQuery != "" || r.URL.ForceQuery {
+	if r.URL.Path == "/api/realtime/connect" {
+		h.serveRealtime(w, r)
+		return
+	}
+	if r.URL.Path != "/api/realtime/snapshot" && (r.URL.RawQuery != "" || r.URL.ForceQuery) {
 		localFailure(w, 400, "INVALID_COMMAND")
 		return
 	}
@@ -223,6 +247,14 @@ func (h *LocalHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	request := Request{Operation: route.operation, CommandID: id}
+	if route.operation == "realtime-snapshot" {
+		body, err := snapshotQuery(r.URL.RawQuery)
+		if err != nil {
+			localFailure(w, 400, "INVALID_COMMAND")
+			return
+		}
+		request.Body = body
+	}
 	if route.operation != "health" && route.operation != "demo-frame" {
 		if len(r.Header.Values("X-Tricks-Tab")) != 1 || !localTab.MatchString(r.Header.Get("X-Tricks-Tab")) {
 			localFailure(w, 400, "INVALID_COMMAND")
@@ -296,6 +328,9 @@ func (h *LocalHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		var failure *LocalError
 		if errors.As(err, &failure) && failure.Status >= 400 && failure.Status <= 599 && localErrorCode(failure.Code) {
+			if failure.Status == http.StatusTooManyRequests {
+				w.Header().Set("Retry-After", "1")
+			}
 			localFailure(w, failure.Status, failure.Code)
 		} else {
 			localFailure(w, 503, "SERVICE_UNAVAILABLE")
@@ -326,7 +361,7 @@ func (h *LocalHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 func localErrorCode(code string) bool {
 	switch code {
-	case "UNAUTHENTICATED", "FORBIDDEN", "STALE_REVISION", "LEASE_LOST", "QUOTA_EXHAUSTED", "INVALID_COMMAND", "IDEMPOTENCY_CONFLICT", "NOT_FOUND", "PAYMENT_PENDING", "SERVICE_UNAVAILABLE":
+	case "UNAUTHENTICATED", "session_renewal_required", "FORBIDDEN", "STALE_REVISION", "LEASE_LOST", "QUOTA_EXHAUSTED", "INVALID_COMMAND", "IDEMPOTENCY_CONFLICT", "NOT_FOUND", "PAYMENT_PENDING", "SERVICE_UNAVAILABLE":
 		return true
 	}
 	return false
@@ -337,6 +372,8 @@ func localFailure(w http.ResponseWriter, status int, code string) {
 	}
 	message := "The request was not completed. Reconcile the original command before retrying a mutation."
 	switch code {
+	case "session_renewal_required":
+		message = "Continue to renew your session before returning to your table."
 	case "UNAUTHENTICATED":
 		message = "Start a local fixture session to continue."
 	case "FORBIDDEN":

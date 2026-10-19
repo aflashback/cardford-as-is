@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/schemas/trix-scenario-collection/export.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "trix-case-export-1.0.0"
+    },
+    "exportVersion": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{24}$"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "corpusId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "mode": {
+      "enum": [
+        "live",
+        "fixture"
+      ]
+    },
+    "planHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceDigest": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      ]
+    },
+    "binaryDigest": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      ]
+    },
+    "caseCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000
+    },
+    "files": {
+      "type": "object",
+      "properties": {
+        "cases.jsonl": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "coverage.json": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "category-strategies.jsonl": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "casebook.md": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "game-findings.jsonl": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "cases.jsonl",
+        "coverage.json",
+        "category-strategies.jsonl",
+        "casebook.md",
+        "game-findings.jsonl"
+      ],
+      "additionalProperties": false
+    },
+    "privateLineageRef": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^blobs/[a-f0-9]{64}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "const": "offline-llm-player"
+    },
+    "promotionEligible": {
+      "const": false
+    },
+    "runtimeActivated": {
+      "const": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "exportVersion",
+    "runId",
+    "corpusId",
+    "mode",
+    "planHash",
+    "sourceDigest",
+    "binaryDigest",
+    "caseCount",
+    "files",
+    "privateLineageRef",
+    "provenance",
+    "promotionEligible",
+    "runtimeActivated"
+  ],
+  "additionalProperties": false,
+  "title": "TrixCaseExport"
+}

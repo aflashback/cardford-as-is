@@ -1,0 +1,859 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/run.json",
+  "title": "run",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+  "schemaVersion": {
+      "enum": ["coach-lab-run-1.0.0","coach-lab-run-2.0.0"]
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schemaVersion": {
+              "const": "multi-game-evaluation-1.0.0"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "purpose": {
+              "enum": [
+                "development",
+                "confirmation"
+              ]
+            },
+            "variant": {
+              "enum": [
+                "hearts-solo",
+                "spades-solo",
+                "spades-partners"
+              ]
+            },
+            "ruleProfile": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "id",
+                "hash"
+              ]
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "id",
+                "hash"
+              ]
+            },
+            "reference": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "id",
+                "hash"
+              ]
+            },
+            "sourceHashes": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "objective": {
+              "type": "string",
+              "minLength": 1
+            },
+            "horizon": {
+              "enum": [
+                "complete-hand",
+                "complete-match"
+              ]
+            },
+            "corpus": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "hash": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "labelIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "version",
+                    "hash",
+                    "labelIds"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "families": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "split": {
+                    "enum": [
+                      "discovery",
+                      "confirmation"
+                    ]
+                  },
+                  "seed": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sealed": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "id",
+                  "split",
+                  "seed",
+                  "sealed"
+                ]
+              },
+              "minItems": 1
+            },
+            "rotations": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "minItems": 1
+            },
+            "seatAssignments": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "candidate": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "minItems": 1
+                },
+                "reference": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "candidate",
+                "reference"
+              ]
+            },
+            "environments": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "primaryEstimand": {
+              "type": "string",
+              "minLength": 1
+            },
+            "usefulGain": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "maximumHarm": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "powerRationale": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "multiplicityAdjustment": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "sampleSize": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "stoppingRule": {
+              "type": "string",
+              "minLength": 1
+            },
+            "missingRunHandling": {
+              "type": "string",
+              "minLength": 1
+            },
+            "maxWallMs": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxDecisionMs": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxDecisions": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "promotionAuthority": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "id",
+            "purpose",
+            "variant",
+            "ruleProfile",
+            "candidate",
+            "reference",
+            "sourceHashes",
+            "objective",
+            "horizon",
+            "corpus",
+            "families",
+            "rotations",
+            "seatAssignments",
+            "environments",
+            "primaryEstimand",
+            "usefulGain",
+            "maximumHarm",
+            "powerRationale",
+            "multiplicityAdjustment",
+            "sampleSize",
+            "stoppingRule",
+            "missingRunHandling",
+            "maxWallMs",
+            "maxDecisionMs",
+            "maxDecisions",
+            "promotionAuthority"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schemaVersion": {
+              "const": "multi-game-evaluation-2.0.0"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "purpose": {
+              "enum": [
+                "development",
+                "confirmation"
+              ]
+            },
+            "variant": {
+              "enum": [
+                "trix-basic-solo",
+                "trix-basic-partners",
+                "trix-complex-solo",
+                "trix-complex-partners"
+              ]
+            },
+            "ruleProfile": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "id",
+                "hash"
+              ]
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "id",
+                "hash"
+              ]
+            },
+            "reference": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "id",
+                "hash"
+              ]
+            },
+            "sourceHashes": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "objective": {
+              "type": "string",
+              "minLength": 1
+            },
+            "horizon": {
+              "enum": [
+                "complete-hand",
+                "complete-match"
+              ]
+            },
+            "corpus": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "hash": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "labelIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "version",
+                    "hash",
+                    "labelIds"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "families": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "split": {
+                    "enum": [
+                      "discovery",
+                      "confirmation"
+                    ]
+                  },
+                  "seed": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sealed": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "id",
+                  "split",
+                  "seed",
+                  "sealed"
+                ]
+              },
+              "minItems": 1
+            },
+            "rotations": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "minItems": 1
+            },
+            "seatAssignments": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "candidate": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "minItems": 1
+                },
+                "reference": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "candidate",
+                "reference"
+              ]
+            },
+            "environments": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "primaryEstimand": {
+              "type": "string",
+              "minLength": 1
+            },
+            "usefulGain": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "maximumHarm": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "powerRationale": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "multiplicityAdjustment": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "sampleSize": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "stoppingRule": {
+              "type": "string",
+              "minLength": 1
+            },
+            "missingRunHandling": {
+              "type": "string",
+              "minLength": 1
+            },
+            "maxWallMs": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxDecisionMs": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxDecisions": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "promotionAuthority": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "id",
+            "purpose",
+            "variant",
+            "ruleProfile",
+            "candidate",
+            "reference",
+            "sourceHashes",
+            "objective",
+            "horizon",
+            "corpus",
+            "families",
+            "rotations",
+            "seatAssignments",
+            "environments",
+            "primaryEstimand",
+            "usefulGain",
+            "maximumHarm",
+            "powerRationale",
+            "multiplicityAdjustment",
+            "sampleSize",
+            "stoppingRule",
+            "missingRunHandling",
+            "maxWallMs",
+            "maxDecisionMs",
+            "maxDecisions",
+            "promotionAuthority"
+          ]
+        }
+      ]
+    },
+    "lab": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceIdentity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sourceDigest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "binaryDigest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "sourceDigest",
+            "binaryDigest"
+          ]
+        },
+        "selector": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gameId": {
+              "enum": [
+                "hearts",
+                "spades",
+                "trix"
+              ]
+            },
+            "variantId": {
+              "enum": [
+                "solo",
+                "partners",
+                "basic-solo",
+                "basic-partners",
+                "complex-solo",
+                "complex-partners"
+              ]
+            },
+            "moduleVersion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ruleProfileId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId"
+          ]
+        },
+        "config": {
+          "type": "object"
+        },
+        "seatPolicies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "seat": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "seat",
+              "id",
+              "version"
+            ]
+          },
+          "minItems": 4
+        },
+        "caps": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "maxRounds": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxActions": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxTransitions": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxWallMs": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1200000
+            }
+          },
+          "required": [
+            "maxRounds",
+            "maxActions",
+            "maxTransitions",
+            "maxWallMs"
+          ]
+        },
+        "judge": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "const": "fixture"
+            },
+            "authorizedUsd": {
+              "const": 0
+            }
+          },
+          "required": [
+            "mode",
+            "authorizedUsd"
+          ]
+        },
+        "familyRoles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "enum": [
+                  "development",
+                  "calibration-fit",
+                  "calibration-audit",
+                  "validation",
+                  "confirmation"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "role"
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "sourceIdentity",
+        "selector",
+        "config",
+        "seatPolicies",
+        "caps",
+        "judge",
+        "familyRoles"
+      ]
+    }
+  },
+  "allOf":[{
+    "if":{"properties":{"schemaVersion":{"const":"coach-lab-run-1.0.0"}}},
+    "then":{"properties":{"base":{"properties":{"schemaVersion":{"const":"multi-game-evaluation-1.0.0"}}}}},
+    "else":{"properties":{"base":{"properties":{"schemaVersion":{"const":"multi-game-evaluation-2.0.0"}}}}}
+  }],
+  "required": [
+    "schemaVersion",
+    "runId",
+    "base",
+    "lab"
+  ]
+}

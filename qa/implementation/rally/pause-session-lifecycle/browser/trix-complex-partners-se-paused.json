@@ -1,0 +1,66 @@
+{
+  "name": "trix-complex-partners-se-paused",
+  "at": "2026-10-16T01:53:49.449Z",
+  "mode": "trix-complex-partners",
+  "case": "manual-pause",
+  "build": "EaeD1DPD",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 290.81976318359375,
+        "clientHeight": 205,
+        "controls": [
+          {
+            "bottom": 199.17639541625977,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 530.7947692871094,
+            "width": 406.45111083984375,
+            "x": 124.34365844726562,
+            "y": 155.18080139160156
+          },
+          {
+            "bottom": 278.1482734680176,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 323.57298278808594,
+            "width": 199.2293243408203,
+            "x": 124.34365844726562,
+            "y": 234.15267944335935
+          },
+          {
+            "bottom": 278.1482734680176,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 530.7947845458984,
+            "width": 199.2293243408203,
+            "x": 331.5654602050781,
+            "y": 234.15267944335935
+          }
+        ],
+        "height": 206.31138610839844,
+        "name": "Game paused",
+        "right": 563.6644515991211,
+        "scrollHeight": 205,
+        "width": 459.9953308105469,
+        "x": 103.66912078857422,
+        "y": 84.50837707519531
+      }
+    ],
+    "height": 375,
+    "scrollHeight": 375,
+    "scrollWidth": 667,
+    "width": 667
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

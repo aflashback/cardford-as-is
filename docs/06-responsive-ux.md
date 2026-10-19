@@ -31,7 +31,7 @@ At 600–1023px, give the table more space and show an inline coach panel below 
 
 ## D. Interaction details
 
-Tap/click selects a legal card, then **Play [card]** confirms. Keyboard arrows or Tab move focus; Enter/Space selects; a clearly labelled confirmation button commits. Selection alone must never submit. During bidding, use fourteen labelled choices (Nil, 1–13) plus confirmation, with a brief explanation of Nil.
+The owner's 9 October UX-42 update supersedes ordinary tap-to-select play: hover and single click/tap do nothing. Hold a legal card to lift and drag toward the table during your turn; release near the hand to cancel or closer to the table to play. Double-click/tap plays on turn or explicitly queues automatic play on the next legal human turn. Keyboard arrows or Tab move focus; Enter/Space explicitly plays or queues, and Escape cancels. Hearts passing and Trix doubling retain separate confirmation after intentional selection. See the [shared gesture guide](14-card-table-design-guide.md) for timing, cancellation and drag bounds. Bidding keeps labelled choices and confirmation.
 
 Illegal cards are visibly unavailable but remain discoverable to assistive technology using `aria-disabled` and explanatory help. Selecting an unavailable card shows the rule without changing the game. Do not rely on a tooltip available only on hover. Use a single roving-focus card group or predictable tab order; document and test the chosen pattern.
 

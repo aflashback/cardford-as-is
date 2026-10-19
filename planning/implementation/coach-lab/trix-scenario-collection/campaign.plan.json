@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "trix-scenario-campaign-plan-1.0.0",
+  "status": "approved-for-implementation",
+  "corpusId": "trix-penalty-luna-discovery-v1",
+  "scope": "offline-discovery-only",
+  "model": {"requested": "gpt-6-luna", "reasoningEffort": "max", "fallbackAllowed": false},
+  "execution": {
+    "transport": "host-assisted-subagent-bridge",
+    "logicalSeats": ["S", "E", "N", "W"],
+    "maxConcurrentPlayerInvocations": 1,
+    "maxConcurrentEpisodes": 1,
+    "context": "fresh-per-invocation",
+    "forkTurns": "none",
+    "toolCallsAllowed": 0,
+    "uninspectableInvocation": "stop",
+    "missingModelOrEffortAttestation": "stop",
+    "phaseOrder": ["basic-solo", "complex-solo", "basic-partners", "complex-partners"]
+  },
+  "pins": {
+    "gameId": "trix",
+    "moduleVersion": "2.2.0",
+    "stateSchemaVersion": "1.2.0",
+    "observationSchemaVersion": "1.2.0",
+    "publicSchemaVersion": "1.2.0",
+    "eventSchemaVersion": "1.0.0"
+  },
+  "phases": [
+    {"variant": "basic-solo", "ruleProfileId": "trix-basic-solo-1.0.0", "objective": "own-request-points", "requests": ["diamonds", "king", "queens", "lutoosh"], "targetCases": 200, "maxCases": 200, "requestTargets": {"diamonds": 50, "king": 50, "queens": 50, "lutoosh": 50}, "maxCompletedRequests": 32, "maxRequestsPerContract": 8},
+    {"variant": "complex-solo", "ruleProfileId": "trix-complex-solo-1.0.0", "objective": "own-request-points", "requests": ["complex"], "targetCases": 200, "maxCases": 200, "requestTargets": {"complex": 200}, "maxCompletedRequests": 32, "maxRequestsPerContract": 32},
+    {"variant": "basic-partners", "ruleProfileId": "trix-basic-partners-1.1.0", "objective": "combined-team-request-points", "requests": ["diamonds", "king", "queens", "lutoosh"], "targetCases": 200, "maxCases": 200, "requestTargets": {"diamonds": 50, "king": 50, "queens": 50, "lutoosh": 50}, "maxCompletedRequests": 32, "maxRequestsPerContract": 8},
+    {"variant": "complex-partners", "ruleProfileId": "trix-complex-partners-1.1.0", "objective": "combined-team-request-points", "requests": ["complex"], "targetCases": 400, "maxCases": 400, "requestTargets": {"complex": 400}, "maxCompletedRequests": 64, "maxRequestsPerContract": 64}
+  ],
+  "selection": {
+    "maxCorpusCases": 1000,
+    "countUnit": "unique-actor-decision",
+    "retainAllRawAttempts": true,
+    "maxCasesPerPhysicalDealFamily": 8,
+    "forcedCasesInStrategicQuota": false,
+    "scheduledRequestChoicesInQuota": false,
+    "incompleteEpisodesInQuota": false,
+    "deduplicateAcrossRuns": true,
+    "categoryVersion": "trix-penalty-taxonomy-1.0.0",
+    "maxAuthoredRequestFraction": 0.25
+  },
+  "workCaps": {
+    "pilot": {"variant": "basic-solo", "requests": ["diamonds", "king", "queens", "lutoosh"]},
+    "batchRequests": 4,
+    "maxPlayerAttemptsPerDecision": 2,
+    "maxInvocationWallMs": 300000,
+    "maxActiveSegmentWallMs": 5400000,
+    "maxAttemptedEpisodes": 180,
+    "maxPlayerAttemptsCampaign": 17920,
+    "onLimit": "checkpoint-and-report-shortfall",
+    "dollarBudget": "no-separate-paid-provider-authorized",
+    "reviewTransport": "current-host-independent-review-context"
+  },
+  "versions": {"playerPrompt": "trix-luna-player-1.0.0", "declarationPrompt": "trix-luna-declaration-1.0.0", "reviewPrompt": "trix-luna-review-1.0.0", "gameReviewPrompt": "trix-luna-game-review-1.0.0", "packetProjection": "trix-scenario-player-packet-1.0.0"},
+  "exclusions": {"requests": ["trix"], "games": ["spades", "hearts", "tarneeb"], "training": true, "runtimeModelIntegration": true, "automaticPromotion": true}
+}

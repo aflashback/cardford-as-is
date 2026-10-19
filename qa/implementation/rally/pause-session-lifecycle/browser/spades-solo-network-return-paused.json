@@ -1,0 +1,64 @@
+{
+  "name": "spades-solo-network-return-paused",
+  "at": "2026-10-16T02:04:19.538Z",
+  "check": "Online restoration does not auto-resume",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 346.3012180328369,
+        "clientHeight": 316,
+        "controls": [
+          {
+            "bottom": 171.69502639770508,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 530.7947692871094,
+            "width": 406.45111083984375,
+            "x": 124.34365844726562,
+            "y": 127.69943237304688
+          },
+          {
+            "bottom": 333.6297187805176,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 323.57298278808594,
+            "width": 199.2293243408203,
+            "x": 124.34365844726562,
+            "y": 289.6341247558594
+          },
+          {
+            "bottom": 333.6297187805176,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 530.7947845458984,
+            "width": 199.2293243408203,
+            "x": 331.5654602050781,
+            "y": 289.6341247558594
+          }
+        ],
+        "height": 317.2637023925781,
+        "name": "Game paused",
+        "right": 563.6644515991211,
+        "scrollHeight": 316,
+        "width": 459.9953308105469,
+        "x": 103.66912078857422,
+        "y": 29.03751564025879
+      }
+    ],
+    "height": 375,
+    "scrollHeight": 375,
+    "scrollWidth": 667,
+    "width": 667
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

@@ -1,0 +1,3873 @@
+{
+  "sourceDecisionId": "case-7c1e505108ccc85af15f2ab33c912891",
+  "sourceInputDigest": "e758efccea00fc07cc4740682156698a6cff674a015cace5d491bb4c476c98c5",
+  "expectedPolicyId": "trix-ownership-1.0.0",
+  "expectedPublicSchemaVersion": "1.2.0",
+  "expectedSelectedCandidateId": "layout:S5",
+  "expectedLegacyTraceSha256": "b0f0b9c369fd508a17fc07dd730e6930d4339d5c177bf4a62ad648334bf7308a",
+  "expectedLegacyCoachSha256": "ff1977a1c04bff22edfecf8caefa9f71c122ae6a6b7ae3eb8a185de8ad5c1e95",
+  "expectedLegacyAdviceSha256": "b9bfbd277ebf1a690d152a22e7ef10dd3198ac8b127f795a845aeefd0311ec39",
+  "actorPacket": {
+    "candidates": [
+      {
+        "id": "layout:H3",
+        "public": {
+          "kind": "layout-card",
+          "card": "H3"
+        }
+      },
+      {
+        "id": "layout:S5",
+        "public": {
+          "kind": "layout-card",
+          "card": "S5"
+        }
+      }
+    ],
+    "gameId": "trix",
+    "observation": {
+      "id": "episode-d13d7d2df06191991cfeb448",
+      "gameId": "trix",
+      "variantId": "complex-partners",
+      "seat": 2,
+      "phase": "layout",
+      "turn": 2,
+      "kingdom": 4,
+      "dealNumber": 7,
+      "owner": 0,
+      "request": "trix",
+      "remainingRequests": [
+        "complex"
+      ],
+      "hand": [
+        "H3",
+        "S5"
+      ],
+      "handCounts": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "trick": [],
+      "tricks": [],
+      "declarations": [],
+      "board": [
+        {
+          "suit": "C",
+          "low": 2,
+          "high": 14
+        },
+        {
+          "suit": "D",
+          "low": 2,
+          "high": 14
+        },
+        {
+          "suit": "H",
+          "low": 4,
+          "high": 14
+        },
+        {
+          "suit": "S",
+          "low": 6,
+          "high": 14
+        }
+      ],
+      "finishOrder": [
+        1
+      ],
+      "passes": [
+        {
+          "seat": 0,
+          "board": [
+            {
+              "suit": "C",
+              "low": 0,
+              "high": 0
+            },
+            {
+              "suit": "D",
+              "low": 0,
+              "high": 0
+            },
+            {
+              "suit": "H",
+              "low": 0,
+              "high": 0
+            },
+            {
+              "suit": "S",
+              "low": 0,
+              "high": 0
+            }
+          ],
+          "ref": "deal:7:pass:1"
+        },
+        {
+          "seat": 2,
+          "board": [
+            {
+              "suit": "C",
+              "low": 11,
+              "high": 11
+            },
+            {
+              "suit": "D",
+              "low": 10,
+              "high": 12
+            },
+            {
+              "suit": "H",
+              "low": 0,
+              "high": 0
+            },
+            {
+              "suit": "S",
+              "low": 11,
+              "high": 11
+            }
+          ],
+          "ref": "deal:7:pass:2"
+        },
+        {
+          "seat": 0,
+          "board": [
+            {
+              "suit": "C",
+              "low": 11,
+              "high": 11
+            },
+            {
+              "suit": "D",
+              "low": 7,
+              "high": 12
+            },
+            {
+              "suit": "H",
+              "low": 11,
+              "high": 11
+            },
+            {
+              "suit": "S",
+              "low": 10,
+              "high": 11
+            }
+          ],
+          "ref": "deal:7:pass:3"
+        },
+        {
+          "seat": 3,
+          "board": [
+            {
+              "suit": "C",
+              "low": 9,
+              "high": 11
+            },
+            {
+              "suit": "D",
+              "low": 6,
+              "high": 13
+            },
+            {
+              "suit": "H",
+              "low": 11,
+              "high": 11
+            },
+            {
+              "suit": "S",
+              "low": 10,
+              "high": 11
+            }
+          ],
+          "ref": "deal:7:pass:4"
+        },
+        {
+          "seat": 3,
+          "board": [
+            {
+              "suit": "C",
+              "low": 8,
+              "high": 11
+            },
+            {
+              "suit": "D",
+              "low": 6,
+              "high": 14
+            },
+            {
+              "suit": "H",
+              "low": 11,
+              "high": 12
+            },
+            {
+              "suit": "S",
+              "low": 10,
+              "high": 11
+            }
+          ],
+          "ref": "deal:7:pass:5"
+        },
+        {
+          "seat": 3,
+          "board": [
+            {
+              "suit": "C",
+              "low": 7,
+              "high": 11
+            },
+            {
+              "suit": "D",
+              "low": 6,
+              "high": 14
+            },
+            {
+              "suit": "H",
+              "low": 9,
+              "high": 12
+            },
+            {
+              "suit": "S",
+              "low": 10,
+              "high": 11
+            }
+          ],
+          "ref": "deal:7:pass:6"
+        },
+        {
+          "seat": 2,
+          "board": [
+            {
+              "suit": "C",
+              "low": 5,
+              "high": 13
+            },
+            {
+              "suit": "D",
+              "low": 6,
+              "high": 14
+            },
+            {
+              "suit": "H",
+              "low": 9,
+              "high": 14
+            },
+            {
+              "suit": "S",
+              "low": 10,
+              "high": 13
+            }
+          ],
+          "ref": "deal:7:pass:7"
+        },
+        {
+          "seat": 2,
+          "board": [
+            {
+              "suit": "C",
+              "low": 2,
+              "high": 14
+            },
+            {
+              "suit": "D",
+              "low": 3,
+              "high": 14
+            },
+            {
+              "suit": "H",
+              "low": 9,
+              "high": 14
+            },
+            {
+              "suit": "S",
+              "low": 10,
+              "high": 13
+            }
+          ],
+          "ref": "deal:7:pass:8"
+        },
+        {
+          "seat": 0,
+          "board": [
+            {
+              "suit": "C",
+              "low": 2,
+              "high": 14
+            },
+            {
+              "suit": "D",
+              "low": 3,
+              "high": 14
+            },
+            {
+              "suit": "H",
+              "low": 8,
+              "high": 14
+            },
+            {
+              "suit": "S",
+              "low": 10,
+              "high": 13
+            }
+          ],
+          "ref": "deal:7:pass:9"
+        },
+        {
+          "seat": 3,
+          "board": [
+            {
+              "suit": "C",
+              "low": 2,
+              "high": 14
+            },
+            {
+              "suit": "D",
+              "low": 2,
+              "high": 14
+            },
+            {
+              "suit": "H",
+              "low": 5,
+              "high": 14
+            },
+            {
+              "suit": "S",
+              "low": 7,
+              "high": 14
+            }
+          ],
+          "ref": "deal:7:pass:10"
+        },
+        {
+          "seat": 3,
+          "board": [
+            {
+              "suit": "C",
+              "low": 2,
+              "high": 14
+            },
+            {
+              "suit": "D",
+              "low": 2,
+              "high": 14
+            },
+            {
+              "suit": "H",
+              "low": 4,
+              "high": 14
+            },
+            {
+              "suit": "S",
+              "low": 6,
+              "high": 14
+            }
+          ],
+          "ref": "deal:7:pass:11"
+        }
+      ],
+      "ledger": [
+        {
+          "dealNumber": 1,
+          "kingdom": 1,
+          "request": "trix",
+          "trick": 0,
+          "finish": 1,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "layout-finish",
+          "card": "SQ",
+          "delta": 200
+        },
+        {
+          "dealNumber": 1,
+          "kingdom": 1,
+          "request": "trix",
+          "trick": 0,
+          "finish": 2,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "layout-finish",
+          "card": "S3",
+          "delta": 150
+        },
+        {
+          "dealNumber": 1,
+          "kingdom": 1,
+          "request": "trix",
+          "trick": 0,
+          "finish": 3,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "layout-finish",
+          "card": "SA",
+          "delta": 100
+        },
+        {
+          "dealNumber": 1,
+          "kingdom": 1,
+          "request": "trix",
+          "trick": 0,
+          "finish": 4,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "layout-finish",
+          "card": "S2",
+          "delta": 50
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 1,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 2,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 3,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D3",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D4",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D2",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D9",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 5,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 5,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "queen",
+          "card": "CQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 6,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 7,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D7",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D5",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "queen",
+          "card": "HQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D6",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "king",
+          "card": "HK",
+          "delta": -75
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "queen",
+          "card": "SQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "DK",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "DJ",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "DA",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D10",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "DQ",
+          "delta": -10
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "queen",
+          "card": "DQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 2,
+          "kingdom": 1,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D8",
+          "delta": -10
+        },
+        {
+          "dealNumber": 3,
+          "kingdom": 2,
+          "request": "trix",
+          "trick": 0,
+          "finish": 1,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "layout-finish",
+          "card": "D3",
+          "delta": 200
+        },
+        {
+          "dealNumber": 3,
+          "kingdom": 2,
+          "request": "trix",
+          "trick": 0,
+          "finish": 2,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "layout-finish",
+          "card": "D2",
+          "delta": 150
+        },
+        {
+          "dealNumber": 3,
+          "kingdom": 2,
+          "request": "trix",
+          "trick": 0,
+          "finish": 3,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "layout-finish",
+          "card": "S3",
+          "delta": 100
+        },
+        {
+          "dealNumber": 3,
+          "kingdom": 2,
+          "request": "trix",
+          "trick": 0,
+          "finish": 4,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "layout-finish",
+          "card": "S2",
+          "delta": 50
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 1,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 2,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 3,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 5,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 6,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 6,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D5",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 6,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "DA",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 6,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D8",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 6,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "DJ",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 7,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 7,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "queen",
+          "card": "HQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "king",
+          "card": "HK",
+          "delta": -75
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "queen",
+          "card": "SQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D2",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D6",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "D7",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "diamond",
+          "card": "DQ",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "queen",
+          "card": "DQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "diamond",
+          "card": "D10",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "queen",
+          "card": "CQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "diamond",
+          "card": "D9",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "diamond",
+          "card": "D4",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "diamond",
+          "card": "DK",
+          "delta": -10
+        },
+        {
+          "dealNumber": 4,
+          "kingdom": 2,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "diamond",
+          "card": "D3",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 1,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 2,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 3,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 4,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "king",
+          "card": "HK",
+          "delta": -75
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 5,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 6,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 7,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 7,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "queen",
+          "card": "SQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 7,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "diamond",
+          "card": "DQ",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 7,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "queen",
+          "card": "DQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "diamond",
+          "card": "D4",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "diamond",
+          "card": "D2",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 8,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "diamond",
+          "card": "D3",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D5",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "DJ",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 9,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D9",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D8",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 10,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "DA",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "DK",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 11,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D10",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "queen",
+          "card": "CQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 12,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D7",
+          "delta": -10
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "trick",
+          "delta": -15
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "queen",
+          "card": "HQ",
+          "delta": -25
+        },
+        {
+          "dealNumber": 5,
+          "kingdom": 3,
+          "request": "complex",
+          "trick": 13,
+          "finish": 0,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "diamond",
+          "card": "D6",
+          "delta": -10
+        },
+        {
+          "dealNumber": 6,
+          "kingdom": 3,
+          "request": "trix",
+          "trick": 0,
+          "finish": 1,
+          "recipient": {
+            "kind": "seat",
+            "seat": 3
+          },
+          "component": "layout-finish",
+          "card": "S5",
+          "delta": 200
+        },
+        {
+          "dealNumber": 6,
+          "kingdom": 3,
+          "request": "trix",
+          "trick": 0,
+          "finish": 2,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "layout-finish",
+          "card": "S4",
+          "delta": 150
+        },
+        {
+          "dealNumber": 6,
+          "kingdom": 3,
+          "request": "trix",
+          "trick": 0,
+          "finish": 3,
+          "recipient": {
+            "kind": "seat",
+            "seat": 2
+          },
+          "component": "layout-finish",
+          "card": "S3",
+          "delta": 100
+        },
+        {
+          "dealNumber": 6,
+          "kingdom": 3,
+          "request": "trix",
+          "trick": 0,
+          "finish": 4,
+          "recipient": {
+            "kind": "seat",
+            "seat": 0
+          },
+          "component": "layout-finish",
+          "card": "S2",
+          "delta": 50
+        },
+        {
+          "dealNumber": 7,
+          "kingdom": 4,
+          "request": "trix",
+          "trick": 0,
+          "finish": 1,
+          "recipient": {
+            "kind": "seat",
+            "seat": 1
+          },
+          "component": "layout-finish",
+          "card": "SA",
+          "delta": 200
+        }
+      ],
+      "withheldBonuses": [],
+      "lastExternalLeader": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 100
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 100
+        }
+      ],
+      "requestTotals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 0
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 200
+        }
+      ],
+      "kingdomTotals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 0
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 200
+        }
+      ],
+      "winners": [],
+      "layoutHistory": {
+        "version": "1.0.0",
+        "status": "available",
+        "turns": [
+          {
+            "ordinal": 1,
+            "seat": 0,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "D",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 0,
+                "high": 0
+              }
+            ],
+            "handCountsBefore": [
+              13,
+              13,
+              13,
+              13
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 2,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "DJ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "D",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 0,
+                "high": 0
+              }
+            ],
+            "handCountsBefore": [
+              13,
+              13,
+              13,
+              13
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 3,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "SJ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "D",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 0,
+                "high": 0
+              }
+            ],
+            "handCountsBefore": [
+              13,
+              13,
+              13,
+              12
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 4,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "CJ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "D",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              13,
+              13,
+              12,
+              12
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 5,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "D10",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              13,
+              12,
+              12,
+              12
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 6,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "DQ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 10,
+                "high": 11
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              12,
+              12,
+              12,
+              12
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 7,
+            "seat": 2,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 10,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              12,
+              12,
+              12,
+              11
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 8,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "HJ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 10,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 0,
+                "high": 0
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              12,
+              12,
+              12,
+              11
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 9,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "D9",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 10,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              12,
+              11,
+              12,
+              11
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 10,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "D8",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 9,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              11,
+              12,
+              11
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 11,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "D7",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 8,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              11,
+              12,
+              10
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 12,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "S10",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 7,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 11,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              11,
+              11,
+              10
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 13,
+            "seat": 0,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 7,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              10,
+              11,
+              10
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 14,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "DK",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 7,
+                "high": 12
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              10,
+              11,
+              10
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 15,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "D6",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 7,
+                "high": 13
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              10,
+              11,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 16,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "C10",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 13
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              10,
+              10,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 17,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "C9",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 10,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 13
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              11,
+              9,
+              10,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 18,
+            "seat": 3,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 9,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 13
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              10,
+              9,
+              10,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 19,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "HQ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 9,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 13
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 11
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              10,
+              9,
+              10,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 20,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "C8",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 9,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 13
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              10,
+              9,
+              9,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 21,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "DA",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 8,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 13
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              10,
+              8,
+              9,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 22,
+            "seat": 3,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 8,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              9,
+              8,
+              9,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 23,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "C7",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 8,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              9,
+              8,
+              9,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 24,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "H10",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 7,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 11,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              9,
+              8,
+              8,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 25,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "H9",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 7,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 10,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              9,
+              7,
+              8,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 26,
+            "seat": 3,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 7,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              8,
+              7,
+              8,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 27,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "C6",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 7,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              8,
+              7,
+              8,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 28,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "SQ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 6,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 11
+              }
+            ],
+            "handCountsBefore": [
+              8,
+              7,
+              7,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 29,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "HK",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 6,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 12
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 12
+              }
+            ],
+            "handCountsBefore": [
+              8,
+              6,
+              7,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 30,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "HA",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 6,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 13
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 12
+              }
+            ],
+            "handCountsBefore": [
+              7,
+              6,
+              7,
+              9
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 31,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "C5",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 6,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 12
+              }
+            ],
+            "handCountsBefore": [
+              7,
+              6,
+              7,
+              8
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 32,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "CQ",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 5,
+                "high": 11
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 12
+              }
+            ],
+            "handCountsBefore": [
+              7,
+              6,
+              6,
+              8
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 33,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "SK",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 5,
+                "high": 12
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 12
+              }
+            ],
+            "handCountsBefore": [
+              7,
+              5,
+              6,
+              8
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 34,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "CK",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 5,
+                "high": 12
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              6,
+              5,
+              6,
+              8
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 35,
+            "seat": 2,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 5,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              6,
+              5,
+              6,
+              7
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 36,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "D5",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 5,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              6,
+              5,
+              6,
+              7
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 37,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "D4",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 5,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 5,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              6,
+              4,
+              6,
+              7
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 38,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "C4",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 5,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 4,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              5,
+              4,
+              6,
+              7
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 39,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "C3",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 4,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 4,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              5,
+              4,
+              6,
+              6
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 40,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "C2",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 3,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 4,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              5,
+              4,
+              5,
+              6
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 41,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "D3",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 4,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              5,
+              3,
+              5,
+              6
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 42,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "CA",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 13
+              },
+              {
+                "suit": "D",
+                "low": 3,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              3,
+              5,
+              6
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 43,
+            "seat": 2,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 3,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              3,
+              5,
+              5
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 44,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "H8",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 3,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 9,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              3,
+              5,
+              5
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 45,
+            "seat": 0,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 3,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 8,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              2,
+              5,
+              5
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 46,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "D2",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 3,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 8,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              2,
+              5,
+              5
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 47,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "H7",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 8,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              2,
+              5,
+              4
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 48,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "S9",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 7,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 10,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              2,
+              4,
+              4
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 49,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "H6",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 7,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 9,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              4,
+              1,
+              4,
+              4
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 50,
+            "seat": 3,
+            "kind": "layout-card",
+            "card": "S8",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 9,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              3,
+              1,
+              4,
+              4
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 51,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "H5",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 6,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 8,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              3,
+              1,
+              4,
+              3
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 52,
+            "seat": 1,
+            "kind": "layout-card",
+            "card": "SA",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 5,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 8,
+                "high": 13
+              }
+            ],
+            "handCountsBefore": [
+              3,
+              1,
+              3,
+              3
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 53,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "S7",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 5,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 8,
+                "high": 14
+              }
+            ],
+            "handCountsBefore": [
+              3,
+              0,
+              3,
+              3
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 54,
+            "seat": 3,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 5,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 7,
+                "high": 14
+              }
+            ],
+            "handCountsBefore": [
+              2,
+              0,
+              3,
+              3
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 55,
+            "seat": 2,
+            "kind": "layout-card",
+            "card": "S6",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 5,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 7,
+                "high": 14
+              }
+            ],
+            "handCountsBefore": [
+              2,
+              0,
+              3,
+              3
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 56,
+            "seat": 0,
+            "kind": "layout-card",
+            "card": "H4",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 5,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 6,
+                "high": 14
+              }
+            ],
+            "handCountsBefore": [
+              2,
+              0,
+              2,
+              3
+            ],
+            "twoAnnouncementsBefore": null
+          },
+          {
+            "ordinal": 57,
+            "seat": 3,
+            "kind": "layout-pass",
+            "boardBefore": [
+              {
+                "suit": "C",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "D",
+                "low": 2,
+                "high": 14
+              },
+              {
+                "suit": "H",
+                "low": 4,
+                "high": 14
+              },
+              {
+                "suit": "S",
+                "low": 6,
+                "high": 14
+              }
+            ],
+            "handCountsBefore": [
+              1,
+              0,
+              2,
+              3
+            ],
+            "twoAnnouncementsBefore": null
+          }
+        ]
+      }
+    },
+    "phase": "layout",
+    "publicSchemaVersion": "1.2.0",
+    "seat": 2,
+    "variantId": "complex-partners"
+  }
+}

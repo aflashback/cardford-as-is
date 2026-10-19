@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "trix-king-scenarios-1.0.0",
+  "fixtures": [
+    {
+      "id": "six-low-hearts-outside-ace-east",
+      "patternId": "six-hearts-short-diamond",
+      "hands": [
+        ["H2", "H3", "H4", "H5", "H6", "HK", "C2", "C3", "C4", "C5", "C6", "CA", "D2"],
+        ["HJ", "HQ", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H9", "H10", "D3", "D7", "D8", "D9", "D10", "DJ", "DQ", "DK", "S2", "S3"],
+        ["H7", "HA", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "D4", "D5", "D6", "DA"]
+      ],
+      "witnesses": [
+        {
+          "id": "release-under-public-ace",
+          "plays": ["HA", "H8", "HJ", "HK"],
+          "expectedKingCaptor": 3
+        },
+        {
+          "id": "exhaust-cover-then-take-club-lead",
+          "plays": ["H7", "H8", "HJ", "H2", "HQ", "H3", "HA", "H9", "C7", "H10", "S4", "C2", "DA", "D3", "S5", "D2", "C8", "S2", "S6", "C3", "C9", "S3", "S7", "C4", "C10", "D7", "S8", "C5", "CJ", "D8", "S9", "C6", "CQ", "D9", "S10", "CA", "HK", "CK", "D10", "SJ"],
+          "expectedKingCaptor": 0
+        },
+        {
+          "id": "partner-return-to-publicly-known-void",
+          "plays": ["DA", "D8", "S4", "D2", "D4", "DK", "S5", "C2", "D3", "S6", "HK", "D5"],
+          "expectedKingCaptor": 3
+        }
+      ]
+    },
+    {
+      "id": "six-low-hearts-outside-ace-north",
+      "patternId": "six-hearts-hidden-ace-location-twins",
+      "hands": [
+        ["H2", "H3", "H4", "H5", "H6", "HK", "C2", "C3", "C4", "C5", "C6", "CA", "D2"],
+        ["HJ", "HQ", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H9", "H10", "D3", "HA", "D8", "D9", "D10", "DJ", "DQ", "DK", "S2", "S3"],
+        ["H7", "D7", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "D4", "D5", "D6", "DA"]
+      ],
+      "witnesses": [
+        {
+          "id": "release-under-north-ace",
+          "plays": ["H7", "HA", "HJ", "HK"],
+          "expectedKingCaptor": 2
+        }
+      ]
+    },
+    {
+      "id": "six-low-hearts-outside-ace-west",
+      "patternId": "six-hearts-hidden-ace-location-twins",
+      "hands": [
+        ["H2", "H3", "H4", "H5", "H6", "HK", "C2", "C3", "C4", "C5", "C6", "CA", "D2"],
+        ["HJ", "HQ", "HA", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H9", "H10", "D3", "D7", "D8", "D9", "D10", "DJ", "DQ", "DK", "S2", "S3"],
+        ["H7", "S4", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "D4", "D5", "D6", "DA"]
+      ],
+      "witnesses": [
+        {
+          "id": "release-under-west-ace",
+          "plays": ["H7", "H8", "HA", "HK"],
+          "expectedKingCaptor": 1
+        }
+      ]
+    },
+    {
+      "id": "six-hearts-own-ace-external-opening",
+      "patternId": "six-hearts-own-ace-counterexample",
+      "hands": [
+        ["H2", "H3", "H4", "H5", "HA", "HK", "C2", "C3", "C4", "C5", "C6", "CA", "D2"],
+        ["HJ", "HQ", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H9", "H10", "D3", "D7", "D8", "D9", "D10", "DJ", "DQ", "DK", "S2", "S3"],
+        ["H7", "H6", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "D4", "D5", "D6", "DA"]
+      ],
+      "witnesses": [
+        {
+          "id": "king-overtakes-on-external-lead",
+          "plays": ["H7", "H8", "HJ", "HK"],
+          "expectedKingCaptor": 0
+        }
+      ]
+    },
+    {
+      "id": "six-hearts-own-ace-owner-opening",
+      "patternId": "six-hearts-own-ace-opening-withholding",
+      "hands": [
+        ["H2", "H3", "H4", "H7", "HA", "HK", "C2", "C3", "C4", "C5", "C6", "CA", "D2"],
+        ["HJ", "HQ", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H9", "H10", "D3", "D7", "D8", "D9", "D10", "DJ", "DQ", "DK", "S2", "S3"],
+        ["H5", "H6", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "D4", "D5", "D6", "DA"]
+      ],
+      "witnesses": [
+        {
+          "id": "king-opening-with-no-external-giver",
+          "plays": ["HK", "H5", "H8", "HJ"],
+          "expectedKingCaptor": 0
+        }
+      ]
+    },
+    {
+      "id": "six-low-hearts-owner-outside-ace",
+      "patternId": "six-hearts-owner-release-lead",
+      "hands": [
+        ["H2", "H3", "H4", "H5", "H7", "HK", "C2", "C3", "C4", "C5", "C6", "CA", "D2"],
+        ["HJ", "HQ", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H9", "H10", "D3", "D7", "D8", "D9", "D10", "DJ", "DQ", "DK", "S2", "S3"],
+        ["H6", "HA", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "D4", "D5", "D6", "DA"]
+      ],
+      "witnesses": [
+        {
+          "id": "lose-club-lead-then-release-under-ace",
+          "plays": ["C2", "CK", "D3", "S4", "HA", "H8", "HJ", "HK"],
+          "expectedKingCaptor": 3
+        }
+      ]
+    },
+    {
+      "id": "six-high-hearts-owner-outside-ace",
+      "patternId": "six-hearts-high-cover-contrast",
+      "hands": [
+        ["H7", "H9", "H10", "HJ", "HQ", "HK", "C2", "C3", "C4", "C5", "C6", "CA", "D2"],
+        ["H4", "H5", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H2", "H3", "D3", "D7", "D8", "D9", "D10", "DJ", "DQ", "DK", "S2", "S3"],
+        ["H6", "HA", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "D4", "D5", "D6", "DA"]
+      ],
+      "witnesses": [
+        {
+          "id": "high-cover-release-after-club-transfer",
+          "plays": ["C2", "CK", "D3", "S4", "HA", "H8", "H4", "HK"],
+          "expectedKingCaptor": 3
+        }
+      ]
+    },
+    {
+      "id": "six-low-hearts-short-side-suits",
+      "patternId": "six-hearts-create-off-suit-release",
+      "hands": [
+        ["H2", "H3", "H4", "H5", "H6", "HK", "C2", "C3", "D2", "D3", "S2", "S3", "S4"],
+        ["HJ", "HQ", "CQ", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK", "SA"],
+        ["H8", "H9", "H10", "D5", "D6", "D7", "D8", "D9", "D10", "DJ", "DQ", "DK", "DA"],
+        ["H7", "HA", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "CJ", "CK", "CA", "D4"]
+      ],
+      "witnesses": [
+        {
+          "id": "exhaust-two-clubs-then-discard-king",
+          "plays": ["CA", "D5", "CQ", "C2", "CK", "D6", "S5", "C3", "CJ", "D7", "S6", "HK"],
+          "expectedKingCaptor": 3
+        }
+      ]
+    }
+  ]
+}

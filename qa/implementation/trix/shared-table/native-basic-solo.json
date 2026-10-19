@@ -1,0 +1,14 @@
+{
+  "variant": "basic-solo",
+  "gameId": "9efa9a2c8d7c8bc90b6bf8f2fdee869a6ba87b4ed5c336bd",
+  "request": "king",
+  "phase": "playing",
+  "playedCard": "C4",
+  "remaining": 12,
+  "humanCommands": 2,
+  "sharedTrickCards": true,
+  "reloadPaused": true,
+  "errors": [],
+  "provider": "off; deterministic code",
+  "scope": "first request only, normal random deal; no mocked success responses"
+}

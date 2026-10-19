@@ -1,0 +1,176 @@
+/* CR-UX-008 / Rally R09. Context sizing only; card-face.css and gesture styles
+   remain the single artwork and interaction definitions. Load after legacy CSS. */
+/* The approved board palette differs from the surrounding shell in these three
+   values. Scope them to live/replay boards; never recolor canonical card faces. */
+.rally-game-shell { --muted: #59604f; --line: #bcc4af; --accent-ink: #fff; }
+html[data-theme=dark] .rally-game-shell { --muted: #c1c8b5; --line: #49614e; --accent-ink: #201e19; }
+html[data-theme=warm] .rally-game-shell { --muted: #c7af8c; --line: #736044; --accent-ink: #241c16; }
+.rally-table-screen { position: relative; flex: 1; min-height: 0; width: 100%; --rally-coach-space: 0px; }
+.rally-app .rally-game-shell { position: relative; display: grid; grid-template-rows: minmax(0,1fr) auto; width: calc(100% - var(--rally-coach-space)); height: 100%; max-width: none; min-height: 0; margin: 0 0 0 var(--rally-coach-space); padding: 12px max(24px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) 24px; gap: var(--rally-row-gap,6px); --coach-width: 0px; --table-gap: 0px; }
+.rally-app .rally-game-shell[hidden] { display: none; }
+.rally-game-shell { container: rally-table / inline-size; }
+.rally-game-shell .play-space { display: block; position: static; min-height: 0; padding: 0; }
+.rally-game-shell .table-stage { display: block; width: 100%; height: 100%; min-height: 0; }
+.rally-game-shell .table-zone { position: relative; height: 100%; min-height: 0; width: 100%; overflow: visible; --rally-felt-right: 42px; --rally-side-y: 43%; }
+.rally-game-shell .table-zone > .table-felt { inset: 32px var(--rally-pocket-felt-right,var(--rally-felt-right)) 22px 42px; transform: none; border-radius: 130px; background: var(--felt); box-shadow: inset 0 0 0 2px var(--line); }
+.rally-game-shell .table-felt:after,.rally-game-shell .table-brand,.rally-game-shell .table-totals { display: none; }
+.rally-game-shell .table-line { inset: 12px; border-radius: inherit; border-color: var(--line); opacity: .5; }
+.rally-game-shell[data-game=trix] .table-zone { --rally-felt-right: 54px; }
+.rally-game-shell[data-game=trix] .table-felt { inset-block: 28px 18px; left: 54px; border-radius: 22px; }
+.rally-game-shell .player { min-width: 0; color: var(--ink); gap: 8px; }
+.rally-game-shell .table-zone .player-0,.rally-game-shell .table-zone .player-2 { padding: 6px 12px; background: var(--surface); border-radius: 9px; min-width: 0; left: 50%; }
+.rally-game-shell .player-0 { bottom: 0; }
+.rally-game-shell .player-2 { top: 0; }
+.rally-game-shell .player-1,.rally-game-shell .player-3 { top: var(--rally-side-y); transform: translateY(-50%); gap: 6px; min-width: 68px; }
+.rally-game-shell .player-1 { left: 0; }.rally-game-shell .player-3 { right: 0; top: calc(var(--rally-side-y) + var(--rally-east-offset,0px)); }
+.rally-game-shell .player-1 .player-info,.rally-game-shell .player-3 .player-info { background: var(--surface); padding: 5px 9px; border-radius: 9px; }
+.rally-game-shell .player-name { font-size: var(--rally-name-size,14px); font-weight: 750; line-height: 1.2; }
+.rally-game-shell .player-detail { font-size: var(--rally-detail-size,12px); line-height: 1.1; color: var(--muted); margin-top: 3px; }
+.rally-game-shell .avatar { width: var(--rally-avatar,36px); height: var(--rally-avatar,36px); border: 2px solid var(--surface); font-size: 14px; box-shadow: none; }
+.rally-game-shell .table-zone .player-active .avatar { box-shadow: 0 0 0 3px var(--accent); }
+.rally-game-shell .table-zone .player-active .player-info { background: transparent; box-shadow: none; }
+.rally-game-shell .table-zone .player-active .player-name { color: var(--ink); }
+.rally-game-shell .turn-dot { background: var(--accent); }
+.rally-game-shell .table-zone .trick-area { --table-card-width: inherit; --table-card-height: inherit; top: 50%; }
+.rally-app .rally-game-shell .hand-section { position: relative; width: 100%; min-width: 0; flex: none; padding: 0 var(--rally-hand-right,8px) 0 var(--rally-hand-left,72px); --hand-card-width: var(--rally-hand-width,58px); --hand-card-height: calc(var(--hand-card-width) * var(--card-aspect)); }
+.rally-game-shell .hand-section .hand-cards { height: calc(var(--hand-card-height) + var(--rally-hand-lift,24px)); padding: var(--rally-hand-lift,24px) 0 0; }
+.rally-game-shell .hand-toolbar { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); width: max-content; max-width: 100%; height: auto; min-height: 0; z-index: 5; }
+.rally-game-shell .hand-toolbar:has(.hand-action:empty) { display: none; }
+.rally-game-shell .hand-action button { min-height: 44px; }
+.rally-game-shell .rally-last { position: absolute; z-index: 4; pointer-events: none; width: var(--rally-preview-width,82px); height: var(--rally-preview-height,72px); }
+.rally-game-shell .rally-last[hidden] { display: none; }
+.rally-game-shell .rally-last .last-trick { display: block; position: static; width: 100%; height: 100%; padding: 0; background: transparent; }
+.rally-last .last-trick-layout { width: var(--rally-preview-width,82px); height: var(--rally-preview-height,72px); transform: none; }
+.rally-last .last-trick-card { --card-width: var(--rally-preview-card,25px); width: var(--card-width); height: calc(var(--card-width) * var(--card-aspect)); }
+.rally-last .last-trick-seat-2,.rally-last .last-trick-seat-0 { left: calc((var(--rally-preview-width,82px) - var(--rally-preview-card,25px)) / 2); }
+.rally-last .last-trick-seat-1,.rally-last .last-trick-seat-3 { top: calc((var(--rally-preview-height,72px) - var(--rally-preview-card,25px) * var(--card-aspect)) / 2); }
+.rally-game-shell .rally-jacks-layout { height: calc(var(--layout-rank-span,12) * var(--layout-step) + var(--layout-height)); max-width: none; }
+.rally-game-shell .rally-jacks-layout .trix-lane-cards > span[role=img] { top: calc((var(--layout-row) - var(--layout-first-row,0)) * var(--layout-step)); z-index: var(--layout-row); }
+/* Jacks needs one centered board. Flat tags and shared lift space free its height
+   without changing the held cards or the canonical selection/drag transforms. */
+.rally-game-shell[data-rally-phase=jacks] .hand-section { z-index: 3; }
+.rally-game-shell[data-rally-phase=jacks] .hand-section .hand-cards { height: var(--hand-card-height); padding-top: 0; overflow: visible; }
+.rally-game-shell[data-rally-phase=jacks] .table-zone > .table-felt { inset-block: 26px; }
+.rally-game-shell[data-rally-phase=jacks] { --rally-two-width: 43.2px; }
+.rally-game-shell[data-rally-phase=jacks] .table-zone .player { flex-direction: row; justify-content: flex-start; gap: 6px; width: max-content; padding: 4px 8px; background: var(--surface); border-radius: 9px; min-width: 0; }
+.rally-game-shell[data-rally-phase=jacks] .table-zone .player-info { display: flex; align-items: center; gap: 6px; padding: 0; background: transparent; }
+.rally-game-shell[data-rally-phase=jacks] .table-zone .player-detail { display: flex; align-items: center; gap: 6px; margin: 0; white-space: nowrap; }
+.rally-game-shell[data-rally-phase=jacks] .table-zone .remaining-cards { --back-width: 12px; --back-height: 18px; --back-step: min(7px,calc(40px / max(1,var(--remaining) - 1))); width: calc(var(--back-width) + max(0,var(--remaining) - 1) * var(--back-step)); margin: 0 3px; }
+.rally-game-shell[data-rally-phase=jacks] .trix-two-announcements { --card-width: var(--rally-two-width); }
+.rally-game-shell[data-rally-phase=jacks] .table-zone .player-0,.rally-game-shell[data-rally-phase=jacks] .table-zone .player-2 { left: 50%; }
+.rally-game-shell[data-rally-phase=jacks] .table-zone .player-1,.rally-game-shell[data-rally-phase=jacks] .table-zone .player-3 { top: 50%; }
+.rally-game-shell[data-rally-phase=jacks] .table-zone .turn-dot { top: 50%; bottom: auto; right: 2px; transform: translateY(-50%); }
+/* Selection keeps normal hand order so a raised card cannot hide the next index.
+   Passing retains its canonical lift/tilt; only doubling changes that transform. */
+.rally-game-shell[data-rally-phase=pass] .hand-card.selected,.rally-game-shell[data-rally-phase=pass] .hand-card.selected:not(:disabled):hover,
+.rally-game-shell[data-rally-phase=double] .hand-card.selected,.rally-game-shell[data-rally-phase=double] .hand-card.selected:not(:disabled):hover { z-index: auto; }
+.rally-game-shell[data-rally-phase=double] .hand-card.selected .card-face,.rally-game-shell[data-rally-phase=double] .hand-card.selected:not(:disabled):hover .card-face { transform: translateY(-6%) rotate(4deg); }
+.rally-game-shell .trix-double-picker { z-index: 5; background: var(--surface); border-color: var(--line); color: var(--ink); }
+.rally-game-shell .trix-double-picker button { min-height: 44px; min-width: 44px; }
+.rally-game-shell .trix-double-picker .subtle-button { color: var(--ink); font-size: 12px; }
+.rally-game-shell .trix-request-picker { background: var(--surface); color: var(--ink); }
+.rally-game-shell .trix-request-options button { min-height: 44px; background: var(--tint); border-color: var(--line); color: var(--ink); }
+.rally-game-shell .trix-request-options small { color: var(--muted); }
+.rally-game-shell .trix-game-complete { color: var(--ink); }
+.rally-game-shell .table-prompt { color: var(--ink); }
+.rally-game-shell .table-prompt .prompt-icon,.rally-game-shell .passing-prompt .pass-illustration > svg { color: var(--muted); }
+/* Phase confirmation belongs to its center cue, clear of South and the hand. */
+.rally-game-shell:is([data-rally-phase=pass],[data-rally-phase=bid]) .table-zone .trick-area { position: absolute; left: 50%; top: 50%; width: 240px; max-width: calc(100% - 24px); height: auto; min-height: 0; transform: translate(-50%,-50%); }
+.rally-game-shell .table-prompt:is(.passing-prompt,.bidding-prompt) { position: static; inset: auto; display: flex; flex-direction: column; align-items: center; width: 100%; padding: 8px; gap: 8px; transform: none; }
+.rally-game-shell .table-prompt:is(.passing-prompt,.bidding-prompt) h2 { margin: 0; font-size: 16px; line-height: 1.2; }
+.rally-game-shell .table-prompt .play-button { min-width: 0; min-height: 44px; margin: 0; gap: 6px; }
+.rally-game-shell .passing-prompt .play-button { width: 100%; }
+.rally-game-shell .bidding-prompt .bid-selector { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; }
+.rally-game-shell .bidding-prompt .bid-selector output { width: 48px; min-width: 48px; font-size: 28px; line-height: 1; }
+.rally-game-shell .phase-prompt-actions { display: flex; justify-content: center; width: 100%; gap: 8px; }
+.rally-game-shell .phase-prompt-actions .play-button { flex: 1; }
+.rally-game-shell .phase-prompt-actions .nil-button { position: static; inset: auto; flex: 0 0 44px; margin: 0; min-width: 44px; min-height: 44px; }
+.rally-game-shell .bid-selector button { min-width: 44px; min-height: 44px; }
+.rally-game-shell .bid-step,.rally-game-shell .nil-button { color: var(--ink); background: var(--surface); border-color: var(--line); }
+.rally-game-shell .nil-button.active { color: var(--accent-ink); background: var(--accent); }
+.rally-game-shell .primary-button { color: var(--accent-ink); background: var(--accent); }
+.rally-game-shell .primary-button:disabled { color: var(--muted); background: var(--tint); }
+.rally-game-shell .table-continue { color: var(--ink); min-height: 44px; }
+.rally-game-shell .table-zone .trick-area:has(> .hand-complete-prompt) { position: absolute; left: 50%; top: 50%; width: 300px; max-width: calc(100% - 24px); height: auto; min-height: 0; transform: translate(-50%,-50%); }
+.rally-game-shell .hand-complete-prompt { position: static; inset: auto; display: flex; flex-direction: column; align-items: center; width: 100%; padding: 8px; gap: 8px; transform: none; }
+.rally-game-shell .hand-complete-prompt h2 { margin: 0; font-size: 16px; line-height: 1.2; }
+.rally-game-shell .hand-complete-prompt .phase-prompt-actions { flex-wrap: wrap; align-items: center; }
+.rally-game-shell .hand-complete-prompt .phase-prompt-actions > button { min-height: 44px; margin: 0; }
+.rally-game-shell[data-rally-compact=true] .hand-complete-prompt .prompt-icon { display: none; }
+.rally-app .trix-error { flex: none; background: var(--surface); color: var(--ink); }
+
+/* These rules use the measured available height, including coach pinning. */
+.rally-game-shell[data-rally-compact=true] { padding: 4px max(12px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) 12px; }
+.rally-game-shell[data-rally-compact=true] .table-zone { --rally-felt-right: 30px; --rally-side-y: 49%; }
+.rally-game-shell[data-rally-compact=true] .table-felt { inset-block: 16px 10px; left: 30px; }
+.rally-game-shell[data-rally-compact=true][data-game=trix] .table-zone { --rally-felt-right: 35px; }
+.rally-game-shell[data-rally-compact=true][data-game=trix] .table-felt { left: 35px; border-radius: 24px; }
+.rally-game-shell[data-rally-compact=true] .player { gap: 5px; }
+.rally-game-shell[data-rally-compact=true] .table-zone .player-0,.rally-game-shell[data-rally-compact=true] .table-zone .player-2 { padding: 4px 8px; }
+.rally-game-shell[data-rally-compact=true] .player-1,.rally-game-shell[data-rally-compact=true] .player-3 { min-width: 60px; gap: 3px; }
+.rally-game-shell[data-rally-compact=true] .player-1 .player-info,.rally-game-shell[data-rally-compact=true] .player-3 .player-info { padding: 3px 7px; }
+.rally-game-shell[data-rally-compact=true] .table-zone .player-2 { left: 20%; }
+.rally-game-shell[data-rally-compact=true] .table-zone .player-0 { left: 80%; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone > .table-felt { inset-block: 18px; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .player { gap: 4px; padding: 4px; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .player-info,.rally-game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .player-detail { gap: 4px; padding: 0; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .remaining-cards { --back-width: 10px; --back-height: 14px; --back-step: min(5px,calc(32px / max(1,var(--remaining) - 1))); }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .player-0,.rally-game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .player-2 { left: 50%; }
+/* South sits near the right edge: keep confirmed doubles and Jacks twos inward. */
+.rally-game-shell[data-rally-compact=true] .player-0 .announced-cards { left: auto; right: calc(100% + 8px); }
+.rally-game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass],[data-rally-phase=double]) .table-zone .player-2 { left: 10%; }
+.rally-game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass],[data-rally-phase=double]) .table-zone .player-0 { left: 90%; }
+.rally-game-shell[data-rally-compact=true] .table-prompt:is(.passing-prompt,.bidding-prompt) :is(.pass-illustration,.prompt-icon) { display: none; }
+/* DoublePicker is table-centered, independent of the shifted South badge. */
+.rally-game-shell > .play-space .rally-double-control { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 5; }
+.rally-double-control .trix-double-picker { position: static; transform: none; }
+/* Center every request on the felt, including taller narrow windows. Keep all
+   choices visible and reserve the side badge lanes instead of scrolling them. */
+.rally-game-shell[data-rally-phase=request] .trix-center { inset: auto; left: 50%; top: calc(50% + 5px); width: min(420px,calc(100% - 176px)); transform: translate(-50%,-50%); }
+.rally-game-shell[data-rally-phase=request] .trix-request-picker { display: flex; flex-direction: column; gap: 10px; padding: 12px; max-height: none; overflow: visible; }
+.rally-game-shell[data-rally-phase=request] .trix-request-picker h2 { margin: 0; font-size: 18px; line-height: 22px; }
+.rally-game-shell[data-rally-phase=request] .trix-request-options { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.rally-game-shell[data-rally-phase=request] .trix-request-options:has(> button:nth-child(3)) { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.rally-game-shell[data-rally-phase=request] .trix-request-options button { min-width: 44px; min-height: 52px; padding: 8px; font-size: 14px; line-height: 18px; text-align: center; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .trix-center { top: calc(50% + 3px); }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .trix-request-picker { display: flex; flex-direction: column; gap: 6px; padding: 6px; max-height: none; overflow: visible; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .trix-request-picker h2 { margin: 0; font-size: 14px; line-height: 18px; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .trix-request-options { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .trix-request-options:has(> button:nth-child(3)) { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .trix-request-options button { min-width: 44px; min-height: 44px; padding: 4px; font-size: 12px; line-height: 16px; text-align: center; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .table-zone .player-2 { left: 0; transform: none; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .table-zone .player-0 { left: auto; right: 0; transform: none; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .table-zone .player-1 { top: 57%; }
+.rally-game-shell[data-rally-compact=true][data-rally-phase=request] .table-zone .player-3 { top: 43%; }
+@container rally-table (max-width:420px) {
+  .rally-game-shell[data-rally-phase=request] .trix-request-options:has(> button:nth-child(3)) { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+/* Available main width includes a pinned coach. Match the approved narrow
+   bid/pass/double prompt without shrinking canonical cards or touch targets. */
+@container rally-table (max-width:560px) {
+  .rally-game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass],[data-rally-phase=double]) .table-zone { width: 100% !important; margin-left: 0 !important; }
+  .rally-game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass],[data-rally-phase=double]) .table-zone .player-1 { top: 57%; }
+  .rally-game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass],[data-rally-phase=double]) .table-zone .player-3 { top: 43%; }
+  .rally-game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass]) .table-zone .trick-area { width: 166px; }
+  .rally-game-shell[data-rally-compact=true] .table-prompt:is(.passing-prompt,.bidding-prompt) { padding: 4px 6px; gap: 4px; border-radius: 14px; }
+  .rally-game-shell[data-rally-compact=true] .bidding-prompt h2 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .rally-game-shell[data-rally-compact=true] .bidding-prompt .bid-selector,.rally-game-shell[data-rally-compact=true] .phase-prompt-actions { gap: 4px; }
+  .rally-game-shell[data-rally-compact=true] .bidding-prompt .bid-selector button { width: 44px; height: 44px; padding: 0; }
+  .rally-game-shell[data-rally-compact=true] .passing-prompt h2 { font-size: 14px; line-height: 1.15; }
+  .rally-game-shell[data-rally-compact=true] .table-prompt :is(.play-button,.nil-button),.rally-game-shell[data-rally-compact=true] .trix-double-picker button { min-width: 44px; min-height: 44px; padding: 6px; gap: 6px; font-size: 12px; line-height: 1.2; }
+  .rally-game-shell[data-rally-compact=true] .trix-double-picker { display: grid; grid-template-columns: minmax(0,1fr) 76px; width: 170px; max-width: calc(100cqw - 24px); padding: 4px 6px; gap: 4px; border-radius: 14px; }
+  .rally-game-shell[data-rally-compact=true] .trix-double-actions { display: contents; }
+  .rally-game-shell[data-rally-compact=true] .trix-double-actions > b { grid-column: 1; grid-row: 1; align-self: center; justify-self: center; }
+  .rally-game-shell[data-rally-compact=true] .trix-double-preview { grid-column: 2; grid-row: 1; align-self: center; justify-self: center; flex-wrap: wrap; gap: 4px; padding: 0; }
+  .rally-game-shell[data-rally-compact=true] .trix-double-actions > .primary-button { grid-column: 1; grid-row: 2; }
+  .rally-game-shell[data-rally-compact=true] .trix-double-actions > .subtle-button { grid-column: 2; grid-row: 2; }
+}
+@media (max-width:1000px) and (max-height:430px) and (orientation:landscape) {
+  .rally-app .rally-game-shell { padding-top: max(4px,env(safe-area-inset-top)); }
+}
+@media (max-height:520px) and (orientation:landscape) {
+  .rally-game-shell[data-rally-phase=jacks] { --rally-two-width: 31.68px; }
+}
+.rally-pause-actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+.rally-idle-notice { position:fixed; z-index:90; top:max(8px,env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%); width:max-content; max-width:calc(100% - 112px); box-sizing:border-box; padding:8px 14px; border:1px solid var(--line); border-radius:14px; background:var(--surface); color:var(--ink); box-shadow:0 4px 20px #0002; font-size:12px; line-height:1.4; text-align:center; pointer-events:none; }
+.rally-pause-actions button { display:flex; align-items:center; justify-content:center; gap:6px; min-height:44px; padding:8px; }

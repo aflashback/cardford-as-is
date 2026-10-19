@@ -60,7 +60,9 @@ test('account export is owner-scoped and allowlists safe frames without deals, s
   for (const key of ['hands', 'seed', 'deals', 'secret', 'hiddenCanary'])
     assert.equal(json.includes(`"${key}"`), false);
   assert.equal(json.includes(other), false);
-  assert.deepEqual(result.games[0]!.frames[0]!.game.hand, ['C2', 'H3', 'SA']);
+  const exportedGame = result.games[0]!.frames[0]!.game;
+  if ('gameId' in exportedGame) throw new Error('Unexpected registered presentation in a legacy export fixture');
+  assert.deepEqual(exportedGame.hand, ['C2', 'H3', 'SA']);
   await assert.rejects(
     exportAccount(pool, owner, async () => {
       throw new Error('Revoked');

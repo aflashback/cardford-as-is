@@ -161,6 +161,14 @@ func (s *Store) checkWorkOrigin(ctx context.Context, tx pgx.Tx, r WorkRequest, p
 	if err := s.checkCommitAccess(ctx, tx, r.Admission, r.GameID, workCoach(r.Purpose)); err != nil {
 		return err
 	}
+	if err := s.checkLifecycleTx(ctx, tx, r.Admission.OwnerID, r.GameID, workCoach(r.Purpose)); err != nil {
+		return err
+	}
+	if !workCoach(r.Purpose) {
+		if err := s.checkPlaybackTx(ctx, tx, r.Admission.OwnerID, r.GameID, r.Admission.ControlRevision); err != nil {
+			return err
+		}
+	}
 	var revision int64
 	var window string
 	err := tx.QueryRow(ctx, "SELECT revision,window_id FROM "+s.table("m03_games")+" WHERE game_id=$1 AND owner_id=$2 FOR UPDATE", r.GameID, r.Admission.OwnerID).Scan(&revision, &window)
@@ -429,7 +437,10 @@ func (s *Store) PublishWork(ctx context.Context, owner string, lease WorkLease, 
 			return err
 		}
 		_, err = tx.Exec(ctx, "UPDATE "+s.table("m03_work_attempts")+" SET status='completed',finished_at=$3 WHERE work_id=$1 AND fence=$2 AND status='running'", w.ID, lease.Fence, now)
-		return err
+		if err != nil {
+			return err
+		}
+		return s.checkWorkOrigin(ctx, tx, w.Request, loaded.Document.Metadata.Pin)
 	})
 	if err != nil {
 		return DecisionRecord{}, err
@@ -487,6 +498,10 @@ func (s *Store) FinishWork(ctx context.Context, owner string, lease WorkLease, s
 		return fmt.Errorf("invalid terminal work state")
 	}
 	return s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
+		// Match owner -> work -> outbox lock ordering of accepted mutations.
+		if _, err := tx.Exec(ctx, "SELECT 1 FROM "+s.table("m03_access")+" WHERE owner_id=$1 FOR UPDATE", owner); err != nil {
+			return err
+		}
 		w, token, err := s.readWork(ctx, tx, "work_id", lease.WorkID, owner, true)
 		if err != nil {
 			return err

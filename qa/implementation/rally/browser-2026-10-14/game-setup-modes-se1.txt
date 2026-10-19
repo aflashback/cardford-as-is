@@ -1,0 +1,69 @@
+- banner:
+  - button
+  - button:
+  - button:
+  - navigation:
+    - button:
+    - button:
+- main:
+  - region:
+    - generic: L
+    - generic: Leo
+    - text: "7"
+    - generic: 7 tricks
+    - generic: M
+    - generic: Maya
+    - text: "1"
+    - generic: 1 tricks
+    - generic: T
+    - generic: Theo
+    - text: "1"
+    - generic: 1 tricks
+    - generic: "Y"
+    - generic: You
+    - text: "4"
+    - generic: 4 tricks
+    - heading [level=2]: Hand complete
+    - button:
+      - text: View hand recap
+    - button:
+      - text: Play again
+  - region:
+    - status: Hand complete
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- main "New game setup":
+  - generic: New game
+  - button "Close new game setup":
+  - paragraph: 2 / 2
+  - heading "Choose a game" [active] [level=1]
+  - paragraph: You and three computer players.
+  - button "♥ Hearts Solo":
+    - generic: ♥
+    - heading "Hearts" [level=3]
+    - generic: Solo
+  - button "♠ Spades Solo":
+    - generic: ♠
+    - heading "Spades" [level=3]
+    - generic: Solo
+  - button "♠ ♠ Spades Partners":
+    - generic: ♠
+    - generic: ♠
+    - heading "Spades" [level=3]
+    - generic: Partners
+  - button "♔ Trix Basic · Solo":
+    - generic: ♔
+    - heading "Trix" [level=3]
+    - generic: Basic · Solo
+  - button "♔ Trix Basic · Partners":
+    - generic: ♔
+    - heading "Trix" [level=3]
+    - generic: Basic · Partners
+  - button "♔ Trix Complex · Solo":
+    - generic: ♔
+    - heading "Trix" [level=3]
+    - generic: Complex · Solo
+  - button "♔ Trix Complex · Partners":
+    - generic: ♔
+    - heading "Trix" [level=3]
+    - generic: Complex · Partners
+  - button "Back to game speed"

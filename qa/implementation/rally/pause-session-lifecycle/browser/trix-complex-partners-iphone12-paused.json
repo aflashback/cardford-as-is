@@ -1,0 +1,66 @@
+{
+  "name": "trix-complex-partners-iphone12-paused",
+  "at": "2026-10-16T01:53:26.939Z",
+  "mode": "trix-complex-partners",
+  "case": "manual-pause",
+  "build": "EaeD1DPD",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 298.2723388671875,
+        "clientHeight": 205,
+        "controls": [
+          {
+            "bottom": 206.62897109985352,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 619.2093963623047,
+            "width": 406.45111083984375,
+            "x": 212.75828552246097,
+            "y": 162.6333770751953
+          },
+          {
+            "bottom": 285.6008491516113,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 411.9876098632813,
+            "width": 199.2293243408203,
+            "x": 212.75828552246097,
+            "y": 241.60525512695312
+          },
+          {
+            "bottom": 285.6008491516113,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 619.2093963623047,
+            "width": 199.2293243408203,
+            "x": 419.9800720214844,
+            "y": 241.60525512695312
+          }
+        ],
+        "height": 206.31138610839844,
+        "name": "Game paused",
+        "right": 652.0790863037109,
+        "scrollHeight": 205,
+        "width": 459.9953308105469,
+        "x": 192.0837554931641,
+        "y": 91.96095275878906
+      }
+    ],
+    "height": 390,
+    "scrollHeight": 390,
+    "scrollWidth": 844,
+    "width": 844
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

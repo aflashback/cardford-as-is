@@ -132,7 +132,7 @@
             "availability": {
               "type": "array",
               "minItems": 3,
-              "maxItems": 3,
+              "maxItems": 7,
               "items": {
                 "$ref": "#/$defs/PlatformAccountAvailability"
               }
@@ -204,7 +204,7 @@
             "availability": {
               "type": "array",
               "minItems": 3,
-              "maxItems": 3,
+              "maxItems": 7,
               "items": {
                 "$ref": "#/$defs/PlatformAccountAvailability"
               }
@@ -373,6 +373,16 @@
           "items": {
             "$ref": "#/$defs/BillingOperation"
           }
+        },
+        "coachSessions": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": { "$ref": "./platform-coach.schema.json#/$defs/CoachUISession" }
+        },
+        "coachFeedback": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": { "$ref": "./platform-coach.schema.json#/$defs/CoachUIFeedbackView" }
         }
       },
       "required": [

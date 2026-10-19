@@ -1,0 +1,22 @@
+{
+  "name": "idle-warning-layout-fixed-old-se",
+  "at": "2026-10-16T02:23:23.343Z",
+  "build": "index-B-IIS17u.js",
+  "check": "Floating warning leaves table and hand geometry unchanged",
+  "unchanged": true,
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

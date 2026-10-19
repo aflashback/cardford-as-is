@@ -1,0 +1,14 @@
+{
+  "variant": "complex-solo",
+  "gameId": "4e10ab0fd900cfad8cd5a70cd35ec9dd73768d15db1a5f36",
+  "request": "complex",
+  "phase": "playing",
+  "playedCard": "C10",
+  "remaining": 12,
+  "humanCommands": 3,
+  "sharedTrickCards": true,
+  "reloadPaused": true,
+  "errors": [],
+  "provider": "off; deterministic code",
+  "scope": "first request only, normal random deal; no mocked success responses"
+}

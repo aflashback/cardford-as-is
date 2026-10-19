@@ -1,0 +1,14 @@
+{
+  "variant": "basic-partners",
+  "gameId": "da9f115ef1963adf57373b3f51e149e4a2d5ce0148af5cbc",
+  "request": "diamonds",
+  "phase": "playing",
+  "playedCard": "H4",
+  "remaining": 12,
+  "humanCommands": 1,
+  "sharedTrickCards": true,
+  "reloadPaused": true,
+  "errors": [],
+  "provider": "off; deterministic code",
+  "scope": "first request only, normal random deal; no mocked success responses"
+}

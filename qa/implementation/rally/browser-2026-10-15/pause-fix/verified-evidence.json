@@ -1,0 +1,19 @@
+{
+  "modes": 7,
+  "successfulPlaybackResponses": 28,
+  "nativePid": 19868,
+  "assets": [
+    {
+      "asset": "/assets/index-D7kota8z.js",
+      "status": 200,
+      "bytes": 4537085,
+      "sha256": "18ed134bf95ba094d9089de2db3c5bd92d001a12d10f51dad47b05579b29e70b"
+    },
+    {
+      "asset": "/assets/index-BAuyfRLG.css",
+      "status": 200,
+      "bytes": 119975,
+      "sha256": "ecc31223bf59bd0021ba2f1d5332542ef945c6a5947e390740fa670500878c16"
+    }
+  ]
+}

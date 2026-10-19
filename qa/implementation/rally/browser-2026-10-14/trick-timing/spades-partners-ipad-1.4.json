@@ -1,0 +1,204 @@
+{
+  "label": "spades-partners-ipad-1.4",
+  "frames": 152,
+  "elapsedMs": 3013.0999999940395,
+  "viewport": {
+    "width": 1024,
+    "height": 768
+  },
+  "rows": [
+    {
+      "ms": 0.1,
+      "cards": [],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 454.2,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 547.6,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 967.9,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "D5",
+          "seat": "2",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1067.6,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "D5",
+          "seat": "2",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1510.8,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "D5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D2",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1607.6,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "D5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D2",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1730,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "D5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D2",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D8",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1827.6,
+      "cards": [
+        {
+          "card": "DA",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "D5",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D2",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D8",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 2995.3,
+      "cards": [],
+      "pocket": [
+        "Leo: Ace of diamonds, won the trick",
+        "Maya: 5 of diamonds",
+        "Joe: 2 of diamonds",
+        "You: 8 of diamonds"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

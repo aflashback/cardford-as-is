@@ -20,7 +20,7 @@ func platformAccountError(err error) error {
 	return err
 }
 func platformTargets() []access.Target {
-	return []access.Target{{GameID: "hearts", VariantID: "solo"}, {GameID: "spades", VariantID: "solo"}, {GameID: "spades", VariantID: "partners"}}
+	return []access.Target{{GameID: "hearts", VariantID: "solo"}, {GameID: "spades", VariantID: "solo"}, {GameID: "spades", VariantID: "partners"}, {GameID: "trix", VariantID: "basic-solo"}, {GameID: "trix", VariantID: "basic-partners"}, {GameID: "trix", VariantID: "complex-solo"}, {GameID: "trix", VariantID: "complex-partners"}}
 }
 func fixtureDecision(v records.FixturePlatformAccess, c records.AccessContext, target access.Target, game, unit, kind, tool string) access.Decision {
 	d := access.Decision{AccessGeneration: c.Access.Generation, Applied: []access.Applied{}, Continuation: "pause-at-expiry", Reason: "no-grant"}
@@ -210,11 +210,11 @@ func (s *Service) platformAccountValue(ctx context.Context, owner string) (map[s
 			play = fixtureDecision(v, c, target, "prospective-session", "prospective-unit", "play", "")
 			coach = fixtureDecision(v, c, target, "prospective-session", "prospective-unit", "coach", "advice")
 		} else {
-			play, err = s.resolver.Resolve(policyInput(c, target, access.Operation{Kind: "play", Intent: "start", SessionID: "prospective-session", UnitID: "prospective-unit", UnitKind: "hand", AtAdmissionBoundary: true}))
+			play, err = s.resolver.Resolve(policyInput(c, target, access.Operation{Kind: "play", Intent: "start", SessionID: "prospective-session", UnitID: "prospective-unit", UnitKind: access.SupportedUnit(target), AtAdmissionBoundary: true}))
 			if err != nil {
 				return nil, err
 			}
-			coach, err = s.resolver.Resolve(policyInput(c, target, access.Operation{Kind: "coach", SessionID: "prospective-session", UnitID: "prospective-unit", UnitKind: "hand", AtAdmissionBoundary: true, ToolID: "advice"}))
+			coach, err = s.resolver.Resolve(policyInput(c, target, access.Operation{Kind: "coach", SessionID: "prospective-session", UnitID: "prospective-unit", UnitKind: access.SupportedUnit(target), AtAdmissionBoundary: true, ToolID: "advice"}))
 			if err != nil {
 				return nil, err
 			}
@@ -371,5 +371,9 @@ func (s *Service) platformExport(ctx context.Context, owner string) (transport.R
 		}
 		decisions = append(decisions, map[string]any{"decisionId": d.ID, "gameId": d.GameID, "revision": d.Revision, "policy": map[string]any{"id": d.Policy.ID, "version": d.Policy.Version}, "packetVersion": d.PacketVersion, "analysis": analysis.Registered, "advice": advice.Levels})
 	}
-	return result("PlatformExportView", map[string]any{"formatVersion": "platform-export-1", "exportedAt": time.Now().UTC().Format(time.RFC3339Nano), "mode": "local-test", "account": account, "games": games, "decisions": decisions, "coachedUnits": inventory.CoachedUnits, "billing": inventory.Billing})
+	coachSessions, coachFeedback, err := s.store.ExportCoachUI(ctx, owner)
+	if err != nil {
+		return transport.Response{}, err
+	}
+	return result("PlatformExportView", map[string]any{"formatVersion": "platform-export-1", "exportedAt": time.Now().UTC().Format(time.RFC3339Nano), "mode": "local-test", "account": account, "games": games, "decisions": decisions, "coachedUnits": inventory.CoachedUnits, "billing": inventory.Billing, "coachSessions": coachSessions, "coachFeedback": coachFeedback})
 }

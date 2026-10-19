@@ -1,0 +1,91 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Basic · Solo"':
+    - text: Trix
+    - generic: Basic · Solo
+  - 'button "Scores: You -100, Leo 25, Maya 25, Theo 0"':
+    - generic: "-100"
+    - generic: You
+    - generic: "25"
+    - generic: Leo
+    - generic: "25"
+    - generic: Maya
+    - generic: "0"
+    - generic: Theo
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Trix four player table":
+    - generic: "Y"
+    - 'img "You: kingdom owner"':
+    - generic: You
+    - button "You current score -100; show scores": "-100"
+    - img "5 cards left"
+    - generic "Your doubled cards":
+      - img "Doubled Queen of hearts":
+        - generic: Q
+        - generic: ♥
+        - generic: ♥
+      - img "Doubled Queen of spades":
+        - generic: Q
+        - generic: ♠
+        - generic: ♠
+    - img "Current player"
+    - generic: L
+    - generic: Leo
+    - button "Leo current score 25; show scores": "25"
+    - img "5 cards left"
+    - generic: M
+    - generic: Maya
+    - button "Maya current score 25; show scores": "25"
+    - img "5 cards left"
+    - generic: T
+    - generic: Theo
+    - button "Theo current score 0; show scores": "0"
+    - img "5 cards left"
+    - generic "Current trick"
+  - complementary "Last trick":
+    - 'img "You: Queen of clubs, won the trick"':
+      - generic: Q
+      - generic: ♣
+      - generic: ♣
+    - 'img "Theo: 7 of spades"':
+      - generic: "7"
+      - generic: ♠
+      - generic: ♠
+    - 'img "Maya: 8 of diamonds"':
+      - generic: "8"
+      - generic: ♦
+      - generic: ♦
+    - 'img "Leo: 10 of clubs"':
+      - generic: "10"
+      - generic: ♣
+      - generic: ♣
+  - region "Your hand":
+    - status: Your turn
+    - button "Jack of hearts":
+      - generic: J
+      - generic: ♥
+      - generic: ♥
+    - button "Queen of hearts":
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - button "King of hearts":
+      - generic: K
+      - generic: ♥
+      - generic: ♥
+    - button "Jack of spades":
+      - generic: J
+      - generic: ♠
+      - generic: ♠
+    - button "Queen of spades":
+      - generic: Q
+      - generic: ♠
+      - generic: ♠
+    - generic: Hold to lift and drag on your turn. Release toward the table to play, or near your hand to return. Double-click or double-tap to play or queue for your turn, if legal. Repeat to cancel a queue. Enter or Space plays or queues; Escape cancels. Hold or double-tap to select doubling cards, then confirm separately.
+- button "Open Coach":
+  - img "Coach waiting"
+- status
+- generic: Local test access · deterministic code players

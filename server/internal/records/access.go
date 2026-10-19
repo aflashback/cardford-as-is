@@ -26,6 +26,9 @@ type AccessChange struct {
 }
 
 func (s *Store) CreateAccess(ctx context.Context, owner string) error {
+	if s.requirePrincipal {
+		return ErrAccess
+	}
 	if !recordID(owner) {
 		return ErrAccess
 	}
@@ -38,6 +41,9 @@ func (s *Store) CreateAccess(ctx context.Context, owner string) error {
 // ChangeAccess never resets a generation. Revoke/regrant, game changes and
 // control changes therefore invalidate work admitted before either mutation.
 func (s *Store) ChangeAccess(ctx context.Context, owner string, expected int64, change AccessChange) (AccessState, error) {
+	if s.requirePrincipal {
+		return AccessState{}, ErrAccess
+	}
 	var result AccessState
 	if !recordID(owner) || expected < 1 || expected >= maxRecordInteger || change.ActiveGameID != "" && !recordID(change.ActiveGameID) {
 		return result, ErrAccess
@@ -47,6 +53,9 @@ func (s *Store) ChangeAccess(ctx context.Context, owner string, expected int64, 
 	err := s.pool.QueryRow(ctx, "UPDATE "+s.table("m03_access")+" SET generation=generation+1,control_generation=control_generation+CASE WHEN $7 THEN 1 ELSE 0 END,active_game_id=NULLIF($3,''),can_read=$4,can_play=$5,can_coach=$6 WHERE owner_id=$1 AND generation=$2 AND control_generation<9007199254740991 RETURNING owner_id,COALESCE(active_game_id,''),generation,control_generation,can_read,can_play,can_coach", owner, expected, change.ActiveGameID, change.CanRead, change.CanPlay, change.CanCoach, change.ChangeControl).Scan(&result.OwnerID, &result.ActiveGameID, &result.Generation, &result.ControlGeneration, &result.CanRead, &result.CanPlay, &result.CanCoach)
 	if errors.Is(err, pgx.ErrNoRows) {
 		err = ErrAccess
+	}
+	if err == nil {
+		s.signalRealtime()
 	}
 	return result, err
 }
@@ -130,7 +139,7 @@ func validateGrant(g Grant) error {
 	if err != nil || contracts.Validate("RegisteredTarget", target) != nil {
 		return ErrAccess
 	}
-	if g.SourceKind != "free" && g.SourceKind != "access-trial" && g.SourceKind != "purchase" && g.SourceKind != "family" {
+	if g.SourceKind != "free" && g.SourceKind != "access-trial" && g.SourceKind != "purchase" && g.SourceKind != "family" && g.SourceKind != "operator-test" {
 		return ErrAccess
 	}
 	seen := map[string]bool{}
@@ -153,6 +162,9 @@ func decodeTerms(raw []byte) (GrantTerms, error) {
 }
 
 func (s *Store) PutGrant(ctx context.Context, g Grant) error {
+	if s.requirePrincipal {
+		return ErrAccess
+	}
 	g = normalizeGrant(g)
 	if err := validateGrant(g); err != nil {
 		return err
@@ -249,6 +261,9 @@ func (s *Store) bumpAccess(ctx context.Context, tx pgx.Tx, owner string) error {
 	return err
 }
 func (s *Store) RevokeGrant(ctx context.Context, owner, id string) error {
+	if s.requirePrincipal {
+		return ErrAccess
+	}
 	return s.withTx(ctx, func(ctx context.Context, tx pgx.Tx) error {
 		var generation int64
 		if err := tx.QueryRow(ctx, "SELECT generation FROM "+s.table("m03_access")+" WHERE owner_id=$1 FOR UPDATE", owner).Scan(&generation); err != nil {
@@ -419,6 +434,9 @@ func (s *Store) AdmitUnit(ctx context.Context, gameID, game, variant string, a A
 func (s *Store) AllowanceUsed(ctx context.Context, owner, bucket, period string) (int64, error) {
 	ctx, cancel := s.bounded(ctx)
 	defer cancel()
+	if err := s.authorize(ctx, s.pool, owner); err != nil {
+		return 0, err
+	}
 	var used int64
 	err := s.pool.QueryRow(ctx, "SELECT used FROM "+s.table("m03_allowance")+" WHERE owner_id=$1 AND bucket_id=$2 AND period_key=$3", owner, bucket, period).Scan(&used)
 	if errors.Is(err, pgx.ErrNoRows) {

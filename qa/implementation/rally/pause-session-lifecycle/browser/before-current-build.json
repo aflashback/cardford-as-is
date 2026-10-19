@@ -1,0 +1,65 @@
+{
+  "name": "before-current-build",
+  "at": "2026-10-16T01:27:15.219Z",
+  "mode": "trix-complex-partners",
+  "phase": "baseline",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 301.7763214111328,
+        "clientHeight": 212,
+        "controls": [
+          {
+            "bottom": 231.12508010864255,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Take control",
+            "right": 619.2093963623047,
+            "width": 406.45111083984375,
+            "x": 212.75828552246097,
+            "y": 187.1294860839844
+          },
+          {
+            "bottom": 289.10483169555664,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 411.9876098632813,
+            "width": 199.2293243408203,
+            "x": 212.75828552246097,
+            "y": 245.10923767089844
+          },
+          {
+            "bottom": 289.10483169555664,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 619.2093963623047,
+            "width": 199.2293243408203,
+            "x": 419.9800720214844,
+            "y": 245.10923767089844
+          }
+        ],
+        "height": 213.3087615966797,
+        "name": "Game paused",
+        "right": 652.0790863037109,
+        "scrollHeight": 212,
+        "width": 459.9953308105469,
+        "x": 192.0837554931641,
+        "y": 88.46755981445312
+      }
+    ],
+    "height": 390,
+    "scrollHeight": 390,
+    "scrollWidth": 844,
+    "width": 844
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

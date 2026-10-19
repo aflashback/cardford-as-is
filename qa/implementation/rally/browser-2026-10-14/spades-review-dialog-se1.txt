@@ -1,0 +1,101 @@
+- banner:
+  - button
+  - button:
+  - button:
+  - navigation:
+    - button:
+    - button:
+- main:
+  - region:
+    - generic: L
+    - generic: Leo
+    - generic: 1 / 2
+    - generic: 1 tricks, bid 2
+    - generic: M
+    - generic: Maya
+    - generic: 0 / 3
+    - generic: 0 tricks, bid 3
+    - generic: T
+    - generic: Theo
+    - generic: 0 / 2
+    - generic: 0 tricks, bid 2
+    - generic: "Y"
+    - generic: You
+    - generic: 0 / Nil
+    - generic: 0 tricks, bid Nil
+  - complementary:
+  - region:
+    - status: Your turn
+    - button [disabled]:
+      - generic: "5"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "7"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: J
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: Q
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: A
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "9"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: A
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "2"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: "3"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: "9"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: K
+      - generic: ♠
+      - generic: ♠
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- dialog "Review current game":
+  - banner:
+    - heading "Review current game" [level=2]
+    - button "Close dialog":
+  - text: Hand
+  - combobox "Hand":
+    - option "All hands" [selected]
+    - option "1"
+  - button "Hand 1 Your decision and the information available then.":
+    - strong: Hand 1
+    - generic: Your decision and the information available then.
+  - button "Hand 1 Your decision and the information available then.":
+    - strong: Hand 1
+    - generic: Your decision and the information available then.
+  - heading "Original" [level=3]
+  - paragraph: Hand 1
+  - heading "What you knew" [level=4]
+  - paragraph: "Your cards: Jack of clubs, 5 of diamonds, 7 of diamonds, Jack of diamonds, Queen of diamonds, Ace of diamonds, 9 of hearts, Queen of hearts, Ace of hearts, 2 of spades, 3 of spades, 9 of spades, King of spades"
+  - paragraph: "Visible trick: No cards played"
+  - region "Original coach advice":
+    - button "Show original coach advice"
+  - button "Previous" [disabled]
+  - generic: 1 / 10
+  - button "Next"

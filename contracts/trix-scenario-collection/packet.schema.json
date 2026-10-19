@@ -1,0 +1,1006 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/schemas/trix-scenario-collection/packet.schema.json",
+  "title": "TrixScenarioPlayerPacket",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "trix-scenario-player-packet-1.0.0"
+    },
+    "invocationId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "actor": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "actorLabel": {
+      "enum": [
+        "S",
+        "W",
+        "N",
+        "E"
+      ]
+    },
+    "nativeRevision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "gameId": {
+      "const": "trix"
+    },
+    "variant": {
+      "enum": [
+        "basic-solo",
+        "complex-solo",
+        "basic-partners",
+        "complex-partners"
+      ]
+    },
+    "request": {
+      "enum": [
+        "diamonds",
+        "king",
+        "queens",
+        "lutoosh",
+        "complex"
+      ]
+    },
+    "pin": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "complex-solo",
+            "basic-partners",
+            "complex-partners"
+          ]
+        },
+        "moduleVersion": {
+          "const": "2.2.0"
+        },
+        "ruleProfileId": {
+          "enum": [
+            "trix-basic-solo-1.0.0",
+            "trix-complex-solo-1.0.0",
+            "trix-basic-partners-1.1.0",
+            "trix-complex-partners-1.1.0"
+          ]
+        },
+        "stateSchemaVersion": {
+          "const": "1.2.0"
+        },
+        "observationSchemaVersion": {
+          "const": "1.2.0"
+        },
+        "publicSchemaVersion": {
+          "const": "1.2.0"
+        },
+        "eventSchemaVersion": {
+          "const": "1.0.0"
+        }
+      },
+      "required": [
+        "gameId",
+        "variantId",
+        "moduleVersion",
+        "ruleProfileId",
+        "stateSchemaVersion",
+        "observationSchemaVersion",
+        "publicSchemaVersion",
+        "eventSchemaVersion"
+      ],
+      "additionalProperties": false
+    },
+    "sharedRulesHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sharedGameDescriptor": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "trix"
+        },
+        "variant": {
+          "enum": [
+            "basic-solo",
+            "complex-solo",
+            "basic-partners",
+            "complex-partners"
+          ]
+        },
+        "request": {
+          "enum": [
+            "diamonds",
+            "king",
+            "queens",
+            "lutoosh",
+            "complex"
+          ]
+        },
+        "pin": {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "trix"
+            },
+            "variantId": {
+              "enum": [
+                "basic-solo",
+                "complex-solo",
+                "basic-partners",
+                "complex-partners"
+              ]
+            },
+            "moduleVersion": {
+              "const": "2.2.0"
+            },
+            "ruleProfileId": {
+              "enum": [
+                "trix-basic-solo-1.0.0",
+                "trix-complex-solo-1.0.0",
+                "trix-basic-partners-1.1.0",
+                "trix-complex-partners-1.1.0"
+              ]
+            },
+            "stateSchemaVersion": {
+              "const": "1.2.0"
+            },
+            "observationSchemaVersion": {
+              "const": "1.2.0"
+            },
+            "publicSchemaVersion": {
+              "const": "1.2.0"
+            },
+            "eventSchemaVersion": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId",
+            "stateSchemaVersion",
+            "observationSchemaVersion",
+            "publicSchemaVersion",
+            "eventSchemaVersion"
+          ],
+          "additionalProperties": false
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000,
+          "pattern": "\\S"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "gameId",
+        "variant",
+        "request",
+        "pin",
+        "name",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "rulesAndScoring": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10000,
+      "pattern": "\\S"
+    },
+    "seatAndCompetition": {
+      "type": "object",
+      "properties": {
+        "actor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "actorLabel": {
+          "enum": [
+            "S",
+            "W",
+            "N",
+            "E"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "solo",
+            "partners"
+          ]
+        },
+        "competitors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10000,
+                "pattern": "\\S"
+              },
+              "seats": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                },
+                "minItems": 1,
+                "maxItems": 2
+              },
+              "seatLabels": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "S",
+                    "W",
+                    "N",
+                    "E"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 2
+              }
+            },
+            "required": [
+              "id",
+              "seats",
+              "seatLabels"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "partner": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "actor",
+        "actorLabel",
+        "mode",
+        "competitors",
+        "partner"
+      ],
+      "additionalProperties": false
+    },
+    "objective": {
+      "enum": [
+        "own-request-points",
+        "combined-team-request-points"
+      ]
+    },
+    "ownHand": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\|[SWNE]\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+      },
+      "minItems": 0,
+      "maxItems": 13,
+      "uniqueItems": true
+    },
+    "handCounts": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 13
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "publicPhaseAndTurn": {
+      "type": "object",
+      "properties": {
+        "phase": {
+          "enum": [
+            "playing",
+            "declare-doubles"
+          ]
+        },
+        "turn": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "turnLabel": {
+          "enum": [
+            "S",
+            "W",
+            "N",
+            "E"
+          ]
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "h7Owner": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "h7OwnerLabel": {
+          "enum": [
+            "S",
+            "W",
+            "N",
+            "E"
+          ]
+        },
+        "turnOrder": {
+          "const": [
+            "S",
+            "E",
+            "N",
+            "W"
+          ]
+        }
+      },
+      "required": [
+        "phase",
+        "turn",
+        "turnLabel",
+        "kingdom",
+        "dealNumber",
+        "h7Owner",
+        "h7OwnerLabel",
+        "turnOrder"
+      ],
+      "additionalProperties": false
+    },
+    "declarations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "actorLabel": {
+            "enum": [
+              "S",
+              "W",
+              "N",
+              "E"
+            ]
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^\\|[SWNE]\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+            },
+            "minItems": 0,
+            "maxItems": 5,
+            "uniqueItems": true
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 10000,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "actor",
+          "actorLabel",
+          "cards",
+          "ref"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 4
+    },
+    "completedTricks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 13
+          },
+          "leader": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "leaderLabel": {
+            "enum": [
+              "S",
+              "W",
+              "N",
+              "E"
+            ]
+          },
+          "winner": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "winnerLabel": {
+            "enum": [
+              "S",
+              "W",
+              "N",
+              "E"
+            ]
+          },
+          "plays": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "actor": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                },
+                "actorLabel": {
+                  "enum": [
+                    "S",
+                    "W",
+                    "N",
+                    "E"
+                  ]
+                },
+                "card": {
+                  "type": "string",
+                  "pattern": "^\\|[SWNE]\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+                }
+              },
+              "required": [
+                "actor",
+                "actorLabel",
+                "card"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "scoreComponents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/TrixLedgerEntry"
+            },
+            "minItems": 0,
+            "maxItems": 10000
+          }
+        },
+        "required": [
+          "number",
+          "leader",
+          "leaderLabel",
+          "winner",
+          "winnerLabel",
+          "plays",
+          "scoreComponents"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 13
+    },
+    "currentTrick": {
+      "type": "object",
+      "properties": {
+        "plays": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "actor": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3
+              },
+              "actorLabel": {
+                "enum": [
+                  "S",
+                  "W",
+                  "N",
+                  "E"
+                ]
+              },
+              "card": {
+                "type": "string",
+                "pattern": "^\\|[SWNE]\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+              }
+            },
+            "required": [
+              "actor",
+              "actorLabel",
+              "card"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 3
+        },
+        "winningActor": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "winningActorLabel": {
+          "anyOf": [
+            {
+              "enum": [
+                "S",
+                "W",
+                "N",
+                "E"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stillToAct": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "plays",
+        "winningActor",
+        "winningActorLabel",
+        "stillToAct"
+      ],
+      "additionalProperties": false
+    },
+    "publicScoresAndBonusFacts": {
+      "type": "object",
+      "properties": {
+        "totals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "requestTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "kingdomTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "requestSeatTotals": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ledger": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLedgerEntry"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "withheldBonuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixWithheldBonus"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "lastExternalLeader": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/TrixLeadSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "totals",
+        "requestTotals",
+        "kingdomTotals",
+        "requestSeatTotals",
+        "ledger",
+        "withheldBonuses",
+        "lastExternalLeader"
+      ],
+      "additionalProperties": false
+    },
+    "legalOptions": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "candidateId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10000,
+                "pattern": "\\S"
+              },
+              "kind": {
+                "const": "play-card"
+              },
+              "card": {
+                "type": "string",
+                "pattern": "^\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+              }
+            },
+            "required": [
+              "candidateId",
+              "kind",
+              "card"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "candidateId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10000,
+                "pattern": "\\S"
+              },
+              "kind": {
+                "const": "declare-doubles"
+              },
+              "cards": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+                },
+                "minItems": 0,
+                "maxItems": 5,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "candidateId",
+              "kind",
+              "cards"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "invocationId",
+    "actor",
+    "actorLabel",
+    "nativeRevision",
+    "gameId",
+    "variant",
+    "request",
+    "pin",
+    "sharedRulesHash",
+    "sharedGameDescriptor",
+    "rulesAndScoring",
+    "seatAndCompetition",
+    "objective",
+    "ownHand",
+    "handCounts",
+    "publicPhaseAndTurn",
+    "declarations",
+    "completedTricks",
+    "currentTrick",
+    "publicScoresAndBonusFacts",
+    "legalOptions"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "TrixLedgerEntry": {
+      "title": "TrixLedgerEntry",
+      "type": "object",
+      "properties": {
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "request": {
+          "enum": [
+            "diamonds",
+            "lutoosh",
+            "queens",
+            "king",
+            "complex",
+            "trix"
+          ]
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "finish": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "recipient": {
+          "$ref": "#/$defs/TrixRecipient"
+        },
+        "component": {
+          "enum": [
+            "diamond",
+            "trick",
+            "queen",
+            "king",
+            "double-bonus",
+            "layout-finish"
+          ]
+        },
+        "card": {
+          "type": "string",
+          "pattern": "^\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+        },
+        "delta": {
+          "type": "integer",
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "declarationRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "leadSourceRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "dealNumber",
+        "kingdom",
+        "request",
+        "trick",
+        "finish",
+        "recipient",
+        "component",
+        "delta"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRecipient": {
+      "title": "TrixRecipient",
+      "oneOf": [
+        {
+          "title": "TrixSeatRecipient",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "seat"
+            },
+            "seat": {
+              "$ref": "#/$defs/Seat"
+            }
+          },
+          "required": [
+            "kind",
+            "seat"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixTeamRecipient",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "competitor"
+            },
+            "competitor": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "competitor"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixWithheldBonus": {
+      "title": "TrixWithheldBonus",
+      "type": "object",
+      "properties": {
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        },
+        "card": {
+          "type": "string",
+          "pattern": "^\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"
+        },
+        "bonusValue": {
+          "enum": [
+            25,
+            75
+          ]
+        },
+        "reason": {
+          "const": "no_previous_external_leader"
+        },
+        "declarationRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "dealNumber",
+        "trick",
+        "card",
+        "bonusValue",
+        "reason",
+        "declarationRef"
+      ],
+      "additionalProperties": false
+    },
+    "TrixLeadSource": {
+      "title": "TrixLeadSource",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        }
+      },
+      "required": [
+        "seat",
+        "trick"
+      ],
+      "additionalProperties": false
+    },
+    "TrixScore": {
+      "title": "TrixScore",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "seats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Seat"
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "total": {
+          "type": "integer",
+          "minimum": -100000,
+          "maximum": 100000
+        }
+      },
+      "required": [
+        "id",
+        "seats",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "Seat": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    }
+  }
+}

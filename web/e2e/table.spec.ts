@@ -1,5 +1,9 @@
 import { test, expect, type Page } from '@playwright/test';
 import type { DevScenarioView, SessionView } from '../shared/contracts';
+import { faceSignatures, sameFaces } from './card-face-contract';
+import { landscapeReviewSizes, landscapeDevices } from './landscape-devices';
+import { freezeThrows, verifyThrow } from './card-throws';
+import { verifyHandDrag } from './hand-gestures';
 
 function fixture(): SessionView {
   return {
@@ -66,6 +70,50 @@ function accountFixture(value = fixture(), ownerId = '11111111-1111-4111-8111-11
     offers: [],
   };
 }
+
+for (const mode of ['spades-partners', 'spades-solo', 'hearts'] as const) {
+  test(`${mode}: confirmed card throws from the hand and preserves the final pile position`, async ({ page }) => {
+    const value = fixture(); value.game.mode = mode;
+    await mount(page, value);
+    await expect(page.locator('.card-throw')).toHaveCount(0);
+    await freezeThrows(page);
+    await page.locator('[data-hand-card="C2"]').press('Enter');
+    await verifyThrow(page, 'C2', 0);
+  });
+  test(`${mode}: corner score totals use the correct competitors and winning direction`, async ({ page }) => {
+    const value = fixture();
+    value.game.mode = mode;
+    value.game.scores = mode === 'spades-partners' ? [9999, -9999, 9999, -9999] : [30, 10, 40, 20];
+    await mount(page, value);
+    const totals = page.getByRole('complementary', { name: 'Game score totals', exact: true });
+    await expect(totals.locator('.table-total')).toHaveCount(4);
+    await expect(totals.locator('button,.table-totals-scope')).toHaveCount(0);
+    await expect(totals.locator('.total-seat')).toHaveCount(0);
+    await expect(totals.locator('.table-total strong')).toHaveText(mode === 'spades-partners' ? ['9999', '-9999', '-9999', '9999'] : ['40', '10', '20', '30']);
+    expect(await totals.locator('.total-leading').evaluateAll(chips => chips.map(chip => chip.getAttribute('data-seat'))))
+      .toEqual(mode === 'hearts' ? ['1'] : mode === 'spades-partners' ? ['2', '0'] : ['2']);
+    await expect(totals.locator('.total-trailing')).toHaveCount(mode === 'spades-partners' ? 2 : 3);
+    const fit = await totals.locator('strong').evaluateAll(numbers => numbers.every(number => number.scrollWidth <= number.clientWidth));
+    expect(fit).toBe(true);
+    await expect(page.locator('.player-0 .player-detail')).toContainText(mode === 'hearts' ? '0 tricks' : '0 tricks, bid 3');
+  });
+}
+
+for (const mode of ['spades-partners', 'spades-solo', 'hearts'] as const) {
+  test(`${mode}: hand, trick and last-trick cards keep the same proportional face`, async ({ page }) => {
+    const value = fixture();
+    value.game.mode = mode;
+    value.game.history = [{ plays: [{ seat: 0, card: 'C3' }, { seat: 1, card: 'C4' }, { seat: 2, card: 'C5' }, { seat: 3, card: 'C6' }], winner: 3 }];
+    value.game.trick = [{ seat: 3, card: 'H7' }];
+    value.game.currentWinner = 3;
+    await mount(page, value);
+    await expect(page.locator('.last-trick-card')).toHaveCount(4);
+    const reference = (await faceSignatures(page))[0];
+    sameFaces(await faceSignatures(page), reference);
+    await page.setViewportSize({ width: landscapeDevices[1].width, height: landscapeDevices[1].height });
+    sameFaces(await faceSignatures(page), reference);
+  });
+}
 async function mount(page: Page, value: SessionView = fixture(), scenarios: DevScenarioView[] = []) {
   let state = structuredClone(value);
   const commands: Record<string, unknown>[] = [];
@@ -91,6 +139,7 @@ async function mount(page: Page, value: SessionView = fixture(), scenarios: DevS
           decisionId: 'decision-2',
           game: {
             ...state.game,
+            phase: state.game.phase === 'pass' ? 'play' : state.game.phase,
             turn: 1,
             hand: state.game.hand.filter((card) => card !== 'C2'),
             trick: [{ seat: 0, card: 'C2' }],
@@ -126,7 +175,7 @@ async function mount(page: Page, value: SessionView = fixture(), scenarios: DevS
     },
   );
   await page.goto('/');
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   return {
     commands,
     setState: (next: SessionView) => {
@@ -208,7 +257,7 @@ for (const loseOpeningResponse of [false, true]) {
       await expect(page.getByRole('status')).not.toHaveText('Opening your table…');
       await page.getByRole('button', { name: 'Reconnect', exact: true }).click();
     }
-    await expect(page.getByRole('button', { name: 'Resume', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Resume game', exact: true })).toBeVisible();
     expect(requests[0]).toBe('/api/session');
     expect(requests.indexOf('/api/identity')).toBeGreaterThan(requests.indexOf('/api/session'));
     expect(mutations).toHaveLength(0);
@@ -218,7 +267,7 @@ for (const loseOpeningResponse of [false, true]) {
   });
 }
 
-test('single card activation selects; fresh double activation commits one server command', async ({
+test('single card activation does nothing; fresh double activation commits one server command', async ({
   page,
 }) => {
   const { commands } = await mount(page);
@@ -228,7 +277,7 @@ test('single card activation selects; fresh double activation commits one server
   await expect(page.getByText('Tricks Coach')).toHaveCount(0);
   const card = page.getByRole('button', { name: '2 of clubs', exact: true });
   await card.click();
-  await expect(card).toHaveAttribute('aria-pressed', 'true');
+  await expect(card).toHaveAttribute('aria-pressed', 'false');
   expect(commands).toHaveLength(0);
   await page.waitForTimeout(400);
   await card.dblclick();
@@ -241,7 +290,7 @@ test('single card activation selects; fresh double activation commits one server
   await page.getByRole('button', { name: 'Pause game', exact: true }).click();
 });
 
-test('off-turn prepared card never autoplays on the human turn', async ({ page }) => {
+test('off-turn queued card plays once on the human turn after resume', async ({ page }) => {
   const initial = fixture();
   initial.game.turn = 1;
   initial.game.legalActions = [];
@@ -252,17 +301,28 @@ test('off-turn prepared card never autoplays on the human turn', async ({ page }
   next.revision = 2;
   next.decisionId = 'human-turn';
   harness.setState(next);
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
-  await expect(page.getByRole('button', { name: '2 of clubs', exact: true })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
-  await page.waitForTimeout(1100);
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
+  await expect.poll(() => harness.commands.length).toBe(1);
+  expect(harness.commands[0]).toMatchObject({ action: { kind: 'play', card: 'C2' } });
+});
+
+test('Hearts pass cards use intentional selection and still require separate confirmation', async ({ page }) => {
+  const value = fixture(); value.game.mode = 'hearts'; value.game.phase = 'pass'; value.game.passDirection = 'left';
+  value.game.turn = null;
+  value.game.legalActions = [{ kind: 'pass', cards: ['C2', 'D3', 'H4'] }];
+  const harness = await mount(page, value);
+  await page.locator('[data-hand-card="C2"]').click();
+  await expect(page.locator('.hand-card.selected')).toHaveCount(0);
+  for (const card of ['C2', 'D3', 'H4']) await page.locator(`[data-hand-card="${card}"]`).dblclick();
+  await expect(page.locator('.hand-card.selected')).toHaveCount(3);
   expect(harness.commands).toHaveLength(0);
+  await page.locator('.play-button').click();
+  await expect.poll(() => harness.commands.length).toBe(1);
+  expect(harness.commands[0]).toMatchObject({ action: { kind: 'pass', cards: ['C2', 'D3', 'H4'] } });
 });
 
 for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
-  test(`${mode}: lifting a selected card preserves a delayed double-click target`, async ({ page }) => {
+  test(`${mode}: single click and hover do nothing; delayed double-click plays once`, async ({ page }) => {
     const session = fixture();
     session.game.mode = mode;
     const harness = await mount(page, session);
@@ -271,15 +331,21 @@ for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
     // Near the bottom edge: moving the button itself used to lose the second click.
     const point = { x: before.x + before.width / 2, y: before.y + before.height - 3 };
     await page.mouse.click(point.x, point.y);
-    await expect(card).toHaveAttribute('aria-pressed', 'true');
+    await expect(card).toHaveAttribute('aria-pressed', 'false');
     await page.waitForTimeout(200);
     expect(await card.boundingBox()).toEqual(before);
-    await expect(card.locator('.card-face')).not.toHaveCSS('transform', 'none');
+    await expect(card.locator('.card-face')).toHaveCSS('transform', 'none');
     await expect(card.locator('.card-face')).toHaveCSS('outline-style', 'none');
     await page.mouse.click(point.x, point.y);
     await expect.poll(() => harness.commands.length).toBe(1);
     expect(harness.commands[0]).toMatchObject({ action: { kind: 'play', card: 'C2' } });
     await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  });
+
+  test(`${mode}: long hold drags above the hand, returns nearby and plays toward the table`, async ({ page }) => {
+    const session = fixture(); session.game.mode = mode;
+    const harness = await mount(page, session);
+    await verifyHandDrag(page, 'C2', async () => harness.commands.length);
   });
 
   test(`${mode}: public counts and trick depth follow the confirmed winner`, async ({ page }, testInfo) => {
@@ -291,7 +357,7 @@ for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
     await expect(page.locator('.empty-card')).toHaveCount(0);
     for (const [seat, count] of [[0, 4], [1, 3], [2, 2], [3, 1]]) {
       const player = seat === 0 ? page.locator('.you-label') : page.locator(`.player-${seat}`);
-      await expect(player.getByLabel(`${count} cards left`, { exact: true })).toBeVisible();
+      await expect(player.getByLabel(`${count} ${count === 1 ? 'card' : 'cards'} left`, { exact: true })).toBeVisible();
     }
     const plays = [
       { seat: 2, card: 'HA' }, { seat: 3, card: 'H8' },
@@ -305,7 +371,7 @@ for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
       next.game.trick = plays.slice(0, length);
       next.game.currentWinner = mode === 'hearts' || length < 3 ? 2 : length === 3 ? 0 : 1;
       harness.setState(next);
-      await page.getByRole('button', { name: 'Resume', exact: true }).click();
+      await page.getByRole('button', { name: 'Resume game', exact: true }).click();
       await expect(page.locator('.trick-slot')).toHaveCount(length);
       const winner = page.locator(`.trick-slot-${next.game.currentWinner}`);
       await expect(winner).toHaveCSS('z-index', '5');
@@ -313,27 +379,117 @@ for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
       for (const card of await page.locator('.trick-slot:not(.winning-card)').all())
         expect(Number(await card.evaluate(node => getComputedStyle(node).zIndex))).toBeLessThan(5);
     }
+    await page.locator('.trick-slot .card-face').evaluateAll(async nodes => {
+      await Promise.all(nodes.flatMap(node => node.getAnimations().map(animation => animation.finished)));
+    });
     const cards = await page.locator('.trick-slot').evaluateAll(nodes => nodes.map(node => {
       const b = node.getBoundingClientRect(); return { x:b.x, y:b.y, width:b.width, height:b.height };
     }));
     expect(cards[0].width).toBeCloseTo(57.6, 0);
-    expect(cards[1].x - cards[3].x).toBeCloseTo(cards[0].width * .85, 0);
-    expect(cards[1].y - cards[0].y).toBeCloseTo(cards[0].height * .85, 0);
+    expect(cards[1].x - cards[3].x).toBeCloseTo(cards[0].width * 1.2, 0);
+    expect(cards[3].x + cards[3].width).toBeLessThan(cards[1].x);
+    expect(cards[1].y - cards[0].y).toBeCloseTo(cards[0].height * .92, 0);
+    // Check that every rank sits below the overlap strip rather than being covered.
+    for (const slot of await page.locator('.trick-slot').all()) {
+      const cardBox = (await slot.boundingBox())!;
+      const rankBox = (await slot.locator('.card-corner b').boundingBox())!;
+      expect(rankBox.y - cardBox.y).toBeGreaterThan(cardBox.height * .08);
+      const rankIsVisible = await slot.locator('.card-corner b').evaluate(node => {
+        const box = node.getBoundingClientRect();
+        const ownCard = node.closest('.trick-slot');
+        return [box.x + 1, box.right - 1].every(x =>
+          document.elementFromPoint(x, box.y + box.height / 2)?.closest('.trick-slot') === ownCard);
+      });
+      expect(rankIsVisible).toBe(true);
+    }
     const layer = async (seat: number) => Number(await page.locator(`.trick-slot-${seat}`).evaluate(node => getComputedStyle(node).zIndex));
     expect(await layer(2)).toBeGreaterThan(await layer(3)); // Ace above the eight of the led suit.
     if (mode !== 'hearts') expect(await layer(0)).toBeGreaterThan(await layer(2)); // Trump above a non-trump.
-    await page.waitForTimeout(250); // Let the existing card placement transition finish for the review image.
     await page.screenshot({ path: testInfo.outputPath(`${mode}-pile-desktop.png`) });
-    await page.setViewportSize({ width: 667, height: 375 });
+    await page.setViewportSize({ width: landscapeDevices[0].width, height: landscapeDevices[0].height });
     await expect(page.locator('.trick-slot')).toHaveCount(4);
     await page.screenshot({ path: testInfo.outputPath(`${mode}-pile-phone.png`) });
+    await page.setViewportSize({ width: 754, height: 668 });
+    await expect.poll(() => page.evaluate(() => parseFloat(document.documentElement.style.getPropertyValue('--app-height')))).toBe(668);
+    const left = (await page.locator('.trick-slot-1').boundingBox())!;
+    const right = (await page.locator('.trick-slot-3').boundingBox())!;
+    expect(left.x + left.width).toBeLessThan(right.x);
+    await page.screenshot({ path: testInfo.outputPath(`${mode}-pile-comment-viewport.png`) });
+    expect(harness.commands).toHaveLength(0);
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  });
+
+  test(`${mode}: remaining-card fans are countable for four and eight, dense for thirteen`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width: 854, height: 668 });
+    const session = fixture();
+    session.game.mode = mode;
+    session.game.handCounts = [4, 4, 8, 13];
+    const harness = await mount(page, session);
+    for (const [seat, count] of [[0, 4], [1, 4], [2, 8], [3, 13]]) {
+      const player = seat === 0 ? page.locator('.you-label') : page.locator(`.player-${seat}`);
+      const backs = player.locator('.count-card-back');
+      await expect(player.getByRole('img', { name: `${count} cards left`, exact: true })).toBeVisible();
+      await expect(backs).toHaveCount(count);
+      await expect(player.locator('.remaining-cards')).toHaveText('');
+      const first = (await backs.nth(0).boundingBox())!, second = (await backs.nth(1).boundingBox())!;
+      const exposed = second.x - first.x;
+      const width = await backs.first().evaluate(node => parseFloat(getComputedStyle(node).width));
+      if (count <= 8) expect(exposed).toBeGreaterThanOrEqual(width / 2);
+      else expect(exposed).toBeLessThan(width / 2);
+      expect(await backs.first().evaluate(node => getComputedStyle(node).transform))
+        .not.toBe(await backs.last().evaluate(node => getComputedStyle(node).transform));
+    }
+    await page.screenshot({ path: testInfo.outputPath(`${mode}-visual-card-counts.png`) });
+    await page.setViewportSize({ width: landscapeDevices[0].width, height: landscapeDevices[0].height });
+    await expect.poll(() => page.evaluate(() => parseFloat(document.documentElement.style.getPropertyValue('--app-height')))).toBe(landscapeDevices[0].height);
+    await page.screenshot({ path: testInfo.outputPath(`${mode}-visual-card-counts-phone.png`) });
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+    const next = structuredClone(session);
+    next.revision = 2;
+    next.decisionId = 'last-card-count';
+    next.game.handCounts = [4, 0, 1, 5];
+    harness.setState(next);
+    await page.getByRole('button', { name: 'Resume game', exact: true }).click();
+    await expect(page.locator('.player-1 .count-card-back')).toHaveCount(0);
+    await expect(page.locator('.player-2').getByRole('img', { name: '1 card left', exact: true })).toBeVisible();
+    await expect(page.locator('.player-2 .count-card-back')).toHaveCount(1);
+    await expect(page.locator('.player-3 .count-card-back')).toHaveCount(5);
+    expect(harness.commands).toHaveLength(0);
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+  });
+
+  test(`${mode}: history box reserves space before the first trick without visible text`, async ({ page }) => {
+    await page.setViewportSize({ width: 854, height: 668 });
+    const session = fixture();
+    session.game.mode = mode;
+    const harness = await mount(page, session);
+    const history = page.getByRole('complementary', { name: 'Last trick', exact: true });
+    await expect(history).toBeVisible();
+    await expect(history).toHaveText('');
+    await expect(history.getByRole('img')).toHaveCount(0);
+    const emptyBox = await history.boundingBox();
+    const coachBefore = await page.locator('.coach-panel').boundingBox();
+    await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+    const next = structuredClone(session);
+    next.revision = 2;
+    next.decisionId = 'first-trick-complete';
+    next.game.history = [{ plays: [
+      { seat: 0, card: 'C2' }, { seat: 1, card: 'C4' },
+      { seat: 2, card: 'C7' }, { seat: 3, card: 'CQ' },
+    ], winner: 3 }];
+    harness.setState(next);
+    await page.getByRole('button', { name: 'Resume game', exact: true }).click();
+    await expect(history.getByRole('img')).toHaveCount(4);
+    await expect(history).toHaveText(/^[A-Z0-9♣\s]*$/);
+    expect(await history.boundingBox()).toEqual(emptyBox);
+    expect(await page.locator('.coach-panel').boundingBox()).toEqual(coachBefore);
     expect(harness.commands).toHaveLength(0);
     await page.getByRole('button', { name: 'Pause game', exact: true }).click();
   });
 }
 
 test.describe('touch card preparation', () => {
-  test.use({ hasTouch: true, viewport: { width: 667, height: 375 } });
+  test.use({ hasTouch: true, viewport: { width: landscapeDevices[0].width, height: landscapeDevices[0].height } });
   test('double-tap plays once on turn and holds a card while waiting', async ({ page }) => {
     const harness = await mount(page);
     const card = page.getByRole('button', { name: '2 of clubs', exact: true });
@@ -361,6 +517,39 @@ test('suggestion never commits or hides legal cards', async ({ page }) => {
   expect(commands).toHaveLength(0);
   await expect(page.locator('.hand-card')).toHaveCount(4);
 });
+
+// Completed tricks include the final card's landing allowance before the reading interval.
+for (const [speed, botDelay, trickDelay] of [[1, 692, 1730], [1.2, 576, 1442], [1.4, 494, 1236]] as const) {
+  for (const phase of ['play', 'trick-end'] as const) {
+    test(`${speed}x: ${phase} advances at the boosted pace and never before its delay`, async ({ page }) => {
+      await page.clock.install({ time: new Date('2026-10-07T12:00:00Z') });
+      await page.clock.pauseAt(new Date('2026-10-07T13:00:00Z'));
+      const session = fixture();
+      session.preferences.gameSpeed = speed;
+      session.game.phase = phase;
+      session.game.turn = 1;
+      session.game.legalActions = [];
+      await mount(page, session);
+      const advances: Record<string, unknown>[] = [];
+      await page.route('**/api/session/advance', route => {
+        advances.push(route.request().postDataJSON() as Record<string, unknown>);
+        const next = fixture();
+        next.revision = 2;
+        next.decisionId = 'boosted-human-turn';
+        return route.fulfill({ json: next });
+      });
+      // Let the paused-clock table's refresh complete before advancing simulated time.
+      await page.waitForTimeout(100);
+      const delay = phase === 'play' ? botDelay : trickDelay;
+      await page.clock.runFor(delay - 1);
+      expect(advances).toHaveLength(0);
+      await page.clock.runFor(2);
+      await expect.poll(() => advances.length).toBe(1);
+      expect(advances[0]).toMatchObject({ kind: phase === 'play' ? 'bot' : 'collect-trick' });
+      await page.getByRole('button', { name: 'Pause game', exact: true }).click();
+    });
+  }
+}
 
 test('phone portrait account bypasses table rotation gate', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -425,10 +614,10 @@ test('late refresh cannot overwrite a newly accepted game', async ({ page }) => 
     },
   );
   await page.goto('/');
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   await expect.poll(() => reads).toBe(3);
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
   await page
     .locator('.game-option')
     .filter({ has: page.locator('.game-art-hearts') })
@@ -459,7 +648,7 @@ test('new game wizard saves pace and starts from the chosen card', async ({ page
     harness.setState(next);
     return route.fulfill({ json: next });
   });
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
   await expect(page.getByRole('main', { name: 'New game setup' })).toBeVisible();
   await expect(page.getByRole('dialog', { name: 'Choose game' })).toHaveCount(0);
   await page.getByRole('button', { name: '1.2×' }).click();
@@ -468,11 +657,11 @@ test('new game wizard saves pace and starts from the chosen card', async ({ page
   await page.getByRole('button', { name: 'Close new game setup' }).click();
   await expect(page.getByRole('main', { name: 'New game setup' })).toHaveCount(0);
   expect(requests).toHaveLength(0);
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
   await expect(page.getByRole('button', { name: '1×', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: '1.2×' }).click();
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
-  await expect(page.getByText('You and three trained players.')).toBeVisible();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
+  await expect(page.getByText('You and three computer players.')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Start game' })).toHaveCount(0);
   await page.screenshot({ path: testInfo.outputPath('cardford-wizard.png') });
   await page
@@ -532,7 +721,7 @@ for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
     ).toBeVisible();
     await page.waitForTimeout(100);
     expect(bodies).toHaveLength(1);
-    await page.getByRole('button', { name: 'Resume', exact: true }).click();
+    await page.getByRole('button', { name: 'Resume game', exact: true }).click();
     await page.getByRole('button', { name: 'Retry', exact: true }).click();
     await expect(page.getByRole('alert')).toHaveCount(0);
     await expect(page.locator('.hand-card')).toHaveCount(3);
@@ -552,15 +741,15 @@ test('lost unaccepted new-game request survives reload and retries its original 
     harness.setState(next);
     return route.fulfill({ json: next });
   });
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
   await page
     .locator('.game-option')
     .filter({ has: page.locator('.game-art-hearts') })
     .click();
   await expect(page.getByRole('alert')).toBeVisible();
   await page.reload();
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   await page.getByRole('button', { name: 'Retry', exact: true }).click();
   await expect(page.locator('.game-switch')).toContainText('Hearts');
   expect(bodies).toHaveLength(2);
@@ -605,7 +794,7 @@ test('pending command still reconciles when identity verification fails during o
   );
   await page.route('**/api/commands/*', (route) => route.fulfill({ json: { status: 'accepted' } }));
   await page.getByRole('button', { name: 'Reconnect', exact: true }).click();
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   await expect(page.locator('.hand-card')).toHaveCount(3);
   await expect(page.getByRole('alert')).toHaveCount(0);
   expect(bodies).toHaveLength(1);
@@ -648,7 +837,7 @@ test('a different signed-in owner discards a pending command instead of replayin
     route.fulfill({ json: { playerId: '22222222-2222-4222-8222-222222222222' } }),
   );
   await page.reload();
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   await expect(page.getByRole('alert')).toHaveCount(0);
   expect(bodies).toHaveLength(1);
   await page.getByRole('button', { name: '2 of clubs', exact: true }).dblclick();
@@ -700,7 +889,7 @@ test('in-place owner switch removes the prior table and fences a late refresh be
   await expect(page.locator('.hand-card')).toHaveCount(0);
   expect(preferences).toHaveLength(0);
   await page.getByRole('button', { name: 'Reconnect', exact: true }).click();
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Ace of clubs', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: '2 of clubs', exact: true })).toHaveCount(0);
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
@@ -857,7 +1046,7 @@ test('queued review retry and lost-response reload recover the same trial and co
   await expect.poll(() => bodies.length).toBe(2);
   expect(bodies[1]).toEqual(bodies[0]);
   await page.reload();
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   await page.getByRole('button', { name: 'Review current game', exact: true }).click();
   await page.getByRole('button', { name: 'Retry same continuation', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Possible continuation', exact: true })).toBeVisible();
@@ -883,8 +1072,8 @@ test('selected deals stage locally, restrict the game and label the resulting ta
     controls.setState(next);
     return route.fulfill({ json: next });
   });
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
   const picker = page.getByLabel('Practice deal');
   await picker.selectOption(scenario.id);
   expect(requests).toHaveLength(0);
@@ -894,8 +1083,8 @@ test('selected deals stage locally, restrict the game and label the resulting ta
   ).toBeDisabled();
   await page.getByRole('button', { name: 'Close new game setup' }).click();
   expect(requests).toHaveLength(0);
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
-  await page.getByRole('button', { name: 'Choose game', exact: true }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
+  await page.getByRole('button', { name: /^Choose game(?:$|:)/ }).click();
   await expect(picker).toHaveValue('');
   await picker.selectOption(scenario.id);
   await page.screenshot({ path: testInfo.outputPath('selected-deal-picker.png') });
@@ -945,7 +1134,7 @@ test('Replay this deal requests the saved setup and creates a fresh table', asyn
     return route.fulfill({ json: fresh });
   });
   await page.getByRole('button', { name: 'Pause game', exact: true }).click();
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   await page.getByRole('button', { name: 'Replay this deal', exact: true }).click();
   await expect(page.locator('.scenario-badge')).toHaveText('Selected deal: Opening A');
   await expect(page.getByRole('button', { name: 'Replay this deal', exact: true })).toHaveCount(0);
@@ -1089,8 +1278,10 @@ test('family member view exposes only own seat and leave control', async ({ page
   await expect(page.getByRole('button', { name: 'Remove member' })).toHaveCount(0);
 });
 
-test('desktop and landscape phone preserve table geometry and card targets', async ({ page }, testInfo) => {
+for (const mode of ['hearts', 'spades-solo', 'spades-partners'] as const) {
+test(`${mode}: named landscape devices keep the human at South with a separate readable hand`, async ({ page }, testInfo) => {
   const session = fixture();
+  session.game.mode = mode;
   session.game.hand = ['C3', 'C10', 'CK', 'D8', 'D9', 'H2', 'H8', 'S2', 'S6', 'S8', 'S9', 'SK', 'SA'];
   session.game.handCounts = [13, 13, 13, 13];
   session.game.legalActions = session.game.hand.map((card) => ({ kind: 'play', card }));
@@ -1105,27 +1296,44 @@ test('desktop and landscape phone preserve table geometry and card targets', asy
       );
     }),
   ).toBe(true);
-  await page.screenshot({ path: testInfo.outputPath('desktop.png') });
-  await page.setViewportSize({ width: 667, height: 375 });
-  await expect(page.locator('.hand-card')).toHaveCount(13);
-  const cards = await page.locator('.hand-card').evaluateAll((nodes) =>
-    nodes.map((node) => {
-      const r = node.getBoundingClientRect();
-      return { x: r.x, width: r.width };
-    }),
-  );
-  for (let index = 0; index < cards.length - 1; index++)
-    expect(cards[index + 1].x - cards[index].x).toBeCloseTo(cards[index].width * .6, 0);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({ path: testInfo.outputPath('phone.png') });
-  await page.setViewportSize({ width: 480, height: 320 });
-  const narrowCards = await page.locator('.hand-card').evaluateAll(nodes => nodes.map(node => {
-    const box = node.getBoundingClientRect();
-    return { x: box.x, right: box.right, width: box.width };
-  }));
-  expect(narrowCards[0].x).toBeGreaterThanOrEqual(0);
-  expect(narrowCards.at(-1)!.right).toBeLessThanOrEqual(480);
-  expect(narrowCards[1].x - narrowCards[0].x).toBeLessThan(cards[1].x - cards[0].x);
+  for (const profile of [...landscapeReviewSizes, { name: 'review panel', width: 712, height: 668 }]) {
+    await page.setViewportSize({ width: profile.width, height: profile.height });
+    await expect.poll(() => page.evaluate(() => parseFloat(document.documentElement.style.getPropertyValue('--app-height')))).toBe(profile.height);
+    const geometry = await page.evaluate(() => {
+      const box = (selector: string) => {
+        const r = document.querySelector(selector)!.getBoundingClientRect();
+        return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, center: r.left + r.width / 2 };
+      };
+      const ranks = [...document.querySelectorAll('.hand-card')].map(card => {
+        const rank = card.querySelector('.card-corner b')!.getBoundingClientRect();
+        return [rank.left + rank.width * .25, rank.left + rank.width * .75].every(x =>
+          card.contains(document.elementFromPoint(x, rank.top + rank.height / 2)));
+      });
+      const scoresClear = [...document.querySelectorAll('.table-total,.table-totals-scope')].every(chip => {
+        const scores = chip.getBoundingClientRect();
+        return ['.player-2', '.player-1 .avatar', '.player-1 .player-info'].every(selector => {
+          const player = box(selector);
+          return scores.right <= player.left || scores.left >= player.right || scores.bottom <= player.top || scores.top >= player.bottom;
+        });
+      });
+      return { table: box('.table-zone'), south: box('.player-0'), hand: box('.hand-cards'), ranks, scoresClear,
+        overflow: document.documentElement.scrollWidth > innerWidth || document.documentElement.scrollHeight > innerHeight };
+    });
+    expect(geometry.overflow, profile.name).toBe(false);
+    expect(geometry.scoresClear, profile.name).toBe(true);
+    expect(geometry.south.center, profile.name).toBeCloseTo(geometry.table.center, 0);
+    expect(geometry.south.bottom, profile.name).toBeCloseTo(geometry.table.bottom, 0);
+    expect(geometry.hand.top, profile.name).toBeGreaterThanOrEqual(geometry.south.bottom);
+    expect(geometry.hand.left, profile.name).toBeGreaterThanOrEqual(0);
+    expect(geometry.hand.right, profile.name).toBeLessThanOrEqual(profile.width);
+    expect(geometry.ranks, profile.name).toEqual(Array(13).fill(true));
+    await expect(page.locator('.table-zone .player-0 .avatar')).toBeVisible();
+    await expect(page.locator('.partner-label')).toHaveCount(0);
+    await expect(page.locator('.player-0.player-active .avatar')).toHaveCSS('box-shadow', /rgb\(180, 133, 60\)/);
+    await expect(page.locator('.hand-section .player')).toHaveCount(0);
+    await expect(page.locator('.hand-card')).toHaveCount(13);
+    await page.screenshot({ path: testInfo.outputPath(`${mode}-${profile.name.replaceAll(' ', '-')}.png`) });
+  }
   const lastCard = page.locator('.hand-card').last();
   await page.locator('.hand-card').first().focus();
   for (let index = 1; index < 13; index++) await page.keyboard.press('Tab');
@@ -1134,6 +1342,7 @@ test('desktop and landscape phone preserve table geometry and card targets', asy
   await page.locator('.hand-card').first().focus();
   expect((await page.locator('.hand-card').first().boundingBox())!.x).toBeGreaterThanOrEqual(0);
 });
+}
 
 for (const mode of ['spades-partners', 'spades-solo', 'hearts'] as const) {
   test(`${mode}: unavailable-card cues follow server legality and clear on a new turn`, async ({ page }) => {
@@ -1148,7 +1357,10 @@ for (const mode of ['spades-partners', 'spades-solo', 'hearts'] as const) {
     await expect(blocked).toBeDisabled();
     await expect(blocked).toHaveAttribute('aria-disabled', 'true');
     await expect(blocked.locator('.unavailable-mark')).toHaveCount(0);
-    await expect(blocked.locator('.card-face')).toHaveCSS('color', 'rgb(135, 148, 157)');
+    await expect(blocked.locator('.card-face')).toHaveCSS('opacity', '1');
+    await expect(blocked.locator('.card-face')).toHaveCSS('background-color', 'rgb(214, 215, 214)');
+    await expect(blocked.locator('.card-face')).toHaveCSS('color', mode === 'hearts' ? 'rgb(181, 75, 97)' : 'rgb(37, 62, 77)');
+    await expect(blocked.locator('.card-face')).toHaveCSS('filter', 'none');
     await expect(page.getByRole('button', { name: '2 of clubs', exact: true })).toBeEnabled();
     expect(harness.commands).toHaveLength(0);
     await expect(page.locator('.you-active .your-turn-mark')).toBeVisible();
@@ -1173,7 +1385,7 @@ for (const mode of ['spades-partners', 'spades-solo', 'hearts'] as const) {
     next.game.spadesBroken = false;
     next.game.legalActions = [{ kind: 'play', card: restricted }];
     harness.setState(next);
-    await page.getByRole('button', { name: 'Resume', exact: true }).click();
+    await page.getByRole('button', { name: 'Resume game', exact: true }).click();
     await expect(page.getByRole('button', { name: label, exact: true })).toBeEnabled();
     await expect(page.locator('.unavailable-mark')).toHaveCount(0);
     expect(harness.commands).toHaveLength(0);
@@ -1185,7 +1397,7 @@ test('a prepared card becomes unavailable without autoplay when the server exclu
   initial.game.turn = 1;
   initial.game.legalActions = [];
   const harness = await mount(page, initial);
-  await page.getByRole('button', { name: '5 of spades', exact: true }).click();
+  await page.getByRole('button', { name: '5 of spades', exact: true }).dblclick();
   await page.getByRole('button', { name: 'Pause game', exact: true }).click();
   const next = fixture();
   next.revision = 2;
@@ -1193,7 +1405,7 @@ test('a prepared card becomes unavailable without autoplay when the server exclu
   next.game.spadesBroken = false;
   next.game.legalActions = [{ kind: 'play', card: 'C2' }];
   harness.setState(next);
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
   const blocked = page.getByRole('button', { name: '5 of spades, unavailable this turn', exact: true });
   await expect(blocked).toBeDisabled();
   await expect(blocked).toHaveAttribute('aria-pressed', 'false');
@@ -1234,25 +1446,15 @@ test('last trick stays above the coach with seat positions, no names and no note
   const last = page.getByRole('complementary', { name: 'Last trick', exact: true });
   const selectedCard = page.getByRole('button', { name: '8 of diamonds', exact: true });
   await selectedCard.click();
-  await expect(selectedCard).toHaveAttribute('aria-pressed', 'true');
-  await page.waitForTimeout(200); // Capture the final raised/tilted face in the review images.
+  await expect(selectedCard).toHaveAttribute('aria-pressed', 'false');
   await expect(last.getByRole('img')).toHaveCount(4);
-  await expect(last.getByRole('img', { name: 'Theo: Queen of clubs, won the trick' })).toBeVisible();
-  expect(await last.innerText()).not.toMatch(/You|Leo|Maya|Theo/);
+  await expect(last.getByRole('img', { name: 'Joe: Queen of clubs, won the trick' })).toBeVisible();
+  expect(await last.innerText()).not.toMatch(/You|Leo|Maya|Joe/);
   await expect(page.getByRole('button', { name: 'Last trick' })).toHaveCount(0);
-  for (const [width, height, name] of [
-    [1920, 1080, 'wide-desktop'],
-    [1280, 800, 'desktop'],
-    [1024, 768, 'tablet-landscape'],
-    [800, 600, 'compact-window'],
-    [700, 700, 'square-window'],
-    [768, 1024, 'tablet'],
-    [700, 701, 'short-tablet'],
-    [844, 390, 'wide-phone'],
-    [667, 375, 'phone'],
-    [667, 320, 'short-phone'],
-    [568, 320, 'small-phone'],
-  ] as const) {
+  for (const { width, height, name } of [
+    { width: 1920, height: 1080, name: 'wide-desktop' },
+    ...landscapeReviewSizes,
+  ]) {
     await page.setViewportSize({ width, height });
     await expect.poll(() => page.evaluate(() => parseFloat(document.documentElement.style.getPropertyValue('--app-height')))).toBe(height);
     await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
@@ -1288,12 +1490,6 @@ test('last trick stays above the coach with seat positions, no names and no note
     }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.screenshot({ path: testInfo.outputPath(`cues-${name}.png`), fullPage: true });
-    if (name === 'square-window' || name === 'short-tablet') {
-      const hand = page.locator('.hand-card').first();
-      await hand.scrollIntoViewIfNeeded();
-      await expect(hand).toBeInViewport({ ratio: 1 });
-      await page.evaluate(() => window.scrollTo(0, 0));
-    }
   }
   expect(notesCalls).toEqual([]);
   expect(harness.commands).toHaveLength(0);
@@ -1303,8 +1499,10 @@ test('last trick stays above the coach with seat positions, no names and no note
   next.decisionId = 'next-hand';
   next.game.handNumber = 2;
   harness.setState(next);
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
-  await expect(last).toHaveCount(0);
+  await page.getByRole('button', { name: 'Resume game', exact: true }).click();
+  await expect(last).toBeVisible();
+  await expect(last.getByRole('img')).toHaveCount(0);
+  await expect(last).toHaveText('');
   for (const [width, height] of [
     [320, 568],
     [390, 844],

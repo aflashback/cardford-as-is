@@ -1,0 +1,69 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Hearts Solo"':
+    - text: Hearts
+    - generic: Solo
+  - 'button "Scores: You 0, Leo 0, Maya 0, Theo 0"':
+    - generic: "0"
+    - generic: You
+    - generic: "0"
+    - generic: Leo
+    - generic: "0"
+    - generic: Maya
+    - generic: "0"
+    - generic: Theo
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Card table":
+    - generic: L
+    - generic: Leo
+    - text: "6"
+    - generic: 6 tricks
+    - img "1 card left"
+    - generic: M
+    - generic: Maya
+    - text: "1"
+    - generic: 1 tricks
+    - img "1 card left"
+    - generic: T
+    - generic: Theo
+    - text: "1"
+    - generic: 1 tricks
+    - img "1 card left"
+    - generic: "Y"
+    - generic: You
+    - text: "4"
+    - generic: 4 tricks
+    - img "1 card left"
+    - img "Current player"
+  - generic "Last trick":
+    - complementary "Last trick":
+      - 'img "Leo: Queen of spades"':
+        - generic: Q
+        - generic: ♠
+        - generic: ♠
+      - 'img "Maya: Jack of hearts"':
+        - generic: J
+        - generic: ♥
+        - generic: ♥
+      - 'img "Theo: King of clubs"':
+        - generic: K
+        - generic: ♣
+        - generic: ♣
+      - 'img "You: Ace of spades, won the trick"':
+        - generic: A
+        - generic: ♠
+        - generic: ♠
+  - region "Your hand":
+    - status: Your turn
+    - button "Queen of hearts":
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- button "Open Coach":
+  - img "Coach waiting"
+- status
+- generic: Local test access · no payment

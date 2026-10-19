@@ -1,4 +1,5 @@
 import type { Card, Suit } from '../../shared/contracts';
+export const playerNames = ['You', 'Leo', 'Maya', 'Joe'] as const;
 export const cardSuit = (card: Card): Suit => card[0] as Suit;
 export const cardRank = (card: Card): number =>
   ({ A: 14, K: 13, Q: 12, J: 11 })[card.slice(1)] ?? Number(card.slice(1));

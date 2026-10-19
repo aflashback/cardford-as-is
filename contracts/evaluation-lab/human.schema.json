@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/human.json",
+  "title": "human",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "coach-lab-human-1.0.0"
+    },
+    "caseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "packetHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewerId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "qualification": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reviewedAt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "independence": {
+      "enum": [
+        "not-established",
+        "independent"
+      ]
+    },
+    "exposure": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "future": {
+          "type": "boolean"
+        },
+        "otherSeat": {
+          "type": "boolean"
+        },
+        "answers": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "future",
+        "otherSeat",
+        "answers"
+      ]
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "acceptable-set",
+        "unknown",
+        "contested"
+      ]
+    },
+    "acceptableActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "caseId",
+    "packetHash",
+    "reviewerId",
+    "qualification",
+    "reviewedAt",
+    "independence",
+    "exposure",
+    "status",
+    "acceptableActions",
+    "rationale"
+  ]
+}

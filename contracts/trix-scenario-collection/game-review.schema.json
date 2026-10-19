@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/schemas/trix-scenario-collection/game-review.schema.json",
+  "type": "object",
+  "properties": {
+    "episodeId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "reviewVersion": {
+      "const": "trix-luna-game-review-1.0.0"
+    },
+    "provenance": {
+      "const": "llm-proposal"
+    },
+    "complete": {
+      "const": true
+    },
+    "quality": {
+      "enum": [
+        "supported",
+        "mixed",
+        "insufficient-evidence"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "seatSummaries": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "reviewedDecisions": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "uncertainty": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "correctionDecisionIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "required": [
+          "actor",
+          "summary",
+          "reviewedDecisions",
+          "uncertainty",
+          "correctionDecisionIds"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "nativeTotals": {
+      "type": "object",
+      "properties": {
+        "scoreTotals": {
+          "type": "array",
+          "items": {
+            "title": "TrixReviewScore",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "seats": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                },
+                "minItems": 1,
+                "maxItems": 2,
+                "uniqueItems": true
+              },
+              "total": {
+                "type": "integer",
+                "minimum": -100000,
+                "maximum": 100000
+              }
+            },
+            "required": [
+              "id",
+              "seats",
+              "total"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "componentTotals": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "required": [
+        "scoreTotals",
+        "componentTotals"
+      ],
+      "additionalProperties": false
+    },
+    "supportedMissedOpportunityRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "explanationIssueCounts": {
+      "type": "object",
+      "properties": {
+        "adequate": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "incomplete-explanation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsupported-claim": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "incorrect-fact": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "uncertain": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "forced": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "adequate",
+        "incomplete-explanation",
+        "unsupported-claim",
+        "incorrect-fact",
+        "uncertain",
+        "forced"
+      ],
+      "additionalProperties": false
+    },
+    "usefulPatternRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "counterexampleRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  },
+  "required": [
+    "episodeId",
+    "reviewVersion",
+    "provenance",
+    "complete",
+    "quality",
+    "summary",
+    "seatSummaries",
+    "nativeTotals",
+    "supportedMissedOpportunityRefs",
+    "explanationIssueCounts",
+    "usefulPatternRefs",
+    "counterexampleRefs",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "title": "TrixScenarioGameReview"
+}

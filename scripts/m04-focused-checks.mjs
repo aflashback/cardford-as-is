@@ -39,6 +39,8 @@ const recordRaceTests = [
   'TestM04AdviceDeliveryExposureAndFinalAuthentication', 'TestM04EHelpPriorReceiptCannotRaceSourceRevocation',
 ];
 const lanes = {
+  trix: { database: false, cached: true, description: 'Four Trix profiles: rules, score, lifecycle, observations, replay and deterministic policy.', checks: [check(['./server/internal/games/trix'])] },
+  'trix-service': { database: true, cached: false, description: 'Native Trix catalog, contracts, persistence, access, saved advice and command recovery.', checks: [check(['./server/internal/service', './server/internal/records', './server/internal/access'], '^TestTrix')] },
   fast: { database: false, cached: true, description: 'Pure rules, projections, contracts and shared services; Go test-result cache enabled.', checks: [check([
     'access', 'coaching', 'contracts', 'demo', 'gamekernel', 'legacydecision', 'sessions',
     'games/hearts', 'games/hearts/reasoning', 'games/hearts/coaching',

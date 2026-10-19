@@ -37,7 +37,7 @@ func (s *Store) EraseOwner(ctx context.Context) error {
 		if _, err := tx.Exec(ctx, "DELETE FROM "+s.table("m03_work_attempts")+" WHERE work_id IN (SELECT work_id FROM "+s.table("m03_work")+" WHERE owner_id=$1)", owner); err != nil {
 			return err
 		}
-		for _, table := range []string{"m04_help_deliveries", "m04_review_jobs", "m03_work", "m03_review_trials", "m03_exposures", "m03_command_decisions", "m03_decisions", "m03_commands"} {
+		for _, table := range []string{"coach_ui_feedback", "coach_ui_items", "coach_ui_sessions", "coach_ui_daily_usage", "m04_help_deliveries", "m04_review_jobs", "m03_work", "m03_review_trials", "m03_exposures", "m03_command_decisions", "m03_decisions", "m03_commands"} {
 			if _, err := tx.Exec(ctx, "DELETE FROM "+s.table(table)+" WHERE owner_id=$1", owner); err != nil {
 				return err
 			}

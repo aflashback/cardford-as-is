@@ -17,13 +17,17 @@ import (
 )
 
 type Service struct {
-	store      *records.Store
-	codec      *records.DocumentCodec
-	jobs       *scheduler
-	reviewJobs *scheduler
-	policy     *access.Policy
-	resolver   *access.Resolver
-	registry   *sessions.Registry
+	lifecycleCancel context.CancelFunc
+	lifecycleDone   chan struct{}
+	store           *records.Store
+	codec           *records.DocumentCodec
+	jobs            *scheduler
+	reviewJobs      *scheduler
+	policy          *access.Policy
+	resolver        *access.Resolver
+	registry        *sessions.Registry
+	playback        *botPlaybackManager
+	realtime        *realtimeHub
 }
 
 func New(store *records.Store, codec *records.DocumentCodec) (*Service, error) {
@@ -38,13 +42,30 @@ func New(store *records.Store, codec *records.DocumentCodec) (*Service, error) {
 			return nil, err
 		}
 	}
-	return &Service{store: store, codec: codec, registry: registry, jobs: newScheduler(2, 16, 20*time.Second), reviewJobs: newScheduler(1, 4, 20*time.Second)}, nil
+	s := &Service{store: store, codec: codec, registry: registry, jobs: newScheduler(2, 16, 20*time.Second), reviewJobs: newScheduler(1, 4, 20*time.Second)}
+	var err error
+	s.playback, err = newBotPlaybackManager(s)
+	if err != nil {
+		s.jobs.close()
+		s.reviewJobs.close()
+		return nil, err
+	}
+	s.realtime = newRealtimeHub(s)
+	s.startLifecycleSweeper()
+	return s, nil
 }
-func (s *Service) Close() { s.jobs.close(); s.reviewJobs.close() }
+func (s *Service) Close() {
+	s.stopLifecycleSweeper()
+	s.realtime.close()
+	s.playback.close()
+	s.jobs.close()
+	s.reviewJobs.close()
+}
 
 // Only these routes accept user input. The public schema is validated again
 // here so trusted transport composition cannot accidentally bypass the boundary.
 var requests = map[string]string{
+	"coach-ui-start": "CoachUIStartRequest", "coach-ui-item": "CoachUIItemRequest", "coach-ui-feedback": "CoachUIFeedbackRequest",
 	"platform-reconcile": "PlatformReconcileRequest", "platform-delete-account": "AccountDeleteRequest",
 	"platform-preferences": "PlatformPreferencesRequest", "platform-billing-preview": "BillingPreviewRequest", "platform-billing-change": "BillingConfirmRequest", "platform-family-command": "PlatformFamilyCommand",
 	"platform-advice": "PlatformAdviceRequest", "platform-notes": "PlatformNotesRequest", "platform-exposures": "PlatformReviewExposureRequest", "platform-review-trial": "PlatformReviewTrialRequest",
@@ -54,6 +75,9 @@ var requests = map[string]string{
 	"new-session": "LocalServiceNewSessionRequest", "control": "LocalServiceControlRequest", "action": "LocalServiceActionRequest",
 	"prepare": "LocalServicePrepareRequest", "advance": "LocalServiceAdvanceRequest", "next-hand": "LocalServiceNextHandRequest",
 	"work-retry": "LocalServiceWorkRetryRequest", "reconcile": "LocalServiceReconcileRequest",
+	"playback":           "RealtimePlaybackRequest",
+	"presence":           "RealtimePresenceRequest",
+	"realtime-negotiate": "LocalServiceEmptyRequest", "realtime-snapshot": "RealtimeSnapshotRequest",
 }
 
 func fail(status int, code string) error {
@@ -95,6 +119,9 @@ func accepted(out records.AcceptedOutcome) (transport.Response, error) {
 func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.Response, err error) {
 	defer func() {
 		if err == nil {
+			if r.Operation == "logout" || r.Operation == "delete-account" || r.Operation == "platform-delete-account" {
+				s.realtime.invalidate(r.Token, r.Operation != "logout")
+			}
 			return
 		}
 		var httpErr *transport.LocalError
@@ -103,6 +130,8 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 			return
 		}
 		switch {
+		case errors.Is(err, records.ErrRenewalRequired):
+			err = &transport.LocalError{Status: 401, Code: "session_renewal_required"}
 		case errors.Is(err, records.ErrUnauthenticated):
 			err = fail(401, "invalid-session")
 		case errors.Is(err, records.ErrControl):
@@ -172,7 +201,7 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 	}
 	p, e := s.store.Authenticate(ctx, r.Token)
 	if e != nil {
-		return out, fail(401, "invalid-session")
+		return out, e
 	}
 	ctx = records.WithPrincipal(ctx, p)
 	if r.Operation != "logout" && r.Operation != "delete-account" && r.Operation != "platform-delete-account" {
@@ -180,7 +209,7 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 			return out, e
 		}
 	}
-	if s.policy != nil && (r.Operation == "access-offers" || r.Operation == "access-resolve" || r.Operation == "platform-session") {
+	if s.policy != nil && (r.Operation == "identity" || r.Operation == "realtime-snapshot" || r.Operation == "access-offers" || r.Operation == "access-resolve" || r.Operation == "platform-session") {
 		templates, e := offerTemplates(s.policy.Offers, "free", time.Now())
 		if e != nil {
 			return out, e
@@ -190,8 +219,16 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		}
 	}
 	switch r.Operation {
+	case "coach-ui-status", "coach-ui-session", "coach-ui-replay", "coach-ui-start", "coach-ui-item", "coach-ui-feedback":
+		return s.platformCoach(ctx, p.OwnerID, r)
+	case "realtime-negotiate":
+		return s.negotiateRealtime(ctx, p.OwnerID, r)
+	case "realtime-snapshot":
+		return s.realtimeSnapshot(ctx, p.OwnerID, r)
 	case "platform-session":
 		return s.platformSession(ctx, p.OwnerID, r.Tab)
+	case "platform-rounds", "platform-round":
+		return s.platformRounds(ctx, p.OwnerID, r.CommandID)
 	case "platform-account":
 		return s.platformAccount(ctx, p.OwnerID)
 	case "platform-preferences", "platform-get-preferences":
@@ -224,6 +261,10 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		return s.create(ctx, p.OwnerID, r)
 	case "control":
 		return s.control(ctx, r)
+	case "presence":
+		return s.renewForeground(ctx, p.OwnerID, r)
+	case "playback":
+		return s.setPlayback(ctx, p.OwnerID, r)
 	case "action", "advance", "next-hand":
 		return s.mutate(ctx, p.OwnerID, r)
 	case "prepare":
@@ -288,6 +329,7 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		if e = s.store.RevokeSession(ctx); e != nil {
 			return out, e
 		}
+		s.playback.wake(p.OwnerID, "")
 		out, e = result("AcceptedView", map[string]any{"accepted": true})
 		out.ClearToken = true
 		return out, e
@@ -295,6 +337,7 @@ func (s *Service) Call(ctx context.Context, r transport.Request) (out transport.
 		if e = s.store.EraseOwner(ctx); e != nil {
 			return out, e
 		}
+		s.playback.stop(p.OwnerID, "")
 		out, e = result("AccountDeleteView", map[string]any{"deleted": true, "mode": "local-test", "message": "Local Go practice data and sessions deleted."})
 		out.ClearToken = true
 		return out, e
@@ -537,7 +580,7 @@ func (s *Service) create(ctx context.Context, owner string, r transport.Request)
 		a = c.Access
 	}
 	receipt, _ := json.Marshal(map[string]any{"commandId": q.CommandID, "gameId": id, "revision": 0, "controlLeaseToken": token, "controlGeneration": a.ControlGeneration + 1})
-	out, err := s.store.CreateAccepted(ctx, records.CreateTransition{Document: doc, Anchor: anchor, Events: events, Admission: admission, ExpectedActiveGameID: expected, ExpectedRevision: q.ExpectedRevision, ReceiptSchema: "LocalServiceCommandReceipt", Receipt: receipt, NewControlToken: token, TabID: r.Tab})
+	out, err := s.store.CreateAccepted(ctx, records.CreateTransition{SessionLifecycle: true, Document: doc, Anchor: anchor, Events: events, Admission: admission, ExpectedActiveGameID: expected, ExpectedRevision: q.ExpectedRevision, ReceiptSchema: "LocalServiceCommandReceipt", Receipt: receipt, NewControlToken: token, TabID: r.Tab})
 	if err != nil {
 		return transport.Response{}, err
 	}

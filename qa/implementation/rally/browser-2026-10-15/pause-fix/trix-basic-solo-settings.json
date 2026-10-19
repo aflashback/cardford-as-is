@@ -1,0 +1,36 @@
+{
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Close dialog"
+    },
+    {
+      "disabled": false,
+      "label": "Light"
+    },
+    {
+      "disabled": false,
+      "label": "Dark"
+    },
+    {
+      "disabled": false,
+      "label": "Warm"
+    },
+    {
+      "disabled": false,
+      "label": "Review"
+    },
+    {
+      "disabled": true,
+      "label": "Score history"
+    }
+  ],
+  "dialog": "Settings",
+  "focused": "",
+  "hidden": false,
+  "title": "Trix Basic · Solo — CardFord",
+  "viewport": [
+    568,
+    320
+  ]
+}

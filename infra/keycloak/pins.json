@@ -1,0 +1,20 @@
+{
+  "keycloak": {
+    "version": "26.8.1",
+    "image": "quay.io/keycloak/keycloak:26.8.1@sha256:ed1cab21814c7d18ce8f0e11d5a1fa1c6923de12dd4c7625a18c5d34452a57a4",
+    "platform": "linux/amd64",
+    "license": "Apache-2.0",
+    "source": "https://github.com/keycloak/keycloak/releases/tag/26.8.1"
+  },
+  "emailOtp": {
+    "version": "0.91",
+    "compiledKeycloakVersion": "26.8.0",
+    "url": "https://repo.maven.apache.org/maven2/io/phasetwo/keycloak/keycloak-magic-link/0.91/keycloak-magic-link-0.91.jar",
+    "file": "keycloak-magic-link-0.91.jar",
+    "sha256": "174504c0e8ac7379d0f3d5652bb9bcc9a4ce74a1569b5df0e48c409857b4ce4a",
+    "sourceCommit": "925ea314d1603f3081afc8cbec06a7446eef07a3",
+    "source": "https://github.com/p2-inc/keycloak-magic-link/tree/925ea314d1603f3081afc8cbec06a7446eef07a3",
+    "license": "Elastic-2.0",
+    "licenseUrl": "https://raw.githubusercontent.com/p2-inc/keycloak-magic-link/925ea314d1603f3081afc8cbec06a7446eef07a3/COPYING"
+  }
+}

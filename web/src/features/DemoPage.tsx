@@ -42,11 +42,9 @@ export function DemoPage() {
     return () => { ++sequence.current; active.current?.abort(); };
   }, [request]);
   return (
-    <main className="account-page demo-page">
-      <header>
-        <a className="wordmark" href="#">
-          CardFord
-        </a>
+    <main className="account-page demo-page rally-page">
+      <header className="rally-page-header">
+        <a className="rally-page-brand" href="#"><img src="/brand/cardford-symbol.svg" alt="" />CardFord</a>
         <a className="text-button" href="#account">
           Account
         </a>
@@ -56,7 +54,7 @@ export function DemoPage() {
         <h1>{frame?.title ?? 'A short example game'}</h1>
         {frame && <>
         <div className="demo-cards" aria-label="Example cards">
-          {frame.cards.map(card => <span key={card}>{card.slice(1)}{suits[cardSuit(card)]}</span>)}
+          {frame.cards.map(card => <span key={card} data-suit={cardSuit(card)}>{card.slice(1)}{suits[cardSuit(card)]}</span>)}
         </div>
         <p>{frame.body}</p>
         <div className="demo-actions">

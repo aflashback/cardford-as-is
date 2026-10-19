@@ -1,0 +1,123 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Complex · Partners"':
+    - text: Trix
+    - generic: Complex · Partners
+  - 'button "Scores: You & Maya 160, Leo & Joe -160"':
+    - generic: "160"
+    - generic: You & Maya
+    - generic: "-160"
+    - generic: Leo & Joe
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Trix four player table":
+    - generic: "Y"
+    - 'img "You: kingdom owner"':
+    - generic: You
+    - group "Your announced twos":
+      - img "Announced 2 of clubs":
+        - generic: "2"
+        - generic: ♣
+        - generic: ♣
+      - img "Announced 2 of spades":
+        - generic: "2"
+        - generic: ♠
+        - generic: ♠
+    - img "Current player"
+    - generic: L
+    - generic: Leo
+    - img "12 cards left"
+    - group "Leo’s announced twos":
+      - img "Announced 2 of diamonds":
+        - generic: "2"
+        - generic: ♦
+        - generic: ♦
+    - generic: M
+    - img "Your partner":
+    - generic: Maya
+    - img "12 cards left"
+    - group "Maya’s announced twos":
+      - img "Announced 2 of hearts":
+        - generic: "2"
+        - generic: ♥
+        - generic: ♥
+    - generic: J
+    - generic: Joe
+    - img "12 cards left"
+    - region "Jack layout board":
+      - group "Clubs lane"
+      - group "Diamonds lane":
+        - img "Jack of diamonds":
+          - generic: J
+          - generic: ♦
+          - generic: ♦
+        - img "10 of diamonds":
+          - generic: "10"
+          - generic: ♦
+          - generic: ♦
+        - img "9 of diamonds":
+          - generic: "9"
+          - generic: ♦
+          - generic: ♦
+      - group "Hearts lane"
+      - group "Spades lane":
+        - img "Jack of spades":
+          - generic: J
+          - generic: ♠
+          - generic: ♠
+  - region "Your hand":
+    - status: Your turn
+    - button "2 of clubs" [disabled]:
+      - generic: "2"
+      - generic: ♣
+      - generic: ♣
+    - button "3 of hearts" [disabled]:
+      - generic: "3"
+      - generic: ♥
+      - generic: ♥
+    - button "4 of hearts" [disabled]:
+      - generic: "4"
+      - generic: ♥
+      - generic: ♥
+    - button "7 of hearts" [disabled]:
+      - generic: "7"
+      - generic: ♥
+      - generic: ♥
+    - button "10 of hearts" [disabled]:
+      - generic: "10"
+      - generic: ♥
+      - generic: ♥
+    - button "Jack of hearts":
+      - generic: J
+      - generic: ♥
+      - generic: ♥
+    - button "2 of spades" [disabled]:
+      - generic: "2"
+      - generic: ♠
+      - generic: ♠
+    - button "4 of spades" [disabled]:
+      - generic: "4"
+      - generic: ♠
+      - generic: ♠
+    - button "6 of spades" [disabled]:
+      - generic: "6"
+      - generic: ♠
+      - generic: ♠
+    - button "9 of spades" [disabled]:
+      - generic: "9"
+      - generic: ♠
+      - generic: ♠
+    - button "King of spades" [disabled]:
+      - generic: K
+      - generic: ♠
+      - generic: ♠
+    - button "Ace of spades" [disabled]:
+      - generic: A
+      - generic: ♠
+      - generic: ♠
+    - generic: Hold to lift and drag on your turn. Release toward the table to play, or near your hand to return. Double-click or double-tap to play or queue for your turn, if legal. Repeat to cancel a queue. Enter or Space plays or queues; Escape cancels. Hold or double-tap to select doubling cards, then confirm separately.
+- button "Open Coach":
+  - img "Coach waiting"
+- status

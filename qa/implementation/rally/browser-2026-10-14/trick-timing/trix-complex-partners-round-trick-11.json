@@ -1,0 +1,127 @@
+{
+  "label": "trix-complex-partners-round-trick-11",
+  "frames": 107,
+  "elapsedMs": 2103.7999999970198,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0.2,
+      "cards": [
+        {
+          "card": "C9",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "HQ",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D9",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Maya: 3 of diamonds",
+        "Leo: 4 of diamonds",
+        "You: Queen of diamonds",
+        "Joe: Ace of diamonds, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 770.1,
+      "cards": [
+        {
+          "card": "C9",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "HQ",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D9",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H6",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Maya: 3 of diamonds",
+        "Leo: 4 of diamonds",
+        "You: Queen of diamonds",
+        "Joe: Ace of diamonds, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 869.6,
+      "cards": [
+        {
+          "card": "C9",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "HQ",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D9",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H6",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Maya: 3 of diamonds",
+        "Leo: 4 of diamonds",
+        "You: Queen of diamonds",
+        "Joe: Ace of diamonds, won the trick"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 2036.8,
+      "cards": [
+        {
+          "card": "SJ",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of clubs, won the trick",
+        "Maya: Queen of hearts",
+        "Leo: 9 of diamonds",
+        "You: 6 of hearts"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

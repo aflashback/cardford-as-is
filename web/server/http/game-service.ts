@@ -40,7 +40,7 @@ import type {
   PreferencesRequest,
   PrepareRequest,
   PrepareView,
-  ReviewFrame,
+  LegacyReviewFrame as ReviewFrame,
   ReviewIndex,
   ReviewView,
   RecapView,

@@ -282,7 +282,8 @@ test('M01 changed pins, illegal private transitions and leaked event projections
   mutableState.secrets[0] = 99;
   const protectedPacket = bound.packet(0);
   assert.notEqual(protectedPacket.gameId, 'test-token');
-  if (protectedPacket.gameId === 'test-token') throw new Error('Unexpected non-card fixture branch');
+  if (protectedPacket.gameId === 'test-token' || protectedPacket.gameId === 'trix')
+    throw new Error('Unexpected registered fixture branch');
   assert.equal(protectedPacket.observation.scores[0], 0);
   assert.throws(() => json({ n: Number.NaN }));
   assert.throws(() =>

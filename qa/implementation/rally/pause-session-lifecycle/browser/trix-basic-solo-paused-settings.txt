@@ -1,0 +1,121 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Basic · Solo"':
+    - text: Trix
+    - generic: Basic · Solo
+  - 'button "Scores: You 0, Leo 0, Maya 0, Joe 0"':
+    - generic: "0"
+    - generic: You
+    - generic: "0"
+    - generic: Leo
+    - generic: "0"
+    - generic: Maya
+    - generic: "0"
+    - generic: Joe
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Trix four player table":
+    - generic: "Y"
+    - 'img "You: kingdom owner"':
+    - generic: You
+    - button "You current score 0; show scores": "0"
+    - generic: L
+    - generic: Leo
+    - button "Leo current score 0; show scores": "0"
+    - img "13 cards left"
+    - generic: M
+    - generic: Maya
+    - button "Maya current score 0; show scores": "0"
+    - img "13 cards left"
+    - generic: J
+    - generic: Joe
+    - button "Joe current score 0; show scores": "0"
+    - img "13 cards left"
+    - img "Current player"
+    - generic "Current trick":
+      - 'img "You: 9 of clubs, currently winning"':
+        - generic: "9"
+        - generic: ♣
+        - generic: ♣
+  - complementary "Last trick"
+  - region "Your hand":
+    - status: Joe’s turn
+    - button "Ace of clubs" [disabled]:
+      - generic: A
+      - generic: ♣
+      - generic: ♣
+    - button "4 of diamonds" [disabled]:
+      - generic: "4"
+      - generic: ♦
+      - generic: ♦
+    - button "5 of diamonds" [disabled]:
+      - generic: "5"
+      - generic: ♦
+      - generic: ♦
+    - button "8 of diamonds" [disabled]:
+      - generic: "8"
+      - generic: ♦
+      - generic: ♦
+    - button "9 of diamonds" [disabled]:
+      - generic: "9"
+      - generic: ♦
+      - generic: ♦
+    - button "3 of hearts" [disabled]:
+      - generic: "3"
+      - generic: ♥
+      - generic: ♥
+    - button "7 of hearts" [disabled]:
+      - generic: "7"
+      - generic: ♥
+      - generic: ♥
+    - button "10 of hearts" [disabled]:
+      - generic: "10"
+      - generic: ♥
+      - generic: ♥
+    - button "Jack of hearts" [disabled]:
+      - generic: J
+      - generic: ♥
+      - generic: ♥
+    - button "3 of spades" [disabled]:
+      - generic: "3"
+      - generic: ♠
+      - generic: ♠
+    - button "Jack of spades" [disabled]:
+      - generic: J
+      - generic: ♠
+      - generic: ♠
+    - button "King of spades" [disabled]:
+      - generic: K
+      - generic: ♠
+      - generic: ♠
+    - generic: Hold to lift and drag on your turn. Release toward the table to play, or near your hand to return. Double-click or double-tap to play or queue for your turn, if legal. Repeat to cancel a queue. Enter or Space plays or queues; Escape cancels. Hold or double-tap to select doubling cards, then confirm separately.
+- generic: Local test access · deterministic code players
+- dialog "Settings":
+  - banner:
+    - heading "Settings" [level=2]
+    - button "Close dialog" [active]:
+  - group "Appearance":
+    - button "Light" [pressed]:
+      - generic: Light
+    - button "Dark":
+      - generic: Dark
+    - button "Warm":
+      - generic: Warm
+  - button "Review":
+    - text: Review
+  - button "Score history" [disabled]:
+    - text: Score history
+  - link "Account":
+    - /url: "#account"
+  - text: Pace
+  - combobox "Game pace":
+    - option "1×"
+    - option "1.2×"
+    - option "1.4×" [selected]
+  - text: Coaching
+  - combobox "Coaching":
+    - option "When I ask"
+    - option "Occasional cues"
+    - option "After the hand" [selected]

@@ -136,6 +136,8 @@ func SupportedUnit(t Target) string {
 	switch t {
 	case Target{"hearts", "solo"}, Target{"spades", "solo"}, Target{"spades", "partners"}:
 		return "hand"
+	case Target{"trix", "basic-solo"}, Target{"trix", "basic-partners"}, Target{"trix", "complex-solo"}, Target{"trix", "complex-partners"}:
+		return "trix-request"
 	}
 	return ""
 }

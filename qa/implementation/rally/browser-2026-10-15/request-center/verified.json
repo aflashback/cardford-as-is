@@ -1,0 +1,27 @@
+{
+  "verifiedAt": "2026-10-15T04:10:16.071Z",
+  "url": "http://127.0.0.1:4174",
+  "health": {
+    "identity": "local-test",
+    "mode": "local",
+    "payments": "fixture",
+    "provider": "off",
+    "status": "ready"
+  },
+  "cases": 64,
+  "matrix": "21 CSS viewports (18 landscape presets plus reported/breakpoint cases) x 3 Coach preferences; 1 restored native view",
+  "maximumCenterError": 0.010587692260742188,
+  "assets": [
+    {
+      "path": "/assets/index-DFNuAX_J.js",
+      "bytes": 4537113,
+      "sha256": "1dfec254da72c24f754eca90f6e82c30d00c46af7de48c5a39aa631fc8201288"
+    },
+    {
+      "path": "/assets/index-B4MbRoco.css",
+      "bytes": 120736,
+      "sha256": "91aeeebb1bbd3804f5a93f1e804b7a815d371a7aa02b677c30bd3276b6ce6b69"
+    }
+  ],
+  "scope": "Rendered current Complex Partners two-choice request; five-choice compact allocation covered by source tests, not live Basic-game captures"
+}

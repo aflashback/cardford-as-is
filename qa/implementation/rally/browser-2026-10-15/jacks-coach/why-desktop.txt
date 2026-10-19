@@ -1,0 +1,123 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Complex · Solo"':
+    - text: Trix
+    - generic: Complex · Solo
+  - 'button "Scores: You 0, Leo 0, Maya 0, Joe 0"':
+    - generic: "0"
+    - generic: You
+    - generic: "0"
+    - generic: Leo
+    - generic: "0"
+    - generic: Maya
+    - generic: "0"
+    - generic: Joe
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main "Saved decision table":
+  - region "Saved four-player table":
+    - generic: "Y"
+    - generic: You
+    - img "Current player"
+    - generic: L
+    - generic: Leo
+    - img "12 cards left"
+    - generic: M
+    - generic: Maya
+    - img "12 cards left"
+    - generic: J
+    - 'img "Joe: kingdom owner"':
+    - generic: Joe
+    - img "12 cards left"
+    - region "Jack layout board":
+      - group "Clubs lane":
+        - img "Jack of clubs":
+          - generic: J
+          - generic: ♣
+          - generic: ♣
+      - group "Diamonds lane"
+      - group "Hearts lane":
+        - img "Jack of hearts":
+          - generic: J
+          - generic: ♥
+          - generic: ♥
+      - group "Spades lane":
+        - img "Jack of spades":
+          - generic: J
+          - generic: ♠
+          - generic: ♠
+  - region "Your saved hand":
+    - img "2 of clubs":
+      - generic: "2"
+      - generic: ♣
+      - generic: ♣
+    - img "4 of diamonds":
+      - generic: "4"
+      - generic: ♦
+      - generic: ♦
+    - img "5 of diamonds":
+      - generic: "5"
+      - generic: ♦
+      - generic: ♦
+    - img "6 of diamonds":
+      - generic: "6"
+      - generic: ♦
+      - generic: ♦
+    - img "8 of diamonds":
+      - generic: "8"
+      - generic: ♦
+      - generic: ♦
+    - img "Jack of diamonds":
+      - generic: J
+      - generic: ♦
+      - generic: ♦
+    - img "6 of hearts":
+      - generic: "6"
+      - generic: ♥
+      - generic: ♥
+    - img "Queen of hearts":
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - img "4 of spades":
+      - generic: "4"
+      - generic: ♠
+      - generic: ♠
+    - img "5 of spades":
+      - generic: "5"
+      - generic: ♠
+      - generic: ♠
+    - img "6 of spades":
+      - generic: "6"
+      - generic: ♠
+      - generic: ♠
+    - img "7 of spades":
+      - generic: "7"
+      - generic: ♠
+      - generic: ♠
+    - img "8 of spades":
+      - generic: "8"
+      - generic: ♠
+      - generic: ♠
+  - status: Trix Jacks
+- status
+- complementary "Coach":
+  - strong: Coach
+  - generic "Coaching allowance resets 2026-10-16T00:00:00Z": Unlimited coaching · local preview
+  - button "Unpin Coach" [pressed]:
+  - button "Close Coach":
+  - region "Coaching sessions" [active]:
+    - button "Back to live play":
+      - text: Back to live play
+    - button "Previous saved frame" [disabled]:
+    - button "Play saved frames" [disabled]:
+    - button "Next saved frame" [disabled]:
+    - status: 1/1
+    - slider "Saved frame" [disabled]: "0"
+    - paragraph: Deal 1 · Trix Jacks
+    - generic: Preview explanation
+    - paragraph: Mock preview using saved actor-visible context. Move quality is not assessed.
+    - generic "History"
+    - button "Comment on this explanation"
+- generic: Local test access · deterministic code players

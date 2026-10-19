@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/gap.json",
+  "title": "gap",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "coach-lab-gap-1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decisionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "layer": {
+      "enum": [
+        "facts",
+        "belief",
+        "objective",
+        "action",
+        "evaluator",
+        "explanation",
+        "coverage"
+      ]
+    },
+    "status": {
+      "enum": [
+        "hypothesis",
+        "supported",
+        "disputed",
+        "fixed"
+      ]
+    },
+    "severity": {
+      "enum": [
+        "unknown",
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidateRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "decisionId",
+    "layer",
+    "status",
+    "severity",
+    "evidenceRefs",
+    "description",
+    "candidateRefs"
+  ]
+}

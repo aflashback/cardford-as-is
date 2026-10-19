@@ -1,0 +1,1557 @@
+{
+  "stage": "lighthouse",
+  "error": "Error: Screen emulation mobile setting (true) does not match formFactor setting (desktop). See https://github.com/GoogleChrome/lighthouse/blob/main/docs/emulation.md",
+  "errors": [],
+  "failedRequests": [],
+  "text": "CardFord\nTrix\nBasic · Solo\n⌄\nPause\nReview\nAccount\nKingdom 1 / 4\nDeal 1 · Maya chooses\nThe King\nAvoid taking the King of Hearts · −75\nScores\nY\nYou\n4 cards left\nL\nLeo\n4 cards left\nM\nMaya\n3 cards left\n♔\nT\nTheo\n4 cards left\n5\n♠\n♠\nMaya\n↶ Play moves right\nCoaching\nAsk for cues\nGentle cues\nHide during play\nRequest points\n\nYou\n0\n\nLeo\n0\n\nMaya\n0\n\nTheo\n0\n\nRequests left\n\nDiamonds · Lutoosh · Queens · Trix\n\nPublic doubles\n\nYou\nHK\n\nCoach\n\nAsk for a cue when it is your turn.\n\nNotice\nExplain\nSuggest\nLast trick · Maya took it\nLeo’s turn\n9 / 13 tricks\n8\n♥\n♥\n9\n♥\n♥\nK\n♥\n♥\n10\n♠\n♠\nLocal test access · deterministic code players",
+  "requests": [
+    {
+      "path": "/api/local/session",
+      "ms": 39.550500000000056,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 71.94790000000012,
+      "status": 200
+    },
+    {
+      "path": "/api/sessions",
+      "ms": 102.28279999999995,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 61.85360000000014,
+      "status": 200
+    },
+    {
+      "path": "/api/dev/scenarios",
+      "ms": 13.648699999999963,
+      "status": 404
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.7179000000001,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 49.518100000000004,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 14.667300000000068,
+      "status": 200
+    },
+    {
+      "path": "/api/sessions",
+      "ms": 13.971099999999979,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 17.35419999999999,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 24.547599999999875,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.5018999999997504,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 64.68199999999979,
+      "status": 202
+    },
+    {
+      "path": "/api/work/8471e4d3f04535ec3e4583fc65fa7f21db0ae506480d28d8",
+      "ms": 3.1252999999996973,
+      "status": 202
+    },
+    {
+      "path": "/api/work/8471e4d3f04535ec3e4583fc65fa7f21db0ae506480d28d8",
+      "ms": 5.906500000000051,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 3.127100000000155,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 178.91530000000012,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 21.555700000000343,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 3.461999999999989,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 26.254500000000007,
+      "status": 202
+    },
+    {
+      "path": "/api/work/4c7f5bbadec8f1a7f35e2b2ec5b10886ffcaf40d9bd22838",
+      "ms": 3.1591000000003078,
+      "status": 202
+    },
+    {
+      "path": "/api/work/4c7f5bbadec8f1a7f35e2b2ec5b10886ffcaf40d9bd22838",
+      "ms": 2.9487999999996646,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.239100000000235,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 44.95669999999973,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 56.73109999999997,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.033499999999549,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 25.097200000000157,
+      "status": 202
+    },
+    {
+      "path": "/api/work/d7c72bca500f3701bc339d42457603ee8d558158ddd7de68",
+      "ms": 2.8314000000000306,
+      "status": 202
+    },
+    {
+      "path": "/api/work/d7c72bca500f3701bc339d42457603ee8d558158ddd7de68",
+      "ms": 2.6416999999992186,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.001800000000003,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 61.93759999999929,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 18.284200000000055,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 15.477199999999357,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 11.910300000000461,
+      "status": 202
+    },
+    {
+      "path": "/api/work/6d598fba0530879b3ca29e332e4fe7a5897e5089f251fbc7",
+      "ms": 2.8332000000000335,
+      "status": 202
+    },
+    {
+      "path": "/api/work/6d598fba0530879b3ca29e332e4fe7a5897e5089f251fbc7",
+      "ms": 2.5286999999998443,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.2274999999999636,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 28.915899999999965,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 18.184299999999894,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.046900000000278,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 11.520599999999831,
+      "status": 202
+    },
+    {
+      "path": "/api/work/85a9d80454a43a02b18c34afbe51bb4cda540a058a2b25d7",
+      "ms": 3.136000000000422,
+      "status": 202
+    },
+    {
+      "path": "/api/work/85a9d80454a43a02b18c34afbe51bb4cda540a058a2b25d7",
+      "ms": 2.603800000000774,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.8483000000005632,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 31.19210000000021,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 16.720400000000154,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.980399999999463,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 43.092900000000554,
+      "status": 202
+    },
+    {
+      "path": "/api/work/79a33370bbf9ddd3249b9756136ffdf5a3b002567c9360d5",
+      "ms": 2.7199000000000524,
+      "status": 202
+    },
+    {
+      "path": "/api/work/79a33370bbf9ddd3249b9756136ffdf5a3b002567c9360d5",
+      "ms": 2.763600000000224,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.8526999999994587,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 47.03510000000006,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.566599999999198,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7366000000001804,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 35.089899999999034,
+      "status": 202
+    },
+    {
+      "path": "/api/work/f99c03571513691d3a31e80a595022dee4c540bd1a46ed86",
+      "ms": 3.9847000000008848,
+      "status": 202
+    },
+    {
+      "path": "/api/work/f99c03571513691d3a31e80a595022dee4c540bd1a46ed86",
+      "ms": 2.4843999999993684,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7237999999997555,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 32.70019999999931,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 20.407999999999447,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 15.562699999998586,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.891200000000026,
+      "status": 202
+    },
+    {
+      "path": "/api/work/7403457bd1f7d33c7bb6fe8896bde2b15ca10ab9a5c9023b",
+      "ms": 6.953499999999622,
+      "status": 202
+    },
+    {
+      "path": "/api/work/7403457bd1f7d33c7bb6fe8896bde2b15ca10ab9a5c9023b",
+      "ms": 2.7739000000001397,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.1149999999997817,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 29.131999999999607,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 16.174999999999272,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.151900000000751,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.590799999999945,
+      "status": 202
+    },
+    {
+      "path": "/api/work/6cee3eb80e7a138b97ef323f718f5b6568c87329458dbccb",
+      "ms": 5.109699999999066,
+      "status": 202
+    },
+    {
+      "path": "/api/work/6cee3eb80e7a138b97ef323f718f5b6568c87329458dbccb",
+      "ms": 2.6947999999993044,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.3730000000014115,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 62.8724000000002,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.4341000000004,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 13.493000000000393,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 17.778299999999945,
+      "status": 202
+    },
+    {
+      "path": "/api/work/eea54ed59ed19570a0c5aeb1edc47f6aa9706594e49270d3",
+      "ms": 3.5187000000005355,
+      "status": 202
+    },
+    {
+      "path": "/api/work/eea54ed59ed19570a0c5aeb1edc47f6aa9706594e49270d3",
+      "ms": 3.0454999999983556,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7140999999992346,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 74.49159999999938,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.820400000000518,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.881199999999808,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.235500000000684,
+      "status": 202
+    },
+    {
+      "path": "/api/work/437a415762753fe2d021454ad1ddc4ec8fedf0d89bedd19c",
+      "ms": 4.490000000001601,
+      "status": 202
+    },
+    {
+      "path": "/api/work/437a415762753fe2d021454ad1ddc4ec8fedf0d89bedd19c",
+      "ms": 2.3792999999986932,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.5182999999997264,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 32.597499999999854,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 17.558000000000902,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.8091999999996915,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.879899999999907,
+      "status": 202
+    },
+    {
+      "path": "/api/work/bef2ba2d82730202470dd82c467bcfdbf2bf18bc85ce4a2a",
+      "ms": 2.1868999999987864,
+      "status": 202
+    },
+    {
+      "path": "/api/work/bef2ba2d82730202470dd82c467bcfdbf2bf18bc85ce4a2a",
+      "ms": 2.372000000001208,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.0758000000005268,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 32.77930000000015,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 18.553400000000693,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7938999999987573,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.522699999999531,
+      "status": 202
+    },
+    {
+      "path": "/api/work/0ac1b694e089c3abfce626d952661a028e830a722b0ce975",
+      "ms": 3.338999999999942,
+      "status": 202
+    },
+    {
+      "path": "/api/work/0ac1b694e089c3abfce626d952661a028e830a722b0ce975",
+      "ms": 2.796200000000681,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7265999999999622,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 35.321900000000824,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 18.552600000000893,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.3712999999988824,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.010299999999916,
+      "status": 202
+    },
+    {
+      "path": "/api/work/d6bbea9de41dd7868c07928080371002ae827a5c7b6e793d",
+      "ms": 3.7510000000002037,
+      "status": 202
+    },
+    {
+      "path": "/api/work/d6bbea9de41dd7868c07928080371002ae827a5c7b6e793d",
+      "ms": 2.6515999999992346,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.4873999999999796,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 59.245999999999185,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 18.111000000000786,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.873199999999997,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 18.40270000000055,
+      "status": 202
+    },
+    {
+      "path": "/api/work/9053bc5f7a7d0dde94580ef8c8558f69c5e00dc697d5b901",
+      "ms": 4.76589999999851,
+      "status": 202
+    },
+    {
+      "path": "UI resume response",
+      "ms": 40.517799999999625
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.60819999999876,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.777400000000853,
+      "status": 200
+    },
+    {
+      "path": "/api/work/9053bc5f7a7d0dde94580ef8c8558f69c5e00dc697d5b901",
+      "ms": 2.7361000000000786,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 3.4126999999989494,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 44.25039999999899,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 20.85610000000088,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7962999999999738,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.31710000000021,
+      "status": 202
+    },
+    {
+      "path": "/api/work/576b8d843d3889886a78f5892be67889016ea055c0e1e555",
+      "ms": 2.137300000000323,
+      "status": 202
+    },
+    {
+      "path": "/api/work/576b8d843d3889886a78f5892be67889016ea055c0e1e555",
+      "ms": 2.314700000000812,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.3264999999992142,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 32.81700000000092,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 21.654600000001665,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 15.80659999999989,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 15.699000000000524,
+      "status": 202
+    },
+    {
+      "path": "/api/work/7f617152b70ce572854fa747b52794ea95b0da9bea488556",
+      "ms": 5.60989999999947,
+      "status": 202
+    },
+    {
+      "path": "/api/work/7f617152b70ce572854fa747b52794ea95b0da9bea488556",
+      "ms": 3.028600000001461,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7021999999997206,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 39.644399999997404,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.745999999999185,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.176500000001397,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 16.335900000001857,
+      "status": 202
+    },
+    {
+      "path": "/api/work/9cdc30d0491b8b8db42319499dffdcfccd5b0b0868b9a4b8",
+      "ms": 4.483899999999267,
+      "status": 202
+    },
+    {
+      "path": "/api/work/9cdc30d0491b8b8db42319499dffdcfccd5b0b0868b9a4b8",
+      "ms": 3.107799999997951,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.27900000000227,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 45.204899999997,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 50.596800000002986,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.501299999999901,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 20.240900000000693,
+      "status": 202
+    },
+    {
+      "path": "/api/work/86d0ba590d95728944bfd99a2edc829c1003533ff9672d09",
+      "ms": 4.182600000000093,
+      "status": 202
+    },
+    {
+      "path": "/api/work/86d0ba590d95728944bfd99a2edc829c1003533ff9672d09",
+      "ms": 2.259699999998702,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.1483999999982188,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 39.25140000000101,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.76009999999951,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 16.36200000000099,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.54910000000018,
+      "status": 202
+    },
+    {
+      "path": "/api/work/cf8d65aa9591a0e1bf68d9b85aef068f6bf90c151690d961",
+      "ms": 5.019100000001345,
+      "status": 202
+    },
+    {
+      "path": "/api/work/cf8d65aa9591a0e1bf68d9b85aef068f6bf90c151690d961",
+      "ms": 2.8218999999990046,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.5023000000001048,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 38.79230000000098,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 50.22119999999995,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.157999999999447,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 12.328699999998207,
+      "status": 202
+    },
+    {
+      "path": "/api/work/49b461127e117f5e14e7b1efda66b5ea76a0a91da126e643",
+      "ms": 4.817900000001828,
+      "status": 202
+    },
+    {
+      "path": "/api/work/49b461127e117f5e14e7b1efda66b5ea76a0a91da126e643",
+      "ms": 2.473099999999249,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.5260999999991327,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 44.96270000000004,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 22.91229999999996,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.856900000002497,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 24.214399999997113,
+      "status": 202
+    },
+    {
+      "path": "/api/work/47a41cbe320922f4d63be85c7a48110c297aaddc4144ba7a",
+      "ms": 6.1804000000011,
+      "status": 202
+    },
+    {
+      "path": "/api/work/47a41cbe320922f4d63be85c7a48110c297aaddc4144ba7a",
+      "ms": 2.3518000000003667,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.0983999999989464,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 43.85060000000158,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 21.875599999999395,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 14.61160000000018,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 12.479000000002998,
+      "status": 202
+    },
+    {
+      "path": "/api/work/48fb74004f8e5aff01d43af3f57c8aec3795ac7b5924269c",
+      "ms": 2.831899999997404,
+      "status": 202
+    },
+    {
+      "path": "/api/work/48fb74004f8e5aff01d43af3f57c8aec3795ac7b5924269c",
+      "ms": 5.608599999999569,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.1398000000008324,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 68.39919999999984,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.945999999999913,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.257400000002235,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 41.93509999999878,
+      "status": 202
+    },
+    {
+      "path": "/api/work/2db59482b9ba09142efbde073797d6d00a55c16d736543e7",
+      "ms": 5.630699999997887,
+      "status": 202
+    },
+    {
+      "path": "/api/work/2db59482b9ba09142efbde073797d6d00a55c16d736543e7",
+      "ms": 2.784300000002986,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.0865999999987253,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 74.68159999999989,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 20.15639999999985,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.889500000001135,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.36830000000191,
+      "status": 202
+    },
+    {
+      "path": "/api/work/ec48f9b48e1a36601c78e0667357475d97ab5833c69ada52",
+      "ms": 2.01929999999993,
+      "status": 202
+    },
+    {
+      "path": "/api/work/ec48f9b48e1a36601c78e0667357475d97ab5833c69ada52",
+      "ms": 2.809900000000198,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.0666000000019267,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 48.09560000000056,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 50.54409999999916,
+      "status": 200
+    },
+    {
+      "path": "UI resume response",
+      "ms": 42.60940000000119
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.0776999999980035,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 34.88999999999942,
+      "status": 202
+    },
+    {
+      "path": "/api/work/899dfe7cfb4d73902856ee4bb7271c82ccb0ecdce5618213",
+      "ms": 5.379000000000815,
+      "status": 202
+    },
+    {
+      "path": "/api/work/899dfe7cfb4d73902856ee4bb7271c82ccb0ecdce5618213",
+      "ms": 2.1900000000023283,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.373700000000099,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 45.01929999999993,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 20.8096000000005,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.897000000000844,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.631499999999505,
+      "status": 202
+    },
+    {
+      "path": "/api/work/7a05f7ee1d3fc0aa5f87d8afd24babf1c80c832b98b272b5",
+      "ms": 5.126399999997375,
+      "status": 202
+    },
+    {
+      "path": "/api/work/7a05f7ee1d3fc0aa5f87d8afd24babf1c80c832b98b272b5",
+      "ms": 2.8228999999992084,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7232000000003609,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 52.09720000000016,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 25.88260000000082,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 12.211700000003475,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 15.903900000001158,
+      "status": 202
+    },
+    {
+      "path": "/api/work/2fa5706fcdb264aa8594d94e26b0b9daa1597e6345c8fb54",
+      "ms": 4.173400000003312,
+      "status": 202
+    },
+    {
+      "path": "/api/work/2fa5706fcdb264aa8594d94e26b0b9daa1597e6345c8fb54",
+      "ms": 3.671300000001793,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.5056000000004133,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 57.36779999999999,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 21.484199999998964,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.6393000000025495,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.815899999997782,
+      "status": 202
+    },
+    {
+      "path": "/api/work/6b6dc9a53b7607449e924f69c17f1dc330c8add2e58d6e79",
+      "ms": 4.75340000000142,
+      "status": 202
+    },
+    {
+      "path": "/api/work/6b6dc9a53b7607449e924f69c17f1dc330c8add2e58d6e79",
+      "ms": 2.619200000001001,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.5213000000003376,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 53.254799999998795,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 20.63590000000113,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.6968000000015309,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.446799999997893,
+      "status": 202
+    },
+    {
+      "path": "/api/work/c1dabe6a273972883ab4176e0837ceaa5cf48202ab93d899",
+      "ms": 5.212999999999738,
+      "status": 202
+    },
+    {
+      "path": "/api/work/c1dabe6a273972883ab4176e0837ceaa5cf48202ab93d899",
+      "ms": 2.6472999999969034,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.6076999999968393,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 48.060600000000704,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 21.21099999999933,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 15.467599999999948,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.059900000000198,
+      "status": 202
+    },
+    {
+      "path": "/api/work/b55966cff631cd3314a7d33ed69deffb3d01971bd8964072",
+      "ms": 2.0653999999994994,
+      "status": 202
+    },
+    {
+      "path": "/api/work/b55966cff631cd3314a7d33ed69deffb3d01971bd8964072",
+      "ms": 2.8092999999971653,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.399600000000646,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 47.368099999999686,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.68670000000202,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.4103999999970256,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.763100000000122,
+      "status": 202
+    },
+    {
+      "path": "/api/work/57af7a739fcd64d3b6ce4bc3a5a6b9656b5ac822eb88033f",
+      "ms": 2.4112000000022817,
+      "status": 202
+    },
+    {
+      "path": "/api/work/57af7a739fcd64d3b6ce4bc3a5a6b9656b5ac822eb88033f",
+      "ms": 2.4861000000018976,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.708200000000943,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 66.72350000000006,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 19.49069999999847,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.267200000002049,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.378100000001723,
+      "status": 202
+    },
+    {
+      "path": "/api/work/b5ae352f492833a7980976d230c1ddfaf6ddb5ed803dc719",
+      "ms": 5.31159999999727,
+      "status": 202
+    },
+    {
+      "path": "/api/work/b5ae352f492833a7980976d230c1ddfaf6ddb5ed803dc719",
+      "ms": 2.5249000000003434,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.1183000000019092,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 51.88940000000002,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 41.42699999999968,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 14.843799999998737,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 14.16740000000209,
+      "status": 202
+    },
+    {
+      "path": "/api/work/fbb58e3299543bd7a27ecb86efb802fd38bf0ddc7cf8c8d3",
+      "ms": 6.497100000000501,
+      "status": 202
+    },
+    {
+      "path": "/api/work/fbb58e3299543bd7a27ecb86efb802fd38bf0ddc7cf8c8d3",
+      "ms": 2.5363999999972293,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.7122999999992317,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 50.494200000001,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 22.079200000000128,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.769899999999325,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 19.358400000000984,
+      "status": 202
+    },
+    {
+      "path": "/api/work/25d7ee3731da5446b877351200a829262dddcc79ccc196d9",
+      "ms": 5.603699999999662,
+      "status": 202
+    },
+    {
+      "path": "/api/work/25d7ee3731da5446b877351200a829262dddcc79ccc196d9",
+      "ms": 2.4900000000016007,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.1469000000033702,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 49.75010000000111,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 18.506900000000314,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.4637000000002445,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 19.359400000001187,
+      "status": 202
+    },
+    {
+      "path": "/api/work/ab80e4b263ccef8455e5b61234aac8829f6b380d4530c7c7",
+      "ms": 5.802299999999377,
+      "status": 202
+    },
+    {
+      "path": "/api/work/ab80e4b263ccef8455e5b61234aac8829f6b380d4530c7c7",
+      "ms": 3.157199999997829,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.9812999999994645,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 136.57990000000063,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 20.933099999998376,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.8916000000026543,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 15.99029999999766,
+      "status": 202
+    },
+    {
+      "path": "/api/work/3606b43c1e0ba716585b86ee70af89aaf88db502723129c0",
+      "ms": 5.216300000000047,
+      "status": 202
+    },
+    {
+      "path": "/api/work/3606b43c1e0ba716585b86ee70af89aaf88db502723129c0",
+      "ms": 2.3620000000009895,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.1306000000040513,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 53.97119999999995,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 22.73689999999624,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 15.436000000001513,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 15.567900000001828,
+      "status": 202
+    },
+    {
+      "path": "/api/work/b8b1a03eecfa56e1237c3c0c2764b7ef26cc09ca1c52779a",
+      "ms": 2.4442999999955646,
+      "status": 202
+    },
+    {
+      "path": "/api/work/b8b1a03eecfa56e1237c3c0c2764b7ef26cc09ca1c52779a",
+      "ms": 2.8136000000013155,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.4631000000008498,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 91.03719999999885,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 21.792300000000978,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.797500000000582,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 13.789599999996426,
+      "status": 202
+    },
+    {
+      "path": "/api/work/a2de221c5c1c87f3efe16f2519d24497bef5381abbc3bb41",
+      "ms": 5.553199999994831,
+      "status": 202
+    },
+    {
+      "path": "/api/work/a2de221c5c1c87f3efe16f2519d24497bef5381abbc3bb41",
+      "ms": 2.9346000000005006,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.913699999997334,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 57.927300000003015,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 23.197999999996682,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 2.1546000000016647,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 28.54069999999774,
+      "status": 202
+    },
+    {
+      "path": "/api/work/1dc7de8ecb43e56e6fd27abc0ea22d3a964bc567b18e410f",
+      "ms": 6.376300000003539,
+      "status": 202
+    },
+    {
+      "path": "/api/work/1dc7de8ecb43e56e6fd27abc0ea22d3a964bc567b18e410f",
+      "ms": 0.052999999999883585,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 0.42929999999614665,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 45.31169999999838,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 37.59750000000349,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 0.11480000000301516,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 0.06390000000101281,
+      "status": 202
+    },
+    {
+      "path": "/api/work/a0132462934a805c9aa42a49d1688230914ed62f531c74df",
+      "ms": 0.06090000000403961,
+      "status": 202
+    },
+    {
+      "path": "/api/work/a0132462934a805c9aa42a49d1688230914ed62f531c74df",
+      "ms": 0.0503000000026077,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 0.05010000000038417,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 0.052100000000791624,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 10.530400000003283,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 51.22370000000228,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 0.1756999999997788,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 0.044800000003306195,
+      "status": 202
+    },
+    {
+      "path": "/api/work/02de4c7ba97d97b56776fa7e47380c8a096803eeb3a8cec6",
+      "ms": 0.039100000001781154,
+      "status": 202
+    },
+    {
+      "path": "/api/work/02de4c7ba97d97b56776fa7e47380c8a096803eeb3a8cec6",
+      "ms": 0.036399999997229315,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 0.03209999999671709,
+      "status": 200
+    },
+    {
+      "path": "/api/session/advance",
+      "ms": 0.04160000000410946,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 0.03540000000066357,
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/study.json",
+  "title": "study",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "coach-lab-study-1.0.0"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "privateEnvelopeHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "purpose": {
+      "enum": [
+        "development",
+        "confirmation"
+      ]
+    },
+    "variant": {
+      "type": "string",
+      "minLength": 1
+    },
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "commitment": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "id",
+          "commitment"
+        ]
+      },
+      "minItems": 0
+    },
+    "validationReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "validatorVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "confirmationEligible": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "validatorVersion",
+        "baseHash",
+        "confirmationEligible"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "runId",
+    "privateEnvelopeHash",
+    "purpose",
+    "variant",
+    "families",
+    "validationReceipt"
+  ]
+}

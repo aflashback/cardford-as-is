@@ -1,0 +1,183 @@
+{
+  "evidenceVersion": 6,
+  "context": {
+    "state": "hearts-one-card-hand",
+    "device": "se1",
+    "nativeFixtureOrigin": "localhost:4191"
+  },
+  "stability": {
+    "coachSettled": true,
+    "samples": 3,
+    "elapsedMs": 179
+  },
+  "measure": {
+    "coach": null,
+    "coachScroll": null,
+    "declaredDoubles": [],
+    "dialogs": [],
+    "document": {
+      "height": 320,
+      "width": 568
+    },
+    "felt": {
+      "bottom": 205.1953067779541,
+      "height": 185.2083282470703,
+      "right": 452.9817504882813,
+      "width": 358.99737548828125,
+      "x": 93.984375,
+      "y": 19.98697853088379
+    },
+    "game": "hearts",
+    "hand": {
+      "bottom": 316.00260162353516,
+      "height": 98.81510162353516,
+      "right": 556.3411254882812,
+      "width": 492.3567504882813,
+      "x": 63.984375,
+      "y": 217.1875
+    },
+    "handCards": [
+      {
+        "bottom": 316.0025939941406,
+        "height": 77.8125,
+        "right": 369.3489570617676,
+        "width": 54.38801956176758,
+        "x": 314.9609375,
+        "y": 238.19009399414065
+      }
+    ],
+    "images": [
+      {
+        "complete": true,
+        "src": "/brand/cardford-symbol.svg",
+        "width": 160
+      },
+      {
+        "complete": true,
+        "src": "/rally/regular-waiting-v2.png",
+        "width": 1254
+      }
+    ],
+    "jacksBoard": null,
+    "jacksCards": [],
+    "jacksRows": [],
+    "lastTrick": {
+      "bottom": 70.98958325386047,
+      "height": 66.9921875,
+      "right": 555.9765396118164,
+      "width": 72.99478912353516,
+      "x": 482.9817504882813,
+      "y": 3.9973957538604736
+    },
+    "main": {
+      "bottom": 320,
+      "height": 320,
+      "right": 568.3333129882812,
+      "width": 516.3411254882812,
+      "x": 51.9921875,
+      "y": 0
+    },
+    "phase": "play",
+    "pinned": false,
+    "players": [
+      {
+        "bottom": 149.14713287353516,
+        "height": 83.34635162353516,
+        "right": 123.984375,
+        "width": 60,
+        "x": 63.984375,
+        "y": 65.80078125
+      },
+      {
+        "bottom": 58.35937237739563,
+        "height": 54.36197662353515,
+        "right": 187.9296875,
+        "width": 80.3125,
+        "x": 107.6171875,
+        "y": 3.9973957538604736
+      },
+      {
+        "bottom": 149.14713287353516,
+        "height": 83.34635162353516,
+        "right": 482.9817504882813,
+        "width": 60,
+        "x": 422.9817504882813,
+        "y": 65.80078125
+      },
+      {
+        "bottom": 215.19530487060547,
+        "height": 54.36197662353515,
+        "right": 434.3424224853515,
+        "width": 70.32551574707031,
+        "x": 364.0169067382813,
+        "y": 160.8333282470703
+      }
+    ],
+    "previewCards": [
+      {
+        "bottom": 53.22916603088379,
+        "height": 31.47135353088379,
+        "right": 504.9739379882813,
+        "width": 21.9921875,
+        "x": 482.9817504882813,
+        "y": 21.7578125
+      },
+      {
+        "bottom": 35.46874928474426,
+        "height": 31.47135353088379,
+        "right": 530.46875,
+        "width": 21.9921875,
+        "x": 508.4765625,
+        "y": 3.9973957538604736
+      },
+      {
+        "bottom": 53.22916603088379,
+        "height": 31.47135353088379,
+        "right": 555.9765625,
+        "width": 21.9921875,
+        "x": 533.984375,
+        "y": 21.7578125
+      },
+      {
+        "bottom": 70.98958015441895,
+        "height": 31.47135353088379,
+        "right": 530.46875,
+        "width": 21.9921875,
+        "x": 508.4765625,
+        "y": 39.51822662353515
+      }
+    ],
+    "prompt": null,
+    "promptControls": [],
+    "replay": false,
+    "tableCards": [],
+    "theme": "light",
+    "twoAnnouncements": [],
+    "viewport": {
+      "dpr": 1.000000015894571,
+      "height": 320,
+      "width": 568
+    }
+  },
+  "checks": {
+    "pageFits": true,
+    "visibleImagesLoaded": true,
+    "handCardsInViewport": true,
+    "playersInViewport": true,
+    "promptClearPlayers": null,
+    "promptControlsContained": null,
+    "tableCardsInViewport": null,
+    "tableCardsClearPlayers": null,
+    "previewCardsInViewport": true,
+    "jacksBoardInViewport": null,
+    "jacksRowsInViewport": null,
+    "jacksCardsInViewport": null,
+    "declaredDoublesInViewport": null,
+    "twoAnnouncementsInViewport": null,
+    "dialogsInViewport": null,
+    "dialogsNoHorizontalScroll": null,
+    "coachInViewport": true,
+    "overlayClearsHand": true,
+    "coachNoHorizontalScroll": true
+  }
+}

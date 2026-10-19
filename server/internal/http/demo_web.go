@@ -55,7 +55,7 @@ func NewDemoWeb(api http.Handler, dist, origin string) (http.Handler, error) {
 		}
 		if entry.IsDir() {
 			top := strings.Split(rel, "/")[0]
-			if top != "assets" && top != "brand" && top != "licenses" {
+			if top != "assets" && top != "brand" && top != "licenses" && top != "rally" {
 				return filepath.SkipDir
 			}
 			return nil
@@ -155,6 +155,13 @@ func demoWebContentType(file string) string {
 	}
 	if file == "favicon.svg" {
 		return "image/svg+xml"
+	}
+	// Only the installed Coach poses are public; provenance docs and arbitrary
+	// files in the public build's Rally directory remain outside this allowlist.
+	switch file {
+	case "rally/regular-waiting-v2.png", "rally/regular-whistle-v3.png",
+		"rally/regular-thinking-v2.png", "rally/regular-explaining-v2.png", "rally/regular-reading-v8.png":
+		return "image/png"
 	}
 	parts := strings.Split(file, "/")
 	for _, part := range parts {

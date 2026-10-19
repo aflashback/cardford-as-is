@@ -14,6 +14,6 @@ Bots and the human coach consume the same actor-safe analysis. The partnership f
 
 CR-IMPL-004's online demo, exact-variant access offers, stable coached units and client platform port are frozen as contracts in M01. Their executable service/frontend behavior belongs to M03–M04. No prices, free grants, native packages or new game catalog entries are activated here.
 
-The selected rules are documented under [rule dossiers](../../docs/rules/trix-solo.md). Tarneeb lead/scoring/Solo decisions and unresolved Trix doubling transitions gate only those new-game branches. Current Hearts and Spades rules remain unchanged.
+The selected rules are documented under [rule dossiers](../../docs/rules/trix-solo.md). At this decision's original date, Tarneeb choices and Trix doubling transitions gated those new-game branches. **7 October owner update:** [CR-GAME-001](CR-GAME-001-trix-four-variants.md) and [the current Trix rules](../../docs/rules/trix.md) resolve TRX-D01/D02; native Trix implementation acceptance and the separate Tarneeb choices remain pending. Current Hearts and Spades rules remain unchanged.
 
 Affected requirements: MG-01–03, MG-07, MG-09–12, MG-15–17 and the partnership family's PR-01–05. Evidence and runnable commands: [milestone status](../../qa/implementation/multi-game/status.md). Rollback disables new registrations/policies; it never rewrites saved pins or historical advice.

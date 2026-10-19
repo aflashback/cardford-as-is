@@ -1,0 +1,80 @@
+/* Game-owned zones only. Cards, hands, seats, tricks, history and coach use shared table CSS. */
+.trix-app .you-avatar { position: relative; }
+.trix-kingdom-owner { position: absolute; top: -6px; right: -4px; display: grid; place-items: center; width: 21px; height: 21px; border: 2px solid #edf1f2; border-radius: 50%; background: #e8c481; color: #634a1e; }
+.player-pass { position: absolute; bottom: calc(100% + 5px); left: 50%; transform: translateX(-50%); color: #334957; font-size: 11px; font-weight: 650; background: #edf1f2; border-radius: 5px; padding: 2px 5px; white-space: nowrap; }
+.trix-seat-score { white-space: nowrap; font: inherit; font-variant-numeric: tabular-nums; background: transparent; padding: 0; color: inherit; }
+.trix-history-link { margin-left: auto; font-size: 11px; white-space: nowrap; }
+.trix-history-link:disabled { opacity: .45; }
+.trix-round-list { display: flex; gap: 8px; flex-wrap: wrap; }
+.trix-round-history h3 { font-size: 14px; margin: 18px 0 10px; }
+.trix-breakdown { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 18px; }
+.trix-breakdown th, .trix-breakdown td { padding: 8px 4px; text-align: left; border-bottom: 1px solid var(--line); }
+.trix-breakdown th:last-child, .trix-breakdown td:last-child { text-align: right; }
+.trix-game-complete { text-align: center; color: #e1ecee; }
+.trix-game-complete p { margin-bottom: 12px; }
+.announced-cards { display: flex; align-items: center; gap: 3px; }
+.player-1 .announced-cards, .player-3 .announced-cards { position: absolute; top: 50%; }
+.player-1 .announced-cards { left: calc(100% + 6px); }
+.player-3 .announced-cards { right: calc(100% + 6px); }
+/* North owns this edge pocket, separate from the central Jack lanes. */
+.player-2 .announced-cards { position: absolute; bottom: 8px; left: calc(100% + 14px); }
+.announced-cards > span { display: block; pointer-events: none; }
+.trix-two-announcements { gap: 0; }
+.trix-two-announcements > span + span { margin-left: calc(var(--card-width) * -.45); }
+.trix-two-announcements .announced-two-back { position: relative; left: auto; top: auto; width: var(--card-width); height: calc(var(--card-width) * var(--card-aspect)); transform: none; flex: none; }
+.trix-center { position: absolute; inset: 70px 92px 20px; display: flex; align-items: center; justify-content: center; min-width: 0; }
+.trix-request-picker, .trix-result { background: #f5f7f7; padding: 18px; border-radius: 16px; max-height: 100%; overflow: auto; width: 100%; max-width: 650px; }
+.trix-request-picker h2 { font-size: 18px; margin-bottom: 12px; text-align: center; }
+.trix-request-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.trix-request-options button { background: #e2edeb; padding: 12px; border: 1px solid #c5d9d5; border-radius: 10px; text-align: left; min-height: 62px; }
+.trix-request-options strong, .trix-request-options small { display: block; }
+.trix-request-options small { font-size: 11px; color: #536b71; margin-top: 5px; }
+.trix-double-picker { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); width: max-content; padding: 8px 10px; border: 1px solid #c5d9d5; border-radius: 10px; background: #f5f7f7; box-shadow: 0 3px 10px #102f4520; font-size: 12px; color: #253e4d; }
+.trix-double-actions { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.trix-double-preview { --card-width: 36px; display: flex; justify-content: center; gap: 5px; padding-bottom: 8px; }
+.trix-double-preview > span { display: block; pointer-events: none; }
+.trix-double-picker button { min-height: 32px; padding: 6px 12px; }
+/* Four vertical suit lanes: Jacks align, higher ranks grow up, lower ranks down. */
+.trix-app .table-zone, .trix-layout { --layout-width: 36.8px; --layout-height: calc(var(--layout-width) * var(--card-aspect)); --layout-step: calc(var(--layout-width) * .58); --layout-gap: 13.8px; --layout-spread: 0; }
+.trix-layout { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); display: grid; grid-template-columns: repeat(4,var(--layout-width)); gap: var(--layout-gap); height: calc(12 * var(--layout-step) + var(--layout-height)); }
+.trix-layout-row { position: relative; width: 100%; height: 100%; isolation: isolate; }
+.trix-lane-cards > span[role='img'] { position: absolute; top: calc(var(--layout-row) * var(--layout-step)); left: 0; z-index: var(--layout-row); display: block; }
+.trix-review-board { background: var(--felt); border-radius: 12px; padding: 28px 12px 12px; min-height: 315px; position: relative; }
+.trix-review .trix-layout { --layout-width: 22px; }
+.trix-score-sheet table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.trix-score-sheet h2 { margin-bottom: 14px; font-size: 18px; }
+.trix-score-sheet td, .trix-score-sheet th { padding: 10px 6px; border-bottom: 1px solid var(--line); text-align: right; }
+.trix-score-sheet th:first-child { text-align: left; }
+.trix-your-score { background: #e2eeeb; }
+.trix-score-sheet details { margin-top: 12px; font-size: 12px; }
+.trix-ledger { max-height: 240px; overflow: auto; }
+.trix-ledger p { display: flex; gap: 12px; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.trix-result > .primary-button { margin-top: 16px; }
+.trix-error { display: flex; gap: 12px; justify-content: center; align-items: center; background: #fff2d8; padding: 4px 12px; font-size: 12px; }
+.trix-coach-setting { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; }
+.trix-coach-setting select, .trix-review select { min-height: 44px; max-width: 100%; background: #f5f7f7; border: 1px solid var(--line); border-radius: 7px; padding: 6px; font: inherit; }
+.trix-review > p, .trix-review h3 { margin: 12px 0; font-size: 12px; line-height: 1.55; }
+.trix-review > label { display: flex; flex-direction: column; gap: 8px; }
+.trix-catalog { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+.trix-catalog button { padding: 8px 10px; background: #e4edec; min-height: 48px; text-align: left; border-radius: 8px; }
+.trix-catalog strong, .trix-catalog span { display: block; }
+.trix-catalog span { margin-top: 2px; font-size: 12px; color: var(--muted); }
+@media (max-height: 720px) { .trix-app .table-zone, .trix-layout { --layout-width: 28.75px; } }
+@media (max-width: 900px) { .trix-center { inset-inline: 78px; } .trix-request-options { grid-template-columns: 1fr; } }
+@media (max-height: 520px) and (orientation: landscape) {
+  .trix-double-picker { bottom: calc(100% + 6px); padding: 5px 8px; font-size: 11px; }
+  .trix-double-actions { gap: 8px; }
+  .trix-double-preview { --card-width: 30px; padding-bottom: 5px; }
+  .trix-app .table-zone, .trix-layout { --layout-width: 29.9px; --layout-step: calc(var(--layout-width) * .58); --layout-gap: 6.9px; --layout-spread: 0; }
+  .trix-layout { top: calc(50% - 3px); }
+  .announced-cards { gap: 2px; }
+  .player-pass { font-size: 9px; bottom: calc(100% + 2px); }
+  .trix-kingdom-owner { width: 17px; height: 17px; top: -5px; right: -5px; }
+  .trix-kingdom-owner svg { width: 11px; height: 11px; }
+  .trix-center { inset: 44px 65px 8px; }
+  .trix-request-picker, .trix-result { padding: 10px; }
+  .trix-request-picker h2 { font-size: 13px; margin-bottom: 6px; }
+  .trix-request-options button { min-height: 40px; padding: 6px; }
+  .trix-request-options small { display: none; }
+}
+@media (max-height: 380px) and (orientation: landscape) { .trix-app .table-zone, .trix-layout { --layout-width: 25.3px; --layout-step: calc(var(--layout-width) * .58); } .trix-double-picker { padding: 3px 6px; gap: 6px; font-size: 10px; } }

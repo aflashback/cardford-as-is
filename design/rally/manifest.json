@@ -1,0 +1,37 @@
+{
+  "name": "CardFord Rally",
+  "version": "1.1.0",
+  "date": "2026-10-13",
+  "changeRecord": "DESIGN-R09",
+  "scope": "Selected design reference and interactive HTML mock only",
+  "designStatus": "Approved Rally direction; owner-requested landscape sizing refinement for review",
+  "ownerApproval": {
+    "design": "approved",
+    "svgDerivatives": "approved"
+  },
+  "productionImplementation": false,
+  "entryPoints": {
+    "home": "index.html",
+    "mock": "approved/index.html#play",
+    "designSystem": "design-system/index.html",
+    "guide": "DESIGN-GUIDE.md",
+    "stickers": "assets/stickers/index.html",
+    "responsive": "responsive.html"
+  },
+  "themes": [
+    "light",
+    "dark",
+    "warm"
+  ],
+  "typefaces": {
+    "body": "DM Sans",
+    "headingsAndScores": "Manrope"
+  },
+  "sourceManifest": "approved/SOURCE.json",
+  "verification": "evidence/package-report.json",
+  "canonicalStickerFormat": "PNG",
+  "svgRole": "Owner-approved path-based vector derivatives; PNG remains the mock runtime format",
+  "browserAcceptance": "Agent-run HTML/UI browser/device QA was not run due to the earlier browser-tool restriction; owner design approval is complete",
+  "lastMaintenance": "DESIGN-R09: landscape layout, scalable table assets, compact side controls and device-size review",
+  "responsiveVerification": "evidence/responsive-report.json"
+}

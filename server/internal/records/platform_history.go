@@ -187,9 +187,19 @@ func (s *Store) PlatformCommittedSources(ctx context.Context, owner, game string
 }
 
 func (s *Store) PlatformStats(ctx context.Context, owner, game string) (PlatformStats, error) {
+	return s.PlatformStatsAt(ctx, owner, game, maxRecordInteger)
+}
+
+// PlatformStatsAt excludes decisions committed after an outbox frame's revision.
+func (s *Store) PlatformStatsAt(ctx context.Context, owner, game string, before int64) (PlatformStats, error) {
 	choices, err := s.PlatformCommittedSources(ctx, owner, game)
 	if err != nil {
 		return PlatformStats{}, err
+	}
+	for revision := range choices {
+		if revision >= before {
+			delete(choices, revision)
+		}
 	}
 	levels, err := s.PlatformHelpLevels(ctx, owner, game)
 	if err != nil {

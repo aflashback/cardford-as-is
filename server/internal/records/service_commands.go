@@ -203,6 +203,7 @@ func (s *Store) ControlStatus(ctx context.Context, tab string) (bool, int64, err
 // CreateTransition retains the original opening material and exact response.
 // Its public command identity comes from WithServiceCommand.
 type CreateTransition struct {
+	SessionLifecycle       bool // New service games opt in; historical fixtures remain unchanged.
 	Document               Document
 	Anchor                 ReplayAnchor
 	Events                 []EventRecord

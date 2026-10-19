@@ -1,0 +1,176 @@
+{
+  "evidenceVersion": 6,
+  "context": {
+    "state": "hearts-hand-results",
+    "device": "ipad",
+    "nativeFixtureOrigin": "localhost:4191"
+  },
+  "stability": {
+    "coachSettled": true,
+    "samples": 3,
+    "elapsedMs": 180
+  },
+  "measure": {
+    "coach": null,
+    "coachScroll": null,
+    "declaredDoubles": [],
+    "dialogs": [
+      {
+        "label": "Hand 1 results",
+        "rect": {
+          "bottom": 618.2161254882812,
+          "height": 468.1119689941406,
+          "right": 912.0833282470704,
+          "width": 800,
+          "x": 112.08332824707033,
+          "y": 150.10415649414062
+        },
+        "scroll": {
+          "clientWidth": 783,
+          "width": 783
+        },
+        "scrollAreas": []
+      }
+    ],
+    "document": {
+      "height": 768,
+      "width": 1024
+    },
+    "felt": {
+      "bottom": 514.9218597412109,
+      "height": 414.9479064941406,
+      "right": 957.9947662353516,
+      "width": 892.0051879882812,
+      "x": 65.98957824707031,
+      "y": 99.97395324707033
+    },
+    "game": "hearts",
+    "hand": {
+      "bottom": 757.9947662353516,
+      "height": 215.0911407470703,
+      "right": 1000.1692695617676,
+      "width": 976.171875,
+      "x": 23.997394561767575,
+      "y": 542.9036254882812
+    },
+    "handCards": [],
+    "images": [
+      {
+        "complete": true,
+        "src": "/brand/cardford-symbol.svg",
+        "width": 160
+      }
+    ],
+    "jacksBoard": null,
+    "jacksCards": [],
+    "jacksRows": [],
+    "lastTrick": null,
+    "main": {
+      "bottom": 767.9947700500488,
+      "height": 712.0051879882812,
+      "right": 1024.1666259765625,
+      "width": 1024.1666259765625,
+      "x": 0,
+      "y": 55.98958206176758
+    },
+    "phase": "results",
+    "pinned": false,
+    "players": [
+      {
+        "bottom": 326.9661407470703,
+        "height": 114.6875,
+        "right": 91.99218368530272,
+        "width": 67.99478912353516,
+        "x": 23.997394561767575,
+        "y": 212.2786407470703
+      },
+      {
+        "bottom": 139.57030487060547,
+        "height": 71.58853912353516,
+        "right": 565.1497268676758,
+        "width": 106.31510162353516,
+        "x": 458.8346252441406,
+        "y": 67.98176574707031
+      },
+      {
+        "bottom": 326.9661407470703,
+        "height": 114.6875,
+        "right": 999.9869766235352,
+        "width": 67.99478912353516,
+        "x": 931.9921875,
+        "y": 212.2786407470703
+      },
+      {
+        "bottom": 536.9140396118164,
+        "height": 71.58853912353516,
+        "right": 559.53125,
+        "width": 95.078125,
+        "x": 464.453125,
+        "y": 465.3255004882813
+      }
+    ],
+    "previewCards": [],
+    "prompt": {
+      "bottom": 363.0273361206054,
+      "height": 121.15885162353516,
+      "right": 661.9921875,
+      "width": 300,
+      "x": 361.9921875,
+      "y": 241.8684844970703
+    },
+    "promptControls": [
+      {
+        "label": "View hand recap",
+        "rect": {
+          "bottom": 355.0325508117676,
+          "height": 43.99739456176758,
+          "right": 517.5390319824219,
+          "width": 144.44009399414062,
+          "x": 373.0989379882813,
+          "y": 311.03515625
+        }
+      },
+      {
+        "label": "Play again",
+        "rect": {
+          "bottom": 355.0325508117676,
+          "height": 43.99739456176758,
+          "right": 650.8853759765625,
+          "width": 125.3515625,
+          "x": 525.5338134765625,
+          "y": 311.03515625
+        }
+      }
+    ],
+    "replay": false,
+    "tableCards": [],
+    "theme": "light",
+    "twoAnnouncements": [],
+    "viewport": {
+      "dpr": 1.000000015894571,
+      "height": 768,
+      "width": 1024
+    }
+  },
+  "checks": {
+    "pageFits": true,
+    "visibleImagesLoaded": true,
+    "handCardsInViewport": null,
+    "playersInViewport": true,
+    "promptClearPlayers": true,
+    "promptControlsContained": true,
+    "tableCardsInViewport": null,
+    "tableCardsClearPlayers": null,
+    "previewCardsInViewport": null,
+    "jacksBoardInViewport": null,
+    "jacksRowsInViewport": null,
+    "jacksCardsInViewport": null,
+    "declaredDoublesInViewport": null,
+    "twoAnnouncementsInViewport": null,
+    "dialogsInViewport": true,
+    "dialogsNoHorizontalScroll": true,
+    "coachInViewport": true,
+    "overlayClearsHand": true,
+    "coachNoHorizontalScroll": true
+  }
+}

@@ -1,0 +1,89 @@
+- banner:
+  - button
+  - button:
+  - button:
+  - navigation:
+    - button:
+    - button:
+- main:
+  - region:
+    - generic: L
+    - generic: Leo
+    - text: "0"
+    - generic: 0 tricks
+    - generic: M
+    - generic: Maya
+    - text: "0"
+    - generic: 0 tricks
+    - generic: J
+    - generic: Joe
+    - text: "0"
+    - generic: 0 tricks
+    - generic: "Y"
+    - generic: You
+    - text: "1"
+    - generic: 1 tricks
+  - complementary
+  - region:
+    - status: You take the trick
+    - button [disabled]:
+      - generic: "8"
+      - generic: ♣
+      - generic: ♣
+    - button [disabled]:
+      - generic: "2"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "7"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "8"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "10"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: K
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "6"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "8"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: A
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "7"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: J
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: K
+      - generic: ♠
+      - generic: ♠
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- dialog "Game paused":
+  - banner:
+    - heading "Game paused" [level=2]
+  - status: Paused while the table layout was unavailable
+  - button "Resume game" [active]:
+    - text: Resume game
+  - paragraph: Saved for 5:00 · Free
+  - navigation "Paused game options":
+    - button "Settings":
+      - text: Settings
+    - button "Choose game":
+      - text: Choose game

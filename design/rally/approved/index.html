@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="CardFord Rally — a table-first interactive design concept.">
+  <title>CardFord — Rally</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="coaching.css">
+  <link rel="stylesheet" href="responsive.css">
+</head>
+<body data-view="play">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="hud" class="hud" aria-label="Table controls"></header>
+  <main id="main" tabindex="-1">
+    <section id="table-screen" class="table-screen" aria-label="Card table">
+      <iframe id="game-board" src="./shared/board.html?concept=studio&amp;theme=light&amp;game=spades&amp;variant=partners&amp;phase=play" title="Interactive CardFord table"></iframe>
+      <aside id="coach-panel" class="coach-panel" aria-label="Coach" lang="en" hidden>
+        <header id="coach-panel-header" class="coach-panel-header"></header>
+        <div id="coach-panel-body" class="coach-panel-body" tabindex="-1"></div>
+      </aside>
+      <button id="coach-launcher" class="coach-launcher" data-action="coach-toggle" data-state="waiting" aria-label="Open coach" title="Open coach" aria-expanded="false" aria-controls="coach-panel" hidden>
+        <img id="coach-launcher-image" class="coach-launcher-image" src="coach-stickers/assets/regular-waiting-v2.png" alt="Coach waiting" draggable="false" width="72" height="72">
+      </button>
+      <span id="coach-launcher-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></span>
+      <section id="rotation-gate" class="rotation-gate" aria-label="Turn your phone to play" hidden>
+        <div class="turn-phone" aria-hidden="true"><span></span><b>↶</b></div>
+        <h1>Turn to play.</h1>
+        <p>Your hand is paused.</p>
+        <button class="quiet-button" data-action="account">Account</button>
+      </section>
+    </section>
+    <section id="page-screen" class="page-screen" hidden></section>
+  </main>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="coaching.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

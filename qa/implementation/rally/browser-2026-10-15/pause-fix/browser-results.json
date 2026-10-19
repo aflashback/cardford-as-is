@@ -1,0 +1,546 @@
+{
+  "modes": [
+    {
+      "mode": "trix-complex-solo",
+      "menus": true,
+      "explicitDismissal": true,
+      "backgroundReturnPaused": true,
+      "accountReturnPaused": true,
+      "backgroundMethod": "native browser focus emulation off/on"
+    },
+    {
+      "mode": "hearts",
+      "menus": true,
+      "explicitDismissal": true,
+      "backgroundReturnPaused": true,
+      "accountReturnPaused": true,
+      "backgroundMethod": "native browser focus emulation off/on"
+    },
+    {
+      "mode": "spades-solo",
+      "menus": true,
+      "explicitDismissal": true,
+      "backgroundReturnPaused": true,
+      "accountReturnPaused": true,
+      "backgroundMethod": "native browser focus emulation off/on"
+    },
+    {
+      "mode": "spades-partners",
+      "menus": true,
+      "explicitDismissal": true,
+      "backgroundReturnPaused": true,
+      "accountReturnPaused": true,
+      "backgroundMethod": "native browser focus emulation off/on"
+    },
+    {
+      "mode": "trix-basic-solo",
+      "menus": true,
+      "explicitDismissal": true,
+      "backgroundReturnPaused": true,
+      "accountReturnPaused": true,
+      "backgroundMethod": "native browser focus emulation off/on"
+    },
+    {
+      "mode": "trix-basic-partners",
+      "menus": true,
+      "explicitDismissal": true,
+      "backgroundReturnPaused": true,
+      "accountReturnPaused": true,
+      "backgroundMethod": "native browser focus emulation off/on"
+    },
+    {
+      "mode": "trix-complex-partners",
+      "menus": true,
+      "explicitDismissal": true,
+      "backgroundReturnPaused": true,
+      "accountReturnPaused": true,
+      "backgroundMethod": "native browser focus emulation off/on"
+    }
+  ],
+  "network": [
+    {
+      "label": "trix-complex-solo-resume",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-solo-resume",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-complex-solo-resume",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-solo-focus-return",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-complex-solo-focus-return",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-solo-focus-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-solo-before-account",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-solo-before-account",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-complex-solo-before-account",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-solo-account",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-complex-solo-account",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-solo-account-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "hearts-paused-controls",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "hearts-resume",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "hearts-resume",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "hearts-resume",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "hearts-focus-return",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "hearts-focus-return",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "hearts-focus-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "hearts-before-account",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "hearts-before-account",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "hearts-before-account",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "hearts-account",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "hearts-account",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "hearts-account-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-solo-paused-controls",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-solo-resume",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-solo-resume",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "spades-solo-resume",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-solo-focus-return",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "spades-solo-focus-return",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-solo-focus-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-solo-before-account",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-solo-before-account",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "spades-solo-before-account",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-solo-account",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "spades-solo-account",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-solo-account-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-partners-paused-controls",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-partners-resume",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-partners-resume",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "spades-partners-resume",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-partners-focus-return",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "spades-partners-focus-return",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-partners-focus-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-partners-before-account",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "spades-partners-before-account",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "spades-partners-before-account",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-partners-account",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "spades-partners-account",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "spades-partners-account-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-solo-paused-controls",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-solo-resume",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-solo-resume",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-basic-solo-resume",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-solo-focus-return",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-basic-solo-focus-return",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-solo-focus-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-solo-before-account",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-solo-before-account",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-basic-solo-before-account",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-solo-account",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-basic-solo-account",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-solo-account-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-partners-paused-controls",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-partners-resume",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-partners-resume",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-basic-partners-resume",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-partners-focus-return",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-basic-partners-focus-return",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-partners-focus-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-partners-before-account",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-basic-partners-before-account",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-basic-partners-before-account",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-partners-account",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-basic-partners-account",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-basic-partners-account-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-partners-paused-controls",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-partners-resume",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-partners-resume",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-complex-partners-resume",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-partners-focus-return",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-complex-partners-focus-return",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-partners-focus-return",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-partners-before-account",
+      "kind": "snapshot",
+      "running": false
+    },
+    {
+      "label": "trix-complex-partners-before-account",
+      "kind": "request",
+      "running": true
+    },
+    {
+      "label": "trix-complex-partners-before-account",
+      "running": true,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-partners-account",
+      "kind": "request",
+      "running": false
+    },
+    {
+      "label": "trix-complex-partners-account",
+      "running": false,
+      "kind": "response",
+      "status": 200
+    },
+    {
+      "label": "trix-complex-partners-account-return",
+      "kind": "snapshot",
+      "running": false
+    }
+  ],
+  "extras": {
+    "portraitReturnPaused": true,
+    "whyReturnWithoutAppLeave": true,
+    "whyAppReturnRequiresResume": true,
+    "focusEmulationRestored": true
+  }
+}

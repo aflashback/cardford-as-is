@@ -1204,42 +1204,50 @@
     },
     "ReviewFrame": {
       "title": "ReviewFrame",
-      "type": "object",
-      "properties": {
-        "game": {
-          "$ref": "#/$defs/GameView"
-        },
-        "action": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/GameAction"
+      "oneOf": [
+        {
+          "title": "LegacyReviewFrame",
+          "type": "object",
+          "properties": {
+            "game": {
+              "$ref": "#/$defs/GameView"
             },
-            {
-              "type": "null"
+            "action": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/GameAction"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "decisionId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "maxItems": 20
             }
-          ]
-        },
-        "decisionId": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 256
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "maxLength": 2000
           },
-          "maxItems": 20
+          "required": [
+            "game",
+            "action",
+            "decisionId",
+            "notes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "$ref": "#/$defs/TrixReviewFrame"
         }
-      },
-      "required": [
-        "game",
-        "action",
-        "decisionId",
-        "notes"
-      ],
-      "additionalProperties": false
+      ]
     },
     "ReviewCase": {
       "title": "ReviewCase",
@@ -1255,7 +1263,14 @@
           "minimum": 1
         },
         "action": {
-          "$ref": "#/$defs/GameAction"
+          "oneOf": [
+            {
+              "$ref": "#/$defs/GameAction"
+            },
+            {
+              "$ref": "#/$defs/TrixAction"
+            }
+          ]
         },
         "assisted": {
           "type": "boolean"
@@ -2884,6 +2899,9 @@
         },
         {
           "$ref": "#/$defs/TokenActorPacket"
+        },
+        {
+          "$ref": "#/$defs/TrixActorPacket"
         }
       ]
     },
@@ -2898,6 +2916,9 @@
         },
         {
           "$ref": "#/$defs/TokenSessionView"
+        },
+        {
+          "$ref": "#/$defs/TrixSessionView"
         }
       ]
     },
@@ -2912,6 +2933,9 @@
         },
         {
           "$ref": "#/$defs/TokenAnalysis"
+        },
+        {
+          "$ref": "#/$defs/TrixAnalysis"
         }
       ]
     },
@@ -2926,6 +2950,9 @@
         },
         {
           "$ref": "#/$defs/TokenActorEvent"
+        },
+        {
+          "$ref": "#/$defs/TrixActorEvent"
         }
       ]
     },
@@ -2978,6 +3005,28 @@
               "enum": [
                 "individual",
                 "neighbour-teams"
+              ]
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixTarget",
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "trix"
+            },
+            "variantId": {
+              "enum": [
+                "basic-solo",
+                "basic-partners",
+                "complex-solo",
+                "complex-partners"
               ]
             }
           },
@@ -3618,8 +3667,253 @@
         },
         {
           "$ref": "#/$defs/TokenPresentation"
+        },
+        {
+          "$ref": "#/$defs/TrixPresentation"
         }
       ]
+    },
+    "RegisteredAdvice": {
+      "title": "RegisteredAdvice",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/AdviceView"
+        },
+        {
+          "$ref": "#/$defs/TrixAdvice"
+        }
+      ]
+    },
+    "CoachSupport": {
+      "title": "CoachSupport",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "exact",
+            "conditional",
+            "policy"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "CoachReason": {
+      "title": "CoachReason",
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 6000
+        },
+        "support": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CoachSupport"
+          },
+          "maxItems": 64
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "maxItems": 32
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "summary",
+        "support",
+        "alternatives",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "CoachMessage": {
+      "title": "CoachMessage",
+      "type": "object",
+      "properties": {
+        "presentationVersion": {
+          "const": "coach-advice-2.0.0"
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "policyVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "cueVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "status": {
+          "enum": [
+            "insufficient-reason",
+            "tactical",
+            "only-option",
+            "no-clear-preference"
+          ]
+        },
+        "selectedAction": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "cue": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "reason": {
+          "$ref": "#/$defs/CoachReason"
+        }
+      },
+      "required": [
+        "presentationVersion",
+        "decisionId",
+        "policyVersion",
+        "cueVersion",
+        "status",
+        "selectedAction",
+        "cue",
+        "reason"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "status": {
+            "const": "tactical"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reason": {
+            "properties": {
+              "support": {
+                "minItems": 1,
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    },
+    "CoachMessageView": {
+      "title": "CoachMessageView",
+      "type": "object",
+      "properties": {
+        "presentationVersion": {
+          "const": "coach-advice-2.0.0"
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "status": {
+          "enum": [
+            "tactical",
+            "only-option",
+            "no-clear-preference",
+            "insufficient-reason"
+          ]
+        },
+        "selectedAction": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "cue": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "view": {
+          "enum": [
+            "recommendation",
+            "reason"
+          ]
+        },
+        "reason": {
+          "$ref": "#/$defs/CoachReason"
+        }
+      },
+      "required": [
+        "presentationVersion",
+        "decisionId",
+        "status",
+        "selectedAction",
+        "cue",
+        "view"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "view": {
+            "const": "reason"
+          }
+        },
+        "required": [
+          "view"
+        ]
+      },
+      "then": {
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "reason": {
+            "$ref": "#/$defs/CoachReason"
+          }
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "reason"
+          ],
+          "properties": {
+            "reason": {}
+          }
+        }
+      }
     },
     "HeartsCandidate": {
       "title": "HeartsCandidate",
@@ -4967,6 +5261,1543 @@
       ],
       "additionalProperties": false
     },
+    "TrixAction": {
+      "title": "TrixAction",
+      "oneOf": [
+        {
+          "title": "TrixChooseRequest",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "choose-request"
+            },
+            "request": {
+              "enum": [
+                "diamonds",
+                "lutoosh",
+                "queens",
+                "king",
+                "complex",
+                "trix"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixDeclareDoubles",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "declare-doubles"
+            },
+            "cards": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "CQ",
+                  "DQ",
+                  "HQ",
+                  "SQ",
+                  "HK"
+                ]
+              },
+              "minItems": 0,
+              "maxItems": 5,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixPlayCard",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "play-card"
+            },
+            "card": {
+              "$ref": "#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixLayoutCard",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "layout-card"
+            },
+            "card": {
+              "$ref": "#/$defs/Card"
+            }
+          },
+          "required": [
+            "kind",
+            "card"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixLayoutPassAction",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "layout-pass"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixPlay": {
+      "title": "TrixPlay",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        }
+      },
+      "required": [
+        "seat",
+        "card"
+      ],
+      "additionalProperties": false
+    },
+    "TrixTrick": {
+      "title": "TrixTrick",
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        },
+        "leader": {
+          "$ref": "#/$defs/Seat"
+        },
+        "winner": {
+          "$ref": "#/$defs/Seat"
+        },
+        "plays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixPlay"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "number",
+        "leader",
+        "winner",
+        "plays"
+      ],
+      "additionalProperties": false
+    },
+    "TrixDeclaration": {
+      "title": "TrixDeclaration",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "seat",
+        "cards",
+        "ref"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRow": {
+      "title": "TrixRow",
+      "type": "object",
+      "properties": {
+        "suit": {
+          "enum": [
+            "C",
+            "D",
+            "H",
+            "S"
+          ]
+        },
+        "low": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "high": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 14
+        }
+      },
+      "required": [
+        "suit",
+        "low",
+        "high"
+      ],
+      "additionalProperties": false
+    },
+    "TrixLayoutPass": {
+      "title": "TrixLayoutPass",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "board": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixRow"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "seat",
+        "board",
+        "ref"
+      ],
+      "additionalProperties": false
+    },
+    "TrixLeadSource": {
+      "title": "TrixLeadSource",
+      "type": "object",
+      "properties": {
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        }
+      },
+      "required": [
+        "seat",
+        "trick"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRecipient": {
+      "title": "TrixRecipient",
+      "oneOf": [
+        {
+          "title": "TrixSeatRecipient",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "seat"
+            },
+            "seat": {
+              "$ref": "#/$defs/Seat"
+            }
+          },
+          "required": [
+            "kind",
+            "seat"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixTeamRecipient",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "competitor"
+            },
+            "competitor": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "competitor"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixLedgerEntry": {
+      "title": "TrixLedgerEntry",
+      "type": "object",
+      "properties": {
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "request": {
+          "enum": [
+            "diamonds",
+            "lutoosh",
+            "queens",
+            "king",
+            "complex",
+            "trix"
+          ]
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 13
+        },
+        "finish": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "recipient": {
+          "$ref": "#/$defs/TrixRecipient"
+        },
+        "component": {
+          "enum": [
+            "diamond",
+            "trick",
+            "queen",
+            "king",
+            "double-bonus",
+            "layout-finish"
+          ]
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        },
+        "delta": {
+          "type": "integer",
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "declarationRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "leadSourceRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "dealNumber",
+        "kingdom",
+        "request",
+        "trick",
+        "finish",
+        "recipient",
+        "component",
+        "delta"
+      ],
+      "additionalProperties": false
+    },
+    "TrixWithheldBonus": {
+      "title": "TrixWithheldBonus",
+      "type": "object",
+      "properties": {
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "trick": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 13
+        },
+        "card": {
+          "$ref": "#/$defs/Card"
+        },
+        "bonusValue": {
+          "enum": [
+            25,
+            75
+          ]
+        },
+        "reason": {
+          "const": "no_previous_external_leader"
+        },
+        "declarationRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "dealNumber",
+        "trick",
+        "card",
+        "bonusValue",
+        "reason",
+        "declarationRef"
+      ],
+      "additionalProperties": false
+    },
+    "TrixScore": {
+      "title": "TrixScore",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "seats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Seat"
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "total": {
+          "type": "integer",
+          "minimum": -100000,
+          "maximum": 100000
+        }
+      },
+      "required": [
+        "id",
+        "seats",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "TrixTwoAnnouncements": {
+      "title": "TrixTwoAnnouncements",
+      "oneOf": [
+        {
+          "title": "TrixTwoAnnouncementsHidden",
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "hidden"
+            },
+            "counts": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "required": [
+            "status",
+            "counts"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixTwoAnnouncementsRevealed",
+          "type": "object",
+          "properties": {
+            "status": {
+              "const": "revealed"
+            },
+            "cards": {
+              "type": "array",
+              "items": {
+                "title": "TrixTwoAnnouncementCard",
+                "type": "object",
+                "properties": {
+                  "seat": {
+                    "$ref": "#/$defs/Seat"
+                  },
+                  "card": {
+                    "enum": [
+                      "C2",
+                      "D2",
+                      "H2",
+                      "S2"
+                    ]
+                  }
+                },
+                "required": [
+                  "seat",
+                  "card"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 4,
+              "maxItems": 4,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "status",
+            "cards"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixObservation": {
+      "title": "TrixObservation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "choose-request",
+            "declare-doubles",
+            "playing",
+            "layout",
+            "round-complete",
+            "chance",
+            "session-complete"
+          ]
+        },
+        "turn": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "owner": {
+          "$ref": "#/$defs/Seat"
+        },
+        "request": {
+          "anyOf": [
+            {
+              "enum": [
+                "diamonds",
+                "lutoosh",
+                "queens",
+                "king",
+                "complex",
+                "trix"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "remainingRequests": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "diamonds",
+              "lutoosh",
+              "queens",
+              "king",
+              "complex",
+              "trix"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "hand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "twoAnnouncements": {
+          "$ref": "#/$defs/TrixTwoAnnouncements"
+        },
+        "handCounts": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "trick": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixPlay"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "tricks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixTrick"
+          },
+          "minItems": 0,
+          "maxItems": 13
+        },
+        "declarations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixDeclaration"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "board": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixRow"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "finishOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Seat"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "passes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLayoutPass"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "ledger": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLedgerEntry"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "withheldBonuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixWithheldBonus"
+          },
+          "minItems": 0,
+          "maxItems": 10000
+        },
+        "lastExternalLeader": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/TrixLeadSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "totals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "requestTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "requestSeatTotals": {
+          "description": "Live presentation only: current-deal points assigned to each seat by the server ledger, in seat order. Excludes competitor-only team bonuses. Optional for immutable historical observations.",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "kingdomTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "winners": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "layoutHistory": {
+          "$ref": "#/$defs/TrixLayoutHistory"
+        }
+      },
+      "required": [
+        "id",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "turn",
+        "kingdom",
+        "dealNumber",
+        "owner",
+        "request",
+        "remainingRequests",
+        "hand",
+        "handCounts",
+        "trick",
+        "tricks",
+        "declarations",
+        "board",
+        "finishOrder",
+        "passes",
+        "ledger",
+        "withheldBonuses",
+        "lastExternalLeader",
+        "totals",
+        "requestTotals",
+        "kingdomTotals",
+        "winners"
+      ],
+      "additionalProperties": false
+    },
+    "TrixActorPacket": {
+      "title": "TrixActorPacket",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "choose-request",
+            "declare-doubles",
+            "playing",
+            "layout",
+            "round-complete",
+            "chance",
+            "session-complete"
+          ]
+        },
+        "observation": {
+          "$ref": "#/$defs/TrixObservation"
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "title": "TrixPublicCandidate",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "public": {
+                "$ref": "#/$defs/TrixAction"
+              }
+            },
+            "required": [
+              "id",
+              "public"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "observation",
+        "candidates"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.2.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "observation": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": {
+                    "$ref": "#/$defs/TrixLayoutHistory"
+                  }
+                },
+                "required": [
+                  "layoutHistory"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "observation": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixSessionView": {
+      "title": "TrixSessionView",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "phase": {
+          "enum": [
+            "choose-request",
+            "declare-doubles",
+            "playing",
+            "layout",
+            "round-complete",
+            "chance",
+            "session-complete"
+          ]
+        },
+        "table": {
+          "$ref": "#/$defs/TrixObservation"
+        },
+        "accessUnit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CoachedUnit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "seat",
+        "phase",
+        "table",
+        "accessUnit"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.2.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "table": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": {
+                    "$ref": "#/$defs/TrixLayoutHistory"
+                  }
+                },
+                "required": [
+                  "layoutHistory"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "table": {
+                "type": "object",
+                "properties": {
+                  "layoutHistory": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixPresentation": {
+      "title": "TrixPresentation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "seat": {
+          "$ref": "#/$defs/Seat"
+        },
+        "observation": {
+          "$ref": "#/$defs/TrixObservation"
+        }
+      },
+      "required": [
+        "id",
+        "gameId",
+        "variantId",
+        "seat",
+        "observation"
+      ],
+      "additionalProperties": false
+    },
+    "TrixAnalysis": {
+      "title": "TrixAnalysis",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "origin": {
+          "enum": [
+            "code",
+            "forced"
+          ]
+        },
+        "selectedCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "objective": {
+          "$ref": "#/$defs/ReasoningObjective"
+        },
+        "horizon": {
+          "$ref": "#/$defs/ReasoningHorizon"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReasoningFact"
+          }
+        },
+        "estimates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReasoningEstimate"
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReasoningScenario"
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "origin",
+        "selectedCandidateId",
+        "objective",
+        "horizon",
+        "facts",
+        "estimates",
+        "scenarios",
+        "assumptions"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixActorEvent": {
+      "title": "TrixActorEvent",
+      "type": "object",
+      "properties": {
+        "publicSchemaVersion": {
+          "enum": [
+            "1.0.0",
+            "1.1.0",
+            "1.2.0"
+          ]
+        },
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "eventSchemaVersion": {
+          "const": "1.0.0"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "seat": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Seat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "card": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Card"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publicSchemaVersion",
+        "gameId",
+        "variantId",
+        "eventSchemaVersion",
+        "id",
+        "type",
+        "message"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "publicSchemaVersion": {
+                "const": "1.1.0"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "variantId": {
+                "enum": [
+                  "basic-partners",
+                  "complex-partners"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TrixAdvice": {
+      "title": "TrixAdvice",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "trix"
+        },
+        "variantId": {
+          "enum": [
+            "basic-solo",
+            "basic-partners",
+            "complex-solo",
+            "complex-partners"
+          ]
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "level": {
+          "enum": [
+            1,
+            2,
+            3
+          ]
+        },
+        "origin": {
+          "enum": [
+            "code",
+            "forced"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "policyVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "recommendedCandidateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 0,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "minItems": 0,
+          "maxItems": 100,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "gameId",
+        "variantId",
+        "decisionId",
+        "level",
+        "origin",
+        "title",
+        "text",
+        "policyVersion",
+        "evidenceRefs"
+      ],
+      "additionalProperties": false
+    },
+    "TrixReviewFrame": {
+      "title": "TrixReviewFrame",
+      "type": "object",
+      "properties": {
+        "game": {
+          "$ref": "#/$defs/TrixPresentation"
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TrixAction"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "minItems": 0,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "game",
+        "action",
+        "decisionId",
+        "notes"
+      ],
+      "additionalProperties": false
+    },
+    "TrixLayoutTurn": {
+      "title": "TrixLayoutTurn",
+      "oneOf": [
+        {
+          "title": "TrixLayoutPlacement",
+          "type": "object",
+          "properties": {
+            "ordinal": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 208
+            },
+            "seat": {
+              "$ref": "#/$defs/Seat"
+            },
+            "kind": {
+              "const": "layout-card"
+            },
+            "card": {
+              "$ref": "#/$defs/Card"
+            },
+            "boardBefore": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TrixRow"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "handCountsBefore": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "twoAnnouncementsBefore": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TrixTwoAnnouncements"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "ordinal",
+            "seat",
+            "kind",
+            "card",
+            "boardBefore",
+            "handCountsBefore",
+            "twoAnnouncementsBefore"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "TrixLayoutForcedPass",
+          "type": "object",
+          "properties": {
+            "ordinal": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 208
+            },
+            "seat": {
+              "$ref": "#/$defs/Seat"
+            },
+            "kind": {
+              "const": "layout-pass"
+            },
+            "boardBefore": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TrixRow"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "handCountsBefore": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 13
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "twoAnnouncementsBefore": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TrixTwoAnnouncements"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "ordinal",
+            "seat",
+            "kind",
+            "boardBefore",
+            "handCountsBefore",
+            "twoAnnouncementsBefore"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "TrixLayoutHistory": {
+      "title": "TrixLayoutHistory",
+      "type": "object",
+      "properties": {
+        "version": {
+          "const": "1.0.0"
+        },
+        "status": {
+          "const": "available"
+        },
+        "turns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLayoutTurn"
+          },
+          "minItems": 0,
+          "maxItems": 208
+        }
+      },
+      "required": [
+        "version",
+        "status",
+        "turns"
+      ],
+      "additionalProperties": false
+    },
     "LocalServiceWorkRetryRequest": {
       "title": "LocalServiceWorkRetryRequest",
       "type": "object",
@@ -5060,6 +6891,40 @@
               "enum": [
                 "individual",
                 "neighbour-teams"
+              ]
+            },
+            "moduleVersion": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "ruleProfileId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "gameId",
+            "variantId",
+            "moduleVersion",
+            "ruleProfileId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "LocalTrixSelector",
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "const": "trix"
+            },
+            "variantId": {
+              "enum": [
+                "basic-solo",
+                "basic-partners",
+                "complex-solo",
+                "complex-partners"
               ]
             },
             "moduleVersion": {
@@ -5714,7 +7579,7 @@
           "maximum": 9007199254740991
         },
         "advice": {
-          "$ref": "#/$defs/AdviceView"
+          "$ref": "#/$defs/RegisteredAdvice"
         }
       },
       "required": [
@@ -6406,7 +8271,7 @@
       "type": "object",
       "properties": {
         "mode": {
-          "$ref": "#/$defs/Mode"
+          "$ref": "#/$defs/CatalogMode"
         },
         "selector": {
           "$ref": "#/$defs/LocalServiceSelector"
@@ -6593,6 +8458,28 @@
               "maxLength": 256
             },
             "operation": {
+              "const": "playback"
+            },
+            "request": {
+              "$ref": "#/$defs/RealtimePlaybackRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
               "const": "platform-preferences"
             },
             "request": {
@@ -6747,6 +8634,9 @@
           "$ref": "#/$defs/LocalServiceRecoveredReceipt"
         },
         {
+          "$ref": "#/$defs/RealtimePlaybackView"
+        },
+        {
           "$ref": "#/$defs/PlatformPreferencesView"
         },
         {
@@ -6802,6 +8692,144 @@
         }
       ],
       "title": "PlatformReconcileView"
+    },
+    "CatalogMode": {
+      "title": "CatalogMode",
+      "enum": [
+        "hearts",
+        "spades-solo",
+        "spades-partners",
+        "trix-basic-solo",
+        "trix-basic-partners",
+        "trix-complex-solo",
+        "trix-complex-partners"
+      ]
+    },
+    "TrixCompletedRound": {
+      "title": "TrixCompletedRound",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "request": {
+          "enum": [
+            "diamonds",
+            "lutoosh",
+            "queens",
+            "king",
+            "complex",
+            "trix"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "dealNumber",
+        "kingdom",
+        "request"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRoundIndex": {
+      "title": "TrixRoundIndex",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "rounds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixCompletedRound"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "gameId",
+        "rounds"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRoundHistory": {
+      "title": "TrixRoundHistory",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "round": {
+          "$ref": "#/$defs/TrixCompletedRound"
+        },
+        "requestTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "kingdomTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "totals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "ledger": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixLedgerEntry"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "withheldBonuses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixWithheldBonus"
+          },
+          "minItems": 0,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "gameId",
+        "round",
+        "requestTotals",
+        "kingdomTotals",
+        "totals",
+        "ledger",
+        "withheldBonuses"
+      ],
+      "additionalProperties": false
     },
     "PlatformPreferencesView": {
       "title": "PlatformPreferencesView",
@@ -6932,7 +8960,7 @@
             "availability": {
               "type": "array",
               "minItems": 3,
-              "maxItems": 3,
+              "maxItems": 7,
               "items": {
                 "$ref": "#/$defs/PlatformAccountAvailability"
               }
@@ -7004,7 +9032,7 @@
             "availability": {
               "type": "array",
               "minItems": 3,
-              "maxItems": 3,
+              "maxItems": 7,
               "items": {
                 "$ref": "#/$defs/PlatformAccountAvailability"
               }
@@ -7172,6 +9200,20 @@
           "maxItems": 10000,
           "items": {
             "$ref": "#/$defs/BillingOperation"
+          }
+        },
+        "coachSessions": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/CoachUISession"
+          }
+        },
+        "coachFeedback": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/CoachUIFeedbackView"
           }
         }
       },
@@ -7597,7 +9639,7 @@
       "type": "object",
       "properties": {
         "advice": {
-          "$ref": "#/$defs/AdviceView"
+          "$ref": "#/$defs/RegisteredAdvice"
         },
         "sourceUnitId": {
           "type": "string",
@@ -7614,6 +9656,1299 @@
         "unlocked"
       ],
       "additionalProperties": false
+    },
+    "CoachUIProvider": {
+      "title": "CoachUIProvider",
+      "type": "object",
+      "properties": {
+        "source": {
+          "const": "mock"
+        },
+        "version": {
+          "const": "ui-preview-v1"
+        },
+        "mock": {
+          "const": true
+        },
+        "preview": {
+          "const": true
+        },
+        "language": {
+          "const": "en"
+        }
+      },
+      "required": [
+        "source",
+        "version",
+        "mock",
+        "preview",
+        "language"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIAccess": {
+      "title": "CoachUIAccess",
+      "type": "object",
+      "properties": {
+        "canRequest": {
+          "type": "boolean"
+        },
+        "remaining": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unlimited": {
+          "type": "boolean"
+        },
+        "resetAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "timezone": {
+          "const": "UTC"
+        },
+        "mode": {
+          "enum": [
+            "free",
+            "paid",
+            "local-fixture"
+          ]
+        }
+      },
+      "required": [
+        "canRequest",
+        "remaining",
+        "unlimited",
+        "resetAt",
+        "timezone",
+        "mode"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIFeedback": {
+      "title": "CoachUIFeedback",
+      "type": "object",
+      "properties": {
+        "feedbackId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "value": {
+          "enum": [
+            "helpful",
+            "not-helpful"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "feedbackId",
+        "value",
+        "reason",
+        "text",
+        "createdAt"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIRatingPreview": {
+      "title": "CoachUIRatingPreview",
+      "type": "object",
+      "properties": {
+        "fictional": {
+          "const": true
+        },
+        "cohortLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "percentile": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "sampleSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "fictional",
+        "cohortLabel",
+        "percentile",
+        "sampleSize",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIItem": {
+      "title": "CoachUIItem",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating",
+            "selection",
+            "confirmed",
+            "postplay"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "replayAvailable": {
+          "type": "boolean"
+        },
+        "feedbackRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "rating": {
+          "$ref": "#/$defs/CoachUIRatingPreview"
+        },
+        "feedback": {
+          "$ref": "#/$defs/CoachUIFeedback"
+        }
+      },
+      "required": [
+        "itemId",
+        "sessionId",
+        "kind",
+        "title",
+        "body",
+        "explanation",
+        "createdAt",
+        "sourceRevision",
+        "decisionId",
+        "provider",
+        "replayAvailable",
+        "feedbackRevision"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUISessionSummary": {
+      "title": "CoachUISessionSummary",
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameType": {
+          "enum": [
+            "hearts",
+            "spades",
+            "trix"
+          ]
+        },
+        "variantId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceUnitId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating"
+          ]
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        }
+      },
+      "required": [
+        "sessionId",
+        "gameId",
+        "gameType",
+        "variantId",
+        "sourceUnitId",
+        "decisionId",
+        "sourceRevision",
+        "createdAt",
+        "kind",
+        "provider"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUISession": {
+      "title": "CoachUISession",
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameType": {
+          "enum": [
+            "hearts",
+            "spades",
+            "trix"
+          ]
+        },
+        "variantId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceUnitId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating"
+          ]
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CoachUIItem"
+          },
+          "minItems": 1,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "sessionId",
+        "gameId",
+        "gameType",
+        "variantId",
+        "sourceUnitId",
+        "decisionId",
+        "sourceRevision",
+        "createdAt",
+        "kind",
+        "provider",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIStatusView": {
+      "title": "CoachUIStatusView",
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "playerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "serverTime": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "access": {
+          "$ref": "#/$defs/CoachUIAccess"
+        },
+        "recent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CoachUISessionSummary"
+          },
+          "minItems": 0,
+          "maxItems": 50
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "playerId",
+        "serverTime",
+        "provider",
+        "access",
+        "recent"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUISessionView": {
+      "title": "CoachUISessionView",
+      "type": "object",
+      "properties": {
+        "session": {
+          "$ref": "#/$defs/CoachUISession"
+        },
+        "access": {
+          "$ref": "#/$defs/CoachUIAccess"
+        }
+      },
+      "required": [
+        "session",
+        "access"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIStartRequest": {
+      "title": "CoachUIStartRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating"
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "decisionId",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIItemRequest": {
+      "title": "CoachUIItemRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "selection",
+            "confirmed",
+            "postplay"
+          ]
+        },
+        "selectedCards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GameAction"
+            },
+            {
+              "$ref": "#/$defs/TrixAction"
+            }
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "decisionId",
+        "sessionId",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "selection"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "selectedCards"
+            ],
+            "properties": {
+              "selectedCards": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/Card"
+                },
+                "minItems": 0,
+                "maxItems": 13,
+                "uniqueItems": true
+              },
+              "action": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "confirmed",
+                  "postplay"
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "action"
+            ],
+            "properties": {
+              "action": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/GameAction"
+                  },
+                  {
+                    "$ref": "#/$defs/TrixAction"
+                  }
+                ]
+              },
+              "selectedCards": false
+            }
+          }
+        }
+      ]
+    },
+    "CoachUIFeedbackRequest": {
+      "title": "CoachUIFeedbackRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedFeedbackRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "value": {
+          "enum": [
+            "helpful",
+            "not-helpful"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "commandId",
+        "itemId",
+        "expectedFeedbackRevision",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIFeedbackView": {
+      "title": "CoachUIFeedbackView",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "feedbackRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "feedback": {
+          "$ref": "#/$defs/CoachUIFeedback"
+        }
+      },
+      "required": [
+        "itemId",
+        "feedbackRevision",
+        "feedback"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIReplayView": {
+      "title": "CoachUIReplayView",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "label": {
+          "const": "Saved actor view"
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReviewFrame"
+          },
+          "minItems": 1,
+          "maxItems": 120
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "itemId",
+        "sourceRevision",
+        "decisionId",
+        "label",
+        "provider",
+        "frames",
+        "explanation"
+      ],
+      "additionalProperties": false
+    },
+    "RealtimePlaybackRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedControlGeneration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expectedPlaybackGeneration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "running": {
+          "type": "boolean"
+        },
+        "intent": {
+          "enum": [
+            "resume",
+            "pause",
+            "hold",
+            "release_hold"
+          ]
+        },
+        "reason": {
+          "enum": [
+            "manual",
+            "away",
+            "layout_unavailable",
+            "idle",
+            "connection_lost",
+            "service_unavailable",
+            "lease_expired",
+            "control_lost",
+            "access_required",
+            "reopened"
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "controlLeaseToken",
+        "expectedControlGeneration",
+        "expectedPlaybackGeneration",
+        "running"
+      ],
+      "additionalProperties": false,
+      "title": "RealtimePlaybackRequest"
+    },
+    "RealtimePlaybackView": {
+      "type": "object",
+      "properties": {
+        "running": {
+          "type": "boolean"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "phase": {
+          "enum": [
+            "running",
+            "held",
+            "paused",
+            "expired",
+            "completed"
+          ]
+        },
+        "pauseReason": {
+          "anyOf": [
+            {
+              "enum": [
+                "manual",
+                "away",
+                "layout_unavailable",
+                "idle",
+                "connection_lost",
+                "service_unavailable",
+                "lease_expired",
+                "control_lost",
+                "access_required",
+                "reopened"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "serverNow": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 40,
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+        },
+        "foregroundLeaseUntil": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 40,
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pausedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 40,
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expiresAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 20,
+              "maxLength": 40,
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "policyVersion": {
+          "enum": [
+            "pause-v1",
+            "legacy"
+          ]
+        },
+        "retentionSeconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400
+        }
+      },
+      "required": [
+        "running",
+        "generation"
+      ],
+      "additionalProperties": false,
+      "title": "RealtimePlaybackView"
+    },
+    "RealtimeNegotiateView": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "mode": {
+          "enum": [
+            "local",
+            "http"
+          ]
+        },
+        "streamId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "enabled",
+        "mode",
+        "streamId",
+        "url"
+      ],
+      "additionalProperties": false,
+      "title": "RealtimeNegotiateView"
+    },
+    "RealtimeSnapshotRequest": {
+      "type": "object",
+      "properties": {
+        "streamId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "workIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "maxItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "streamId",
+        "workIds"
+      ],
+      "additionalProperties": false,
+      "title": "RealtimeSnapshotRequest"
+    },
+    "RealtimeSnapshot": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "streamId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "view": {
+          "$ref": "#/$defs/PlatformSessionView"
+        },
+        "works": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalServicePrepareView"
+          },
+          "maxItems": 4
+        },
+        "playback": {
+          "$ref": "#/$defs/RealtimePlaybackView"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "streamId",
+        "sequence",
+        "view",
+        "works",
+        "playback"
+      ],
+      "additionalProperties": false,
+      "title": "RealtimeSnapshot"
+    },
+    "RealtimeMessage": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "const": "1.0.0"
+            },
+            "messageId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "streamId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "session.view"
+            },
+            "view": {
+              "$ref": "#/$defs/PlatformSessionView"
+            },
+            "playback": {
+              "$ref": "#/$defs/RealtimePlaybackView"
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "messageId",
+            "streamId",
+            "sequence",
+            "type",
+            "view",
+            "playback"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "const": "1.0.0"
+            },
+            "messageId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "streamId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "work.updated"
+            },
+            "work": {
+              "$ref": "#/$defs/LocalServicePrepareView"
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "messageId",
+            "streamId",
+            "sequence",
+            "type",
+            "work"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "const": "1.0.0"
+            },
+            "messageId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "streamId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "control.changed"
+            },
+            "controlGeneration": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "messageId",
+            "streamId",
+            "sequence",
+            "type",
+            "controlGeneration"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "const": "1.0.0"
+            },
+            "messageId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "streamId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "access.changed"
+            },
+            "accessGeneration": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "messageId",
+            "streamId",
+            "sequence",
+            "type",
+            "accessGeneration"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "const": "1.0.0"
+            },
+            "messageId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "streamId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "type": {
+              "const": "work.updated"
+            },
+            "review": {
+              "$ref": "#/$defs/PlatformReviewStatus"
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "messageId",
+            "streamId",
+            "sequence",
+            "type",
+            "review"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "title": "RealtimeMessage"
+    },
+    "RealtimePresenceRequest": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedControlGeneration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expectedPlaybackGeneration": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "gameId",
+        "controlLeaseToken",
+        "expectedControlGeneration",
+        "expectedPlaybackGeneration",
+        "sequence"
+      ],
+      "additionalProperties": false,
+      "title": "RealtimePresenceRequest"
     }
   },
   "anyOf": [
@@ -7882,6 +11217,21 @@
       "$ref": "#/$defs/RegisteredPresentation"
     },
     {
+      "$ref": "#/$defs/RegisteredAdvice"
+    },
+    {
+      "$ref": "#/$defs/CoachSupport"
+    },
+    {
+      "$ref": "#/$defs/CoachReason"
+    },
+    {
+      "$ref": "#/$defs/CoachMessage"
+    },
+    {
+      "$ref": "#/$defs/CoachMessageView"
+    },
+    {
       "$ref": "#/$defs/LocalServiceWorkRetryRequest"
     },
     {
@@ -7990,6 +11340,18 @@
       "$ref": "#/$defs/PlatformReconcileView"
     },
     {
+      "$ref": "#/$defs/CatalogMode"
+    },
+    {
+      "$ref": "#/$defs/TrixCompletedRound"
+    },
+    {
+      "$ref": "#/$defs/TrixRoundIndex"
+    },
+    {
+      "$ref": "#/$defs/TrixRoundHistory"
+    },
+    {
       "$ref": "#/$defs/PlatformPreferencesView"
     },
     {
@@ -8030,6 +11392,69 @@
     },
     {
       "$ref": "#/$defs/PlatformAdviceView"
+    },
+    {
+      "$ref": "#/$defs/CoachUIProvider"
+    },
+    {
+      "$ref": "#/$defs/CoachUIAccess"
+    },
+    {
+      "$ref": "#/$defs/CoachUIFeedback"
+    },
+    {
+      "$ref": "#/$defs/CoachUIRatingPreview"
+    },
+    {
+      "$ref": "#/$defs/CoachUIItem"
+    },
+    {
+      "$ref": "#/$defs/CoachUISessionSummary"
+    },
+    {
+      "$ref": "#/$defs/CoachUISession"
+    },
+    {
+      "$ref": "#/$defs/CoachUIStatusView"
+    },
+    {
+      "$ref": "#/$defs/CoachUISessionView"
+    },
+    {
+      "$ref": "#/$defs/CoachUIStartRequest"
+    },
+    {
+      "$ref": "#/$defs/CoachUIItemRequest"
+    },
+    {
+      "$ref": "#/$defs/CoachUIFeedbackRequest"
+    },
+    {
+      "$ref": "#/$defs/CoachUIFeedbackView"
+    },
+    {
+      "$ref": "#/$defs/CoachUIReplayView"
+    },
+    {
+      "$ref": "#/$defs/RealtimePlaybackRequest"
+    },
+    {
+      "$ref": "#/$defs/RealtimePlaybackView"
+    },
+    {
+      "$ref": "#/$defs/RealtimeNegotiateView"
+    },
+    {
+      "$ref": "#/$defs/RealtimeSnapshotRequest"
+    },
+    {
+      "$ref": "#/$defs/RealtimeSnapshot"
+    },
+    {
+      "$ref": "#/$defs/RealtimeMessage"
+    },
+    {
+      "$ref": "#/$defs/RealtimePresenceRequest"
     }
   ]
 }

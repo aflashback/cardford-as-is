@@ -1,0 +1,54 @@
+[
+  {
+    "device": "se1",
+    "earlyCards": 5,
+    "denseCards": 37,
+    "identicalGeometry": true,
+    "identicalBoard": true,
+    "geometry": {
+      "cardWidth": 17.6,
+      "firstRow": 0,
+      "rankSpan": 12,
+      "step": 10.208
+    }
+  },
+  {
+    "device": "iphone12",
+    "earlyCards": 5,
+    "denseCards": 37,
+    "identicalGeometry": true,
+    "identicalBoard": true,
+    "geometry": {
+      "cardWidth": 23.9,
+      "firstRow": 0,
+      "rankSpan": 12,
+      "step": 13.861999999999998
+    }
+  },
+  {
+    "device": "ipad",
+    "earlyCards": 5,
+    "denseCards": 37,
+    "identicalGeometry": true,
+    "identicalBoard": true,
+    "geometry": {
+      "cardWidth": 45.6,
+      "firstRow": 0,
+      "rankSpan": 12,
+      "step": 26.448
+    }
+  },
+  {
+    "device": "desktop",
+    "earlyCards": 5,
+    "denseCards": 37,
+    "identicalGeometry": true,
+    "identicalBoard": true,
+    "geometry": {
+      "cardWidth": 54.7,
+      "firstRow": 0,
+      "rankSpan": 12,
+      "step": 31.726
+    }
+  }
+]

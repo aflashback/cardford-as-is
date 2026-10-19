@@ -1,12 +1,12 @@
-import type { GameAction, GameView, Mode, RegisteredActorPacket, RegisteredSessionView } from '../../shared/contracts.ts';
+import type { GameAction, GameView, Mode, RegisteredActorPacket, RegisteredSessionView, RegisteredPresentation } from '../../shared/local-service.contracts.ts';
 
 const modes: Record<'hearts'|'spades', readonly Mode[]> = {
   hearts: ['hearts'], spades: ['spades-solo', 'spades-partners'],
 };
 /** Registered current-game display adapters consume server-owned projections. */
-export function presentation(view: RegisteredSessionView, game: GameView | import('../../shared/contracts.ts').TokenPresentation,
+export function presentation(view: RegisteredSessionView, game: RegisteredPresentation,
   actor: RegisteredActorPacket | null, instanceId: string): GameView {
-  if (view.gameId === 'test-token' || 'gameId' in game)
+  if (view.gameId === 'test-token' || view.gameId === 'trix' || 'gameId' in game)
     throw new Error('This test module requires its installed non-card presentation adapter.');
   const expected: Mode = view.gameId === 'hearts' ? 'hearts' :
     view.variantId === 'solo' ? 'spades-solo' : 'spades-partners';
@@ -26,7 +26,7 @@ function sameAction(left: GameAction, right: GameAction): boolean {
     left.cards.length === 3 && left.cards.every(card => right.cards.includes(card));
 }
 export function resolveCandidate(actor: RegisteredActorPacket | null, action: GameAction): string {
-  if (actor?.gameId === 'test-token') throw new Error('Numeric token choices require the test module adapter.');
+  if (actor?.gameId === 'test-token' || actor?.gameId === 'trix') throw new Error('This game requires its registered choice adapter.');
   const candidates = actor?.candidates.filter(candidate => sameAction(action, candidate.public)) ?? [];
   if (candidates.length !== 1) throw new Error('That action is unavailable at this confirmed decision.');
   return candidates[0].id;

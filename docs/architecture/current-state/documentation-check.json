@@ -1,0 +1,66 @@
+{
+  "checkedAtUtc": "2026-10-17T01:47:24.369Z",
+  "reviewedDate": "2026-10-16",
+  "markdownFiles": 10,
+  "localLinksChecked": 239,
+  "mermaidBlocks": 19,
+  "missingLocalLinks": [],
+  "structureIssues": [],
+  "sourceFilesChecked": 99,
+  "sourceDrift": [],
+  "diagramValidation": "Fence/type/block structure only; no Mermaid renderer run",
+  "runtimeTestsRun": false,
+  "files": [
+    {
+      "path": "docs/architecture/current-state/01-reference-architecture.md",
+      "mermaidDiagrams": 2,
+      "sha256": "562690f4552d96b5e75df001b67fd1dca3b5dc811c93e474c8b80ba8e7fdf456"
+    },
+    {
+      "path": "docs/architecture/current-state/02-components.md",
+      "mermaidDiagrams": 2,
+      "sha256": "ade2e10e8e0fed55783a9595c35af507e472117483723e79693248bd0e48bf01"
+    },
+    {
+      "path": "docs/architecture/current-state/03-data-and-state.md",
+      "mermaidDiagrams": 2,
+      "sha256": "b0f8bbebb94ba5ccee67c26433d8c5c92a075b7fccd978e7df8390005cfc7dfc"
+    },
+    {
+      "path": "docs/architecture/current-state/04-stack-and-setup.md",
+      "mermaidDiagrams": 3,
+      "sha256": "cd1d676a6079619e1508389463960d82f9b10f423aa7399903e303f18ce4f783"
+    },
+    {
+      "path": "docs/architecture/current-state/05-gameplay-sequences.md",
+      "mermaidDiagrams": 7,
+      "sha256": "bb7163f5443ba006e97e0dd2bb86e9307529b2e8fb3091a0acbbb80d4b493301"
+    },
+    {
+      "path": "docs/architecture/current-state/06-identity-sequences.md",
+      "mermaidDiagrams": 3,
+      "sha256": "f2a9e1188540c2c8a0a7427d65403ac81b1c518c4cee111ecfbfc890c0689bcc"
+    },
+    {
+      "path": "docs/architecture/current-state/07-decisions.md",
+      "mermaidDiagrams": 0,
+      "sha256": "e13ceab042b0bd80f11a7121a2e1ca9e05b99ada94a03f2c770b90a54984d198"
+    },
+    {
+      "path": "docs/architecture/current-state/08-review-and-evidence.md",
+      "mermaidDiagrams": 0,
+      "sha256": "2b74c8f8716c82ee389f7b2cb5b29012f9c64de47e695c1dd70470c204dff7f7"
+    },
+    {
+      "path": "docs/architecture/current-state/README.md",
+      "mermaidDiagrams": 0,
+      "sha256": "24606899bfd75907d6379823f81fd36a43fb724383d87a757f068c68a0611495"
+    },
+    {
+      "path": "docs/architecture/README.md",
+      "mermaidDiagrams": 0,
+      "sha256": "ef97004132d5eb0d8c387678126efc473285506a5273b964b0ead71a82c65f71"
+    }
+  ],
+  "status": "passed"
+}

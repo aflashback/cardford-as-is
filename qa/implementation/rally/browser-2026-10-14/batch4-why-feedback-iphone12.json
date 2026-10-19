@@ -1,0 +1,244 @@
+{
+  "evidenceVersion": 4,
+  "context": {
+    "state": "batch4-why-feedback",
+    "device": "iphone12",
+    "nativeFixtureOrigin": "localhost:4191"
+  },
+  "measure": {
+    "coach": {
+      "bottom": 261.4453125,
+      "height": 253.4375,
+      "right": 263.98436737060547,
+      "width": 203.9973907470703,
+      "x": 59.98697662353515,
+      "y": 8.0078125
+    },
+    "coachScroll": {
+      "clientWidth": 202,
+      "width": 202
+    },
+    "declaredDoubles": [],
+    "dialogs": [],
+    "document": {
+      "height": 389,
+      "width": 844
+    },
+    "felt": {
+      "bottom": 253.4505100250244,
+      "height": 233.46353149414065,
+      "right": 716.4713439941406,
+      "width": 536.9921875,
+      "x": 179.47915649414062,
+      "y": 19.98697853088379
+    },
+    "game": "trix",
+    "hand": {
+      "bottom": 384.9999771118164,
+      "height": 119.55728912353516,
+      "right": 832.1744384765625,
+      "width": 768.1900634765625,
+      "x": 63.984375,
+      "y": 265.44268798828125
+    },
+    "handCards": [
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 275.15625,
+        "width": 66.09375,
+        "x": 209.0625,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 314.8177032470703,
+        "width": 66.09375,
+        "x": 248.7239532470703,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 354.4791564941406,
+        "width": 66.09375,
+        "x": 288.3854064941406,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 394.140625,
+        "width": 66.09375,
+        "x": 328.046875,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 433.8020629882813,
+        "width": 66.09375,
+        "x": 367.7083129882813,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 473.4635314941406,
+        "width": 66.09375,
+        "x": 407.3697814941406,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 513.125,
+        "width": 66.09375,
+        "x": 447.03125,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 552.7864379882812,
+        "width": 66.09375,
+        "x": 486.6926879882813,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 592.4478759765625,
+        "width": 66.09375,
+        "x": 526.3541259765625,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 632.109375,
+        "width": 66.09375,
+        "x": 566.015625,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 671.7708129882812,
+        "width": 66.09375,
+        "x": 605.6770629882812,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 711.4322509765625,
+        "width": 66.09375,
+        "x": 645.3385009765625,
+        "y": 290.44268798828125
+      },
+      {
+        "bottom": 384.9999771118164,
+        "height": 94.55728912353516,
+        "right": 751.09375,
+        "width": 66.09375,
+        "x": 685,
+        "y": 290.44268798828125
+      }
+    ],
+    "images": [
+      {
+        "complete": true,
+        "src": "/brand/cardford-symbol.svg",
+        "width": 160
+      },
+      {
+        "complete": true,
+        "src": "/rally/regular-waiting-v2.png",
+        "width": 1254
+      }
+    ],
+    "jacksBoard": null,
+    "jacksCards": [],
+    "jacksRows": [],
+    "lastTrick": null,
+    "main": {
+      "bottom": 388.9973754882813,
+      "height": 388.9973754882813,
+      "right": 844.1666259765625,
+      "width": 792.1744384765625,
+      "x": 51.9921875,
+      "y": 0
+    },
+    "phase": "request",
+    "pinned": false,
+    "players": [
+      {
+        "bottom": 263.4505081176758,
+        "height": 54.36197662353515,
+        "right": 751.4713287353516,
+        "width": 74.97395324707031,
+        "x": 676.4973754882812,
+        "y": 209.08853149414065
+      },
+      {
+        "bottom": 193.5481719970703,
+        "height": 83.34635162353516,
+        "right": 204.47915649414065,
+        "width": 60,
+        "x": 144.47915649414062,
+        "y": 110.20182037353516
+      },
+      {
+        "bottom": 58.35937237739563,
+        "height": 54.36197662353515,
+        "right": 224.79165649414065,
+        "width": 80.3125,
+        "x": 144.47915649414062,
+        "y": 3.9973957538604736
+      },
+      {
+        "bottom": 157.23307037353516,
+        "height": 83.34635162353516,
+        "right": 751.4713134765625,
+        "width": 60,
+        "x": 691.4713134765625,
+        "y": 73.88671875
+      }
+    ],
+    "previewCards": [],
+    "prompt": null,
+    "promptControls": [],
+    "replay": true,
+    "tableCards": [],
+    "theme": "light",
+    "twoAnnouncements": [],
+    "viewport": {
+      "dpr": 1.000000015894571,
+      "height": 389,
+      "width": 844
+    }
+  },
+  "checks": {
+    "pageFits": true,
+    "visibleImagesLoaded": true,
+    "handCardsInViewport": true,
+    "playersInViewport": true,
+    "promptClearPlayers": null,
+    "promptControlsContained": null,
+    "tableCardsInViewport": null,
+    "tableCardsClearPlayers": null,
+    "previewCardsInViewport": null,
+    "jacksBoardInViewport": null,
+    "jacksRowsInViewport": null,
+    "jacksCardsInViewport": null,
+    "declaredDoublesInViewport": null,
+    "twoAnnouncementsInViewport": null,
+    "dialogsInViewport": null,
+    "dialogsNoHorizontalScroll": null,
+    "coachInViewport": true,
+    "overlayClearsHand": true,
+    "coachNoHorizontalScroll": true
+  }
+}

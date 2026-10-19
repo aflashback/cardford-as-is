@@ -71,6 +71,11 @@ type Registry struct {
 func DefaultHandlers() InstalledHandlers {
 	return InstalledHandlers{Engine: []string{"actor", "sealed", "automatic", "chance", "round-boundary"}, UI: []string{"hearts-table", "spades-table"}, Schemas: []string{"hearts-state-v2", "hearts-observation-v2", "hearts-public-v2", "hearts-event-v2", "spades-state-2.0.0", "spades-observation-2.0.0", "spades-public-2.0.0", "spades-event-2.0.0"}}
 }
+
+// Handlers returns the actual compiled handler inventory used for this registry.
+func (r *Registry) Handlers() InstalledHandlers {
+	return InstalledHandlers{Engine: append([]string{}, r.installed.Engine...), UI: append([]string{}, r.installed.UI...), Schemas: append([]string{}, r.installed.Schemas...)}
+}
 func NewRegistry() (*Registry, error) { return NewRegistryWithHandlers(DefaultHandlers()) }
 func NewRegistryWithHandlers(installed InstalledHandlers) (*Registry, error) {
 	r := &Registry{installed: InstalledHandlers{Engine: append([]string{}, installed.Engine...), UI: append([]string{}, installed.UI...), Schemas: append([]string{}, installed.Schemas...)}}
@@ -145,6 +150,9 @@ func (r *Registry) CreateRegisteredSession(selector Selector, config, material j
 	if err != nil {
 		return nil, err
 	}
+	if b.installation != nil && b.installation.Historical {
+		return nil, fmt.Errorf("historical installation cannot create a new session")
+	}
 	bound, err := b.start(config, material)
 	if err != nil {
 		return nil, err
@@ -181,7 +189,7 @@ func (r *Registry) Catalog(engineHandlers, uiHandlers []string) []Descriptor {
 	}
 	for _, b := range r.branches {
 		d := b.descriptor
-		if b.installation != nil && b.installation.TestOnly {
+		if b.installation != nil && (b.installation.TestOnly || b.installation.Historical) {
 			continue
 		}
 		if containsAll(r.installed.Engine, d.RequiredEngineCapabilities) && containsAll(engineHandlers, d.RequiredEngineCapabilities) && containsAll(r.installed.UI, d.RequiredUICapabilities) && containsAll(uiHandlers, d.RequiredUICapabilities) {

@@ -1,5 +1,7 @@
 # 03 — Architecture and execution model
 
+**Current-state reference (16 October 2026):** Start with [the current architecture review](architecture/current-state/README.md) for the source-grounded Go/PostgreSQL, realtime, lifecycle and local Keycloak architecture, component maps, stack/setup diagrams and sequences. This document preserves the historical v0.2 design below; it is not the current runtime diagram.
+
 **Implementation update (6 October 2026):** The current owner-approved runtime is Go/PostgreSQL with the preserved React client on native Windows. Use the [backend readiness contract](../planning/implementation/multi-game/backend-readiness.md), [current platform contracts](../planning/implementation/multi-game/contracts.md) and [M04E evidence/activation gates](../qa/implementation/multi-game/m04e/status.md). The Node/Fastify/SQLite diagram and runtime below are the historical v0.2 design.
 
 **Normative baseline:** v0.2.0. Code is the referee; Jev is a player and a source of recommendations; authored content is the teacher's vocabulary.

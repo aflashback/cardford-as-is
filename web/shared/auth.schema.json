@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.example/contracts/auth.schema.json",
+  "title": "AuthStatusView",
+  "description": "Public authentication bootstrap. Provider tokens and identity credentials never enter this contract.",
+  "$defs": {
+    "AuthenticatedPlayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "displayName",
+        "plan"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "plan": {
+          "enum": [
+            "free",
+            "paid"
+          ]
+        }
+      }
+    },
+    "SessionLease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "serverTime",
+        "accessExpiresAt",
+        "idleExpiresAt",
+        "absoluteExpiresAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "serverTime": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 64,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "accessExpiresAt": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 64,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "idleExpiresAt": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 64,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "absoluteExpiresAt": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 64,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$"
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "authenticated",
+        "loginUrl",
+        "logoutUrl",
+        "accountUrl",
+        "state",
+        "refreshUrl"
+      ],
+      "properties": {
+        "mode": {
+          "const": "keycloak"
+        },
+        "authenticated": {
+          "const": false
+        },
+        "loginUrl": {
+          "const": "/auth/login"
+        },
+        "logoutUrl": {
+          "const": "/auth/logout"
+        },
+        "accountUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "refreshUrl": {
+          "const": "/auth/refresh"
+        },
+        "state": {
+          "enum": [
+            "signed-out",
+            "reauthentication-required"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "authenticated",
+        "loginUrl",
+        "logoutUrl",
+        "accountUrl",
+        "csrfToken",
+        "state",
+        "refreshUrl",
+        "session"
+      ],
+      "properties": {
+        "mode": {
+          "const": "keycloak"
+        },
+        "authenticated": {
+          "const": false
+        },
+        "loginUrl": {
+          "const": "/auth/login"
+        },
+        "logoutUrl": {
+          "const": "/auth/logout"
+        },
+        "accountUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "csrfToken": {
+          "type": "string",
+          "minLength": 32,
+          "maxLength": 256,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "refreshUrl": {
+          "const": "/auth/refresh"
+        },
+        "state": {
+          "const": "renewal-required"
+        },
+        "session": {
+          "$ref": "#/$defs/SessionLease"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "authenticated",
+        "loginUrl",
+        "logoutUrl",
+        "accountUrl",
+        "csrfToken",
+        "account",
+        "state",
+        "refreshUrl",
+        "session"
+      ],
+      "properties": {
+        "mode": {
+          "const": "keycloak"
+        },
+        "authenticated": {
+          "const": true
+        },
+        "loginUrl": {
+          "const": "/auth/login"
+        },
+        "logoutUrl": {
+          "const": "/auth/logout"
+        },
+        "accountUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "csrfToken": {
+          "type": "string",
+          "minLength": 32,
+          "maxLength": 256,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "account": {
+          "$ref": "#/$defs/AuthenticatedPlayer"
+        },
+        "refreshUrl": {
+          "const": "/auth/refresh"
+        },
+        "state": {
+          "const": "authenticated"
+        },
+        "session": {
+          "$ref": "#/$defs/SessionLease"
+        }
+      }
+    }
+  ]
+}

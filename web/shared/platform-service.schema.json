@@ -214,7 +214,7 @@
       "type": "object",
       "properties": {
         "mode": {
-          "$ref": "#/$defs/Mode"
+          "$ref": "#/$defs/CatalogMode"
         },
         "selector": {
           "$ref": "#/$defs/LocalServiceSelector"
@@ -401,6 +401,28 @@
               "maxLength": 256
             },
             "operation": {
+              "const": "playback"
+            },
+            "request": {
+              "$ref": "#/$defs/RealtimePlaybackRequest"
+            }
+          },
+          "required": [
+            "commandId",
+            "operation",
+            "request"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "operation": {
               "const": "platform-preferences"
             },
             "request": {
@@ -555,6 +577,9 @@
           "$ref": "#/$defs/LocalServiceRecoveredReceipt"
         },
         {
+          "$ref": "#/$defs/RealtimePlaybackView"
+        },
+        {
           "$ref": "#/$defs/PlatformPreferencesView"
         },
         {
@@ -610,6 +635,144 @@
         }
       ],
       "title": "PlatformReconcileView"
+    },
+    "CatalogMode": {
+      "title": "CatalogMode",
+      "enum": [
+        "hearts",
+        "spades-solo",
+        "spades-partners",
+        "trix-basic-solo",
+        "trix-basic-partners",
+        "trix-complex-solo",
+        "trix-complex-partners"
+      ]
+    },
+    "TrixCompletedRound": {
+      "title": "TrixCompletedRound",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "dealNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "kingdom": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "request": {
+          "enum": [
+            "diamonds",
+            "lutoosh",
+            "queens",
+            "king",
+            "complex",
+            "trix"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "dealNumber",
+        "kingdom",
+        "request"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRoundIndex": {
+      "title": "TrixRoundIndex",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "rounds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TrixCompletedRound"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "gameId",
+        "rounds"
+      ],
+      "additionalProperties": false
+    },
+    "TrixRoundHistory": {
+      "title": "TrixRoundHistory",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "round": {
+          "$ref": "#/$defs/TrixCompletedRound"
+        },
+        "requestTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "./games/trix.schema.json#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "kingdomTotals": {
+          "type": "array",
+          "items": {
+            "$ref": "./games/trix.schema.json#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "totals": {
+          "type": "array",
+          "items": {
+            "$ref": "./games/trix.schema.json#/$defs/TrixScore"
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "ledger": {
+          "type": "array",
+          "items": {
+            "$ref": "./games/trix.schema.json#/$defs/TrixLedgerEntry"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        },
+        "withheldBonuses": {
+          "type": "array",
+          "items": {
+            "$ref": "./games/trix.schema.json#/$defs/TrixWithheldBonus"
+          },
+          "minItems": 0,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "gameId",
+        "round",
+        "requestTotals",
+        "kingdomTotals",
+        "totals",
+        "ledger",
+        "withheldBonuses"
+      ],
+      "additionalProperties": false
     }
   }
 }

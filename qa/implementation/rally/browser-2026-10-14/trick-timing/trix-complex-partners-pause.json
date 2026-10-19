@@ -1,0 +1,195 @@
+{
+  "label": "trix-complex-partners-pause",
+  "frames": 885,
+  "elapsedMs": 17655.70000000298,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0.3,
+      "cards": [
+        {
+          "card": "S3",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "S2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "S7",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Leo: 3 of hearts",
+        "You: 2 of hearts",
+        "Joe: 10 of hearts, won the trick",
+        "Maya: 8 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 664.1,
+      "cards": [
+        {
+          "card": "S3",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "S2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "S7",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "S4",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Leo: 3 of hearts",
+        "You: 2 of hearts",
+        "Joe: 10 of hearts, won the trick",
+        "Maya: 8 of hearts"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 763.8,
+      "cards": [
+        {
+          "card": "S3",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "S2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "S7",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "S4",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Leo: 3 of hearts",
+        "You: 2 of hearts",
+        "Joe: 10 of hearts, won the trick",
+        "Maya: 8 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 924.1,
+      "cards": [
+        {
+          "card": "S3",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "S2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "S7",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "S4",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Leo: 3 of hearts",
+        "You: 2 of hearts",
+        "Joe: 10 of hearts, won the trick",
+        "Maya: 8 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": true
+    },
+    {
+      "ms": 16626.7,
+      "cards": [
+        {
+          "card": "S3",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "S2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "S7",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "S4",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Leo: 3 of hearts",
+        "You: 2 of hearts",
+        "Joe: 10 of hearts, won the trick",
+        "Maya: 8 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 17631.6,
+      "cards": [
+        {
+          "card": "C3",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 3 of spades",
+        "Maya: 2 of spades",
+        "Leo: 7 of spades, won the trick",
+        "You: 4 of spades"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "generatedAt": "2026-10-14T01:27:12.109Z",
+  "scope": "Offline dependency, source, license, SVG and mock-contract checks; not rendered UI or production-game acceptance.",
+  "checks": [
+    {
+      "name": "approved entry and viewport",
+      "status": "passed"
+    },
+    {
+      "name": "canonical copies 20/20",
+      "status": "passed",
+      "detail": "Package matches frozen SHA-256 baseline; production checkout not required"
+    },
+    {
+      "name": "SOURCE manifest hashes",
+      "status": "passed",
+      "detail": "56 authoritative snapshot SHA-256 records"
+    },
+    {
+      "name": "runtime local dependency closure",
+      "status": "passed",
+      "detail": "20 resolved references plus dynamic launcher alternatives"
+    },
+    {
+      "name": "authored runtime has no remote-service calls",
+      "status": "passed",
+      "detail": "Static source check, not network capture"
+    },
+    {
+      "name": "licenses and fonts included",
+      "status": "passed",
+      "detail": "Nonempty notices/fonts; bytes validated in SOURCE manifest"
+    },
+    {
+      "name": "snapshot rebuild dependency path",
+      "status": "passed",
+      "detail": "Ready bundle needs no modules at runtime; rebuild uses repo modules (currently present) or RALLY_NODE_MODULES. This verification check does not rebuild the bundle."
+    },
+    {
+      "name": "guide and reference local links",
+      "status": "passed",
+      "detail": "53 document/reference asset links, scripts parsed without execution"
+    },
+    {
+      "name": "exported tokens match source declarations",
+      "status": "passed",
+      "detail": "85 values with exact property, selector and line provenance"
+    },
+    {
+      "name": "SVG paths without raster embedding",
+      "status": "passed",
+      "detail": "5 SVG text checks; XML parse is recorded separately"
+    },
+    {
+      "name": "sticker manifest, PNG and SVG hashes",
+      "status": "passed",
+      "detail": "Five exact PNG masters and five traced derivative hashes; license present"
+    },
+    {
+      "name": "recorded SVG XML parse matches delivered bytes",
+      "status": "passed",
+      "detail": "Five .NET XML parses with DTD prohibited; evidence hashes match current SVGs"
+    },
+    {
+      "name": "approved verify-coaching-panel.mjs",
+      "status": "passed",
+      "detail": "PASS Off starts without a suggestion or charge\nPASS Toggle, gallery navigation and automatic events do not consume a session\nPASS An explicit suggestion uses one session\nPASS Why, seek and feedback share that session and preserve the live phase\nPASS The second request uses the remaining free session; an extra request locks\nPASS Related selection comments update the authorized session without another charge\nPASS Turning off prevents automatic comments and closes replay without changing balance\nPASS Confirmation retires a pending selection note while off and does not charge\nPASS Default timing retires a confirmed Trix double note immediately\nPASS A played card archives the prior live cue even in When I ask mode\nPASS Off/on shows the latest selected cards without spending another session\nPASS Allowance and off preference survive reload\nPASS New game resets the session without refunding the allowance\nPASS Demo Unlock permits repeated explicit requests without charging\nPASS Portrait hides the panel and pauses replay; landscape restores the same replay\nPASS Local midnight restores two free uses; preview controls change only demo access\nPASS Coach opens unpinned, including preferences saved before pinning existed\nPASS Pin and unpin preserve the coaching session, replay, seek control and allowance\nPASS Only a visible pinned panel reserves space; hiding preserves the preference\nPASS Measured pin boundary preserves session and replay at 759/760/761px\nPASS Narrow and portrait pin transitions restore the preference at zero quota\nPASS Explicit pin preference survives reload, a new game and demo allowance changes\nPASS Waiting sticker toggles the panel and stays available while open; X only closes\nPASS Only Trix double, Spades bid and Hearts pass show a closed-window whistle\nPASS Open and X acknowledge a decision; changing selected cards does not nag again\nPASS Source phase transitions arm once before shell state updates and retain acknowledgment\nPASS Exhausted allowance suppresses fresh-session attention; Demo Unlocked permits it\nPASS Portrait, navigation and pause hide attention without spending or losing pin preference\nPASS Sticker assets and accessible status are local, with no sound or card changes\nPASS No footer nodes, coaching dialogs, network calls or iframe remounts\n\n30 offline state/DOM contract groups passed. No browser/rendering assertions were run."
+    },
+    {
+      "name": "approved shared/verify-coaching.mjs",
+      "status": "passed",
+      "detail": "PASS: 36 authored replay frames; five lessons; two rounds each; public winners, turn order, selection and pass exchange."
+    },
+    {
+      "name": "approved shared/verify-last-trick-pocket.mjs",
+      "status": "passed",
+      "detail": "desktop: table 930.0px, gap 73.0px, felt inset 42.0px\nwide desktop: table 930.0px, gap 100.0px, felt inset 42.0px\niPhone 12: table 688.8px, gap 30.0px, felt inset 30.0px\nshort phone pinned: table 344.0px, gap 30.0px, felt inset 30.0px\nsafe area pinned: table 336.0px, gap 30.0px, felt inset 30.0px\n568x320 pinned: table 278.0px, gap 30.0px, felt inset 66.0px\nTrix penalties pinned: table 278.0px, gap 30.0px, felt inset 66.0px\n348x272: estimated East offset 0.0px; South gap 9.4px\n447x327: estimated East offset 0.0px; South gap 37.5px\nPASS 7 pocket sizes + 5 card/seat clearance cases, including empty reservation and two source-metric narrow layouts (numerical only)."
+    },
+    {
+      "name": "approved shared/verify-rally-fit.mjs",
+      "status": "passed",
+      "detail": "SE source model: hand 54.4px; Jacks opening 37.5px (straight), full rank range 21.8px.\nPASS hand containment/lift, aligned Jack baselines, public range fit, announcement clearance, null-fit reset, trick proportions and ultrawide height stability. Numerical/source checks only."
+    },
+    {
+      "name": "approved app.js syntax",
+      "status": "passed",
+      "detail": "Parsed without execution"
+    },
+    {
+      "name": "approved coaching.js syntax",
+      "status": "passed",
+      "detail": "Parsed without execution"
+    }
+  ],
+  "failures": [],
+  "runtimeReferences": [
+    {
+      "from": "design/rally/approved/index.html",
+      "reference": "style.css",
+      "target": "design/rally/approved/style.css"
+    },
+    {
+      "from": "design/rally/approved/index.html",
+      "reference": "coaching.css",
+      "target": "design/rally/approved/coaching.css"
+    },
+    {
+      "from": "design/rally/approved/index.html",
+      "reference": "responsive.css",
+      "target": "design/rally/approved/responsive.css"
+    },
+    {
+      "from": "design/rally/approved/index.html",
+      "reference": "./shared/board.html?concept=studio&theme=light&game=spades&variant=partners&phase=play",
+      "target": "design/rally/approved/shared/board.html"
+    },
+    {
+      "from": "design/rally/approved/index.html",
+      "reference": "coach-stickers/assets/regular-waiting-v2.png",
+      "target": "design/rally/approved/coach-stickers/assets/regular-waiting-v2.png"
+    },
+    {
+      "from": "design/rally/approved/index.html",
+      "reference": "coaching.js",
+      "target": "design/rally/approved/coaching.js"
+    },
+    {
+      "from": "design/rally/approved/index.html",
+      "reference": "app.js",
+      "target": "design/rally/approved/app.js"
+    },
+    {
+      "from": "design/rally/approved/style.css",
+      "reference": "./shared/assets/dm-sans.woff2",
+      "target": "design/rally/approved/shared/assets/dm-sans.woff2"
+    },
+    {
+      "from": "design/rally/approved/style.css",
+      "reference": "./shared/assets/manrope.woff2",
+      "target": "design/rally/approved/shared/assets/manrope.woff2"
+    },
+    {
+      "from": "design/rally/approved/app.js",
+      "reference": "./shared/assets/cardford-symbol.svg",
+      "target": "design/rally/approved/shared/assets/cardford-symbol.svg"
+    },
+    {
+      "from": "design/rally/approved/shared/board.html",
+      "reference": "production.css",
+      "target": "design/rally/approved/shared/production.css"
+    },
+    {
+      "from": "design/rally/approved/shared/board.html",
+      "reference": "trix.css",
+      "target": "design/rally/approved/shared/trix.css"
+    },
+    {
+      "from": "design/rally/approved/shared/board.html",
+      "reference": "table-layout.css",
+      "target": "design/rally/approved/shared/table-layout.css"
+    },
+    {
+      "from": "design/rally/approved/shared/board.html",
+      "reference": "board.css",
+      "target": "design/rally/approved/shared/board.css"
+    },
+    {
+      "from": "design/rally/approved/shared/board.html",
+      "reference": "board-theme.css",
+      "target": "design/rally/approved/shared/board-theme.css"
+    },
+    {
+      "from": "design/rally/approved/shared/board.html",
+      "reference": "board.js",
+      "target": "design/rally/approved/shared/board.js"
+    },
+    {
+      "from": "design/rally/approved/shared/board-theme.css",
+      "reference": "assets/dm-sans.woff2",
+      "target": "design/rally/approved/shared/assets/dm-sans.woff2"
+    },
+    {
+      "from": "design/rally/approved/shared/board-theme.css",
+      "reference": "assets/manrope.woff2",
+      "target": "design/rally/approved/shared/assets/manrope.woff2"
+    },
+    {
+      "from": "design/rally/approved/coaching.js",
+      "reference": "coach-stickers/assets/regular-waiting-v2.png",
+      "target": "design/rally/approved/coach-stickers/assets/regular-waiting-v2.png"
+    },
+    {
+      "from": "design/rally/approved/coaching.js",
+      "reference": "coach-stickers/assets/regular-whistle-v3.png",
+      "target": "design/rally/approved/coach-stickers/assets/regular-whistle-v3.png"
+    }
+  ],
+  "navigationReferences": [
+    {
+      "from": "design/rally/approved/app.js",
+      "reference": "../index.html",
+      "target": "design/rally/index.html",
+      "purpose": "Guide navigation; not a runtime dependency"
+    }
+  ]
+}

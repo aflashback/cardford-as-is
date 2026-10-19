@@ -121,6 +121,9 @@ func (s *Service) platformSource(ctx context.Context, owner string, live *record
 	if err != nil {
 		return nil, nil, obs, err
 	}
+	if bound.Pin().GameID == "trix" {
+		return source, bound, obs, nil
+	}
 	raw, err := bound.LegacyObservation(0)
 	if err != nil {
 		return nil, nil, obs, err
@@ -275,7 +278,9 @@ func (s *Service) platformHelp(ctx context.Context, owner string, r transport.Re
 		return transport.Response{}, denied(decision)
 	}
 	var content json.RawMessage
-	if kind == "notes" {
+	if b.Pin().GameID == "trix" {
+		content, err = s.trixHelpContent(ctx, owner, q.GameID, q.DecisionID, source, live, b, kind, level)
+	} else if kind == "notes" {
 		content, err = d.Notes(obs)
 	} else {
 		var advice contracts.AdviceView
@@ -361,6 +366,9 @@ func (s *Service) platformReviews(ctx context.Context, owner, selected string) (
 		return transport.Response{}, err
 	}
 	game := live.Document.Metadata.GameID
+	if live.Document.Metadata.Pin.GameID == "trix" {
+		return s.trixReviews(ctx, owner, live, selected)
+	}
 	choices, err := s.store.PlatformCommittedSources(ctx, owner, game)
 	if err != nil {
 		return transport.Response{}, err

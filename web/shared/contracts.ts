@@ -91,7 +91,12 @@ export type PublicContracts =
   | AccessOffer
   | AccessOfferPolicy
   | AccessDecision
-  | RegisteredPresentation;
+  | RegisteredPresentation
+  | RegisteredAdvice
+  | CoachSupport
+  | CoachReason
+  | CoachMessage
+  | CoachMessageView;
 export type Mode = 'hearts' | 'spades-solo' | 'spades-partners';
 export type Seat = 0 | 1 | 2 | 3;
 export type Card = string;
@@ -133,6 +138,11 @@ export type AdvanceRequest =
       controlLeaseToken: string;
       kind: 'collect-trick';
     };
+export type ReviewFrame = LegacyReviewFrame | TrixReviewFrame;
+export type TrixTwoAnnouncements = TrixTwoAnnouncementsHidden | TrixTwoAnnouncementsRevealed;
+export type TrixRecipient = TrixSeatRecipient | TrixTeamRecipient;
+export type TrixLayoutTurn = TrixLayoutPlacement | TrixLayoutForcedPass;
+export type TrixAction = TrixChooseRequest | TrixDeclareDoubles | TrixPlayCard | TrixLayoutCard | TrixLayoutPassAction;
 export type AccountCommand =
   | {
       commandId: string;
@@ -182,7 +192,7 @@ export type FamilyCommand =
       commandId: string;
       action: 'leave';
     };
-export type RegisteredActorPacket = HeartsActorPacket | SpadesActorPacket | TokenActorPacket;
+export type RegisteredActorPacket = HeartsActorPacket | SpadesActorPacket | TokenActorPacket | TrixActorPacket;
 export type HeartsCandidate =
   | {
       kind: 'play';
@@ -205,9 +215,9 @@ export type SpadesCandidate =
       kind: 'bid';
       bid: number;
     };
-export type RegisteredSessionView = HeartsSessionView | SpadesSessionView | TokenSessionView;
-export type RegisteredAnalysis = HeartsAnalysis | SpadesAnalysis | TokenAnalysis;
-export type RegisteredActorEvent = HeartsActorEvent | SpadesActorEvent | TokenActorEvent;
+export type RegisteredSessionView = HeartsSessionView | SpadesSessionView | TokenSessionView | TrixSessionView;
+export type RegisteredAnalysis = HeartsAnalysis | SpadesAnalysis | TokenAnalysis | TrixAnalysis;
+export type RegisteredActorEvent = HeartsActorEvent | SpadesActorEvent | TokenActorEvent | TrixActorEvent;
 export type RegisteredTarget =
   | {
       gameId: 'hearts';
@@ -217,7 +227,8 @@ export type RegisteredTarget =
       gameId: 'spades';
       variantId: 'solo' | 'partners';
     }
-  | TokenTarget;
+  | TokenTarget
+  | TrixTarget;
 export type VersionedActionsRequest = ActionsRequest | V2ActionsRequest;
 export type VersionedNewSessionRequest = NewSessionRequest | V2NewSessionRequest;
 export type DemoFrameRequest =
@@ -279,7 +290,8 @@ export type AccessDecision =
         | 'not-owned'
         | 'not-admitted';
     };
-export type RegisteredPresentation = GameView | TokenPresentation;
+export type RegisteredPresentation = GameView | TokenPresentation | TrixPresentation;
+export type RegisteredAdvice = AdviceView | TrixAdvice;
 
 export interface Play {
   seat: Seat;
@@ -515,7 +527,7 @@ export interface ExposureRequest {
 export interface AcceptedView {
   accepted: true;
 }
-export interface ReviewFrame {
+export interface LegacyReviewFrame {
   game: GameView;
   action: GameAction | null;
   decisionId: string;
@@ -524,10 +536,292 @@ export interface ReviewFrame {
    */
   notes: string[];
 }
+export interface TrixReviewFrame {
+  game: TrixPresentation;
+  action: TrixAction | null;
+  decisionId: string;
+  /**
+   * @minItems 0
+   * @maxItems 20
+   */
+  notes: string[];
+}
+export interface TrixPresentation {
+  id: string;
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
+  seat: Seat;
+  observation: TrixObservation;
+}
+export interface TrixObservation {
+  id: string;
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
+  seat: Seat;
+  phase: 'choose-request' | 'declare-doubles' | 'playing' | 'layout' | 'round-complete' | 'chance' | 'session-complete';
+  turn: Seat | null;
+  kingdom: number;
+  dealNumber: number;
+  owner: Seat;
+  request: ('diamonds' | 'lutoosh' | 'queens' | 'king' | 'complex' | 'trix') | null;
+  /**
+   * @minItems 0
+   * @maxItems 5
+   */
+  remainingRequests: ('diamonds' | 'lutoosh' | 'queens' | 'king' | 'complex' | 'trix')[];
+  /**
+   * @minItems 0
+   * @maxItems 13
+   */
+  hand: Card[];
+  twoAnnouncements?: TrixTwoAnnouncements;
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  handCounts: number[];
+  /**
+   * @minItems 0
+   * @maxItems 4
+   */
+  trick: TrixPlay[];
+  /**
+   * @minItems 0
+   * @maxItems 13
+   */
+  tricks: TrixTrick[];
+  /**
+   * @minItems 0
+   * @maxItems 4
+   */
+  declarations: TrixDeclaration[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  board: TrixRow[];
+  /**
+   * @minItems 0
+   * @maxItems 4
+   */
+  finishOrder: Seat[];
+  /**
+   * @minItems 0
+   * @maxItems 10000
+   */
+  passes: TrixLayoutPass[];
+  /**
+   * @minItems 0
+   * @maxItems 10000
+   */
+  ledger: TrixLedgerEntry[];
+  /**
+   * @minItems 0
+   * @maxItems 10000
+   */
+  withheldBonuses: TrixWithheldBonus[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  lastExternalLeader: (TrixLeadSource | null)[];
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  totals: TrixScore[];
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  requestTotals: TrixScore[];
+  /**
+   * Live presentation only: current-deal points assigned to each seat by the server ledger, in seat order. Excludes competitor-only team bonuses. Optional for immutable historical observations.
+   *
+   * @minItems 4
+   * @maxItems 4
+   */
+  requestSeatTotals?: number[];
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  kingdomTotals: TrixScore[];
+  /**
+   * @minItems 0
+   * @maxItems 4
+   */
+  winners: string[];
+  layoutHistory?: TrixLayoutHistory;
+}
+export interface TrixTwoAnnouncementsHidden {
+  status: 'hidden';
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  counts: number[];
+}
+export interface TrixTwoAnnouncementsRevealed {
+  status: 'revealed';
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  cards: TrixTwoAnnouncementCard[];
+}
+export interface TrixTwoAnnouncementCard {
+  seat: Seat;
+  card: 'C2' | 'D2' | 'H2' | 'S2';
+}
+export interface TrixPlay {
+  seat: Seat;
+  card: Card;
+}
+export interface TrixTrick {
+  number: number;
+  leader: Seat;
+  winner: Seat;
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  plays: TrixPlay[];
+}
+export interface TrixDeclaration {
+  seat: Seat;
+  /**
+   * @minItems 0
+   * @maxItems 5
+   */
+  cards: Card[];
+  ref: string;
+}
+export interface TrixRow {
+  suit: 'C' | 'D' | 'H' | 'S';
+  low: number;
+  high: number;
+}
+export interface TrixLayoutPass {
+  seat: Seat;
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  board: TrixRow[];
+  ref: string;
+}
+export interface TrixLedgerEntry {
+  dealNumber: number;
+  kingdom: number;
+  request: 'diamonds' | 'lutoosh' | 'queens' | 'king' | 'complex' | 'trix';
+  trick: number;
+  finish: number;
+  recipient: TrixRecipient;
+  component: 'diamond' | 'trick' | 'queen' | 'king' | 'double-bonus' | 'layout-finish';
+  card?: Card;
+  delta: number;
+  declarationRef?: string;
+  leadSourceRef?: string;
+}
+export interface TrixSeatRecipient {
+  kind: 'seat';
+  seat: Seat;
+}
+export interface TrixTeamRecipient {
+  kind: 'competitor';
+  competitor: string;
+}
+export interface TrixWithheldBonus {
+  dealNumber: number;
+  trick: number;
+  card: Card;
+  bonusValue: 25 | 75;
+  reason: 'no_previous_external_leader';
+  declarationRef: string;
+}
+export interface TrixLeadSource {
+  seat: Seat;
+  trick: number;
+}
+export interface TrixScore {
+  id: string;
+  /**
+   * @minItems 1
+   * @maxItems 2
+   */
+  seats: Seat[];
+  total: number;
+}
+export interface TrixLayoutHistory {
+  version: '1.0.0';
+  status: 'available';
+  /**
+   * @minItems 0
+   * @maxItems 208
+   */
+  turns: TrixLayoutTurn[];
+}
+export interface TrixLayoutPlacement {
+  ordinal: number;
+  seat: Seat;
+  kind: 'layout-card';
+  card: Card;
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  boardBefore: TrixRow[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  handCountsBefore: number[];
+  twoAnnouncementsBefore: TrixTwoAnnouncements | null;
+}
+export interface TrixLayoutForcedPass {
+  ordinal: number;
+  seat: Seat;
+  kind: 'layout-pass';
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  boardBefore: TrixRow[];
+  /**
+   * @minItems 4
+   * @maxItems 4
+   */
+  handCountsBefore: number[];
+  twoAnnouncementsBefore: TrixTwoAnnouncements | null;
+}
+export interface TrixChooseRequest {
+  kind: 'choose-request';
+  request: 'diamonds' | 'lutoosh' | 'queens' | 'king' | 'complex' | 'trix';
+}
+export interface TrixDeclareDoubles {
+  kind: 'declare-doubles';
+  /**
+   * @minItems 0
+   * @maxItems 5
+   */
+  cards?: ('CQ' | 'DQ' | 'HQ' | 'SQ' | 'HK')[];
+}
+export interface TrixPlayCard {
+  kind: 'play-card';
+  card: Card;
+}
+export interface TrixLayoutCard {
+  kind: 'layout-card';
+  card: Card;
+}
+export interface TrixLayoutPassAction {
+  kind: 'layout-pass';
+}
 export interface ReviewCase {
   decisionId: string;
   handNumber: number;
-  action: GameAction;
+  action: GameAction | TrixAction;
   assisted: boolean;
   status: 'not-assessed' | 'supported' | 'reasonable' | 'review';
   summary: string;
@@ -606,6 +900,7 @@ export interface AccountView {
 export interface ApiError {
   code:
     | 'UNAUTHENTICATED'
+    | 'session_renewal_required'
     | 'FORBIDDEN'
     | 'STALE_REVISION'
     | 'LEASE_LOST'
@@ -1024,6 +1319,23 @@ export interface TokenRevealAction {
   kind: 'reveal';
   token: number;
 }
+export interface TrixActorPacket {
+  publicSchemaVersion: '1.0.0' | '1.1.0' | '1.2.0';
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
+  seat: Seat;
+  phase: 'choose-request' | 'declare-doubles' | 'playing' | 'layout' | 'round-complete' | 'chance' | 'session-complete';
+  observation: TrixObservation;
+  /**
+   * @minItems 1
+   * @maxItems 32
+   */
+  candidates: TrixPublicCandidate[];
+}
+export interface TrixPublicCandidate {
+  id: string;
+  public: TrixAction;
+}
 export interface HeartsSessionView {
   publicSchemaVersion: '2.0.0';
   gameId: 'hearts';
@@ -1049,6 +1361,15 @@ export interface TokenSessionView {
   seat: Seat;
   phase: 'token-layout' | 'reveal' | 'collect' | 'complete';
   table: TokenObservation;
+  accessUnit: CoachedUnit | null;
+}
+export interface TrixSessionView {
+  publicSchemaVersion: '1.0.0' | '1.1.0' | '1.2.0';
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
+  seat: Seat;
+  phase: 'choose-request' | 'declare-doubles' | 'playing' | 'layout' | 'round-complete' | 'chance' | 'session-complete';
+  table: TrixObservation;
   accessUnit: CoachedUnit | null;
 }
 export interface HeartsAnalysis {
@@ -1082,6 +1403,19 @@ export interface TokenAnalysis {
   gameId: 'test-token';
   variantId: 'individual' | 'neighbour-teams';
   origin: 'demo' | 'forced';
+  selectedCandidateId: string;
+  objective: ReasoningObjective;
+  horizon: ReasoningHorizon;
+  facts: ReasoningFact[];
+  estimates: ReasoningEstimate[];
+  scenarios: ReasoningScenario[];
+  assumptions: string[];
+}
+export interface TrixAnalysis {
+  publicSchemaVersion: '1.0.0' | '1.1.0' | '1.2.0';
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
+  origin: 'code' | 'forced';
   selectedCandidateId: string;
   objective: ReasoningObjective;
   horizon: ReasoningHorizon;
@@ -1131,9 +1465,24 @@ export interface TokenActorEvent {
   seat: Seat | null;
   token: number | null;
 }
+export interface TrixActorEvent {
+  publicSchemaVersion: '1.0.0' | '1.1.0' | '1.2.0';
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
+  eventSchemaVersion: '1.0.0';
+  id: string;
+  type: string;
+  message: string;
+  seat?: Seat | null;
+  card?: Card | null;
+}
 export interface TokenTarget {
   gameId: 'test-token';
   variantId: 'individual' | 'neighbour-teams';
+}
+export interface TrixTarget {
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
 }
 export interface RegisteredSelector {
   target: RegisteredTarget;
@@ -1200,6 +1549,66 @@ export interface TokenPresentation {
   variantId: 'individual' | 'neighbour-teams';
   seat: Seat;
   observation: TokenObservation;
+}
+export interface TrixAdvice {
+  gameId: 'trix';
+  variantId: 'basic-solo' | 'basic-partners' | 'complex-solo' | 'complex-partners';
+  decisionId: string;
+  level: 1 | 2 | 3;
+  origin: 'code' | 'forced';
+  title: string;
+  text: string;
+  policyVersion: string;
+  recommendedCandidateId?: string;
+  /**
+   * @minItems 0
+   * @maxItems 32
+   */
+  alternatives?: string[];
+  /**
+   * @minItems 0
+   * @maxItems 100
+   */
+  evidenceRefs: string[];
+}
+export interface CoachSupport {
+  id: string;
+  kind: 'exact' | 'conditional' | 'policy';
+  text: string;
+}
+export interface CoachReason {
+  summary: string;
+  /**
+   * @maxItems 64
+   */
+  support: CoachSupport[];
+  /**
+   * @maxItems 32
+   */
+  alternatives: string[];
+  /**
+   * @maxItems 32
+   */
+  limitations: string[];
+}
+export interface CoachMessage {
+  presentationVersion: 'coach-advice-2.0.0';
+  decisionId: string;
+  policyVersion: string;
+  cueVersion: string;
+  status: 'insufficient-reason' | 'tactical' | 'only-option' | 'no-clear-preference';
+  selectedAction: string;
+  cue: string;
+  reason: CoachReason;
+}
+export interface CoachMessageView {
+  presentationVersion: 'coach-advice-2.0.0';
+  decisionId: string;
+  status: 'tactical' | 'only-option' | 'no-clear-preference' | 'insufficient-reason';
+  selectedAction: string;
+  cue: string;
+  view: 'recommendation' | 'reason';
+  reason?: CoachReason;
 }
 
 export interface ContractTypes {
@@ -1291,6 +1700,11 @@ export interface ContractTypes {
   AccessOfferPolicy: AccessOfferPolicy;
   AccessDecision: AccessDecision;
   RegisteredPresentation: RegisteredPresentation;
+  RegisteredAdvice: RegisteredAdvice;
+  CoachSupport: CoachSupport;
+  CoachReason: CoachReason;
+  CoachMessage: CoachMessage;
+  CoachMessageView: CoachMessageView;
   HeartsCandidate: HeartsCandidate;
   HeartsObservation: HeartsObservation;
   HeartsActorPacket: HeartsActorPacket;
@@ -1313,5 +1727,27 @@ export interface ContractTypes {
   TokenAnalysis: TokenAnalysis;
   TokenActorEvent: TokenActorEvent;
   TokenPresentation: TokenPresentation;
+  TrixAction: TrixAction;
+  TrixPlay: TrixPlay;
+  TrixTrick: TrixTrick;
+  TrixDeclaration: TrixDeclaration;
+  TrixRow: TrixRow;
+  TrixLayoutPass: TrixLayoutPass;
+  TrixLeadSource: TrixLeadSource;
+  TrixRecipient: TrixRecipient;
+  TrixLedgerEntry: TrixLedgerEntry;
+  TrixWithheldBonus: TrixWithheldBonus;
+  TrixScore: TrixScore;
+  TrixTwoAnnouncements: TrixTwoAnnouncements;
+  TrixObservation: TrixObservation;
+  TrixActorPacket: TrixActorPacket;
+  TrixSessionView: TrixSessionView;
+  TrixPresentation: TrixPresentation;
+  TrixAnalysis: TrixAnalysis;
+  TrixActorEvent: TrixActorEvent;
+  TrixAdvice: TrixAdvice;
+  TrixReviewFrame: TrixReviewFrame;
+  TrixLayoutTurn: TrixLayoutTurn;
+  TrixLayoutHistory: TrixLayoutHistory;
 }
 export type ContractName = keyof ContractTypes;

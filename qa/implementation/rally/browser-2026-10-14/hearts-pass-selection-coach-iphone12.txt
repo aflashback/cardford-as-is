@@ -1,0 +1,122 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Hearts Solo"':
+  - 'button "Scores: You 0, Leo 0, Maya 0, Theo 0"':
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Card table":
+    - generic: L
+    - generic: Leo
+    - text: "0"
+    - generic: 0 tricks
+    - img "13 cards left"
+    - generic: M
+    - generic: Maya
+    - text: "0"
+    - generic: 0 tricks
+    - img "13 cards left"
+    - generic: T
+    - generic: Theo
+    - text: "0"
+    - generic: 0 tricks
+    - img "13 cards left"
+    - generic: "Y"
+    - generic: You
+    - text: "0"
+    - generic: 0 tricks
+    - img "13 cards left"
+    - img "Current player"
+    - heading "Pass three cards left" [level=2]
+    - button "Pass 3 of 3":
+      - text: Pass 3 of 3
+  - region "Your hand":
+    - status: Pass three left
+    - button "10 of clubs":
+      - generic: "10"
+      - generic: ♣
+      - generic: ♣
+    - button "Jack of clubs":
+      - generic: J
+      - generic: ♣
+      - generic: ♣
+    - button "2 of diamonds":
+      - generic: "2"
+      - generic: ♦
+      - generic: ♦
+    - button "7 of diamonds":
+      - generic: "7"
+      - generic: ♦
+      - generic: ♦
+    - button "10 of diamonds":
+      - generic: "10"
+      - generic: ♦
+      - generic: ♦
+    - button "7 of hearts":
+      - generic: "7"
+      - generic: ♥
+      - generic: ♥
+    - button "8 of hearts":
+      - generic: "8"
+      - generic: ♥
+      - generic: ♥
+    - button "10 of hearts" [pressed]:
+      - generic: "10"
+      - generic: ♥
+      - generic: ♥
+    - button "Ace of hearts" [pressed]:
+      - generic: A
+      - generic: ♥
+      - generic: ♥
+    - button "3 of spades":
+      - generic: "3"
+      - generic: ♠
+      - generic: ♠
+    - button "4 of spades":
+      - generic: "4"
+      - generic: ♠
+      - generic: ♠
+    - button "5 of spades":
+      - generic: "5"
+      - generic: ♠
+      - generic: ♠
+    - button "Queen of spades" [pressed]:
+      - generic: Q
+      - generic: ♠
+      - generic: ♠
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- button "Close Coach" [expanded]:
+  - img "Coach waiting"
+- status
+- complementary "Coach":
+  - strong: Coach
+  - generic "Coaching allowance resets 2026-10-15T00:00:00Z": Unlimited coaching · local preview
+  - button "Pin Coach beside the table":
+  - button "Close Coach":
+  - region "Coaching sessions":
+    - navigation "Coach tools":
+      - button "Cue":
+        - generic: Cue
+      - button "Review":
+        - generic: Review
+      - button "Rating":
+        - generic: Rating
+      - button "Saved coaching sessions":
+    - button "Comment on selection" [disabled]
+    - text: This decision
+    - generic: Cue
+    - article:
+      - strong: Pending selection
+      - generic: Preview
+      - paragraph: "Selected: SQ, HA, H10. This choice is not confirmed."
+      - 'button "Why: Pending selection"': Why?
+      - 'button "Helpful: Pending selection"':
+      - 'button "Not helpful: Pending selection"':
+    - article:
+      - strong: Before you choose
+      - generic: Preview
+      - paragraph: Preview cue for this saved decision.
+      - 'button "Why: Before you choose"': Why?
+      - 'button "Helpful: Before you choose"':
+      - 'button "Not helpful: Before you choose"':

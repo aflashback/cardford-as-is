@@ -1,0 +1,64 @@
+{
+  "name": "spades-partners-away-during-why",
+  "at": "2026-10-16T02:05:01.102Z",
+  "check": "Away during held Why latches persistent pause",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 304.8145217895508,
+        "clientHeight": 233,
+        "controls": [
+          {
+            "bottom": 213.1711463928223,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 530.7947692871094,
+            "width": 406.45111083984375,
+            "x": 124.34365844726562,
+            "y": 169.17555236816406
+          },
+          {
+            "bottom": 292.1430244445801,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 323.57298278808594,
+            "width": 199.2293243408203,
+            "x": 124.34365844726562,
+            "y": 248.14743041992188
+          },
+          {
+            "bottom": 292.1430244445801,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 530.7947845458984,
+            "width": 199.2293243408203,
+            "x": 331.5654602050781,
+            "y": 248.14743041992188
+          }
+        ],
+        "height": 234.30088806152344,
+        "name": "Game paused",
+        "right": 563.6644515991211,
+        "scrollHeight": 233,
+        "width": 459.9953308105469,
+        "x": 103.66912078857422,
+        "y": 70.51363372802734
+      }
+    ],
+    "height": 375,
+    "scrollHeight": 375,
+    "scrollWidth": 667,
+    "width": 667
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

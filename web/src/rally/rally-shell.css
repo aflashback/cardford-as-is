@@ -1,0 +1,48 @@
+/* CR-UX-008. The approved Rally shell; card faces keep their own fixed palette. */
+.rally-app { --table-header-height: 56px; height: var(--app-height,100dvh); min-height: 0; background: var(--bg); position: relative; }
+.rally-app[hidden] { display: none; }
+.rally-app > .rally-header { position: relative; display: grid; grid-template-columns: 44px minmax(120px,1fr) auto minmax(92px,1fr); align-items: center; gap: 8px; padding: 0 max(12px,env(safe-area-inset-right)) 0 max(12px,env(safe-area-inset-left)); height: calc(56px + env(safe-area-inset-top)); flex: 0 0 calc(56px + env(safe-area-inset-top)); padding-top: env(safe-area-inset-top); background: var(--bg); border-bottom: 1px solid var(--line); z-index: 10; }
+.rally-header .rally-logo img { width: 31px; height: 31px; }
+.rally-header .icon-button { width: 44px; height: 44px; min-height: 44px; border-radius: 8px; color: var(--ink); }
+.rally-header .icon-button:hover,.rally-score-button:hover,.rally-header .game-switch:hover { background: var(--tint); }
+.rally-header .game-switch { justify-self: start; display: flex; height: 44px; min-height: 44px; gap: 9px; padding: 4px 9px; border: 0; background: transparent; color: var(--ink); border-radius: 7px; }
+.rally-header .rally-game-title { font-family: inherit; font-size: 16px; text-align: left; }
+.rally-game-title b { font-size: 16px; font-weight: 750; }
+.rally-game-title small { display: block; color: var(--muted); font-size: 10px; font-weight: 500; }
+.rally-header .top-actions { display: flex; justify-content: flex-end; gap: 4px; }
+.rally-compact-icon { display: none; }
+.rally-score-button { min-height: 44px; padding: 0 14px; border-radius: 8px; background: transparent; color: var(--ink); }
+.rally-score-summary { display: flex; align-items: center; gap: clamp(10px,2vw,24px); }
+.rally-score { display: flex; align-items: center; gap: 8px; }
+.rally-score b { font: 750 25px/1 'Manrope Variable',sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.05em; }
+.rally-score small { max-width: 70px; font-size: 10px; text-align: left; }
+.rally-connection-status { position: absolute; right: 112px; bottom: -19px; font-size: 10px; background: var(--surface); border-radius: 5px; padding: 2px 6px; color: var(--muted); }
+.rally-menu { display: grid; gap: 6px; }
+.rally-menu > :is(button,a) { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 8px 12px; background: transparent; border-radius: 8px; text-align: left; }
+.rally-menu > :is(button,a):hover { background: var(--tint); }
+.rally-score-sheet { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.rally-score-sheet th,.rally-score-sheet td { padding: 12px; text-align: right; border-bottom: 1px solid var(--line); }
+.rally-score-sheet :is(th,td):first-child { text-align: left; }
+.rally-score-sheet caption { text-align: left; color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+.rally-app .runtime-label { position: absolute; left: 8px; bottom: 1px; font-size: 9px; }
+.rotate-gate { background: var(--bg); color: var(--ink); z-index: 100; }
+.rotate-gate .text-button { color: var(--ink); }
+@media (max-height:480px) and (orientation:landscape) {
+  .rally-app { --table-header-height: 48px; }
+  .rally-app > .rally-header { height: calc(48px + env(safe-area-inset-top)); flex-basis: calc(48px + env(safe-area-inset-top)); }
+  .rally-score b { font-size: 21px; }
+}
+@media (max-width:1000px) and (max-height:430px) and (orientation:landscape) {
+  .rally-app { padding-left: calc(52px + env(safe-area-inset-left)); --table-header-height: 0px; }
+  .rally-app > .rally-header { position: absolute; inset: 0 auto 0 0; width: calc(52px + env(safe-area-inset-left)); height: 100%; padding: env(safe-area-inset-top) 4px env(safe-area-inset-bottom) calc(4px + env(safe-area-inset-left)); display: grid; grid-template-columns: 44px; grid-template-rows: repeat(5,44px); align-content: center; gap: 4px; border-bottom: 0; border-right: 1px solid var(--line); }
+  .rally-header .rally-logo { grid-row: 1; grid-column: 1; }
+  .rally-header .rally-game-switch { grid-row: 2; grid-column: 1; padding: 0; justify-content: center; width: 44px; }
+  .rally-header .rally-score-button { grid-row: 3; grid-column: 1; padding: 0; width: 44px; height: 44px; }
+  .rally-header .top-actions { display: contents; }
+  .rally-header .top-actions > button:first-child { grid-row: 4; grid-column: 1; }
+  .rally-header .rally-menu-button { grid-row: 5; grid-column: 1; }
+  .rally-header .rally-compact-icon { display: inline-block; }
+  .rally-header :is(.rally-game-title,.rally-game-chevron,.rally-score-summary) { display: none; }
+  .rally-connection-status { right: auto; left: calc(56px + env(safe-area-inset-left)); bottom: 4px; width: max-content; max-width: 140px; }
+}
+@media (prefers-reduced-motion:reduce) { .rally-app button { transition: none; } }

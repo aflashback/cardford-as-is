@@ -1,0 +1,20 @@
+{
+  "name": "spades-partners-why-open",
+  "at": "2026-10-16T02:04:51.679Z",
+  "check": "Why acquires temporary hold, distinct from persistent pause",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": true,
+    "dialogs": [],
+    "height": 375,
+    "scrollHeight": 375,
+    "scrollWidth": 667,
+    "width": 667
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "gameId": "a04494c7ab33b6a123ac02411a881194b767030c42638764",
+  "humanPlays": 13,
+  "autoContinuedTo": 2,
+  "historyRequests": [
+    "/api/platform/rounds",
+    "/api/platform/rounds/a04494c7ab33b6a123ac02411a881194b767030c42638764%3Atrix-request%3A1",
+    "/api/platform/rounds",
+    "/api/platform/rounds/a04494c7ab33b6a123ac02411a881194b767030c42638764%3Atrix-request%3A1"
+  ],
+  "saved": {
+    "gameId": "a04494c7ab33b6a123ac02411a881194b767030c42638764",
+    "round": {
+      "id": "a04494c7ab33b6a123ac02411a881194b767030c42638764:trix-request:1",
+      "dealNumber": 1,
+      "kingdom": 1,
+      "request": "queens"
+    },
+    "requestTotals": [
+      {
+        "id": "seat-0",
+        "seats": [
+          0
+        ],
+        "total": -100
+      },
+      {
+        "id": "seat-1",
+        "seats": [
+          1
+        ],
+        "total": 0
+      },
+      {
+        "id": "seat-2",
+        "seats": [
+          2
+        ],
+        "total": 0
+      },
+      {
+        "id": "seat-3",
+        "seats": [
+          3
+        ],
+        "total": 0
+      }
+    ],
+    "kingdomTotals": [
+      {
+        "id": "seat-0",
+        "seats": [
+          0
+        ],
+        "total": -100
+      },
+      {
+        "id": "seat-1",
+        "seats": [
+          1
+        ],
+        "total": 0
+      },
+      {
+        "id": "seat-2",
+        "seats": [
+          2
+        ],
+        "total": 0
+      },
+      {
+        "id": "seat-3",
+        "seats": [
+          3
+        ],
+        "total": 0
+      }
+    ],
+    "totals": [
+      {
+        "id": "seat-0",
+        "seats": [
+          0
+        ],
+        "total": -100
+      },
+      {
+        "id": "seat-1",
+        "seats": [
+          1
+        ],
+        "total": 0
+      },
+      {
+        "id": "seat-2",
+        "seats": [
+          2
+        ],
+        "total": 0
+      },
+      {
+        "id": "seat-3",
+        "seats": [
+          3
+        ],
+        "total": 0
+      }
+    ],
+    "ledger": [
+      {
+        "dealNumber": 1,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "DQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 1,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "HQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 1,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "SQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 1,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "CQ",
+        "delta": -25
+      }
+    ],
+    "withheldBonuses": []
+  },
+  "errors": [],
+  "provider": "off; deterministic code",
+  "scope": "one completed native Basic Solo request and saved history reload"
+}

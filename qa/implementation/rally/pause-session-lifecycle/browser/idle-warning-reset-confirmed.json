@@ -1,0 +1,24 @@
+{
+  "name": "idle-warning-reset-confirmed",
+  "at": "2026-10-16T02:30:29.109Z",
+  "build": "index-B-IIS17u.js",
+  "warningVisibleBeforePlay": true,
+  "playedAt": "2026-10-16T02:29:48.159Z",
+  "action": "Queen of diamonds via Enter",
+  "check": "Still running after the original idle deadline; warning remains hidden",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 390,
+    "scrollHeight": 390,
+    "scrollWidth": 844,
+    "width": 844
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

@@ -214,7 +214,7 @@
       "type": "object",
       "properties": {
         "advice": {
-          "$ref": "#/$defs/AdviceView"
+          "$ref": "#/$defs/RegisteredAdvice"
         },
         "sourceUnitId": {
           "type": "string",

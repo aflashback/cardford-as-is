@@ -1,0 +1,44 @@
+{
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Close dialog"
+    },
+    {
+      "disabled": false,
+      "label": "HeartsSolo"
+    },
+    {
+      "disabled": false,
+      "label": "SpadesSolo"
+    },
+    {
+      "disabled": false,
+      "label": "SpadesPartners"
+    },
+    {
+      "disabled": false,
+      "label": "TrixBasic · Solo"
+    },
+    {
+      "disabled": false,
+      "label": "TrixBasic · Partners"
+    },
+    {
+      "disabled": false,
+      "label": "TrixComplex · Solo"
+    },
+    {
+      "disabled": false,
+      "label": "TrixComplex · Partners"
+    }
+  ],
+  "dialog": "Choose a game",
+  "focused": "",
+  "hidden": false,
+  "title": "Trix Complex · Partners — CardFord",
+  "viewport": [
+    568,
+    320
+  ]
+}

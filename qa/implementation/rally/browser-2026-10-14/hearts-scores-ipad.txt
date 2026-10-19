@@ -1,0 +1,118 @@
+- banner:
+  - button
+  - button:
+    - text: Hearts
+    - generic: Solo
+  - button:
+    - generic: "0"
+    - generic: You
+    - generic: "0"
+    - generic: Leo
+    - generic: "0"
+    - generic: Maya
+    - generic: "0"
+    - generic: Theo
+  - navigation:
+    - button:
+    - button:
+- main:
+  - region:
+    - generic: L
+    - generic: Leo
+    - text: "0"
+    - generic: 0 tricks
+    - generic: M
+    - generic: Maya
+    - text: "0"
+    - generic: 0 tricks
+    - generic: T
+    - generic: Theo
+    - text: "0"
+    - generic: 0 tricks
+    - generic: "Y"
+    - generic: You
+    - text: "1"
+    - generic: 1 tricks
+  - complementary:
+  - region:
+    - status: Your turn
+    - button [disabled]:
+      - generic: J
+      - generic: ♣
+      - generic: ♣
+    - button [disabled]:
+      - generic: "2"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "7"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "10"
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: K
+      - generic: ♦
+      - generic: ♦
+    - button [disabled]:
+      - generic: "7"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "8"
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - button [disabled]:
+      - generic: "3"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: "4"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: "5"
+      - generic: ♠
+      - generic: ♠
+    - button [disabled]:
+      - generic: A
+      - generic: ♠
+      - generic: ♠
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- generic: Local test access · no payment
+- dialog "Scores":
+  - banner:
+    - heading "Scores" [level=2]
+    - button "Close dialog" [active]:
+  - table "Hand 1 · Lowest score wins":
+    - caption: Hand 1 · Lowest score wins
+    - rowgroup:
+      - row "Player Tricks Total":
+        - columnheader "Player"
+        - columnheader "Tricks"
+        - columnheader "Total"
+    - rowgroup:
+      - row "You 1 0":
+        - rowheader "You"
+        - cell "1"
+        - cell "0"
+      - row "Leo 0 0":
+        - rowheader "Leo"
+        - cell "0"
+        - cell "0"
+      - row "Maya 0 0":
+        - rowheader "Maya"
+        - cell "0"
+        - cell "0"
+      - row "Theo 0 0":
+        - rowheader "Theo"
+        - cell "0"
+        - cell "0"
+  - button "Review play":
+    - text: Review play

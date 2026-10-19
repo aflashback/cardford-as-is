@@ -1,0 +1,52 @@
+{
+  "sample": "one human Trix Jacks double-click; native Go/PostgreSQL test DB; production frontend",
+  "feedbackMs": 1.3000001907348633,
+  "firstVisibleFrameMs": 14,
+  "confirmedMs": 243.70000004768372,
+  "frames": {
+    "count": 27,
+    "p95Ms": 20.099999999998545,
+    "over50ms": 0
+  },
+  "longTasks": [],
+  "requests": [
+    {
+      "path": "/api/identity",
+      "ms": 12.55370000000039,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 16.235100000001694,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 3.8685999999979686,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 2.844699999997829,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 0.6098999999994703,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 24.620899999998073,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 15.651200000000244,
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "chrome": "154.0.8037.98",
+  "provider": "off; deterministic code"
+}

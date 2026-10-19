@@ -1,0 +1,101 @@
+{
+  "sample": "one human Trix Jacks double-click; deterministic test deal; native Go/PostgreSQL test DB; production frontend",
+  "feedbackMs": 1.4000000953674316,
+  "firstVisibleFrameMs": 13.599999904632568,
+  "confirmedMs": 161.90000009536743,
+  "frames": {
+    "count": 17,
+    "p95Ms": 20.100000000000136,
+    "over50ms": 0
+  },
+  "longTasks": [],
+  "requests": [
+    {
+      "path": "/api/identity",
+      "ms": 11.428199999999833,
+      "startedMs": 43.408300000000054,
+      "finishedMs": 54.852100000000064,
+      "status": 200
+    },
+    {
+      "path": "/api/session/prepare",
+      "ms": 23.011499999999614,
+      "startedMs": 56.17970000000014,
+      "finishedMs": 79.19450000000006,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 4.586900000000242,
+      "startedMs": 79.96239999999989,
+      "finishedMs": 84.55139999999983,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 3.49980000000005,
+      "startedMs": 85.49299999999994,
+      "finishedMs": 88.99459999999999,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 2.1338000000000648,
+      "startedMs": 89.30229999999983,
+      "finishedMs": 91.43759999999975,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 6.950600000000122,
+      "startedMs": 92.1842999999999,
+      "finishedMs": 99.13639999999987,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 10.170900000000074,
+      "startedMs": 99.82400000000007,
+      "finishedMs": 109.99629999999979,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 2.2746000000001914,
+      "startedMs": 110.76789999999983,
+      "finishedMs": 113.04419999999982,
+      "status": 202
+    },
+    {
+      "path": "/api/work/:id",
+      "ms": 2.664900000000216,
+      "startedMs": 114.11889999999994,
+      "finishedMs": 116.78539999999975,
+      "status": 200
+    },
+    {
+      "path": "/api/identity",
+      "ms": 1.3571000000001732,
+      "startedMs": 117.63139999999976,
+      "finishedMs": 118.98999999999978,
+      "status": 200
+    },
+    {
+      "path": "/api/session/actions",
+      "ms": 51.30450000000019,
+      "startedMs": 119.97649999999976,
+      "finishedMs": 171.2826,
+      "status": 200
+    },
+    {
+      "path": "/api/platform/session",
+      "ms": 23.13220000000001,
+      "startedMs": 171.9445999999998,
+      "finishedMs": 195.07830000000013,
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "chrome": "154.0.8037.98",
+  "provider": "off; deterministic code"
+}

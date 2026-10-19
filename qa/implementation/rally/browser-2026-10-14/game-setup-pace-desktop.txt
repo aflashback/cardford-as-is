@@ -1,0 +1,55 @@
+- banner:
+  - button
+  - button:
+    - text: Hearts
+    - generic: Solo
+  - button:
+    - generic: "18"
+    - generic: You
+    - generic: "8"
+    - generic: Leo
+    - generic: "0"
+    - generic: Maya
+    - generic: "0"
+    - generic: Theo
+  - navigation:
+    - button:
+    - button:
+- main:
+  - region:
+    - generic: L
+    - generic: Leo
+    - text: "7"
+    - generic: 7 tricks
+    - generic: M
+    - generic: Maya
+    - text: "1"
+    - generic: 1 tricks
+    - generic: T
+    - generic: Theo
+    - text: "1"
+    - generic: 1 tricks
+    - generic: "Y"
+    - generic: You
+    - text: "4"
+    - generic: 4 tricks
+    - heading [level=2]: Hand complete
+    - button:
+      - text: View hand recap
+    - button:
+      - text: Play again
+  - region:
+    - status: Hand complete
+    - generic: "Hold to lift and drag a card on your turn. Release toward the table to play, or near your hand to return it. Double-click or double-tap to play or queue a card for your turn, if legal. Repeat to cancel a queue. Keyboard: Enter or Space plays or queues; Escape cancels. Hold or double-tap to select passing cards; confirm the pass separately."
+- generic: Local test access · no payment
+- main "New game setup":
+  - generic: New game
+  - button "Close new game setup":
+  - paragraph: 1 / 2
+  - heading "Set the pace" [active] [level=1]
+  - paragraph: Game speed
+  - button "1×"
+  - button "1.2×"
+  - button "1.4×" [pressed]
+  - button "Choose game":
+    - text: Choose game

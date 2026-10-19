@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/schemas/trix-scenario-collection/decision-review.schema.json",
+  "type": "object",
+  "properties": {
+    "decisionId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "packetHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewVersion": {
+      "const": "trix-luna-review-1.0.0"
+    },
+    "provenance": {
+      "const": "llm-proposal"
+    },
+    "rationaleStatus": {
+      "enum": [
+        "adequate",
+        "incomplete-explanation",
+        "unsupported-claim",
+        "incorrect-fact",
+        "uncertain",
+        "forced"
+      ]
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "enum": [
+              "facts",
+              "objective",
+              "material-alternatives",
+              "tactical-purpose",
+              "uncertainty"
+            ]
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "issue",
+              "unknown"
+            ]
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^actor:/"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "explanation",
+          "evidenceRefs"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "categoryIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DIA",
+          "HK",
+          "Q",
+          "LUT",
+          "VOID",
+          "COMB",
+          "DBL",
+          "INFER",
+          "END",
+          "TEAM"
+        ]
+      }
+    },
+    "explanationIssues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^actor:/"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "evidenceRefs"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "counterexamplesToSeek": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "assumptions",
+          "counterexamplesToSeek"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "missedOpportunity": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "alternativeCandidateId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "objective": {
+              "enum": [
+                "own-request-points",
+                "combined-team-request-points"
+              ]
+            },
+            "advantage": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "proofKind": {
+              "enum": [
+                "native-objective-dominance",
+                "information-set-exhaustive"
+              ]
+            },
+            "proofRef": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "pattern": "^blobs/[a-f0-9]{64}$"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            "actorEvidenceRefs": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^actor:/"
+              }
+            },
+            "correction": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "alternativeCandidateId",
+            "objective",
+            "advantage",
+            "proofKind",
+            "proofRef",
+            "actorEvidenceRefs",
+            "correction"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  },
+  "required": [
+    "decisionId",
+    "packetHash",
+    "reviewVersion",
+    "provenance",
+    "rationaleStatus",
+    "checks",
+    "categoryIds",
+    "explanationIssues",
+    "hypotheses",
+    "missedOpportunity",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "title": "TrixScenarioDecisionReview"
+}

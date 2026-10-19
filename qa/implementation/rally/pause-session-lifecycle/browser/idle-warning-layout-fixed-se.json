@@ -1,0 +1,21 @@
+{
+  "name": "idle-warning-layout-fixed-se",
+  "at": "2026-10-16T02:23:35.742Z",
+  "build": "index-B-IIS17u.js",
+  "check": "Floating idle warning landscape review",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 375,
+    "scrollHeight": 375,
+    "scrollWidth": 667,
+    "width": 667
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

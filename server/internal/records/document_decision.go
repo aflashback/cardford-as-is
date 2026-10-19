@@ -6,6 +6,7 @@ import (
 	"cardford/server/internal/games/hearts"
 	"cardford/server/internal/games/spades"
 	"cardford/server/internal/legacydecision"
+	"cardford/server/internal/sessions"
 	"encoding/json"
 	"fmt"
 	"reflect"
@@ -21,7 +22,11 @@ func (c *DocumentCodec) PermittedInput(d Document, s gamekernel.Snapshot, actor 
 	return p.Observation, digest, window, err
 }
 func (c *DocumentCodec) permittedProjection(d Document, s gamekernel.Snapshot, actor int) (gamekernel.Projection, string, string, error) {
-	if d.Metadata.Pin.ModuleVersion == "2.0.0" {
+	stored, err := c.bound(d, s)
+	if err != nil {
+		return gamekernel.Projection{}, "", "", err
+	}
+	if _, registered := stored.inner.(*sessions.DurableSnapshot); registered {
 		bound, err := c.Session(d, s)
 		if err != nil {
 			return gamekernel.Projection{}, "", "", err
@@ -32,9 +37,6 @@ func (c *DocumentCodec) permittedProjection(d Document, s gamekernel.Snapshot, a
 		}
 		window, err := c.WindowID(d)
 		return gamekernel.Projection{Observation: input.Packet, CandidateIDs: input.CandidateIDs}, input.InputDigest, window, err
-	}
-	if _, err := c.bound(d, s); err != nil {
-		return gamekernel.Projection{}, "", "", err
 	}
 	if actor < 0 || actor > 3 {
 		return gamekernel.Projection{}, "", "", fmt.Errorf("invalid decision actor")
@@ -145,6 +147,26 @@ func (c *DocumentCodec) ValidateHistoricalDecisionAt(d Document, s gamekernel.Sn
 	if !eligible {
 		return fmt.Errorf("selected candidate is not eligible for original actor")
 	}
+	if decision.AdviceSchema == "TrixAdvice" {
+		if _, e := gamekernel.ParseRegisteredAnalysis(decision.Analysis, gamekernel.Pin(d.Metadata.Pin), decision.SelectedCandidateID); e != nil {
+			return e
+		}
+		var advice struct {
+			Alternatives []string `json:"alternatives"`
+		}
+		if e := json.Unmarshal(decision.Advice, &advice); e != nil {
+			return e
+		}
+		for _, alternative := range advice.Alternatives {
+			found := false
+			for _, id := range p.CandidateIDs {
+				found = found || id == alternative
+			}
+			if !found {
+				return fmt.Errorf("Trix advice alternative is not an original legal candidate")
+			}
+		}
+	}
 	if decision.AnalysisSchema == OriginalAnalysisSchema {
 		original, _, e := OriginalDecision(decision)
 		if e != nil {
@@ -204,13 +226,13 @@ func ValidateHistoricalDecision(d DecisionRecord) error {
 		_, _, err := OriginalDecision(d)
 		return err
 	}
-	if d.AnalysisSchema != "RegisteredAnalysis" || d.AdviceSchema != "AdviceView" {
+	if d.AnalysisSchema != "RegisteredAnalysis" || (d.AdviceSchema != "AdviceView" && d.AdviceSchema != "TrixAdvice") {
 		return fmt.Errorf("unsupported historical decision reader")
 	}
 	if err := contracts.Validate("RegisteredAnalysis", d.Analysis); err != nil {
 		return err
 	}
-	if err := contracts.Validate("AdviceView", d.Advice); err != nil {
+	if err := contracts.Validate(d.AdviceSchema, d.Advice); err != nil {
 		return err
 	}
 	var analysis struct {
@@ -221,6 +243,9 @@ func ValidateHistoricalDecision(d DecisionRecord) error {
 	}
 	if analysis.Selected != d.SelectedCandidateID {
 		return fmt.Errorf("original analysis selection mismatch")
+	}
+	if d.AdviceSchema == "TrixAdvice" {
+		return validateTrixSavedAdvice(d)
 	}
 	var advice struct {
 		DecisionID    string   `json:"decisionId"`
@@ -274,7 +299,7 @@ func (c *DocumentCodec) ValidateDecisionCommand(d DecisionRecord, raw json.RawMe
 	if err := validateDecisionPurpose(d.Actor, d.Purpose); err != nil {
 		return err
 	}
-	if d.PacketVersion == "2.0.0" {
+	if d.PacketVersion == "2.0.0" || d.AdviceSchema == "TrixAdvice" {
 		return validateV2DecisionCommand(d, raw)
 	}
 	if _, err := contracts.ParseJSON(raw); err != nil {

@@ -1,0 +1,741 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/schemas/trix-scenario-collection/campaign.schema.json",
+  "title": "TrixScenarioCampaignPlan",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "trix-scenario-campaign-plan-1.0.0"
+    },
+    "status": {
+      "enum": [
+        "proposed-not-executable",
+        "approved-for-implementation"
+      ]
+    },
+    "corpusId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "scope": {
+      "const": "offline-discovery-only"
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "requested": {
+          "const": "gpt-6-luna"
+        },
+        "reasoningEffort": {
+          "const": "max"
+        },
+        "fallbackAllowed": {
+          "const": false
+        }
+      },
+      "required": [
+        "requested",
+        "reasoningEffort",
+        "fallbackAllowed"
+      ],
+      "additionalProperties": false
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "transport": {
+          "const": "host-assisted-subagent-bridge"
+        },
+        "logicalSeats": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "S"
+            },
+            {
+              "const": "E"
+            },
+            {
+              "const": "N"
+            },
+            {
+              "const": "W"
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "maxConcurrentPlayerInvocations": {
+          "const": 1
+        },
+        "maxConcurrentEpisodes": {
+          "const": 1
+        },
+        "context": {
+          "const": "fresh-per-invocation"
+        },
+        "forkTurns": {
+          "const": "none"
+        },
+        "toolCallsAllowed": {
+          "const": 0
+        },
+        "uninspectableInvocation": {
+          "const": "stop"
+        },
+        "missingModelOrEffortAttestation": {
+          "const": "stop"
+        },
+        "phaseOrder": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "basic-solo"
+            },
+            {
+              "const": "complex-solo"
+            },
+            {
+              "const": "basic-partners"
+            },
+            {
+              "const": "complex-partners"
+            }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "transport",
+        "logicalSeats",
+        "maxConcurrentPlayerInvocations",
+        "maxConcurrentEpisodes",
+        "context",
+        "forkTurns",
+        "toolCallsAllowed",
+        "uninspectableInvocation",
+        "missingModelOrEffortAttestation",
+        "phaseOrder"
+      ],
+      "additionalProperties": false
+    },
+    "pins": {
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "const": "trix"
+        },
+        "moduleVersion": {
+          "const": "2.2.0"
+        },
+        "stateSchemaVersion": {
+          "const": "1.2.0"
+        },
+        "observationSchemaVersion": {
+          "const": "1.2.0"
+        },
+        "publicSchemaVersion": {
+          "const": "1.2.0"
+        },
+        "eventSchemaVersion": {
+          "const": "1.0.0"
+        }
+      },
+      "required": [
+        "gameId",
+        "moduleVersion",
+        "stateSchemaVersion",
+        "observationSchemaVersion",
+        "publicSchemaVersion",
+        "eventSchemaVersion"
+      ],
+      "additionalProperties": false
+    },
+    "phases": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "variant": {
+              "const": "basic-solo"
+            },
+            "ruleProfileId": {
+              "const": "trix-basic-solo-1.0.0"
+            },
+            "objective": {
+              "const": "own-request-points"
+            },
+            "requests": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "const": "diamonds"
+                },
+                {
+                  "const": "king"
+                },
+                {
+                  "const": "queens"
+                },
+                {
+                  "const": "lutoosh"
+                }
+              ],
+              "items": false,
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "targetCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200
+            },
+            "maxCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200
+            },
+            "requestTargets": {
+              "type": "object",
+              "properties": {
+                "diamonds": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                },
+                "king": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                },
+                "queens": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                },
+                "lutoosh": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                }
+              },
+              "required": [
+                "diamonds",
+                "king",
+                "queens",
+                "lutoosh"
+              ],
+              "additionalProperties": false
+            },
+            "maxCompletedRequests": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "maxRequestsPerContract": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          "required": [
+            "variant",
+            "ruleProfileId",
+            "objective",
+            "requests",
+            "targetCases",
+            "maxCases",
+            "requestTargets",
+            "maxCompletedRequests",
+            "maxRequestsPerContract"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variant": {
+              "const": "complex-solo"
+            },
+            "ruleProfileId": {
+              "const": "trix-complex-solo-1.0.0"
+            },
+            "objective": {
+              "const": "own-request-points"
+            },
+            "requests": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "const": "complex"
+                }
+              ],
+              "items": false,
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "targetCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200
+            },
+            "maxCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200
+            },
+            "requestTargets": {
+              "type": "object",
+              "properties": {
+                "complex": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 200
+                }
+              },
+              "required": [
+                "complex"
+              ],
+              "additionalProperties": false
+            },
+            "maxCompletedRequests": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "maxRequestsPerContract": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            }
+          },
+          "required": [
+            "variant",
+            "ruleProfileId",
+            "objective",
+            "requests",
+            "targetCases",
+            "maxCases",
+            "requestTargets",
+            "maxCompletedRequests",
+            "maxRequestsPerContract"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variant": {
+              "const": "basic-partners"
+            },
+            "ruleProfileId": {
+              "const": "trix-basic-partners-1.1.0"
+            },
+            "objective": {
+              "const": "combined-team-request-points"
+            },
+            "requests": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "const": "diamonds"
+                },
+                {
+                  "const": "king"
+                },
+                {
+                  "const": "queens"
+                },
+                {
+                  "const": "lutoosh"
+                }
+              ],
+              "items": false,
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "targetCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200
+            },
+            "maxCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200
+            },
+            "requestTargets": {
+              "type": "object",
+              "properties": {
+                "diamonds": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                },
+                "king": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                },
+                "queens": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                },
+                "lutoosh": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50
+                }
+              },
+              "required": [
+                "diamonds",
+                "king",
+                "queens",
+                "lutoosh"
+              ],
+              "additionalProperties": false
+            },
+            "maxCompletedRequests": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "maxRequestsPerContract": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 8
+            }
+          },
+          "required": [
+            "variant",
+            "ruleProfileId",
+            "objective",
+            "requests",
+            "targetCases",
+            "maxCases",
+            "requestTargets",
+            "maxCompletedRequests",
+            "maxRequestsPerContract"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "variant": {
+              "const": "complex-partners"
+            },
+            "ruleProfileId": {
+              "const": "trix-complex-partners-1.1.0"
+            },
+            "objective": {
+              "const": "combined-team-request-points"
+            },
+            "requests": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "const": "complex"
+                }
+              ],
+              "items": false,
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "targetCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 400
+            },
+            "maxCases": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 400
+            },
+            "requestTargets": {
+              "type": "object",
+              "properties": {
+                "complex": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 400
+                }
+              },
+              "required": [
+                "complex"
+              ],
+              "additionalProperties": false
+            },
+            "maxCompletedRequests": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 64
+            },
+            "maxRequestsPerContract": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 64
+            }
+          },
+          "required": [
+            "variant",
+            "ruleProfileId",
+            "objective",
+            "requests",
+            "targetCases",
+            "maxCases",
+            "requestTargets",
+            "maxCompletedRequests",
+            "maxRequestsPerContract"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "selection": {
+      "type": "object",
+      "properties": {
+        "maxCorpusCases": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "countUnit": {
+          "const": "unique-actor-decision"
+        },
+        "retainAllRawAttempts": {
+          "const": true
+        },
+        "maxCasesPerPhysicalDealFamily": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "forcedCasesInStrategicQuota": {
+          "const": false
+        },
+        "scheduledRequestChoicesInQuota": {
+          "const": false
+        },
+        "incompleteEpisodesInQuota": {
+          "const": false
+        },
+        "deduplicateAcrossRuns": {
+          "const": true
+        },
+        "categoryVersion": {
+          "const": "trix-penalty-taxonomy-1.0.0"
+        },
+        "maxAuthoredRequestFraction": {
+          "const": 0.25
+        }
+      },
+      "required": [
+        "maxCorpusCases",
+        "countUnit",
+        "retainAllRawAttempts",
+        "maxCasesPerPhysicalDealFamily",
+        "forcedCasesInStrategicQuota",
+        "scheduledRequestChoicesInQuota",
+        "incompleteEpisodesInQuota",
+        "deduplicateAcrossRuns",
+        "categoryVersion",
+        "maxAuthoredRequestFraction"
+      ],
+      "additionalProperties": false
+    },
+    "workCaps": {
+      "type": "object",
+      "properties": {
+        "pilot": {
+          "type": "object",
+          "properties": {
+            "variant": {
+              "const": "basic-solo"
+            },
+            "requests": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "const": "diamonds"
+                },
+                {
+                  "const": "king"
+                },
+                {
+                  "const": "queens"
+                },
+                {
+                  "const": "lutoosh"
+                }
+              ],
+              "items": false,
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "required": [
+            "variant",
+            "requests"
+          ],
+          "additionalProperties": false
+        },
+        "batchRequests": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "maxPlayerAttemptsPerDecision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        },
+        "maxInvocationWallMs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300000
+        },
+        "maxActiveSegmentWallMs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5400000
+        },
+        "maxAttemptedEpisodes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 180
+        },
+        "maxPlayerAttemptsCampaign": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 17920
+        },
+        "onLimit": {
+          "const": "checkpoint-and-report-shortfall"
+        },
+        "dollarBudget": {
+          "const": "no-separate-paid-provider-authorized"
+        },
+        "reviewTransport": {
+          "const": "current-host-independent-review-context"
+        }
+      },
+      "required": [
+        "pilot",
+        "batchRequests",
+        "maxPlayerAttemptsPerDecision",
+        "maxInvocationWallMs",
+        "maxActiveSegmentWallMs",
+        "maxAttemptedEpisodes",
+        "maxPlayerAttemptsCampaign",
+        "onLimit",
+        "dollarBudget",
+        "reviewTransport"
+      ],
+      "additionalProperties": false
+    },
+    "versions": {
+      "type": "object",
+      "properties": {
+        "playerPrompt": {
+          "const": "trix-luna-player-1.0.0"
+        },
+        "declarationPrompt": {
+          "const": "trix-luna-declaration-1.0.0"
+        },
+        "reviewPrompt": {
+          "const": "trix-luna-review-1.0.0"
+        },
+        "gameReviewPrompt": {
+          "const": "trix-luna-game-review-1.0.0"
+        },
+        "packetProjection": {
+          "const": "trix-scenario-player-packet-1.0.0"
+        }
+      },
+      "required": [
+        "playerPrompt",
+        "declarationPrompt",
+        "reviewPrompt",
+        "gameReviewPrompt",
+        "packetProjection"
+      ],
+      "additionalProperties": false
+    },
+    "exclusions": {
+      "type": "object",
+      "properties": {
+        "requests": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "trix"
+            }
+          ],
+          "items": false,
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "games": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "const": "spades"
+            },
+            {
+              "const": "hearts"
+            },
+            {
+              "const": "tarneeb"
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "training": {
+          "const": true
+        },
+        "runtimeModelIntegration": {
+          "const": true
+        },
+        "automaticPromotion": {
+          "const": true
+        }
+      },
+      "required": [
+        "requests",
+        "games",
+        "training",
+        "runtimeModelIntegration",
+        "automaticPromotion"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "status",
+    "corpusId",
+    "scope",
+    "model",
+    "execution",
+    "pins",
+    "phases",
+    "selection",
+    "workCaps",
+    "versions",
+    "exclusions"
+  ],
+  "additionalProperties": false
+}

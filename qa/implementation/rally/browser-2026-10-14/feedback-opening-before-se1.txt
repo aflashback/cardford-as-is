@@ -1,0 +1,134 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Basic · Solo"':
+  - 'button "Scores: You -200, Leo 25, Maya 75, Theo 0"':
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Trix four player table":
+    - generic: "Y"
+    - 'img "You: kingdom owner"':
+    - generic: You
+    - button "You current score 0; show scores": "0"
+    - img "12 cards left"
+    - img "Current player"
+    - generic: L
+    - generic: Leo
+    - button "Leo current score 0; show scores": "0"
+    - img "12 cards left"
+    - generic: M
+    - generic: Maya
+    - button "Maya current score 0; show scores": "0"
+    - img "13 cards left"
+    - generic: T
+    - generic: Theo
+    - button "Theo current score 0; show scores": "0"
+    - img "13 cards left"
+    - region "Jack layout board":
+      - group "Clubs lane":
+        - img "Jack of clubs":
+          - generic: J
+          - generic: ♣
+          - generic: ♣
+        - img "10 of clubs":
+          - generic: "10"
+          - generic: ♣
+          - generic: ♣
+      - group "Diamonds lane"
+      - group "Hearts lane"
+      - group "Spades lane"
+  - region "Your hand":
+    - status: Your turn
+    - button "2 of clubs" [disabled]:
+      - generic: "2"
+      - generic: ♣
+      - generic: ♣
+    - button "3 of clubs" [disabled]:
+      - generic: "3"
+      - generic: ♣
+      - generic: ♣
+    - button "4 of clubs" [disabled]:
+      - generic: "4"
+      - generic: ♣
+      - generic: ♣
+    - button "Queen of clubs":
+      - generic: Q
+      - generic: ♣
+      - generic: ♣
+    - button "Jack of diamonds":
+      - generic: J
+      - generic: ♦
+      - generic: ♦
+    - button "Queen of diamonds" [disabled]:
+      - generic: Q
+      - generic: ♦
+      - generic: ♦
+    - button "7 of hearts" [disabled]:
+      - generic: "7"
+      - generic: ♥
+      - generic: ♥
+    - button "Jack of hearts":
+      - generic: J
+      - generic: ♥
+      - generic: ♥
+    - button "Queen of hearts" [disabled]:
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - button "King of hearts" [disabled]:
+      - generic: K
+      - generic: ♥
+      - generic: ♥
+    - button "Jack of spades":
+      - generic: J
+      - generic: ♠
+      - generic: ♠
+    - button "Queen of spades" [disabled]:
+      - generic: Q
+      - generic: ♠
+      - generic: ♠
+    - generic: Hold to lift and drag on your turn. Release toward the table to play, or near your hand to return. Double-click or double-tap to play or queue for your turn, if legal. Repeat to cancel a queue. Enter or Space plays or queues; Escape cancels. Hold or double-tap to select doubling cards, then confirm separately.
+- button "Close Coach" [expanded]:
+  - img "Coach waiting"
+- status
+- complementary "Coach":
+  - strong: Coach
+  - generic "Coaching allowance resets 2026-10-15T00:00:00Z": Unlimited coaching · local preview
+  - button "More table width is needed to pin Coach" [disabled]:
+  - button "Close Coach":
+  - region "Coaching sessions":
+    - navigation "Coach tools":
+      - button "Cue":
+        - generic: Cue
+      - button "Review":
+        - generic: Review
+      - button "Rating":
+        - generic: Rating
+      - button "Saved coaching sessions":
+    - text: This decision
+    - generic: Comparison
+    - article:
+      - strong: Fictional comparison
+      - generic: Preview
+      - paragraph: Sample placement only. This is not a comparison with real players.
+      - strong: 50th percentile
+      - meter "Fictional preview percentile"
+      - text: Fictional sample · Fictional preview cohort
+      - text: 100 example players · not a real rating
+      - 'button "Why: Fictional comparison"': Why?
+      - 'button "Helpful: Fictional comparison"':
+      - 'button "Not helpful: Fictional comparison" [active]':
+    - strong: Your feedback
+    - button "Close feedback":
+    - text: Reason
+    - combobox "Reason":
+      - option "Choose (optional)" [selected]
+      - option "Unclear"
+      - option "Not relevant"
+      - option "I disagree"
+      - option "Something else"
+    - text: Note
+    - textbox "Note":
+      - /placeholder: Optional
+    - button "Save feedback"

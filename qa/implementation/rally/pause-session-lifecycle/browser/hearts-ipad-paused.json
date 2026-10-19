@@ -1,0 +1,66 @@
+{
+  "name": "hearts-ipad-paused",
+  "at": "2026-10-16T02:02:31.834Z",
+  "mode": "Hearts Solo",
+  "phase": "paused",
+  "build": "index-Ctizdknu.js",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 505.8011169433594,
+        "clientHeight": 242,
+        "controls": [
+          {
+            "bottom": 399.1467475891113,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 704.9775085449219,
+            "width": 398.4480590820313,
+            "x": 306.5294494628906,
+            "y": 355.1511535644531
+          },
+          {
+            "bottom": 481.12504959106445,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 501.7572479248047,
+            "width": 195.2277984619141,
+            "x": 306.5294494628906,
+            "y": 437.12945556640625
+          },
+          {
+            "bottom": 481.12504959106445,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 704.9775238037109,
+            "width": 195.2277984619141,
+            "x": 509.7497253417969,
+            "y": 437.12945556640625
+          }
+        ],
+        "height": 243.3201904296875,
+        "name": "Game paused",
+        "right": 741.8487243652344,
+        "scrollHeight": 242,
+        "width": 459.9953308105469,
+        "x": 281.8533935546875,
+        "y": 262.4809265136719
+      }
+    ],
+    "height": 768,
+    "scrollHeight": 768,
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

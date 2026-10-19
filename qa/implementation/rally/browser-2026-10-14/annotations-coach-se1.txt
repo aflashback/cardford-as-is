@@ -1,0 +1,228 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Complex · Partners"':
+  - 'button "Scores: You & Maya -60, Leo & Joe -440"':
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main:
+  - region "Trix four player table":
+    - generic: "Y"
+    - generic: You
+    - button "You current score 0; show scores": "0"
+    - img "3 cards left"
+    - img "Current player"
+    - generic: L
+    - generic: Leo
+    - button "Leo current score 0; show scores": "0"
+    - img "5 cards left"
+    - group "Leo’s announced twos":
+      - img "Announced 2 of diamonds":
+        - generic: "2"
+        - generic: ♦
+        - generic: ♦
+      - img "Announced 2 of hearts":
+        - generic: "2"
+        - generic: ♥
+        - generic: ♥
+      - img "Announced 2 of spades":
+        - generic: "2"
+        - generic: ♠
+        - generic: ♠
+    - generic: M
+    - img "Your partner":
+    - 'img "Maya: kingdom owner"':
+    - generic: Maya
+    - button "Maya current score 0; show scores": "0"
+    - img "3 cards left"
+    - generic: J
+    - generic: Joe
+    - button "Joe current score 0; show scores": "0"
+    - img "4 cards left"
+    - region "Jack layout board":
+      - group "Clubs lane":
+        - img "Ace of clubs":
+          - generic: A
+          - generic: ♣
+          - generic: ♣
+        - img "King of clubs":
+          - generic: K
+          - generic: ♣
+          - generic: ♣
+        - img "Queen of clubs":
+          - generic: Q
+          - generic: ♣
+          - generic: ♣
+        - img "Jack of clubs":
+          - generic: J
+          - generic: ♣
+          - generic: ♣
+        - img "10 of clubs":
+          - generic: "10"
+          - generic: ♣
+          - generic: ♣
+        - img "9 of clubs":
+          - generic: "9"
+          - generic: ♣
+          - generic: ♣
+        - img "8 of clubs":
+          - generic: "8"
+          - generic: ♣
+          - generic: ♣
+        - img "7 of clubs":
+          - generic: "7"
+          - generic: ♣
+          - generic: ♣
+        - img "6 of clubs":
+          - generic: "6"
+          - generic: ♣
+          - generic: ♣
+        - img "5 of clubs":
+          - generic: "5"
+          - generic: ♣
+          - generic: ♣
+        - img "4 of clubs":
+          - generic: "4"
+          - generic: ♣
+          - generic: ♣
+        - img "3 of clubs":
+          - generic: "3"
+          - generic: ♣
+          - generic: ♣
+        - img "2 of clubs":
+          - generic: "2"
+          - generic: ♣
+          - generic: ♣
+      - group "Diamonds lane":
+        - img "Ace of diamonds":
+          - generic: A
+          - generic: ♦
+          - generic: ♦
+        - img "King of diamonds":
+          - generic: K
+          - generic: ♦
+          - generic: ♦
+        - img "Queen of diamonds":
+          - generic: Q
+          - generic: ♦
+          - generic: ♦
+        - img "Jack of diamonds":
+          - generic: J
+          - generic: ♦
+          - generic: ♦
+        - img "10 of diamonds":
+          - generic: "10"
+          - generic: ♦
+          - generic: ♦
+        - img "9 of diamonds":
+          - generic: "9"
+          - generic: ♦
+          - generic: ♦
+        - img "8 of diamonds":
+          - generic: "8"
+          - generic: ♦
+          - generic: ♦
+        - img "7 of diamonds":
+          - generic: "7"
+          - generic: ♦
+          - generic: ♦
+        - img "6 of diamonds":
+          - generic: "6"
+          - generic: ♦
+          - generic: ♦
+        - img "5 of diamonds":
+          - generic: "5"
+          - generic: ♦
+          - generic: ♦
+      - group "Hearts lane":
+        - img "King of hearts":
+          - generic: K
+          - generic: ♥
+          - generic: ♥
+        - img "Queen of hearts":
+          - generic: Q
+          - generic: ♥
+          - generic: ♥
+        - img "Jack of hearts":
+          - generic: J
+          - generic: ♥
+          - generic: ♥
+        - img "10 of hearts":
+          - generic: "10"
+          - generic: ♥
+          - generic: ♥
+        - img "9 of hearts":
+          - generic: "9"
+          - generic: ♥
+          - generic: ♥
+        - img "8 of hearts":
+          - generic: "8"
+          - generic: ♥
+          - generic: ♥
+        - img "7 of hearts":
+          - generic: "7"
+          - generic: ♥
+          - generic: ♥
+        - img "6 of hearts":
+          - generic: "6"
+          - generic: ♥
+          - generic: ♥
+      - group "Spades lane":
+        - img "King of spades":
+          - generic: K
+          - generic: ♠
+          - generic: ♠
+        - img "Queen of spades":
+          - generic: Q
+          - generic: ♠
+          - generic: ♠
+        - img "Jack of spades":
+          - generic: J
+          - generic: ♠
+          - generic: ♠
+        - img "10 of spades":
+          - generic: "10"
+          - generic: ♠
+          - generic: ♠
+        - img "9 of spades":
+          - generic: "9"
+          - generic: ♠
+          - generic: ♠
+        - img "8 of spades":
+          - generic: "8"
+          - generic: ♠
+          - generic: ♠
+  - region "Your hand":
+    - status: Your turn
+    - button "4 of diamonds":
+      - generic: "4"
+      - generic: ♦
+      - generic: ♦
+    - button "5 of hearts":
+      - generic: "5"
+      - generic: ♥
+      - generic: ♥
+    - button "6 of spades" [disabled]:
+      - generic: "6"
+      - generic: ♠
+      - generic: ♠
+    - generic: Hold to lift and drag on your turn. Release toward the table to play, or near your hand to return. Double-click or double-tap to play or queue for your turn, if legal. Repeat to cancel a queue. Enter or Space plays or queues; Escape cancels. Hold or double-tap to select doubling cards, then confirm separately.
+- button "Close Coach" [expanded]:
+  - img "Coach waiting"
+- status
+- complementary "Coach":
+  - strong: Coach
+  - generic "Coaching allowance resets 2026-10-15T00:00:00Z": Unlimited coaching · local preview
+  - button "More table width is needed to pin Coach" [disabled]:
+  - button "Close Coach":
+  - region "Coaching sessions":
+    - navigation "Coach tools":
+      - button "Cue":
+        - generic: Cue
+      - button "Review":
+        - generic: Review
+      - button "Rating":
+        - generic: Rating
+      - button "Saved coaching sessions":
+    - paragraph: Pick a coaching tool.
+    - generic: 2 free sessions a day. Explanations are previews while Coach is in training.

@@ -1,0 +1,1502 @@
+{
+  "schemaVersion": "trix-jacks-ending-native-fixtures-1.0.0",
+  "fixtures": [
+    {
+      "id": "two-lower-upper",
+      "deck": [
+        "C3",
+        "CK",
+        "H5",
+        "C8",
+        "S9",
+        "S6",
+        "H7",
+        "S5",
+        "H8",
+        "S10",
+        "D10",
+        "C6",
+        "DJ",
+        "CA",
+        "D3",
+        "D7",
+        "H6",
+        "C4",
+        "CQ",
+        "D8",
+        "D6",
+        "SK",
+        "S4",
+        "HK",
+        "DQ",
+        "H2",
+        "C2",
+        "D2",
+        "HJ",
+        "D5",
+        "SA",
+        "D4",
+        "C10",
+        "HQ",
+        "C9",
+        "S2",
+        "CJ",
+        "H3",
+        "C7",
+        "DK",
+        "DA",
+        "H9",
+        "H10",
+        "SQ",
+        "D9",
+        "S3",
+        "SJ",
+        "HA",
+        "S8",
+        "H4",
+        "S7",
+        "C5"
+      ],
+      "prefix": [
+        {
+          "kind": "choose-request",
+          "request": "trix"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S2"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H2"
+        }
+      ],
+      "expectedBoard": [
+        {
+          "suit": "C",
+          "low": 4,
+          "high": 12
+        },
+        {
+          "suit": "D",
+          "low": 4,
+          "high": 12
+        },
+        {
+          "suit": "H",
+          "low": 2,
+          "high": 14
+        },
+        {
+          "suit": "S",
+          "low": 2,
+          "high": 14
+        }
+      ],
+      "expectedHands": [
+        [
+          "C3",
+          "CK"
+        ],
+        [
+          "CA",
+          "D3"
+        ],
+        [
+          "C2",
+          "D2"
+        ],
+        [
+          "DK",
+          "DA"
+        ]
+      ]
+    },
+    {
+      "id": "partner-all-twos",
+      "deck": [
+        "C3",
+        "D3",
+        "H3",
+        "S3",
+        "CK",
+        "S5",
+        "S6",
+        "C7",
+        "S8",
+        "SK",
+        "H5",
+        "H10",
+        "H7",
+        "CA",
+        "H4",
+        "CJ",
+        "HQ",
+        "D5",
+        "D8",
+        "H9",
+        "HK",
+        "S10",
+        "S9",
+        "D10",
+        "CQ",
+        "S7",
+        "C2",
+        "D2",
+        "H2",
+        "S2",
+        "HJ",
+        "C10",
+        "SJ",
+        "H6",
+        "D6",
+        "S4",
+        "HA",
+        "SQ",
+        "DJ",
+        "DK",
+        "DA",
+        "C6",
+        "D4",
+        "C9",
+        "SA",
+        "C5",
+        "DQ",
+        "D9",
+        "C4",
+        "H8",
+        "C8",
+        "D7"
+      ],
+      "prefix": [
+        {
+          "kind": "choose-request",
+          "request": "trix"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D10"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HQ"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S10"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SA"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C6"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H8"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H4"
+        }
+      ],
+      "expectedBoard": [
+        {
+          "suit": "C",
+          "low": 4,
+          "high": 12
+        },
+        {
+          "suit": "D",
+          "low": 4,
+          "high": 12
+        },
+        {
+          "suit": "H",
+          "low": 4,
+          "high": 14
+        },
+        {
+          "suit": "S",
+          "low": 4,
+          "high": 14
+        }
+      ],
+      "expectedHands": [
+        [
+          "C3",
+          "CK",
+          "D3",
+          "H3",
+          "S3"
+        ],
+        [
+          "CA"
+        ],
+        [
+          "C2",
+          "D2",
+          "H2",
+          "S2"
+        ],
+        [
+          "DK",
+          "DA"
+        ]
+      ]
+    },
+    {
+      "id": "partner-zero-twos-lower",
+      "deck": [
+        "C4",
+        "CK",
+        "S3",
+        "H8",
+        "D5",
+        "H7",
+        "SA",
+        "S8",
+        "H10",
+        "D6",
+        "S6",
+        "S5",
+        "DJ",
+        "CA",
+        "C2",
+        "H9",
+        "H2",
+        "HJ",
+        "HQ",
+        "CJ",
+        "D7",
+        "D10",
+        "S4",
+        "HK",
+        "CQ",
+        "SQ",
+        "C3",
+        "SK",
+        "H3",
+        "DK",
+        "D9",
+        "H4",
+        "D8",
+        "C7",
+        "DQ",
+        "S9",
+        "H5",
+        "SJ",
+        "C5",
+        "D3",
+        "D2",
+        "DA",
+        "C9",
+        "S10",
+        "HA",
+        "D4",
+        "S2",
+        "S7",
+        "H6",
+        "C10",
+        "C8",
+        "C6"
+      ],
+      "prefix": [
+        {
+          "kind": "choose-request",
+          "request": "trix"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DJ"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SQ"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D10"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CJ"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HA"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S2"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C5"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H5"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D6"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H4"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H2"
+        }
+      ],
+      "expectedBoard": [
+        {
+          "suit": "C",
+          "low": 5,
+          "high": 12
+        },
+        {
+          "suit": "D",
+          "low": 4,
+          "high": 14
+        },
+        {
+          "suit": "H",
+          "low": 2,
+          "high": 14
+        },
+        {
+          "suit": "S",
+          "low": 2,
+          "high": 14
+        }
+      ],
+      "expectedHands": [
+        [
+          "C4",
+          "CK"
+        ],
+        [
+          "C2",
+          "CA"
+        ],
+        [
+          "C3"
+        ],
+        [
+          "D2",
+          "D3"
+        ]
+      ]
+    },
+    {
+      "id": "forced-five-card-release",
+      "deck": [
+        "C3",
+        "CK",
+        "D4",
+        "D3",
+        "D2",
+        "D10",
+        "D9",
+        "HA",
+        "S8",
+        "C4",
+        "C9",
+        "SA",
+        "H8",
+        "CA",
+        "CQ",
+        "S10",
+        "H2",
+        "H6",
+        "C7",
+        "H5",
+        "C5",
+        "H9",
+        "S5",
+        "HJ",
+        "CJ",
+        "H10",
+        "C2",
+        "D7",
+        "D5",
+        "H7",
+        "S2",
+        "C10",
+        "HK",
+        "DK",
+        "S7",
+        "DJ",
+        "S9",
+        "SK",
+        "H3",
+        "DA",
+        "HQ",
+        "C8",
+        "H4",
+        "C6",
+        "S3",
+        "D6",
+        "DQ",
+        "S4",
+        "S6",
+        "SQ",
+        "D8",
+        "SJ"
+      ],
+      "prefix": [
+        {
+          "kind": "choose-request",
+          "request": "trix"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S10"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S4"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S2"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D2"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H2"
+        }
+      ],
+      "expectedBoard": [
+        {
+          "suit": "C",
+          "low": 4,
+          "high": 12
+        },
+        {
+          "suit": "D",
+          "low": 2,
+          "high": 13
+        },
+        {
+          "suit": "H",
+          "low": 2,
+          "high": 14
+        },
+        {
+          "suit": "S",
+          "low": 2,
+          "high": 14
+        }
+      ],
+      "expectedHands": [
+        [
+          "C3",
+          "CK"
+        ],
+        [
+          "CA"
+        ],
+        [
+          "C2"
+        ],
+        [
+          "DA"
+        ]
+      ]
+    },
+    {
+      "id": "partner-zero-twos-ace",
+      "deck": [
+        "C4",
+        "CK",
+        "S3",
+        "H8",
+        "D5",
+        "H7",
+        "SA",
+        "S8",
+        "H10",
+        "D6",
+        "S6",
+        "S5",
+        "DJ",
+        "C2",
+        "C3",
+        "H9",
+        "H2",
+        "HJ",
+        "HQ",
+        "CJ",
+        "D7",
+        "D10",
+        "S4",
+        "HK",
+        "CQ",
+        "SQ",
+        "CA",
+        "SK",
+        "H3",
+        "DK",
+        "D9",
+        "H4",
+        "D8",
+        "C7",
+        "DQ",
+        "S9",
+        "H5",
+        "SJ",
+        "C5",
+        "D3",
+        "D2",
+        "DA",
+        "C9",
+        "S10",
+        "HA",
+        "D4",
+        "S2",
+        "S7",
+        "H6",
+        "C10",
+        "C8",
+        "C6"
+      ],
+      "prefix": [
+        {
+          "kind": "choose-request",
+          "request": "trix"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DJ"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SQ"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D10"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CJ"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "CQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HJ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H10"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HQ"
+        },
+        {
+          "kind": "layout-card",
+          "card": "SA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "DA"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HK"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "HA"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "S2"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H9"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H8"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "C5"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H7"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H6"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H5"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D6"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H4"
+        },
+        {
+          "kind": "layout-pass"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D5"
+        },
+        {
+          "kind": "layout-card",
+          "card": "D4"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H3"
+        },
+        {
+          "kind": "layout-card",
+          "card": "H2"
+        }
+      ],
+      "expectedBoard": [
+        {
+          "suit": "C",
+          "low": 5,
+          "high": 12
+        },
+        {
+          "suit": "D",
+          "low": 4,
+          "high": 14
+        },
+        {
+          "suit": "H",
+          "low": 2,
+          "high": 14
+        },
+        {
+          "suit": "S",
+          "low": 2,
+          "high": 14
+        }
+      ],
+      "expectedHands": [
+        [
+          "C4",
+          "CK"
+        ],
+        [
+          "C2",
+          "C3"
+        ],
+        [
+          "CA"
+        ],
+        [
+          "D2",
+          "D3"
+        ]
+      ]
+    }
+  ]
+}

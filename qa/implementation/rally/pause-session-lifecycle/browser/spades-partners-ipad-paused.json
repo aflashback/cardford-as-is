@@ -1,0 +1,65 @@
+{
+  "name": "spades-partners-ipad-paused",
+  "at": "2026-10-16T02:05:10.052Z",
+  "mode": "Spades Partners",
+  "build": "index-Ctizdknu.js",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 521.2990875244141,
+        "clientHeight": 273,
+        "controls": [
+          {
+            "bottom": 414.64470291137695,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 704.9775085449219,
+            "width": 398.4480590820313,
+            "x": 306.5294494628906,
+            "y": 370.6491088867187
+          },
+          {
+            "bottom": 496.6230354309082,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 501.7572479248047,
+            "width": 195.2277984619141,
+            "x": 306.5294494628906,
+            "y": 452.62744140625
+          },
+          {
+            "bottom": 496.6230354309082,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 704.9775238037109,
+            "width": 195.2277984619141,
+            "x": 509.7497253417969,
+            "y": 452.62744140625
+          }
+        ],
+        "height": 274.3055419921875,
+        "name": "Game paused",
+        "right": 741.8487243652344,
+        "scrollHeight": 273,
+        "width": 459.9953308105469,
+        "x": 281.8533935546875,
+        "y": 246.99354553222656
+      }
+    ],
+    "height": 768,
+    "scrollHeight": 768,
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

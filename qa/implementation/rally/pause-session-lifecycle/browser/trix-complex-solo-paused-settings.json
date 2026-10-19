@@ -1,0 +1,123 @@
+{
+  "name": "trix-complex-solo-paused-settings",
+  "at": "2026-10-16T02:07:21.145Z",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 673.1770477294922,
+        "clientHeight": 445,
+        "controls": [
+          {
+            "bottom": 303.8829536437988,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Close dialog",
+            "right": 913.3108406066896,
+            "width": 43.9955940246582,
+            "x": 869.3152465820312,
+            "y": 259.8873596191406
+          },
+          {
+            "bottom": 364.55156326293945,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Light",
+            "right": 643.0068359375,
+            "width": 128.14404296875,
+            "x": 514.86279296875,
+            "y": 320.55596923828125
+          },
+          {
+            "bottom": 364.55156326293945,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Dark",
+            "right": 778.1588439941406,
+            "width": 128.15463256835938,
+            "x": 650.0042114257812,
+            "y": 320.55596923828125
+          },
+          {
+            "bottom": 364.55156326293945,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Warm",
+            "right": 913.3108215332032,
+            "width": 128.15463256835938,
+            "x": 785.1561889648438,
+            "y": 320.55596923828125
+          },
+          {
+            "bottom": 408.5471382141113,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Review",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 364.5515441894531
+          },
+          {
+            "bottom": 458.5344429016113,
+            "disabled": true,
+            "height": 43.9955940246582,
+            "label": "Score history",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 414.5388488769531
+          },
+          {
+            "bottom": 512.5232734680176,
+            "disabled": false,
+            "height": 47.99711990356445,
+            "label": "Account",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 464.5261535644531
+          },
+          {
+            "bottom": 572.5143928527832,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Game pace",
+            "right": 913.3108367919922,
+            "width": 249.99998474121097,
+            "x": 663.3108520507812,
+            "y": 528.518798828125
+          },
+          {
+            "bottom": 632.5054817199707,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Coaching",
+            "right": 913.3108367919922,
+            "width": 249.99998474121097,
+            "x": 663.3108520507812,
+            "y": 588.5098876953125
+          }
+        ],
+        "height": 445.9582214355469,
+        "name": "Settings",
+        "right": 950.1820373535156,
+        "scrollHeight": 445,
+        "width": 459.9953308105469,
+        "x": 490.1867065429687,
+        "y": 227.2188262939453
+      }
+    ],
+    "height": 900,
+    "scrollHeight": 900,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

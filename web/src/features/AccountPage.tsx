@@ -4,10 +4,19 @@ import { api, ApiFailure, definiteFailure } from '../api/client';
 import { backend } from '../platform/web';
 import type { PlatformAccountView, AccessOffer, RegisteredTarget } from '../../shared/local-service.contracts';
 import { clearGoPending, executeGo, readGoPending, recoverGoPending, restoreGoPending, type GoPending } from '../api/goPendingCommands';
+import { invalidateAuth, onAuthInvalidated } from '../api/authLifecycle';
 import { FamilyPanel } from './FamilyPanel';
 import { DataControls } from './DataControls';
+import {CoachAccountSection} from '../rally/CoachAccountSection';
+import { authMode } from '../auth/transport';
+import { RealAccountPage } from '../auth/RealAccountPage';
 
 function targetLabel(target:RegisteredTarget):string {
+  if (target.gameId === 'trix') {
+    const variant = ({ 'basic-solo': 'Basic Solo', 'basic-partners': 'Basic Partners',
+      'complex-solo': 'Complex Solo', 'complex-partners': 'Complex Partners' } as Record<string,string>)[target.variantId];
+    return `Trix ${variant ?? target.variantId}`;
+  }
   return target.gameId === 'hearts' ? 'Hearts' : target.variantId === 'partners' ? 'Spades Partners' : 'Spades Solo';
 }
 function accessReason(reason:string):string {
@@ -16,7 +25,19 @@ function accessReason(reason:string):string {
     'not-admitted':'Start an eligible hand first'} as Record<string,string>)[reason] ?? 'Unavailable';
 }
 
+function AccountHeader() {
+  return <header className="rally-page-header">
+    <a className="rally-page-brand" href="#"><img src="/brand/cardford-symbol.svg" alt="" />CardFord</a>
+    <a className="text-button" href="#">Return to table</a>
+  </header>;
+}
+
+
 export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }) {
+  return authMode === 'keycloak' ? <RealAccountPage /> : <FixtureAccountPage onRefresh={onRefresh} />;
+}
+
+function FixtureAccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }) {
   const [deleted, setDeleted] = useState(false);
   const [account, setAccount] = useState<AccountView | null>(null);
   const [platform, setPlatform] = useState<PlatformAccountView | null>(null);
@@ -28,26 +49,49 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
   const [showFamily, setShowFamily] = useState(false);
   const pending = useRef<{ commandId: string; previewId: string } | null>(null);
   const inFlight = useRef(false);
+  const generation = useRef(0);
+  const invalidated = useRef(false);
   const confirmation = useRef<HTMLHeadingElement>(null);
-  const reload = async () => {
+  const reload = async (reconnect = false) => {
+    if (invalidated.current && !reconnect) return;
+    if (reconnect) invalidated.current = false;
+    const requestGeneration = ++generation.current;
     if (backend === 'go') {
       await api('/api/local/session', 'IdentityView', {});
+      if (invalidated.current || requestGeneration !== generation.current) return;
       const value = await api('/api/account', 'PlatformAccountView');
+      if (invalidated.current || requestGeneration !== generation.current) return;
       setPlatform(value); setAccount(value.fixtureAccount);
       setGoPending(readGoPending('account', value.player.id));
-    } else setAccount(await api('/api/account', 'AccountView'));
+    } else {
+      const value = await api('/api/account', 'AccountView');
+      if (invalidated.current || requestGeneration !== generation.current) return;
+      setAccount(value);
+    }
   };
   async function verifyOwner() {
     if (backend !== 'go') return account?.player.id ?? '';
     const identity = await api('/api/identity', 'IdentityView');
     if (identity.playerId !== platform?.player.id) {
-      setPlatform(null); setAccount(null); setPreview(null); pending.current = null;
+      invalidateAuth();
       throw new Error('The signed-in player changed. Reconnect before continuing.');
     }
     return identity.playerId;
   }
   useEffect(() => {
-    void reload().catch((e) => setError(e instanceof Error ? e.message : 'Account unavailable.'));
+    const disconnect = onAuthInvalidated(() => {
+      generation.current++;
+      invalidated.current = true;
+      pending.current = null;
+      inFlight.current = false;
+      setAccount(null); setPlatform(null); setPreview(null); setGoPending(null);
+      setShowFamily(false); setNotice(''); setBusy(false);
+      setError('The signed-in session ended. Reconnect before continuing.');
+    });
+    void reload().catch((e) => {
+      if (!invalidated.current) setError(e instanceof Error ? e.message : 'Account unavailable.');
+    });
+    return disconnect;
   }, []);
   useEffect(() => {
     if (preview) confirmation.current?.focus();
@@ -123,7 +167,8 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
   }
   if (deleted)
     return (
-      <main className="account-page">
+      <main className="account-page rally-page">
+        <AccountHeader />
         <h1>Local account deleted</h1>
         <p>Your local session has ended. No real subscription was canceled.</p>
         {error && <p role="alert">{error}</p>}
@@ -144,22 +189,23 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
       </main>
     );
   if (platform?.mode === 'configured') return (
-    <main className="account-page">
-      <header><a className="wordmark" href="#">CardFord</a><a className="text-button" href="#">Return to table</a></header>
-      <h1>Account and subscription</h1>
+    <main className="account-page rally-page">
+      <AccountHeader />
+      <div className="rally-page-title"><h1>Account.</h1><span className="rally-page-tag">Local account</span></div>
       <p className="fixture-notice">Local test account. No payment method is charged.</p>
       {error && <p role="alert">{error}</p>}{notice && <p role="status">{notice}</p>}
       {goPending && <button className="text-button" disabled={busy} onClick={()=>void retryGoChange()}>Retry same change</button>}
-      <section className="account-section">
-        <h2>{platform.player.displayName}</h2>
+      <section className="account-section rally-account-summary">
+        <div className="rally-profile-heading"><span className="rally-profile-avatar" aria-hidden="true">{platform.player.displayName.charAt(0).toUpperCase()}</span><h2>{platform.player.displayName}</h2></div>
         <label className="local-account-id">Local account ID<input readOnly value={platform.player.id} aria-label="Local account ID" onFocus={e=>e.currentTarget.select()} /></label>
       </section>
+      <CoachAccountSection playerId={platform.player.id} revision={platform.accessGeneration}/>
       <section className="account-section"><h2>Practice access</h2>
-        {platform.availability.map(item=><article key={`${item.target.gameId}:${item.target.variantId}`}>
+        <div className="rally-access-list">{platform.availability.map(item=><article key={`${item.target.gameId}:${item.target.variantId}`}>
           <h3>{targetLabel(item.target)}</h3>
           <p>Play: {item.play.allowed ? 'Available' : accessReason(item.play.reason)}</p>
-          <p>Coaching: {item.coach.allowed ? item.coach.remaining === null ? 'Included' : `${item.coach.remaining} hands remaining` : accessReason(item.coach.reason)}</p>
-        </article>)}
+          <p>Saved hand coaching: {item.coach.allowed ? item.coach.remaining === null ? 'Included' : `${item.coach.remaining} hands remaining` : accessReason(item.coach.reason)}</p>
+        </article>)}</div>
       </section>
       <section className="account-section"><h2>Available offers</h2>
         {!platform.offers?.offers.some(offer=>offer.enabled) && <p>No offers are available.</p>}
@@ -180,16 +226,9 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
     </main>
   );
   return (
-    <main className="account-page">
-      <header>
-        <a className="wordmark" href="#">
-          CardFord
-        </a>
-        <a className="text-button" href="#">
-          Return to table
-        </a>
-      </header>
-      <h1>Account and subscription</h1>
+    <main className="account-page rally-page">
+      <AccountHeader />
+      <div className="rally-page-title"><h1>Account.</h1>{account?.authMode === 'local-test' && <span className="rally-page-tag">Local account</span>}</div>
       {error && <p role="alert">{error}</p>}
       {notice && <p role="status">{notice}</p>}
       {goPending && <button className="text-button" disabled={busy} onClick={()=>void retryGoChange()}>Retry same change</button>}
@@ -197,7 +236,7 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
         <>
           <p role="status">Opening your account…</p>
           {error && (
-            <button className="text-button" onClick={() => void reload()}>
+            <button className="text-button" onClick={() => void reload(true).catch((e) => setError(e instanceof Error ? e.message : 'Account unavailable.'))}>
               Reconnect
             </button>
           )}
@@ -209,8 +248,8 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
               Local test account. Plan changes use fixtures and do not charge a payment method.
             </p>
           )}
-          <section className="account-section">
-            <h2>{account.player.displayName}</h2>
+          <section className="account-section rally-account-summary">
+            <div className="rally-profile-heading"><span className="rally-profile-avatar" aria-hidden="true">{account.player.displayName.charAt(0).toUpperCase()}</span><h2>{account.player.displayName}</h2></div>
             {account.authMode === 'local-test' && (
               <label className="local-account-id">
                 Local account ID
@@ -228,8 +267,8 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
             <p>Status: {account.subscription.status}</p>
             <p>
               {account.access.remainingHands === null
-                ? 'Coaching hands included'
-                : `${account.access.remainingHands} coached hands remaining`}
+                ? 'Legacy hand coaching included'
+                : `${account.access.remainingHands} legacy coached hands remaining`}
             </p>
             {account.access.resetsAt && (
               <p>Allowance resets {new Date(account.access.resetsAt).toLocaleString()}</p>
@@ -254,8 +293,9 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
               </button>
             )}
           </section>
-          <section className="account-section">
-            <h2>Plans</h2>
+          {backend==='go' && <CoachAccountSection playerId={account.player.id} revision={platform?.accessGeneration ?? account.subscription.status}/>}
+          <details className="account-section rally-plan-section">
+            <summary>Plans</summary>
             <p>Prices have not been published. This local build cannot take payment.</p>
             <div className="plan-options">
               {account.offers.map((offer) => (
@@ -272,7 +312,7 @@ export function AccountPage({ onRefresh }: { onRefresh: () => Promise<unknown> }
                 </article>
               ))}
             </div>
-          </section>
+          </details>
           {preview && (
             <section className="account-section" aria-label="Confirm subscription change">
               <h2 ref={confirmation} tabIndex={-1}>

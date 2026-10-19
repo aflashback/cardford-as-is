@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/decision.json",
+  "title": "decision",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "coach-lab-decision-1.0.0"
+    },
+    "decisionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "familyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "episodeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "actor": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "executionStatus": {
+      "enum": [
+        "prepared",
+        "committed",
+        "failed"
+      ]
+    },
+    "forced": {
+      "type": "boolean"
+    },
+    "policyPin": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "seat": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "seat",
+        "id",
+        "version"
+      ]
+    },
+    "inputDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "actorPacket": {
+      "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/RegisteredActorPacket"
+    },
+    "legalCandidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {}
+        },
+        "required": [
+          "id",
+          "action"
+        ]
+      },
+      "minItems": 1
+    },
+    "selectedCandidateId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "registeredAnalysis": {},
+    "originalAnalysis": {},
+    "originalAdvice": {},
+    "coachMessage": {
+      "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/CoachMessage"
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "passed",
+            "failed",
+            "partially-checkable"
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type":"object","additionalProperties":false,
+            "properties":{"id":{"type":"string","minLength":1},"status":{"enum":["passed","failed","pending","partially-checkable"]},"detail":{"type":"string"}},
+            "required":["id","status","detail"]
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "status",
+        "checks"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "decisionId",
+    "familyId",
+    "episodeId",
+    "revision",
+    "actor",
+    "phase",
+    "executionStatus",
+    "forced",
+    "policyPin",
+    "inputDigest",
+    "actorPacket",
+    "legalCandidates",
+    "selectedCandidateId",
+    "registeredAnalysis",
+    "originalAnalysis",
+    "originalAdvice",
+    "audit"
+  ]
+}

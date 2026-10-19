@@ -1,10 +1,22 @@
 # Card Coach — multi-game software specification pack
 
+**Current architecture:** [CardFord current-state review](docs/architecture/current-state/README.md) documents the implemented components, local setup, state ownership, decisions and runtime sequences, with source links and evidence boundaries.
+
 **Version:** 0.2.0 · **Prepared:** 26 September 2026 · **Status:** proposed implementation baseline
+
+**Offline Trix collection operation (11 October 2026):** The authorized campaign targets all 160 planned requests, with detailed reviews after every game and selection deferred. Its continuation stopped after one completed game and 26/52 accepted decision reviews; game reviews remain zero. A stopped, interrupted MCP startup timeout is now eligible for narrowly audited recovery through `recover-campaign`, then the zero-call `campaign-recovery-check`, then `campaign`, which uses the latest authorized immutable processor. Recovery admission is pending; full collection is incomplete. Invocation and attempt limits remain unchanged, and operator pauses remain effective. Use the [collector runbook](planning/implementation/coach-lab/trix-scenario-collection/README.md) and [evidence ledger](qa/evaluation/coach-lab/trix-scenario-collection.md).
 
 **Current scope note (29 September 2026):** This original specification records the first partnership-only plan. Later owner-approved decisions and the local build added Hearts Solo and Spades Solo alongside Spades Partners. For current variant support, use the updated [multi-game contract](docs/12-multi-game-extensibility.md), [three-mode rule profiles](planning/02-games-and-decisions.md) and [Spades reasoning contract](planning/12-spades-reasoning.md). The original release and Jev-first statements below remain historical context.
 
 **Implementation update (6 October 2026):** The repository now contains the app. [Local instructions](LOCAL-README.md) describe the explicit native Windows Go/PostgreSQL backend with the preserved React client and the retained Node/V1 reference. [M04E evidence and activation gates](qa/implementation/multi-game/m04e/status.md) identify verified behavior and remaining history/database work. The v0.2 stack and proposed implementation statements below describe the original specification.
+
+**Trix implementation update (7 October 2026):** The native Go/React app now installs seven modes: Hearts Solo, Spades Solo/Partners, and Trix Basic Solo/Partners plus Complex Solo/Partners. The local Trix functional baseline is implemented and verified across all four variants, including full kingdom/request sessions, deterministic bots, saved advice/review and private replay. Basic session completion was verified across restart. Use the [Trix acceptance status](qa/implementation/trix/status.md) and [delivery ledger](planning/implementation/trix/delivery.md) for exact evidence, resource limits and deferred strategy work. The retained Node reference serves the three Hearts/Spades modes.
+
+**Shared table update (8 October 2026):** Trix reuses the Spades/Hearts card-table components and gestures, with vertical Jack lanes, automatic forced passes, four-card collection holds and minimal doubling announcements. The [design guide](docs/14-card-table-design-guide.md) records the reuse contract; [UI acceptance and Chrome profiling](qa/implementation/trix/shared-table-ui.md) record this follow-up. `npm run dev:go` runs the watched frontend at 4174 with the native Go API on 4176.
+
+**Trix Jacks update (8 October 2026):** The Jack layout request is now named Trix Jacks. New Basic/Complex Partners games automatically announce twos when both teams hold them: face-down counts first, then exact cards after four turns including passes. Normal play and hand ownership stay unchanged. Existing saved games retain their original rules. [Focused acceptance and repeatable checks](qa/implementation/trix/twos-announcement.md).
+
+`npm run test:trix` runs the bounded core checks by default; the final core run passed in 77.7 seconds. Run the Basic and Complex browser families separately using the [local verification instructions](LOCAL-README.md). Both Complex browser sessions passed, and both original Basic games passed completion/reload/original-review checks after restart. The combined four-variant campaign failed its resource gate; uninterrupted Basic browser completion and strategy strength remain unproven.
 
 ## The decision
 

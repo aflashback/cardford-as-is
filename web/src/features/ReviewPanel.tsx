@@ -8,6 +8,8 @@ import type {
   ReviewView,
   SessionView,
   TrialRequest,
+  ReviewFrame,
+  LegacyReviewFrame,
 } from '../../shared/contracts';
 import { api, ApiFailure, definiteFailure } from '../api/client';
 import { cardLabel } from '../api/display';
@@ -17,6 +19,7 @@ import type { PlatformReviewAccessView } from '../../shared/local-service.contra
 import { backend } from '../platform/web';
 import { clearGoPending, executeGo, readGoPending, restoreGoPending, storeGoPending, type GoPending } from '../api/goPendingCommands';
 import { goTrial, loadOriginalAdvice, originalAdviceMode } from '../api/goReview';
+import { onAuthInvalidated } from '../api/authLifecycle';
 import {
   clearPending,
   clearPendingCommands,
@@ -26,6 +29,10 @@ import {
   storePending,
   type StoredPending,
 } from '../api/pendingCommands';
+
+function legacyGame(frame:ReviewFrame|undefined) {
+  return frame && !('gameId' in frame.game) ? frame.game : undefined;
+}
 
 export function ReviewPanel({
   session,
@@ -58,9 +65,10 @@ export function ReviewPanel({
   const invalidated = useRef(false);
   const isCurrent = (requestGeneration: number) =>
     requestGeneration === generation.current && !invalidated.current;
-  function invalidateOwner(playerId: string) {
+  function invalidateOwner(playerId: string, authEnded = false) {
     generation.current++;
     invalidated.current = true;
+    reviewAbort.current.abort();
     clearPendingCommands();
     setIndex(null);
     setReview(null);
@@ -75,13 +83,16 @@ export function ReviewPanel({
     setHand(null);
     setStep(0);
     trialRequest.current = null;
-    owner.current = playerId;
+    owner.current = authEnded ? null : playerId;
     setBusy(false);
-    setError('The signed-in player changed. Reopen review before continuing.');
+    setError(authEnded
+      ? 'The signed-in session ended. Reconnect before continuing.'
+      : 'The signed-in player changed. Reopen review before continuing.');
     onOwnerChanged?.(playerId);
   }
   useEffect(() => {
     reviewAbort.current = new AbortController();
+    const disconnectAuth = onAuthInvalidated(() => invalidateOwner('', true));
     const requestGeneration = generation.current;
     let active = true;
     void api(backend === 'go' ? '/api/platform/reviews' : '/api/session/reviews?scope=match', 'ReviewIndex')
@@ -116,6 +127,7 @@ export function ReviewPanel({
       });
     return () => {
       active = false;
+      disconnectAuth();
       reviewAbort.current.abort();
       generation.current++;
     };
@@ -147,6 +159,7 @@ export function ReviewPanel({
         if (goPending.path === '/api/platform/advice') {
           const result = await executeGo('review', goPending.path, 'PlatformAdviceView', await restoreGoPending(goPending), owner.current!, goPending.gameId);
           if (!isCurrent(requestGeneration)) return;
+          if ('gameId' in result.advice) throw new Error('This advice requires the Trix review display.');
           setAdvice(result.advice);
         } else {
           const result = await goTrial(goPending, true, reviewAbort.current.signal);
@@ -234,7 +247,7 @@ export function ReviewPanel({
       const result = await api(backend === 'go' ? `/api/platform/reviews/${encodeURIComponent(decisionId)}` : `/api/session/reviews/${encodeURIComponent(decisionId)}?step=0`, 'ReviewView');
       if (!isCurrent(requestGeneration)) return;
       setReview(result);
-      const game = result.frames[0]?.game;
+      const game = legacyGame(result.frames[0]);
       if (game) {
         if (backend === 'go') {
           const access = await api(`/api/platform/reviews/${encodeURIComponent(decisionId)}/access`, 'PlatformReviewAccessView');
@@ -286,12 +299,13 @@ export function ReviewPanel({
           return executeGo('review', '/api/platform/advice', 'PlatformAdviceView', request, owner.current!, request.gameId);
         });
         if (!isCurrent(requestGeneration)) return;
+        if ('gameId' in result.advice) throw new Error('This advice requires the Trix review display.');
         setAdvice(result.advice); setPendingAdvice(false);
         const access = await api(`/api/platform/reviews/${encodeURIComponent(review.decisionId)}/access`, 'PlatformReviewAccessView');
         if (isCurrent(requestGeneration)) { setGoAccess(access); setSourceAccess({...sourceAccess, handUnlocked:access.unlocked}); }
         return;
       }
-      const source = review.frames[0]?.game;
+      const source = legacyGame(review.frames[0]);
       if (!source) throw new Error('Original decision is unavailable.');
       const command = envelope();
       const result = await api('/api/coaching/hand-unlocks', 'HandUnlockView', {
@@ -337,7 +351,7 @@ export function ReviewPanel({
           if (!isCurrent(requestGeneration)) return;
           setSourceAccess({...sourceAccess, handUnlocked:issued.unlocked});
         }
-        const source = review.frames[0]?.game;
+        const source = legacyGame(review.frames[0]);
         if (!source) throw new Error('Original decision is unavailable.');
         const request = {...envelope(), decisionId:review.decisionId, trialId:crypto.randomUUID(), alternativeCandidateId:reviewCandidate(source, card)};
         const stored = await storeGoPending('review', `/api/platform/reviews/${encodeURIComponent(review.decisionId)}/trials`, request, playerId, request.gameId);
@@ -348,7 +362,7 @@ export function ReviewPanel({
         return;
       }
       if (!sourceAccess.handUnlocked) {
-        const source = review.frames[0]?.game;
+        const source = legacyGame(review.frames[0]);
         if (!source) throw new Error('Original decision is unavailable.');
         const command = envelope();
         const result = await api('/api/coaching/hand-unlocks', 'HandUnlockView', {
@@ -399,18 +413,18 @@ export function ReviewPanel({
       if (isCurrent(requestGeneration)) setBusy(false);
     }
   }
-  const frames = trial?.frames ?? review?.frames ?? [];
+  const frames = (trial?.frames ?? review?.frames ?? []).filter((frame):frame is LegacyReviewFrame=>!('gameId' in frame.game));
   const frame = frames[Math.min(step, Math.max(0, frames.length - 1))];
   const hands = [...new Set(index?.cases.map((item) => item.handNumber) ?? [])];
   return (
-    <div className="review-panel">
+    <div className="review-panel rally-review">
       {error && <p role="alert">{error}</p>}
       {(pendingTrial || goPending) && (
         <button className="text-button" disabled={busy} onClick={() => void retryTrial()}>
           {goPending?.path === '/api/platform/advice' ? 'Retry same advice' : 'Retry same continuation'}
         </button>
       )}
-      <label>
+      <label className="rally-review-filter">
         Hand{' '}
         <select value={hand ?? ''} onChange={(e) => setHand(e.target.value ? Number(e.target.value) : null)}>
           <option value="">All hands</option>
@@ -431,7 +445,8 @@ export function ReviewPanel({
               disabled={busy}
               onClick={() => void open(item.decisionId)}
             >
-              Hand {item.handNumber}: {item.summary} {item.assisted ? '· help issued' : ''}
+              <span><strong>Hand {item.handNumber}</strong><small>{item.summary}</small></span>
+              {item.assisted && <span className="rally-review-help">Help issued</span>}
             </button>
           ))}
         {index?.cases.length === 0 && <p>No plays to review yet.</p>}

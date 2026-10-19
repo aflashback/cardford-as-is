@@ -1,0 +1,65 @@
+{
+  "name": "trix-complex-partners-old-se-paused-final",
+  "at": "2026-10-16T02:08:30.467Z",
+  "mode": "Trix Complex Partners",
+  "build": "index-Ctizdknu.js",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 277.37549591064453,
+        "clientHeight": 233,
+        "controls": [
+          {
+            "bottom": 185.732120513916,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 480.9980239868164,
+            "width": 406.45111083984375,
+            "x": 74.54691314697266,
+            "y": 141.7365264892578
+          },
+          {
+            "bottom": 264.7039985656738,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 273.77623748779297,
+            "width": 199.2293243408203,
+            "x": 74.54691314697266,
+            "y": 220.7084045410156
+          },
+          {
+            "bottom": 264.7039985656738,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 480.99803161621094,
+            "width": 199.2293243408203,
+            "x": 281.7687072753906,
+            "y": 220.7084045410156
+          }
+        ],
+        "height": 234.30088806152344,
+        "name": "Game paused",
+        "right": 513.8677024841309,
+        "scrollHeight": 233,
+        "width": 459.9953308105469,
+        "x": 53.872371673583984,
+        "y": 43.074607849121094
+      }
+    ],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

@@ -1,0 +1,146 @@
+/* CR-UX-008 / Rally R09. Dialogs are siblings of the table shell, so use the
+   appearance root rather than .rally-app ancestry. Card faces remain untouched. */
+html[data-theme] .modal-shade {
+  --dialog-edge: 24px;
+  z-index: 90;
+  padding: max(var(--dialog-edge),env(safe-area-inset-top)) max(var(--dialog-edge),env(safe-area-inset-right)) max(var(--dialog-edge),env(safe-area-inset-bottom)) max(var(--dialog-edge),env(safe-area-inset-left));
+  background: #141912a8;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+html[data-theme] .dialog {
+  width: 460px;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  font-size: 14px;
+  line-height: 1.5;
+}
+html[data-theme] .dialog-wide { width: 800px; }
+html[data-theme] .dialog-compact { width: 520px; }
+.dialog .dialog-header { position: sticky; top: 0; z-index: 5; min-height: 60px; padding: 8px 0; margin-top: -8px; margin-bottom: 16px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.dialog .dialog-header h2 { color: var(--ink); font: 750 22px/1.2 'Manrope Variable',sans-serif; letter-spacing: -.04em; }
+.dialog .dialog-header .icon-button { width: 44px; height: 44px; min-width: 44px; min-height: 44px; margin: 0; color: var(--ink); border-radius: 8px; }
+.dialog :is(button,select,input:not([type=checkbox]),textarea,summary),.new-game-wizard :is(button,select) { min-height: 44px; }
+.dialog :is(button,a,select,input,textarea,summary):focus-visible,.new-game-wizard :is(button,a,select,input,h1):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.dialog :is(button,select,input,textarea),.new-game-wizard :is(button,select) { font-family: inherit; }
+.dialog button:disabled,.new-game-wizard button:disabled { opacity: .45; cursor: default; }
+.dialog :is(.primary-button,.text-button,.subtle-button),.new-game-wizard :is(.primary-button,.text-button) { min-height: 44px; font-size: 14px; font-weight: 700; padding: 10px 14px; border-radius: 8px; }
+.dialog .primary-button,.new-game-wizard .primary-button { color: var(--accent-ink); background: var(--accent); }
+.dialog .primary-button:disabled,.new-game-wizard .primary-button:disabled { color: var(--muted); background: var(--tint); opacity: .65; }
+.dialog :is(.text-button,.subtle-button,.icon-button,.rally-menu>a,.rally-menu>button) { color: var(--ink); background: transparent; }
+.dialog :is(.text-button,.subtle-button,.icon-button,.rally-menu>a,.rally-menu>button):hover,.new-game-wizard .icon-button:hover { background: var(--tint); }
+.dialog :is(select,input:not([type=checkbox]),textarea),.new-game-wizard select { max-width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: var(--bg); font-size: 14px; }
+.dialog :is(.dialog-intro,.settings-note,.small-copy,.pause-copy,.recap-details,.review-navigation),.new-game-wizard :is(.wizard-progress,.wizard-lead,.scenario-picker small) { color: var(--muted); font-size: 13px; }
+.dialog :is(h3,.setting-option b) { color: var(--ink); }
+.dialog :is([role=alert],[role=status]) { overflow-wrap: anywhere; }
+.dialog [role=alert] { padding: 10px 12px; background: var(--tint); border-inline-start: 3px solid var(--accent); }
+.dialog .dialog-bottom { flex-wrap: wrap; gap: 12px; margin-top: 20px; padding-top: 16px; border-color: var(--line); }
+.dialog .dialog-bottom>p { color: var(--muted); font-size: 12px; }
+.dialog .settings-label { margin: 20px 0 10px; font-size: 14px; }
+.dialog .setting-options { gap: 8px; }
+.dialog .setting-option { min-height: 56px; gap: 12px; padding: 12px; border-color: var(--line); background: var(--bg); color: var(--ink); }
+.dialog .setting-option.chosen { border-color: var(--accent); background: var(--tint); }
+.dialog .setting-option b { font-size: 14px; }
+.dialog .setting-option small { color: var(--muted); font-size: 12px; }
+.dialog .radio-mark { border-color: var(--line); flex: none; }
+.dialog .setting-option.chosen .radio-mark { border-color: var(--accent); }
+.dialog .radio-mark>span { background: var(--accent); }
+.dialog .pause-art { height: 80px; color: var(--accent); }
+.dialog .pause-content { display: grid; gap: 16px; padding: 8px 0; }
+.dialog .recap-layout { grid-template-columns: minmax(145px,1fr) minmax(0,1.7fr); gap: 24px; padding: 12px 0; }
+.dialog .recap-score { background: var(--tint); color: var(--muted); border-radius: 12px; padding: 24px 16px; }
+.dialog .recap-score strong { color: var(--ink); font-size: 56px; line-height: 1; font-variant-numeric: tabular-nums; }
+.dialog .recap-score>span:last-child,.dialog .recap-reflection :is(p,small),.dialog .decision-summary span { color: var(--muted); font-size: 12px; }
+.dialog .recap-standings { width: 100%; color: var(--ink); }
+.dialog .recap-reflection h3 { font-size: 18px; }
+.dialog .decision-summary { gap: 24px; }
+.dialog .recap-details>summary { cursor: pointer; align-content: center; color: var(--ink); }
+.dialog .recap-details :is(p,ol) { margin: 8px 0 12px; }
+
+/* Real Trix request totals/history and setup share the dialog's shell palette. */
+.dialog .trix-coach-setting { margin: 16px 0; font-size: 14px; font-weight: 650; }
+.dialog .trix-coach-setting select { flex: 1; max-width: 250px; }
+.dialog .trix-catalog { gap: 8px; margin-top: 16px; }
+.dialog .trix-catalog button { min-height: 76px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink); }
+.dialog .trix-catalog button:not(:disabled):hover { background: var(--tint); border-color: var(--accent); }
+.dialog .trix-catalog strong { font: 750 18px/1.2 'Manrope Variable',sans-serif; }
+.dialog .trix-catalog span { font-size: 12px; }
+.dialog :is(.trix-score-sheet table,.trix-breakdown,.rally-score-sheet) { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--ink); }
+.dialog :is(.trix-score-sheet,.trix-round-history) { min-width: 0; }
+.dialog :is(.trix-score-sheet td,.trix-score-sheet th,.trix-breakdown td,.trix-breakdown th,.rally-score-sheet td,.rally-score-sheet th) { padding: 12px 8px; border-color: var(--line); }
+.dialog .trix-your-score { background: var(--tint); }
+.dialog .trix-round-list { gap: 8px; margin-bottom: 16px; }
+.dialog .trix-round-list .text-button { border: 1px solid var(--line); text-align: left; }
+.dialog .trix-round-list [aria-pressed=true] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Setup remains a separate page with seven compact game choices. */
+html[data-theme] .new-game-wizard { background: var(--bg); color: var(--ink); z-index: 90; overscroll-behavior: contain; }
+.new-game-wizard .wizard-header { position: sticky; top: 0; z-index: 2; min-height: 52px; background: var(--bg); border-bottom: 1px solid var(--line); padding-bottom: 8px; font-size: 18px; }
+.new-game-wizard .wizard-header .icon-button { min-width: 44px; width: 44px; height: 44px; color: var(--ink); border-radius: 8px; }
+.new-game-wizard .wizard-content { margin-top: clamp(20px,4vh,40px); }
+.new-game-wizard .wizard-progress { margin-bottom: 8px; }
+.new-game-wizard .wizard-content h1 { font-size: clamp(28px,4vw,44px); letter-spacing: -.04em; }
+.new-game-wizard .wizard-lead { margin: 10px 0 20px; }
+.new-game-wizard .wizard-speed-options { gap: 8px; }
+.new-game-wizard .wizard-speed-options button { min-width: 96px; min-height: 60px; padding: 8px 18px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); color: var(--ink); font-size: 21px; }
+.new-game-wizard .wizard-speed-options button.chosen { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.new-game-wizard .game-options { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.new-game-wizard .game-option { display: grid; grid-template-columns: 48px minmax(0,1fr); grid-template-rows: auto auto; gap: 4px 12px; align-content: center; min-height: 96px; padding: 14px 28px 14px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); }
+.new-game-wizard .game-option:not(:disabled):hover { background: var(--tint); border-color: var(--accent); }
+.new-game-wizard .game-option:focus-visible { outline-color: var(--accent); }
+.new-game-wizard .game-art { grid-row: 1 / span 2; grid-column: 1; align-self: center; height: 48px; width: 48px; margin: 0; border-radius: 8px; background: var(--felt); color: var(--ink); }
+.new-game-wizard .game-art>span { width: auto; height: auto; border: 0; background: transparent; box-shadow: none; transform: none; font: 30px/1 'Manrope Variable',sans-serif; }
+.new-game-wizard .game-art-spades-partners span:last-child { margin-left: -12px; margin-top: 7px; transform: none; font-size: 22px; }
+.new-game-wizard .game-art-hearts { color: var(--accent); }
+.new-game-wizard .game-option h3 { align-self: end; margin: 0; font-size: 17px; }
+.new-game-wizard .mode-label { grid-column: 2; justify-self: start; padding: 0; margin: 0; color: var(--muted); background: transparent; font-size: 12px; }
+.new-game-wizard .game-option small { grid-column: 2; color: var(--muted); font-size: 11px; }
+.new-game-wizard .option-check { right: 9px; bottom: 12px; color: var(--accent); }
+.new-game-wizard .wizard-next { margin-top: 24px; }
+.new-game-wizard .wizard-back { border-color: var(--line); color: var(--ink); background: transparent; }
+.new-game-wizard .wizard-back:hover { background: var(--tint); }
+
+@media (max-width:760px) {
+  .new-game-wizard .game-options { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:460px) {
+  html[data-theme] .modal-shade { --dialog-edge: 12px; }
+  html[data-theme] .dialog { padding: 16px; }
+  .dialog .recap-layout { grid-template-columns: 1fr; gap: 16px; }
+  .dialog .recap-score { padding: 18px; }
+  .new-game-wizard .game-options { grid-template-columns: 1fr; }
+}
+@media (max-height:520px) and (orientation:landscape) {
+  html[data-theme] .modal-shade { --dialog-edge: 8px; }
+  html[data-theme] .dialog { padding: 12px 20px; }
+  .dialog .dialog-header { min-height: 52px; padding: 4px 0; margin: -4px 0 10px; }
+  .dialog .dialog-header h2 { font-size: 20px; }
+  .dialog .dialog-bottom { margin-top: 12px; padding-top: 10px; }
+  .dialog .pause-art { height: 44px; }
+  .dialog .recap-layout { gap: 16px; }
+  .dialog .recap-score { padding: 16px 12px; }
+  .dialog .recap-score strong { font-size: 42px; }
+  .dialog .setting-option { padding: 8px 12px; }
+  .dialog .trix-catalog button { min-height: 64px; padding: 10px 12px; }
+  .new-game-wizard .wizard-header { min-height: 48px; }
+  .new-game-wizard .wizard-content { margin-top: 12px; }
+  .new-game-wizard .wizard-content h1 { font-size: 27px; }
+  .new-game-wizard .wizard-lead { margin: 6px 0 12px; }
+  .new-game-wizard .wizard-speed-options button { min-height: 48px; }
+  .new-game-wizard .wizard-next { margin-top: 16px; }
+  .new-game-wizard .game-options { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .new-game-wizard .game-option { min-height: 78px; grid-template-columns: 36px minmax(0,1fr); gap: 3px 8px; padding: 10px 21px 10px 10px; }
+  .new-game-wizard .game-art { width: 36px; height: 42px; }
+  .new-game-wizard .game-art>span { font-size: 27px; }
+  .new-game-wizard .game-option h3 { font-size: 16px; }
+}

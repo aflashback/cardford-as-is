@@ -1,0 +1,5092 @@
+{
+  "purpose": "resumed-after-time-budget",
+  "mode": "trix-basic-partners",
+  "gameId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4",
+  "sourceOriginalRun": ".local/trix-checks/2026-10-08T02-44-06-129Z-all",
+  "correctiveProbeAfterSelectedReviewFix": true,
+  "priorHelperAttempts": [
+    {
+      "elapsedMs": 142145.6935,
+      "outcome": "helper-signedzero-assertion"
+    },
+    {
+      "elapsedMs": 38099.9645,
+      "outcome": "earliest-review-cue-button-timeout"
+    },
+    {
+      "elapsedMs": 8517.1511,
+      "outcome": "startup-migrations-commit-deadline"
+    }
+  ],
+  "originalCompletedDeals": 19,
+  "deals": 20,
+  "accepted": 0,
+  "elapsedMs": 16075,
+  "terminal": {
+    "id": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4",
+    "gameId": "trix",
+    "variantId": "basic-partners",
+    "seat": 0,
+    "phase": "session-complete",
+    "turn": null,
+    "kingdom": 4,
+    "dealNumber": 20,
+    "owner": 1,
+    "request": "lutoosh",
+    "remainingRequests": [],
+    "hand": [],
+    "handCounts": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "trick": [],
+    "tricks": [
+      {
+        "number": 1,
+        "leader": 1,
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "D2"
+          },
+          {
+            "seat": 0,
+            "card": "D5"
+          },
+          {
+            "seat": 3,
+            "card": "D10"
+          },
+          {
+            "seat": 2,
+            "card": "D9"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "leader": 3,
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 3,
+            "card": "H2"
+          },
+          {
+            "seat": 2,
+            "card": "H3"
+          },
+          {
+            "seat": 1,
+            "card": "H9"
+          },
+          {
+            "seat": 0,
+            "card": "H4"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "leader": 1,
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "S3"
+          },
+          {
+            "seat": 0,
+            "card": "S6"
+          },
+          {
+            "seat": 3,
+            "card": "S5"
+          },
+          {
+            "seat": 2,
+            "card": "S4"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "leader": 0,
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "C8"
+          },
+          {
+            "seat": 3,
+            "card": "C6"
+          },
+          {
+            "seat": 2,
+            "card": "C7"
+          },
+          {
+            "seat": 1,
+            "card": "C5"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "leader": 0,
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "CQ"
+          },
+          {
+            "seat": 3,
+            "card": "CJ"
+          },
+          {
+            "seat": 2,
+            "card": "C3"
+          },
+          {
+            "seat": 1,
+            "card": "CA"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "leader": 1,
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "D3"
+          },
+          {
+            "seat": 0,
+            "card": "DJ"
+          },
+          {
+            "seat": 3,
+            "card": "HA"
+          },
+          {
+            "seat": 2,
+            "card": "D7"
+          }
+        ]
+      },
+      {
+        "number": 7,
+        "leader": 0,
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DK"
+          },
+          {
+            "seat": 3,
+            "card": "CK"
+          },
+          {
+            "seat": 2,
+            "card": "DQ"
+          },
+          {
+            "seat": 1,
+            "card": "D8"
+          }
+        ]
+      },
+      {
+        "number": 8,
+        "leader": 0,
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "DA"
+          },
+          {
+            "seat": 3,
+            "card": "SQ"
+          },
+          {
+            "seat": 2,
+            "card": "D4"
+          },
+          {
+            "seat": 1,
+            "card": "D6"
+          }
+        ]
+      },
+      {
+        "number": 9,
+        "leader": 0,
+        "winner": 1,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H6"
+          },
+          {
+            "seat": 3,
+            "card": "H5"
+          },
+          {
+            "seat": 2,
+            "card": "H8"
+          },
+          {
+            "seat": 1,
+            "card": "HJ"
+          }
+        ]
+      },
+      {
+        "number": 10,
+        "leader": 1,
+        "winner": 0,
+        "plays": [
+          {
+            "seat": 1,
+            "card": "S7"
+          },
+          {
+            "seat": 0,
+            "card": "S10"
+          },
+          {
+            "seat": 3,
+            "card": "S8"
+          },
+          {
+            "seat": 2,
+            "card": "S2"
+          }
+        ]
+      },
+      {
+        "number": 11,
+        "leader": 0,
+        "winner": 2,
+        "plays": [
+          {
+            "seat": 0,
+            "card": "H7"
+          },
+          {
+            "seat": 3,
+            "card": "C10"
+          },
+          {
+            "seat": 2,
+            "card": "H10"
+          },
+          {
+            "seat": 1,
+            "card": "SA"
+          }
+        ]
+      },
+      {
+        "number": 12,
+        "leader": 2,
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 2,
+            "card": "C2"
+          },
+          {
+            "seat": 1,
+            "card": "SK"
+          },
+          {
+            "seat": 0,
+            "card": "HQ"
+          },
+          {
+            "seat": 3,
+            "card": "C4"
+          }
+        ]
+      },
+      {
+        "number": 13,
+        "leader": 3,
+        "winner": 3,
+        "plays": [
+          {
+            "seat": 3,
+            "card": "C9"
+          },
+          {
+            "seat": 2,
+            "card": "SJ"
+          },
+          {
+            "seat": 1,
+            "card": "S9"
+          },
+          {
+            "seat": 0,
+            "card": "HK"
+          }
+        ]
+      }
+    ],
+    "declarations": [],
+    "board": [
+      {
+        "suit": "C",
+        "low": 0,
+        "high": 0
+      },
+      {
+        "suit": "D",
+        "low": 0,
+        "high": 0
+      },
+      {
+        "suit": "H",
+        "low": 0,
+        "high": 0
+      },
+      {
+        "suit": "S",
+        "low": 0,
+        "high": 0
+      }
+    ],
+    "finishOrder": [],
+    "passes": [],
+    "ledger": [
+      {
+        "dealNumber": 1,
+        "kingdom": 1,
+        "request": "king",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "king",
+        "card": "HK",
+        "delta": -75
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D2",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D3",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D4",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "DA",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D5",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D8",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D9",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D10",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D6",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "DJ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D7",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "DQ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 2,
+        "kingdom": 1,
+        "request": "diamonds",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "DK",
+        "delta": -10
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 2,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 3,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 5,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 11,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 3,
+        "kingdom": 1,
+        "request": "lutoosh",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 4,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "CQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 4,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 5,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "DQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 4,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 11,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "HQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 4,
+        "kingdom": 1,
+        "request": "queens",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "SQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 5,
+        "kingdom": 1,
+        "request": "trix",
+        "trick": 0,
+        "finish": 1,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "layout-finish",
+        "card": "S2",
+        "delta": 200
+      },
+      {
+        "dealNumber": 5,
+        "kingdom": 1,
+        "request": "trix",
+        "trick": 0,
+        "finish": 2,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "layout-finish",
+        "card": "H5",
+        "delta": 150
+      },
+      {
+        "dealNumber": 5,
+        "kingdom": 1,
+        "request": "trix",
+        "trick": 0,
+        "finish": 3,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "layout-finish",
+        "card": "H3",
+        "delta": 100
+      },
+      {
+        "dealNumber": 5,
+        "kingdom": 1,
+        "request": "trix",
+        "trick": 0,
+        "finish": 4,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "layout-finish",
+        "card": "H2",
+        "delta": 50
+      },
+      {
+        "dealNumber": 6,
+        "kingdom": 2,
+        "request": "king",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "king",
+        "card": "HK",
+        "delta": -75
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D2",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D4",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D6",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "DJ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D3",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "D7",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "DK",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "diamond",
+        "card": "DQ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D10",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D8",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D9",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "DA",
+        "delta": -10
+      },
+      {
+        "dealNumber": 7,
+        "kingdom": 2,
+        "request": "diamonds",
+        "trick": 11,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "diamond",
+        "card": "D5",
+        "delta": -10
+      },
+      {
+        "dealNumber": 8,
+        "kingdom": 2,
+        "request": "queens",
+        "trick": 5,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "CQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 8,
+        "kingdom": 2,
+        "request": "queens",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "DQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 8,
+        "kingdom": 2,
+        "request": "queens",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "SQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 8,
+        "kingdom": 2,
+        "request": "queens",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "HQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 2,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 3,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 5,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 11,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 9,
+        "kingdom": 2,
+        "request": "lutoosh",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 10,
+        "kingdom": 2,
+        "request": "trix",
+        "trick": 0,
+        "finish": 1,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "layout-finish",
+        "card": "D3",
+        "delta": 200
+      },
+      {
+        "dealNumber": 10,
+        "kingdom": 2,
+        "request": "trix",
+        "trick": 0,
+        "finish": 2,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "layout-finish",
+        "card": "S5",
+        "delta": 150
+      },
+      {
+        "dealNumber": 10,
+        "kingdom": 2,
+        "request": "trix",
+        "trick": 0,
+        "finish": 3,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "layout-finish",
+        "card": "S3",
+        "delta": 100
+      },
+      {
+        "dealNumber": 10,
+        "kingdom": 2,
+        "request": "trix",
+        "trick": 0,
+        "finish": 4,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "layout-finish",
+        "card": "S2",
+        "delta": 50
+      },
+      {
+        "dealNumber": 11,
+        "kingdom": 3,
+        "request": "king",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "king",
+        "card": "HK",
+        "delta": -75
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D2",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D5",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D4",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D7",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "DA",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D10",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D8",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D9",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "DJ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D3",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "D6",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "DK",
+        "delta": -10
+      },
+      {
+        "dealNumber": 12,
+        "kingdom": 3,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "diamond",
+        "card": "DQ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 13,
+        "kingdom": 3,
+        "request": "queens",
+        "trick": 3,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "queen",
+        "card": "SQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 13,
+        "kingdom": 3,
+        "request": "queens",
+        "trick": 5,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "CQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 13,
+        "kingdom": 3,
+        "request": "queens",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "DQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 13,
+        "kingdom": 3,
+        "request": "queens",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "queen",
+        "card": "HQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 14,
+        "kingdom": 3,
+        "request": "trix",
+        "trick": 0,
+        "finish": 1,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "layout-finish",
+        "card": "SK",
+        "delta": 200
+      },
+      {
+        "dealNumber": 14,
+        "kingdom": 3,
+        "request": "trix",
+        "trick": 0,
+        "finish": 2,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "layout-finish",
+        "card": "SA",
+        "delta": 150
+      },
+      {
+        "dealNumber": 14,
+        "kingdom": 3,
+        "request": "trix",
+        "trick": 0,
+        "finish": 3,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "layout-finish",
+        "card": "S2",
+        "delta": 100
+      },
+      {
+        "dealNumber": 14,
+        "kingdom": 3,
+        "request": "trix",
+        "trick": 0,
+        "finish": 4,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "layout-finish",
+        "card": "H2",
+        "delta": 50
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 2,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 3,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 5,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 11,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 15,
+        "kingdom": 3,
+        "request": "lutoosh",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 16,
+        "kingdom": 4,
+        "request": "queens",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "queen",
+        "card": "CQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 16,
+        "kingdom": 4,
+        "request": "queens",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "queen",
+        "card": "DQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 16,
+        "kingdom": 4,
+        "request": "queens",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "queen",
+        "card": "HQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 16,
+        "kingdom": 4,
+        "request": "queens",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "queen",
+        "card": "SQ",
+        "delta": -25
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "D6",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "D3",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "D4",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "D5",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "diamond",
+        "card": "D10",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "diamond",
+        "card": "DA",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "diamond",
+        "card": "D9",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "diamond",
+        "card": "D7",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "D2",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "DJ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "D8",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "DQ",
+        "delta": -10
+      },
+      {
+        "dealNumber": 17,
+        "kingdom": 4,
+        "request": "diamonds",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "diamond",
+        "card": "DK",
+        "delta": -10
+      },
+      {
+        "dealNumber": 18,
+        "kingdom": 4,
+        "request": "king",
+        "trick": 11,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "king",
+        "card": "HK",
+        "delta": -75
+      },
+      {
+        "dealNumber": 19,
+        "kingdom": 4,
+        "request": "trix",
+        "trick": 0,
+        "finish": 1,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "layout-finish",
+        "card": "H2",
+        "delta": 200
+      },
+      {
+        "dealNumber": 19,
+        "kingdom": 4,
+        "request": "trix",
+        "trick": 0,
+        "finish": 2,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "layout-finish",
+        "card": "SA",
+        "delta": 150
+      },
+      {
+        "dealNumber": 19,
+        "kingdom": 4,
+        "request": "trix",
+        "trick": 0,
+        "finish": 3,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "layout-finish",
+        "card": "S3",
+        "delta": 100
+      },
+      {
+        "dealNumber": 19,
+        "kingdom": 4,
+        "request": "trix",
+        "trick": 0,
+        "finish": 4,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "layout-finish",
+        "card": "S2",
+        "delta": 50
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 1,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 2,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 3,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 4,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 5,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 6,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 7,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 8,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 9,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 1
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 10,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 0
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 11,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 2
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 12,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "trick",
+        "delta": -15
+      },
+      {
+        "dealNumber": 20,
+        "kingdom": 4,
+        "request": "lutoosh",
+        "trick": 13,
+        "finish": 0,
+        "recipient": {
+          "kind": "seat",
+          "seat": 3
+        },
+        "component": "trick",
+        "delta": -15
+      }
+    ],
+    "withheldBonuses": [],
+    "lastExternalLeader": [
+      {
+        "seat": 1,
+        "trick": 10
+      },
+      {
+        "seat": 0,
+        "trick": 9
+      },
+      {
+        "seat": 0,
+        "trick": 11
+      },
+      {
+        "seat": 2,
+        "trick": 12
+      }
+    ],
+    "totals": [
+      {
+        "id": "NS",
+        "seats": [
+          0,
+          2
+        ],
+        "total": -235
+      },
+      {
+        "id": "EW",
+        "seats": [
+          1,
+          3
+        ],
+        "total": 235
+      }
+    ],
+    "requestTotals": [
+      {
+        "id": "NS",
+        "seats": [
+          0,
+          2
+        ],
+        "total": -105
+      },
+      {
+        "id": "EW",
+        "seats": [
+          1,
+          3
+        ],
+        "total": -90
+      }
+    ],
+    "kingdomTotals": [
+      {
+        "id": "NS",
+        "seats": [
+          0,
+          2
+        ],
+        "total": 5
+      },
+      {
+        "id": "EW",
+        "seats": [
+          1,
+          3
+        ],
+        "total": -5
+      }
+    ],
+    "winners": [
+      "EW"
+    ]
+  },
+  "completed": [
+    {
+      "deal": 1,
+      "kingdom": 1,
+      "owner": 0,
+      "request": "king",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 0
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -75
+        }
+      ]
+    },
+    {
+      "deal": 2,
+      "kingdom": 1,
+      "owner": 0,
+      "request": "diamonds",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -20
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -110
+        }
+      ]
+    },
+    {
+      "deal": 3,
+      "kingdom": 1,
+      "owner": 0,
+      "request": "lutoosh",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -105
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -90
+        }
+      ]
+    },
+    {
+      "deal": 4,
+      "kingdom": 1,
+      "owner": 0,
+      "request": "queens",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -100
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 0
+        }
+      ]
+    },
+    {
+      "deal": 5,
+      "kingdom": 1,
+      "owner": 0,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 250
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 250
+        }
+      ]
+    },
+    {
+      "deal": 6,
+      "kingdom": 2,
+      "owner": 3,
+      "request": "king",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 0
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -75
+        }
+      ]
+    },
+    {
+      "deal": 7,
+      "kingdom": 2,
+      "owner": 3,
+      "request": "diamonds",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -90
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -40
+        }
+      ]
+    },
+    {
+      "deal": 8,
+      "kingdom": 2,
+      "owner": 3,
+      "request": "queens",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -100
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 0
+        }
+      ]
+    },
+    {
+      "deal": 9,
+      "kingdom": 2,
+      "owner": 3,
+      "request": "lutoosh",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -120
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -75
+        }
+      ]
+    },
+    {
+      "deal": 10,
+      "kingdom": 2,
+      "owner": 3,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 200
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 300
+        }
+      ]
+    },
+    {
+      "deal": 11,
+      "kingdom": 3,
+      "owner": 2,
+      "request": "king",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -75
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 0
+        }
+      ]
+    },
+    {
+      "deal": 12,
+      "kingdom": 3,
+      "owner": 2,
+      "request": "diamonds",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -130
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 0
+        }
+      ]
+    },
+    {
+      "deal": 13,
+      "kingdom": 3,
+      "owner": 2,
+      "request": "queens",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -50
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -50
+        }
+      ]
+    },
+    {
+      "deal": 14,
+      "kingdom": 3,
+      "owner": 2,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 250
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 250
+        }
+      ]
+    },
+    {
+      "deal": 15,
+      "kingdom": 3,
+      "owner": 2,
+      "request": "lutoosh",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -150
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -45
+        }
+      ]
+    },
+    {
+      "deal": 16,
+      "kingdom": 4,
+      "owner": 1,
+      "request": "queens",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -50
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -50
+        }
+      ]
+    },
+    {
+      "deal": 17,
+      "kingdom": 4,
+      "owner": 1,
+      "request": "diamonds",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -40
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -90
+        }
+      ]
+    },
+    {
+      "deal": 18,
+      "kingdom": 4,
+      "owner": 1,
+      "request": "king",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 0
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -75
+        }
+      ]
+    },
+    {
+      "deal": 19,
+      "kingdom": 4,
+      "owner": 1,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": 200
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": 300
+        }
+      ]
+    },
+    {
+      "deal": 20,
+      "kingdom": 4,
+      "owner": 1,
+      "request": "lutoosh",
+      "totals": [
+        {
+          "id": "NS",
+          "seats": [
+            0,
+            2
+          ],
+          "total": -105
+        },
+        {
+          "id": "EW",
+          "seats": [
+            1,
+            3
+          ],
+          "total": -90
+        }
+      ]
+    }
+  ],
+  "actions": {
+    "choose-request": 5,
+    "declare-doubles": 8,
+    "play-card": 195,
+    "layout-pass": 14,
+    "layout-card": 52
+  },
+  "records": [
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:0",
+      "deal": 1,
+      "phase": "choose-request",
+      "candidateId": "choose:king",
+      "origin": "code",
+      "hint": "Compare your high cards, low exits and the games still available. The next request will use a fresh deal.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1",
+      "deal": 1,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "forced",
+      "hint": "A doubled queen costs its taker 50; the king costs 150. The team opposite the taker receives the bonus, even when your teammate takes the card.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:5",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:H2",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:12",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:13",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:20",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:C6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:22",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:S5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:28",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:31",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:33",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:37",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:H3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:42",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:SA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:45",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:H6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:52",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:54",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:H9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:59",
+      "deal": 2,
+      "phase": "choose-request",
+      "candidateId": "choose:diamonds",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:60",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:D2",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:65",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:S5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:71",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:H10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:73",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:C6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:76",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:C10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:80",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:84",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:89",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:S10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:92",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:97",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:101",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:104",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:DQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:109",
+      "deal": 2,
+      "phase": "playing",
+      "candidateId": "play:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:114",
+      "deal": 3,
+      "phase": "choose-request",
+      "candidateId": "choose:lutoosh",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:115",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:S3",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:122",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:123",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:129",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:H6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:132",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:135",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:139",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:DA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:143",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:HJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:148",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:HK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:152",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:S4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:158",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:160",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:S9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:163",
+      "deal": 3,
+      "phase": "playing",
+      "candidateId": "play:SJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:169",
+      "deal": 4,
+      "phase": "choose-request",
+      "candidateId": "choose:queens",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:170",
+      "deal": 4,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "hint": "A doubled queen costs its taker 50; the king costs 150. The team opposite the taker receives the bonus, even when your teammate takes the card.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:174",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D2",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:181",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:H2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:183",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:C10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:186",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:CQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:190",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:196",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:S4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:201",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:H4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:204",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:209",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:H9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:212",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:216",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:220",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:224",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:228",
+      "deal": 5,
+      "phase": "choose-request",
+      "candidateId": "choose:trix",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:229",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "forced",
+      "hint": "Passing is required on this board. It reveals only that you cannot extend the current rows.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:233",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:CQ",
+      "origin": "forced",
+      "hint": "Compare which placement connects more of your remaining cards. Opponents may also benefit from the new opening.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:237",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:241",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:C8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:245",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:DQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:249",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:253",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:S10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:257",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:261",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:265",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:269",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:273",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:S4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:277",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:281",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:285",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:289",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:H6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:293",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:H5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:303",
+      "deal": 6,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:307",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:310",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:312",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:318",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:321",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:H3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:327",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:330",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:335",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:H5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:338",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:343",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:346",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:350",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:HA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:352",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:362",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:363",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:370",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:S7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:372",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:H8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:375",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:C6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:382",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:383",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:390",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:DQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:392",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:H10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:395",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:C8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:399",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:405",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:409",
+      "deal": 7,
+      "phase": "playing",
+      "candidateId": "play:HK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:417",
+      "deal": 8,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:421",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:HK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:422",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:C6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:426",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:C10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:433",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:S5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:435",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:438",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:D2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:443",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:448",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:451",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:456",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:459",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:465",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:S9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:468",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:476",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:477",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:C8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:481",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:487",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:490",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:493",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:H9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:497",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:HJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:503",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:HK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:508",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:S3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:511",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:514",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:S10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:519",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:522",
+      "deal": 9,
+      "phase": "playing",
+      "candidateId": "play:SK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:531",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:CQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:535",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:539",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:543",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:D8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:547",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:551",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:HA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:555",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:559",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:C4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:563",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:567",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:571",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:575",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:H4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:579",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:583",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:587",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:590",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:592",
+      "deal": 10,
+      "phase": "layout",
+      "candidateId": "layout:S2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:598",
+      "deal": 11,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:602",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:S10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:604",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:611",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:H4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:614",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:D4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:619",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:H6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:622",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:624",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:C8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:628",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:C9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:634",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:638",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:SA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:640",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:644",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:D9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:650",
+      "deal": 11,
+      "phase": "playing",
+      "candidateId": "play:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:657",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:H3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:662",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:S4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:664",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:670",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:671",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:678",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:C9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:680",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:683",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:687",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:691",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:695",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:HJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:699",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:703",
+      "deal": 12,
+      "phase": "playing",
+      "candidateId": "play:HA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:712",
+      "deal": 13,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:716",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:S9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:718",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:C2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:724",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:D4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:729",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:H9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:730",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:CQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:736",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:S10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:739",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:744",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:746",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:750",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:H10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:754",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:HJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:761",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:SJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:765",
+      "deal": 13,
+      "phase": "playing",
+      "candidateId": "play:SA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:771",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:775",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:779",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:783",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:CQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:787",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:791",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:C9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:795",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:799",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:H8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:803",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:D8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:807",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:DA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:811",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:815",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:819",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:S4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:823",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:827",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:831",
+      "deal": 14,
+      "phase": "layout",
+      "candidateId": "layout:SK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:842",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:844",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:C2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:850",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:853",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:C9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:859",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:862",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:D8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:864",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:C10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:869",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:SJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:874",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:876",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:880",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:884",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:DQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:888",
+      "deal": 15,
+      "phase": "playing",
+      "candidateId": "play:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:896",
+      "deal": 16,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "hint": "A doubled queen costs its taker 50; the king costs 150. The team opposite the taker receives the bonus, even when your teammate takes the card.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:900",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:D8",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:903",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:908",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:S2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:912",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:915",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:920",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:SJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:923",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:927",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:DQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:932",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:937",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:H4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:940",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:H6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:944",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:H8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:948",
+      "deal": 16,
+      "phase": "playing",
+      "candidateId": "play:H10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:955",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:S5",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:960",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:H3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:963",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:969",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:H5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:971",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:976",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:C8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:981",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:985",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:D7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:988",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:993",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:D8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:997",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:S9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1001",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1005",
+      "deal": 17,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1010",
+      "deal": 18,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "hint": "A doubled queen costs its taker 50; the king costs 150. The team opposite the taker receives the bonus, even when your teammate takes the card.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1014",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:D2",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1019",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:C8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1021",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1025",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1029",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:H3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1036",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:S2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1038",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:H4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1042",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:H6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1047",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1050",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:HJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1055",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:HK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1058",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1062",
+      "deal": 18,
+      "phase": "playing",
+      "candidateId": "play:SK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1069",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:CJ",
+      "origin": "forced",
+      "hint": "Compare which placement connects more of your remaining cards. Opponents may also benefit from the new opening.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1073",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:C10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1077",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1081",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1085",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:C4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1089",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1093",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1097",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "forced",
+      "hint": "Passing is required on this board. It reveals only that you cannot extend the current rows.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1101",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:HA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1105",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1109",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1113",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:D2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1117",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:H3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1121",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:S7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1124",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1127",
+      "deal": 19,
+      "phase": "layout",
+      "candidateId": "layout:SA",
+      "origin": "code",
+      "exposedLevel": 0
+    }
+  ],
+  "hintedDecisions": [
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:0",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:5",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:60",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:115",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:170",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:174",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:229",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:233",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:896",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:900",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:955",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1010",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1014",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1069",
+    "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:1097"
+  ],
+  "resumedActions": [],
+  "pageErrors": [],
+  "checks": {
+    "terminal": "passed",
+    "reload": "passed",
+    "savedReview": "passed"
+  },
+  "reviewDiagnostics": {
+    "earliestHintedDecision": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:0",
+    "earliest": {
+      "status": 200,
+      "validReviewView": true,
+      "frameCount": 58
+    },
+    "selectedOriginalHintedDecision": "322ea7b4f7d13f16f4b6901fd4bdf159eb05274917ee04a4:decision:0"
+  },
+  "caveat": "The original browser run completed 19 deals and timed out during deal20. The first resume helper advanced deal20 but stopped on a helper-only signedzero comparison. This successful invocation resumed the same persisted owned test game after another listener restart; resumedActions covers only additional human actions, not bot actions or any accepted action immediately before the original timeout. This is completion and restart evidence, not an uninterrupted fresh full-browser pass."
+}

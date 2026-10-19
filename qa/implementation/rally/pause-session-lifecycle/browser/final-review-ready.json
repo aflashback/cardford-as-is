@@ -1,0 +1,22 @@
+{
+  "name": "final-review-ready",
+  "at": "2026-10-16T02:31:28.421Z",
+  "build": "index-B-IIS17u.js",
+  "runtime": "actual game server; current checkout",
+  "result": "Viewport override reset to the normal 455x547 pane. Screenshot shows the portrait landscape-required gate. Server remains manually paused at generation 16; Resume, Settings and Choose game are behind the gate until the pane is widened.",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 547,
+    "scrollHeight": 547,
+    "scrollWidth": 455,
+    "width": 455
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

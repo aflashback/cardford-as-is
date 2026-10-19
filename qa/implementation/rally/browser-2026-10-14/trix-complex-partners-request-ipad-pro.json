@@ -1,0 +1,264 @@
+{
+  "evidenceVersion": 4,
+  "context": {
+    "state": "trix-complex-partners-request",
+    "device": "ipad-pro",
+    "nativeFixtureOrigin": "localhost:4191"
+  },
+  "measure": {
+    "coach": null,
+    "coachScroll": null,
+    "declaredDoubles": [],
+    "dialogs": [],
+    "document": {
+      "height": 1024,
+      "width": 1366
+    },
+    "felt": {
+      "bottom": 717.7083129882812,
+      "height": 621.7317504882812,
+      "right": 1287.9947891235352,
+      "width": 1210,
+      "x": 77.99478912353516,
+      "y": 95.9765625
+    },
+    "game": "trix",
+    "hand": {
+      "bottom": 1013.9973754882812,
+      "height": 272.3046875,
+      "right": 1341.99214553833,
+      "width": 1317.9947509765625,
+      "x": 23.997394561767575,
+      "y": 741.6926879882812
+    },
+    "handCards": [
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 276.95311737060547,
+        "width": 153.9973907470703,
+        "x": 122.95572662353516,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 363.12498474121094,
+        "width": 153.9973907470703,
+        "x": 209.12759399414065,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 449.29685974121094,
+        "width": 153.9973907470703,
+        "x": 295.2994689941406,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 535.4687347412109,
+        "width": 153.9973907470703,
+        "x": 381.4713439941406,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 621.6406097412109,
+        "width": 153.9973907470703,
+        "x": 467.6432189941406,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 707.8124542236328,
+        "width": 153.9973907470703,
+        "x": 553.8150634765625,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 793.9843292236328,
+        "width": 153.9973907470703,
+        "x": 639.9869384765625,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 880.1562042236328,
+        "width": 153.9973907470703,
+        "x": 726.1588134765625,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 966.3280792236328,
+        "width": 153.9973907470703,
+        "x": 812.3306884765625,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 1052.4999542236328,
+        "width": 153.9973907470703,
+        "x": 898.5025634765625,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 1138.6718292236328,
+        "width": 153.9973907470703,
+        "x": 984.6744384765624,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 1224.8437042236328,
+        "width": 153.9973907470703,
+        "x": 1070.8463134765625,
+        "y": 793.6978759765625
+      },
+      {
+        "bottom": 1013.9973449707032,
+        "height": 220.29946899414065,
+        "right": 1311.0155792236328,
+        "width": 153.9973907470703,
+        "x": 1157.0181884765625,
+        "y": 793.6978759765625
+      }
+    ],
+    "images": [
+      {
+        "complete": true,
+        "src": "/brand/cardford-symbol.svg",
+        "width": 160
+      },
+      {
+        "complete": true,
+        "src": "/rally/regular-waiting-v2.png",
+        "width": 1254
+      }
+    ],
+    "jacksBoard": null,
+    "jacksCards": [],
+    "jacksRows": [],
+    "lastTrick": null,
+    "main": {
+      "bottom": 1023.9973945617676,
+      "height": 968.0078125,
+      "right": 1365.833251953125,
+      "width": 1365.833251953125,
+      "x": 0,
+      "y": 55.98958206176758
+    },
+    "phase": "request",
+    "pinned": false,
+    "players": [
+      {
+        "bottom": 735.703125,
+        "height": 76.4453125,
+        "right": 742.9817657470703,
+        "width": 119.97395324707033,
+        "x": 623.0078125,
+        "y": 659.2578125
+      },
+      {
+        "bottom": 417.3176879882813,
+        "height": 124.453125,
+        "right": 91.99218368530272,
+        "width": 67.99478912353516,
+        "x": 23.997394561767575,
+        "y": 292.86456298828125
+      },
+      {
+        "bottom": 144.4270782470703,
+        "height": 76.4453125,
+        "right": 742.9817657470703,
+        "width": 119.97395324707033,
+        "x": 623.0078125,
+        "y": 67.98176574707031
+      },
+      {
+        "bottom": 417.3176879882813,
+        "height": 124.453125,
+        "right": 1341.9921035766602,
+        "width": 67.99478912353516,
+        "x": 1273.997314453125,
+        "y": 292.86456298828125
+      }
+    ],
+    "previewCards": [],
+    "prompt": {
+      "bottom": 484.4921875,
+      "height": 115.3125,
+      "right": 1007.9947814941406,
+      "width": 650,
+      "x": 357.9947814941406,
+      "y": 369.1796875
+    },
+    "promptControls": [
+      {
+        "label": "All combined",
+        "rect": {
+          "bottom": 466.4973945617676,
+          "height": 43.99739456176758,
+          "right": 678.9973754882812,
+          "width": 303.0078125,
+          "x": 375.9895629882813,
+          "y": 422.5
+        }
+      },
+      {
+        "label": "Trix Jacks",
+        "rect": {
+          "bottom": 466.4973945617676,
+          "height": 43.99739456176758,
+          "right": 990,
+          "width": 303.0078125,
+          "x": 686.9921875,
+          "y": 422.5
+        }
+      }
+    ],
+    "replay": false,
+    "tableCards": [],
+    "theme": "light",
+    "twoAnnouncements": [],
+    "viewport": {
+      "dpr": 1.000000015894571,
+      "height": 1024,
+      "width": 1366
+    }
+  },
+  "checks": {
+    "pageFits": true,
+    "visibleImagesLoaded": true,
+    "handCardsInViewport": true,
+    "playersInViewport": true,
+    "promptClearPlayers": true,
+    "promptControlsContained": true,
+    "tableCardsInViewport": null,
+    "tableCardsClearPlayers": null,
+    "previewCardsInViewport": null,
+    "jacksBoardInViewport": null,
+    "jacksRowsInViewport": null,
+    "jacksCardsInViewport": null,
+    "declaredDoublesInViewport": null,
+    "twoAnnouncementsInViewport": null,
+    "dialogsInViewport": null,
+    "dialogsNoHorizontalScroll": null,
+    "coachInViewport": true,
+    "overlayClearsHand": true,
+    "coachNoHorizontalScroll": true
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-14T00:36:04.0530447Z",
+  "method": ".NET XML parse with DTD prohibited and XmlResolver disabled; element allowlist",
+  "files": [
+    {
+      "file": "assets/stickers/svg/regular-explaining-v2.svg",
+      "sha256": "ccb58286c71d619a7e25df623f2acab7786c364abe384c209dc14f8acf4c7d41",
+      "xmlValid": true,
+      "elements": [
+        "defs",
+        "desc",
+        "g",
+        "mask",
+        "path",
+        "svg",
+        "title"
+      ],
+      "pathCount": 5424
+    },
+    {
+      "file": "assets/stickers/svg/regular-reading-v8.svg",
+      "sha256": "6ebd0c9970d8ef559d2b4f301225e301d0a811243646c19bf3a873d63fff355e",
+      "xmlValid": true,
+      "elements": [
+        "defs",
+        "desc",
+        "g",
+        "mask",
+        "path",
+        "svg",
+        "title"
+      ],
+      "pathCount": 5258
+    },
+    {
+      "file": "assets/stickers/svg/regular-thinking-v2.svg",
+      "sha256": "aa29622078ff4d00e62670d7c6862e428aa6940b615c9ffb616a52a41639f1bc",
+      "xmlValid": true,
+      "elements": [
+        "defs",
+        "desc",
+        "g",
+        "mask",
+        "path",
+        "svg",
+        "title"
+      ],
+      "pathCount": 4110
+    },
+    {
+      "file": "assets/stickers/svg/regular-waiting-v2.svg",
+      "sha256": "db865af9695113af7de4ba416812faf1e934b46459982c66229ab7c85ff5c55e",
+      "xmlValid": true,
+      "elements": [
+        "defs",
+        "desc",
+        "g",
+        "mask",
+        "path",
+        "svg",
+        "title"
+      ],
+      "pathCount": 3667
+    },
+    {
+      "file": "assets/stickers/svg/regular-whistle-v3.svg",
+      "sha256": "949bff8cc3477c26baf085e243013de5f0f315f6bed122470bbe5c87bcf644bc",
+      "xmlValid": true,
+      "elements": [
+        "defs",
+        "desc",
+        "g",
+        "mask",
+        "path",
+        "svg",
+        "title"
+      ],
+      "pathCount": 4849
+    }
+  ]
+}

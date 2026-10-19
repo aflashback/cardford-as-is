@@ -17,10 +17,12 @@ import (
 	"time"
 
 	"cardford/server/internal/access"
+	"cardford/server/internal/games/trix"
 	transport "cardford/server/internal/http"
 	"cardford/server/internal/localpolicies"
 	"cardford/server/internal/records"
 	"cardford/server/internal/service"
+	"cardford/server/internal/sessions"
 	"cardford/server/internal/strategy/installation"
 	"github.com/jackc/pgx/v5/pgconn"
 )
@@ -59,7 +61,20 @@ func run(ctx context.Context, migrations, web, policyPath, reasoningProfile stri
 	if err != nil {
 		return err
 	}
-	codec, err := records.NewServiceCodec()
+	handlers := sessions.DefaultHandlers()
+	handlers.UI = append(handlers.UI, "trix-table")
+	installations := trix.Installations()
+	if err = installTrixFixture(installations, os.Getenv("CARDFORD_TRIX_FIXTURE_FILE"), cfg.Mode); err != nil {
+		return err
+	}
+	for _, installed := range installations {
+		handlers.Schemas = append(handlers.Schemas, installed.Descriptor.Schemas.State, installed.Descriptor.Schemas.Observation, installed.Descriptor.Schemas.Public, installed.Descriptor.Schemas.Event)
+	}
+	registry, err := sessions.NewRegistryWithRegistrations(handlers, installations...)
+	if err != nil {
+		return fmt.Errorf("local game installation failed: %w", err)
+	}
+	codec, err := records.NewServiceCodecWithRegistry(registry)
 	if err != nil {
 		return fmt.Errorf("local policy initialization failed")
 	}

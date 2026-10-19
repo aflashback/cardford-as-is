@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/review.json",
+  "title": "review",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "presentationHash":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "schemaVersion": {
+      "const": "coach-lab-review-1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "caseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "enum": [
+        "A",
+        "B-cue",
+        "B-reason",
+        "C"
+      ]
+    },
+    "inputHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "modelPin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provenance": {
+      "enum": [
+        "llm-proposal",
+        "fixture"
+      ]
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "completed",
+        "abstained",
+        "disputed",
+        "failed"
+      ]
+    },
+    "verdict": {
+      "anyOf": [
+        {
+          "enum": [
+            "supported",
+            "inferior",
+            "uncertain",
+            "not-applicable"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "acceptableActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "text",
+          "evidenceRefs"
+        ]
+      },
+      "minItems": 0
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "enum": [
+              "strategic-purpose",
+              "context-grounding",
+              "action-fidelity",
+              "uncertainty-honesty",
+              "reason-completeness"
+            ]
+          },
+          "assessment": {
+            "enum": [
+              "pass",
+              "fail",
+              "uncertain",
+              "not-applicable"
+            ]
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "name",
+          "assessment",
+          "evidenceRefs"
+        ]
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "caseId",
+    "stage",
+    "inputHash",
+    "modelPin",
+    "provenance",
+    "status",
+    "verdict",
+    "acceptableActions",
+    "reasons",
+    "dimensions"
+  ]
+}

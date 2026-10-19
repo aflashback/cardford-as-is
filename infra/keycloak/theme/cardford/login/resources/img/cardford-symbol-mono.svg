@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="cardford-one-color-symbol-title cardford-one-color-symbol-desc">
+  <title id="cardford-one-color-symbol-title">Cardford one-color symbol</title>
+  <desc id="cardford-one-color-symbol-desc">One-ink version of the three-card symbol.</desc>
+  <g transform="translate(0 0) scale(1)" stroke-linejoin="round">
+    <rect x="19" y="37" width="75" height="108" rx="10" transform="rotate(-18 56.5 91)" fill="#13304D"/>
+    <rect x="46" y="22" width="75" height="116" rx="10" transform="rotate(-7 83.5 80)" fill="#F6F4ED" stroke="#13304D" stroke-width="7"/>
+    <rect x="71" y="40" width="71" height="108" rx="10" fill="#F6F4ED" stroke="#13304D" stroke-width="8"/>
+    <path d="M106 76 120 94 106 112 92 94Z" fill="#13304D"/>
+  </g>
+</svg>

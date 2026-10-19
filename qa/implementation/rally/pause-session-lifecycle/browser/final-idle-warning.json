@@ -1,0 +1,21 @@
+{
+  "name": "final-idle-warning",
+  "at": "2026-10-16T02:18:56.277Z",
+  "build": "index-BS-kEy9R.js",
+  "check": "Warning visible after 120 seconds without input; resumed connection still live",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 320,
+    "scrollHeight": 343,
+    "scrollWidth": 555,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

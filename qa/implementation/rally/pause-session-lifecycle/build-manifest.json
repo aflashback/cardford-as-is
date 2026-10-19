@@ -1,0 +1,148 @@
+{
+  "url": "http://127.0.0.1:4174",
+  "health": {
+    "identity": "local-test",
+    "mode": "local",
+    "payments": "fixture",
+    "provider": "off",
+    "status": "ready"
+  },
+  "nativePid": 44092,
+  "files": [
+    {
+      "path": ".local/cardford.exe",
+      "sha256": "b671c908bfaab9745a60c8326b656440587421b651f76cd9301d8c1b0b5ca40e",
+      "bytes": 21087744,
+      "modifiedUtc": "2026-10-16T02:16:13.407622Z"
+    },
+    {
+      "path": "web/dist/index.html",
+      "sha256": "f400054af1c9b3e1e083c61bd69b459938c19adba7d40e5ab89ce590d9cebfbb",
+      "bytes": 649,
+      "modifiedUtc": "2026-10-16T02:20:16.7819414Z"
+    },
+    {
+      "path": "server/internal/records/realtime_playback.go",
+      "sha256": "387cc2ac69a8605485772cb5fc80146d741238e451b6c03a3ec67b00e0d50754",
+      "bytes": 18584,
+      "modifiedUtc": "2026-10-16T01:59:45.5725094Z"
+    },
+    {
+      "path": "server/internal/records/session_retention.go",
+      "sha256": "f70125db6613cd72fc90f6bf2037b8f717da55fbd5ca597615c42179101f30c5",
+      "bytes": 3144,
+      "modifiedUtc": "2026-10-16T01:46:26.130178Z"
+    },
+    {
+      "path": "server/internal/service/session_lifecycle.go",
+      "sha256": "c7a5a8eebd537a2e1dd663e56d5623f4aa0213e008f818f8472979a6194893db",
+      "bytes": 3678,
+      "modifiedUtc": "2026-10-16T01:59:49.2449791Z"
+    },
+    {
+      "path": "server/internal/service/bot_playback.go",
+      "sha256": "d99192ddfba839079de82622289e041f5cf667b3779994a7ce9274652ac5619f",
+      "bytes": 18888,
+      "modifiedUtc": "2026-10-16T01:54:35.6690923Z"
+    },
+    {
+      "path": "server/internal/service/scheduler.go",
+      "sha256": "41a3aa608b76c39a12fe927c1f175c1f699b8841a5a287ce0c9fc521afd82b17",
+      "bytes": 4106,
+      "modifiedUtc": "2026-10-16T01:46:26.1423971Z"
+    },
+    {
+      "path": "server/internal/http/realtime.go",
+      "sha256": "3dbe296fb7cfb1e14ad65829e964b9b4b3685b18fe47ba50489b81e9e6082155",
+      "bytes": 5987,
+      "modifiedUtc": "2026-10-16T02:15:23.9063105Z"
+    },
+    {
+      "path": "web/server/records/migrations/013-session-lifecycle.sql",
+      "sha256": "c2eefc23df21ea03ebe8d861dd2ec7d9702bd9b7c88c274edf21b86e3de280b1",
+      "bytes": 2124,
+      "modifiedUtc": "2026-10-16T01:35:55.5699694Z"
+    },
+    {
+      "path": "web/shared/realtime.schema.json",
+      "sha256": "2a70ffda255a7997fa1949a31774582d44004e5c640115eef1d125a29ae87501",
+      "bytes": 13401,
+      "modifiedUtc": "2026-10-16T01:35:22.0186052Z"
+    },
+    {
+      "path": "web/src/api/useGoSession.ts",
+      "sha256": "13595382f7090a01fbd3826c2c795b12c3cb982a0edbd1d4470535805f9bd2ec",
+      "bytes": 45321,
+      "modifiedUtc": "2026-10-16T02:15:10.7155061Z"
+    },
+    {
+      "path": "web/src/api/realtimeStream.ts",
+      "sha256": "f6ca23482e8a6593da2e1a1b547dd7f5b920001b22ccb6714f37e88f12427c8f",
+      "bytes": 15956,
+      "modifiedUtc": "2026-10-16T02:12:32.0317204Z"
+    },
+    {
+      "path": "web/src/table/PauseDialog.tsx",
+      "sha256": "7400db3ef7ae8e7d0cdde2a8adec0406d8334cedfee75afa2f608cfafe5d32b3",
+      "bytes": 3785,
+      "modifiedUtc": "2026-10-16T02:04:47.1940199Z"
+    },
+    {
+      "path": "web/src/table/sessionLifecycle.ts",
+      "sha256": "798e3efba2af64a49c680dc235f24ab4610383403f7f0cf391e8d0d27ced96d4",
+      "bytes": 4244,
+      "modifiedUtc": "2026-10-16T02:04:46.8795434Z"
+    },
+    {
+      "path": "web/src/table/idlePresence.ts",
+      "sha256": "d6114b4b864eda34e460289472eb468b24c42a5a00d7fa3d8eaa07dad8336c84",
+      "bytes": 987,
+      "modifiedUtc": "2026-10-16T01:38:26.6473239Z"
+    },
+    {
+      "path": "web/src/rally/useCoachExperience.ts",
+      "sha256": "7eca5def0171c9e87508593648ab2f9f5a774b63e2436b8d97416c2ef0007d52",
+      "bytes": 11474,
+      "modifiedUtc": "2026-10-16T01:55:12.3985871Z"
+    },
+    {
+      "path": "web/dist/assets/index-B-IIS17u.js",
+      "sha256": "fb1b55c9d6888d501dddcf5fd015f89a8cbeefe92cab9a9e73badeb8fabc5da4",
+      "bytes": 4609838,
+      "modifiedUtc": "2026-10-16T02:20:16.7854479Z"
+    },
+    {
+      "path": "web/dist/assets/index-B8-fOB3W.css",
+      "sha256": "e24ccd82bf6f401c6fa72801ed01b19d9bb9bbd40e241bc547f5e2870e635ffc",
+      "bytes": 121132,
+      "modifiedUtc": "2026-10-16T02:20:16.7819414Z"
+    },
+    {
+      "path": "web/src/App.tsx",
+      "sha256": "9b61f23604fad143c8f6409dff21668b0dbe8ae3bf9d6a27201feb8a49d4090a",
+      "bytes": 51405,
+      "modifiedUtc": "2026-10-16T02:19:33.3557005Z"
+    },
+    {
+      "path": "web/src/games/trix/Table.tsx",
+      "sha256": "cba97a3ba1204364d96c8aca74927f880fb1bba4f284201085e7a53b81ead769",
+      "bytes": 31419,
+      "modifiedUtc": "2026-10-16T02:19:33.6970038Z"
+    },
+    {
+      "path": "web/src/table/rally-table.css",
+      "sha256": "7542735bbbaabd7b437a8b2bc763d30cd235cee6404936624fc0cfd563c7d271",
+      "bytes": 21704,
+      "modifiedUtc": "2026-10-16T02:19:34.0213295Z"
+    }
+  ],
+  "diagnostics": "off (default); opt-in safe close categories retained",
+  "recordedAt": "2026-10-16T02:22:02.1134791Z",
+  "startedAt": "2026-10-16T02:20:58.521Z",
+  "checkout": "C:\\repos\\test-jev",
+  "postBuildFormatting": {
+    "path": "web/src/api/useGoSession.ts",
+    "sha256": "8119499457edf49d9fa26d882566eeb50616a25cba6eb4362dec9a0f29247cbc",
+    "note": "After the recorded build, one mixed CRLF line at line 413 was normalized to remove git diff trailing-whitespace output. No code token changed; original built-source hash is preserved above."
+  }
+}

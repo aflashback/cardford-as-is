@@ -1,0 +1,242 @@
+{
+  "label": "trix-complex-partners-round-trick-10",
+  "frames": 161,
+  "elapsedMs": 3196.6000000089407,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0.3,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 56.4,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 477.8,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 576.3,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1223.6,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DQ",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1316.4,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DQ",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1896.8,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DQ",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "DA",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1996.9,
+      "cards": [
+        {
+          "card": "D3",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "DQ",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "DA",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: 9 of spades",
+        "Maya: 10 of spades, won the trick",
+        "Leo: 10 of diamonds",
+        "You: Ace of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 3166.2,
+      "cards": [
+        {
+          "card": "C9",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Maya: 3 of diamonds",
+        "Leo: 4 of diamonds",
+        "You: Queen of diamonds",
+        "Joe: Ace of diamonds, won the trick"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

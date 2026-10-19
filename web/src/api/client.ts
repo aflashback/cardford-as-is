@@ -2,6 +2,8 @@ import type { ContractName, ContractTypes } from '../../shared/local-service.con
 import { validateContract } from '../../shared/local-service.validation.ts';
 import { clearPendingCommands } from './pendingCommands.ts';
 import { clearLeases } from './controlLease.ts';
+import { authEpoch, invalidateAuth, renewAuthAccess, noteAcceptedAuthActivity } from './authLifecycle.ts';
+import { apiCredentials, apiUrl, authCsrf } from '../auth/transport.ts';
 
 export const API_REQUEST_TIMEOUT_MS = 15_000;
 
@@ -21,16 +23,19 @@ export class ApiFailure extends Error {
   readonly status: number;
   readonly code: string;
   readonly current?: ContractTypes['SessionView'];
+  readonly retryAfterMs?: number;
   constructor(
     message: string,
     status: number,
     code: string,
     current?: ContractTypes['SessionView'],
+    retryAfterMs?: number,
   ) {
     super(message);
     this.status = status;
     this.code = code;
     this.current = current;
+    this.retryAfterMs = retryAfterMs;
   }
 }
 /** These transport outcomes require receipt recovery, even when HTTP is <500. */
@@ -46,7 +51,16 @@ export async function api<N extends ContractName>(
   signal?: AbortSignal,
   timeoutMs = API_REQUEST_TIMEOUT_MS,
 ): Promise<ContractTypes[N]> {
-  if (path === '/api/logout') { clearPendingCommands(); clearLeases(); }
+  if (path === '/api/logout') { clearPendingCommands(); clearLeases(); invalidateAuth(); }
+  const requestEpoch = authEpoch();
+  const serializedBody = body === undefined ? undefined : JSON.stringify(body);
+  const playbackStop=path==='/api/session/playback' && typeof body==='object' && body!==null && 'running' in body && body.running!==true;
+  const passive=method==='GET' || method==='HEAD' || path.startsWith('/api/realtime/') || path.startsWith('/api/work/') || playbackStop ||
+    ['/api/session/presence','/api/platform/exposures','/api/session/advance'].includes(path);
+  const assertCurrent = () => {
+    if (requestEpoch !== authEpoch())
+      throw new ApiFailure('The signed-in session changed. Reconnect before continuing.', 401, 'UNAUTHENTICATED');
+  };
   const controller = new AbortController();
   let timeoutError: ApiFailure | undefined;
   let interrupt: (reason: unknown) => void = () => undefined;
@@ -71,29 +85,53 @@ export async function api<N extends ContractName>(
     interrupt(timeoutError);
   }, timeoutMs);
   try {
-    const response = await Promise.race([
-      fetch(path, {
+    let response: Response;
+    for (let attempt=0;;attempt++) {
+    response = await Promise.race([
+      fetch(apiUrl(path), {
         method,
-        credentials: 'same-origin',
+        credentials: apiCredentials(),
         signal: controller.signal,
         headers: {
           'x-tricks-tab': tabId(),
+          ...(method !== 'GET' && method !== 'HEAD' && authCsrf() ? {'X-CSRF-Token': authCsrf()!} : {}),
           ...(body === undefined ? {} : { 'Content-Type': 'application/json', 'x-tricks-client': '1' }),
         },
-        ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+        ...(body === undefined ? {} : { body: serializedBody }),
       }),
       interrupted,
     ]);
-    if (response.status === 401) { clearPendingCommands(); clearLeases(); }
+    assertCurrent();
+    if (response.status !== 401) break;
+    let failure:unknown;
+    try { failure=await Promise.race([response.json(),interrupted]); } catch { /* An empty 401 remains terminal. */ }
+    const renewable=typeof failure==='object' && failure!==null && 'code' in failure && failure.code==='session_renewal_required';
+    if(renewable && attempt===0 && !passive && await Promise.race([renewAuthAccess(),interrupted])) {
+      assertCurrent();
+      if(controller.signal.aborted)throw controller.signal.reason;
+      continue;
+    }
+    if(renewable)throw new ApiFailure('Continue to renew your session before returning to your table.',401,'session_renewal_required');
+    clearPendingCommands(); clearLeases(); invalidateAuth();
+    throw new ApiFailure('The signed-in session ended. Reconnect before continuing.', 401, 'UNAUTHENTICATED');
+    }
     const value: unknown = await Promise.race([response.json(), interrupted]);
+    assertCurrent();
     if (!response.ok) {
+      const retryAfter = response.headers?.get('Retry-After');
+      const retryAfterValue = retryAfter === null || retryAfter === undefined ? NaN :
+        /^\d+(?:\.\d+)?$/.test(retryAfter) ? Number(retryAfter) * 1000 :
+          Date.parse(retryAfter) - Date.now();
+      const retryAfterMs = Number.isFinite(retryAfterValue) ? Math.max(0,retryAfterValue) : undefined;
       if (validateContract('ApiError', value)) {
-        throw new ApiFailure(value.message, response.status, value.code, value.current);
+        throw new ApiFailure(value.message, response.status, value.code, value.current, retryAfterMs);
       }
       throw new ApiFailure(
         'The service could not complete this request.',
         response.status,
         'SERVICE_UNAVAILABLE',
+        undefined,
+        retryAfterMs,
       );
     }
     if (!validateContract(type, value))
@@ -102,6 +140,10 @@ export async function api<N extends ContractName>(
         502,
         'INVALID_RESPONSE',
       );
+    if (type === 'AccountDeleteView' && (path === '/api/platform/account/delete' || path === '/api/account/delete')) {
+      clearPendingCommands(); clearLeases(); invalidateAuth();
+    }
+    if(method!=='GET' && !passive)noteAcceptedAuthActivity();
     return value;
   } catch (error) {
     if (timeoutError) throw timeoutError;

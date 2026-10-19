@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "coach-lab-strength-1.0.0",
+  "studyId": "my-trix-development-pilot",
+  "stage": "development",
+  "families": [
+    {
+      "id": "my-pilot-family-1",
+      "seed": "choose-a-fresh-unique-pilot-seed-1"
+    },
+    {
+      "id": "my-pilot-family-2",
+      "seed": "choose-a-fresh-unique-pilot-seed-2"
+    }
+  ],
+  "rotations": [
+    0,
+    1
+  ],
+  "deployments": [
+    "one-seat",
+    "both-partners"
+  ],
+  "environments": [
+    {
+      "id": "baseline-players",
+      "seatPolicies": [
+        {
+          "seat": 0,
+          "id": "trix-deterministic-1.0.0",
+          "version": "1.0.0"
+        },
+        {
+          "seat": 1,
+          "id": "trix-deterministic-1.0.0",
+          "version": "1.0.0"
+        },
+        {
+          "seat": 2,
+          "id": "trix-deterministic-1.0.0",
+          "version": "1.0.0"
+        },
+        {
+          "seat": 3,
+          "id": "trix-deterministic-1.0.0",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "id": "reasoning-players",
+      "seatPolicies": [
+        {
+          "seat": 0,
+          "id": "trix-reasoning-1.0.0",
+          "version": "1.0.0"
+        },
+        {
+          "seat": 1,
+          "id": "trix-reasoning-1.0.0",
+          "version": "1.0.0"
+        },
+        {
+          "seat": 2,
+          "id": "trix-reasoning-1.0.0",
+          "version": "1.0.0"
+        },
+        {
+          "seat": 3,
+          "id": "trix-reasoning-1.0.0",
+          "version": "1.0.0"
+        }
+      ]
+    }
+  ],
+  "usefulGain": 5,
+  "maximumHarm": 0,
+  "minFamilies": 20,
+  "powerRationale": "Two-family bounded operational pilot. Twenty-family floor is not a power calculation; this pilot is deliberately insufficient for any strategic-strength claim. Use its variance and activation coverage to design a separate larger study. Five margin points is an exploratory screen only.",
+  "multiplicityAdjustment": "Separate four deployment/environment cells; exploratory family bootstrap with Bonferroni cell alpha 0.05/4. No pooled or powered strength claim."
+}

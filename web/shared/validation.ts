@@ -91,6 +91,11 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   AccessOfferPolicy: compiled.validateAccessOfferPolicy,
   AccessDecision: compiled.validateAccessDecision,
   RegisteredPresentation: compiled.validateRegisteredPresentation,
+  RegisteredAdvice: compiled.validateRegisteredAdvice,
+  CoachSupport: compiled.validateCoachSupport,
+  CoachReason: compiled.validateCoachReason,
+  CoachMessage: compiled.validateCoachMessage,
+  CoachMessageView: compiled.validateCoachMessageView,
   HeartsCandidate: compiled.validateHeartsCandidate,
   HeartsObservation: compiled.validateHeartsObservation,
   HeartsActorPacket: compiled.validateHeartsActorPacket,
@@ -113,6 +118,28 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   TokenAnalysis: compiled.validateTokenAnalysis,
   TokenActorEvent: compiled.validateTokenActorEvent,
   TokenPresentation: compiled.validateTokenPresentation,
+  TrixAction: compiled.validateTrixAction,
+  TrixPlay: compiled.validateTrixPlay,
+  TrixTrick: compiled.validateTrixTrick,
+  TrixDeclaration: compiled.validateTrixDeclaration,
+  TrixRow: compiled.validateTrixRow,
+  TrixLayoutPass: compiled.validateTrixLayoutPass,
+  TrixLeadSource: compiled.validateTrixLeadSource,
+  TrixRecipient: compiled.validateTrixRecipient,
+  TrixLedgerEntry: compiled.validateTrixLedgerEntry,
+  TrixWithheldBonus: compiled.validateTrixWithheldBonus,
+  TrixScore: compiled.validateTrixScore,
+  TrixTwoAnnouncements: compiled.validateTrixTwoAnnouncements,
+  TrixObservation: compiled.validateTrixObservation,
+  TrixActorPacket: compiled.validateTrixActorPacket,
+  TrixSessionView: compiled.validateTrixSessionView,
+  TrixPresentation: compiled.validateTrixPresentation,
+  TrixAnalysis: compiled.validateTrixAnalysis,
+  TrixActorEvent: compiled.validateTrixActorEvent,
+  TrixAdvice: compiled.validateTrixAdvice,
+  TrixReviewFrame: compiled.validateTrixReviewFrame,
+  TrixLayoutTurn: compiled.validateTrixLayoutTurn,
+  TrixLayoutHistory: compiled.validateTrixLayoutHistory,
 };
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
   return validators[name];
@@ -211,6 +238,11 @@ export const validateAccessOffer = contractValidator('AccessOffer');
 export const validateAccessOfferPolicy = contractValidator('AccessOfferPolicy');
 export const validateAccessDecision = contractValidator('AccessDecision');
 export const validateRegisteredPresentation = contractValidator('RegisteredPresentation');
+export const validateRegisteredAdvice = contractValidator('RegisteredAdvice');
+export const validateCoachSupport = contractValidator('CoachSupport');
+export const validateCoachReason = contractValidator('CoachReason');
+export const validateCoachMessage = contractValidator('CoachMessage');
+export const validateCoachMessageView = contractValidator('CoachMessageView');
 export const validateHeartsCandidate = contractValidator('HeartsCandidate');
 export const validateHeartsObservation = contractValidator('HeartsObservation');
 export const validateHeartsActorPacket = contractValidator('HeartsActorPacket');
@@ -233,3 +265,25 @@ export const validateTokenSessionView = contractValidator('TokenSessionView');
 export const validateTokenAnalysis = contractValidator('TokenAnalysis');
 export const validateTokenActorEvent = contractValidator('TokenActorEvent');
 export const validateTokenPresentation = contractValidator('TokenPresentation');
+export const validateTrixAction = contractValidator('TrixAction');
+export const validateTrixPlay = contractValidator('TrixPlay');
+export const validateTrixTrick = contractValidator('TrixTrick');
+export const validateTrixDeclaration = contractValidator('TrixDeclaration');
+export const validateTrixRow = contractValidator('TrixRow');
+export const validateTrixLayoutPass = contractValidator('TrixLayoutPass');
+export const validateTrixLeadSource = contractValidator('TrixLeadSource');
+export const validateTrixRecipient = contractValidator('TrixRecipient');
+export const validateTrixLedgerEntry = contractValidator('TrixLedgerEntry');
+export const validateTrixWithheldBonus = contractValidator('TrixWithheldBonus');
+export const validateTrixScore = contractValidator('TrixScore');
+export const validateTrixTwoAnnouncements = contractValidator('TrixTwoAnnouncements');
+export const validateTrixObservation = contractValidator('TrixObservation');
+export const validateTrixActorPacket = contractValidator('TrixActorPacket');
+export const validateTrixSessionView = contractValidator('TrixSessionView');
+export const validateTrixPresentation = contractValidator('TrixPresentation');
+export const validateTrixAnalysis = contractValidator('TrixAnalysis');
+export const validateTrixActorEvent = contractValidator('TrixActorEvent');
+export const validateTrixAdvice = contractValidator('TrixAdvice');
+export const validateTrixReviewFrame = contractValidator('TrixReviewFrame');
+export const validateTrixLayoutTurn = contractValidator('TrixLayoutTurn');
+export const validateTrixLayoutHistory = contractValidator('TrixLayoutHistory');

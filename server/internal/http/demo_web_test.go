@@ -1,6 +1,9 @@
 package http
 
 import (
+	"bytes"
+	"image"
+	"image/png"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -8,6 +11,67 @@ import (
 	"strings"
 	"testing"
 )
+
+var coachPosePaths = []string{"rally/regular-waiting-v2.png", "rally/regular-whistle-v3.png",
+	"rally/regular-thinking-v2.png", "rally/regular-explaining-v2.png", "rally/regular-reading-v8.png"}
+
+func TestDemoWebDeliversOnlyApprovedCoachPNGs(t *testing.T) {
+	dist := demoWebFixture(t)
+	if err := os.MkdirAll(filepath.Join(dist, "rally"), 0700); err != nil {
+		t.Fatal(err)
+	}
+	var encoded bytes.Buffer
+	if err := png.Encode(&encoded, image.NewNRGBA(image.Rect(0, 0, 1, 1))); err != nil {
+		t.Fatal(err)
+	}
+	for _, name := range coachPosePaths {
+		if err := os.WriteFile(filepath.Join(dist, filepath.FromSlash(name)), encoded.Bytes(), 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	for _, name := range []string{"README.md", "unapproved.png", "regular-waiting-v2.png.map", ".private.png"} {
+		if err := os.WriteFile(filepath.Join(dist, "rally", name), []byte("SECRET"), 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	h, err := NewDemoWeb(http.HandlerFunc(func(http.ResponseWriter, *http.Request) { t.Fatal("asset request reached API") }), dist, "http://127.0.0.1:4190")
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, name := range coachPosePaths {
+		for _, method := range []string{"GET", "HEAD"} {
+			w := httptest.NewRecorder()
+			h.ServeHTTP(w, localRequest(method, "/"+name, ""))
+			if w.Code != 200 || w.Header().Get("Content-Type") != "image/png" || w.Header().Get("Content-Length") == "" || w.Header().Get("X-Content-Type-Options") != "nosniff" {
+				t.Fatalf("%s %s: %d %v", method, name, w.Code, w.Header())
+			}
+			if method == "GET" && !bytes.Equal(w.Body.Bytes(), encoded.Bytes()) {
+				t.Fatalf("PNG bytes changed: %s", name)
+			}
+			if method == "HEAD" && w.Body.Len() != 0 {
+				t.Fatalf("HEAD returned image body: %s", name)
+			}
+			if !strings.Contains(w.Header().Get("Content-Security-Policy"), "img-src 'self' data:") {
+				t.Fatal("same-origin images blocked")
+			}
+		}
+	}
+	for _, name := range []string{"/rally/", "/rally/README.md", "/rally/unapproved.png", "/rally/regular-waiting-v2.png.map", "/rally/.private.png", "/rally/%2e%2e/index.html", "/rally/regular-waiting-v2.png?secret=1"} {
+		w := httptest.NewRecorder()
+		h.ServeHTTP(w, localRequest("GET", name, ""))
+		if w.Code != 404 || strings.Contains(w.Body.String(), "SECRET") {
+			t.Fatalf("unapproved path served: %s: %d", name, w.Code)
+		}
+	}
+	if err := os.WriteFile(filepath.Join(dist, filepath.FromSlash(coachPosePaths[0])), []byte("CHANGED"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	w := httptest.NewRecorder()
+	h.ServeHTTP(w, localRequest("GET", "/"+coachPosePaths[0], ""))
+	if !bytes.Equal(w.Body.Bytes(), encoded.Bytes()) {
+		t.Fatal("Coach asset changed after startup")
+	}
+}
 
 func demoWebFixture(t *testing.T) string {
 	t.Helper()

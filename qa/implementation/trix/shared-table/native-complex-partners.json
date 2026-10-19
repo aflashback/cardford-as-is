@@ -1,0 +1,14 @@
+{
+  "variant": "complex-partners",
+  "gameId": "eb47587bd3bde05362cdc2f591da9caeefbcf3e7e065d5aa",
+  "request": "trix",
+  "phase": "layout",
+  "playedCard": "C10",
+  "remaining": 12,
+  "humanCommands": 1,
+  "sharedTrickCards": false,
+  "reloadPaused": true,
+  "errors": [],
+  "provider": "off; deterministic code",
+  "scope": "first request only, normal random deal; no mocked success responses"
+}

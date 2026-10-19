@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,unlinkSync} from 'node:fs';
+import {safePath,sha} from './journal.mjs';
+import {eofGracePins as P,verifyEofGraceFailure} from './eof-grace-evidence.mjs';
+import {eofFixture,changeFixture} from './eof-grace-test-fixture.mjs';
+test('exact copied first failure remains unadmitted with full original bytes',async t=>{const c=eofFixture(),claim=c.rows.find(x=>x.sequence===1991),verify=()=>verifyEofGraceFailure(c,claim,{parent:c.parent,baseline:c.baseline}),before=sha(readFileSync(safePath(c.root,'private/journal.jsonl')));const proof=verify();assert.equal(proof.acceptedResponse,false);assert.equal(proof.strictIsolationPassed,false);assert.equal(proof.receiptConstructed,false);assert.equal(proof.localKillRequested,true);assert.deepEqual(proof.observedExit,{code:null,signal:'SIGTERM'});assert.equal(proof.responseHash,P.responseHash);assert.equal(Object.keys(proof.originalFiles).length,17);assert.equal(sha(readFileSync(safePath(c.root,'private/journal.jsonl'))),before);
+ const dir='private/invocations/'+P.jobId+'/private/app-server/';
+ for(const[name,mutation]of [['job.json',x=>({...x,promptHash:'0'.repeat(64)})],['stop-intent.json',x=>({...x,graceMs:10001})],['kill-request.json',x=>({...x,reason:'absolute-deadline'})],['stopped.json',x=>({...x,exit:{code:0,signal:null}})],['invocation.json',x=>({...x,admitted:true})],['process.json',x=>({...x,adapterSourceHash:'0'.repeat(64)})],['termination.json',x=>({...x,localKillRequested:false})]])await t.test('reject '+name,()=>changeFixture(c,dir+name,mutation,()=>assert.throws(verify)));
+ for(const name of ['response.txt','receipt.json','private/app-server/memory-isolation-verification.json'])await t.test('reject recreated original '+name,()=>{const p=safePath(c.root,'private/invocations/'+P.jobId+'/'+name);writeFileSync(p,'{}\n',{flag:'wx'});try{assert.throws(verify)}finally{unlinkSync(p)}});
+ await t.test('wire corruption is not an admissible failure proof',()=>{const p=safePath(c.root,dir+'wire.jsonl'),b=readFileSync(p);try{writeFileSync(p,Buffer.concat([b,Buffer.from('{}\n')]));assert.throws(verify)}finally{writeFileSync(p,b)}});
+ await t.test('another claim cannot borrow exact proof',()=>assert.throws(()=>verifyEofGraceFailure(c,{...claim,hash:'0'.repeat(64)},{parent:c.parent,baseline:c.baseline})));
+ await t.test('preservation hashes remain required independently of structure',()=>assert.throws(()=>verifyEofGraceFailure(c,claim,{parent:c.parent,baseline:{...c.baseline,originalFailureFiles:{...c.baseline.originalFailureFiles,[dir+'host-session.jsonl']:{bytes:1,sha256:'0'.repeat(64)}}}})));
+});

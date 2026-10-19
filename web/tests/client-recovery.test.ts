@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { api, ApiFailure, definiteFailure } from '../src/api/client.ts';
+import { authEpoch, onAuthInvalidated, registerAuthRenewal } from '../src/api/authLifecycle.ts';
 import {
   clearPendingCommands,
   PENDING_COMMAND_TTL_MS,
@@ -60,6 +61,14 @@ test('timeout and queue-capacity HTTP responses remain ambiguous for receipt rec
   for (const status of [400, 401, 403, 409])
     assert.equal(definiteFailure(new ApiFailure('Confirmed rejection.', status, 'INVALID_COMMAND')), true);
   assert.equal(definiteFailure(new TypeError('Network failed')), false);
+});
+
+test('realtime admission Retry-After is retained for bounded reconnect backoff', async context => {
+  storage(context);
+  fetchFixture(context, async () => Response.json({code:'SERVICE_UNAVAILABLE',message:'Slow down.'},
+    {status:429,headers:{'Retry-After':'2'}}));
+  await assert.rejects(api('/api/realtime/negotiate','RealtimeNegotiateView',{}), error =>
+    error instanceof ApiFailure && error.status === 429 && error.retryAfterMs === 2000);
 });
 
 test('one bounded deadline aborts a stalled fetch and keeps mutation outcome ambiguous', async (context) => {
@@ -187,4 +196,80 @@ test('logout attempts and unauthenticated responses erase all durable pending en
   values.set('unrelated', 'keep');
   clearPendingCommands();
   assert.equal(values.get('unrelated'), 'keep');
+});
+
+test('a 401 invalidates mounted consumers and rejects an older private response', async (context) => {
+  const values = storage(context);
+  let finishOld!: (response: Response) => void;
+  const oldResponse = new Promise<Response>((resolve) => { finishOld = resolve; });
+  fetchFixture(context, async (path) =>
+    String(path) === '/api/account'
+      ? oldResponse
+      : Response.json({ code: 'UNAUTHENTICATED', message: 'Session ended.' }, { status: 401 }),
+  );
+  values.set('cardford-go-pending-v1:tab:session', 'old-owner-intent');
+  const before = authEpoch();
+  let invalidations = 0;
+  const disconnect = onAuthInvalidated(() => { invalidations++; });
+  context.after(disconnect);
+  const old = api('/api/account', 'PlatformAccountView');
+  await assert.rejects(api('/api/identity', 'IdentityView'),
+    (error) => error instanceof ApiFailure && error.status === 401);
+  assert.equal(authEpoch(), before + 1);
+  assert.equal(invalidations, 1);
+  assert.equal(values.has('cardford-go-pending-v1:tab:session'), false);
+  finishOld(Response.json({ playerId: 'old-owner' }));
+  await assert.rejects(old,
+    (error) => error instanceof ApiFailure && error.status === 401 && error.code === 'UNAUTHENTICATED');
+  assert.equal(invalidations, 1);
+});
+
+
+test('typed expiry coalesces renewal and retries each original serialized mutation at most once',async t=>{
+ storage(t);let renewals=0;let finish!:()=>void;
+ const dispose=registerAuthRenewal(()=>{renewals++;return new Promise<boolean>(resolve=>{finish=()=>resolve(true);});},()=>{});t.after(dispose);
+ const bodies:string[]=[];let calls=0;
+ fetchFixture(t,async(_url,options)=>{bodies.push(String(options?.body));calls++;return calls<=2?Response.json({code:'session_renewal_required',message:'Renew.'},{status:401}):Response.json({accepted:true});});
+ // Coordinator owns coalescing; mirror its shared operation at the boundary.
+ let shared:Promise<boolean>|undefined;dispose();
+ const remove=registerAuthRenewal(()=>shared??=(async()=>{renewals++;await new Promise<void>(resolve=>{finish=resolve;});return true;})(),()=>{});t.after(remove);
+ const epoch=authEpoch();const a=api('/api/session/actions','AcceptedView',command),b=api('/api/session/actions','AcceptedView',command);
+ for(let i=0;i<10 && !finish;i++)await Promise.resolve();
+ assert.equal(renewals,1);finish();await Promise.all([a,b]);
+ assert.equal(calls,4);assert.ok(bodies.every(body=>body===JSON.stringify(command)));assert.equal(authEpoch(),epoch);
+});
+
+test('a second typed expiry is never replayed again; passive presence cannot renew',async t=>{
+ storage(t);let renewals=0;const remove=registerAuthRenewal(async()=>{renewals++;return true;},()=>{});t.after(remove);let calls=0;
+ fetchFixture(t,async()=>{calls++;return Response.json({code:'session_renewal_required',message:'Renew.'},{status:401});});
+ await assert.rejects(api('/api/session/actions','AcceptedView',command),error=>error instanceof ApiFailure&&error.code==='session_renewal_required');
+ assert.equal(calls,2);assert.equal(renewals,1);
+ await assert.rejects(api('/api/session/presence','AcceptedView',{}),error=>error instanceof ApiFailure&&error.code==='session_renewal_required');
+ assert.equal(calls,3);assert.equal(renewals,1);
+});
+
+test('background reads preserve renewable expiry without refreshing or losing pending actions', async (t) => {
+  storage(t);
+  await storePending('session', { path: '/api/session/actions', body: command }, 'owner-a', 'game-a');
+  const pending = readPending('session', 'owner-a');
+  assert.ok(pending);
+  const epoch = authEpoch();
+  let renewals = 0;
+  const remove = registerAuthRenewal(async () => { renewals++; return true; }, () => {});
+  t.after(remove);
+  let calls = 0;
+  fetchFixture(t, async () => {
+    calls++;
+    return Response.json({ code: 'session_renewal_required', message: 'Continue.' }, { status: 401 });
+  });
+
+  for (const method of ['GET', 'HEAD']) {
+    const before = calls;
+    await assert.rejects(api('/api/platform/coach', 'AcceptedView', undefined, method),
+      (error) => error instanceof ApiFailure && error.status === 401 && error.code === 'session_renewal_required');
+    assert.equal(calls - before, 1, `${method} must not replay a background read`);
+    assert.equal(renewals, 0, `${method} must wait for explicit user renewal`);
+    assert.equal(authEpoch(), epoch);
+    assert.deepEqual(readPending('session', 'owner-a'), pending);
+  }
 });

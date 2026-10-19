@@ -1,0 +1,242 @@
+{
+  "label": "hearts-iphone-se-pause",
+  "frames": 917,
+  "elapsedMs": 18333.59999999404,
+  "viewport": {
+    "width": 667,
+    "height": 375
+  },
+  "rows": [
+    {
+      "ms": 0.3,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 2 of clubs",
+        "Leo: 4 of clubs",
+        "Maya: 8 of clubs, won the trick",
+        "Joe: 3 of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 197.8,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D7",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 2 of clubs",
+        "Leo: 4 of clubs",
+        "Maya: 8 of clubs, won the trick",
+        "Joe: 3 of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 295.6,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D7",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 2 of clubs",
+        "Leo: 4 of clubs",
+        "Maya: 8 of clubs, won the trick",
+        "Joe: 3 of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 735.5,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D7",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "You: 2 of clubs",
+        "Leo: 4 of clubs",
+        "Maya: 8 of clubs, won the trick",
+        "Joe: 3 of clubs"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 835.5,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D7",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 2 of clubs",
+        "Leo: 4 of clubs",
+        "Maya: 8 of clubs, won the trick",
+        "Joe: 3 of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1015.8,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D7",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 2 of clubs",
+        "Leo: 4 of clubs",
+        "Maya: 8 of clubs, won the trick",
+        "Joe: 3 of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": true
+    },
+    {
+      "ms": 17318.3,
+      "cards": [
+        {
+          "card": "D2",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D7",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "D4",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "You: 2 of clubs",
+        "Leo: 4 of clubs",
+        "Maya: 8 of clubs, won the trick",
+        "Joe: 3 of clubs"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 18299.2,
+      "cards": [],
+      "pocket": [
+        "Maya: 2 of diamonds",
+        "Joe: 6 of diamonds",
+        "You: 7 of diamonds, won the trick",
+        "Leo: 4 of diamonds"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

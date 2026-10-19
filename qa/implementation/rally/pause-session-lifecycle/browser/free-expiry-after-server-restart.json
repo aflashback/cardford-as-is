@@ -1,0 +1,20 @@
+{
+  "name": "free-expiry-after-server-restart",
+  "at": "2026-10-16T01:59:54.791Z",
+  "check": "Original free game remains expired across actual server restart",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

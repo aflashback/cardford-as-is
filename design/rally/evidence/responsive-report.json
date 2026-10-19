@@ -1,0 +1,264 @@
+{
+  "checkedAt": "2026-10-14T01:27:59.878Z",
+  "scope": "Authored helper outputs with source-estimated seat/announcement rectangles and calculated shell budgets; not measured CSS rendering or device acceptance.",
+  "matrix": [
+    {
+      "viewport": "568×320",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "516.0×320.0",
+      "tableHeight": 211.2,
+      "handWidth": 54.4,
+      "trickWidth": 42.6,
+      "jacksOpening": 36.2,
+      "jacksFull": 23.9,
+      "trickBoundingAreaRatio": 0.273
+    },
+    {
+      "viewport": "568×320",
+      "requestPin": true,
+      "actualPin": false,
+      "iframe": "516.0×320.0",
+      "tableHeight": 211.2,
+      "handWidth": 54.4,
+      "trickWidth": 42.6,
+      "jacksOpening": 36.2,
+      "jacksFull": 23.9,
+      "trickBoundingAreaRatio": 0.273
+    },
+    {
+      "viewport": "667×375",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "615.0×375.0",
+      "tableHeight": 249.9,
+      "handWidth": 63.7,
+      "trickWidth": 52.1,
+      "jacksOpening": 45,
+      "jacksFull": 32.1,
+      "trickBoundingAreaRatio": 0.263
+    },
+    {
+      "viewport": "667×375",
+      "requestPin": true,
+      "actualPin": false,
+      "iframe": "615.0×375.0",
+      "tableHeight": 249.9,
+      "handWidth": 63.7,
+      "trickWidth": 52.1,
+      "jacksOpening": 45,
+      "jacksFull": 32.1,
+      "trickBoundingAreaRatio": 0.263
+    },
+    {
+      "viewport": "844×390",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "792.0×390.0",
+      "tableHeight": 260.2,
+      "handWidth": 66.3,
+      "trickWidth": 54.6,
+      "jacksOpening": 46.8,
+      "jacksFull": 33.7,
+      "trickBoundingAreaRatio": 0.225
+    },
+    {
+      "viewport": "844×390",
+      "requestPin": true,
+      "actualPin": true,
+      "iframe": "572.0×390.0",
+      "tableHeight": 260.2,
+      "handWidth": 66.3,
+      "trickWidth": 54.6,
+      "jacksOpening": 46.8,
+      "jacksFull": 31.7,
+      "trickBoundingAreaRatio": 0.308
+    },
+    {
+      "viewport": "915×412",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "863.0×412.0",
+      "tableHeight": 275.9,
+      "handWidth": 70,
+      "trickWidth": 58.5,
+      "jacksOpening": 49.4,
+      "jacksFull": 36.1,
+      "trickBoundingAreaRatio": 0.229
+    },
+    {
+      "viewport": "915×412",
+      "requestPin": true,
+      "actualPin": true,
+      "iframe": "643.0×412.0",
+      "tableHeight": 275.9,
+      "handWidth": 70,
+      "trickWidth": 58.5,
+      "jacksOpening": 49.4,
+      "jacksFull": 35.3,
+      "trickBoundingAreaRatio": 0.282
+    },
+    {
+      "viewport": "1024×768",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "1024.0×712.0",
+      "tableHeight": 468.9,
+      "handWidth": 121,
+      "trickWidth": 75,
+      "jacksOpening": 81.2,
+      "jacksFull": 68.8,
+      "trickBoundingAreaRatio": 0.169
+    },
+    {
+      "viewport": "1024×768",
+      "requestPin": true,
+      "actualPin": true,
+      "iframe": "760.0×712.0",
+      "tableHeight": 497.4,
+      "handWidth": 104.6,
+      "trickWidth": 82,
+      "jacksOpening": 85.4,
+      "jacksFull": 54,
+      "trickBoundingAreaRatio": 0.295
+    },
+    {
+      "viewport": "1180×820",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "1180.0×764.0",
+      "tableHeight": 505.3,
+      "handWidth": 129.8,
+      "trickWidth": 84,
+      "jacksOpening": 91,
+      "jacksFull": 77,
+      "trickBoundingAreaRatio": 0.162
+    },
+    {
+      "viewport": "1180×820",
+      "requestPin": true,
+      "actualPin": true,
+      "iframe": "896.4×764.0",
+      "tableHeight": 506.2,
+      "handWidth": 129.2,
+      "trickWidth": 84.2,
+      "jacksOpening": 91.2,
+      "jacksFull": 67,
+      "trickBoundingAreaRatio": 0.239
+    },
+    {
+      "viewport": "1366×1024",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "1366.0×968.0",
+      "tableHeight": 667.7,
+      "handWidth": 154,
+      "trickWidth": 123.9,
+      "jacksOpening": 96,
+      "jacksFull": 96,
+      "trickBoundingAreaRatio": 0.213
+    },
+    {
+      "viewport": "1366×1024",
+      "requestPin": true,
+      "actualPin": true,
+      "iframe": "1041.5×968.0",
+      "tableHeight": 667.7,
+      "handWidth": 154,
+      "trickWidth": 123.9,
+      "jacksOpening": 96,
+      "jacksFull": 80.9,
+      "trickBoundingAreaRatio": 0.305
+    },
+    {
+      "viewport": "1440×900",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "1440.0×844.0",
+      "tableHeight": 561.9,
+      "handWidth": 143.4,
+      "trickWidth": 97.9,
+      "jacksOpening": 96,
+      "jacksFull": 89.7,
+      "trickBoundingAreaRatio": 0.164
+    },
+    {
+      "viewport": "1440×900",
+      "requestPin": true,
+      "actualPin": true,
+      "iframe": "1099.2×844.0",
+      "tableHeight": 561.9,
+      "handWidth": 143.4,
+      "trickWidth": 97.9,
+      "jacksOpening": 96,
+      "jacksFull": 86.5,
+      "trickBoundingAreaRatio": 0.215
+    },
+    {
+      "viewport": "1920×1080",
+      "requestPin": false,
+      "actualPin": false,
+      "iframe": "1920.0×1024.0",
+      "tableHeight": 723.7,
+      "handWidth": 154,
+      "trickWidth": 136,
+      "jacksOpening": 96,
+      "jacksFull": 96,
+      "trickBoundingAreaRatio": 0.187
+    },
+    {
+      "viewport": "1920×1080",
+      "requestPin": true,
+      "actualPin": true,
+      "iframe": "1576.0×1024.0",
+      "tableHeight": 723.7,
+      "handWidth": 154,
+      "trickWidth": 136,
+      "jacksOpening": 96,
+      "jacksFull": 96,
+      "trickBoundingAreaRatio": 0.196
+    }
+  ],
+  "checks": [
+    {
+      "name": "Nine viewport matrix: hand containment, selected lift, tricks and both Jacks histories",
+      "status": "passed"
+    },
+    {
+      "name": "Notched phone and layout thresholds preserve positive budgets",
+      "status": "passed"
+    },
+    {
+      "name": "Large play activity grows instead of retaining a tiny fixed public pile",
+      "status": "passed"
+    },
+    {
+      "name": "Fit is stateless across large, short, impossible and recovered public histories",
+      "status": "passed"
+    }
+  ],
+  "failures": [],
+  "notchedPinBoundary": [
+    {
+      "viewport": "858×390",
+      "clientWidth": 759,
+      "actualPin": false,
+      "iframe": "712×369",
+      "fullJacksWidth": 36.9
+    },
+    {
+      "viewport": "859×390",
+      "clientWidth": 760,
+      "actualPin": true,
+      "iframe": "493×369",
+      "fullJacksWidth": 28.2
+    },
+    {
+      "viewport": "860×390",
+      "clientWidth": 761,
+      "actualPin": true,
+      "iframe": "494×369",
+      "fullJacksWidth": 28.2
+    }
+  ]
+}

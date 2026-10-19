@@ -1,0 +1,299 @@
+{
+  "rect": {
+    "top": 130.0859375,
+    "bottom": 422.9140625,
+    "left": 267.4453125,
+    "right": 448.8671875
+  },
+  "zone": {
+    "top": 48,
+    "bottom": 511,
+    "left": 22,
+    "right": 694.328125
+  },
+  "lanes": [
+    {
+      "frontSuitVisible": true,
+      "cards": [
+        {
+          "x": 267.4453125,
+          "y": 130.0859375,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 150.3203125,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 170.5546875,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 190.8046875,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 211.0390625,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 231.2890625,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 251.5234375,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 271.7734375,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 292.0078125,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 312.2578125,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 332.4921875,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 352.7421875,
+          "unobstructed": true
+        },
+        {
+          "x": 267.4453125,
+          "y": 372.9765625,
+          "unobstructed": true
+        }
+      ]
+    },
+    {
+      "frontSuitVisible": true,
+      "cards": [
+        {
+          "x": 316.2890625,
+          "y": 130.0859375,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 150.3203125,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 170.5546875,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 190.8046875,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 211.0390625,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 231.2890625,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 251.5234375,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 271.7734375,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 292.0078125,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 312.2578125,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 332.4921875,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 352.7421875,
+          "unobstructed": true
+        },
+        {
+          "x": 316.2890625,
+          "y": 372.9765625,
+          "unobstructed": true
+        }
+      ]
+    },
+    {
+      "frontSuitVisible": true,
+      "cards": [
+        {
+          "x": 365.1328125,
+          "y": 130.0859375,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 150.3203125,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 170.5546875,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 190.8046875,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 211.0390625,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 231.2890625,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 251.5234375,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 271.7734375,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 292.0078125,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 312.2578125,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 332.4921875,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 352.7421875,
+          "unobstructed": true
+        },
+        {
+          "x": 365.1328125,
+          "y": 372.9765625,
+          "unobstructed": true
+        }
+      ]
+    },
+    {
+      "frontSuitVisible": true,
+      "cards": [
+        {
+          "x": 413.9765625,
+          "y": 130.0859375,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 150.3203125,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 170.5546875,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 190.8046875,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 211.0390625,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 231.2890625,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 251.5234375,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 271.7734375,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 292.0078125,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 312.2578125,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 332.4921875,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 352.7421875,
+          "unobstructed": true
+        },
+        {
+          "x": 413.9765625,
+          "y": 372.9765625,
+          "unobstructed": true
+        }
+      ]
+    }
+  ],
+  "northBottom": 120,
+  "southTop": 433,
+  "pageOverflow": false
+}

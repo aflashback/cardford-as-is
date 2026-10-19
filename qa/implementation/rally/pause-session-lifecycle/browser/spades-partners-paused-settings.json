@@ -1,0 +1,113 @@
+{
+  "name": "spades-partners-paused-settings",
+  "at": "2026-10-16T02:05:40.019Z",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 661.1830596923828,
+        "clientHeight": 421,
+        "controls": [
+          {
+            "bottom": 315.8769416809082,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Close dialog",
+            "right": 913.3108406066896,
+            "width": 43.9955940246582,
+            "x": 869.3152465820312,
+            "y": 271.88134765625
+          },
+          {
+            "bottom": 376.5455513000488,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Light",
+            "right": 643.0068359375,
+            "width": 128.14404296875,
+            "x": 514.86279296875,
+            "y": 332.5499572753906
+          },
+          {
+            "bottom": 376.5455513000488,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Dark",
+            "right": 778.1588439941406,
+            "width": 128.15463256835938,
+            "x": 650.0042114257812,
+            "y": 332.5499572753906
+          },
+          {
+            "bottom": 376.5455513000488,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Warm",
+            "right": 913.3108215332032,
+            "width": 128.15463256835938,
+            "x": 785.1561889648438,
+            "y": 332.5499572753906
+          },
+          {
+            "bottom": 473.86303329467773,
+            "disabled": false,
+            "height": 46.33510971069336,
+            "label": "When I ask",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 427.5279235839844
+          },
+          {
+            "bottom": 528.1906089782715,
+            "disabled": false,
+            "height": 46.33510971069336,
+            "label": "Occasional cues",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 481.8554992675781
+          },
+          {
+            "bottom": 582.5181541442871,
+            "disabled": false,
+            "height": 46.33510971069336,
+            "label": "After the hand",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 536.1830444335938
+          },
+          {
+            "bottom": 636.507007598877,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Done",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 592.5114135742188
+          }
+        ],
+        "height": 421.9702453613281,
+        "name": "Settings",
+        "right": 950.1820373535156,
+        "scrollHeight": 421,
+        "width": 459.9953308105469,
+        "x": 490.1867065429687,
+        "y": 239.2128143310547
+      }
+    ],
+    "height": 900,
+    "scrollHeight": 900,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

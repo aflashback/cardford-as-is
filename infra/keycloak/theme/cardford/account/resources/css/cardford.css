@@ -1,0 +1,119 @@
+/* AUTH-LOCAL-012: presentation only; Keycloak v3 owns all account interactions. */
+@font-face { font-family:Rally; src:url('../fonts/dm-sans.woff2') format('woff2'); font-style:normal; font-weight:100 1000; font-display:swap; }
+@font-face { font-family:RallyDisplay; src:url('../fonts/manrope.woff2') format('woff2'); font-style:normal; font-weight:200 800; font-display:swap; }
+:root {
+  color-scheme:light;
+  --cf-bg:#eee9dc; --cf-paper:#fffdf8; --cf-ink:#242820; --cf-muted:#5d6257; --cf-action:#bd442d; --cf-line:#cacaba;
+  --pf-v5-global--FontFamily--text:Rally,system-ui,sans-serif;
+  --pf-v5-global--FontFamily--heading:RallyDisplay,Rally,system-ui,sans-serif;
+  --pf-v5-global--Color--100:var(--cf-ink);
+  --pf-v5-global--Color--200:var(--cf-muted);
+  --pf-v5-global--BackgroundColor--100:var(--cf-paper);
+  --pf-v5-global--BackgroundColor--200:var(--cf-bg);
+  --pf-v5-global--BorderColor--100:var(--cf-line);
+  --pf-v5-global--primary-color--100:var(--cf-action);
+  --pf-v5-global--primary-color--200:#a83d29;
+  --pf-v5-global--link--Color:var(--cf-action);
+  --pf-v5-global--link--Color--hover:#8e3424;
+  --pf-v5-global--active-color--100:var(--cf-action);
+}
+body, .pf-v5-c-page { background:var(--cf-bg); color:var(--cf-ink); font-family:Rally,system-ui,sans-serif; }
+.keycloak__loading-container { background:var(--cf-bg); color:var(--cf-ink); }
+.pf-v5-c-masthead {
+  background:var(--cf-bg); color:var(--cf-ink); border-bottom:1px solid var(--cf-line);
+  padding:16px 24px; gap:12px;
+  --pf-v5-global--Color--100:var(--cf-ink);
+  --pf-v5-global--Color--200:var(--cf-muted);
+  --pf-v5-c-masthead--Color:var(--cf-ink);
+}
+.pf-v5-c-masthead__brand { display:inline-flex; align-items:center; gap:10px; color:var(--cf-ink); text-decoration:none; }
+.pf-v5-c-masthead__brand img { width:34px; height:34px; }
+.pf-v5-c-masthead__brand::after { content:'CardFord'; font:800 23px/1.2 RallyDisplay,Rally,sans-serif; letter-spacing:-.04em; }
+.pf-v5-c-masthead .pf-v5-c-toolbar { background:transparent; color:var(--cf-ink); }
+.pf-v5-c-masthead :is(.pf-v5-c-menu-toggle,.pf-v5-c-button.pf-m-plain) { color:var(--cf-ink); }
+.pf-v5-c-page__sidebar { background:var(--cf-bg); border-right:1px solid var(--cf-line); box-shadow:none; }
+.pf-v5-c-nav {
+  --pf-v5-c-nav__link--Color:var(--cf-muted);
+  --pf-v5-c-nav__link--hover--Color:var(--cf-ink);
+  --pf-v5-c-nav__link--focus--Color:var(--cf-ink);
+  --pf-v5-c-nav__link--m-current--Color:var(--cf-ink);
+  --pf-v5-c-nav__link--hover--BackgroundColor:#e4dfd1;
+  --pf-v5-c-nav__link--focus--BackgroundColor:#e4dfd1;
+  --pf-v5-c-nav__link--m-current--BackgroundColor:#e4dfd1;
+  --pf-v5-c-nav__link--m-current--after--BorderColor:var(--cf-action);
+  --pf-v5-c-nav__subnav--BorderColor:var(--cf-line);
+}
+.pf-v5-c-nav__link { min-height:48px; font-size:15px; }
+.pf-v5-c-nav__link.pf-m-current { font-weight:700; }
+.pf-v5-c-nav__link::before { border-color:var(--cf-line); }
+.pf-v5-c-nav__link::after { border-color:var(--cf-action); }
+body[data-page-id=account] .pf-v5-c-nav__link.pf-m-current::after { border-color:var(--cf-action); }
+.pf-v5-c-page__main { background:var(--cf-bg); }
+.pf-v5-c-page__main-section.pf-m-light { background:transparent; }
+.pf-v5-c-page__main-section { padding:28px 40px; }
+.pf-v5-c-page__main > .pf-v5-c-page__main-section:first-child { position:relative; isolation:isolate; padding-top:40px; }
+.pf-v5-c-page__main > .pf-v5-c-page__main-section:first-child::before {
+  content:''; position:absolute; z-index:-1; pointer-events:none; top:10px; right:32px; width:120px; height:120px;
+  background:url('../img/cardford-symbol-mono.svg') center/contain no-repeat; opacity:.055; filter:grayscale(1);
+}
+.pf-v5-c-title { font-family:RallyDisplay,Rally,sans-serif; color:var(--cf-ink); }
+body[data-page-id=account] h1.pf-v5-c-title { font-size:clamp(28px,3vw,36px); line-height:1.2; font-weight:800; letter-spacing:-.04em; }
+body[data-page-id=account] h2.pf-v5-c-title { font-size:22px; font-weight:750; letter-spacing:-.02em; }
+body[data-page-id=account] h3.pf-v5-c-title { font-size:18px; font-weight:700; }
+body[data-page-id=account] h1.pf-v5-c-title.pf-m-xl { font-size:22px; font-weight:750; letter-spacing:-.02em; }
+.pf-v5-c-content p { color:var(--cf-muted); line-height:1.55; }
+.pf-v5-c-form { max-width:680px; --pf-v5-c-form--GridGap:24px; }
+.pf-v5-c-form__label-text { font-weight:700; }
+.pf-v5-c-form-control { background:var(--cf-paper); border:1px solid var(--cf-line); border-radius:7px; }
+.pf-v5-c-form-control::before { border:0; }
+.pf-v5-c-form-control::after { border-radius:7px; }
+.pf-v5-c-form-control > :is(input,textarea,select) { min-height:44px; padding:10px 14px; font-size:16px; }
+.pf-v5-c-form-control.pf-m-disabled { background:#e5e1d6; color:var(--cf-muted); }
+.pf-v5-c-form-control.pf-m-error { border-color:var(--pf-v5-global--danger-color--100); }
+.pf-v5-c-form-control:focus-within { outline:2px solid var(--cf-muted); outline-offset:3px; }
+.pf-v5-c-button { min-height:44px; border-radius:7px; font-weight:650; }
+.pf-v5-c-menu-toggle { min-width:44px; min-height:44px; }
+.pf-v5-c-button::after { border-radius:7px; }
+.pf-v5-c-button.pf-m-primary { background:var(--cf-action); color:var(--cf-paper); }
+.pf-v5-c-button.pf-m-primary:hover { background:#a83d29; }
+.pf-v5-c-button.pf-m-link { color:var(--cf-action); }
+.pf-v5-c-button.pf-m-secondary { color:var(--cf-action); }
+body[data-page-id=account] .pf-v5-c-data-list { background:var(--cf-paper); border-color:var(--cf-line); border-top-width:1px; }
+body[data-page-id=account] .pf-v5-c-data-list__item { background:transparent; border-color:var(--cf-line); border-bottom-width:1px; }
+body[data-page-id=account] .pf-v5-c-data-list__item-row { padding-inline:24px; }
+.pf-v5-c-card { background:var(--cf-paper); border:1px solid var(--cf-line); border-radius:10px; box-shadow:none; }
+.pf-v5-c-menu, .pf-v5-c-dropdown__menu, .pf-v5-c-modal-box { background:var(--cf-paper); color:var(--cf-ink); border-radius:8px; }
+.pf-v5-c-page__main-section:has(> .pf-v5-c-jump-links) { background:transparent; padding:16px; border:1px solid var(--cf-line); border-radius:7px; }
+:is(a,button,input,select,textarea):focus-visible { outline:3px solid var(--cf-muted); outline-offset:3px; }
+@media (max-width:767px) {
+  .pf-v5-c-masthead { display:flex; flex-wrap:nowrap; align-items:center; padding:12px 16px; column-gap:8px; }
+  .pf-v5-c-masthead__brand { flex:1; }
+  .pf-v5-c-masthead__content { flex:0 0 auto; min-width:0; margin:0; }
+  .pf-v5-c-masthead :is(.pf-v5-c-toolbar,.pf-v5-c-toolbar__content) { padding:0; }
+  .pf-v5-c-masthead .pf-v5-c-toolbar__content-section { gap:8px; }
+  .pf-v5-c-masthead .pf-v5-c-toolbar__item { margin:0; }
+  .pf-v5-c-masthead .pf-v5-c-menu-toggle { min-width:44px; min-height:44px; }
+  .pf-v5-c-page__main-section { padding:24px; }
+  .pf-v5-c-page__main > .pf-v5-c-page__main-section:first-child { padding-top:28px; }
+  .pf-v5-c-jump-links__main { display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; gap:12px; }
+  .pf-v5-c-jump-links__header { margin:0; }
+  .pf-v5-c-jump-links__label { padding:0; }
+  .pf-v5-c-jump-links__list { margin:0; padding:0; }
+  .pf-v5-c-jump-links__link { min-height:44px; padding:10px 12px; }
+  /* Keep native application headings compact when its list stacks on phones. */
+  #applications-list-header .pf-v5-c-data-list__item-row > span { display:none; }
+  #applications-list-header .pf-v5-c-data-list__item-content { display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:12px; }
+  #applications-list-header .pf-v5-c-data-list__cell { grid-column:auto; padding-block:12px; font-size:12px; flex:1; }
+  #applications-list-header .pf-v5-c-data-list__cell:empty { display:none; }
+  #applications-list .pf-v5-c-data-list__item-content { min-width:0; }
+  #applications-list .pf-v5-c-button { max-width:100%; white-space:normal; overflow-wrap:anywhere; }
+  #applications-list .pf-v5-c-data-list__expandable-content { padding-inline:16px!important; overflow-wrap:anywhere; }
+}
+@media (max-width:380px) {
+  .pf-v5-c-masthead { padding-inline:12px; }
+  .pf-v5-c-masthead__brand { gap:7px; }
+  .pf-v5-c-masthead__brand::after { font-size:20px; }
+  .pf-v5-c-masthead__brand img { width:30px; height:30px; }
+  .pf-v5-c-page__main-section { padding-inline:20px; }
+  body[data-page-id=account] .pf-v5-c-data-list__item-row { padding-inline:20px; }
+}

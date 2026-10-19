@@ -1,0 +1,210 @@
+{
+  "status": "passed-bounded-records-fixture",
+  "recordedAt": "2026-10-16T01:48:47.422Z",
+  "source": {
+    "head": "e60cfb21d706611525197183f16628790025f5ac",
+    "sha256": {
+      "qa/implementation/rally/pause-session-lifecycle/capacity/run.mjs": "e9c137488e0abf6cc38a143a0eb71dff6f545c786d97869ea4ba673107870554",
+      "qa/implementation/rally/pause-session-lifecycle/capacity/pause_capacity_test.go.txt": "87ed8ffcc8df572c79d88574a23439907c05e41688ffdff546c131e5f8e1f169",
+      "server/internal/records/realtime_playback.go": "dde1cf345886149bde8526e42463a9e0a2439d685b7b849e1435c18a662ae0de",
+      "server/internal/records/session_retention.go": "f70125db6613cd72fc90f6bf2037b8f717da55fbd5ca597615c42179101f30c5",
+      "server/internal/records/store.go": "c3934896c60fba17d1135b365562be17285ce7994ba4b54a26a7a64087134b80",
+      "server/internal/service/bot_playback.go": "5ab6d83d9031505ef7c9a49e168b29e63ee3561df76eae4d5656c661614f3658",
+      "server/internal/service/session_lifecycle.go": "ce44ef87a3c3c7faa8d3deee35af90d3c2bbc8caad2e706b15bc853f15dff940",
+      "server/internal/service/realtime.go": "c6d6daa6b2f1cd38be6af7f07ead3fb599ec6d60b0eaa6b2809729a5452bef2d",
+      "web/server/records/migrations/001-local-platform.sql": "1306a673d8c1f00972f7cb3e410f3489a7c40d3aa5a20d87f8cd5913c6f752c2",
+      "web/server/records/migrations/002-billing-family.sql": "5e1268ddcc97c34635d580641b5cdc768cc9c47690c0735db1be8e9b8d64042f",
+      "web/server/records/migrations/003-account-data.sql": "75d80528f474bdc4f92c20494c46a146fd3d3147adcd0fc05764b8472abb8fae",
+      "web/server/records/migrations/004-analysis-jobs.sql": "3ec418d08f1c4f89a8bcb72ee13bb2f4346861afac491aec95306849cf0cae43",
+      "web/server/records/migrations/005-analysis-attempt-fence.sql": "485165d34bf550e39fba00891556bc85f1fc0868853e6793c85e98c505b2701c",
+      "web/server/records/migrations/006-preparation-attempts.sql": "c68c498df78096f777e286e0173a6ad884589158a34503312fc6c547d0e54e1e",
+      "web/server/records/migrations/007-versioned-platform-records.sql": "cae296b33b5c8b09169e7636b6116d6a60fd72ac9cd78661b4900b3b2873208a",
+      "web/server/records/migrations/008-local-go-service.sql": "2f5b0e962a59491a2cc6ee35de1f72778c98b45e7e6b67789b09705ed05299d5",
+      "web/server/records/migrations/009-configured-access.sql": "ec6ea4b6338cb5de7e026f5134000dfa47a0e6ccfa407095ee48fa21061a48a1",
+      "web/server/records/migrations/010-platform-client.sql": "2b0eca4c94a1220246e88292cbc87f685d76d36bfa031e8437fd78fdd0c12a46",
+      "web/server/records/migrations/011-realtime.sql": "b01d1a8aaeb4a0e0ab161e0e53d6cf219e38622b370f345cf052e23f8c33f9ae",
+      "web/server/records/migrations/012-coach-ui.sql": "81b29589c92ad08cb1a4691dbe5e8862aff8dbf8c621d1bc0544e8022e85cb27",
+      "web/server/records/migrations/013-session-lifecycle.sql": "c2eefc23df21ea03ebe8d861dd2ec7d9702bd9b7c88c274edf21b86e3de280b1"
+    },
+    "recordsPackageSHA256": "be01380ee51657f255ade88da34294108a4cd2b0e1b9776e7b773f85cd137090",
+    "contextServiceFilesChangedDuringRun": []
+  },
+  "machine": {
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26200",
+    "cpu": "AMD Ryzen 9 5900HX with Radeon Graphics        ",
+    "logicalCPUs": 16,
+    "hostRAMBytes": 33721040896,
+    "node": "v24.19.0"
+  },
+  "clients": 8,
+  "counts": {
+    "activeGamePointers": 0,
+    "expired": 128,
+    "gamesPreserved": 128,
+    "outboxRows": 1024,
+    "paused": 0,
+    "running": 0,
+    "serviceReceiptRows": 576,
+    "workRows": 0
+  },
+  "database": {
+    "acquiredAfter": 0,
+    "firstPool": {
+      "acquisitions": 1305,
+      "canceledAcquireCount": 0,
+      "cumulativeAcquireDurationMs": 2266.2714,
+      "emptyAcquireCount": 1119,
+      "note": "AcquireDuration is total acquisition duration, not SQL execution time or a latency percentile"
+    },
+    "loopbackTestDatabase": true,
+    "poolMaxConnsPerStore": 4,
+    "randomIsolatedSchema": true,
+    "schemaRelationBytes": 4980736,
+    "secondPool": {
+      "acquisitions": 146,
+      "canceledAcquireCount": 0,
+      "cumulativeAcquireDurationMs": 0,
+      "emptyAcquireCount": 0,
+      "note": "AcquireDuration is total acquisition duration, not SQL execution time or a latency percentile"
+    },
+    "storePools": 2
+  },
+  "expirySweep": {
+    "batchLimit": 8,
+    "calls": 35,
+    "drainWallMs": 120.7453,
+    "duplicateExpiries": 0,
+    "expiredGamesPerSecond": 1060.0826698844592,
+    "note": "stage operations count is two concurrent drainers, not number of games or sweep calls; tiny fixture drain rate is not sustained production cleanup throughput",
+    "stores": 2,
+    "uniqueExpiredGames": 128
+  },
+  "games": 128,
+  "goRuntime": {
+    "gcCyclesDuringStages": 7,
+    "gomaxprocs": 16,
+    "goroutinesAfter": 4,
+    "goroutinesBefore": 4,
+    "heapAllocAfterGC": 4021736,
+    "heapAllocBefore": 3719440,
+    "heapSysAfter": 16416768,
+    "totalAllocDuringStages": 16231152,
+    "version": "go1.26.8"
+  },
+  "renewalRounds": 3,
+  "schemaVersion": "pause-capacity-1.0.0",
+  "scope": "isolated actual records lifecycle; no service runners or sockets",
+  "setupMs": 1061.9269,
+  "stages": [
+    {
+      "name": "resume",
+      "operations": 128,
+      "wallMs": 157.9846,
+      "operationsPerSecond": 810.2055516803537,
+      "p50Ms": 5.4623,
+      "p95Ms": 12.8485,
+      "p99Ms": 102.1353,
+      "maxMs": 108.6879
+    },
+    {
+      "name": "renew-1",
+      "operations": 128,
+      "wallMs": 38.1594,
+      "operationsPerSecond": 3354.3504352793802,
+      "p50Ms": 2.1671,
+      "p95Ms": 3.0658,
+      "p99Ms": 3.6378,
+      "maxMs": 3.6957
+    },
+    {
+      "name": "renew-2",
+      "operations": 128,
+      "wallMs": 36.9964,
+      "operationsPerSecond": 3459.7960882680477,
+      "p50Ms": 2.1602,
+      "p95Ms": 2.734,
+      "p99Ms": 3.252,
+      "maxMs": 3.252
+    },
+    {
+      "name": "renew-3",
+      "operations": 128,
+      "wallMs": 35.6482,
+      "operationsPerSecond": 3590.6441278942557,
+      "p50Ms": 2.1232,
+      "p95Ms": 2.6666,
+      "p99Ms": 2.8138,
+      "maxMs": 3.1014
+    },
+    {
+      "name": "duplicate-renew",
+      "operations": 128,
+      "wallMs": 30.4109,
+      "operationsPerSecond": 4209.017161609818,
+      "p50Ms": 1.7035,
+      "p95Ms": 2.2107,
+      "p99Ms": 2.919,
+      "maxMs": 2.919
+    },
+    {
+      "name": "pause-or-late-renew",
+      "operations": 128,
+      "wallMs": 64.4446,
+      "operationsPerSecond": 1986.2021022707875,
+      "p50Ms": 3.7502,
+      "p95Ms": 5.6976,
+      "p99Ms": 8.0245,
+      "maxMs": 8.0245
+    },
+    {
+      "name": "repeat-pause",
+      "operations": 128,
+      "wallMs": 69.5005,
+      "operationsPerSecond": 1841.7133689685684,
+      "p50Ms": 4.2894,
+      "p95Ms": 4.9493,
+      "p99Ms": 5.2391,
+      "maxMs": 5.3285
+    },
+    {
+      "name": "two-store-expiry-drain",
+      "operations": 2,
+      "wallMs": 120.0742,
+      "operationsPerSecond": 16.656367479441876,
+      "p50Ms": 120.0742,
+      "p95Ms": 120.0742,
+      "p99Ms": 120.0742,
+      "maxMs": 120.0742
+    },
+    {
+      "name": "resume-after-expiry",
+      "operations": 128,
+      "wallMs": 51.7558,
+      "operationsPerSecond": 2473.152767419304,
+      "p50Ms": 3.1898,
+      "p95Ms": 3.7467,
+      "p99Ms": 4.2854,
+      "maxMs": 4.7989
+    },
+    {
+      "name": "read-expired",
+      "operations": 128,
+      "wallMs": 35.019,
+      "operationsPerSecond": 3655.158628173277,
+      "p50Ms": 2.148,
+      "p95Ms": 2.9548,
+      "p99Ms": 3.2799,
+      "maxMs": 3.2799
+    }
+  ],
+  "limitations": [
+    "Not an HTTP, WebSocket, bot, coach, browser or production benchmark",
+    "No per-server capacity or 100000-game claim",
+    "Burst operations without five-second client pacing",
+    "Expiry deadlines injected only in a random throwaway test schema",
+    "Heap metrics describe the Go test process; SQL relation bytes include schema/index overhead",
+    "SQL statement counts, process CPU, WAL, network and service worker cancellation are not measured"
+  ]
+}

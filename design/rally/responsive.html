@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Review the same Rally hand across representative landscape CSS viewport sizes.">
+  <title>Rally · Responsive review</title>
+  <link rel="icon" href="approved/shared/assets/cardford-symbol.svg">
+  <link rel="stylesheet" href="responsive-review.css">
+  <script src="device-profiles.js" defer></script>
+  <script src="responsive-review.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#review-controls">Skip to review controls</a>
+  <header class="review-header">
+    <a href="index.html" class="brand" aria-label="Rally package home"><img src="approved/shared/assets/cardford-symbol.svg" width="30" height="30" alt="CardFord"><span>RALLY <small>Responsive review</small></span></a>
+    <p>One hand. Different sizes.</p><a class="text-link" href="approved/#play" target="_blank" rel="noopener">Open full mock ↗</a>
+  </header>
+  <section id="review-controls" class="review-controls" aria-label="Responsive review controls">
+    <div class="viewport-controls">
+      <label class="field preset-field" for="profile"><span>CSS viewport class</span><select id="profile" aria-describedby="profile-note"></select></label>
+      <div class="step-controls" role="group" aria-label="Cycle viewport classes"><button id="previous-profile" class="icon-button" aria-label="Previous viewport class" title="Previous viewport class">←</button><button id="next-profile" class="icon-button" aria-label="Next viewport class" title="Next viewport class">→</button></div>
+      <button id="rotate" class="button secondary" aria-pressed="false" title="Swap width and height without reloading the hand"><span aria-hidden="true">↶</span><span class="rotate-label">Portrait</span></button>
+      <div class="view-scale" role="group" aria-label="Preview display scale"><button data-scale="fit" aria-pressed="true">Fit</button><button data-scale="actual" aria-pressed="false" title="One review pixel per CSS pixel; scroll to inspect larger viewports">100%</button></div>
+      <span class="size-label" id="viewport-size">844 × 390 <small>CSS px</small></span>
+    </div>
+    <div class="scenario-controls">
+      <div class="scenario-form"><label class="field" for="game-mode"><span>Demo mode</span><select id="game-mode" disabled><option value="hearts-solo">Hearts · Solo</option><option value="spades-solo">Spades · Solo</option><option value="spades-partners" selected>Spades · Partners</option><option value="trix-basic-solo">Trix · Basic Solo</option><option value="trix-basic-partners">Trix · Basic Partners</option><option value="trix-complex-solo">Trix · Complex Solo</option><option value="trix-complex-partners">Trix · Complex Partners</option></select></label><label class="field phase-field" for="phase"><span>Phase</span><select id="phase" disabled><option value="play">Trick play</option><option value="bid">Bidding</option></select></label><button id="load-scenario" class="button primary" disabled>Load demo →</button></div>
+      <div class="presentation-controls"><label class="field" for="theme"><span>Theme</span><select id="theme" disabled><option value="light">Light</option><option value="dark">Dark</option><option value="warm">Warm</option></select></label><label class="field" for="coach-display"><span>Coach</span><select id="coach-display" disabled><option value="closed">Closed</option><option value="overlay">Overlay</option><option value="pinned">Pinned</option></select></label><span id="coach-effective" class="coach-effective"></span></div>
+    </div>
+    <div class="shortcut-row"><span class="micro-label">New demo</span><button data-scenario="trix-jacks" disabled>Trix Jacks</button><button data-scenario="trix-double" disabled>Trix double</button><button data-scenario="hearts-pass" disabled>Hearts pass</button><button data-scenario="spades-bid" disabled>Spades bid</button><button data-scenario="trick-play" disabled>Trick play</button><span class="reset-note">Only loading a demo resets the hand.</span></div>
+  </section>
+  <main id="workspace" class="workspace" aria-label="Scaled viewport review area" tabindex="-1">
+    <div class="workspace-heading"><div><h1 id="profile-title">iPhone 12 class</h1><p id="profile-note">Representative 844 × 390 CSS viewport.</p></div><div class="live-state"><span class="state-dot" aria-hidden="true"></span><span id="live-state">Connecting to mock…</span></div></div>
+    <div id="preview-stage" class="preview-stage" tabindex="0" aria-label="Viewport canvas. At 100 percent, scroll to inspect viewports larger than this area."><div class="canvas-align"><div id="viewport-boundary" class="viewport-boundary"><iframe id="preview" src="approved/index.html#play" width="844" height="390" title="Interactive Rally mock, 844 by 390 CSS pixels"></iframe></div></div></div>
+    <div class="canvas-caption"><span id="scale-label">Display 100% · actual iframe 844 × 390 CSS px</span><span id="orientation-label">Landscape · hand stays mounted</span></div>
+  </main>
+  <footer class="review-footer"><div><span id="review-status" role="status" aria-live="polite">Resize, rotate or change display scale without reloading the hand.</span><p>Viewport review only. No device, Safari, touch, DPR, browser chrome or notch emulation.</p></div>
+    <details><summary>Preset notes & sources</summary><div class="source-notes"><p>Names identify representative CSS classes, not exact current hardware behavior. Real browser controls, safe areas, zoom and display settings change available space.</p><p>Some requested sizes match a descriptor's screen dimensions rather than its browser viewport. Tighter registry viewport examples are included separately. Fit scales the review surface; the embedded page keeps its selected CSS width and height.</p><p>Checked against the <a href="https://github.com/microsoft/playwright/blob/main/packages/isomorphic/deviceDescriptorsSource.json" target="_blank" rel="noopener">official Playwright device registry</a> where available. See <a href="https://playwright.dev/docs/emulation#viewport" target="_blank" rel="noopener">viewport versus device emulation</a>. Dimensions and provenance: <a href="device-profiles.js">device-profiles.js</a>.</p><p>Use the local HTTP preview server. This reviewer and its source checks do not establish browser/device acceptance.</p></div></details>
+  </footer>
+</body>
+</html>

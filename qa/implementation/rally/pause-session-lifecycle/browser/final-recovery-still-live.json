@@ -1,0 +1,21 @@
+{
+  "name": "final-recovery-still-live",
+  "at": "2026-10-16T02:17:15.110Z",
+  "build": "index-BS-kEy9R.js",
+  "check": "Observe after rapid offline recovery, no input while waiting for idle",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

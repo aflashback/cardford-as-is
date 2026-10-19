@@ -186,6 +186,16 @@ func generatedWire(name string) wireValue {
 		return new(AccessDecision)
 	case "RegisteredPresentation":
 		return new(RegisteredPresentation)
+	case "RegisteredAdvice":
+		return new(RegisteredAdvice)
+	case "CoachSupport":
+		return new(CoachSupport)
+	case "CoachReason":
+		return new(CoachReason)
+	case "CoachMessage":
+		return new(CoachMessage)
+	case "CoachMessageView":
+		return new(CoachMessageView)
 	case "HeartsCandidate":
 		return new(HeartsCandidate)
 	case "HeartsObservation":
@@ -230,6 +240,50 @@ func generatedWire(name string) wireValue {
 		return new(TokenActorEvent)
 	case "TokenPresentation":
 		return new(TokenPresentation)
+	case "TrixAction":
+		return new(TrixAction)
+	case "TrixPlay":
+		return new(TrixPlay)
+	case "TrixTrick":
+		return new(TrixTrick)
+	case "TrixDeclaration":
+		return new(TrixDeclaration)
+	case "TrixRow":
+		return new(TrixRow)
+	case "TrixLayoutPass":
+		return new(TrixLayoutPass)
+	case "TrixLeadSource":
+		return new(TrixLeadSource)
+	case "TrixRecipient":
+		return new(TrixRecipient)
+	case "TrixLedgerEntry":
+		return new(TrixLedgerEntry)
+	case "TrixWithheldBonus":
+		return new(TrixWithheldBonus)
+	case "TrixScore":
+		return new(TrixScore)
+	case "TrixTwoAnnouncements":
+		return new(TrixTwoAnnouncements)
+	case "TrixObservation":
+		return new(TrixObservation)
+	case "TrixActorPacket":
+		return new(TrixActorPacket)
+	case "TrixSessionView":
+		return new(TrixSessionView)
+	case "TrixPresentation":
+		return new(TrixPresentation)
+	case "TrixAnalysis":
+		return new(TrixAnalysis)
+	case "TrixActorEvent":
+		return new(TrixActorEvent)
+	case "TrixAdvice":
+		return new(TrixAdvice)
+	case "TrixReviewFrame":
+		return new(TrixReviewFrame)
+	case "TrixLayoutTurn":
+		return new(TrixLayoutTurn)
+	case "TrixLayoutHistory":
+		return new(TrixLayoutHistory)
 	case "LocalServiceWorkRetryRequest":
 		return new(LocalServiceWorkRetryRequest)
 	case "LocalServiceEmptyRequest":
@@ -302,6 +356,14 @@ func generatedWire(name string) wireValue {
 		return new(PlatformRecoveredReceipt)
 	case "PlatformReconcileView":
 		return new(PlatformReconcileView)
+	case "CatalogMode":
+		return new(CatalogMode)
+	case "TrixCompletedRound":
+		return new(TrixCompletedRound)
+	case "TrixRoundIndex":
+		return new(TrixRoundIndex)
+	case "TrixRoundHistory":
+		return new(TrixRoundHistory)
 	case "PlatformPreferencesView":
 		return new(PlatformPreferencesView)
 	case "PlatformPreferencesRequest":
@@ -330,6 +392,48 @@ func generatedWire(name string) wireValue {
 		return new(PlatformReviewStatus)
 	case "PlatformAdviceView":
 		return new(PlatformAdviceView)
+	case "CoachUIProvider":
+		return new(CoachUIProvider)
+	case "CoachUIAccess":
+		return new(CoachUIAccess)
+	case "CoachUIFeedback":
+		return new(CoachUIFeedback)
+	case "CoachUIRatingPreview":
+		return new(CoachUIRatingPreview)
+	case "CoachUIItem":
+		return new(CoachUIItem)
+	case "CoachUISessionSummary":
+		return new(CoachUISessionSummary)
+	case "CoachUISession":
+		return new(CoachUISession)
+	case "CoachUIStatusView":
+		return new(CoachUIStatusView)
+	case "CoachUISessionView":
+		return new(CoachUISessionView)
+	case "CoachUIStartRequest":
+		return new(CoachUIStartRequest)
+	case "CoachUIItemRequest":
+		return new(CoachUIItemRequest)
+	case "CoachUIFeedbackRequest":
+		return new(CoachUIFeedbackRequest)
+	case "CoachUIFeedbackView":
+		return new(CoachUIFeedbackView)
+	case "CoachUIReplayView":
+		return new(CoachUIReplayView)
+	case "RealtimePlaybackRequest":
+		return new(RealtimePlaybackRequest)
+	case "RealtimePlaybackView":
+		return new(RealtimePlaybackView)
+	case "RealtimeNegotiateView":
+		return new(RealtimeNegotiateView)
+	case "RealtimeSnapshotRequest":
+		return new(RealtimeSnapshotRequest)
+	case "RealtimeSnapshot":
+		return new(RealtimeSnapshot)
+	case "RealtimeMessage":
+		return new(RealtimeMessage)
+	case "RealtimePresenceRequest":
+		return new(RealtimePresenceRequest)
 	}
 	return nil
 }

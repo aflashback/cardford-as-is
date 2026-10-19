@@ -1,18 +1,107 @@
+# Dependencies and package-manager caches (all workspaces)
 node_modules/
+.npm/
+.pnpm-store/
+
+# Build, publish and disposable command output (all workspaces)
 dist/
+build/
+bin/
+obj/
+out/
+publish/
+artifacts/
 *.tsbuildinfo
+.vite/
+.cache/
+.turbo/
+.eslintcache
+.prettiercache
+
+# Compiled Go/native binaries and Java classes
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.class
+# Default extensionless output from go build ./server/cmd/<name>
+/cardford
+/cardford-auth
+/coachlab
+/m02a
+/perf
+/trixcollection
+
+# Local configuration and secrets; commit only example environment files
 .env
 .env.*
 !.env.example
 !.env.local.example
+!.env.*.example
 *token*.txt
 *secret*.txt
 .secrets/
+
+# Local servers, toolchains, databases, certificates and private lab runs
+# Startup/setup scripts keep these under .local/, including auth and PostgreSQL.
+.local/
 data/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Local agent/browser state
 .worktrees/
 .superpowers/
-.local/
-playwright-report/
-test-results/
-*.log
 .playwright-mcp/
+
+# Automated test output and coverage (retain curated qa/ evidence and fixtures)
+playwright-report/
+blob-report/
+test-results/
+coverage/
+.nyc_output/
+/coverage.out
+/coverage.txt
+/coverage.html
+/cpu.prof
+/mem.prof
+
+# Runtime logs, process IDs and scratch files
+*.log
+*.log.*
+*.pid
+*.pid.lock
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Python helper environments and bytecode
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS/editor leftovers
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# Keep source, lockfiles, migrations, generated contracts, design assets and
+# reviewed qa/ evidence versioned. Do not blanket-ignore JSON, SQL or archives.
+# Ignore rules do not untrack files already added to Git's index.

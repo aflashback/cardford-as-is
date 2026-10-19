@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-13",
+  "scope": "Standalone SVG assets only; no HTML, browser or website rendering.",
+  "rasterizer": {
+    "name": "sharp",
+    "version": "0.35.5",
+    "output": "Temporary native-resolution PNGs; not distributed or canonical."
+  },
+  "visual_inspection": {
+    "all_five_viewed": true,
+    "observed": "Character identity and poses remain recognizable. Whistle grip and Reading v8 notebook curl, CardFord watermark and fingers are retained. Fine texture and edges visibly differ from the PNG originals.",
+    "owner_acceptance": "approved; user confirmed all reviewed and approved",
+    "canonical_format": "PNG"
+  },
+  "metric_definition": "Mean absolute per-channel difference on the 0–255 RGB scale after compositing original PNG and SVG rasterization over the same background at native dimensions. Includes transparent canvas. These numbers describe difference, not a perceptual-quality acceptance threshold.",
+  "backgrounds": {
+    "chalk": "#EEE9DC",
+    "dark": "#17241D"
+  },
+  "assets": [
+    {
+      "id": "regular-whistle-v3",
+      "chalk_mae": 2.816,
+      "dark_mae": 2.349,
+      "rasterized_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "regular-thinking-v2",
+      "chalk_mae": 2.268,
+      "dark_mae": 1.836,
+      "rasterized_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "regular-explaining-v2",
+      "chalk_mae": 2.492,
+      "dark_mae": 2.028,
+      "rasterized_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "regular-waiting-v2",
+      "chalk_mae": 2.117,
+      "dark_mae": 1.7,
+      "rasterized_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "regular-reading-v8",
+      "chalk_mae": 3.138,
+      "dark_mae": 2.758,
+      "rasterized_corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

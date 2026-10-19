@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "builder": "registry.access.redhat.com/ubi9/openjdk-21:1.23@sha256:0f2fbb155820b8edd269e2f465a6b325a6bdcb065f828ec7e72a4dfdc5ca6642",
+  "keycloakImage": "quay.io/keycloak/keycloak:26.8.1@sha256:ed1cab21814c7d18ce8f0e11d5a1fa1c6923de12dd4c7625a18c5d34452a57a4",
+  "communityProviderSha256": "174504c0e8ac7379d0f3d5652bb9bcc9a4ce74a1569b5df0e48c409857b4ce4a",
+  "sourceHash": "2f4d85f3ef851a5e74c73bf9050c8b228c80c44dca887815c86ab0302a7e9f04",
+  "sources": [
+    {
+      "path": "src/META-INF/services/org.keycloak.authentication.AuthenticatorFactory",
+      "sha256": "c0a924437925c300f303f76812396a9fe4e4e92c0572453a199f0067fb65b3b7"
+    },
+    {
+      "path": "src/io/cardford/auth/BoundedEmailOtpAuthenticator.java",
+      "sha256": "ff46482c345871c11554a9130ccdd04ee93ac2b61fd9683ec73b6a5c86fa1674"
+    },
+    {
+      "path": "src/io/cardford/auth/BoundedEmailOtpAuthenticatorFactory.java",
+      "sha256": "a33cabe941e2e3b085fef5630f21cb0feba63780ccfdeed939ba2bf99e99d1b3"
+    },
+    {
+      "path": "src/io/cardford/auth/EmailOtpPolicy.java",
+      "sha256": "099ed8ca6c9d531b3d93d526429e775a71b2f10af76be0cf589a5a09c7be0edd"
+    },
+    {
+      "path": "test/EmailOtpPolicyTest.java",
+      "sha256": "44976076a4d305f8c9848e214a07bde0a929b0b04d4ec3f64d2fc6ff6638eab3"
+    }
+  ],
+  "sha256": "4dc770133baba94d87c50d0dad06f806c7938752d8c16791c4a52fb2cef528a7",
+  "artifact": "cardford-email-otp-policy.jar",
+  "policy": {
+    "lifetimeSeconds": 300,
+    "maxAttempts": 5,
+    "resendSeconds": 60
+  },
+  "license": "Apache-2.0; linked community provider remains Elastic-2.0"
+}

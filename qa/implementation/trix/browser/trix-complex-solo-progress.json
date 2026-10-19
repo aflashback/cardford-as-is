@@ -1,0 +1,1256 @@
+{
+  "mode": "trix-complex-solo",
+  "gameId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce",
+  "revision": 493,
+  "deal": 8,
+  "kingdom": 4,
+  "request": "complex",
+  "elapsedMs": 413031,
+  "completed": [
+    {
+      "deal": 1,
+      "kingdom": 1,
+      "owner": 1,
+      "request": "complex",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": -30
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": 0
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": -405
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": -65
+        }
+      ]
+    },
+    {
+      "deal": 2,
+      "kingdom": 1,
+      "owner": 1,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": 200
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": 50
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": 150
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": 100
+        }
+      ]
+    },
+    {
+      "deal": 3,
+      "kingdom": 2,
+      "owner": 0,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": 100
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": 200
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": 50
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": 150
+        }
+      ]
+    },
+    {
+      "deal": 4,
+      "kingdom": 2,
+      "owner": 0,
+      "request": "complex",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": -125
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": -170
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": -150
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": -55
+        }
+      ]
+    },
+    {
+      "deal": 5,
+      "kingdom": 3,
+      "owner": 3,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": 200
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": 50
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": 100
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": 150
+        }
+      ]
+    },
+    {
+      "deal": 6,
+      "kingdom": 3,
+      "owner": 3,
+      "request": "complex",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": -300
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": 60
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": -140
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": -120
+        }
+      ]
+    },
+    {
+      "deal": 7,
+      "kingdom": 4,
+      "owner": 2,
+      "request": "trix",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": 200
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": 50
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": 100
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": 150
+        }
+      ]
+    },
+    {
+      "deal": 8,
+      "kingdom": 4,
+      "owner": 2,
+      "request": "complex",
+      "totals": [
+        {
+          "id": "seat-0",
+          "seats": [
+            0
+          ],
+          "total": -55
+        },
+        {
+          "id": "seat-1",
+          "seats": [
+            1
+          ],
+          "total": -350
+        },
+        {
+          "id": "seat-2",
+          "seats": [
+            2
+          ],
+          "total": -95
+        },
+        {
+          "id": "seat-3",
+          "seats": [
+            3
+          ],
+          "total": 0
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:2",
+      "deal": 1,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "hint": "A doubled card costs twice its ordinary penalty. If you take your own double, the current or previous external leader gets the bonus; with no previous giver, nobody does.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:6",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:H10",
+      "origin": "code",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:9",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:C2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:15",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:HJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:17",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:24",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:27",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:C9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:31",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:CJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:36",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:D2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:39",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:43",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:47",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:51",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:55",
+      "deal": 1,
+      "phase": "playing",
+      "candidateId": "play:HK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:61",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:CJ",
+      "origin": "forced",
+      "hint": "Compare which placement connects more of your remaining cards. Opponents may also benefit from the new opening.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:65",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:69",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:73",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "forced",
+      "hint": "Passing is required on this board. It reveals only that you cannot extend the current rows.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:77",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:H8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:81",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:85",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:DK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:89",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:C2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:93",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:97",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:101",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:H5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:105",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:S10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:109",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:113",
+      "deal": 2,
+      "phase": "layout",
+      "candidateId": "layout:S7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:125",
+      "deal": 3,
+      "phase": "choose-request",
+      "candidateId": "choose:trix",
+      "origin": "code",
+      "hint": "Compare your high cards, low exits and the games still available. The next request will use a fresh deal.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:126",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:130",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:DQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:134",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:138",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:H10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:142",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:H9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:146",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:HQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:150",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:C8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:154",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:HK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:158",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:162",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:SK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:166",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:170",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:174",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:178",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:D4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:182",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:185",
+      "deal": 3,
+      "phase": "layout",
+      "candidateId": "layout:S3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:189",
+      "deal": 4,
+      "phase": "choose-request",
+      "candidateId": "choose:complex",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:190",
+      "deal": 4,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:194",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:C6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:198",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:C7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:205",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:206",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:210",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:215",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:S2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:221",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:HJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:223",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:S5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:228",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:231",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:234",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:240",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:DA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:243",
+      "deal": 4,
+      "phase": "playing",
+      "candidateId": "play:SK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:252",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:CJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:256",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:CQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:260",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:DJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:264",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:D9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:268",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:272",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:H6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:276",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:S9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:280",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:284",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:288",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:C4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:292",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:D2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:296",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:300",
+      "deal": 5,
+      "phase": "layout",
+      "candidateId": "layout:S5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:313",
+      "deal": 6,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:317",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:319",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:322",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:329",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:S10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:330",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C5",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:337",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:340",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:C10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:345",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:H9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:349",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:350",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:CQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:356",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:SJ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:361",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:DA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:362",
+      "deal": 6,
+      "phase": "playing",
+      "candidateId": "play:CK",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:371",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:SJ",
+      "origin": "forced",
+      "hint": "Compare which placement connects more of your remaining cards. Opponents may also benefit from the new opening.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:375",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:SQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:379",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:S7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:383",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:D10",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:387",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:DQ",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:391",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:DA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:395",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:SA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:399",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:403",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:407",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:H7",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:411",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "forced",
+      "hint": "Passing is required on this board. It reveals only that you cannot extend the current rows.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:415",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout-pass",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:419",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:D2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:423",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:427",
+      "deal": 7,
+      "phase": "layout",
+      "candidateId": "layout:H3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:438",
+      "deal": 8,
+      "phase": "declare-doubles",
+      "candidateId": "doubles:",
+      "origin": "code",
+      "hint": "A doubled card costs twice its ordinary penalty. If you take your own double, the current or previous external leader gets the bonus; with no previous giver, nobody does.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:442",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:HQ",
+      "origin": "forced",
+      "hint": "Follow suit when you can. Compare losing this trick with releasing a dangerous high card; later players may change the winner.",
+      "exposedLevel": 3
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:444",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:C2",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:449",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:S4",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:454",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:C3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:457",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:D3",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:461",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:C6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:465",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:D6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:470",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:S6",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:473",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:CA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:476",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:D9",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:481",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:DA",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:485",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:S8",
+      "origin": "code",
+      "exposedLevel": 0
+    },
+    {
+      "decisionId": "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:489",
+      "deal": 8,
+      "phase": "playing",
+      "candidateId": "play:SA",
+      "origin": "code",
+      "exposedLevel": 0
+    }
+  ],
+  "actions": {
+    "declare-doubles": 4,
+    "play-card": 52,
+    "layout-card": 52,
+    "layout-pass": 6,
+    "choose-request": 2
+  },
+  "hintedDecisions": [
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:2",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:6",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:61",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:73",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:125",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:371",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:411",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:438",
+    "43758aafc34bb9dd4435a9059c72b1700da2c339cb690dce:decision:442"
+  ]
+}

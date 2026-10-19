@@ -1,0 +1,65 @@
+{
+  "name": "spades-solo-old-se-paused",
+  "at": "2026-10-16T02:03:45.485Z",
+  "mode": "Spades Solo",
+  "build": "index-Ctizdknu.js",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 263.38074493408203,
+        "clientHeight": 205,
+        "controls": [
+          {
+            "bottom": 171.73737716674805,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 480.9980239868164,
+            "width": 406.45111083984375,
+            "x": 74.54691314697266,
+            "y": 127.74178314208984
+          },
+          {
+            "bottom": 250.70924758911133,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 273.77623748779297,
+            "width": 199.2293243408203,
+            "x": 74.54691314697266,
+            "y": 206.71365356445312
+          },
+          {
+            "bottom": 250.70924758911133,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 480.99803161621094,
+            "width": 199.2293243408203,
+            "x": 281.7687072753906,
+            "y": 206.71365356445312
+          }
+        ],
+        "height": 206.31138610839844,
+        "name": "Game paused",
+        "right": 513.8677024841309,
+        "scrollHeight": 205,
+        "width": 459.9953308105469,
+        "x": 53.872371673583984,
+        "y": 57.069358825683594
+      }
+    ],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

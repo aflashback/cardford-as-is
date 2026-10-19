@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/gapreview.json",
+  "title": "gapreview",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "gapId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "caseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewerId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "assessment": {
+      "enum": [
+        "pending",
+        "supported",
+        "disputed",
+        "uncertain"
+      ]
+    },
+    "rationale": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "exposure": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "future": {
+          "type": "boolean"
+        },
+        "otherSeat": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "future",
+        "otherSeat"
+      ]
+    }
+  },
+  "required": [
+    "gapId",
+    "caseId",
+    "reviewerId",
+    "assessment",
+    "rationale",
+    "evidenceRefs",
+    "exposure"
+  ]
+}

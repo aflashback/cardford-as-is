@@ -1,0 +1,20 @@
+{
+  "name": "hearts-portrait-paused",
+  "at": "2026-10-16T02:02:56.331Z",
+  "check": "Portrait gate pauses table",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 844,
+    "scrollHeight": 844,
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

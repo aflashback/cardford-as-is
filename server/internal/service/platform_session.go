@@ -14,6 +14,23 @@ import (
 // The legacy presentation is only the preserved current-game UI adapter; the
 // registered view and server-issued candidate packet remain explicit boundaries.
 func (s *Service) platformSession(ctx context.Context, owner, tab string) (transport.Response, error) {
+	return s.platformSessionProjection(ctx, owner, tab, nil)
+}
+
+// Both HTTP recovery and push compose the same allowlisted persisted view.
+// An outbox projection preserves its committed revision during fast bot runs.
+func (s *Service) platformSessionProjection(ctx context.Context, owner, tab string, projection *records.RealtimeProjection) (transport.Response, error) {
+	if s.policy == nil {
+		installed := false
+		for _, registration := range s.registry.Installations() {
+			installed = installed || registration.Pin.GameID == "trix"
+		}
+		if installed {
+			if err := s.store.EnsureLocalTrixGrants(ctx, owner); err != nil {
+				return transport.Response{}, err
+			}
+		}
+	}
 	prefs, err := s.store.GetPlatformPreferences(ctx, owner)
 	if err != nil {
 		return transport.Response{}, err
@@ -23,7 +40,7 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 		return transport.Response{}, err
 	}
 	registry := s.registry
-	handlers := sessions.DefaultHandlers()
+	handlers := registry.Handlers()
 	catalog := []map[string]any{}
 	var fixture records.FixturePlatformAccess
 	if s.policy == nil {
@@ -47,10 +64,11 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 					return transport.Response{}, err
 				}
 			}
-			mode := descriptor.GameID
-			if mode == "spades" {
-				mode += "-" + variant.ID
+			installation, e := registry.Installation(sessions.Selector{GameID: descriptor.GameID, VariantID: variant.ID, ModuleVersion: descriptor.ModuleVersion, RuleProfileID: variant.RuleProfileID})
+			if e != nil {
+				return transport.Response{}, e
 			}
+			mode := installation.Mode
 			catalog = append(catalog, map[string]any{"mode": mode, "selector": sessions.Selector{GameID: descriptor.GameID, VariantID: variant.ID, ModuleVersion: descriptor.ModuleVersion, RuleProfileID: variant.RuleProfileID}, "start": start})
 		}
 	}
@@ -63,26 +81,34 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 	if id == "" {
 		return result("PlatformSessionView", out)
 	}
-	loaded, err := s.store.Load(ctx, owner, id)
+	var p records.RealtimeProjection
+	if projection != nil {
+		p = *projection
+		if p.GameID != id {
+			return transport.Response{}, records.ErrConflict
+		}
+	} else {
+		p, err = s.store.ReadRealtimeProjection(ctx, owner, id)
+		if err != nil {
+			return transport.Response{}, err
+		}
+	}
+	p, err = s.store.RefreshRealtimeProjection(ctx, owner, p)
 	if err != nil {
 		return transport.Response{}, err
 	}
-	b, err := s.codec.Session(loaded.Document, loaded.Snapshot)
-	if err != nil {
-		return transport.Response{}, fail(422, "saved-module-reader-unavailable")
+	view, presentation := p.View, p.Presentation
+	if p.Pin.GameID == "trix" {
+		view, err = liveTrixProjection(view, "table")
+		if err != nil {
+			return transport.Response{}, err
+		}
+		presentation, err = liveTrixProjection(presentation, "observation")
+		if err != nil {
+			return transport.Response{}, err
+		}
 	}
-	view, err := b.View(0)
-	if err != nil {
-		return transport.Response{}, err
-	}
-	presentation, err := b.Presentation(0)
-	if err != nil {
-		return transport.Response{}, err
-	}
-	n, err := b.Node()
-	if err != nil {
-		return transport.Response{}, err
-	}
+	n := p.Node
 	var actor any
 	human := n.Kind == "actor" && n.Seat != nil && *n.Seat == 0
 	if n.Kind == "sealed" {
@@ -91,9 +117,13 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 		}
 	}
 	if human {
-		packet, e := b.Packet(0)
-		if e != nil {
-			return transport.Response{}, e
+		packet := p.Actor
+		var e error
+		if p.Pin.GameID == "trix" {
+			packet, e = liveTrixProjection(packet, "observation")
+			if e != nil {
+				return transport.Response{}, e
+			}
 		}
 		actor = packet
 	}
@@ -101,10 +131,7 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 	if err != nil {
 		return transport.Response{}, err
 	}
-	unit, err := s.codec.CurrentUnitID(loaded.Document, loaded.Snapshot)
-	if err != nil {
-		return transport.Response{}, err
-	}
+	unit := p.UnitID
 	c, err = s.store.ReadAccessContext(ctx, owner, id, unit)
 	if err != nil {
 		return transport.Response{}, err
@@ -112,9 +139,11 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 	if c.Access.ActiveGameID != id {
 		return transport.Response{}, records.ErrConflict
 	}
-	target, op, err := sessionOperation(b, id, unit, "play", "continue", "")
-	if err != nil {
-		return transport.Response{}, err
+	target := access.Target{GameID: p.Pin.GameID, VariantID: p.Pin.VariantID}
+	op := access.Operation{Kind: "play", Intent: "continue", SessionID: id, UnitID: unit, UnitKind: access.SupportedUnit(target)}
+	if p.AccessUnit != nil {
+		op.UnitKind = p.AccessUnit.Kind
+		op.AtAdmissionBoundary = p.AccessUnit.AtAdmissionBoundary
 	}
 	var play, coach access.Decision
 	unlocked := false
@@ -132,7 +161,7 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 		unlocked = fixture.HandUnlocked
 		if coach.Allowed || coach.Reason == "exhausted" {
 			allowance["kind"] = "unlimited"
-			allowance["unit"] = "hand"
+			allowance["unit"] = access.SupportedUnit(target)
 			if fixture.Remaining != nil {
 				allowance["kind"] = "limited"
 				allowance["remaining"] = fixture.Remaining
@@ -181,7 +210,7 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 			}
 		}
 	}
-	stats, err := s.store.PlatformStats(ctx, owner, id)
+	stats, err := s.store.PlatformStatsAt(ctx, owner, id, p.Revision)
 	if err != nil {
 		return transport.Response{}, err
 	}
@@ -199,10 +228,10 @@ func (s *Service) platformSession(ctx context.Context, owner, tab string) (trans
 		node["requestId"] = n.RequestID
 	}
 	var blocked any
-	if !loaded.Disposition.Playable {
-		blocked = loaded.Disposition.Reason
+	if !p.Disposition.Playable {
+		blocked = p.Disposition.Reason
 	}
-	pin := loaded.Document.Metadata.Pin
-	out["session"] = map[string]any{"gameId": id, "revision": loaded.Document.Revision, "playable": loaded.Disposition.Playable, "blockedReason": blocked, "selector": sessions.Selector{GameID: pin.GameID, VariantID: pin.VariantID, ModuleVersion: pin.ModuleVersion, RuleProfileID: pin.RuleProfileID}, "pin": pin, "competition": loaded.Document.Metadata.Competition, "controllers": loaded.Document.Metadata.Controllers, "view": view, "presentation": presentation, "actor": actor, "node": node, "control": map[string]any{"owned": owned, "leaseToken": nil, "controlGeneration": generation}, "decisionId": records.PlatformDecisionID(id, loaded.Document.Revision), "stats": stats, "access": map[string]any{"play": play, "coach": coach, "handUnlocked": unlocked, "canStartWork": coach.Allowed, "localMock": s.policy == nil, "allowance": allowance}}
+	pin := p.Pin
+	out["session"] = map[string]any{"gameId": id, "revision": p.Revision, "playable": p.Disposition.Playable, "blockedReason": blocked, "selector": sessions.Selector{GameID: pin.GameID, VariantID: pin.VariantID, ModuleVersion: pin.ModuleVersion, RuleProfileID: pin.RuleProfileID}, "pin": pin, "competition": p.Competition, "controllers": p.Controllers, "view": view, "presentation": presentation, "actor": actor, "node": node, "control": map[string]any{"owned": owned, "leaseToken": nil, "controlGeneration": generation}, "decisionId": records.PlatformDecisionID(id, p.Revision), "stats": stats, "access": map[string]any{"play": play, "coach": coach, "handUnlocked": unlocked, "canStartWork": coach.Allowed, "localMock": s.policy == nil, "allowance": allowance}}
 	return result("PlatformSessionView", out)
 }

@@ -1,0 +1,21 @@
+{
+  "name": "idle-warning-dismissed-by-play",
+  "at": "2026-10-16T02:29:48.296Z",
+  "build": "index-B-IIS17u.js",
+  "action": "Enter on legal Queen of diamonds during visible idle warning",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 390,
+    "scrollHeight": 390,
+    "scrollWidth": 844,
+    "width": 844
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

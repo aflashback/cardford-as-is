@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "trix-jacks-timing-archive-cases-1.0.0",
+  "cases": [
+    {
+      "id": "ph07-long-heart-path",
+      "manifest": ".local/evaluation/coach-lab/ownership-strength-work/studies/cfo-basic-development-20261009-v1/manifests/cell-2d451942c61b163e80dc.json",
+      "decisions": ".local/evaluation/coach-lab/ownership-strength-work/studies/cfo-basic-development-20261009-v1/runs/cell-2d451942c61b163e80dc/exports/bcfff1d135be7b73ad142d2e/decisions.jsonl",
+      "decisionId": "case-893f468f1bf088ab27ae58754b1fc6a4",
+      "inputDigest": "421bf5ef764636d04dfe9a725ffa8b36eb167d0b65d98d7240f2716438c2d6de",
+      "referenceCandidateId": "layout:H10",
+      "recordDigest": "dd514179d7b3f3d1f27f1efd9c614be196b96892fcbe27e5c210b704eeb36596",
+      "manifestDigest": "11a2785e7d28d8a7cd2f8d051d6077d6a8e080226c30718aa4553c0e168ea24f"
+    },
+    {
+      "id": "consumed-neutral-c3-d6",
+      "manifest": ".local/evaluation/coach-lab/ownership-strength-work/studies/cfo-basic-fresh-validation-20261009-v1/manifests/cell-d918a215d64eb034523d.json",
+      "decisions": ".local/evaluation/coach-lab/ownership-strength-work/studies/cfo-basic-fresh-validation-20261009-v1/runs/cell-d918a215d64eb034523d/exports/97c2690a40f370d35fd4c54f/decisions.jsonl",
+      "decisionId": "case-747eb0c1b5131677a8f70ae837c950fb",
+      "inputDigest": "fa584b4dc61aa1b0dcb761e07fd817f9106c20d2453c1c5ac270704db1a983c1",
+      "referenceCandidateId": "layout:D6",
+      "recordDigest": "eff198a6206d694450ad89e655e98a67204efcea02fc6857669f85fcf495834a",
+      "manifestDigest": "5e83b3ef95d9381339b0a355ece00b780953bdda21dc63bb5da760973d2f4cb0"
+    }
+  ]
+}

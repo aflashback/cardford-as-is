@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/schemas/trix-scenario-collection/strategy.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "trix-category-strategy-1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "categoryId": {
+      "enum": [
+        "DIA",
+        "HK",
+        "Q",
+        "LUT",
+        "VOID",
+        "COMB",
+        "DBL",
+        "INFER",
+        "END",
+        "TEAM"
+      ]
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "basic-solo",
+          "complex-solo",
+          "basic-partners",
+          "complex-partners"
+        ]
+      },
+      "minItems": 1
+    },
+    "requests": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "diamonds",
+          "king",
+          "queens",
+          "lutoosh",
+          "complex"
+        ]
+      },
+      "minItems": 1
+    },
+    "objective": {
+      "enum": [
+        "own-request-points",
+        "combined-team-request-points"
+      ]
+    },
+    "observableTrigger": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "actionPrinciple": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "supportingCaseIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "counterexampleCaseIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 1
+    },
+    "doNotApplyWhen": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 1
+    },
+    "evidenceLevel": {
+      "enum": [
+        "hypothesis",
+        "supported-for-testing",
+        "disputed"
+      ]
+    },
+    "coachCueDraft": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "whyDraft": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "validationNeeded": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 1
+    },
+    "provenance": {
+      "const": "offline-llm-player"
+    },
+    "promotionEligible": {
+      "const": false
+    },
+    "runtimeActivated": {
+      "const": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "categoryId",
+    "variants",
+    "requests",
+    "objective",
+    "observableTrigger",
+    "actionPrinciple",
+    "supportingCaseIds",
+    "counterexampleCaseIds",
+    "assumptions",
+    "doNotApplyWhen",
+    "evidenceLevel",
+    "coachCueDraft",
+    "whyDraft",
+    "validationNeeded",
+    "provenance",
+    "promotionEligible",
+    "runtimeActivated"
+  ],
+  "additionalProperties": false,
+  "title": "TrixCategoryStrategy"
+}

@@ -100,6 +100,9 @@ func (c *DocumentCodec) MetadataForNew(selector sessions.Selector, id, owner str
 	if err != nil {
 		return SessionMetadata{}, err
 	}
+	if r.Historical {
+		return SessionMetadata{}, fmt.Errorf("historical installation cannot admit a new session")
+	}
 	policy, err := c.PolicyForNew(selector)
 	if err != nil {
 		return SessionMetadata{}, err

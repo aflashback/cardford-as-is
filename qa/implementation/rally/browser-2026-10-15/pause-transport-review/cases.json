@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-15T14:04:18.572Z",
+  "cases": [
+    {
+      "case": "paused-idle",
+      "durationMs": 61284,
+      "socketClosed": false,
+      "gameRevision": 120
+    },
+    {
+      "case": "focus-return",
+      "explicitResumeStillRequired": true
+    },
+    {
+      "case": "offline",
+      "pauseVisible": true
+    },
+    {
+      "case": "online-return",
+      "explicitResumeStillRequired": true
+    },
+    {
+      "case": "landscape-return",
+      "explicitResumeStillRequired": true,
+      "initialCheckBeforeLayoutSettled": true
+    }
+  ],
+  "scope": "Current live Trix Complex Partners request, no cards or request choice submitted; focus and network emulation are desktop checks, not physical phone suspension.",
+  "restored": {
+    "networkOnline": true,
+    "focusEmulation": true,
+    "temporaryViewportReset": true,
+    "serverRunning": false,
+    "generation": 20,
+    "revision": 120
+  }
+}

@@ -41,7 +41,7 @@ func WithControl(ctx context.Context, tab, rawLease string) context.Context {
 func tokenHash(raw string) string { v := sha256.Sum256([]byte(raw)); return hex.EncodeToString(v[:]) }
 func (s *Store) authenticated(ctx context.Context) bool {
 	_, ok := ctx.Value(principalKey{}).(Principal)
-	return s.localService || ok
+	return s.localService || s.requirePrincipal || ok
 }
 func principalFrom(ctx context.Context) (Principal, error) {
 	p, ok := ctx.Value(principalKey{}).(Principal)
@@ -65,6 +65,11 @@ func (s *Store) authorize(ctx context.Context, q grantReader, owner string) erro
 		return err
 	}
 	if !valid {
+		if s.requirePrincipal {
+			if f, e := s.family(ctx, q, p.sessionHash); e == nil && !f.Uncertain && !f.AccessExpiresAt.After(f.ServerTime) {
+				return ErrRenewalRequired
+			}
+		}
 		return ErrUnauthenticated
 	}
 	return nil
@@ -93,6 +98,11 @@ func (s *Store) currentRead(ctx context.Context, owner string) error {
 		return err
 	}
 	if !allowed {
+		// A lease can expire during CPU decoding. Preserve renewable expiry
+		// instead of presenting it as a definite permission denial to callers.
+		if err := s.authorize(ctx, s.pool, owner); err != nil {
+			return err
+		}
 		return ErrReadDenied
 	}
 	return nil
@@ -119,6 +129,14 @@ func (s *Store) authorizeControl(ctx context.Context, q grantReader, owner strin
 	}
 	return nil
 }
+
+// CheckControl rechecks the original work credential without reserving a
+// connection for CPU work. Publication still repeats its transactional fence.
+func (s *Store) CheckControl(ctx context.Context, owner string) error {
+	bounded, cancel := s.bounded(ctx)
+	defer cancel()
+	return s.authorizeControl(bounded, s.pool, owner)
+}
 func (s *Store) Authenticate(ctx context.Context, token string) (Principal, error) {
 	if len(token) < 32 || len(token) > 256 {
 		return Principal{}, ErrUnauthenticated
@@ -128,6 +146,11 @@ func (s *Store) Authenticate(ctx context.Context, token string) (Principal, erro
 	p := Principal{sessionHash: tokenHash(token)}
 	err := s.pool.QueryRow(ctx, "SELECT s.owner_id,a.configured_offers FROM "+s.table("m04_sessions")+" s JOIN "+s.table("m03_access")+" a ON a.owner_id=s.owner_id WHERE s.token_hash=$1 AND s.revoked_at IS NULL AND s.expires_at>clock_timestamp()", p.sessionHash).Scan(&p.OwnerID, &p.Configured)
 	if errors.Is(err, pgx.ErrNoRows) {
+		if s.requirePrincipal {
+			if f, e := s.family(ctx, s.pool, p.sessionHash); e == nil && !f.Uncertain && !f.AccessExpiresAt.After(f.ServerTime) {
+				return Principal{}, ErrRenewalRequired
+			}
+		}
 		return Principal{}, ErrUnauthenticated
 	}
 	return p, err
@@ -138,9 +161,15 @@ func LocalGrantID(owner, game, variant string) string {
 }
 
 // NewLocalIdentity creates a durable local fixture identity. This is not hosted
-// login or a commercial offer resolver; its three terms are server-owned.
+// login or a commercial offer resolver; its exact-target terms are server-owned.
 func (s *Store) NewLocalIdentity(ctx context.Context) (Identity, error) {
+	return s.newLocalIdentity(ctx, [][2]string{{"hearts", "solo"}, {"spades", "solo"}, {"spades", "partners"}, {"trix", "basic-solo"}, {"trix", "basic-partners"}, {"trix", "complex-solo"}, {"trix", "complex-partners"}})
+}
+func (s *Store) newLocalIdentity(ctx context.Context, targets [][2]string) (Identity, error) {
 	var out Identity
+	if s.requirePrincipal {
+		return out, ErrAccess
+	}
 	owner, err := freshID()
 	if err != nil {
 		return out, err
@@ -162,7 +191,7 @@ func (s *Store) NewLocalIdentity(ctx context.Context) (Identity, error) {
 		if _, err := tx.Exec(ctx, "INSERT INTO "+s.table("m04_sessions")+"(token_hash,owner_id,expires_at) VALUES($1,$2,$3)", out.Principal.sessionHash, owner, now.Add(30*24*time.Hour)); err != nil {
 			return err
 		}
-		for _, target := range [][2]string{{"hearts", "solo"}, {"spades", "solo"}, {"spades", "partners"}} {
+		for _, target := range targets {
 			g := Grant{ID: LocalGrantID(owner, target[0], target[1]), OwnerID: owner, OfferID: "local-fixture", OfferVersion: "1.0.0", SourceKind: "free", SourceID: owner, ValidFrom: now, Terms: GrantTerms{Version: "1.0.0", Game: target[0], Variant: target[1], CanPlay: true, CanCoach: true, Tools: []string{"advice", "review-alternative"}, BucketID: "local-fixture", Period: "lifetime", Timezone: "UTC", Unlimited: true, ExpiryRule: "pause-at-expiry"}}
 			if err := validateGrant(g); err != nil {
 				return fmt.Errorf("local fixture terms: %w", err)
@@ -183,6 +212,9 @@ func (s *Store) NewLocalIdentity(ctx context.Context) (Identity, error) {
 // An empty configuration issues no grants and never implies fixture coverage.
 func (s *Store) NewConfiguredIdentity(ctx context.Context, templates []Grant) (Identity, error) {
 	var out Identity
+	if s.requirePrincipal {
+		return out, ErrAccess
+	}
 	owner, err := freshID()
 	if err != nil {
 		return out, err

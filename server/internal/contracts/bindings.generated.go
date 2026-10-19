@@ -998,41 +998,23 @@ func (v ReviewFrame) MarshalJSON() ([]byte, error) {
 }
 func (v ReviewFrame) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
-type ReviewCase struct {
-	DecisionID string     `json:"decisionId"`
-	HandNumber float64    `json:"handNumber"`
-	Action     GameAction `json:"action"`
-	Assisted   bool       `json:"assisted"`
-	Status     string     `json:"status"`
-	Summary    string     `json:"summary"`
-}
+// ReviewCase preserves the complete validated JSON value, including null and union tags.
+type ReviewCase struct{ raw json.RawMessage }
 
 func (v *ReviewCase) UnmarshalJSON(raw []byte) error {
 	if err := Validate("ReviewCase", raw); err != nil {
 		return err
 	}
-	type wire ReviewCase
-	var next wire
-	if err := json.Unmarshal(raw, &next); err != nil {
-		return err
-	}
-	*v = ReviewCase(next)
+	v.raw = append([]byte(nil), raw...)
 	return nil
 }
 func (v ReviewCase) MarshalJSON() ([]byte, error) {
-	if err := validStrings(v); err != nil {
+	if err := Validate("ReviewCase", v.raw); err != nil {
 		return nil, err
 	}
-	type wire ReviewCase
-	raw, err := json.Marshal(wire(v))
-	if err != nil {
-		return nil, err
-	}
-	if err = Validate("ReviewCase", raw); err != nil {
-		return nil, err
-	}
-	return raw, nil
+	return append([]byte(nil), v.raw...), nil
 }
+func (v ReviewCase) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
 type ReviewIndex struct {
 	Cases []ReviewCase `json:"cases"`
@@ -2545,6 +2527,166 @@ func (v RegisteredPresentation) MarshalJSON() ([]byte, error) {
 }
 func (v RegisteredPresentation) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
+// RegisteredAdvice preserves the complete validated JSON value, including null and union tags.
+type RegisteredAdvice struct{ raw json.RawMessage }
+
+func (v *RegisteredAdvice) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RegisteredAdvice", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v RegisteredAdvice) MarshalJSON() ([]byte, error) {
+	if err := Validate("RegisteredAdvice", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v RegisteredAdvice) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type CoachSupport struct {
+	ID   string `json:"id"`
+	Kind string `json:"kind"`
+	Text string `json:"text"`
+}
+
+func (v *CoachSupport) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachSupport", raw); err != nil {
+		return err
+	}
+	type wire CoachSupport
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachSupport(next)
+	return nil
+}
+func (v CoachSupport) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachSupport
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachSupport", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachReason struct {
+	Summary      string         `json:"summary"`
+	Support      []CoachSupport `json:"support"`
+	Alternatives []string       `json:"alternatives"`
+	Limitations  []string       `json:"limitations"`
+}
+
+func (v *CoachReason) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachReason", raw); err != nil {
+		return err
+	}
+	type wire CoachReason
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachReason(next)
+	return nil
+}
+func (v CoachReason) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachReason
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachReason", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachMessage struct {
+	PresentationVersion string      `json:"presentationVersion"`
+	DecisionID          string      `json:"decisionId"`
+	PolicyVersion       string      `json:"policyVersion"`
+	CueVersion          string      `json:"cueVersion"`
+	Status              string      `json:"status"`
+	SelectedAction      string      `json:"selectedAction"`
+	Cue                 string      `json:"cue"`
+	Reason              CoachReason `json:"reason"`
+}
+
+func (v *CoachMessage) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachMessage", raw); err != nil {
+		return err
+	}
+	type wire CoachMessage
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachMessage(next)
+	return nil
+}
+func (v CoachMessage) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachMessage
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachMessage", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachMessageView struct {
+	PresentationVersion string       `json:"presentationVersion"`
+	DecisionID          string       `json:"decisionId"`
+	Status              string       `json:"status"`
+	SelectedAction      string       `json:"selectedAction"`
+	Cue                 string       `json:"cue"`
+	View                string       `json:"view"`
+	Reason              *CoachReason `json:"reason,omitempty"`
+}
+
+func (v *CoachMessageView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachMessageView", raw); err != nil {
+		return err
+	}
+	type wire CoachMessageView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachMessageView(next)
+	return nil
+}
+func (v CoachMessageView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachMessageView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachMessageView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
 // HeartsCandidate preserves the complete validated JSON value, including null and union tags.
 type HeartsCandidate struct{ raw json.RawMessage }
 
@@ -3149,6 +3291,602 @@ func (v TokenPresentation) MarshalJSON() ([]byte, error) {
 	return raw, nil
 }
 
+// TrixAction preserves the complete validated JSON value, including null and union tags.
+type TrixAction struct{ raw json.RawMessage }
+
+func (v *TrixAction) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixAction", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixAction) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixAction", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixAction) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TrixPlay struct {
+	Seat Seat `json:"seat"`
+	Card Card `json:"card"`
+}
+
+func (v *TrixPlay) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixPlay", raw); err != nil {
+		return err
+	}
+	type wire TrixPlay
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixPlay(next)
+	return nil
+}
+func (v TrixPlay) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixPlay
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixPlay", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixTrick struct {
+	Number float64    `json:"number"`
+	Leader Seat       `json:"leader"`
+	Winner Seat       `json:"winner"`
+	Plays  []TrixPlay `json:"plays"`
+}
+
+func (v *TrixTrick) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixTrick", raw); err != nil {
+		return err
+	}
+	type wire TrixTrick
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixTrick(next)
+	return nil
+}
+func (v TrixTrick) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixTrick
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixTrick", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixDeclaration struct {
+	Seat  Seat   `json:"seat"`
+	Cards []Card `json:"cards"`
+	Ref   string `json:"ref"`
+}
+
+func (v *TrixDeclaration) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixDeclaration", raw); err != nil {
+		return err
+	}
+	type wire TrixDeclaration
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixDeclaration(next)
+	return nil
+}
+func (v TrixDeclaration) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixDeclaration
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixDeclaration", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixRow struct {
+	Suit string  `json:"suit"`
+	Low  float64 `json:"low"`
+	High float64 `json:"high"`
+}
+
+func (v *TrixRow) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixRow", raw); err != nil {
+		return err
+	}
+	type wire TrixRow
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixRow(next)
+	return nil
+}
+func (v TrixRow) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixRow
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixRow", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixLayoutPass struct {
+	Seat  Seat      `json:"seat"`
+	Board []TrixRow `json:"board"`
+	Ref   string    `json:"ref"`
+}
+
+func (v *TrixLayoutPass) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixLayoutPass", raw); err != nil {
+		return err
+	}
+	type wire TrixLayoutPass
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixLayoutPass(next)
+	return nil
+}
+func (v TrixLayoutPass) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixLayoutPass
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixLayoutPass", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixLeadSource struct {
+	Seat  Seat    `json:"seat"`
+	Trick float64 `json:"trick"`
+}
+
+func (v *TrixLeadSource) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixLeadSource", raw); err != nil {
+		return err
+	}
+	type wire TrixLeadSource
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixLeadSource(next)
+	return nil
+}
+func (v TrixLeadSource) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixLeadSource
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixLeadSource", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// TrixRecipient preserves the complete validated JSON value, including null and union tags.
+type TrixRecipient struct{ raw json.RawMessage }
+
+func (v *TrixRecipient) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixRecipient", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixRecipient) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixRecipient", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixRecipient) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TrixLedgerEntry struct {
+	DealNumber     float64       `json:"dealNumber"`
+	Kingdom        float64       `json:"kingdom"`
+	Request        string        `json:"request"`
+	Trick          float64       `json:"trick"`
+	Finish         float64       `json:"finish"`
+	Recipient      TrixRecipient `json:"recipient"`
+	Component      string        `json:"component"`
+	Card           *Card         `json:"card,omitempty"`
+	Delta          float64       `json:"delta"`
+	DeclarationRef *string       `json:"declarationRef,omitempty"`
+	LeadSourceRef  *string       `json:"leadSourceRef,omitempty"`
+}
+
+func (v *TrixLedgerEntry) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixLedgerEntry", raw); err != nil {
+		return err
+	}
+	type wire TrixLedgerEntry
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixLedgerEntry(next)
+	return nil
+}
+func (v TrixLedgerEntry) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixLedgerEntry
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixLedgerEntry", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixWithheldBonus struct {
+	DealNumber     float64 `json:"dealNumber"`
+	Trick          float64 `json:"trick"`
+	Card           Card    `json:"card"`
+	BonusValue     float64 `json:"bonusValue"`
+	Reason         string  `json:"reason"`
+	DeclarationRef string  `json:"declarationRef"`
+}
+
+func (v *TrixWithheldBonus) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixWithheldBonus", raw); err != nil {
+		return err
+	}
+	type wire TrixWithheldBonus
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixWithheldBonus(next)
+	return nil
+}
+func (v TrixWithheldBonus) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixWithheldBonus
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixWithheldBonus", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixScore struct {
+	ID    string  `json:"id"`
+	Seats []Seat  `json:"seats"`
+	Total float64 `json:"total"`
+}
+
+func (v *TrixScore) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixScore", raw); err != nil {
+		return err
+	}
+	type wire TrixScore
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixScore(next)
+	return nil
+}
+func (v TrixScore) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixScore
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixScore", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// TrixTwoAnnouncements preserves the complete validated JSON value, including null and union tags.
+type TrixTwoAnnouncements struct{ raw json.RawMessage }
+
+func (v *TrixTwoAnnouncements) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixTwoAnnouncements", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixTwoAnnouncements) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixTwoAnnouncements", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixTwoAnnouncements) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// TrixObservation preserves the complete validated JSON value, including null and union tags.
+type TrixObservation struct{ raw json.RawMessage }
+
+func (v *TrixObservation) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixObservation", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixObservation) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixObservation", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixObservation) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// TrixActorPacket preserves the complete validated JSON value, including null and union tags.
+type TrixActorPacket struct{ raw json.RawMessage }
+
+func (v *TrixActorPacket) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixActorPacket", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixActorPacket) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixActorPacket", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixActorPacket) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// TrixSessionView preserves the complete validated JSON value, including null and union tags.
+type TrixSessionView struct{ raw json.RawMessage }
+
+func (v *TrixSessionView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixSessionView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixSessionView) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixSessionView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixSessionView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TrixPresentation struct {
+	ID          string          `json:"id"`
+	GameID      string          `json:"gameId"`
+	VariantID   string          `json:"variantId"`
+	Seat        Seat            `json:"seat"`
+	Observation TrixObservation `json:"observation"`
+}
+
+func (v *TrixPresentation) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixPresentation", raw); err != nil {
+		return err
+	}
+	type wire TrixPresentation
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixPresentation(next)
+	return nil
+}
+func (v TrixPresentation) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixPresentation
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixPresentation", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// TrixAnalysis preserves the complete validated JSON value, including null and union tags.
+type TrixAnalysis struct{ raw json.RawMessage }
+
+func (v *TrixAnalysis) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixAnalysis", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixAnalysis) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixAnalysis", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixAnalysis) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// TrixActorEvent preserves the complete validated JSON value, including null and union tags.
+type TrixActorEvent struct{ raw json.RawMessage }
+
+func (v *TrixActorEvent) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixActorEvent", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixActorEvent) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixActorEvent", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixActorEvent) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TrixAdvice struct {
+	GameID                 string    `json:"gameId"`
+	VariantID              string    `json:"variantId"`
+	DecisionID             string    `json:"decisionId"`
+	Level                  float64   `json:"level"`
+	Origin                 string    `json:"origin"`
+	Title                  string    `json:"title"`
+	Text                   string    `json:"text"`
+	PolicyVersion          string    `json:"policyVersion"`
+	RecommendedCandidateID *string   `json:"recommendedCandidateId,omitempty"`
+	Alternatives           *[]string `json:"alternatives,omitempty"`
+	EvidenceRefs           []string  `json:"evidenceRefs"`
+}
+
+func (v *TrixAdvice) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixAdvice", raw); err != nil {
+		return err
+	}
+	type wire TrixAdvice
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixAdvice(next)
+	return nil
+}
+func (v TrixAdvice) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixAdvice
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixAdvice", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// TrixReviewFrame preserves the complete validated JSON value, including null and union tags.
+type TrixReviewFrame struct{ raw json.RawMessage }
+
+func (v *TrixReviewFrame) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixReviewFrame", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixReviewFrame) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixReviewFrame", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixReviewFrame) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// TrixLayoutTurn preserves the complete validated JSON value, including null and union tags.
+type TrixLayoutTurn struct{ raw json.RawMessage }
+
+func (v *TrixLayoutTurn) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixLayoutTurn", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v TrixLayoutTurn) MarshalJSON() ([]byte, error) {
+	if err := Validate("TrixLayoutTurn", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v TrixLayoutTurn) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type TrixLayoutHistory struct {
+	Version string           `json:"version"`
+	Status  string           `json:"status"`
+	Turns   []TrixLayoutTurn `json:"turns"`
+}
+
+func (v *TrixLayoutHistory) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixLayoutHistory", raw); err != nil {
+		return err
+	}
+	type wire TrixLayoutHistory
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixLayoutHistory(next)
+	return nil
+}
+func (v TrixLayoutHistory) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixLayoutHistory
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixLayoutHistory", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
 type LocalServiceWorkRetryRequest struct {
 	ControlLeaseToken string `json:"controlLeaseToken"`
 }
@@ -3602,10 +4340,10 @@ func (v LocalServiceCommandReceipt) MarshalJSON() ([]byte, error) {
 }
 
 type LocalServiceDecisionView struct {
-	DecisionID string     `json:"decisionId"`
-	GameID     string     `json:"gameId"`
-	Revision   float64    `json:"revision"`
-	Advice     AdviceView `json:"advice"`
+	DecisionID string           `json:"decisionId"`
+	GameID     string           `json:"gameId"`
+	Revision   float64          `json:"revision"`
+	Advice     RegisteredAdvice `json:"advice"`
 }
 
 func (v *LocalServiceDecisionView) UnmarshalJSON(raw []byte) error {
@@ -4003,7 +4741,7 @@ func (v PlatformController) MarshalJSON() ([]byte, error) {
 }
 
 type PlatformCatalogEntry struct {
-	Mode     Mode                 `json:"mode"`
+	Mode     CatalogMode          `json:"mode"`
 	Selector LocalServiceSelector `json:"selector"`
 	Start    AccessDecision       `json:"start"`
 }
@@ -4124,6 +4862,138 @@ func (v PlatformReconcileView) MarshalJSON() ([]byte, error) {
 	return append([]byte(nil), v.raw...), nil
 }
 func (v PlatformReconcileView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type CatalogMode string
+
+func (v *CatalogMode) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CatalogMode", raw); err != nil {
+		return err
+	}
+	type wire CatalogMode
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CatalogMode(next)
+	return nil
+}
+func (v CatalogMode) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CatalogMode
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CatalogMode", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixCompletedRound struct {
+	ID         string  `json:"id"`
+	DealNumber float64 `json:"dealNumber"`
+	Kingdom    float64 `json:"kingdom"`
+	Request    string  `json:"request"`
+}
+
+func (v *TrixCompletedRound) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixCompletedRound", raw); err != nil {
+		return err
+	}
+	type wire TrixCompletedRound
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixCompletedRound(next)
+	return nil
+}
+func (v TrixCompletedRound) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixCompletedRound
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixCompletedRound", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixRoundIndex struct {
+	GameID string               `json:"gameId"`
+	Rounds []TrixCompletedRound `json:"rounds"`
+}
+
+func (v *TrixRoundIndex) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixRoundIndex", raw); err != nil {
+		return err
+	}
+	type wire TrixRoundIndex
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixRoundIndex(next)
+	return nil
+}
+func (v TrixRoundIndex) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixRoundIndex
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixRoundIndex", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type TrixRoundHistory struct {
+	GameID          string              `json:"gameId"`
+	Round           TrixCompletedRound  `json:"round"`
+	RequestTotals   []TrixScore         `json:"requestTotals"`
+	KingdomTotals   []TrixScore         `json:"kingdomTotals"`
+	Totals          []TrixScore         `json:"totals"`
+	Ledger          []TrixLedgerEntry   `json:"ledger"`
+	WithheldBonuses []TrixWithheldBonus `json:"withheldBonuses"`
+}
+
+func (v *TrixRoundHistory) UnmarshalJSON(raw []byte) error {
+	if err := Validate("TrixRoundHistory", raw); err != nil {
+		return err
+	}
+	type wire TrixRoundHistory
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = TrixRoundHistory(next)
+	return nil
+}
+func (v TrixRoundHistory) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire TrixRoundHistory
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("TrixRoundHistory", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
 
 type PlatformPreferencesView struct {
 	SchemaVersion string      `json:"schemaVersion"`
@@ -4297,7 +5167,9 @@ type PlatformExportView struct {
 		UnlockedAt string             `json:"unlockedAt"`
 		Offer      VersionedComponent `json:"offer"`
 	} `json:"coachedUnits"`
-	Billing []BillingOperation `json:"billing"`
+	Billing       []BillingOperation     `json:"billing"`
+	CoachSessions *[]CoachUISession      `json:"coachSessions,omitempty"`
+	CoachFeedback *[]CoachUIFeedbackView `json:"coachFeedback,omitempty"`
 }
 
 func (v *PlatformExportView) UnmarshalJSON(raw []byte) error {
@@ -4544,9 +5416,9 @@ func (v PlatformReviewStatus) MarshalJSON() ([]byte, error) {
 func (v PlatformReviewStatus) RawJSON() []byte { return append([]byte(nil), v.raw...) }
 
 type PlatformAdviceView struct {
-	Advice       AdviceView `json:"advice"`
-	SourceUnitID string     `json:"sourceUnitId"`
-	Unlocked     bool       `json:"unlocked"`
+	Advice       RegisteredAdvice `json:"advice"`
+	SourceUnitID string           `json:"sourceUnitId"`
+	Unlocked     bool             `json:"unlocked"`
 }
 
 func (v *PlatformAdviceView) UnmarshalJSON(raw []byte) error {
@@ -4576,5 +5448,644 @@ func (v PlatformAdviceView) MarshalJSON() ([]byte, error) {
 	return raw, nil
 }
 
-var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "RegisteredPresentation", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "TokenReveal", "TokenCycle", "TokenCompetitor", "TokenObservation", "TokenCandidate", "TokenActorPacket", "TokenSessionView", "TokenAnalysis", "TokenActorEvent", "TokenPresentation", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt", "LocalServiceAccessRequest", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt", "PlatformAllowanceView", "PlatformAccessView", "PlatformReviewAccessView", "PlatformCompetition", "PlatformController", "PlatformCatalogEntry", "PlatformSession", "PlatformSessionView", "PlatformReconcileRequest", "PlatformRecoveredReceipt", "PlatformReconcileView", "PlatformPreferencesView", "PlatformPreferencesRequest", "PlatformAccountAvailability", "PlatformAccountView", "PlatformExportDecision", "PlatformExportView", "PlatformFixtureAccountView", "PlatformFamilyCommand", "PlatformAdviceRequest", "PlatformNotesRequest", "PlatformReviewTrialRequest", "PlatformReviewExposureRequest", "PlatformReviewStatus", "PlatformAdviceView"}
-var supportedPatterns = map[string]bool{"^[CDHS](?:[2-9]|10|J|Q|K|A)$": true, "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": true, "^[1-9][0-9]{0,5}$": true, "^(0|[1-9][0-9]{0,5})$": true, "^[a-z0-9][a-z0-9-]{0,63}$": true, "^[0-9]+\\.[0-9]+\\.[0-9]+$": true, "^[^\\u0000-\\u001f\\u007f]+$": true, "^[a-f0-9]{48}$": true}
+type CoachUIProvider struct {
+	Source   string `json:"source"`
+	Version  string `json:"version"`
+	Mock     bool   `json:"mock"`
+	Preview  bool   `json:"preview"`
+	Language string `json:"language"`
+}
+
+func (v *CoachUIProvider) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIProvider", raw); err != nil {
+		return err
+	}
+	type wire CoachUIProvider
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIProvider(next)
+	return nil
+}
+func (v CoachUIProvider) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIProvider
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIProvider", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// CoachUIAccess preserves the complete validated JSON value, including null and union tags.
+type CoachUIAccess struct{ raw json.RawMessage }
+
+func (v *CoachUIAccess) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIAccess", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v CoachUIAccess) MarshalJSON() ([]byte, error) {
+	if err := Validate("CoachUIAccess", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v CoachUIAccess) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type CoachUIFeedback struct {
+	FeedbackID string `json:"feedbackId"`
+	Value      string `json:"value"`
+	Reason     string `json:"reason"`
+	Text       string `json:"text"`
+	CreatedAt  string `json:"createdAt"`
+}
+
+func (v *CoachUIFeedback) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIFeedback", raw); err != nil {
+		return err
+	}
+	type wire CoachUIFeedback
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIFeedback(next)
+	return nil
+}
+func (v CoachUIFeedback) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIFeedback
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIFeedback", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUIRatingPreview struct {
+	Fictional   bool    `json:"fictional"`
+	CohortLabel string  `json:"cohortLabel"`
+	Percentile  float64 `json:"percentile"`
+	SampleSize  float64 `json:"sampleSize"`
+	Label       string  `json:"label"`
+}
+
+func (v *CoachUIRatingPreview) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIRatingPreview", raw); err != nil {
+		return err
+	}
+	type wire CoachUIRatingPreview
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIRatingPreview(next)
+	return nil
+}
+func (v CoachUIRatingPreview) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIRatingPreview
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIRatingPreview", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUIItem struct {
+	ItemID           string                `json:"itemId"`
+	SessionID        string                `json:"sessionId"`
+	Kind             string                `json:"kind"`
+	Title            string                `json:"title"`
+	Body             string                `json:"body"`
+	Explanation      string                `json:"explanation"`
+	CreatedAt        string                `json:"createdAt"`
+	SourceRevision   float64               `json:"sourceRevision"`
+	DecisionID       string                `json:"decisionId"`
+	Provider         CoachUIProvider       `json:"provider"`
+	ReplayAvailable  bool                  `json:"replayAvailable"`
+	FeedbackRevision float64               `json:"feedbackRevision"`
+	Rating           *CoachUIRatingPreview `json:"rating,omitempty"`
+	Feedback         *CoachUIFeedback      `json:"feedback,omitempty"`
+}
+
+func (v *CoachUIItem) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIItem", raw); err != nil {
+		return err
+	}
+	type wire CoachUIItem
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIItem(next)
+	return nil
+}
+func (v CoachUIItem) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIItem
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIItem", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUISessionSummary struct {
+	SessionID      string          `json:"sessionId"`
+	GameID         string          `json:"gameId"`
+	GameType       string          `json:"gameType"`
+	VariantID      string          `json:"variantId"`
+	SourceUnitID   string          `json:"sourceUnitId"`
+	DecisionID     string          `json:"decisionId"`
+	SourceRevision float64         `json:"sourceRevision"`
+	CreatedAt      string          `json:"createdAt"`
+	Kind           string          `json:"kind"`
+	Provider       CoachUIProvider `json:"provider"`
+}
+
+func (v *CoachUISessionSummary) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUISessionSummary", raw); err != nil {
+		return err
+	}
+	type wire CoachUISessionSummary
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUISessionSummary(next)
+	return nil
+}
+func (v CoachUISessionSummary) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUISessionSummary
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUISessionSummary", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUISession struct {
+	SessionID      string          `json:"sessionId"`
+	GameID         string          `json:"gameId"`
+	GameType       string          `json:"gameType"`
+	VariantID      string          `json:"variantId"`
+	SourceUnitID   string          `json:"sourceUnitId"`
+	DecisionID     string          `json:"decisionId"`
+	SourceRevision float64         `json:"sourceRevision"`
+	CreatedAt      string          `json:"createdAt"`
+	Kind           string          `json:"kind"`
+	Provider       CoachUIProvider `json:"provider"`
+	Items          []CoachUIItem   `json:"items"`
+}
+
+func (v *CoachUISession) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUISession", raw); err != nil {
+		return err
+	}
+	type wire CoachUISession
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUISession(next)
+	return nil
+}
+func (v CoachUISession) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUISession
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUISession", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUIStatusView struct {
+	SchemaVersion float64                 `json:"schemaVersion"`
+	PlayerID      string                  `json:"playerId"`
+	ServerTime    string                  `json:"serverTime"`
+	Provider      CoachUIProvider         `json:"provider"`
+	Access        CoachUIAccess           `json:"access"`
+	Recent        []CoachUISessionSummary `json:"recent"`
+}
+
+func (v *CoachUIStatusView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIStatusView", raw); err != nil {
+		return err
+	}
+	type wire CoachUIStatusView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIStatusView(next)
+	return nil
+}
+func (v CoachUIStatusView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIStatusView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIStatusView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUISessionView struct {
+	Session CoachUISession `json:"session"`
+	Access  CoachUIAccess  `json:"access"`
+}
+
+func (v *CoachUISessionView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUISessionView", raw); err != nil {
+		return err
+	}
+	type wire CoachUISessionView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUISessionView(next)
+	return nil
+}
+func (v CoachUISessionView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUISessionView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUISessionView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUIStartRequest struct {
+	CommandID         string  `json:"commandId"`
+	GameID            string  `json:"gameId"`
+	ExpectedRevision  float64 `json:"expectedRevision"`
+	ControlLeaseToken string  `json:"controlLeaseToken"`
+	DecisionID        string  `json:"decisionId"`
+	Kind              string  `json:"kind"`
+}
+
+func (v *CoachUIStartRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIStartRequest", raw); err != nil {
+		return err
+	}
+	type wire CoachUIStartRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIStartRequest(next)
+	return nil
+}
+func (v CoachUIStartRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIStartRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIStartRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// CoachUIItemRequest preserves the complete validated JSON value, including null and union tags.
+type CoachUIItemRequest struct{ raw json.RawMessage }
+
+func (v *CoachUIItemRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIItemRequest", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v CoachUIItemRequest) MarshalJSON() ([]byte, error) {
+	if err := Validate("CoachUIItemRequest", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v CoachUIItemRequest) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type CoachUIFeedbackRequest struct {
+	CommandID                string  `json:"commandId"`
+	ItemID                   string  `json:"itemId"`
+	ExpectedFeedbackRevision float64 `json:"expectedFeedbackRevision"`
+	Value                    string  `json:"value"`
+	Reason                   *string `json:"reason,omitempty"`
+	Text                     *string `json:"text,omitempty"`
+}
+
+func (v *CoachUIFeedbackRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIFeedbackRequest", raw); err != nil {
+		return err
+	}
+	type wire CoachUIFeedbackRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIFeedbackRequest(next)
+	return nil
+}
+func (v CoachUIFeedbackRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIFeedbackRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIFeedbackRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUIFeedbackView struct {
+	ItemID           string          `json:"itemId"`
+	FeedbackRevision float64         `json:"feedbackRevision"`
+	Feedback         CoachUIFeedback `json:"feedback"`
+}
+
+func (v *CoachUIFeedbackView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIFeedbackView", raw); err != nil {
+		return err
+	}
+	type wire CoachUIFeedbackView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIFeedbackView(next)
+	return nil
+}
+func (v CoachUIFeedbackView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIFeedbackView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIFeedbackView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type CoachUIReplayView struct {
+	ItemID         string          `json:"itemId"`
+	SourceRevision float64         `json:"sourceRevision"`
+	DecisionID     string          `json:"decisionId"`
+	Label          string          `json:"label"`
+	Provider       CoachUIProvider `json:"provider"`
+	Frames         []ReviewFrame   `json:"frames"`
+	Explanation    string          `json:"explanation"`
+}
+
+func (v *CoachUIReplayView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("CoachUIReplayView", raw); err != nil {
+		return err
+	}
+	type wire CoachUIReplayView
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = CoachUIReplayView(next)
+	return nil
+}
+func (v CoachUIReplayView) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire CoachUIReplayView
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("CoachUIReplayView", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+type RealtimePlaybackRequest struct {
+	CommandID                  string  `json:"commandId"`
+	GameID                     string  `json:"gameId"`
+	ControlLeaseToken          string  `json:"controlLeaseToken"`
+	ExpectedControlGeneration  float64 `json:"expectedControlGeneration"`
+	ExpectedPlaybackGeneration float64 `json:"expectedPlaybackGeneration"`
+	Running                    bool    `json:"running"`
+	Intent                     *string `json:"intent,omitempty"`
+	Reason                     *string `json:"reason,omitempty"`
+}
+
+func (v *RealtimePlaybackRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RealtimePlaybackRequest", raw); err != nil {
+		return err
+	}
+	type wire RealtimePlaybackRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = RealtimePlaybackRequest(next)
+	return nil
+}
+func (v RealtimePlaybackRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire RealtimePlaybackRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("RealtimePlaybackRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+// RealtimePlaybackView preserves the complete validated JSON value, including null and union tags.
+type RealtimePlaybackView struct{ raw json.RawMessage }
+
+func (v *RealtimePlaybackView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RealtimePlaybackView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v RealtimePlaybackView) MarshalJSON() ([]byte, error) {
+	if err := Validate("RealtimePlaybackView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v RealtimePlaybackView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// RealtimeNegotiateView preserves the complete validated JSON value, including null and union tags.
+type RealtimeNegotiateView struct{ raw json.RawMessage }
+
+func (v *RealtimeNegotiateView) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RealtimeNegotiateView", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v RealtimeNegotiateView) MarshalJSON() ([]byte, error) {
+	if err := Validate("RealtimeNegotiateView", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v RealtimeNegotiateView) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// RealtimeSnapshotRequest preserves the complete validated JSON value, including null and union tags.
+type RealtimeSnapshotRequest struct{ raw json.RawMessage }
+
+func (v *RealtimeSnapshotRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RealtimeSnapshotRequest", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v RealtimeSnapshotRequest) MarshalJSON() ([]byte, error) {
+	if err := Validate("RealtimeSnapshotRequest", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v RealtimeSnapshotRequest) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// RealtimeSnapshot preserves the complete validated JSON value, including null and union tags.
+type RealtimeSnapshot struct{ raw json.RawMessage }
+
+func (v *RealtimeSnapshot) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RealtimeSnapshot", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v RealtimeSnapshot) MarshalJSON() ([]byte, error) {
+	if err := Validate("RealtimeSnapshot", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v RealtimeSnapshot) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+// RealtimeMessage preserves the complete validated JSON value, including null and union tags.
+type RealtimeMessage struct{ raw json.RawMessage }
+
+func (v *RealtimeMessage) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RealtimeMessage", raw); err != nil {
+		return err
+	}
+	v.raw = append([]byte(nil), raw...)
+	return nil
+}
+func (v RealtimeMessage) MarshalJSON() ([]byte, error) {
+	if err := Validate("RealtimeMessage", v.raw); err != nil {
+		return nil, err
+	}
+	return append([]byte(nil), v.raw...), nil
+}
+func (v RealtimeMessage) RawJSON() []byte { return append([]byte(nil), v.raw...) }
+
+type RealtimePresenceRequest struct {
+	GameID                     string  `json:"gameId"`
+	ControlLeaseToken          string  `json:"controlLeaseToken"`
+	ExpectedControlGeneration  float64 `json:"expectedControlGeneration"`
+	ExpectedPlaybackGeneration float64 `json:"expectedPlaybackGeneration"`
+	Sequence                   float64 `json:"sequence"`
+}
+
+func (v *RealtimePresenceRequest) UnmarshalJSON(raw []byte) error {
+	if err := Validate("RealtimePresenceRequest", raw); err != nil {
+		return err
+	}
+	type wire RealtimePresenceRequest
+	var next wire
+	if err := json.Unmarshal(raw, &next); err != nil {
+		return err
+	}
+	*v = RealtimePresenceRequest(next)
+	return nil
+}
+func (v RealtimePresenceRequest) MarshalJSON() ([]byte, error) {
+	if err := validStrings(v); err != nil {
+		return nil, err
+	}
+	type wire RealtimePresenceRequest
+	raw, err := json.Marshal(wire(v))
+	if err != nil {
+		return nil, err
+	}
+	if err = Validate("RealtimePresenceRequest", raw); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
+var contractNames = []string{"Mode", "Seat", "Card", "Suit", "Phase", "GameAction", "Play", "Trick", "HandResult", "GameView", "Preferences", "Plan", "PaidPlan", "CoachAccess", "SessionStats", "SessionView", "AdviceView", "CommandEnvelope", "NewSessionRequest", "ActionsRequest", "PrepareRequest", "CommandStatusView", "IdentityView", "PrepareView", "AdvanceRequest", "NextHandRequest", "AdviceRequest", "PreferencesRequest", "HandUnlockRequest", "HandUnlockView", "ExposureRequest", "AcceptedView", "ReviewFrame", "ReviewCase", "ReviewIndex", "ReviewView", "TrialRequest", "ReviewTrial", "RecapView", "SubscriptionView", "OfferView", "AccountView", "AccountCommand", "ApiError", "ReviewQuery", "ReviewStepQuery", "AccessQuery", "SuitMemory", "NotesView", "BillingPreviewRequest", "BillingPreview", "BillingConfirmRequest", "BillingOperation", "FamilyMember", "FamilyInvitation", "FamilyView", "FamilyCommand", "AccountDeleteRequest", "AccountDeleteView", "ExportView", "ScenarioId", "DevScenarioView", "DevScenariosView", "VersionedComponent", "ModulePin", "CoachedUnit", "ReasoningObjective", "ReasoningHorizon", "ReasoningEstimate", "ReasoningScenario", "ReasoningFact", "RegisteredActorPacket", "RegisteredSessionView", "RegisteredAnalysis", "RegisteredActorEvent", "RegisteredTarget", "RegisteredSelector", "V2ActionsRequest", "VersionedActionsRequest", "V2NewSessionRequest", "VersionedNewSessionRequest", "DemoFrameRequest", "DemoFrame", "AccessAllowance", "AccessOffer", "AccessOfferPolicy", "AccessDecision", "RegisteredPresentation", "RegisteredAdvice", "CoachSupport", "CoachReason", "CoachMessage", "CoachMessageView", "HeartsCandidate", "HeartsObservation", "HeartsActorPacket", "HeartsSessionView", "HeartsAnalysis", "HeartsActorEvent", "SpadesCandidate", "SpadesObservation", "SpadesActorPacket", "SpadesSessionView", "SpadesAnalysis", "SpadesActorEvent", "TokenReveal", "TokenCycle", "TokenCompetitor", "TokenObservation", "TokenCandidate", "TokenActorPacket", "TokenSessionView", "TokenAnalysis", "TokenActorEvent", "TokenPresentation", "TrixAction", "TrixPlay", "TrixTrick", "TrixDeclaration", "TrixRow", "TrixLayoutPass", "TrixLeadSource", "TrixRecipient", "TrixLedgerEntry", "TrixWithheldBonus", "TrixScore", "TrixTwoAnnouncements", "TrixObservation", "TrixActorPacket", "TrixSessionView", "TrixPresentation", "TrixAnalysis", "TrixActorEvent", "TrixAdvice", "TrixReviewFrame", "TrixLayoutTurn", "TrixLayoutHistory", "LocalServiceWorkRetryRequest", "LocalServiceEmptyRequest", "LocalServiceSelector", "LocalServiceNode", "LocalServiceControl", "LocalServiceSession", "LocalServiceSessionView", "LocalServiceNewSessionRequest", "LocalServiceControlRequest", "LocalControlView", "LocalServiceActionRequest", "LocalServicePrepareRequest", "LocalServicePrepareView", "LocalServiceAdvanceRequest", "LocalServiceNextHandRequest", "LocalServiceCommandReceipt", "LocalServiceDecisionView", "LocalServiceHealthView", "LocalServiceReconcileRequest", "LocalServiceRecoveredReceipt", "LocalServiceAccessRequest", "LocalServiceTrialRequest", "LocalServiceTrialReceipt", "LocalServiceUnlockRequest", "LocalServiceUnlockReceipt", "PlatformAllowanceView", "PlatformAccessView", "PlatformReviewAccessView", "PlatformCompetition", "PlatformController", "PlatformCatalogEntry", "PlatformSession", "PlatformSessionView", "PlatformReconcileRequest", "PlatformRecoveredReceipt", "PlatformReconcileView", "CatalogMode", "TrixCompletedRound", "TrixRoundIndex", "TrixRoundHistory", "PlatformPreferencesView", "PlatformPreferencesRequest", "PlatformAccountAvailability", "PlatformAccountView", "PlatformExportDecision", "PlatformExportView", "PlatformFixtureAccountView", "PlatformFamilyCommand", "PlatformAdviceRequest", "PlatformNotesRequest", "PlatformReviewTrialRequest", "PlatformReviewExposureRequest", "PlatformReviewStatus", "PlatformAdviceView", "CoachUIProvider", "CoachUIAccess", "CoachUIFeedback", "CoachUIRatingPreview", "CoachUIItem", "CoachUISessionSummary", "CoachUISession", "CoachUIStatusView", "CoachUISessionView", "CoachUIStartRequest", "CoachUIItemRequest", "CoachUIFeedbackRequest", "CoachUIFeedbackView", "CoachUIReplayView", "RealtimePlaybackRequest", "RealtimePlaybackView", "RealtimeNegotiateView", "RealtimeSnapshotRequest", "RealtimeSnapshot", "RealtimeMessage", "RealtimePresenceRequest"}
+var supportedPatterns = map[string]bool{"^[CDHS](?:[2-9]|10|J|Q|K|A)$": true, "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": true, "^[1-9][0-9]{0,5}$": true, "^(0|[1-9][0-9]{0,5})$": true, "^[a-z0-9][a-z0-9-]{0,63}$": true, "^[0-9]+\\.[0-9]+\\.[0-9]+$": true, "^[^\\u0000-\\u001f\\u007f]+$": true, "^[a-f0-9]{48}$": true, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$": true}

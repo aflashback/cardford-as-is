@@ -91,6 +91,11 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   AccessOfferPolicy: compiled.validateAccessOfferPolicy,
   AccessDecision: compiled.validateAccessDecision,
   RegisteredPresentation: compiled.validateRegisteredPresentation,
+  RegisteredAdvice: compiled.validateRegisteredAdvice,
+  CoachSupport: compiled.validateCoachSupport,
+  CoachReason: compiled.validateCoachReason,
+  CoachMessage: compiled.validateCoachMessage,
+  CoachMessageView: compiled.validateCoachMessageView,
   HeartsCandidate: compiled.validateHeartsCandidate,
   HeartsObservation: compiled.validateHeartsObservation,
   HeartsActorPacket: compiled.validateHeartsActorPacket,
@@ -113,6 +118,28 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   TokenAnalysis: compiled.validateTokenAnalysis,
   TokenActorEvent: compiled.validateTokenActorEvent,
   TokenPresentation: compiled.validateTokenPresentation,
+  TrixAction: compiled.validateTrixAction,
+  TrixPlay: compiled.validateTrixPlay,
+  TrixTrick: compiled.validateTrixTrick,
+  TrixDeclaration: compiled.validateTrixDeclaration,
+  TrixRow: compiled.validateTrixRow,
+  TrixLayoutPass: compiled.validateTrixLayoutPass,
+  TrixLeadSource: compiled.validateTrixLeadSource,
+  TrixRecipient: compiled.validateTrixRecipient,
+  TrixLedgerEntry: compiled.validateTrixLedgerEntry,
+  TrixWithheldBonus: compiled.validateTrixWithheldBonus,
+  TrixScore: compiled.validateTrixScore,
+  TrixTwoAnnouncements: compiled.validateTrixTwoAnnouncements,
+  TrixObservation: compiled.validateTrixObservation,
+  TrixActorPacket: compiled.validateTrixActorPacket,
+  TrixSessionView: compiled.validateTrixSessionView,
+  TrixPresentation: compiled.validateTrixPresentation,
+  TrixAnalysis: compiled.validateTrixAnalysis,
+  TrixActorEvent: compiled.validateTrixActorEvent,
+  TrixAdvice: compiled.validateTrixAdvice,
+  TrixReviewFrame: compiled.validateTrixReviewFrame,
+  TrixLayoutTurn: compiled.validateTrixLayoutTurn,
+  TrixLayoutHistory: compiled.validateTrixLayoutHistory,
   LocalServiceWorkRetryRequest: compiled.validateLocalServiceWorkRetryRequest,
   LocalServiceEmptyRequest: compiled.validateLocalServiceEmptyRequest,
   LocalServiceSelector: compiled.validateLocalServiceSelector,
@@ -149,6 +176,10 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   PlatformReconcileRequest: compiled.validatePlatformReconcileRequest,
   PlatformRecoveredReceipt: compiled.validatePlatformRecoveredReceipt,
   PlatformReconcileView: compiled.validatePlatformReconcileView,
+  CatalogMode: compiled.validateCatalogMode,
+  TrixCompletedRound: compiled.validateTrixCompletedRound,
+  TrixRoundIndex: compiled.validateTrixRoundIndex,
+  TrixRoundHistory: compiled.validateTrixRoundHistory,
   PlatformPreferencesView: compiled.validatePlatformPreferencesView,
   PlatformPreferencesRequest: compiled.validatePlatformPreferencesRequest,
   PlatformAccountAvailability: compiled.validatePlatformAccountAvailability,
@@ -163,6 +194,27 @@ const validators: { [N in ContractName]: ValidateFunction<ContractTypes[N]> } = 
   PlatformReviewExposureRequest: compiled.validatePlatformReviewExposureRequest,
   PlatformReviewStatus: compiled.validatePlatformReviewStatus,
   PlatformAdviceView: compiled.validatePlatformAdviceView,
+  CoachUIProvider: compiled.validateCoachUIProvider,
+  CoachUIAccess: compiled.validateCoachUIAccess,
+  CoachUIFeedback: compiled.validateCoachUIFeedback,
+  CoachUIRatingPreview: compiled.validateCoachUIRatingPreview,
+  CoachUIItem: compiled.validateCoachUIItem,
+  CoachUISessionSummary: compiled.validateCoachUISessionSummary,
+  CoachUISession: compiled.validateCoachUISession,
+  CoachUIStatusView: compiled.validateCoachUIStatusView,
+  CoachUISessionView: compiled.validateCoachUISessionView,
+  CoachUIStartRequest: compiled.validateCoachUIStartRequest,
+  CoachUIItemRequest: compiled.validateCoachUIItemRequest,
+  CoachUIFeedbackRequest: compiled.validateCoachUIFeedbackRequest,
+  CoachUIFeedbackView: compiled.validateCoachUIFeedbackView,
+  CoachUIReplayView: compiled.validateCoachUIReplayView,
+  RealtimePlaybackRequest: compiled.validateRealtimePlaybackRequest,
+  RealtimePlaybackView: compiled.validateRealtimePlaybackView,
+  RealtimeNegotiateView: compiled.validateRealtimeNegotiateView,
+  RealtimeSnapshotRequest: compiled.validateRealtimeSnapshotRequest,
+  RealtimeSnapshot: compiled.validateRealtimeSnapshot,
+  RealtimeMessage: compiled.validateRealtimeMessage,
+  RealtimePresenceRequest: compiled.validateRealtimePresenceRequest,
 };
 export function contractValidator<N extends ContractName>(name: N): ValidateFunction<ContractTypes[N]> {
   return validators[name];
@@ -261,6 +313,11 @@ export const validateAccessOffer = contractValidator('AccessOffer');
 export const validateAccessOfferPolicy = contractValidator('AccessOfferPolicy');
 export const validateAccessDecision = contractValidator('AccessDecision');
 export const validateRegisteredPresentation = contractValidator('RegisteredPresentation');
+export const validateRegisteredAdvice = contractValidator('RegisteredAdvice');
+export const validateCoachSupport = contractValidator('CoachSupport');
+export const validateCoachReason = contractValidator('CoachReason');
+export const validateCoachMessage = contractValidator('CoachMessage');
+export const validateCoachMessageView = contractValidator('CoachMessageView');
 export const validateHeartsCandidate = contractValidator('HeartsCandidate');
 export const validateHeartsObservation = contractValidator('HeartsObservation');
 export const validateHeartsActorPacket = contractValidator('HeartsActorPacket');
@@ -283,6 +340,28 @@ export const validateTokenSessionView = contractValidator('TokenSessionView');
 export const validateTokenAnalysis = contractValidator('TokenAnalysis');
 export const validateTokenActorEvent = contractValidator('TokenActorEvent');
 export const validateTokenPresentation = contractValidator('TokenPresentation');
+export const validateTrixAction = contractValidator('TrixAction');
+export const validateTrixPlay = contractValidator('TrixPlay');
+export const validateTrixTrick = contractValidator('TrixTrick');
+export const validateTrixDeclaration = contractValidator('TrixDeclaration');
+export const validateTrixRow = contractValidator('TrixRow');
+export const validateTrixLayoutPass = contractValidator('TrixLayoutPass');
+export const validateTrixLeadSource = contractValidator('TrixLeadSource');
+export const validateTrixRecipient = contractValidator('TrixRecipient');
+export const validateTrixLedgerEntry = contractValidator('TrixLedgerEntry');
+export const validateTrixWithheldBonus = contractValidator('TrixWithheldBonus');
+export const validateTrixScore = contractValidator('TrixScore');
+export const validateTrixTwoAnnouncements = contractValidator('TrixTwoAnnouncements');
+export const validateTrixObservation = contractValidator('TrixObservation');
+export const validateTrixActorPacket = contractValidator('TrixActorPacket');
+export const validateTrixSessionView = contractValidator('TrixSessionView');
+export const validateTrixPresentation = contractValidator('TrixPresentation');
+export const validateTrixAnalysis = contractValidator('TrixAnalysis');
+export const validateTrixActorEvent = contractValidator('TrixActorEvent');
+export const validateTrixAdvice = contractValidator('TrixAdvice');
+export const validateTrixReviewFrame = contractValidator('TrixReviewFrame');
+export const validateTrixLayoutTurn = contractValidator('TrixLayoutTurn');
+export const validateTrixLayoutHistory = contractValidator('TrixLayoutHistory');
 export const validateLocalServiceWorkRetryRequest = contractValidator('LocalServiceWorkRetryRequest');
 export const validateLocalServiceEmptyRequest = contractValidator('LocalServiceEmptyRequest');
 export const validateLocalServiceSelector = contractValidator('LocalServiceSelector');
@@ -319,6 +398,10 @@ export const validatePlatformSessionView = contractValidator('PlatformSessionVie
 export const validatePlatformReconcileRequest = contractValidator('PlatformReconcileRequest');
 export const validatePlatformRecoveredReceipt = contractValidator('PlatformRecoveredReceipt');
 export const validatePlatformReconcileView = contractValidator('PlatformReconcileView');
+export const validateCatalogMode = contractValidator('CatalogMode');
+export const validateTrixCompletedRound = contractValidator('TrixCompletedRound');
+export const validateTrixRoundIndex = contractValidator('TrixRoundIndex');
+export const validateTrixRoundHistory = contractValidator('TrixRoundHistory');
 export const validatePlatformPreferencesView = contractValidator('PlatformPreferencesView');
 export const validatePlatformPreferencesRequest = contractValidator('PlatformPreferencesRequest');
 export const validatePlatformAccountAvailability = contractValidator('PlatformAccountAvailability');
@@ -333,3 +416,24 @@ export const validatePlatformReviewTrialRequest = contractValidator('PlatformRev
 export const validatePlatformReviewExposureRequest = contractValidator('PlatformReviewExposureRequest');
 export const validatePlatformReviewStatus = contractValidator('PlatformReviewStatus');
 export const validatePlatformAdviceView = contractValidator('PlatformAdviceView');
+export const validateCoachUIProvider = contractValidator('CoachUIProvider');
+export const validateCoachUIAccess = contractValidator('CoachUIAccess');
+export const validateCoachUIFeedback = contractValidator('CoachUIFeedback');
+export const validateCoachUIRatingPreview = contractValidator('CoachUIRatingPreview');
+export const validateCoachUIItem = contractValidator('CoachUIItem');
+export const validateCoachUISessionSummary = contractValidator('CoachUISessionSummary');
+export const validateCoachUISession = contractValidator('CoachUISession');
+export const validateCoachUIStatusView = contractValidator('CoachUIStatusView');
+export const validateCoachUISessionView = contractValidator('CoachUISessionView');
+export const validateCoachUIStartRequest = contractValidator('CoachUIStartRequest');
+export const validateCoachUIItemRequest = contractValidator('CoachUIItemRequest');
+export const validateCoachUIFeedbackRequest = contractValidator('CoachUIFeedbackRequest');
+export const validateCoachUIFeedbackView = contractValidator('CoachUIFeedbackView');
+export const validateCoachUIReplayView = contractValidator('CoachUIReplayView');
+export const validateRealtimePlaybackRequest = contractValidator('RealtimePlaybackRequest');
+export const validateRealtimePlaybackView = contractValidator('RealtimePlaybackView');
+export const validateRealtimeNegotiateView = contractValidator('RealtimeNegotiateView');
+export const validateRealtimeSnapshotRequest = contractValidator('RealtimeSnapshotRequest');
+export const validateRealtimeSnapshot = contractValidator('RealtimeSnapshot');
+export const validateRealtimeMessage = contractValidator('RealtimeMessage');
+export const validateRealtimePresenceRequest = contractValidator('RealtimePresenceRequest');

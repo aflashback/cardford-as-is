@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>The Regular · Rally sticker library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="checker" data-format="compare" data-size="large">
+  <header class="masthead">
+    <a class="wordmark" href="../../index.html" aria-label="Back to the Rally design package"><span class="brand-mark" aria-hidden="true">R</span> Rally <span>/ Assets</span></a>
+    <a class="file-link" href="manifest.json" download>Manifest <span aria-hidden="true">↓</span></a>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">Approved character · 5 poses</p><h1 id="page-title">The Regular.</h1></div>
+      <p class="intro-note">Original PNGs + editable vector traces.<br><strong>PNG remains canonical.</strong> SVGs are not pixel-identical.</p>
+    </section>
+
+    <nav id="poses" class="poses" aria-label="Choose a coach pose"></nav>
+
+    <section class="viewer" aria-labelledby="pose-title">
+      <div class="viewer-head">
+        <div class="pose-name"><span class="pose-index" id="pose-index">01</span><h2 id="pose-title">Whistle</h2></div>
+        <div class="downloads"><a id="download-png" download>PNG <span aria-hidden="true">↓</span></a><a id="download-svg" download>SVG <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <div class="toolbar">
+        <fieldset class="segmented"><legend>Format</legend><button type="button" data-format="compare" aria-pressed="true">Compare</button><button type="button" data-format="png" aria-pressed="false">PNG</button><button type="button" data-format="svg" aria-pressed="false">SVG</button></fieldset>
+        <fieldset class="swatches"><legend>Background</legend><button type="button" data-theme="checker" aria-label="Checker background" title="Checker background" aria-pressed="true"><span class="checker"></span></button><button type="button" data-theme="chalk" aria-label="Chalk background" title="Chalk background" aria-pressed="false"><span class="chalk"></span></button><button type="button" data-theme="dark" aria-label="Dark background" title="Dark background" aria-pressed="false"><span class="dark"></span></button><button type="button" data-theme="sage" aria-label="Sage background" title="Sage background" aria-pressed="false"><span class="sage"></span></button></fieldset>
+        <label class="size-control">Size <select id="size"><option value="small">Small</option><option value="medium">Medium</option><option value="large" selected>Large</option></select></label>
+      </div>
+      <div class="comparison" id="comparison">
+        <figure class="artwork png"><figcaption><span>PNG</span><span>Original</span></figcaption><div class="canvas"><img id="png-preview" alt="" draggable="false"></div></figure>
+        <figure class="artwork svg"><figcaption><span>SVG</span><span>Automated trace</span></figcaption><div class="canvas"><img id="svg-preview" alt="" draggable="false"></div></figure>
+      </div>
+      <div class="asset-facts" id="asset-facts" aria-live="polite"></div>
+    </section>
+    <footer class="notes"><p>Real SVG paths. Vector transparency. No embedded PNG.<br>Curve fitting approximates fine texture, gradients and edges.</p><a href="README.md">Asset notes & provenance <span aria-hidden="true">↗</span></a></footer>
+  </main>
+  <script src="asset-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+{
+  "label": "trix-complex-partners-desktop-final-1.4",
+  "frames": 178,
+  "elapsedMs": 3511.5,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0,
+      "cards": [],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 445.8,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 545.7,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1108.4,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H2",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1205.6,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H2",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1646,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H2",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "H10",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1745.7,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H2",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "H10",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 2186.6,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H2",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "H10",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "H8",
+          "seat": "2",
+          "visible": false
+        }
+      ],
+      "pocket": [],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 2285.7,
+      "cards": [
+        {
+          "card": "H3",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "H2",
+          "seat": "0",
+          "visible": true
+        },
+        {
+          "card": "H10",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "H8",
+          "seat": "2",
+          "visible": true
+        }
+      ],
+      "pocket": [],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 3452,
+      "cards": [
+        {
+          "card": "S3",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Leo: 3 of hearts",
+        "You: 2 of hearts",
+        "Joe: 10 of hearts, won the trick",
+        "Maya: 8 of hearts"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

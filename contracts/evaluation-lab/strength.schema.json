@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/strength.json",
+  "title": "strength",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "studyId", "stage", "families", "rotations", "deployments", "environments", "usefulGain", "maximumHarm", "minFamilies", "powerRationale", "multiplicityAdjustment"],
+  "properties": {
+    "schemaVersion": {"const": "coach-lab-strength-1.0.0"},
+    "studyId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"},
+    "stage": {"enum": ["development", "fresh-validation"]},
+    "families": {"type": "array", "minItems": 2, "maxItems": 128, "items": {"type": "object", "additionalProperties": false, "required": ["id", "seed"], "properties": {"id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"}, "seed": {"type": "string", "minLength": 1, "maxLength": 200}}}},
+    "rotations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 0, "maximum": 3}},
+    "deployments": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["one-seat", "both-partners"]}},
+    "environments": {"type": "array", "minItems": 1, "maxItems": 8, "items": {"type": "object", "additionalProperties": false, "required": ["id", "seatPolicies"], "properties": {"id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"}, "seatPolicies": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "object", "additionalProperties": false, "required": ["seat", "id", "version"], "properties": {"seat": {"type": "integer", "minimum": 0, "maximum": 3}, "id": {"enum": ["trix-deterministic-1.0.0", "trix-reasoning-1.0.0", "trix-history-1.0.0", "trix-frontier-1.0.0", "trix-ownership-1.0.0", "trix-ownership-comparison-1.0.0"]}, "version": {"const": "1.0.0"}}}}}}},
+    "usefulGain": {"type": "number", "exclusiveMinimum": 0},
+    "maximumHarm": {"type": "number", "minimum": 0},
+    "minFamilies": {"type": "integer", "minimum": 2, "maximum": 10000},
+    "powerRationale": {"type": "string", "minLength": 1},
+    "multiplicityAdjustment": {"type": "string", "minLength": 1}
+  }
+}

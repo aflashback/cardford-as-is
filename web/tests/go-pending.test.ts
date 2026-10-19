@@ -137,3 +137,33 @@ test('native family acceptance recovers the original48-character token without s
   assert.deepEqual(await executeGo('account','/api/family','FamilyView',request,ownerId,'account'),receipt);
   assert.equal(readGoPending('account',ownerId),null);
 });
+
+test('playback retains an uncertain original command separately from an in-flight action',async context=>{
+  const maps=environment(context);
+  await retainLease('owner-a','game-a',body.controlLeaseToken,2);
+  await storeGoPending('session','/api/session/actions',body,'owner-a','game-a');
+  const request={commandId:'resume-original',gameId:'game-a',controlLeaseToken:body.controlLeaseToken,
+    expectedControlGeneration:2,expectedPlaybackGeneration:3,running:true};
+  let mutations=0;
+  globalThis.fetch=async(path,options)=>{
+    mutations++;assert.equal(path,'/api/session/playback');
+    assert.deepEqual(JSON.parse(options!.body as string),request);
+    throw new TypeError('accepted playback reply lost');
+  };
+  await assert.rejects(executeGo('playback','/api/session/playback','RealtimePlaybackView',request,'owner-a','game-a'));
+  assert.equal(readGoPending('playback','owner-a')?.body.commandId,request.commandId);
+  assert.ok(![...maps.localStorage.values()].some(value=>value.includes(body.controlLeaseToken)));
+  await assert.rejects(executeGo('playback','/api/session/playback','RealtimePlaybackView',
+    {...request,commandId:'pause-new',running:false},'owner-a','game-a'),/previous request remains unconfirmed/);
+  assert.equal(mutations,1);
+  await retainLease('owner-a','game-a','b'.repeat(40),4);
+  globalThis.fetch=async(path,options)=>{
+    assert.equal(path,'/api/platform/commands/reconcile');
+    assert.deepEqual(JSON.parse(options!.body as string),{commandId:request.commandId,operation:'playback',request});
+    return Response.json({status:'accepted',receipt:{running:true,generation:4}});
+  };
+  const restored=await restoreGoPending(readGoPending('playback','owner-a')!);
+  assert.deepEqual(await executeGo('playback','/api/session/playback','RealtimePlaybackView',restored,'owner-a','game-a'),{running:true,generation:4});
+  assert.equal(readGoPending('playback','owner-a'),null);
+  assert.equal(readGoPending('session','owner-a')?.body.commandId,body.commandId);
+});

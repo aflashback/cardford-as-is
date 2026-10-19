@@ -72,6 +72,9 @@ func (s *Service) platformTrial(ctx context.Context, owner string, r transport.R
 	if err != nil {
 		return transport.Response{}, err
 	}
+	if b.Pin().GameID == "trix" {
+		return result("PlatformReviewStatus", map[string]any{"commandId": q.CommandID, "status": "unavailable", "result": nil})
+	}
 	if source.Document.Revision >= live.Document.Revision || obs.Phase != "play" {
 		return transport.Response{}, fail(400, "recorded-play-required")
 	}

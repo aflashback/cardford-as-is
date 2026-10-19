@@ -21,7 +21,7 @@
 **Performance/toolchain amendment, 6 October UTC:** [CR-ARCH-004](../../../planning/decisions/CR-ARCH-004-native-windows-performance.md) requires native Windows for both current runtime checks, pins Go 1.26.8 after a reproducible 1.27.1 profiling failure, and corrects the old unequal internal-work comparison. Follow [native setup](../../../planning/implementation/multi-game/windows-development.md) and the [recorded experiment](../../../qa/implementation/multi-game/performance-windows/report.md). Use game-owned immutable typed snapshots inside bounded operations, with strict decoding at import and serialization at real output/persistence boundaries. M03 subsequently passed its private records gate; M04 is next; full-history, policy and service resource gates remain open.
 
 - “All supported games have four seats.” Competition is four individuals or two teams of two; controllers and visibility are separate.
-- “Jev is the only runtime strategic model.” Later CR-IMPL-001/CR-STRAT-009 allow explicit deterministic code policies; no other runtime LLM/framework/cascade.
+- Owner correction, 7 October 2026: [CR-STRAT-011](../../../planning/decisions/CR-STRAT-011-deterministic-feedback-lab.md) supersedes the earlier Jev-only direction. Bots always use deterministic code without runtime models; the current coach shares that analysis. Offline LLM review is permitted in the lab. Model selection/training/integration is deferred to possible coach-only work and is not an active M11 deliverable.
 - “Rules, arithmetic, legal actions, trick winners, score, features, permissions and state transitions are code.”
 - “No hidden-hand leakage.” Build allowlisted seat inputs; never pass the aggregate, actual concealed deal, fixture labels or teammate memory to a policy/provider.
 - “All state changes are authorized, version checked, idempotent and persisted.” Never keep a transaction open across provider/expensive policy work.
@@ -83,7 +83,7 @@ flowchart LR
  M07 --> M10[10 Bots and coach]
  M08 -. Tarneeb branch .-> M10
  M09 -. Trix branches .-> M10
- M10 --> M11[11 Comparative evaluation and Jev fixtures]
+ M10 --> M11[11 Deterministic feedback and comparative evaluation]
  M11 --> M12[12 Human evidence and promotion]
 ```
 
@@ -103,7 +103,7 @@ Each task ends with a focused commit and evidence under `qa/implementation/multi
 - [x] Run `npm run contracts:check`, `npm run typecheck`, `npm run test:all`, `npm run build`; save actual results. If `TEST_DATABASE_URL` is unavailable, run pure tests and mark durable acceptance blocked; do not substitute the saved-games database.
 - [x] Record CR-ARCH-001 reason, alternatives, compatibility and owner authority for this migration. Preserve the earlier flat-contract freeze as V1; record proposed V2 changes before depending on them.
 - [x] Read CR-IMPL-004; record demo/access gaps and a basic first-app acceptance checklist. Keep final offer values unselected and native/capacity work deferred; inspect later evaluation commits without rerunning their experiments.
-- [ ] Freeze Jawaker's specified Trix mechanics. Resolve its narrow opening/doubling/tie omissions from sources; explicitly record interpretation/fixtures. Record the selected Tarneeb lead/scoring profile and Solo meaning when the pending owner answers arrive. No invented individual Tarneeb profile or alternate Trix layout.
+- [ ] Complete native rule-profile/version acceptance and record the selected Tarneeb lead/scoring profile and Solo meaning when its pending owner answers arrive. **Trix clarification completed 7 October:** [the current rules](../../rules/trix.md) record opening/tie interpretations and owner-resolved TRX-D01/D02, including lead-giver/withheld Solo bonuses and direct opposing-team credits. No invented individual Tarneeb profile or alternate Trix layout.
 - [x] Commit the baseline and decision dossier. Gate: shared migration may proceed; each new-game rule branch requires a complete named profile before reducer implementation.
 
 ## M01 — Freeze module, packet and V2 document contracts
@@ -247,6 +247,8 @@ Execute the [M02A checklist](../../../planning/implementation/multi-game/backend
 
 ## M09 — Implement Jawaker Trix Solo and Complex Partners
 
+**Scope update, 7 October 2026:** the owner has requested **Trix Basic Solo/Partners and Complex Solo/Partners**, beginning with Basic. [The native Trix plan](2026-10-07-trix-four-variants.md) supersedes this section's two-variant scope, TypeScript file proposals and Trix-specific M10 steps. [CR-GAME-001](../../../planning/decisions/CR-GAME-001-trix-four-variants.md) and [the current rule specification](../../rules/trix.md) govern new work; TRX-D01/D02 are resolved by owner answers, while implementation acceptance remains pending. The checklist below is historical planning, not an additional implementation lane. The associated lab will require four separate Trix adapters/objectives.
+
 **Owner:** Trix engine/UI. **Requirements:** MG-02, MG-06–09, MG-12. **Dependencies:** M06 + complete Jawaker profile from M00.
 
 **Create:** exact engine/layout/score/schema/UI/fixture files named in [the Trix packet](../../../planning/implementation/multi-game/game-packets.md#trix-solo-and-complex-partners-jawaker-authority). **Modify:** installed registrations/public root/UI registry after correctness gate.
@@ -269,17 +271,19 @@ Execute the [M02A checklist](../../../planning/implementation/multi-game/backend
 - [ ] Use same analysis for bot selection and human advice; keep the advice snapshot when cues are hidden and in later review. Record unsampled/contested choices; suppress reasons invalidated by another selected move. Do not update defaults from scenario hits alone.
 - [ ] Commit per family. Gate: small reviewable policies/cues with exceptions and action fidelity; strategic preference still awaits independent evaluation.
 
-## M11 — Evaluate alternatives and repair Jev fixture diagnostics
+## M11 — Evaluate deterministic decisions and close the feedback loop
 
-**Owner:** evaluation/provider. **Requirements:** MG-11, MG-13–14. **Dependencies:** relevant M10 branch.
+**Revised owner direction, 7 October:** the [Coach Feedback Lab plan](2026-10-07-coach-feedback-lab.md) and [design](../specs/2026-10-07-coach-feedback-lab-design.md) govern the active follow-up: browser-free complete games, deterministic partnership/solo inference, per-decision evidence, offline LLM review, counterexamples and controlled code/rule improvements. Bots permanently remain deterministic; the coach shares their analysis. The previous Jev exploration/provider-comparison branch is removed from active lab work. Model choice, training and any later coach-only assistance are deferred under CR-STRAT-011. Existing source archives, provider diagnostics, pending labels and promotion gates remain historical evidence. This revision is planning-only and starts no implementation or spending.
 
-**Create:** `web/server/evaluation/multi-game/manifest.ts`, `run.ts`, `report.ts`; per-variant files specified in the [evaluation packet](../../../planning/implementation/multi-game/cases-and-evaluation.md#evaluation-must-be-frozen-before-confirmation); `web/server/providers/eligibility.ts`; `web/server/tests/multi-game-evaluation.test.ts`, `provider-eligibility.test.ts`. **Modify:** `web/server/providers/openrouter.ts`, `openrouter.test.ts`, existing gate components through compatible adapters only.
+**Owner:** evaluation/reasoning. **Requirements:** MG-11 plus LAB-01–16 in the revised plan; historical MG-13–14 provider work does not authorize a runtime model. **Dependencies:** relevant M10 branch; each future-game branch also requires its M08/M09 native engine and rules.
 
-- [ ] Add strict manifest tests and provider fixtures. Assert `assert.equal(providerEligibility(heartsPassPacket).kind,'unsupported-action-space');` and zero attempts reserved/dispatched for forced/off/zero-cap/unsupported choices. Export `providerEligibility` from `providers/eligibility.ts`.
-- [ ] Run new tests, existing `openrouter.test.ts`, `provider-ledger.test.ts`, `jev-offline.test.ts`, `gate-inference.test.ts`, `gate-rule.test.ts`.
+**Reuse:** existing `web/server/evaluation/multi-game/manifest.ts`, research/label adapters, native knowledge/sampling/partner-resource code and completed M11 evidence. **Create/extend:** the single native runner and TypeScript run/report coordinator, safe evidence contracts, deterministic inference experiments and per-game adapters specified in the revised plan. Preserve legacy study meanings and existing gate components through compatible adapters.
+
+- [ ] Complete the revised lab's reliable collection and exact audit slice, including shared deterministic action/advice identity, zero runtime model dependencies, replay and fixed-work reproducibility.
+- [ ] Add conditional joint-card inference and counterexample/calibration coverage, isolated offline judge/critic packets and accountable optional review jobs. Model opinions remain provisional evidence.
 - [ ] Implement per-variant development reports and manifest freezing; define complete horizon, independent family, blind labels, gain/harm bounds, statistical/stopping/latency limits **before** confirmation. Isolate single-seat strength and test team-wide deployment separately. Existing frozen Spades gate requirements remain in force.
-- [ ] Add sanitized response field-category diagnostics and reproduce invalid responses through fixtures. Preserve the rejected historical request and exhausted cap; no live retry here. A future explicitly bounded request gets its own manifest/ledger and records actual resolved model/usage.
-- [ ] Commit `feat: add multi-game evaluation and provider diagnostics`. Gate: reproducible development comparison, confirming eligibility explicit; neither model agreement nor familiar browser points promotes a policy.
+- [ ] Convert a verified gap into a narrow deterministic rule, probability assumption or cue revision; retain negative cases and test unfamiliar partners/opponents. Add Tarneeb/Trix lab adapters only after their native rule/engine gates.
+- [ ] Finish with a reproducible gap/report/regression package and explicit confirmation eligibility. Neither model agreement nor familiar browser points promotes a policy; no runtime model-selection or training milestone is included.
 
 ## M12 — Complete browser evidence, human evaluation and promotion record
 
@@ -296,7 +300,7 @@ Execute the [M02A checklist](../../../planning/implementation/multi-game/backend
 
 ## Execution handoff
 
-**6–7 October continuation:** the owner authorized continuous functional implementation to a human-testable local app and a 30-minute whole-test-run ceiling. The [active execution ledger](../../../planning/implementation/multi-game/continuous-local-build.md) supersedes earlier “next owner request” pauses. M05 now has optional Go actor-scoped planning and real service acceptance; M06 installs a genuine numeric module through storage/service; M07 maintains the research catalog; M10 supplies an optional Partners bot/coach family; M11 supplies fixture diagnostics and nonpromoting development evidence. See each milestone's current report for scoped acceptance and gaps. M08/M09 still require the pending Tarneeb/Trix rule choices. Human labels, strategy promotion, native packaging, hosting and live providers remain deferred. M12 current-game browser acceptance and the running local handoff now have scoped acceptance: [final report](../../../qa/implementation/multi-game/m12/status.md). Both experimental Partners journeys passed; the app runs with Partners resources selected. The broader gates remain pending.
+**6–7 October continuation:** the owner authorized continuous functional implementation to a human-testable local app and a 30-minute whole-test-run ceiling. The [active execution ledger](../../../planning/implementation/multi-game/continuous-local-build.md) supersedes earlier “next owner request” pauses. M05 now has optional Go actor-scoped planning and real service acceptance; M06 installs a genuine numeric module through storage/service; M07 maintains the research catalog; M10 supplies an optional Partners bot/coach family; M11 supplies fixture diagnostics and nonpromoting development evidence. See each milestone's current report for scoped acceptance and gaps. M08 still requires the pending Tarneeb choices. Trix doubling choices are owner-resolved in CR-GAME-001; M09 native implementation acceptance remains pending. Human labels, strategy promotion, native packaging, hosting and live providers remain deferred. M12 current-game browser acceptance and the running local handoff now have scoped acceptance: [final report](../../../qa/implementation/multi-game/m12/status.md). Both experimental Partners journeys passed; the app runs with Partners resources selected. The broader gates remain pending.
 
 M00–M02A, M03 and M04A/B/C have scoped acceptance. **M04D passed scoped MG-15/MG-16 backend acceptance; see [evidence](../../../qa/implementation/multi-game/m04d/status.md).** M04E's complete platform/client/account implementation is delivered on the explicit `npm run start:go` path; [scoped functional acceptance has passed](../../../qa/implementation/multi-game/m04e/status.md). Full M04 and default-start activation remain blocked by the prior unresolved native PostgreSQL timeout cause and the long-history resource pass with integrity-preserving optimization and uncensored normal Spades match evidence. The continuation above authorizes optional M05 and strategy implementation; human review, live providers/payments and hosting remain deferred. Native Windows remains the selected local environment. Use fresh reviewers for interface, hidden-information and legacy compatibility changes. Review each milestone's concrete diff/evidence before integration; stop optional testing once its risks/gates are covered.
 

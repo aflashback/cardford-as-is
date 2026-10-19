@@ -1,0 +1,21 @@
+{
+  "name": "idle-warning-layout-fixed-ipad",
+  "at": "2026-10-16T02:23:36.263Z",
+  "build": "index-B-IIS17u.js",
+  "check": "Floating idle warning landscape review",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [],
+    "height": 768,
+    "scrollHeight": 768,
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}

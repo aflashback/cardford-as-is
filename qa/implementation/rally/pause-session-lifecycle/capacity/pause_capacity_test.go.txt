@@ -1,0 +1,373 @@
+package records
+
+// This file is intentionally .go.txt. run.mjs exposes it only through Go's
+// overlay to the records test package, with no physical server source edits.
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"net"
+	"os"
+	"runtime"
+	"sort"
+	"strconv"
+	"strings"
+	"sync"
+	"testing"
+	"time"
+
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+type pauseCapacityFixture struct {
+	ctx          context.Context
+	owner, game  string
+	state        PlaybackState
+	pausedExpiry time.Time
+}
+type pauseCapacityStage struct {
+	Name                string  `json:"name"`
+	Operations          int     `json:"operations"`
+	WallMS              float64 `json:"wallMs"`
+	OperationsPerSecond float64 `json:"operationsPerSecond"`
+	P50MS               float64 `json:"p50Ms"`
+	P95MS               float64 `json:"p95Ms"`
+	P99MS               float64 `json:"p99Ms"`
+	MaxMS               float64 `json:"maxMs"`
+}
+
+func pauseCapacityPoolDelta(before, after *pgxpool.Stat) map[string]any {
+	return map[string]any{
+		"acquisitions":                after.AcquireCount() - before.AcquireCount(),
+		"cumulativeAcquireDurationMs": float64(after.AcquireDuration()-before.AcquireDuration()) / float64(time.Millisecond),
+		"emptyAcquireCount":           after.EmptyAcquireCount() - before.EmptyAcquireCount(),
+		"canceledAcquireCount":        after.CanceledAcquireCount() - before.CanceledAcquireCount(),
+		"note":                        "AcquireDuration is total acquisition duration, not SQL execution time or a latency percentile",
+	}
+}
+
+func pauseCapacityNumber(t *testing.T, name string, fallback, maximum int) int {
+	t.Helper()
+	raw := os.Getenv(name)
+	if raw == "" {
+		return fallback
+	}
+	n, err := strconv.Atoi(raw)
+	if err != nil || n < 1 || n > maximum {
+		t.Fatalf("invalid bounded %s", name)
+	}
+	return n
+}
+func pauseCapacityRun(t *testing.T, name string, games, clients int, fn func(int) error) pauseCapacityStage {
+	t.Helper()
+	durations := make([]time.Duration, games)
+	failures := make([]error, games)
+	jobs := make(chan int, clients)
+	var workers sync.WaitGroup
+	start := time.Now()
+	for worker := 0; worker < clients; worker++ {
+		workers.Add(1)
+		go func() {
+			defer workers.Done()
+			for index := range jobs {
+				began := time.Now()
+				failures[index] = fn(index)
+				durations[index] = time.Since(began)
+			}
+		}()
+	}
+	for index := 0; index < games; index++ {
+		jobs <- index
+	}
+	close(jobs)
+	workers.Wait()
+	elapsed := time.Since(start)
+	for index, err := range failures {
+		if err != nil {
+			t.Fatalf("%s fixture %d: %v", name, index, err)
+		}
+	}
+	sort.Slice(durations, func(i, j int) bool { return durations[i] < durations[j] })
+	percentile := func(percent int) float64 {
+		index := (len(durations)*percent+99)/100 - 1
+		return float64(durations[index]) / float64(time.Millisecond)
+	}
+	return pauseCapacityStage{Name: name, Operations: games, WallMS: float64(elapsed) / float64(time.Millisecond), OperationsPerSecond: float64(games) / elapsed.Seconds(), P50MS: percentile(50), P95MS: percentile(95), P99MS: percentile(99), MaxMS: float64(durations[len(durations)-1]) / float64(time.Millisecond)}
+}
+func TestPauseCapacityBounded(t *testing.T) {
+	if os.Getenv("CARDFORD_PAUSE_CAPACITY") != "1" {
+		t.Skip("explicit bounded harness opt-in required")
+	}
+	url := os.Getenv("TEST_DATABASE_URL")
+	if url == "" || url == os.Getenv("DATABASE_URL") {
+		t.Fatal("separate test database required")
+	}
+	cfg, err := pgx.ParseConfig(url)
+	if err != nil {
+		t.Fatal("invalid test database configuration")
+	}
+	loopback := func(host string) bool { ip := net.ParseIP(host); return ip != nil && ip.IsLoopback() }
+	if !loopback(cfg.Host) || !strings.HasSuffix(cfg.Database, "_test") {
+		t.Fatal("loopback _test target required")
+	}
+	if applicationURL := os.Getenv("DATABASE_URL"); applicationURL != "" {
+		application, parseErr := pgx.ParseConfig(applicationURL)
+		if parseErr != nil || application.Database == cfg.Database {
+			t.Fatal("test database name must differ from application database")
+		}
+	}
+	for _, fallback := range cfg.Fallbacks {
+		if !loopback(fallback.Host) {
+			t.Fatal("non-loopback fallback forbidden")
+		}
+	}
+	games := pauseCapacityNumber(t, "PAUSE_CAPACITY_GAMES", 32, 128)
+	clients := pauseCapacityNumber(t, "PAUSE_CAPACITY_CLIENTS", 4, 8)
+	rounds := pauseCapacityNumber(t, "PAUSE_CAPACITY_ROUNDS", 3, 4)
+	codec, err := NewServiceCodec()
+	if err != nil {
+		t.Fatal(err)
+	}
+	first, second := storeTestOpen(t, codec)
+	fixtureCtx, cancel := context.WithTimeout(context.Background(), 85*time.Second)
+	defer cancel()
+	fixtures := make([]pauseCapacityFixture, games)
+	setup := time.Now()
+	for i := range fixtures {
+		identity, e := first.NewLocalIdentity(fixtureCtx)
+		if e != nil {
+			t.Fatal(e)
+		}
+		owner := identity.Principal.OwnerID
+		game := fmt.Sprintf("pause-capacity-%04d", i)
+		ctx := WithPrincipal(fixtureCtx, identity.Principal)
+		meta, e := ServiceMetadata(serviceSelector("spades-partners"), game, owner)
+		if e != nil {
+			t.Fatal(e)
+		}
+		config, _ := json.Marshal(map[string]any{"id": game, "dealer": 0})
+		doc, anchor, events, e := codec.Start(meta, config, storeTestDeal())
+		if e != nil {
+			t.Fatal(e)
+		}
+		token, e := freshID()
+		if e != nil {
+			t.Fatal(e)
+		}
+		unit, e := codec.UnitID(doc)
+		if e != nil {
+			t.Fatal(e)
+		}
+		request := CreateTransition{Document: doc, Anchor: anchor, Events: events, Admission: AccessAdmission{OwnerID: owner, Generation: 1, ControlRevision: 1, GrantID: LocalGrantID(owner, "spades", "partners"), UnitID: unit}, NewControlToken: token, TabID: "capacity-tab", ReceiptSchema: "AcceptedView", Receipt: []byte(`{"accepted":true}`)}
+		if _, e = first.CreateAccepted(localCommand(ctx, "capacity-create"), request); e != nil {
+			t.Fatal(e)
+		}
+		fixtures[i] = pauseCapacityFixture{ctx: WithControl(ctx, "capacity-tab", token), owner: owner, game: game}
+	}
+	setupMS := float64(time.Since(setup)) / float64(time.Millisecond)
+	runtime.GC()
+	var memoryBefore runtime.MemStats
+	runtime.ReadMemStats(&memoryBefore)
+	goroutinesBefore := runtime.NumGoroutine()
+	poolBefore := first.pool.Stat()
+	secondPoolBefore := second.pool.Stat()
+	var stages []pauseCapacityStage
+	stages = append(stages, pauseCapacityRun(t, "resume", games, clients, func(i int) error {
+		f := &fixtures[i]
+		state, e := first.SetPlaybackIntent(localCommand(f.ctx, "capacity-resume"), f.game, 2, 0, "resume", "", "capacity-instance")
+		if e != nil {
+			return e
+		}
+		if state.Phase != "running" || state.ForegroundLeaseUntil == nil {
+			return fmt.Errorf("resume did not establish running lease")
+		}
+		f.state = state
+		return nil
+	}))
+	for round := 1; round <= rounds; round++ {
+		sequence := int64(round)
+		stages = append(stages, pauseCapacityRun(t, fmt.Sprintf("renew-%d", round), games, clients, func(i int) error {
+			f := &fixtures[i]
+			state, e := first.RenewForeground(f.ctx, f.game, 2, f.state.Generation, sequence, "capacity-instance")
+			if e != nil {
+				return e
+			}
+			if state.Phase != "running" || !state.Running {
+				return fmt.Errorf("renewal unexpectedly paused fixture")
+			}
+			f.state = state
+			return nil
+		}))
+	}
+	stages = append(stages, pauseCapacityRun(t, "duplicate-renew", games, clients, func(i int) error {
+		f := &fixtures[i]
+		before := *f.state.ForegroundLeaseUntil
+		state, e := first.RenewForeground(f.ctx, f.game, 2, f.state.Generation, int64(rounds), "capacity-instance")
+		if e != nil {
+			return e
+		}
+		if state.ForegroundLeaseUntil == nil || !state.ForegroundLeaseUntil.Equal(before) {
+			return fmt.Errorf("duplicate renewal moved deadline")
+		}
+		return nil
+	}))
+	// Only this random schema is advanced. Do not wait five minutes or an hour,
+	// and do not mutate the manual-review game's lifecycle or any global clock.
+	forcedLease := time.Now().Add(-time.Second).UTC().Truncate(time.Microsecond)
+	var lateGames []string
+	for i := range fixtures {
+		if i%2 == 1 {
+			lateGames = append(lateGames, fixtures[i].game)
+		}
+	}
+	if _, err = first.pool.Exec(fixtureCtx, `UPDATE m05_playback SET foreground_lease_until=$2 WHERE game_id=ANY($1)`, lateGames, forcedLease); err != nil {
+		t.Fatal(err)
+	}
+	stages = append(stages, pauseCapacityRun(t, "pause-or-late-renew", games, clients, func(i int) error {
+		f := &fixtures[i]
+		var state PlaybackState
+		var e error
+		if i%2 == 0 {
+			state, e = first.SetPlaybackIntent(localCommand(f.ctx, "capacity-pause"), f.game, 2, f.state.Generation, "pause", "away", "capacity-instance")
+		} else {
+			state, e = first.RenewForeground(f.ctx, f.game, 2, f.state.Generation, int64(rounds+1), "capacity-instance")
+		}
+		if e != nil {
+			return e
+		}
+		if state.Phase != "paused" || state.Running || state.ExpiresAt == nil {
+			return fmt.Errorf("pause/late renewal failed to stop")
+		}
+		if i%2 == 1 && (state.PausedAt == nil || !state.PausedAt.Equal(forcedLease)) {
+			return fmt.Errorf("late renewal moved pause origin")
+		}
+		f.state = state
+		f.pausedExpiry = *state.ExpiresAt
+		return nil
+	}))
+	stages = append(stages, pauseCapacityRun(t, "repeat-pause", games, clients, func(i int) error {
+		f := &fixtures[i]
+		state, e := first.SetPlaybackIntent(localCommand(f.ctx, "capacity-repeat-pause"), f.game, 2, f.state.Generation, "pause", "away", "capacity-instance")
+		if e != nil {
+			return e
+		}
+		if state.ExpiresAt == nil || !state.ExpiresAt.Equal(f.pausedExpiry) {
+			return fmt.Errorf("repeat pause extended retention")
+		}
+		f.state = state
+		return nil
+	}))
+	if _, err = first.pool.Exec(fixtureCtx, `UPDATE m05_playback SET paused_at=clock_timestamp()-interval '301 seconds',expires_at=clock_timestamp()-interval '1 second' WHERE phase='paused'`); err != nil {
+		t.Fatal(err)
+	}
+	// Exercise competing real store sweepers. The private setup above changes
+	// deadlines only; it is not an alternative expiry implementation.
+	sweepLimit := min(8, games)
+	swept := make(map[string]int64)
+	var sweepMu sync.Mutex
+	sweepCalls := 0
+	sweepStarted := time.Now()
+	stages = append(stages, pauseCapacityRun(t, "two-store-expiry-drain", 2, 2, func(index int) error {
+		store := first
+		if index == 1 {
+			store = second
+		}
+		for attempt := 0; attempt < (games+sweepLimit-1)/sweepLimit+2; attempt++ {
+			due, e := store.SweepSessionLifecycle(fixtureCtx, sweepLimit)
+			if e != nil {
+				return e
+			}
+			sweepMu.Lock()
+			sweepCalls++
+			for _, expired := range due {
+				if expired.Phase != "expired" {
+					sweepMu.Unlock()
+					return fmt.Errorf("unexpected sweep phase")
+				}
+				if _, duplicate := swept[expired.GameID]; duplicate {
+					sweepMu.Unlock()
+					return fmt.Errorf("two stores reported duplicate expiry")
+				}
+				swept[expired.GameID] = expired.Generation
+			}
+			sweepMu.Unlock()
+			if len(due) == 0 {
+				return nil
+			}
+		}
+		return fmt.Errorf("bounded sweep did not drain")
+	}))
+	sweepWall := time.Since(sweepStarted)
+	if len(swept) != games {
+		t.Fatalf("sweep did not report exactly %d expiries: %d", games, len(swept))
+	}
+	stages = append(stages, pauseCapacityRun(t, "resume-after-expiry", games, clients, func(i int) error {
+		f := &fixtures[i]
+		state, e := first.SetPlaybackIntent(localCommand(f.ctx, "capacity-expired-resume"), f.game, 2, swept[f.game], "resume", "", "capacity-instance")
+		if e != nil {
+			return e
+		}
+		if state.Phase != "expired" || state.Running {
+			return fmt.Errorf("expired fixture resurrected")
+		}
+		return nil
+	}))
+	stages = append(stages, pauseCapacityRun(t, "read-expired", games, clients, func(i int) error {
+		f := &fixtures[i]
+		state, e := first.ReadPlayback(f.ctx, f.owner, f.game, "capacity-instance")
+		if e != nil {
+			return e
+		}
+		if state.Phase != "expired" || state.Running {
+			return fmt.Errorf("expired read lost terminal outcome")
+		}
+		return nil
+	}))
+	poolAfter := first.pool.Stat()
+	secondPoolAfter := second.pool.Stat()
+	var expired, running, paused, workRows, gameRows, outboxRows, receiptRows, schemaBytes int64
+	if err = first.pool.QueryRow(fixtureCtx, `SELECT count(*) FILTER(WHERE phase='expired'),count(*) FILTER(WHERE running),count(*) FILTER(WHERE phase='paused') FROM m05_playback`).Scan(&expired, &running, &paused); err != nil {
+		t.Fatal(err)
+	}
+	for _, count := range []struct {
+		table string
+		value *int64
+	}{{"m03_work", &workRows}, {"m03_games", &gameRows}, {"m05_realtime_outbox", &outboxRows}, {"m04_service_commands", &receiptRows}} {
+		if err = first.pool.QueryRow(fixtureCtx, `SELECT count(*) FROM `+first.table(count.table)).Scan(count.value); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err = first.pool.QueryRow(fixtureCtx, `SELECT COALESCE(sum(pg_total_relation_size(c.oid)),0)::bigint FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname=$1 AND c.relkind='r'`, first.schema).Scan(&schemaBytes); err != nil {
+		t.Fatal(err)
+	}
+	runtime.GC()
+	var memoryAfter runtime.MemStats
+	runtime.ReadMemStats(&memoryAfter)
+	if running != 0 || paused != 0 || expired != int64(games) || workRows != 0 || gameRows != int64(games) {
+		t.Fatalf("unexpected lifecycle/work counts: running=%d paused=%d work=%d", running, paused, workRows)
+	}
+	var activePointers int64
+	if err = first.pool.QueryRow(fixtureCtx, `SELECT count(*) FROM m03_access WHERE COALESCE(active_game_id,'')<>''`).Scan(&activePointers); err != nil {
+		t.Fatal(err)
+	}
+	if activePointers != 0 {
+		t.Fatal("expired active pointers retained")
+	}
+	if first.pool.Stat().AcquiredConns() != 0 || second.pool.Stat().AcquiredConns() != 0 {
+		t.Fatal("connection retained after lifecycle operations")
+	}
+	report := map[string]any{
+		"schemaVersion": "pause-capacity-1.0.0", "scope": "isolated actual records lifecycle; no service runners or sockets",
+		"games": games, "clients": clients, "renewalRounds": rounds, "setupMs": setupMS, "stages": stages,
+		"counts":      map[string]int64{"running": running, "paused": paused, "expired": expired, "gamesPreserved": gameRows, "workRows": workRows, "outboxRows": outboxRows, "serviceReceiptRows": receiptRows, "activeGamePointers": activePointers},
+		"expirySweep": map[string]any{"stores": 2, "batchLimit": sweepLimit, "calls": sweepCalls, "uniqueExpiredGames": len(swept), "duplicateExpiries": 0, "drainWallMs": float64(sweepWall) / float64(time.Millisecond), "expiredGamesPerSecond": float64(len(swept)) / sweepWall.Seconds(), "note": "stage operations count is two concurrent drainers, not number of games or sweep calls; tiny fixture drain rate is not sustained production cleanup throughput"},
+		"database":    map[string]any{"randomIsolatedSchema": true, "loopbackTestDatabase": true, "poolMaxConnsPerStore": first.pool.Config().MaxConns, "storePools": 2, "firstPool": pauseCapacityPoolDelta(poolBefore, poolAfter), "secondPool": pauseCapacityPoolDelta(secondPoolBefore, secondPoolAfter), "acquiredAfter": first.pool.Stat().AcquiredConns() + second.pool.Stat().AcquiredConns(), "schemaRelationBytes": schemaBytes},
+		"goRuntime":   map[string]any{"version": runtime.Version(), "gomaxprocs": runtime.GOMAXPROCS(0), "goroutinesBefore": goroutinesBefore, "goroutinesAfter": runtime.NumGoroutine(), "heapAllocBefore": memoryBefore.HeapAlloc, "heapAllocAfterGC": memoryAfter.HeapAlloc, "heapSysAfter": memoryAfter.HeapSys, "totalAllocDuringStages": memoryAfter.TotalAlloc - memoryBefore.TotalAlloc, "gcCyclesDuringStages": memoryAfter.NumGC - memoryBefore.NumGC},
+	}
+	raw, err := json.Marshal(report)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log("PAUSE_CAPACITY_JSON=" + string(raw))
+}

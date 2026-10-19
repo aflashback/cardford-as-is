@@ -1,0 +1,236 @@
+{
+  "label": "trix-complex-partners-round-trick-13",
+  "frames": 154,
+  "elapsedMs": 3049.8999999910593,
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "rows": [
+    {
+      "ms": 0.2,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 4.1,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 424.7,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "2",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 524.2,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "2",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 947.3,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "HJ",
+          "seat": "1",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1044.3,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "HJ",
+          "seat": "1",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1706.8,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "HJ",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "HK",
+          "seat": "0",
+          "visible": false
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 1,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 1804,
+      "cards": [
+        {
+          "card": "SK",
+          "seat": "3",
+          "visible": true
+        },
+        {
+          "card": "D6",
+          "seat": "2",
+          "visible": true
+        },
+        {
+          "card": "HJ",
+          "seat": "1",
+          "visible": true
+        },
+        {
+          "card": "HK",
+          "seat": "0",
+          "visible": true
+        }
+      ],
+      "pocket": [
+        "Joe: Jack of spades, won the trick",
+        "Maya: 7 of diamonds",
+        "Leo: 5 of diamonds",
+        "You: 7 of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    },
+    {
+      "ms": 2984,
+      "cards": [],
+      "pocket": [
+        "Joe: King of spades, won the trick",
+        "Maya: 6 of diamonds",
+        "Leo: Jack of hearts",
+        "You: King of hearts"
+      ],
+      "flights": 0,
+      "hidden": false,
+      "dialog": false
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+[
+  {
+    "name": "hearts-desktop-1.4",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "C2,C4,C8,C3",
+    "settledAtMs": 1888.2,
+    "collectedAtMs": 3088.4,
+    "visibleMs": 1200.2,
+    "activeVisibleMs": 1200.2,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "spades-solo-iphone-se-1.4",
+    "viewport": {
+      "width": 667,
+      "height": 375
+    },
+    "fourthLandingObserved": true,
+    "cards": "H3,H8,H5,H2",
+    "settledAtMs": 1847.3,
+    "collectedAtMs": 3027.7,
+    "visibleMs": 1180.4,
+    "activeVisibleMs": 1180.4,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "spades-partners-ipad-1.4",
+    "viewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "fourthLandingObserved": true,
+    "cards": "DA,D5,D2,D8",
+    "settledAtMs": 1827.6,
+    "collectedAtMs": 2995.3,
+    "visibleMs": 1167.7,
+    "activeVisibleMs": 1167.7,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-basic-solo-iphone-se-1.4",
+    "viewport": {
+      "width": 667,
+      "height": 375
+    },
+    "fourthLandingObserved": true,
+    "cards": "C3,C4,C5,C2",
+    "settledAtMs": 1857.7,
+    "collectedAtMs": 3057.9,
+    "visibleMs": 1200.2,
+    "activeVisibleMs": 1200.2,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-basic-partners-iphone12-1.4",
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "fourthLandingObserved": true,
+    "cards": "C2,C6,C10,C9",
+    "settledAtMs": 1781.3,
+    "collectedAtMs": 2981.6,
+    "visibleMs": 1200.3,
+    "activeVisibleMs": 1200.3,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-solo-ipad-1.4",
+    "viewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "fourthLandingObserved": true,
+    "cards": "C2,C3,C5,C7",
+    "settledAtMs": 1868.6,
+    "collectedAtMs": 3057.7,
+    "visibleMs": 1189.1,
+    "activeVisibleMs": 1189.1,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-desktop-final-1.4",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "H3,H2,H10,H8",
+    "settledAtMs": 2285.7,
+    "collectedAtMs": 3452,
+    "visibleMs": 1166.3,
+    "activeVisibleMs": 1166.3,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "hearts-iphone-se-pause",
+    "viewport": {
+      "width": 667,
+      "height": 375
+    },
+    "fourthLandingObserved": true,
+    "cards": "D2,D6,D7,D4",
+    "settledAtMs": 835.5,
+    "collectedAtMs": 18299.2,
+    "visibleMs": 17463.7,
+    "activeVisibleMs": 1161.2,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": true
+  },
+  {
+    "name": "trix-complex-partners-pause",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "S3,S2,S7,S4",
+    "settledAtMs": 763.8,
+    "collectedAtMs": 17631.6,
+    "visibleMs": 16867.8,
+    "activeVisibleMs": 1165.2,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": true
+  },
+  {
+    "name": "trix-complex-partners-round-trick-3",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "C3,C4,C5,C2",
+    "settledAtMs": 2013.1,
+    "collectedAtMs": 3193.5,
+    "visibleMs": 1180.4,
+    "activeVisibleMs": 1180.4,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-4",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "S6,S5,S8,SA",
+    "settledAtMs": 1765.4,
+    "collectedAtMs": 2929.5,
+    "visibleMs": 1164.1,
+    "activeVisibleMs": 1164.1,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-5",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "C7,C6,C10,CK",
+    "settledAtMs": 2555.3,
+    "collectedAtMs": 3742.1,
+    "visibleMs": 1186.8,
+    "activeVisibleMs": 1186.8,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-6",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "D2,DJ,DK,D8",
+    "settledAtMs": 1971.1,
+    "collectedAtMs": 3151.2,
+    "visibleMs": 1180.1,
+    "activeVisibleMs": 1180.1,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-7",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "C8,CQ,SQ,CJ",
+    "settledAtMs": 732.1,
+    "collectedAtMs": 1915.8,
+    "visibleMs": 1183.7,
+    "activeVisibleMs": 1183.7,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-8",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "H5,H9,H4,HA",
+    "settledAtMs": 2000.5,
+    "collectedAtMs": 3169.8,
+    "visibleMs": 1169.3,
+    "activeVisibleMs": 1169.3,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-9",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "S9,S10,D10,CA",
+    "settledAtMs": 1764.5,
+    "collectedAtMs": 2944.4,
+    "visibleMs": 1179.9,
+    "activeVisibleMs": 1179.9,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-10",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "D3,D4,DQ,DA",
+    "settledAtMs": 1996.9,
+    "collectedAtMs": 3166.2,
+    "visibleMs": 1169.3,
+    "activeVisibleMs": 1169.3,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-11",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "C9,HQ,D9,H6",
+    "settledAtMs": 869.6,
+    "collectedAtMs": 2036.8,
+    "visibleMs": 1167.2,
+    "activeVisibleMs": 1167.2,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-12",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "SJ,D7,D5,H7",
+    "settledAtMs": 1843.2,
+    "collectedAtMs": 3007.8,
+    "visibleMs": 1164.6,
+    "activeVisibleMs": 1164.6,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  },
+  {
+    "name": "trix-complex-partners-round-trick-13",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "fourthLandingObserved": true,
+    "cards": "SK,D6,HJ,HK",
+    "settledAtMs": 1804,
+    "collectedAtMs": 2984,
+    "visibleMs": 1180,
+    "activeVisibleMs": 1180,
+    "pocketChangedDuringHold": false,
+    "pocketAdvancedAtCollection": true,
+    "interrupted": false
+  }
+]

@@ -8,11 +8,14 @@ import (
 
 // Registration is trusted compiled composition, never a request/config payload.
 // TestOnly registrations may be injected by tests but never enter Catalog.
+// Historical registrations retain executable saved readers but cannot create
+// new sessions or enter Catalog. Their exact selectors remain resolvable.
 type Registration struct {
 	Pin         gamekernel.Pin
 	Descriptor  Descriptor
 	Mode        string
 	TestOnly    bool
+	Historical  bool
 	Start       func(json.RawMessage, json.RawMessage) (gamekernel.BoundSession, error)
 	Open        func(json.RawMessage) (gamekernel.BoundSession, error)
 	OpenStored  func(json.RawMessage, []json.RawMessage) (gamekernel.BoundSession, error)
@@ -55,6 +58,13 @@ func NewRegistryWithRegistrations(installed InstalledHandlers, extras ...Registr
 		for _, prior := range r.branches {
 			if prior.pin == extra.Pin || selectorFor(prior.pin) == selectorFor(extra.Pin) {
 				return nil, fmt.Errorf("duplicate compiled module installation")
+			}
+			priorInstallation := defaultInstallation(prior)
+			if prior.installation != nil {
+				priorInstallation = *prior.installation
+			}
+			if !extra.Historical && !extra.TestOnly && !priorInstallation.Historical && !priorInstallation.TestOnly && priorInstallation.Mode == extra.Mode {
+				return nil, fmt.Errorf("duplicate active module mode")
 			}
 		}
 		copy := copyInstallation(extra)

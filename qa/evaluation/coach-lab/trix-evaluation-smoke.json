@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "coach-lab-evaluation-batch-1.0.0",
+  "comparison": {
+    "version": "coach-lab-comparison-1.0.0",
+    "decisionId": "",
+    "originalId": "",
+    "screening": {
+      "budget": {
+        "maxWorlds": 2,
+        "maxSteps": 250000,
+        "maxCandidates": 286,
+        "maxMemoryBytes": 268435456,
+        "maxSamplerOperations": 2000000,
+        "maxSetupOperations": 2000000
+      },
+      "horizon": {
+        "id": "card-round",
+        "version": "2.0.0",
+        "scope": "current-round"
+      },
+      "policies": [
+        "spades-tactics-2.1.0",
+        "spades-tactics-2.1.0",
+        "spades-tactics-2.1.0",
+        "spades-tactics-2.1.0"
+      ],
+      "stream": "screening"
+    },
+    "confirmationBudget": {
+      "maxWorlds": 2,
+      "maxSteps": 1000000,
+      "maxCandidates": 286,
+      "maxMemoryBytes": 268435456,
+      "maxSamplerOperations": 8000000,
+      "maxSetupOperations": 8000000
+    },
+    "maxAlternatives": 3,
+    "alpha": 0.05,
+    "practicalEffect": 0,
+    "effectUnit": "score-points"
+  },
+  "maxWallMs": 1140000,
+  "maxDecisionMs": 30000,
+  "trixComparison": {
+    "version": "coach-lab-trix-comparison-1.0.0",
+    "decisionId": "",
+    "originalId": "",
+    "request": {
+      "version": "trix-request-evaluation-1.0.0",
+      "worlds": 2,
+      "maxSamplerOperations": 2000000,
+      "maxSteps": 100000,
+      "policies": [
+        "trix-deterministic-1.0.0",
+        "trix-deterministic-1.0.0",
+        "trix-deterministic-1.0.0",
+        "trix-deterministic-1.0.0"
+      ],
+      "stream": "comparison"
+    }
+  }
+}

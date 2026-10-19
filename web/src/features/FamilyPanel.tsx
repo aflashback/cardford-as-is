@@ -62,7 +62,7 @@ export function FamilyPanel({ onChange }: { onChange: () => Promise<unknown> }) 
         </button>
       )}
       {!family ? (
-        <p>Opening family settings…</p>
+        <p role="status">Opening family settings…</p>
       ) : (
         <>
           <p className="fixture-notice">
@@ -109,10 +109,9 @@ export function FamilyPanel({ onChange }: { onChange: () => Promise<unknown> }) 
           )}
           {family.members.map((member) => (
             <div className="family-member" key={member.assignmentId}>
-              <span>
-                {member.displayName} · {member.seatClass} ·{' '}
+              <span><strong>{member.displayName}</strong><small>{member.seatClass} ·{' '}
                 {member.status === 'held' ? 'Seat held until period end' : 'Active'}
-              </span>
+              </small></span>
               {family.role === 'payer' &&
                 member.playerId !== family.payer?.playerId &&
                 member.status === 'active' && (

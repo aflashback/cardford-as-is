@@ -20,8 +20,11 @@ var (
 )
 
 type StoreOptions struct {
+	PauseFreeRetention time.Duration
+	PausePaidRetention time.Duration
 	// LocalService activates only the separate loopback development schema.
 	LocalService       bool
+	authLocal          bool
 	Schema             string
 	CreateSchema       bool
 	QueryTimeout       time.Duration
@@ -34,23 +37,47 @@ type StoreOptions struct {
 // Store defaults to an isolated M03 test schema. Explicit local-service mode
 // permits only the separate loopback schema with an installed service codec.
 type Store struct {
-	pool           *pgxpool.Pool
-	schema         string
-	codec          *DocumentCodec
-	queryTimeout   time.Duration
-	lockTimeout    time.Duration
-	localService   bool
-	statsDecisions statsDecisionCache
+	pauseFreeRetention time.Duration
+	pausePaidRetention time.Duration
+	pool               *pgxpool.Pool
+	schema             string
+	codec              *DocumentCodec
+	queryTimeout       time.Duration
+	lockTimeout        time.Duration
+	localService       bool
+	requirePrincipal   bool
+	statsDecisions     statsDecisionCache
+	realtimeWake       chan struct{}
 }
 
 var schemaName = regexp.MustCompile(`^m03_[a-z0-9_]{1,48}$`)
 
 func OpenStore(ctx context.Context, url string, options StoreOptions) (*Store, error) {
+	if options.PauseFreeRetention == 0 {
+		options.PauseFreeRetention = 5 * time.Minute
+	}
+	if options.PausePaidRetention == 0 {
+		options.PausePaidRetention = time.Hour
+	}
+	if options.PauseFreeRetention < time.Second || options.PausePaidRetention < options.PauseFreeRetention || options.PausePaidRetention > 24*time.Hour || options.PauseFreeRetention%time.Second != 0 || options.PausePaidRetention%time.Second != 0 {
+		return nil, fmt.Errorf("invalid pause retention policy")
+	}
 	cfg, err := pgxpool.ParseConfig(url)
 	if err != nil {
 		return nil, fmt.Errorf("invalid M03 database configuration")
 	}
-	if options.LocalService {
+	if options.authLocal {
+		ip := net.ParseIP(cfg.ConnConfig.Host)
+		if options.LocalService || ip == nil || !ip.IsLoopback() || options.Schema != "cardford_auth_local" || cfg.ConnConfig.Database != "cardford_auth_local_dev" || options.Codec == nil {
+			return nil, fmt.Errorf("auth local requires isolated loopback database, schema and codec")
+		}
+		for _, fallback := range cfg.ConnConfig.Fallbacks {
+			ip := net.ParseIP(fallback.Host)
+			if ip == nil || !ip.IsLoopback() {
+				return nil, fmt.Errorf("auth database fallback must be loopback")
+			}
+		}
+	} else if options.LocalService {
 		ip := net.ParseIP(cfg.ConnConfig.Host)
 		if (ip == nil || !ip.IsLoopback()) || options.Schema != "cardford_go_local" || options.Codec == nil {
 			return nil, fmt.Errorf("local service requires loopback PostgreSQL, cardford_go_local schema and an explicit codec")
@@ -97,7 +124,9 @@ func OpenStore(ctx context.Context, url string, options StoreOptions) (*Store, e
 	if err != nil {
 		return nil, fmt.Errorf("open M03 database: %w", err)
 	}
-	s := &Store{pool: pool, schema: options.Schema, codec: options.Codec, queryTimeout: options.QueryTimeout, lockTimeout: options.LockTimeout, localService: options.LocalService}
+	s := &Store{pool: pool, schema: options.Schema, codec: options.Codec, queryTimeout: options.QueryTimeout, lockTimeout: options.LockTimeout, localService: options.LocalService, requirePrincipal: options.authLocal, realtimeWake: make(chan struct{}, 1)}
+	s.pauseFreeRetention = options.PauseFreeRetention
+	s.pausePaidRetention = options.PausePaidRetention
 	if options.CreateSchema {
 		_, err = pool.Exec(bounded, "CREATE SCHEMA IF NOT EXISTS "+pgx.Identifier{options.Schema}.Sanitize())
 		err = stageError("store.create-schema", err)
@@ -139,7 +168,13 @@ func (s *Store) withTx(ctx context.Context, fn func(context.Context, pgx.Tx) err
 	if err = fn(ctx, tx); err != nil {
 		return stageError(stage+".body", err)
 	}
-	return stageError(stage+".commit", tx.Commit(ctx))
+	if err = tx.Commit(ctx); err != nil {
+		return stageError(stage+".commit", err)
+	}
+	if quiet, _ := ctx.Value(realtimeQuietKey{}).(bool); !quiet {
+		s.signalRealtime()
+	}
+	return nil
 }
 
 type databaseStageKey struct{}

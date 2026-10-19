@@ -1,0 +1,155 @@
+{
+  "capturedAt": "2026-10-15T00:17:59.001Z",
+  "scope": "Read-only local main database; actor-safe public projection fields only. Identifiers, hands, candidates, credentials and private documents omitted.",
+  "game": {
+    "type": "trix",
+    "variant": "complex-partners",
+    "deal": 7,
+    "request": "complex"
+  },
+  "events": [
+    {
+      "sequence": "1122",
+      "kind": "session",
+      "revision": "386",
+      "status": "",
+      "created_at": "2026-10-15T00:12:04.922Z",
+      "delivered_at": "2026-10-15T00:12:04.970Z"
+    },
+    {
+      "sequence": "1123",
+      "kind": "work",
+      "revision": "386",
+      "status": "completed",
+      "created_at": "2026-10-15T00:12:06.404Z",
+      "delivered_at": "2026-10-15T00:12:06.406Z"
+    },
+    {
+      "sequence": "1124",
+      "kind": "session",
+      "revision": "387",
+      "status": "",
+      "created_at": "2026-10-15T00:12:07.834Z",
+      "delivered_at": "2026-10-15T00:12:07.861Z"
+    },
+    {
+      "sequence": "1125",
+      "kind": "work",
+      "revision": "387",
+      "status": "completed",
+      "created_at": "2026-10-15T00:12:07.960Z",
+      "delivered_at": "2026-10-15T00:12:07.963Z"
+    },
+    {
+      "sequence": "1126",
+      "kind": "session",
+      "revision": "388",
+      "status": "",
+      "created_at": "2026-10-15T00:12:09.402Z",
+      "delivered_at": "2026-10-15T00:12:09.441Z"
+    },
+    {
+      "sequence": "1127",
+      "kind": "work",
+      "revision": "388",
+      "status": "completed",
+      "created_at": "2026-10-15T00:12:09.526Z",
+      "delivered_at": "2026-10-15T00:12:09.528Z"
+    },
+    {
+      "sequence": "1128",
+      "kind": "session",
+      "revision": "389",
+      "status": "",
+      "created_at": "2026-10-15T00:12:10.969Z",
+      "delivered_at": "2026-10-15T00:12:11.008Z"
+    },
+    {
+      "sequence": "1129",
+      "kind": "work",
+      "revision": "389",
+      "status": "completed",
+      "created_at": "2026-10-15T00:12:11.098Z",
+      "delivered_at": "2026-10-15T00:12:11.100Z"
+    },
+    {
+      "sequence": "1130",
+      "kind": "session",
+      "revision": "390",
+      "status": "",
+      "created_at": "2026-10-15T00:12:12.540Z",
+      "delivered_at": "2026-10-15T00:12:12.570Z"
+    },
+    {
+      "sequence": "1131",
+      "kind": "playback",
+      "revision": "390",
+      "status": "paused",
+      "created_at": "2026-10-15T00:14:40.012Z",
+      "delivered_at": "2026-10-15T00:14:40.039Z"
+    }
+  ],
+  "accessControlEventsInTrickWindow": [],
+  "currentPreferences": {
+    "preferences_revision": "1",
+    "preferences": {
+      "coachMode": "asked",
+      "gameSpeed": 1.4
+    }
+  },
+  "historicalSpeed": "Not independently recoverable from outbox projections; current preference is not proof of game-time speed.",
+  "publicCompletedTrick": {
+    "number": 2,
+    "leader": 0,
+    "winner": 0,
+    "plays": [
+      {
+        "seat": 0,
+        "card": "S9"
+      },
+      {
+        "seat": 3,
+        "card": "S2"
+      },
+      {
+        "seat": 2,
+        "card": "S7"
+      },
+      {
+        "seat": 1,
+        "card": "S8"
+      }
+    ]
+  },
+  "publicActiveTrick": [],
+  "diagnostic": {
+    "localLogTime": "2026-10-14 20:10:40",
+    "utcTime": "2026-10-15T00:10:40Z",
+    "stage": "advance",
+    "class": "control_lost",
+    "inspectionMs": 1346,
+    "durableStop": "ok",
+    "stopClass": "none",
+    "relation": "Precedes this trick; not evidence of its visual symptom."
+  },
+  "sourceTimingAtCurrentSpeed": {
+    "turnMs": 494.50549450549454,
+    "completedTrickHoldMs": 1153.846153846154,
+    "throwMs": 82.41758241758242
+  },
+  "limits": [
+    "Outbox delivered_at is dispatcher completion, not browser receipt or paint acknowledgment.",
+    "Fourth card is persisted in completed public trick; no standalone four-card active-trick projection is required by native rules.",
+    "Client hold depends on mounted useTrickPlayback history; no browser paint trace was captured.",
+    "No root cause or fix claimed."
+  ],
+  "sources": [
+    "server/internal/records/realtime_playback.go",
+    "server/internal/service/bot_playback.go",
+    "server/internal/records/realtime_outbox.go",
+    "web/server/records/migrations/011-realtime.sql",
+    "web/src/api/useGoSession.ts",
+    "web/src/games/trix/useTrickPlayback.ts",
+    "web/src/table/playback.ts"
+  ]
+}

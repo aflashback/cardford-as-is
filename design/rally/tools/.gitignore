@@ -1,0 +1,4 @@
+# Isolated vector-tracing tool environment; install locally using asset README.
+/.vector-deps/
+/__pycache__/
+*.pyc

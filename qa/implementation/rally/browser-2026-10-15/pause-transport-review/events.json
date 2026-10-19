@@ -1,0 +1,1119 @@
+[
+  {
+    "label": "reload-paused",
+    "event": "Network.requestWillBeSent",
+    "sequence": 65,
+    "timestamp": 121285.631266,
+    "requestId": "2452.2948",
+    "path": "/api/local/session",
+    "method": "POST"
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.responseReceived",
+    "sequence": 72,
+    "timestamp": 121285.639912,
+    "requestId": "2452.2948",
+    "path": "/api/local/session",
+    "status": 200
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.loadingFinished",
+    "sequence": 78,
+    "timestamp": 121285.637122,
+    "requestId": "2452.2948",
+    "path": "/api/local/session"
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.requestWillBeSent",
+    "sequence": 79,
+    "timestamp": 121285.641319,
+    "requestId": "2452.2949",
+    "path": "/api/realtime/negotiate",
+    "method": "POST"
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.responseReceived",
+    "sequence": 89,
+    "timestamp": 121285.645719,
+    "requestId": "2452.2949",
+    "path": "/api/realtime/negotiate",
+    "status": 200
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.loadingFinished",
+    "sequence": 91,
+    "timestamp": 121285.644337,
+    "requestId": "2452.2949",
+    "path": "/api/realtime/negotiate"
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.webSocketCreated",
+    "sequence": 92,
+    "requestId": "2452.2950",
+    "path": "/api/realtime/connect"
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.webSocketHandshakeResponseReceived",
+    "sequence": 96,
+    "timestamp": 121285.651058,
+    "requestId": "2452.2950",
+    "status": 101
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.requestWillBeSent",
+    "sequence": 97,
+    "timestamp": 121285.651275,
+    "requestId": "2452.2952",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.responseReceived",
+    "sequence": 110,
+    "timestamp": 121285.686508,
+    "requestId": "2452.2952",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.loadingFinished",
+    "sequence": 112,
+    "timestamp": 121285.685807,
+    "requestId": "2452.2952",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": false,
+        "generation": 12
+      },
+      "sequence": 2350,
+      "revision": 120
+    }
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.requestWillBeSent",
+    "sequence": 121,
+    "timestamp": 121285.72235,
+    "requestId": "2452.2959",
+    "path": "/api/platform/coach",
+    "method": "GET"
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.responseReceived",
+    "sequence": 131,
+    "timestamp": 121285.742286,
+    "requestId": "2452.2959",
+    "path": "/api/platform/coach",
+    "status": 200
+  },
+  {
+    "label": "reload-paused",
+    "event": "Network.loadingFinished",
+    "sequence": 133,
+    "timestamp": 121285.737915,
+    "requestId": "2452.2959",
+    "path": "/api/platform/coach"
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.requestWillBeSent",
+    "sequence": 140,
+    "timestamp": 121300.619095,
+    "requestId": "2452.2960",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.responseReceived",
+    "sequence": 143,
+    "timestamp": 121300.645431,
+    "requestId": "2452.2960",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.loadingFinished",
+    "sequence": 145,
+    "timestamp": 121300.644526,
+    "requestId": "2452.2960",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": false,
+        "generation": 12
+      },
+      "sequence": 2350,
+      "revision": 120
+    }
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.requestWillBeSent",
+    "sequence": 146,
+    "timestamp": 121300.647011,
+    "requestId": "2452.2961",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.responseReceived",
+    "sequence": 149,
+    "timestamp": 121300.650179,
+    "requestId": "2452.2961",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.loadingFinished",
+    "sequence": 151,
+    "timestamp": 121300.649605,
+    "requestId": "2452.2961",
+    "path": "/api/identity"
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.requestWillBeSent",
+    "sequence": 152,
+    "timestamp": 121300.651096,
+    "requestId": "2452.2962",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": true,
+      "expectedPlaybackGeneration": 12,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.responseReceived",
+    "sequence": 155,
+    "timestamp": 121300.658078,
+    "requestId": "2452.2962",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.loadingFinished",
+    "sequence": 157,
+    "timestamp": 121300.657322,
+    "requestId": "2452.2962",
+    "path": "/api/session/playback",
+    "state": {
+      "running": true,
+      "generation": 13
+    }
+  },
+  {
+    "label": "explicit-resume",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 158,
+    "timestamp": 121300.683553,
+    "requestId": "2452.2950",
+    "message": {
+      "type": "session.view",
+      "sequence": 2351,
+      "playback": {
+        "running": true,
+        "generation": 13
+      },
+      "revision": 120
+    }
+  },
+  {
+    "label": "manual-pause",
+    "event": "Network.requestWillBeSent",
+    "sequence": 161,
+    "timestamp": 121301.356031,
+    "requestId": "2452.2963",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "manual-pause",
+    "event": "Network.responseReceived",
+    "sequence": 162,
+    "timestamp": 121301.376184,
+    "requestId": "2452.2963",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "manual-pause",
+    "event": "Network.loadingFinished",
+    "sequence": 164,
+    "timestamp": 121301.358659,
+    "requestId": "2452.2963",
+    "path": "/api/identity"
+  },
+  {
+    "label": "manual-pause",
+    "event": "Network.requestWillBeSent",
+    "sequence": 165,
+    "timestamp": 121301.377277,
+    "requestId": "2452.2964",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": false,
+      "expectedPlaybackGeneration": 13,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "manual-pause",
+    "event": "Network.responseReceived",
+    "sequence": 168,
+    "timestamp": 121301.385871,
+    "requestId": "2452.2964",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "manual-pause",
+    "event": "Network.loadingFinished",
+    "sequence": 170,
+    "timestamp": 121301.385133,
+    "requestId": "2452.2964",
+    "path": "/api/session/playback",
+    "state": {
+      "running": false,
+      "generation": 14
+    }
+  },
+  {
+    "label": "paused-idle",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 171,
+    "timestamp": 121301.405557,
+    "requestId": "2452.2950",
+    "message": {
+      "type": "session.view",
+      "sequence": 2352,
+      "playback": {
+        "running": false,
+        "generation": 14
+      },
+      "revision": 120
+    }
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.requestWillBeSent",
+    "sequence": 172,
+    "timestamp": 121363.218563,
+    "requestId": "2452.2965",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.responseReceived",
+    "sequence": 175,
+    "timestamp": 121363.244675,
+    "requestId": "2452.2965",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.loadingFinished",
+    "sequence": 177,
+    "timestamp": 121363.243968,
+    "requestId": "2452.2965",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": false,
+        "generation": 14
+      },
+      "sequence": 2352,
+      "revision": 120
+    }
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.requestWillBeSent",
+    "sequence": 178,
+    "timestamp": 121363.245921,
+    "requestId": "2452.2966",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.responseReceived",
+    "sequence": 181,
+    "timestamp": 121363.248933,
+    "requestId": "2452.2966",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.loadingFinished",
+    "sequence": 183,
+    "timestamp": 121363.24837,
+    "requestId": "2452.2966",
+    "path": "/api/identity"
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.requestWillBeSent",
+    "sequence": 184,
+    "timestamp": 121363.249408,
+    "requestId": "2452.2967",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": true,
+      "expectedPlaybackGeneration": 14,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.responseReceived",
+    "sequence": 187,
+    "timestamp": 121363.255543,
+    "requestId": "2452.2967",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.loadingFinished",
+    "sequence": 189,
+    "timestamp": 121363.254653,
+    "requestId": "2452.2967",
+    "path": "/api/session/playback",
+    "state": {
+      "running": true,
+      "generation": 15
+    }
+  },
+  {
+    "label": "resume-before-blur",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 190,
+    "timestamp": 121363.282609,
+    "requestId": "2452.2950",
+    "message": {
+      "type": "session.view",
+      "sequence": 2353,
+      "playback": {
+        "running": true,
+        "generation": 15
+      },
+      "revision": 120
+    }
+  },
+  {
+    "label": "native-blur",
+    "event": "Network.requestWillBeSent",
+    "sequence": 193,
+    "timestamp": 121363.451061,
+    "requestId": "2452.2968",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "native-blur",
+    "event": "Network.responseReceived",
+    "sequence": 194,
+    "timestamp": 121363.457038,
+    "requestId": "2452.2968",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "native-blur",
+    "event": "Network.loadingFinished",
+    "sequence": 196,
+    "timestamp": 121363.453464,
+    "requestId": "2452.2968",
+    "path": "/api/identity"
+  },
+  {
+    "label": "native-blur",
+    "event": "Network.requestWillBeSent",
+    "sequence": 197,
+    "timestamp": 121363.45777,
+    "requestId": "2452.2969",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": false,
+      "expectedPlaybackGeneration": 15,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "native-blur",
+    "event": "Network.responseReceived",
+    "sequence": 200,
+    "timestamp": 121363.465397,
+    "requestId": "2452.2969",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "native-blur",
+    "event": "Network.loadingFinished",
+    "sequence": 202,
+    "timestamp": 121363.464538,
+    "requestId": "2452.2969",
+    "path": "/api/session/playback",
+    "state": {
+      "running": false,
+      "generation": 16
+    }
+  },
+  {
+    "label": "native-blur",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 203,
+    "timestamp": 121363.48481,
+    "requestId": "2452.2950",
+    "message": {
+      "type": "session.view",
+      "sequence": 2354,
+      "playback": {
+        "running": false,
+        "generation": 16
+      },
+      "revision": 120
+    }
+  },
+  {
+    "label": "focus-return",
+    "event": "Network.requestWillBeSent",
+    "sequence": 204,
+    "timestamp": 121363.53604,
+    "requestId": "2452.2970",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "focus-return",
+    "event": "Network.responseReceived",
+    "sequence": 207,
+    "timestamp": 121363.568476,
+    "requestId": "2452.2970",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "focus-return",
+    "event": "Network.loadingFinished",
+    "sequence": 209,
+    "timestamp": 121363.567771,
+    "requestId": "2452.2970",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": false,
+        "generation": 16
+      },
+      "sequence": 2354,
+      "revision": 120
+    }
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.requestWillBeSent",
+    "sequence": 210,
+    "timestamp": 121407.399491,
+    "requestId": "2452.2971",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.responseReceived",
+    "sequence": 213,
+    "timestamp": 121407.422728,
+    "requestId": "2452.2971",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.loadingFinished",
+    "sequence": 215,
+    "timestamp": 121407.422051,
+    "requestId": "2452.2971",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": false,
+        "generation": 16
+      },
+      "sequence": 2354,
+      "revision": 120
+    }
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.requestWillBeSent",
+    "sequence": 216,
+    "timestamp": 121407.423738,
+    "requestId": "2452.2972",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.responseReceived",
+    "sequence": 219,
+    "timestamp": 121407.426449,
+    "requestId": "2452.2972",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.loadingFinished",
+    "sequence": 221,
+    "timestamp": 121407.425947,
+    "requestId": "2452.2972",
+    "path": "/api/identity"
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.requestWillBeSent",
+    "sequence": 222,
+    "timestamp": 121407.42688,
+    "requestId": "2452.2973",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": true,
+      "expectedPlaybackGeneration": 16,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.responseReceived",
+    "sequence": 225,
+    "timestamp": 121407.432495,
+    "requestId": "2452.2973",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.loadingFinished",
+    "sequence": 227,
+    "timestamp": 121407.43188,
+    "requestId": "2452.2973",
+    "path": "/api/session/playback",
+    "state": {
+      "running": true,
+      "generation": 17
+    }
+  },
+  {
+    "label": "resume-before-network-loss",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 228,
+    "timestamp": 121407.45457,
+    "requestId": "2452.2950",
+    "message": {
+      "type": "session.view",
+      "sequence": 2355,
+      "playback": {
+        "running": true,
+        "generation": 17
+      },
+      "revision": 120
+    }
+  },
+  {
+    "label": "network-offline",
+    "event": "Network.requestWillBeSent",
+    "sequence": 229,
+    "timestamp": 121407.747762,
+    "requestId": "2452.2974",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "network-offline",
+    "event": "Network.loadingFailed",
+    "sequence": 230,
+    "timestamp": 121407.752736,
+    "requestId": "2452.2974",
+    "path": "/api/identity",
+    "failed": true
+  },
+  {
+    "label": "network-offline",
+    "event": "Network.requestWillBeSent",
+    "sequence": 231,
+    "timestamp": 121407.753237,
+    "requestId": "2452.2975",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "network-offline",
+    "event": "Network.loadingFailed",
+    "sequence": 232,
+    "timestamp": 121407.757443,
+    "requestId": "2452.2975",
+    "path": "/api/realtime/snapshot",
+    "failed": true
+  },
+  {
+    "label": "network-offline",
+    "event": "Network.webSocketClosed",
+    "sequence": 233,
+    "timestamp": 121407.761196,
+    "requestId": "2452.2950"
+  },
+  {
+    "label": "network-return",
+    "event": "Network.requestWillBeSent",
+    "sequence": 234,
+    "timestamp": 121407.882421,
+    "requestId": "2452.2976",
+    "path": "/api/realtime/negotiate",
+    "method": "POST"
+  },
+  {
+    "label": "network-return",
+    "event": "Network.requestWillBeSent",
+    "sequence": 235,
+    "timestamp": 121407.882708,
+    "requestId": "2452.2977",
+    "path": "/api/platform/coach",
+    "method": "GET"
+  },
+  {
+    "label": "network-return",
+    "event": "Network.responseReceived",
+    "sequence": 239,
+    "timestamp": 121407.887485,
+    "requestId": "2452.2976",
+    "path": "/api/realtime/negotiate",
+    "status": 200
+  },
+  {
+    "label": "network-return",
+    "event": "Network.loadingFinished",
+    "sequence": 241,
+    "timestamp": 121407.886616,
+    "requestId": "2452.2976",
+    "path": "/api/realtime/negotiate"
+  },
+  {
+    "label": "network-return",
+    "event": "Network.webSocketCreated",
+    "sequence": 242,
+    "requestId": "2452.2978",
+    "path": "/api/realtime/connect"
+  },
+  {
+    "label": "network-return",
+    "event": "Network.webSocketHandshakeResponseReceived",
+    "sequence": 244,
+    "timestamp": 121407.894271,
+    "requestId": "2452.2978",
+    "status": 101
+  },
+  {
+    "label": "network-return",
+    "event": "Network.requestWillBeSent",
+    "sequence": 245,
+    "timestamp": 121407.89447,
+    "requestId": "2452.2979",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "network-return",
+    "event": "Network.responseReceived",
+    "sequence": 248,
+    "timestamp": 121407.899042,
+    "requestId": "2452.2977",
+    "path": "/api/platform/coach",
+    "status": 200
+  },
+  {
+    "label": "network-return",
+    "event": "Network.loadingFinished",
+    "sequence": 250,
+    "timestamp": 121407.897758,
+    "requestId": "2452.2977",
+    "path": "/api/platform/coach"
+  },
+  {
+    "label": "network-return",
+    "event": "Network.responseReceived",
+    "sequence": 252,
+    "timestamp": 121407.921888,
+    "requestId": "2452.2979",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "network-return",
+    "event": "Network.loadingFinished",
+    "sequence": 254,
+    "timestamp": 121407.921158,
+    "requestId": "2452.2979",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": true,
+        "generation": 17
+      },
+      "sequence": 2355,
+      "revision": 120
+    }
+  },
+  {
+    "label": "explicit-recovery-resume",
+    "event": "Network.requestWillBeSent",
+    "sequence": 257,
+    "timestamp": 121478.00029,
+    "requestId": "2452.2980",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "explicit-recovery-resume",
+    "event": "Network.responseReceived",
+    "sequence": 258,
+    "timestamp": 121478.020773,
+    "requestId": "2452.2980",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "explicit-recovery-resume",
+    "event": "Network.loadingFinished",
+    "sequence": 260,
+    "timestamp": 121478.004563,
+    "requestId": "2452.2980",
+    "path": "/api/identity"
+  },
+  {
+    "label": "explicit-recovery-resume",
+    "event": "Network.requestWillBeSent",
+    "sequence": 261,
+    "timestamp": 121478.02125,
+    "requestId": "2452.2981",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "explicit-recovery-resume",
+    "event": "Network.responseReceived",
+    "sequence": 264,
+    "timestamp": 121478.047408,
+    "requestId": "2452.2981",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "explicit-recovery-resume",
+    "event": "Network.loadingFinished",
+    "sequence": 266,
+    "timestamp": 121478.046693,
+    "requestId": "2452.2981",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": true,
+        "generation": 17
+      },
+      "sequence": 2355,
+      "revision": 120
+    }
+  },
+  {
+    "label": "confirmed-pause-after-network-test",
+    "event": "Network.requestWillBeSent",
+    "sequence": 269,
+    "timestamp": 121478.719758,
+    "requestId": "2452.2982",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "confirmed-pause-after-network-test",
+    "event": "Network.responseReceived",
+    "sequence": 270,
+    "timestamp": 121478.740412,
+    "requestId": "2452.2982",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "confirmed-pause-after-network-test",
+    "event": "Network.loadingFinished",
+    "sequence": 272,
+    "timestamp": 121478.724274,
+    "requestId": "2452.2982",
+    "path": "/api/identity"
+  },
+  {
+    "label": "confirmed-pause-after-network-test",
+    "event": "Network.requestWillBeSent",
+    "sequence": 273,
+    "timestamp": 121478.741054,
+    "requestId": "2452.2983",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": false,
+      "expectedPlaybackGeneration": 17,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "confirmed-pause-after-network-test",
+    "event": "Network.responseReceived",
+    "sequence": 276,
+    "timestamp": 121478.74962,
+    "requestId": "2452.2983",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "confirmed-pause-after-network-test",
+    "event": "Network.loadingFinished",
+    "sequence": 278,
+    "timestamp": 121478.748473,
+    "requestId": "2452.2983",
+    "path": "/api/session/playback",
+    "state": {
+      "running": false,
+      "generation": 18
+    }
+  },
+  {
+    "label": "confirmed-pause-after-network-test",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 279,
+    "timestamp": 121478.770384,
+    "requestId": "2452.2978",
+    "message": {
+      "type": "session.view",
+      "sequence": 2356,
+      "playback": {
+        "running": false,
+        "generation": 18
+      },
+      "revision": 120
+    }
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.requestWillBeSent",
+    "sequence": 280,
+    "timestamp": 121502.862074,
+    "requestId": "2452.2984",
+    "path": "/api/realtime/snapshot",
+    "method": "GET"
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.responseReceived",
+    "sequence": 283,
+    "timestamp": 121502.894291,
+    "requestId": "2452.2984",
+    "path": "/api/realtime/snapshot",
+    "status": 200
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.loadingFinished",
+    "sequence": 285,
+    "timestamp": 121502.893565,
+    "requestId": "2452.2984",
+    "path": "/api/realtime/snapshot",
+    "state": {
+      "playback": {
+        "running": false,
+        "generation": 18
+      },
+      "sequence": 2356,
+      "revision": 120
+    }
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.requestWillBeSent",
+    "sequence": 286,
+    "timestamp": 121502.895149,
+    "requestId": "2452.2985",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.responseReceived",
+    "sequence": 289,
+    "timestamp": 121502.898028,
+    "requestId": "2452.2985",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.loadingFinished",
+    "sequence": 291,
+    "timestamp": 121502.897503,
+    "requestId": "2452.2985",
+    "path": "/api/identity"
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.requestWillBeSent",
+    "sequence": 292,
+    "timestamp": 121502.898535,
+    "requestId": "2452.2986",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": true,
+      "expectedPlaybackGeneration": 18,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.responseReceived",
+    "sequence": 295,
+    "timestamp": 121502.906216,
+    "requestId": "2452.2986",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.loadingFinished",
+    "sequence": 297,
+    "timestamp": 121502.905145,
+    "requestId": "2452.2986",
+    "path": "/api/session/playback",
+    "state": {
+      "running": true,
+      "generation": 19
+    }
+  },
+  {
+    "label": "resume-before-portrait",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 298,
+    "timestamp": 121502.93097,
+    "requestId": "2452.2978",
+    "message": {
+      "type": "session.view",
+      "sequence": 2357,
+      "playback": {
+        "running": true,
+        "generation": 19
+      },
+      "revision": 120
+    }
+  },
+  {
+    "label": "portrait",
+    "event": "Network.requestWillBeSent",
+    "sequence": 301,
+    "timestamp": 121503.106601,
+    "requestId": "2452.2987",
+    "path": "/api/identity",
+    "method": "GET"
+  },
+  {
+    "label": "portrait",
+    "event": "Network.responseReceived",
+    "sequence": 311,
+    "timestamp": 121503.135085,
+    "requestId": "2452.2987",
+    "path": "/api/identity",
+    "status": 200
+  },
+  {
+    "label": "portrait",
+    "event": "Network.loadingFinished",
+    "sequence": 321,
+    "timestamp": 121503.132801,
+    "requestId": "2452.2987",
+    "path": "/api/identity"
+  },
+  {
+    "label": "portrait",
+    "event": "Network.requestWillBeSent",
+    "sequence": 322,
+    "timestamp": 121503.137814,
+    "requestId": "2452.2990",
+    "path": "/api/session/playback",
+    "method": "POST",
+    "playbackRequest": {
+      "running": false,
+      "expectedPlaybackGeneration": 19,
+      "expectedControlGeneration": 75
+    }
+  },
+  {
+    "label": "portrait",
+    "event": "Network.responseReceived",
+    "sequence": 326,
+    "timestamp": 121503.14638,
+    "requestId": "2452.2990",
+    "path": "/api/session/playback",
+    "status": 200
+  },
+  {
+    "label": "portrait",
+    "event": "Network.loadingFinished",
+    "sequence": 328,
+    "timestamp": 121503.145654,
+    "requestId": "2452.2990",
+    "path": "/api/session/playback",
+    "state": {
+      "running": false,
+      "generation": 20
+    }
+  },
+  {
+    "label": "portrait",
+    "event": "Network.webSocketFrameReceived",
+    "sequence": 330,
+    "timestamp": 121503.166646,
+    "requestId": "2452.2978",
+    "message": {
+      "type": "session.view",
+      "sequence": 2358,
+      "playback": {
+        "running": false,
+        "generation": 20
+      },
+      "revision": 120
+    }
+  }
+]

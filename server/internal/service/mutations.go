@@ -165,6 +165,13 @@ func (s *Service) mutate(ctx context.Context, owner string, r transport.Request)
 	if err != nil {
 		return transport.Response{}, err
 	}
+	// Server runner commits already own a runner; foreground human commands
+	// recreate one on demand after waiting at a human/round boundary.
+	if _, automated := records.PlaybackGeneration(ctx); automated {
+		s.playback.wake(owner, q.GameID)
+	} else {
+		s.playback.wakeOrStart(ctx, owner, q.GameID, r.Tab, q.ControlLeaseToken)
+	}
 	return accepted(out)
 }
 func (s *Service) prepared(ctx context.Context, owner, id string, l *records.Loaded, a records.AccessAdmission) (records.DecisionRecord, error) {

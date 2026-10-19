@@ -1,0 +1,401 @@
+{
+  "name": "CardFord Rally approved mock",
+  "version": "1.1.0",
+  "date": "2026-10-13",
+  "requirement": "DESIGN-R09",
+  "approval": "Owner approved the Rally design direction and SVG artwork. DESIGN-R09 adds the requested responsive sizing refinement for review. Historical source paths may have been removed by approved cleanup.",
+  "records": [
+    {
+      "source": "design/studio/index.html",
+      "file": "index.html",
+      "sourceSHA256": "77c3102777aba306bcb31104b0a02e7208f7077830632d2b9a324f909aab8b30",
+      "sha256": "8bd1723336ae29771e9d087d72f0501b1fd15110e0aa1dc5af26df0076ee01ec",
+      "adaptation": "local shared-asset paths; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/studio/app.js",
+      "file": "app.js",
+      "sourceSHA256": "705b8907e2a6d4e79daa457301182890bbebe4f9499c253f3f61d2d72b09f860",
+      "sha256": "a812238372ded75b48df121cc22320a56f7351736c24d4bccfe93aaa8dee4ce3",
+      "adaptation": "Local shared-asset paths and handoff navigation label; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/studio/style.css",
+      "file": "style.css",
+      "sourceSHA256": "337ecb345731d108804664297f58ebe40d4886037d278a4894a4f74fd503b3ea",
+      "sha256": "1fdca93f57327b8fa2cd1822e5782ec5f9ebe29aeaf24fa0076b324586195c69",
+      "adaptation": "local shared-asset paths"
+    },
+    {
+      "source": "design/studio/coaching.js",
+      "file": "coaching.js",
+      "sourceSHA256": "ceb9c759e148cf8ace25dc28b4321b6afa761936fd6ac3a1b7e66fa908922e3d",
+      "sha256": "76d15b13bc51e8eb1f5c7c57fbcb50aa0cd9750a12f05f5a31293741a8fbc425",
+      "adaptation": "Original snapshot; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/studio/coaching.css",
+      "file": "coaching.css",
+      "sourceSHA256": "f4bb6aa392f7e6ea8f5b96932b422a347774d189f2c8ec417d0c9ee620d2a574",
+      "sha256": "f4bb6aa392f7e6ea8f5b96932b422a347774d189f2c8ec417d0c9ee620d2a574",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/studio/verify-coaching-panel.mjs",
+      "file": "verify-coaching-panel.mjs",
+      "sourceSHA256": "a09ea8662f2a696e26301e4cd12c38f8cafd5dde485ff32c01b88ef65bf8fc98",
+      "sha256": "45182562d4abdeed9d4b5e9a6124f051c2df8614ee5c5849a2284fd3ea07f7a1",
+      "adaptation": "Original snapshot; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/shared/assets/cardford-symbol.svg",
+      "file": "shared/assets/cardford-symbol.svg",
+      "sourceSHA256": "82d93c00a98d28166ece0b9a5f6f3132604c0efb70e46c5e4288ca3c7083b3c0",
+      "sha256": "82d93c00a98d28166ece0b9a5f6f3132604c0efb70e46c5e4288ca3c7083b3c0",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/DM-Sans-LICENSE.txt",
+      "file": "shared/assets/DM-Sans-LICENSE.txt",
+      "sourceSHA256": "6fbd040a29c2037a765dfb9f2561e9965b5c95c6dcb5dce516089d63d5f17af7",
+      "sha256": "6fbd040a29c2037a765dfb9f2561e9965b5c95c6dcb5dce516089d63d5f17af7",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/dm-sans.woff2",
+      "file": "shared/assets/dm-sans.woff2",
+      "sourceSHA256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/lucide-react-LICENSE.txt",
+      "file": "shared/assets/lucide-react-LICENSE.txt",
+      "sourceSHA256": "1e7290b35280a048667bbf0ebabac1c7fd52a75300e8b2946ac165715997f2bc",
+      "sha256": "1e7290b35280a048667bbf0ebabac1c7fd52a75300e8b2946ac165715997f2bc",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/Manrope-LICENSE.txt",
+      "file": "shared/assets/Manrope-LICENSE.txt",
+      "sourceSHA256": "d826ab6583b12c26807d8716a545bdbbb672df04f48608a364ba9efdbe501c30",
+      "sha256": "d826ab6583b12c26807d8716a545bdbbb672df04f48608a364ba9efdbe501c30",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/manrope.woff2",
+      "file": "shared/assets/manrope.woff2",
+      "sourceSHA256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
+      "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/react-dom-LICENSE.txt",
+      "file": "shared/assets/react-dom-LICENSE.txt",
+      "sourceSHA256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/react-LICENSE.txt",
+      "file": "shared/assets/react-LICENSE.txt",
+      "sourceSHA256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/assets/scheduler-LICENSE.txt",
+      "file": "shared/assets/scheduler-LICENSE.txt",
+      "sourceSHA256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/board-theme.css",
+      "file": "shared/board-theme.css",
+      "sourceSHA256": "615aca470d37f8944cb39bce62b6d06a494ff2a3b8c7efc5a14b3a241922b03c",
+      "sha256": "6bb82c91c0996672c9fb07a68e747b6749ce98f1f8d2c432ae80d60d5adb20ef",
+      "adaptation": "Rally-only snapshot: removed eight unused Clubhouse/Lantern rules; base :root now uses Rally light values with --accent-ink:#fff preserved. All remaining rules unchanged.; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/shared/board.css",
+      "file": "shared/board.css",
+      "sourceSHA256": "2f8db5f5d0911032feefe4b45d1edc06c7f855f0060cba997bea0ee42852e8db",
+      "sha256": "2f8db5f5d0911032feefe4b45d1edc06c7f855f0060cba997bea0ee42852e8db",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/board.html",
+      "file": "shared/board.html",
+      "sourceSHA256": "e89d5bf0d4d9a4f5aa23643a7fe7195ea8b21cea647b030928aa68b3e91bf0f4",
+      "sha256": "e89d5bf0d4d9a4f5aa23643a7fe7195ea8b21cea647b030928aa68b3e91bf0f4",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/board.js",
+      "file": "shared/board.js",
+      "sourceSHA256": "f2bb2062585febf4f7522926fc34a8fb93cf0783861f886f3f5adf517bbac3c8",
+      "sha256": "69099d06b93c131b4307b19e09bd65626864f45828000b4683895fe133b5577f",
+      "adaptation": "Rebuilt from adapted approved/shared/board.tsx using approved/shared/build.mjs.; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/shared/board.tsx",
+      "file": "shared/board.tsx",
+      "sourceSHA256": "51f51385c575bb2dfda1e11c15c9708ef268e10dbb4351213935df478af91d11",
+      "sha256": "5e6eb496bece5964c59ffcf38b9d634b3897f9f611228db8a06de1db933f2e6a",
+      "adaptation": "Rally-only snapshot: default concept is studio; removed unreachable non-Rally last-trick rendering branch. Canonical card components and gestures unchanged.; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/shared/build.mjs",
+      "file": "shared/build.mjs",
+      "sourceSHA256": "3da699ca370ead86802c1b02069512c8d9f18d52c92204e1fbf26256d999f573",
+      "sha256": "69bcaa924f62a7319f654cf6123247c6e5c3ac323d2a6532a76c4ad397602fdb",
+      "adaptation": "Package location and optional RALLY_NODE_MODULES rebuild dependency path"
+    },
+    {
+      "source": "design/shared/coach-replay-data.ts",
+      "file": "shared/coach-replay-data.ts",
+      "sourceSHA256": "c04b82991440fbd1119a33111d545e1c1c17dd7cbb1b85866a00d19c851ce7fa",
+      "sha256": "c04b82991440fbd1119a33111d545e1c1c17dd7cbb1b85866a00d19c851ce7fa",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/CoachReplay.tsx",
+      "file": "shared/CoachReplay.tsx",
+      "sourceSHA256": "7e463f91a6075e3eb6294dd7bd9e50557cb42b275dc8e6728dd86600a69c426d",
+      "sha256": "7e463f91a6075e3eb6294dd7bd9e50557cb42b275dc8e6728dd86600a69c426d",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/last-trick-pocket.mjs",
+      "file": "shared/last-trick-pocket.mjs",
+      "sourceSHA256": "c384fa3d81dfcd1e767e75d9ab5b06aa4d52cccaac135194238a38b4abd663c3",
+      "sha256": "d709efdd58877e89431eacd02809abe37086879b9b8f7873cfbab20bc3a91962",
+      "adaptation": "Original snapshot; DESIGN-R09 responsive presentation and review support"
+    },
+    {
+      "source": "design/shared/production.css",
+      "file": "shared/production.css",
+      "sourceSHA256": "0f2da9ad34e4f809407978863a7a3af555fc53db5ef7ae21f3c8ba5617db37d3",
+      "sha256": "0f2da9ad34e4f809407978863a7a3af555fc53db5ef7ae21f3c8ba5617db37d3",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/score-totals.css",
+      "file": "shared/score-totals.css",
+      "sourceSHA256": "c75fe385716e2348f26d954646565905e39529fe8a9e29c1e5cdc5f282800376",
+      "sha256": "c75fe385716e2348f26d954646565905e39529fe8a9e29c1e5cdc5f282800376",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/table-layout.css",
+      "file": "shared/table-layout.css",
+      "sourceSHA256": "0e63dc2787a4a3c43eac7a25363375ccdb8cd1b7040a56ba7488c1594b5c63f5",
+      "sha256": "0e63dc2787a4a3c43eac7a25363375ccdb8cd1b7040a56ba7488c1594b5c63f5",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/trix.css",
+      "file": "shared/trix.css",
+      "sourceSHA256": "666b0bef8e2e6a602368429e9fbdd38cb11e702266bee012ca8442ba38220d2b",
+      "sha256": "666b0bef8e2e6a602368429e9fbdd38cb11e702266bee012ca8442ba38220d2b",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/api/display.ts",
+      "file": "shared/vendor/src/api/display.ts",
+      "sourceSHA256": "ce4d4d83b8350fad8350f18730e08eb2040c4d0e91d1315fb438d549e150963b",
+      "sha256": "ce4d4d83b8350fad8350f18730e08eb2040c4d0e91d1315fb438d549e150963b",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/games/trix/adapter.ts",
+      "file": "shared/vendor/src/games/trix/adapter.ts",
+      "sourceSHA256": "4725569c573759f04f057190a29fbf208e6dac99266faaf599686f74359b0f1c",
+      "sha256": "4725569c573759f04f057190a29fbf208e6dac99266faaf599686f74359b0f1c",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/games/trix/Card.tsx",
+      "file": "shared/vendor/src/games/trix/Card.tsx",
+      "sourceSHA256": "1c2b95408eaca8becef43ca1f1531aad4b8fa2d412176f38fd1128e1ecdc212b",
+      "sha256": "1c2b95408eaca8becef43ca1f1531aad4b8fa2d412176f38fd1128e1ecdc212b",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/games/trix/LayoutBoard.tsx",
+      "file": "shared/vendor/src/games/trix/LayoutBoard.tsx",
+      "sourceSHA256": "a166fb3314eb45829da99044c13501d7c6271cf5dac0266e407b6af0b0524b3a",
+      "sha256": "a166fb3314eb45829da99044c13501d7c6271cf5dac0266e407b6af0b0524b3a",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/games/trix/TwoAnnouncements.tsx",
+      "file": "shared/vendor/src/games/trix/TwoAnnouncements.tsx",
+      "sourceSHA256": "a70634820feb80a9240f480ef8b10f24f892cfde2eee1c044a840646b791a76c",
+      "sha256": "a70634820feb80a9240f480ef8b10f24f892cfde2eee1c044a840646b791a76c",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/games/trix/useLayoutFit.ts",
+      "file": "shared/vendor/src/games/trix/useLayoutFit.ts",
+      "sourceSHA256": "6c9ee7d9c2ece63a3666c15261a7ccdc7e1d84de77186d09894c810f86f7ec31",
+      "sha256": "6c9ee7d9c2ece63a3666c15261a7ccdc7e1d84de77186d09894c810f86f7ec31",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/card-face.css",
+      "file": "shared/vendor/src/table/card-face.css",
+      "sourceSHA256": "bf3eebd1d526f72e6fa9731b7cb2516f9b9362d449e520a64671e198744a8ad5",
+      "sha256": "bf3eebd1d526f72e6fa9731b7cb2516f9b9362d449e520a64671e198744a8ad5",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/CardPrimitives.tsx",
+      "file": "shared/vendor/src/table/CardPrimitives.tsx",
+      "sourceSHA256": "9a8087b3261837c1ce37581a5791a4f95d31ab2d02cc9741a80f5c017820d47e",
+      "sha256": "9a8087b3261837c1ce37581a5791a4f95d31ab2d02cc9741a80f5c017820d47e",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/hand-gestures.css",
+      "file": "shared/vendor/src/table/hand-gestures.css",
+      "sourceSHA256": "e0ed112b4ff610bdb756c78ab36be636680af97def1ece397d4376b236aeef58",
+      "sha256": "e0ed112b4ff610bdb756c78ab36be636680af97def1ece397d4376b236aeef58",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/HandCards.tsx",
+      "file": "shared/vendor/src/table/HandCards.tsx",
+      "sourceSHA256": "91f67f7f42c4a6a8c3cf4089fc499bbd809f4291272805cc18af0bd1a25ff42d",
+      "sha256": "91f67f7f42c4a6a8c3cf4089fc499bbd809f4291272805cc18af0bd1a25ff42d",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/playback.ts",
+      "file": "shared/vendor/src/table/playback.ts",
+      "sourceSHA256": "291311a468e4ee66428884752922bc59a09abdf0f41479bcbdb40da6d5fcd4dc",
+      "sha256": "291311a468e4ee66428884752922bc59a09abdf0f41479bcbdb40da6d5fcd4dc",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/score-totals.css",
+      "file": "shared/vendor/src/table/score-totals.css",
+      "sourceSHA256": "c75fe385716e2348f26d954646565905e39529fe8a9e29c1e5cdc5f282800376",
+      "sha256": "c75fe385716e2348f26d954646565905e39529fe8a9e29c1e5cdc5f282800376",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/ScoreTotals.tsx",
+      "file": "shared/vendor/src/table/ScoreTotals.tsx",
+      "sourceSHA256": "2c406a41be7afa12a35972632677407e7d3c43aea522718e8c03643552c59d7b",
+      "sha256": "2c406a41be7afa12a35972632677407e7d3c43aea522718e8c03643552c59d7b",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/useCardThrows.ts",
+      "file": "shared/vendor/src/table/useCardThrows.ts",
+      "sourceSHA256": "66a532fceab433ecfa98d35b02a576c77803ed0d6c2385bd6c9a492ed7106081",
+      "sha256": "66a532fceab433ecfa98d35b02a576c77803ed0d6c2385bd6c9a492ed7106081",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/vendor/src/table/useHandGestures.ts",
+      "file": "shared/vendor/src/table/useHandGestures.ts",
+      "sourceSHA256": "7625aa27486df3b3889ba26b4e54c4c24d459fbff1761f9c795cb671b580c025",
+      "sha256": "7625aa27486df3b3889ba26b4e54c4c24d459fbff1761f9c795cb671b580c025",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/verify-coaching.mjs",
+      "file": "shared/verify-coaching.mjs",
+      "sourceSHA256": "3b500a51a378ef68480e8531392741a506c459b11bd37e4500b579d2fc24ac7f",
+      "sha256": "3b500a51a378ef68480e8531392741a506c459b11bd37e4500b579d2fc24ac7f",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/shared/verify-last-trick-pocket.mjs",
+      "file": "shared/verify-last-trick-pocket.mjs",
+      "sourceSHA256": "634f0d9de89acd7de9d06cd63e924e4aac5b5f0bf284e75a7104f55c09e7770d",
+      "sha256": "634f0d9de89acd7de9d06cd63e924e4aac5b5f0bf284e75a7104f55c09e7770d",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/studio/coach-stickers/assets/regular-waiting-v2.png",
+      "file": "coach-stickers/assets/regular-waiting-v2.png",
+      "sourceSHA256": "08f029335576d94ac3c0eb5722d5658503e8ba3fb6756256fb7c4818ff9b999b",
+      "sha256": "08f029335576d94ac3c0eb5722d5658503e8ba3fb6756256fb7c4818ff9b999b",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/studio/coach-stickers/assets/regular-whistle-v3.png",
+      "file": "coach-stickers/assets/regular-whistle-v3.png",
+      "sourceSHA256": "0660a5f1fbb0d73c4a872f860cf4bd95863eea306bad54391fb3d0303de46aa6",
+      "sha256": "0660a5f1fbb0d73c4a872f860cf4bd95863eea306bad54391fb3d0303de46aa6",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/studio/coach-stickers/assets/regular-thinking-v2.png",
+      "file": "coach-stickers/assets/regular-thinking-v2.png",
+      "sourceSHA256": "40336f19a235326f2c8ec2aef4ff677334f2622b5aeafe17b4d174fef4085131",
+      "sha256": "40336f19a235326f2c8ec2aef4ff677334f2622b5aeafe17b4d174fef4085131",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/studio/coach-stickers/assets/regular-explaining-v2.png",
+      "file": "coach-stickers/assets/regular-explaining-v2.png",
+      "sourceSHA256": "1b1f8b2dfb82330d838ae8be20a3995cc0b9b6db7584c99ed693cd094604c6c0",
+      "sha256": "1b1f8b2dfb82330d838ae8be20a3995cc0b9b6db7584c99ed693cd094604c6c0",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/studio/coach-stickers/assets/regular-reading-v8.png",
+      "file": "coach-stickers/assets/regular-reading-v8.png",
+      "sourceSHA256": "53e3901ac6519a651ed170150e8f363116b0e6452b0bfb480da4a170fdfe3487",
+      "sha256": "53e3901ac6519a651ed170150e8f363116b0e6452b0bfb480da4a170fdfe3487",
+      "adaptation": "none"
+    },
+    {
+      "source": "design/studio/coach-stickers/README.md",
+      "file": "coach-stickers/README.md",
+      "sourceSHA256": "f7f9bd959123db950a6dd346e0b42860283e7965d86b914f03c503878170b6ad",
+      "sha256": "7e35a8128c46e40785e3a99ee407ddd1994c50875a4b8d9d31336dfa45e03e05",
+      "adaptation": "Final approval status and Rally-only review link; historical generation prompts preserved"
+    },
+    {
+      "source": "design/rally/approved/responsive.css",
+      "file": "responsive.css",
+      "sourceSHA256": "e5afe5912b607add678c4f2935f64570fb5ea16b37af7df90b8d99e41b1444bc",
+      "sha256": "e5afe5912b607add678c4f2935f64570fb5ea16b37af7df90b8d99e41b1444bc",
+      "adaptation": "DESIGN-R09 authored responsive presentation; canonical card and gesture sources remain unchanged"
+    },
+    {
+      "source": "design/rally/approved/shared/rally-fit.mjs",
+      "file": "shared/rally-fit.mjs",
+      "sourceSHA256": "a697deb0e4dd3942ffd93c19be7b73deb944ff21fefc9c99fe74b0952abf2f79",
+      "sha256": "a697deb0e4dd3942ffd93c19be7b73deb944ff21fefc9c99fe74b0952abf2f79",
+      "adaptation": "DESIGN-R09 authored responsive presentation; canonical card and gesture sources remain unchanged"
+    },
+    {
+      "source": "design/rally/approved/shared/useRallyFit.ts",
+      "file": "shared/useRallyFit.ts",
+      "sourceSHA256": "e1d2b8af9573dd811900570367eee6a9bb1659f4053f9befc683d9d6eec415a6",
+      "sha256": "e1d2b8af9573dd811900570367eee6a9bb1659f4053f9befc683d9d6eec415a6",
+      "adaptation": "DESIGN-R09 authored responsive presentation; canonical card and gesture sources remain unchanged"
+    },
+    {
+      "source": "design/rally/approved/shared/RallyJacksLayout.tsx",
+      "file": "shared/RallyJacksLayout.tsx",
+      "sourceSHA256": "bf47be6d64436b4c67f784a5b7164c9283a777713eacc413b9c1f60b114d5db3",
+      "sha256": "bf47be6d64436b4c67f784a5b7164c9283a777713eacc413b9c1f60b114d5db3",
+      "adaptation": "DESIGN-R09 authored responsive presentation; canonical card and gesture sources remain unchanged"
+    },
+    {
+      "source": "design/rally/approved/shared/verify-rally-fit.mjs",
+      "file": "shared/verify-rally-fit.mjs",
+      "sourceSHA256": "7eab750dfe924ba0248b9b18af58fd2d2756332b06964d5a72d59d83cb4cb996",
+      "sha256": "7eab750dfe924ba0248b9b18af58fd2d2756332b06964d5a72d59d83cb4cb996",
+      "adaptation": "DESIGN-R09 authored responsive presentation; canonical card and gesture sources remain unchanged"
+    }
+  ]
+}

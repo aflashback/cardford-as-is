@@ -1,6 +1,8 @@
 # Trix Solo rule dossier
 
-**Dossier version:** `0.1.0`. **Candidate profile:** `trix-solo-jawaker-1.0.0-draft.1`. **Verified:** 2026-10-05. **Status:** specified mechanics frozen; doubling protocol incomplete; M09 implementation/catalog gate closed. This prerelease ID is a research identifier, not an installed manifest or runnable profile.
+**Historical research dossier, amended by owner decision on 2026-10-07:** the active four-variant plan calls this **Trix Basic Solo**. Use [the expanded Trix specification](trix.md) and [native Go implementation plan](../superpowers/plans/2026-10-07-trix-four-variants.md) for new work. Source provenance is retained; TRX-D01/D02 are now resolved as described below.
+
+**Dossier version:** `0.2.0`. **Historical candidate profile:** `trix-solo-jawaker-1.0.0-draft.1`. **Sources verified:** 2026-10-05. **Status:** doubling decisions resolved by owner; implementation/catalog acceptance pending. The historical ID remains research provenance; new work uses the explicit Basic Solo profile in the current specification, not an alias or silent repin.
 
 Authority: the [owner's Jawaker selection](../../planning/research/2026-10-04-card-game-architecture-interview/08-standard-rule-reconciliation.md), [M00/M09 plan](../superpowers/plans/2026-10-04-multi-game-reasoning-implementation.md) and [game packet](../../planning/implementation/multi-game/game-packets.md). Requirements MG-02, MG-06–09 and MG-12 apply. The [Complex Partners dossier](trix-complex-partners.md) has a different request schedule and objective.
 
@@ -35,25 +37,26 @@ These are application interpretations of omissions, not quotations or separately
 | Request completion | Play the full deal, including penalty requests after all scoring cards have appeared; this preserves the packet's card-conservation model. | King capture does not erase unplayed cards or history. |
 | Dealer after initial deal | Remains a non-gameplay role: fresh private deal material is explicit; opener/owner are never derived from dealer. Any UI dealer progression needs its own documented choice. | Initial dealer distinct from owner does not change opener. |
 
-## Unresolved branch gates
+## Resolved branch gates
 
-`TRX-D01`: exact doubling window, actor order, deadline/decline semantics and whether multiple held queens are declared together or separately. Selected pages do not supply the protocol. A future `double-card`/`decline-double` schema must preserve public reveal chronology without assuming hidden simultaneous support. Illegal/out-of-window declarations must reject without mutation.
+`TRX-D01` — **resolved by owner, 2026-10-07:** before first play, one public declaration turn per seat, kingdom owner then rightward. Declare a subset of eligible held cards together or decline; reveal immediately. No repeat turn, deadline-dependent decline or late announcement. The native plan uses one `declare-doubles` action with an empty subset for decline; historical separate-action proposals below do not govern new code.
 
-`TRX-D02`: self-capture. Literal declarer bonus would offset the doubled penalty, but selected Jawaker text gives no explicit self-capture exception. Pagat instead sometimes transfers the bonus to the trick leader; those rules must not be silently imported. Both self-led and another-seat-led self-capture need an explicit profile choice. Until D01/D02 are resolved, do not instantiate a complete reducer or advertise this mode; M01 generic contracts remain independent.
+`TRX-D02` — **resolved by owner, 2026-10-07:** Solo self-capture costs −50/−150 and credits +25/+75 to the current external trick leader, or the last player who handed the announcer the lead in this deal. Keep that giver across consecutive self-led wins; update when another player hands over the lead; reset on every deal. If the announcer has led continuously from the opening, there is no bonus. Another player's capture still credits the announcer. This owner decision supersedes the earlier literal self-credit proposal; it is not attributed to the source pages. Persist public lead provenance and withheld-bonus records as specified in [the current rules](trix.md#4-public-doubling--trx-05-owner-confirmed).
 
 ## Planned fixtures and evidence boundary
 
-All following cases are **planned arithmetic/legality expectations, not executed engine tests**. Implement later in the game packet's `trix-*.test.ts` suites:
+All following cases are **planned arithmetic/legality expectations, not executed engine tests**. Implement in the native Go suites from the current Trix plan; the original TypeScript paths are superseded.
 
 | ID | Expected result |
 |---|---|
 | TRX-S01 | Undoubled Q capture: taker −25, other seats 0. |
 | TRX-S02 | Distinct declarer/taker doubled Q: taker −50, declarer +25. |
 | TRX-S03 | Distinct declarer/taker doubled HK: taker −150, declarer +75. |
-| TRX-S04 | All ordinary penalty requests total −500; layout total +500 per kingdom; doubling with distinct taker/declarer preserves the ordinary net total. |
+| TRX-S04 | Penalty requests total −500−W and layout +500 per kingdom; W is withheld Solo bonuses. Whole kingdom totals −W, including the no-bonus opening exception. |
+| TRX-S05 | Self-captured doubled Q/HK: announcer −50/−150; qualifying current/prior external leader +25/+75, otherwise no bonus. See TX-D05–TX-D11 in the current scenario packet. |
 | TRX-L01 | Empty C suit accepts CJ; C bounds J/J and hand C10/CQ/CA yield C10/CQ only. |
 | TRX-L02 | A legal extension excludes pass; no extension forces pass. Pass proves no current adjacency card, not a generic suit void. |
 | TRX-H01 | 20 distinct deals, owner retained for five requests, consumed pool/reveal history survive resume, old packets stay unchanged. |
 | TRX-C01 | Packet's queen-free South deal: South chooses Queens and leads CA; East S2, North H2, West CQ; South captures −25 despite owning no queen. This now has a source-supported penalty opener; full engine reachability remains not run. |
 
-Actual evidence here: live rule-page review and discrepancy analysis. No reducer, scoring suite, replay, provider, browser session or strategic-strength experiment ran for this dossier. Resolving blocked meanings produces a new prerelease revision; `1.0.0` requires complete semantics and corresponding M09 acceptance evidence. Historical records retain their original eventual profile version.
+Actual evidence here: source-page review and the later explicit owner decision. No reducer, scoring suite, replay, provider, browser session or strategic-strength experiment ran for this dossier. New work uses the current draft.3 semantics; playable `1.0.0` still requires implementation acceptance. Historical records retain their original versions.

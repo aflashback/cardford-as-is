@@ -1,0 +1,36 @@
+.rally-coach-experience{display:grid;gap:10px;min-width:0;color:var(--ink)}
+.rally-coach-experience:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.rally-coach-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 44px;gap:3px}
+.rally-coach-experience button{min-height:44px;min-width:44px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.rally-coach-experience button:disabled{opacity:.5;cursor:default}
+.rally-coach-experience button:focus-visible,.rally-coach-experience :is(select,textarea,input):focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.rally-coach-tools button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;border-color:transparent}
+.rally-coach-tools button:last-child{border-color:var(--line)}
+.rally-coach-experience button[aria-pressed=true]{border-color:var(--accent);background:var(--tint)}
+.rally-coach-experience p{margin:0;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.rally-coach-experience small{font-size:11px;line-height:1.45;color:var(--muted)}
+.rally-coach-empty{display:grid;justify-items:center;gap:8px;text-align:center;padding:12px 2px}
+.rally-coach-empty img{object-fit:contain;max-width:100%}
+.rally-coach-allowance,.rally-coach-feedback,.rally-coach-item{display:grid;gap:9px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.rally-coach-item>header,.rally-coach-feedback>header{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.rally-coach-item strong{font-size:20px;line-height:1.2;font-weight:750}
+.rally-coach-preview{display:inline-block;font-size:10px;font-weight:700;border:1px solid var(--line);border-radius:99px;padding:3px 6px;white-space:nowrap;width:max-content}
+.rally-coach-item footer{display:flex;gap:5px}.rally-coach-item footer button:first-child{margin-right:auto;padding:0 12px;font-weight:750}
+.rally-coach-context{display:flex;justify-content:space-between;gap:6px;font-size:11px;color:var(--muted)}
+.rally-coach-history{display:grid;gap:6px}.rally-coach-history>button{display:grid;gap:4px;padding:8px;text-align:left;font-size:12px}
+.rally-coach-notice{border-left:3px solid var(--accent);padding:6px 8px;background:var(--tint)}
+.rally-coach-retry{display:flex;align-items:center;justify-content:center;gap:6px}
+.rally-coach-working{color:var(--muted)}
+.rally-coach-replay{display:grid;gap:10px}.rally-replay-controls{display:flex;align-items:center;gap:5px}.rally-replay-controls output{font-size:11px;margin-left:auto}
+.rally-coach-experience .rally-replay-back{margin:0;padding:6px 8px;gap:6px;text-align:left}
+.rally-coach-replay input[type=range]{width:100%;min-width:0;min-height:44px;accent-color:var(--accent)}
+.rally-coach-replay summary{min-height:44px;align-content:center;cursor:pointer;font-size:13px}.rally-coach-replay ol{display:grid;gap:5px;padding-left:20px;margin:0}
+.rally-coach-replay li button{width:100%;font-size:12px;text-align:left;padding:5px}.rally-coach-replay [aria-current=step]{border-color:var(--accent)}
+.rally-replay-caption{color:var(--muted)}
+.rally-coach-rating{display:grid;gap:5px}.rally-coach-rating>strong{font-size:26px}.rally-coach-rating>strong small{margin-left:5px}
+.rally-coach-rating meter{width:100%;accent-color:var(--accent)}
+.rally-coach-feedback{position:relative}.rally-coach-feedback label{display:grid;gap:5px;font-size:12px}
+.rally-coach-feedback :is(select,textarea){width:100%;min-width:0;min-height:44px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px;font:inherit}
+.rally-coach-experience .primary-button{background:var(--accent);color:var(--accent-ink);font-weight:750}
+@media(max-width:900px),(max-height:480px){.rally-coach-tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}.rally-coach-tools button{flex-direction:row}.rally-coach-tools button:last-child{border-color:transparent}}
+@media(max-height:430px) and (orientation:landscape){.rally-coach-experience,.rally-coach-replay{gap:6px}.rally-coach-item,.rally-coach-feedback,.rally-coach-allowance{padding:8px;gap:6px}.rally-coach-empty{padding:3px}.rally-coach-empty img{width:44px;height:44px}.rally-coach-item>header{flex-wrap:wrap}.rally-coach-item strong{font-size:18px}}

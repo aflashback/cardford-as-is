@@ -1,0 +1,114 @@
+{
+  "name": "hearts-old-se-settings",
+  "at": "2026-10-16T02:02:23.581Z",
+  "check": "Settings accessible during pause",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 312.4682312011719,
+        "clientHeight": 303,
+        "controls": [
+          {
+            "bottom": 68.65048789978027,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Close dialog",
+            "right": 480.9980354309082,
+            "width": 43.9955940246582,
+            "x": 437.00244140625,
+            "y": 24.65489387512207
+          },
+          {
+            "bottom": 123.31681442260742,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Light",
+            "right": 205.35865020751953,
+            "width": 130.81173706054688,
+            "x": 74.54691314697266,
+            "y": 79.32122039794922
+          },
+          {
+            "bottom": 123.31681442260742,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Dark",
+            "right": 343.17832946777344,
+            "width": 130.8223114013672,
+            "x": 212.35601806640625,
+            "y": 79.32122039794922
+          },
+          {
+            "bottom": 123.31681442260742,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Warm",
+            "right": 480.99803161621094,
+            "width": 130.8223114013672,
+            "x": 350.17572021484375,
+            "y": 79.32122039794922
+          },
+          {
+            "bottom": 218.2947883605957,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "When I ask",
+            "right": 480.9980239868164,
+            "width": 406.45111083984375,
+            "x": 74.54691314697266,
+            "y": 174.2991943359375
+          },
+          {
+            "bottom": 270.28284072875977,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Occasional cues",
+            "right": 480.9980239868164,
+            "width": 406.45111083984375,
+            "x": 74.54691314697266,
+            "y": 226.28724670410156
+          },
+          {
+            "bottom": 322.2708930969238,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "After the hand",
+            "right": 480.9980239868164,
+            "width": 406.45111083984375,
+            "x": 74.54691314697266,
+            "y": 278.2752990722656
+          },
+          {
+            "bottom": 373.2638740539551,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Done",
+            "right": 480.9980239868164,
+            "width": 406.45111083984375,
+            "x": 74.54691314697266,
+            "y": 329.2682800292969
+          }
+        ],
+        "height": 304.47576904296875,
+        "name": "Settings",
+        "right": 513.8677024841309,
+        "scrollHeight": 377,
+        "width": 459.9953308105469,
+        "x": 53.872371673583984,
+        "y": 7.992462158203125
+      }
+    ],
+    "height": 320,
+    "scrollHeight": 320,
+    "scrollWidth": 568,
+    "width": 568
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": false
+  }
+}

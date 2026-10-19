@@ -1,0 +1,19 @@
+/* AUTH-LOCAL-011: keep authentication focused; appearance belongs to the table. */
+.rally-page.auth-page { display:block; width:min(100%,624px); padding:20px 32px 32px; }
+.auth-page .rally-page-header { padding-bottom:20px; }
+.auth-page .rally-page-brand { font-family:'Manrope Variable','DM Sans Variable',sans-serif; font-size:23px; font-weight:800; }
+.auth-page .rally-page-brand img { width:34px; height:34px; }
+.auth-welcome { position:relative; isolation:isolate; padding:48px 0 0; }
+.auth-welcome::before { content:''; position:absolute; z-index:-1; pointer-events:none; top:20px; right:0; width:120px; height:120px; background:url('/brand/cardford-symbol-mono.svg') center/contain no-repeat; opacity:.055; }
+.auth-page .auth-welcome h1 { margin:0 0 12px; font-size:clamp(28px,6vw,38px); line-height:1.18; letter-spacing:-.04em; }
+.auth-page .auth-welcome p { margin:0 0 24px; font-size:16px; line-height:1.5; }
+.auth-page .auth-welcome .primary-button { width:100%; min-height:48px; margin:4px 0 0; font-size:15px; }
+.auth-page .auth-welcome .auth-help { margin:12px 0 0; font-size:13px; }
+.auth-secondary { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 24px; margin-top:24px; padding-top:8px; border-top:1px solid var(--line); }
+.auth-page .auth-secondary .text-button { padding:8px 0; min-height:44px; color:var(--muted); font-size:14px; font-weight:500; text-decoration:underline; text-underline-offset:3px; }
+.auth-page .auth-secondary .text-button:hover { background:transparent; color:var(--ink); }
+@media(max-width:400px) {
+  .rally-page.auth-page { padding-inline:22px; }
+  .auth-welcome { padding-top:36px; }
+  .auth-welcome::before { width:100px; height:100px; }
+}

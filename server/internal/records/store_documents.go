@@ -71,7 +71,6 @@ func (s *Store) Create(ctx context.Context, doc Document, anchor ReplayAnchor, e
 	if err != nil {
 		return err
 	}
-	_ = snapshot
 	if !disposition.Playable {
 		return fmt.Errorf("unsupported execution pin: %s", disposition.Reason)
 	}
@@ -119,6 +118,10 @@ func (s *Store) Create(ctx context.Context, doc Document, anchor ReplayAnchor, e
 		if err != nil {
 			return err
 		}
+	}
+	projection, err := s.buildRealtimeProjection(doc, snapshot)
+	if err != nil {
+		return err
 	}
 	return s.withTx(databaseStage(ctx, "create.publish"), func(ctx context.Context, tx pgx.Tx) error {
 		create, acceptedCreate := ctx.Value(createAcceptedKey{}).(*createAcceptedState)
@@ -223,6 +226,14 @@ func (s *Store) Create(ctx context.Context, doc Document, anchor ReplayAnchor, e
 		}
 		if err != nil {
 			return err
+		}
+		if err = s.saveRealtimeProjectionTx(ctx, tx, doc.Metadata.OwnerID, doc.Metadata.GameID, doc.Revision, projection); err != nil {
+			return err
+		}
+		if acceptedCreate && create.request.SessionLifecycle {
+			if err = s.initializeLifecycleTx(ctx, tx, doc.Metadata, control+1); err != nil {
+				return err
+			}
 		}
 		if acceptedCreate {
 			return s.saveServiceTx(ctx, tx, admission.OwnerID, create.outcome)
@@ -445,12 +456,18 @@ func (s *Store) Commit(ctx context.Context, request AcceptedTransition) (Accepte
 		return AcceptedOutcome{}, fmt.Errorf("invalid transition binding")
 	}
 	var next Document
+	var nextSnapshot gamekernel.Snapshot
 	var events []EventRecord
 	if request.Staged != nil {
 		next, events, err = s.codec.AcceptStaged(before, request.Before.Snapshot, request.Command.Command, request.Staged)
+		nextSnapshot = request.Staged.NextSnapshot()
 	} else {
-		next, events, err = s.codec.Advance(before, request.Before.Snapshot, request.Command.Command)
+		next, nextSnapshot, events, err = s.codec.AdvanceBound(before, request.Before.Snapshot, request.Command.Command)
 	}
+	if err != nil {
+		return AcceptedOutcome{}, err
+	}
+	projection, err := s.buildRealtimeProjection(next, nextSnapshot)
 	if err != nil {
 		return AcceptedOutcome{}, err
 	}
@@ -540,6 +557,9 @@ func (s *Store) Commit(ctx context.Context, request AcceptedTransition) (Accepte
 		if err = s.checkCommitAccess(ctx, tx, request.Admission, before.Metadata.GameID, request.Charge != nil); err != nil {
 			return err
 		}
+		if err = s.checkPlaybackTx(ctx, tx, before.Metadata.OwnerID, before.Metadata.GameID, request.Admission.ControlRevision); err != nil {
+			return err
+		}
 		if _, _, err = s.checkGrant(ctx, tx, request.Admission, before.Metadata.GameID, before.Metadata.Pin.GameID, before.Metadata.Pin.VariantID, request.Charge != nil); err != nil {
 			return err
 		}
@@ -624,6 +644,14 @@ func (s *Store) Commit(ctx context.Context, request AcceptedTransition) (Accepte
 			if _, err = tx.Exec(ctx, `INSERT INTO m03_command_decisions(owner_id,command_id,decision_id) VALUES($1,$2,$3)`, before.Metadata.OwnerID, request.Command.CommandID, decision.ID); err != nil {
 				return err
 			}
+		}
+		// Recheck fresh SQL time after all staged writes; a transaction waiting
+		// behind another writer cannot commit after its foreground lease lapses.
+		if err = s.checkPlaybackTx(ctx, tx, before.Metadata.OwnerID, before.Metadata.GameID, request.Admission.ControlRevision); err != nil {
+			return err
+		}
+		if err = s.saveRealtimeProjectionTx(ctx, tx, next.Metadata.OwnerID, next.Metadata.GameID, next.Revision, projection); err != nil {
+			return err
 		}
 		return s.saveServiceTx(ctx, tx, before.Metadata.OwnerID, accepted)
 	})

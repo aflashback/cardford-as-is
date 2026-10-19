@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/schemas/trix-scenario-collection/game-findings.schema.json",
+  "title": "TrixPublicGameFinding",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "trix-public-game-finding-1.0.0"
+    },
+    "episodeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variant": {
+      "enum": [
+        "basic-solo",
+        "complex-solo",
+        "basic-partners",
+        "complex-partners"
+      ]
+    },
+    "request": {
+      "enum": [
+        "diamonds",
+        "king",
+        "queens",
+        "lutoosh",
+        "complex"
+      ]
+    },
+    "nativeTotals": {
+      "type": "object",
+      "properties": {
+        "scoreTotals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "seats": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                },
+                "minItems": 1,
+                "maxItems": 2,
+                "uniqueItems": true
+              },
+              "total": {
+                "type": "integer",
+                "minimum": -100000,
+                "maximum": 100000
+              }
+            },
+            "required": [
+              "id",
+              "seats",
+              "total"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "componentTotals": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "required": [
+        "scoreTotals",
+        "componentTotals"
+      ],
+      "additionalProperties": false
+    },
+    "publicTricks": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 13
+          },
+          "leader": {
+            "enum": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "winner": {
+            "enum": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "plays": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seat": {
+                  "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ]
+                },
+                "card": {
+                  "type": "string",
+                  "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+                }
+              },
+              "required": [
+                "seat",
+                "card"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 4,
+            "maxItems": 4
+          }
+        },
+        "required": [
+          "number",
+          "leader",
+          "winner",
+          "plays"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "nativeLedger": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dealNumber": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "kingdom": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          "request": {
+            "enum": [
+              "diamonds",
+              "lutoosh",
+              "queens",
+              "king",
+              "complex",
+              "trix"
+            ]
+          },
+          "trick": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "finish": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          },
+          "recipient": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "seat"
+                  },
+                  "seat": {
+                    "enum": [
+                      0,
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "seat"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "competitor"
+                  },
+                  "competitor": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256
+                  }
+                },
+                "required": [
+                  "kind",
+                  "competitor"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "component": {
+            "enum": [
+              "diamond",
+              "trick",
+              "queen",
+              "king",
+              "double-bonus",
+              "layout-finish"
+            ]
+          },
+          "card": {
+            "type": "string",
+            "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+          },
+          "delta": {
+            "type": "integer",
+            "minimum": -1000,
+            "maximum": 1000
+          },
+          "declarationRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "leadSourceRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "required": [
+          "dealNumber",
+          "kingdom",
+          "request",
+          "trick",
+          "finish",
+          "recipient",
+          "component",
+          "delta"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "withheldBonuses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dealNumber": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "trick": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 13
+          },
+          "card": {
+            "type": "string",
+            "pattern": "^[CDHS](?:[2-9]|10|J|Q|K|A)$"
+          },
+          "bonusValue": {
+            "enum": [
+              25,
+              75
+            ]
+          },
+          "reason": {
+            "const": "no_previous_external_leader"
+          },
+          "declarationRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "required": [
+          "dealNumber",
+          "trick",
+          "card",
+          "bonusValue",
+          "reason",
+          "declarationRef"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "gameReview": {
+      "$ref": "game-review.schema.json"
+    },
+    "frozenDecisionReviewDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "provenance": {
+      "const": "offline-llm-player"
+    },
+    "promotionEligible": {
+      "const": false
+    },
+    "runtimeActivated": {
+      "const": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "episodeId",
+    "variant",
+    "request",
+    "nativeTotals",
+    "publicTricks",
+    "nativeLedger",
+    "withheldBonuses",
+    "gameReview",
+    "frozenDecisionReviewDigest",
+    "provenance",
+    "promotionEligible",
+    "runtimeActivated"
+  ],
+  "additionalProperties": false
+}

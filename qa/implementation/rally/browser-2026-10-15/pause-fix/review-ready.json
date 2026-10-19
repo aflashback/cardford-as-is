@@ -1,0 +1,24 @@
+{
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Resume game"
+    },
+    {
+      "disabled": false,
+      "label": "Settings"
+    },
+    {
+      "disabled": false,
+      "label": "Choose game"
+    }
+  ],
+  "dialog": "Game paused",
+  "focused": "Resume game",
+  "hidden": false,
+  "title": "Trix Complex · Partners — CardFord",
+  "viewport": [
+    592,
+    579
+  ]
+}

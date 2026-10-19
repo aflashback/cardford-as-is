@@ -1,0 +1,147 @@
+@font-face{font-family:'DM Sans Variable';src:url('assets/dm-sans.woff2') format('woff2');font-weight:100 1000;font-display:swap}
+@font-face{font-family:'Manrope Variable';src:url('assets/manrope.woff2') format('woff2');font-weight:200 800;font-display:swap}
+:root{--board-bg:#eee9dc;--board-ink:#242820;--board-muted:#59604f;--board-felt:#d8ddcc;--board-line:#bcc4af;--board-accent:#bd442d;--accent-ink:#fff;--badge:#f8f4e9;--badge-ink:#242820;--app-height:100dvh;color-scheme:light;background:var(--board-bg);color:var(--board-ink)}
+:root[data-concept=studio]{--board-bg:#eee9dc;--board-ink:#242820;--board-muted:#59604f;--board-felt:#d8ddcc;--board-line:#bcc4af;--board-accent:#bd442d;--badge:#f8f4e9;--badge-ink:#242820}
+:root[data-concept=studio][data-theme=dark]{--board-bg:#191e1a;--board-ink:#f1eadb;--board-muted:#c1c8b5;--board-felt:#293b30;--board-line:#49614e;--board-accent:#ee7659;--accent-ink:#201e19;--badge:#273027;--badge-ink:#f1eadb;color-scheme:dark}
+:root[data-concept=studio][data-theme=warm]{--board-bg:#241c16;--board-ink:#f2dbb5;--board-muted:#c7af8c;--board-felt:#423526;--board-line:#736044;--board-accent:#da9160;--accent-ink:#241c16;--badge:#352a1f;--badge-ink:#f2dbb5;color-scheme:dark}
+html,body,#root{height:100%;width:100%;overflow:hidden}
+.demo-board{height:100%;min-height:0;background:var(--board-bg)}
+.demo-board .game-shell{display:grid;grid-template-rows:minmax(0,1fr) auto;width:100%;height:100%;max-width:none;min-height:0;margin:0;padding:12px 24px max(10px,env(safe-area-inset-bottom));gap:4px;--coach-width:0px;--table-gap:0px;position:relative}
+.demo-board .table-zone{position:relative;min-height:0;justify-self:center;width:min(86%,930px);height:100%}
+.demo-board .table-felt{inset:32px 42px 22px;transform:none;border-radius:50%;background:var(--board-felt);box-shadow:inset 0 0 0 1px var(--board-line);overflow:hidden}
+.demo-board .table-felt:after{display:none}.demo-board .table-line{inset:12px;border-radius:inherit;border-color:var(--board-line);opacity:.5}
+[data-concept=studio] .demo-board .table-felt{border-radius:130px;box-shadow:inset 0 0 0 2px var(--board-line)}
+[data-game=trix] .demo-board .table-zone{width:min(97%,1160px)}
+[data-game=trix] .demo-board .table-felt{inset:28px 54px 18px;border-radius:36px}
+[data-game=trix][data-concept=studio] .demo-board .table-felt{border-radius:22px}
+.felt-symbol{display:none}.demo-board .table-totals{display:none}
+.demo-board .player{min-width:0;color:var(--badge-ink);gap:8px;font-family:'DM Sans Variable',sans-serif}
+.demo-board .player-0,.demo-board .player-2{padding:6px 12px;background:var(--badge);border-radius:24px}
+.demo-board .table-zone .player-0{bottom:0;min-width:0}.demo-board .player-2{top:0}
+.demo-board .player-1,.demo-board .player-3{top:43%;transform:translateY(-50%);gap:6px;min-width:68px}
+.demo-board .player-1 .player-info,.demo-board .player-3 .player-info{background:var(--badge);padding:5px 9px;border-radius:14px}
+.demo-board .player-name{font-size:14px;font-weight:750;line-height:1.2}
+.demo-board .player-detail{font-size:12px;line-height:1.1;color:var(--board-muted);margin-top:3px}
+.demo-board .avatar{width:36px;height:36px;border:2px solid var(--badge);font-size:14px;box-shadow:none}
+.demo-board .table-zone .player-active .avatar{box-shadow:0 0 0 3px var(--board-accent)}
+.demo-board .table-zone .player-active .player-info{background:transparent;box-shadow:none}
+.demo-board .table-zone .player-active .player-name{color:var(--badge-ink)}
+.demo-board .turn-dot{background:var(--board-accent)}.kingdom-crown{position:absolute;top:-13px;right:-6px;color:var(--board-accent)}
+[data-concept=studio] .demo-board .player-0,[data-concept=studio] .demo-board .player-2,[data-concept=studio] .demo-board .player-info{border-radius:9px}
+.demo-board .table-zone .trick-area{top:53%}
+.demo-board .hand-section{width:100%;min-width:0;justify-self:center;flex:none}
+/* Status prose remains available to assistive technology. */
+.board-status,.board-controls{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap;padding:0!important;margin:-1px!important}
+.demo-board .hand-card:disabled{opacity:1}
+/* Rally: a small clockwise cue, keeping the hand's normal overlap order. */
+[data-concept=studio][data-phase=double] .hand-card.selected,
+[data-concept=studio][data-phase=double] .hand-card.selected:not(:disabled):hover,
+[data-concept=studio] .coach-replay-board[data-replay-phase=double] .hand-card.selected{z-index:auto}
+[data-concept=studio][data-phase=double] .hand-card.selected .card-face,
+[data-concept=studio][data-phase=double] .hand-card.selected:not(:disabled):hover .card-face{transform:translateY(-6%) rotate(4deg)}
+.demo-board .game-shell[hidden]{display:none}
+.replay-stamp{position:absolute;top:5px;left:6px;color:var(--board-muted);font:650 10px 'DM Sans Variable',sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.replay-hand .hand-card{cursor:default}
+.replay-hand .hand-card.replay-focus:after{content:'';position:absolute;inset:-3px;border:2px solid var(--board-accent);border-radius:8px;pointer-events:none}
+.replay-hand .hand-card:not(.selected):hover{transform:none}
+.coach-replay-board .player-active .avatar{box-shadow:none}
+.replay-phase-label{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:var(--board-ink);font:750 20px 'Manrope Variable',sans-serif}
+[data-concept=studio] .coach-replay-board[data-replay-phase=double] .hand-card.selected .card-face{transform:translateY(-6%) rotate(4deg)}
+.phase-prompt{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;display:flex;align-items:center;flex-direction:column;gap:12px;color:var(--board-ink);background:var(--board-bg);border:1px solid var(--board-line);border-radius:22px;padding:18px 24px;max-width:calc(100% - 190px);text-align:center}
+.phase-prompt h2{font:750 16px 'DM Sans Variable',sans-serif;margin:0}
+.phase-primary,.phase-link,.request-buttons button,.bid-controls button{min-width:44px;min-height:44px;font-family:'DM Sans Variable',sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.phase-primary{padding:10px 18px;border-radius:30px;background:var(--board-accent);color:var(--accent-ink);font-size:14px;font-weight:750}.phase-primary:disabled{opacity:.45;cursor:default}
+.phase-link{background:transparent;color:var(--board-ink);padding:8px 14px;border:1px solid var(--board-line);border-radius:30px;font-weight:650}
+.prompt-actions{display:flex;gap:8px;align-items:center}.bid-controls{display:flex;gap:18px;align-items:center}.bid-controls button{border:1px solid var(--board-line);background:var(--badge);color:var(--badge-ink);border-radius:50%;font-size:25px}.bid-controls output{font-size:38px;font-weight:750;min-width:48px;font-variant-numeric:tabular-nums}
+.selection-dots{display:flex;gap:8px;padding:4px}.selection-dots i{width:14px;height:14px;border:2px solid var(--board-muted);border-radius:50%}.selection-dots i.filled{background:var(--board-accent);border-color:var(--board-accent)}
+.request-prompt{width:max-content;max-width:calc(100% - 180px)}.request-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}.request-buttons button{background:var(--badge);color:var(--badge-ink);border:1px solid var(--board-line);border-radius:12px;padding:10px 14px;flex-direction:column;font-size:12px;font-weight:650}.request-buttons button>span{font-size:24px;line-height:1}
+.double-prompt{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;z-index:5;background:var(--board-bg);color:var(--board-ink);padding:10px 14px;border:1px solid var(--board-line);border-radius:32px}.double-prompt>strong{font-size:22px;padding-inline:4px}.double-preview{display:flex;gap:5px;--card-width:36px}
+.board-overlay{position:absolute;inset:0;z-index:20;background:color-mix(in srgb,var(--board-bg) 75%,transparent);backdrop-filter:blur(7px);display:grid;place-items:center;padding:20px}.state-panel{display:flex;flex-direction:column;align-items:center;gap:18px;background:var(--badge);color:var(--badge-ink);border:1px solid var(--board-line);border-radius:24px;padding:28px;max-width:350px}.state-panel h2{font-size:22px;line-height:1.2;margin:0;text-align:center}
+.board-last{position:absolute;left:-28px;bottom:4px;color:var(--board-muted);font-size:10px;pointer-events:none}.board-last>span{display:none}.board-last .last-trick{display:block;position:static;background:transparent;padding:0;width:120px}
+.demo-board button:focus-visible{outline:3px solid var(--board-accent);outline-offset:3px}
+@media(max-height:520px){
+.demo-board .game-shell{padding:4px max(12px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));gap:0}
+.demo-board .table-zone{width:min(84%,850px)}[data-game=trix] .demo-board .table-zone{width:98%}
+.demo-board .table-felt{inset:16px 30px 10px}[data-game=trix] .demo-board .table-felt{inset:16px 35px 10px;border-radius:24px}
+.demo-board .player{gap:5px}.demo-board .player-name{font-size:12px}.demo-board .player-detail{font-size:10px;margin-top:2px}.demo-board .avatar{width:28px;height:28px;font-size:12px}.demo-board .player-0,.demo-board .player-2{padding:4px 8px}
+.demo-board .player-1,.demo-board .player-3{top:49%;min-width:60px;gap:3px}.demo-board .player-1 .player-info,.demo-board .player-3 .player-info{padding:3px 7px}
+.demo-board .table-zone .player-2{left:36%}.demo-board .table-zone .player-0{left:65%}[data-phase=jacks] .demo-board .table-zone .player-2{left:44%}[data-phase=jacks] .demo-board .table-zone .player-0{left:56%}
+.phase-prompt{padding:10px 16px;gap:7px;border-radius:18px}.phase-prompt h2{font-size:14px}.bid-controls{gap:12px}.bid-controls output{font-size:30px}.phase-primary,.phase-link{padding:7px 12px;font-size:12px}
+.request-buttons{gap:5px}.request-buttons button{padding:6px 10px;min-height:52px;font-size:11px}.request-buttons button>span{font-size:19px}.double-prompt{padding:6px 10px;gap:7px}.double-prompt>strong{font-size:18px}.double-preview{--card-width:26.4px}
+.board-last{left:-10px;bottom:0}.board-last .last-trick{width:80px}.state-panel{padding:20px;gap:12px}.state-panel h2{font-size:19px}
+}
+/* Responsive Rally allocation. Sizes come from the actual iframe, including a
+   pinned coach's reduced width. Only context widths/layout change; the frozen
+   proportional CardFace artwork and hand gestures remain untouched. */
+.demo-board .game-shell{gap:var(--rally-row-gap,4px)}
+.demo-board .game-shell .hand-section{--hand-card-width:var(--rally-hand-width,58px);--hand-card-height:calc(var(--hand-card-width) * var(--card-aspect));padding:0 var(--rally-hand-right,8px) 0 var(--rally-hand-left,72px)}
+.demo-board .game-shell .hand-section .hand-cards{height:calc(var(--hand-card-height) + var(--rally-hand-lift,24px));padding:var(--rally-hand-lift,24px) 0 0}
+.demo-board .game-shell .avatar{width:var(--rally-avatar,28px);height:var(--rally-avatar,28px)}
+.demo-board .game-shell .player-name{font-size:var(--rally-name-size,12px)}
+.demo-board .game-shell .player-detail{font-size:var(--rally-detail-size,10px)}
+.demo-board .game-shell .player-1{left:0}
+.demo-board .game-shell .player-3{right:0}
+.demo-board .game-shell .table-zone .player-2{left:50%}
+.demo-board .game-shell .table-zone .player-0{left:50%}
+.demo-board .game-shell[data-rally-compact=true] .table-zone .player-2{left:20%}
+.demo-board .game-shell[data-rally-compact=true] .table-zone .player-0{left:80%}
+.demo-board .game-shell[data-rally-compact=true] .kingdom-crown{top:-5px;right:-5px}
+.demo-board .game-shell[data-rally-compact=true] .replay-stamp{top:auto;bottom:3px;left:0;font-size:9px}
+.demo-board .game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .player-2{left:12%}
+.demo-board .game-shell[data-rally-compact=true][data-rally-phase=jacks] .table-zone .player-0{left:88%}
+.demo-board .game-shell[data-rally-compact=true][data-rally-phase=jacks] .player-0 .announced-cards{left:auto;right:calc(100% + 8px)}
+.demo-board .game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass],[data-rally-phase=double]) .table-zone .player-2{left:10%}
+.demo-board .game-shell[data-rally-compact=true]:is([data-rally-phase=bid],[data-rally-phase=pass],[data-rally-phase=double]) .table-zone .player-0{left:90%}
+.demo-board .game-shell .table-zone .trick-area{--table-card-width:inherit;--table-card-height:inherit}
+.demo-board .rally-last .last-trick-layout{width:var(--rally-preview-width,82px);height:var(--rally-preview-height,72px)}
+.demo-board .rally-last .last-trick-card{--card-width:var(--rally-preview-card,25px);width:var(--card-width);height:calc(var(--card-width) * var(--card-aspect))}
+.demo-board .rally-last .last-trick-seat-2,.demo-board .rally-last .last-trick-seat-0{left:calc((var(--rally-preview-width,82px) - var(--rally-preview-card,25px)) / 2)}
+.demo-board .rally-last .last-trick-seat-1,.demo-board .rally-last .last-trick-seat-3{top:calc((var(--rally-preview-height,72px) - var(--rally-preview-card,25px) * var(--card-aspect)) / 2)}
+.demo-board .rally-jacks-layout{height:calc(var(--layout-rank-span,12) * var(--layout-step) + var(--layout-height));max-width:none}
+.demo-board .rally-jacks-layout .trix-lane-cards>span[role=img]{top:calc((var(--layout-row) - var(--layout-first-row,0)) * var(--layout-step));z-index:calc(var(--layout-column) * var(--rally-layout-stack,0) + var(--layout-row))}
+@media(max-height:330px){.demo-board .table-zone .player-2{left:30%}.demo-board .table-zone .player-0{left:70%}.board-last{display:none}}
+/* Keep request choices between the four seats when Coach narrows the table. */
+@media(max-width:666px) and (max-height:380px) and (orientation:landscape){
+ [data-concept=studio] .request-prompt{top:50%;padding-block:6px;gap:0}
+ [data-concept=studio] .request-prompt h2{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ [data-concept=studio] .request-buttons{width:100%;max-width:100%;min-width:0;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;scrollbar-width:thin}
+ [data-concept=studio] .request-buttons button{flex:0 0 auto;min-width:44px;min-height:52px;scroll-snap-align:start}
+ [data-concept=studio] .request-buttons button:focus-visible{outline-offset:-3px}
+}
+/* Rally live-play corner pocket. Reserve before the first trick; keep the hand full width. */
+.demo-board .table-zone.rally-pocket-table{--rally-table-ratio:.86;--rally-table-limit:930px;--rally-felt-right:42px;--rally-side-y:43%;justify-self:start;width:var(--rally-table-width,min(86%,930px));margin-left:var(--rally-table-left,0px)}
+[data-game=trix] .demo-board .table-zone.rally-pocket-table{--rally-table-ratio:.97;--rally-table-limit:1160px;--rally-felt-right:54px}
+.demo-board .rally-pocket-table .table-felt{right:var(--rally-pocket-felt-right,var(--rally-felt-right))}
+.demo-board .rally-pocket-table .player-3{top:calc(var(--rally-side-y) + var(--rally-east-offset,0px))}
+.board-last.rally-last{display:block;left:0;top:0;right:auto;bottom:auto;width:max-content;height:max-content;transform:none;z-index:4}
+.board-last.rally-last .last-trick{width:auto;height:auto;padding:0;background:transparent}
+@media(max-height:520px) and (orientation:landscape){
+ .demo-board .table-zone.rally-pocket-table{--rally-table-ratio:.84;--rally-table-limit:850px;--rally-felt-right:30px;--rally-side-y:49%}
+ [data-game=trix] .demo-board .table-zone.rally-pocket-table{--rally-table-ratio:.98;--rally-table-limit:1160px;--rally-felt-right:35px}
+ .board-last.rally-last{display:block}
+}
+/* A LEFT-pinned coach can leave a 348px iframe. The usual 190px prompt
+   exclusion would squeeze bidding below its three 44px/48px/44px controls.
+   Keep the canonical cards and badge sizes; use the full non-play table width
+   and a compact center prompt, with the four badges around its perimeter. */
+@media(max-width:560px) and (max-height:520px) and (orientation:landscape){
+ [data-concept=studio]:is([data-phase=bid],[data-phase=pass],[data-phase=double]) .demo-board .table-zone{width:100%;overflow:visible}
+ [data-concept=studio]:is([data-phase=bid],[data-phase=pass],[data-phase=double]) .demo-board .table-zone .player-2{left:10%}
+ [data-concept=studio]:is([data-phase=bid],[data-phase=pass],[data-phase=double]) .demo-board .table-zone .player-0{left:90%}
+ [data-concept=studio]:is([data-phase=bid],[data-phase=pass],[data-phase=double]) .demo-board .table-zone .player-1{top:57%}
+ [data-concept=studio]:is([data-phase=bid],[data-phase=pass],[data-phase=double]) .demo-board .table-zone .player-3{top:43%}
+ [data-concept=studio]:is([data-phase=bid],[data-phase=pass]) .phase-prompt{width:166px;max-width:calc(100% - 24px);padding:4px 6px;gap:4px;border-radius:14px}
+ [data-concept=studio][data-phase=bid] .phase-prompt h2{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ [data-concept=studio][data-phase=bid] .bid-controls{gap:4px}
+ [data-concept=studio][data-phase=bid] .bid-controls button{width:44px;height:44px;padding:0}
+ [data-concept=studio][data-phase=bid] .bid-controls output{width:48px;min-width:48px;font-size:28px;line-height:1}
+ [data-concept=studio][data-phase=bid] .prompt-actions{gap:4px}
+ [data-concept=studio][data-phase=pass] .phase-prompt h2{line-height:1.15}
+ [data-concept=studio][data-phase=pass] .selection-dots{padding:2px}
+ [data-concept=studio]:is([data-phase=bid],[data-phase=pass],[data-phase=double]) :is(.phase-primary,.phase-link){min-width:44px;min-height:44px;padding:6px;gap:6px;font-size:12px;line-height:1.2}
+ [data-concept=studio][data-phase=double] .double-prompt{display:grid;grid-template-columns:minmax(0,1fr) minmax(44px,max-content);width:170px;max-width:calc(100% - 24px);padding:4px 6px;gap:4px;border-radius:14px}
+ [data-concept=studio][data-phase=double] .double-prompt>strong{grid-column:1;grid-row:1;justify-self:center}
+ [data-concept=studio][data-phase=double] .double-preview{grid-column:2;grid-row:1;justify-self:center}
+ [data-concept=studio][data-phase=double] .double-prompt>.phase-primary{grid-column:1;grid-row:2}
+ [data-concept=studio][data-phase=double] .double-prompt>.phase-link{grid-column:2;grid-row:2}
+}

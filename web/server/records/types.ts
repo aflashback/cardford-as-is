@@ -6,7 +6,7 @@ import type {
   AdviceView,
   GameAction,
   Preferences,
-  ReviewFrame,
+  LegacyReviewFrame as ReviewFrame,
   SessionStats,
   DevScenarioView,
 } from '../../shared/contracts.ts';

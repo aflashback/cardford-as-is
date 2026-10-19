@@ -1,0 +1,33 @@
+{
+  "scope": "Canonical card, gesture and motion files before Rally live integration",
+  "files": [
+    {
+      "file": "web/src/table/CardPrimitives.tsx",
+      "sha256": "9a8087b3261837c1ce37581a5791a4f95d31ab2d02cc9741a80f5c017820d47e"
+    },
+    {
+      "file": "web/src/table/HandCards.tsx",
+      "sha256": "91f67f7f42c4a6a8c3cf4089fc499bbd809f4291272805cc18af0bd1a25ff42d"
+    },
+    {
+      "file": "web/src/table/card-face.css",
+      "sha256": "bf3eebd1d526f72e6fa9731b7cb2516f9b9362d449e520a64671e198744a8ad5"
+    },
+    {
+      "file": "web/src/table/hand-gestures.css",
+      "sha256": "e0ed112b4ff610bdb756c78ab36be636680af97def1ece397d4376b236aeef58"
+    },
+    {
+      "file": "web/src/table/useHandGestures.ts",
+      "sha256": "7625aa27486df3b3889ba26b4e54c4c24d459fbff1761f9c795cb671b580c025"
+    },
+    {
+      "file": "web/src/table/useCardThrows.ts",
+      "sha256": "66a532fceab433ecfa98d35b02a576c77803ed0d6c2385bd6c9a492ed7106081"
+    },
+    {
+      "file": "web/src/table/playback.ts",
+      "sha256": "291311a468e4ee66428884752922bc59a09abdf0f41479bcbdb40da6d5fcd4dc"
+    }
+  ]
+}

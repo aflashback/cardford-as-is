@@ -1,0 +1,4 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["trix-ui-fixture.tsx", "trix-ui.spec.ts", "trix-ui-live.spec.ts", "trix-ui-live.config.ts"]
+}

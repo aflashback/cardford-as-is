@@ -1,0 +1,106 @@
+{
+  "capturedAt": "2026-10-14T00:27:57.439Z",
+  "scope": "20 copied source/style/logo files; no authored adapter or bundle",
+  "files": [
+    {
+      "package": "vendor/src/api/display.ts",
+      "production": "web/src/api/display.ts",
+      "sha256": "ce4d4d83b8350fad8350f18730e08eb2040c4d0e91d1315fb438d549e150963b"
+    },
+    {
+      "package": "vendor/src/games/trix/adapter.ts",
+      "production": "web/src/games/trix/adapter.ts",
+      "sha256": "4725569c573759f04f057190a29fbf208e6dac99266faaf599686f74359b0f1c"
+    },
+    {
+      "package": "vendor/src/games/trix/Card.tsx",
+      "production": "web/src/games/trix/Card.tsx",
+      "sha256": "1c2b95408eaca8becef43ca1f1531aad4b8fa2d412176f38fd1128e1ecdc212b"
+    },
+    {
+      "package": "vendor/src/games/trix/LayoutBoard.tsx",
+      "production": "web/src/games/trix/LayoutBoard.tsx",
+      "sha256": "a166fb3314eb45829da99044c13501d7c6271cf5dac0266e407b6af0b0524b3a"
+    },
+    {
+      "package": "vendor/src/games/trix/TwoAnnouncements.tsx",
+      "production": "web/src/games/trix/TwoAnnouncements.tsx",
+      "sha256": "a70634820feb80a9240f480ef8b10f24f892cfde2eee1c044a840646b791a76c"
+    },
+    {
+      "package": "vendor/src/games/trix/useLayoutFit.ts",
+      "production": "web/src/games/trix/useLayoutFit.ts",
+      "sha256": "6c9ee7d9c2ece63a3666c15261a7ccdc7e1d84de77186d09894c810f86f7ec31"
+    },
+    {
+      "package": "vendor/src/table/card-face.css",
+      "production": "web/src/table/card-face.css",
+      "sha256": "bf3eebd1d526f72e6fa9731b7cb2516f9b9362d449e520a64671e198744a8ad5"
+    },
+    {
+      "package": "vendor/src/table/CardPrimitives.tsx",
+      "production": "web/src/table/CardPrimitives.tsx",
+      "sha256": "9a8087b3261837c1ce37581a5791a4f95d31ab2d02cc9741a80f5c017820d47e"
+    },
+    {
+      "package": "vendor/src/table/hand-gestures.css",
+      "production": "web/src/table/hand-gestures.css",
+      "sha256": "e0ed112b4ff610bdb756c78ab36be636680af97def1ece397d4376b236aeef58"
+    },
+    {
+      "package": "vendor/src/table/HandCards.tsx",
+      "production": "web/src/table/HandCards.tsx",
+      "sha256": "91f67f7f42c4a6a8c3cf4089fc499bbd809f4291272805cc18af0bd1a25ff42d"
+    },
+    {
+      "package": "vendor/src/table/playback.ts",
+      "production": "web/src/table/playback.ts",
+      "sha256": "291311a468e4ee66428884752922bc59a09abdf0f41479bcbdb40da6d5fcd4dc"
+    },
+    {
+      "package": "vendor/src/table/score-totals.css",
+      "production": "web/src/table/score-totals.css",
+      "sha256": "c75fe385716e2348f26d954646565905e39529fe8a9e29c1e5cdc5f282800376"
+    },
+    {
+      "package": "vendor/src/table/ScoreTotals.tsx",
+      "production": "web/src/table/ScoreTotals.tsx",
+      "sha256": "2c406a41be7afa12a35972632677407e7d3c43aea522718e8c03643552c59d7b"
+    },
+    {
+      "package": "vendor/src/table/useCardThrows.ts",
+      "production": "web/src/table/useCardThrows.ts",
+      "sha256": "66a532fceab433ecfa98d35b02a576c77803ed0d6c2385bd6c9a492ed7106081"
+    },
+    {
+      "package": "vendor/src/table/useHandGestures.ts",
+      "production": "web/src/table/useHandGestures.ts",
+      "sha256": "7625aa27486df3b3889ba26b4e54c4c24d459fbff1761f9c795cb671b580c025"
+    },
+    {
+      "package": "production.css",
+      "production": "web/src/styles.css",
+      "sha256": "0f2da9ad34e4f809407978863a7a3af555fc53db5ef7ae21f3c8ba5617db37d3"
+    },
+    {
+      "package": "table-layout.css",
+      "production": "web/src/table/table-layout.css",
+      "sha256": "0e63dc2787a4a3c43eac7a25363375ccdb8cd1b7040a56ba7488c1594b5c63f5"
+    },
+    {
+      "package": "score-totals.css",
+      "production": "web/src/table/score-totals.css",
+      "sha256": "c75fe385716e2348f26d954646565905e39529fe8a9e29c1e5cdc5f282800376"
+    },
+    {
+      "package": "trix.css",
+      "production": "web/src/games/trix/trix.css",
+      "sha256": "666b0bef8e2e6a602368429e9fbdd38cb11e702266bee012ca8442ba38220d2b"
+    },
+    {
+      "package": "assets/cardford-symbol.svg",
+      "production": "web/public/brand/cardford-symbol.svg",
+      "sha256": "82d93c00a98d28166ece0b9a5f6f3132604c0efb70e46c5e4288ca3c7083b3c0"
+    }
+  ]
+}

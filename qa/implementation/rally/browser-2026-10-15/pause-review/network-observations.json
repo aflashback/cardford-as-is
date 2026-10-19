@@ -1,0 +1,54 @@
+{
+  "manualPause": [
+    {
+      "kind": "request",
+      "running": false,
+      "requestId": "2452.1685"
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "requestId": "2452.1685"
+    },
+    {
+      "kind": "request",
+      "running": true,
+      "requestId": "2452.1688"
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "requestId": "2452.1688"
+    },
+    {
+      "kind": "request",
+      "running": false,
+      "requestId": "2452.1694"
+    },
+    {
+      "kind": "response",
+      "status": 200,
+      "requestId": "2452.1694"
+    }
+  ],
+  "rotationReturn": [
+    {
+      "running": true
+    }
+  ],
+  "leavingAccount": {
+    "pauseCommands": 0,
+    "returnSnapshots": [
+      {
+        "status": 200,
+        "playback": {
+          "running": true,
+          "generation": 9
+        }
+      }
+    ],
+    "pauseCommandsOnReturn": [
+      false
+    ]
+  }
+}

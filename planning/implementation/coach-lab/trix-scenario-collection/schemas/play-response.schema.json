@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cardford.local/planning/trix-scenario/play-response-1.0.0.json",
+  "title": "Proposed offline Trix player response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["card", "reasoning", "confidence"],
+  "properties": {
+    "card": {"type": "string", "pattern": "^\\|[♠♥♦♣]\\|(A|K|Q|J|10|[2-9])\\|$"},
+    "reasoning": {"type": "string", "minLength": 1, "maxLength": 4000},
+    "confidence": {"type": "integer", "minimum": 0, "maximum": 100}
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/inference.json",
+  "title": "inference",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "coach-lab-inference-1.0.0"
+    },
+    "decisionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "supported",
+        "insufficient",
+        "unstable",
+        "inconsistent"
+      ]
+    },
+    "assumptionVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "estimates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "kind": {
+            "enum": [
+              "exact",
+              "conditional"
+            ]
+          }
+        },
+        "required": [
+          "event",
+          "value",
+          "kind"
+        ]
+      },
+      "minItems": 0
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "decisionId",
+    "status",
+    "assumptionVersion",
+    "work",
+    "evidenceRefs",
+    "estimates",
+    "limitations"
+  ]
+}

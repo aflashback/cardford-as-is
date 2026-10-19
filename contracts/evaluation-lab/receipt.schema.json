@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardford.local/evaluation-lab/receipt.json",
+  "title": "receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "coach-lab-receipt-1.0.0"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "checkpointed",
+        "censored",
+        "failed"
+      ]
+    },
+    "manifestHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "binaryDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "episodes": {
+      "type": "array",
+      "items": {},
+      "minItems": 0
+    },
+    "decisions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "committed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "pending": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "forced": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unforced": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "providerMode": {
+      "const": "fixture"
+    },
+    "strengthClaim": {
+      "const": false
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "runId",
+    "status",
+    "manifestHash",
+    "episodes",
+    "decisions",
+    "committed",
+    "pending",
+    "forced",
+    "unforced",
+    "providerMode",
+    "strengthClaim",
+    "errors"
+  ]
+}

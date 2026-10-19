@@ -1,0 +1,16 @@
+.table-totals { position: absolute; top: 6px; left: 8px; z-index: 3; font-size: 11px; }
+.table-total-list { --score-size: 36px; display: grid; grid-template-columns: repeat(3, var(--score-size)); grid-template-rows: repeat(3, var(--score-size)); gap: 2px; list-style: none; padding: 0; margin: 0; }
+.table-total { display: grid; place-items: center; width: var(--score-size); height: var(--score-size); border: 1px solid #cad7dc; border-radius: 5px; background: #e9eff1; color: #526875; }
+.table-total.total-position-2 { grid-area: 1 / 2; }
+.table-total.total-position-1 { grid-area: 2 / 1; }
+.table-total.total-position-3 { grid-area: 2 / 3; }
+.table-total.total-position-0 { grid-area: 3 / 2; }
+.table-total strong { max-width: 100%; text-align: center; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; white-space: nowrap; }
+.table-total.total-leading { color: #24634d; background: #e0f0e7; border-color: #a5cbb7; }
+.table-total.total-trailing { color: #963b44; background: #f8e5e7; border-color: #ddb1b6; }
+@media (max-height: 520px) and (orientation: landscape) {
+  .table-totals { top: 0; left: 40px; font-size: 9px; }
+  .table-total-list { --score-size: 26px; }
+  .table-total { border-radius: 4px; }
+  .table-total strong { font-size: 8px; }
+}

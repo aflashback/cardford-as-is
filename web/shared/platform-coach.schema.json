@@ -1,0 +1,762 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://trickscoach.com/schemas/platform-coach-v1.json",
+  "title": "Coach UI preview contracts",
+  "description": "Persisted mock Coach experience. Inputs never carry advice, owner, entitlements or replay state. Source authority and ownership are checked by the service. Existing hand allowances remain separate.",
+  "$defs": {
+    "CoachUIProvider": {
+      "title": "CoachUIProvider",
+      "type": "object",
+      "properties": {
+        "source": {
+          "const": "mock"
+        },
+        "version": {
+          "const": "ui-preview-v1"
+        },
+        "mock": {
+          "const": true
+        },
+        "preview": {
+          "const": true
+        },
+        "language": {
+          "const": "en"
+        }
+      },
+      "required": [
+        "source",
+        "version",
+        "mock",
+        "preview",
+        "language"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIAccess": {
+      "title": "CoachUIAccess",
+      "type": "object",
+      "properties": {
+        "canRequest": {
+          "type": "boolean"
+        },
+        "remaining": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unlimited": {
+          "type": "boolean"
+        },
+        "resetAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "timezone": {
+          "const": "UTC"
+        },
+        "mode": {
+          "enum": [
+            "free",
+            "paid",
+            "local-fixture"
+          ]
+        }
+      },
+      "required": [
+        "canRequest",
+        "remaining",
+        "unlimited",
+        "resetAt",
+        "timezone",
+        "mode"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIFeedback": {
+      "title": "CoachUIFeedback",
+      "type": "object",
+      "properties": {
+        "feedbackId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "value": {
+          "enum": [
+            "helpful",
+            "not-helpful"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "feedbackId",
+        "value",
+        "reason",
+        "text",
+        "createdAt"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIRatingPreview": {
+      "title": "CoachUIRatingPreview",
+      "type": "object",
+      "properties": {
+        "fictional": {
+          "const": true
+        },
+        "cohortLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "percentile": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "sampleSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      },
+      "required": [
+        "fictional",
+        "cohortLabel",
+        "percentile",
+        "sampleSize",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIItem": {
+      "title": "CoachUIItem",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating",
+            "selection",
+            "confirmed",
+            "postplay"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "replayAvailable": {
+          "type": "boolean"
+        },
+        "feedbackRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "rating": {
+          "$ref": "#/$defs/CoachUIRatingPreview"
+        },
+        "feedback": {
+          "$ref": "#/$defs/CoachUIFeedback"
+        }
+      },
+      "required": [
+        "itemId",
+        "sessionId",
+        "kind",
+        "title",
+        "body",
+        "explanation",
+        "createdAt",
+        "sourceRevision",
+        "decisionId",
+        "provider",
+        "replayAvailable",
+        "feedbackRevision"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUISessionSummary": {
+      "title": "CoachUISessionSummary",
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameType": {
+          "enum": [
+            "hearts",
+            "spades",
+            "trix"
+          ]
+        },
+        "variantId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceUnitId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating"
+          ]
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        }
+      },
+      "required": [
+        "sessionId",
+        "gameId",
+        "gameType",
+        "variantId",
+        "sourceUnitId",
+        "decisionId",
+        "sourceRevision",
+        "createdAt",
+        "kind",
+        "provider"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUISession": {
+      "title": "CoachUISession",
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameType": {
+          "enum": [
+            "hearts",
+            "spades",
+            "trix"
+          ]
+        },
+        "variantId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceUnitId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating"
+          ]
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CoachUIItem"
+          },
+          "minItems": 1,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "sessionId",
+        "gameId",
+        "gameType",
+        "variantId",
+        "sourceUnitId",
+        "decisionId",
+        "sourceRevision",
+        "createdAt",
+        "kind",
+        "provider",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIStatusView": {
+      "title": "CoachUIStatusView",
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "playerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "serverTime": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "access": {
+          "$ref": "#/$defs/CoachUIAccess"
+        },
+        "recent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CoachUISessionSummary"
+          },
+          "minItems": 0,
+          "maxItems": 50
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "playerId",
+        "serverTime",
+        "provider",
+        "access",
+        "recent"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUISessionView": {
+      "title": "CoachUISessionView",
+      "type": "object",
+      "properties": {
+        "session": {
+          "$ref": "#/$defs/CoachUISession"
+        },
+        "access": {
+          "$ref": "#/$defs/CoachUIAccess"
+        }
+      },
+      "required": [
+        "session",
+        "access"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIStartRequest": {
+      "title": "CoachUIStartRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "cue",
+            "review",
+            "rating"
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "decisionId",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIItemRequest": {
+      "title": "CoachUIItemRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "gameId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "controlLeaseToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "kind": {
+          "enum": [
+            "selection",
+            "confirmed",
+            "postplay"
+          ]
+        },
+        "selectedCards": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+          },
+          "minItems": 0,
+          "maxItems": 13,
+          "uniqueItems": true
+        },
+        "action": {
+          "anyOf": [
+            {
+              "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/GameAction"
+            },
+            {
+              "$ref": "./games/trix.schema.json#/$defs/TrixAction"
+            }
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "gameId",
+        "expectedRevision",
+        "controlLeaseToken",
+        "decisionId",
+        "sessionId",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "selection"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "selectedCards"
+            ],
+            "properties": {
+              "selectedCards": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/Card"
+                },
+                "minItems": 0,
+                "maxItems": 13,
+                "uniqueItems": true
+              },
+              "action": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "confirmed",
+                  "postplay"
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "action"
+            ],
+            "properties": {
+              "action": {
+                "anyOf": [
+                  {
+                    "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/GameAction"
+                  },
+                  {
+                    "$ref": "./games/trix.schema.json#/$defs/TrixAction"
+                  }
+                ]
+              },
+              "selectedCards": false
+            }
+          }
+        }
+      ]
+    },
+    "CoachUIFeedbackRequest": {
+      "title": "CoachUIFeedbackRequest",
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expectedFeedbackRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "value": {
+          "enum": [
+            "helpful",
+            "not-helpful"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "commandId",
+        "itemId",
+        "expectedFeedbackRevision",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIFeedbackView": {
+      "title": "CoachUIFeedbackView",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "feedbackRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "feedback": {
+          "$ref": "#/$defs/CoachUIFeedback"
+        }
+      },
+      "required": [
+        "itemId",
+        "feedbackRevision",
+        "feedback"
+      ],
+      "additionalProperties": false
+    },
+    "CoachUIReplayView": {
+      "title": "CoachUIReplayView",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "label": {
+          "const": "Saved actor view"
+        },
+        "provider": {
+          "$ref": "#/$defs/CoachUIProvider"
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "$ref": "https://trickscoach.com/schemas/local-v1.json#/$defs/ReviewFrame"
+          },
+          "minItems": 1,
+          "maxItems": 120
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "itemId",
+        "sourceRevision",
+        "decisionId",
+        "label",
+        "provider",
+        "frames",
+        "explanation"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

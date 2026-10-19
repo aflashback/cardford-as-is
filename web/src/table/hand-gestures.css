@@ -1,0 +1,12 @@
+/* Pointer targets stay fixed. Only intentional picks/queues change the artwork. */
+.app-shell .hand-card { touch-action: none; -webkit-touch-callout: none; }
+.app-shell .hand-card:not(.selected):not(.queued):hover .card-face { transform: none; }
+.app-shell .hand-card.queued { z-index: 6; }
+.app-shell .hand-card.queued .card-face,
+.app-shell .hand-card.queued:hover .card-face { transform: translateY(-10%); transition: none; }
+.hand-drag-card { position: fixed; z-index: 95; pointer-events: none; transform-origin: center; will-change: transform; }
+.hand-drag-card .card-face { visibility: visible; }
+.hand-drag-card.returning { transition: transform 140ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .hand-drag-card.returning { transition: none; }
+}

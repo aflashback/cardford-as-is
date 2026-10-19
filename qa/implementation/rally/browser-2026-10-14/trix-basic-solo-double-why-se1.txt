@@ -1,0 +1,103 @@
+- banner:
+  - button "CardFord · choose game"
+  - 'button "Choose game: Trix Basic · Solo"':
+  - 'button "Scores: You 0, Leo 0, Maya 0, Theo 0"':
+  - navigation "Table controls":
+    - button "Pause game":
+    - button "Game menu":
+- main "Saved decision table":
+  - region "Saved four-player table":
+    - generic: "Y"
+    - 'img "You: kingdom owner"':
+    - generic: You
+    - text: "0"
+    - img "13 cards left"
+    - img "Current player"
+    - generic: L
+    - generic: Leo
+    - text: "0"
+    - img "13 cards left"
+    - generic: M
+    - generic: Maya
+    - text: "0"
+    - img "13 cards left"
+    - generic: T
+    - generic: Theo
+    - text: "0"
+    - img "13 cards left"
+    - generic: Doubling
+  - region "Your saved hand":
+    - img "2 of clubs":
+      - generic: "2"
+      - generic: ♣
+      - generic: ♣
+    - img "3 of clubs":
+      - generic: "3"
+      - generic: ♣
+      - generic: ♣
+    - img "4 of clubs":
+      - generic: "4"
+      - generic: ♣
+      - generic: ♣
+    - img "Jack of clubs":
+      - generic: J
+      - generic: ♣
+      - generic: ♣
+    - img "Queen of clubs, selected in saved decision":
+      - generic: Q
+      - generic: ♣
+      - generic: ♣
+    - img "Jack of diamonds":
+      - generic: J
+      - generic: ♦
+      - generic: ♦
+    - img "Queen of diamonds, selected in saved decision":
+      - generic: Q
+      - generic: ♦
+      - generic: ♦
+    - img "7 of hearts":
+      - generic: "7"
+      - generic: ♥
+      - generic: ♥
+    - img "Jack of hearts":
+      - generic: J
+      - generic: ♥
+      - generic: ♥
+    - img "Queen of hearts, selected in saved decision":
+      - generic: Q
+      - generic: ♥
+      - generic: ♥
+    - img "King of hearts":
+      - generic: K
+      - generic: ♥
+      - generic: ♥
+    - img "Jack of spades":
+      - generic: J
+      - generic: ♠
+      - generic: ♠
+    - img "Queen of spades, selected in saved decision":
+      - generic: Q
+      - generic: ♠
+      - generic: ♠
+  - status: Doubling
+- button "Close Coach" [expanded]:
+  - img "Coach waiting"
+- status
+- complementary "Coach":
+  - strong: Coach
+  - generic "Coaching allowance resets 2026-10-15T00:00:00Z": Unlimited coaching · local preview
+  - button "More table width is needed to pin Coach" [disabled]:
+  - button "Close Coach":
+  - region "Coaching sessions" [active]:
+    - button "Back to live play":
+      - text: Back to live play
+    - button "Previous saved frame" [disabled]:
+    - button "Play saved frames" [disabled]:
+    - button "Next saved frame" [disabled]:
+    - status: 1/1
+    - slider "Saved frame" [disabled]: "0"
+    - paragraph: Deal 1 · Doubling
+    - generic: Preview explanation
+    - paragraph: Mock preview using saved actor-visible context. Move quality is not assessed.
+    - generic "History"
+    - button "Comment on this explanation"

@@ -1,0 +1,65 @@
+{
+  "name": "trix-basic-solo-desktop-paused",
+  "at": "2026-10-16T02:05:58.008Z",
+  "mode": "Trix Basic Solo",
+  "build": "index-Ctizdknu.js",
+  "geometry": {
+    "brokenImages": [],
+    "coachOpen": false,
+    "dialogs": [
+      {
+        "bottom": 571.8580322265625,
+        "clientHeight": 242,
+        "controls": [
+          {
+            "bottom": 465.20366287231445,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Resume game",
+            "right": 913.3108520507812,
+            "width": 398.4480590820313,
+            "x": 514.86279296875,
+            "y": 421.20806884765625
+          },
+          {
+            "bottom": 547.1819648742676,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Settings",
+            "right": 710.0905914306641,
+            "width": 195.2277984619141,
+            "x": 514.86279296875,
+            "y": 503.1863708496094
+          },
+          {
+            "bottom": 547.1819648742676,
+            "disabled": false,
+            "height": 43.9955940246582,
+            "label": "Choose game",
+            "right": 913.3108673095704,
+            "width": 195.2277984619141,
+            "x": 718.0830688476562,
+            "y": 503.1863708496094
+          }
+        ],
+        "height": 243.3201904296875,
+        "name": "Game paused",
+        "right": 950.1820373535156,
+        "scrollHeight": 242,
+        "width": 459.9953308105469,
+        "x": 490.1867065429687,
+        "y": 328.537841796875
+      }
+    ],
+    "height": 900,
+    "scrollHeight": 900,
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  "checks": {
+    "noHorizontalPageOverflow": true,
+    "dialogsInside": true,
+    "noBrokenImages": true,
+    "controlsInside": true
+  }
+}
